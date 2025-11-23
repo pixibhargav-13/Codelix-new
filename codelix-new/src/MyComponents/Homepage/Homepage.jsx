@@ -12,6 +12,8 @@ import "./Homepage.css";
 import { WhatWeBuild } from "../WhatWeBuild/WhatWeBuild";
 import { WhatMakesUsDifferent } from "../WhatMakesUsDifferent/WhatMakesUsDifferent";
 import { WhatWeProvide } from "../WhatWeProvide/WhatWeProvide";
+import Ourwork from "../OurWork/Ourwork";
+import { ChooseUs } from "../ReasonToChooseUs/ChooseUs";
 
 export const Homepage = () => {
   return (
@@ -105,6 +107,12 @@ export const Homepage = () => {
         <div className="what-makes-us-different">
           <WhatWeProvide/>
         </div>
+      </div>
+      <div className="Choose-us">
+      <ChooseUs/>
+      </div>
+      <div className="our-work">
+      <Ourwork/>
       </div>
     </>
   );
