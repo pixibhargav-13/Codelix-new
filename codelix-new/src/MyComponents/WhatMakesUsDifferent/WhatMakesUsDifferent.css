@@ -1,0 +1,57 @@
+.what-different-section {
+  background: #ffffff;
+}
+
+.heading-diff {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.underline-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-img {
+  position: absolute;
+  bottom: -14px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  pointer-events: none;
+}
+
+/* Gray text */
+.gray-font {
+  color: #6f6f6f;
+}
+
+/* Left Section Line Before Quote */
+.deliver-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.deliver-text .line {
+  display: inline-block;
+  width: 80px;
+  height: 2px;
+  background: #cccccc;
+}
+
+.codelix-blue{
+    color: #3E7DFC;
+    font-weight: bold !important;
+}
+
+/* Right Side Stats */
+.stats-card {
+  border: 1px solid #ABB3CB;
+  border-radius: 0px;
+  background: #fff;
+}
+
+.stats-card h3 {
+  margin-bottom: 2px;
+}

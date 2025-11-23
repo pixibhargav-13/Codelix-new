@@ -2,7 +2,7 @@
     max-width: 1400px;
 }
 
-.homepage{
+.hero-section{
     width: 100vw;
     max-width: 100vw;
     overflow-x: hidden;
@@ -52,14 +52,7 @@
     border-color: #ccc;
 }
 
-/* Arrow Icon */
 .arrow-icon{
     height: 20px;
     width: auto;
-}
-
-/* Make spacing identical to screenshot */
-.hero-buttons .btn span {
-    display: inline-block;
-    margin-right: 10px;
 }
