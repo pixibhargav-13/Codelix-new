@@ -14,6 +14,7 @@ import { WhatMakesUsDifferent } from "../WhatMakesUsDifferent/WhatMakesUsDiffere
 import { WhatWeProvide } from "../WhatWeProvide/WhatWeProvide";
 import Ourwork from "../OurWork/Ourwork";
 import { ChooseUs } from "../ReasonToChooseUs/ChooseUs";
+import { ExploreProducts } from "../ExploreProducts/ExploreProducts";
 
 export const Homepage = () => {
   return (
@@ -97,22 +98,28 @@ export const Homepage = () => {
         </div>
 
         <div className="what-we-build">
-          <WhatWeBuild/>
+          <WhatWeBuild />
         </div>
 
         <div className="what-makes-us-different">
-          <WhatMakesUsDifferent/>
+          <WhatMakesUsDifferent />
         </div>
 
         <div className="what-makes-us-different">
-          <WhatWeProvide/>
+          <WhatWeProvide />
         </div>
-      </div>
-      <div className="Choose-us">
-      <ChooseUs/>
-      </div>
-      <div className="our-work">
-      <Ourwork/>
+
+        <div className="explore-products">
+          <ExploreProducts />
+        </div>
+
+        <div className="Choose-us">
+          <ChooseUs />
+        </div>
+        
+        <div className="our-work">
+          <Ourwork />
+        </div>
       </div>
     </>
   );
