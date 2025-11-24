@@ -58,14 +58,17 @@ export const ChooseUs = () => {
 
         <p className="choose-subtitle mb-5">
           From concept to completion, we craft digital experiences that don’t
-          just look great; they drive measurable growth and long-term impact.
+          just look great;
+          <span className="line-break">
+            they drive measurable growth and long-term impact.
+          </span>
         </p>
 
         {/* Boxes */}
         <div className="row g-0 choose-grid">
           {reasons.map((item) => (
             <div className="col-lg-4 col-md-6 border p-4 choose-box" key={item.id}>
-              <h5 className="fw-bold">{item.title}</h5>
+              <h5 className="choose-title">{item.title}</h5>
               <p className="mt-2 choose-desc">{item.description}</p>
             </div>
           ))}

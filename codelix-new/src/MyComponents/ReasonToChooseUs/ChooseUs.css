@@ -32,8 +32,19 @@
 }
 
 .choose-subtitle {
-  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+  text-align: center;
   color: #6C788F;
+  word-break: break-all;
+}
+
+.line-break{
+  display: block;
 }
 
 .choose-box {
@@ -41,12 +52,31 @@
   background: #ffffff;
 }
 
-.choose-box h5 {
-  font-size: 16px;
+
+.choose-title {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 600 !important;    
+  font-style: normal;     
+  font-size: 23px !important;
+  line-height: 30px;
+  letter-spacing: 0;
+  color: #131926;       
 }
 
 .choose-desc {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;    
   font-size: 14px;
-  color: #6b7280;
-  line-height: 1.5;
+  line-height: 20px;     
+  letter-spacing: 0;
+  color: #131926;
+}
+
+.row.g-0 {
+    border: 1px solid #ABB3C2;
+}
+
+.border {
+  border:#ABB3C2 !important;
 }
