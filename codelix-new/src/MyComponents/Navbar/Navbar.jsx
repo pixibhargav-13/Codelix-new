@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import codelixlogo from "../Images/codelix-logo.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import { Menu, X } from "lucide-react"; // you can remove this if you want Bootstrap toggler icon
-import './Navbar.css'
+import "./Navbar.css";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,9 +41,8 @@ export const Navbar = () => {
             ))}
           </ul>
 
-          {/* Contact Us Button */}
-          <div className="d-flex justify-content-center mt-3 blue-common-btn">
-            <button className="btn blue-common-btn d-flex align-items-center justify-content-between navbar-button">
+          <div className="navbar-contact-wrapper mt-3">
+            <button className="btn navbar-button">
               <span>Contact Us</span>
               <img src={whiteArrow} alt="arrow" className="arrow-icon" />
             </button>

@@ -1,13 +1,14 @@
 .navbar-button {
-  border-radius: 0px;
+  background: #2B6EF2 !important;      /* blue */
+  color: #ffffff !important;            /* white text */
   border: 1px solid transparent;
-  font-weight: 500;
-  font-size: 16px;
-  letter-spacing: 0.3px;
+  width: 160px;
+  padding: 10px 15px !important;
+  border-radius: 0px !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   transition: all 0.2s ease-in-out;
-  padding: 10px 10px 10px 15px !important;
-  width: 145px !important;
-  color: #ffffff !important;
 }
 
 .navbar-toggler {
@@ -28,8 +29,29 @@
 .arrow-icon {
   height: 20px;
   width: auto;
+  transition: transform 2s ease-in;
 }
 
 .nav-link:hover {
   color: #3e7dfc !important;
+}
+
+/* WRAPPER (No background here) */
+.navbar-contact-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/* HOVER EFFECT — EXACT LIKE YOUR IMAGE */
+.navbar-button:hover {
+  background: #ffffff !important;       /* white */
+  color: #2B6EF2 !important;            /* blue text */
+  border: 1px solid #2B6EF2 !important; /* blue thin border */
+  box-shadow: 4px 4px 0px #2B6EF2;      /* bottom blue block effect */
+}
+
+.navbar-button:hover .arrow-icon {
+  filter: brightness(0) saturate(100%) invert(36%) sepia(98%) saturate(2475%)
+    hue-rotate(206deg) brightness(95%) contrast(101%);
+    rotate: -45deg;
 }

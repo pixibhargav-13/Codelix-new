@@ -1,70 +1,70 @@
-.wrapper{
-    max-width: 1400px;
+.wrapper {
+  max-width: 1400px;
 }
 
-.hero-section{
-    width: 100vw;
-    max-width: 100vw;
-    padding-bottom: 2rem;
-    overflow-x: hidden;
-    background-image: url('../Images/heroBgImage.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+.hero-section {
+  width: 100vw;
+  max-width: 100vw;
+  padding-bottom: 2rem;
+  overflow-x: hidden;
+  background-image: url("../Images/heroBgImage.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.client-logo{
-    height: 40px;
+.client-logo {
+  height: 40px;
 }
 
-.right-image{
-    width: 100% !important;
+.right-image {
+  width: 100% !important;
 }
 
-.hero-buttons{
+.hero-buttons {
   margin-top: 1.5rem !important;
 }
 
 .hero-buttons button {
-    border-radius: 0px;
-    border: 1px solid transparent;
-    font-weight: 500;
-    font-size: 15px;
-    letter-spacing: 0.3px;
-    transition: all 0.2s ease-in-out;
-    padding: 10px 20px 10px 15px !important;
-    width: 250px !important;
-}
-
-.free-quote-btn{
-    color: #fff !important;
+  border-radius: 0px;
+  border: 1px solid transparent;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  transition: all 0.2s ease-in-out;
+  padding: 10px 20px 10px 15px !important;
+  width: 250px !important;
 }
 
 .free-quote-btn {
-    background: #2B6EF2; 
-    color: #fff !important;
-    border-color: #2B6EF2;
+  color: #fff !important;
+}
+
+.free-quote-btn {
+  background: #2b6ef2;
+  color: #fff !important;
+  border-color: #2b6ef2;
 }
 
 .free-quote-btn:hover {
-    background: #1f56c3;
-    border-color: #1f56c3;
+  background: #1f56c3;
+  border-color: #1f56c3;
 }
 
 .explore-work-btn {
-    background-color: #ffffff !important;
-    color: red;
-    border: 1px solid #ddd;
+  background-color: #ffffff !important;
+  color: red;
+  border: 1px solid #ddd;
 }
 
 .explore-work-btn:hover {
-    background: #f2f2f2;
-    border-color: #ccc;
+  background: #f2f2f2;
+  border-color: #ccc;
 }
 
-.arrow-icon{
-    height: 20px;
-    width: auto;
+.arrow-icon {
+  height: 20px;
+  width: auto;
 }
 
 .homepage-hero-slideshow-wrapper {
@@ -84,8 +84,6 @@
 .homepage-hero-fade-in {
   opacity: 1;
 }
-
-
 
 /* --- CLIENT LOGO MARQUEE --- */
 
@@ -126,13 +124,63 @@
   }
 }
 
+.free-quote-btn {
+  background: #2b6ef2 !important;
+  color: #ffffff !important;
+  border: 1px solid transparent;
+  transition: all 0.25s ease-in-out !important;
+}
+
+/* HOVER EFFECT MATCHING CONTACT-US BUTTON */
+.free-quote-btn:hover {
+  background: #ffffff !important;
+  color: #2b6ef2 !important;
+  border: 1px solid #2b6ef2 !important;
+  box-shadow: 4px 4px 0px #2b6ef2;
+}
+
+/* SMOOTH ARROW ROTATION */
+.free-quote-btn .arrow-icon {
+  transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out !important;
+}
+
+.free-quote-btn:hover .arrow-icon {
+  transform: rotate(-45deg);
+  filter: brightness(0) saturate(100%) invert(36%) sepia(98%) saturate(2475%)
+    hue-rotate(206deg) brightness(95%) contrast(101%);
+}
+
+/* EXPLORE OUR WORK BUTTON */
+.explore-work-btn {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #ddd !important;
+  transition: all 0.25s ease-in-out !important;
+}
+
+/* HOVER EFFECT */
+.explore-work-btn:hover {
+  border: 1px solid #000 !important;
+  box-shadow: 4px 4px 0px #000000; /* black shadow */
+}
+
+/* Arrow smooth rotation */
+.explore-work-btn .arrow-icon {
+  transition: transform 0.35s ease-in-out !important;
+}
+
+/* Rotate arrow on hover */
+.explore-work-btn:hover .arrow-icon {
+  transform: rotate(-45deg);
+  filter: brightness(0); /* keeps arrow BLACK */
+}
 
 @media (min-width: 200px) and (max-width: 400px) {
   .container {
     padding-left: 25px !important;
     padding-right: 25px !important;
   }
-  
+
   .hero-buttons {
     flex-direction: column !important;
     gap: 10px !important;
@@ -141,7 +189,7 @@
   }
 
   .hero-buttons button {
-    width: 100% !important;      /* both stay side–by–side */
+    width: 100% !important; /* both stay side–by–side */
     white-space: nowrap !important;
     padding: 10px 10px !important;
     font-size: 13px !important;
@@ -156,4 +204,3 @@
     flex-shrink: 0;
   }
 }
-

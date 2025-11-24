@@ -101,6 +101,22 @@
   width: auto;
 }
 
+.read-btn:hover {
+  color: #ffffff !important;
+  border-color: #000000 !important;
+  box-shadow: 4px 4px 0px #000000;
+}
+
+/* Arrow animation */
+.read-btn .arrow-icon {
+  transition: transform 0.35s ease-in-out !important;
+}
+
+.read-btn:hover .arrow-icon {
+  transform: rotate(-45deg);
+  filter: brightness(0) invert(1); /* make arrow white */
+}
+
 @media (min-width: 200px) and (max-width: 400px) {
   .card-body h5 {
     font-size: 15px;
