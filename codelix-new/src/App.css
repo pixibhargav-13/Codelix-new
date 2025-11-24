@@ -5,27 +5,42 @@
   list-style-type: none;
 }
 
-.hanken-grotesk{
-  font-family: 'Hanken Grotesk';
+.hanken-grotesk {
+  font-family: "Hanken Grotesk";
   font-weight: 700;
 }
 
-.inter{
-  font-family: 'Inter';
+.inter {
+  font-family: "Inter";
 }
 
-.light-gray{
-  color: #A2A9B5;
+.light-gray {
+  color: #a2a9b5;
 }
 
-.gray-font{
-  color: #6C788F !important;
+.gray-font {
+  color: #6c788f !important;
 }
 
-.blue-common-btn{
-  background-color: #3E7DFC !important;
+.blue-common-btn {
+  background-color: #3e7dfc !important;
 }
 
-.explore-our-work-btn{
-  background-color: #FFFFFF !important;
+.explore-our-work-btn {
+  background-color: #ffffff !important;
+}
+
+.gray-font-margin-top {
+  margin-top: 3rem !important;
+}
+
+@media (min-width: 200px) and (max-width: 400px) {
+  .heading-provide {
+    font-size: 28px !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .gray-font-margin-top {
+    margin-top: 2rem !important;
+  }
 }

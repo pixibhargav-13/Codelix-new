@@ -50,7 +50,7 @@ export const WhatWeBuild = () => {
   return (
     <section className="what-we-build py-5">
       <div className="container text-center">
-        <h2 className="heading-title mb-2">
+        <h2 className="heading-provide mb-2">
           This Is What{" "}
           <span className="underline-wrapper fw-bold">
             We Build
@@ -58,7 +58,7 @@ export const WhatWeBuild = () => {
           </span>
         </h2>
 
-        <p className="gray-font mb-5 mt-3">
+        <p className="gray-font gray-font-margin-top mb-5">
           We build AI-driven Tech experiences that combine elegant design,
           seamless performance, and measurable results.
         </p>

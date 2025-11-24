@@ -66,7 +66,7 @@ export const ExploreProducts = () => {
             </div>
 
             {/* RIGHT SIDE IMAGE */}
-            <div className="col-lg-6">
+            <div className="col-lg-6 explore-product-img-div">
               <img src={p.image} alt="product" className="explore-product-img" />
             </div>
 

@@ -19,7 +19,7 @@ export const Navbar = () => {
 
         {/* Mobile Toggle Button */}
         <button
-          className="navbar-toggler border-0 text-white"
+          className="navbar-toggler text-white"
           type="button"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >

@@ -67,3 +67,14 @@
   height: 19px;
   width: auto;
 }
+
+@media (min-width: 200px) and (max-width: 425px) {
+ .explore-product-img-div{
+  margin-top: 3rem !important;
+ }
+
+ .container {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+  }
+}

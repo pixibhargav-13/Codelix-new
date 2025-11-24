@@ -1,10 +1,20 @@
-import React from "react";
-import hero from "../Images/homepage-hero-image.png";
-import client1 from "../Images/heroClientOne.png";
-import client2 from "../Images/heroClientTwo.png";
-import client3 from "../Images/heroClientThree.png";
-import client4 from "../Images/heroClientFour.png";
-import client5 from "../Images/heroClientFive.png";
+import React, { useState, useEffect } from "react";
+import heroOne from "../Images/homepage-hero-web-dev.png";
+import heroTwo from "../Images/homepage-hero-app-dev.png";
+import heroThree from "../Images/homepage-hero-saas-dev.png";
+import client1 from "../Images/homepage-client-one.png";
+import client2 from "../Images/homepage-client-two.png";
+import client3 from "../Images/homepage-client-three.png";
+import client4 from "../Images/homepage-client-four.png";
+import client5 from "../Images/homepage-client-five.png";
+import client6 from "../Images/homepage-client-six.png";
+import client7 from "../Images/homepage-client-seven.png";
+import client8 from "../Images/homepage-client-eight.png";
+import client9 from "../Images/homepage-client-nine.png";
+import client10 from "../Images/homepage-client-ten.png";
+import client11 from "../Images/homepage-client-eleven.png";
+import client12 from "../Images/homepage-client-twelve.png";
+
 import blackArrow from "../Images/blackArrow.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import { Navbar } from "../Navbar/Navbar";
@@ -15,8 +25,44 @@ import { WhatWeProvide } from "../WhatWeProvide/WhatWeProvide";
 import Ourwork from "../OurWork/Ourwork";
 import { ChooseUs } from "../ReasonToChooseUs/ChooseUs";
 import { ExploreProducts } from "../ExploreProducts/ExploreProducts";
+import { HomepageBlog } from "../HomepageBlog/HomepageBlog";
+import { HomepageFaq } from "../HomepageFaq/HomepageFaq";
 
 export const Homepage = () => {
+  const heroImages = [heroOne, heroTwo, heroThree];
+  const [index, setIndex] = useState(0);
+  const [currentHero, setCurrentHero] = useState(heroImages[0]);
+  const [fade, setFade] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false);
+
+      setTimeout(() => {
+        const newIndex = (index + 1) % heroImages.length;
+        setIndex(newIndex);
+        setCurrentHero(heroImages[newIndex]);
+        setFade(true); // fade-in
+      }, 500);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [index]);
+
+  const clientLogos = [
+    client1,
+    client2,
+    client3,
+    client4,
+    client5,
+    client6,
+    client7,
+    client8,
+    client9,
+    client10,
+    client11,
+    client12,
+  ];
   return (
     <>
       <div className="homepage">
@@ -39,9 +85,9 @@ export const Homepage = () => {
                         design excellence through world-class UI/UX design.
                       </p>
 
-                      <div className="d-flex gap-3 mt-4 hero-buttons">
+                      <div className="d-flex gap-3 hero-buttons">
                         {/* Blue Button */}
-                        <button className="btn blue-common-btn d-flex align-items-center justify-content-between">
+                        <button className="btn blue-common-btn d-flex align-items-center justify-content-between free-quote-btn">
                           <span>Get a Free Quote</span>
                           <img
                             src={whiteArrow}
@@ -65,11 +111,15 @@ export const Homepage = () => {
 
                   {/* Right Image */}
                   <div className="col-lg-5 h-100">
-                    <div className="border border-secondary d-flex justify-content-center align-items-center h-100 no-spacing">
+                    <div className="border border-secondary d-flex justify-content-center align-items-center h-100 no-spacing homepage-hero-slideshow-wrapper">
                       <img
-                        src={hero}
+                        src={currentHero}
                         alt="hero"
-                        className="img-fluid right-image"
+                        className={`img-fluid right-image homepage-hero-fade-image ${
+                          fade
+                            ? "homepage-hero-fade-in"
+                            : "homepage-hero-fade-out"
+                        }`}
                       />
                     </div>
                   </div>
@@ -83,17 +133,18 @@ export const Homepage = () => {
             Trusted by 25+ Companies and Growing
           </p>
 
-          <div className="d-flex justify-content-center flex-wrap">
-            <img src={client1} className="img-fluid client-logo" />
-            <img src={client2} className="img-fluid client-logo" />
-            <img src={client3} className="img-fluid client-logo" />
-            <img src={client4} className="img-fluid client-logo" />
-            <img src={client5} className="img-fluid client-logo" />
-            <img src={client5} className="img-fluid client-logo" />
-            <img src={client5} className="img-fluid client-logo" />
-            <img src={client5} className="img-fluid client-logo" />
-            <img src={client5} className="img-fluid client-logo" />
-            <img src={client5} className="img-fluid client-logo" />
+          {/* CLIENT LOGO MARQUEE */}
+          <div className="client-marquee-container mt-4">
+            <div className="client-marquee-track">
+              {clientLogos.concat(clientLogos).map((logo, index) => (
+                <img
+                  key={index}
+                  src={logo}
+                  className="client-marquee-logo"
+                  alt="client"
+                />
+              ))}
+            </div>
           </div>
         </div>
 
@@ -116,9 +167,17 @@ export const Homepage = () => {
         <div className="Choose-us">
           <ChooseUs />
         </div>
-        
+
         <div className="our-work">
           <Ourwork />
+        </div>
+
+        <div className="homepage-blog">
+          <HomepageBlog />
+        </div>
+
+        <div className="homepage-faq">
+          <HomepageFaq />
         </div>
       </div>
     </>

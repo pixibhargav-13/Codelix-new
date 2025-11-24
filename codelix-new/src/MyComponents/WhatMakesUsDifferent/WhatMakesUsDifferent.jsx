@@ -17,7 +17,7 @@ export const WhatMakesUsDifferent = () => {
       <div className="container">
 
         {/* HEADING */}
-        <h2 className="text-center heading-diff mb-4">
+        <h2 className="text-center heading-provide mb-4">
           What Makes{" "}
           <span className="underline-wrapper fw-bold">
             Us Different
@@ -56,15 +56,13 @@ export const WhatMakesUsDifferent = () => {
                 <div className="col-6" key={item.id}>
                   <div className="stats-card p-3 h-100">
                     <h3 className="fw-bold">{item.value}</h3>
-                    <p className="small mt-2 mb-0">{item.label}</p>
+                    <p className="different-label mt-2 mb-0">{item.label}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
   );

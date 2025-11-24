@@ -20,6 +20,11 @@
 .right-image{
     width: 100% !important;
 }
+
+.hero-buttons{
+  margin-top: 1.5rem !important;
+}
+
 .hero-buttons button {
     border-radius: 0px;
     border: 1px solid transparent;
@@ -29,6 +34,10 @@
     transition: all 0.2s ease-in-out;
     padding: 10px 20px 10px 15px !important;
     width: 250px !important;
+}
+
+.free-quote-btn{
+    color: #fff !important;
 }
 
 .free-quote-btn {
@@ -57,3 +66,94 @@
     height: 20px;
     width: auto;
 }
+
+.homepage-hero-slideshow-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.homepage-hero-fade-image {
+  opacity: 1;
+  transition: opacity 1.3s ease-in-out;
+}
+
+.homepage-hero-fade-out {
+  opacity: 0;
+}
+
+.homepage-hero-fade-in {
+  opacity: 1;
+}
+
+
+
+/* --- CLIENT LOGO MARQUEE --- */
+
+.client-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 10px 0;
+}
+
+.client-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: max-content;
+  animation: marquee-scroll 20s linear infinite;
+}
+
+.client-marquee-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.client-marquee-logo:hover {
+  opacity: 1;
+}
+
+/* MARQUEE ANIMATION */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+@media (min-width: 200px) and (max-width: 400px) {
+  .container {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+  }
+  
+  .hero-buttons {
+    flex-direction: column !important;
+    gap: 10px !important;
+    justify-content: space-between !important;
+    margin-top: 8rem !important;
+  }
+
+  .hero-buttons button {
+    width: 100% !important;      /* both stay side–by–side */
+    white-space: nowrap !important;
+    padding: 10px 10px !important;
+    font-size: 13px !important;
+  }
+
+  .hero-buttons span {
+    white-space: nowrap !important;
+  }
+
+  .arrow-icon {
+    height: 18px;
+    flex-shrink: 0;
+  }
+}
+

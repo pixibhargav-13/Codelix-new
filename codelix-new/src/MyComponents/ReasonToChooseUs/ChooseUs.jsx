@@ -56,7 +56,7 @@ export const ChooseUs = () => {
           </span>
         </h2>
 
-        <p className="choose-subtitle mb-5">
+        <p className="choose-subtitle gray-font-margin-top mb-5">
           From concept to completion, we craft digital experiences that don’t
           just look great;
           <span className="line-break">

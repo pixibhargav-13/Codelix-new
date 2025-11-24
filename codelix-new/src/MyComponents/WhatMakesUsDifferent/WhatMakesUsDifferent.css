@@ -40,18 +40,32 @@
   background: #cccccc;
 }
 
-.codelix-blue{
-    color: #3E7DFC;
-    font-weight: bold !important;
+.codelix-blue {
+  color: #3e7dfc;
+  font-weight: bold !important;
 }
 
 /* Right Side Stats */
 .stats-card {
-  border: 1px solid #ABB3CB;
+  border: 1px solid #abb3cb;
   border-radius: 0px;
   background: #fff;
 }
 
 .stats-card h3 {
   margin-bottom: 2px;
+}
+
+.different-label {
+  font-size: 0.875rem;
+}
+
+@media (min-width: 200px) and (max-width: 400px) {
+  .deliver-text {
+    font-size: 15px !important;
+  }
+
+  .different-label {
+    font-size: 0.75rem;
+  }
 }
