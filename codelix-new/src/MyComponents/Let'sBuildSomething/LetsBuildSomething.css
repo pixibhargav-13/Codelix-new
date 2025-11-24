@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    box-sizing: border-box;
+}
+
+.lets-build-section {
+    position: relative;
+    background: #020814;
+    padding: 8rem 0px;
+    overflow: hidden;
+    border-radius: 0;
+}
+
+/* Curved LEFT & RIGHT images */
+.overlay-curves {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.curve {
+    position: absolute;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.9;
+}
+
+/* Left curve */
+.curve-left {
+    left: -5%;
+    transform: scaleX(-1);
+    /* Mirrors the same image */
+}
+
+/* Right curve */
+.curve-right {
+    right: -5%;
+}
+
+/* Center content */
+.content-wrapper {
+    position: relative;
+    z-index: 5;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.lets-build-main-title {
+    color: #ffffff;
+    font-family: "Hanken Grotesk";
+    font-weight: 700;
+    font-style: normal;   
+    font-size: 48px;
+    line-height: 100%;    
+    letter-spacing: 0%;
+    text-align: center;
+}
+
+.lets-build-subtitle {
+    font-family: Inter;
+    font-weight: 400;
+    font-style: normal; /* "Regular" means normal */
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    color: #FFFFFF99;   /* exact from your specs */
+    margin: 20px 0 40px; /* keep your spacing */
+}
+
+/* Button */
+.consult-btn {
+    background: #3E7DFC;
+    color: #fff;
+    border: none;
+    padding: 21px 28px;
+    font-size: 20px;
+    border-radius: 6px;
+    margin-top:5rem;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.consult-btn:hover {
+    background: #2563eb;
+}
+
+
+/* =============== RESPONSIVE =============== */
+
+/* =================== MOBILE FIXES =================== */
+@media (max-width: 992px) {
+    .curve {
+        width: 90vw;
+    }
+
+    .curve-left {
+        left: -35vw;
+    }
+
+    .curve-right {
+        right: -35vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .curve {
+        width: 110vw;
+    }
+
+    .curve-left {
+        left: -16vw;
+    }
+
+    .curve-right {
+        right: -16vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .curve {
+        width: 140vw;   /* gives perfect curve shape like your reference */
+    }
+
+    .curve-left {
+        left: -60vw;
+    }
+
+    .curve-right {
+        right: -60vw;
+    }
+}

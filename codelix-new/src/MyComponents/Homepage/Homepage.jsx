@@ -27,6 +27,7 @@ import { ChooseUs } from "../ReasonToChooseUs/ChooseUs";
 import { ExploreProducts } from "../ExploreProducts/ExploreProducts";
 import { HomepageBlog } from "../HomepageBlog/HomepageBlog";
 import { HomepageFaq } from "../HomepageFaq/HomepageFaq";
+import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
 
 export const Homepage = () => {
   const heroImages = [heroOne, heroTwo, heroThree];
@@ -115,11 +116,10 @@ export const Homepage = () => {
                       <img
                         src={currentHero}
                         alt="hero"
-                        className={`img-fluid right-image homepage-hero-fade-image ${
-                          fade
+                        className={`img-fluid right-image homepage-hero-fade-image ${fade
                             ? "homepage-hero-fade-in"
                             : "homepage-hero-fade-out"
-                        }`}
+                          }`}
                       />
                     </div>
                   </div>
@@ -171,7 +171,9 @@ export const Homepage = () => {
         <div className="our-work">
           <Ourwork />
         </div>
-
+        <div className="lets-build-something">
+          <LetsBuildSomething />
+        </div>
         <div className="homepage-blog">
           <HomepageBlog />
         </div>
@@ -181,5 +183,5 @@ export const Homepage = () => {
         </div>
       </div>
     </>
-  );
+      );
 };
