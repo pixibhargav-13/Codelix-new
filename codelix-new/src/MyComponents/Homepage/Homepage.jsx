@@ -185,9 +185,9 @@ export const Homepage = () => {
           <HomepageFaq />
         </div>
 
-        {/* <div className="footer">
+        <div className="footer">
           <Footer/>
-        </div> */}
+        </div>
       </div>
     </>
   );
