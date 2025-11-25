@@ -14,8 +14,8 @@ export const Navbar = () => {
     { name: "Home", path: "/" },
     { name: "Work", path: "/work" },
     { name: "Services", path: "/services" },
-    { name: "About", path: "/about" },
-    { name: "Blog", path: "/blog" },
+    { name: "About", path: "/" },
+    { name: "Blog", path: "/"},
   ];
 
   return (
@@ -48,7 +48,7 @@ export const Navbar = () => {
           </ul>
 
           <div className="navbar-contact-wrapper mt-3">
-            <Link to="/contact">
+            <Link to="/">
               <button className="btn navbar-button">
                 <span>Contact Us</span>
                 <img src={whiteArrow} alt="arrow" className="arrow-icon mx-3" />
