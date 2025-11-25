@@ -9,39 +9,37 @@ import Ourwork from "../OurWork/Ourwork";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
 
 const Work = () => {
-    return (
-        <>
-            <div className="homepage">
-                <div className="hero-section">
+  return (
+    <>
+        <div className="work-hero-section">
+          <div className="work-content">
+            <h1>Work</h1>
+            <p>
+              We build AI-driven Tech experiences that combine elegant design,
+              <span className="line-break">
+                seasonless seamless performance, and measurable results.
+              </span>
+            </p>
+          </div>
+        </div>
 
-                    {/* --- HERO CONTENT --- */}
-                    <div className="work-content">
-                        <h1>Work</h1>
-                        <p>
-                            We build AI-driven Tech experiences that combine elegant design,
-                            <span className="line-break">seasonless seamless performance, and measurable results.</span>
-                        </p>
+        <div className="best-projects">
+          <BestProjects />
+        </div>
 
-                    </div>
-                </div>
-                <div className="best-projects">
-                    <BestProjects />
-                </div>
-                <div className="lets-build-something">
-                    <LetsBuildSomething />
-                </div>
+        <div className="lets-build-something">
+          <LetsBuildSomething />
+        </div>
 
-                <div className="our-work">
-                    <Ourwork />
-                </div>
-                <div className="footer">
-                    <Footer />
-                </div>
-              
+        <div className="our-work">
+          <Ourwork />
+        </div>
 
-            </div>
-        </>
-    );
+        <div className="footer">
+          <Footer />
+        </div>
+    </>
+  );
 };
 
 export default Work;
