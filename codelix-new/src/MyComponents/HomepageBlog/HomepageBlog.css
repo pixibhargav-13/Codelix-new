@@ -54,6 +54,21 @@
   background: white;
 }
 
+.blog-btn:hover {
+  color: black !important;
+  border-color: #000000 !important;
+  box-shadow: 4px 4px 0px #000000;
+  background-color: transparent !important;
+}
+
+.blog-btn .arrow-icon {
+  transition: transform 0.35s ease-in-out !important;
+}
+
+.blog-btn:hover .arrow-icon {
+  transform: rotate(-45deg);
+}
+
 .arrow-icon {
   height: 16px;
   width: auto;

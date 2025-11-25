@@ -30,19 +30,12 @@
     opacity: 0.9;
 }
 
-/* Left curve */
 .curve-left {
-    left: -5%;
+    left: 14%;
     transform: scaleX(-1);
-    /* Mirrors the same image */
 }
 
-/* Right curve */
-.curve-right {
-    right: -5%;
-}
 
-/* Center content */
 .content-wrapper {
     position: relative;
     z-index: 5;
@@ -74,21 +67,46 @@
     margin: 20px 0 40px; /* keep your spacing */
 }
 
-/* Button */
+
 .consult-btn {
-    background: #3E7DFC;
-    color: #fff;
-    border: none;
-    padding: 21px 28px;
-    font-size: 20px;
-    border-radius: 6px;
-    margin-top:5rem;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
+  background: #3E7DFC !important;
+  color: #ffffff !important;
+  padding: 10px 15px !important;
+  font-size: 18px !important;
+  border-radius: 0px !important;
+  border: 1px solid transparent !important;
+  font-weight: 500 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 25px;
+  transition: all 0.25s ease-in-out !important;
 }
 
+/* Hover effect — EXACT like your blue button */
 .consult-btn:hover {
-    background: #2563eb;
+  background: #ffffff !important;             /* white */
+  color: #3E7DFC !important;                  /* blue text */
+  border: 1px solid #3E7DFC !important;       /* blue border */
+  box-shadow: 4px 4px 0px #3E7DFC !important; /* blue shadow */
+}
+
+/* Arrow rotation */
+.consult-btn .arrow {
+  transition: transform 0.35s ease-in-out !important;
+}
+
+.consult-btn:hover .arrow {
+  transform: rotate(-45deg);
+}
+
+/* Arrow color turns blue on hover */
+.consult-btn .arrow i {
+  transition: filter 0.35s ease-in-out;
+}
+
+.consult-btn:hover .arrow i {
+  filter: brightness(0) saturate(100%) invert(36%) sepia(98%)
+    saturate(2475%) hue-rotate(206deg) brightness(95%) contrast(101%);
 }
 
 

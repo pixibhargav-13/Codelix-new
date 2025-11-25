@@ -68,7 +68,7 @@ export const Homepage = () => {
     <>
       <div className="homepage">
         <div className="hero-section">
-          <div className="wrapper">
+        
             <Navbar />
             <section className="text-white py-5">
               <div className="container">
@@ -117,8 +117,8 @@ export const Homepage = () => {
                         src={currentHero}
                         alt="hero"
                         className={`img-fluid right-image homepage-hero-fade-image ${fade
-                            ? "homepage-hero-fade-in"
-                            : "homepage-hero-fade-out"
+                          ? "homepage-hero-fade-in"
+                          : "homepage-hero-fade-out"
                           }`}
                       />
                     </div>
@@ -126,7 +126,7 @@ export const Homepage = () => {
                 </div>
               </div>
             </section>
-          </div>
+        
 
           {/* BOTTOM LOGOS */}
           <p className="text-center mt-5 mb-3 text-light small opacity-75">
@@ -183,5 +183,5 @@ export const Homepage = () => {
         </div>
       </div>
     </>
-      );
+  );
 };

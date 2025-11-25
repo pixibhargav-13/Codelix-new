@@ -42,6 +42,17 @@
   background: white;
 }
 
+.service-box:hover {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+/* Make titles white on hover */
+.service-box:hover .what-we-provide-title,
+.service-box:hover p {
+  color: #fff !important;
+}
+
 /* Last column in row should not have right border */
 .col-lg-6:nth-child(2n) .service-box {
   border-right: none;
@@ -52,10 +63,23 @@
   border-bottom: none;
 }
 
-/* Arrow icon */
+.arrow-wrapper {
+  width: 46px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease-in-out;
+  background: transparent;
+}
+
 .arrow-icon {
   height: 20px;
-  margin-left: 15px;
+  transition: transform 0.25s ease-in-out;
+}
+
+.service-box:hover .arrow-wrapper {
+  background: #ffffff !important;
 }
 
 .arrow-icon-rotate{

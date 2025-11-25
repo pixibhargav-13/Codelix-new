@@ -63,6 +63,24 @@
   font-weight: 400 !important;
 }
 
+.explore-btn:hover {
+  background: #ffffff !important;         /* white bg */
+  color: #2B6EF2 !important;              /* blue text */
+  border: 1px solid #2B6EF2 !important;   /* blue border */
+  box-shadow: 4px 4px 0px #2B6EF2 !important;  
+}
+
+/* Arrow animation */
+.explore-btn .arrow-icon {
+  transition: transform 0.35s ease-in-out !important;
+}
+
+.explore-btn:hover .arrow-icon {
+  transform: rotate(-45deg);
+  filter: brightness(0) saturate(100%) invert(36%) sepia(98%)
+    saturate(2475%) hue-rotate(206deg) brightness(95%) contrast(101%);
+}
+
 .arrow-icon {
   height: 19px;
   width: auto;

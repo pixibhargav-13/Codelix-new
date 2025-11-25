@@ -69,7 +69,7 @@ export const WhatWeProvide = () => {
           {services.map((service) => (
             <div className="col-lg-6" key={service.id}>
               <div className="service-box p-4 d-flex justify-content-between h-100 gap-5">
-                
+
                 {/* LEFT SIDE TEXT */}
                 <div className="text-start">
                   <h4 className="what-we-provide-title">{service.title}</h4>
@@ -79,7 +79,9 @@ export const WhatWeProvide = () => {
                 </div>
 
                 {/* ARROW ICON */}
-                <img src={arrow} alt="arrow" className="arrow-icon arrow-icon-rotate" />
+                <div className="arrow-wrapper">
+                  <img src={arrow} alt="arrow" className="arrow-icon arrow-icon-rotate" />
+                </div>
               </div>
             </div>
           ))}

@@ -8,7 +8,6 @@ export const LetsBuildSomething = () => {
     <section className="lets-build-section">
       <div className="overlay-curves">
         <img src={buildSomething} alt="curve-left" className="curve curve-left" />
-        <img src={buildSomething} alt="curve-right" className="curve curve-right" />
       </div>
 
       <div className="content-wrapper text-center">
