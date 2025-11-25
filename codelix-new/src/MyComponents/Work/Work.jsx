@@ -1,32 +1,47 @@
 import React from "react";
 import "./Work.css";
+import { Navbar } from "../Navbar/Navbar"; // your named export
 import { BestProjects } from "../BestProjects/BestProjects";
-import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
-import Ourwork from "../OurWork/Ourwork";
+import { HowWeWork } from "../Service-How-We-Work/HowWeWork";
+import { ToolsAndTechUsedWeb } from "../ToolsAndTechUsedWeb/ToolsAndTechUsedWeb";
 import Footer from "../Footer/Footer";
+import Ourwork from "../OurWork/Ourwork";
+import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
 
 const Work = () => {
-  return (
-    <>
-      <div className="work-page">
-        <div className="best-projects">
-          <BestProjects />
-        </div>
-      </div>
+    return (
+        <>
+            <div className="homepage">
+                <div className="hero-section">
 
-      <div className="lets-build-something">
-        <LetsBuildSomething />
-      </div>
+                    {/* --- HERO CONTENT --- */}
+                    <div className="work-content">
+                        <h1>Work</h1>
+                        <p>
+                            We build AI-driven Tech experiences that combine elegant design,
+                            <span className="line-break">seasonless seamless performance, and measurable results.</span>
+                        </p>
 
-      <div className="our-work">
-        <Ourwork />
-      </div>
+                    </div>
+                </div>
+                <div className="best-projects">
+                    <BestProjects />
+                </div>
+                <div className="lets-build-something">
+                    <LetsBuildSomething />
+                </div>
 
-      <div className="footer">
-        <Footer />
-      </div>
-    </>
-  );
+                <div className="our-work">
+                    <Ourwork />
+                </div>
+                <div className="footer">
+                    <Footer />
+                </div>
+              
+
+            </div>
+        </>
+    );
 };
 
 export default Work;
