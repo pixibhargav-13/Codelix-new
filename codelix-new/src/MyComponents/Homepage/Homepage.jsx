@@ -28,6 +28,7 @@ import { ExploreProducts } from "../ExploreProducts/ExploreProducts";
 import { HomepageBlog } from "../HomepageBlog/HomepageBlog";
 import { HomepageFaq } from "../HomepageFaq/HomepageFaq";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
+import Footer from "../Footer/Footer";
 import { BestProjects } from "../BestProjects/BestProjects";
 import { HowWeWork } from "../Service-How-We-Work/HowWeWork";
 
@@ -190,6 +191,10 @@ export const Homepage = () => {
 
         <div className="homepage-faq">
           <HomepageFaq />
+        </div>
+
+        <div className="footer">
+          <Footer/>
         </div>
       </div>
     </>
