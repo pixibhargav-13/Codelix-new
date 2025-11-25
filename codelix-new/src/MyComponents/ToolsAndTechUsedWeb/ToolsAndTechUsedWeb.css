@@ -22,32 +22,37 @@
 
 /* -------------------- TABS -------------------- */
 .tab-buttons {
-  margin: 2rem auto;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
+  width: 100%;                     /* takes full border width */
+  display: flex;                   /* flex so buttons stretch */
+  border: 1px solid #d0d7e2;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-top: 5rem;
 }
 
 .tab-buttons button {
-  padding: 10px 25px;
+  flex: 1;                         /* 50% each */
+  padding: 12px 0;
+  background: #ffffff;
   font-size: 16px;
-  background: #f1f5ff;
-  border: 1px solid #cdd7f8;
+  border: none;
   cursor: pointer;
-  border-radius: 4px;
   font-weight: 500;
+  text-align: center;              /* center text */
 }
 
 .tab-buttons button.active-tab {
   background: #2b6ef2;
-  color: #fff;
-  border-color: #2b6ef2;
+  color: white;
 }
 
 /* -------------------- TECH GRID -------------------- */
 .tech-table {
-  margin-top: 30px;
-  border: 1px solid #dcdcdc;
+  margin-top: 0;                /* make table touch tabs */
+  border: 1px solid #d0d7e2;
+  border-top: none;             /* avoid double border with tabs */
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 }

@@ -51,7 +51,7 @@ export const Navbar = () => {
             <Link to="/contact">
               <button className="btn navbar-button">
                 <span>Contact Us</span>
-                <img src={whiteArrow} alt="arrow" className="arrow-icon" />
+                <img src={whiteArrow} alt="arrow" className="arrow-icon mx-3" />
               </button>
             </Link>
           </div>
