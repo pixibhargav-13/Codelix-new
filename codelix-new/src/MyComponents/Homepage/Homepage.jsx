@@ -31,6 +31,7 @@ import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
 import Footer from "../Footer/Footer";
 import { BestProjects } from "../BestProjects/BestProjects";
 import { HowWeWork } from "../Service-How-We-Work/HowWeWork";
+import { ToolsAndTechUsedWeb } from "../ToolsAndTechUsedWeb/ToolsAndTechUsedWeb";
 
 export const Homepage = () => {
   const heroimages = [heroOne, heroTwo, heroThree];
@@ -71,65 +72,64 @@ export const Homepage = () => {
     <>
       <div className="homepage">
         <div className="hero-section">
-        
-            <Navbar />
-            <section className="text-white py-5">
-              <div className="container">
-                {/* TOP SECTION */}
-                <div className="row g-4 align-items-stretch">
-                  {/* Left Text */}
-                  <div className="col-lg-7 h-100">
-                    <div className="p-4 border border-secondary h-100">
-                      <h1 className="fw-bold display-6 hanken-grotesk">
-                        AI-Powered Tech for Ambitious Businesses
-                      </h1>
-                      <p className="mt-3 light-gray inter">
-                        We craft AI-powered Web, App & SaaS solutions that
-                        empower businesses with performance, precision, and
-                        design excellence through world-class UI/UX design.
-                      </p>
+          <Navbar />
+          <section className="text-white py-5">
+            <div className="container">
+              {/* TOP SECTION */}
+              <div className="row g-4 align-items-stretch">
+                {/* Left Text */}
+                <div className="col-lg-7 ">
+                  <div className="p-4 border border-secondary h-100  d-flex flex-column justify-content-center">
+                    <h1 className="fw-bold display-6 hanken-grotesk">
+                      AI-Powered Tech for Ambitious Businesses
+                    </h1>
+                    <p className="mt-3 light-gray inter">
+                      We craft AI-powered Web, App & SaaS solutions that empower
+                      businesses with performance, precision, and design
+                      excellence through world-class UI/UX design.
+                    </p>
 
-                      <div className="d-flex gap-3 hero-buttons">
-                        {/* Blue Button */}
-                        <button className="btn blue-common-btn d-flex align-items-center justify-content-between free-quote-btn">
-                          <span>Get a Free Quote</span>
-                          <img
-                            src={whiteArrow}
-                            alt="arrow"
-                            className="arrow-icon"
-                          />
-                        </button>
+                    <div className="d-flex gap-3 hero-buttons">
+                      {/* Blue Button */}
+                      <button className="btn blue-common-btn d-flex align-items-center justify-content-between free-quote-btn">
+                        <span>Get a Free Quote</span>
+                        <img
+                          src={whiteArrow}
+                          alt="arrow"
+                          className="arrow-icon"
+                        />
+                      </button>
 
-                        {/* White Button */}
-                        <button className="btn explore-work-btn d-flex align-items-center justify-content-between">
-                          <span>Explore Our Work</span>
-                          <img
-                            src={blackArrow}
-                            alt="arrow"
-                            className="arrow-icon"
-                          />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Right Image */}
-                  <div className="col-lg-5 h-100">
-                    <div className="border border-secondary d-flex justify-content-center align-items-center h-100 no-spacing homepage-hero-slideshow-wrapper">
-                      <img
-                        src={currentHero}
-                        alt="hero"
-                        className={`img-fluid right-image homepage-hero-fade-image ${fade
-                          ? "homepage-hero-fade-in"
-                          : "homepage-hero-fade-out"
-                          }`}
-                      />
+                      {/* White Button */}
+                      <button className="btn explore-work-btn d-flex align-items-center justify-content-between">
+                        <span>Explore Our Work</span>
+                        <img
+                          src={blackArrow}
+                          alt="arrow"
+                          className="arrow-icon"
+                        />
+                      </button>
                     </div>
                   </div>
                 </div>
+
+                {/* Right Image */}
+                <div className="col-lg-5 h-100">
+                  <div className="border border-secondary d-flex justify-content-center align-items-center h-100 no-spacing homepage-hero-slideshow-wrapper">
+                    <img
+                      src={currentHero}
+                      alt="hero"
+                      className={`img-fluid right-image homepage-hero-fade-image ${
+                        fade
+                          ? "homepage-hero-fade-in"
+                          : "homepage-hero-fade-out"
+                      }`}
+                    />
+                  </div>
+                </div>
               </div>
-            </section>
-        
+            </div>
+          </section>
 
           {/* BOTTOM LOGOS */}
           <p className="text-center mt-5 mb-3 text-light small opacity-75">
@@ -152,11 +152,15 @@ export const Homepage = () => {
         </div>
 
         <div className="best-projects">
-          <BestProjects/>
+          <BestProjects />
         </div>
 
         <div className="how-we-work">
-          <HowWeWork/>
+          <HowWeWork />
+        </div>
+
+        <div className="tools-and-tech-we-use">
+          <ToolsAndTechUsedWeb />
         </div>
 
         <div className="what-we-build">

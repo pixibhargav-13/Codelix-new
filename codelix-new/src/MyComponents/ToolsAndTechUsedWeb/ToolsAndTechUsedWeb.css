@@ -1,0 +1,78 @@
+.tools-section {
+  padding: 4rem 0;
+}
+
+.tools-heading {
+  font-size: 32px;
+  font-weight: 300;
+}
+
+.underline-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-img {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+}
+
+/* -------------------- TABS -------------------- */
+.tab-buttons {
+  margin: 2rem auto;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.tab-buttons button {
+  padding: 10px 25px;
+  font-size: 16px;
+  background: #f1f5ff;
+  border: 1px solid #cdd7f8;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.tab-buttons button.active-tab {
+  background: #2b6ef2;
+  color: #fff;
+  border-color: #2b6ef2;
+}
+
+/* -------------------- TECH GRID -------------------- */
+.tech-table {
+  margin-top: 30px;
+  border: 1px solid #dcdcdc;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.tech-card {
+  text-align: center;
+  padding: 35px 15px;
+  border: 1px solid #e5e5e5;
+}
+
+.tech-icon {
+  height: 55px;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+.tech-card p {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #6c788f;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .tech-table {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
