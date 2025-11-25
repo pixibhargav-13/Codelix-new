@@ -3,7 +3,7 @@ import {Homepage}  from "./MyComponents/Homepage/Homepage";
 import About  from "./MyComponents/About/About";
 import  Services  from "./MyComponents/Services/Services";
 import Blog  from "./MyComponents/Blog/Blog";
-import Ourwork from "./MyComponents/OurWork/Ourwork";
+import Work from "./MyComponents/Work/Work";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/about" element={<About />} />
-        <Route path="/work" element={<Ourwork />} />
+        <Route path="/work" element={<Work />} />
         <Route path="/services" element={<Services />} />
         <Route path="/blog" element={<Blog />} />
       </Routes>
