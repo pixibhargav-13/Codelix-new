@@ -11,6 +11,12 @@
   transition: all 0.2s ease-in-out;
 }
 
+.navbar{
+  background-image: url('../images/heroBgImage.png');
+  background-size: cover;
+  background-position: center;
+}
+
 .navbar-toggler {
   border: 1.5px solid #abb3cb !important;
   border-radius: 0px !important;

@@ -113,34 +113,6 @@
 /* =============== RESPONSIVE =============== */
 
 /* =================== MOBILE FIXES =================== */
-@media (max-width: 992px) {
-    .curve {
-        width: 90vw;
-    }
-
-    .curve-left {
-        left: -35vw;
-    }
-
-    .curve-right {
-        right: -35vw;
-    }
-}
-
-@media (max-width: 768px) {
-    .curve {
-        width: 110vw;
-    }
-
-    .curve-left {
-        left: -16vw;
-    }
-
-    .curve-right {
-        right: -16vw;
-    }
-}
-
 @media (max-width: 480px) {
     .curve {
         width: 140vw;   /* gives perfect curve shape like your reference */
@@ -152,5 +124,18 @@
 
     .curve-right {
         right: -60vw;
+    }
+
+    .lets-build-main-title{
+        font-size: 30px;
+    }
+
+    .lets-build-subtitle{
+        font-size: 15px;
+    }
+
+    .consult-btn{
+        font-size: 15px;
+        padding: 7px 11px !important;
     }
 }

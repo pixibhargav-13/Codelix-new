@@ -30,8 +30,7 @@ import { HomepageFaq } from "../HomepageFaq/HomepageFaq";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
 import Footer from "../Footer/Footer";
 import { BestProjects } from "../BestProjects/BestProjects";
-import { HowWeWork } from "../Service-How-We-Work/HowWeWork";
-import { ToolsAndTechUsedWeb } from "../ToolsAndTechUsedWeb/ToolsAndTechUsedWeb";
+
 
 export const Homepage = () => {
   const heroimages = [heroOne, heroTwo, heroThree];
@@ -72,7 +71,6 @@ export const Homepage = () => {
     <>
       <div className="homepage">
         <div className="hero-section">
-          <Navbar />
           <section className="text-white py-5">
             <div className="container">
               {/* TOP SECTION */}
@@ -151,18 +149,6 @@ export const Homepage = () => {
           </div>
         </div>
 
-        <div className="best-projects">
-          <BestProjects />
-        </div>
-
-        <div className="how-we-work">
-          <HowWeWork />
-        </div>
-
-        <div className="tools-and-tech-we-use">
-          <ToolsAndTechUsedWeb />
-        </div>
-
         <div className="what-we-build">
           <WhatWeBuild />
         </div>
@@ -186,9 +172,11 @@ export const Homepage = () => {
         <div className="our-work">
           <Ourwork />
         </div>
+        
         <div className="lets-build-something">
           <LetsBuildSomething />
         </div>
+
         <div className="homepage-blog">
           <HomepageBlog />
         </div>
@@ -197,9 +185,9 @@ export const Homepage = () => {
           <HomepageFaq />
         </div>
 
-        <div className="footer">
+        {/* <div className="footer">
           <Footer/>
-        </div>
+        </div> */}
       </div>
     </>
   );

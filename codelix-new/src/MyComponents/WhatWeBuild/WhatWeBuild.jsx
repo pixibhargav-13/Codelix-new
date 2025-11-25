@@ -58,7 +58,7 @@ export const WhatWeBuild = () => {
           </span>
         </h2>
 
-        <p className="gray-font gray-font-margin-top mb-5">
+        <p className="gray-font gray-font-margin-top mb-5 mt-4">
           We build AI-driven Tech experiences that combine elegant design,
           seamless performance, and measurable results.
         </p>

@@ -14,7 +14,7 @@ import quote from "../images/our-work-quote.png";
 const Ourwork = () => {
   return (
     <div className="container ourwork-section py-5">
-        <h2 className="text-center heading-diff mb-4">
+        <h2 className="text-center heading-diff mb-5">
            Our Work Through{" "}
           <span className="underline-wrapper fw-bold">
             Client's Words

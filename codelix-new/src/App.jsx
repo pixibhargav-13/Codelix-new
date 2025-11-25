@@ -4,18 +4,21 @@ import About  from "./MyComponents/About/About";
 import  Services  from "./MyComponents/Services/Services";
 import Blog  from "./MyComponents/Blog/Blog";
 import Work from "./MyComponents/Work/Work";
+import { Navbar } from "./MyComponents/Navbar/Navbar";
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/work" element={<Work />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/blog" element={<Blog />} />
-      </Routes>
-    </Router>
+  <Navbar /> 
+  <Routes>
+    <Route path="/" element={<Homepage />} />
+    <Route path="/about" element={<About />} />
+    <Route path="/work" element={<Work />} />
+    <Route path="/services" element={<Services />} />
+    <Route path="/blog" element={<Blog />} />
+  </Routes>
+</Router>
+
   );
 }
 
