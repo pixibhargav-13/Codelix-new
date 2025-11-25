@@ -1,7 +1,7 @@
 import React from "react";
 import "./WhatWeProvide.css";
-import underline from "../Images/what-we-build-underline.png"; // same underline image
-import arrow from "../Images/blackArrow.png"; // arrow icon
+import underline from "../images/what-we-build-underline.png"; // same underline image
+import arrow from "../images/blackArrow.png"; // arrow icon
 
 export const WhatWeProvide = () => {
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "./LetsBuildSomething.css";
 
-import buildSomething from "../Images/Build-something.png"; // Curved left/right SVG or PNG
+import buildSomething from "../images/Build-something.png"; // Curved left/right SVG or PNG
 
 export const LetsBuildSomething = () => {
   return (

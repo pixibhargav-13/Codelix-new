@@ -145,5 +145,6 @@
 
   .read-btn {
     margin-top: 9px;
+    gap: 15px !important;
   }
 }

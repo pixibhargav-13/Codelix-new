@@ -1,9 +1,9 @@
 import React from "react";
 import "./ExploreProducts.css";
 
-import underline from "../Images/what-we-build-underline.png"; // underline img
-import rightArrow from "../Images/whiteArrow.png";              // arrow img
-import productOneImg from "../Images/homepage-product-one.png";     // product image  (replace if needed)
+import underline from "../images/what-we-build-underline.png"; // underline img
+import rightArrow from "../images/whiteArrow.png";              // arrow img
+import productOneImg from "../images/homepage-product-one.png";     // product image  (replace if needed)
 
 export const ExploreProducts = () => {
   const products = [

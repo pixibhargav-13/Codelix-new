@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
-import heroOne from "../Images/homepage-hero-web-dev.png";
-import heroTwo from "../Images/homepage-hero-app-dev.png";
-import heroThree from "../Images/homepage-hero-saas-dev.png";
-import client1 from "../Images/homepage-client-one.png";
-import client2 from "../Images/homepage-client-two.png";
-import client3 from "../Images/homepage-client-three.png";
-import client4 from "../Images/homepage-client-four.png";
-import client5 from "../Images/homepage-client-five.png";
-import client6 from "../Images/homepage-client-six.png";
-import client7 from "../Images/homepage-client-seven.png";
-import client8 from "../Images/homepage-client-eight.png";
-import client9 from "../Images/homepage-client-nine.png";
-import client10 from "../Images/homepage-client-ten.png";
-import client11 from "../Images/homepage-client-eleven.png";
-import client12 from "../Images/homepage-client-twelve.png";
+import heroOne from "../images/homepage-hero-web-dev.png";
+import heroTwo from "../images/homepage-hero-app-dev.png";
+import heroThree from "../images/homepage-hero-saas-dev.png";
+import client1 from "../images/homepage-client-one.png";
+import client2 from "../images/homepage-client-two.png";
+import client3 from "../images/homepage-client-three.png";
+import client4 from "../images/homepage-client-four.png";
+import client5 from "../images/homepage-client-five.png";
+import client6 from "../images/homepage-client-six.png";
+import client7 from "../images/homepage-client-seven.png";
+import client8 from "../images/homepage-client-eight.png";
+import client9 from "../images/homepage-client-nine.png";
+import client10 from "../images/homepage-client-ten.png";
+import client11 from "../images/homepage-client-eleven.png";
+import client12 from "../images/homepage-client-twelve.png";
 
-import blackArrow from "../Images/blackArrow.png";
-import whiteArrow from "../Images/whiteArrow.png";
+import blackArrow from "../images/blackArrow.png";
+import whiteArrow from "../images/whiteArrow.png";
 import { Navbar } from "../Navbar/Navbar";
 import "./Homepage.css";
 import { WhatWeBuild } from "../WhatWeBuild/WhatWeBuild";
@@ -28,11 +28,13 @@ import { ExploreProducts } from "../ExploreProducts/ExploreProducts";
 import { HomepageBlog } from "../HomepageBlog/HomepageBlog";
 import { HomepageFaq } from "../HomepageFaq/HomepageFaq";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
+import { BestProjects } from "../BestProjects/BestProjects";
+import { HowWeWork } from "../Service-How-We-Work/HowWeWork";
 
 export const Homepage = () => {
-  const heroImages = [heroOne, heroTwo, heroThree];
+  const heroimages = [heroOne, heroTwo, heroThree];
   const [index, setIndex] = useState(0);
-  const [currentHero, setCurrentHero] = useState(heroImages[0]);
+  const [currentHero, setCurrentHero] = useState(heroimages[0]);
   const [fade, setFade] = useState(true);
 
   useEffect(() => {
@@ -40,9 +42,9 @@ export const Homepage = () => {
       setFade(false);
 
       setTimeout(() => {
-        const newIndex = (index + 1) % heroImages.length;
+        const newIndex = (index + 1) % heroimages.length;
         setIndex(newIndex);
-        setCurrentHero(heroImages[newIndex]);
+        setCurrentHero(heroimages[newIndex]);
         setFade(true); // fade-in
       }, 500);
     }, 3000);
@@ -146,6 +148,14 @@ export const Homepage = () => {
               ))}
             </div>
           </div>
+        </div>
+
+        <div className="best-projects">
+          <BestProjects/>
+        </div>
+
+        <div className="how-we-work">
+          <HowWeWork/>
         </div>
 
         <div className="what-we-build">

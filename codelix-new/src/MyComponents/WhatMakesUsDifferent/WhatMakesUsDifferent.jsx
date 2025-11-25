@@ -1,6 +1,6 @@
 import React from "react";
 import "./WhatMakesUsDifferent.css";
-import underline from "../Images/what-we-build-underline.png"; // underline image
+import underline from "../images/what-we-build-underline.png"; // underline image
 
 export const WhatMakesUsDifferent = () => {
   

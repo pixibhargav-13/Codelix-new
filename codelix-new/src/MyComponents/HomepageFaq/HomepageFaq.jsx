@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./HomepageFaq.css";
 
-import underline from "../Images/what-we-build-underline.png"; 
-import plusIcon from "../Images/homepage-plus.png";   // your plus image
-import minusIcon from "../Images/homepage-minus.png"; // your minus image
+import underline from "../images/what-we-build-underline.png"; 
+import plusIcon from "../images/homepage-plus.png";   // your plus image
+import minusIcon from "../images/homepage-minus.png"; // your minus image
 
 export const HomepageFaq = () => {
   const faqs = [

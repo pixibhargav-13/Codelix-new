@@ -1,0 +1,124 @@
+.best-projects-section {
+  padding: 4rem 0;
+  background: #fff;
+}
+
+.section-heading {
+  font-size: 32px;
+  font-weight: 300;
+}
+
+.highlight {
+  font-weight: 700;
+}
+
+.filter-badge {
+  border: 1.8px solid #abb3cb;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 0;
+  cursor: pointer;
+  color: #6c788f;
+  font-weight: 500;
+}
+
+.project-card {
+  border: 1px solid #dcdcdc;
+  padding: 25px;
+  margin-bottom: 40px;
+  background: white;
+}
+
+.project-card .row {
+  align-items: flex-start !important;
+}
+
+.project-img {
+  width: 100%;
+  border-radius: 0;
+  border: 1px solid #dcdcdc;
+}
+
+.best-project-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  margin-top: 0;
+}
+
+.project-desc {
+  color: #6f6f6f;
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.tag-badge {
+  border: 1px solid #abb3cb;
+  padding: 4px 12px;
+  font-size: 14px;
+  color: #6c788f;
+  font-weight: 400;
+}
+
+.read-case-study-btn {
+  background: #2b6ef2 !important;
+  color: #ffffff !important;
+  border: 1px solid transparent;
+  padding: 10px 11px !important;
+  border-radius: 0px !important;
+  font-weight: 500 !important;
+  display: flex !important;
+  align-items: center;
+  gap: 22px;
+  transition: all 0.25s ease-in-out;
+  margin-top: 6rem;
+}
+
+/* Hover - identical to Get a Free Quote */
+.read-case-study-btn:hover {
+  background: #ffffff !important;
+  color: #2b6ef2 !important;
+  border: 1px solid #2b6ef2 !important;
+  box-shadow: 4px 4px 0px #2b6ef2;
+}
+
+/* Arrow animation */
+.read-case-study-btn .arrow-icon,
+.read-case-study-btn .arrow {
+  transition: transform 0.35s ease-in-out !important;
+}
+
+.read-case-study-btn:hover .arrow-icon,
+.read-case-study-btn:hover .arrow {
+  transform: rotate(-45deg);
+  filter: brightness(0) saturate(100%) invert(36%) sepia(98%) saturate(2475%)
+    hue-rotate(206deg) brightness(95%) contrast(101%);
+}
+
+.arrow {
+  font-size: 20px !important;
+  transition: 0.3s ease;
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.project-content button {
+  align-self: flex-start;
+}
+
+@media (min-width: 200px) and (max-width: 425px) {
+  .best-project-title {
+    margin-top: 1rem;
+    font-size: 28px !important;
+  }
+
+  .read-case-study-btn {
+    margin-top: 0.5rem !important;
+  }
+}

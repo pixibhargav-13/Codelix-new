@@ -1,6 +1,6 @@
 import React from "react";
 import "./ChooseUs.css";
-import underline from "../Images/what-we-build-underline.png";
+import underline from "../images/what-we-build-underline.png";
 
 export const ChooseUs = () => {
   // ⭐ DATA ARRAY – 6 boxes

@@ -1,0 +1,72 @@
+.how-we-work-section {
+  padding: 4rem 0;
+  background: #fff;
+}
+
+.how-heading {
+  font-size: 32px;
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+
+.underline-wrapper {
+  font-weight: 700;
+}
+
+/* Grid spacing */
+.how-grid {
+  row-gap: 30px;
+}
+
+/* Card */
+.how-card {
+  border: 1px solid #dcdcdc;
+  padding: 28px;
+  background: white;
+  transition: 0.2s ease-in-out;
+}
+
+.how-card:hover {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.06);
+}
+
+.how-number {
+  font-size: 27px;
+  font-weight: 600;
+  color: #b4b4b4;
+  text-align: left;
+}
+
+.how-title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0 12px 0;
+}
+
+.how-title {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  color: #000;
+}
+
+.how-arrow {
+  width: 18px;
+  height: auto;
+  rotate: -45deg;
+}
+
+.how-desc {
+  color: #131926;
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.5;
+  text-align: left;
+}
+
+@media (min-width: 200px) and (max-width: 425px) {
+  .how-desc {
+    margin-top: 2rem;
+  }
+}

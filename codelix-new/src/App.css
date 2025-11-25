@@ -34,7 +34,7 @@
   margin-top: 3rem !important;
 }
 
-@media (min-width: 200px) and (max-width: 400px) {
+@media (min-width: 200px) and (max-width: 425px) {
   .heading-provide {
     font-size: 28px !important;
     margin-bottom: 2rem !important;

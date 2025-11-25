@@ -1,11 +1,11 @@
 import React from "react";
-import blackArrow from "../Images/blackArrow.png";
-import whiteArrow from "../Images/whiteArrow.png";
-import aanganOne from "../Images/homepage-aangan-one.png";
-import customSoftware from "../Images/homepage-custom-software.png";
-import eCommerce from "../Images/homepag-e-commerce.png";
-import autoHub from "../Images/homepage-autohub.png";
-import underline from "../Images/what-we-build-underline.png";
+import blackArrow from "../images/blackArrow.png";
+import whiteArrow from "../images/whiteArrow.png";
+import aanganOne from "../images/homepage-aangan-one.png";
+import customSoftware from "../images/homepage-custom-software.png";
+import eCommerce from "../images/homepag-e-commerce.png";
+import autoHub from "../images/homepage-autohub.png";
+import underline from "../images/what-we-build-underline.png";
 import "./WhatWeBuild.css";
 
 export const WhatWeBuild = () => {
