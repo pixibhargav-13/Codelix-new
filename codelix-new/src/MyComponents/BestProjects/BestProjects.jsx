@@ -1,10 +1,10 @@
 import React from "react";
 import "./BestProjects.css";
-import underline from "../images/what-we-build-underline.png";
-import whiteArrow from "../images/whiteArrow.png";
-import projectOne from "../images/work-best-project-one.png";
-import projectTwo from "../images/work-best-project-two.png";
-import projectThree from "../images/work-best-project-three.png";
+import underline from "../Images/what-we-build-underline.png";
+import whiteArrow from "../Images/whiteArrow.png";
+import projectOne from "../Images/work-best-project-one.png";
+import projectTwo from "../Images/work-best-project-two.png";
+import projectThree from "../Images/work-best-project-three.png";
 
 export const BestProjects = () => {
   const projects = [

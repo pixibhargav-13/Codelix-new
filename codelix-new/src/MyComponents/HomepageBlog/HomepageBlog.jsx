@@ -1,9 +1,9 @@
 import React from "react";
 import "./HomepageBlog.css";
 
-import underline from "../images/what-we-build-underline.png"; // underline image
-import blogImg from "../images/homepage-blog-image.png"; // replace with real image
-import rightArrow from "../images/blackArrow.png";
+import underline from "../Images/what-we-build-underline.png"; // underline image
+import blogImg from "../Images/homepage-blog-image.png"; // replace with real image
+import rightArrow from "../Images/blackArrow.png";
 
 export const HomepageBlog = () => {
   const blogs = [

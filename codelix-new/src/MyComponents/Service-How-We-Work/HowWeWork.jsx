@@ -1,7 +1,7 @@
 import React from "react";
 import "./HowWeWork.css";
-import blackArrow from "../images/blackArrow.png";
-import underline from "../images/what-we-build-underline.png";
+import blackArrow from "../Images/blackArrow.png";
+import underline from "../Images/what-we-build-underline.png";
 
 export const HowWeWork = () => {
   const steps = [

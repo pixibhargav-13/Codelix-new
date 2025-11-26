@@ -3,7 +3,7 @@ import "./ToolsAndTechUsedWeb.css";
 import reactLogo from "../Images/react.png";
 import angularLogo from "../Images/angular.png";
 import bootstrapLogo from "../Images/bootstrap.png";
-import nust from "../images/nust.png";
+import nust from "../Images/nust.png";
 import vueLogo from "../Images/vue.png";
 import tsLogo from "../Images/typescript.png";
 import jsLogo from "../Images/javascript.png";
@@ -19,7 +19,7 @@ import javaLogo from "../Images/java.png";
 import dockerLogo from "../Images/docker.png";
 import djangoLogo from "../Images/django.png";
 import csharpLogo from "../Images/csharp.png";
-import underline from "../images/what-we-build-underline.png";
+import underline from "../Images/what-we-build-underline.png";
 export const ToolsAndTechUsedWeb = () => {
   const [activeTab, setActiveTab] = useState("frontend");
 

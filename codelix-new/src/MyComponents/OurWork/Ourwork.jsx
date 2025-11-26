@@ -1,15 +1,15 @@
 import React from "react";
 import "./Ourwork.css";
 //images
-import logo1 from "../images/Our-work-logo-one.png";
-import logo2 from "../images/Our-work-logo-two.png";
-import logo3 from "../images/Our-work-logo-three.png";
-import logo4 from "../images/Our-work-logo-four.png";
-import logo5 from "../images/Our-work-logo-five.png";
-import profileImg from "../images/Our-work-client.png";
-import underlineImg from "../images/Our-work-line.png";
-import linkedInImg from "../images/Our-work-linkedIn.png";
-import quote from "../images/our-work-quote.png";
+import logo1 from "../Images/Our-work-logo-one.png";
+import logo2 from "../Images/Our-work-logo-two.png";
+import logo3 from "../Images/Our-work-logo-three.png";
+import logo4 from "../Images/Our-work-logo-four.png";
+import logo5 from "../Images/Our-work-logo-five.png";
+import profileImg from "../Images/Our-work-client.png";
+import underlineImg from "../Images/Our-work-line.png";
+import linkedInImg from "../Images/Our-work-linkedIn.png";
+import quote from "../Images/our-work-quote.png";
 
 const Ourwork = () => {
   return (

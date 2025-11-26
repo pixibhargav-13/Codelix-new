@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import codelixlogo from "../images/codelix-logo.png";
-import whiteArrow from "../images/whiteArrow.png";
+import codelixlogo from "../Images/codelix-logo.png";
+import whiteArrow from "../Images/whiteArrow.png";
 import { Menu, X } from "lucide-react";  
 import "./Navbar.css";
 import { Link } from "react-router-dom";
