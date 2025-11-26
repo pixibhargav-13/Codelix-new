@@ -35,7 +35,6 @@
   padding: 10px 20px 10px 15px !important;
   width: 250px !important;
 }
-
 .free-quote-btn {
   color: #fff !important;
 }
@@ -202,5 +201,12 @@
   .arrow-icon {
     height: 18px;
     flex-shrink: 0;
+  }
+}
+
+
+@media (min-width: 800px) and (max-width: 1200px) {
+  .container{
+    max-width: 1070px !important;
   }
 }

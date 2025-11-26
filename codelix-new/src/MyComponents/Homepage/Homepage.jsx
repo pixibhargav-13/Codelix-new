@@ -76,16 +76,18 @@ export const Homepage = () => {
               {/* TOP SECTION */}
               <div className="row g-4 align-items-stretch">
                 {/* Left Text */}
-                <div className="col-lg-7 ">
-                  <div className="p-4 border border-secondary h-100  d-flex flex-column justify-content-center">
-                    <h1 className="fw-bold display-6 hanken-grotesk">
-                      AI-Powered Tech for Ambitious Businesses
-                    </h1>
-                    <p className="mt-3 light-gray inter">
-                      We craft AI-powered Web, App & SaaS solutions that empower
-                      businesses with performance, precision, and design
-                      excellence through world-class UI/UX design.
-                    </p>
+               <div className="col-lg-7 ">
+                  <div className="p-4 border border-secondary h-100  d-flex flex-column justify-content-between">
+                    <div className="d-flex flex-column g-4" >
+                      <h1 className="fw-bold display-6 hanken-grotesk">
+                        AI-Powered Tech for Ambitious Businesses
+                      </h1>
+                      <p className="mt-3 light-gray inter">
+                        We craft AI-powered Web, App & SaaS solutions that empower
+                        businesses with performance, precision, and design
+                        excellence through world-class UI/UX design.
+                      </p>
+                    </div>
 
                     <div className="d-flex gap-3 hero-buttons">
                       {/* Blue Button */}
