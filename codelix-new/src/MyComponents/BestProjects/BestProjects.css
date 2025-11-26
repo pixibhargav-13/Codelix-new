@@ -93,8 +93,7 @@
 .read-case-study-btn:hover .arrow-icon,
 .read-case-study-btn:hover .arrow {
   transform: rotate(-45deg);
-  filter: brightness(0) saturate(100%) invert(36%) sepia(98%) saturate(2475%)
-    hue-rotate(206deg) brightness(95%) contrast(101%);
+  filter: brightness(0) saturate(100%) invert(36%) sepia(98%) saturate(2475%) hue-rotate(206deg) brightness(95%) contrast(101%);
 }
 
 .arrow {
@@ -120,5 +119,33 @@
 
   .read-case-study-btn {
     margin-top: 0.5rem !important;
+  }
+}
+
+/* MOBILE - clean compact inline tabs */
+@media (max-width: 480px) {
+  .filter-tags {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 10px 14px !important;
+    max-width: 330px;
+    margin: 0 auto 2rem;
+  }
+
+  .filter-badge {
+    white-space: nowrap;
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+}
+
+.underline-wrapper{
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  .filter-tags {
+    margin-bottom: 2.5rem; 
   }
 }

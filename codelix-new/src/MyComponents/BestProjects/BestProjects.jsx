@@ -11,7 +11,7 @@ export const BestProjects = () => {
     {
       id: 1,
       title: "NextGen - Modern Fashion E-Commerce Website",
-      description:
+      description: 
         "A modern and fully responsive e-commerce website built for a fashion and lifestyle brand offering clothing, eyewear, and accessories. This platform features a clean user interface, intuitive navigation, and a seamless shopping experience designed to maximize user engagement and conversions.",
       tags: ["Mobile", "Web"],
       buttonText: "Read Case Study",
@@ -50,7 +50,7 @@ export const BestProjects = () => {
           </span>
         </h2>
 
-        <div className="filter-tags d-flex flex-wrap justify-content-center gap-3 mb-5">
+        <div className="filter-tags d-flex flex-wrap justify-content-center gap-3 ">
           {[
             "Custom Software Development",
             "Web Development",
@@ -59,7 +59,7 @@ export const BestProjects = () => {
             "E-Commerce Solutions",
             "AI Development",
           ].map((tag, i) => (
-            <span className="filter-badge mb-5" key={i}>
+            <span className="filter-badge " key={i}>
               {tag}
             </span>
           ))}
@@ -112,5 +112,5 @@ export const BestProjects = () => {
         </div>
       </div>
     </section>
-  );
+  );
 };
