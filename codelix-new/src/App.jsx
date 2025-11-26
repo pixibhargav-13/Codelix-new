@@ -9,7 +9,6 @@ import { Navbar } from "./MyComponents/Navbar/Navbar";
 function App() {
   return (
     <Router>
-  <Navbar /> 
   <Routes>
     <Route path="/" element={<Homepage />} />
     <Route path="/about" element={<About />} />

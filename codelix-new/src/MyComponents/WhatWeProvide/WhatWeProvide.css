@@ -85,3 +85,15 @@
 .arrow-icon-rotate{
   rotate: -45deg;
 }
+
+@media (max-width: 991px) {
+  .service-box {
+    border-right: none !important;   /* remove right border on mobile */
+    border-bottom: 1px solid #ddd !important;
+  }
+
+  /* LAST ITEM: remove bottom border */
+  .services-grid .col-lg-6:last-child .service-box {
+    border-bottom: none !important;
+  }
+}

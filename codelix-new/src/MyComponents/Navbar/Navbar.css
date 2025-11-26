@@ -12,7 +12,7 @@
 }
 
 .navbar{
-  background-image: url('../Images/heroBgImage.png');
+  background: transparent;
   background-size: cover;
   background-position: center;
 }

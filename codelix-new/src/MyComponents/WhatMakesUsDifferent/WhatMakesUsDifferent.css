@@ -72,7 +72,7 @@
   font-size: 0.875rem;
 }
 
-@media (min-width: 200px) and (max-width: 400px) {
+@media (min-width: 200px) and (max-width: 425px) {
   .deliver-text {
     font-size: 15px !important;
   }

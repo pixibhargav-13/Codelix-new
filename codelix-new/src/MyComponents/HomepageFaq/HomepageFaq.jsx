@@ -55,7 +55,7 @@ export const HomepageFaq = () => {
     <section className="homepage-faq-section py-5">
       <div className="container text-center">
 
-        <h2 className="heading-provide mb-4">
+        <h2 className="heading-provide mb-2">
           Frequently Asked{" "}
           <span className="underline-wrapper fw-bold">
             Questions

@@ -174,7 +174,7 @@
   filter: brightness(0); /* keeps arrow BLACK */
 }
 
-@media (min-width: 200px) and (max-width: 400px) {
+@media (min-width: 200px) and (max-width: 425px) {
   .container {
     padding-left: 25px !important;
     padding-right: 25px !important;
@@ -203,7 +203,6 @@
     flex-shrink: 0;
   }
 }
-
 
 @media (min-width: 800px) and (max-width: 1200px) {
   .container{

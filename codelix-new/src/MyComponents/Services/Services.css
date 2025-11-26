@@ -4,3 +4,7 @@
   padding-bottom: 2rem;
   overflow-x: hidden;
 }
+
+.light-gray {
+  color: #a2a9b5 !important;
+}

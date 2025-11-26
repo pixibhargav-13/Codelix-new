@@ -58,7 +58,7 @@ export const WhatWeProvide = () => {
           </span>
         </h2>
 
-        <p className="gray-font mb-5 mt-4 gray-font-margin-top">
+        <p className="gray-font mb-5 mt-3 gray-font-margin-top">
           From concept to completion, our expert team delivers solutions that
           drive real results, blending innovation, performance, and purposeful
           design.

@@ -5,9 +5,6 @@
   list-style-type: none;
 }
 
-/* ---------------------------
-   GLOBAL FOOTER LAYOUT
----------------------------- */
 .codelix-footer {
   width: 100%;
   background: #0B0F19;
@@ -162,8 +159,8 @@
 
 
 .codelix-large-text img {
-  width: 80%;
-  max-width: 1100px;
+  width: 85%;
+  max-width: 1160px;
   display: block;
   margin: 0 auto;
 }
@@ -174,15 +171,15 @@
 @media (max-width: 475px) {
 .footer-bottom-content a
  {
-    font-size: 20px !important;
+    font-size: 17px !important;
 }
 .codelix-footer .copyright {
-  font-size: 20px !important;
+  font-size: 15px !important;
 }
 /* Target only the container inside footer-content but not footer-bottom */
 .footer-content > .container {
     border: 1px solid #FFFFFF;
-    padding: 20px;
+    padding: 0px !important;
     margin: 20px auto 0 auto;
     width: 100%;
 }
@@ -241,23 +238,29 @@
   /* Bottom Section */
   .footer-bottom-content {
     flex-direction: column;
-    text-align: center;
-    gap: 6px;
+    text-align: left !important;
+    align-items: flex-start !important;
+    gap: 8px;
   }
 
   .footer-links-bottom {
-    display: flex;
-    gap: 20px;
+    flex-direction: row;
+    gap: 15px !important;
+    justify-content: flex-start !important;
+    align-items: flex-start;
     width: 100%;
   }
 
-  /* Large Footer Logo */
+  .footer-bottom-content a {
+    margin-left: 0 !important;
+    margin-right: 10px !important;
+  }
+
   .codelix-large-text img {
     width: 90% !important;
     margin: 30px auto 0 auto !important;
   }
 
-  /* Marquee Text */
   .marquee-content span {
     font-size: 18px !important;
   }

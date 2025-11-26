@@ -13,7 +13,7 @@ export const WhatMakesUsDifferent = () => {
   ];
 
   return (
-    <section className="what-different-section py-5">
+    <section className="what-different-section py-lg-5 py-0">
       <div className="container">
 
         {/* HEADING */}

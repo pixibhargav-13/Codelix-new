@@ -1,141 +1,156 @@
 * {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  box-sizing: border-box;
 }
 
 .lets-build-section {
-    position: relative;
-    background: #020814;
-    padding: 8rem 0px;
-    overflow: hidden;
-    border-radius: 0;
+  position: relative;
+  background: #020814;
+  padding: 8rem 0px 5rem 0px;
+  overflow: hidden;
+  border-radius: 0;
 }
 
 /* Curved LEFT & RIGHT images */
 .overlay-curves {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180%;
+  height: 180%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .curve {
-    position: absolute;
-    height: 100%;
-    object-fit: contain;
-    opacity: 0.9;
+  position: absolute;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.9;
+  width: 100%;
 }
 
 .curve-left {
-    left: 14%;
-    transform: scaleX(-1);
+  left: -32%;
+  transform: scaleX(-1);
 }
 
+.curve-right {
+  left: 31%;
+  transform: scaleX(-1);
+}
 
 .content-wrapper {
-    position: relative;
-    z-index: 5;
-    max-width: 700px;
-    margin: 0 auto;
+  position: relative;
+  z-index: 5;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .lets-build-main-title {
-    color: #ffffff;
-    font-family: "Hanken Grotesk";
-    font-weight: 700;
-    font-style: normal;   
-    font-size: 48px;
-    line-height: 100%;    
-    letter-spacing: 0%;
-    text-align: center;
+  color: #ffffff;
+  font-family: "Hanken Grotesk";
+  font-weight: 700;
+  font-style: normal;
+  font-size: 48px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 .lets-build-subtitle {
-    font-family: Inter;
-    font-weight: 400;
-    font-style: normal; /* "Regular" means normal */
-    font-size: 18px;
-    line-height: 26px;
-    letter-spacing: 0%;
-    text-align: center;
-    vertical-align: middle;
-    color: #FFFFFF99;   /* exact from your specs */
-    margin: 20px 0 40px; /* keep your spacing */
+  font-family: Inter;
+  font-weight: 400;
+  font-style: normal; /* "Regular" means normal */
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #ffffff99; /* exact from your specs */
+  margin: 20px 0 40px; /* keep your spacing */
 }
-
-
-.consult-btn {
-  background: #3E7DFC !important;
-  color: #ffffff !important;
-  padding: 10px 15px !important;
-  font-size: 18px !important;
-  border-radius: 0px !important;
-  border: 1px solid transparent !important;
-  font-weight: 500 !important;
-  display: inline-flex;
-  align-items: center;
-  gap: 25px;
-  transition: all 0.25s ease-in-out !important;
-}
-
-/* Hover effect — EXACT like your blue button */
-.consult-btn:hover {
-  background: #ffffff !important;             /* white */
-  color: #3E7DFC !important;                  /* blue text */
-  border: 1px solid #3E7DFC !important;       /* blue border */
-  box-shadow: 4px 4px 0px #3E7DFC !important; /* blue shadow */
-}
-
-/* Arrow rotation */
-.consult-btn .arrow {
-  transition: transform 0.35s ease-in-out !important;
-}
-
-.consult-btn:hover .arrow {
-  transform: rotate(-45deg);
-}
-
-/* Arrow color turns blue on hover */
-.consult-btn .arrow i {
-  transition: filter 0.35s ease-in-out;
-}
-
-.consult-btn:hover .arrow i {
-  filter: brightness(0) saturate(100%) invert(36%) sepia(98%)
-    saturate(2475%) hue-rotate(206deg) brightness(95%) contrast(101%);
-}
-
-
 /* =============== RESPONSIVE =============== */
 
 /* =================== MOBILE FIXES =================== */
-@media (max-width: 480px) {
-    .curve {
-        width: 140vw;   /* gives perfect curve shape like your reference */
-    }
+@media (min-width: 845px) and (max-width: 1013px) {
+  .curve-left {
+    left: -26%;
+    transform: scaleX(-1);
+  }
 
-    .curve-left {
-        left: -60vw;
-    }
+  .curve-right {
+    left: 28%;
+    transform: scaleX(-1);
+  }
+}
 
-    .curve-right {
-        right: -60vw;
-    }
+@media (min-width: 768px) and (max-width: 846px) {
+  .curve-left {
+    left: -26%;
+    transform: scaleX(-1);
+  }
 
-    .lets-build-main-title{
-        font-size: 30px;
-    }
+  .curve-right {
+    left: 26%;
+    transform: scaleX(-1);
+  }
+}
 
-    .lets-build-subtitle{
-        font-size: 15px;
-    }
+@media (min-width: 369px) and (max-width: 425px) {
+  .curve-left {
+    left: -44vw;
+  }
 
-    .consult-btn{
-        font-size: 15px;
-        padding: 7px 11px !important;
-    }
+  .curve-right {
+    left: 25%;
+  }
+
+  .lets-build-main-title{
+    font-size: 22px;
+  }
+
+  .lets-build-subtitle{
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 352px) and (max-width: 368px) {
+  .curve-left {
+    left: -44vw;
+  }
+
+  .curve-right {
+    left: 25%;
+  }
+
+  .lets-build-main-title{
+    font-size: 22px;
+  }
+
+  .lets-build-subtitle{
+    font-size: 18px;
+  }
+
+}
+
+@media (min-width: 318px) and (max-width: 351px) {
+  .curve-left {
+    left: -48vw;
+  }
+
+  .curve-right {
+    left: 25%;
+  }
+
+  .lets-build-main-title{
+    font-size: 22px;
+  }
+
+  .lets-build-subtitle{
+    font-size: 18px;
+  }
 }

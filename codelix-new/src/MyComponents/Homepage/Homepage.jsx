@@ -71,6 +71,7 @@ export const Homepage = () => {
     <>
       <div className="homepage">
         <div className="hero-section">
+          <Navbar/>
           <section className="text-white py-5">
             <div className="container">
               {/* TOP SECTION */}

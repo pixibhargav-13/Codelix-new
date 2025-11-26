@@ -134,7 +134,7 @@
   transform: rotate(-45deg);
 }
 
-@media (min-width: 200px) and (max-width: 400px) {
+@media (min-width: 200px) and (max-width: 425px) {
   .card-body h5 {
     font-size: 15px;
   }

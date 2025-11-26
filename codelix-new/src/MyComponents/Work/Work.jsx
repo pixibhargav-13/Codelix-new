@@ -12,6 +12,7 @@ const Work = () => {
   return (
     <>
         <div className="work-hero-section">
+          <Navbar/>
           <div className="work-content">
             <h1>Work</h1>
             <p>

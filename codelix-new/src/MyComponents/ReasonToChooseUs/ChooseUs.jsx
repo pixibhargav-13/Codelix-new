@@ -48,7 +48,7 @@ export const ChooseUs = () => {
       <div className="container text-center">
 
         {/* Heading */}
-        <h2 className="text-center heading-diff mb-4">
+        <h2 className="text-center heading-diff mb-3">
           Reasons To{" "}
           <span className="underline-wrapper fw-bold">
             Choose Us

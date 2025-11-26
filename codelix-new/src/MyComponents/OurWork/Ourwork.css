@@ -1,130 +1,123 @@
-*{
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    text-decoration: none;
-}
-
-.heading-diff {
-  font-size: 32px;
-  font-weight: 200;
-}
-
-.underline-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.underline-img {
-  position: absolute;
-  bottom: -14px;
-  left: 0;
-  width: 100%;
-  height: 10px;
-  pointer-events: none;
-}
-.row.g-0 {
-  border: 1px solid #ABB3CB;
+.clickable-logo {
+  cursor: pointer;
+  padding: 25px;
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s ease-in-out;
 }
 
 .left-box {
-  position: relative;
+  padding: 3rem !important;
 }
 
-.quote-icon {
-  margin-bottom: 20px;
+.row.g-0 {
+  border: 1px solid #abb3cb;
+  background: #ffffff;
+}
+
+.clickable-logo img {
+  width: 85%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.clickable-logo:hover {
+  background: #f4f6fa;
+}
+
+.logos-box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.logo-item-block {
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inactive-logo {
+  background: #f5f5f7;
+}
+
+.active-logo {
+  background: #ffffff;
+}
+
+/* Logo sizing */
+.logo-item-block img {
+  width: 90%;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.inactive-logo img {
+  opacity: 0.6;
+}
+
+.active-logo img {
+  opacity: 1;
 }
 
 .testimonial-text {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-style: normal;
+  margin-top: 15px;
   font-size: 18px;
-  line-height: 26px;
-  letter-spacing: 0%;
-  vertical-align: middle;
-  color: #000;
-  margin-bottom: 40px;
 }
 
-
-.client-details {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;  
+.client-info-section {
+  margin-top: 1rem;
 }
 
-
-/* Alex Park text */
-.left-box h5 {
-  font-family: "Hanken Grotesk", sans-serif;
-  font-weight: 700;
-  font-style: normal; 
-  font-size: 20px;
-  line-height: 24px;
-  letter-spacing: 0%;
-  vertical-align: middle;
-  color: #000;
-}
-
-/* CEO, Harmony Inc. text */
-.left-box small {
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 16px;
-  letter-spacing: 0%;
-  vertical-align: middle;
-  color: #6C788F; 
-}
-
-
-/* LinkedIn Icon */
-.linkedin-icon {
-  object-fit: cover;
-  cursor: pointer;
-}
-
-
-/* Right Side Logos*/
-.logos-box {
-  display: flex;
-  flex-direction: column;        
-  justify-content: space-between;
-}
-
-
-
-.logo-item:last-child {
-  border-bottom: none;
-}
-
-.logo-item img {
-  width: 100%;
-  object-fit: cover;
-}
-
-/* Responsive */
-
-@media (max-width: 991px) {
-  .left-box {
-    order: 2;
-  }
-
+/* MOBILE VIEW (<= 425px) */
+@media (max-width: 425px) {
   .logos-box {
     order: 1;
-    width: 100%;
-    display: flex;
-    justify-content: center;
     flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 5px 10px 5px;
   }
 
-  .logo-item {
-    border-radius: 6px;
+  .logo-item-block {
+    flex: 1;
+    padding: 18px 8px;
+    border-left: none !important;
   }
 
-  .logo-item img {
+  .active-logo {
+    background: #ffffff;
+  }
+
+  .inactive-logo {
+    background: #f5f5f7;
+  }
+
+  .logo-item-block img {
     width: 100%;
+    max-width: 70px;
+    height: auto;
+  }
+
+  .left-box {
+    order: 2;
+    padding: 20px !important;
+    margin-top: 2rem !important;
+  }
+
+  .testimonial-text {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .client-details h5 {
+    font-size: 18px;
+  }
+
+  .linkedin-icon {
+    width: 35px;
   }
 }
-
