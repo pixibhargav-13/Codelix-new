@@ -9,7 +9,7 @@ import logo5 from "../Images/Our-work-logo-five.png";
 import profileImg from "../Images/Our-work-client.png";
 import underlineImg from "../Images/Our-work-line.png";
 import linkedInImg from "../Images/Our-work-linkedIn.png";
-import quote from "../Images/our-work-quote.png";
+import quote from "../Images/Our-work-quote.png";
 
 const Ourwork = () => {
   return (
