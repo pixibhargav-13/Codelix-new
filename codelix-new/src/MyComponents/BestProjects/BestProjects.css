@@ -139,6 +139,13 @@
     padding: 6px 10px;
     font-size: 13px;
   }
+
+  .best-project-title {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  margin-top: 10px;
+}
 }
 
 .underline-wrapper {
