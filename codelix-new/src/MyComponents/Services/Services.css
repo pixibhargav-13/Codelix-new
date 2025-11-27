@@ -6,11 +6,11 @@
 }
 
 .service-hero-section{
-  background: radial-gradient(
+ background: radial-gradient(
     circle at center,
-    rgb(92, 142, 241) 0%,
-    rgb(10, 74, 204) 40%,
-    rgba(25, 1, 1, 0.5) 100%
+    rgb(3, 34, 98) 0%,
+    rgb(9, 34, 84) 10%,
+    rgba(0, 0, 0,1) 100%
   );
 }
 

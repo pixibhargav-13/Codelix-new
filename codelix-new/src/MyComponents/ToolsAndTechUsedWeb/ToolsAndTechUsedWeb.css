@@ -85,3 +85,34 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+@media (max-width: 417px) {
+  .tab-buttons {
+    display: flex;
+    flex-wrap: nowrap; /* force side-by-side */
+  }
+
+  .tab-buttons button {
+    flex: 1;
+    min-width: 0; /* allow shrinking */
+    padding: 8px 0; /* smaller padding */
+    font-size: 13px; /* smaller font */
+  }
+
+  .active-tab {
+    border-bottom: 2px solid #2b6ef2;
+  }
+
+  .tech-table {
+    grid-template-columns: repeat(2, 1fr) !important; /* 2 columns */
+  }
+
+  .tech-card {
+    padding: 20px 10px; /* reduce padding */
+  }
+
+  .tech-icon {
+    max-width: 45px;
+    height: auto;
+  }
+}
