@@ -86,7 +86,7 @@
   width: auto;
 }
 
-@media (min-width: 200px) and (max-width: 425px) {
+@media (min-width: 200px) and (max-width: 600px) {
  .explore-product-img-div{
   margin-top: 3rem !important;
  }
