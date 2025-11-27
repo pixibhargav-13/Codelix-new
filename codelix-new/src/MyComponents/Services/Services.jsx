@@ -60,7 +60,7 @@ const Services = () => {
   ];
   return (
     <>
-      <div className="hero-section">
+      <div className="service-hero-section">
         <Navbar />
         <section className="text-white py-5">
           <div className="container">

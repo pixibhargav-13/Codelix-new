@@ -75,6 +75,10 @@
   color: #6c788f;
 }
 
+.inactive-tab{
+  color: black !important;
+}
+
 /* Mobile */
 @media (max-width: 480px) {
   .tech-table {

@@ -5,6 +5,15 @@
   overflow-x: hidden;
 }
 
+.service-hero-section{
+  background: radial-gradient(
+    circle at center,
+    rgb(92, 142, 241) 0%,
+    rgb(10, 74, 204) 40%,
+    rgba(25, 1, 1, 0.5) 100%
+  );
+}
+
 .light-gray {
   color: #a2a9b5 !important;
 }

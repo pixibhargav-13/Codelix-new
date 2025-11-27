@@ -67,13 +67,13 @@ export const ToolsAndTechUsedWeb = () => {
       {/* TAB BUTTONS */}
       <div className="tab-buttons">
         <button
-          className={activeTab === "frontend" ? "active-tab" : ""}
+          className={activeTab === "frontend" ? "active-tab" : "inactive-tab"}
           onClick={() => setActiveTab("frontend")}
         >
           Frontend
         </button>
         <button
-          className={activeTab === "backend" ? "active-tab" : ""}
+          className={activeTab === "backend" ? "active-tab" : "inactive-tab"}
           onClick={() => setActiveTab("backend")}
         >
           Backend
