@@ -5,6 +5,7 @@ import  Services  from "./MyComponents/Services/Services";
 import Blog  from "./MyComponents/Blog/Blog";
 import Work from "./MyComponents/Work/Work";
 import { Navbar } from "./MyComponents/Navbar/Navbar";
+import { ContactUs } from "./MyComponents/ContactUs/ContactUs";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
     <Route path="/work" element={<Work />} />
     <Route path="/services" element={<Services />} />
     <Route path="/blog" element={<Blog />} />
+    <Route path="/contact" element={<ContactUs/>} />
   </Routes>
 </Router>
 
