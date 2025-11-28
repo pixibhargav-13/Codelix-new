@@ -161,14 +161,6 @@
 }
 
 @media (max-width: 375px) {
-  .lets-build-section {
-    min-height: 450px;
-  }
-
-  .curve-background-mobile {
-    max-width: 400px;
-  }
-
   .lets-build-main-title {
     font-size: 24px;
   }
@@ -179,15 +171,6 @@
 }
 
 @media (max-width: 320px) {
-  .lets-build-section {
-    min-height: 400px;
-    padding: 5rem 0;
-  }
-
-  .curve-background-mobile {
-    max-width: 350px;
-  }
-
   .lets-build-main-title {
     font-size: 22px;
   }
