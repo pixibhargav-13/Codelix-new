@@ -16,6 +16,7 @@ export const Navbar = () => {
     { name: "Services", path: "/services" },
     { name: "About", path: "/" },
     { name: "Blog", path: "/"},
+    { name: "Contact", path: "/contact"},
   ];
 
   return (
@@ -48,7 +49,7 @@ export const Navbar = () => {
           </ul>
 
           <div className="navbar-contact-wrapper mt-3">
-            <Link to="/">
+            <Link to="/Contact">
               <button className="btn navbar-button">
                 <span>Contact Us</span>
                 <img src={whiteArrow} alt="arrow" className="arrow-icon mx-3" />
