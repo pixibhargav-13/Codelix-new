@@ -11,7 +11,7 @@ export const SEO = ({
 }) => {
   const siteUrl = 'https://codelix.com'; // Update this with your actual domain
   const fullTitle = title || 'Codelix | AI-Powered Web, App & SaaS Development';
-  const fullCanonical = canonical || window.location.href;
+  const fullCanonical = canonical || (typeof window !== 'undefined' ? window.location.href : siteUrl);
 
   return (
     <Helmet>
