@@ -7,11 +7,18 @@ import { ToolsAndTechUsedWeb } from "../ToolsAndTechUsedWeb/ToolsAndTechUsedWeb"
 import Footer from "../Footer/Footer";
 import Ourwork from "../OurWork/Ourwork";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
+import { SEO } from "../../components/SEO";
 
 const Work = () => {
   return (
     <>
-        <div className="work-hero-section">
+      <SEO
+        title="Our Work | Portfolio | AI-Driven Projects | Codelix"
+        description="Explore our portfolio of AI-driven web apps, mobile solutions, and SaaS platforms. See how we deliver elegant design and exceptional performance."
+        keywords="portfolio, case studies, web development projects, app development, project showcase"
+        canonical="https://codelix.com/work"
+      />
+      <div className="work-hero-section">
           <Navbar/>
           <div className="work-content">
             <h1>Work</h1>

@@ -30,6 +30,7 @@ import { HomepageFaq } from "../HomepageFaq/HomepageFaq";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
 import Footer from "../Footer/Footer";
 import { BestProjects } from "../BestProjects/BestProjects";
+import { SEO } from "../../components/SEO";
 
 
 export const Homepage = () => {
@@ -69,6 +70,12 @@ export const Homepage = () => {
   ];
   return (
     <>
+      <SEO
+        title="Codelix | AI-Powered Web, App & SaaS Development Services"
+        description="Craft AI-powered web, app & SaaS solutions with world-class UI/UX design. Trusted by 25+ companies for web development, mobile apps, and custom software."
+        keywords="web development, app development, SaaS solutions, UI/UX design, AI technology, software development"
+        canonical="https://codelix.com/"
+      />
       <div className="homepage">
         <div className="hero-section">
           <Navbar/>

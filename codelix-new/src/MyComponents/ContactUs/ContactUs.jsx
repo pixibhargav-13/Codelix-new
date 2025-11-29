@@ -7,10 +7,17 @@ import { Navbar } from "../Navbar/Navbar";
 import Ourwork from "../OurWork/Ourwork";
 import { HomepageFaq } from "../HomepageFaq/HomepageFaq";
 import Footer from "../Footer/Footer";
+import { SEO } from "../../components/SEO";
 
 export const ContactUs = () => {
   return (
     <>
+      <SEO
+        title="Contact Us | Get a Free Quote | Codelix"
+        description="Ready to build something amazing? Contact Codelix for a free consultation. We're here to help with your web, app, or SaaS project."
+        keywords="contact us, free quote, consultation, web development inquiry, get in touch"
+        canonical="https://codelix.com/contact"
+      />
       <div className="work-hero-section">
         <Navbar />
         <div className="work-content">
