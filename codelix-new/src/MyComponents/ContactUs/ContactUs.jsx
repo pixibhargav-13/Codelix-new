@@ -1,6 +1,6 @@
 import React from "react";
 import "./ContactUs.css";
-import contactUsLogo from "../images/contact-us-logo.jpg";
+import contactUsLogo from "../Images/contact-us-logo.jpg";
 import whiteArrow from "../Images/whiteArrow.png";
 import underline from "../Images/what-we-build-underline.png";
 import { Navbar } from "../Navbar/Navbar";
