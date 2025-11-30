@@ -115,16 +115,16 @@
     display: none;
   }
 
-  /* Show mobile round circle - FIXED POSITION */
+  /* Show mobile round circle - FULL HEIGHT */
   .mobile-curves {
     display: flex;
-    top: 29%;
+    position: absolute;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100vw;
+    width: 100vh; 
     height: 100vh;
-    max-width: 500px;
-    max-height: 500px;
+    min-width: 100vw; 
   }
 
   .curve-background-mobile {
@@ -134,10 +134,12 @@
   }
 
   .lets-build-section {
-    padding: 5rem 0;
+    padding: 0;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
   }
 
   .mobile-center-wrapper {
@@ -163,12 +165,9 @@
 
 @media (max-width: 375px) {
   .mobile-curves {
-    max-width: 450px;
-    max-height: 450px;
-  }
-
-  .lets-build-section {
-    min-height: 450px;
+    width: 100vh;
+    height: 100vh;
+    min-width: 100vw;
   }
 
   .content-wrapper {
@@ -186,12 +185,9 @@
 
 @media (max-width: 320px) {
   .mobile-curves {
-    max-width: 400px;
-    max-height: 400px;
-  }
-
-  .lets-build-section {
-    min-height: 400px;
+    width: 100vh;
+    height: 100vh;
+    min-width: 100vw;
   }
 
   .content-wrapper {
@@ -199,7 +195,7 @@
   }
 
   .lets-build-main-title {
-    font-size: 22px;
+    font-size: 18px;
   }
 
   .lets-build-subtitle {
