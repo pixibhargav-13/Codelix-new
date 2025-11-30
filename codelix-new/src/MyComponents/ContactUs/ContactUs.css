@@ -221,7 +221,7 @@
     gap: 10px;
   }
 
-  .contact-us-form-row input {
+  .contact-us-form-row .input-background {
     background-color: #ffffff;
   }
 

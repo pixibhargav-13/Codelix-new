@@ -85,52 +85,52 @@ export const ContactUs = () => {
                     <div className="contact-us-form-row">
                       <div>
                         <label className="form-label">Your Name*</label>
-                        <input type="text" />
+                        <input type="text" className="input-background"/>
                       </div>
                       <div>
                         <label className="form-label">Contact*</label>
-                        <input type="text" />
+                        <input type="text" className="input-background"/>
                       </div>
                     </div>
 
                     {/* Email */}
                     <label className="form-label">Email*</label>
-                    <input type="email" />
+                    <input type="email" className="input-background" />
 
                     {/* Company + Designation */}
                     <div className="contact-us-form-row">
                       <div>
                         <label className="form-label">Company*</label>
-                        <input type="text" />
+                        <input type="text" className="input-background"/>
                       </div>
                       <div>
                         <label className="form-label">Designation*</label>
-                        <input type="text" />
+                        <input type="text" className="input-background"/>
                       </div>
                     </div>
 
                     {/* Service */}
                     <label className="form-label">Service*</label>
-                    <select>
+                    <select className="input-background">
                       <option>Select</option>
                     </select>
 
                     {/* About Project */}
                     <label className="form-label">About Project*</label>
-                    <textarea rows="4"></textarea>
+                    <textarea rows="4" className="input-background"></textarea>
 
                     {/* Budget + Timeline */}
                     <div className="contact-us-form-row">
                       <div>
                         <label className="form-label">Budget</label>
-                        <select>
+                        <select className="input-background">
                           <option>Select</option>
                         </select>
                       </div>
 
                       <div>
                         <label className="form-label">Timeline</label>
-                        <select>
+                        <select className="input-background">
                           <option>Select</option>
                         </select>
                       </div>
@@ -138,7 +138,7 @@ export const ContactUs = () => {
 
                     {/* How heard */}
                     <label className="form-label">How did you hear about us?</label>
-                    <textarea rows="3"></textarea>
+                    <textarea rows="3" className="input-background"></textarea>
                   </form>
 
                   <div className="d-flex justify-content-center mt-3">
