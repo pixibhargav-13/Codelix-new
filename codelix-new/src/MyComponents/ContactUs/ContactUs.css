@@ -7,23 +7,21 @@
   text-align: center;
   background: white;
   margin-bottom: 40px;
-
-  & .contact-us-top-section-text {
+}
+  .contact-us-top-section-text {
     display: flex;
     flex-direction: column;
   }
 
-  & h2 {
+.contact-us-top-section h2 {
     font-size: 40px;
     margin-bottom: 10px;
     color: #131926;
   }
 
-  & p {
+.contact-us-top-section p {
     font-size: 16px;
-    color: black !important;
   }
-}
 
 .contact-us-top-cards {
   margin-top: 30px;
@@ -35,20 +33,27 @@
   color: #131926;
   display: flex;
   flex-direction: column;
-
-  & h4 {
+}
+ .contact-us-card h4 {
     font-size: 20px;
     line-height: 30px;
     font-weight: 600;
   }
 
-  & p {
+ .contact-us-card p {
     line-height: 20px;
     font-size: 14px;
     font-weight: 400;
   }
+.contact-us-card:hover,
+.contact-us-card:hover h4,
+.contact-us-card:hover p,
+.contact-us-process-card:hover,
+.contact-us-process-card:hover h5,
+.contact-us-process-card:hover p {
+  background: #000 !important;
+  color: #fff !important;
 }
-
 .underline-text {
   position: relative;
   display: inline-block;

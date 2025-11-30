@@ -52,6 +52,12 @@
   opacity: 0.9;
 }
 
+/* Mobile center wrapper - does nothing on desktop */
+.mobile-center-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
 .content-wrapper {
   position: relative;
   z-index: 5;
@@ -109,45 +115,40 @@
     display: none;
   }
 
-  .lets-build-section {
-    padding: 0rem 0; /* Increased padding to show full circle */
-     display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-direction: column !important;
+  /* Show mobile round circle - FIXED POSITION */
+  .mobile-curves {
+    display: flex;
+    top: 29%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    max-width: 500px;
+    max-height: 500px;
   }
 
-  /* .mobile-curves {
-        display: flex;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 120%; 
-  } */
-
-  .mobile-curves {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: none !important;
-  pointer-events: none;
-}
-/* 
   .curve-background-mobile {
-    max-width: 500px; 
-    margin: 0 auto;
-  } */
-.curve-background-mobile {
-  height: auto;
-  object-fit: contain;
-}
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .lets-build-section {
+    padding: 5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-center-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
 
   .content-wrapper {
-    padding: 0rem 30px;
+    padding: 2rem 40px;
   }
 
   .lets-build-main-title {
@@ -161,6 +162,19 @@
 }
 
 @media (max-width: 375px) {
+  .mobile-curves {
+    max-width: 450px;
+    max-height: 450px;
+  }
+
+  .lets-build-section {
+    min-height: 450px;
+  }
+
+  .content-wrapper {
+    padding: 2rem 30px;
+  }
+
   .lets-build-main-title {
     font-size: 24px;
   }
@@ -171,6 +185,19 @@
 }
 
 @media (max-width: 320px) {
+  .mobile-curves {
+    max-width: 400px;
+    max-height: 400px;
+  }
+
+  .lets-build-section {
+    min-height: 400px;
+  }
+
+  .content-wrapper {
+    padding: 1.5rem 25px;
+  }
+
   .lets-build-main-title {
     font-size: 22px;
   }
