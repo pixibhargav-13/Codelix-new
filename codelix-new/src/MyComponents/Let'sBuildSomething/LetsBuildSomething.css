@@ -122,9 +122,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100vh; 
-    height: 100vh;
-    min-width: 100vw; 
+    height: 104vh;
   }
 
   .curve-background-mobile {
@@ -165,9 +163,7 @@
 
 @media (max-width: 375px) {
   .mobile-curves {
-    width: 100vh;
-    height: 100vh;
-    min-width: 100vw;
+    height: 104vh;
   }
 
   .content-wrapper {
@@ -185,9 +181,7 @@
 
 @media (max-width: 320px) {
   .mobile-curves {
-    width: 100vh;
-    height: 100vh;
-    min-width: 100vw;
+    height: 104vh;
   }
 
   .content-wrapper {
