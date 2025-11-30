@@ -142,7 +142,7 @@ export const ContactUs = () => {
                   </form>
 
                   <div className="d-flex justify-content-center mt-3">
-                    <button className="btn blue-common-btn mt-4 d-flex align-items-center justify-content-between view-all-button">
+                    <button className="btn blue-common-btn mt-4 d-flex align-items-center justify-content-between view-all-button contact-us-blue-button">
                       <span>Submit</span>
                       <img src={whiteArrow} alt="arrow" className="arrow-icon" />
                     </button>
