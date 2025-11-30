@@ -1,6 +1,6 @@
 import React from "react";
 import "./ContactUs.css";
-import contactUsLogo from "../Images/contact-us-logo.jpg";
+import contactUsLogo from "../Images/contact-us-logo.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import underline from "../Images/what-we-build-underline.png";
 import { Navbar } from "../Navbar/Navbar";
@@ -30,54 +30,56 @@ export const ContactUs = () => {
           </p>
         </div>
       </div>
-      <div className="contact-us-container light-gray">
-        <div className="contact-us-top-section">
-          <div className="contact-us-top-section-text">
-            <h2 className="heading-provide mb-2">
-              Schedule A{" "}
-              <span className="underline-wrapper fw-bold">
-                Meeting
-                <img src={underline} alt="" className="underline-img" />
-              </span>
-            </h2>
-            <p className="gray-font mb-5 gray-font-margin-top">
-              Leave us a little info and we will get in touch asap!
-            </p>
-          </div>
-
-          <div className="contact-us-top-cards d-flex justify-content-center flex-md-row flex-column text-start">
-            <div className="contact-us-card">
-              <h4>People</h4>
-              <p>
-                With our design & development ninjas by our side, there's
-                absolutely nothing we can't achieve.
+      <div className="contact-us-container d-flex justify-content-between flex-column light-gray">
+        <div className="container">
+          <div className="contact-us-top-section">
+            <div className="contact-us-top-section-text">
+              <h2 className="heading-provide mb-2">
+                Schedule A{" "}
+                <span className="underline-wrapper fw-bold">
+                  Meeting
+                  <img src={underline} alt="" className="underline-img" />
+                </span>
+              </h2>
+              <p className="gray-font mb-5 gray-font-margin-top">
+                Leave us a little info and we will get in touch asap!
               </p>
             </div>
 
-            <div className="contact-us-card">
-              <h4>Process</h4>
-              <p>
-                We turn your vision into reality with a proven end-to-end
-                process. From strategy to launch, every step is handled with
-                care.
-              </p>
-            </div>
+            <div className="contact-us-top-cards d-flex justify-content-center flex-md-row flex-column text-start">
+              <div className="contact-us-card">
+                <h4>People</h4>
+                <p>
+                  With our design & development ninjas by our side, there's
+                  absolutely nothing we can't achieve.
+                </p>
+              </div>
 
-            <div className="contact-us-card">
-              <h4>Passion</h4>
-              <p>
-                We turn your product vision from brainstorming to a fully
-                implemented real-world solution.
-              </p>
+              <div className="contact-us-card">
+                <h4>Process</h4>
+                <p>
+                  We turn your vision into reality with a proven end-to-end
+                  process. From strategy to launch, every step is handled with
+                  care.
+                </p>
+              </div>
+
+              <div className="contact-us-card">
+                <h4>Passion</h4>
+                <p>
+                  We turn your product vision from brainstorming to a fully
+                  implemented real-world solution.
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
         <div className="contact-us-main-section">
           <div className="container">
-            <div className="row">
-              <div className="col-lg-8 col-md-12 mb-4">
-                <div className="contact-us-form-box form d-flex flex-column align-items-center">
+            <div className="row d-flex gap-10">
+              <div className="col-lg-8 col-md-12">
+                <div className="contact-us-form-box form d-flex flex-column">
                   <form>
                     {/* Name + Contact */}
                     <div className="contact-us-form-row">
@@ -120,14 +122,14 @@ export const ContactUs = () => {
                     {/* Budget + Timeline */}
                     <div className="contact-us-form-row">
                       <div>
-                        <label>Budget</label>
+                        <label className="form-label">Budget</label>
                         <select>
                           <option>Select</option>
                         </select>
                       </div>
 
                       <div>
-                        <label>Timeline</label>
+                        <label className="form-label">Timeline</label>
                         <select>
                           <option>Select</option>
                         </select>
@@ -135,16 +137,16 @@ export const ContactUs = () => {
                     </div>
 
                     {/* How heard */}
-                    <label>How did you hear about us?</label>
+                    <label className="form-label">How did you hear about us?</label>
                     <textarea rows="3"></textarea>
                   </form>
 
                   <div className="d-flex justify-content-center mt-3">
-                <button className="btn blue-common-btn mt-4 d-flex align-items-center justify-content-between view-all-button">
-                  <span>Submit</span>
-                  <img src={whiteArrow} alt="arrow" className="arrow-icon" />
-                </button>
-              </div>
+                    <button className="btn blue-common-btn mt-4 d-flex align-items-center justify-content-between view-all-button">
+                      <span>Submit</span>
+                      <img src={whiteArrow} alt="arrow" className="arrow-icon" />
+                    </button>
+                  </div>
                 </div>
               </div>
 
