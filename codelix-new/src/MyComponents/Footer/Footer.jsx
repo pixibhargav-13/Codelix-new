@@ -2,6 +2,7 @@ import React from "react";
 import "./Footer.css";
 import codelixText from "../Images/codelix-footer-logo.png";
 import footerDot from "../Images/footer-dot.png";
+
 const Footer = () => {
   const footerData = {
     info: [
@@ -35,51 +36,31 @@ const Footer = () => {
     ],
   };
 
+  // Create marquee items array
+  const marqueeItems = [
+    { text: "WE LIVE IN IT", dot: footerDot },
+    { text: "WE LIVE IN IT", dot: footerDot },
+    { text: "WE LIVE IN IT", dot: footerDot },
+    { text: "WE LIVE IN IT", dot: footerDot },
+    { text: "WE LIVE IN IT", dot: footerDot },
+    { text: "WE LIVE IN IT", dot: footerDot },
+  ];
+
   return (
     <footer className="codelix-footer">
       {/* Marquee Section */}
-      {/* <div className="marquee-container">
-        <div className="marquee-content">
-          <span>WE LIVE IN IT</span>
-          <span className="dot">
-            <img src={footerDot} />
-          </span>
-          <span>WE LIVE IN IT</span>
-          <span className="dot">
-            <img src={footerDot} />
-          </span>
-
-          <span>WE LIVE IN IT</span>
-          <span className="dot">
-            <img src={footerDot} />
-          </span>
-
-          <span>WE LIVE IN IT</span>
-          <span className="dot">
-            <img src={footerDot} />
-          </span>
-
-          <span>WE LIVE IN IT</span>
-          <span className="dot">
-            <img src={footerDot} />
-          </span>
-
-          <span>WE LIVE IN IT</span>
-          <span className="dot">
-            <img src={footerDot} />
-          </span>
-
-          <span>WE LIVE IN IT</span>
-          <span className="dot">
-            <img src={footerDot} />
-          </span>
-
-          <span>WE LIVE IN IT</span>
-          <span className="dot">
-            <img src={footerDot} />
-          </span>
+      <div className="marquee-container">
+        <div className="marquee-track">
+          {marqueeItems.concat(marqueeItems).map((item, index) => (
+            <React.Fragment key={index}>
+              <span>{item.text}</span>
+              <span className="dot">
+                <img src={item.dot} alt="dot" />
+              </span>
+            </React.Fragment>
+          ))}
         </div>
-      </div> */}
+      </div>
 
       {/* Footer Content */}
       <div className="footer-content">
@@ -141,7 +122,7 @@ const Footer = () => {
             <div className="footer-bottom-content">
               <p className="copyright">
                 <span>
-                  <i class="fa-regular fa-copyright"></i>
+                  <i className="fa-regular fa-copyright"></i>
                 </span>{" "}
                 2025 Codelix — All Copyright Reserved
               </p>
@@ -157,7 +138,7 @@ const Footer = () => {
       {/* Large CODELIX Text */}
       <div className="codelix-large-text">
         <div className="codelix-text">
-          <img src={codelixText} />
+          <img src={codelixText} alt="Codelix" />
         </div>
       </div>
     </footer>
