@@ -128,13 +128,13 @@ export const Navbar = () => {
 
           {serviceOpen && (
             <div className="mobile-dropdown-content">
-              <Link to="/mobile-app" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/" onClick={() => setIsMenuOpen(false)}>
                 Mobile App Development
               </Link>
-              <Link to="/saas-development" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/" onClick={() => setIsMenuOpen(false)}>
                 SaaS Development
               </Link>
-              <Link to="/web-development" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/" onClick={() => setIsMenuOpen(false)}>
                 Web Development
               </Link>
             </div>
