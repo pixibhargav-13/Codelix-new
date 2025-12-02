@@ -68,9 +68,9 @@ export const Navbar = () => {
 
                 {desktopServiceOpen && (
                   <div className="desktop-dropdown-menu">
-                    <Link to="/mobile-app">Mobile App Development</Link>
-                    <Link to="/saas-development">SaaS Development</Link>
-                    <Link to="/web-development">Web Development</Link>
+                    <Link to="/">Mobile App Development</Link>
+                    <Link to="/">SaaS Development</Link>
+                    <Link to="/">Web Development</Link>
                   </div>
                 )}
               </li>
