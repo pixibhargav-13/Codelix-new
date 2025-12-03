@@ -9,7 +9,7 @@ export const SEO = ({
   ogType = 'website',
   canonical = ''
 }) => {
-  const siteUrl = 'https://codelix.com'; // Update this with your actual domain
+  const siteUrl = 'https://www.codelixitsolutions.com/'; // Update this with your actual domain
   const fullTitle = title || 'Codelix | AI-Powered Web, App & SaaS Development';
   const fullCanonical = canonical || (typeof window !== 'undefined' ? window.location.href : siteUrl);
 

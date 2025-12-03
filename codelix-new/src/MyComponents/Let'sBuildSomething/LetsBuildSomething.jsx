@@ -36,7 +36,7 @@ export const LetsBuildSomething = () => {
         </p>
 
         <div className="text-center">
-          <button className="btn explore-btn consult-btn mt-5 d-inline-flex align-items-center gap-3">
+          <button className="btn get-free-consultation-btn consult-btn mt-lg-5 d-inline-flex align-items-center gap-3">
             Get Free Consultation
             <img src={rightArrow} alt="arrow" className="arrow-icon" />
           </button>

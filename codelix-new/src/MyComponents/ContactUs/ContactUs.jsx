@@ -1,6 +1,6 @@
 import React from "react";
 import "./ContactUs.css";
-import contactUsLogo from "../Images/contact-us-logo.jpg";
+import contactUsLogo from "../Images/contact-us-logo.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import underline from "../Images/what-we-build-underline.png";
 import { Navbar } from "../Navbar/Navbar";
@@ -8,6 +8,7 @@ import Ourwork from "../OurWork/Ourwork";
 import { HomepageFaq } from "../HomepageFaq/HomepageFaq";
 import Footer from "../Footer/Footer";
 import { SEO } from "../../components/SEO";
+
 
 export const ContactUs = () => {
   return (
@@ -30,121 +31,140 @@ export const ContactUs = () => {
           </p>
         </div>
       </div>
-      <div className="contact-us-container light-gray">
-        <div className="contact-us-top-section">
-          <div className="contact-us-top-section-text">
-            <h2 className="heading-provide mb-2">
-              Schedule A{" "}
-              <span className="underline-wrapper fw-bold">
-                Meeting
-                <img src={underline} alt="" className="underline-img" />
-              </span>
-            </h2>
-            <p className="gray-font mb-5 gray-font-margin-top">
-              Leave us a little info and we will get in touch asap!
-            </p>
-          </div>
-
-          <div className="contact-us-top-cards d-flex justify-content-center flex-md-row flex-column text-start">
-            <div className="contact-us-card">
-              <h4>People</h4>
-              <p>
-                With our design & development ninjas by our side, there's
-                absolutely nothing we can't achieve.
+      <div className="contact-us-container d-flex justify-content-between flex-column light-gray">
+        <div className="container">
+          <div className="contact-us-top-section">
+            <div className="contact-us-top-section-text">
+              <h2 className="heading-provide mb-2">
+                Schedule A{" "}
+                <span className="underline-wrapper fw-bold">
+                  Meeting
+                  <img src={underline} alt="" className="underline-img" />
+                </span>
+              </h2>
+              <p className="gray-font mb-5 gray-font-margin-top">
+                Leave us a little info and we will get in touch asap!
               </p>
             </div>
 
-            <div className="contact-us-card">
-              <h4>Process</h4>
-              <p>
-                We turn your vision into reality with a proven end-to-end
-                process. From strategy to launch, every step is handled with
-                care.
-              </p>
-            </div>
+            <div className="contact-us-top-cards d-flex justify-content-center flex-md-row flex-column text-start">
+              <div className="contact-us-card">
+                <h4>People</h4>
+                <p>
+                  With our design & development ninjas by our side, there's
+                  absolutely nothing we can't achieve.
+                </p>
+              </div>
 
-            <div className="contact-us-card">
-              <h4>Passion</h4>
-              <p>
-                We turn your product vision from brainstorming to a fully
-                implemented real-world solution.
-              </p>
+              <div className="contact-us-card">
+                <h4>Process</h4>
+                <p>
+                  We turn your vision into reality with a proven end-to-end
+                  process. From strategy to launch, every step is handled with
+                  care.
+                </p>
+              </div>
+
+              <div className="contact-us-card">
+                <h4>Passion</h4>
+                <p>
+                  We turn your product vision from brainstorming to a fully
+                  implemented real-world solution.
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
         <div className="contact-us-main-section">
           <div className="container">
-            <div className="row">
-              <div className="col-lg-8 col-md-12 mb-4">
-                <div className="contact-us-form-box form d-flex flex-column align-items-center">
+            <div className="row d-flex gap-10">
+              <div className="col-lg-8 col-md-12">
+                <div className="contact-us-form-box form d-flex flex-column">
                   <form>
                     {/* Name + Contact */}
                     <div className="contact-us-form-row">
                       <div>
                         <label className="form-label">Your Name*</label>
-                        <input type="text" />
+                        <input type="text" className="input-background"/>
                       </div>
                       <div>
                         <label className="form-label">Contact*</label>
-                        <input type="text" />
+                        <input type="text" className="input-background"/>
                       </div>
                     </div>
 
                     {/* Email */}
                     <label className="form-label">Email*</label>
-                    <input type="email" />
+                    <input type="email" className="input-background" />
 
                     {/* Company + Designation */}
                     <div className="contact-us-form-row">
                       <div>
                         <label className="form-label">Company*</label>
-                        <input type="text" />
+                        <input type="text" className="input-background"/>
                       </div>
                       <div>
                         <label className="form-label">Designation*</label>
-                        <input type="text" />
+                        <input type="text" className="input-background"/>
                       </div>
                     </div>
 
                     {/* Service */}
                     <label className="form-label">Service*</label>
-                    <select>
+                    <select className="input-background">
                       <option>Select</option>
+                      <option>Web Development</option>
+                      <option>Mobile Development</option>
+                      <option>UI/UX Design</option>
+                      <option>Custom Software dev.</option>
+                      <option>E-Commerce Solutions</option>
+                      <option>AI Development</option>
                     </select>
 
                     {/* About Project */}
                     <label className="form-label">About Project*</label>
-                    <textarea rows="4"></textarea>
+                    <textarea rows="4" className="input-background"></textarea>
 
                     {/* Budget + Timeline */}
                     <div className="contact-us-form-row">
                       <div>
-                        <label>Budget</label>
-                        <select>
+                        <label className="form-label">Budget</label>
+                        <select className="input-background">
                           <option>Select</option>
+                          <option>Under $1500</option>
+                          <option>$1500 - $5,000</option>
+                          <option>$5,000 - $10,000</option>
+                          <option>$10,000 - $20,000</option>
+                          <option>$20,000 - $50,000</option>
+                          <option>Above $50,000</option>
                         </select>
                       </div>
 
                       <div>
-                        <label>Timeline</label>
-                        <select>
+                        <label className="form-label">Timeline</label>
+                        <select className="input-background">
                           <option>Select</option>
+                          <option>1-3 months</option>
+                          <option>3-6 months</option>
+                          <option>6-12 months</option>
+                          <option>12+ months</option>
+                          <option>Flexible</option>
                         </select>
                       </div>
                     </div>
 
                     {/* How heard */}
-                    <label>How did you hear about us?</label>
-                    <textarea rows="3"></textarea>
+                    <label className="form-label">How did you hear about us?</label>
+                    <textarea rows="3" className="input-background"></textarea>
                   </form>
 
                   <div className="d-flex justify-content-center mt-3">
-                <button className="btn blue-common-btn mt-4 d-flex align-items-center justify-content-between view-all-button">
-                  <span>Submit</span>
-                  <img src={whiteArrow} alt="arrow" className="arrow-icon" />
-                </button>
-              </div>
+                    <button className="btn blue-common-btn mt-4 d-flex align-items-center justify-content-between view-all-button contact-us-blue-button">
+                      <span>Submit</span>
+                      <img src={whiteArrow} alt="arrow" className="arrow-icon" />
+                    </button>
+                  </div>
                 </div>
               </div>
 

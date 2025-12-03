@@ -2,6 +2,48 @@
   background: #f8fafc;
 }
 
+/* Custom padding classes for values greater than Bootstrap's py-5 */
+.homepage-faq-section.py-6 {
+  padding-top: 4.5rem !important;
+  padding-bottom: 4.5rem !important;
+}
+
+.homepage-faq-section.py-7 {
+  padding-top: 5.5rem !important;
+  padding-bottom: 5.5rem !important;
+}
+
+.homepage-faq-section.py-8 {
+  padding-top: 6.5rem !important;
+  padding-bottom: 6.5rem !important;
+}
+
+/* Custom padding-top classes for values greater than Bootstrap's pt-5 */
+.homepage-faq-section.pt-6 {
+  padding-top: 4.5rem !important;
+}
+
+.homepage-faq-section.pt-7 {
+  padding-top: 5.5rem !important;
+}
+
+.homepage-faq-section.pt-8 {
+  padding-top: 6.5rem !important;
+}
+
+/* Custom padding-bottom classes for values greater than Bootstrap's pb-5 */
+.homepage-faq-section.pb-6 {
+  padding-bottom: 4.5rem !important;
+}
+
+.homepage-faq-section.pb-7 {
+  padding-bottom: 5.5rem !important;
+}
+
+.homepage-faq-section.pb-8 {
+  padding-bottom: 6.5rem !important;
+}
+
 /* Heading */
 .faq-heading {
   font-size: 30px;
@@ -11,10 +53,13 @@
 .faq-subtext {
   color: #6c6c6c;
   font-size: 15px;
+  white-space: normal;
+ 
 }
 
 .faq-list {
   max-width: 750px;
+  text-align: left;
 }
 
 .faq-item {
@@ -33,6 +78,7 @@
   font-size: 17px;
   font-weight: 600;
   color: #131926;
+  text-align: left;
 }
 
 .toggle-btn {
@@ -61,4 +107,40 @@
   font-size: 15px;
   font-weight: 400;
   text-align: justify;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .faq-subtext {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .faq-list {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
+  .faq-question {
+    gap: 10px;
+  }
+
+  .question-text {
+    flex: 1;
+    min-width: 0;
+    font-size: 15px;
+    padding-right: 10px;
+  }
+
+  .toggle-btn {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+  }
+
+  .faq-answer {
+    text-align: left;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
 }

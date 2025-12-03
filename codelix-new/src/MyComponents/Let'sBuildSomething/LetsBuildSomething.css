@@ -52,6 +52,12 @@
   opacity: 0.9;
 }
 
+/* Mobile center wrapper - does nothing on desktop */
+.mobile-center-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
 .content-wrapper {
   position: relative;
   z-index: 5;
@@ -84,6 +90,31 @@
   margin: 20px 0 40px;
 }
 
+.get-free-consultation-btn {
+  background-color: #3e7dfc !important;
+  color: #fff !important;
+  padding: 10px 18px !important;
+  border-radius: 0px !important;
+  font-weight: 400 !important;
+}
+
+.get-free-consultation-btn:hover {
+  background: #ffffff !important;
+  color: #2b6ef2 !important;
+  border: 1px solid #2b6ef2 !important;
+  box-shadow: 4px 4px 0px #2b6ef2 !important;
+}
+
+.get-free-consultation-btn .arrow-icon {
+  transition: transform 0.35s ease-in-out !important;
+}
+
+.get-free-consultation-btn:hover .arrow-icon {
+  transform: rotate(-45deg);
+  filter: brightness(0) saturate(100%) invert(36%) sepia(98%) saturate(2475%)
+    hue-rotate(206deg) brightness(95%) contrast(101%);
+}
+
 /* =============== RESPONSIVE =============== */
 
 /* Tablet screens - keep desktop curves */
@@ -109,45 +140,38 @@
     display: none;
   }
 
-  .lets-build-section {
-    padding: 0rem 0; /* Increased padding to show full circle */
-     display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-direction: column !important;
+  /* Show mobile round circle - FULL HEIGHT */
+  .mobile-curves {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
-  /* .mobile-curves {
-        display: flex;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 120%; 
-  } */
-
-  .mobile-curves {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: none !important;
-  pointer-events: none;
-}
-/* 
   .curve-background-mobile {
-    max-width: 500px; 
-    margin: 0 auto;
-  } */
-.curve-background-mobile {
-  height: auto;
-  object-fit: contain;
-}
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+
+  .lets-build-section {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .mobile-center-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
 
   .content-wrapper {
-    padding: 0rem 30px;
+    padding: 2rem 40px;
   }
 
   .lets-build-main-title {
@@ -158,9 +182,17 @@
   .lets-build-subtitle {
     font-size: 16px;
   }
+
+  .get-free-consultation-btn {
+    padding: 8px 8px !important;
+  }
 }
 
 @media (max-width: 375px) {
+  .content-wrapper {
+    padding: 2rem 30px;
+  }
+
   .lets-build-main-title {
     font-size: 24px;
   }
@@ -168,14 +200,26 @@
   .lets-build-subtitle {
     font-size: 15px;
   }
+
+  .get-free-consultation-btn {
+    padding: 8px 8px !important;
+  }
 }
 
 @media (max-width: 320px) {
+  .content-wrapper {
+    padding: 1.5rem 25px;
+  }
+
   .lets-build-main-title {
-    font-size: 22px;
+    font-size: 18px;
   }
 
   .lets-build-subtitle {
     font-size: 14px;
+  }
+
+  .get-free-consultation-btn {
+    padding: 8px 8px !important;
   }
 }

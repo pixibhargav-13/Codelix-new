@@ -1,6 +1,6 @@
 import React from "react";
 import "./Work.css";
-import { Navbar } from "../Navbar/Navbar"; // your named export
+import { Navbar } from "../Navbar/Navbar";
 import { BestProjects } from "../BestProjects/BestProjects";
 import { HowWeWork } from "../Service-How-We-Work/HowWeWork";
 import { ToolsAndTechUsedWeb } from "../ToolsAndTechUsedWeb/ToolsAndTechUsedWeb";
@@ -18,8 +18,9 @@ const Work = () => {
         keywords="portfolio, case studies, web development projects, app development, project showcase"
         canonical="https://codelix.com/work"
       />
-      <div className="work-hero-section">
-          <Navbar/>
+      <div className="work-page">
+        <div className="work-hero-section">
+          <Navbar />
           <div className="work-content">
             <h1>Work</h1>
             <p>
@@ -46,6 +47,7 @@ const Work = () => {
         <div className="footer">
           <Footer />
         </div>
+      </div>
     </>
   );
 };

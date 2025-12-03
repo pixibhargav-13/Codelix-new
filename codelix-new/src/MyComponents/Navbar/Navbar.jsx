@@ -1,29 +1,45 @@
 import React, { useState } from "react";
 import codelixlogo from "../Images/codelix-logo.png";
 import whiteArrow from "../Images/whiteArrow.png";
-import { Menu, X } from "lucide-react";  
+import { Menu, X } from "lucide-react";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   // Define navigation links with paths
   const navLinks = [
-    { name: "Home", path: "/" },
     { name: "Work", path: "/work" },
     { name: "Services", path: "/services" },
-    { name: "About", path: "/" },
-    { name: "Blog", path: "/"},
-    { name: "Contact", path: "/contact"},
+    { name: "About", path: "/about" },
+    { name: "Blog", path: "/blog" },
   ];
+
+  // Handle navigation with refresh if on same page
+  const handleNavClick = (e, path) => {
+    // Check if we're already on this page
+    const currentPath = location.pathname;
+    const targetPath = path === "/" ? "/" : path;
+    
+    if (currentPath === targetPath) {
+      e.preventDefault();
+      // Refresh the page
+      window.location.reload();
+    }
+  };
 
   return (
     <nav className="navbar navbar-expand-lg pt-4">
       <div className="container">
         {/* Logo */}
-        <Link className="navbar-brand d-flex align-items-center" to="/">
+        <Link 
+          className="navbar-brand d-flex align-items-center" 
+          to="/"
+          onClick={(e) => handleNavClick(e, "/")}
+        >
           <img src={codelixlogo} alt="Codelix Logo" height="40" />
         </Link>
 
@@ -41,16 +57,26 @@ export const Navbar = () => {
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-4 text-center">
             {navLinks.map((link) => (
               <li className="nav-item" key={link.name}>
-                <Link className="nav-link text-white" to={link.path}>
+                <NavLink
+                  to={link.path}
+                  end={link.path === "/"}
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "nav-link-active" : "nav-link-inactive"}`
+                  }
+                  onClick={(e) => handleNavClick(e, link.path)}
+                >
                   {link.name}
-                </Link>
+                </NavLink>
               </li>
             ))}
           </ul>
 
-          <div className="navbar-contact-wrapper mt-3">
-            <Link to="/Contact">
-              <button className="btn navbar-button">
+          <div className="navbar-contact-wrapper mt-3 mt-lg-0 ms-lg-3 d-flex align-items-center">
+            <Link 
+              to="/contact"
+              onClick={(e) => handleNavClick(e, "/contact")}
+            >
+              <button className="btn navbar-button d-flex align-items-center">
                 <span>Contact Us</span>
                 <img src={whiteArrow} alt="arrow" className="arrow-icon mx-3" />
               </button>

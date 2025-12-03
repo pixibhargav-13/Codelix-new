@@ -8,12 +8,12 @@ export const WhatMakesUsDifferent = () => {
   const stats = [
     { id: 1, value: "25+", label: "Projects Completed" },
     { id: 2, value: "95%", label: "Success Rate" },
-    { id: 3, value: "20+", label: "Tech Stacks & Tools" },
+    { id: 3, value: "30+", label: "Tech Stacks & Tools" },
     { id: 4, value: "2+", label: "Countries Served" },
   ];
 
   return (
-    <section className="what-different-section py-lg-5 py-0">
+    <section className="what-different-section pt-5 pb-7">
       <div className="container">
 
         {/* HEADING */}

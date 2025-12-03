@@ -1,12 +1,4 @@
-.contact-us-container {
-  margin: 0 auto;
-  gap: 40px;
-  display: flex;
-  flex-direction: column;
-}
-
 .contact-us-top-section {
-  max-width: 90%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -14,22 +6,21 @@
   text-align: center;
   background: white;
   margin-bottom: 40px;
+}
 
-  & .contact-us-top-section-text {
-    display: flex;
-    flex-direction: column;
-  }
+.contact-us-top-section-text {
+  display: flex;
+  flex-direction: column;
+}
 
-  & h2 {
-    font-size: 40px;
-    margin-bottom: 10px;
-    color: #131926;
-  }
+.contact-us-top-section h2 {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #131926;
+}
 
-  & p {
-    font-size: 16px;
-    color: black !important;
-  }
+.contact-us-top-section p {
+  font-size: 16px;
 }
 
 .contact-us-top-cards {
@@ -42,18 +33,28 @@
   color: #131926;
   display: flex;
   flex-direction: column;
+}
 
-  & h4 {
-    font-size: 20px;
-    line-height: 30px;
-    font-weight: 600;
-  }
+.contact-us-card h4 {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 600;
+}
 
-  & p {
-    line-height: 20px;
-    font-size: 14px;
-    font-weight: 400;
-  }
+.contact-us-card p {
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.contact-us-card:hover,
+.contact-us-card:hover h4,
+.contact-us-card:hover p,
+.contact-us-process-card:hover,
+.contact-us-process-card:hover h5,
+.contact-us-process-card:hover p {
+  background: #000 !important;
+  color: #fff !important;
 }
 
 .underline-text {
@@ -74,18 +75,21 @@
   background-size: 100% 100%;
 }
 
-.contact-us-form-box {
-  & label {
-    font-weight: 600;
-    font-size: 15px;
-    color: black !important;
-  }
-}
 
 /* Main section layout */
 .contact-us-main-section {
   background-color: #f8faff;
-  padding: 100px 100px 100px 100px;
+  padding-top: 5rem !important;
+  padding-bottom: 5rem !important;
+}
+
+.form-label {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 30px;
+  color: #131926;
 }
 
 @media (max-width: 900px) {
@@ -105,24 +109,36 @@
     border: 2px solid #abb3c2;
     background-color: white !important;
   }
-
-  & label {
-    font-weight: 600;
-    font-size: 14px;
-  }
 }
 
 .contact-us-form-box input,
-.contact-us-form-box select,
 .contact-us-form-box textarea {
   width: 100%;
-  padding: 6px;
+  padding: 13px;
   margin-bottom: 18px;
   border: 1px solid #abb3c2;
   color: #6c788f;
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0;
+  background-color: #ffffff;
+}
+
+.contact-us-form-box select {
+  width: 100%;
+  padding: 13px 40px 13px 13px;
+  margin-bottom: 18px;
+  border: 1px solid #abb3c2;
+  color: #6c788f;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  background-color: #ffffff;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236c788f' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 13px center;
+  background-size: 12px 8px;
 }
 
 .contact-us-form-row {
@@ -132,6 +148,17 @@
 
 .contact-us-form-row div {
   flex: 1;
+}
+
+.blue-common-btn span {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  /* Medium */
+  font-style: normal;
+  /* 'Medium' is handled by font-weight */
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
 }
 
 @media (max-width: 600px) {
@@ -162,31 +189,35 @@
 }
 
 .contact-us-process-header {
-  border: 1px solid #abb3c2;
-  background-color: white;
+  background-color: #ffffff;
 }
 
 .contact-us-process-card {
   display: flex;
   flex-direction: column;
   gap: 0px;
-  padding: 20px 23px 20px 23px;
-  border-top: 1px solid #abb3c2;
+  padding: 19px 23px 19px 23px;
+  border: 1px solid #abb3c2;
+}
 
-  & h5 {
-    font-family: Inter;
-    font-size: 22px;
-    font-weight: 600;
-    color: #131926;
-  }
+.contact-us-process-card h5 {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0%;
+  color: #131926;
+}
 
-  & p {
-    font-size: 14px;
-    font-weight: 400;
-    color: black;
-    line-height: 20px;
-    margin-bottom: 0px !important;
-  }
+.contact-us-process-card p {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #131926;
 }
 
 .contact-us-main-section .row {
@@ -194,43 +225,53 @@
   align-items: stretch !important;
 }
 
-.contact-us-copy-img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 200px;
-  height: 200px;
-  border: 1px solid #abb3c2;
-  background-color: white;
-  margin: 0 auto;
-  margin-top: 1.8rem !important;
-}
-
 .contact-us-copy-img img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
+  height: 14rem;
+  margin-top: 2rem;
 }
-
-
 @media (min-width: 200px) and (max-width: 575px) {
-  .contact-us-main-section{
+  .contact-us-main-section {
     padding: 50px 0px 0px 0px !important;
   }
 
-  .contact-us-form-row{
+  .contact-us-form-row {
     gap: 10px;
   }
 
-  .contact-us-process-card{
+  .contact-us-form-row .input-background {
+    background-color: #ffffff;
+  }
+
+  .contact-us-process-card {
     padding: 30px 31px;
   }
 
-  .contact-us-process-box{
+  .contact-us-process-box {
     padding-bottom: 2rem;
   }
 
-  .contact-us-container{
+  .contact-us-container {
     gap: 0px !important;
+  }
+
+  .work-content h1 {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+
+  .form-label {
+    font-size: 16px;
+  }
+
+  .contact-us-blue-button {
+    margin-bottom: 2rem;
+  }
+
+  .contact-us-process-card h5 {
+    font-size: 22.66px;
   }
 }
