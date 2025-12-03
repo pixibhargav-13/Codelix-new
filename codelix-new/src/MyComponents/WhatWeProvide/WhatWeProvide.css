@@ -2,6 +2,48 @@
   background: #F8FAFF;
 }
 
+/* Custom padding classes for values greater than Bootstrap's py-5 */
+.what-provide-section.py-6 {
+  padding-top: 4.5rem !important;
+  padding-bottom: 4.5rem !important;
+}
+
+.what-provide-section.py-7 {
+  padding-top: 5.5rem !important;
+  padding-bottom: 5.5rem !important;
+}
+
+.what-provide-section.py-8 {
+  padding-top: 6.5rem !important;
+  padding-bottom: 6.5rem !important;
+}
+
+/* Custom padding-top classes for values greater than Bootstrap's pt-5 */
+.what-provide-section.pt-6 {
+  padding-top: 4.5rem !important;
+}
+
+.what-provide-section.pt-7 {
+  padding-top: 5.5rem !important;
+}
+
+.what-provide-section.pt-8 {
+  padding-top: 6.5rem !important;
+}
+
+/* Custom padding-bottom classes for values greater than Bootstrap's pb-5 */
+.what-provide-section.pb-6 {
+  padding-bottom: 4.5rem !important;
+}
+
+.what-provide-section.pb-7 {
+  padding-bottom: 5.5rem !important;
+}
+
+.what-provide-section.pb-8 {
+  padding-bottom: 6.5rem !important;
+}
+
 .heading-provide {
   font-size: 32px;
   font-weight: 200;

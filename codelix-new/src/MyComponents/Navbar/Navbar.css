@@ -27,8 +27,18 @@
   transition: transform 0.2s ease-in;
 }
 
-.nav-link:hover {
+.nav-link {
+  color: #ffffff;
+  transition: color 0.2s ease-in-out;
+}
+
+
+.nav-link-active {
   color: #3e7dfc !important;
+}
+
+.nav-link-inactive {
+  color: #ffffff !important;
 }
 
 .navbar-contact-wrapper {

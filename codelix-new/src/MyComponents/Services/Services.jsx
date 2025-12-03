@@ -81,7 +81,7 @@ const Services = () => {
                     <h1 className="fw-bold display-6 hanken-grotesk">
                       Web Development
                     </h1>
-                    <p className="mt-3 light-gray inter">
+                    <p className="mt-3 light-gray inter fs-5">
                       Our AI-powered web development services focus on building
                       and maintaining high-quality websites enhanced with
                       intelligent automation. We combine modern design,
@@ -105,7 +105,7 @@ const Services = () => {
               </div>
 
               {/* Right Image */}
-              <div className="col-lg-5 h-100">
+              <div className="col-lg-5 ">
                 <div className="border border-secondary d-flex justify-content-center align-items-center h-100 no-spacing homepage-hero-slideshow-wrapper">
                   <img
                     src={currentHero}

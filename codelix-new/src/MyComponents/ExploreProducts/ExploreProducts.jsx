@@ -27,17 +27,21 @@ export const ExploreProducts = () => {
   ];
 
   return (
-    <section className="explore-products-section py-5">
+    <section className="explore-products-section py-7">
       <div className="container">
 
         {/* HEADING */}
-        <h2 className="text-center explore-heading mb-5">
+        <h2 className="text-center explore-heading mb-2">
           Explore Our{" "}
           <span className="underline-wrapper fw-bold">
             Product
             <img src={underline} alt="" className="underline-img" />
           </span>
         </h2>
+
+        <p className="gray-font mb-5 mt-3 gray-font-margin-top text-center">
+        AanganOne is a smart society management platform that simplifies security, communication, and daily operations for residential communities.
+        </p>
 
         {/* PRODUCT LIST */}
         {products.map((p) => (

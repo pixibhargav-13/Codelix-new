@@ -2,6 +2,48 @@
   background: #ffffff;
 }
 
+/* Custom padding classes for values greater than Bootstrap's py-5 */
+.homepage-blog-section.py-6 {
+  padding-top: 4.5rem !important;
+  padding-bottom: 4.5rem !important;
+}
+
+.homepage-blog-section.py-7 {
+  padding-top: 5.5rem !important;
+  padding-bottom: 5.5rem !important;
+}
+
+.homepage-blog-section.py-8 {
+  padding-top: 6.5rem !important;
+  padding-bottom: 6.5rem !important;
+}
+
+/* Custom padding-top classes for values greater than Bootstrap's pt-5 */
+.homepage-blog-section.pt-6 {
+  padding-top: 4.5rem !important;
+}
+
+.homepage-blog-section.pt-7 {
+  padding-top: 5.5rem !important;
+}
+
+.homepage-blog-section.pt-8 {
+  padding-top: 6.5rem !important;
+}
+
+/* Custom padding-bottom classes for values greater than Bootstrap's pb-5 */
+.homepage-blog-section.pb-6 {
+  padding-bottom: 4.5rem !important;
+}
+
+.homepage-blog-section.pb-7 {
+  padding-bottom: 5.5rem !important;
+}
+
+.homepage-blog-section.pb-8 {
+  padding-bottom: 6.5rem !important;
+}
+
 .blog-heading {
   font-size: 30px;
   font-weight: 400;
@@ -25,12 +67,23 @@
   border: 1px solid #dcdcdc;
   border-radius: 0px;
   background: white;
+  /* Make all cards equal height and push footer (date + button) to the bottom */
+  display: flex;
+  flex-direction: column;
 }
 
 .homepage-blog-img {
   width: 100%;
   height: auto;
   padding: 17px 17px 0px 17px;
+}
+
+/* Ensure inner content stretches so footer area sits at the bottom */
+.blog-card > .p-3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
 }
 
 .homepage-blog-title {

@@ -59,14 +59,18 @@ const Ourwork = () => {
   const [active, setActive] = useState(0);
 
   return (
-    <div className="container ourwork-section py-5">
-      <h2 className="text-center heading-diff mb-5">
+    <div className="container ourwork-section py-7">
+      <h2 className="text-center heading-diff mb-3">
         Our Work Through{" "}
         <span className="underline-wrapper fw-bold">
           Client's Words
           <img src={underlineImg} alt="" className="underline-img" />
         </span>
       </h2>
+
+      <p className="gray-font mb-5 gray-font-margin-top text-center">
+      Real stories from the clients who trusted us with their vision.
+      </p>
 
       <div className="row g-0">
         {/* LEFT SIDE */}

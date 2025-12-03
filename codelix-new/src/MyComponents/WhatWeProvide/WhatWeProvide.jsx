@@ -46,7 +46,7 @@ export const WhatWeProvide = () => {
   ];
 
   return (
-    <section className="what-provide-section py-5">
+    <section className="what-provide-section py-7">
       <div className="container text-center">
 
         {/* HEADING */}

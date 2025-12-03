@@ -1,0 +1,112 @@
+.tools-all-section {
+  padding: 4rem 0;
+}
+
+/* Custom padding classes for values greater than Bootstrap's py-5 */
+.tools-all-section.py-6 {
+  padding-top: 4.5rem !important;
+  padding-bottom: 4.5rem !important;
+}
+
+.tools-all-section.py-7 {
+  padding-top: 5.5rem !important;
+  padding-bottom: 5.5rem !important;
+}
+
+.tools-all-section.py-8 {
+  padding-top: 6.5rem !important;
+  padding-bottom: 6.5rem !important;
+}
+
+/* Custom padding-top classes for values greater than Bootstrap's pt-5 */
+.tools-all-section.pt-6 {
+  padding-top: 4.5rem !important;
+}
+
+.tools-all-section.pt-7 {
+  padding-top: 5.5rem !important;
+}
+
+.tools-all-section.pt-8 {
+  padding-top: 6.5rem !important;
+}
+
+/* Custom padding-bottom classes for values greater than Bootstrap's pb-5 */
+.tools-all-section.pb-6 {
+  padding-bottom: 4.5rem !important;
+}
+
+.tools-all-section.pb-7 {
+  padding-bottom: 5.5rem !important;
+}
+
+.tools-all-section.pb-8 {
+  padding-bottom: 6.5rem !important;
+}
+
+.tools-all-heading {
+  font-size: 32px;
+  font-weight: 300;
+}
+
+.tools-all-underline-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.tools-all-underline-img {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+}
+
+/* -------------------- TECH GRID -------------------- */
+.tools-all-tech-table {
+  margin-top: 0;
+  border: 1px solid #d0d7e2;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.tools-all-tech-card {
+  text-align: center;
+  padding: 35px 15px;
+  border: 1px solid #e5e5e5;
+}
+
+.tools-all-tech-icon {
+  height: 55px;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+.tools-all-tech-card p {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #6c788f;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .tools-all-tech-table {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 417px) {
+  .tools-all-tech-table {
+    grid-template-columns: repeat(2, 1fr) !important; /* 2 columns */
+  }
+
+  .tools-all-tech-card {
+    padding: 20px 10px; /* reduce padding */
+  }
+
+  .tools-all-tech-icon {
+    max-width: 45px;
+    height: auto;
+  }
+}
+

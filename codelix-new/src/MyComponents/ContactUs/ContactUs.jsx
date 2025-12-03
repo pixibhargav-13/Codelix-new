@@ -9,6 +9,7 @@ import { HomepageFaq } from "../HomepageFaq/HomepageFaq";
 import Footer from "../Footer/Footer";
 import { SEO } from "../../components/SEO";
 
+
 export const ContactUs = () => {
   return (
     <>
@@ -113,6 +114,12 @@ export const ContactUs = () => {
                     <label className="form-label">Service*</label>
                     <select className="input-background">
                       <option>Select</option>
+                      <option>Web Development</option>
+                      <option>Mobile Development</option>
+                      <option>UI/UX Design</option>
+                      <option>Custom Software dev.</option>
+                      <option>E-Commerce Solutions</option>
+                      <option>AI Development</option>
                     </select>
 
                     {/* About Project */}
@@ -125,6 +132,12 @@ export const ContactUs = () => {
                         <label className="form-label">Budget</label>
                         <select className="input-background">
                           <option>Select</option>
+                          <option>Under $1500</option>
+                          <option>$1500 - $5,000</option>
+                          <option>$5,000 - $10,000</option>
+                          <option>$10,000 - $20,000</option>
+                          <option>$20,000 - $50,000</option>
+                          <option>Above $50,000</option>
                         </select>
                       </div>
 
@@ -132,6 +145,11 @@ export const ContactUs = () => {
                         <label className="form-label">Timeline</label>
                         <select className="input-background">
                           <option>Select</option>
+                          <option>1-3 months</option>
+                          <option>3-6 months</option>
+                          <option>6-12 months</option>
+                          <option>12+ months</option>
+                          <option>Flexible</option>
                         </select>
                       </div>
                     </div>
