@@ -3,34 +3,13 @@ import codelixlogo from "../Images/codelix-logo.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import { Menu, X, ChevronDown } from "lucide-react";
 import "./Navbar.css";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
   const [serviceOpen, setServiceOpen] = useState(false); // Mobile dropdown toggle
   const [desktopServiceOpen, setDesktopServiceOpen] = useState(false); // Desktop dropdown
 
-  // Define navigation links with paths
-  const navLinks = [
-    { name: "Work", path: "/work" },
-    { name: "Services", path: "/services" },
-    { name: "About", path: "/about" },
-    { name: "Blog", path: "/blog" },
-  ];
-
-  // Handle navigation with refresh if on same page
-  const handleNavClick = (e, path) => {
-    // Check if we're already on this page
-    const currentPath = location.pathname;
-    const targetPath = path === "/" ? "/" : path;
-
-    if (currentPath === targetPath) {
-      e.preventDefault();
-      // Refresh the page
-      window.location.reload();
-    }
-  };
   React.useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 992) {
@@ -46,21 +25,13 @@ export const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-lg pt-4">
         <div className="container">
-
           {/* Logo */}
-          <Link className="navbar-brand d-flex align-items-center" to="/">
+          <Link
+            className="navbar-brand d-flex align-items-center"
+            to="/"
+          >
             <img src={codelixlogo} alt="Codelix Logo" height="40" />
           </Link>
-    <nav className="navbar navbar-expand-lg pt-4">
-      <div className="container">
-        {/* Logo */}
-        <Link
-          className="navbar-brand d-flex align-items-center"
-          to="/"
-          onClick={(e) => handleNavClick(e, "/")}
-        >
-          <img src={codelixlogo} alt="Codelix Logo" height="40" />
-        </Link>
 
           {/* MOBILE TOGGLE BUTTON */}
           <button
@@ -71,35 +42,18 @@ export const Navbar = () => {
             <Menu size={28} />
           </button>
 
-        {/* Navbar Links */}
-        <div className={`collapse navbar-collapse ${isMenuOpen ? "show" : ""}`}>
-          <ul className="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-4 text-center">
-            {navLinks.map((link) => (
-              <li className="nav-item" key={link.name}>
-                <NavLink
-                  to={link.path}
-                  end={link.path === "/"}
-                  className={({ isActive }) =>
-                    `nav-link ${isActive ? "nav-link-active" : "nav-link-inactive"}`
-                  }
-                  onClick={(e) => handleNavClick(e, link.path)}
-                >
-                  {link.name}
-                </NavLink>
           {/* DESKTOP NAVBAR LINKS */}
           <div className="collapse navbar-collapse desktop-nav">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-4 text-center">
-
               <li className="nav-item">
-                <Link className="nav-link text-white" to="/">
-                  Home
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link className="nav-link text-white" to="/work">
+                <NavLink
+                  to="/work"
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "nav-link-active" : "nav-link-inactive"}`
+                  }
+                >
                   Work
-                </Link>
+                </NavLink>
               </li>
 
               {/* Desktop Services Dropdown */}
@@ -114,25 +68,34 @@ export const Navbar = () => {
 
                 {desktopServiceOpen && (
                   <div className="desktop-dropdown-menu">
-                    <Link to="/">Mobile App Development</Link>
-                    <Link to="/">SaaS Development</Link>
-                    <Link to="/">Web Development</Link>
+                    <Link to="/services">Mobile App Development</Link>
+                    <Link to="/services">SaaS Development</Link>
+                    <Link to="/services">Web Development</Link>
                   </div>
                 )}
               </li>
 
               <li className="nav-item">
-                <Link className="nav-link text-white" to="/">
+                <NavLink
+                  to="/about"
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "nav-link-active" : "nav-link-inactive"}`
+                  }
+                >
                   About
-                </Link>
+                </NavLink>
               </li>
 
               <li className="nav-item">
-                <Link className="nav-link text-white" to="/">
+                <NavLink
+                  to="/blog"
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "nav-link-active" : "nav-link-inactive"}`
+                  }
+                >
                   Blog
-                </Link>
+                </NavLink>
               </li>
-
             </ul>
 
             {/* Desktop Contact Button */}
@@ -150,15 +113,18 @@ export const Navbar = () => {
 
       {/* MOBILE SLIDE MENU */}
       <div className={`mobile-slide-panel ${isMenuOpen ? "open" : ""}`}>
-
         <div className="mobile-close-btn" onClick={() => setIsMenuOpen(false)}>
           <X size={30} color="#fff" />
         </div>
 
         <div className="mobile-menu-links">
-
-          <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
-          <Link to="/work" onClick={() => setIsMenuOpen(false)}>Work</Link>
+          <NavLink
+            to="/work"
+            onClick={() => setIsMenuOpen(false)}
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
+            Work
+          </NavLink>
 
           {/* Mobile Services Dropdown */}
           <div
@@ -174,20 +140,32 @@ export const Navbar = () => {
 
           {serviceOpen && (
             <div className="mobile-dropdown-content">
-              <Link to="/" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/services" onClick={() => setIsMenuOpen(false)}>
                 Mobile App Development
               </Link>
-              <Link to="/" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/services" onClick={() => setIsMenuOpen(false)}>
                 SaaS Development
               </Link>
-              <Link to="/" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/services" onClick={() => setIsMenuOpen(false)}>
                 Web Development
               </Link>
             </div>
           )}
 
-          <Link to="/" onClick={() => setIsMenuOpen(false)}>About</Link>
-          <Link to="/" onClick={() => setIsMenuOpen(false)}>Blog</Link>
+          <NavLink
+            to="/about"
+            onClick={() => setIsMenuOpen(false)}
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
+            About
+          </NavLink>
+          <NavLink
+            to="/blog"
+            onClick={() => setIsMenuOpen(false)}
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
+            Blog
+          </NavLink>
 
           <Link
             to="/contact"
@@ -199,19 +177,5 @@ export const Navbar = () => {
         </div>
       </div>
     </>
-          <div className="navbar-contact-wrapper mt-3 mt-lg-0 ms-lg-3 d-flex align-items-center">
-            <Link
-              to="/contact"
-              onClick={(e) => handleNavClick(e, "/contact")}
-            >
-              <button className="btn navbar-button d-flex align-items-center">
-                <span>Contact Us</span>
-                <img src={whiteArrow} alt="arrow" className="arrow-icon mx-3" />
-              </button>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </nav>
   );
 };

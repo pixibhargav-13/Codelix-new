@@ -135,6 +135,12 @@
   border-bottom: none !important;
 }
 
+/* Mobile active link */
+.mobile-menu-links a.active-link {
+  color: #3e7dfc !important;
+  border-bottom-color: #3e7dfc;
+}
+
 /* Hide desktop nav in mobile */
 @media (max-width: 992px) {
   .desktop-nav {
