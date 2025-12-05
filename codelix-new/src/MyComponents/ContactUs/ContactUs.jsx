@@ -19,6 +19,7 @@ export const ContactUs = () => {
         keywords="contact us, free quote, consultation, web development inquiry, get in touch"
         canonical="https://codelix.com/contact"
       />
+      <div className="contact-us-page-wrapper">
       <div className="work-hero-section">
         <Navbar />
         <div className="work-content">
@@ -233,6 +234,7 @@ export const ContactUs = () => {
 
       <div className="footer">
         <Footer />
+      </div>
       </div>
     </>
   );
