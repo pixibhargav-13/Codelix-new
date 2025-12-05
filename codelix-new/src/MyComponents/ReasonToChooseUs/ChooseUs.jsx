@@ -44,7 +44,7 @@ export const ChooseUs = () => {
   ];
 
   return (
-    <section className="choose-us-section py-5">
+    <section className="choose-us-section py-7">
       <div className="container text-center">
 
         {/* Heading */}

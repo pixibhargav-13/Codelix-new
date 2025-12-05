@@ -1,3 +1,19 @@
+/* Custom padding classes for values greater than Bootstrap's py-5 */
+.ourwork-section.py-6 {
+  padding-top: 4.5rem !important;
+  padding-bottom: 4.5rem !important;
+}
+
+.ourwork-section.py-7 {
+  padding-top: 5.5rem !important;
+  padding-bottom: 5.5rem !important;
+}
+
+.ourwork-section.py-8 {
+  padding-top: 6.5rem !important;
+  padding-bottom: 6.5rem !important;
+}
+
 .clickable-logo {
   cursor: pointer;
   padding: 25px;
@@ -46,6 +62,10 @@
 
 .active-logo {
   background: #ffffff;
+}
+
+.gray-font {
+  color: #6f6f6f;
 }
 
 /* Logo sizing */
@@ -123,4 +143,9 @@
   .linkedin-icon {
     width: 35px;
   }
+}
+
+.logo-item-block {
+  overflow: hidden;
+  
 }

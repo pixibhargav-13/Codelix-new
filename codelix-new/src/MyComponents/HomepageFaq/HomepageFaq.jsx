@@ -9,39 +9,39 @@ export const HomepageFaq = () => {
   const faqs = [
     {
       id: 1,
-      question: "Is there a free trial available?",
+      question: "Do you provide source code after project completion?",
       answer:
-        "Yes, you can try us for free for 30 days. If you want, we'll provide you with a free, personalized 30-minute onboarding call to get you up and running as soon as possible.",
+        "Yes. Once the project is completed and fully paid for, you receive 100% ownership of the source code, along with documentation and deployment details.",
     },
     {
       id: 2,
-      question: "Can I change my plan later?",
+      question: "What if I need changes after the project is delivered?",
       answer:
-        "We understand that plans can change. If you wish to cancel a project, you can do so at any stage with written notice. Work completed up to the cancellation date will be billed accordingly, and any unused payment balance will be refunded.",
+        "We offer a revision window after delivery for design or functionality tweaks. For ongoing improvements, we recommend our maintenance plan, which covers updates, enhancements, and tech support.",
     },
     {
       id: 3,
       question: "What is your cancellation policy?",
       answer:
-        "We use AI to enhance performance and user experience through smart recommendations, chat automation, predictive analytics, and process optimisation. Our AI-powered integrations are tailored to your business goals, ensuring tangible results, not just buzzwords.",
+        "We understand that plans can change. If you wish to cancel a project, you can do so at any stage with written notice. Work completed up to the cancellation date will be billed accordingly, and any unused payment balance will be refunded.",
     },
     {
       id: 4,
-      question: "Can other info be added to an invoice?",
+      question: "How do you integrate AI into your solutions?",
       answer:
-        "Our billing process is simple and transparent. After finalising your project scope, we provide a detailed quotation with milestones. Payments are made in phases: an upfront deposit, followed by milestone-based instalments as work progresses.",
+        "We use AI to enhance performance and user experience through smart recommendations, chat automation, predictive analytics, and process optimisation. Our AI-powered integrations are tailored to your business goals, ensuring tangible results, not just buzzwords.",
     },
     {
       id: 5,
       question: "How does billing work?",
       answer:
-        "Billing is processed monthly or yearly depending on your subscription type.",
+        "Our billing process is simple and transparent. After finalising your project scope, we provide a detailed quotation with milestones. Payments are made in phases: an upfront deposit, followed by milestone-based instalments as work progresses.",
     },
     {
       id: 6,
-      question: "How do I change my account email?",
+      question: "Can you sign an NDA before starting the project?",
       answer:
-        "You can update your email under account settings > personal information.",
+        "Of course. We take confidentiality seriously and are happy to sign an NDA (Non-Disclosure Agreement) before discussing or starting your project to protect your ideas and data.",
     },
   ];
 
@@ -52,21 +52,22 @@ export const HomepageFaq = () => {
   };
 
   return (
-    <section className="homepage-faq-section py-5">
-      <div className="container text-center">
+    <section className="homepage-faq-section py-7">
+      <div className="container">
+        <div className="text-center">
+          <h2 className="heading-provide mb-2">
+            Frequently Asked{" "}
+            <span className="underline-wrapper fw-bold">
+              Questions
+              <img src={underline} alt="underline" className="underline-img" />
+            </span>
+          </h2>
 
-        <h2 className="heading-provide mb-2">
-          Frequently Asked{" "}
-          <span className="underline-wrapper fw-bold">
-            Questions
-            <img src={underline} alt="underline" className="underline-img" />
-          </span>
-        </h2>
-
-        <p className="faq-subtext mb-5">
-          We've gathered the most common questions to help you understand how we build,
-          design, and <br/> deliver with excellence.
-        </p>
+          <p className="faq-subtext mb-5">
+            We've gathered the most common questions to help you understand how we build,
+            design, and <br/> deliver with excellence.
+          </p>
+        </div>
 
         <div className="faq-list mx-auto">
           {faqs.map((faq) => (

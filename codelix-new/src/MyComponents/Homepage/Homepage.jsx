@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import heroOne from "../Images/homepage-hero-web-dev.png";
 import heroTwo from "../Images/homepage-hero-app-dev.png";
 import heroThree from "../Images/homepage-hero-saas-dev.png";
+import herofour from "../Images/homepage-hero-a-b-testing.png";
+import herofive from "../Images/homepage-hero-ux-design.png";
 import client1 from "../Images/homepage-client-one.png";
 import client2 from "../Images/homepage-client-two.png";
 import client3 from "../Images/homepage-client-three.png";
@@ -25,6 +27,7 @@ import { WhatWeProvide } from "../WhatWeProvide/WhatWeProvide";
 import Ourwork from "../OurWork/Ourwork";
 import { ChooseUs } from "../ReasonToChooseUs/ChooseUs";
 import { ExploreProducts } from "../ExploreProducts/ExploreProducts";
+import { ToolsAndTechUsed } from "../ToolsAndTechUsed/ToolsAndTechUsed";
 import { HomepageBlog } from "../HomepageBlog/HomepageBlog";
 import { HomepageFaq } from "../HomepageFaq/HomepageFaq";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
@@ -34,14 +37,14 @@ import { SEO } from "../../components/SEO";
 
 
 export const Homepage = () => {
-  const heroimages = [heroOne, heroTwo, heroThree];
+  const heroimages = [heroOne, heroTwo, heroThree, herofour, herofive];
   const [index, setIndex] = useState(0);
   const [currentHero, setCurrentHero] = useState(heroimages[0]);
   const [fade, setFade] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setFade(false);
+      setFade(false); 
 
       setTimeout(() => {
         const newIndex = (index + 1) % heroimages.length;
@@ -84,13 +87,13 @@ export const Homepage = () => {
               {/* TOP SECTION */}
               <div className="row g-4 align-items-stretch">
                 {/* Left Text */}
-               <div className="col-lg-7 ">
-                  <div className="p-4 border border-secondary h-100  d-flex flex-column justify-content-between">
+                <div className="col-lg-7 ">
+                  <div className="p-4 border border-secondary d-flex h-100 flex-column justify-content-between"  >
                     <div className="d-flex flex-column g-4" >
                       <h1 className="fw-bold display-6 hanken-grotesk">
                         AI-Powered Tech for Ambitious Businesses
                       </h1>
-                      <p className="mt-3 light-gray inter">
+                      <p className="mt-3 light-gray inter fs-5">
                         We craft AI-powered Web, App & SaaS solutions that empower
                         businesses with performance, precision, and design
                         excellence through world-class UI/UX design.
@@ -122,10 +125,10 @@ export const Homepage = () => {
                 </div>
 
                 {/* Right Image */}
-                <div className="col-lg-5 h-100">
+                <div className="col-lg-5">
                   <div className="border border-secondary d-flex justify-content-center align-items-center h-100 no-spacing homepage-hero-slideshow-wrapper">
                     <img
-                      src={currentHero}
+                      src={currentHero} style={{ height: '100%', width: 'auto' }}
                       alt="hero"
                       className={`img-fluid right-image homepage-hero-fade-image ${
                         fade
@@ -173,6 +176,10 @@ export const Homepage = () => {
 
         <div className="explore-products">
           <ExploreProducts />
+        </div>
+
+        <div className="tools-and-tech-used">
+          <ToolsAndTechUsed />
         </div>
 
         <div className="Choose-us">

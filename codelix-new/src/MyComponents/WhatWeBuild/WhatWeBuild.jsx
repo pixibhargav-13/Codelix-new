@@ -48,7 +48,7 @@ export const WhatWeBuild = () => {
   ];
 
   return (
-    <section className="what-we-build py-5">
+    <section className="what-we-build pt-7 pb-5">
       <div className="container text-center">
         <h2 className="heading-provide mb-2">
           This Is What{" "}

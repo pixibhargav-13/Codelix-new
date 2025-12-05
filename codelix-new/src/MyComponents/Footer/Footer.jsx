@@ -3,15 +3,31 @@ import "./Footer.css";
 import codelixText from "../Images/codelix-footer-logo.png";
 import footerDot from "../Images/footer-dot.png";
 
+import { Link, useLocation } from "react-router-dom";
+
 const Footer = () => {
+  const location = useLocation();
+
+  // Handle navigation with refresh if on same page
+  const handleNavClick = (e, path) => {
+    // Check if we're already on this page
+    const currentPath = location.pathname;
+    const targetPath = path === "/" ? "/" : path;
+
+    if (currentPath === targetPath) {
+      e.preventDefault();
+      // Refresh the page
+      window.location.reload();
+    }
+  };
   const footerData = {
     info: [
-      { label: "Codelix", link: "#" },
-      { label: "Work", link: "#" },
+      { label: "Codelix", link: "/" },
+      { label: "Work", link: "/work" },
       { label: "About", link: "#" },
-      { label: "Services", link: "#" },
+      { label: "Services", link: "/services" },
       { label: "Blog", link: "#" },
-      { label: "Contact", link: "#" },
+      { label: "Contact", link: "/contact" },
     ],
     services: [
       { label: "Web Development", link: "#" },
@@ -72,7 +88,13 @@ const Footer = () => {
               <ul className="footer-links">
                 {footerData.info.map((item, index) => (
                   <li key={index}>
-                    <a href={item.link}>{item.label}</a>
+                    {item.link.startsWith("/") ? (
+                      <Link to={item.link} onClick={(e) => handleNavClick(e, item.link)}>
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <Link to={item.link}>{item.label}</Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -127,8 +149,12 @@ const Footer = () => {
                 2025 Codelix — All Copyright Reserved
               </p>
               <div className="footer-links-bottom">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of service</a>
+                <Link to="/privacy-policy" onClick={(e) => handleNavClick(e, "/privacy-policy")}>
+                  Privacy Policy
+                </Link>
+                <Link to="/terms-of-service" onClick={(e) => handleNavClick(e, "/terms-of-service")}>
+                  Terms of service
+                </Link>
               </div>
             </div>
           </div>

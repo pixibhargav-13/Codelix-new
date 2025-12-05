@@ -2,7 +2,9 @@ import React from "react";
 import "./HomepageBlog.css";
 
 import underline from "../Images/what-we-build-underline.png"; // underline image
-import blogImg from "../Images/homepage-blog-image.png"; // replace with real image
+import blogImg1 from "../Images/homepage-blog-image.png"; // replace with real image
+import blogImg2 from "../Images/homepage-blog-image2.png"; // replace with real image
+import blogImg3 from "../Images/homepage-blog-image3.png"; // replace with real image
 import rightArrow from "../Images/blackArrow.png";
 
 export const HomepageBlog = () => {
@@ -10,25 +12,25 @@ export const HomepageBlog = () => {
     {
       id: 1,
       title: "Top 5 Reasons to choose laravel for faster web app development.",
-      date: "20 October 2024",
-      image: blogImg,
+      date: "20 November 2025",
+      image: blogImg1,
     },
     {
       id: 2,
-      title: "Top 5 Reasons to choose laravel for faster web app development.",
-      date: "20 October 2024",
-      image: blogImg,
+      title: "Design Systems & Component Based UIS: Efficiency At Scale.",
+      date: "23 November 2025",
+      image: blogImg2,
     },
     {
       id: 3,
-      title: "Top 5 Reasons to choose laravel for faster web app development.",
-      date: "20 October 2024",
-      image: blogImg,
+      title: "Progressive Web App (PWAS) As The New Standard.",
+      date: "28 November 2025",
+      image: blogImg3,
     },
   ];
 
   return (
-    <section className="homepage-blog-section py-5">
+    <section className="homepage-blog-section py-7">
       <div className="container text-center">
 
         {/* Heading */}
