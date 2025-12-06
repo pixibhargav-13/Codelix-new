@@ -1,3 +1,4 @@
+/* Keep your original CSS exactly as it is */
 .navbar-button {
   background: #2B6EF2 !important;
   color: #ffffff !important;
@@ -11,30 +12,18 @@
   transition: all 0.2s ease-in-out;
 }
 
-.navbar{
+.navbar {
   background: transparent;
-  background-size: cover;
-  background-position: center;
 }
 
 .navbar-toggler {
   border: 1.5px solid #abb3cb !important;
   border-radius: 0px !important;
   padding: 8px 7px !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.navbar-toggle:active,
-.navbar-toggle:focus {
-  outline: none;
-  border-color: #ffffff !important;
 }
 
 .arrow-icon {
   height: 20px;
-  width: auto;
   transition: transform 0.2s ease-in;
 }
 
@@ -65,32 +54,159 @@
 }
 
 .navbar-button:hover .arrow-icon {
-  filter: brightness(0) saturate(100%) invert(36%) sepia(98%) saturate(2475%)
-    hue-rotate(206deg) brightness(95%) contrast(101%);
-  transform: rotate(-45deg);
+    filter: brightness(0) saturate(100%) invert(36%) sepia(98%) saturate(2475%) hue-rotate(206deg) brightness(95%) contrast(101%);
+    transform: rotate(-45deg);
 }
 
-/* Media query for mobile devices (iPhone and similar) */
-@media (max-width: 768px) {
-  .navbar-button {
-    min-width: 180px; /* Increase width slightly for mobile */
-    width: auto;
-    white-space: nowrap;
-    gap: 8px;
-    padding: 10px 12px !important; /* Slightly adjust padding */
-  }
-  
-  .arrow-icon {
-    flex-shrink: 0;
-    margin-left: 4px; 
+/* ----------------------------------------
+   MOBILE SLIDE PANEL (Custom)
+---------------------------------------- */
+.mobile-slide-panel {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  background: #000;
+  transition: right 0.4s ease-in-out;
+  padding: 20px 25px;
+  z-index: 1;
+  height: 100%;
+}
+
+.mobile-slide-panel.open {
+  right: 0;
+}
+
+.mobile-close-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+
+.mobile-menu-links a {
+  display: block;
+  border-bottom: 1px solid #ffffff;
+  color: #fff;
+  font-size: 32px;
+  text-decoration: none;
+  margin-bottom: 25px;
+  font-family: Inter;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateX(30px);
+  animation: slideIn 0.4s ease forwards;
+}
+
+.mobile-menu-links a:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.mobile-menu-links a:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.mobile-menu-links a:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.mobile-menu-links a:nth-child(4) {
+  animation-delay: 0.25s;
+}
+
+.mobile-menu-links a:nth-child(5) {
+  animation-delay: 0.3s;
+}
+
+.mobile-menu-links a:nth-child(6) {
+  animation-delay: 0.35s;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
-/* Additional media query for very small screens (iPhone SE, etc.) */
-@media (max-width: 375px) {
-  .navbar-button {
-    min-width: 170px;
-    padding: 10px 10px !important;
-    font-size: 14px; 
+/* Mobile contact button */
+.mobile-contact-btn {
+  color: #fff;
+  border-bottom: none !important;
+}
+
+/* Mobile active link */
+.mobile-menu-links a.active-link {
+  color: #3e7dfc !important;
+  border-bottom-color: #3e7dfc;
+}
+
+/* Hide desktop nav in mobile */
+@media (max-width: 992px) {
+  .desktop-nav {
+    display: none !important;
   }
+}
+
+/* Desktop Dropdown */
+.dropdown-desktop {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown-toggle-custom {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.desktop-dropdown-menu {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  background: #000;
+  padding: 15px 20px;
+  border: 1px solid #2b6ef2;
+  min-width: 230px;
+  z-index: 10;
+}
+
+.desktop-dropdown-menu a {
+  display: block;
+  padding: 8px 0;
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.desktop-dropdown-menu a:hover {
+  color: #3e7dfc;
+}
+
+
+/* MOBILE DROPDOWN */
+.mobile-dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  font-size: 32px;
+  padding-bottom: 5px;
+  margin-bottom: 25px;
+  cursor: pointer;
+}
+
+.mobile-dropdown-content a {
+  display: block;
+  padding: 10px 0 10px 20px;
+  font-size: 26px;
+  color: #fff;
+  border-bottom: 1px solid #ffffff20;
+}
+
+/* Rotate arrow when opened */
+.rotate-icon {
+  transform: rotate(180deg);
+  transition: 0.3s ease;
 }

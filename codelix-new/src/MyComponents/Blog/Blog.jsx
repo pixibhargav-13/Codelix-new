@@ -123,6 +123,7 @@ const Blog = () => {
     },
   ];
 
+
   return (
     <>
       <SEO
@@ -131,6 +132,7 @@ const Blog = () => {
         keywords="blog, tech blog, development tips, web development insights, coding tutorials"
         canonical="https://codelix.com/blog"
       />
+
       <div className="blog-page">
         {/* Hero Section */}
         <div className="blog-hero-section">

@@ -12,7 +12,7 @@ const Footer = () => {
     // Check if we're already on this page
     const currentPath = location.pathname;
     const targetPath = path === "/" ? "/" : path;
-    
+
     if (currentPath === targetPath) {
       e.preventDefault();
       // Refresh the page
