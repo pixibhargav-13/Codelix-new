@@ -118,7 +118,7 @@
 /* =============== RESPONSIVE =============== */
 
 /* Tablet screens - keep desktop curves */
-@media (max-width: 768px) and (min-width: 426px) {
+@media (max-width: 768px) and (min-width: 481px) {
   .desktop-curves {
     padding: 0 20px;
   }
@@ -131,10 +131,13 @@
     font-size: 16px;
     line-height: 24px;
   }
+  .lets-build-section {
+      padding: 0rem 0px 1rem 0px !important;
+  }
 }
 
-/* Mobile screens - switch to round circle */
-@media (max-width: 425px) {
+/* Mobile screens - switch to round circle (INCLUDING iPhone Pro Max) */
+@media (max-width: 480px) {
   /* Hide desktop curves */
   .desktop-curves {
     display: none;
