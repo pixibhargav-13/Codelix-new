@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./LetsBuildSomething.css";
 import rightArrow from "../Images/whiteArrow.png";
 import buildSomething from "../Images/Build-something.png";
@@ -36,10 +37,10 @@ export const LetsBuildSomething = () => {
         </p>
 
         <div className="text-center">
-          <button className="btn get-free-consultation-btn consult-btn mt-lg-5 d-inline-flex align-items-center gap-3">
+          <Link to="/contact" className="btn get-free-consultation-btn consult-btn mt-lg-5 d-inline-flex align-items-center gap-3" >
             Get Free Consultation
             <img src={rightArrow} alt="arrow" className="arrow-icon" />
-          </button>
+          </Link>
         </div>
       </div>
     </section>

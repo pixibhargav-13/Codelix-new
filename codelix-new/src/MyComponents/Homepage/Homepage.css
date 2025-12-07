@@ -35,14 +35,19 @@
 .hero-buttons a {
   border-radius: 0px;
   border: 1px solid transparent;
-  font-weight: 500;
-  font-size: 15px;
+  font-weight: 500 !important;
+  font-size: 15px !important;
   letter-spacing: 0.3px;
   transition: all 0.2s ease-in-out;
   padding: 10px 20px 10px 15px !important;
   width: 250px !important;
   text-decoration: none !important;
   display: inline-flex !important;
+}
+
+.hero-buttons button span {
+  font-size: 15px !important;
+  font-weight: 500 !important;
 }
 .free-quote-btn {
   color: #fff !important;
@@ -141,6 +146,7 @@
   transition: all 0.25s ease-in-out !important;
   text-decoration: none !important;
   display: inline-flex !important;
+  font-size: 15px !important;
 }
 
 /* HOVER EFFECT MATCHING CONTACT-US BUTTON */
@@ -168,6 +174,7 @@
   color: #000000 !important;
   border: 1px solid #ddd !important;
   transition: all 0.25s ease-in-out !important;
+  font-size: 15px !important;
 }
 
 /* HOVER EFFECT */
@@ -198,23 +205,38 @@
     gap: 10px !important;
     justify-content: space-between !important;
     margin-top: 8rem !important;
-  }
-
+ 
+    
   .hero-buttons button,
   .hero-buttons a {
     width: 100% !important; /* both stay side–by–side */
     white-space: nowrap !important;
     padding: 10px 10px !important;
     font-size: 13px !important;
+    font-weight: 500 !important;
   }
 
-  .hero-buttons span {
+  .hero-buttons button span {
     white-space: nowrap !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
   }
 
   .arrow-icon {
     height: 18px;
     flex-shrink: 0;
+  }
+
+  .free-quote-btn,
+  .explore-work-btn {
+    font-size: 13px !important;
+    font-weight: 500 !important;
+  }
+
+  .free-quote-btn span,
+  .explore-work-btn span {
+    font-size: 13px !important;
+    font-weight: 500 !important;
   }
 }
 

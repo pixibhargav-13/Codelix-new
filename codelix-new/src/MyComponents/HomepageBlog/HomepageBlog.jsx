@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./HomepageBlog.css";
 
 import underline from "../Images/what-we-build-underline.png"; // underline image
@@ -6,8 +7,10 @@ import blogImg1 from "../Images/homepage-blog-image.png"; // replace with real i
 import blogImg2 from "../Images/homepage-blog-image2.png"; // replace with real image
 import blogImg3 from "../Images/homepage-blog-image3.png"; // replace with real image
 import rightArrow from "../Images/blackArrow.png";
+import whiteArrow from "../Images/whiteArrow.png";
 
 export const HomepageBlog = () => {
+  const navigate = useNavigate();
   const blogs = [
     {
       id: 1,
@@ -69,6 +72,15 @@ export const HomepageBlog = () => {
             </div>
           ))}
         </div>
+
+        {/* View All Blogs Button */}
+        <div className="d-flex justify-content-center mt-3">
+          <button className="btn blue-common-btn mt-4 d-flex align-items-center justify-content-between view-all-button" onClick={() => navigate('/blog')}>
+            <span>See Blogs</span>
+            <img src={whiteArrow} alt="arrow" className="arrow-icon" />
+          </button>
+        </div>
+
       </div>
     </section>
   );

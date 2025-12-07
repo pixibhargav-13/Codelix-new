@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import blackArrow from "../Images/blackArrow.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import aanganOne from "../Images/homepage-aangan-one.png";
@@ -9,6 +10,7 @@ import underline from "../Images/what-we-build-underline.png";
 import "./WhatWeBuild.css";
 
 export const WhatWeBuild = () => {
+  const navigate = useNavigate();
   const cards = [
     {
       id: 1,
@@ -95,7 +97,7 @@ export const WhatWeBuild = () => {
         </div>
 
         <div className="d-flex justify-content-center mt-3">
-          <button className="btn blue-common-btn mt-4 d-flex align-items-center justify-content-between view-all-button">
+          <button className="btn blue-common-btn mt-4 d-flex align-items-center justify-content-between view-all-button" onClick={() => navigate('/work')}>
             <span>View All</span>
             <img src={whiteArrow} alt="arrow" className="arrow-icon" />
           </button>

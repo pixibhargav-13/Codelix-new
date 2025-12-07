@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import heroOne from "../Images/homepage-hero-web-dev.png";
 import heroTwo from "../Images/homepage-hero-app-dev.png";
 import heroThree from "../Images/homepage-hero-saas-dev.png";
@@ -37,6 +38,7 @@ import { SEO } from "../../components/SEO";
 
 
 export const Homepage = () => {
+  const navigate = useNavigate();
   const heroimages = [heroOne, heroTwo, heroThree, herofour, herofive];
   const [index, setIndex] = useState(0);
   const [currentHero, setCurrentHero] = useState(heroimages[0]);
@@ -102,7 +104,10 @@ export const Homepage = () => {
 
                     <div className="d-flex gap-3 hero-buttons">
                       {/* Blue Button */}
-                      <button className="btn blue-common-btn d-flex align-items-center justify-content-between free-quote-btn">
+                      <button
+                        className="btn blue-common-btn d-flex align-items-center justify-content-between free-quote-btn"
+                        onClick={() => navigate('/contact')}
+                      >
                         <span>Get a Free Quote</span>
                         <img
                           src={whiteArrow}
@@ -112,7 +117,10 @@ export const Homepage = () => {
                       </button>
 
                       {/* White Button */}
-                      <button className="btn explore-work-btn d-flex align-items-center justify-content-between">
+                      <button
+                        className="btn explore-work-btn d-flex align-items-center justify-content-between"
+                        onClick={() => navigate('/work')}
+                      >
                         <span>Explore Our Work</span>
                         <img
                           src={blackArrow}
