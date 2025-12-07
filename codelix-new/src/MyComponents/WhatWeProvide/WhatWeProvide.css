@@ -75,23 +75,32 @@
   border: 1px solid #ddd;
   border-radius: 0px;
   overflow: hidden;
+  margin-top: 2rem;
 }
 
 /* SERVICE BOXES */
+.service-box-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+
 .service-box {
   border-bottom: 1px solid #ddd;
   border-right: 1px solid #ddd;
   background: white;
+  transition: all 0.3s ease;
 }
 
-.service-box:hover {
+.service-box-link:hover .service-box {
   background: #000 !important;
   color: #fff !important;
 }
 
 /* Make titles white on hover */
-.service-box:hover .what-we-provide-title,
-.service-box:hover p {
+.service-box-link:hover .what-we-provide-title,
+.service-box-link:hover p {
   color: #fff !important;
 }
 
@@ -120,7 +129,7 @@
   transition: transform 0.25s ease-in-out;
 }
 
-.service-box:hover .arrow-wrapper {
+.service-box-link:hover .arrow-wrapper {
   background: #ffffff !important;
 }
 

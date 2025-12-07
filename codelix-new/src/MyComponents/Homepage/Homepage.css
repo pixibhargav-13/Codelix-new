@@ -31,7 +31,8 @@
   margin-top: 1.5rem !important;
 }
 
-.hero-buttons button {
+.hero-buttons button,
+.hero-buttons a {
   border-radius: 0px;
   border: 1px solid transparent;
   font-weight: 500;
@@ -40,6 +41,8 @@
   transition: all 0.2s ease-in-out;
   padding: 10px 20px 10px 15px !important;
   width: 250px !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
 }
 .free-quote-btn {
   color: #fff !important;
@@ -136,6 +139,8 @@
   color: #ffffff !important;
   border: 1px solid transparent;
   transition: all 0.25s ease-in-out !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
 }
 
 /* HOVER EFFECT MATCHING CONTACT-US BUTTON */
@@ -195,7 +200,8 @@
     margin-top: 8rem !important;
   }
 
-  .hero-buttons button {
+  .hero-buttons button,
+  .hero-buttons a {
     width: 100% !important; /* both stay side–by–side */
     white-space: nowrap !important;
     padding: 10px 10px !important;

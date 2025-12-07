@@ -3,6 +3,12 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import {Homepage}  from "./MyComponents/Homepage/Homepage";
 import About  from "./MyComponents/About/About";
 import  Services  from "./MyComponents/Services/Services";
+import WebDevelopment from "./MyComponents/Services/WebDevelopment";
+import ApplicationDevelopment from "./MyComponents/Services/ApplicationDevelopment";
+import UIUXDesign from "./MyComponents/Services/UIUXDesign";
+import ECommerceSolutions from "./MyComponents/Services/ECommerceSolutions";
+import CustomSoftwareDevelopment from "./MyComponents/Services/CustomSoftwareDevelopment";
+import AIDevelopment from "./MyComponents/Services/AIDevelopment";
 import Blog  from "./MyComponents/Blog/Blog";
 import Work from "./MyComponents/Work/Work";
 import { Navbar } from "./MyComponents/Navbar/Navbar";
@@ -30,6 +36,12 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/work" element={<Work />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/services/web-development" element={<WebDevelopment />} />
+        <Route path="/services/application-development" element={<ApplicationDevelopment />} />
+        <Route path="/services/ui-ux-design" element={<UIUXDesign />} />
+        <Route path="/services/e-commerce-solutions" element={<ECommerceSolutions />} />
+        <Route path="/services/custom-software-development" element={<CustomSoftwareDevelopment />} />
+        <Route path="/services/ai-development" element={<AIDevelopment />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/terms-of-service" element={<TermsConditions />} />
