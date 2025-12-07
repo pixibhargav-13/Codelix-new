@@ -63,7 +63,7 @@ export const ExploreProducts = () => {
               </div>
 
               {/* BUTTON */}
-              <button className="btn explore-btn mt-5 d-flex align-items-center justify-content-between gap-5">
+              <button className="btn explore-btn mt-5 d-flex align-items-center justify-content-between gap-5" onClick={() => window.open('https://www.aanganone.com/', '_blank')}>
                 {p.buttonText}
                 <img src={rightArrow} alt="arrow" className="arrow-icon" />
               </button>
