@@ -55,12 +55,32 @@
   border-top: none;             /* avoid double border with tabs */
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: minmax(165px, auto);
+  align-items: stretch;
+}
+
+.tech-table.no-tabs {
+  margin-top: 3rem;             /* add margin when no tabs */
+  border-top: 1px solid #d0d7e2;
+  border-radius: 8px;
 }
 
 .tech-card {
   text-align: center;
   padding: 35px 15px;
   border: 1px solid #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 165px;
+  align-self: stretch;
+}
+
+.tech-card.empty-cell {
+  align-self: stretch;
+  min-height: 165px;
 }
 
 .tech-icon {
@@ -79,10 +99,58 @@
   color: black !important;
 }
 
+/* -------------------- GENERAL TECHNOLOGIES SECTION -------------------- */
+.general-tech-section {
+  margin-top: 5rem;
+}
+
+.general-tech-heading {
+  font-size: 28px;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.general-tech-table {
+  border: 1px solid #d0d7e2;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-radius: 8px;
+}
+
+.general-tech-card {
+  text-align: center;
+  padding: 35px 15px;
+  border: 1px solid #e5e5e5;
+}
+
+.general-tech-icon {
+  height: 55px;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+.general-tech-card p {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #6c788f;
+}
+
+/* Tablet */
+@media (max-width: 992px) and (min-width: 481px) {
+  .tech-table {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
 /* Mobile */
 @media (max-width: 480px) {
   .tech-table {
     grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .tech-card.empty-cell {
+    display: none;
   }
 }
 
@@ -105,14 +173,37 @@
 
   .tech-table {
     grid-template-columns: repeat(2, 1fr) !important; /* 2 columns */
+    grid-auto-rows: minmax(140px, auto);
   }
 
   .tech-card {
     padding: 20px 10px; /* reduce padding */
+    min-height: 140px;
+  }
+  
+  .tech-card.empty-cell {
+    display: none;
   }
 
   .tech-icon {
     max-width: 45px;
     height: auto;
+  }
+
+  .general-tech-table {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .general-tech-card {
+    padding: 20px 10px;
+  }
+
+  .general-tech-icon {
+    max-width: 45px;
+    height: auto;
+  }
+
+  .general-tech-heading {
+    font-size: 24px;
   }
 }

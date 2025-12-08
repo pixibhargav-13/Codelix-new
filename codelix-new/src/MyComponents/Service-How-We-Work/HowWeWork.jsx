@@ -3,8 +3,8 @@ import "./HowWeWork.css";
 import blackArrow from "../Images/blackArrow.png";
 import underline from "../Images/what-we-build-underline.png";
 
-export const HowWeWork = () => {
-  const steps = [
+export const HowWeWork = ({ customSteps = null }) => {
+  const defaultSteps = [
     {
       number: "01",
       title: "Project Ideation",
@@ -13,7 +13,7 @@ export const HowWeWork = () => {
     {
       number: "02",
       title: "Planning",
-      desc: "Based on our initial discussion, we create a detailed project plan that includes timelines, milestones, and deliverables. We collaborate with you to finalize the scope and ensure we're aligned on the project’s objectives.",
+      desc: "Based on our initial discussion, we create a detailed project plan that includes timelines, milestones, and deliverables. We collaborate with you to finalize the scope and ensure we're aligned on the project's objectives.",
     },
     {
       number: "03",
@@ -36,6 +36,8 @@ export const HowWeWork = () => {
       desc: "After testing, we deploy the solution and provide post-launch support to ensure everything runs smoothly and your team is fully trained to manage it.",
     },
   ];
+
+  const steps = customSteps || defaultSteps;
 
   return (
     <section className="how-we-work-section">

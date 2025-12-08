@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import codelixlogo from "../Images/codelix-logo.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -9,6 +9,7 @@ export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [serviceOpen, setServiceOpen] = useState(false); // Mobile dropdown toggle
   const [desktopServiceOpen, setDesktopServiceOpen] = useState(false); // Desktop dropdown
+  const dropdownRef = useRef(null);
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -20,6 +21,23 @@ export const Navbar = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDesktopServiceOpen(false);
+      }
+    };
+
+    if (desktopServiceOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [desktopServiceOpen]);
 
   return (
     <>
@@ -59,18 +77,44 @@ export const Navbar = () => {
               {/* Desktop Services Dropdown */}
               <li
                 className="nav-item dropdown-desktop"
+                ref={dropdownRef}
                 onMouseEnter={() => setDesktopServiceOpen(true)}
-                onMouseLeave={() => setDesktopServiceOpen(false)}
               >
                 <span className="nav-link text-white dropdown-toggle-custom">
                   Services <ChevronDown size={18} />
                 </span>
 
                 {desktopServiceOpen && (
-                  <div className="desktop-dropdown-menu">
-                    <Link to="/services">Mobile App Development</Link>
-                    <Link to="/services">SaaS Development</Link>
-                    <Link to="/services">Web Development</Link>
+                  <div 
+                    className="desktop-dropdown-menu"
+                    onMouseEnter={() => setDesktopServiceOpen(true)}
+                  >
+                    <div className="dropdown-menu-container">
+                      <Link to="/services/web-development" onClick={() => setDesktopServiceOpen(false)} className="service-item">
+                        <h4 className="service-title">Web Development</h4>
+                        <p className="service-description">Build responsive, high-performance websites and web applications with modern technologies.</p>
+                      </Link>
+                      <Link to="/services/application-development" onClick={() => setDesktopServiceOpen(false)} className="service-item">
+                        <h4 className="service-title">Application Development</h4>
+                        <p className="service-description">Create powerful mobile and desktop applications for iOS, Android, and cross-platform solutions.</p>
+                      </Link>
+                      <Link to="/services/ui-ux-design" onClick={() => setDesktopServiceOpen(false)} className="service-item">
+                        <h4 className="service-title">UI/UX Design</h4>
+                        <p className="service-description">Design intuitive, beautiful user interfaces that enhance user experience and drive engagement.</p>
+                      </Link>
+                      <Link to="/services/e-commerce-solutions" onClick={() => setDesktopServiceOpen(false)} className="service-item">
+                        <h4 className="service-title">E-Commerce Solutions</h4>
+                        <p className="service-description">Launch and scale your online store with custom e-commerce platforms and integrations.</p>
+                      </Link>
+                      <Link to="/services/custom-software-development" onClick={() => setDesktopServiceOpen(false)} className="service-item">
+                        <h4 className="service-title">Custom Software Development</h4>
+                        <p className="service-description">Develop tailored software solutions that streamline your business operations and workflows.</p>
+                      </Link>
+                      <Link to="/services/ai-development" onClick={() => setDesktopServiceOpen(false)} className="service-item">
+                        <h4 className="service-title">AI Development</h4>
+                        <p className="service-description">Integrate AI and machine learning capabilities to automate processes and enhance decision-making.</p>
+                      </Link>
+                    </div>
                   </div>
                 )}
               </li>
@@ -119,6 +163,13 @@ export const Navbar = () => {
 
         <div className="mobile-menu-links">
           <NavLink
+            to="/"
+            onClick={() => setIsMenuOpen(false)}
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
+            Home
+          </NavLink>
+          <NavLink
             to="/work"
             onClick={() => setIsMenuOpen(false)}
             className={({ isActive }) => (isActive ? "active-link" : "")}
@@ -140,14 +191,23 @@ export const Navbar = () => {
 
           {serviceOpen && (
             <div className="mobile-dropdown-content">
-              <Link to="/services" onClick={() => setIsMenuOpen(false)}>
-                Mobile App Development
-              </Link>
-              <Link to="/services" onClick={() => setIsMenuOpen(false)}>
-                SaaS Development
-              </Link>
-              <Link to="/services" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/services/web-development" onClick={() => setIsMenuOpen(false)}>
                 Web Development
+              </Link>
+              <Link to="/services/application-development" onClick={() => setIsMenuOpen(false)}>
+                Application Development
+              </Link>
+              <Link to="/services/ui-ux-design" onClick={() => setIsMenuOpen(false)}>
+                UI/UX Design
+              </Link>
+              <Link to="/services/e-commerce-solutions" onClick={() => setIsMenuOpen(false)}>
+                E-Commerce Solutions
+              </Link>
+              <Link to="/services/custom-software-development" onClick={() => setIsMenuOpen(false)}>
+                Custom Software Development
+              </Link>
+              <Link to="/services/ai-development" onClick={() => setIsMenuOpen(false)}>
+                AI Development
               </Link>
             </div>
           )}

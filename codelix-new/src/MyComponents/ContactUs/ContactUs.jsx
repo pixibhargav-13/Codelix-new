@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "./ContactUs.css";
 import contactUsLogo from "../Images/contact-us-logo.png";
 import whiteArrow from "../Images/whiteArrow.png";
@@ -11,6 +12,19 @@ import { SEO } from "../../components/SEO";
 
 
 export const ContactUs = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === '#contact-form') {
+      setTimeout(() => {
+        const element = document.getElementById('contact-form');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, [location]);
+
   return (
     <>
       <SEO
@@ -76,7 +90,7 @@ export const ContactUs = () => {
           </div>
         </div>
 
-        <div className="contact-us-main-section">
+        <div className="contact-us-main-section" id="contact-form">
           <div className="container">
             <div className="row d-flex gap-10">
               <div className="col-lg-8 col-md-12">
