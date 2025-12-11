@@ -4,6 +4,11 @@
   overflow-x: hidden;
 }
 
+.contact-us-container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 .contact-us-top-section {
   margin: 0 auto;
   display: flex;
@@ -12,6 +17,8 @@
   text-align: center;
   background: white;
   margin-bottom: 40px;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .contact-us-top-section-text {
@@ -39,6 +46,8 @@
   color: #131926;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .contact-us-card h4 {
@@ -235,9 +244,52 @@
   height: 14rem;
   margin-top: 2rem;
 }
+
+@media (min-width: 576px) and (max-width: 991px) {
+  .contact-us-top-section {
+    padding-top: 70px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .contact-us-top-section h2 {
+    font-size: 36px;
+  }
+
+  .contact-us-top-cards {
+    gap: 20px;
+    padding: 0 20px;
+  }
+
+  .contact-us-card {
+    padding: 20px 25px;
+  }
+
+  .contact-us-form-box form {
+    padding: 25px 20px;
+  }
+}
+
 @media (min-width: 200px) and (max-width: 575px) {
   .contact-us-main-section {
-    padding: 50px 0px 0px 0px !important;
+    padding: 50px 15px 0px 15px !important;
+  }
+
+  .contact-us-main-section .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .contact-us-main-section .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .contact-us-main-section .col-lg-8,
+  .contact-us-main-section .col-lg-4 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   .contact-us-form-row {
@@ -249,7 +301,7 @@
   }
 
   .contact-us-process-card {
-    padding: 30px 31px;
+    padding: 20px 15px;
   }
 
   .contact-us-process-box {
@@ -258,6 +310,14 @@
 
   .contact-us-container {
     gap: 0px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .contact-us-container .container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    max-width: 100% !important;
   }
 
   .work-content h1 {
@@ -278,6 +338,53 @@
   }
 
   .contact-us-process-card h5 {
-    font-size: 22.66px;
+    font-size: 20px;
+  }
+
+  .contact-us-top-section {
+    padding-top: 50px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .contact-us-top-section h2 {
+    font-size: 28px;
+    padding: 0 15px;
+  }
+
+  .contact-us-top-section p {
+    padding: 0 15px;
+  }
+
+  .contact-us-top-cards {
+    gap: 15px;
+    padding: 0 15px;
+    width: 100%;
+  }
+
+  .contact-us-card {
+    padding: 20px 15px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .contact-us-card h4 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .contact-us-card p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .contact-us-form-box form {
+    padding: 15px;
+  }
+
+  .contact-us-form-box {
+    width: 100%;
+    box-sizing: border-box;
   }
 }
