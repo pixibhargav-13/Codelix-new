@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./BestProjects.css";
 import underline from "../Images/what-we-build-underline.png";
 import whiteArrow from "../Images/whiteArrow.png";
@@ -22,6 +23,7 @@ import projectSixteen from "../Images/work-best-project-sixteen.png";
 
 
 export const BestProjects = () => {
+  const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = useState("All");
 
   const projects = [
@@ -271,7 +273,22 @@ export const BestProjects = () => {
                       </div>
                     </div>
 
-                    <button className="btn read-case-study-btn project-btn">
+                    <button 
+                      className="btn read-case-study-btn project-btn"
+                      onClick={() => {
+                        if (project.id === 1) {
+                          navigate("/nextgen-case-study");
+                        } else if (project.id === 2) {
+                          navigate("/erp-case-study");
+                        } else if (project.id === 10) {
+                          navigate("/payroll-case-study");
+                        } else if (project.id === 14) {
+                          navigate("/smart-business-case-study");
+                        } else {
+                          navigate("/case-study");
+                        }
+                      }}
+                    >
                       <span>{project.buttonText}</span>
                       <img src={whiteArrow} className="arrow-icon" />
                     </button>
