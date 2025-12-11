@@ -1,0 +1,1056 @@
+﻿.wrapper {
+  max-width: 1400px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+}
+
+.payroll-case-study-page {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: #ffffff;
+}
+
+.payroll-case-study-hero-section {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+  padding-top: 0;
+  padding-bottom: 5rem;
+  background: #F8FAFF;
+}
+
+/* Navbar background for case study page */
+.payroll-case-study-page .navbar {
+  background: #F8FAFF !important;
+}
+
+/* Navbar font color override for case study page */
+.payroll-case-study-page .navbar .nav-link {
+  color: #131926 !important;
+}
+
+.payroll-case-study-page .navbar .nav-link-active {
+  color: #3e7dfc !important;
+}
+
+.payroll-case-study-page .navbar .nav-link-inactive {
+  color: #131926 !important;
+}
+
+.payroll-case-study-page .navbar .dropdown-toggle-custom {
+  color: #131926 !important;
+}
+
+.payroll-case-study-page .navbar .navbar-toggler {
+  border: 1.5px solid #131926 !important;
+  color: #131926 !important;
+}
+
+.payroll-case-study-page .navbar .navbar-toggler svg {
+  color: #131926 !important;
+}
+
+.payroll-case-study-page .navbar .navbar-button {
+  background: #2B6EF2 !important;
+  color: #ffffff !important;
+}
+
+.payroll-case-study-page .navbar .navbar-button:hover {
+  background: #ffffff !important;
+  color: #2B6EF2 !important;
+  border: 1px solid #2B6EF2 !important;
+}
+
+/* Back Button */
+.payroll-case-study-back-btn {
+  background: transparent;
+  border: 1px solid #dcdcdc;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.payroll-case-study-back-btn:hover {
+  border-color: #2b6ef2;
+  background: #2b6ef2;
+  color: #ffffff;
+}
+
+.payroll-case-study-back-btn svg {
+  color: #131926;
+  transition: color 0.3s ease;
+}
+
+.payroll-case-study-back-btn:hover svg {
+  color: #ffffff;
+}
+
+/* Hero Row */
+.payroll-case-study-hero-row {
+  margin-top: 0;
+  align-items: stretch;
+}
+
+.payroll-case-study-content-col {
+  display: flex;
+  flex-direction: column;
+  padding-right: 2rem;
+}
+
+.payroll-case-study-content-wrapper {
+  background: #F8FAFF;
+  border: 1px solid #dcdcdc;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+}
+
+/* Hero Title - Matching BestProjects */
+.payroll-case-study-hero-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  margin-top: 0;
+  color: #131926;
+  font-family: "Hanken Grotesk", sans-serif;
+  line-height: 1.3;
+}
+
+/* Hero Description - Matching BestProjects */
+.payroll-case-study-hero-description {
+  color: #6f6f6f;
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+}
+
+/* Tags - Matching BestProjects */
+.payroll-case-study-tags {
+  margin-bottom: 1rem;
+}
+
+.payroll-case-study-tag-badge {
+  border: 1px solid #abb3cb;
+  padding: 4px 12px;
+  font-size: 14px;
+  color: #6c788f;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+}
+
+/* Schedule A Call Button - Matching BestProjects read-payroll-case-study-btn */
+.payroll-case-study-schedule-btn {
+  background: #2b6ef2 !important;
+  color: #ffffff !important;
+  border: 1px solid transparent;
+  padding: 10px 11px !important;
+  border-radius: 0px !important;
+  font-weight: 500 !important;
+  display: flex !important;
+  align-items: center;
+  gap: 22px;
+  transition: all 0.25s ease-in-out;
+  margin-top: auto;
+  align-self: flex-start;
+  font-family: "Inter", sans-serif;
+}
+
+.payroll-case-study-schedule-btn:hover {
+  background: #ffffff !important;
+  color: #2b6ef2 !important;
+  border: 1px solid #2b6ef2 !important;
+  box-shadow: 4px 4px 0px #2b6ef2;
+}
+
+.payroll-case-study-arrow-icon {
+  height: 20px;
+  width: auto;
+  transition: transform 0.35s ease-in-out;
+}
+
+.payroll-case-study-schedule-btn:hover .payroll-case-study-arrow-icon {
+  transform: rotate(-45deg);
+  filter: brightness(0) saturate(100%) invert(36%) sepia(98%) saturate(2475%) hue-rotate(206deg) brightness(95%) contrast(101%);
+}
+
+/* Image Container - Square */
+.payroll-case-study-image-col {
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.payroll-case-study-image-wrapper {
+  width: 100%;
+  border: 1px solid #dcdcdc;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  /* Make square - width equals height */
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+}
+
+.payroll-case-study-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.py-6 {
+  padding-top: 4.5rem !important;
+  padding-bottom: 4.5rem !important;
+}
+
+.py-7 {
+  padding-top: 5.5rem !important;
+  padding-bottom: 5.5rem !important;
+}
+
+.py-8 {
+  padding-top: 6.5rem !important;
+  padding-bottom: 6.5rem !important;
+}
+
+/* Custom padding-top classes for values greater than Bootstrap's pt-5 */
+.pt-6 {
+  padding-top: 4.5rem !important;
+}
+
+.pt-7 {
+  padding-top: 5.5rem !important;
+}
+
+.pt-8 {
+  padding-top: 6.5rem !important;
+}
+
+/* Custom padding-bottom classes for values greater than Bootstrap's pb-5 */
+.pb-6 {
+  padding-bottom: 4.5rem !important;
+}
+
+.pb-7 {
+  padding-bottom: 5.5rem !important;
+}
+
+.pb-8 {
+  padding-bottom: 6.5rem !important;
+}
+
+
+.payroll-case-study-main-content {
+  background: #ffffff;
+}
+
+.payroll-case-study-section {
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.payroll-case-study-section-heading {
+  font-size: 32px;
+  font-weight: 200;
+  color: #131926;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-family: "Hanken Grotesk", sans-serif;
+}
+
+.payroll-case-study-underline-wrapper {
+  position: relative;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.payroll-case-study-underline-img {
+  position: absolute;
+  bottom: -14px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  pointer-events: none;
+}
+
+.payroll-case-study-section-text {
+  font-size: 1.125rem;
+  color: #6C788F;
+  line-height: 1.8;
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.payroll-case-study-section-paragraph {
+  font-size: 1.125rem;
+  color: #131926;
+  line-height: 1.8;
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Project Outcomes Section */
+.payroll-case-study-outcomes-section {
+  background: #F8FAFF;
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.payroll-case-study-outcomes-wrapper {
+  text-align: center;
+  max-width: 1275px;
+  font-weight: 500;
+  margin: 0 auto;
+}
+
+.payroll-case-study-outcomes-heading {
+  font-size: 32px;
+  font-weight: 200;
+  color: #131926;
+  margin-bottom: 1rem;
+  font-family: "Hanken Grotesk", sans-serif;
+}
+
+.payroll-case-study-outcomes-subtitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+  text-align: center;
+  color: #6C788F;
+  word-break: break-all;
+  margin-top: 0.75rem;
+}
+
+.payroll-case-study-outcomes-cards {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+}
+
+.payroll-case-study-outcomes-cards > div {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0;
+}
+
+@media (max-width: 992px) {
+  .payroll-case-study-outcomes-cards {
+    flex-wrap: wrap;
+  }
+  
+  .payroll-case-study-outcomes-cards > div {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+.payroll-case-study-outcome-card {
+  background: #ffffff;
+  border: 1px solid #ABB3CB;
+  padding: 0.75rem 1.74rem;
+  text-align: center;
+  height: auto;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.payroll-case-study-outcome-number {
+  font-size: 2.75rem;
+  font-weight: 500;
+  color: #131926;
+  margin-bottom: 0.12rem;
+  font-family: "Hanken Grotesk", sans-serif;
+  transition: transform 0.1s ease-out;
+}
+
+.payroll-case-study-outcome-label {
+  font-size: 1rem;
+  color: #131926;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+/* Mobile styles for Project Outcomes */
+@media (max-width: 768px) {
+  .payroll-case-study-outcome-card {
+    padding: 0.5rem 1rem;
+    min-height: 60px;
+  }
+  
+  .payroll-case-study-outcome-number {
+    font-size: 2rem;
+    margin-bottom: 0.1rem;
+  }
+  
+  .payroll-case-study-outcome-label {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .payroll-case-study-outcomes-cards {
+    gap: 0.75rem;
+    justify-content: center;
+  }
+  
+  .payroll-case-study-outcomes-cards > div {
+    flex: 0 0 auto;
+    max-width: calc(100% - 2rem);
+    min-width: 260px;
+    margin-bottom: 0.8rem;
+  }
+  
+  .payroll-case-study-outcome-card {
+    padding: 0.4rem 0.8rem;
+    min-height: 55px;
+  }
+  
+  .payroll-case-study-outcome-number {
+    font-size: 1.75rem;
+    margin-bottom: 0.08rem;
+  }
+  
+  .payroll-case-study-outcome-label {
+    font-size: 0.8rem;
+  }
+}
+
+/* Challenges & Solutions Section */
+.payroll-case-study-challenges-solutions-section {
+  background: #ffffff;
+}
+
+.payroll-case-study-challenges-grid {
+  margin: 0;
+}
+
+.payroll-case-study-challenges-grid > div {
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.payroll-case-study-challenges-grid > div:last-child,
+.payroll-case-study-challenges-grid > div:nth-last-child(2) {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .payroll-case-study-challenges-grid > div:nth-child(odd) {
+    padding-right: 0.75rem;
+  }
+  
+  .payroll-case-study-challenges-grid > div:nth-child(even) {
+    padding-left: 0.75rem;
+  }
+  
+  .payroll-case-study-challenges-grid > div:nth-child(1) {
+    margin-bottom: 1.5rem;
+  }
+  
+  .payroll-case-study-challenges-grid > div:nth-child(2) {
+    margin-bottom: 0;
+  }
+  
+  .payroll-case-study-challenges-grid > div:nth-child(4) {
+    margin-top: -22.45rem;
+  }
+}
+
+.payroll-case-study-challenges-image {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.payroll-case-study-solutions-image {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+  position: relative;
+  margin-top: -2.18rem;
+}
+
+.payroll-case-study-challenges-text-wrapper,
+.payroll-case-study-solutions-text-wrapper {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: auto;
+  height: auto;
+  background: #ffffff;
+  border: 1px solid #dcdcdc;
+}
+
+.payroll-case-study-challenges-heading,
+.payroll-case-study-solutions-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #131926;
+  margin-bottom: 1.5rem;
+  font-family: "Hanken Grotesk", sans-serif;
+}
+
+.payroll-case-study-challenges-list,
+.payroll-case-study-solutions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.payroll-case-study-challenges-list li,
+.payroll-case-study-solutions-list li {
+  font-size: 1rem;
+  color: #131926;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  font-family: "Inter", sans-serif;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.payroll-case-study-challenges-list li::before,
+.payroll-case-study-solutions-list li::before {
+  content: "â€¢";
+  position: absolute;
+  left: 0;
+  color: #131926;
+  font-weight: bold;
+}
+
+/* Light Image Section */
+.payroll-case-study-light-image-wrapper {
+  background: #ffffff;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.payroll-case-study-light-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Increase Light Image size on mobile */
+@media (max-width: 768px) {
+  .payroll-case-study-light-image-wrapper {
+    overflow: visible;
+  }
+
+  .payroll-case-study-light-image {
+    width: 105%;
+    max-width: 105%;
+    margin-left: -2.5%;
+    margin-right: -2.5%;
+    transform: scale(1.02);
+  }
+}
+
+@media (max-width: 480px) {
+  .payroll-case-study-light-image {
+    width: 108%;
+    max-width: 108%;
+    margin-left: -4%;
+    margin-right: -4%;
+    transform: scale(1.04);
+  }
+}
+
+/* Tools & Technologies Section */
+.payroll-case-study-tools-section {
+  background: #ffffff;
+}
+
+.payroll-case-study-tools-wrapper {
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  font-weight: 500;
+}
+
+.payroll-case-study-tools-heading {
+  font-size: 32px;
+  font-weight: 200;
+  color: #131926;
+  font-family: "Hanken Grotesk", sans-serif;
+  margin-bottom: 3rem;
+}
+
+.payroll-case-study-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  border: 1px solid #d0d7e2;
+  border-right: none;
+  border-bottom: none;
+  margin-top: 3rem;
+}
+
+.payroll-case-study-tool-item {
+  border-right: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 35px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 165px;
+  background: #ffffff;
+}
+
+.payroll-case-study-tool-empty {
+  background: #ffffff;
+}
+
+.payroll-case-study-tool-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.payroll-case-study-tool-name {
+  font-size: 1rem;
+  color: #131926;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+/* Tablet */
+@media (max-width: 992px) and (min-width: 481px) {
+  .payroll-case-study-tools-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .payroll-case-study-tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .payroll-case-study-tool-empty {
+    display: none;
+  }
+  
+  .payroll-case-study-tool-item {
+    padding: 20px 10px;
+    min-height: 140px;
+  }
+  
+  .payroll-case-study-tool-logo {
+    max-width: 45px;
+    height: auto;
+  }
+}
+
+@media (max-width: 417px) {
+  .payroll-case-study-tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(140px, auto);
+  }
+  
+  .payroll-case-study-tool-item {
+    padding: 20px 10px;
+    min-height: 140px;
+  }
+  
+  .payroll-case-study-tool-empty {
+    display: none;
+  }
+  
+  .payroll-case-study-tool-logo {
+    max-width: 45px;
+    height: auto;
+  }
+}
+
+/* Component 5 Images Section */
+.payroll-case-study-component5-section {
+  background: #ffffff;
+}
+
+.payroll-case-study-component5-row {
+  margin: 0;
+}
+
+.payroll-case-study-component5-row > div {
+  padding: 0 0.5rem;
+}
+
+.payroll-case-study-component5-row > div:first-child {
+  padding-left: 0;
+  padding-right: 0.5rem;
+}
+
+.payroll-case-study-component5-row > div:last-child {
+  padding-right: 0;
+  padding-left: 0.5rem;
+}
+
+.payroll-case-study-component5-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Mobile Styles - Centered Images */
+@media (max-width: 768px) {
+  .payroll-case-study-component5-section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+    overflow-x: hidden;
+  }
+  
+  .payroll-case-study-component5-section .container {
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 100%;
+  }
+  
+  .payroll-case-study-component5-row {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .payroll-case-study-component5-row > div {
+    padding: 0;
+    margin-bottom: 0;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .payroll-case-study-component5-row > div:first-child,
+  .payroll-case-study-component5-row > div:last-child {
+    padding: 0;
+  }
+  
+  .payroll-case-study-component5-image {
+    width: 90%;
+    max-width: 90%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Challenges & Solutions Section Width Reduction */
+  .payroll-case-study-challenges-solutions-section .container {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .payroll-case-study-challenges-image,
+  .payroll-case-study-solutions-image {
+    width: 90%;
+    max-width: 90%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .payroll-case-study-challenges-text-wrapper,
+  .payroll-case-study-solutions-text-wrapper {
+    width: 90%;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  /* Reorder sections on mobile: Challenges Image -> Challenges Text -> Solutions Image -> Solutions Text */
+  .payroll-case-study-challenges-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .payroll-case-study-challenges-grid > div:nth-child(1) {
+    order: 1; /* Challenges Image */
+    margin-bottom: 2rem !important;
+  }
+
+  .payroll-case-study-challenges-grid > div:nth-child(2) {
+    order: 2; /* Challenges Text */
+    margin-bottom: 2rem !important;
+  }
+
+  .payroll-case-study-challenges-grid > div:nth-child(3) {
+    order: 4; /* Solutions Text - move to last */
+    margin-bottom: 2rem !important;
+  }
+
+  .payroll-case-study-challenges-grid > div:nth-child(4) {
+    order: 3; /* Solutions Image - move before Solutions Text */
+    margin-bottom: 2rem !important;
+    margin-top: 0 !important; /* Remove negative margin on mobile */
+  }
+
+  /* All sections have equal spacing, including after Solutions Text */
+  .payroll-case-study-challenges-grid > div:nth-child(3) {
+    margin-bottom: 2rem !important; /* Solutions Text - keep spacing after it */
+  }
+
+  .payroll-case-study-solutions-image {
+    margin-top: 0 !important; /* Remove negative margin on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .payroll-case-study-component5-section {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  .payroll-case-study-component5-section .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .payroll-case-study-component5-row {
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .payroll-case-study-component5-row > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .payroll-case-study-component5-image {
+    width: 90%;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  /* Challenges & Solutions Section Width Reduction */
+  .payroll-case-study-challenges-solutions-section .container {
+    max-width: 93%;
+    margin: 0 auto;
+  }
+
+  .payroll-case-study-challenges-image,
+  .payroll-case-study-solutions-image {
+    width: 98%;
+    max-width: 98%;
+    margin: 0 auto;
+  }
+
+  .payroll-case-study-challenges-text-wrapper,
+  .payroll-case-study-solutions-text-wrapper {
+    width: 98%;
+    max-width: 98%;
+    margin: 0 auto;
+  }
+
+  /* Reorder sections on mobile: Challenges Image -> Challenges Text -> Solutions Image -> Solutions Text */
+  .payroll-case-study-challenges-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .payroll-case-study-challenges-grid > div:nth-child(1) {
+    order: 1; /* Challenges Image */
+    margin-bottom: 2rem !important;
+  }
+
+  .payroll-case-study-challenges-grid > div:nth-child(2) {
+    order: 2; /* Challenges Text */
+    margin-bottom: 2rem !important;
+  }
+
+  .payroll-case-study-challenges-grid > div:nth-child(3) {
+    order: 4; /* Solutions Text - move to last */
+    margin-bottom: 2rem !important;
+  }
+
+  .payroll-case-study-challenges-grid > div:nth-child(4) {
+    order: 3; /* Solutions Image - move before Solutions Text */
+    margin-bottom: 2rem !important;
+    margin-top: 0 !important; /* Remove negative margin on mobile */
+  }
+
+  /* All sections have equal spacing, including after Solutions Text */
+  .payroll-case-study-challenges-grid > div:nth-child(3) {
+    margin-bottom: 2rem !important; /* Solutions Text - keep spacing after it */
+  }
+
+  .payroll-case-study-solutions-image {
+    margin-top: 0 !important; /* Remove negative margin on mobile */
+  }
+}
+
+/* Full width footer wrapper */
+.payroll-case-study-footer-wrapper {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .payroll-case-study-content-col {
+    padding-right: 0;
+    margin-bottom: 2rem;
+  }
+
+  .payroll-case-study-image-col {
+    padding-left: 0;
+  }
+
+  .payroll-case-study-content-wrapper {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .payroll-case-study-hero-title {
+    font-size: 28px !important;
+  }
+
+  .payroll-case-study-hero-description {
+    font-size: 15px;
+  }
+
+  .payroll-case-study-content-wrapper {
+    padding: 1.5rem;
+  }
+
+  .payroll-case-study-section-heading {
+    font-size: 28px;
+  }
+
+  .payroll-case-study-section-paragraph {
+    font-size: 1rem;
+  }
+
+  .payroll-case-study-outcomes-heading {
+    font-size: 28px;
+  }
+
+  .payroll-case-study-outcomes-subtitle {
+    font-size: 16px;
+  }
+
+  .payroll-case-study-challenges-heading,
+  .payroll-case-study-solutions-heading {
+    font-size: 28px;
+  }
+
+  .payroll-case-study-tools-heading {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .payroll-case-study-hero-title {
+    font-size: 28px !important;
+  }
+
+  .payroll-case-study-hero-description {
+    font-size: 14px;
+  }
+
+  .payroll-case-study-section-heading {
+    font-size: 28px;
+  }
+
+  .payroll-case-study-outcomes-heading {
+    font-size: 28px;
+  }
+
+  .payroll-case-study-outcomes-subtitle {
+    font-size: 15px;
+  }
+
+  .payroll-case-study-challenges-heading,
+  .payroll-case-study-solutions-heading {
+    font-size: 28px;
+  }
+
+  .payroll-case-study-tools-heading {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 375px) {
+  .payroll-case-study-hero-title {
+    font-size: 24px !important;
+  }
+
+  .payroll-case-study-section-heading {
+    font-size: 28px;
+  }
+
+  .payroll-case-study-outcomes-heading {
+    font-size: 28px;
+  }
+
+  .payroll-case-study-outcomes-subtitle {
+    font-size: 14px;
+  }
+
+  .payroll-case-study-challenges-heading,
+  .payroll-case-study-solutions-heading {
+    font-size: 28px;
+  }
+
+  .payroll-case-study-tools-heading {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .payroll-case-study-content-wrapper {
+    padding: 3rem;
+  }
+}
+
+
+

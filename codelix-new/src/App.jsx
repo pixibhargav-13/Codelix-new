@@ -15,6 +15,11 @@ import { Navbar } from "./MyComponents/Navbar/Navbar";
 import { ContactUs } from "./MyComponents/ContactUs/ContactUs";
 import TermsConditions from "./MyComponents/TermsConditions/TermsConditions";
 import PrivacyPolicy from "./MyComponents/PrivacyPolicy/PrivacyPolicy";
+import CaseStudy from "./MyComponents/CaseStudy/CaseStudy";
+import NextGenCaseStudy from "./MyComponents/CaseStudy/NextGenCaseStudy";
+import ERPCaseStudy from "./MyComponents/CaseStudy/ERPCaseStudy";
+import PayrollCaseStudy from "./MyComponents/CaseStudy/PayrollCaseStudy";
+import SmartBusinessCaseStudy from "./MyComponents/CaseStudy/SmartBusinessCaseStudy";
 
 // Scroll to top on every route change
 const ScrollToTop = () => {
@@ -46,6 +51,11 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/terms-of-service" element={<TermsConditions />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/case-study" element={<CaseStudy />} />
+        <Route path="/nextgen-case-study" element={<NextGenCaseStudy />} />
+        <Route path="/erp-case-study" element={<ERPCaseStudy />} />
+        <Route path="/payroll-case-study" element={<PayrollCaseStudy />} />
+        <Route path="/smart-business-case-study" element={<SmartBusinessCaseStudy />} />
       </Routes>
     </Router>
   );

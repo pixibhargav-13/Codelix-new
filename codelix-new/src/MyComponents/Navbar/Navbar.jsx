@@ -5,7 +5,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import "./Navbar.css";
 import { Link, NavLink } from "react-router-dom";
 
-export const Navbar = () => {
+export const Navbar = ({ logo }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [serviceOpen, setServiceOpen] = useState(false); // Mobile dropdown toggle
   const [desktopServiceOpen, setDesktopServiceOpen] = useState(false); // Desktop dropdown
@@ -48,7 +48,7 @@ export const Navbar = () => {
             className="navbar-brand d-flex align-items-center"
             to="/"
           >
-            <img src={codelixlogo} alt="Codelix Logo" height="40" />
+            <img src={logo || codelixlogo} alt="Codelix Logo" height="40" />
           </Link>
 
           {/* MOBILE TOGGLE BUTTON */}

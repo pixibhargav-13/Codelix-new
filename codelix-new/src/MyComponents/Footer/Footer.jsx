@@ -30,12 +30,12 @@ const Footer = () => {
       { label: "Contact", link: "/contact" },
     ],
     services: [
-      { label: "Web Development", link: "#" },
-      { label: "Mobile Development", link: "#" },
-      { label: "UI/UX Design", link: "#" },
-      { label: "Custom Software dev.", link: "#" },
-      { label: "E-Commerce Solutions", link: "#" },
-      { label: "AI Development", link: "#" },
+      { label: "Web Development", link: "/services/web-development" },
+      { label: "Mobile Development", link: "/services/application-development" },
+      { label: "UI/UX Design", link: "/services/ui-ux-design" },
+      { label: "Custom Software dev.", link: "/services/custom-software-development" },
+      { label: "E-Commerce Solutions", link: "/services/e-commerce-solutions" },
+      { label: "AI Development", link: "/services/ai-development" },
     ],
     social: [
       { label: "Linkedin", link: "#" },
@@ -106,7 +106,13 @@ const Footer = () => {
               <ul className="footer-links">
                 {footerData.services.map((item, index) => (
                   <li key={index}>
-                    <a href={item.link}>{item.label}</a>
+                    {item.link.startsWith("/") ? (
+                      <Link to={item.link} onClick={(e) => handleNavClick(e, item.link)}>
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <Link to={item.link}>{item.label}</Link>
+                    )}
                   </li>
                 ))}
               </ul>
