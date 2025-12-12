@@ -10,6 +10,7 @@ export const Navbar = ({ logo }) => {
   const [serviceOpen, setServiceOpen] = useState(false); // Mobile dropdown toggle
   const [desktopServiceOpen, setDesktopServiceOpen] = useState(false); // Desktop dropdown
   const dropdownRef = useRef(null);
+  const closeTimerRef = useRef(null);
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -38,6 +39,28 @@ export const Navbar = ({ logo }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [desktopServiceOpen]);
+
+  // Helpers to keep dropdown open while moving cursor from trigger to panel
+  const handleDesktopEnter = () => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+    }
+    setDesktopServiceOpen(true);
+  };
+
+  const handleDesktopLeave = () => {
+    closeTimerRef.current = setTimeout(() => {
+      setDesktopServiceOpen(false);
+    }, 180);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+      }
+    };
+  }, []);
 
   return (
     <>
@@ -78,7 +101,8 @@ export const Navbar = ({ logo }) => {
               <li
                 className="nav-item dropdown-desktop"
                 ref={dropdownRef}
-                onMouseEnter={() => setDesktopServiceOpen(true)}
+                onMouseEnter={handleDesktopEnter}
+                onMouseLeave={handleDesktopLeave}
               >
                 <span className="nav-link text-white dropdown-toggle-custom">
                   Services <ChevronDown size={18} />
@@ -87,7 +111,8 @@ export const Navbar = ({ logo }) => {
                 {desktopServiceOpen && (
                   <div 
                     className="desktop-dropdown-menu"
-                    onMouseEnter={() => setDesktopServiceOpen(true)}
+                    onMouseEnter={handleDesktopEnter}
+                    onMouseLeave={handleDesktopLeave}
                   >
                     <div className="dropdown-menu-container">
                       <Link to="/services/web-development" onClick={() => setDesktopServiceOpen(false)} className="service-item">

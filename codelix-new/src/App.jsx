@@ -20,6 +20,17 @@ import NextGenCaseStudy from "./MyComponents/CaseStudy/NextGenCaseStudy";
 import ERPCaseStudy from "./MyComponents/CaseStudy/ERPCaseStudy";
 import PayrollCaseStudy from "./MyComponents/CaseStudy/PayrollCaseStudy";
 import SmartBusinessCaseStudy from "./MyComponents/CaseStudy/SmartBusinessCaseStudy";
+import BookCollectionsCaseStudy from "./MyComponents/CaseStudy/BookCollectionsCaseStudy";
+import MakhanaStoreCaseStudy from "./MyComponents/CaseStudy/MakhanaStoreCaseStudy";
+import FreightShippingCaseStudy from "./MyComponents/CaseStudy/FreightShippingCaseStudy";
+import HRPortalCaseStudy from "./MyComponents/CaseStudy/HRPortalCaseStudy";
+import EdTechCaseStudy from "./MyComponents/CaseStudy/EdTechCaseStudy";
+import ModernCreativeAgencyCaseStudy from "./MyComponents/CaseStudy/ModernCreativeAgencyCaseStudy";
+import ElegantCreativeAgencyCaseStudy from "./MyComponents/CaseStudy/ElegantCreativeAgencyCaseStudy";
+import AIPoweredDesignCaseStudy from "./MyComponents/CaseStudy/AIPoweredDesignCaseStudy";
+import CarMarketplaceCaseStudy from "./MyComponents/CaseStudy/CarMarketplaceCaseStudy";
+import SchoolManagementCaseStudy from "./MyComponents/CaseStudy/SchoolManagementCaseStudy";
+import SmartSocietyManagementCaseStudy from "./MyComponents/CaseStudy/SmartSocietyManagementCaseStudy";
 
 // Scroll to top on every route change
 const ScrollToTop = () => {
@@ -56,6 +67,17 @@ function App() {
         <Route path="/erp-case-study" element={<ERPCaseStudy />} />
         <Route path="/payroll-case-study" element={<PayrollCaseStudy />} />
         <Route path="/smart-business-case-study" element={<SmartBusinessCaseStudy />} />
+        <Route path="/book-collections-case-study" element={<BookCollectionsCaseStudy />} />
+        <Route path="/makhana-store-case-study" element={<MakhanaStoreCaseStudy />} />
+        <Route path="/freight-shipping-case-study" element={<FreightShippingCaseStudy />} />
+        <Route path="/hr-portal-case-study" element={<HRPortalCaseStudy />} />
+        <Route path="/edtech-case-study" element={<EdTechCaseStudy />} />
+        <Route path="/modern-creative-agency-case-study" element={<ModernCreativeAgencyCaseStudy />} />
+        <Route path="/elegant-creative-agency-case-study" element={<ElegantCreativeAgencyCaseStudy />} />
+        <Route path="/ai-powered-design-case-study" element={<AIPoweredDesignCaseStudy />} />
+        <Route path="/car-marketplace-case-study" element={<CarMarketplaceCaseStudy />} />
+        <Route path="/school-management-case-study" element={<SchoolManagementCaseStudy />} />
+        <Route path="/smart-society-management-case-study" element={<SmartSocietyManagementCaseStudy />} />
       </Routes>
     </Router>
   );

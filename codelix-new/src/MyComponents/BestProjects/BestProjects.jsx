@@ -49,10 +49,10 @@ export const BestProjects = () => {
     {
       id: 3,
       title:
-        "A Custom ERP Solution Designed for Industrial & Financial Workflows",
+        "A Smart Society Management App for Modern Residential Communities",
       description:
-        "A robust and scalable ERP system designed to handle complex industrial workflows, streamline financial processes, and support high-volume operational activities with ease. Ensures accuracy, transparency, and smooth coordination across departments.",
-      tags: ["AWS", "Web"],
+        "A fully functional mobile application designed to simplify and digitize everyday society operations. It enhances communication between residents and management, centralizes essential services, and automates routine tasks such as approvals, maintenance requests, payments, and community updates, making the entire residential experience more organized, transparent, and efficient.",
+      tags: ["Mobile", "Web"],
       buttonText: "Read Case Study",
       image: projectThree,
     },
@@ -176,6 +176,7 @@ export const BestProjects = () => {
       buttonText: "Read Case Study",
       image: projectFifteen,
     },
+  
   ];
 
   // Filter mapping: filter name -> project IDs
@@ -280,10 +281,32 @@ export const BestProjects = () => {
                           navigate("/nextgen-case-study");
                         } else if (project.id === 2) {
                           navigate("/erp-case-study");
+                        } else if (project.id === 3) {
+                          navigate("/smart-society-management-case-study");
+                        } else if (project.id === 4) {
+                          navigate("/car-marketplace-case-study");
+                        } else if (project.id === 5) {
+                          navigate("/book-collections-case-study");
+                        } else if (project.id === 6) {
+                          navigate("/modern-creative-agency-case-study");
+                        } else if (project.id === 7) {
+                          navigate("/hr-portal-case-study");
+                        } else if (project.id === 8) {
+                          navigate("/makhana-store-case-study");
+                        } else if (project.id === 9) {
+                          navigate("/edtech-case-study");
                         } else if (project.id === 10) {
                           navigate("/payroll-case-study");
+                        } else if (project.id === 11) {
+                          navigate("/elegant-creative-agency-case-study");
+                        } else if (project.id === 12) {
+                          navigate("/ai-powered-design-case-study");
+                        } else if (project.id === 13) {
+                          navigate("/freight-shipping-case-study");
                         } else if (project.id === 14) {
                           navigate("/smart-business-case-study");
+                        } else if (project.id === 15) {
+                          navigate("/school-management-case-study");
                         } else {
                           navigate("/case-study");
                         }

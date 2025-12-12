@@ -24,8 +24,10 @@ import { useNavigate } from "react-router-dom";
 const PayrollCaseStudy = () => {
   const navigate = useNavigate();
   const outcomesRef = useRef(null);
+  const challengesRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [counts, setCounts] = useState({ projects: 0, success: 0, years: 0 });
+  const [counts, setCounts] = useState({ projects: 1, success: 1, years: 1 });
+  const [bulletPointsVisible, setBulletPointsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -51,6 +53,32 @@ const PayrollCaseStudy = () => {
     };
   }, [isVisible]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !bulletPointsVisible) {
+            setBulletPointsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (challengesRef.current) {
+      observer.observe(challengesRef.current);
+    }
+
+    return () => {
+      if (challengesRef.current) {
+        observer.unobserve(challengesRef.current);
+      }
+    };
+  }, [bulletPointsVisible]);
+
+  // Target values for animation
+  const targetValues = { projects: 80, success: 2, years: 0 };
+
   const easeOutCubic = (t) => {
     return 1 - Math.pow(1 - t, 3);
   };
@@ -64,29 +92,29 @@ const PayrollCaseStudy = () => {
       const progress = Math.min(elapsed / duration, 1);
       const easedProgress = easeOutCubic(progress);
 
-      // Animate Projects (50+)
+      // Animate Projects (starting from 1)
       setCounts((prev) => ({
         ...prev,
-        projects: Math.floor(50 * easedProgress),
+        projects: Math.floor(1 + (targetValues.projects - 1) * easedProgress),
       }));
 
-      // Animate Success Rate (95%)
+      // Animate Success Rate (starting from 1)
       setCounts((prev) => ({
         ...prev,
-        success: Math.floor(95 * easedProgress),
+        success: Math.floor(1 + (targetValues.success - 1) * easedProgress),
       }));
 
-      // Animate Years (6+)
+      // Animate Years (starting from 1)
       setCounts((prev) => ({
         ...prev,
-        years: Math.floor(6 * easedProgress),
+        years: Math.floor(1 + (targetValues.years - 1) * easedProgress),
       }));
 
       if (progress < 1) {
         requestAnimationFrame(animate);
       } else {
         // Ensure final values are set
-        setCounts({ projects: 80, success: 2, years: 0 });
+        setCounts(targetValues);
       }
     };
 
@@ -165,8 +193,10 @@ const PayrollCaseStudy = () => {
                 </span>
               </h2>
               <p className="payroll-case-study-section-paragraph">
-              The Custom Payroll Management System is a fully tailored solution designed to automate salary processing, attendance tracking, compliance calculations, and financial reporting for businesses. The platform offers both a responsive web dashboard for HR teams and a simplified mobile interface for employees, enabling seamless payroll operations from anywhere.
-              This system replaces manual spreadsheets and inconsistent attendance records with an integrated workflow that ensures accuracy, compliance, and transparency for all payroll-related activities.
+                The Custom Payroll Management System is a fully tailored solution designed to automate salary processing, attendance tracking, compliance calculations, and financial reporting for businesses. The platform offers both a responsive web dashboard for HR teams and a simplified mobile interface for employees, enabling seamless payroll operations from anywhere.
+              </p>
+              <p className="payroll-case-study-section-paragraph">
+                This system replaces manual spreadsheets and inconsistent attendance records with an integrated workflow that ensures accuracy, compliance, and transparency for all payroll-related activities.
               </p>
             </div>
           </div>
@@ -220,7 +250,7 @@ const PayrollCaseStudy = () => {
         </div>
 
         {/* Challenges & Solutions Section */}
-        <div className="payroll-case-study-challenges-solutions-section py-5">
+        <div className="payroll-case-study-challenges-solutions-section py-5" ref={challengesRef}>
           <div className="container">
             <div className="row payroll-case-study-challenges-grid">
               {/* Top Left - Challenges Image */}
@@ -233,10 +263,18 @@ const PayrollCaseStudy = () => {
                 <div className="payroll-case-study-challenges-text-wrapper">
                   <h3 className="payroll-case-study-challenges-heading">Challenges</h3>
                   <ul className="payroll-case-study-challenges-list">
-                    <li>Manual payroll processing leading to errors and delays.</li>
-                    <li>Difficulty tracking employee attendance and leave management.</li>
-                    <li>Complex tax calculations and compliance requirements.</li>
-                    <li>Lack of real-time access to payroll information for employees.</li>
+                    <li className={bulletPointsVisible ? "payroll-bullet-visible" : ""} style={{ transitionDelay: "0.1s" }}>
+                      Developing a meditech app comes with its own set of challenges.
+                    </li>
+                    <li className={bulletPointsVisible ? "payroll-bullet-visible" : ""} style={{ transitionDelay: "0.2s" }}>
+                      These include ensuring user-friendly interfaces, maintaining data security, integrating with existing healthcare systems, and complying with regulations.
+                    </li>
+                    <li className={bulletPointsVisible ? "payroll-bullet-visible" : ""} style={{ transitionDelay: "0.3s" }}>
+                      Additionally, keeping up with rapid technological advancements and addressing user feedback effectively can be daunting.
+                    </li>
+                    <li className={bulletPointsVisible ? "payroll-bullet-visible" : ""} style={{ transitionDelay: "0.4s" }}>
+                      It's crucial to navigate these hurdles to create a successful and impactful application.
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -246,10 +284,18 @@ const PayrollCaseStudy = () => {
                 <div className="payroll-case-study-solutions-text-wrapper">
                   <h3 className="payroll-case-study-solutions-heading">Solutions</h3>
                   <ul className="payroll-case-study-solutions-list">
-                    <li>Automated payroll processing with accurate calculations and timely payments.</li>
-                    <li>Integrated attendance tracking system with biometric and digital check-in options.</li>
-                    <li>Built-in tax calculation engine that ensures compliance with local regulations.</li>
-                    <li>Mobile and web portals for employees to access payslips and payroll information anytime.</li>
+                    <li className={bulletPointsVisible ? "payroll-bullet-visible" : ""} style={{ transitionDelay: "0.5s" }}>
+                      Developing a meditech app comes with its own set of challenges.
+                    </li>
+                    <li className={bulletPointsVisible ? "payroll-bullet-visible" : ""} style={{ transitionDelay: "0.6s" }}>
+                      These include ensuring user-friendly interfaces, maintaining data security, integrating with existing healthcare systems, and complying with regulations.
+                    </li>
+                    <li className={bulletPointsVisible ? "payroll-bullet-visible" : ""} style={{ transitionDelay: "0.7s" }}>
+                      Additionally, keeping up with rapid technological advancements and addressing user feedback effectively can be daunting.
+                    </li>
+                    <li className={bulletPointsVisible ? "payroll-bullet-visible" : ""} style={{ transitionDelay: "0.8s" }}>
+                      It's crucial to navigate these hurdles to create a successful and impactful application.
+                    </li>
                   </ul>
                 </div>
               </div>

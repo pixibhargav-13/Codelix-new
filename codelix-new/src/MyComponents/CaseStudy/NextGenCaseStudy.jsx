@@ -9,7 +9,7 @@ import whiteArrow from "../Images/whiteArrow.png";
 import projectImage from "../Images/work-best-project-one.png";
 import underline from "../Images/what-we-build-underline.png";
 import lightImage from "../Images/Light.png";
-import light2Image from "../Images/Light2.png";
+import light2Image from "../Images/Light7.png";
 import fam1Image from "../Images/fam-1.png";
 import fam2Image from "../Images/fam-2.png";
 import figmaLogo from "../Images/figma.png";
@@ -24,8 +24,10 @@ import { useNavigate } from "react-router-dom";
 const NextGenCaseStudy = () => {
   const navigate = useNavigate();
   const outcomesRef = useRef(null);
+  const challengesRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [counts, setCounts] = useState({ projects: 0, success: 0, years: 0 });
+  const [counts, setCounts] = useState({ projects: 1, success: 1, years: 1 });
+  const [bulletPointsVisible, setBulletPointsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -51,6 +53,32 @@ const NextGenCaseStudy = () => {
     };
   }, [isVisible]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !bulletPointsVisible) {
+            setBulletPointsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (challengesRef.current) {
+      observer.observe(challengesRef.current);
+    }
+
+    return () => {
+      if (challengesRef.current) {
+        observer.unobserve(challengesRef.current);
+      }
+    };
+  }, [bulletPointsVisible]);
+
+  // Target values for animation
+  const targetValues = { projects: 42, success: 29, years: 20 };
+
   const easeOutCubic = (t) => {
     return 1 - Math.pow(1 - t, 3);
   };
@@ -64,29 +92,29 @@ const NextGenCaseStudy = () => {
       const progress = Math.min(elapsed / duration, 1);
       const easedProgress = easeOutCubic(progress);
 
-      // Animate Projects (50+)
+      // Animate Projects (starting from 1)
       setCounts((prev) => ({
         ...prev,
-        projects: Math.floor(50 * easedProgress),
+        projects: Math.floor(1 + (targetValues.projects - 1) * easedProgress),
       }));
 
-      // Animate Success Rate (95%)
+      // Animate Success Rate (starting from 1)
       setCounts((prev) => ({
         ...prev,
-        success: Math.floor(95 * easedProgress),
+        success: Math.floor(1 + (targetValues.success - 1) * easedProgress),
       }));
 
-      // Animate Years (6+)
+      // Animate Years (starting from 1)
       setCounts((prev) => ({
         ...prev,
-        years: Math.floor(6 * easedProgress),
+        years: Math.floor(1 + (targetValues.years - 1) * easedProgress),
       }));
 
       if (progress < 1) {
         requestAnimationFrame(animate);
       } else {
         // Ensure final values are set
-        setCounts({ projects: 50, success: 95, years: 6 });
+        setCounts(targetValues);
       }
     };
 
@@ -119,10 +147,10 @@ const NextGenCaseStudy = () => {
               <div className="col-lg-8 nextgen-case-study-content-col">
                 <div className="nextgen-case-study-content-wrapper">
                   <h1 className="nextgen-case-study-hero-title">
-                    NextGen - Streamlining Your Healthcare Billing Process
+                    NextGen – Modern Fashion E-Commerce Website
                   </h1>
                   <p className="nextgen-case-study-hero-description">
-                    Introducing an innovative point-of-sale (POS) system specifically tailored for healthcare facilities that handle over 2,000 transactions daily. This advanced solution streamlines operations, enhances patient experiences.
+                    A modern and fully responsive e-commerce website built for a fashion and lifestyle brand offering clothing, eyewear, and accessories. This platform features a clean user interface, intuitive navigation, and a seamless shopping experience designed to maximize user engagement and conversions.
                   </p>
                   
                   {/* Tags */}
@@ -165,7 +193,10 @@ const NextGenCaseStudy = () => {
                 </span>
               </h2>
               <p className="nextgen-case-study-section-paragraph">
-                Introducing an innovative point-of-sale (POS) system specifically tailored for healthcare facilities that handle over 2,000 transactions daily. This advanced solution not only streamlines operations but also significantly enhances patient experiences by providing seamless transaction processing, real-time inventory management, and comprehensive reporting features. With its user-friendly interface and robust security measures, this POS system is designed to meet the unique needs of healthcare providers, ensuring that both staff and patients benefit from improved efficiency and satisfaction.
+               The NextGen Fashion E-Commerce Website is a modern, fully responsive online storefront created for a lifestyle brand selling clothing, eyewear, and accessories. The platform delivers a clean and elegant interface with intuitive navigation, ensuring that users can browse categories, explore product details, and complete purchases effortlessly.
+              </p>
+              <p className="nextgen-case-study-section-paragraph">
+                With a strong focus on conversion optimization, the website includes smooth transitions, fast load speeds, and visually appealing product layouts that highlight the brand’s unique style. Built for both mobile and web users, the platform ensures a seamless shopping experience across all devices.
               </p>
             </div>
           </div>
@@ -190,20 +221,20 @@ const NextGenCaseStudy = () => {
               <div className="row nextgen-case-study-outcomes-cards">
                 <div className="col-lg-4 col-md-4 col-sm-12">
                   <div className="nextgen-case-study-outcome-card">
-                    <div className="nextgen-case-study-outcome-number">{counts.projects}+</div>
-                    <div className="nextgen-case-study-outcome-label">Projects Completed</div>
+                    <div className="nextgen-case-study-outcome-number">{counts.projects}%</div>
+                    <div className="nextgen-case-study-outcome-label"> increase in product views</div>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-12">
                   <div className="nextgen-case-study-outcome-card">
                     <div className="nextgen-case-study-outcome-number">{counts.success}%</div>
-                    <div className="nextgen-case-study-outcome-label">Success Rate</div>
+                    <div className="nextgen-case-study-outcome-label">faster average browsing speed</div>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-12">
                   <div className="nextgen-case-study-outcome-card">
-                    <div className="nextgen-case-study-outcome-number">{counts.years}+</div>
-                    <div className="nextgen-case-study-outcome-label">Years of Experience</div>
+                    <div className="nextgen-case-study-outcome-number">{counts.years}%</div>
+                    <div className="nextgen-case-study-outcome-label">improvement in checkout completion rates</div>
                   </div>
                 </div>
               </div>
@@ -219,7 +250,7 @@ const NextGenCaseStudy = () => {
         </div>
 
         {/* Challenges & Solutions Section */}
-        <div className="nextgen-case-study-challenges-solutions-section py-5">
+        <div className="nextgen-case-study-challenges-solutions-section py-5" ref={challengesRef}>
           <div className="container">
             <div className="row nextgen-case-study-challenges-grid">
               {/* Top Left - Challenges Image */}
@@ -232,10 +263,18 @@ const NextGenCaseStudy = () => {
                 <div className="nextgen-case-study-challenges-text-wrapper">
                   <h3 className="nextgen-case-study-challenges-heading">Challenges</h3>
                   <ul className="nextgen-case-study-challenges-list">
-                    <li>Developing a meditech app comes with its own set of challenges.</li>
-                    <li>These include ensuring user-friendly interfaces, maintaining data security, integrating with existing healthcare systems, and complying with regulations.</li>
-                    <li>Additionally, keeping up with rapid technological advancements and addressing user feedback effectively can be daunting.</li>
-                    <li>It's crucial to navigate these hurdles to create a successful and impactful application.</li>
+                    <li className={bulletPointsVisible ? "nextgen-bullet-visible" : ""} style={{ transitionDelay: "0.1s" }}>
+                      Creating an engaging online shopping experience that reflects the brand's modern fashion identity.
+                    </li>
+                    <li className={bulletPointsVisible ? "nextgen-bullet-visible" : ""} style={{ transitionDelay: "0.2s" }}>
+                      Ensuring the website performs seamlessly across all devices, especially mobile, where most fashion shoppers browse.
+                    </li>
+                    <li className={bulletPointsVisible ? "nextgen-bullet-visible" : ""} style={{ transitionDelay: "0.3s" }}>
+                      Organizing multiple product categories (clothing, eyewear, accessories) in an intuitive way that encourages exploration.
+                    </li>
+                    <li className={bulletPointsVisible ? "nextgen-bullet-visible" : ""} style={{ transitionDelay: "0.4s" }}>
+                      Building trust and maximizing conversions through clear product presentation, secure checkout, and smooth user flow.
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -245,10 +284,18 @@ const NextGenCaseStudy = () => {
                 <div className="nextgen-case-study-solutions-text-wrapper">
                   <h3 className="nextgen-case-study-solutions-heading">Solutions</h3>
                   <ul className="nextgen-case-study-solutions-list">
-                    <li>Developing a meditech app comes with its own set of challenges.</li>
-                    <li>These include ensuring user-friendly interfaces, maintaining data security, integrating with existing healthcare systems, and complying with regulations.</li>
-                    <li>Additionally, keeping up with rapid technological advancements and addressing user feedback effectively can be daunting.</li>
-                    <li>It's crucial to navigate these hurdles to create a successful and impactful application.</li>
+                    <li className={bulletPointsVisible ? "nextgen-bullet-visible" : ""} style={{ transitionDelay: "0.5s" }}>
+                      Designed a clean, modern interface with high-quality product imagery and elegant layouts that showcase fashion items beautifully.
+                    </li>
+                    <li className={bulletPointsVisible ? "nextgen-bullet-visible" : ""} style={{ transitionDelay: "0.6s" }}>
+                      Implemented a fully responsive design that ensures optimal viewing and shopping experience on desktop, tablet, and mobile devices.
+                    </li>
+                    <li className={bulletPointsVisible ? "nextgen-bullet-visible" : ""} style={{ transitionDelay: "0.7s" }}>
+                      Created an intuitive navigation system with clear category organization and filtering options to help customers find products easily.
+                    </li>
+                    <li className={bulletPointsVisible ? "nextgen-bullet-visible" : ""} style={{ transitionDelay: "0.8s" }}>
+                      Integrated secure payment processing, detailed product pages, and streamlined checkout flow to enhance user trust and increase conversions.
+                    </li>
                   </ul>
                 </div>
               </div>
