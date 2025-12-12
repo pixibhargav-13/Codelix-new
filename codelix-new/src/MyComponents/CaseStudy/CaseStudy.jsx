@@ -24,8 +24,10 @@ import { useNavigate } from "react-router-dom";
 const CaseStudy = () => {
   const navigate = useNavigate();
   const outcomesRef = useRef(null);
+  const challengesRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [counts, setCounts] = useState({ projects: 0, success: 0, years: 0 });
+  const [counts, setCounts] = useState({ projects: 1, success: 1, years: 1 });
+  const [bulletPointsVisible, setBulletPointsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -51,6 +53,32 @@ const CaseStudy = () => {
     };
   }, [isVisible]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !bulletPointsVisible) {
+            setBulletPointsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (challengesRef.current) {
+      observer.observe(challengesRef.current);
+    }
+
+    return () => {
+      if (challengesRef.current) {
+        observer.unobserve(challengesRef.current);
+      }
+    };
+  }, [bulletPointsVisible]);
+
+  // Target values for animation
+  const targetValues = { projects: 50, success: 95, years: 6 };
+
   const easeOutCubic = (t) => {
     return 1 - Math.pow(1 - t, 3);
   };
@@ -64,29 +92,29 @@ const CaseStudy = () => {
       const progress = Math.min(elapsed / duration, 1);
       const easedProgress = easeOutCubic(progress);
 
-      // Animate Projects (50+)
+      // Animate Projects (starting from 1)
       setCounts((prev) => ({
         ...prev,
-        projects: Math.floor(50 * easedProgress),
+        projects: Math.floor(1 + (targetValues.projects - 1) * easedProgress),
       }));
 
-      // Animate Success Rate (95%)
+      // Animate Success Rate (starting from 1)
       setCounts((prev) => ({
         ...prev,
-        success: Math.floor(95 * easedProgress),
+        success: Math.floor(1 + (targetValues.success - 1) * easedProgress),
       }));
 
-      // Animate Years (6+)
+      // Animate Years (starting from 1)
       setCounts((prev) => ({
         ...prev,
-        years: Math.floor(6 * easedProgress),
+        years: Math.floor(1 + (targetValues.years - 1) * easedProgress),
       }));
 
       if (progress < 1) {
         requestAnimationFrame(animate);
       } else {
         // Ensure final values are set
-        setCounts({ projects: 50, success: 95, years: 6 });
+        setCounts(targetValues);
       }
     };
 
@@ -219,7 +247,7 @@ const CaseStudy = () => {
         </div>
 
         {/* Challenges & Solutions Section */}
-        <div className="case-study-challenges-solutions-section py-5">
+        <div className="case-study-challenges-solutions-section py-5" ref={challengesRef}>
           <div className="container">
             <div className="row case-study-challenges-grid">
               {/* Top Left - Challenges Image */}
@@ -232,10 +260,18 @@ const CaseStudy = () => {
                 <div className="case-study-challenges-text-wrapper">
                   <h3 className="case-study-challenges-heading">Challenges</h3>
                   <ul className="case-study-challenges-list">
-                    <li>Developing a meditech app comes with its own set of challenges.</li>
-                    <li>These include ensuring user-friendly interfaces, maintaining data security, integrating with existing healthcare systems, and complying with regulations.</li>
-                    <li>Additionally, keeping up with rapid technological advancements and addressing user feedback effectively can be daunting.</li>
-                    <li>It's crucial to navigate these hurdles to create a successful and impactful application.</li>
+                    <li className={bulletPointsVisible ? "case-study-bullet-visible" : ""} style={{ transitionDelay: "0.1s" }}>
+                      Developing a meditech app comes with its own set of challenges.
+                    </li>
+                    <li className={bulletPointsVisible ? "case-study-bullet-visible" : ""} style={{ transitionDelay: "0.2s" }}>
+                      These include ensuring user-friendly interfaces, maintaining data security, integrating with existing healthcare systems, and complying with regulations.
+                    </li>
+                    <li className={bulletPointsVisible ? "case-study-bullet-visible" : ""} style={{ transitionDelay: "0.3s" }}>
+                      Additionally, keeping up with rapid technological advancements and addressing user feedback effectively can be daunting.
+                    </li>
+                    <li className={bulletPointsVisible ? "case-study-bullet-visible" : ""} style={{ transitionDelay: "0.4s" }}>
+                      It's crucial to navigate these hurdles to create a successful and impactful application.
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -245,10 +281,18 @@ const CaseStudy = () => {
                 <div className="case-study-solutions-text-wrapper">
                   <h3 className="case-study-solutions-heading">Solutions</h3>
                   <ul className="case-study-solutions-list">
-                    <li>Developing a meditech app comes with its own set of challenges.</li>
-                    <li>These include ensuring user-friendly interfaces, maintaining data security, integrating with existing healthcare systems, and complying with regulations.</li>
-                    <li>Additionally, keeping up with rapid technological advancements and addressing user feedback effectively can be daunting.</li>
-                    <li>It's crucial to navigate these hurdles to create a successful and impactful application.</li>
+                    <li className={bulletPointsVisible ? "case-study-bullet-visible" : ""} style={{ transitionDelay: "0.5s" }}>
+                      Developing a meditech app comes with its own set of challenges.
+                    </li>
+                    <li className={bulletPointsVisible ? "case-study-bullet-visible" : ""} style={{ transitionDelay: "0.6s" }}>
+                      These include ensuring user-friendly interfaces, maintaining data security, integrating with existing healthcare systems, and complying with regulations.
+                    </li>
+                    <li className={bulletPointsVisible ? "case-study-bullet-visible" : ""} style={{ transitionDelay: "0.7s" }}>
+                      Additionally, keeping up with rapid technological advancements and addressing user feedback effectively can be daunting.
+                    </li>
+                    <li className={bulletPointsVisible ? "case-study-bullet-visible" : ""} style={{ transitionDelay: "0.8s" }}>
+                      It's crucial to navigate these hurdles to create a successful and impactful application.
+                    </li>
                   </ul>
                 </div>
               </div>

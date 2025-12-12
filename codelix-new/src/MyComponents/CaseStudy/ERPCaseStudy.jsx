@@ -24,8 +24,10 @@ import { useNavigate } from "react-router-dom";
 const ERPCaseStudy = () => {
   const navigate = useNavigate();
   const outcomesRef = useRef(null);
+  const challengesRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [counts, setCounts] = useState({ projects: 0, success: 0, years: 0 });
+  const [counts, setCounts] = useState({ projects: 1, success: 1, years: 1 });
+  const [bulletPointsVisible, setBulletPointsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -51,6 +53,32 @@ const ERPCaseStudy = () => {
     };
   }, [isVisible]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !bulletPointsVisible) {
+            setBulletPointsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (challengesRef.current) {
+      observer.observe(challengesRef.current);
+    }
+
+    return () => {
+      if (challengesRef.current) {
+        observer.unobserve(challengesRef.current);
+      }
+    };
+  }, [bulletPointsVisible]);
+
+  // Target values for animation
+  const targetValues = { projects: 70, success: 2, years: 95 };
+
   const easeOutCubic = (t) => {
     return 1 - Math.pow(1 - t, 3);
   };
@@ -64,29 +92,29 @@ const ERPCaseStudy = () => {
       const progress = Math.min(elapsed / duration, 1);
       const easedProgress = easeOutCubic(progress);
 
-      // Animate Projects (50+)
+      // Animate Projects (starting from 1)
       setCounts((prev) => ({
         ...prev,
-        projects: Math.floor(50 * easedProgress),
+        projects: Math.floor(1 + (targetValues.projects - 1) * easedProgress),
       }));
 
-      // Animate Success Rate (95%)
+      // Animate Success Rate (starting from 1)
       setCounts((prev) => ({
         ...prev,
-        success: Math.floor(95 * easedProgress),
+        success: Math.floor(1 + (targetValues.success - 1) * easedProgress),
       }));
 
-      // Animate Years (6+)
+      // Animate Years (starting from 1)
       setCounts((prev) => ({
         ...prev,
-        years: Math.floor(6 * easedProgress),
+        years: Math.floor(1 + (targetValues.years - 1) * easedProgress),
       }));
 
       if (progress < 1) {
         requestAnimationFrame(animate);
       } else {
         // Ensure final values are set
-        setCounts({ projects: 70, success: 2, years: 95 });
+        setCounts(targetValues);
       }
     };
 
@@ -166,6 +194,8 @@ const ERPCaseStudy = () => {
               </h2>
               <p className="erp-case-study-section-paragraph">
               This Custom ERP Solution was created to streamline complex industrial and financial operations for a high-volume enterprise. The system centralizes all core business processes—procurement, production, inventory, sales, finance, and compliance—into a unified platform capable of handling thousands of daily transactions.
+              </p>
+              <p className="erp-case-study-section-paragraph">
               Designed for scalability and robustness, the ERP ensures accurate data flow, smooth departmental coordination, and real-time insights that enable better planning, reduced operational delays, and stronger financial control. The solution supports both web access and cloud deployment on AWS for enterprise-level reliability.
               </p>
             </div>
@@ -220,7 +250,7 @@ const ERPCaseStudy = () => {
         </div>
 
         {/* Challenges & Solutions Section */}
-        <div className="erp-case-study-challenges-solutions-section py-5">
+        <div className="erp-case-study-challenges-solutions-section py-5" ref={challengesRef}>
           <div className="container">
             <div className="row erp-case-study-challenges-grid">
               {/* Top Left - Challenges Image */}
@@ -233,10 +263,18 @@ const ERPCaseStudy = () => {
                 <div className="erp-case-study-challenges-text-wrapper">
                   <h3 className="erp-case-study-challenges-heading">Challenges</h3>
                   <ul className="erp-case-study-challenges-list">
-                    <li>Managing complex industrial workflows across multiple departments.</li>
-                    <li>Integrating disparate systems and ensuring data consistency.</li>
-                    <li>Handling high-volume transactions while maintaining system performance.</li>
-                    <li>Ensuring compliance with financial regulations and reporting requirements.</li>
+                    <li className={bulletPointsVisible ? "erp-bullet-visible" : ""} style={{ transitionDelay: "0.1s" }}>
+                      Developing a meditech app comes with its own set of challenges.
+                    </li>
+                    <li className={bulletPointsVisible ? "erp-bullet-visible" : ""} style={{ transitionDelay: "0.2s" }}>
+                      These include ensuring user-friendly interfaces, maintaining data security, integrating with existing healthcare systems, and complying with regulations.
+                    </li>
+                    <li className={bulletPointsVisible ? "erp-bullet-visible" : ""} style={{ transitionDelay: "0.3s" }}>
+                      Additionally, keeping up with rapid technological advancements and addressing user feedback effectively can be daunting.
+                    </li>
+                    <li className={bulletPointsVisible ? "erp-bullet-visible" : ""} style={{ transitionDelay: "0.4s" }}>
+                      It's crucial to navigate these hurdles to create a successful and impactful application.
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -246,10 +284,18 @@ const ERPCaseStudy = () => {
                 <div className="erp-case-study-solutions-text-wrapper">
                   <h3 className="erp-case-study-solutions-heading">Solutions</h3>
                   <ul className="erp-case-study-solutions-list">
-                    <li>Developed a unified ERP platform that centralizes all business operations.</li>
-                    <li>Implemented real-time data synchronization and automated workflows.</li>
-                    <li>Built scalable architecture to handle increasing transaction volumes.</li>
-                    <li>Created comprehensive reporting and compliance modules for financial transparency.</li>
+                    <li className={bulletPointsVisible ? "erp-bullet-visible" : ""} style={{ transitionDelay: "0.5s" }}>
+                      Developing a meditech app comes with its own set of challenges.
+                    </li>
+                    <li className={bulletPointsVisible ? "erp-bullet-visible" : ""} style={{ transitionDelay: "0.6s" }}>
+                      These include ensuring user-friendly interfaces, maintaining data security, integrating with existing healthcare systems, and complying with regulations.
+                    </li>
+                    <li className={bulletPointsVisible ? "erp-bullet-visible" : ""} style={{ transitionDelay: "0.7s" }}>
+                      Additionally, keeping up with rapid technological advancements and addressing user feedback effectively can be daunting.
+                    </li>
+                    <li className={bulletPointsVisible ? "erp-bullet-visible" : ""} style={{ transitionDelay: "0.8s" }}>
+                      It's crucial to navigate these hurdles to create a successful and impactful application.
+                    </li>
                   </ul>
                 </div>
               </div>
