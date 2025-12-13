@@ -20,6 +20,7 @@ export const WhatWeBuild = () => {
       description:
         "A fully functional mobile application designed to simplify and digitise everyday society operations. It enhances communication between residents...",
       buttonText: "Read",
+      path: "/smart-society-management-case-study",
     },
     {
       id: 2,
@@ -29,6 +30,7 @@ export const WhatWeBuild = () => {
       description:
         "A robust and scalable ERP system designed to handle complex industrial workflows, streamline financial processes, and support high-volume operations.",
       buttonText: "Read",
+      path: "/erp-case-study",
     },
     {
       id: 3,
@@ -38,6 +40,7 @@ export const WhatWeBuild = () => {
       description:
         "A modern and intuitive online storefront designed specifically for book retail, featuring smooth navigation, elegant product showcases, and a se...",
       buttonText: "Read",
+      path: "/book-collections-case-study",
     },
     {
       id: 4,
@@ -46,6 +49,7 @@ export const WhatWeBuild = () => {
       description:
         "A user-friendly automotive mobile application designed to make the car buying and selling process simple, transparent, and efficient. The platfor...",
       buttonText: "Read",
+      path: "/car-marketplace-case-study",
     },
   ];
 
@@ -68,7 +72,11 @@ export const WhatWeBuild = () => {
         <div className="row g-4">
           {cards.map((card) => (
             <div className="col-lg-6" key={card.id}>
-              <div className="card what-card h-100">
+              <div 
+                className="card what-card h-100"
+                style={{ cursor: 'pointer' }}
+                onClick={() => navigate(card.path)}
+              >
                 {/* IMAGE */}
                 <div className="image-wrapper">
                   <img
@@ -81,7 +89,13 @@ export const WhatWeBuild = () => {
                 {/* TEXT */}
                 <div className="card-body text-start d-flex justify-content-between card-text-section">
                   <h5 className="fw-bold mt-1">{card.title}</h5>
-                  <button className="btn btn-outline-dark px-3 d-flex read-btn align-items-center">
+                  <button 
+                    className="btn btn-outline-dark px-3 d-flex read-btn align-items-center"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate(card.path);
+                    }}
+                  >
                     <span>{card.buttonText}</span>
                     <img src={blackArrow} alt="arrow" className="arrow-icon" />
                   </button>
