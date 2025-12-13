@@ -4,7 +4,7 @@ import { Navbar } from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { SEO } from "../../components/SEO";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
-import logoV2 from "../Images/Logo_v2.png";
+import logoV2 from "../Images/Logo-V2.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import projectImage from "../Images/work-best-project-three.png";
 import underline from "../Images/what-we-build-underline.png";
@@ -17,7 +17,8 @@ import adobeXdLogo from "../Images/adobe-xd.png";
 import sketchLogo from "../Images/sketch.png";
 import framerLogo from "../Images/framer.png";
 import canvaLogo from "../Images/canva.png";
-import component5Image from "../Images/Component 5.png";
+import projectFour from "../Images/work-best-project-four.png";
+import projectFifteen from "../Images/work-best-project-fifteen.png";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -262,16 +263,16 @@ const SmartSocietyManagementCaseStudy = () => {
                   <h3 className="smart-society-management-case-study-challenges-heading">Challenges</h3>
                   <ul className="smart-society-management-case-study-challenges-list">
                     <li className={bulletPointsVisible ? "smart-society-management-bullet-visible" : ""} style={{ transitionDelay: "0.1s" }}>
-                      Creating a unified platform that serves diverse needs of residents, management committees, and service providers.
+                      Most tasks such as maintenance requests, approvals, and payment tracking were handled manually or via WhatsApp, causing delays and confusion.
                     </li>
                     <li className={bulletPointsVisible ? "smart-society-management-bullet-visible" : ""} style={{ transitionDelay: "0.2s" }}>
-                      Implementing secure payment processing for maintenance dues and other community fees.
+                      Important updates often didn't reach residents in time, leading to frustration and repeated queries.
                     </li>
                     <li className={bulletPointsVisible ? "smart-society-management-bullet-visible" : ""} style={{ transitionDelay: "0.3s" }}>
-                      Building an efficient system for managing maintenance requests, complaints, and service tracking.
+                      Residents had no single app to manage payments, track requests, view notices, or contact the committee.
                     </li>
                     <li className={bulletPointsVisible ? "smart-society-management-bullet-visible" : ""} style={{ transitionDelay: "0.4s" }}>
-                      Ensuring effective communication channels between residents and management while maintaining privacy and security.
+                      Security checkpoints relied on manual registers, which were inaccurate and slow.
                     </li>
                   </ul>
                 </div>
@@ -283,16 +284,16 @@ const SmartSocietyManagementCaseStudy = () => {
                   <h3 className="smart-society-management-case-study-solutions-heading">Solutions</h3>
                   <ul className="smart-society-management-case-study-solutions-list">
                     <li className={bulletPointsVisible ? "smart-society-management-bullet-visible" : ""} style={{ transitionDelay: "0.5s" }}>
-                      Designed role-based interfaces with personalized dashboards for residents, committee members, and administrators to access relevant features.
+                      Resident Dashboard- Maintenance status, Payments overview, Announcements, Upcoming events, Quick actions for common services
                     </li>
                     <li className={bulletPointsVisible ? "smart-society-management-bullet-visible" : ""} style={{ transitionDelay: "0.6s" }}>
-                      Integrated secure payment gateways with multiple payment options, automated reminders, and transparent billing systems.
+                      Maintenance & Service Requests- Raise tickets in seconds, Add photos and descriptions, Real-time status updates, Faster approvals and tracking
                     </li>
                     <li className={bulletPointsVisible ? "smart-society-management-bullet-visible" : ""} style={{ transitionDelay: "0.7s" }}>
-                      Created a comprehensive request management system with status tracking, priority assignment, and automated notifications.
+                      Online Payments & Dues- Pay maintenance and society charges from the app, View past transactions, Automated reminders
                     </li>
                     <li className={bulletPointsVisible ? "smart-society-management-bullet-visible" : ""} style={{ transitionDelay: "0.8s" }}>
-                      Implemented communication features including announcements, messaging, and community forums with privacy controls and moderation tools.
+                      Visitor & Security Management- Pre-approve guests, Digital visitor logs, Staff attendance and daily workers tracking
                     </li>
                   </ul>
                 </div>
@@ -362,15 +363,76 @@ const SmartSocietyManagementCaseStudy = () => {
         {/* Let's Build Something Section */}
         <LetsBuildSomething />
 
-        {/* Component 5 Images Section */}
-        <div className="smart-society-management-case-study-component5-section py-7">
+        {/* Best Projects Section */}
+        <div className="smart-society-management-case-study-best-projects-section py-6">
           <div className="container">
-            <div className="row smart-society-management-case-study-component5-row">
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="smart-society-management-case-study-component5-image" />
+            <div className="smart-society-management-case-study-best-projects-wrapper">
+              {/* Project 1: Car Marketplace */}
+              <div className="smart-society-management-case-study-best-project-card">
+                <div className="row align-items-center">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectFour}
+                      alt="A Feature-Rich Mobile Marketplace for Buying & Selling Cars"
+                      className="smart-society-management-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 smart-society-management-case-study-best-project-content-col">
+                    <div className="smart-society-management-case-study-best-project-content">
+                      <h3 className="smart-society-management-case-study-best-project-title">
+                        A Feature-Rich Mobile Marketplace for Buying & Selling Cars
+                      </h3>
+                      <p className="smart-society-management-case-study-best-project-desc">
+                        A user-friendly automotive mobile application designed to make the car buying and selling process simple, transparent, and efficient. The platform allows users to browse a wide range of vehicles with detailed specifications, list their own cars for sale in just a few steps, and compare different options side-by-side to make confident decisions.
+                      </p>
+                      <div className="smart-society-management-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="smart-society-management-case-study-best-project-tag-badge">Android</span>
+                        <span className="smart-society-management-case-study-best-project-tag-badge">iOS</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn smart-society-management-case-study-read-case-study-btn smart-society-management-case-study-project-btn"
+                      onClick={() => navigate("/car-marketplace-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="smart-society-management-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="smart-society-management-case-study-component5-image" />
+
+              {/* Project 2: School Management */}
+              <div className="smart-society-management-case-study-best-project-card">
+                <div className="row align-items-center flex-row-reverse">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectFifteen}
+                      alt="Morden School Management Mobile Application"
+                      className="smart-society-management-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 smart-society-management-case-study-best-project-content-col">
+                    <div className="smart-society-management-case-study-best-project-content">
+                      <h3 className="smart-society-management-case-study-best-project-title">
+                        Morden School Management Mobile Application
+                      </h3>
+                      <p className="smart-society-management-case-study-best-project-desc">
+                        A comprehensive mobile application designed to streamline school operations and enhance communication between students, parents, teachers, and administrators. The app provides real-time updates on attendance, grades, assignments, events, and school announcements, making it easier for all stakeholders to stay connected and informed.
+                      </p>
+                      <div className="smart-society-management-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="smart-society-management-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="smart-society-management-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn smart-society-management-case-study-read-case-study-btn smart-society-management-case-study-project-btn"
+                      onClick={() => navigate("/school-management-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="smart-society-management-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

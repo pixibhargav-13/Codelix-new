@@ -4,7 +4,7 @@ import { Navbar } from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { SEO } from "../../components/SEO";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
-import logoV2 from "../Images/Logo_v2.png";
+import logoV2 from "../Images/Logo-V2.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import projectImage from "../Images/work-best-project-eleven.png";
 import underline from "../Images/what-we-build-underline.png";
@@ -17,7 +17,8 @@ import adobeXdLogo from "../Images/adobe-xd.png";
 import sketchLogo from "../Images/sketch.png";
 import framerLogo from "../Images/framer.png";
 import canvaLogo from "../Images/canva.png";
-import component5Image from "../Images/Component 5.png";
+import projectSix from "../Images/work-best-project-six.png";
+import projectTwelve from "../Images/work-best-project-twelve.png";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -264,16 +265,16 @@ const ElegantCreativeAgencyCaseStudy = () => {
                   <h3 className="elegant-creative-agency-case-study-challenges-heading">Challenges</h3>
                   <ul className="elegant-creative-agency-case-study-challenges-list">
                     <li className={bulletPointsVisible ? "elegant-creative-agency-bullet-visible" : ""} style={{ transitionDelay: "0.1s" }}>
-                      Creating a sophisticated dark-mode design that feels premium and elegant without being overwhelming.
+                      The previous layout lacked personality, failing to reflect the studio's design capabilities.
                     </li>
                     <li className={bulletPointsVisible ? "elegant-creative-agency-bullet-visible" : ""} style={{ transitionDelay: "0.2s" }}>
-                      Balancing bold visual elements with clean grid structures to create a cohesive and professional layout.
+                      Portfolio pieces weren't displayed in a visually engaging or structured way.
                     </li>
                     <li className={bulletPointsVisible ? "elegant-creative-agency-bullet-visible" : ""} style={{ transitionDelay: "0.3s" }}>
-                      Ensuring strong typography choices enhance readability and brand identity while maintaining visual impact.
+                      Earlier versions attempted dark themes but lacked contrast and readability.
                     </li>
                     <li className={bulletPointsVisible ? "elegant-creative-agency-bullet-visible" : ""} style={{ transitionDelay: "0.4s" }}>
-                      Designing an interface that showcases creative work effectively while maintaining intuitive navigation and user flow.
+                      Users had difficulty understanding services, categories, and project types.
                     </li>
                   </ul>
                 </div>
@@ -285,16 +286,16 @@ const ElegantCreativeAgencyCaseStudy = () => {
                   <h3 className="elegant-creative-agency-case-study-solutions-heading">Solutions</h3>
                   <ul className="elegant-creative-agency-case-study-solutions-list">
                     <li className={bulletPointsVisible ? "elegant-creative-agency-bullet-visible" : ""} style={{ transitionDelay: "0.5s" }}>
-                      Developed a refined dark-mode color palette with carefully selected contrast ratios to ensure readability and visual sophistication.
+                      Dark-Mode Visual Identity- Elegant, high-contrast dark theme, Strong, expressive typography, Premium visual style for artistic impact
                     </li>
                     <li className={bulletPointsVisible ? "elegant-creative-agency-bullet-visible" : ""} style={{ transitionDelay: "0.6s" }}>
-                      Implemented clean grid systems and strategic spacing that create visual hierarchy while allowing creative content to shine.
+                      Modern Portfolio Showcase- Grid-based project layouts, Smooth animations, Large imagery for deep visual storytelling
                     </li>
                     <li className={bulletPointsVisible ? "elegant-creative-agency-bullet-visible" : ""} style={{ transitionDelay: "0.7s" }}>
-                      Selected and customized typography that reinforces brand identity, enhances readability, and creates strong visual impact.
+                      Clear, Minimal Navigation- Service categories organized logically, Faster access to projects and contact forms, Reduced visual clutter
                     </li>
                     <li className={bulletPointsVisible ? "elegant-creative-agency-bullet-visible" : ""} style={{ transitionDelay: "0.8s" }}>
-                      Created an intuitive portfolio showcase with smooth interactions and clear navigation that highlights creative work effectively.
+                      Mobile-Optimized Creative Experience- Responsive grids, Smooth animations on mobile, Tablet-friendly layouts for presentations
                     </li>
                   </ul>
                 </div>
@@ -364,15 +365,76 @@ const ElegantCreativeAgencyCaseStudy = () => {
         {/* Let's Build Something Section */}
         <LetsBuildSomething />
 
-        {/* Component 5 Images Section */}
-        <div className="elegant-creative-agency-case-study-component5-section py-7">
+        {/* Best Projects Section */}
+        <div className="elegant-creative-agency-case-study-best-projects-section py-7">
           <div className="container">
-            <div className="row elegant-creative-agency-case-study-component5-row">
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="elegant-creative-agency-case-study-component5-image" />
+            <div className="elegant-creative-agency-case-study-best-projects-wrapper">
+              {/* Project 1: Modern Creative Agency */}
+              <div className="elegant-creative-agency-case-study-best-project-card">
+                <div className="row align-items-center">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectSix}
+                      alt="Modern Website UI/UX Design for a Creative Agency"
+                      className="elegant-creative-agency-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 elegant-creative-agency-case-study-best-project-content-col">
+                    <div className="elegant-creative-agency-case-study-best-project-content">
+                      <h3 className="elegant-creative-agency-case-study-best-project-title">
+                        Modern Website UI/UX Design for a Creative Agency
+                      </h3>
+                      <p className="elegant-creative-agency-case-study-best-project-desc">
+                        This project showcases the complete UI/UX design for a modern creative agency website. The design focuses on a bold visual identity, clean layout structures, and a smooth user journey across all pages.
+                      </p>
+                      <div className="elegant-creative-agency-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="elegant-creative-agency-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="elegant-creative-agency-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn elegant-creative-agency-case-study-read-case-study-btn elegant-creative-agency-case-study-project-btn"
+                      onClick={() => navigate("/modern-creative-agency-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="elegant-creative-agency-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="elegant-creative-agency-case-study-component5-image" />
+
+              {/* Project 2: AI Powered Design */}
+              <div className="elegant-creative-agency-case-study-best-project-card">
+                <div className="row align-items-center flex-row-reverse">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectTwelve}
+                      alt="AI-Powered Design Platform – UI/UX Concept"
+                      className="elegant-creative-agency-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 elegant-creative-agency-case-study-best-project-content-col">
+                    <div className="elegant-creative-agency-case-study-best-project-content">
+                      <h3 className="elegant-creative-agency-case-study-best-project-title">
+                        AI-Powered Design Platform – UI/UX Concept
+                      </h3>
+                      <p className="elegant-creative-agency-case-study-best-project-desc">
+                        This project showcases a futuristic UI/UX concept created for an AI-powered design platform. The interface focuses on bold visuals, modern gradients, and a clean layout that highlights the platform's innovative features.
+                      </p>
+                      <div className="elegant-creative-agency-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="elegant-creative-agency-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="elegant-creative-agency-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn elegant-creative-agency-case-study-read-case-study-btn elegant-creative-agency-case-study-project-btn"
+                      onClick={() => navigate("/ai-powered-design-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="elegant-creative-agency-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

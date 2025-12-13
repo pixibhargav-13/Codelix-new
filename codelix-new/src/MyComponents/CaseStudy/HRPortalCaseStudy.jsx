@@ -4,7 +4,7 @@ import { Navbar } from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { SEO } from "../../components/SEO";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
-import logoV2 from "../Images/Logo_v2.png";
+import logoV2 from "../Images/Logo-V2.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import projectImage from "../Images/work-best-project-seven.png";
 import underline from "../Images/what-we-build-underline.png";
@@ -17,7 +17,8 @@ import adobeXdLogo from "../Images/adobe-xd.png";
 import sketchLogo from "../Images/sketch.png";
 import framerLogo from "../Images/framer.png";
 import canvaLogo from "../Images/canva.png";
-import component5Image from "../Images/Component 5.png";
+import projectThirteen from "../Images/work-best-project-thirteen.png";
+import projectNine from "../Images/work-best-project-nine.png";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -264,16 +265,13 @@ const HRPortalCaseStudy = () => {
                   <h3 className="hr-portal-case-study-challenges-heading">Challenges</h3>
                   <ul className="hr-portal-case-study-challenges-list">
                     <li className={bulletPointsVisible ? "hr-portal-bullet-visible" : ""} style={{ transitionDelay: "0.1s" }}>
-                      Creating a user-friendly interface that simplifies complex HR processes and benefits management.
+                      Employees used email, PDFs, or physical documents, causing delays and lost records.
                     </li>
                     <li className={bulletPointsVisible ? "hr-portal-bullet-visible" : ""} style={{ transitionDelay: "0.2s" }}>
-                      Ensuring secure handling of sensitive employee data while maintaining easy access for authorized users.
+                      Employees had limited visibility into benefits, eligibility, and claim history.
                     </li>
                     <li className={bulletPointsVisible ? "hr-portal-bullet-visible" : ""} style={{ transitionDelay: "0.3s" }}>
-                      Building a responsive platform that works seamlessly across desktop and mobile devices for on-the-go access.
-                    </li>
-                    <li className={bulletPointsVisible ? "hr-portal-bullet-visible" : ""} style={{ transitionDelay: "0.4s" }}>
-                      Implementing efficient claim submission and tracking workflows that reduce administrative burden.
+                      HR teams spent excessive time responding to repetitive employee queries.
                     </li>
                   </ul>
                 </div>
@@ -285,16 +283,16 @@ const HRPortalCaseStudy = () => {
                   <h3 className="hr-portal-case-study-solutions-heading">Solutions</h3>
                   <ul className="hr-portal-case-study-solutions-list">
                     <li className={bulletPointsVisible ? "hr-portal-bullet-visible" : ""} style={{ transitionDelay: "0.5s" }}>
-                      Designed an intuitive dashboard with clear navigation and organized sections for easy access to benefits and claims information.
+                      Employee Dashboard- View available benefits, See eligibility & policy details, Send inquiries directly through the portal
                     </li>
                     <li className={bulletPointsVisible ? "hr-portal-bullet-visible" : ""} style={{ transitionDelay: "0.6s" }}>
-                      Implemented robust security measures including authentication, encryption, and role-based access control to protect sensitive data.
+                      Digital Claim Submission- Upload documents, Auto-check required fields, Real-time claim submission status
                     </li>
                     <li className={bulletPointsVisible ? "hr-portal-bullet-visible" : ""} style={{ transitionDelay: "0.7s" }}>
-                      Developed a fully responsive design that ensures optimal functionality and user experience on all devices and screen sizes.
+                      Approval Workflow Automation- Role-based approver views, One-click approvals/rejections, Notifications and reminders
                     </li>
                     <li className={bulletPointsVisible ? "hr-portal-bullet-visible" : ""} style={{ transitionDelay: "0.8s" }}>
-                      Created streamlined workflows for claim submission and tracking with real-time status updates and notification systems.
+                      HR Control Panel- Manage benefits, Track company-wide claim statistics, Generate reports, Configure policies
                     </li>
                   </ul>
                 </div>
@@ -364,15 +362,76 @@ const HRPortalCaseStudy = () => {
         {/* Let's Build Something Section */}
         <LetsBuildSomething />
 
-        {/* Component 5 Images Section */}
-        <div className="hr-portal-case-study-component5-section py-7">
+        {/* Best Projects Section */}
+        <div className="hr-portal-case-study-best-projects-section py-7">
           <div className="container">
-            <div className="row hr-portal-case-study-component5-row">
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="hr-portal-case-study-component5-image" />
+            <div className="hr-portal-case-study-best-projects-wrapper">
+              {/* Project 1: Freight Shipping */}
+              <div className="hr-portal-case-study-best-project-card">
+                <div className="row align-items-center">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectThirteen}
+                      alt="Freight & Shipping Web Platform – Modern Development"
+                      className="hr-portal-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 hr-portal-case-study-best-project-content-col">
+                    <div className="hr-portal-case-study-best-project-content">
+                      <h3 className="hr-portal-case-study-best-project-title">
+                        Freight & Shipping Web Platform – Modern Development
+                      </h3>
+                      <p className="hr-portal-case-study-best-project-desc">
+                        A fully responsive and modern website developed for an international ocean freight and logistics service provider. The platform showcases global cargo solutions, shipment tracking features, service categories, and detailed logistics information through a clean, intuitive interface.
+                      </p>
+                      <div className="hr-portal-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="hr-portal-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="hr-portal-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn hr-portal-case-study-read-case-study-btn hr-portal-case-study-project-btn"
+                      onClick={() => navigate("/freight-shipping-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="hr-portal-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="hr-portal-case-study-component5-image" />
+
+              {/* Project 2: EdTech */}
+              <div className="hr-portal-case-study-best-project-card">
+                <div className="row align-items-center flex-row-reverse">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectNine}
+                      alt="Modern EdTech Website for Online Courses"
+                      className="hr-portal-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 hr-portal-case-study-best-project-content-col">
+                    <div className="hr-portal-case-study-best-project-content">
+                      <h3 className="hr-portal-case-study-best-project-title">
+                        Modern EdTech Website for Online Courses
+                      </h3>
+                      <p className="hr-portal-case-study-best-project-desc">
+                        A modern web platform developed for an online learning experience, featuring smooth navigation, structured course pages, and a clean, welcoming interface. The website is built with fast performance, mobile responsiveness, and a user-friendly flow to make online education simple and engaging.
+                      </p>
+                      <div className="hr-portal-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="hr-portal-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="hr-portal-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn hr-portal-case-study-read-case-study-btn hr-portal-case-study-project-btn"
+                      onClick={() => navigate("/edtech-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="hr-portal-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

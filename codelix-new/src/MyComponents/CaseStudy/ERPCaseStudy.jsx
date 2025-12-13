@@ -4,7 +4,7 @@ import { Navbar } from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { SEO } from "../../components/SEO";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
-import logoV2 from "../Images/Logo_v2.png";
+import logoV2 from "../Images/Logo-V2.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import projectImage from "../Images/work-best-project-two.png";
 import underline from "../Images/what-we-build-underline.png";
@@ -17,7 +17,8 @@ import adobeXdLogo from "../Images/adobe-xd.png";
 import sketchLogo from "../Images/sketch.png";
 import framerLogo from "../Images/framer.png";
 import canvaLogo from "../Images/canva.png";
-import component5Image from "../Images/Component 5.png";
+import projectFourteen from "../Images/work-best-project-fourteen.png";
+import projectTen from "../Images/work-best-project-ten.png";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -264,16 +265,16 @@ const ERPCaseStudy = () => {
                   <h3 className="erp-case-study-challenges-heading">Challenges</h3>
                   <ul className="erp-case-study-challenges-list">
                     <li className={bulletPointsVisible ? "erp-bullet-visible" : ""} style={{ transitionDelay: "0.1s" }}>
-                      Developing a meditech app comes with its own set of challenges.
+                      Different departments worked in isolation, leading to delays, duplicated entries, and frequent miscommunication.
                     </li>
                     <li className={bulletPointsVisible ? "erp-bullet-visible" : ""} style={{ transitionDelay: "0.2s" }}>
-                      These include ensuring user-friendly interfaces, maintaining data security, integrating with existing healthcare systems, and complying with regulations.
+                      Purchase orders, production updates, and financial data were maintained in Excel sheets or physical registers, causing inconsistencies.
                     </li>
                     <li className={bulletPointsVisible ? "erp-bullet-visible" : ""} style={{ transitionDelay: "0.3s" }}>
-                      Additionally, keeping up with rapid technological advancements and addressing user feedback effectively can be daunting.
+                      Management could not monitor stock levels, pending orders, approvals, or financial positions in real time.
                     </li>
                     <li className={bulletPointsVisible ? "erp-bullet-visible" : ""} style={{ transitionDelay: "0.4s" }}>
-                      It's crucial to navigate these hurdles to create a successful and impactful application.
+                      The business needed a system capable of processing thousands of entries per day without performance issues.
                     </li>
                   </ul>
                 </div>
@@ -285,16 +286,16 @@ const ERPCaseStudy = () => {
                   <h3 className="erp-case-study-solutions-heading">Solutions</h3>
                   <ul className="erp-case-study-solutions-list">
                     <li className={bulletPointsVisible ? "erp-bullet-visible" : ""} style={{ transitionDelay: "0.5s" }}>
-                      Developing a meditech app comes with its own set of challenges.
+                      Centralized Operational Modules- Procurement & Purchase Orders, Production Tracking, Inventory & Warehouse Management, Sales & Dispatch, Vendor & Customer Management
                     </li>
                     <li className={bulletPointsVisible ? "erp-bullet-visible" : ""} style={{ transitionDelay: "0.6s" }}>
-                      These include ensuring user-friendly interfaces, maintaining data security, integrating with existing healthcare systems, and complying with regulations.
+                      Automated Financial Processes- Ledger entries, Payment tracking, GST calculations, Vendor settlements, Expense management, Real-time profit/loss insights
                     </li>
                     <li className={bulletPointsVisible ? "erp-bullet-visible" : ""} style={{ transitionDelay: "0.7s" }}>
-                      Additionally, keeping up with rapid technological advancements and addressing user feedback effectively can be daunting.
+                      Advanced Inventory Control- Stock movement logs, Batch/lot tracking, Multi-warehouse management, Low-stock alerts, Auto-generated reports
                     </li>
                     <li className={bulletPointsVisible ? "erp-bullet-visible" : ""} style={{ transitionDelay: "0.8s" }}>
-                      It's crucial to navigate these hurdles to create a successful and impactful application.
+                      Employees view only what they are permitted to access, ensuring full data security and integrity.
                     </li>
                   </ul>
                 </div>
@@ -364,15 +365,76 @@ const ERPCaseStudy = () => {
         {/* Let's Build Something Section */}
         <LetsBuildSomething />
 
-        {/* Component 5 Images Section */}
-        <div className="erp-case-study-component5-section py-7">
+        {/* Best Projects Section */}
+        <div className="erp-case-study-best-projects-section py-7">
           <div className="container">
-            <div className="row erp-case-study-component5-row">
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="erp-case-study-component5-image" />
+            <div className="erp-case-study-best-projects-wrapper">
+              {/* Project 1: Smart Business */}
+              <div className="erp-case-study-best-project-card">
+                <div className="row align-items-center">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectFourteen}
+                      alt="Smart Business Operations System - Custom Software"
+                      className="erp-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 erp-case-study-best-project-content-col">
+                    <div className="erp-case-study-best-project-content">
+                      <h3 className="erp-case-study-best-project-title">
+                        Smart Business Operations System - Custom Software
+                      </h3>
+                      <p className="erp-case-study-best-project-desc">
+                        A comprehensive custom software solution developed to streamline business operations, featuring automated workflows, real-time analytics, and integrated management tools. The system helps businesses optimize their processes, improve efficiency, and make data-driven decisions.
+                      </p>
+                      <div className="erp-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="erp-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="erp-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn erp-case-study-read-case-study-btn erp-case-study-project-btn"
+                      onClick={() => navigate("/smart-business-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="erp-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="erp-case-study-component5-image" />
+
+              {/* Project 2: Payroll */}
+              <div className="erp-case-study-best-project-card">
+                <div className="row align-items-center flex-row-reverse">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectTen}
+                      alt="Custom Payroll Management System – Web & Mobile"
+                      className="erp-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 erp-case-study-best-project-content-col">
+                    <div className="erp-case-study-best-project-content">
+                      <h3 className="erp-case-study-best-project-title">
+                        Custom Payroll Management System – Web & Mobile
+                      </h3>
+                      <p className="erp-case-study-best-project-desc">
+                        A comprehensive payroll management system developed for web and mobile platforms, featuring employee management, salary processing, tax calculations, and detailed reporting. The system provides a seamless experience for HR teams to manage payroll efficiently across all devices.
+                      </p>
+                      <div className="erp-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="erp-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="erp-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn erp-case-study-read-case-study-btn erp-case-study-project-btn"
+                      onClick={() => navigate("/payroll-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="erp-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

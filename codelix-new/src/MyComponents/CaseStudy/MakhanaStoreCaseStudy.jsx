@@ -4,7 +4,7 @@ import { Navbar } from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { SEO } from "../../components/SEO";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
-import logoV2 from "../Images/Logo_v2.png";
+import logoV2 from "../Images/Logo-V2.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import projectImage from "../Images/work-best-project-eight.png";
 import underline from "../Images/what-we-build-underline.png";
@@ -17,7 +17,8 @@ import adobeXdLogo from "../Images/adobe-xd.png";
 import sketchLogo from "../Images/sketch.png";
 import framerLogo from "../Images/framer.png";
 import canvaLogo from "../Images/canva.png";
-import component5Image from "../Images/Component 5.png";
+import projectFive from "../Images/work-best-project-five.png";
+import projectOne from "../Images/work-best-project-one.png";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -264,16 +265,16 @@ const MakhanaStoreCaseStudy = () => {
                   <h3 className="makhana-store-case-study-challenges-heading">Challenges</h3>
                   <ul className="makhana-store-case-study-challenges-list">
                     <li className={bulletPointsVisible ? "makhana-store-bullet-visible" : ""} style={{ transitionDelay: "0.1s" }}>
-                      Creating a visually appealing platform that reflects the premium and organic nature of the makhana products.
+                      Product images, descriptions, and category layouts did not clearly communicate quality or brand value.
                     </li>
                     <li className={bulletPointsVisible ? "makhana-store-bullet-visible" : ""} style={{ transitionDelay: "0.2s" }}>
-                      Ensuring the website performs well on mobile devices since a significant portion of customers shop on smartphones.
+                      Most users browsed from mobile, but the old site had slow load times and layout breaks.
                     </li>
                     <li className={bulletPointsVisible ? "makhana-store-bullet-visible" : ""} style={{ transitionDelay: "0.3s" }}>
-                      Organizing multiple product categories and variants in a way that's easy to navigate and understand.
+                      Customers faced difficulty locating specific flavors, pack sizes, or combo offers.
                     </li>
                     <li className={bulletPointsVisible ? "makhana-store-bullet-visible" : ""} style={{ transitionDelay: "0.4s" }}>
-                      Building trust and credibility through clear product information, secure checkout, and professional design.
+                      Weak visual presentation and scattered information lowered user interest and trust.
                     </li>
                   </ul>
                 </div>
@@ -285,16 +286,16 @@ const MakhanaStoreCaseStudy = () => {
                   <h3 className="makhana-store-case-study-solutions-heading">Solutions</h3>
                   <ul className="makhana-store-case-study-solutions-list">
                     <li className={bulletPointsVisible ? "makhana-store-bullet-visible" : ""} style={{ transitionDelay: "0.5s" }}>
-                      Designed a clean, modern interface with high-quality product imagery and elegant typography that conveys premium quality.
+                      Mobile-First E-Commerce Experience- Smooth, touch-friendly interface, Optimized banners and product carousels, Faster load times for mobile visitors
                     </li>
                     <li className={bulletPointsVisible ? "makhana-store-bullet-visible" : ""} style={{ transitionDelay: "0.6s" }}>
-                      Implemented a mobile-first responsive design that ensures optimal viewing and shopping experience across all devices.
+                      Category-Smart Navigation- Filters by flavor, pack size, combinations, and pricing, Clean category hierarchies for easier product discovery
                     </li>
                     <li className={bulletPointsVisible ? "makhana-store-bullet-visible" : ""} style={{ transitionDelay: "0.7s" }}>
-                      Created an intuitive category structure with clear navigation and filtering options to help customers find products quickly.
+                      High-Quality Product Displays- Premium product images, Clear descriptions and nutritional details, Comparison-friendly product grids
                     </li>
                     <li className={bulletPointsVisible ? "makhana-store-bullet-visible" : ""} style={{ transitionDelay: "0.8s" }}>
-                      Integrated secure payment gateways, detailed product descriptions, and trust badges to enhance customer confidence and conversion rates.
+                      Conversion-Optimized Product Pages- Clear CTA buttons, Quick-add to cart, Lightweight interactions, Better placement of trust elements
                     </li>
                   </ul>
                 </div>
@@ -364,15 +365,76 @@ const MakhanaStoreCaseStudy = () => {
         {/* Let's Build Something Section */}
         <LetsBuildSomething />
 
-        {/* Component 5 Images Section */}
-        <div className="makhana-store-case-study-component5-section py-7">
+        {/* Best Projects Section */}
+        <div className="makhana-store-case-study-best-projects-section py-7">
           <div className="container">
-            <div className="row makhana-store-case-study-component5-row">
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="makhana-store-case-study-component5-image" />
+            <div className="makhana-store-case-study-best-projects-wrapper">
+              {/* Project 1: Book Collections */}
+              <div className="makhana-store-case-study-best-project-card">
+                <div className="row align-items-center">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectFive}
+                      alt="A High-Performance E-Commerce Platform for Premium Book Collections"
+                      className="makhana-store-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 makhana-store-case-study-best-project-content-col">
+                    <div className="makhana-store-case-study-best-project-content">
+                      <h3 className="makhana-store-case-study-best-project-title">
+                        A High-Performance E-Commerce Platform for Premium Book Collections
+                      </h3>
+                      <p className="makhana-store-case-study-best-project-desc">
+                        A high-performance e-commerce website developed for a premium book collection store, featuring advanced search functionality, detailed product pages, and a sophisticated design. The platform provides an exceptional browsing and purchasing experience with optimized performance and responsive layout.
+                      </p>
+                      <div className="makhana-store-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="makhana-store-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="makhana-store-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn makhana-store-case-study-read-case-study-btn makhana-store-case-study-project-btn"
+                      onClick={() => navigate("/book-collections-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="makhana-store-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="makhana-store-case-study-component5-image" />
+
+              {/* Project 2: NextGen */}
+              <div className="makhana-store-case-study-best-project-card">
+                <div className="row align-items-center flex-row-reverse">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectOne}
+                      alt="NextGen – Modern Fashion E-Commerce Website"
+                      className="makhana-store-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 makhana-store-case-study-best-project-content-col">
+                    <div className="makhana-store-case-study-best-project-content">
+                      <h3 className="makhana-store-case-study-best-project-title">
+                        NextGen – Modern Fashion E-Commerce Website
+                      </h3>
+                      <p className="makhana-store-case-study-best-project-desc">
+                        A modern, responsive e-commerce platform developed for a fashion brand, featuring elegant product displays, smooth shopping cart functionality, and a sleek user interface. The website delivers an engaging shopping experience with fast load times and mobile-first design.
+                      </p>
+                      <div className="makhana-store-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="makhana-store-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="makhana-store-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn makhana-store-case-study-read-case-study-btn makhana-store-case-study-project-btn"
+                      onClick={() => navigate("/nextgen-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="makhana-store-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

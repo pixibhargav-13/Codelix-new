@@ -4,7 +4,7 @@ import { Navbar } from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { SEO } from "../../components/SEO";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
-import logoV2 from "../Images/Logo_v2.png";
+import logoV2 from "../Images/Logo-V2.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import projectImage from "../Images/work-best-project-four.png";
 import underline from "../Images/what-we-build-underline.png";
@@ -17,7 +17,8 @@ import adobeXdLogo from "../Images/adobe-xd.png";
 import sketchLogo from "../Images/sketch.png";
 import framerLogo from "../Images/framer.png";
 import canvaLogo from "../Images/canva.png";
-import component5Image from "../Images/Component 5.png";
+import projectThree from "../Images/work-best-project-three.png";
+import projectFifteen from "../Images/work-best-project-fifteen.png";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -264,16 +265,13 @@ const CarMarketplaceCaseStudy = () => {
                   <h3 className="car-marketplace-case-study-challenges-heading">Challenges</h3>
                   <ul className="car-marketplace-case-study-challenges-list">
                     <li className={bulletPointsVisible ? "car-marketplace-bullet-visible" : ""} style={{ transitionDelay: "0.1s" }}>
-                      Creating a user-friendly interface that simplifies the complex process of buying and selling cars.
+                      Sellers found it difficult to upload images, add specifications, and set prices.
                     </li>
                     <li className={bulletPointsVisible ? "car-marketplace-bullet-visible" : ""} style={{ transitionDelay: "0.2s" }}>
-                      Implementing smart search filters and comparison features that help users find the right vehicle quickly.
+                      Users struggled to find the right cars due to limited filtering options and unclear categorization.
                     </li>
                     <li className={bulletPointsVisible ? "car-marketplace-bullet-visible" : ""} style={{ transitionDelay: "0.3s" }}>
-                      Ensuring secure transaction flows and building trust between buyers, sellers, and dealers.
-                    </li>
-                    <li className={bulletPointsVisible ? "car-marketplace-bullet-visible" : ""} style={{ transitionDelay: "0.4s" }}>
-                      Designing an intuitive listing process that makes it easy for sellers to post their vehicles with all necessary details.
+                      Missing specs, pricing uncertainties, and weak UI reduced user confidence.
                     </li>
                   </ul>
                 </div>
@@ -285,16 +283,16 @@ const CarMarketplaceCaseStudy = () => {
                   <h3 className="car-marketplace-case-study-solutions-heading">Solutions</h3>
                   <ul className="car-marketplace-case-study-solutions-list">
                     <li className={bulletPointsVisible ? "car-marketplace-bullet-visible" : ""} style={{ transitionDelay: "0.5s" }}>
-                      Designed an intuitive interface with clear navigation and organized sections that guide users through the buying and selling process effortlessly.
+                      Enhanced Vehicle Discovery- Advanced filters (brand, model, year, mileage, price, fuel type, etc.), Smart recommendations based on user preferences, Trending and featured cars section
                     </li>
                     <li className={bulletPointsVisible ? "car-marketplace-bullet-visible" : ""} style={{ transitionDelay: "0.6s" }}>
-                      Implemented advanced search filters, comparison tools, and detailed vehicle specifications to help users make informed decisions.
+                      Streamlined Car Listing Flow- Step-by-step guided listing, Auto-fill options for common car models, Easy photo uploading and spec entry
                     </li>
                     <li className={bulletPointsVisible ? "car-marketplace-bullet-visible" : ""} style={{ transitionDelay: "0.7s" }}>
-                      Integrated secure payment processing, verification systems, and transparent communication channels to build trust and ensure safe transactions.
+                      Side-by-Side Comparison Tool- Compare specifications, images, and pricing instantly, Helps users make confident purchase decisions
                     </li>
                     <li className={bulletPointsVisible ? "car-marketplace-bullet-visible" : ""} style={{ transitionDelay: "0.8s" }}>
-                      Created a streamlined listing workflow with step-by-step guidance, photo uploads, and comprehensive vehicle information forms.
+                      Real-Time Updates & Notifications- Instant updates on pricing changes, Alerts for similar cars, Status updates for listed vehicles
                     </li>
                   </ul>
                 </div>
@@ -364,15 +362,76 @@ const CarMarketplaceCaseStudy = () => {
         {/* Let's Build Something Section */}
         <LetsBuildSomething />
 
-        {/* Component 5 Images Section */}
-        <div className="car-marketplace-case-study-component5-section py-7">
+        {/* Best Projects Section */}
+        <div className="car-marketplace-case-study-best-projects-section py-7">
           <div className="container">
-            <div className="row car-marketplace-case-study-component5-row">
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="car-marketplace-case-study-component5-image" />
+            <div className="car-marketplace-case-study-best-projects-wrapper">
+              {/* Project 1: Smart Society Management */}
+              <div className="car-marketplace-case-study-best-project-card">
+                <div className="row align-items-center">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectThree}
+                      alt="A Smart Society Management App for Modern Residential Communities"
+                      className="car-marketplace-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 car-marketplace-case-study-best-project-content-col">
+                    <div className="car-marketplace-case-study-best-project-content">
+                      <h3 className="car-marketplace-case-study-best-project-title">
+                        A Smart Society Management App for Modern Residential Communities
+                      </h3>
+                      <p className="car-marketplace-case-study-best-project-desc">
+                        A comprehensive mobile and web application designed to streamline community management for modern residential societies. The platform enables residents to access essential services, manage maintenance requests, pay dues, communicate with neighbors, and stay updated with community announcements.
+                      </p>
+                      <div className="car-marketplace-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="car-marketplace-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="car-marketplace-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn car-marketplace-case-study-read-case-study-btn car-marketplace-case-study-project-btn"
+                      onClick={() => navigate("/smart-society-management-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="car-marketplace-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="car-marketplace-case-study-component5-image" />
+
+              {/* Project 2: School Management */}
+              <div className="car-marketplace-case-study-best-project-card">
+                <div className="row align-items-center flex-row-reverse">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectFifteen}
+                      alt="Morden School Management Mobile Application"
+                      className="car-marketplace-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 car-marketplace-case-study-best-project-content-col">
+                    <div className="car-marketplace-case-study-best-project-content">
+                      <h3 className="car-marketplace-case-study-best-project-title">
+                        Morden School Management Mobile Application
+                      </h3>
+                      <p className="car-marketplace-case-study-best-project-desc">
+                        A comprehensive mobile application designed to streamline school operations and enhance communication between students, parents, teachers, and administrators. The app provides real-time updates on attendance, grades, assignments, events, and school announcements.
+                      </p>
+                      <div className="car-marketplace-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="car-marketplace-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="car-marketplace-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn car-marketplace-case-study-read-case-study-btn car-marketplace-case-study-project-btn"
+                      onClick={() => navigate("/school-management-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="car-marketplace-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

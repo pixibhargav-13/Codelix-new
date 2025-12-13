@@ -4,7 +4,7 @@ import { Navbar } from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { SEO } from "../../components/SEO";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
-import logoV2 from "../Images/Logo_v2.png";
+import logoV2 from "../Images/Logo-V2.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import projectImage from "../Images/work-best-project-nine.png";
 import underline from "../Images/what-we-build-underline.png";
@@ -17,7 +17,8 @@ import adobeXdLogo from "../Images/adobe-xd.png";
 import sketchLogo from "../Images/sketch.png";
 import framerLogo from "../Images/framer.png";
 import canvaLogo from "../Images/canva.png";
-import component5Image from "../Images/Component 5.png";
+import projectThirteen from "../Images/work-best-project-thirteen.png";
+import projectSeven from "../Images/work-best-project-seven.png";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -264,16 +265,16 @@ const EdTechCaseStudy = () => {
                   <h3 className="edtech-case-study-challenges-heading">Challenges</h3>
                   <ul className="edtech-case-study-challenges-list">
                     <li className={bulletPointsVisible ? "edtech-bullet-visible" : ""} style={{ transitionDelay: "0.1s" }}>
-                      Creating an engaging and intuitive platform that makes online learning accessible and enjoyable for students.
+                      Learners struggled to understand course flow, lesson breakdowns, and key outcomes.
                     </li>
                     <li className={bulletPointsVisible ? "edtech-bullet-visible" : ""} style={{ transitionDelay: "0.2s" }}>
-                      Organizing multiple courses and learning materials in a way that's easy to navigate and discover.
+                      Navigation felt cluttered and unfriendly, making it hard for users to explore content.
                     </li>
                     <li className={bulletPointsVisible ? "edtech-bullet-visible" : ""} style={{ transitionDelay: "0.3s" }}>
-                      Ensuring fast page load times and smooth performance, especially when handling video content and course materials.
+                      Slow loading and inconsistent layouts affected a majority of mobile learners.
                     </li>
                     <li className={bulletPointsVisible ? "edtech-bullet-visible" : ""} style={{ transitionDelay: "0.4s" }}>
-                      Building a responsive design that works seamlessly across all devices for learners accessing courses on various platforms.
+                      Educators could not effectively highlight course benefits, instructor details, or testimonials.
                     </li>
                   </ul>
                 </div>
@@ -285,16 +286,16 @@ const EdTechCaseStudy = () => {
                   <h3 className="edtech-case-study-solutions-heading">Solutions</h3>
                   <ul className="edtech-case-study-solutions-list">
                     <li className={bulletPointsVisible ? "edtech-bullet-visible" : ""} style={{ transitionDelay: "0.5s" }}>
-                      Designed a clean, welcoming interface with clear course categorization and intuitive navigation to enhance the learning experience.
+                      Structured Course Pages- Lesson-by-lesson breakdown, Clear course objectives, Instructor profiles, Visual highlights & banners
                     </li>
                     <li className={bulletPointsVisible ? "edtech-bullet-visible" : ""} style={{ transitionDelay: "0.6s" }}>
-                      Implemented a structured course organization system with search and filtering capabilities to help students find relevant courses easily.
+                      Seamless Navigation Experience- Easy category browsing, Smooth transitions, Clean content hierarchy
                     </li>
                     <li className={bulletPointsVisible ? "edtech-bullet-visible" : ""} style={{ transitionDelay: "0.7s" }}>
-                      Optimized performance with efficient content loading, lazy loading techniques, and optimized media delivery for fast page speeds.
+                      Mobile-First EdTech Architecture- Fast loading for videos and images, Optimized layouts for mobile users, Responsive, touch-friendly UI
                     </li>
                     <li className={bulletPointsVisible ? "edtech-bullet-visible" : ""} style={{ transitionDelay: "0.8s" }}>
-                      Developed a fully responsive design that ensures optimal viewing and interaction on desktop, tablet, and mobile devices.
+                      Conversion-Optimized Landing Pages- Simplified sign-up steps, Strong CTAs, Social proof & testimonials
                     </li>
                   </ul>
                 </div>
@@ -364,15 +365,76 @@ const EdTechCaseStudy = () => {
         {/* Let's Build Something Section */}
         <LetsBuildSomething />
 
-        {/* Component 5 Images Section */}
-        <div className="edtech-case-study-component5-section py-7">
+        {/* Best Projects Section */}
+        <div className="edtech-case-study-best-projects-section py-7">
           <div className="container">
-            <div className="row edtech-case-study-component5-row">
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="edtech-case-study-component5-image" />
+            <div className="edtech-case-study-best-projects-wrapper">
+              {/* Project 1: Freight Shipping */}
+              <div className="edtech-case-study-best-project-card">
+                <div className="row align-items-center">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectThirteen}
+                      alt="Freight & Shipping Web Platform – Modern Development"
+                      className="edtech-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 edtech-case-study-best-project-content-col">
+                    <div className="edtech-case-study-best-project-content">
+                      <h3 className="edtech-case-study-best-project-title">
+                        Freight & Shipping Web Platform – Modern Development
+                      </h3>
+                      <p className="edtech-case-study-best-project-desc">
+                        A fully responsive and modern website developed for an international ocean freight and logistics service provider. The platform showcases global cargo solutions, shipment tracking features, service categories, and detailed logistics information through a clean, intuitive interface.
+                      </p>
+                      <div className="edtech-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="edtech-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="edtech-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn edtech-case-study-read-case-study-btn edtech-case-study-project-btn"
+                      onClick={() => navigate("/freight-shipping-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="edtech-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="edtech-case-study-component5-image" />
+
+              {/* Project 2: HR Portal */}
+              <div className="edtech-case-study-best-project-card">
+                <div className="row align-items-center flex-row-reverse">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectSeven}
+                      alt="Modern HR Portal for Employee Benefits - Web Development"
+                      className="edtech-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 edtech-case-study-best-project-content-col">
+                    <div className="edtech-case-study-best-project-content">
+                      <h3 className="edtech-case-study-best-project-title">
+                        Modern HR Portal for Employee Benefits - Web Development
+                      </h3>
+                      <p className="edtech-case-study-best-project-desc">
+                        A modern, responsive web platform developed to simplify employee benefits, claims, and HR administration. The website includes a clean dashboard for employees to view benefits, submit claims, track approvals, and access important HR resources with ease.
+                      </p>
+                      <div className="edtech-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="edtech-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="edtech-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn edtech-case-study-read-case-study-btn edtech-case-study-project-btn"
+                      onClick={() => navigate("/hr-portal-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="edtech-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

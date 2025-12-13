@@ -4,7 +4,7 @@ import { Navbar } from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { SEO } from "../../components/SEO";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
-import logoV2 from "../Images/Logo_v2.png";
+import logoV2 from "../Images/Logo-V2.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import projectImage from "../Images/work-best-project-twelve.png";
 import underline from "../Images/what-we-build-underline.png";
@@ -17,7 +17,8 @@ import adobeXdLogo from "../Images/adobe-xd.png";
 import sketchLogo from "../Images/sketch.png";
 import framerLogo from "../Images/framer.png";
 import canvaLogo from "../Images/canva.png";
-import component5Image from "../Images/Component 5.png";
+import projectEleven from "../Images/work-best-project-eleven.png";
+import projectSix from "../Images/work-best-project-six.png";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -264,16 +265,16 @@ const AIPoweredDesignCaseStudy = () => {
                   <h3 className="ai-powered-design-case-study-challenges-heading">Challenges</h3>
                   <ul className="ai-powered-design-case-study-challenges-list">
                     <li className={bulletPointsVisible ? "ai-powered-design-bullet-visible" : ""} style={{ transitionDelay: "0.1s" }}>
-                      Creating a futuristic design aesthetic that communicates advanced AI technology without feeling intimidating or overly complex.
+                      The interface needed to feel innovative without overwhelming users with complexity.
                     </li>
                     <li className={bulletPointsVisible ? "ai-powered-design-bullet-visible" : ""} style={{ transitionDelay: "0.2s" }}>
-                      Balancing bold visual elements and modern gradients with clean layouts to maintain clarity and usability.
+                      Modern gradients, dark themes, and bold visuals had to be visually engaging yet functional.
                     </li>
                     <li className={bulletPointsVisible ? "ai-powered-design-bullet-visible" : ""} style={{ transitionDelay: "0.3s" }}>
-                      Designing an interface that feels innovative and cutting-edge while remaining accessible and user-friendly.
+                      AI workflows required new UI patterns because standard design templates did not apply.
                     </li>
                     <li className={bulletPointsVisible ? "ai-powered-design-bullet-visible" : ""} style={{ transitionDelay: "0.4s" }}>
-                      Ensuring the design effectively highlights platform features and capabilities while maintaining intuitive navigation.
+                      Tools, controls, and content needed clear grouping to maintain user comprehension.
                     </li>
                   </ul>
                 </div>
@@ -285,16 +286,16 @@ const AIPoweredDesignCaseStudy = () => {
                   <h3 className="ai-powered-design-case-study-solutions-heading">Solutions</h3>
                   <ul className="ai-powered-design-case-study-solutions-list">
                     <li className={bulletPointsVisible ? "ai-powered-design-bullet-visible" : ""} style={{ transitionDelay: "0.5s" }}>
-                      Developed a modern design language using strategic gradients, dynamic visual elements, and futuristic aesthetics that communicate innovation.
+                      Futuristic Visual Design System- Soft glow effects, Modern gradient palettes, High-contrast dark UI, Sleek minimal layouts
                     </li>
                     <li className={bulletPointsVisible ? "ai-powered-design-bullet-visible" : ""} style={{ transitionDelay: "0.6s" }}>
-                      Created clean, organized layouts with clear information hierarchy that balance bold visuals with functional design principles.
+                      Structured Feature Modules- AI recommendations, Automation workflow cards, Editable UI components, Category-based content grouping
                     </li>
                     <li className={bulletPointsVisible ? "ai-powered-design-bullet-visible" : ""} style={{ transitionDelay: "0.7s" }}>
-                      Designed an intuitive navigation system and user flow that makes advanced features feel approachable and easy to understand.
+                      Simplified Interaction Flow- Easy access to key tools, Clear on-screen hierarchy, Predictable navigation patterns
                     </li>
                     <li className={bulletPointsVisible ? "ai-powered-design-bullet-visible" : ""} style={{ transitionDelay: "0.8s" }}>
-                      Implemented engaging visual storytelling through hero sections, feature highlights, and interactive elements that showcase platform capabilities effectively.
+                      Immersive Showcase Layout- Elevated hero presentation, 3D-inspired platform staging, High-quality component previews
                     </li>
                   </ul>
                 </div>
@@ -364,15 +365,76 @@ const AIPoweredDesignCaseStudy = () => {
         {/* Let's Build Something Section */}
         <LetsBuildSomething />
 
-        {/* Component 5 Images Section */}
-        <div className="ai-powered-design-case-study-component5-section py-7">
+        {/* Best Projects Section */}
+        <div className="ai-powered-design-case-study-best-projects-section py-7">
           <div className="container">
-            <div className="row ai-powered-design-case-study-component5-row">
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="ai-powered-design-case-study-component5-image" />
+            <div className="ai-powered-design-case-study-best-projects-wrapper">
+              {/* Project 1: Elegant Creative Agency */}
+              <div className="ai-powered-design-case-study-best-project-card">
+                <div className="row align-items-center">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectEleven}
+                      alt="Elegant Creative Agency Website – UI/UX Design"
+                      className="ai-powered-design-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 ai-powered-design-case-study-best-project-content-col">
+                    <div className="ai-powered-design-case-study-best-project-content">
+                      <h3 className="ai-powered-design-case-study-best-project-title">
+                        Elegant Creative Agency Website – UI/UX Design
+                      </h3>
+                      <p className="ai-powered-design-case-study-best-project-desc">
+                        A high-end UI/UX design created for a modern creative studio website. The interface uses dark-mode aesthetics, clean grids, and strong typography to showcase projects in a bold and visually engaging way.
+                      </p>
+                      <div className="ai-powered-design-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="ai-powered-design-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="ai-powered-design-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn ai-powered-design-case-study-read-case-study-btn ai-powered-design-case-study-project-btn"
+                      onClick={() => navigate("/elegant-creative-agency-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="ai-powered-design-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="ai-powered-design-case-study-component5-image" />
+
+              {/* Project 2: Modern Creative Agency */}
+              <div className="ai-powered-design-case-study-best-project-card">
+                <div className="row align-items-center flex-row-reverse">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectSix}
+                      alt="Modern Website UI/UX Design for a Creative Agency"
+                      className="ai-powered-design-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 ai-powered-design-case-study-best-project-content-col">
+                    <div className="ai-powered-design-case-study-best-project-content">
+                      <h3 className="ai-powered-design-case-study-best-project-title">
+                        Modern Website UI/UX Design for a Creative Agency
+                      </h3>
+                      <p className="ai-powered-design-case-study-best-project-desc">
+                        This project showcases the complete UI/UX design for a modern creative agency website. The design focuses on a bold visual identity, clean layout structures, and a smooth user journey across all pages.
+                      </p>
+                      <div className="ai-powered-design-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="ai-powered-design-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="ai-powered-design-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn ai-powered-design-case-study-read-case-study-btn ai-powered-design-case-study-project-btn"
+                      onClick={() => navigate("/modern-creative-agency-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="ai-powered-design-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

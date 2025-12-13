@@ -4,7 +4,7 @@ import { Navbar } from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { SEO } from "../../components/SEO";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
-import logoV2 from "../Images/Logo_v2.png";
+import logoV2 from "../Images/Logo-V2.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import projectImage from "../Images/work-best-project-ten.png";
 import underline from "../Images/what-we-build-underline.png";
@@ -17,7 +17,8 @@ import adobeXdLogo from "../Images/adobe-xd.png";
 import sketchLogo from "../Images/sketch.png";
 import framerLogo from "../Images/framer.png";
 import canvaLogo from "../Images/canva.png";
-import component5Image from "../Images/Component 5.png";
+import projectFourteen from "../Images/work-best-project-fourteen.png";
+import projectTwo from "../Images/work-best-project-two.png";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -264,16 +265,16 @@ const PayrollCaseStudy = () => {
                   <h3 className="payroll-case-study-challenges-heading">Challenges</h3>
                   <ul className="payroll-case-study-challenges-list">
                     <li className={bulletPointsVisible ? "payroll-bullet-visible" : ""} style={{ transitionDelay: "0.1s" }}>
-                      Developing a meditech app comes with its own set of challenges.
+                      Payroll was processed using Excel sheets, leading to frequent errors and inconsistent payouts.
                     </li>
                     <li className={bulletPointsVisible ? "payroll-bullet-visible" : ""} style={{ transitionDelay: "0.2s" }}>
-                      These include ensuring user-friendly interfaces, maintaining data security, integrating with existing healthcare systems, and complying with regulations.
+                      Data from biometric devices, manual logs, and employee requests created confusion during salary processing.
                     </li>
                     <li className={bulletPointsVisible ? "payroll-bullet-visible" : ""} style={{ transitionDelay: "0.3s" }}>
-                      Additionally, keeping up with rapid technological advancements and addressing user feedback effectively can be daunting.
+                      Components like PF, ESI, TDS, overtime, leaves, and deductions were complicated to track accurately.
                     </li>
                     <li className={bulletPointsVisible ? "payroll-bullet-visible" : ""} style={{ transitionDelay: "0.4s" }}>
-                      It's crucial to navigate these hurdles to create a successful and impactful application.
+                      Employees relied on HR for basic information like payslips, leave balances, or attendance history, increasing HR workload.
                     </li>
                   </ul>
                 </div>
@@ -285,16 +286,16 @@ const PayrollCaseStudy = () => {
                   <h3 className="payroll-case-study-solutions-heading">Solutions</h3>
                   <ul className="payroll-case-study-solutions-list">
                     <li className={bulletPointsVisible ? "payroll-bullet-visible" : ""} style={{ transitionDelay: "0.5s" }}>
-                      Developing a meditech app comes with its own set of challenges.
+                      Automatically calculates- Basic, HRA, allowances, Overtime, Deductions (PF, ESI, TDS, loans), Leave adjustments, Incentives & bonuses.
                     </li>
                     <li className={bulletPointsVisible ? "payroll-bullet-visible" : ""} style={{ transitionDelay: "0.6s" }}>
-                      These include ensuring user-friendly interfaces, maintaining data security, integrating with existing healthcare systems, and complying with regulations.
+                      Attendance Integration- Sync from biometric machines, Mobile attendance with GPS, Leave & WFH request flows, Real-time visibility for HR.
                     </li>
                     <li className={bulletPointsVisible ? "payroll-bullet-visible" : ""} style={{ transitionDelay: "0.7s" }}>
-                      Additionally, keeping up with rapid technological advancements and addressing user feedback effectively can be daunting.
+                      Employee Self-Service Portal- Download payslips, View attendance & leave balance, Submit leave/O.T. requests, Update profile information.
                     </li>
                     <li className={bulletPointsVisible ? "payroll-bullet-visible" : ""} style={{ transitionDelay: "0.8s" }}>
-                      It's crucial to navigate these hurdles to create a successful and impactful application.
+                      HR Dashboard- Salary approvals, Monthly payroll overview, Department-wise reports, Compliance summaries.
                     </li>
                   </ul>
                 </div>
@@ -364,15 +365,76 @@ const PayrollCaseStudy = () => {
         {/* Let's Build Something Section */}
         <LetsBuildSomething />
 
-        {/* Component 5 Images Section */}
-        <div className="payroll-case-study-component5-section py-7">
+        {/* Best Projects Section */}
+        <div className="payroll-case-study-best-projects-section py-7">
           <div className="container">
-            <div className="row payroll-case-study-component5-row">
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="payroll-case-study-component5-image" />
+            <div className="payroll-case-study-best-projects-wrapper">
+              {/* Project 1: Smart Business */}
+              <div className="payroll-case-study-best-project-card">
+                <div className="row align-items-center">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectFourteen}
+                      alt="Smart Business Operations System - Custom Software"
+                      className="payroll-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 payroll-case-study-best-project-content-col">
+                    <div className="payroll-case-study-best-project-content">
+                      <h3 className="payroll-case-study-best-project-title">
+                        Smart Business Operations System - Custom Software
+                      </h3>
+                      <p className="payroll-case-study-best-project-desc">
+                        A comprehensive custom software solution developed to streamline business operations, featuring automated workflows, real-time analytics, and integrated management tools. The system helps businesses optimize their processes, improve efficiency, and make data-driven decisions.
+                      </p>
+                      <div className="payroll-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="payroll-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="payroll-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn payroll-case-study-read-case-study-btn payroll-case-study-project-btn"
+                      onClick={() => navigate("/smart-business-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="payroll-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="payroll-case-study-component5-image" />
+
+              {/* Project 2: ERP */}
+              <div className="payroll-case-study-best-project-card">
+                <div className="row align-items-center flex-row-reverse">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectTwo}
+                      alt="A Custom ERP Solution Designed for Industrial & Financial Workflows"
+                      className="payroll-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 payroll-case-study-best-project-content-col">
+                    <div className="payroll-case-study-best-project-content">
+                      <h3 className="payroll-case-study-best-project-title">
+                        A Custom ERP Solution Designed for Industrial & Financial Workflows
+                      </h3>
+                      <p className="payroll-case-study-best-project-desc">
+                        A comprehensive ERP solution developed to streamline industrial and financial workflows, featuring integrated modules for inventory management, financial reporting, supply chain management, and business analytics. The platform provides a unified system for managing complex business operations.
+                      </p>
+                      <div className="payroll-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="payroll-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="payroll-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn payroll-case-study-read-case-study-btn payroll-case-study-project-btn"
+                      onClick={() => navigate("/erp-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="payroll-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

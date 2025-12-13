@@ -714,80 +714,122 @@
   }
 }
 
-/* Component 5 Images Section */
-.hr-portal-case-study-component5-section {
+/* Best Projects Section */
+.hr-portal-case-study-best-projects-section {
   background: #ffffff;
 }
 
-.hr-portal-case-study-component5-row {
-  margin: 0;
+.hr-portal-case-study-best-projects-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 
-.hr-portal-case-study-component5-row > div {
-  padding: 0 0.5rem;
+.hr-portal-case-study-best-project-card {
+  border: 1px solid #dcdcdc;
+  padding: 25px;
+  background: white;
 }
 
-.hr-portal-case-study-component5-row > div:first-child {
-  padding-left: 0;
-  padding-right: 0.5rem;
+.hr-portal-case-study-best-project-card .row {
+  align-items: stretch !important;
 }
 
-.hr-portal-case-study-component5-row > div:last-child {
-  padding-right: 0;
-  padding-left: 0.5rem;
-}
-
-.hr-portal-case-study-component5-image {
+.hr-portal-case-study-best-project-img {
+  height: 100% !important;
   width: 100%;
-  height: auto;
-  display: block;
+  border-radius: 0;
+  border: 1px solid #dcdcdc;
+  object-fit: cover;
 }
 
-/* Mobile Styles - Centered Images */
-@media (max-width: 768px) {
-  .hr-portal-case-study-component5-section {
-    padding-top: 3rem !important;
-    padding-bottom: 3rem !important;
-    overflow-x: hidden;
+.hr-portal-case-study-best-project-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  margin-top: 0;
+}
+
+.hr-portal-case-study-best-project-desc {
+  color: #6f6f6f;
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
   }
   
-  .hr-portal-case-study-component5-section .container {
-    padding-left: 15px;
-    padding-right: 15px;
-    max-width: 100%;
+.hr-portal-case-study-best-project-tag-badge {
+  border: 1px solid #abb3cb;
+  padding: 4px 12px;
+  font-size: 14px;
+  color: #6c788f;
+  font-weight: 400;
   }
   
-  .hr-portal-case-study-component5-row {
-    margin: 0;
+.hr-portal-case-study-best-project-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+  gap: 5px;
   }
   
-  .hr-portal-case-study-component5-row > div {
-    padding: 0;
-    margin-bottom: 0;
-    width: 100%;
-    max-width: 100%;
+.hr-portal-case-study-best-project-content-col {
     display: flex;
-    justify-content: center;
+  flex-direction: column;
+}
+
+.hr-portal-case-study-read-case-study-btn {
+  background: #2b6ef2 !important;
+  color: #ffffff !important;
+  border: 1px solid transparent;
+  padding: 10px 11px !important;
+  border-radius: 0px !important;
+  font-weight: 500 !important;
+  display: flex !important;
     align-items: center;
+  gap: 22px;
+  transition: all 0.25s ease-in-out;
+  margin-top: 6rem;
+  align-self: flex-start;
   }
   
-  .hr-portal-case-study-component5-row > div:first-child,
-  .hr-portal-case-study-component5-row > div:last-child {
-    padding: 0;
+.hr-portal-case-study-read-case-study-btn:hover {
+  background: #ffffff !important;
+  color: #2b6ef2 !important;
+  border: 1px solid #2b6ef2 !important;
+  box-shadow: 4px 4px 0px #2b6ef2;
+}
+
+.hr-portal-case-study-read-case-study-btn .hr-portal-case-study-arrow-icon {
+  transition: transform 0.35s ease-in-out !important;
   }
   
-  .hr-portal-case-study-component5-image {
-    width: 90%;
-    max-width: 90%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
+.hr-portal-case-study-read-case-study-btn:hover .hr-portal-case-study-arrow-icon {
+  transform: rotate(-45deg);
+  filter: brightness(0) saturate(100%) invert(36%) sepia(98%) saturate(2475%) hue-rotate(206deg) brightness(95%) contrast(101%);
+}
+
+/* Mobile Styles for Best Projects */
+@media (max-width: 768px) {
+  .hr-portal-case-study-best-projects-wrapper {
+    gap: 2.5rem !important;
+  }
+
+  .hr-portal-case-study-best-project-card {
+    padding: 20px;
+    margin-bottom: 1rem;
+  }
+
+  .hr-portal-case-study-best-project-title {
+    font-size: 28px;
+    margin-top: 1rem;
+  }
+
+  .hr-portal-case-study-best-project-desc {
+    font-size: 15px;
+  }
+
+  .hr-portal-case-study-read-case-study-btn {
+    margin-top: 0.5rem !important;
   }
 
   /* Challenges & Solutions Section Width Reduction */
@@ -849,32 +891,28 @@
 }
 
 @media (max-width: 480px) {
-  .hr-portal-case-study-component5-section {
-    padding-top: 2rem !important;
-    padding-bottom: 2rem !important;
+  .hr-portal-case-study-best-projects-wrapper {
+    gap: 1rem !important;
+  }
+
+  .hr-portal-case-study-best-project-card {
+    padding: 15px;
+    margin-bottom: 0;
   }
   
-  .hr-portal-case-study-component5-section .container {
-    padding-left: 10px;
-    padding-right: 10px;
+  .hr-portal-case-study-best-project-title {
+    font-size: 24px;
+    margin-top: 1rem;
   }
   
-  .hr-portal-case-study-component5-row {
-    gap: 0.75rem;
-    align-items: center;
-    justify-content: center;
+  .hr-portal-case-study-best-project-desc {
+    font-size: 14px;
   }
   
-  .hr-portal-case-study-component5-row > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .hr-portal-case-study-component5-image {
-    width: 90%;
-    max-width: 90%;
-    margin: 0 auto;
+  .hr-portal-case-study-read-case-study-btn {
+    margin-top: 1rem !important;
+    padding: 8px 10px !important;
+    font-size: 14px !important;
   }
 
   /* Challenges & Solutions Section Width Reduction */
@@ -1057,6 +1095,20 @@
 @media (min-width: 1400px) {
   .hr-portal-case-study-content-wrapper {
     padding: 3rem;
+  }
+
+  .hr-portal-case-study-best-project-card .row {
+    align-items: stretch !important;
+  }
+
+  .hr-portal-case-study-best-project-content-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hr-portal-case-study-project-btn {
+    margin-top: auto !important;
+    align-self: flex-start;
   }
 }
 

@@ -4,7 +4,7 @@ import { Navbar } from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { SEO } from "../../components/SEO";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
-import logoV2 from "../Images/Logo_v2.png";
+import logoV2 from "../Images/Logo-V2.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import projectImage from "../Images/work-best-project-five.png";
 import underline from "../Images/what-we-build-underline.png";
@@ -17,7 +17,8 @@ import adobeXdLogo from "../Images/adobe-xd.png";
 import sketchLogo from "../Images/sketch.png";
 import framerLogo from "../Images/framer.png";
 import canvaLogo from "../Images/canva.png";
-import component5Image from "../Images/Component 5.png";
+import projectEight from "../Images/work-best-project-eight.png";
+import projectOne from "../Images/work-best-project-one.png";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -264,16 +265,16 @@ const BookCollectionsCaseStudy = () => {
                   <h3 className="book-collections-case-study-challenges-heading">Challenges</h3>
                   <ul className="book-collections-case-study-challenges-list">
                     <li className={bulletPointsVisible ? "book-collections-bullet-visible" : ""} style={{ transitionDelay: "0.1s" }}>
-                      Creating an intuitive browsing experience for large book catalogs with multiple categories and genres.
+                      Premium books require a refined visual experience, but the earlier platform lacked high-quality displays, layouts, and storytelling.
                     </li>
                     <li className={bulletPointsVisible ? "book-collections-bullet-visible" : ""} style={{ transitionDelay: "0.2s" }}>
-                      Ensuring fast page load times and smooth navigation despite high-quality product images and descriptions.
+                      Heavy images, unoptimized components, and outdated code slowed down browsing and checkout.
                     </li>
                     <li className={bulletPointsVisible ? "book-collections-bullet-visible" : ""} style={{ transitionDelay: "0.3s" }}>
-                      Implementing responsive design that works seamlessly across desktop, tablet, and mobile devices.
+                      Users struggled to quickly find the right book due to poor categorization and filtering.
                     </li>
                     <li className={bulletPointsVisible ? "book-collections-bullet-visible" : ""} style={{ transitionDelay: "0.4s" }}>
-                      Building a secure and efficient checkout process that minimizes cart abandonment.
+                      Mobile shoppers experienced broken layouts and inconsistent navigation.
                     </li>
                   </ul>
                 </div>
@@ -285,16 +286,16 @@ const BookCollectionsCaseStudy = () => {
                   <h3 className="book-collections-case-study-solutions-heading">Solutions</h3>
                   <ul className="book-collections-case-study-solutions-list">
                     <li className={bulletPointsVisible ? "book-collections-bullet-visible" : ""} style={{ transitionDelay: "0.5s" }}>
-                      Developed a sophisticated category filtering system with search functionality to help users quickly find books by genre, author, or title.
+                      High-Quality Product Showcases- Large, crisp images, Zoom interactions, Rich descriptions, "More from this collection" recommendations
                     </li>
                     <li className={bulletPointsVisible ? "book-collections-bullet-visible" : ""} style={{ transitionDelay: "0.6s" }}>
-                      Optimized images and implemented lazy loading techniques to ensure fast page loads and smooth user experience.
+                      Intuitive Category & Search System- Genre-based categories, Filters for edition, rarity, and author, Smooth auto-complete search
                     </li>
                     <li className={bulletPointsVisible ? "book-collections-bullet-visible" : ""} style={{ transitionDelay: "0.7s" }}>
-                      Built a fully responsive design using Tailwind CSS that adapts beautifully to all screen sizes and devices.
+                      Lightning-Fast Performance- ReactJS dynamic rendering, Tailwind-optimized styling, Lazy-loading for images, Fully responsive layouts
                     </li>
                     <li className={bulletPointsVisible ? "book-collections-bullet-visible" : ""} style={{ transitionDelay: "0.8s" }}>
-                      Created a streamlined checkout process with multiple payment options and secure transaction handling.
+                      Streamlined Checkout Experience- Fewer steps, Cleaner UI, Improved form structure, Reduced friction to increase conversions
                     </li>
                   </ul>
                 </div>
@@ -364,15 +365,76 @@ const BookCollectionsCaseStudy = () => {
         {/* Let's Build Something Section */}
         <LetsBuildSomething />
 
-        {/* Component 5 Images Section */}
-        <div className="book-collections-case-study-component5-section py-7">
+        {/* Best Projects Section */}
+        <div className="book-collections-case-study-best-projects-section py-7">
           <div className="container">
-            <div className="row book-collections-case-study-component5-row">
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="book-collections-case-study-component5-image" />
+            <div className="book-collections-case-study-best-projects-wrapper">
+              {/* Project 1: Makhana Store */}
+              <div className="book-collections-case-study-best-project-card">
+                <div className="row align-items-center">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectEight}
+                      alt="Organic Makhana Store – Responsive E-Commerce Platform"
+                      className="book-collections-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 book-collections-case-study-best-project-content-col">
+                    <div className="book-collections-case-study-best-project-content">
+                      <h3 className="book-collections-case-study-best-project-title">
+                        Organic Makhana Store – Responsive E-Commerce Platform
+                      </h3>
+                      <p className="book-collections-case-study-best-project-desc">
+                        A fully responsive e-commerce website developed for an organic makhana store, featuring smooth product browsing, secure checkout, and a clean, modern design. The platform ensures a seamless shopping experience across all devices with intuitive navigation and fast performance.
+                      </p>
+                      <div className="book-collections-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="book-collections-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="book-collections-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn book-collections-case-study-read-case-study-btn book-collections-case-study-project-btn"
+                      onClick={() => navigate("/makhana-store-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="book-collections-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="book-collections-case-study-component5-image" />
+
+              {/* Project 2: NextGen */}
+              <div className="book-collections-case-study-best-project-card">
+                <div className="row align-items-center flex-row-reverse">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectOne}
+                      alt="NextGen – Modern Fashion E-Commerce Website"
+                      className="book-collections-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 book-collections-case-study-best-project-content-col">
+                    <div className="book-collections-case-study-best-project-content">
+                      <h3 className="book-collections-case-study-best-project-title">
+                        NextGen – Modern Fashion E-Commerce Website
+                      </h3>
+                      <p className="book-collections-case-study-best-project-desc">
+                        A modern, responsive e-commerce platform developed for a fashion brand, featuring elegant product displays, smooth shopping cart functionality, and a sleek user interface. The website delivers an engaging shopping experience with fast load times and mobile-first design.
+                      </p>
+                      <div className="book-collections-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="book-collections-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="book-collections-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn book-collections-case-study-read-case-study-btn book-collections-case-study-project-btn"
+                      onClick={() => navigate("/nextgen-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="book-collections-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
