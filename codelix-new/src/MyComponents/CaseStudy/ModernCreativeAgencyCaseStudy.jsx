@@ -4,7 +4,7 @@ import { Navbar } from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { SEO } from "../../components/SEO";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
-import logoV2 from "../Images/Logo_v2.png";
+import logoV2 from "../Images/Logo-V2.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import projectImage from "../Images/work-best-project-six.png";
 import underline from "../Images/what-we-build-underline.png";
@@ -17,7 +17,8 @@ import adobeXdLogo from "../Images/adobe-xd.png";
 import sketchLogo from "../Images/sketch.png";
 import framerLogo from "../Images/framer.png";
 import canvaLogo from "../Images/canva.png";
-import component5Image from "../Images/Component 5.png";
+import projectEleven from "../Images/work-best-project-eleven.png";
+import projectTwelve from "../Images/work-best-project-twelve.png";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -264,16 +265,16 @@ const ModernCreativeAgencyCaseStudy = () => {
                   <h3 className="modern-creative-agency-case-study-challenges-heading">Challenges</h3>
                   <ul className="modern-creative-agency-case-study-challenges-list">
                     <li className={bulletPointsVisible ? "modern-creative-agency-bullet-visible" : ""} style={{ transitionDelay: "0.1s" }}>
-                      Creating a bold and distinctive visual identity that reflects the agency's creative expertise while maintaining professionalism.
+                      Users found it difficult to understand the agency's services, work, and capabilities at a glance.
                     </li>
                     <li className={bulletPointsVisible ? "modern-creative-agency-bullet-visible" : ""} style={{ transitionDelay: "0.2s" }}>
-                      Designing a smooth user journey that effectively showcases the agency's portfolio and services without overwhelming visitors.
+                      The previous design did not reflect the creativity, professionalism, or visual strength of the agency.
                     </li>
                     <li className={bulletPointsVisible ? "modern-creative-agency-bullet-visible" : ""} style={{ transitionDelay: "0.3s" }}>
-                      Ensuring the design works seamlessly across all devices while maintaining visual impact and brand consistency.
+                      Service information was not organized cohesively, making it difficult for visitors to explore offerings.
                     </li>
                     <li className={bulletPointsVisible ? "modern-creative-agency-bullet-visible" : ""} style={{ transitionDelay: "0.4s" }}>
-                      Balancing creative expression with usability to create an engaging yet intuitive experience for potential clients.
+                      Portfolio items lacked structured layouts, strong visuals, and storytelling elements.
                     </li>
                   </ul>
                 </div>
@@ -285,16 +286,16 @@ const ModernCreativeAgencyCaseStudy = () => {
                   <h3 className="modern-creative-agency-case-study-solutions-heading">Solutions</h3>
                   <ul className="modern-creative-agency-case-study-solutions-list">
                     <li className={bulletPointsVisible ? "modern-creative-agency-bullet-visible" : ""} style={{ transitionDelay: "0.5s" }}>
-                      Developed a cohesive design system with bold typography, strategic use of color, and clean grid layouts that communicate creativity and professionalism.
+                      Bold Visual Identity- Strong typography, Clean grids, Vibrant yet balanced color schemes, Consistent design language across the entire site
                     </li>
                     <li className={bulletPointsVisible ? "modern-creative-agency-bullet-visible" : ""} style={{ transitionDelay: "0.6s" }}>
-                      Created an intuitive navigation structure with clear information hierarchy, making it easy for visitors to explore services, view case studies, and get in touch.
+                      Streamlined Service Presentation- Clear service categories, Structured descriptions, Visual icons and illustrations, Easy navigation between related services
                     </li>
                     <li className={bulletPointsVisible ? "modern-creative-agency-bullet-visible" : ""} style={{ transitionDelay: "0.7s" }}>
-                      Implemented a fully responsive design that adapts beautifully to all screen sizes, ensuring consistent visual impact and functionality across devices.
+                      Enhanced Portfolio Experience- High-quality project showcases, Organized multi-grid layouts, Visual storytelling with captions and highlights
                     </li>
                     <li className={bulletPointsVisible ? "modern-creative-agency-bullet-visible" : ""} style={{ transitionDelay: "0.8s" }}>
-                      Designed engaging interactions and smooth transitions that enhance the user experience while maintaining clear usability and accessibility standards.
+                      Smooth, Modern Navigation- Simple menu structure, Clear page paths, Sticky navigation for better usability
                     </li>
                   </ul>
                 </div>
@@ -364,15 +365,76 @@ const ModernCreativeAgencyCaseStudy = () => {
         {/* Let's Build Something Section */}
         <LetsBuildSomething />
 
-        {/* Component 5 Images Section */}
-        <div className="modern-creative-agency-case-study-component5-section py-7">
+        {/* Best Projects Section */}
+        <div className="modern-creative-agency-case-study-best-projects-section py-7">
           <div className="container">
-            <div className="row modern-creative-agency-case-study-component5-row">
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="modern-creative-agency-case-study-component5-image" />
+            <div className="modern-creative-agency-case-study-best-projects-wrapper">
+              {/* Project 1: Elegant Creative Agency */}
+              <div className="modern-creative-agency-case-study-best-project-card">
+                <div className="row align-items-center">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectEleven}
+                      alt="Elegant Creative Agency Website – UI/UX Design"
+                      className="modern-creative-agency-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 modern-creative-agency-case-study-best-project-content-col">
+                    <div className="modern-creative-agency-case-study-best-project-content">
+                      <h3 className="modern-creative-agency-case-study-best-project-title">
+                        Elegant Creative Agency Website – UI/UX Design
+                      </h3>
+                      <p className="modern-creative-agency-case-study-best-project-desc">
+                        A high-end UI/UX design created for a modern creative studio website. The interface uses dark-mode aesthetics, clean grids, and strong typography to showcase projects in a bold and visually engaging way.
+                      </p>
+                      <div className="modern-creative-agency-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="modern-creative-agency-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="modern-creative-agency-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn modern-creative-agency-case-study-read-case-study-btn modern-creative-agency-case-study-project-btn"
+                      onClick={() => navigate("/elegant-creative-agency-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="modern-creative-agency-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="modern-creative-agency-case-study-component5-image" />
+
+              {/* Project 2: AI Powered Design */}
+              <div className="modern-creative-agency-case-study-best-project-card">
+                <div className="row align-items-center flex-row-reverse">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectTwelve}
+                      alt="AI-Powered Design Platform – UI/UX Concept"
+                      className="modern-creative-agency-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 modern-creative-agency-case-study-best-project-content-col">
+                    <div className="modern-creative-agency-case-study-best-project-content">
+                      <h3 className="modern-creative-agency-case-study-best-project-title">
+                        AI-Powered Design Platform – UI/UX Concept
+                      </h3>
+                      <p className="modern-creative-agency-case-study-best-project-desc">
+                        This project showcases a futuristic UI/UX concept created for an AI-powered design platform. The interface focuses on bold visuals, modern gradients, and a clean layout that highlights the platform's innovative features.
+                      </p>
+                      <div className="modern-creative-agency-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="modern-creative-agency-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="modern-creative-agency-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn modern-creative-agency-case-study-read-case-study-btn modern-creative-agency-case-study-project-btn"
+                      onClick={() => navigate("/ai-powered-design-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="modern-creative-agency-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

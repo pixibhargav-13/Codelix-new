@@ -4,7 +4,7 @@ import { Navbar } from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { SEO } from "../../components/SEO";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
-import logoV2 from "../Images/Logo_v2.png";
+import logoV2 from "../Images/Logo-V2.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import projectImage from "../Images/work-best-project-fourteen.png";
 import underline from "../Images/what-we-build-underline.png";
@@ -17,7 +17,8 @@ import adobeXdLogo from "../Images/adobe-xd.png";
 import sketchLogo from "../Images/sketch.png";
 import framerLogo from "../Images/framer.png";
 import canvaLogo from "../Images/canva.png";
-import component5Image from "../Images/Component 5.png";
+import projectTen from "../Images/work-best-project-ten.png";
+import projectTwo from "../Images/work-best-project-two.png";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -261,16 +262,16 @@ const SmartBusinessCaseStudy = () => {
                   <h3 className="smart-business-case-study-challenges-heading">Challenges</h3>
                   <ul className="smart-business-case-study-challenges-list">
                     <li className={bulletPointsVisible ? "smart-business-bullet-visible" : ""} style={{ transitionDelay: "0.1s" }}>
-                      Developing a meditech app comes with its own set of challenges.
+                      Orders, inventory, requests, and staff tasks were tracked manually, resulting in mistakes, delays, and missing data.
                     </li>
                     <li className={bulletPointsVisible ? "smart-business-bullet-visible" : ""} style={{ transitionDelay: "0.2s" }}>
-                      These include ensuring user-friendly interfaces, maintaining data security, integrating with existing healthcare systems, and complying with regulations.
+                      Decision-makers didn't have instant access to updated information, causing slow approvals and bottlenecks.
                     </li>
                     <li className={bulletPointsVisible ? "smart-business-bullet-visible" : ""} style={{ transitionDelay: "0.3s" }}>
-                      Additionally, keeping up with rapid technological advancements and addressing user feedback effectively can be daunting.
+                      Different teams handled interconnected processes, but there was no unified system to manage order status, inventory movement, or staff responsibilities.
                     </li>
                     <li className={bulletPointsVisible ? "smart-business-bullet-visible" : ""} style={{ transitionDelay: "0.4s" }}>
-                      It's crucial to navigate these hurdles to create a successful and impactful application.
+                      Reports and records were scattered across Excel sheets, WhatsApp messages, and files — causing miscommunication.
                     </li>
                   </ul>
                 </div>
@@ -282,16 +283,19 @@ const SmartBusinessCaseStudy = () => {
                   <h3 className="smart-business-case-study-solutions-heading">Solutions</h3>
                   <ul className="smart-business-case-study-solutions-list">
                     <li className={bulletPointsVisible ? "smart-business-bullet-visible" : ""} style={{ transitionDelay: "0.5s" }}>
-                      Developing a meditech app comes with its own set of challenges.
+                      A single dashboard to manage end-to-end order flow: Pending → Approved → Completed → Returned
                     </li>
                     <li className={bulletPointsVisible ? "smart-business-bullet-visible" : ""} style={{ transitionDelay: "0.6s" }}>
-                      These include ensuring user-friendly interfaces, maintaining data security, integrating with existing healthcare systems, and complying with regulations.
+                      Real-time stock updates, low-stock alerts, and automatic validation to prevent entry errors.
                     </li>
                     <li className={bulletPointsVisible ? "smart-business-bullet-visible" : ""} style={{ transitionDelay: "0.7s" }}>
-                      Additionally, keeping up with rapid technological advancements and addressing user feedback effectively can be daunting.
+                      Role-based access, task assignment, approvals, and activity logs for accountability.
                     </li>
                     <li className={bulletPointsVisible ? "smart-business-bullet-visible" : ""} style={{ transitionDelay: "0.8s" }}>
-                      It's crucial to navigate these hurdles to create a successful and impactful application.
+                      Dashboard widgets and downloadable reports allow management to take faster, data-backed decisions.
+                    </li>
+                    <li className={bulletPointsVisible ? "smart-business-bullet-visible" : ""} style={{ transitionDelay: "0.9s" }}>
+                      Robust authentication, permission layers, and encrypted data flows ensure safety and compliance.
                     </li>
                   </ul>
                 </div>
@@ -361,15 +365,76 @@ const SmartBusinessCaseStudy = () => {
         {/* Let's Build Something Section */}
         <LetsBuildSomething />
 
-        {/* Component 5 Images Section */}
-        <div className="smart-business-case-study-component5-section py-7">
+        {/* Best Projects Section */}
+        <div className="smart-business-case-study-best-projects-section py-7">
           <div className="container">
-            <div className="row smart-business-case-study-component5-row">
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="smart-business-case-study-component5-image" />
+            <div className="smart-business-case-study-best-projects-wrapper">
+              {/* Project 1: Payroll */}
+              <div className="smart-business-case-study-best-project-card">
+                <div className="row align-items-center">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectTen}
+                      alt="Custom Payroll Management System – Web & Mobile"
+                      className="smart-business-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 smart-business-case-study-best-project-content-col">
+                    <div className="smart-business-case-study-best-project-content">
+                      <h3 className="smart-business-case-study-best-project-title">
+                        Custom Payroll Management System – Web & Mobile
+                      </h3>
+                      <p className="smart-business-case-study-best-project-desc">
+                        A comprehensive payroll management system developed for web and mobile platforms, featuring employee management, salary processing, tax calculations, and detailed reporting. The system provides a seamless experience for HR teams to manage payroll efficiently across all devices.
+                      </p>
+                      <div className="smart-business-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="smart-business-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="smart-business-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn smart-business-case-study-read-case-study-btn smart-business-case-study-project-btn"
+                      onClick={() => navigate("/payroll-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="smart-business-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="smart-business-case-study-component5-image" />
+
+              {/* Project 2: ERP */}
+              <div className="smart-business-case-study-best-project-card">
+                <div className="row align-items-center flex-row-reverse">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectTwo}
+                      alt="A Custom ERP Solution Designed for Industrial & Financial Workflows"
+                      className="smart-business-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 smart-business-case-study-best-project-content-col">
+                    <div className="smart-business-case-study-best-project-content">
+                      <h3 className="smart-business-case-study-best-project-title">
+                        A Custom ERP Solution Designed for Industrial & Financial Workflows
+                      </h3>
+                      <p className="smart-business-case-study-best-project-desc">
+                        A comprehensive ERP solution developed to streamline industrial and financial workflows, featuring integrated modules for inventory management, financial reporting, supply chain management, and business analytics. The platform provides a unified system for managing complex business operations.
+                      </p>
+                      <div className="smart-business-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="smart-business-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="smart-business-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn smart-business-case-study-read-case-study-btn smart-business-case-study-project-btn"
+                      onClick={() => navigate("/erp-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="smart-business-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

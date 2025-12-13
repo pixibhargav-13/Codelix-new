@@ -4,7 +4,7 @@ import { Navbar } from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { SEO } from "../../components/SEO";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
-import logoV2 from "../Images/Logo_v2.png";
+import logoV2 from "../Images/Logo-V2.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import projectImage from "../Images/work-best-project-one.png";
 import underline from "../Images/what-we-build-underline.png";
@@ -17,7 +17,8 @@ import adobeXdLogo from "../Images/adobe-xd.png";
 import sketchLogo from "../Images/sketch.png";
 import framerLogo from "../Images/framer.png";
 import canvaLogo from "../Images/canva.png";
-import component5Image from "../Images/Component 5.png";
+import projectFive from "../Images/work-best-project-five.png";
+import projectEight from "../Images/work-best-project-eight.png";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -264,16 +265,16 @@ const NextGenCaseStudy = () => {
                   <h3 className="nextgen-case-study-challenges-heading">Challenges</h3>
                   <ul className="nextgen-case-study-challenges-list">
                     <li className={bulletPointsVisible ? "nextgen-bullet-visible" : ""} style={{ transitionDelay: "0.1s" }}>
-                      Creating an engaging online shopping experience that reflects the brand's modern fashion identity.
+                      The previous website lacked modern visuals, reducing brand appeal and trust.
                     </li>
                     <li className={bulletPointsVisible ? "nextgen-bullet-visible" : ""} style={{ transitionDelay: "0.2s" }}>
-                      Ensuring the website performs seamlessly across all devices, especially mobile, where most fashion shoppers browse.
+                      Users struggled to browse through categories like clothing, eyewear, and accessories efficiently.
                     </li>
                     <li className={bulletPointsVisible ? "nextgen-bullet-visible" : ""} style={{ transitionDelay: "0.3s" }}>
-                      Organizing multiple product categories (clothing, eyewear, accessories) in an intuitive way that encourages exploration.
+                      A majority of fashion shoppers visit from mobile, but the old site had slow load times and inconsistent layouts.
                     </li>
                     <li className={bulletPointsVisible ? "nextgen-bullet-visible" : ""} style={{ transitionDelay: "0.4s" }}>
-                      Building trust and maximizing conversions through clear product presentation, secure checkout, and smooth user flow.
+                      Limited image variety and poor description placement negatively affected conversions.
                     </li>
                   </ul>
                 </div>
@@ -285,16 +286,16 @@ const NextGenCaseStudy = () => {
                   <h3 className="nextgen-case-study-solutions-heading">Solutions</h3>
                   <ul className="nextgen-case-study-solutions-list">
                     <li className={bulletPointsVisible ? "nextgen-bullet-visible" : ""} style={{ transitionDelay: "0.5s" }}>
-                      Designed a clean, modern interface with high-quality product imagery and elegant layouts that showcase fashion items beautifully.
+                      Clean, elegant layouts inspired by premium fashion brands, High-quality visuals and product spotlights, Curated collections (e.g., Trending, New Arrivals, Essentials)
                     </li>
                     <li className={bulletPointsVisible ? "nextgen-bullet-visible" : ""} style={{ transitionDelay: "0.6s" }}>
-                      Implemented a fully responsive design that ensures optimal viewing and shopping experience on desktop, tablet, and mobile devices.
+                      Intuitive Category Navigation- Clothing, Eyewear, Accessories, Seasonal collections
                     </li>
                     <li className={bulletPointsVisible ? "nextgen-bullet-visible" : ""} style={{ transitionDelay: "0.7s" }}>
-                      Created an intuitive navigation system with clear category organization and filtering options to help customers find products easily.
+                      Mobile-First Experience- Touch-friendly interactions, Faster load speeds, Optimized product grid layouts, Smooth page transitions
                     </li>
                     <li className={bulletPointsVisible ? "nextgen-bullet-visible" : ""} style={{ transitionDelay: "0.8s" }}>
-                      Integrated secure payment processing, detailed product pages, and streamlined checkout flow to enhance user trust and increase conversions.
+                      Conversion-Optimized Product Pages- Large product images, Zoom & multiple-angle views, Clear CTAS, Detailed descriptions, measurements, and fabric info
                     </li>
                   </ul>
                 </div>
@@ -364,15 +365,76 @@ const NextGenCaseStudy = () => {
         {/* Let's Build Something Section */}
         <LetsBuildSomething />
 
-        {/* Component 5 Images Section */}
-        <div className="nextgen-case-study-component5-section py-7">
+        {/* Best Projects Section */}
+        <div className="nextgen-case-study-best-projects-section py-7">
           <div className="container">
-            <div className="row nextgen-case-study-component5-row">
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="nextgen-case-study-component5-image" />
+            <div className="nextgen-case-study-best-projects-wrapper">
+              {/* Project 1: Book Collections */}
+              <div className="nextgen-case-study-best-project-card">
+                <div className="row align-items-center">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectFive}
+                      alt="A High-Performance E-Commerce Platform for Premium Book Collections"
+                      className="nextgen-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 nextgen-case-study-best-project-content-col">
+                    <div className="nextgen-case-study-best-project-content">
+                      <h3 className="nextgen-case-study-best-project-title">
+                        A High-Performance E-Commerce Platform for Premium Book Collections
+                      </h3>
+                      <p className="nextgen-case-study-best-project-desc">
+                        A high-performance e-commerce website developed for a premium book collection store, featuring advanced search functionality, detailed product pages, and a sophisticated design. The platform provides an exceptional browsing and purchasing experience with optimized performance and responsive layout.
+                      </p>
+                      <div className="nextgen-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="nextgen-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="nextgen-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn nextgen-case-study-read-case-study-btn nextgen-case-study-project-btn"
+                      onClick={() => navigate("/book-collections-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="nextgen-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="nextgen-case-study-component5-image" />
+
+              {/* Project 2: Makhana Store */}
+              <div className="nextgen-case-study-best-project-card">
+                <div className="row align-items-center flex-row-reverse">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectEight}
+                      alt="Organic Makhana Store – Responsive E-Commerce Platform"
+                      className="nextgen-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 nextgen-case-study-best-project-content-col">
+                    <div className="nextgen-case-study-best-project-content">
+                      <h3 className="nextgen-case-study-best-project-title">
+                        Organic Makhana Store – Responsive E-Commerce Platform
+                      </h3>
+                      <p className="nextgen-case-study-best-project-desc">
+                        A fully responsive e-commerce website developed for an organic makhana store, featuring smooth product browsing, secure checkout, and a clean, modern design. The platform ensures a seamless shopping experience across all devices with intuitive navigation and fast performance.
+                      </p>
+                      <div className="nextgen-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="nextgen-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="nextgen-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn nextgen-case-study-read-case-study-btn nextgen-case-study-project-btn"
+                      onClick={() => navigate("/makhana-store-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="nextgen-case-study-arrow-icon" />
+                    </button>
+                  </div>
+              </div>
               </div>
             </div>
           </div>

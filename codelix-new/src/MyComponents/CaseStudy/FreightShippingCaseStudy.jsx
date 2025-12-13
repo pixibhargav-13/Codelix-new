@@ -4,7 +4,7 @@ import { Navbar } from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { SEO } from "../../components/SEO";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
-import logoV2 from "../Images/Logo_v2.png";
+import logoV2 from "../Images/Logo-V2.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import projectImage from "../Images/work-best-project-thirteen.png";
 import underline from "../Images/what-we-build-underline.png";
@@ -17,7 +17,8 @@ import adobeXdLogo from "../Images/adobe-xd.png";
 import sketchLogo from "../Images/sketch.png";
 import framerLogo from "../Images/framer.png";
 import canvaLogo from "../Images/canva.png";
-import component5Image from "../Images/Component 5.png";
+import projectSeven from "../Images/work-best-project-seven.png";
+import projectNine from "../Images/work-best-project-nine.png";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -264,16 +265,16 @@ const FreightShippingCaseStudy = () => {
                   <h3 className="freight-shipping-case-study-challenges-heading">Challenges</h3>
                   <ul className="freight-shipping-case-study-challenges-list">
                     <li className={bulletPointsVisible ? "freight-shipping-bullet-visible" : ""} style={{ transitionDelay: "0.1s" }}>
-                      Creating a comprehensive platform that effectively communicates complex logistics and shipping information.
+                      Users struggled to understand service categories, routes, and freight options due to unclear structure.
                     </li>
                     <li className={bulletPointsVisible ? "freight-shipping-bullet-visible" : ""} style={{ transitionDelay: "0.2s" }}>
-                      Implementing real-time shipment tracking functionality that provides accurate and up-to-date information.
+                      A lack of modern branding and visuals made the services appear less professional than competitors.
                     </li>
                     <li className={bulletPointsVisible ? "freight-shipping-bullet-visible" : ""} style={{ transitionDelay: "0.3s" }}>
-                      Ensuring the website performs well across all devices, especially for users accessing shipping information on mobile.
+                      Important details like tariffs, shipping routes, transit times, and service types were buried or missing.
                     </li>
                     <li className={bulletPointsVisible ? "freight-shipping-bullet-visible" : ""} style={{ transitionDelay: "0.4s" }}>
-                      Organizing multiple service categories and global shipping solutions in an intuitive and easy-to-navigate structure.
+                      Slow loading and inconsistencies in responsiveness caused users to leave the website early.
                     </li>
                   </ul>
                 </div>
@@ -285,16 +286,16 @@ const FreightShippingCaseStudy = () => {
                   <h3 className="freight-shipping-case-study-solutions-heading">Solutions</h3>
                   <ul className="freight-shipping-case-study-solutions-list">
                     <li className={bulletPointsVisible ? "freight-shipping-bullet-visible" : ""} style={{ transitionDelay: "0.5s" }}>
-                      Designed a clean, professional interface that presents complex logistics information in a clear and accessible manner.
+                      Clean, Enterprise-Grade UI/UX- Professional global freight aesthetic, Powerful visuals of cargo operations, Clear hierarchy for all service categories
                     </li>
                     <li className={bulletPointsVisible ? "freight-shipping-bullet-visible" : ""} style={{ transitionDelay: "0.6s" }}>
-                      Integrated real-time tracking features with API connectivity to provide accurate shipment status updates.
+                      Service-Centric Navigation- Ocean freight services, Cargo solutions, Container details, Routes & transit timelines, Documentation and compliance
                     </li>
                     <li className={bulletPointsVisible ? "freight-shipping-bullet-visible" : ""} style={{ transitionDelay: "0.7s" }}>
-                      Built a fully responsive design that ensures optimal functionality and user experience on desktop, tablet, and mobile devices.
+                      Quote Request Optimization- Simple form, Better information prompts, Faster submissions, Improved conversion rate
                     </li>
                     <li className={bulletPointsVisible ? "freight-shipping-bullet-visible" : ""} style={{ transitionDelay: "0.8s" }}>
-                      Created an intuitive navigation system with organized service categories and clear information hierarchy for easy access to shipping solutions.
+                      Responsive, Mobile-Friendly Structure- Perfectly optimized for tablets, mobile devices, and large screens, Faster load speeds for global users
                     </li>
                   </ul>
                 </div>
@@ -364,15 +365,76 @@ const FreightShippingCaseStudy = () => {
         {/* Let's Build Something Section */}
         <LetsBuildSomething />
 
-        {/* Component 5 Images Section */}
-        <div className="freight-shipping-case-study-component5-section py-7">
+        {/* Best Projects Section */}
+        <div className="freight-shipping-case-study-best-projects-section py-7">
           <div className="container">
-            <div className="row freight-shipping-case-study-component5-row">
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="freight-shipping-case-study-component5-image" />
+            <div className="freight-shipping-case-study-best-projects-wrapper">
+              {/* Project 1: HR Portal */}
+              <div className="freight-shipping-case-study-best-project-card">
+                <div className="row align-items-center">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectSeven}
+                      alt="Modern HR Portal for Employee Benefits - Web Development"
+                      className="freight-shipping-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 freight-shipping-case-study-best-project-content-col">
+                    <div className="freight-shipping-case-study-best-project-content">
+                      <h3 className="freight-shipping-case-study-best-project-title">
+                        Modern HR Portal for Employee Benefits - Web Development
+                      </h3>
+                      <p className="freight-shipping-case-study-best-project-desc">
+                        A modern, responsive web platform developed to simplify employee benefits, claims, and HR administration. The website includes a clean dashboard for employees to view benefits, submit claims, track approvals, and access important HR resources with ease.
+                      </p>
+                      <div className="freight-shipping-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="freight-shipping-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="freight-shipping-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn freight-shipping-case-study-read-case-study-btn freight-shipping-case-study-project-btn"
+                      onClick={() => navigate("/hr-portal-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="freight-shipping-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="freight-shipping-case-study-component5-image" />
+
+              {/* Project 2: EdTech */}
+              <div className="freight-shipping-case-study-best-project-card">
+                <div className="row align-items-center flex-row-reverse">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectNine}
+                      alt="Modern EdTech Website for Online Courses"
+                      className="freight-shipping-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 freight-shipping-case-study-best-project-content-col">
+                    <div className="freight-shipping-case-study-best-project-content">
+                      <h3 className="freight-shipping-case-study-best-project-title">
+                        Modern EdTech Website for Online Courses
+                      </h3>
+                      <p className="freight-shipping-case-study-best-project-desc">
+                        A modern web platform developed for an online learning experience, featuring smooth navigation, structured course pages, and a clean, welcoming interface. The website is built with fast performance, mobile responsiveness, and a user-friendly flow to make online education simple and engaging.
+                      </p>
+                      <div className="freight-shipping-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="freight-shipping-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="freight-shipping-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn freight-shipping-case-study-read-case-study-btn freight-shipping-case-study-project-btn"
+                      onClick={() => navigate("/edtech-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="freight-shipping-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

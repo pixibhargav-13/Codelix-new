@@ -4,7 +4,7 @@ import { Navbar } from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { SEO } from "../../components/SEO";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
-import logoV2 from "../Images/Logo_v2.png";
+import logoV2 from "../Images/Logo-V2.png";
 import whiteArrow from "../Images/whiteArrow.png";
 import projectImage from "../Images/work-best-project-fifteen.png";
 import underline from "../Images/what-we-build-underline.png";
@@ -17,7 +17,8 @@ import adobeXdLogo from "../Images/adobe-xd.png";
 import sketchLogo from "../Images/sketch.png";
 import framerLogo from "../Images/framer.png";
 import canvaLogo from "../Images/canva.png";
-import component5Image from "../Images/Component 5.png";
+import projectThree from "../Images/work-best-project-three.png";
+import projectFour from "../Images/work-best-project-four.png";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -264,16 +265,16 @@ const SchoolManagementCaseStudy = () => {
                   <h3 className="school-management-case-study-challenges-heading">Challenges</h3>
                   <ul className="school-management-case-study-challenges-list">
                     <li className={bulletPointsVisible ? "school-management-bullet-visible" : ""} style={{ transitionDelay: "0.1s" }}>
-                      Creating an intuitive interface that serves multiple user types (students, teachers, administrators) with different needs.
+                      Announcements were shared via paper slips or WhatsApp, leading to missed or delayed information.
                     </li>
                     <li className={bulletPointsVisible ? "school-management-bullet-visible" : ""} style={{ transitionDelay: "0.2s" }}>
-                      Organizing complex academic information like schedules, timetables, and announcements in an easy-to-access format.
+                      Students and teachers had no centralized place to manage schedules, classes, or homework.
                     </li>
                     <li className={bulletPointsVisible ? "school-management-bullet-visible" : ""} style={{ transitionDelay: "0.3s" }}>
-                      Ensuring real-time updates and notifications work reliably to keep users informed about important academic events.
+                      Students couldn't quickly check class timings or updated schedules, causing confusion.
                     </li>
                     <li className={bulletPointsVisible ? "school-management-bullet-visible" : ""} style={{ transitionDelay: "0.4s" }}>
-                      Building a secure platform that protects student and academic data while maintaining easy access for authorized users.
+                      Teachers relied on manual systems that were difficult to maintain and prone to errors.
                     </li>
                   </ul>
                 </div>
@@ -285,16 +286,16 @@ const SchoolManagementCaseStudy = () => {
                   <h3 className="school-management-case-study-solutions-heading">Solutions</h3>
                   <ul className="school-management-case-study-solutions-list">
                     <li className={bulletPointsVisible ? "school-management-bullet-visible" : ""} style={{ transitionDelay: "0.5s" }}>
-                      Designed role-based interfaces with personalized dashboards that provide relevant information and features for each user type.
+                      Student Dashboard- Daily schedules, Class details, Assignment summaries, Quick access to resources
                     </li>
                     <li className={bulletPointsVisible ? "school-management-bullet-visible" : ""} style={{ transitionDelay: "0.6s" }}>
-                      Created organized sections with clear navigation, allowing users to quickly access schedules, timetables, announcements, and academic resources.
+                      Timetable & Class Management- Updated class timings, Teacher-specific schedules, Real-time changes with notifications
                     </li>
                     <li className={bulletPointsVisible ? "school-management-bullet-visible" : ""} style={{ transitionDelay: "0.7s" }}>
-                      Implemented real-time notification systems and push alerts to keep users updated about schedule changes, announcements, and important events.
+                      Announcement & Notification Center- School-wide announcements, Important reminders, Push notifications for urgent updates
                     </li>
                     <li className={bulletPointsVisible ? "school-management-bullet-visible" : ""} style={{ transitionDelay: "0.8s" }}>
-                      Built robust security measures including authentication, role-based access control, and data encryption to protect sensitive academic information.
+                      Teacher Tools- Class management, Attendance marking, Assignment posting, Progress insights
                     </li>
                   </ul>
                 </div>
@@ -364,15 +365,76 @@ const SchoolManagementCaseStudy = () => {
         {/* Let's Build Something Section */}
         <LetsBuildSomething />
 
-        {/* Component 5 Images Section */}
-        <div className="school-management-case-study-component5-section py-7">
+        {/* Best Projects Section */}
+        <div className="school-management-case-study-best-projects-section py-7">
           <div className="container">
-            <div className="row school-management-case-study-component5-row">
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="school-management-case-study-component5-image" />
+            <div className="school-management-case-study-best-projects-wrapper">
+              {/* Project 1: Smart Society Management */}
+              <div className="school-management-case-study-best-project-card">
+                <div className="row align-items-center">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectThree}
+                      alt="A Smart Society Management App for Modern Residential Communities"
+                      className="school-management-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 school-management-case-study-best-project-content-col">
+                    <div className="school-management-case-study-best-project-content">
+                      <h3 className="school-management-case-study-best-project-title">
+                        A Smart Society Management App for Modern Residential Communities
+                      </h3>
+                      <p className="school-management-case-study-best-project-desc">
+                        A comprehensive mobile and web application designed to streamline community management for modern residential societies. The platform enables residents to access essential services, manage maintenance requests, pay dues, communicate with neighbors, and stay updated with community announcements.
+                      </p>
+                      <div className="school-management-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="school-management-case-study-best-project-tag-badge">Mobile</span>
+                        <span className="school-management-case-study-best-project-tag-badge">Web</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn school-management-case-study-read-case-study-btn school-management-case-study-project-btn"
+                      onClick={() => navigate("/smart-society-management-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="school-management-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-12">
-                <img src={component5Image} alt="Component 5" className="school-management-case-study-component5-image" />
+
+              {/* Project 2: Car Marketplace */}
+              <div className="school-management-case-study-best-project-card">
+                <div className="row align-items-center flex-row-reverse">
+                  <div className="col-lg-6">
+                    <img
+                      src={projectFour}
+                      alt="A Feature-Rich Mobile Marketplace for Buying & Selling Cars"
+                      className="school-management-case-study-best-project-img"
+                    />
+                  </div>
+                  <div className="col-lg-6 school-management-case-study-best-project-content-col">
+                    <div className="school-management-case-study-best-project-content">
+                      <h3 className="school-management-case-study-best-project-title">
+                        A Feature-Rich Mobile Marketplace for Buying & Selling Cars
+                      </h3>
+                      <p className="school-management-case-study-best-project-desc">
+                        A user-friendly automotive mobile application designed to make the car buying and selling process simple, transparent, and efficient. The platform allows users to browse a wide range of vehicles with detailed specifications, list their own cars for sale in just a few steps, and compare different options side-by-side.
+                      </p>
+                      <div className="school-management-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
+                        <span className="school-management-case-study-best-project-tag-badge">Android</span>
+                        <span className="school-management-case-study-best-project-tag-badge">iOS</span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn school-management-case-study-read-case-study-btn school-management-case-study-project-btn"
+                      onClick={() => navigate("/car-marketplace-case-study")}
+                    >
+                      <span>Read Case Study</span>
+                      <img src={whiteArrow} className="school-management-case-study-arrow-icon" />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
