@@ -4,88 +4,533 @@
   box-sizing: border-box;
 }
 
-.about {
-  min-height: 100vh;
+.about-page {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
   background: #0b0f19;
-  display: flex;
-  flex-direction: column;
+}
+
+.about-hero-section {
+  width: 100vw;
+  max-width: 100vw;
+  padding-bottom: 2rem;
+  overflow-x: hidden;
+  background: radial-gradient(
+    circle at center,
+    rgb(3, 34, 98) 0%,
+    rgb(9, 34, 84) 10%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+.about-hero-content-wrapper {
+  background: transparent;
+  border: 1px solid #abb3cb;
+}
+
+.about-hero-title {
+  font-family: "Hanken Grotesk", sans-serif;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.about-hero-description {
+  font-family: "Inter", sans-serif;
+  color: #a2a9b5;
+  line-height: 1.6;
+}
+
+.about-schedule-btn {
+  background: transparent !important;
+  color: #3E7DFC !important;
+  border: 1px solid #3E7DFC !important;
+  border-radius: 0px !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  letter-spacing: 0.3px;
+  transition: all 0.25s ease-in-out !important;
+  padding: 10px 20px 10px 15px !important;
+  width: 250px !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+}
+
+.about-schedule-btn:hover {
+  background: #3E7DFC !important;
+  color: #ffffff !important;
+  border-color: #3E7DFC !important;
+}
+
+.about-schedule-btn .arrow-icon {
+  height: 20px;
+  width: auto;
+  transition: transform 0.35s ease-in-out;
+  filter: brightness(0) saturate(100%) invert(36%) sepia(98%) saturate(2475%) hue-rotate(206deg) brightness(95%) contrast(101%);
+}
+
+.about-schedule-btn:hover .arrow-icon {
+  transform: rotate(-45deg);
+  filter: brightness(0) saturate(100%) invert(100%);
+}
+
+.about-hero-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+.about-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.about-content-section {
+  min-height: 50vh;
+  padding: 4rem 0;
+  background: #0b0f19;
+}
+
+/* Our Core Philosophy Section */
+.about-philosophy-section {
+  background: #ffffff;
+  padding: 100px 0 60px 0;
   width: 100vw;
   max-width: 100vw;
   overflow-x: hidden;
 }
 
-.about-main {
-  flex: 1;
+.about-philosophy-wrapper {
+  margin: 0 auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5rem 0;
-}
-
-.about-inner {
-  max-width: 960px;
-  width: 100%;
-  background: #0f1729;
-  border: 1.5px solid #abb3cb;
-  padding: 3rem 2.5rem;
+  flex-direction: column;
   text-align: center;
-  color: #ffffff;
+  max-width: 100%;
 }
 
-.about-badge {
-  display: inline-block;
-  padding: 0.35rem 0.9rem;
-  border-radius: 999px;
-  border: 1px solid #3e7dfc;
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #9ca8c9;
-  margin-bottom: 1rem;
-}
-
-.about-title {
-  font-family: "Hanken Grotesk", sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.about-highlight {
-  color: #3e7dfc;
-}
-
-.about-text {
-  font-family: "Inter", sans-serif;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: #b5bed6;
-  margin-bottom: 2rem;
-}
-
-.about-pill-row {
+.about-philosophy-header {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
+  flex-direction: column;
+  margin-bottom: 40px;
 }
 
-.about-pill {
-  border-radius: 999px;
-  border: 1px solid #2b6ef2;
-  padding: 0.4rem 1rem;
-  font-size: 0.85rem;
-  color: #d0d7ee;
-  background: rgba(43, 110, 242, 0.08);
+.about-philosophy-heading {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #131926;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 300;
+}
+
+.about-philosophy-underline-wrapper {
+  position: relative;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.about-philosophy-underline-img {
+  position: absolute;
+  bottom: -14px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  pointer-events: none;
+}
+
+.about-philosophy-cards {
+  margin-top: 30px;
+  gap: 0;
+}
+
+.about-philosophy-card {
+  border: 1px solid #abb3c2;
+  padding: 30px;
+  color: #131926;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  background: #ffffff;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.about-philosophy-card:first-child {
+  border-right: 1px solid #abb3c2;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.about-philosophy-card:last-child {
+  border-left: 1px solid #abb3c2;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.about-philosophy-card h4 {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 600;
+  font-family: "Hanken Grotesk", sans-serif;
+  margin-bottom: 12px;
+  color: #131926;
+}
+
+.about-philosophy-card p {
+  line-height: 24px;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  color: #6c788f;
+  margin: 0;
+}
+
+.about-philosophy-card:hover,
+.about-philosophy-card:hover h4,
+.about-philosophy-card:hover p {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+.about-footer-wrapper {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 @media (max-width: 768px) {
-  .about-inner {
-    padding: 2rem 1.5rem;
+  .about-philosophy-section {
+    padding: 60px 0 40px 0;
   }
 
-  .about-title {
-    font-size: 2rem;
+  .about-philosophy-heading {
+    font-size: 32px;
+  }
+
+  .about-philosophy-cards {
+    gap: 0;
+  }
+
+  .about-philosophy-card {
+    padding: 20px;
+  }
+
+  .about-philosophy-card:first-child {
+    border-right: 1px solid #abb3c2;
+    border-bottom: 1px solid #abb3c2;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .about-philosophy-card:last-child {
+    border-left: 1px solid #abb3c2;
+    border-top: 1px solid #abb3c2;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+
+  .about-philosophy-card h4 {
+    font-size: 18px;
+  }
+
+  .about-philosophy-card p {
+    font-size: 14px;
+  }
+}
+
+/* Trusted By Companies Across Industries Section */
+.about-industries-section {
+  background: #f8faff;
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.about-industries-wrapper {
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  font-weight: 500;
+}
+
+.about-industries-heading {
+  font-size: 32px;
+  font-weight: 200;
+  color: #131926;
+  font-family: "Hanken Grotesk", sans-serif;
+  margin-bottom: 3rem;
+}
+
+.about-industries-underline-wrapper {
+  position: relative;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.about-industries-underline-img {
+  position: absolute;
+  bottom: -14px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  pointer-events: none;
+}
+
+.about-industries-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid #d0d7e2;
+  border-right: none;
+  border-bottom: none;
+  margin-top: 3rem;
+}
+
+.about-industry-item {
+  border-right: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 35px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 165px;
+  background: #ffffff;
+}
+
+.about-industry-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.about-industry-name {
+  font-size: 1rem;
+  color: #131926;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  text-align: center;
+}
+
+/* Tablet */
+@media (max-width: 992px) and (min-width: 481px) {
+  .about-industries-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .about-industries-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .about-industry-item {
+    padding: 20px 10px;
+    min-height: 140px;
+  }
+  
+  .about-industry-icon {
+    max-width: 45px;
+    height: auto;
+  }
+
+  .about-industry-name {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 417px) {
+  .about-industries-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(140px, auto);
+  }
+  
+  .about-industry-item {
+    padding: 20px 10px;
+    min-height: 140px;
+  }
+  
+  .about-industry-icon {
+    max-width: 45px;
+    height: auto;
+  }
+
+  .about-industry-name {
+    font-size: 0.875rem;
+  }
+}
+
+/* The Foundations Of Codelix Section */
+.about-foundations-section {
+  background: #ffffff;
+  padding: 100px 0;
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.about-foundations-wrapper {
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.about-foundations-heading {
+  font-size: 32px;
+  font-weight: 200;
+  color: #131926;
+  font-family: "Hanken Grotesk", sans-serif;
+  margin-bottom: 3rem;
+}
+
+.about-foundations-underline-wrapper {
+  position: relative;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.about-foundations-underline-img {
+  position: absolute;
+  bottom: -14px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  pointer-events: none;
+}
+
+.about-foundations-cards {
+  margin-top: 3rem;
+}
+
+.about-foundation-card {
+  border: 1px solid #abb3c2;
+  padding: 30px;
+  background: #ffffff;
+  height: 100%;
+  text-align: left;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-foundation-number {
+  font-size: 48px;
+  font-weight: 300;
+  color: #e5e5e5;
+  font-family: "Hanken Grotesk", sans-serif;
+  line-height: 1;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.about-foundation-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #131926;
+  font-family: "Hanken Grotesk", sans-serif;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.about-foundation-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #6c788f;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .about-foundations-section {
+    padding: 60px 0;
+  }
+
+  .about-foundations-heading {
+    font-size: 28px;
+    margin-bottom: 2rem;
+  }
+
+  .about-foundation-card {
+    padding: 25px;
+    margin-bottom: 20px;
+  }
+
+  .about-foundation-number {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+
+  .about-foundation-title {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .about-foundation-description {
+    font-size: 14px;
+  }
+}
+
+/* Our Work Through Client's Words Section */
+.about-ourwork-section {
+  background: #ffffff;
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.light-gray {
+  color: #a2a9b5 !important;
+}
+
+.hanken-grotesk {
+  font-family: "Hanken Grotesk", sans-serif;
+}
+
+.inter {
+  font-family: "Inter", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .about-hero-title {
+    font-size: 28px !important;
+  }
+
+  .about-hero-description {
+    font-size: 15px !important;
+  }
+
+  .about-schedule-btn {
+    width: 100% !important;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-hero-title {
+    font-size: 28px !important;
+  }
+
+  .about-hero-description {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .about-hero-title {
+    font-size: 24px !important;
   }
 }
 
