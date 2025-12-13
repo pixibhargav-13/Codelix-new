@@ -38,9 +38,9 @@ const Footer = () => {
       { label: "AI Development", link: "/services/ai-development" },
     ],
     social: [
-      { label: "Linkedin", link: "#" },
+      { label: "Linkedin", link: "https://www.linkedin.com/company/codelixit-solutions" },
       { label: "Upwork", link: "#" },
-      { label: "Instagram", link: "#" },
+      { label: "Instagram", link: "https://www.instagram.com/codelixitsolutions/" },
     ],
     contact: [
       {
@@ -124,7 +124,13 @@ const Footer = () => {
               <ul className="footer-links">
                 {footerData.social.map((item, index) => (
                   <li key={index}>
-                    <a href={item.link}>{item.label}</a>
+                    <a 
+                      href={item.link} 
+                      target={item.link.startsWith("http") ? "_blank" : "_self"}
+                      rel={item.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                    >
+                      {item.label}
+                    </a>
                   </li>
                 ))}
               </ul>
