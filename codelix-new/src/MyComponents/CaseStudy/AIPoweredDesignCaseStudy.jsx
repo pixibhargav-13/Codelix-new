@@ -12,9 +12,6 @@ import lightImage from "../Images/Light20.png";
 import light2Image from "../Images/Light21.png";
 import fam1Image from "../Images/fam-1.png";
 import fam2Image from "../Images/fam-2.png";
-import figmaLogo from "../Images/figma.png";
-import adobeXdLogo from "../Images/adobe-xd.png";
-import sketchLogo from "../Images/sketch.png";
 import framerLogo from "../Images/framer.png";
 import canvaLogo from "../Images/canva.png";
 import projectEleven from "../Images/work-best-project-eleven.png";
@@ -156,8 +153,8 @@ const AIPoweredDesignCaseStudy = () => {
                   
                   {/* Tags */}
                   <div className="ai-powered-design-case-study-tags d-flex flex-wrap gap-2 mb-4">
-                    <span className="ai-powered-design-case-study-tag-badge">Mobile</span>
-                    <span className="ai-powered-design-case-study-tag-badge">Web</span>
+                    <span className="ai-powered-design-case-study-tag-badge">Framer</span>
+                    <span className="ai-powered-design-case-study-tag-badge">Canva</span>
                   </div>
 
                   {/* Schedule A Call Button */}
@@ -329,19 +326,7 @@ const AIPoweredDesignCaseStudy = () => {
               </h2>
               
               <div className="ai-powered-design-case-study-tools-grid">
-                {/* Top Row */}
-                <div className="ai-powered-design-case-study-tool-item">
-                  <img src={figmaLogo} alt="Figma" className="ai-powered-design-case-study-tool-logo" />
-                  <p className="ai-powered-design-case-study-tool-name">Figma</p>
-                </div>
-                <div className="ai-powered-design-case-study-tool-item">
-                  <img src={adobeXdLogo} alt="Adobe XD" className="ai-powered-design-case-study-tool-logo" />
-                  <p className="ai-powered-design-case-study-tool-name">Adobe XD</p>
-                </div>
-                <div className="ai-powered-design-case-study-tool-item">
-                  <img src={sketchLogo} alt="Sketch" className="ai-powered-design-case-study-tool-logo" />
-                  <p className="ai-powered-design-case-study-tool-name">Sketch</p>
-                </div>
+                {/* Top Row - 5 items (2 tools + 3 empty) */}
                 <div className="ai-powered-design-case-study-tool-item">
                   <img src={framerLogo} alt="Framer" className="ai-powered-design-case-study-tool-logo" />
                   <p className="ai-powered-design-case-study-tool-name">Framer</p>
@@ -350,8 +335,11 @@ const AIPoweredDesignCaseStudy = () => {
                   <img src={canvaLogo} alt="Canva" className="ai-powered-design-case-study-tool-logo" />
                   <p className="ai-powered-design-case-study-tool-name">Canva</p>
                 </div>
+                <div className="ai-powered-design-case-study-tool-item ai-powered-design-case-study-tool-empty"></div>
+                <div className="ai-powered-design-case-study-tool-item ai-powered-design-case-study-tool-empty"></div>
+                <div className="ai-powered-design-case-study-tool-item ai-powered-design-case-study-tool-empty"></div>
                 
-                {/* Bottom Row - Empty */}
+                {/* Bottom Row - 5 empty items */}
                 <div className="ai-powered-design-case-study-tool-item ai-powered-design-case-study-tool-empty"></div>
                 <div className="ai-powered-design-case-study-tool-item ai-powered-design-case-study-tool-empty"></div>
                 <div className="ai-powered-design-case-study-tool-item ai-powered-design-case-study-tool-empty"></div>
@@ -388,8 +376,8 @@ const AIPoweredDesignCaseStudy = () => {
                         A high-end UI/UX design created for a modern creative studio website. The interface uses dark-mode aesthetics, clean grids, and strong typography to showcase projects in a bold and visually engaging way.
                       </p>
                       <div className="ai-powered-design-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="ai-powered-design-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="ai-powered-design-case-study-best-project-tag-badge">Web</span>
+                        <span className="ai-powered-design-case-study-best-project-tag-badge">Figma</span>
+                        <span className="ai-powered-design-case-study-best-project-tag-badge">Canva</span>
                       </div>
                     </div>
                     <button
@@ -422,8 +410,9 @@ const AIPoweredDesignCaseStudy = () => {
                         This project showcases the complete UI/UX design for a modern creative agency website. The design focuses on a bold visual identity, clean layout structures, and a smooth user journey across all pages.
                       </p>
                       <div className="ai-powered-design-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="ai-powered-design-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="ai-powered-design-case-study-best-project-tag-badge">Web</span>
+                        <span className="ai-powered-design-case-study-best-project-tag-badge">Figma</span>
+                        <span className="ai-powered-design-case-study-best-project-tag-badge">Canva</span>
+                        <span className="ai-powered-design-case-study-best-project-tag-badge">Photoshop</span>
                       </div>
                     </div>
                     <button

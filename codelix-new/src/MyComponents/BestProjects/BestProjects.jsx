@@ -32,7 +32,7 @@ export const BestProjects = () => {
       title: "NextGen - Modern Fashion E-Commerce Website",
       description: 
         "A modern and fully responsive e-commerce website built for a fashion and lifestyle brand offering clothing, eyewear, and accessories. This platform features a clean user interface, intuitive navigation, and a seamless shopping experience designed to maximize user engagement and conversions.",
-      tags: ["Mobile", "Web"],
+      tags: ["Nodejs", "Figma", "ReactJS", "Postgres", "Postman", "Swagger", "AWS"],
       buttonText: "Read Case Study",
       image: projectOne,
     },
@@ -42,7 +42,7 @@ export const BestProjects = () => {
         "A Custom ERP Solution Designed for Industrial & Financial Workflows",
       description:
         "A robust and scalable ERP system designed to handle complex industrial workflows, streamline financial processes, and support high-volume operational activities with ease. Ensures accuracy, transparency, and smooth coordination across departments.",
-      tags: ["AWS", "Web"],
+      tags: ["Spring Boot", "ReactJS", "Figma", "ExpressJS", "MySQL", "AWS", "Swagger"],
       buttonText: "Read Case Study",
       image: projectTwo,
     },
@@ -52,7 +52,7 @@ export const BestProjects = () => {
         "A Smart Society Management App for Modern Residential Communities",
       description:
         "A fully functional mobile application designed to simplify and digitize everyday society operations. It enhances communication between residents and management, centralizes essential services, and automates routine tasks such as approvals, maintenance requests, payments, and community updates, making the entire residential experience more organized, transparent, and efficient.",
-      tags: ["Mobile", "Web"],
+      tags: ["Flutter", "Firebase", "Twilio", "Figma", "AWS", "MySQL", "Spring Boot"],
       buttonText: "Read Case Study",
       image: projectThree,
     },
@@ -62,7 +62,7 @@ export const BestProjects = () => {
         "A Feature-Rich Mobile Marketplace for Buying & Selling Cars",
       description:
         "A user-friendly automotive mobile application designed to make the car buying and selling process simple, transparent, and efficient. The platform allows users to browse a wide range of vehicles with detailed specifications, list their own cars for sale in just a few steps, and compare different options side-by-side to make confident decisions. With secure flows, smart search filters, real-time updates, and an intuitive interface, the app streamlines the entire journey, from discovery to final transaction, making it effortless for buyers, sellers, and dealers alike.",
-      tags: ["Android", "ios"],
+      tags: ["React Native", "Firebase", "Twilio", "Figma", "AWS", "Postgres", "FastAPI"],
       buttonText: "Read Case Study",
       image: projectFour,
     },
@@ -72,7 +72,7 @@ export const BestProjects = () => {
         "A High-Performance E-Commerce Platform for Premium Book Collections",
       description:
         "A modern and intuitive online storefront designed specifically for book retail, featuring smooth navigation, elegant product showcases, and a seamless browsing experience. The platform highlights each book with high-quality visuals, detailed descriptions, and an organized category structure that helps users discover titles easily.",
-      tags: ["ReactJS", "tailwind"],
+      tags: ["Nodejs", "Figma", "ReactJS", "MongoDB", "Postman", "Swagger", "AWS"],
       buttonText: "Read Case Study",
       image: projectFive,
     },
@@ -82,7 +82,7 @@ export const BestProjects = () => {
         "Modern Website UI/UX Design for a Creative Agency",
       description:
         "This project showcases the complete UI/UX design for a modern creative agency website. The design focuses on a bold visual identity, clean layout structures, and a smooth user journey across all pages. Each section—from the hero area to services, case studies, contact flow, and navigation—has been crafted with a strong emphasis on clarity, usability, and visual appeal.",
-      tags: ["Mobile", "Web"],
+      tags: ["Figma", "Canva", "Photoshop"],
       buttonText: "Read Case Study",
       image: projectSix,
     },
@@ -92,7 +92,7 @@ export const BestProjects = () => {
         "Modern HR Portal for Employee Benefits - Web Development",
       description:
         "A modern, responsive web platform developed to simplify employee benefits, claims, and HR administration. The website includes a clean dashboard for employees to view benefits, submit claims, track approvals, and access important HR resources with ease.",
-      tags: ["Mobile", "Web"],
+      tags: ["AngularJS", "Postgres", "Django", "gRPC"],
       buttonText: "Read Case Study",
       image: projectSeven,
     },
@@ -102,7 +102,7 @@ export const BestProjects = () => {
         "Organic Makhana Store – Responsive E-Commerce Platform",
       description:
         "A clean and responsive e-commerce website designed for a premium makhana brand. The platform showcases multiple product categories with high-quality visuals, clear structure, and an effortless shopping experience. Built with a mobile-first layout, smooth navigation, and optimised product pages, it enhances customer trust and supports strong conversion flow.",
-      tags: ["Mobile", "Web"],
+      tags: ["Nodejs", "Figma", "ReactJS", "Postgres", "Render", "Swagger", "AWS"],
       buttonText: "Read Case Study",
       image: projectEight,
     },
@@ -112,7 +112,7 @@ export const BestProjects = () => {
         "Modern EdTech Website for Online Courses",
       description:
         "A modern web platform developed for an online learning experience, featuring smooth navigation, structured course pages, and a clean, welcoming interface. The website is built with fast performance, mobile responsiveness, and a user-friendly flow to make online education simple and engaging.",
-      tags: ["Mobile", "Web"],
+      tags: ["ReactJS", "MongoDB", "Spring Boot", "gRPC"],
       buttonText: "Read Case Study",
       image: projectNine,
     },
@@ -122,7 +122,7 @@ export const BestProjects = () => {
         "Custom Payroll Management System – Web & Mobile",
       description:
         "A fully custom payroll management system developed to simplify employee salary processing, attendance tracking, and financial reporting for businesses. This solution includes a responsive web dashboard and mobile interface, enabling HR teams and employees to manage payroll activities from anywhere.",
-      tags: ["Mobile", "Web"],
+      tags: ["Spring Boot", "AngularJS", "Figma", "ExpressJS", "MySQL", "AWS", "Swagger"],
       buttonText: "Read Case Study",
       image: projectTen,
     },
@@ -132,7 +132,7 @@ export const BestProjects = () => {
         "Elegant Creative Agency Website – UI/UX Design",
       description:
         "A high-end UI/UX design created for a modern creative studio website. The interface uses dark-mode aesthetics, clean grids, and strong typography to showcase projects in a bold and visually engaging way. Designed to highlight creativity while keeping the experience smooth and intuitive across all devices.",
-      tags: ["Mobile", "Web"],
+      tags: ["Figma", "Canva"],
       buttonText: "Read Case Study",
       image: projectEleven,
     },
@@ -141,8 +141,8 @@ export const BestProjects = () => {
       title:
         "AI-Powered Design Platform – UI/UX Concept",
       description:
-      "This project showcases a futuristic UI/UX concept created for an AI-powered design platform. The interface focuses on bold visuals, modern gradients, and a clean layout that highlights the platform’s innovative features. The goal was to craft an immersive user experience centered around simplicity, intuitive navigation, and high visual impact. Every section—from the hero banner to the feature highlights—is designed to communicate advanced technology while staying user-friendly and accessible.",
-      tags: ["Mobile", "Web"],
+      "This project showcases a futuristic UI/UX concept created for an AI-powered design platform. The interface focuses on bold visuals, modern gradients, and a clean layout that highlights the platform's innovative features. The goal was to craft an immersive user experience centered around simplicity, intuitive navigation, and high visual impact. Every section—from the hero banner to the feature highlights—is designed to communicate advanced technology while staying user-friendly and accessible.",
+      tags: ["Framer", "Canva"],
       buttonText: "Read Case Study",
       image: projectTwelve,
     },
@@ -152,7 +152,7 @@ export const BestProjects = () => {
         "Freight & Shipping Web Platform – Modern Development",
       description:
       "A fully responsive and modern website developed for an international ocean freight and logistics service provider. The platform showcases global cargo solutions, shipment tracking features, service categories, and detailed logistics information through a clean, intuitive interface.",
-      tags: ["Mobile", "Web"],
+      tags: ["ReactJS", "MongoDB", "Nodejs", "gRPC"],
       buttonText: "Read Case Study",
       image: projectThirteen,
     },
@@ -162,7 +162,7 @@ export const BestProjects = () => {
         "Smart Business Operations System - Custom Software",
       description:
       "A fully customized software system developed to help businesses manage their operations more efficiently. The platform includes a clean web dashboard and a mobile-friendly interface, offering seamless access to core business modules such as order tracking, inventory management, staff workflows, and real-time reporting.",
-      tags: ["Mobile", "Web"],
+      tags: ["Spring Boot", "ReactJS", "Figma", "ExpressJS", "Postgres", "AWS", "Swagger"],
       buttonText: "Read Case Study",
       image: projectFourteen,
     },
@@ -172,7 +172,7 @@ export const BestProjects = () => {
         "Morden School Management Mobile Application",
       description:
       "A modern and user-friendly mobile application developed to streamline school operations, student schedules, and daily academic activities. The app allows students and teachers to manage classes, view timetables, check announcements, and stay updated with important academic information.",
-      tags: ["Mobile", "Web"],
+      tags: ["Flutter", "Firebase", "Twilio", "Figma", "AWS", "MongoDB", "Django"],
       buttonText: "Read Case Study",
       image: projectFifteen,
     },

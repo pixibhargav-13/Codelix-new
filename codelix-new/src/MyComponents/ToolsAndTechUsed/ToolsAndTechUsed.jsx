@@ -34,6 +34,7 @@ import webflowLogo from "../Images/webflow.png";
 import n8nLogo from "../Images/n8n.png";
 import zapierLogo from "../Images/zapier.png";
 import makeLogo from "../Images/make.png";
+import postgresqlLogo from "../Images/postgresql.png";
 
 import underline from "../Images/what-we-build-underline.png";
 
@@ -58,6 +59,7 @@ export const ToolsAndTechUsed = () => {
     { name: "Docker", img: dockerLogo },
     { name: "Django", img: djangoLogo },
     { name: "C#", img: csharpLogo },
+    { name: "Postgres", img: postgresqlLogo },
     { name: "React Native", img: reactLogo },
     { name: "Figma", img: figmaLogo },
     { name: "Adobe XD", img: adobeXdLogo },

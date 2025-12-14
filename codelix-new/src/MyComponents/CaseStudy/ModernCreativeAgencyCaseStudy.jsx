@@ -13,10 +13,8 @@ import light2Image from "../Images/Light19.png";
 import fam1Image from "../Images/fam-1.png";
 import fam2Image from "../Images/fam-2.png";
 import figmaLogo from "../Images/figma.png";
-import adobeXdLogo from "../Images/adobe-xd.png";
-import sketchLogo from "../Images/sketch.png";
-import framerLogo from "../Images/framer.png";
 import canvaLogo from "../Images/canva.png";
+import photoshopLogo from "../Images/PhotoShop.png";
 import projectEleven from "../Images/work-best-project-eleven.png";
 import projectTwelve from "../Images/work-best-project-twelve.png";
 import { ArrowLeft } from "lucide-react";
@@ -156,8 +154,9 @@ const ModernCreativeAgencyCaseStudy = () => {
                   
                   {/* Tags */}
                   <div className="modern-creative-agency-case-study-tags d-flex flex-wrap gap-2 mb-4">
-                    <span className="modern-creative-agency-case-study-tag-badge">Mobile</span>
-                    <span className="modern-creative-agency-case-study-tag-badge">Web</span>
+                    <span className="modern-creative-agency-case-study-tag-badge">Figma</span>
+                    <span className="modern-creative-agency-case-study-tag-badge">Canva</span>
+                    <span className="modern-creative-agency-case-study-tag-badge">Photoshop</span>
                   </div>
 
                   {/* Schedule A Call Button */}
@@ -329,29 +328,23 @@ const ModernCreativeAgencyCaseStudy = () => {
               </h2>
               
               <div className="modern-creative-agency-case-study-tools-grid">
-                {/* Top Row */}
+                {/* Top Row - 5 items (3 tools + 2 empty) */}
                 <div className="modern-creative-agency-case-study-tool-item">
                   <img src={figmaLogo} alt="Figma" className="modern-creative-agency-case-study-tool-logo" />
                   <p className="modern-creative-agency-case-study-tool-name">Figma</p>
                 </div>
                 <div className="modern-creative-agency-case-study-tool-item">
-                  <img src={adobeXdLogo} alt="Adobe XD" className="modern-creative-agency-case-study-tool-logo" />
-                  <p className="modern-creative-agency-case-study-tool-name">Adobe XD</p>
-                </div>
-                <div className="modern-creative-agency-case-study-tool-item">
-                  <img src={sketchLogo} alt="Sketch" className="modern-creative-agency-case-study-tool-logo" />
-                  <p className="modern-creative-agency-case-study-tool-name">Sketch</p>
-                </div>
-                <div className="modern-creative-agency-case-study-tool-item">
-                  <img src={framerLogo} alt="Framer" className="modern-creative-agency-case-study-tool-logo" />
-                  <p className="modern-creative-agency-case-study-tool-name">Framer</p>
-                </div>
-                <div className="modern-creative-agency-case-study-tool-item">
                   <img src={canvaLogo} alt="Canva" className="modern-creative-agency-case-study-tool-logo" />
                   <p className="modern-creative-agency-case-study-tool-name">Canva</p>
                 </div>
+                <div className="modern-creative-agency-case-study-tool-item">
+                  <img src={photoshopLogo} alt="Photoshop" className="modern-creative-agency-case-study-tool-logo" />
+                  <p className="modern-creative-agency-case-study-tool-name">Photoshop</p>
+                </div>
+                <div className="modern-creative-agency-case-study-tool-item modern-creative-agency-case-study-tool-empty"></div>
+                <div className="modern-creative-agency-case-study-tool-item modern-creative-agency-case-study-tool-empty"></div>
                 
-                {/* Bottom Row - Empty */}
+                {/* Bottom Row - 5 empty items */}
                 <div className="modern-creative-agency-case-study-tool-item modern-creative-agency-case-study-tool-empty"></div>
                 <div className="modern-creative-agency-case-study-tool-item modern-creative-agency-case-study-tool-empty"></div>
                 <div className="modern-creative-agency-case-study-tool-item modern-creative-agency-case-study-tool-empty"></div>
@@ -388,8 +381,8 @@ const ModernCreativeAgencyCaseStudy = () => {
                         A high-end UI/UX design created for a modern creative studio website. The interface uses dark-mode aesthetics, clean grids, and strong typography to showcase projects in a bold and visually engaging way.
                       </p>
                       <div className="modern-creative-agency-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="modern-creative-agency-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="modern-creative-agency-case-study-best-project-tag-badge">Web</span>
+                        <span className="modern-creative-agency-case-study-best-project-tag-badge">Figma</span>
+                        <span className="modern-creative-agency-case-study-best-project-tag-badge">Canva</span>
                       </div>
                     </div>
                     <button
@@ -422,8 +415,8 @@ const ModernCreativeAgencyCaseStudy = () => {
                         This project showcases a futuristic UI/UX concept created for an AI-powered design platform. The interface focuses on bold visuals, modern gradients, and a clean layout that highlights the platform's innovative features.
                       </p>
                       <div className="modern-creative-agency-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="modern-creative-agency-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="modern-creative-agency-case-study-best-project-tag-badge">Web</span>
+                        <span className="modern-creative-agency-case-study-best-project-tag-badge">Framer</span>
+                        <span className="modern-creative-agency-case-study-best-project-tag-badge">Canva</span>
                       </div>
                     </div>
                     <button
@@ -449,4 +442,5 @@ const ModernCreativeAgencyCaseStudy = () => {
 };
 
 export default ModernCreativeAgencyCaseStudy;
+
 

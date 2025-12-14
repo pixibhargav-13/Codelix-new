@@ -13,10 +13,12 @@ import light2Image from "../Images/Dashboard mobile3.png";
 import fam1Image from "../Images/fam-1.png";
 import fam2Image from "../Images/fam-2.png";
 import figmaLogo from "../Images/figma.png";
-import adobeXdLogo from "../Images/adobe-xd.png";
-import sketchLogo from "../Images/sketch.png";
-import framerLogo from "../Images/framer.png";
-import canvaLogo from "../Images/canva.png";
+import springbootLogo from "../Images/springboot.png";
+import reactLogo from "../Images/react.png";
+import expressLogo from "../Images/Express.png";
+import mysqlLogo from "../Images/MySQL.png";
+import awsLogo from "../Images/AWS.png";
+import swaggerLogo from "../Images/Swagger.png";
 import projectFourteen from "../Images/work-best-project-fourteen.png";
 import projectTen from "../Images/work-best-project-ten.png";
 import { ArrowLeft } from "lucide-react";
@@ -156,8 +158,13 @@ const ERPCaseStudy = () => {
                   
                   {/* Tags */}
                   <div className="erp-case-study-tags d-flex flex-wrap gap-2 mb-4">
+                    <span className="erp-case-study-tag-badge">Spring Boot</span>
+                    <span className="erp-case-study-tag-badge">ReactJS</span>
+                    <span className="erp-case-study-tag-badge">Figma</span>
+                    <span className="erp-case-study-tag-badge">ExpressJS</span>
+                    <span className="erp-case-study-tag-badge">MySQL</span>
                     <span className="erp-case-study-tag-badge">AWS</span>
-                    <span className="erp-case-study-tag-badge">Web</span>
+                    <span className="erp-case-study-tag-badge">Swagger</span>
                   </div>
 
                   {/* Schedule A Call Button */}
@@ -329,31 +336,37 @@ const ERPCaseStudy = () => {
               </h2>
               
               <div className="erp-case-study-tools-grid">
-                {/* Top Row */}
+                {/* Top Row - 5 items */}
+                <div className="erp-case-study-tool-item">
+                  <img src={springbootLogo} alt="Spring Boot" className="erp-case-study-tool-logo" />
+                  <p className="erp-case-study-tool-name">Spring Boot</p>
+                </div>
+                <div className="erp-case-study-tool-item">
+                  <img src={reactLogo} alt="ReactJS" className="erp-case-study-tool-logo" />
+                  <p className="erp-case-study-tool-name">ReactJS</p>
+                </div>
                 <div className="erp-case-study-tool-item">
                   <img src={figmaLogo} alt="Figma" className="erp-case-study-tool-logo" />
                   <p className="erp-case-study-tool-name">Figma</p>
                 </div>
                 <div className="erp-case-study-tool-item">
-                  <img src={adobeXdLogo} alt="Adobe XD" className="erp-case-study-tool-logo" />
-                  <p className="erp-case-study-tool-name">Adobe XD</p>
+                  <img src={expressLogo} alt="ExpressJS" className="erp-case-study-tool-logo" />
+                  <p className="erp-case-study-tool-name">ExpressJS</p>
                 </div>
                 <div className="erp-case-study-tool-item">
-                  <img src={sketchLogo} alt="Sketch" className="erp-case-study-tool-logo" />
-                  <p className="erp-case-study-tool-name">Sketch</p>
-                </div>
-                <div className="erp-case-study-tool-item">
-                  <img src={framerLogo} alt="Framer" className="erp-case-study-tool-logo" />
-                  <p className="erp-case-study-tool-name">Framer</p>
-                </div>
-                <div className="erp-case-study-tool-item">
-                  <img src={canvaLogo} alt="Canva" className="erp-case-study-tool-logo" />
-                  <p className="erp-case-study-tool-name">Canva</p>
+                  <img src={mysqlLogo} alt="MySQL" className="erp-case-study-tool-logo" />
+                  <p className="erp-case-study-tool-name">MySQL</p>
                 </div>
                 
-                {/* Bottom Row - Empty */}
-                <div className="erp-case-study-tool-item erp-case-study-tool-empty"></div>
-                <div className="erp-case-study-tool-item erp-case-study-tool-empty"></div>
+                {/* Bottom Row - 5 items (2 tools + 3 empty) */}
+                <div className="erp-case-study-tool-item">
+                  <img src={awsLogo} alt="AWS" className="erp-case-study-tool-logo" />
+                  <p className="erp-case-study-tool-name">AWS</p>
+                </div>
+                <div className="erp-case-study-tool-item">
+                  <img src={swaggerLogo} alt="Swagger" className="erp-case-study-tool-logo" />
+                  <p className="erp-case-study-tool-name">Swagger</p>
+                </div>
                 <div className="erp-case-study-tool-item erp-case-study-tool-empty"></div>
                 <div className="erp-case-study-tool-item erp-case-study-tool-empty"></div>
                 <div className="erp-case-study-tool-item erp-case-study-tool-empty"></div>
@@ -388,8 +401,13 @@ const ERPCaseStudy = () => {
                         A comprehensive custom software solution developed to streamline business operations, featuring automated workflows, real-time analytics, and integrated management tools. The system helps businesses optimize their processes, improve efficiency, and make data-driven decisions.
                       </p>
                       <div className="erp-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="erp-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="erp-case-study-best-project-tag-badge">Web</span>
+                        <span className="erp-case-study-best-project-tag-badge">Spring Boot</span>
+                        <span className="erp-case-study-best-project-tag-badge">ReactJS</span>
+                        <span className="erp-case-study-best-project-tag-badge">Figma</span>
+                        <span className="erp-case-study-best-project-tag-badge">ExpressJS</span>
+                        <span className="erp-case-study-best-project-tag-badge">Postgres</span>
+                        <span className="erp-case-study-best-project-tag-badge">AWS</span>
+                        <span className="erp-case-study-best-project-tag-badge">Swagger</span>
                       </div>
                     </div>
                     <button
@@ -422,8 +440,13 @@ const ERPCaseStudy = () => {
                         A comprehensive payroll management system developed for web and mobile platforms, featuring employee management, salary processing, tax calculations, and detailed reporting. The system provides a seamless experience for HR teams to manage payroll efficiently across all devices.
                       </p>
                       <div className="erp-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="erp-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="erp-case-study-best-project-tag-badge">Web</span>
+                        <span className="erp-case-study-best-project-tag-badge">Spring Boot</span>
+                        <span className="erp-case-study-best-project-tag-badge">AngularJS</span>
+                        <span className="erp-case-study-best-project-tag-badge">Figma</span>
+                        <span className="erp-case-study-best-project-tag-badge">ExpressJS</span>
+                        <span className="erp-case-study-best-project-tag-badge">MySQL</span>
+                        <span className="erp-case-study-best-project-tag-badge">AWS</span>
+                        <span className="erp-case-study-best-project-tag-badge">Swagger</span>
                       </div>
                     </div>
                     <button

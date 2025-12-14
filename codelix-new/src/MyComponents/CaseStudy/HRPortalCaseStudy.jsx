@@ -12,11 +12,10 @@ import lightImage from "../Images/Light12.png";
 import light2Image from "../Images/Light13.png";
 import fam1Image from "../Images/fam-1.png";
 import fam2Image from "../Images/fam-2.png";
-import figmaLogo from "../Images/figma.png";
-import adobeXdLogo from "../Images/adobe-xd.png";
-import sketchLogo from "../Images/sketch.png";
-import framerLogo from "../Images/framer.png";
-import canvaLogo from "../Images/canva.png";
+import angularLogo from "../Images/angular.png";
+import postgresqlLogo from "../Images/postgresql.png";
+import djangoLogo from "../Images/django.png";
+import grpcLogo from "../Images/gRPC.png";
 import projectThirteen from "../Images/work-best-project-thirteen.png";
 import projectNine from "../Images/work-best-project-nine.png";
 import { ArrowLeft } from "lucide-react";
@@ -156,8 +155,10 @@ const HRPortalCaseStudy = () => {
                   
                   {/* Tags */}
                   <div className="hr-portal-case-study-tags d-flex flex-wrap gap-2 mb-4">
-                    <span className="hr-portal-case-study-tag-badge">Mobile</span>
-                    <span className="hr-portal-case-study-tag-badge">Web</span>
+                    <span className="hr-portal-case-study-tag-badge">AngularJS</span>
+                    <span className="hr-portal-case-study-tag-badge">Postgres</span>
+                    <span className="hr-portal-case-study-tag-badge">Django</span>
+                    <span className="hr-portal-case-study-tag-badge">gRPC</span>
                   </div>
 
                   {/* Schedule A Call Button */}
@@ -326,29 +327,26 @@ const HRPortalCaseStudy = () => {
               </h2>
               
               <div className="hr-portal-case-study-tools-grid">
-                {/* Top Row */}
+                {/* Top Row - 5 items (4 tools + 1 empty) */}
                 <div className="hr-portal-case-study-tool-item">
-                  <img src={figmaLogo} alt="Figma" className="hr-portal-case-study-tool-logo" />
-                  <p className="hr-portal-case-study-tool-name">Figma</p>
+                  <img src={angularLogo} alt="AngularJS" className="hr-portal-case-study-tool-logo" />
+                  <p className="hr-portal-case-study-tool-name">AngularJS</p>
                 </div>
                 <div className="hr-portal-case-study-tool-item">
-                  <img src={adobeXdLogo} alt="Adobe XD" className="hr-portal-case-study-tool-logo" />
-                  <p className="hr-portal-case-study-tool-name">Adobe XD</p>
+                  <img src={postgresqlLogo} alt="Postgres" className="hr-portal-case-study-tool-logo" />
+                  <p className="hr-portal-case-study-tool-name">Postgres</p>
                 </div>
                 <div className="hr-portal-case-study-tool-item">
-                  <img src={sketchLogo} alt="Sketch" className="hr-portal-case-study-tool-logo" />
-                  <p className="hr-portal-case-study-tool-name">Sketch</p>
+                  <img src={djangoLogo} alt="Django" className="hr-portal-case-study-tool-logo" />
+                  <p className="hr-portal-case-study-tool-name">Django</p>
                 </div>
                 <div className="hr-portal-case-study-tool-item">
-                  <img src={framerLogo} alt="Framer" className="hr-portal-case-study-tool-logo" />
-                  <p className="hr-portal-case-study-tool-name">Framer</p>
+                  <img src={grpcLogo} alt="gRPC" className="hr-portal-case-study-tool-logo" />
+                  <p className="hr-portal-case-study-tool-name">gRPC</p>
                 </div>
-                <div className="hr-portal-case-study-tool-item">
-                  <img src={canvaLogo} alt="Canva" className="hr-portal-case-study-tool-logo" />
-                  <p className="hr-portal-case-study-tool-name">Canva</p>
-                </div>
+                <div className="hr-portal-case-study-tool-item hr-portal-case-study-tool-empty"></div>
                 
-                {/* Bottom Row - Empty */}
+                {/* Bottom Row - 5 empty items */}
                 <div className="hr-portal-case-study-tool-item hr-portal-case-study-tool-empty"></div>
                 <div className="hr-portal-case-study-tool-item hr-portal-case-study-tool-empty"></div>
                 <div className="hr-portal-case-study-tool-item hr-portal-case-study-tool-empty"></div>
@@ -385,8 +383,10 @@ const HRPortalCaseStudy = () => {
                         A fully responsive and modern website developed for an international ocean freight and logistics service provider. The platform showcases global cargo solutions, shipment tracking features, service categories, and detailed logistics information through a clean, intuitive interface.
                       </p>
                       <div className="hr-portal-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="hr-portal-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="hr-portal-case-study-best-project-tag-badge">Web</span>
+                        <span className="hr-portal-case-study-best-project-tag-badge">ReactJS</span>
+                        <span className="hr-portal-case-study-best-project-tag-badge">MongoDB</span>
+                        <span className="hr-portal-case-study-best-project-tag-badge">Nodejs</span>
+                        <span className="hr-portal-case-study-best-project-tag-badge">gRPC</span>
                       </div>
                     </div>
                     <button
@@ -419,8 +419,10 @@ const HRPortalCaseStudy = () => {
                         A modern web platform developed for an online learning experience, featuring smooth navigation, structured course pages, and a clean, welcoming interface. The website is built with fast performance, mobile responsiveness, and a user-friendly flow to make online education simple and engaging.
                       </p>
                       <div className="hr-portal-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="hr-portal-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="hr-portal-case-study-best-project-tag-badge">Web</span>
+                        <span className="hr-portal-case-study-best-project-tag-badge">ReactJS</span>
+                        <span className="hr-portal-case-study-best-project-tag-badge">MongoDB</span>
+                        <span className="hr-portal-case-study-best-project-tag-badge">Spring Boot</span>
+                        <span className="hr-portal-case-study-best-project-tag-badge">gRPC</span>
                       </div>
                     </div>
                     <button

@@ -156,8 +156,8 @@ const ElegantCreativeAgencyCaseStudy = () => {
                   
                   {/* Tags */}
                   <div className="elegant-creative-agency-case-study-tags d-flex flex-wrap gap-2 mb-4">
-                    <span className="elegant-creative-agency-case-study-tag-badge">Mobile</span>
-                    <span className="elegant-creative-agency-case-study-tag-badge">Web</span>
+                    <span className="elegant-creative-agency-case-study-tag-badge">Figma</span>
+                    <span className="elegant-creative-agency-case-study-tag-badge">Canva</span>
                   </div>
 
                   {/* Schedule A Call Button */}
@@ -329,29 +329,20 @@ const ElegantCreativeAgencyCaseStudy = () => {
               </h2>
               
               <div className="elegant-creative-agency-case-study-tools-grid">
-                {/* Top Row */}
+                {/* Top Row - 5 items (2 tools + 3 empty) */}
                 <div className="elegant-creative-agency-case-study-tool-item">
                   <img src={figmaLogo} alt="Figma" className="elegant-creative-agency-case-study-tool-logo" />
                   <p className="elegant-creative-agency-case-study-tool-name">Figma</p>
                 </div>
                 <div className="elegant-creative-agency-case-study-tool-item">
-                  <img src={adobeXdLogo} alt="Adobe XD" className="elegant-creative-agency-case-study-tool-logo" />
-                  <p className="elegant-creative-agency-case-study-tool-name">Adobe XD</p>
-                </div>
-                <div className="elegant-creative-agency-case-study-tool-item">
-                  <img src={sketchLogo} alt="Sketch" className="elegant-creative-agency-case-study-tool-logo" />
-                  <p className="elegant-creative-agency-case-study-tool-name">Sketch</p>
-                </div>
-                <div className="elegant-creative-agency-case-study-tool-item">
-                  <img src={framerLogo} alt="Framer" className="elegant-creative-agency-case-study-tool-logo" />
-                  <p className="elegant-creative-agency-case-study-tool-name">Framer</p>
-                </div>
-                <div className="elegant-creative-agency-case-study-tool-item">
                   <img src={canvaLogo} alt="Canva" className="elegant-creative-agency-case-study-tool-logo" />
                   <p className="elegant-creative-agency-case-study-tool-name">Canva</p>
                 </div>
+                <div className="elegant-creative-agency-case-study-tool-item elegant-creative-agency-case-study-tool-empty"></div>
+                <div className="elegant-creative-agency-case-study-tool-item elegant-creative-agency-case-study-tool-empty"></div>
+                <div className="elegant-creative-agency-case-study-tool-item elegant-creative-agency-case-study-tool-empty"></div>
                 
-                {/* Bottom Row - Empty */}
+                {/* Bottom Row - 5 empty items */}
                 <div className="elegant-creative-agency-case-study-tool-item elegant-creative-agency-case-study-tool-empty"></div>
                 <div className="elegant-creative-agency-case-study-tool-item elegant-creative-agency-case-study-tool-empty"></div>
                 <div className="elegant-creative-agency-case-study-tool-item elegant-creative-agency-case-study-tool-empty"></div>
@@ -388,8 +379,9 @@ const ElegantCreativeAgencyCaseStudy = () => {
                         This project showcases the complete UI/UX design for a modern creative agency website. The design focuses on a bold visual identity, clean layout structures, and a smooth user journey across all pages.
                       </p>
                       <div className="elegant-creative-agency-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="elegant-creative-agency-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="elegant-creative-agency-case-study-best-project-tag-badge">Web</span>
+                        <span className="elegant-creative-agency-case-study-best-project-tag-badge">Figma</span>
+                        <span className="elegant-creative-agency-case-study-best-project-tag-badge">Canva</span>
+                        <span className="elegant-creative-agency-case-study-best-project-tag-badge">Photoshop</span>
                       </div>
                     </div>
                     <button
@@ -422,8 +414,8 @@ const ElegantCreativeAgencyCaseStudy = () => {
                         This project showcases a futuristic UI/UX concept created for an AI-powered design platform. The interface focuses on bold visuals, modern gradients, and a clean layout that highlights the platform's innovative features.
                       </p>
                       <div className="elegant-creative-agency-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="elegant-creative-agency-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="elegant-creative-agency-case-study-best-project-tag-badge">Web</span>
+                        <span className="elegant-creative-agency-case-study-best-project-tag-badge">Framer</span>
+                        <span className="elegant-creative-agency-case-study-best-project-tag-badge">Canva</span>
                       </div>
                     </div>
                     <button

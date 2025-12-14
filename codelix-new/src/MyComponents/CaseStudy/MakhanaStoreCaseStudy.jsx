@@ -13,10 +13,12 @@ import light2Image from "../Images/Order WC 2.png";
 import fam1Image from "../Images/fam-1.png";
 import fam2Image from "../Images/fam-2.png";
 import figmaLogo from "../Images/figma.png";
-import adobeXdLogo from "../Images/adobe-xd.png";
-import sketchLogo from "../Images/sketch.png";
-import framerLogo from "../Images/framer.png";
-import canvaLogo from "../Images/canva.png";
+import nodeLogo from "../Images/node.png";
+import reactLogo from "../Images/react.png";
+import postgresqlLogo from "../Images/postgresql.png";
+import renderLogo from "../Images/Render.png";
+import swaggerLogo from "../Images/Swagger.png";
+import awsLogo from "../Images/AWS.png";
 import projectFive from "../Images/work-best-project-five.png";
 import projectOne from "../Images/work-best-project-one.png";
 import { ArrowLeft } from "lucide-react";
@@ -156,8 +158,13 @@ const MakhanaStoreCaseStudy = () => {
                   
                   {/* Tags */}
                   <div className="makhana-store-case-study-tags d-flex flex-wrap gap-2 mb-4">
-                    <span className="makhana-store-case-study-tag-badge">Mobile</span>
-                    <span className="makhana-store-case-study-tag-badge">Web</span>
+                    <span className="makhana-store-case-study-tag-badge">Nodejs</span>
+                    <span className="makhana-store-case-study-tag-badge">Figma</span>
+                    <span className="makhana-store-case-study-tag-badge">ReactJS</span>
+                    <span className="makhana-store-case-study-tag-badge">Postgres</span>
+                    <span className="makhana-store-case-study-tag-badge">Render</span>
+                    <span className="makhana-store-case-study-tag-badge">Swagger</span>
+                    <span className="makhana-store-case-study-tag-badge">AWS</span>
                   </div>
 
                   {/* Schedule A Call Button */}
@@ -329,31 +336,37 @@ const MakhanaStoreCaseStudy = () => {
               </h2>
               
               <div className="makhana-store-case-study-tools-grid">
-                {/* Top Row */}
+                {/* Top Row - 5 items */}
+                <div className="makhana-store-case-study-tool-item">
+                  <img src={nodeLogo} alt="Nodejs" className="makhana-store-case-study-tool-logo" />
+                  <p className="makhana-store-case-study-tool-name">Nodejs</p>
+                </div>
                 <div className="makhana-store-case-study-tool-item">
                   <img src={figmaLogo} alt="Figma" className="makhana-store-case-study-tool-logo" />
                   <p className="makhana-store-case-study-tool-name">Figma</p>
                 </div>
                 <div className="makhana-store-case-study-tool-item">
-                  <img src={adobeXdLogo} alt="Adobe XD" className="makhana-store-case-study-tool-logo" />
-                  <p className="makhana-store-case-study-tool-name">Adobe XD</p>
+                  <img src={reactLogo} alt="ReactJS" className="makhana-store-case-study-tool-logo" />
+                  <p className="makhana-store-case-study-tool-name">ReactJS</p>
                 </div>
                 <div className="makhana-store-case-study-tool-item">
-                  <img src={sketchLogo} alt="Sketch" className="makhana-store-case-study-tool-logo" />
-                  <p className="makhana-store-case-study-tool-name">Sketch</p>
+                  <img src={postgresqlLogo} alt="Postgres" className="makhana-store-case-study-tool-logo" />
+                  <p className="makhana-store-case-study-tool-name">Postgres</p>
                 </div>
                 <div className="makhana-store-case-study-tool-item">
-                  <img src={framerLogo} alt="Framer" className="makhana-store-case-study-tool-logo" />
-                  <p className="makhana-store-case-study-tool-name">Framer</p>
-                </div>
-                <div className="makhana-store-case-study-tool-item">
-                  <img src={canvaLogo} alt="Canva" className="makhana-store-case-study-tool-logo" />
-                  <p className="makhana-store-case-study-tool-name">Canva</p>
+                  <img src={renderLogo} alt="Render" className="makhana-store-case-study-tool-logo" />
+                  <p className="makhana-store-case-study-tool-name">Render</p>
                 </div>
                 
-                {/* Bottom Row - Empty */}
-                <div className="makhana-store-case-study-tool-item makhana-store-case-study-tool-empty"></div>
-                <div className="makhana-store-case-study-tool-item makhana-store-case-study-tool-empty"></div>
+                {/* Bottom Row - 5 items (2 tools + 3 empty) */}
+                <div className="makhana-store-case-study-tool-item">
+                  <img src={swaggerLogo} alt="Swagger" className="makhana-store-case-study-tool-logo" />
+                  <p className="makhana-store-case-study-tool-name">Swagger</p>
+                </div>
+                <div className="makhana-store-case-study-tool-item">
+                  <img src={awsLogo} alt="AWS" className="makhana-store-case-study-tool-logo" />
+                  <p className="makhana-store-case-study-tool-name">AWS</p>
+                </div>
                 <div className="makhana-store-case-study-tool-item makhana-store-case-study-tool-empty"></div>
                 <div className="makhana-store-case-study-tool-item makhana-store-case-study-tool-empty"></div>
                 <div className="makhana-store-case-study-tool-item makhana-store-case-study-tool-empty"></div>
@@ -388,8 +401,13 @@ const MakhanaStoreCaseStudy = () => {
                         A high-performance e-commerce website developed for a premium book collection store, featuring advanced search functionality, detailed product pages, and a sophisticated design. The platform provides an exceptional browsing and purchasing experience with optimized performance and responsive layout.
                       </p>
                       <div className="makhana-store-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="makhana-store-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="makhana-store-case-study-best-project-tag-badge">Web</span>
+                        <span className="makhana-store-case-study-best-project-tag-badge">Nodejs</span>
+                        <span className="makhana-store-case-study-best-project-tag-badge">Figma</span>
+                        <span className="makhana-store-case-study-best-project-tag-badge">ReactJS</span>
+                        <span className="makhana-store-case-study-best-project-tag-badge">MongoDB</span>
+                        <span className="makhana-store-case-study-best-project-tag-badge">Postman</span>
+                        <span className="makhana-store-case-study-best-project-tag-badge">Swagger</span>
+                        <span className="makhana-store-case-study-best-project-tag-badge">AWS</span>
                       </div>
                     </div>
                     <button
@@ -422,8 +440,13 @@ const MakhanaStoreCaseStudy = () => {
                         A modern, responsive e-commerce platform developed for a fashion brand, featuring elegant product displays, smooth shopping cart functionality, and a sleek user interface. The website delivers an engaging shopping experience with fast load times and mobile-first design.
                       </p>
                       <div className="makhana-store-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="makhana-store-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="makhana-store-case-study-best-project-tag-badge">Web</span>
+                        <span className="makhana-store-case-study-best-project-tag-badge">Nodejs</span>
+                        <span className="makhana-store-case-study-best-project-tag-badge">Figma</span>
+                        <span className="makhana-store-case-study-best-project-tag-badge">ReactJS</span>
+                        <span className="makhana-store-case-study-best-project-tag-badge">Postgres</span>
+                        <span className="makhana-store-case-study-best-project-tag-badge">Postman</span>
+                        <span className="makhana-store-case-study-best-project-tag-badge">Swagger</span>
+                        <span className="makhana-store-case-study-best-project-tag-badge">AWS</span>
                       </div>
                     </div>
                     <button

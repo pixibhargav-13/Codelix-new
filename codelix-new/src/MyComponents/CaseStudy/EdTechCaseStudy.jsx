@@ -12,11 +12,10 @@ import lightImage from "../Images/Light14.png";
 import light2Image from "../Images/Light15.png";
 import fam1Image from "../Images/fam-1.png";
 import fam2Image from "../Images/fam-2.png";
-import figmaLogo from "../Images/figma.png";
-import adobeXdLogo from "../Images/adobe-xd.png";
-import sketchLogo from "../Images/sketch.png";
-import framerLogo from "../Images/framer.png";
-import canvaLogo from "../Images/canva.png";
+import reactLogo from "../Images/react.png";
+import mongodbLogo from "../Images/MongoDB.png";
+import springbootLogo from "../Images/springboot.png";
+import grpcLogo from "../Images/gRPC.png";
 import projectThirteen from "../Images/work-best-project-thirteen.png";
 import projectSeven from "../Images/work-best-project-seven.png";
 import { ArrowLeft } from "lucide-react";
@@ -156,8 +155,10 @@ const EdTechCaseStudy = () => {
                   
                   {/* Tags */}
                   <div className="edtech-case-study-tags d-flex flex-wrap gap-2 mb-4">
-                    <span className="edtech-case-study-tag-badge">Mobile</span>
-                    <span className="edtech-case-study-tag-badge">Web</span>
+                    <span className="edtech-case-study-tag-badge">ReactJS</span>
+                    <span className="edtech-case-study-tag-badge">MongoDB</span>
+                    <span className="edtech-case-study-tag-badge">Spring Boot</span>
+                    <span className="edtech-case-study-tag-badge">gRPC</span>
                   </div>
 
                   {/* Schedule A Call Button */}
@@ -329,29 +330,26 @@ const EdTechCaseStudy = () => {
               </h2>
               
               <div className="edtech-case-study-tools-grid">
-                {/* Top Row */}
+                {/* Top Row - 5 items (4 tools + 1 empty) */}
                 <div className="edtech-case-study-tool-item">
-                  <img src={figmaLogo} alt="Figma" className="edtech-case-study-tool-logo" />
-                  <p className="edtech-case-study-tool-name">Figma</p>
+                  <img src={reactLogo} alt="ReactJS" className="edtech-case-study-tool-logo" />
+                  <p className="edtech-case-study-tool-name">ReactJS</p>
                 </div>
                 <div className="edtech-case-study-tool-item">
-                  <img src={adobeXdLogo} alt="Adobe XD" className="edtech-case-study-tool-logo" />
-                  <p className="edtech-case-study-tool-name">Adobe XD</p>
+                  <img src={mongodbLogo} alt="MongoDB" className="edtech-case-study-tool-logo" />
+                  <p className="edtech-case-study-tool-name">MongoDB</p>
                 </div>
                 <div className="edtech-case-study-tool-item">
-                  <img src={sketchLogo} alt="Sketch" className="edtech-case-study-tool-logo" />
-                  <p className="edtech-case-study-tool-name">Sketch</p>
+                  <img src={springbootLogo} alt="Spring Boot" className="edtech-case-study-tool-logo" />
+                  <p className="edtech-case-study-tool-name">Spring Boot</p>
                 </div>
                 <div className="edtech-case-study-tool-item">
-                  <img src={framerLogo} alt="Framer" className="edtech-case-study-tool-logo" />
-                  <p className="edtech-case-study-tool-name">Framer</p>
+                  <img src={grpcLogo} alt="gRPC" className="edtech-case-study-tool-logo" />
+                  <p className="edtech-case-study-tool-name">gRPC</p>
                 </div>
-                <div className="edtech-case-study-tool-item">
-                  <img src={canvaLogo} alt="Canva" className="edtech-case-study-tool-logo" />
-                  <p className="edtech-case-study-tool-name">Canva</p>
-                </div>
+                <div className="edtech-case-study-tool-item edtech-case-study-tool-empty"></div>
                 
-                {/* Bottom Row - Empty */}
+                {/* Bottom Row - 5 empty items */}
                 <div className="edtech-case-study-tool-item edtech-case-study-tool-empty"></div>
                 <div className="edtech-case-study-tool-item edtech-case-study-tool-empty"></div>
                 <div className="edtech-case-study-tool-item edtech-case-study-tool-empty"></div>
@@ -388,8 +386,10 @@ const EdTechCaseStudy = () => {
                         A fully responsive and modern website developed for an international ocean freight and logistics service provider. The platform showcases global cargo solutions, shipment tracking features, service categories, and detailed logistics information through a clean, intuitive interface.
                       </p>
                       <div className="edtech-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="edtech-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="edtech-case-study-best-project-tag-badge">Web</span>
+                        <span className="edtech-case-study-best-project-tag-badge">ReactJS</span>
+                        <span className="edtech-case-study-best-project-tag-badge">MongoDB</span>
+                        <span className="edtech-case-study-best-project-tag-badge">Nodejs</span>
+                        <span className="edtech-case-study-best-project-tag-badge">gRPC</span>
                       </div>
                     </div>
                     <button
@@ -422,8 +422,10 @@ const EdTechCaseStudy = () => {
                         A modern, responsive web platform developed to simplify employee benefits, claims, and HR administration. The website includes a clean dashboard for employees to view benefits, submit claims, track approvals, and access important HR resources with ease.
                       </p>
                       <div className="edtech-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="edtech-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="edtech-case-study-best-project-tag-badge">Web</span>
+                        <span className="edtech-case-study-best-project-tag-badge">AngularJS</span>
+                        <span className="edtech-case-study-best-project-tag-badge">Postgres</span>
+                        <span className="edtech-case-study-best-project-tag-badge">Django</span>
+                        <span className="edtech-case-study-best-project-tag-badge">gRPC</span>
                       </div>
                     </div>
                     <button

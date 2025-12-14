@@ -13,10 +13,12 @@ import light2Image from "../Images/IMAGE GOES HERE.png";
 import fam1Image from "../Images/fam-1.png";
 import fam2Image from "../Images/fam-2.png";
 import figmaLogo from "../Images/figma.png";
-import adobeXdLogo from "../Images/adobe-xd.png";
-import sketchLogo from "../Images/sketch.png";
-import framerLogo from "../Images/framer.png";
-import canvaLogo from "../Images/canva.png";
+import flutterLogo from "../Images/flutter.png";
+import firebaseLogo from "../Images/Firebase.png";
+import twilioLogo from "../Images/Twilio.png";
+import awsLogo from "../Images/AWS.png";
+import mongodbLogo from "../Images/MongoDB.png";
+import djangoLogo from "../Images/django.png";
 import projectThree from "../Images/work-best-project-three.png";
 import projectFour from "../Images/work-best-project-four.png";
 import { ArrowLeft } from "lucide-react";
@@ -156,8 +158,13 @@ const SchoolManagementCaseStudy = () => {
                   
                   {/* Tags */}
                   <div className="school-management-case-study-tags d-flex flex-wrap gap-2 mb-4">
-                    <span className="school-management-case-study-tag-badge">Mobile</span>
-                    <span className="school-management-case-study-tag-badge">Web</span>
+                    <span className="school-management-case-study-tag-badge">Flutter</span>
+                    <span className="school-management-case-study-tag-badge">Firebase</span>
+                    <span className="school-management-case-study-tag-badge">Twilio</span>
+                    <span className="school-management-case-study-tag-badge">Figma</span>
+                    <span className="school-management-case-study-tag-badge">AWS</span>
+                    <span className="school-management-case-study-tag-badge">MongoDB</span>
+                    <span className="school-management-case-study-tag-badge">Django</span>
                   </div>
 
                   {/* Schedule A Call Button */}
@@ -329,31 +336,37 @@ const SchoolManagementCaseStudy = () => {
               </h2>
               
               <div className="school-management-case-study-tools-grid">
-                {/* Top Row */}
+                {/* Top Row - 5 items */}
+                <div className="school-management-case-study-tool-item">
+                  <img src={flutterLogo} alt="Flutter" className="school-management-case-study-tool-logo" />
+                  <p className="school-management-case-study-tool-name">Flutter</p>
+                </div>
+                <div className="school-management-case-study-tool-item">
+                  <img src={firebaseLogo} alt="Firebase" className="school-management-case-study-tool-logo" />
+                  <p className="school-management-case-study-tool-name">Firebase</p>
+                </div>
+                <div className="school-management-case-study-tool-item">
+                  <img src={twilioLogo} alt="Twilio" className="school-management-case-study-tool-logo" />
+                  <p className="school-management-case-study-tool-name">Twilio</p>
+                </div>
                 <div className="school-management-case-study-tool-item">
                   <img src={figmaLogo} alt="Figma" className="school-management-case-study-tool-logo" />
                   <p className="school-management-case-study-tool-name">Figma</p>
                 </div>
                 <div className="school-management-case-study-tool-item">
-                  <img src={adobeXdLogo} alt="Adobe XD" className="school-management-case-study-tool-logo" />
-                  <p className="school-management-case-study-tool-name">Adobe XD</p>
-                </div>
-                <div className="school-management-case-study-tool-item">
-                  <img src={sketchLogo} alt="Sketch" className="school-management-case-study-tool-logo" />
-                  <p className="school-management-case-study-tool-name">Sketch</p>
-                </div>
-                <div className="school-management-case-study-tool-item">
-                  <img src={framerLogo} alt="Framer" className="school-management-case-study-tool-logo" />
-                  <p className="school-management-case-study-tool-name">Framer</p>
-                </div>
-                <div className="school-management-case-study-tool-item">
-                  <img src={canvaLogo} alt="Canva" className="school-management-case-study-tool-logo" />
-                  <p className="school-management-case-study-tool-name">Canva</p>
+                  <img src={awsLogo} alt="AWS" className="school-management-case-study-tool-logo" />
+                  <p className="school-management-case-study-tool-name">AWS</p>
                 </div>
                 
-                {/* Bottom Row - Empty */}
-                <div className="school-management-case-study-tool-item school-management-case-study-tool-empty"></div>
-                <div className="school-management-case-study-tool-item school-management-case-study-tool-empty"></div>
+                {/* Bottom Row - 5 items (2 tools + 3 empty) */}
+                <div className="school-management-case-study-tool-item">
+                  <img src={mongodbLogo} alt="MongoDB" className="school-management-case-study-tool-logo" />
+                  <p className="school-management-case-study-tool-name">MongoDB</p>
+                </div>
+                <div className="school-management-case-study-tool-item">
+                  <img src={djangoLogo} alt="Django" className="school-management-case-study-tool-logo" />
+                  <p className="school-management-case-study-tool-name">Django</p>
+                </div>
                 <div className="school-management-case-study-tool-item school-management-case-study-tool-empty"></div>
                 <div className="school-management-case-study-tool-item school-management-case-study-tool-empty"></div>
                 <div className="school-management-case-study-tool-item school-management-case-study-tool-empty"></div>
@@ -388,8 +401,13 @@ const SchoolManagementCaseStudy = () => {
                         A comprehensive mobile and web application designed to streamline community management for modern residential societies. The platform enables residents to access essential services, manage maintenance requests, pay dues, communicate with neighbors, and stay updated with community announcements.
                       </p>
                       <div className="school-management-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="school-management-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="school-management-case-study-best-project-tag-badge">Web</span>
+                        <span className="school-management-case-study-best-project-tag-badge">Flutter</span>
+                        <span className="school-management-case-study-best-project-tag-badge">Firebase</span>
+                        <span className="school-management-case-study-best-project-tag-badge">Twilio</span>
+                        <span className="school-management-case-study-best-project-tag-badge">Figma</span>
+                        <span className="school-management-case-study-best-project-tag-badge">AWS</span>
+                        <span className="school-management-case-study-best-project-tag-badge">MySQL</span>
+                        <span className="school-management-case-study-best-project-tag-badge">Spring Boot</span>
                       </div>
                     </div>
                     <button
@@ -422,8 +440,13 @@ const SchoolManagementCaseStudy = () => {
                         A user-friendly automotive mobile application designed to make the car buying and selling process simple, transparent, and efficient. The platform allows users to browse a wide range of vehicles with detailed specifications, list their own cars for sale in just a few steps, and compare different options side-by-side.
                       </p>
                       <div className="school-management-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="school-management-case-study-best-project-tag-badge">Android</span>
-                        <span className="school-management-case-study-best-project-tag-badge">iOS</span>
+                        <span className="school-management-case-study-best-project-tag-badge">React Native</span>
+                        <span className="school-management-case-study-best-project-tag-badge">Firebase</span>
+                        <span className="school-management-case-study-best-project-tag-badge">Twilio</span>
+                        <span className="school-management-case-study-best-project-tag-badge">Figma</span>
+                        <span className="school-management-case-study-best-project-tag-badge">AWS</span>
+                        <span className="school-management-case-study-best-project-tag-badge">Postgres</span>
+                        <span className="school-management-case-study-best-project-tag-badge">FastAPI</span>
                       </div>
                     </div>
                     <button

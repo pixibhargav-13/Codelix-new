@@ -24,9 +24,9 @@ const Footer = () => {
     info: [
       { label: "Codelix", link: "/" },
       { label: "Work", link: "/work" },
-      { label: "About", link: "#" },
+      { label: "About", link: "/about" },
       { label: "Services", link: "/services" },
-      { label: "Blog", link: "#" },
+      { label: "Blog", link: "/blog" },
       { label: "Contact", link: "/contact" },
     ],
     services: [
