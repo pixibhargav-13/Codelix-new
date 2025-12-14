@@ -12,11 +12,10 @@ import lightImage from "../Images/Light10.png";
 import light2Image from "../Images/Light11.png";
 import fam1Image from "../Images/fam-1.png";
 import fam2Image from "../Images/fam-2.png";
-import figmaLogo from "../Images/figma.png";
-import adobeXdLogo from "../Images/adobe-xd.png";
-import sketchLogo from "../Images/sketch.png";
-import framerLogo from "../Images/framer.png";
-import canvaLogo from "../Images/canva.png";
+import reactLogo from "../Images/react.png";
+import mongodbLogo from "../Images/MongoDB.png";
+import nodeLogo from "../Images/node.png";
+import grpcLogo from "../Images/gRPC.png";
 import projectSeven from "../Images/work-best-project-seven.png";
 import projectNine from "../Images/work-best-project-nine.png";
 import { ArrowLeft } from "lucide-react";
@@ -156,8 +155,10 @@ const FreightShippingCaseStudy = () => {
                   
                   {/* Tags */}
                   <div className="freight-shipping-case-study-tags d-flex flex-wrap gap-2 mb-4">
-                    <span className="freight-shipping-case-study-tag-badge">Mobile</span>
-                    <span className="freight-shipping-case-study-tag-badge">Web</span>
+                    <span className="freight-shipping-case-study-tag-badge">ReactJS</span>
+                    <span className="freight-shipping-case-study-tag-badge">MongoDB</span>
+                    <span className="freight-shipping-case-study-tag-badge">Nodejs</span>
+                    <span className="freight-shipping-case-study-tag-badge">gRPC</span>
                   </div>
 
                   {/* Schedule A Call Button */}
@@ -329,29 +330,26 @@ const FreightShippingCaseStudy = () => {
               </h2>
               
               <div className="freight-shipping-case-study-tools-grid">
-                {/* Top Row */}
+                {/* Top Row - 5 items (4 tools + 1 empty) */}
                 <div className="freight-shipping-case-study-tool-item">
-                  <img src={figmaLogo} alt="Figma" className="freight-shipping-case-study-tool-logo" />
-                  <p className="freight-shipping-case-study-tool-name">Figma</p>
+                  <img src={reactLogo} alt="ReactJS" className="freight-shipping-case-study-tool-logo" />
+                  <p className="freight-shipping-case-study-tool-name">ReactJS</p>
                 </div>
                 <div className="freight-shipping-case-study-tool-item">
-                  <img src={adobeXdLogo} alt="Adobe XD" className="freight-shipping-case-study-tool-logo" />
-                  <p className="freight-shipping-case-study-tool-name">Adobe XD</p>
+                  <img src={mongodbLogo} alt="MongoDB" className="freight-shipping-case-study-tool-logo" />
+                  <p className="freight-shipping-case-study-tool-name">MongoDB</p>
                 </div>
                 <div className="freight-shipping-case-study-tool-item">
-                  <img src={sketchLogo} alt="Sketch" className="freight-shipping-case-study-tool-logo" />
-                  <p className="freight-shipping-case-study-tool-name">Sketch</p>
+                  <img src={nodeLogo} alt="Nodejs" className="freight-shipping-case-study-tool-logo" />
+                  <p className="freight-shipping-case-study-tool-name">Nodejs</p>
                 </div>
                 <div className="freight-shipping-case-study-tool-item">
-                  <img src={framerLogo} alt="Framer" className="freight-shipping-case-study-tool-logo" />
-                  <p className="freight-shipping-case-study-tool-name">Framer</p>
+                  <img src={grpcLogo} alt="gRPC" className="freight-shipping-case-study-tool-logo" />
+                  <p className="freight-shipping-case-study-tool-name">gRPC</p>
                 </div>
-                <div className="freight-shipping-case-study-tool-item">
-                  <img src={canvaLogo} alt="Canva" className="freight-shipping-case-study-tool-logo" />
-                  <p className="freight-shipping-case-study-tool-name">Canva</p>
-                </div>
+                <div className="freight-shipping-case-study-tool-item freight-shipping-case-study-tool-empty"></div>
                 
-                {/* Bottom Row - Empty */}
+                {/* Bottom Row - 5 empty items */}
                 <div className="freight-shipping-case-study-tool-item freight-shipping-case-study-tool-empty"></div>
                 <div className="freight-shipping-case-study-tool-item freight-shipping-case-study-tool-empty"></div>
                 <div className="freight-shipping-case-study-tool-item freight-shipping-case-study-tool-empty"></div>
@@ -388,8 +386,10 @@ const FreightShippingCaseStudy = () => {
                         A modern, responsive web platform developed to simplify employee benefits, claims, and HR administration. The website includes a clean dashboard for employees to view benefits, submit claims, track approvals, and access important HR resources with ease.
                       </p>
                       <div className="freight-shipping-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="freight-shipping-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="freight-shipping-case-study-best-project-tag-badge">Web</span>
+                        <span className="freight-shipping-case-study-best-project-tag-badge">AngularJS</span>
+                        <span className="freight-shipping-case-study-best-project-tag-badge">Postgres</span>
+                        <span className="freight-shipping-case-study-best-project-tag-badge">Django</span>
+                        <span className="freight-shipping-case-study-best-project-tag-badge">gRPC</span>
                       </div>
                     </div>
                     <button
@@ -422,8 +422,10 @@ const FreightShippingCaseStudy = () => {
                         A modern web platform developed for an online learning experience, featuring smooth navigation, structured course pages, and a clean, welcoming interface. The website is built with fast performance, mobile responsiveness, and a user-friendly flow to make online education simple and engaging.
                       </p>
                       <div className="freight-shipping-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="freight-shipping-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="freight-shipping-case-study-best-project-tag-badge">Web</span>
+                        <span className="freight-shipping-case-study-best-project-tag-badge">ReactJS</span>
+                        <span className="freight-shipping-case-study-best-project-tag-badge">MongoDB</span>
+                        <span className="freight-shipping-case-study-best-project-tag-badge">Spring Boot</span>
+                        <span className="freight-shipping-case-study-best-project-tag-badge">gRPC</span>
                       </div>
                     </div>
                     <button

@@ -13,10 +13,12 @@ import light2Image from "../Images/IMAGE GOES HERE3.png";
 import fam1Image from "../Images/fam-1.png";
 import fam2Image from "../Images/fam-2.png";
 import figmaLogo from "../Images/figma.png";
-import adobeXdLogo from "../Images/adobe-xd.png";
-import sketchLogo from "../Images/sketch.png";
-import framerLogo from "../Images/framer.png";
-import canvaLogo from "../Images/canva.png";
+import flutterLogo from "../Images/flutter.png";
+import firebaseLogo from "../Images/Firebase.png";
+import twilioLogo from "../Images/Twilio.png";
+import awsLogo from "../Images/AWS.png";
+import mysqlLogo from "../Images/MySQL.png";
+import springbootLogo from "../Images/springboot.png";
 import projectFour from "../Images/work-best-project-four.png";
 import projectFifteen from "../Images/work-best-project-fifteen.png";
 import { ArrowLeft } from "lucide-react";
@@ -156,8 +158,13 @@ const SmartSocietyManagementCaseStudy = () => {
                   
                   {/* Tags */}
                   <div className="smart-society-management-case-study-tags d-flex flex-wrap gap-2 mb-4">
-                    <span className="smart-society-management-case-study-tag-badge">Mobile</span>
-                    <span className="smart-society-management-case-study-tag-badge">Web</span>
+                    <span className="smart-society-management-case-study-tag-badge">Flutter</span>
+                    <span className="smart-society-management-case-study-tag-badge">Firebase</span>
+                    <span className="smart-society-management-case-study-tag-badge">Twilio</span>
+                    <span className="smart-society-management-case-study-tag-badge">Figma</span>
+                    <span className="smart-society-management-case-study-tag-badge">AWS</span>
+                    <span className="smart-society-management-case-study-tag-badge">MySQL</span>
+                    <span className="smart-society-management-case-study-tag-badge">Spring Boot</span>
                   </div>
 
                   {/* Schedule A Call Button */}
@@ -327,31 +334,37 @@ const SmartSocietyManagementCaseStudy = () => {
               </h2>
               
               <div className="smart-society-management-case-study-tools-grid">
-                {/* Top Row */}
+                {/* Top Row - 5 items */}
+                <div className="smart-society-management-case-study-tool-item">
+                  <img src={flutterLogo} alt="Flutter" className="smart-society-management-case-study-tool-logo" />
+                  <p className="smart-society-management-case-study-tool-name">Flutter</p>
+                </div>
+                <div className="smart-society-management-case-study-tool-item">
+                  <img src={firebaseLogo} alt="Firebase" className="smart-society-management-case-study-tool-logo" />
+                  <p className="smart-society-management-case-study-tool-name">Firebase</p>
+                </div>
+                <div className="smart-society-management-case-study-tool-item">
+                  <img src={twilioLogo} alt="Twilio" className="smart-society-management-case-study-tool-logo" />
+                  <p className="smart-society-management-case-study-tool-name">Twilio</p>
+                </div>
                 <div className="smart-society-management-case-study-tool-item">
                   <img src={figmaLogo} alt="Figma" className="smart-society-management-case-study-tool-logo" />
                   <p className="smart-society-management-case-study-tool-name">Figma</p>
                 </div>
                 <div className="smart-society-management-case-study-tool-item">
-                  <img src={adobeXdLogo} alt="Adobe XD" className="smart-society-management-case-study-tool-logo" />
-                  <p className="smart-society-management-case-study-tool-name">Adobe XD</p>
-                </div>
-                <div className="smart-society-management-case-study-tool-item">
-                  <img src={sketchLogo} alt="Sketch" className="smart-society-management-case-study-tool-logo" />
-                  <p className="smart-society-management-case-study-tool-name">Sketch</p>
-                </div>
-                <div className="smart-society-management-case-study-tool-item">
-                  <img src={framerLogo} alt="Framer" className="smart-society-management-case-study-tool-logo" />
-                  <p className="smart-society-management-case-study-tool-name">Framer</p>
-                </div>
-                <div className="smart-society-management-case-study-tool-item">
-                  <img src={canvaLogo} alt="Canva" className="smart-society-management-case-study-tool-logo" />
-                  <p className="smart-society-management-case-study-tool-name">Canva</p>
+                  <img src={awsLogo} alt="AWS" className="smart-society-management-case-study-tool-logo" />
+                  <p className="smart-society-management-case-study-tool-name">AWS</p>
                 </div>
                 
-                {/* Bottom Row - Empty */}
-                <div className="smart-society-management-case-study-tool-item smart-society-management-case-study-tool-empty"></div>
-                <div className="smart-society-management-case-study-tool-item smart-society-management-case-study-tool-empty"></div>
+                {/* Bottom Row - 5 items (2 tools + 3 empty) */}
+                <div className="smart-society-management-case-study-tool-item">
+                  <img src={mysqlLogo} alt="MySQL" className="smart-society-management-case-study-tool-logo" />
+                  <p className="smart-society-management-case-study-tool-name">MySQL</p>
+                </div>
+                <div className="smart-society-management-case-study-tool-item">
+                  <img src={springbootLogo} alt="Spring Boot" className="smart-society-management-case-study-tool-logo" />
+                  <p className="smart-society-management-case-study-tool-name">Spring Boot</p>
+                </div>
                 <div className="smart-society-management-case-study-tool-item smart-society-management-case-study-tool-empty"></div>
                 <div className="smart-society-management-case-study-tool-item smart-society-management-case-study-tool-empty"></div>
                 <div className="smart-society-management-case-study-tool-item smart-society-management-case-study-tool-empty"></div>
@@ -386,8 +399,13 @@ const SmartSocietyManagementCaseStudy = () => {
                         A user-friendly automotive mobile application designed to make the car buying and selling process simple, transparent, and efficient. The platform allows users to browse a wide range of vehicles with detailed specifications, list their own cars for sale in just a few steps, and compare different options side-by-side to make confident decisions.
                       </p>
                       <div className="smart-society-management-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="smart-society-management-case-study-best-project-tag-badge">Android</span>
-                        <span className="smart-society-management-case-study-best-project-tag-badge">iOS</span>
+                        <span className="smart-society-management-case-study-best-project-tag-badge">React Native</span>
+                        <span className="smart-society-management-case-study-best-project-tag-badge">Firebase</span>
+                        <span className="smart-society-management-case-study-best-project-tag-badge">Twilio</span>
+                        <span className="smart-society-management-case-study-best-project-tag-badge">Figma</span>
+                        <span className="smart-society-management-case-study-best-project-tag-badge">AWS</span>
+                        <span className="smart-society-management-case-study-best-project-tag-badge">Postgres</span>
+                        <span className="smart-society-management-case-study-best-project-tag-badge">FastAPI</span>
                       </div>
                     </div>
                     <button
@@ -420,8 +438,13 @@ const SmartSocietyManagementCaseStudy = () => {
                         A comprehensive mobile application designed to streamline school operations and enhance communication between students, parents, teachers, and administrators. The app provides real-time updates on attendance, grades, assignments, events, and school announcements, making it easier for all stakeholders to stay connected and informed.
                       </p>
                       <div className="smart-society-management-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="smart-society-management-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="smart-society-management-case-study-best-project-tag-badge">Web</span>
+                        <span className="smart-society-management-case-study-best-project-tag-badge">Flutter</span>
+                        <span className="smart-society-management-case-study-best-project-tag-badge">Firebase</span>
+                        <span className="smart-society-management-case-study-best-project-tag-badge">Twilio</span>
+                        <span className="smart-society-management-case-study-best-project-tag-badge">Figma</span>
+                        <span className="smart-society-management-case-study-best-project-tag-badge">AWS</span>
+                        <span className="smart-society-management-case-study-best-project-tag-badge">MongoDB</span>
+                        <span className="smart-society-management-case-study-best-project-tag-badge">Django</span>
                       </div>
                     </div>
                     <button

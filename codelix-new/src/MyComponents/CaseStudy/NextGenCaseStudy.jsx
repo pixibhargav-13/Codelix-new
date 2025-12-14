@@ -13,10 +13,12 @@ import light2Image from "../Images/Light7.png";
 import fam1Image from "../Images/fam-1.png";
 import fam2Image from "../Images/fam-2.png";
 import figmaLogo from "../Images/figma.png";
-import adobeXdLogo from "../Images/adobe-xd.png";
-import sketchLogo from "../Images/sketch.png";
-import framerLogo from "../Images/framer.png";
-import canvaLogo from "../Images/canva.png";
+import nodeLogo from "../Images/node.png";
+import reactLogo from "../Images/react.png";
+import postgresqlLogo from "../Images/postgresql.png";
+import postmanLogo from "../Images/Postman.png";
+import swaggerLogo from "../Images/Swagger.png";
+import awsLogo from "../Images/AWS.png";
 import projectFive from "../Images/work-best-project-five.png";
 import projectEight from "../Images/work-best-project-eight.png";
 import { ArrowLeft } from "lucide-react";
@@ -156,8 +158,13 @@ const NextGenCaseStudy = () => {
                   
                   {/* Tags */}
                   <div className="nextgen-case-study-tags d-flex flex-wrap gap-2 mb-4">
-                    <span className="nextgen-case-study-tag-badge">Mobile</span>
-                    <span className="nextgen-case-study-tag-badge">Web</span>
+                    <span className="nextgen-case-study-tag-badge">Nodejs</span>
+                    <span className="nextgen-case-study-tag-badge">Figma</span>
+                    <span className="nextgen-case-study-tag-badge">ReactJS</span>
+                    <span className="nextgen-case-study-tag-badge">Postgres</span>
+                    <span className="nextgen-case-study-tag-badge">Postman</span>
+                    <span className="nextgen-case-study-tag-badge">Swagger</span>
+                    <span className="nextgen-case-study-tag-badge">AWS</span>
                   </div>
 
                   {/* Schedule A Call Button */}
@@ -329,31 +336,37 @@ const NextGenCaseStudy = () => {
               </h2>
               
               <div className="nextgen-case-study-tools-grid">
-                {/* Top Row */}
+                {/* Top Row - 5 items */}
+                <div className="nextgen-case-study-tool-item">
+                  <img src={nodeLogo} alt="Nodejs" className="nextgen-case-study-tool-logo" />
+                  <p className="nextgen-case-study-tool-name">Nodejs</p>
+                </div>
                 <div className="nextgen-case-study-tool-item">
                   <img src={figmaLogo} alt="Figma" className="nextgen-case-study-tool-logo" />
                   <p className="nextgen-case-study-tool-name">Figma</p>
                 </div>
                 <div className="nextgen-case-study-tool-item">
-                  <img src={adobeXdLogo} alt="Adobe XD" className="nextgen-case-study-tool-logo" />
-                  <p className="nextgen-case-study-tool-name">Adobe XD</p>
+                  <img src={reactLogo} alt="ReactJS" className="nextgen-case-study-tool-logo" />
+                  <p className="nextgen-case-study-tool-name">ReactJS</p>
                 </div>
                 <div className="nextgen-case-study-tool-item">
-                  <img src={sketchLogo} alt="Sketch" className="nextgen-case-study-tool-logo" />
-                  <p className="nextgen-case-study-tool-name">Sketch</p>
+                  <img src={postgresqlLogo} alt="Postgres" className="nextgen-case-study-tool-logo" />
+                  <p className="nextgen-case-study-tool-name">Postgres</p>
                 </div>
                 <div className="nextgen-case-study-tool-item">
-                  <img src={framerLogo} alt="Framer" className="nextgen-case-study-tool-logo" />
-                  <p className="nextgen-case-study-tool-name">Framer</p>
-                </div>
-                <div className="nextgen-case-study-tool-item">
-                  <img src={canvaLogo} alt="Canva" className="nextgen-case-study-tool-logo" />
-                  <p className="nextgen-case-study-tool-name">Canva</p>
+                  <img src={postmanLogo} alt="Postman" className="nextgen-case-study-tool-logo" />
+                  <p className="nextgen-case-study-tool-name">Postman</p>
                 </div>
                 
-                {/* Bottom Row - Empty */}
-                <div className="nextgen-case-study-tool-item nextgen-case-study-tool-empty"></div>
-                <div className="nextgen-case-study-tool-item nextgen-case-study-tool-empty"></div>
+                {/* Bottom Row - 5 items (2 tools + 3 empty) */}
+                <div className="nextgen-case-study-tool-item">
+                  <img src={swaggerLogo} alt="Swagger" className="nextgen-case-study-tool-logo" />
+                  <p className="nextgen-case-study-tool-name">Swagger</p>
+                </div>
+                <div className="nextgen-case-study-tool-item">
+                  <img src={awsLogo} alt="AWS" className="nextgen-case-study-tool-logo" />
+                  <p className="nextgen-case-study-tool-name">AWS</p>
+                </div>
                 <div className="nextgen-case-study-tool-item nextgen-case-study-tool-empty"></div>
                 <div className="nextgen-case-study-tool-item nextgen-case-study-tool-empty"></div>
                 <div className="nextgen-case-study-tool-item nextgen-case-study-tool-empty"></div>
@@ -388,8 +401,13 @@ const NextGenCaseStudy = () => {
                         A high-performance e-commerce website developed for a premium book collection store, featuring advanced search functionality, detailed product pages, and a sophisticated design. The platform provides an exceptional browsing and purchasing experience with optimized performance and responsive layout.
                       </p>
                       <div className="nextgen-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="nextgen-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="nextgen-case-study-best-project-tag-badge">Web</span>
+                        <span className="nextgen-case-study-best-project-tag-badge">Nodejs</span>
+                        <span className="nextgen-case-study-best-project-tag-badge">Figma</span>
+                        <span className="nextgen-case-study-best-project-tag-badge">ReactJS</span>
+                        <span className="nextgen-case-study-best-project-tag-badge">MongoDB</span>
+                        <span className="nextgen-case-study-best-project-tag-badge">Postman</span>
+                        <span className="nextgen-case-study-best-project-tag-badge">Swagger</span>
+                        <span className="nextgen-case-study-best-project-tag-badge">AWS</span>
                       </div>
                     </div>
                     <button
@@ -422,8 +440,13 @@ const NextGenCaseStudy = () => {
                         A fully responsive e-commerce website developed for an organic makhana store, featuring smooth product browsing, secure checkout, and a clean, modern design. The platform ensures a seamless shopping experience across all devices with intuitive navigation and fast performance.
                       </p>
                       <div className="nextgen-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="nextgen-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="nextgen-case-study-best-project-tag-badge">Web</span>
+                        <span className="nextgen-case-study-best-project-tag-badge">Nodejs</span>
+                        <span className="nextgen-case-study-best-project-tag-badge">Figma</span>
+                        <span className="nextgen-case-study-best-project-tag-badge">ReactJS</span>
+                        <span className="nextgen-case-study-best-project-tag-badge">Postgres</span>
+                        <span className="nextgen-case-study-best-project-tag-badge">Render</span>
+                        <span className="nextgen-case-study-best-project-tag-badge">Swagger</span>
+                        <span className="nextgen-case-study-best-project-tag-badge">AWS</span>
                       </div>
                     </div>
                     <button

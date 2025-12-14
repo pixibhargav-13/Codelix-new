@@ -13,10 +13,12 @@ import light2Image from "../Images/Dashboard mobile.png";
 import fam1Image from "../Images/fam-1.png";
 import fam2Image from "../Images/fam-2.png";
 import figmaLogo from "../Images/figma.png";
-import adobeXdLogo from "../Images/adobe-xd.png";
-import sketchLogo from "../Images/sketch.png";
-import framerLogo from "../Images/framer.png";
-import canvaLogo from "../Images/canva.png";
+import springbootLogo from "../Images/springboot.png";
+import reactLogo from "../Images/react.png";
+import expressLogo from "../Images/Express.png";
+import postgresqlLogo from "../Images/postgresql.png";
+import awsLogo from "../Images/AWS.png";
+import swaggerLogo from "../Images/Swagger.png";
 import projectTen from "../Images/work-best-project-ten.png";
 import projectTwo from "../Images/work-best-project-two.png";
 import { ArrowLeft } from "lucide-react";
@@ -156,8 +158,13 @@ const SmartBusinessCaseStudy = () => {
                   
                   {/* Tags */}
                   <div className="smart-business-case-study-tags d-flex flex-wrap gap-2 mb-4">
-                    <span className="smart-business-case-study-tag-badge">Mobile</span>
-                    <span className="smart-business-case-study-tag-badge">Web</span>
+                    <span className="smart-business-case-study-tag-badge">Spring Boot</span>
+                    <span className="smart-business-case-study-tag-badge">ReactJS</span>
+                    <span className="smart-business-case-study-tag-badge">Figma</span>
+                    <span className="smart-business-case-study-tag-badge">ExpressJS</span>
+                    <span className="smart-business-case-study-tag-badge">Postgres</span>
+                    <span className="smart-business-case-study-tag-badge">AWS</span>
+                    <span className="smart-business-case-study-tag-badge">Swagger</span>
                   </div>
 
                   {/* Schedule A Call Button */}
@@ -329,31 +336,37 @@ const SmartBusinessCaseStudy = () => {
               </h2>
               
               <div className="smart-business-case-study-tools-grid">
-                {/* Top Row */}
+                {/* Top Row - 5 items */}
+                <div className="smart-business-case-study-tool-item">
+                  <img src={springbootLogo} alt="Spring Boot" className="smart-business-case-study-tool-logo" />
+                  <p className="smart-business-case-study-tool-name">Spring Boot</p>
+                </div>
+                <div className="smart-business-case-study-tool-item">
+                  <img src={reactLogo} alt="ReactJS" className="smart-business-case-study-tool-logo" />
+                  <p className="smart-business-case-study-tool-name">ReactJS</p>
+                </div>
                 <div className="smart-business-case-study-tool-item">
                   <img src={figmaLogo} alt="Figma" className="smart-business-case-study-tool-logo" />
                   <p className="smart-business-case-study-tool-name">Figma</p>
                 </div>
                 <div className="smart-business-case-study-tool-item">
-                  <img src={adobeXdLogo} alt="Adobe XD" className="smart-business-case-study-tool-logo" />
-                  <p className="smart-business-case-study-tool-name">Adobe XD</p>
+                  <img src={expressLogo} alt="ExpressJS" className="smart-business-case-study-tool-logo" />
+                  <p className="smart-business-case-study-tool-name">ExpressJS</p>
                 </div>
                 <div className="smart-business-case-study-tool-item">
-                  <img src={sketchLogo} alt="Sketch" className="smart-business-case-study-tool-logo" />
-                  <p className="smart-business-case-study-tool-name">Sketch</p>
-                </div>
-                <div className="smart-business-case-study-tool-item">
-                  <img src={framerLogo} alt="Framer" className="smart-business-case-study-tool-logo" />
-                  <p className="smart-business-case-study-tool-name">Framer</p>
-                </div>
-                <div className="smart-business-case-study-tool-item">
-                  <img src={canvaLogo} alt="Canva" className="smart-business-case-study-tool-logo" />
-                  <p className="smart-business-case-study-tool-name">Canva</p>
+                  <img src={postgresqlLogo} alt="Postgres" className="smart-business-case-study-tool-logo" />
+                  <p className="smart-business-case-study-tool-name">Postgres</p>
                 </div>
                 
-                {/* Bottom Row - Empty */}
-                <div className="smart-business-case-study-tool-item smart-business-case-study-tool-empty"></div>
-                <div className="smart-business-case-study-tool-item smart-business-case-study-tool-empty"></div>
+                {/* Bottom Row - 5 items (2 tools + 3 empty) */}
+                <div className="smart-business-case-study-tool-item">
+                  <img src={awsLogo} alt="AWS" className="smart-business-case-study-tool-logo" />
+                  <p className="smart-business-case-study-tool-name">AWS</p>
+                </div>
+                <div className="smart-business-case-study-tool-item">
+                  <img src={swaggerLogo} alt="Swagger" className="smart-business-case-study-tool-logo" />
+                  <p className="smart-business-case-study-tool-name">Swagger</p>
+                </div>
                 <div className="smart-business-case-study-tool-item smart-business-case-study-tool-empty"></div>
                 <div className="smart-business-case-study-tool-item smart-business-case-study-tool-empty"></div>
                 <div className="smart-business-case-study-tool-item smart-business-case-study-tool-empty"></div>
@@ -388,8 +401,13 @@ const SmartBusinessCaseStudy = () => {
                         A comprehensive payroll management system developed for web and mobile platforms, featuring employee management, salary processing, tax calculations, and detailed reporting. The system provides a seamless experience for HR teams to manage payroll efficiently across all devices.
                       </p>
                       <div className="smart-business-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="smart-business-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="smart-business-case-study-best-project-tag-badge">Web</span>
+                        <span className="smart-business-case-study-best-project-tag-badge">Spring Boot</span>
+                        <span className="smart-business-case-study-best-project-tag-badge">AngularJS</span>
+                        <span className="smart-business-case-study-best-project-tag-badge">Figma</span>
+                        <span className="smart-business-case-study-best-project-tag-badge">ExpressJS</span>
+                        <span className="smart-business-case-study-best-project-tag-badge">MySQL</span>
+                        <span className="smart-business-case-study-best-project-tag-badge">AWS</span>
+                        <span className="smart-business-case-study-best-project-tag-badge">Swagger</span>
                       </div>
                     </div>
                     <button
@@ -422,8 +440,13 @@ const SmartBusinessCaseStudy = () => {
                         A comprehensive ERP solution developed to streamline industrial and financial workflows, featuring integrated modules for inventory management, financial reporting, supply chain management, and business analytics. The platform provides a unified system for managing complex business operations.
                       </p>
                       <div className="smart-business-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="smart-business-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="smart-business-case-study-best-project-tag-badge">Web</span>
+                        <span className="smart-business-case-study-best-project-tag-badge">Spring Boot</span>
+                        <span className="smart-business-case-study-best-project-tag-badge">ReactJS</span>
+                        <span className="smart-business-case-study-best-project-tag-badge">Figma</span>
+                        <span className="smart-business-case-study-best-project-tag-badge">ExpressJS</span>
+                        <span className="smart-business-case-study-best-project-tag-badge">MySQL</span>
+                        <span className="smart-business-case-study-best-project-tag-badge">AWS</span>
+                        <span className="smart-business-case-study-best-project-tag-badge">Swagger</span>
                       </div>
                     </div>
                     <button

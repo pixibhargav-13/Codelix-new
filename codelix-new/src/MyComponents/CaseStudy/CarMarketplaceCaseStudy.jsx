@@ -13,10 +13,12 @@ import light2Image from "../Images/IMAGE GOES HERE2.png";
 import fam1Image from "../Images/fam-1.png";
 import fam2Image from "../Images/fam-2.png";
 import figmaLogo from "../Images/figma.png";
-import adobeXdLogo from "../Images/adobe-xd.png";
-import sketchLogo from "../Images/sketch.png";
-import framerLogo from "../Images/framer.png";
-import canvaLogo from "../Images/canva.png";
+import reactNativeLogo from "../Images/react.png";
+import firebaseLogo from "../Images/Firebase.png";
+import twilioLogo from "../Images/Twilio.png";
+import awsLogo from "../Images/AWS.png";
+import postgresqlLogo from "../Images/postgresql.png";
+import fastapiLogo from "../Images/FastAPI.png";
 import projectThree from "../Images/work-best-project-three.png";
 import projectFifteen from "../Images/work-best-project-fifteen.png";
 import { ArrowLeft } from "lucide-react";
@@ -156,8 +158,13 @@ const CarMarketplaceCaseStudy = () => {
                   
                   {/* Tags */}
                   <div className="car-marketplace-case-study-tags d-flex flex-wrap gap-2 mb-4">
-                    <span className="car-marketplace-case-study-tag-badge">Android</span>
-                    <span className="car-marketplace-case-study-tag-badge">iOS</span>
+                    <span className="car-marketplace-case-study-tag-badge">React Native</span>
+                    <span className="car-marketplace-case-study-tag-badge">Firebase</span>
+                    <span className="car-marketplace-case-study-tag-badge">Twilio</span>
+                    <span className="car-marketplace-case-study-tag-badge">Figma</span>
+                    <span className="car-marketplace-case-study-tag-badge">AWS</span>
+                    <span className="car-marketplace-case-study-tag-badge">Postgres</span>
+                    <span className="car-marketplace-case-study-tag-badge">FastAPI</span>
                   </div>
 
                   {/* Schedule A Call Button */}
@@ -326,31 +333,37 @@ const CarMarketplaceCaseStudy = () => {
               </h2>
               
               <div className="car-marketplace-case-study-tools-grid">
-                {/* Top Row */}
+                {/* Top Row - 5 items */}
+                <div className="car-marketplace-case-study-tool-item">
+                  <img src={reactNativeLogo} alt="React Native" className="car-marketplace-case-study-tool-logo" />
+                  <p className="car-marketplace-case-study-tool-name">React Native</p>
+                </div>
+                <div className="car-marketplace-case-study-tool-item">
+                  <img src={firebaseLogo} alt="Firebase" className="car-marketplace-case-study-tool-logo" />
+                  <p className="car-marketplace-case-study-tool-name">Firebase</p>
+                </div>
+                <div className="car-marketplace-case-study-tool-item">
+                  <img src={twilioLogo} alt="Twilio" className="car-marketplace-case-study-tool-logo" />
+                  <p className="car-marketplace-case-study-tool-name">Twilio</p>
+                </div>
                 <div className="car-marketplace-case-study-tool-item">
                   <img src={figmaLogo} alt="Figma" className="car-marketplace-case-study-tool-logo" />
                   <p className="car-marketplace-case-study-tool-name">Figma</p>
                 </div>
                 <div className="car-marketplace-case-study-tool-item">
-                  <img src={adobeXdLogo} alt="Adobe XD" className="car-marketplace-case-study-tool-logo" />
-                  <p className="car-marketplace-case-study-tool-name">Adobe XD</p>
-                </div>
-                <div className="car-marketplace-case-study-tool-item">
-                  <img src={sketchLogo} alt="Sketch" className="car-marketplace-case-study-tool-logo" />
-                  <p className="car-marketplace-case-study-tool-name">Sketch</p>
-                </div>
-                <div className="car-marketplace-case-study-tool-item">
-                  <img src={framerLogo} alt="Framer" className="car-marketplace-case-study-tool-logo" />
-                  <p className="car-marketplace-case-study-tool-name">Framer</p>
-                </div>
-                <div className="car-marketplace-case-study-tool-item">
-                  <img src={canvaLogo} alt="Canva" className="car-marketplace-case-study-tool-logo" />
-                  <p className="car-marketplace-case-study-tool-name">Canva</p>
+                  <img src={awsLogo} alt="AWS" className="car-marketplace-case-study-tool-logo" />
+                  <p className="car-marketplace-case-study-tool-name">AWS</p>
                 </div>
                 
-                {/* Bottom Row - Empty */}
-                <div className="car-marketplace-case-study-tool-item car-marketplace-case-study-tool-empty"></div>
-                <div className="car-marketplace-case-study-tool-item car-marketplace-case-study-tool-empty"></div>
+                {/* Bottom Row - 5 items (2 tools + 3 empty) */}
+                <div className="car-marketplace-case-study-tool-item">
+                  <img src={postgresqlLogo} alt="Postgres" className="car-marketplace-case-study-tool-logo" />
+                  <p className="car-marketplace-case-study-tool-name">Postgres</p>
+                </div>
+                <div className="car-marketplace-case-study-tool-item">
+                  <img src={fastapiLogo} alt="FastAPI" className="car-marketplace-case-study-tool-logo" />
+                  <p className="car-marketplace-case-study-tool-name">FastAPI</p>
+                </div>
                 <div className="car-marketplace-case-study-tool-item car-marketplace-case-study-tool-empty"></div>
                 <div className="car-marketplace-case-study-tool-item car-marketplace-case-study-tool-empty"></div>
                 <div className="car-marketplace-case-study-tool-item car-marketplace-case-study-tool-empty"></div>
@@ -385,8 +398,13 @@ const CarMarketplaceCaseStudy = () => {
                         A comprehensive mobile and web application designed to streamline community management for modern residential societies. The platform enables residents to access essential services, manage maintenance requests, pay dues, communicate with neighbors, and stay updated with community announcements.
                       </p>
                       <div className="car-marketplace-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="car-marketplace-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="car-marketplace-case-study-best-project-tag-badge">Web</span>
+                        <span className="car-marketplace-case-study-best-project-tag-badge">Flutter</span>
+                        <span className="car-marketplace-case-study-best-project-tag-badge">Firebase</span>
+                        <span className="car-marketplace-case-study-best-project-tag-badge">Twilio</span>
+                        <span className="car-marketplace-case-study-best-project-tag-badge">Figma</span>
+                        <span className="car-marketplace-case-study-best-project-tag-badge">AWS</span>
+                        <span className="car-marketplace-case-study-best-project-tag-badge">MySQL</span>
+                        <span className="car-marketplace-case-study-best-project-tag-badge">Spring Boot</span>
                       </div>
                     </div>
                     <button
@@ -419,8 +437,13 @@ const CarMarketplaceCaseStudy = () => {
                         A comprehensive mobile application designed to streamline school operations and enhance communication between students, parents, teachers, and administrators. The app provides real-time updates on attendance, grades, assignments, events, and school announcements.
                       </p>
                       <div className="car-marketplace-case-study-best-project-tags d-flex flex-wrap gap-2 mb-3">
-                        <span className="car-marketplace-case-study-best-project-tag-badge">Mobile</span>
-                        <span className="car-marketplace-case-study-best-project-tag-badge">Web</span>
+                        <span className="car-marketplace-case-study-best-project-tag-badge">Flutter</span>
+                        <span className="car-marketplace-case-study-best-project-tag-badge">Firebase</span>
+                        <span className="car-marketplace-case-study-best-project-tag-badge">Twilio</span>
+                        <span className="car-marketplace-case-study-best-project-tag-badge">Figma</span>
+                        <span className="car-marketplace-case-study-best-project-tag-badge">AWS</span>
+                        <span className="car-marketplace-case-study-best-project-tag-badge">MongoDB</span>
+                        <span className="car-marketplace-case-study-best-project-tag-badge">Django</span>
                       </div>
                     </div>
                     <button

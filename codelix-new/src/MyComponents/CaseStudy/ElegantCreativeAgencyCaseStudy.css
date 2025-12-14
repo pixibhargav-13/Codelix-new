@@ -387,6 +387,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: all 0.25s ease-in-out;
+}
+
+.elegant-creative-agency-case-study-outcome-card:hover {
+  background: #ffffff !important;
+  border-color: #2B6EF2 !important;
+  box-shadow: 4px 4px 0px #2B6EF2;
+  transform: translateY(-2px);
 }
 
 .elegant-creative-agency-case-study-outcome-number {
@@ -396,6 +404,10 @@
   margin-bottom: 0.12rem;
   font-family: "Hanken Grotesk", sans-serif;
   transition: transform 0.1s ease-out;
+}
+
+.elegant-creative-agency-case-study-outcome-card:hover .elegant-creative-agency-case-study-outcome-number {
+  color: #2B6EF2 !important;
 }
 
 .elegant-creative-agency-case-study-outcome-label {
