@@ -19,7 +19,7 @@ import grpcLogo from "../Images/gRPC.png";
 import projectSeven from "../Images/work-best-project-seven.png";
 import projectNine from "../Images/work-best-project-nine.png";
 import { ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const FreightShippingCaseStudy = () => {
   const navigate = useNavigate();
@@ -162,10 +162,10 @@ const FreightShippingCaseStudy = () => {
                   </div>
 
                   {/* Schedule A Call Button */}
-                  <button className="btn freight-shipping-case-study-schedule-btn">
+                  <Link to="/contact#contact-form" className="btn freight-shipping-case-study-schedule-btn">
                     <span>Schedule A Call</span>
                     <img src={whiteArrow} alt="arrow" className="freight-shipping-case-study-arrow-icon" />
-                  </button>
+                  </Link>
                 </div>
               </div>
 

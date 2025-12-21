@@ -22,7 +22,7 @@ import awsLogo from "../Images/AWS.png";
 import projectFive from "../Images/work-best-project-five.png";
 import projectOne from "../Images/work-best-project-one.png";
 import { ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const MakhanaStoreCaseStudy = () => {
   const navigate = useNavigate();
@@ -168,10 +168,10 @@ const MakhanaStoreCaseStudy = () => {
                   </div>
 
                   {/* Schedule A Call Button */}
-                  <button className="btn makhana-store-case-study-schedule-btn">
+                  <Link to="/contact#contact-form" className="btn makhana-store-case-study-schedule-btn">
                     <span>Schedule A Call</span>
                     <img src={whiteArrow} alt="arrow" className="makhana-store-case-study-arrow-icon" />
-                  </button>
+                  </Link>
                 </div>
               </div>
 

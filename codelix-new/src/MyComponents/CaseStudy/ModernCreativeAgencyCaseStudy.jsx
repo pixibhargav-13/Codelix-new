@@ -18,7 +18,7 @@ import photoshopLogo from "../Images/PhotoShop.png";
 import projectEleven from "../Images/work-best-project-eleven.png";
 import projectTwelve from "../Images/work-best-project-twelve.png";
 import { ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const ModernCreativeAgencyCaseStudy = () => {
   const navigate = useNavigate();
@@ -160,10 +160,10 @@ const ModernCreativeAgencyCaseStudy = () => {
                   </div>
 
                   {/* Schedule A Call Button */}
-                  <button className="btn modern-creative-agency-case-study-schedule-btn">
+                  <Link to="/contact#contact-form" className="btn modern-creative-agency-case-study-schedule-btn">
                     <span>Schedule A Call</span>
                     <img src={whiteArrow} alt="arrow" className="modern-creative-agency-case-study-arrow-icon" />
-                  </button>
+                  </Link>
                 </div>
               </div>
 

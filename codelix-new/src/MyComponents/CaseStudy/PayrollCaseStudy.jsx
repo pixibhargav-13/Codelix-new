@@ -22,7 +22,7 @@ import swaggerLogo from "../Images/Swagger.png";
 import projectFourteen from "../Images/work-best-project-fourteen.png";
 import projectTwo from "../Images/work-best-project-two.png";
 import { ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const PayrollCaseStudy = () => {
   const navigate = useNavigate();
@@ -168,10 +168,10 @@ const PayrollCaseStudy = () => {
                   </div>
 
                   {/* Schedule A Call Button */}
-                  <button className="btn payroll-case-study-schedule-btn">
+                  <Link to="/contact#contact-form" className="btn payroll-case-study-schedule-btn">
                     <span>Schedule A Call</span>
                     <img src={whiteArrow} alt="arrow" className="payroll-case-study-arrow-icon" />
-                  </button>
+                  </Link>
                 </div>
               </div>
 

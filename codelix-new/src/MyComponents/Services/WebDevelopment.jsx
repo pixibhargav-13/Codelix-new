@@ -12,7 +12,9 @@ import Footer from "../Footer/Footer";
 import whiteArrow from "../Images/whiteArrow.png";
 import heroOne from "../Images/homepage-hero-web-dev.png";
 import { SEO } from "../../components/SEO";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 const WebDevelopment = () => {
+  useScrollAnimation();
   const heroimages = [heroOne];
   const [index, setIndex] = useState(0);
   const [currentHero, setCurrentHero] = useState(heroimages[0]);
@@ -90,27 +92,27 @@ const WebDevelopment = () => {
         </section>
       </div>
       <div className="services-page">
-        <div className="how-we-work">
+        <div className="how-we-work scroll-animate">
           <HowWeWork />
         </div>
 
-        <div className="tools-and-tech-we-use">
+        <div className="tools-and-tech-we-use scroll-animate">
           <ToolsAndTechUsedWeb showGeneralTech={false} />
         </div>
 
-        <div className="choose-us">
+        <div className="choose-us scroll-animate">
           <ChooseUs />
         </div>
 
-        <div className="what-we-provide">
+        <div className="what-we-provide scroll-animate">
           <WhatWeProvide showOtherServices={true} />
         </div>
 
-        <div className="lets-build-something">
+        <div className="lets-build-something scroll-animate">
           <LetsBuildSomething />
         </div>
 
-        <div className="our-work">
+        <div className="our-work scroll-animate">
           <Ourwork />
         </div>
 

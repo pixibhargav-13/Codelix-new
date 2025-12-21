@@ -21,9 +21,12 @@ import fashionIcon from "../Images/Fashion.png";
 import consumerServiceIcon from "../Images/Consumer Service.png";
 import staffingIcon from "../Images/Staffing.png";
 import { useNavigate } from "react-router-dom";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 const About = () => {
   const navigate = useNavigate();
+
+  useScrollAnimation();
 
   return (
     <>
@@ -83,7 +86,7 @@ const About = () => {
         </div>
 
         {/* Our Core Philosophy Section */}
-        <div className="about-philosophy-section py-7">
+        <div className="about-philosophy-section py-7 scroll-animate">
           <div className="container">
             <div className="about-philosophy-wrapper">
               <div className="about-philosophy-header">
@@ -116,7 +119,7 @@ const About = () => {
         </div>
 
         {/* Trusted By Companies Across Industries Section */}
-        <div className="about-industries-section py-7">
+        <div className="about-industries-section py-7 scroll-animate">
           <div className="container">
             <div className="about-industries-wrapper">
               <h2 className="about-industries-heading pb-3">
@@ -182,7 +185,7 @@ const About = () => {
         </div>
 
         {/* The Foundations Of Codelix Section */}
-        <div className="about-foundations-section pt-6">
+        <div className="about-foundations-section pt-6 scroll-animate">
           <div className="container">
             <div className="about-foundations-wrapper">
               <h2 className="about-foundations-heading">
@@ -232,7 +235,7 @@ const About = () => {
         <LetsBuildSomething />
 
         {/* Our Work Through Client's Words Section */}
-        <div className="about-ourwork-section">
+        <div className="about-ourwork-section scroll-animate">
           <Ourwork />
         </div>
 

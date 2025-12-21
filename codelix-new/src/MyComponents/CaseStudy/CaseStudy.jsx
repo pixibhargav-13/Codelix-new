@@ -19,7 +19,7 @@ import framerLogo from "../Images/framer.png";
 import canvaLogo from "../Images/canva.png";
 import component5Image from "../Images/Component 5.png";
 import { ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const CaseStudy = () => {
   const navigate = useNavigate();
@@ -160,10 +160,10 @@ const CaseStudy = () => {
                   </div>
 
                   {/* Schedule A Call Button */}
-                  <button className="btn case-study-schedule-btn">
+                  <Link to="/contact#contact-form" className="btn case-study-schedule-btn">
                     <span>Schedule A Call</span>
                     <img src={whiteArrow} alt="arrow" className="case-study-arrow-icon" />
-                  </button>
+                  </Link>
                 </div>
               </div>
 

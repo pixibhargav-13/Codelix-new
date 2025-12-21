@@ -35,7 +35,7 @@ import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
 import Footer from "../Footer/Footer";
 import { BestProjects } from "../BestProjects/BestProjects";
 import { SEO } from "../../components/SEO";
-
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 export const Homepage = () => {
   const navigate = useNavigate();
@@ -43,6 +43,8 @@ export const Homepage = () => {
   const [index, setIndex] = useState(0);
   const [currentHero, setCurrentHero] = useState(heroimages[0]);
   const [fade, setFade] = useState(true);
+
+  useScrollAnimation();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -170,43 +172,43 @@ export const Homepage = () => {
           </div>
         </div>
 
-        <div className="what-we-build">
+        <div className="what-we-build scroll-animate">
           <WhatWeBuild />
         </div>
 
-        <div className="what-makes-us-different">
+        <div className="what-makes-us-different scroll-animate">
           <WhatMakesUsDifferent />
         </div>
 
-        <div className="what-makes-us-different">
+        <div className="what-makes-us-different scroll-animate">
           <WhatWeProvide />
         </div>
 
-        <div className="explore-products">
+        <div className="explore-products scroll-animate">
           <ExploreProducts />
         </div>
 
-        <div className="tools-and-tech-used">
+        <div className="tools-and-tech-used scroll-animate">
           <ToolsAndTechUsed />
         </div>
 
-        <div className="Choose-us">
+        <div className="Choose-us scroll-animate">
           <ChooseUs />
         </div>
 
-        <div className="our-work">
+        <div className="our-work scroll-animate">
           <Ourwork />
         </div>
         
-        <div className="lets-build-something">
+        <div className="lets-build-something scroll-animate">
           <LetsBuildSomething />
         </div>
 
-        <div className="homepage-blog">
+        <div className="homepage-blog scroll-animate">
           <HomepageBlog />
         </div>
 
-        <div className="homepage-faq">
+        <div className="homepage-faq scroll-animate">
           <HomepageFaq />
         </div>
 

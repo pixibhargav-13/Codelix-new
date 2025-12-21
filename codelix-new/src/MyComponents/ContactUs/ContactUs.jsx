@@ -9,10 +9,13 @@ import Ourwork from "../OurWork/Ourwork";
 import { HomepageFaq } from "../HomepageFaq/HomepageFaq";
 import Footer from "../Footer/Footer";
 import { SEO } from "../../components/SEO";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 
 export const ContactUs = () => {
   const location = useLocation();
+
+  useScrollAnimation();
 
   useEffect(() => {
     if (location.hash === '#contact-form') {
@@ -90,7 +93,7 @@ export const ContactUs = () => {
           </div>
         </div>
 
-        <div className="contact-us-main-section" id="contact-form">
+        <div className="contact-us-main-section scroll-animate" id="contact-form">
           <div className="container">
             <div className="row d-flex gap-10">
               <div className="col-lg-8 col-md-12">
@@ -237,11 +240,11 @@ export const ContactUs = () => {
         </div>
       </div>
 
-      <div className="our-work">
+      <div className="our-work scroll-animate">
         <Ourwork />
       </div>
 
-      <div className="homepage-faq">
+      <div className="homepage-faq scroll-animate">
         <HomepageFaq />
       </div>
 
