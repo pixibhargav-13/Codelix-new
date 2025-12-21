@@ -22,7 +22,7 @@ import springbootLogo from "../Images/springboot.png";
 import projectFour from "../Images/work-best-project-four.png";
 import projectFifteen from "../Images/work-best-project-fifteen.png";
 import { ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const SmartSocietyManagementCaseStudy = () => {
   const navigate = useNavigate();
@@ -168,10 +168,10 @@ const SmartSocietyManagementCaseStudy = () => {
                   </div>
 
                   {/* Schedule A Call Button */}
-                  <button className="btn smart-society-management-case-study-schedule-btn">
+                  <Link to="/contact#contact-form" className="btn smart-society-management-case-study-schedule-btn">
                     <span>Schedule A Call</span>
                     <img src={whiteArrow} alt="arrow" className="smart-society-management-case-study-arrow-icon" />
-                  </button>
+                  </Link>
                 </div>
               </div>
 

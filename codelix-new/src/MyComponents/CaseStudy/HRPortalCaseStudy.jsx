@@ -19,7 +19,7 @@ import grpcLogo from "../Images/gRPC.png";
 import projectThirteen from "../Images/work-best-project-thirteen.png";
 import projectNine from "../Images/work-best-project-nine.png";
 import { ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const HRPortalCaseStudy = () => {
   const navigate = useNavigate();
@@ -162,10 +162,10 @@ const HRPortalCaseStudy = () => {
                   </div>
 
                   {/* Schedule A Call Button */}
-                  <button className="btn hr-portal-case-study-schedule-btn">
+                  <Link to="/contact#contact-form" className="btn hr-portal-case-study-schedule-btn">
                     <span>Schedule A Call</span>
                     <img src={whiteArrow} alt="arrow" className="hr-portal-case-study-arrow-icon" />
-                  </button>
+                  </Link>
                 </div>
               </div>
 

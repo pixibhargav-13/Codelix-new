@@ -12,6 +12,7 @@ import Footer from "../Footer/Footer";
 import whiteArrow from "../Images/whiteArrow.png";
 import heroOne from "../Images/homepage-hero-app-dev.png";
 import { SEO } from "../../components/SEO";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 import pythonLogo from "../Images/python.png";
 import javaLogo from "../Images/java.png";
 import nodeLogo from "../Images/node.png";
@@ -22,6 +23,7 @@ import zapierLogo from "../Images/zapier.png";
 import makeLogo from "../Images/make.png";
 
 const AIDevelopment = () => {
+  useScrollAnimation();
   const heroimages = [heroOne];
   const [index, setIndex] = useState(0);
   const [currentHero, setCurrentHero] = useState(heroimages[0]);
@@ -102,7 +104,7 @@ const AIDevelopment = () => {
         </section>
       </div>
       <div className="services-page">
-        <div className="how-we-work">
+        <div className="how-we-work scroll-animate">
           <HowWeWork customSteps={[
             {
               number: "01",
@@ -137,23 +139,23 @@ const AIDevelopment = () => {
           ]} />
         </div>
 
-        <div className="tools-and-tech-we-use">
+        <div className="tools-and-tech-we-use scroll-animate">
           <ToolsAndTechUsedWeb showTabs={false} customTechnologies={aiTechnologies} />
         </div>
 
-        <div className="choose-us">
+        <div className="choose-us scroll-animate">
           <ChooseUs />
         </div>
 
-        <div className="what-we-provide">
+        <div className="what-we-provide scroll-animate">
           <WhatWeProvide showOtherServices={true} />
         </div>
 
-        <div className="lets-build-something">
+        <div className="lets-build-something scroll-animate">
           <LetsBuildSomething />
         </div>
 
-        <div className="our-work">
+        <div className="our-work scroll-animate">
           <Ourwork />
         </div>
 

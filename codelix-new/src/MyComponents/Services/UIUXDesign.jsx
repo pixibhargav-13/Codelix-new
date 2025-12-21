@@ -12,6 +12,7 @@ import Footer from "../Footer/Footer";
 import whiteArrow from "../Images/whiteArrow.png";
 import heroOne from "../Images/homepage-hero-app-dev.png";
 import { SEO } from "../../components/SEO";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 import figmaLogo from "../Images/figma.png";
 import adobeXdLogo from "../Images/adobe-xd.png";
 import sketchLogo from "../Images/sketch.png";
@@ -19,6 +20,7 @@ import framerLogo from "../Images/framer.png";
 import canvaLogo from "../Images/canva.png";
 
 const UIUXDesign = () => {
+  useScrollAnimation();
   const heroimages = [heroOne];
   const [index, setIndex] = useState(0);
   const [currentHero, setCurrentHero] = useState(heroimages[0]);
@@ -101,7 +103,7 @@ const UIUXDesign = () => {
         </section>
       </div>
       <div className="services-page">
-        <div className="how-we-work">
+        <div className="how-we-work scroll-animate">
           <HowWeWork customSteps={[
             {
               number: "01",
@@ -136,23 +138,23 @@ const UIUXDesign = () => {
           ]} />
         </div>
 
-        <div className="tools-and-tech-we-use">
+        <div className="tools-and-tech-we-use scroll-animate">
           <ToolsAndTechUsedWeb showTabs={false} customTechnologies={uiuxTechnologies} />
         </div>
 
-        <div className="choose-us">
+        <div className="choose-us scroll-animate">
           <ChooseUs />
         </div>
 
-        <div className="what-we-provide">
+        <div className="what-we-provide scroll-animate">
           <WhatWeProvide showOtherServices={true} />
         </div>
 
-        <div className="lets-build-something">
+        <div className="lets-build-something scroll-animate">
           <LetsBuildSomething />
         </div>
 
-        <div className="our-work">
+        <div className="our-work scroll-animate">
           <Ourwork />
         </div>
 

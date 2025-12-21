@@ -22,7 +22,7 @@ import awsLogo from "../Images/AWS.png";
 import projectEight from "../Images/work-best-project-eight.png";
 import projectOne from "../Images/work-best-project-one.png";
 import { ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const BookCollectionsCaseStudy = () => {
   const navigate = useNavigate();
@@ -168,10 +168,10 @@ const BookCollectionsCaseStudy = () => {
                   </div>
 
                   {/* Schedule A Call Button */}
-                  <button className="btn book-collections-case-study-schedule-btn">
+                  <Link to="/contact#contact-form" className="btn book-collections-case-study-schedule-btn">
                     <span>Schedule A Call</span>
                     <img src={whiteArrow} alt="arrow" className="book-collections-case-study-arrow-icon" />
-                  </button>
+                  </Link>
                 </div>
               </div>
 

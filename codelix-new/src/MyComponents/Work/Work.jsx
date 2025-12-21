@@ -8,8 +8,11 @@ import Footer from "../Footer/Footer";
 import Ourwork from "../OurWork/Ourwork";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
 import { SEO } from "../../components/SEO";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 const Work = () => {
+  useScrollAnimation();
+  
   return (
     <>
       <SEO
@@ -36,11 +39,11 @@ const Work = () => {
           <BestProjects />
         </div>
 
-        <div className="lets-build-something">
+        <div className="lets-build-something scroll-animate">
           <LetsBuildSomething />
         </div>
 
-        <div className="our-work">
+        <div className="our-work scroll-animate">
           <Ourwork />
         </div>
 

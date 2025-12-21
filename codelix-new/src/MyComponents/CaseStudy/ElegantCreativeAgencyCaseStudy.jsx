@@ -20,7 +20,7 @@ import canvaLogo from "../Images/canva.png";
 import projectSix from "../Images/work-best-project-six.png";
 import projectTwelve from "../Images/work-best-project-twelve.png";
 import { ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const ElegantCreativeAgencyCaseStudy = () => {
   const navigate = useNavigate();
@@ -161,10 +161,10 @@ const ElegantCreativeAgencyCaseStudy = () => {
                   </div>
 
                   {/* Schedule A Call Button */}
-                  <button className="btn elegant-creative-agency-case-study-schedule-btn">
+                  <Link to="/contact#contact-form" className="btn elegant-creative-agency-case-study-schedule-btn">
                     <span>Schedule A Call</span>
                     <img src={whiteArrow} alt="arrow" className="elegant-creative-agency-case-study-arrow-icon" />
-                  </button>
+                  </Link>
                 </div>
               </div>
 

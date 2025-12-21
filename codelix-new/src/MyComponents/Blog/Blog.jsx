@@ -9,9 +9,12 @@ import blogImg2 from "../Images/homepage-blog-image2.png";
 import blogImg3 from "../Images/homepage-blog-image3.png";
 import rightArrow from "../Images/blackArrow.png";
 import underline from "../Images/what-we-build-underline.png";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 const Blog = () => {
   const [activeCategory, setActiveCategory] = React.useState("All Articles");
+
+  useScrollAnimation();
 
   const categories = [
     "All Articles",
@@ -123,7 +126,6 @@ const Blog = () => {
     },
   ];
 
-
   return (
     <>
       <SEO
@@ -148,7 +150,7 @@ const Blog = () => {
         </div>
 
         {/* Blog Posts Grid */}
-        <section className="blog-posts-section">
+        <section className="blog-posts-section scroll-animate">
           <div className="container">
             <div className="row g-4">
               {blogs.slice(0, 6).map((blog) => (
@@ -178,7 +180,7 @@ const Blog = () => {
         </section>
 
         {/* Keep Exploring Blogs Section */}
-        <section className="blog-explore-section py-7">
+        <section className="blog-explore-section py-7 scroll-animate">
           <div className="container">
             {/* Header */}
             <div className="blog-explore-header text-center">
@@ -256,7 +258,9 @@ const Blog = () => {
         </section>
 
         {/* FAQs Section */}
-        <HomepageFaq />
+        <div className="scroll-animate">
+          <HomepageFaq />
+        </div>
 
         {/* Footer */}
         <Footer />

@@ -22,7 +22,7 @@ import fastapiLogo from "../Images/FastAPI.png";
 import projectThree from "../Images/work-best-project-three.png";
 import projectFifteen from "../Images/work-best-project-fifteen.png";
 import { ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const CarMarketplaceCaseStudy = () => {
   const navigate = useNavigate();
@@ -168,10 +168,10 @@ const CarMarketplaceCaseStudy = () => {
                   </div>
 
                   {/* Schedule A Call Button */}
-                  <button className="btn car-marketplace-case-study-schedule-btn">
+                  <Link to="/contact#contact-form" className="btn car-marketplace-case-study-schedule-btn">
                     <span>Schedule A Call</span>
                     <img src={whiteArrow} alt="arrow" className="car-marketplace-case-study-arrow-icon" />
-                  </button>
+                  </Link>
                 </div>
               </div>
 

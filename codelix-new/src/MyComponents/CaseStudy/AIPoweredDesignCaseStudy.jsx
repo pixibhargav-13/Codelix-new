@@ -17,7 +17,7 @@ import canvaLogo from "../Images/canva.png";
 import projectEleven from "../Images/work-best-project-eleven.png";
 import projectSix from "../Images/work-best-project-six.png";
 import { ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const AIPoweredDesignCaseStudy = () => {
   const navigate = useNavigate();
@@ -158,10 +158,10 @@ const AIPoweredDesignCaseStudy = () => {
                   </div>
 
                   {/* Schedule A Call Button */}
-                  <button className="btn ai-powered-design-case-study-schedule-btn">
+                  <Link to="/contact#contact-form" className="btn ai-powered-design-case-study-schedule-btn">
                     <span>Schedule A Call</span>
                     <img src={whiteArrow} alt="arrow" className="ai-powered-design-case-study-arrow-icon" />
-                  </button>
+                  </Link>
                 </div>
               </div>
 

@@ -25,12 +25,15 @@ import client10 from "../Images/homepage-client-ten.png";
 import client11 from "../Images/homepage-client-eleven.png";
 import client12 from "../Images/homepage-client-twelve.png";
 import { SEO } from "../../components/SEO";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 const Services = () => {
   const heroimages = [heroOne];
   const [index, setIndex] = useState(0);
   const [currentHero, setCurrentHero] = useState(heroimages[0]);
   const [fade, setFade] = useState(true);
+
+  useScrollAnimation();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -122,27 +125,27 @@ const Services = () => {
         </section>
       </div>
       <div className="services-page">
-        <div className="how-we-work">
+        <div className="how-we-work scroll-animate">
           <HowWeWork />
         </div>
 
-        <div className="tools-and-tech-we-use">
+        <div className="tools-and-tech-we-use scroll-animate">
           <ToolsAndTechUsedWeb />
         </div>
 
-        <div className="choose-us">
+        <div className="choose-us scroll-animate">
           <ChooseUs />
         </div>
 
-        <div className="what-we-provide">
+        <div className="what-we-provide scroll-animate">
           <WhatWeProvide />
         </div>
 
-        <div className="lets-build-something">
+        <div className="lets-build-something scroll-animate">
           <LetsBuildSomething />
         </div>
 
-        <div className="our-work">
+        <div className="our-work scroll-animate">
           <Ourwork />
         </div>
 

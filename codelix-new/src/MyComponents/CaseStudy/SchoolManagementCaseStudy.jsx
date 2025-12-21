@@ -22,7 +22,7 @@ import djangoLogo from "../Images/django.png";
 import projectThree from "../Images/work-best-project-three.png";
 import projectFour from "../Images/work-best-project-four.png";
 import { ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const SchoolManagementCaseStudy = () => {
   const navigate = useNavigate();
@@ -168,10 +168,10 @@ const SchoolManagementCaseStudy = () => {
                   </div>
 
                   {/* Schedule A Call Button */}
-                  <button className="btn school-management-case-study-schedule-btn">
+                  <Link to="/contact#contact-form" className="btn school-management-case-study-schedule-btn">
                     <span>Schedule A Call</span>
                     <img src={whiteArrow} alt="arrow" className="school-management-case-study-arrow-icon" />
-                  </button>
+                  </Link>
                 </div>
               </div>
 
