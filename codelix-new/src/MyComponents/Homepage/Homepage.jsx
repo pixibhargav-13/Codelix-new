@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useImageOptimization } from "../../hooks/useImageOptimization";
 import heroOne from "../Images/homepage-hero-web-dev.png";
 import heroTwo from "../Images/homepage-hero-app-dev.png";
 import heroThree from "../Images/homepage-hero-saas-dev.png";
@@ -38,23 +37,12 @@ import { BestProjects } from "../BestProjects/BestProjects";
 import { SEO } from "../../components/SEO";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
-const Homepage = () => {
+export const Homepage = () => {
   const navigate = useNavigate();
-  const heroimages = useMemo(() => [heroOne, heroTwo, heroThree, herofour, herofive], []);
+  const heroimages = [heroOne, heroTwo, heroThree, herofour, herofive];
   const [index, setIndex] = useState(0);
+  const [currentHero, setCurrentHero] = useState(heroimages[0]);
   const [fade, setFade] = useState(true);
-
-  // Optimize current hero image
-  const currentHeroImage = useImageOptimization(heroimages[index], {
-    quality: 85,
-    lazy: false
-  });
-
-  // Optimize client logos with lazy loading
-  const clientLogos = useMemo(() => [
-    client1, client2, client3, client4, client5, client6,
-    client7, client8, client9, client10, client11, client12
-  ], []);
 
   useScrollAnimation();
 
@@ -65,13 +53,28 @@ const Homepage = () => {
       setTimeout(() => {
         const newIndex = (index + 1) % heroimages.length;
         setIndex(newIndex);
-        setFade(true);
+        setCurrentHero(heroimages[newIndex]);
+        setFade(true); // fade-in
       }, 500);
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [index, heroimages.length]);
+  }, [index]);
 
+  const clientLogos = [
+    client1,
+    client2,
+    client3,
+    client4,
+    client5,
+    client6,
+    client7,
+    client8,
+    client9,
+    client10,
+    client11,
+    client12,
+  ];
   return (
     <>
       <SEO
@@ -134,18 +137,15 @@ const Homepage = () => {
                 {/* Right Image */}
                 <div className="col-lg-5">
                   <div className="border border-secondary d-flex justify-content-center align-items-center h-100 no-spacing homepage-hero-slideshow-wrapper">
-                    {!currentHeroImage.isLoading && (
-                      <img
-                        src={currentHeroImage.src}
-                        alt="hero"
-                        className={`img-fluid right-image homepage-hero-fade-image ${
-                          fade
-                            ? "homepage-hero-fade-in"
-                            : "homepage-hero-fade-out"
-                        }`}
-                        {...currentHeroImage.attributes}
-                      />
-                    )}
+                    <img
+                      src={currentHero} style={{ height: '100%', width: 'auto' }}
+                      alt="hero"
+                      className={`img-fluid right-image homepage-hero-fade-image ${
+                        fade
+                          ? "homepage-hero-fade-in"
+                          : "homepage-hero-fade-out"
+                      }`}
+                    />
                   </div>
                 </div>
               </div>
@@ -166,8 +166,6 @@ const Homepage = () => {
                   src={logo}
                   className="client-marquee-logo"
                   alt="client"
-                  loading="lazy"
-                  decoding="async"
                 />
               ))}
             </div>
@@ -221,5 +219,3 @@ const Homepage = () => {
     </>
   );
 };
-
-export default Homepage;

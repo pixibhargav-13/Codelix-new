@@ -65,9 +65,9 @@ export const ChooseUs = () => {
         </p>
 
         {/* Boxes */}
-        <div className="choose-grid">
+        <div className="row g-0 choose-grid">
           {reasons.map((item) => (
-            <div className="choose-box" key={item.id}>
+            <div className="col-lg-4 col-md-6 border p-4 choose-box" key={item.id}>
               <h5 className="choose-title">{item.title}</h5>
               <p className="mt-2 choose-desc">{item.description}</p>
             </div>
