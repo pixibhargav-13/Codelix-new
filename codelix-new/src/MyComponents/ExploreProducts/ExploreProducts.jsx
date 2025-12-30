@@ -3,13 +3,13 @@ import "./ExploreProducts.css";
 
 import underline from "../Images/what-we-build-underline.png"; // underline img
 import rightArrow from "../Images/whiteArrow.png";              // arrow img
-import productOneImg from "../Images/homepage-product-one.png";     // product image  (replace if needed)
+import productOneImg from "../Images/Product Section.png";     // product image
 
 export const ExploreProducts = () => {
   const products = [
     {
       id: 1,
-      title: "AangonOne - Smart Society Management",
+      title: "AangonOne - Smart Living",
       description:
         "Aangonone is a modern Society & Apartment Management SaaS platform built to simplify everyday operations in gated communities. From visitor tracking to finance management, Aangonone unites residents, secretaries, staff, and security under one intelligent system, making society life smarter, safer, and more connected.",
       tags: [

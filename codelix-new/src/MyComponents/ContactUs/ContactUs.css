@@ -1,12 +1,10 @@
 .contact-us-page-wrapper {
-  width: 100vw;
-  max-width: 100vw;
-  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 .contact-us-container {
   max-width: 100%;
-  overflow-x: hidden;
 }
 
 .contact-us-top-section {
@@ -18,7 +16,6 @@
   background: white;
   margin-bottom: 40px;
   max-width: 100%;
-  overflow-x: hidden;
 }
 
 .contact-us-top-section-text {
@@ -48,6 +45,7 @@
   flex-direction: column;
   width: 100%;
   box-sizing: border-box;
+  overflow: visible;
 }
 
 .contact-us-card h4 {
@@ -137,6 +135,7 @@
   font-weight: 400;
   letter-spacing: 0;
   background-color: #ffffff;
+  box-sizing: border-box;
 }
 
 .contact-us-form-box select {
@@ -154,6 +153,7 @@
   background-repeat: no-repeat;
   background-position: right 13px center;
   background-size: 12px 8px;
+  box-sizing: border-box;
 }
 
 .contact-us-form-row {
