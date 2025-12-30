@@ -10,7 +10,7 @@ import { WhatWeProvide } from "../WhatWeProvide/WhatWeProvide";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
 import Footer from "../Footer/Footer";
 import whiteArrow from "../Images/whiteArrow.png";
-import heroOne from "../Images/homepage-hero-app-dev.png";
+import heroOne from "../Images/homepage-hero-web-dev.png";
 import { SEO } from "../../components/SEO";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 import shopifyLogo from "../Images/shopify.png";

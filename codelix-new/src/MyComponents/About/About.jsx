@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./About.css";
 import { SEO } from "../../components/SEO";
 import { Navbar } from "../Navbar/Navbar";
@@ -6,7 +6,10 @@ import Footer from "../Footer/Footer";
 import { LetsBuildSomething } from "../Let'sBuildSomething/LetsBuildSomething";
 import Ourwork from "../OurWork/Ourwork";
 import whiteArrow from "../Images/whiteArrow.png";
-import aboutHeroImage from "../Images/Hero_bannerr.png";
+import heroBanner1 from "../Images/Hero_bannerr.png";
+import heroBanner2 from "../Images/Hero-bannerr_1.png";
+import heroBanner3 from "../Images/Hero-banner_2.png";
+import heroBanner4 from "../Images/Hero-banner_3.png";
 import underline from "../Images/what-we-build-underline.png";
 import financeIcon from "../Images/Finance.png";
 import logisticIcon from "../Images/Logistic & Supply chain.png";
@@ -25,8 +28,27 @@ import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 const About = () => {
   const navigate = useNavigate();
+  const heroimages = [heroBanner1, heroBanner2, heroBanner3, heroBanner4];
+  const [index, setIndex] = useState(0);
+  const [currentHero, setCurrentHero] = useState(heroimages[0]);
+  const [fade, setFade] = useState(true);
 
   useScrollAnimation();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false); 
+
+      setTimeout(() => {
+        const newIndex = (index + 1) % heroimages.length;
+        setIndex(newIndex);
+        setCurrentHero(heroimages[newIndex]);
+        setFade(true); // fade-in
+      }, 500);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [index]);
 
   return (
     <>
@@ -74,9 +96,14 @@ const About = () => {
                 <div className="col-lg-5">
                   <div className="border border-secondary d-flex justify-content-center align-items-center h-100 no-spacing about-hero-image-wrapper">
                     <img
-                      src={aboutHeroImage}
+                      src={currentHero}
                       alt="About Codelix"
-                      className="img-fluid right-image about-hero-image"
+                      style={{ height: '100%', width: 'auto' }}
+                      className={`img-fluid right-image about-hero-image about-hero-fade-image ${
+                        fade
+                          ? "about-hero-fade-in"
+                          : "about-hero-fade-out"
+                      }`}
                     />
                   </div>
                 </div>

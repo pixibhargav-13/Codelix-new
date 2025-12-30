@@ -90,6 +90,19 @@
   object-fit: contain;
 }
 
+.about-hero-fade-image {
+  opacity: 1;
+  transition: opacity 1.3s ease-in-out;
+}
+
+.about-hero-fade-out {
+  opacity: 0;
+}
+
+.about-hero-fade-in {
+  opacity: 1;
+}
+
 .about-content-section {
   min-height: 50vh;
   padding: 4rem 0;
