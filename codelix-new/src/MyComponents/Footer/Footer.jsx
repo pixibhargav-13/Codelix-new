@@ -158,7 +158,7 @@ const Footer = () => {
                 <span>
                   <i className="fa-regular fa-copyright"></i>
                 </span>{" "}
-                2025 Codelix — All Copyright Reserved
+                2026 Codelix — All Copyright Reserved
               </p>
               <div className="footer-links-bottom">
                 <Link to="/privacy-policy" onClick={(e) => handleNavClick(e, "/privacy-policy")}>
