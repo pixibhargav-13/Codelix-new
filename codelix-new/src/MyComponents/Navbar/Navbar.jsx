@@ -54,6 +54,13 @@ export const Navbar = ({ logo }) => {
     }, 180);
   };
 
+  // Prevent page scroll when hovering over dropdown menu
+  const handleDropdownWheel = (e) => {
+    e.stopPropagation();
+    // Prevent default scroll behavior
+    e.preventDefault();
+  };
+
   useEffect(() => {
     return () => {
       if (closeTimerRef.current) {
@@ -61,6 +68,21 @@ export const Navbar = ({ logo }) => {
       }
     };
   }, []);
+
+  // Prevent body scroll when dropdown is open
+  useEffect(() => {
+    if (desktopServiceOpen) {
+      // Store the original overflow value
+      const originalOverflow = document.body.style.overflow;
+      // Disable body scroll
+      document.body.style.overflow = 'hidden';
+      
+      return () => {
+        // Restore original overflow when dropdown closes
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [desktopServiceOpen]);
 
   return (
     <>
@@ -113,6 +135,7 @@ export const Navbar = ({ logo }) => {
                     className="desktop-dropdown-menu"
                     onMouseEnter={handleDesktopEnter}
                     onMouseLeave={handleDesktopLeave}
+                    onWheel={handleDropdownWheel}
                   >
                     <div className="dropdown-menu-container">
                       <Link to="/services/web-development" onClick={() => setDesktopServiceOpen(false)} className="service-item">
