@@ -31,6 +31,7 @@ import AIPoweredDesignCaseStudy from "./MyComponents/CaseStudy/AIPoweredDesignCa
 import CarMarketplaceCaseStudy from "./MyComponents/CaseStudy/CarMarketplaceCaseStudy";
 import SchoolManagementCaseStudy from "./MyComponents/CaseStudy/SchoolManagementCaseStudy";
 import SmartSocietyManagementCaseStudy from "./MyComponents/CaseStudy/SmartSocietyManagementCaseStudy";
+import Chatbot from "./MyComponents/Chatbot/Chatbot";
 
 // Scroll to top on every route change
 const ScrollToTop = () => {
@@ -47,6 +48,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      <Chatbot />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/about" element={<About />} />
