@@ -44,8 +44,8 @@ const Footer = () => {
     ],
     contact: [
       {
-        label: "Sales@codelixitsolution.com",
-        link: "mailto:Sales@codelixitsolution.com",
+        label: "Sales@codelixitsolutions.com",
+        link: "mailto:Sales@codelixitsolutions.com",
       },
       { label: "+91 94292 69295", link: "tel:+919429269295" },
       { label: "+91 74909 09686", link: "tel:+917490909686" },
