@@ -1,9 +1,14 @@
 import nodemailer from "nodemailer";
 
 export default async function handler(req, res) {
+  console.log("--- Contact API hit ---");
+  console.log("Method:", req.method);
+
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
+
+  console.log("Request body:", JSON.stringify(req.body));
 
   const {
     name,
@@ -19,8 +24,15 @@ export default async function handler(req, res) {
   } = req.body;
 
   if (!name || !contact || !email || !company || !designation || !service || !project) {
+    console.log("Validation failed - missing required fields");
     return res.status(400).json({ error: "Please fill in all required fields." });
   }
+
+  console.log("ENV check - SMTP_HOST:", process.env.SMTP_HOST ? "SET" : "MISSING");
+  console.log("ENV check - SMTP_PORT:", process.env.SMTP_PORT ? "SET" : "MISSING");
+  console.log("ENV check - SMTP_EMAIL:", process.env.SMTP_EMAIL ? "SET" : "MISSING");
+  console.log("ENV check - SMTP_PASSWORD:", process.env.SMTP_PASSWORD ? "SET" : "MISSING");
+  console.log("ENV check - CONTACT_RECEIVER:", process.env.CONTACT_RECEIVER ? "SET" : "MISSING");
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -108,9 +120,11 @@ export default async function handler(req, res) {
       html: htmlBody,
     });
 
+    console.log("Email sent successfully!");
     return res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
-    console.error("Email send error:", error);
+    console.error("Email send error:", error.message);
+    console.error("Full error:", JSON.stringify(error, Object.getOwnPropertyNames(error)));
     return res.status(500).json({ error: "Failed to send email. Please try again later." });
   }
 }
