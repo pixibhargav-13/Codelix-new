@@ -42,6 +42,7 @@ export const ContactUs = () => {
     console.log("Form submitted:", formData);
     setSubmitted(true);
     // You can add actual API call here
+
   };
 
   useEffect(() => {
@@ -126,6 +127,7 @@ export const ContactUs = () => {
             <div className="row d-flex gap-10">
               <div className="col-lg-8 col-md-12">
                 <div className="contact-us-form-box form d-flex flex-column">
+
                   {submitted ? (
                     <div className="text-center py-5">
                       <h3 className="fw-bold mb-3">Thank You! 🎉</h3>
@@ -136,6 +138,7 @@ export const ContactUs = () => {
                       >
                         Reset
                       </button>
+
                     </div>
                   ) : (
                     <>
@@ -296,6 +299,7 @@ export const ContactUs = () => {
                       </form>
                     </>
                   )}
+
                 </div>
               </div>
 
