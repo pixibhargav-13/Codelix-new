@@ -23,47 +23,26 @@ export const ContactUs = () => {
     email: "",
     company: "",
     designation: "",
-    service: "",
-    project: "",
-    budget: "",
-    timeline: "",
-    referral: "",
+    service: "Select",
+    aboutProject: "",
+    budget: "Select",
+    timeline: "Select",
+    howHeard: "",
   });
-  const [status, setStatus] = useState({ type: "", message: "" });
-  const [loading, setLoading] = useState(false);
+
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-    setStatus({ type: "", message: "" });
+    console.log("Form submitted:", formData);
+    setSubmitted(true);
+    // You can add actual API call here
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
-
-      if (res.ok) {
-        setStatus({ type: "success", message: "Thank you! Your message has been sent successfully." });
-        setFormData({
-          name: "", contact: "", email: "", company: "", designation: "",
-          service: "", project: "", budget: "", timeline: "", referral: "",
-        });
-      } else {
-        setStatus({ type: "error", message: data.error || "Something went wrong. Please try again." });
-      }
-    } catch {
-      setStatus({ type: "error", message: "Network error. Please check your connection and try again." });
-    } finally {
-      setLoading(false);
-    }
   };
 
   useEffect(() => {
@@ -85,16 +64,17 @@ export const ContactUs = () => {
         keywords="contact us, free quote, consultation, web development inquiry, get in touch"
         canonical="https://codelix.com/contact"
       />
-      <div className="work-hero-section">
-        <Navbar />
-        <div className="work-content">
-          <h1>Contact</h1>
-          <p>
-            Whether you're looking for guidance, support, or a custom solution,
-            <span className="line-break">
+      <div className="contact-page">
+        {/* Hero Section */}
+        <div className="contact-hero-section">
+          <Navbar />
+          <div className="contact-hero-content">
+            <h1>Contact</h1>
+            <p>
+              Whether you're looking for guidance, support, or a custom solution,
               we're here to help you every step of the way.
-            </span>
-          </p>
+            </p>
+          </div>
         </div>
       </div>
       <div className="contact-us-container d-flex justify-content-between flex-column light-gray">
@@ -147,96 +127,179 @@ export const ContactUs = () => {
             <div className="row d-flex gap-10">
               <div className="col-lg-8 col-md-12">
                 <div className="contact-us-form-box form d-flex flex-column">
-                  <form onSubmit={handleSubmit}>
-                    {/* Name + Contact */}
-                    <div className="contact-us-form-row">
-                      <div>
-                        <label className="form-label">Your Name*</label>
-                        <input type="text" name="name" value={formData.name} onChange={handleChange} className="input-background" required />
-                      </div>
-                      <div>
-                        <label className="form-label">Contact*</label>
-                        <input type="text" name="contact" value={formData.contact} onChange={handleChange} className="input-background" required />
-                      </div>
-                    </div>
 
-                    {/* Email */}
-                    <label className="form-label">Email*</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} className="input-background" required />
-
-                    {/* Company + Designation */}
-                    <div className="contact-us-form-row">
-                      <div>
-                        <label className="form-label">Company*</label>
-                        <input type="text" name="company" value={formData.company} onChange={handleChange} className="input-background" required />
-                      </div>
-                      <div>
-                        <label className="form-label">Designation*</label>
-                        <input type="text" name="designation" value={formData.designation} onChange={handleChange} className="input-background" required />
-                      </div>
-                    </div>
-
-                    {/* Service */}
-                    <label className="form-label">Service*</label>
-                    <select name="service" value={formData.service} onChange={handleChange} className="input-background" required>
-                      <option value="">Select</option>
-                      <option value="Web Development">Web Development</option>
-                      <option value="Mobile Development">Mobile Development</option>
-                      <option value="UI/UX Design">UI/UX Design</option>
-                      <option value="Custom Software dev.">Custom Software dev.</option>
-                      <option value="E-Commerce Solutions">E-Commerce Solutions</option>
-                      <option value="AI Development">AI Development</option>
-                    </select>
-
-                    {/* About Project */}
-                    <label className="form-label">About Project*</label>
-                    <textarea rows="4" name="project" value={formData.project} onChange={handleChange} className="input-background" required></textarea>
-
-                    {/* Budget + Timeline */}
-                    <div className="contact-us-form-row">
-                      <div>
-                        <label className="form-label">Budget</label>
-                        <select name="budget" value={formData.budget} onChange={handleChange} className="input-background">
-                          <option value="">Select</option>
-                          <option value="Under $1500">Under $1500</option>
-                          <option value="$1500 - $5,000">$1500 - $5,000</option>
-                          <option value="$5,000 - $10,000">$5,000 - $10,000</option>
-                          <option value="$10,000 - $20,000">$10,000 - $20,000</option>
-                          <option value="$20,000 - $50,000">$20,000 - $50,000</option>
-                          <option value="Above $50,000">Above $50,000</option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="form-label">Timeline</label>
-                        <select name="timeline" value={formData.timeline} onChange={handleChange} className="input-background">
-                          <option value="">Select</option>
-                          <option value="1-3 months">1-3 months</option>
-                          <option value="3-6 months">3-6 months</option>
-                          <option value="6-12 months">6-12 months</option>
-                          <option value="12+ months">12+ months</option>
-                          <option value="Flexible">Flexible</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    {/* How heard */}
-                    <label className="form-label">How did you hear about us?</label>
-                    <textarea rows="3" name="referral" value={formData.referral} onChange={handleChange} className="input-background"></textarea>
-
-                    <div className="d-flex justify-content-center mt-3">
-                      <button type="submit" disabled={loading} className="btn blue-common-btn mt-4 d-flex align-items-center justify-content-between view-all-button contact-us-blue-button">
-                        <span>{loading ? "Sending..." : "Submit"}</span>
-                        {!loading && <img src={whiteArrow} alt="arrow" className="arrow-icon" />}
+                  {submitted ? (
+                    <div className="text-center py-5">
+                      <h3 className="fw-bold mb-3">Thank You! 🎉</h3>
+                      <p className="gray-font">Your message has been received. Our team will get back to you shortly.</p>
+                      <button 
+                        className="btn blue-common-btn contact-us-blue-button mt-4 mx-auto d-flex align-items-center justify-content-center gap-2"
+                        onClick={() => setSubmitted(false)}
+                      >
+                        Reset
                       </button>
-                    </div>
 
-                    {status.message && (
-                      <p className={`text-center mt-3 fw-semibold ${status.type === "success" ? "text-success" : "text-danger"}`}>
-                        {status.message}
-                      </p>
-                    )}
-                  </form>
+                    </div>
+                  ) : (
+                    <>
+                      <form onSubmit={handleSubmit}>
+                        {/* Name + Email */}
+                        <div className="contact-us-form-row">
+                          <div>
+                            <label className="form-label">Your Name*</label>
+                            <input 
+                              type="text" 
+                              name="name"
+                              className="input-background" 
+                              required 
+                              value={formData.name}
+                              onChange={handleChange}
+                            />
+                          </div>
+                          <div>
+                            <label className="form-label">Email*</label>
+                            <input 
+                              type="email" 
+                              name="email"
+                              className="input-background" 
+                              required 
+                              value={formData.email}
+                              onChange={handleChange}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Contact + Company */}
+                        <div className="contact-us-form-row">
+                          <div>
+                            <label className="form-label">Contact*</label>
+                            <input 
+                              type="text" 
+                              name="contact"
+                              className="input-background" 
+                              required 
+                              value={formData.contact}
+                              onChange={handleChange}
+                            />
+                          </div>
+                          <div>
+                            <label className="form-label">Company*</label>
+                            <input 
+                              type="text" 
+                              name="company"
+                              className="input-background" 
+                              required 
+                              value={formData.company}
+                              onChange={handleChange}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Designation + Service */}
+                        <div className="contact-us-form-row">
+                          <div>
+                            <label className="form-label">Designation*</label>
+                            <input 
+                              type="text" 
+                              name="designation"
+                              className="input-background" 
+                              required 
+                              value={formData.designation}
+                              onChange={handleChange}
+                            />
+                          </div>
+                          <div>
+                            <label className="form-label">Service*</label>
+                            <select 
+                              name="service"
+                              className="input-background" 
+                              required
+                              value={formData.service}
+                              onChange={handleChange}
+                            >
+                              <option disabled value="Select">Select</option>
+                              <option>Web Development</option>
+                              <option>Mobile Development</option>
+                              <option>UI/UX Design</option>
+                              <option>Custom Software dev.</option>
+                              <option>E-Commerce Solutions</option>
+                              <option>AI Development</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        {/* About Project */}
+                        <label className="form-label">About Project*</label>
+                        <textarea 
+                          rows="4" 
+                          name="aboutProject"
+                          className="input-background" 
+                          required
+                          value={formData.aboutProject}
+                          onChange={handleChange}
+                        ></textarea>
+
+                        {/* Budget + Timeline */}
+                        <div className="contact-us-form-row">
+                          <div>
+                            <label className="form-label">Budget</label>
+                            <select 
+                              name="budget"
+                              className="input-background"
+                              value={formData.budget}
+                              onChange={handleChange}
+                            >
+                              <option disabled value="Select">Select</option>
+                              <option>Under $1500</option>
+                              <option>$1500 - $5,000</option>
+                              <option>$5,000 - $10,000</option>
+                              <option>$10,000 - $20,000</option>
+                              <option>$20,000 - $50,000</option>
+                              <option>Above $50,000</option>
+                            </select>
+                          </div>
+
+                          <div>
+                            <label className="form-label">Timeline</label>
+                            <select 
+                              name="timeline"
+                              className="input-background"
+                              value={formData.timeline}
+                              onChange={handleChange}
+                            >
+                              <option disabled value="Select">Select</option>
+                              <option>1-3 months</option>
+                              <option>3-6 months</option>
+                              <option>6-12 months</option>
+                              <option>12+ months</option>
+                              <option>Flexible</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        {/* How heard */}
+                        <label className="form-label">How did you hear about us?</label>
+                        <textarea 
+                          rows="3" 
+                          name="howHeard"
+                          className="input-background"
+                          value={formData.howHeard}
+                          onChange={handleChange}
+                        ></textarea>
+
+                        <div className="d-flex justify-content-center mt-3">
+                          <button 
+                            type="submit"
+                            className="btn blue-common-btn mt-4 d-flex align-items-center justify-content-between view-all-button contact-us-blue-button"
+                          >
+                            <span>Submit</span>
+                            <img src={whiteArrow} alt="arrow" className="arrow-icon" />
+                          </button>
+                        </div>
+                      </form>
+                    </>
+                  )}
+
                 </div>
               </div>
 
@@ -245,7 +308,7 @@ export const ContactUs = () => {
                 <div className="contact-us-process-box">
                   <div className="contact-us-process-header">
                     <div className="contact-us-process-card">
-                      <h5>Initiating Contract</h5>
+                      <h5>Define your needs</h5>
                       <p>
                         Tell us what you need — our tech team will analyze and
                         suggest the best solution.
@@ -253,7 +316,7 @@ export const ContactUs = () => {
                     </div>
 
                     <div className="contact-us-process-card">
-                      <h5>Define your needs</h5>
+                      <h5>NDA Signing</h5>
                       <p>
                         We secure your idea with a signed NDA. Your privacy is
                         always our priority.
@@ -261,7 +324,7 @@ export const ContactUs = () => {
                     </div>
 
                     <div className="contact-us-process-card">
-                      <h5>NDA Signing</h5>
+                      <h5>Estimated Budget</h5>
                       <p>
                         After in-depth evaluation, we share the estimated budget
                         and project timeline.
@@ -269,15 +332,14 @@ export const ContactUs = () => {
                     </div>
 
                     <div className="contact-us-process-card">
-                      <h5>Estimated Budget/Cost</h5>
+                      <h5>Initiating Partnership</h5>
                       <p>
-                        After in-depth evaluation, we share the estimated budget
-                        and project timeline.
+                        Once the scope and budget are approved, we formalize the partnership to get started.
                       </p>
                     </div>
 
                     <div className="contact-us-process-card">
-                      <h5>Time Launch</h5>
+                      <h5>Timeline & Launch</h5>
                       <p>
                         We respect your deadlines — delivering on time with full
                         transparency.

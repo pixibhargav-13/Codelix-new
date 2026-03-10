@@ -10,9 +10,9 @@ export const ExploreProducts = () => {
   const products = [
     {
       id: 1,
-      title: "AangonOne - Smart Living",
+      title: "AanganOne - Smart Living",
       description:
-        "Aangonone is a modern Society & Apartment Management SaaS platform built to simplify everyday operations in gated communities. From visitor tracking to finance management, Aangonone unites residents, secretaries, staff, and security under one intelligent system, making society life smarter, safer, and more connected.",
+        "Aanganone is a modern Society & Apartment Management SaaS platform built to simplify everyday operations in gated communities. From visitor tracking to finance management, Aanganone unites residents, secretaries, staff, and security under one intelligent system, making society life smarter, safer, and more connected.",
       tags: [
         "Maintenance",
         "Pre-Approve",
@@ -22,7 +22,7 @@ export const ExploreProducts = () => {
         "Amenities",
         "Local Business",
       ],
-      buttonText: "Explore AangonOne",
+      buttonText: "Explore AanganOne",
       image: productOneImg,
       link: "https://www.aanganone.com/",
     },
