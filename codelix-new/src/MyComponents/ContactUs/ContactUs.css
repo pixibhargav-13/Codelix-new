@@ -1,6 +1,49 @@
-.contact-us-page-wrapper {
+.contact-us-page-wrapper,
+.contact-page {
   width: 100%;
   max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.contact-hero-section {
+  width: 100vw;
+  max-width: 100vw;
+  padding-bottom: 9rem;
+  overflow-x: hidden;
+  background-image: url("../Images/work-hero-section.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: 0;
+}
+
+.contact-hero-content {
+  text-align: center;
+  margin-top: 6rem;
+  color: white;
+}
+
+.contact-hero-content h1 {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 64px;
+  letter-spacing: 0%;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.contact-hero-content p {
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #ffffff;
+  width: 60%;
+  margin: 0 auto;
 }
 
 .contact-us-container {
@@ -184,13 +227,39 @@
 
 .contact-us-submit-btn {
   background: #3e7dfc;
-  color: white;
+  color: white !important;
   padding: 14px 20px;
   border: none;
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
   gap: 20px;
+}
+
+.contact-us-blue-button {
+  background-color: #3e7dfc !important;
+  color: #ffffff !important;
+  border: 1px solid transparent;
+  width: 160px !important;
+  border-radius: 0px !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.contact-us-blue-button:hover {
+  background-color: #ffffff !important;
+  color: #3e7dfc !important;
+  border-color: #3e7dfc !important;
+  box-shadow: 4px 4px 0px #3e7dfc;
+}
+
+.contact-us-blue-button:hover .arrow-icon {
+  transform: rotate(-45deg);
+  filter: brightness(0) saturate(100%) invert(43%) sepia(87%) saturate(1900%) hue-rotate(205deg) brightness(101%) contrast(101%);
+}
+
+.contact-us-blue-button .arrow-icon {
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 /* Right side process cards */
@@ -320,17 +389,32 @@
     max-width: 100% !important;
   }
 
-  .work-content h1 {
+  .contact-hero-content h1 {
     font-family: "Hanken Grotesk", sans-serif;
     font-weight: 700;
     font-style: normal;
     font-size: 32px;
-    line-height: 100%;
+    line-height: 42px;
     letter-spacing: 0%;
   }
 
   .form-label {
     font-size: 16px;
+  }
+
+  .contact-hero-content p {
+    font-size: 16px;
+    line-height: 24px;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .contact-hero-section {
+    padding-bottom: 4rem;
+  }
+
+  .contact-hero-content {
+    margin-top: 4rem;
   }
 
   .contact-us-blue-button {

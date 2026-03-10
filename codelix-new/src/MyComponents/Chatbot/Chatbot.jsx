@@ -38,7 +38,7 @@ const Chatbot = () => {
       // Restore body scroll when chatbot is closed
       document.body.style.overflow = '';
     }
-    
+
     // Cleanup function to restore scroll when component unmounts
     return () => {
       document.body.style.overflow = '';
@@ -50,7 +50,7 @@ const Chatbot = () => {
       console.log('Message send blocked:', { hasMessage: !!inputMessage.trim(), isLoading });
       return;
     }
-    
+
     const messageText = inputMessage.trim();
     console.log('sendMessage called with:', messageText);
 
@@ -68,13 +68,13 @@ const Chatbot = () => {
       const messagePayload = {
         message: messageText
       };
-      
+
       const webhookUrl = 'https://n8n.codelixitsolutions.com/webhook/Chatbot';
-      
+
       console.log('Sending message to webhook:', messageText);
       console.log('Webhook URL:', webhookUrl);
       console.log('Payload:', messagePayload);
-      
+
       // Ensure the request is sent with proper configuration
       const fetchOptions = {
         method: 'POST',
@@ -86,9 +86,9 @@ const Chatbot = () => {
         body: JSON.stringify(messagePayload),
         credentials: 'omit' // Don't send credentials to avoid CORS preflight issues
       };
-      
+
       console.log('Fetch options:', fetchOptions);
-      
+
       const response = await fetch(webhookUrl, fetchOptions).catch((fetchError) => {
         console.error('Fetch error caught:', fetchError);
         console.error('Error details:', {
@@ -96,16 +96,16 @@ const Chatbot = () => {
           message: fetchError?.message,
           stack: fetchError?.stack
         });
-        
+
         // Check if it's a network error
         if (fetchError instanceof TypeError && fetchError.message.includes('fetch')) {
           console.error('Network error: Could not reach the webhook URL');
           throw new Error('Network error: Unable to connect to the webhook. Please check your internet connection.');
         }
-        
+
         throw fetchError;
       });
-      
+
       console.log('Fetch request completed successfully');
       console.log('Response status:', response.status);
       console.log('Response headers:', Object.fromEntries(response.headers.entries()));
@@ -121,7 +121,7 @@ const Chatbot = () => {
       // Get response text first to handle both JSON and plain text
       const responseText = await response.text();
       console.log('Response text:', responseText);
-      
+
       // Try to parse as JSON, if fails, treat as plain text
       let data;
       try {
@@ -173,7 +173,7 @@ const Chatbot = () => {
       console.error('Error name:', error.name);
       console.error('Error message:', error.message);
       console.error('Error stack:', error.stack);
-      
+
       // Show error message for any error
       setMessages(prev => [...prev, {
         text: "Sorry, I'm having trouble connecting to the server. Please try again later.",
@@ -221,7 +221,7 @@ const Chatbot = () => {
             <div className="chatbot-header-content">
               <div className="chatbot-avatar">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z" fill="currentColor"/>
+                  <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z" fill="currentColor" />
                 </svg>
               </div>
               <div className="chatbot-header-text">
@@ -231,12 +231,12 @@ const Chatbot = () => {
             </div>
             <button className="chatbot-close" onClick={handleCloseClick} aria-label="Close chat">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
           </div>
-          
-          <div 
+
+          <div
             className="chatbot-messages"
             onWheel={(e) => {
               // Prevent scroll from propagating to body
@@ -285,16 +285,16 @@ const Chatbot = () => {
               onKeyDown={handleKeyDown}
               disabled={isLoading}
             />
-             <button
-               className="chatbot-send"
-               onClick={sendMessage}
-               disabled={isLoading || !inputMessage.trim()}
-               aria-label="Send message"
-             >
-               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-               </svg>
-             </button>
+            <button
+              className="chatbot-send"
+              onClick={sendMessage}
+              disabled={isLoading || !inputMessage.trim()}
+              aria-label="Send message"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+              </svg>
+            </button>
           </div>
 
           {showCloseDialog && (
@@ -303,20 +303,20 @@ const Chatbot = () => {
                 <h4>Close Chat</h4>
                 <p>What would you like to do?</p>
                 <div className="chatbot-close-dialog-buttons">
-                  <button 
-                    className="chatbot-dialog-btn chatbot-dialog-btn-primary" 
+                  <button
+                    className="chatbot-dialog-btn chatbot-dialog-btn-primary"
                     onClick={handleClearAndClose}
                   >
                     Clear Conversation
                   </button>
-                  <button 
-                    className="chatbot-dialog-btn chatbot-dialog-btn-secondary" 
+                  <button
+                    className="chatbot-dialog-btn chatbot-dialog-btn-secondary"
                     onClick={handleJustClose}
                   >
                     Close Chat
                   </button>
-                  <button 
-                    className="chatbot-dialog-btn chatbot-dialog-btn-cancel" 
+                  <button
+                    className="chatbot-dialog-btn chatbot-dialog-btn-cancel"
                     onClick={() => setShowCloseDialog(false)}
                   >
                     Cancel
@@ -335,10 +335,10 @@ const Chatbot = () => {
           aria-label="Open chatbot"
         >
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="white" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            <circle cx="8" cy="10" r="1" fill="rgba(255, 255, 255, 0.6)"/>
-            <circle cx="12" cy="10" r="1" fill="rgba(255, 255, 255, 0.6)"/>
-            <circle cx="16" cy="10" r="1" fill="rgba(255, 255, 255, 0.6)"/>
+            <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="white" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="8" cy="10" r="1" fill="rgba(255, 255, 255, 0.6)" />
+            <circle cx="12" cy="10" r="1" fill="rgba(255, 255, 255, 0.6)" />
+            <circle cx="16" cy="10" r="1" fill="rgba(255, 255, 255, 0.6)" />
           </svg>
         </button>
       )}
