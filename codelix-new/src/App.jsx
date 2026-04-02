@@ -1,5 +1,6 @@
 import React, { useEffect, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import CodelixLoader from "./components/PageLoader";
 
 // ─── Eagerly loaded (critical for first paint) ────────────────────────────────
 import { Homepage } from "./MyComponents/Homepage/Homepage";
@@ -38,27 +39,6 @@ const CarMarketplaceCaseStudy        = lazy(() => import("./MyComponents/CaseStu
 const SchoolManagementCaseStudy      = lazy(() => import("./MyComponents/CaseStudy/SchoolManagementCaseStudy"));
 const SmartSocietyManagementCaseStudy = lazy(() => import("./MyComponents/CaseStudy/SmartSocietyManagementCaseStudy"));
 
-// ─── Page loading fallback ────────────────────────────────────────────────────
-const PageLoader = () => (
-  <div style={{
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100vh",
-    background: "#fff",
-  }}>
-    <div style={{
-      width: "40px",
-      height: "40px",
-      border: "3px solid #e0e0e0",
-      borderTop: "3px solid #3E7DFC",
-      borderRadius: "50%",
-      animation: "spin 0.7s linear infinite",
-    }} />
-    <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-  </div>
-);
-
 // ─── Scroll to top on route change ───────────────────────────────────────────
 const ScrollToTop = () => {
   const location = useLocation();
@@ -68,13 +48,32 @@ const ScrollToTop = () => {
   return null;
 };
 
-// ─── App ──────────────────────────────────────────────────────────────────────
-function App() {
+// ─── Route-change loader: always shows on every navigation ───────────────────
+// We keep a separate `showLoader` state that is set to true on every pathname
+// change. CodelixLoader itself controls the exit timing internally (2.2s hold
+// + 0.7s fade), so the page content renders beneath it until the loader exits.
+const AppRoutes = () => {
+  const location = useLocation();
+  const [loaderKey, setLoaderKey] = React.useState(0);
+  const [showLoader, setShowLoader] = React.useState(true);
+
+  useEffect(() => {
+    // On every route change: show a fresh loader
+    setShowLoader(true);
+    setLoaderKey((k) => k + 1);
+
+    // MIN_DURATION (2200) + EXIT_DURATION (700) + small buffer
+    const hideTimer = setTimeout(() => setShowLoader(false), 2950);
+    return () => clearTimeout(hideTimer);
+  }, [location.pathname]);
+
   return (
-    <Router>
-      <ScrollToTop />
-      <Chatbot />
-      <Suspense fallback={<PageLoader />}>
+    <>
+      {/* Loader overlays the page — always triggered on navigation */}
+      {showLoader && <CodelixLoader key={loaderKey} />}
+
+      {/* Suspense still handles the lazy-chunk loading state */}
+      <Suspense fallback={null}>
         <Routes>
           <Route path="/"                                          element={<Homepage />} />
           <Route path="/about"                                     element={<About />} />
@@ -108,8 +107,20 @@ function App() {
           <Route path="/smart-society-management-case-study"       element={<SmartSocietyManagementCaseStudy />} />
         </Routes>
       </Suspense>
+    </>
+  );
+};
+
+// ─── App ──────────────────────────────────────────────────────────────────────
+function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      <Chatbot />
+      <AppRoutes />
     </Router>
   );
 }
 
 export default App;
+
