@@ -31,18 +31,49 @@ export const ContactUs = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
-    // You can add actual API call here
+    setSending(true);
+    setError("");
 
+    const formPayload = new FormData(e.target);
+    formPayload.append("access_key", "d81ad30d-2d27-411e-849b-6b1d9945a2b8");
+    // Give Web3Forms a meaningful subject line
+    formPayload.append("subject", `New Inquiry from ${formData.name} — Codelix Contact Form`);
+    // Reply-to so you can hit Reply directly in Gmail
+    formPayload.append("from_name", "Codelix Website");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formPayload,
+      });
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitted(true);
+        e.target.reset();
+        setFormData({
+          name: "", contact: "", email: "", company: "",
+          designation: "", service: "Select", aboutProject: "",
+          budget: "Select", timeline: "Select", howHeard: "",
+        });
+      } else {
+        setError(data.message || "Something went wrong. Please try again.");
+      }
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   useEffect(() => {
@@ -143,6 +174,8 @@ export const ContactUs = () => {
                   ) : (
                     <>
                       <form onSubmit={handleSubmit}>
+                        {/* Web3Forms honeypot — prevents spam */}
+                        <input type="checkbox" name="botcheck" style={{ display: "none" }} />
                         {/* Name + Email */}
                         <div className="contact-us-form-row">
                           <div>
@@ -287,13 +320,21 @@ export const ContactUs = () => {
                           onChange={handleChange}
                         ></textarea>
 
+                        {error && (
+                          <p style={{ color: "#e53935", fontSize: "14px", marginTop: "12px", textAlign: "center" }}>
+                            ⚠️ {error}
+                          </p>
+                        )}
+
                         <div className="d-flex justify-content-center mt-3">
                           <button 
                             type="submit"
+                            disabled={sending}
                             className="btn blue-common-btn mt-4 d-flex align-items-center justify-content-between view-all-button contact-us-blue-button"
+                            style={{ opacity: sending ? 0.7 : 1, cursor: sending ? "not-allowed" : "pointer" }}
                           >
-                            <span>Submit</span>
-                            <img src={whiteArrow} alt="arrow" className="arrow-icon" />
+                            <span>{sending ? "Sending..." : "Submit"}</span>
+                            {!sending && <img src={whiteArrow} alt="arrow" className="arrow-icon" />}
                           </button>
                         </div>
                       </form>

@@ -23,8 +23,8 @@ import "./PageLoader.css";
  *   ~2500ms   – display:none, page fully revealed
  */
 
-const MIN_DURATION = 2200; // ms before exit animation begins (matches reference ~1800ms)
-const EXIT_DURATION = 700; // ms for the fade-out transition (matches reference 0.6s)
+const MIN_DURATION = 1200; // ms before exit animation begins (matches reference ~1800ms)
+const EXIT_DURATION = 300; // ms for the fade-out transition (matches reference 0.6s)
 
 const CodelixLoader = () => {
   const loaderRef = useRef(null);
@@ -83,7 +83,7 @@ const CodelixLoader = () => {
         </div>
 
         {/* CODELIX wordmark */}
-        <p className="cl-loader__wordmark">CODELIX</p>
+        {/*<p className="cl-loader__wordmark">CODELIX</p>*/}
       </div>
     </div>
   );
