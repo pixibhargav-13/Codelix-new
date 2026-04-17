@@ -35,14 +35,14 @@ const testimonials = [
   {
     logo: logo4,
     quote:
-      "Their expertise helped us scale our business faster. Great technical and UI/UX understanding!",
+      "Honestly, we were struggling to keep up with our growth until they stepped in. They didn't just build the tech; they actually understood our users. It’s been a total game-changer for our workflow, and the design is just spot on.",
     name: "Emily Watson",
     position: "Director, Nova Corp",
   },
   {
     logo: logo5,
     quote:
-      "Fantastic experience! They always go the extra mile to deliver value in every sprint.",
+      "What I love most is that they don't just say 'yes' to everything—they tell us what's actually going to work. The whole process felt super collaborative, and they genuinely cared about making the project a success.",
     name: "Chris Taylor",
     position: "COO, Orbit Labs",
   },
@@ -72,7 +72,7 @@ const Ourwork = () => {
       </h2>
 
       <p className="gray-font mb-5 gray-font-margin-top text-center">
-      Real stories from the clients who trusted us with their vision.
+        Real stories from the clients who trusted us with their vision.
       </p>
 
       <div className="row g-0">
@@ -104,9 +104,8 @@ const Ourwork = () => {
           {testimonials.map((item, index) => (
             <div
               key={index}
-              className={`logo-item-block ${
-                index === active ? "active-logo" : "inactive-logo"
-              }`}
+              className={`logo-item-block ${index === active ? "active-logo" : "inactive-logo"
+                }`}
               onClick={() => setActive(index)}
             >
               <img src={item.logo} alt="logo" />

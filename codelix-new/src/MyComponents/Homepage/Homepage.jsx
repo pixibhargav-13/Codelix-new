@@ -17,6 +17,7 @@ import client9 from "../Images/homepage-client-nine.png";
 import client10 from "../Images/homepage-client-ten.png";
 import client11 from "../Images/homepage-client-eleven.png";
 import client12 from "../Images/homepage-client-twelve.png";
+import client13 from "../Images/homepage-client-thirteen.png";
 
 import blackArrow from "../Images/blackArrow.png";
 import whiteArrow from "../Images/whiteArrow.png";
@@ -48,7 +49,7 @@ export const Homepage = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setFade(false); 
+      setFade(false);
 
       setTimeout(() => {
         const newIndex = (index + 1) % heroimages.length;
@@ -74,6 +75,7 @@ export const Homepage = () => {
     client10,
     client11,
     client12,
+    client13,
   ];
   return (
     <>
@@ -85,7 +87,7 @@ export const Homepage = () => {
       />
       <div className="homepage">
         <div className="hero-section">
-          <Navbar/>
+          <Navbar />
           <section className="text-white py-5">
             <div className="container">
               {/* TOP SECTION */}
@@ -140,11 +142,10 @@ export const Homepage = () => {
                     <img
                       src={currentHero} style={{ height: '100%', width: 'auto' }}
                       alt="hero"
-                      className={`img-fluid right-image homepage-hero-fade-image ${
-                        fade
-                          ? "homepage-hero-fade-in"
-                          : "homepage-hero-fade-out"
-                      }`}
+                      className={`img-fluid right-image homepage-hero-fade-image ${fade
+                        ? "homepage-hero-fade-in"
+                        : "homepage-hero-fade-out"
+                        }`}
                     />
                   </div>
                 </div>
@@ -154,7 +155,7 @@ export const Homepage = () => {
 
           {/* BOTTOM LOGOS */}
           <p className="text-center mt-5 mb-3 text-light small opacity-75">
-            Trusted by 25+ Companies and Growing
+            Trusted by 30+ Companies and Growing
           </p>
 
           {/* CLIENT LOGO MARQUEE */}
@@ -199,7 +200,7 @@ export const Homepage = () => {
         <div className="our-work scroll-animate">
           <Ourwork />
         </div>
-        
+
         <div className="lets-build-something scroll-animate">
           <LetsBuildSomething />
         </div>
@@ -213,7 +214,7 @@ export const Homepage = () => {
         </div>
 
         <div className="footer">
-          <Footer/>
+          <Footer />
         </div>
       </div>
     </>
