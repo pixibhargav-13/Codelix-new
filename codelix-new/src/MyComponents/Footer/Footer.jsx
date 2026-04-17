@@ -49,6 +49,10 @@ const Footer = () => {
       },
       { label: "+91 94292 69295", link: "tel:+919429269295" },
       { label: "+91 74909 09686", link: "tel:+917490909686" },
+      {
+        label: "A-1308, PNTC - Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat — 380015",
+        link: "https://www.google.com/maps/search/?api=1&query=A-1308,+PNTC+-+Times+Of+India+Press+Road,+Vejalpur,+Ahmedabad,+Gujarat+—+380015",
+      },
     ],
   };
 
@@ -142,7 +146,13 @@ const Footer = () => {
               <ul className="footer-links">
                 {footerData.contact.map((item, index) => (
                   <li key={index}>
-                    <a href={item.link}>{item.label}</a>
+                    <a 
+                      href={item.link}
+                      target={item.link.startsWith("http") ? "_blank" : "_self"}
+                      rel={item.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                    >
+                      {item.label}
+                    </a>
                   </li>
                 ))}
               </ul>

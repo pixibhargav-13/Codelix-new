@@ -14,8 +14,8 @@ export const WhatMakesUsDifferent = () => {
 
   // ⭐ RIGHT SIDE STATS (REUSABLE)
   const stats = [
-    { id: 1, value: "25+", label: "Projects Completed", suffix: "+" },
-    { id: 2, value: "95%", label: "Success Rate", suffix: "%" },
+    { id: 1, value: "30+", label: "Projects Completed", suffix: "+" },
+    { id: 2, value: "97%", label: "Success Rate", suffix: "%" },
     { id: 3, value: "30+", label: "Tech Stacks & Tools", suffix: "+" },
     { id: 4, value: "2+", label: "Countries Served", suffix: "+" },
   ];
@@ -103,12 +103,12 @@ export const WhatMakesUsDifferent = () => {
             </h4>
 
             <p className="gray-font mb-4">
-              — driven to build Tech solutions that make businesses faster, smarter, 
+              — driven to build Tech solutions that make businesses faster, smarter,
               and more connected.
             </p>
 
             <p className="gray-font mb-4">
-              From custom software systems and mobile applications to sleek e-commerce 
+              From custom software systems and mobile applications to sleek e-commerce
               stores, every project at <span className="codelix-blue">Codelix</span> reflects our core motto.
             </p>
 
