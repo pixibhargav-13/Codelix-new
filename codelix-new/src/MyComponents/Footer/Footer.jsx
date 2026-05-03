@@ -51,7 +51,7 @@ const Footer = () => {
       { label: "+91 74909 09686", link: "tel:+917490909686" },
       {
         label: "A-1308, PNTC - Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat — 380015",
-        link: "https://www.google.com/maps/search/?api=1&query=A-1308,+PNTC+-+Times+Of+India+Press+Road,+Vejalpur,+Ahmedabad,+Gujarat+—+380015",
+        link: "https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.0095811,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D",
       },
     ],
   };
@@ -128,8 +128,8 @@ const Footer = () => {
               <ul className="footer-links">
                 {footerData.social.map((item, index) => (
                   <li key={index}>
-                    <a 
-                      href={item.link} 
+                    <a
+                      href={item.link}
                       target={item.link.startsWith("http") ? "_blank" : "_self"}
                       rel={item.link.startsWith("http") ? "noopener noreferrer" : undefined}
                     >
@@ -146,7 +146,7 @@ const Footer = () => {
               <ul className="footer-links">
                 {footerData.contact.map((item, index) => (
                   <li key={index}>
-                    <a 
+                    <a
                       href={item.link}
                       target={item.link.startsWith("http") ? "_blank" : "_self"}
                       rel={item.link.startsWith("http") ? "noopener noreferrer" : undefined}
