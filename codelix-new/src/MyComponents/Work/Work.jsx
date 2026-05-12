@@ -16,10 +16,9 @@ const Work = () => {
   return (
     <>
       <SEO
-        title="Our Work | Portfolio | AI-Driven Projects | Codelix"
+        title="Our Work | Portfolio | AI-Driven Projects | Codelix IT Solutions"
         description="Explore our portfolio of AI-driven web apps, mobile solutions, and SaaS platforms. See how we deliver elegant design and exceptional performance."
         keywords="portfolio, case studies, web development projects, app development, project showcase"
-        canonical="https://codelix.com/work"
       />
       <div className="work-page">
         <div className="work-hero-section">

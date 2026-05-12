@@ -127,10 +127,9 @@ const PayrollCaseStudy = () => {
   return (
     <>
       <SEO
-        title="Payroll Case Study | Codelix"
-        description="Explore our detailed case studies showcasing innovative solutions and successful projects."
-        keywords="case study, project details, portfolio, web development case study"
-        canonical="https://codelix.com/payroll-case-study"
+        title="Payroll Case Study | Codelix IT Solutions"
+        description="Learn how Codelix IT Solutions built a smart payroll management system with automated salary processing, tax compliance, and employee self-service features."
+        keywords="payroll system case study, payroll management, salary automation, HR software, employee management, Codelix portfolio"
       />
       <div className="payroll-case-study-page">
         <div className="payroll-case-study-hero-section">

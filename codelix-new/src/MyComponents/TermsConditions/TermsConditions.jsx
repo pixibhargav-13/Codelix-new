@@ -9,10 +9,9 @@ const TermsConditions = () => {
   return (
     <>
       <SEO
-        title="Terms & Conditions | Codelix"
+        title="Terms & Conditions | Codelix IT Solutions"
         description="Read Codelix's Terms & Conditions to understand how you may use our site, services, and content."
         keywords="terms and conditions, terms of service, user agreement, website terms"
-        canonical="https://codelix.com/terms-of-service"
       />
       <div className="terms-conditions-hero-section">
         <Navbar />

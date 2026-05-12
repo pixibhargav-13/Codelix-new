@@ -54,10 +54,9 @@ const AIDevelopment = () => {
   return (
     <>
       <SEO
-        title="AI Development Services | Artificial Intelligence Solutions | Codelix"
+        title="AI Development Services | Artificial Intelligence Solutions | Codelix IT Solutions"
         description="Cutting-edge AI development services that leverage machine learning, natural language processing, and intelligent automation to transform your business operations."
         keywords="AI development, artificial intelligence, machine learning, NLP, intelligent automation, AI solutions"
-        canonical="https://codelix.com/services/ai-development"
       />
       <div className="service-hero-section">
         <Navbar />

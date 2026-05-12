@@ -40,10 +40,9 @@ const CustomSoftwareDevelopment = () => {
   return (
     <>
       <SEO
-        title="Custom Software Development | Tailored Solutions | Codelix"
+        title="Custom Software Development | Tailored Solutions | Codelix IT Solutions"
         description="Bespoke software development services tailored to your unique business needs. We build custom solutions that streamline operations, improve efficiency, and drive growth."
         keywords="custom software development, bespoke software, enterprise software, business software, tailored solutions"
-        canonical="https://codelix.com/services/custom-software-development"
       />
       <div className="service-hero-section">
         <Navbar />

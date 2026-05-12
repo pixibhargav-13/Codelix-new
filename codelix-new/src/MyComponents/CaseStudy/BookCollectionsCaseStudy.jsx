@@ -127,10 +127,9 @@ const BookCollectionsCaseStudy = () => {
   return (
     <>
       <SEO
-        title="Book Collections Case Study | Codelix"
-        description="Explore our detailed case studies showcasing innovative solutions and successful projects."
-        keywords="case study, project details, portfolio, web development case study"
-        canonical="https://codelix.com/book-collections-case-study"
+        title="Book Collections Case Study | Codelix IT Solutions"
+        description="See how Codelix IT Solutions designed a beautiful book collections e-commerce platform with advanced search, user reviews, and seamless checkout experience."
+        keywords="book store case study, e-commerce platform, online bookstore, book collections app, Codelix portfolio"
       />
       <div className="book-collections-case-study-page">
         <div className="book-collections-case-study-hero-section">

@@ -1,42 +1,41 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export const SEO = ({
   title,
   description,
   keywords = '',
-  ogImage = '/codelix.svg',
-  ogType = 'website',
-  canonical = ''
 }) => {
-  const siteUrl = 'https://www.codelixitsolutions.com/'; // Update this with your actual domain
-  const fullTitle = title || 'Codelix | AI-Powered Web, App & SaaS Development';
-  const fullCanonical = canonical || (typeof window !== 'undefined' ? window.location.href : siteUrl);
+  const siteUrl = 'https://www.codelixitsolutions.com';
+  const location = useLocation();
+  const fullTitle = title || 'Codelix IT Solutions | AI-Powered Web, App & SaaS Development';
+  const pathName = location.pathname === '/' ? '/' : location.pathname.replace(/\/+$/, '');
+  const fullCanonical = `${siteUrl}${pathName}`;
 
-  return (
-    <Helmet>
-      {/* Primary Meta Tags */}
-      <title>{fullTitle}</title>
-      <meta name="title" content={fullTitle} />
-      <meta name="description" content={description} />
-      {keywords && <meta name="keywords" content={keywords} />}
+  useEffect(() => {
+    // Title
+    document.title = fullTitle;
 
-      {/* Canonical URL */}
-      <link rel="canonical" href={fullCanonical} />
+    // Canonical & URL tags
+    document.getElementById('meta-canonical')?.setAttribute('href', fullCanonical);
+    document.getElementById('meta-og-url')?.setAttribute('content', fullCanonical);
 
-      {/* Open Graph / Facebook */}
-      <meta property="og:type" content={ogType} />
-      <meta property="og:url" content={fullCanonical} />
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+    // Description
+    if (description) {
+      document.getElementById('meta-description')?.setAttribute('content', description);
+      document.getElementById('meta-og-description')?.setAttribute('content', description);
+      document.getElementById('meta-tw-description')?.setAttribute('content', description);
+    }
 
-      {/* Twitter */}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={fullCanonical} />
-      <meta property="twitter:title" content={fullTitle} />
-      <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={`${siteUrl}${ogImage}`} />
-    </Helmet>
-  );
+    // Keywords
+    if (keywords) {
+      document.getElementById('meta-keywords')?.setAttribute('content', keywords);
+    }
+
+    // Titles (OG & Twitter)
+    document.getElementById('meta-og-title')?.setAttribute('content', fullTitle);
+    document.getElementById('meta-tw-title')?.setAttribute('content', fullTitle);
+  }, [fullTitle, description, keywords, fullCanonical]);
+
+  return null;
 };

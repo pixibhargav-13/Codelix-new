@@ -127,10 +127,9 @@ const MakhanaStoreCaseStudy = () => {
   return (
     <>
       <SEO
-        title="Makhana Store Case Study | Codelix"
-        description="Explore our detailed case studies showcasing innovative solutions and successful projects."
-        keywords="case study, project details, portfolio, web development case study"
-        canonical="https://codelix.com/makhana-store-case-study"
+        title="Makhana Store Case Study | Codelix IT Solutions"
+        description="Discover how Codelix IT Solutions built a premium makhana e-commerce store with brand storytelling, product catalog, and integrated payment solutions."
+        keywords="makhana store case study, food e-commerce, online store design, product catalog, Codelix portfolio"
       />
       <div className="makhana-store-case-study-page">
         <div className="makhana-store-case-study-hero-section">

@@ -127,10 +127,9 @@ const NextGenCaseStudy = () => {
   return (
     <>
       <SEO
-        title="NextGen Case Study | Codelix"
-        description="Explore our detailed case studies showcasing innovative solutions and successful projects."
-        keywords="case study, project details, portfolio, web development case study"
-        canonical="https://codelix.com/nextgen-case-study"
+        title="NextGen Case Study | Codelix IT Solutions"
+        description="See how Codelix IT Solutions built a next-generation digital platform with cutting-edge UI, scalable architecture, and AI-driven features."
+        keywords="nextgen platform case study, digital transformation, scalable web app, AI-powered platform, Codelix portfolio"
       />
       <div className="nextgen-case-study-page">
         <div className="nextgen-case-study-hero-section">

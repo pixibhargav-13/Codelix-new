@@ -53,10 +53,9 @@ const UIUXDesign = () => {
   return (
     <>
       <SEO
-        title="UI/UX Design Services | User Experience Design | Codelix"
+        title="UI/UX Design Services | User Experience Design | Codelix IT Solutions"
         description="Professional UI/UX design services that create intuitive, beautiful, and user-centered digital experiences. We design interfaces that users love and businesses trust."
         keywords="UI design, UX design, user interface design, user experience, digital design, interface design"
-        canonical="https://codelix.com/services/ui-ux-design"
       />
       <div className="service-hero-section">
         <Navbar />

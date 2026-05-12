@@ -124,10 +124,9 @@ const EdTechCaseStudy = () => {
   return (
     <>
       <SEO
-        title="EdTech Case Study | Codelix"
-        description="Explore our detailed case studies showcasing innovative solutions and successful projects."
-        keywords="case study, project details, portfolio, web development case study"
-        canonical="https://codelix.com/edtech-case-study"
+        title="EdTech Case Study | Codelix IT Solutions"
+        description="Discover how Codelix IT Solutions built an EdTech platform with interactive learning modules, student progress tracking, and virtual classroom features."
+        keywords="EdTech case study, education technology, online learning platform, e-learning, student management, Codelix portfolio"
       />
       <div className="edtech-case-study-page">
         <div className="edtech-case-study-hero-section">

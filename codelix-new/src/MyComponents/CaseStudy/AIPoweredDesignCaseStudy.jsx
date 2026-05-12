@@ -122,10 +122,9 @@ const AIPoweredDesignCaseStudy = () => {
   return (
     <>
       <SEO
-        title="AI-Powered Design Platform Case Study | Codelix"
-        description="Explore our detailed case studies showcasing innovative solutions and successful projects."
-        keywords="case study, project details, portfolio, web development case study"
-        canonical="https://codelix.com/ai-powered-design-case-study"
+        title="AI-Powered Design Platform Case Study | Codelix IT Solutions"
+        description="Discover how Codelix IT Solutions leveraged AI-powered design tools to create stunning, data-driven interfaces with intelligent layout and content generation."
+        keywords="AI design case study, AI-powered UI, generative design, intelligent interfaces, machine learning design, Codelix portfolio"
       />
       <div className="ai-powered-design-case-study-page">
         <div className="ai-powered-design-case-study-hero-section">

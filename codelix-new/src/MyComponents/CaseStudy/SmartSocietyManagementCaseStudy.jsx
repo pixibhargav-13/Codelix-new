@@ -127,10 +127,9 @@ const SmartSocietyManagementCaseStudy = () => {
   return (
     <>
       <SEO
-        title="Smart Society Management Case Study | Codelix"
-        description="Explore our detailed case studies showcasing innovative solutions and successful projects."
-        keywords="case study, project details, portfolio, web development case study"
-        canonical="https://codelix.com/smart-society-management-case-study"
+        title="Smart Society Management Case Study | Codelix IT Solutions"
+        description="Explore how Codelix IT Solutions built a smart society management app with visitor tracking, maintenance requests, billing automation, and community engagement features."
+        keywords="society management case study, residential management app, visitor management, maintenance tracking, smart society, Codelix portfolio"
       />
       <div className="smart-society-management-case-study-page">
         <div className="smart-society-management-case-study-hero-section">

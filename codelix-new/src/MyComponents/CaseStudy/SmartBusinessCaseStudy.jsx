@@ -127,10 +127,9 @@ const SmartBusinessCaseStudy = () => {
   return (
     <>
       <SEO
-        title="Smart Business Case Study | Codelix"
-        description="Explore our detailed case studies showcasing innovative solutions and successful projects."
-        keywords="case study, project details, portfolio, web development case study"
-        canonical="https://codelix.com/smart-business-case-study"
+        title="Smart Business Case Study | Codelix IT Solutions"
+        description="Explore how Codelix IT Solutions created a smart business management platform with AI-powered insights, workflow automation, and data-driven decision tools."
+        keywords="smart business case study, business management platform, AI analytics, workflow automation, Codelix portfolio"
       />
       <div className="smart-business-case-study-page">
         <div className="smart-business-case-study-hero-section">

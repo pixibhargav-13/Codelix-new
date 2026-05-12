@@ -124,10 +124,9 @@ const FreightShippingCaseStudy = () => {
   return (
     <>
       <SEO
-        title="Freight & Shipping Case Study | Codelix"
-        description="Explore our detailed case studies showcasing innovative solutions and successful projects."
-        keywords="case study, project details, portfolio, web development case study"
-        canonical="https://codelix.com/freight-shipping-case-study"
+        title="Freight & Shipping Case Study | Codelix IT Solutions"
+        description="Learn how Codelix IT Solutions developed a freight shipping management platform with real-time tracking, route optimization, and logistics automation."
+        keywords="freight shipping case study, logistics platform, shipment tracking, supply chain management, Codelix portfolio"
       />
       <div className="freight-shipping-case-study-page">
         <div className="freight-shipping-case-study-hero-section">

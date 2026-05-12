@@ -53,10 +53,9 @@ const About = () => {
   return (
     <>
       <SEO
-        title="About Codelix | AI-Powered Development Team"
+        title="About Codelix IT Solutions | AI-Powered Development Team"
         description="Learn about Codelix - your partner in building AI-powered web, app, and SaaS solutions with cutting-edge technology and exceptional design."
         keywords="about codelix, development team, company information, our story"
-        canonical="https://codelix.com/about"
       />
       <div className="about-page">
         <div className="about-hero-section">

@@ -9,10 +9,9 @@ const PrivacyPolicy = () => {
   return (
     <>
       <SEO
-        title="Privacy Policy | Codelix"
+        title="Privacy Policy | Codelix IT Solutions"
         description="Read Codelix's Privacy Policy to understand how we collect, use, and protect your personal information."
         keywords="privacy policy, data protection, privacy, data usage"
-        canonical="https://codelix.com/privacy-policy"
       />
       <div className="privacy-page-hero-section">
         <Navbar />

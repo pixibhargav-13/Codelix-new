@@ -90,10 +90,9 @@ export const ContactUs = () => {
   return (
     <>
       <SEO
-        title="Contact Us | Get a Free Quote | Codelix"
+        title="Contact Us | Get a Free Quote | Codelix IT Solutions"
         description="Ready to build something amazing? Contact Codelix for a free consultation. We're here to help with your web, app, or SaaS project."
         keywords="contact us, free quote, consultation, web development inquiry, get in touch"
-        canonical="https://codelix.com/contact"
       />
       <div className="contact-page">
         {/* Hero Section */}

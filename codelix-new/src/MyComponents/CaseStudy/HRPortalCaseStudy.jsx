@@ -124,10 +124,9 @@ const HRPortalCaseStudy = () => {
   return (
     <>
       <SEO
-        title="HR Portal Case Study | Codelix"
-        description="Explore our detailed case studies showcasing innovative solutions and successful projects."
-        keywords="case study, project details, portfolio, web development case study"
-        canonical="https://codelix.com/hr-portal-case-study"
+        title="HR Portal Case Study | Codelix IT Solutions"
+        description="See how Codelix IT Solutions created an HR portal with employee onboarding, leave management, performance tracking, and team collaboration tools."
+        keywords="HR portal case study, human resources software, employee management, leave management, performance tracking, Codelix portfolio"
       />
       <div className="hr-portal-case-study-page">
         <div className="hr-portal-case-study-hero-section">

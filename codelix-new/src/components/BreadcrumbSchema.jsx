@@ -1,6 +1,48 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
+// Human-readable names for URL slugs (auto-generated names are ugly for abbreviations)
+const SLUG_NAMES = {
+  'about': 'About',
+  'work': 'Our Work',
+  'services': 'Services',
+  'blog': 'Blog',
+  'contact': 'Contact Us',
+  'terms-of-service': 'Terms of Service',
+  'privacy-policy': 'Privacy Policy',
+  'web-development': 'Web Development',
+  'application-development': 'Application Development',
+  'ui-ux-design': 'UI/UX Design',
+  'e-commerce-solutions': 'E-Commerce Solutions',
+  'custom-software-development': 'Custom Software Development',
+  'ai-development': 'AI Development',
+  'case-study': 'Case Studies',
+  'nextgen-case-study': 'NextGen Case Study',
+  'erp-case-study': 'ERP Case Study',
+  'payroll-case-study': 'Payroll Case Study',
+  'smart-business-case-study': 'Smart Business Case Study',
+  'book-collections-case-study': 'Book Collections Case Study',
+  'makhana-store-case-study': 'Makhana Store Case Study',
+  'freight-shipping-case-study': 'Freight Shipping Case Study',
+  'hr-portal-case-study': 'HR Portal Case Study',
+  'edtech-case-study': 'EdTech Case Study',
+  'modern-creative-agency-case-study': 'Modern Creative Agency Case Study',
+  'elegant-creative-agency-case-study': 'Elegant Creative Agency Case Study',
+  'ai-powered-design-case-study': 'AI-Powered Design Case Study',
+  'car-marketplace-case-study': 'Car Marketplace Case Study',
+  'school-management-case-study': 'School Management Case Study',
+  'smart-society-management-case-study': 'Smart Society Management Case Study',
+};
+
+// Fallback: convert slug to title case (e.g. "new-page" → "New Page")
+const slugToName = (slug) => {
+  if (SLUG_NAMES[slug]) return SLUG_NAMES[slug];
+  return slug
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
+
 const BreadcrumbSchema = () => {
   const location = useLocation();
 
@@ -24,24 +66,19 @@ const BreadcrumbSchema = () => {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://codelixitsolutions.com/"
+        item: "https://www.codelixitsolutions.com/"
       }
     ];
 
-    let currentUrl = "https://codelixitsolutions.com";
+    let currentUrl = "https://www.codelixitsolutions.com";
 
     pathnames.forEach((value, index) => {
       currentUrl += `/${value}`;
 
-      const name = value
-        .split('-')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
-
       itemListElement.push({
         "@type": "ListItem",
         position: index + 2,
-        name: name,
+        name: slugToName(value),
         item: currentUrl
       });
     });

@@ -127,10 +127,9 @@ const SchoolManagementCaseStudy = () => {
   return (
     <>
       <SEO
-        title="School Management Case Study | Codelix"
-        description="Explore our detailed case studies showcasing innovative solutions and successful projects."
-        keywords="case study, project details, portfolio, web development case study"
-        canonical="https://codelix.com/school-management-case-study"
+        title="School Management Case Study | Codelix IT Solutions"
+        description="See how Codelix IT Solutions developed a school management system with student enrollment, attendance tracking, grade management, and parent communication portals."
+        keywords="school management case study, student management system, education software, attendance tracking, school ERP, Codelix portfolio"
       />
       <div className="school-management-case-study-page">
         <div className="school-management-case-study-hero-section">

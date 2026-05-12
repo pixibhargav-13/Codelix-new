@@ -125,10 +125,9 @@ const ElegantCreativeAgencyCaseStudy = () => {
   return (
     <>
       <SEO
-        title="Elegant Creative Agency Case Study | Codelix"
-        description="Explore our detailed case studies showcasing innovative solutions and successful projects."
-        keywords="case study, project details, portfolio, web development case study"
-        canonical="https://codelix.com/elegant-creative-agency-case-study"
+        title="Elegant Creative Agency Case Study | Codelix IT Solutions"
+        description="Explore how Codelix IT Solutions crafted an elegant creative agency website with refined typography, immersive layouts, and premium brand identity."
+        keywords="elegant agency case study, premium website design, brand identity, creative studio website, Codelix portfolio"
       />
       <div className="elegant-creative-agency-case-study-page">
         <div className="elegant-creative-agency-case-study-hero-section">

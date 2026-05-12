@@ -127,10 +127,9 @@ const CarMarketplaceCaseStudy = () => {
   return (
     <>
       <SEO
-        title="Car Marketplace Case Study | Codelix"
-        description="Explore our detailed case studies showcasing innovative solutions and successful projects."
-        keywords="case study, project details, portfolio, web development case study"
-        canonical="https://codelix.com/car-marketplace-case-study"
+        title="Car Marketplace Case Study | Codelix IT Solutions"
+        description="Learn how Codelix IT Solutions built a car marketplace platform with advanced vehicle search, dealer management, and seamless buyer-seller connection tools."
+        keywords="car marketplace case study, auto marketplace, vehicle listing platform, dealer management, car sales website, Codelix portfolio"
       />
       <div className="car-marketplace-case-study-page">
         <div className="car-marketplace-case-study-hero-section">

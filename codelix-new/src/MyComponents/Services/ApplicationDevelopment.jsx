@@ -51,10 +51,9 @@ const ApplicationDevelopment = () => {
   return (
     <>
       <SEO
-        title="Application Development Services | Mobile & Desktop Apps | Codelix"
+        title="Application Development Services | Mobile & Desktop Apps | Codelix IT Solutions"
         description="Expert application development services for mobile and desktop platforms. We build scalable, high-performance applications using cutting-edge technologies and best practices."
         keywords="application development, mobile app development, desktop applications, cross-platform apps, software development"
-        canonical="https://codelix.com/services/application-development"
       />
       <div className="service-hero-section">
         <Navbar />

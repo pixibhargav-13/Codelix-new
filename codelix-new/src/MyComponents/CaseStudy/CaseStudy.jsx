@@ -124,10 +124,9 @@ const CaseStudy = () => {
   return (
     <>
       <SEO
-        title="Case Study | Codelix"
-        description="Explore our detailed case studies showcasing innovative solutions and successful projects."
-        keywords="case study, project details, portfolio, web development case study"
-        canonical="https://codelix.com/case-study"
+        title="Case Study | Codelix IT Solutions"
+        description="Browse Codelix IT Solutions' portfolio of real-world case studies — from ERP and HR systems to e-commerce, EdTech, and AI-powered platforms."
+        keywords="case studies, project portfolio, client work, software development case studies, web app projects, Codelix portfolio"
       />
       <div className="case-study-page">
         <div className="case-study-hero-section">

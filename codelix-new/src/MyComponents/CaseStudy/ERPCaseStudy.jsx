@@ -127,10 +127,9 @@ const ERPCaseStudy = () => {
   return (
     <>
       <SEO
-        title="ERP Case Study | Codelix"
-        description="Explore our detailed case studies showcasing innovative solutions and successful projects."
-        keywords="case study, project details, portfolio, web development case study"
-        canonical="https://codelix.com/erp-case-study"
+        title="ERP Case Study | Codelix IT Solutions"
+        description="Discover how Codelix IT Solutions delivered a comprehensive ERP system with real-time analytics, inventory management, and automated business workflows."
+        keywords="ERP case study, enterprise resource planning, business automation, inventory management, Codelix portfolio"
       />
       <div className="erp-case-study-page">
         <div className="erp-case-study-hero-section">

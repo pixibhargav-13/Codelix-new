@@ -49,10 +49,9 @@ const ECommerceSolutions = () => {
   return (
     <>
       <SEO
-        title="E-Commerce Solutions | Online Store Development | Codelix"
+        title="E-Commerce Solutions | Online Store Development | Codelix IT Solutions"
         description="Complete e-commerce solutions that drive sales and growth. We build secure, scalable online stores with seamless payment integration and exceptional user experiences."
         keywords="e-commerce development, online store, ecommerce solutions, shopping cart, payment integration, online retail"
-        canonical="https://codelix.com/services/e-commerce-solutions"
       />
       <div className="service-hero-section">
         <Navbar />
