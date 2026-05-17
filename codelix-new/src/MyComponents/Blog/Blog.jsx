@@ -12,10 +12,10 @@ import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 const Blog = () => {
   const [activeCategory, setActiveCategory] = React.useState("All Articles");
-  const [visibleCount, setVisibleCount] = React.useState(6); // 6 items shown initially in the bottom section
+  const [visibleCount, setVisibleCount] = React.useState(6); // Show 6 items initially
 
   const bottomBlogs = activeCategory === "All Articles" 
-    ? blogs.slice(6) 
+    ? blogs 
     : blogs.filter(blog => blog.tags.includes(activeCategory));
 
   useScrollAnimation();
