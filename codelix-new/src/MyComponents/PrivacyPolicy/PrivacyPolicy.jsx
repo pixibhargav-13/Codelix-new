@@ -21,7 +21,7 @@ const PrivacyPolicy = () => {
               Privacy Policy
               <img
                 src={underline}
-                alt="underline"
+                alt=""
                 className="privacy-page-underline-img"
               />
             </span>

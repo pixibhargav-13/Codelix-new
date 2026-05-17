@@ -169,7 +169,7 @@ const NextGenCaseStudy = () => {
                   {/* Schedule A Call Button */}
                   <Link to="/contact#contact-form" className="btn nextgen-case-study-schedule-btn">
                     <span>Schedule A Call</span>
-                    <img src={whiteArrow} alt="arrow" className="nextgen-case-study-arrow-icon" />
+                    <img src={whiteArrow} alt="" className="nextgen-case-study-arrow-icon" />
                   </Link>
                 </div>
               </div>
@@ -196,7 +196,7 @@ const NextGenCaseStudy = () => {
                 Project{" "}
                 <span className="nextgen-case-study-underline-wrapper fw-bold">
                   Overview
-                  <img src={underline} alt="underline" className="nextgen-case-study-underline-img" />
+                  <img src={underline} alt="" className="nextgen-case-study-underline-img" />
                 </span>
               </h2>
               <p className="nextgen-case-study-section-paragraph">
@@ -217,7 +217,7 @@ const NextGenCaseStudy = () => {
                 Project{" "}
                 <span className="nextgen-case-study-underline-wrapper fw-bold">
                   Outcomes
-                  <img src={underline} alt="underline" className="nextgen-case-study-underline-img" />
+                  <img src={underline} alt="" className="nextgen-case-study-underline-img" />
                 </span>
               </h2>
 
@@ -330,7 +330,7 @@ const NextGenCaseStudy = () => {
                 Tools & Technologies We Use In{" "}
                 <span className="nextgen-case-study-underline-wrapper fw-bold">
                   This Project
-                  <img src={underline} alt="underline" className="nextgen-case-study-underline-img" />
+                  <img src={underline} alt="" className="nextgen-case-study-underline-img" />
                 </span>
               </h2>
               

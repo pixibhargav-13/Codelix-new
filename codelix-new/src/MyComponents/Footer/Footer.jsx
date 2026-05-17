@@ -39,7 +39,6 @@ const Footer = () => {
     ],
     social: [
       { label: "Linkedin", link: "https://www.linkedin.com/company/codelixit-solutions" },
-      { label: "Upwork", link: "#" },
       { label: "Instagram", link: "https://www.instagram.com/codelixitsolutions/" },
     ],
     contact: [

@@ -59,7 +59,7 @@ export const HowWeWork = ({ customSteps = null }) => {
 
                 <div className="how-title-wrapper">
                   <h4 className="how-title">{step.title}</h4>
-                  <img src={blackArrow} alt="arrow" className="how-arrow" />
+                  <img src={blackArrow} alt="" className="how-arrow" />
                 </div>
 
                 <p className="how-desc">{step.desc}</p>

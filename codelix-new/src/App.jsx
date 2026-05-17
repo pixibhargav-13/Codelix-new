@@ -40,6 +40,9 @@ const CarMarketplaceCaseStudy        = lazy(() => import("./MyComponents/CaseStu
 const SchoolManagementCaseStudy      = lazy(() => import("./MyComponents/CaseStudy/SchoolManagementCaseStudy"));
 const SmartSocietyManagementCaseStudy = lazy(() => import("./MyComponents/CaseStudy/SmartSocietyManagementCaseStudy"));
 
+// ─── 404 Not Found ─────────────────────────────────────────────────────────────
+const NotFound                         = lazy(() => import("./MyComponents/NotFound/NotFound"));
+
 // ─── Scroll to top on route change ───────────────────────────────────────────
 const ScrollToTop = () => {
   const location = useLocation();
@@ -106,6 +109,7 @@ const AppRoutes = () => {
           <Route path="/car-marketplace-case-study"                element={<CarMarketplaceCaseStudy />} />
           <Route path="/school-management-case-study"              element={<SchoolManagementCaseStudy />} />
           <Route path="/smart-society-management-case-study"       element={<SmartSocietyManagementCaseStudy />} />
+          <Route path="*"                                          element={<NotFound />} />
         </Routes>
       </Suspense>
     </>

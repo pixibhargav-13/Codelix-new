@@ -169,7 +169,7 @@ const SmartBusinessCaseStudy = () => {
                   {/* Schedule A Call Button */}
                   <Link to="/contact#contact-form" className="btn smart-business-case-study-schedule-btn">
                     <span>Schedule A Call</span>
-                    <img src={whiteArrow} alt="arrow" className="smart-business-case-study-arrow-icon" />
+                    <img src={whiteArrow} alt="" className="smart-business-case-study-arrow-icon" />
                   </Link>
                 </div>
               </div>
@@ -196,7 +196,7 @@ const SmartBusinessCaseStudy = () => {
                 Project{" "}
                 <span className="smart-business-case-study-underline-wrapper fw-bold">
                   Overview
-                  <img src={underline} alt="underline" className="smart-business-case-study-underline-img" />
+                  <img src={underline} alt="" className="smart-business-case-study-underline-img" />
                 </span>
               </h2>
               <p className="smart-business-case-study-section-paragraph">
@@ -214,7 +214,7 @@ const SmartBusinessCaseStudy = () => {
                 Project{" "}
                 <span className="smart-business-case-study-underline-wrapper fw-bold">
                   Outcomes
-                  <img src={underline} alt="underline" className="smart-business-case-study-underline-img" />
+                  <img src={underline} alt="" className="smart-business-case-study-underline-img" />
                 </span>
               </h2>
 
@@ -330,7 +330,7 @@ const SmartBusinessCaseStudy = () => {
                 Tools & Technologies We Use In{" "}
                 <span className="smart-business-case-study-underline-wrapper fw-bold">
                   This Project
-                  <img src={underline} alt="underline" className="smart-business-case-study-underline-img" />
+                  <img src={underline} alt="" className="smart-business-case-study-underline-img" />
                 </span>
               </h2>
               

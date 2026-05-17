@@ -84,7 +84,7 @@ export const ExploreProducts = () => {
               {/* BUTTON */}
               <button className="btn explore-btn mt-5 d-flex align-items-center justify-content-between gap-5" onClick={() => window.open(p.link, '_blank')}>
                 {p.buttonText}
-                <img src={rightArrow} alt="arrow" className="arrow-icon" />
+                <img src={rightArrow} alt="" className="arrow-icon" />
               </button>
             </div>
 

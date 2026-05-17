@@ -162,7 +162,7 @@ const ElegantCreativeAgencyCaseStudy = () => {
                   {/* Schedule A Call Button */}
                   <Link to="/contact#contact-form" className="btn elegant-creative-agency-case-study-schedule-btn">
                     <span>Schedule A Call</span>
-                    <img src={whiteArrow} alt="arrow" className="elegant-creative-agency-case-study-arrow-icon" />
+                    <img src={whiteArrow} alt="" className="elegant-creative-agency-case-study-arrow-icon" />
                   </Link>
                 </div>
               </div>
@@ -189,7 +189,7 @@ const ElegantCreativeAgencyCaseStudy = () => {
                 Project{" "}
                 <span className="elegant-creative-agency-case-study-underline-wrapper fw-bold">
                   Overview
-                  <img src={underline} alt="underline" className="elegant-creative-agency-case-study-underline-img" />
+                  <img src={underline} alt="" className="elegant-creative-agency-case-study-underline-img" />
                 </span>
               </h2>
               <p className="elegant-creative-agency-case-study-section-paragraph">
@@ -210,7 +210,7 @@ const ElegantCreativeAgencyCaseStudy = () => {
                 Project{" "}
                 <span className="elegant-creative-agency-case-study-underline-wrapper fw-bold">
                   Outcomes
-                  <img src={underline} alt="underline" className="elegant-creative-agency-case-study-underline-img" />
+                  <img src={underline} alt="" className="elegant-creative-agency-case-study-underline-img" />
                 </span>
               </h2>
 
@@ -323,7 +323,7 @@ const ElegantCreativeAgencyCaseStudy = () => {
                 Tools & Technologies We Use In{" "}
                 <span className="elegant-creative-agency-case-study-underline-wrapper fw-bold">
                   This Project
-                  <img src={underline} alt="underline" className="elegant-creative-agency-case-study-underline-img" />
+                  <img src={underline} alt="" className="elegant-creative-agency-case-study-underline-img" />
                 </span>
               </h2>
               

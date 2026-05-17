@@ -163,7 +163,7 @@ const FreightShippingCaseStudy = () => {
                   {/* Schedule A Call Button */}
                   <Link to="/contact#contact-form" className="btn freight-shipping-case-study-schedule-btn">
                     <span>Schedule A Call</span>
-                    <img src={whiteArrow} alt="arrow" className="freight-shipping-case-study-arrow-icon" />
+                    <img src={whiteArrow} alt="" className="freight-shipping-case-study-arrow-icon" />
                   </Link>
                 </div>
               </div>
@@ -190,7 +190,7 @@ const FreightShippingCaseStudy = () => {
                 Project{" "}
                 <span className="freight-shipping-case-study-underline-wrapper fw-bold">
                   Overview
-                  <img src={underline} alt="underline" className="freight-shipping-case-study-underline-img" />
+                  <img src={underline} alt="" className="freight-shipping-case-study-underline-img" />
                 </span>
               </h2>
               <p className="freight-shipping-case-study-section-paragraph">
@@ -211,7 +211,7 @@ const FreightShippingCaseStudy = () => {
                 Project{" "}
                 <span className="freight-shipping-case-study-underline-wrapper fw-bold">
                   Outcomes
-                  <img src={underline} alt="underline" className="freight-shipping-case-study-underline-img" />
+                  <img src={underline} alt="" className="freight-shipping-case-study-underline-img" />
                 </span>
               </h2>
 
@@ -324,7 +324,7 @@ const FreightShippingCaseStudy = () => {
                 Tools & Technologies We Use In{" "}
                 <span className="freight-shipping-case-study-underline-wrapper fw-bold">
                   This Project
-                  <img src={underline} alt="underline" className="freight-shipping-case-study-underline-img" />
+                  <img src={underline} alt="" className="freight-shipping-case-study-underline-img" />
                 </span>
               </h2>
               

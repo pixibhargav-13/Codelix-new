@@ -333,7 +333,7 @@ export const ContactUs = () => {
                             style={{ opacity: sending ? 0.7 : 1, cursor: sending ? "not-allowed" : "pointer" }}
                           >
                             <span>{sending ? "Sending..." : "Submit"}</span>
-                            {!sending && <img src={whiteArrow} alt="arrow" className="arrow-icon" />}
+                            {!sending && <img src={whiteArrow} alt="" className="arrow-icon" />}
                           </button>
                         </div>
                       </form>

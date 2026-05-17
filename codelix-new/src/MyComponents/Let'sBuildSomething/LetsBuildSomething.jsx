@@ -39,7 +39,7 @@ export const LetsBuildSomething = () => {
         <div className="text-center">
           <Link to="/contact" className="btn get-free-consultation-btn consult-btn mt-lg-5 d-inline-flex align-items-center gap-3" >
             Get Free Consultation
-            <img src={rightArrow} alt="arrow" className="arrow-icon" />
+            <img src={rightArrow} alt="" className="arrow-icon" />
           </Link>
         </div>
       </div>

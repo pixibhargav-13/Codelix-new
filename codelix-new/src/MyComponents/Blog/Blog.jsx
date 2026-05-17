@@ -156,7 +156,7 @@ const Blog = () => {
                 <div className="col-lg-4 col-md-6" key={blog.id}>
                   <div className="blog-card h-100">
                     {/* Image */}
-                    <img src={blog.image} alt={blog.title} className="homepage-blog-img" />
+                    <img src={blog.image} alt={blog.title} className="homepage-blog-img" loading="lazy" />
 
                     {/* Card Content */}
                     <div className="p-3 text-start">
@@ -167,7 +167,7 @@ const Blog = () => {
 
                         <button className="btn blog-btn d-flex align-items-center gap-2">
                           Read Blog
-                          <img src={rightArrow} alt="arrow" className="arrow-icon" />
+                          <img src={rightArrow} alt="" className="arrow-icon" />
                         </button>
                       </div>
                     </div>
@@ -187,7 +187,7 @@ const Blog = () => {
                 Keep Exploring{" "}
                 <span className="underline-wrapper fw-bold">
                   Blogs
-                  <img src={underline} alt="underline" className="underline-img" />
+                  <img src={underline} alt="" className="underline-img" />
                 </span>
               </h2>
               <p className="blog-explore-tagline mb-5 mt-2">
@@ -224,7 +224,7 @@ const Blog = () => {
                     <div className="blog-explore-card" key={blog.id}>
                       {/* Thumbnail */}
                       <div className="blog-explore-thumbnail">
-                        <img src={blog.image} alt={blog.title} />
+                        <img src={blog.image} alt={blog.title} loading="lazy" />
                       </div>
 
                       {/* Card Content */}

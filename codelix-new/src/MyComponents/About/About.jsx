@@ -83,7 +83,7 @@ const About = () => {
                         <span>Schedule A Call</span>
                         <img
                           src={whiteArrow}
-                          alt="arrow"
+                          alt=""
                           className="arrow-icon"
                         />
                       </button>
@@ -120,7 +120,7 @@ const About = () => {
                   Our Core{" "}
                   <span className="about-philosophy-underline-wrapper fw-bold">
                     Philosophy
-                    <img src={underline} alt="underline" className="about-philosophy-underline-img" />
+                    <img src={underline} alt="" className="about-philosophy-underline-img" />
                   </span>
                 </h2>
               </div>
@@ -152,7 +152,7 @@ const About = () => {
                 Trusted By Companies Across{" "}
                 <span className="about-industries-underline-wrapper fw-bold">
                   Industries
-                  <img src={underline} alt="underline" className="about-industries-underline-img" />
+                  <img src={underline} alt="" className="about-industries-underline-img" />
                 </span>
               </h2>
               
@@ -218,7 +218,7 @@ const About = () => {
                 The Foundations Of{" "}
                 <span className="about-foundations-underline-wrapper fw-bold">
                   Codelix
-                  <img src={underline} alt="underline" className="about-foundations-underline-img" />
+                  <img src={underline} alt="" className="about-foundations-underline-img" />
                 </span>
               </h2>
 

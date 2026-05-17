@@ -169,7 +169,7 @@ const MakhanaStoreCaseStudy = () => {
                   {/* Schedule A Call Button */}
                   <Link to="/contact#contact-form" className="btn makhana-store-case-study-schedule-btn">
                     <span>Schedule A Call</span>
-                    <img src={whiteArrow} alt="arrow" className="makhana-store-case-study-arrow-icon" />
+                    <img src={whiteArrow} alt="" className="makhana-store-case-study-arrow-icon" />
                   </Link>
                 </div>
               </div>
@@ -196,7 +196,7 @@ const MakhanaStoreCaseStudy = () => {
                 Project{" "}
                 <span className="makhana-store-case-study-underline-wrapper fw-bold">
                   Overview
-                  <img src={underline} alt="underline" className="makhana-store-case-study-underline-img" />
+                  <img src={underline} alt="" className="makhana-store-case-study-underline-img" />
                 </span>
               </h2>
               <p className="makhana-store-case-study-section-paragraph">
@@ -217,7 +217,7 @@ const MakhanaStoreCaseStudy = () => {
                 Project{" "}
                 <span className="makhana-store-case-study-underline-wrapper fw-bold">
                   Outcomes
-                  <img src={underline} alt="underline" className="makhana-store-case-study-underline-img" />
+                  <img src={underline} alt="" className="makhana-store-case-study-underline-img" />
                 </span>
               </h2>
 
@@ -330,7 +330,7 @@ const MakhanaStoreCaseStudy = () => {
                 Tools & Technologies We Use In{" "}
                 <span className="makhana-store-case-study-underline-wrapper fw-bold">
                   This Project
-                  <img src={underline} alt="underline" className="makhana-store-case-study-underline-img" />
+                  <img src={underline} alt="" className="makhana-store-case-study-underline-img" />
                 </span>
               </h2>
               

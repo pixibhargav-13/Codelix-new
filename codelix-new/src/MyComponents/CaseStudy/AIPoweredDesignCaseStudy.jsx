@@ -159,7 +159,7 @@ const AIPoweredDesignCaseStudy = () => {
                   {/* Schedule A Call Button */}
                   <Link to="/contact#contact-form" className="btn ai-powered-design-case-study-schedule-btn">
                     <span>Schedule A Call</span>
-                    <img src={whiteArrow} alt="arrow" className="ai-powered-design-case-study-arrow-icon" />
+                    <img src={whiteArrow} alt="" className="ai-powered-design-case-study-arrow-icon" />
                   </Link>
                 </div>
               </div>
@@ -186,7 +186,7 @@ const AIPoweredDesignCaseStudy = () => {
                 Project{" "}
                 <span className="ai-powered-design-case-study-underline-wrapper fw-bold">
                   Overview
-                  <img src={underline} alt="underline" className="ai-powered-design-case-study-underline-img" />
+                  <img src={underline} alt="" className="ai-powered-design-case-study-underline-img" />
                 </span>
               </h2>
               <p className="ai-powered-design-case-study-section-paragraph">
@@ -207,7 +207,7 @@ const AIPoweredDesignCaseStudy = () => {
                 Project{" "}
                 <span className="ai-powered-design-case-study-underline-wrapper fw-bold">
                   Outcomes
-                  <img src={underline} alt="underline" className="ai-powered-design-case-study-underline-img" />
+                  <img src={underline} alt="" className="ai-powered-design-case-study-underline-img" />
                 </span>
               </h2>
 
@@ -320,7 +320,7 @@ const AIPoweredDesignCaseStudy = () => {
                 Tools & Technologies We Use In{" "}
                 <span className="ai-powered-design-case-study-underline-wrapper fw-bold">
                   This Project
-                  <img src={underline} alt="underline" className="ai-powered-design-case-study-underline-img" />
+                  <img src={underline} alt="" className="ai-powered-design-case-study-underline-img" />
                 </span>
               </h2>
               

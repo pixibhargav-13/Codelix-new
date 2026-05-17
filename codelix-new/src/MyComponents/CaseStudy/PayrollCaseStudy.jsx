@@ -169,7 +169,7 @@ const PayrollCaseStudy = () => {
                   {/* Schedule A Call Button */}
                   <Link to="/contact#contact-form" className="btn payroll-case-study-schedule-btn">
                     <span>Schedule A Call</span>
-                    <img src={whiteArrow} alt="arrow" className="payroll-case-study-arrow-icon" />
+                    <img src={whiteArrow} alt="" className="payroll-case-study-arrow-icon" />
                   </Link>
                 </div>
               </div>
@@ -196,7 +196,7 @@ const PayrollCaseStudy = () => {
                 Project{" "}
                 <span className="payroll-case-study-underline-wrapper fw-bold">
                   Overview
-                  <img src={underline} alt="underline" className="payroll-case-study-underline-img" />
+                  <img src={underline} alt="" className="payroll-case-study-underline-img" />
                 </span>
               </h2>
               <p className="payroll-case-study-section-paragraph">
@@ -217,7 +217,7 @@ const PayrollCaseStudy = () => {
                 Project{" "}
                 <span className="payroll-case-study-underline-wrapper fw-bold">
                   Outcomes
-                  <img src={underline} alt="underline" className="payroll-case-study-underline-img" />
+                  <img src={underline} alt="" className="payroll-case-study-underline-img" />
                 </span>
               </h2>
 
@@ -330,7 +330,7 @@ const PayrollCaseStudy = () => {
                 Tools & Technologies We Use In{" "}
                 <span className="payroll-case-study-underline-wrapper fw-bold">
                   This Project
-                  <img src={underline} alt="underline" className="payroll-case-study-underline-img" />
+                  <img src={underline} alt="" className="payroll-case-study-underline-img" />
                 </span>
               </h2>
               

@@ -1,0 +1,107 @@
+.not-found-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.not-found-hero-section {
+  background-color: #0a0a0a;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.not-found-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  min-height: 100vh;
+}
+
+.not-found-code {
+  font-size: clamp(100px, 15vw, 200px);
+  font-weight: 800;
+  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 50%, #93c5fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 10px;
+  font-family: "Hanken Grotesk", sans-serif;
+}
+
+.not-found-title {
+  font-size: clamp(24px, 4vw, 42px);
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 16px;
+  font-family: "Hanken Grotesk", sans-serif;
+}
+
+.not-found-description {
+  font-size: clamp(14px, 1.8vw, 18px);
+  color: #9ca3af;
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.not-found-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.not-found-home-btn {
+  background-color: #3b82f6;
+  color: #fff;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.not-found-home-btn:hover {
+  background-color: #2563eb;
+  color: #fff;
+}
+
+.not-found-contact-btn {
+  background-color: transparent;
+  color: #e5e7eb;
+  padding: 12px 32px;
+  border-radius: 8px;
+  border: 1px solid #374151;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.not-found-contact-btn:hover {
+  border-color: #9ca3af;
+  color: #fff;
+}
+
+@media (max-width: 480px) {
+  .not-found-actions {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .not-found-home-btn,
+  .not-found-contact-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

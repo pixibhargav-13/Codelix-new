@@ -99,7 +99,7 @@ const Services = () => {
                       <span>Schedule A Call</span>
                       <img
                         src={whiteArrow}
-                        alt="arrow"
+                        alt=""
                         className="arrow-icon"
                       />
                     </Link>
@@ -112,7 +112,7 @@ const Services = () => {
                 <div className="border border-secondary d-flex justify-content-center align-items-center h-100 no-spacing homepage-hero-slideshow-wrapper">
                   <img
                     src={currentHero}
-                    alt="hero"
+                    alt="Professional web development services"
                     className={`img-fluid right-image homepage-hero-fade-image ${
                       fade ? "homepage-hero-fade-in" : "homepage-hero-fade-out"
                     }`}

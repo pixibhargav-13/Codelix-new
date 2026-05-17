@@ -169,7 +169,7 @@ const CarMarketplaceCaseStudy = () => {
                   {/* Schedule A Call Button */}
                   <Link to="/contact#contact-form" className="btn car-marketplace-case-study-schedule-btn">
                     <span>Schedule A Call</span>
-                    <img src={whiteArrow} alt="arrow" className="car-marketplace-case-study-arrow-icon" />
+                    <img src={whiteArrow} alt="" className="car-marketplace-case-study-arrow-icon" />
                   </Link>
                 </div>
               </div>
@@ -196,7 +196,7 @@ const CarMarketplaceCaseStudy = () => {
                 Project{" "}
                 <span className="car-marketplace-case-study-underline-wrapper fw-bold">
                   Overview
-                  <img src={underline} alt="underline" className="car-marketplace-case-study-underline-img" />
+                  <img src={underline} alt="" className="car-marketplace-case-study-underline-img" />
                 </span>
               </h2>
               <p className="car-marketplace-case-study-section-paragraph">
@@ -217,7 +217,7 @@ const CarMarketplaceCaseStudy = () => {
                 Project{" "}
                 <span className="car-marketplace-case-study-underline-wrapper fw-bold">
                   Outcomes
-                  <img src={underline} alt="underline" className="car-marketplace-case-study-underline-img" />
+                  <img src={underline} alt="" className="car-marketplace-case-study-underline-img" />
                 </span>
               </h2>
 
@@ -327,7 +327,7 @@ const CarMarketplaceCaseStudy = () => {
                 Tools & Technologies We Use In{" "}
                 <span className="car-marketplace-case-study-underline-wrapper fw-bold">
                   This Project
-                  <img src={underline} alt="underline" className="car-marketplace-case-study-underline-img" />
+                  <img src={underline} alt="" className="car-marketplace-case-study-underline-img" />
                 </span>
               </h2>
               

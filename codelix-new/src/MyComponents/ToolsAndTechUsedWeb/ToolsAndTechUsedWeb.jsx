@@ -113,7 +113,7 @@ export const ToolsAndTechUsedWeb = ({
           We Use
           <img
             src={underline}
-            alt="underline"
+            alt=""
             className="underline-img"
           />
         </span>

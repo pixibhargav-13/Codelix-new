@@ -80,7 +80,7 @@ const ApplicationDevelopment = () => {
                       <span>Schedule A Call</span>
                       <img
                         src={whiteArrow}
-                        alt="arrow"
+                        alt=""
                         className="arrow-icon"
                       />
                     </Link>

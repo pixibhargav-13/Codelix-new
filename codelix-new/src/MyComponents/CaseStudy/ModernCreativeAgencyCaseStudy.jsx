@@ -161,7 +161,7 @@ const ModernCreativeAgencyCaseStudy = () => {
                   {/* Schedule A Call Button */}
                   <Link to="/contact#contact-form" className="btn modern-creative-agency-case-study-schedule-btn">
                     <span>Schedule A Call</span>
-                    <img src={whiteArrow} alt="arrow" className="modern-creative-agency-case-study-arrow-icon" />
+                    <img src={whiteArrow} alt="" className="modern-creative-agency-case-study-arrow-icon" />
                   </Link>
                 </div>
               </div>
@@ -188,7 +188,7 @@ const ModernCreativeAgencyCaseStudy = () => {
                 Project{" "}
                 <span className="modern-creative-agency-case-study-underline-wrapper fw-bold">
                   Overview
-                  <img src={underline} alt="underline" className="modern-creative-agency-case-study-underline-img" />
+                  <img src={underline} alt="" className="modern-creative-agency-case-study-underline-img" />
                 </span>
               </h2>
               <p className="modern-creative-agency-case-study-section-paragraph">
@@ -209,7 +209,7 @@ const ModernCreativeAgencyCaseStudy = () => {
                 Project{" "}
                 <span className="modern-creative-agency-case-study-underline-wrapper fw-bold">
                   Outcomes
-                  <img src={underline} alt="underline" className="modern-creative-agency-case-study-underline-img" />
+                  <img src={underline} alt="" className="modern-creative-agency-case-study-underline-img" />
                 </span>
               </h2>
 
@@ -322,7 +322,7 @@ const ModernCreativeAgencyCaseStudy = () => {
                 Tools & Technologies We Use In{" "}
                 <span className="modern-creative-agency-case-study-underline-wrapper fw-bold">
                   This Project
-                  <img src={underline} alt="underline" className="modern-creative-agency-case-study-underline-img" />
+                  <img src={underline} alt="" className="modern-creative-agency-case-study-underline-img" />
                 </span>
               </h2>
               

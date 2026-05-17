@@ -114,7 +114,7 @@ export const Homepage = () => {
                         <span>Get a Free Quote</span>
                         <img
                           src={whiteArrow}
-                          alt="arrow"
+                          alt=""
                           className="arrow-icon"
                         />
                       </button>
@@ -127,7 +127,7 @@ export const Homepage = () => {
                         <span>Explore Our Work</span>
                         <img
                           src={blackArrow}
-                          alt="arrow"
+                          alt=""
                           className="arrow-icon"
                         />
                       </button>
@@ -140,7 +140,7 @@ export const Homepage = () => {
                   <div className="border border-secondary d-flex justify-content-center align-items-center h-100 no-spacing homepage-hero-slideshow-wrapper">
                     <img
                       src={currentHero} style={{ height: '100%', width: 'auto' }}
-                      alt="hero"
+                      alt="AI-powered web and app development showcase"
                       className={`img-fluid right-image homepage-hero-fade-image ${fade
                         ? "homepage-hero-fade-in"
                         : "homepage-hero-fade-out"
@@ -165,7 +165,8 @@ export const Homepage = () => {
                   key={index}
                   src={logo}
                   className="client-marquee-logo"
-                  alt="client"
+                  alt="Trusted client company logo"
+                  loading="lazy"
                 />
               ))}
             </div>

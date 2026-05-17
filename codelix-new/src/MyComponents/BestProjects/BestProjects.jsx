@@ -215,7 +215,7 @@ export const BestProjects = () => {
           Some Of Our{" "}
           <span className="underline-wrapper fw-bold">
             Best Projects
-            <img src={underline} alt="underline" className="underline-img" />
+            <img src={underline} alt="" className="underline-img" />
           </span>
         </h2>
 
@@ -257,6 +257,7 @@ export const BestProjects = () => {
                       src={project.image}
                       alt={project.title}
                       className="project-img"
+                      loading="lazy"
                     />
                   </div>
 
@@ -313,7 +314,7 @@ export const BestProjects = () => {
                       }}
                     >
                       <span>{project.buttonText}</span>
-                      <img src={whiteArrow} className="arrow-icon" />
+                      <img src={whiteArrow} alt="" className="arrow-icon" />
                     </button>
                   </div>
                 </div>

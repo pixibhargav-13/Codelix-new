@@ -85,7 +85,7 @@ export const ToolsAndTechUsed = () => {
           We Use
           <img
             src={underline}
-            alt="underline"
+            alt=""
             className="tools-all-underline-img"
           />
         </span>

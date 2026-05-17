@@ -114,7 +114,7 @@ export const WhatWeProvide = ({ showOtherServices = false }) => {
 
                   {/* ARROW ICON */}
                   <div className="arrow-wrapper">
-                    <img src={arrow} alt="arrow" className="arrow-icon arrow-icon-rotate" />
+                    <img src={arrow} alt="" className="arrow-icon arrow-icon-rotate" />
                   </div>
                 </div>
               </Link>

@@ -41,7 +41,7 @@ export const HomepageBlog = () => {
           Read Our Insightful & Trending{" "}
           <span className="underline-wrapper fw-bold">
             Blogs
-            <img src={underline} className="underline-img" alt="underline" />
+            <img src={underline} className="underline-img" alt="" />
           </span>
         </h2>
 
@@ -52,7 +52,7 @@ export const HomepageBlog = () => {
               <div className="blog-card h-100">
 
                 {/* Image */}
-                <img src={blog.image} alt={blog.title} className="homepage-blog-img" />
+                <img src={blog.image} alt={blog.title} className="homepage-blog-img" loading="lazy" />
 
                 {/* Card Content */}
                 <div className="p-3 text-start">
@@ -63,7 +63,7 @@ export const HomepageBlog = () => {
 
                     <button className="btn blog-btn d-flex align-items-center gap-2">
                       Read Blog
-                      <img src={rightArrow} alt="arrow" className="arrow-icon" />
+                      <img src={rightArrow} alt="" className="arrow-icon" />
                     </button>
                   </div>
                 </div>
@@ -77,7 +77,7 @@ export const HomepageBlog = () => {
         <div className="d-flex justify-content-center mt-3">
           <button className="btn blue-common-btn mt-4 d-flex align-items-center justify-content-between view-all-button" onClick={() => navigate('/blog')}>
             <span>See Blogs</span>
-            <img src={whiteArrow} alt="arrow" className="arrow-icon" />
+            <img src={whiteArrow} alt="" className="arrow-icon" />
           </button>
         </div>
 

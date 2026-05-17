@@ -59,7 +59,7 @@ export const HomepageFaq = () => {
             Frequently Asked{" "}
             <span className="underline-wrapper fw-bold">
               Questions
-              <img src={underline} alt="underline" className="underline-img" />
+              <img src={underline} alt="" className="underline-img" />
             </span>
           </h2>
 

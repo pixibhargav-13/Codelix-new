@@ -195,7 +195,7 @@ export const Navbar = ({ logo }) => {
               <Link to="/contact">
                 <button className="btn navbar-button">
                   <span>Contact Us</span>
-                  <img src={whiteArrow} alt="arrow" className="arrow-icon mx-3" />
+                  <img src={whiteArrow} alt="" className="arrow-icon mx-3" />
                 </button>
               </Link>
             </div>

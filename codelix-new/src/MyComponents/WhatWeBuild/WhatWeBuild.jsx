@@ -60,7 +60,7 @@ export const WhatWeBuild = () => {
           This Is What{" "}
           <span className="underline-wrapper fw-bold">
             We Build
-            <img src={underline} alt="underline" className="underline-img" />
+            <img src={underline} alt="" className="underline-img" />
           </span>
         </h2>
 
@@ -83,6 +83,7 @@ export const WhatWeBuild = () => {
                     src={card.image}
                     alt={card.title}
                     className="card-img-top"
+                    loading="lazy"
                   />
                 </div>
 
@@ -97,7 +98,7 @@ export const WhatWeBuild = () => {
                     }}
                   >
                     <span>{card.buttonText}</span>
-                    <img src={blackArrow} alt="arrow" className="arrow-icon" />
+                    <img src={blackArrow} alt="" className="arrow-icon" />
                   </button>
                 </div>
 
@@ -113,7 +114,7 @@ export const WhatWeBuild = () => {
         <div className="d-flex justify-content-center mt-3">
           <button className="btn blue-common-btn mt-4 d-flex align-items-center justify-content-between view-all-button" onClick={() => navigate('/work')}>
             <span>View All</span>
-            <img src={whiteArrow} alt="arrow" className="arrow-icon" />
+            <img src={whiteArrow} alt="" className="arrow-icon" />
           </button>
         </div>
       </div>

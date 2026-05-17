@@ -161,7 +161,7 @@ const CaseStudy = () => {
                   {/* Schedule A Call Button */}
                   <Link to="/contact#contact-form" className="btn case-study-schedule-btn">
                     <span>Schedule A Call</span>
-                    <img src={whiteArrow} alt="arrow" className="case-study-arrow-icon" />
+                    <img src={whiteArrow} alt="" className="case-study-arrow-icon" />
                   </Link>
                 </div>
               </div>
@@ -188,7 +188,7 @@ const CaseStudy = () => {
                 Project{" "}
                 <span className="case-study-underline-wrapper fw-bold">
                   Overview
-                  <img src={underline} alt="underline" className="case-study-underline-img" />
+                  <img src={underline} alt="" className="case-study-underline-img" />
                 </span>
               </h2>
               <p className="case-study-section-paragraph">
@@ -206,7 +206,7 @@ const CaseStudy = () => {
                 Project{" "}
                 <span className="case-study-underline-wrapper fw-bold">
                   Outcomes
-                  <img src={underline} alt="underline" className="case-study-underline-img" />
+                  <img src={underline} alt="" className="case-study-underline-img" />
                 </span>
               </h2>
 
@@ -319,7 +319,7 @@ const CaseStudy = () => {
                 Tools & Technologies We Use In{" "}
                 <span className="case-study-underline-wrapper fw-bold">
                   This Project
-                  <img src={underline} alt="underline" className="case-study-underline-img" />
+                  <img src={underline} alt="" className="case-study-underline-img" />
                 </span>
               </h2>
               

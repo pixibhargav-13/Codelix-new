@@ -21,7 +21,7 @@ const TermsConditions = () => {
               Terms &amp; Conditions
               <img
                 src={underline}
-                alt="underline"
+                alt=""
                 className="terms-conditions-underline-img"
               />
             </span>

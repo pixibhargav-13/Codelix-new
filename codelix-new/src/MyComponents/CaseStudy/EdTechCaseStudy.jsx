@@ -163,7 +163,7 @@ const EdTechCaseStudy = () => {
                   {/* Schedule A Call Button */}
                   <Link to="/contact#contact-form" className="btn edtech-case-study-schedule-btn">
                     <span>Schedule A Call</span>
-                    <img src={whiteArrow} alt="arrow" className="edtech-case-study-arrow-icon" />
+                    <img src={whiteArrow} alt="" className="edtech-case-study-arrow-icon" />
                   </Link>
                 </div>
               </div>
@@ -190,7 +190,7 @@ const EdTechCaseStudy = () => {
                 Project{" "}
                 <span className="edtech-case-study-underline-wrapper fw-bold">
                   Overview
-                  <img src={underline} alt="underline" className="edtech-case-study-underline-img" />
+                  <img src={underline} alt="" className="edtech-case-study-underline-img" />
                 </span>
               </h2>
               <p className="edtech-case-study-section-paragraph">
@@ -211,7 +211,7 @@ const EdTechCaseStudy = () => {
                 Project{" "}
                 <span className="edtech-case-study-underline-wrapper fw-bold">
                   Outcomes
-                  <img src={underline} alt="underline" className="edtech-case-study-underline-img" />
+                  <img src={underline} alt="" className="edtech-case-study-underline-img" />
                 </span>
               </h2>
 
@@ -324,7 +324,7 @@ const EdTechCaseStudy = () => {
                 Tools & Technologies We Use In{" "}
                 <span className="edtech-case-study-underline-wrapper fw-bold">
                   This Project
-                  <img src={underline} alt="underline" className="edtech-case-study-underline-img" />
+                  <img src={underline} alt="" className="edtech-case-study-underline-img" />
                 </span>
               </h2>
               
