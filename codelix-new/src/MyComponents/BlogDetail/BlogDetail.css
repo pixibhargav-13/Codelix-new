@@ -52,7 +52,7 @@
 .blog-detail-image-container {
   width: 100%;
   max-width: 1000px;
-  margin: 80px auto 50px;
+  margin: 20px auto 50px;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -163,6 +163,7 @@
 .blog-breadcrumb-container {
   max-width: 1000px;
   margin: 0 auto;
+  margin-top: 5rem;
 }
 
 .related-articles {
