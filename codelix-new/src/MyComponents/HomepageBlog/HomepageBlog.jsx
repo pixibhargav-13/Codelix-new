@@ -3,34 +3,13 @@ import { useNavigate } from "react-router-dom";
 import "./HomepageBlog.css";
 
 import underline from "../Images/what-we-build-underline.png"; // underline image
-import blogImg1 from "../Images/homepage-blog-image.png"; // replace with real image
-import blogImg2 from "../Images/homepage-blog-image2.png"; // replace with real image
-import blogImg3 from "../Images/homepage-blog-image3.png"; // replace with real image
+import { blogs as allBlogs, slugify } from "../../data/blogData";
 import rightArrow from "../Images/blackArrow.png";
 import whiteArrow from "../Images/whiteArrow.png";
 
 export const HomepageBlog = () => {
   const navigate = useNavigate();
-  const blogs = [
-    {
-      id: 1,
-      title: "Top 5 Reasons to choose laravel for faster web app development.",
-      date: "20 November 2025",
-      image: blogImg1,
-    },
-    {
-      id: 2,
-      title: "Design Systems & Component Based UIS: Efficiency At Scale.",
-      date: "23 November 2025",
-      image: blogImg2,
-    },
-    {
-      id: 3,
-      title: "Progressive Web App (PWAS) As The New Standard.",
-      date: "28 November 2025",
-      image: blogImg3,
-    },
-  ];
+  const blogs = allBlogs.slice(0, 3);
 
   return (
     <section className="homepage-blog-section py-7">
@@ -61,7 +40,7 @@ export const HomepageBlog = () => {
                   <div className="d-flex justify-content-between align-items-center mt-4">
                     <span className="homepage-blog-date">{blog.date}</span>
 
-                    <button className="btn blog-btn d-flex align-items-center gap-2">
+                    <button className="btn blog-btn d-flex align-items-center gap-2" onClick={() => navigate(`/blog/${slugify(blog.title)}`)}>
                       Read Blog
                       <img src={rightArrow} alt="" className="arrow-icon" />
                     </button>

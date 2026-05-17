@@ -17,6 +17,7 @@ const ECommerceSolutions             = lazy(() => import("./MyComponents/Service
 const CustomSoftwareDevelopment      = lazy(() => import("./MyComponents/Services/CustomSoftwareDevelopment"));
 const AIDevelopment                  = lazy(() => import("./MyComponents/Services/AIDevelopment"));
 const Blog                           = lazy(() => import("./MyComponents/Blog/Blog"));
+const BlogDetail                     = lazy(() => import("./MyComponents/BlogDetail/BlogDetail"));
 const Work                           = lazy(() => import("./MyComponents/Work/Work"));
 const ContactUs                      = lazy(() => import("./MyComponents/ContactUs/ContactUs"));
 const TermsConditions                = lazy(() => import("./MyComponents/TermsConditions/TermsConditions"));
@@ -90,6 +91,7 @@ const AppRoutes = () => {
           <Route path="/services/custom-software-development"      element={<CustomSoftwareDevelopment />} />
           <Route path="/services/ai-development"                   element={<AIDevelopment />} />
           <Route path="/blog"                                      element={<Blog />} />
+          <Route path="/blog/:slug"                                element={<BlogDetail />} />
           <Route path="/contact"                                   element={<ContactUs />} />
           <Route path="/terms-of-service"                          element={<TermsConditions />} />
           <Route path="/privacy-policy"                            element={<PrivacyPolicy />} />

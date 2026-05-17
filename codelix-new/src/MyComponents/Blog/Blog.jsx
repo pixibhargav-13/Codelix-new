@@ -4,15 +4,19 @@ import { SEO } from "../../components/SEO";
 import { Navbar } from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { HomepageFaq } from "../HomepageFaq/HomepageFaq";
-import blogImg1 from "../Images/homepage-blog-image.png";
-import blogImg2 from "../Images/homepage-blog-image2.png";
-import blogImg3 from "../Images/homepage-blog-image3.png";
+import { useNavigate } from "react-router-dom";
+import { blogs, slugify } from "../../data/blogData";
 import rightArrow from "../Images/blackArrow.png";
 import underline from "../Images/what-we-build-underline.png";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 const Blog = () => {
   const [activeCategory, setActiveCategory] = React.useState("All Articles");
+  const [visibleCount, setVisibleCount] = React.useState(6); // 6 items shown initially in the bottom section
+
+  const bottomBlogs = activeCategory === "All Articles" 
+    ? blogs.slice(6) 
+    : blogs.filter(blog => blog.tags.includes(activeCategory));
 
   useScrollAnimation();
 
@@ -27,104 +31,7 @@ const Blog = () => {
     "Artificial Intelligence",
   ];
 
-  const blogs = [
-    {
-      id: 1,
-      title: "Why digital presence matters more than ever in 2025",
-      date: "20 October 2024",
-      readTime: "5 min read",
-      image: blogImg1,
-      tags: ["All Articles", "business"],
-    },
-    {
-      id: 2,
-      title: "Design system & component-based UIS: Efficiency at scale",
-      date: "20 October 2024",
-      readTime: "5 min read",
-      image: blogImg2,
-      tags: ["All Articles", "UI/UX"],
-    },
-    {
-      id: 3,
-      title: "Progressive web apps (PWAS) as the new standard",
-      date: "20 October 2024",
-      readTime: "5 min read",
-      image: blogImg3,
-      tags: ["All Articles", "Tech"],
-    },
-    {
-      id: 4,
-      title: "SaaS vs. On-Premise: What's Best for Your Business?",
-      date: "20 October 2024",
-      readTime: "5 min read",
-      image: blogImg1,
-      tags: ["All Articles", "business"],
-    },
-    {
-      id: 5,
-      title: "How E-Commerce Platforms Boost Retail Transformation",
-      date: "20 October 2024",
-      readTime: "5 min read",
-      image: blogImg2,
-      tags: ["All Articles", "E-Commerce"],
-    },
-    {
-      id: 6,
-      title: "How End-to-End Web Development Delivers Better Results",
-      date: "20 October 2024",
-      readTime: "5 min read",
-      image: blogImg3,
-      tags: ["All Articles", "Development"],
-    },
-    {
-      id: 7,
-      title: "Top 5 Reasons to choose laravel for faster web app development.",
-      date: "31 October 2025",
-      readTime: "5 min read",
-      image: blogImg1,
-      tags: ["All Articles", "business"],
-    },
-    {
-      id: 8,
-      title: "AI-Powered Solutions Transforming Modern Businesses",
-      date: "31 October 2025",
-      readTime: "5 min read",
-      image: blogImg2,
-      tags: ["All Articles", "Artificial Intelligence"],
-    },
-    {
-      id: 9,
-      title: "Mastering WordPress: Advanced CMS Techniques",
-      date: "31 October 2025",
-      readTime: "5 min read",
-      image: blogImg3,
-      tags: ["All Articles", "CMS"],
-    },
-    {
-      id: 10,
-      title: "Building Scalable Web Applications with Modern Frameworks",
-      date: "31 October 2025",
-      readTime: "5 min read",
-      image: blogImg1,
-      tags: ["All Articles", "Development"],
-    },
-    {
-      id: 11,
-      title: "The Future of Mobile App Development: Trends and Insights",
-      date: "31 October 2025",
-      readTime: "5 min read",
-      image: blogImg2,
-      tags: ["All Articles", "Tech"],
-    },
-    {
-      id: 12,
-      title: "Optimizing User Experience Through Better UI/UX Design",
-      date: "31 October 2025",
-      readTime: "5 min read",
-      image: blogImg3,
-      tags: ["All Articles", "UI/UX"],
-    },
-  ];
+  const navigate = useNavigate();
 
   return (
     <>
@@ -165,7 +72,7 @@ const Blog = () => {
                       <div className="d-flex justify-content-between align-items-center mt-4">
                         <span className="homepage-blog-date">{blog.date}</span>
 
-                        <button className="btn blog-btn d-flex align-items-center gap-2">
+                        <button className="btn blog-btn d-flex align-items-center gap-2" onClick={() => navigate(`/blog/${slugify(blog.title)}`)}>
                           Read Blog
                           <img src={rightArrow} alt="" className="arrow-icon" />
                         </button>
@@ -208,7 +115,10 @@ const Blog = () => {
                         className={`blog-category-btn ${
                           activeCategory === category ? "active" : ""
                         }`}
-                        onClick={() => setActiveCategory(category)}
+                        onClick={() => {
+                          setActiveCategory(category);
+                          setVisibleCount(6); // Reset visible count on category change
+                        }}
                       >
                         {category}
                       </button>
@@ -220,39 +130,52 @@ const Blog = () => {
               {/* Blog Cards - Right */}
               <div className="col-lg-8 col-md-12">
                 <div className="blog-explore-cards">
-                  {blogs.slice(6, 12).map((blog) => (
-                    <div className="blog-explore-card" key={blog.id}>
-                      {/* Thumbnail */}
-                      <div className="blog-explore-thumbnail">
-                        <img src={blog.image} alt={blog.title} loading="lazy" />
-                      </div>
+                  {bottomBlogs.length > 0 ? (
+                    bottomBlogs.slice(0, visibleCount).map((blog) => (
+                      <div className="blog-explore-card" key={blog.id}>
+                        {/* Thumbnail */}
+                        <div className="blog-explore-thumbnail" style={{ cursor: "pointer" }} onClick={() => navigate(`/blog/${slugify(blog.title)}`)}>
+                          <img src={blog.image} alt={blog.title} loading="lazy" />
+                        </div>
 
-                      {/* Card Content */}
-                      <div className="blog-explore-content">
-                        <h3 className="blog-explore-card-title">{blog.title}</h3>
-                        <p className="blog-explore-card-date">{blog.date}</p>
-                        <div className="blog-explore-tags">
-                          {blog.tags.map((tag, index) => (
-                            <span key={index} className="blog-explore-tag">
-                              {tag}
-                            </span>
-                          ))}
+                        {/* Card Content */}
+                        <div className="blog-explore-content" style={{ cursor: "pointer" }} onClick={() => navigate(`/blog/${slugify(blog.title)}`)}>
+                          <h3 className="blog-explore-card-title">{blog.title}</h3>
+                          <p className="blog-explore-card-date">{blog.date}</p>
+                          <div className="blog-explore-tags">
+                            {blog.tags.map((tag, index) => (
+                              <span key={index} className="blog-explore-tag">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
                         </div>
                       </div>
+                    ))
+                  ) : (
+                    <div className="text-center w-100 py-5">
+                      <h4 className="text-muted">No articles found in this category.</h4>
                     </div>
-                  ))}
+                  )}
                 </div>
               </div>
             </div>
 
             {/* Load More Button - Centered on Full Screen */}
-            <div className="row mt-4">
-              <div className="col-12">
-                <div className="text-center">
-                  <button className="blog-load-more-btn">Load More</button>
+            {visibleCount < bottomBlogs.length && (
+              <div className="row mt-4">
+                <div className="col-12">
+                  <div className="text-center">
+                    <button 
+                      className="blog-load-more-btn"
+                      onClick={() => setVisibleCount(prev => prev + 6)}
+                    >
+                      Load More
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </section>
 
