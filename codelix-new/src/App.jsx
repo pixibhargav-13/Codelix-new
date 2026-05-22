@@ -2,6 +2,7 @@ import React, { useEffect, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import CodelixLoader from "./components/PageLoader";
 import BreadcrumbSchema from "./components/BreadcrumbSchema";
+import CustomCursor from "./components/CustomCursor/CustomCursor";
 
 // ─── Eagerly loaded (critical for first paint) ────────────────────────────────
 import { Homepage } from "./MyComponents/Homepage/Homepage";
@@ -124,6 +125,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <BreadcrumbSchema />
+      <CustomCursor />
       <Chatbot />
       <AppRoutes />
     </Router>
