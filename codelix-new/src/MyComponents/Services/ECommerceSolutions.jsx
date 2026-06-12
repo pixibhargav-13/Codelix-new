@@ -12,6 +12,7 @@ import Footer from "../Footer/Footer";
 import whiteArrow from "../Images/whiteArrow.png";
 import heroOne from "../Images/homepage-hero-web-dev.png";
 import { SEO } from "../../components/SEO";
+import { ServiceSchema } from "../../components/ServiceSchema";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 import shopifyLogo from "../Images/shopify.png";
 import woocommerceLogo from "../Images/woocommerce.png";
@@ -52,6 +53,11 @@ const ECommerceSolutions = () => {
         title="E-Commerce Solutions | Online Store Development | Codelix IT Solutions"
         description="Complete e-commerce solutions that drive sales and growth. We build secure, scalable online stores with seamless payment integration and exceptional user experiences."
         keywords="e-commerce development, online store, ecommerce solutions, shopping cart, payment integration, online retail"
+      />
+      <ServiceSchema
+        name="E-Commerce Solutions"
+        description="Complete e-commerce solutions that drive sales and growth. We build secure, scalable online stores with seamless payment integration and exceptional user experiences."
+        url="/services/e-commerce-solutions"
       />
       <div className="service-hero-section">
         <Navbar />

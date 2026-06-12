@@ -12,6 +12,7 @@ import Footer from "../Footer/Footer";
 import whiteArrow from "../Images/whiteArrow.png";
 import heroOne from "../Images/homepage-hero-app-dev.png";
 import { SEO } from "../../components/SEO";
+import { ServiceSchema } from "../../components/ServiceSchema";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 import pythonLogo from "../Images/python.png";
 import javaLogo from "../Images/java.png";
@@ -57,6 +58,11 @@ const AIDevelopment = () => {
         title="AI Development Services | Artificial Intelligence Solutions | Codelix IT Solutions"
         description="Cutting-edge AI development services that leverage machine learning, natural language processing, and intelligent automation to transform your business operations."
         keywords="AI development, artificial intelligence, machine learning, NLP, intelligent automation, AI solutions"
+      />
+      <ServiceSchema
+        name="AI Development"
+        description="Cutting-edge AI development services that leverage machine learning, natural language processing, and intelligent automation to transform your business operations."
+        url="/services/ai-development"
       />
       <div className="service-hero-section">
         <Navbar />

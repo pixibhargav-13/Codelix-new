@@ -12,6 +12,7 @@ import Footer from "../Footer/Footer";
 import whiteArrow from "../Images/whiteArrow.png";
 import heroOne from "../Images/homepage-hero-web-dev.png";
 import { SEO } from "../../components/SEO";
+import { ServiceSchema } from "../../components/ServiceSchema";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 const WebDevelopment = () => {
   useScrollAnimation();
@@ -41,6 +42,11 @@ const WebDevelopment = () => {
         title="Web Development Services | Custom Web Solutions | Codelix IT Solutions"
         description="Professional web development services combining modern design, optimized coding, and intelligent automation for high-performance websites and applications."
         keywords="web development, web design, custom web solutions, professional web services, responsive design, modern websites"
+      />
+      <ServiceSchema
+        name="Web Development"
+        description="Professional web development services combining modern design, optimized coding, and intelligent automation for high-performance websites and applications."
+        url="/services/web-development"
       />
       <div className="service-hero-section">
         <Navbar />

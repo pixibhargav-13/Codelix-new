@@ -12,6 +12,7 @@ import Footer from "../Footer/Footer";
 import whiteArrow from "../Images/whiteArrow.png";
 import heroOne from "../Images/homepage-hero-ux-design.png";
 import { SEO } from "../../components/SEO";
+import { ServiceSchema } from "../../components/ServiceSchema";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 import figmaLogo from "../Images/figma.png";
 import adobeXdLogo from "../Images/adobe-xd.png";
@@ -56,6 +57,11 @@ const UIUXDesign = () => {
         title="UI/UX Design Services | User Experience Design | Codelix IT Solutions"
         description="Professional UI/UX design services that create intuitive, beautiful, and user-centered digital experiences. We design interfaces that users love and businesses trust."
         keywords="UI design, UX design, user interface design, user experience, digital design, interface design"
+      />
+      <ServiceSchema
+        name="UI/UX Design"
+        description="Professional UI/UX design services that create intuitive, beautiful, and user-centered digital experiences. We design interfaces that users love and businesses trust."
+        url="/services/ui-ux-design"
       />
       <div className="service-hero-section">
         <Navbar />

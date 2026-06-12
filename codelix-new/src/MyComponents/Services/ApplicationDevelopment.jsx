@@ -12,6 +12,7 @@ import Footer from "../Footer/Footer";
 import whiteArrow from "../Images/whiteArrow.png";
 import heroOne from "../Images/homepage-hero-app-dev.png";
 import { SEO } from "../../components/SEO";
+import { ServiceSchema } from "../../components/ServiceSchema";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 import flutterLogo from "../Images/flutter.png";
 import reactLogo from "../Images/react.png";
@@ -54,6 +55,11 @@ const ApplicationDevelopment = () => {
         title="Application Development Services | Mobile & Desktop Apps | Codelix IT Solutions"
         description="Expert application development services for mobile and desktop platforms. We build scalable, high-performance applications using cutting-edge technologies and best practices."
         keywords="application development, mobile app development, desktop applications, cross-platform apps, software development"
+      />
+      <ServiceSchema
+        name="Application Development"
+        description="Expert application development services for mobile and desktop platforms. We build scalable, high-performance applications using cutting-edge technologies and best practices."
+        url="/services/application-development"
       />
       <div className="service-hero-section">
         <Navbar />

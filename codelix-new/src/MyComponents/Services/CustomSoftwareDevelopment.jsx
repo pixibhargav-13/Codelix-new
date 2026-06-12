@@ -12,6 +12,7 @@ import Footer from "../Footer/Footer";
 import whiteArrow from "../Images/whiteArrow.png";
 import heroOne from "../Images/homepage-hero-a-b-testing.png";
 import { SEO } from "../../components/SEO";
+import { ServiceSchema } from "../../components/ServiceSchema";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 const CustomSoftwareDevelopment = () => {
@@ -43,6 +44,11 @@ const CustomSoftwareDevelopment = () => {
         title="Custom Software Development | Tailored Solutions | Codelix IT Solutions"
         description="Bespoke software development services tailored to your unique business needs. We build custom solutions that streamline operations, improve efficiency, and drive growth."
         keywords="custom software development, bespoke software, enterprise software, business software, tailored solutions"
+      />
+      <ServiceSchema
+        name="Custom Software Development"
+        description="Bespoke software development services tailored to your unique business needs. We build custom solutions that streamline operations, improve efficiency, and drive growth."
+        url="/services/custom-software-development"
       />
       <div className="service-hero-section">
         <Navbar />

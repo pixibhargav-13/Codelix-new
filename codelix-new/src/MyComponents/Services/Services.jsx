@@ -67,9 +67,9 @@ const Services = () => {
   return (
     <>
       <SEO
-        title="Web Development Services | Custom Solutions | Codelix IT Solutions"
-        description="Professional web development services combining modern design, optimized coding, and intelligent automation for high-performance websites and applications."
-        keywords="web development, web design, custom web solutions, professional web services, responsive design"
+        title="Our Services | Web, App, AI & Software Development | Codelix IT Solutions"
+        description="Explore Codelix IT Solutions' full range of services - web development, mobile & desktop apps, UI/UX design, e-commerce, custom software, and AI development."
+        keywords="software development services, web development company, app development services, AI development, UI/UX design, e-commerce solutions, custom software development"
       />
       <div className="service-hero-section">
         <Navbar />
