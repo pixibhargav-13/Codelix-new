@@ -10,6 +10,7 @@ import {
 import "../HomepageV2/HomepageV2.css";
 import { TECH_STACK } from "../HomepageV2/techStack";
 import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
+import codelixLogo from "../Images/codelix-logo.png";
 import "./ServicesV2.css";
 
 /* how delivery actually runs — the question every services page has to answer
@@ -39,7 +40,7 @@ const SERVICES = [
     icon: Globe,
     title: "Web Development",
     body: "Fast, reliable websites that look sharp and actually bring in business — not just another template with your logo on it.",
-    path: "/services/web-development",
+    path: "/services-v2/web-development",
     capabilities: ["Corporate websites", "Web applications", "CMS builds", "Landing pages", "Performance & Core Web Vitals"],
   },
   {
@@ -418,7 +419,9 @@ export default function ServicesV2() {
       {/* ══════════ NAV ══════════ */}
       <nav className={`v2-nav ${navScrolled ? "scrolled" : ""}`}>
         <div className="v2-nav-inner">
-          <a href="/preview-v2" className="v2-nav-logo">Codelix</a>
+          <a href="/preview-v2" className="v2-nav-logo" aria-label="Codelix — home">
+            <img src={codelixLogo} alt="Codelix" />
+          </a>
           <div className="v2-nav-links">
             <a href="/preview-v2#work">Work</a>
             <a href="/services-v2">Services</a>

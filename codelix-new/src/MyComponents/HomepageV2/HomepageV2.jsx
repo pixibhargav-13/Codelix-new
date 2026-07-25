@@ -14,6 +14,7 @@ import workTwo from "../Images/work-best-project-two.png";
 import workThree from "../Images/work-best-project-three.png";
 import workFour from "../Images/work-best-project-four.png";
 import workFive from "../Images/work-best-project-five.png";
+import codelixText from "../Images/codelix-footer-logo.png";
 
 /* full real tech-stack set — shared with the services page */
 import { TECH_STACK } from "./techStack";
@@ -21,6 +22,7 @@ import { TECH_STACK } from "./techStack";
 
 /* shared with the services page */
 import { CLIENT_LOGOS } from "./clientLogos";
+import codelixLogo from "../Images/codelix-logo.png";
 
 import "./HomepageV2.css";
 
@@ -173,7 +175,7 @@ function ScrollSentence({ words, tone }) {
       const scrollable = r.height - window.innerHeight;
       if (scrollable <= 0) return 0;
       const raw = (-r.top) / scrollable;
-      const norm = Math.min(Math.max((raw - 0.06) / 0.86, 0), 0.9999);
+      const norm = Math.min(Math.max(raw / 0.92, 0), 0.9999);
       return norm * words.length;
     };
 
@@ -308,7 +310,6 @@ export default function HomepageV2() {
 
   const rootRef = useRef(null);
   const stripRef = useRef(null);
-  const footerMarqueeRef = useRef(null);
   const heroWordRefs = useRef([]);
   const wrLabelRefs = useRef([]);
   const flyerRefs = useRef([]);
@@ -571,13 +572,7 @@ export default function HomepageV2() {
     };
   }, []);
 
-  /* footer marquee drifts continuously — same mechanism as the client strip,
-     just its own ref/tween since each marquee needs an independent loop */
-  useEffect(() => {
-    if (!footerMarqueeRef.current) return;
-    const tw = gsap.to(footerMarqueeRef.current, { xPercent: -50, duration: 26, ease: "none", repeat: -1 });
-    return () => tw.kill();
-  }, []);
+  /* (Footer marquee animation is now handled in pure CSS) */
 
   /* stat numbers count up from 0 → target the first time they scroll in */
   useEffect(() => {
@@ -766,7 +761,9 @@ export default function HomepageV2() {
       {/* ══════════ NAV ══════════ */}
       <nav className={`v2-nav ${navScrolled ? "scrolled" : ""}`}>
         <div className="v2-nav-inner">
-          <a href="/" className="v2-nav-logo">Codelix</a>
+          <a href="/" className="v2-nav-logo" aria-label="Codelix — home">
+            <img src={codelixLogo} alt="Codelix" />
+          </a>
           <div className="v2-nav-links">
             <a href="#work">Work</a>
             <a href="#services">Services</a>
@@ -1199,7 +1196,7 @@ export default function HomepageV2() {
           "WE LIVE IN IT" marquee, and the oversized wordmark at the base ══════════ */}
       <footer className="v2-footer">
         <div className="v2-footer-marquee">
-          <div className="v2-footer-marquee-track" ref={footerMarqueeRef}>
+          <div className="v2-footer-marquee-track">
             {Array.from({ length: 12 }).map((_, i) => (
               <span key={i}>WE LIVE IN IT <em>•</em></span>
             ))}
@@ -1254,7 +1251,11 @@ export default function HomepageV2() {
           </div>
         </div>
 
-        <div className="v2-footer-wordmark" aria-hidden="true">CODELIX</div>
+        <div className="codelix-large-text" style={{ padding: '0 var(--pad-x)' }}>
+          <div className="codelix-text">
+            <img src={codelixText} alt="Codelix" style={{ width: '100%', display: 'block', margin: '0 auto' }} />
+          </div>
+        </div>
       </footer>
     </div>
   );

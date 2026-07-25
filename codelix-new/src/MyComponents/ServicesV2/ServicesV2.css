@@ -16,6 +16,7 @@
   flex-direction: column;
   justify-content: center;
 }
+
 /* same drifting hairline grid as the homepage hero, so the two pages read
    as one system rather than two different sites */
 .sv2-hero::before {
@@ -30,6 +31,7 @@
   mask-image: radial-gradient(ellipse 80% 70% at 25% 45%, #000 10%, transparent 76%);
   animation: v2-grid-drift 24s linear infinite;
 }
+
 .sv2-hero::after {
   content: "";
   position: absolute;
@@ -43,10 +45,11 @@
   pointer-events: none;
   animation: v2-hero-breathe 9s ease-in-out infinite;
 }
+
 .sv2-hero-inner {
   position: relative;
   z-index: 2;
-  max-width: 1000px;
+  max-width: 1100px;
 }
 
 .sv2-hero-title {
@@ -57,6 +60,7 @@
   color: var(--text);
   margin: 26px 0 0;
 }
+
 .sv2-hero-sub {
   margin-top: 26px;
   font-size: 16px;
@@ -64,6 +68,7 @@
   color: var(--text-55);
   max-width: 60ch;
 }
+
 .sv2-hero-cta {
   margin-top: 40px;
   display: flex;
@@ -78,7 +83,11 @@
   transform: translateY(20px);
   transition: opacity .9s var(--ease-expo), transform .9s var(--ease-expo);
 }
-.sv2-hero-reveal.is-in { opacity: 1; transform: none; }
+
+.sv2-hero-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
 
 /* quick-jump chips */
 .sv2-chips {
@@ -89,6 +98,7 @@
   flex-wrap: wrap;
   gap: 10px;
 }
+
 .sv2-chip {
   display: inline-flex;
   align-items: center;
@@ -106,14 +116,22 @@
     background .35s ease,
     transform .45s var(--ease-expo);
 }
-.sv2-chip svg { color: var(--text-38); transition: color .35s ease; }
+
+.sv2-chip svg {
+  color: var(--text-38);
+  transition: color .35s ease;
+}
+
 .sv2-chip:hover {
   color: var(--text);
   border-color: var(--rule-strong);
   background: rgba(242, 240, 236, .04);
   transform: translateY(-2px);
 }
-.sv2-chip:hover svg { color: rgba(180, 200, 230, .95); }
+
+.sv2-chip:hover svg {
+  color: rgba(180, 200, 230, .95);
+}
 
 /* ───────────── SERVICE ROWS ───────────── */
 .sv2-service {
@@ -134,25 +152,45 @@
     clip-path 1.25s cubic-bezier(.16, 1, .3, 1),
     background .45s ease;
 }
-.sv2-service.is-in { opacity: 1; transform: none; clip-path: inset(0 0 0% 0); }
-.sv2-service:hover { background: rgba(242, 240, 236, .022); }
+
+.sv2-service.is-in {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 0% 0);
+}
+
+.sv2-service:hover {
+  background: rgba(242, 240, 236, .022);
+}
 
 /* a hairline that draws across the row on hover */
 .sv2-service::after {
   content: "";
   position: absolute;
-  left: 0; right: 0; bottom: -.8px;
+  left: 0;
+  right: 0;
+  bottom: -.8px;
   height: .8px;
   background: rgba(180, 200, 230, .55);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform .7s var(--ease-expo);
 }
-.sv2-service:hover::after { transform: scaleX(1); }
+
+.sv2-service:hover::after {
+  transform: scaleX(1);
+}
 
 /* number + icon sit side by side, anchored together as one unit instead of
    the icon floating disconnected below the index */
-.sv2-service-index { display: flex; flex-direction: row; justify-content: space-between; align-items: center; gap: 12px; }
+.sv2-service-index {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
 .sv2-service-n {
   font-size: 11px;
   font-weight: 600;
@@ -160,7 +198,11 @@
   color: var(--text-25);
   transition: color .4s var(--ease-expo);
 }
-.sv2-service:hover .sv2-service-n { color: rgba(180, 200, 230, .9); }
+
+.sv2-service:hover .sv2-service-n {
+  color: rgba(180, 200, 230, .9);
+}
+
 .sv2-service-icon {
   display: inline-flex;
   align-items: center;
@@ -175,13 +217,16 @@
     border-color .4s var(--ease-expo),
     transform .55s var(--ease-expo);
 }
+
 .sv2-service:hover .sv2-service-icon {
   color: var(--text);
   border-color: var(--rule-strong);
   transform: translateY(-3px);
 }
 
-.sv2-service-main { min-width: 0; }
+.sv2-service-main {
+  min-width: 0;
+}
 
 /* NOTE: these are scoped under .v2 deliberately. HomepageV2.css resets
    `.v2 h3 / .v2 p / .v2 ul { margin: 0 }` at specificity (0,1,1), which
@@ -196,7 +241,11 @@
   margin-bottom: 16px;
   transition: transform .6s var(--ease-expo);
 }
-.sv2-service:hover .sv2-service-title { transform: translateX(8px); }
+
+.sv2-service:hover .sv2-service-title {
+  transform: translateX(8px);
+}
+
 .v2 .sv2-service-body {
   font-size: 14.5px;
   line-height: 1.75;
@@ -205,7 +254,10 @@
   margin-bottom: 8px;
   transition: color .4s var(--ease-expo);
 }
-.sv2-service:hover .sv2-service-body { color: var(--text-55); }
+
+.sv2-service:hover .sv2-service-body {
+  color: var(--text-55);
+}
 
 /* capability pills */
 .v2 .sv2-caps {
@@ -216,6 +268,7 @@
   flex-wrap: wrap;
   gap: 8px;
 }
+
 .sv2-caps li {
   padding: 6px 12px;
   border: .8px solid var(--rule);
@@ -225,9 +278,16 @@
   color: var(--text-38);
   transition: color .4s ease, border-color .4s ease;
 }
-.sv2-service:hover .sv2-caps li { color: var(--text-45); border-color: var(--rule-strong); }
 
-.sv2-service-cta { padding-top: 6px; }
+.sv2-service:hover .sv2-caps li {
+  color: var(--text-45);
+  border-color: var(--rule-strong);
+}
+
+.sv2-service-cta {
+  padding-top: 6px;
+}
+
 .sv2-service-link {
   display: inline-flex;
   align-items: center;
@@ -240,21 +300,44 @@
   white-space: nowrap;
   transition: color .4s var(--ease-expo);
 }
+
 .sv2-service-link i {
   font-style: normal;
   transition: transform .5s var(--ease-expo);
 }
-.sv2-service:hover .sv2-service-link { color: var(--text); }
-.sv2-service:hover .sv2-service-link i { transform: translateX(5px); }
+
+.sv2-service:hover .sv2-service-link {
+  color: var(--text);
+}
+
+.sv2-service:hover .sv2-service-link i {
+  transform: translateX(5px);
+}
 
 @media (max-width: 860px) {
-  .sv2-hero { padding-top: 132px; }
+  .sv2-hero {
+    padding-top: 132px;
+  }
+
   .sv2-service {
     grid-template-columns: 56px minmax(0, 1fr);
     padding-top: 36px;
     padding-bottom: 36px;
   }
-  .sv2-service-index { flex-direction: row; align-items: center; gap: 12px; }
-  .sv2-service-icon { width: 38px; height: 38px; }
-  .sv2-service-cta { grid-column: 2; padding-top: 18px; }
+
+  .sv2-service-index {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sv2-service-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .sv2-service-cta {
+    grid-column: 2;
+    padding-top: 18px;
+  }
 }

@@ -148,11 +148,29 @@
 }
 
 .v2-nav-logo {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  /* kept for the text fallback if the image ever fails to load */
   font-size: 18px;
   font-weight: 700;
   letter-spacing: .04em;
   text-transform: uppercase;
   color: var(--text);
+  transition: opacity .35s ease;
+}
+.v2-nav-logo:hover { opacity: .78; }
+.v2-nav-logo img {
+  height: 34px;
+  width: auto;
+  display: block;
+  /* the nav shrinks on scroll — keep the mark in proportion with it */
+  transition: height .4s var(--ease-premium);
+}
+.v2-nav.scrolled .v2-nav-logo img { height: 29px; }
+@media (max-width: 560px) {
+  .v2-nav-logo img { height: 28px; }
+  .v2-nav.scrolled .v2-nav-logo img { height: 25px; }
 }
 
 .v2-nav-links {
@@ -651,12 +669,12 @@
    container's length, each word of the sentence lights up in turn. */
 .v2-sentence {
   position: relative;
-  height: 420vh;
+  height: 350vh;
   /* reference uses ~5.5× viewport */
 }
 
 .v2-sentence--dark {
-  background: var(--canvas);
+  background: #050507;
 }
 
 .v2-sentence--light {
@@ -687,7 +705,7 @@
    .v2-sentence's own (different) background, so there's never a visible
    seam between two mismatched tones */
 .v2-sentence--dark .v2-sentence-sticky {
-  background: #08090c;
+  background: #050507;
 }
 
 .v2-sentence--light .v2-sentence-sticky {
@@ -737,25 +755,26 @@
   will-change: opacity;
 }
 
-/* dark run: deepens with each beat */
+/* dark run: starts and ends at #050507 (--void) so it blends with adjacent
+   sections; the middle beats shift through a subtle warm-cool palette */
 .v2-sentence--dark .v2-sentence-bg:nth-child(1) {
-  background: #08090c;
+  background: #050507;
 }
 
 .v2-sentence--dark .v2-sentence-bg:nth-child(2) {
-  background: #0c0d13;
+  background: #0d0a10;
 }
 
 .v2-sentence--dark .v2-sentence-bg:nth-child(3) {
-  background: #101119;
+  background: #110e16;
 }
 
 .v2-sentence--dark .v2-sentence-bg:nth-child(4) {
-  background: #14151f;
+  background: #0d0a10;
 }
 
 .v2-sentence--dark .v2-sentence-bg:nth-child(5) {
-  background: #191a26;
+  background: #050507;
 }
 
 /* light run: a genuine light → dark gradient across all 5 beats, not a flat
@@ -827,8 +846,22 @@
   backface-visibility: hidden;
 }
 
+/* font color shifts subtly through the beats — slightly warmer in the
+   middle to complement the background shift, bright at the edges */
 .v2-sentence--dark .v2-sentence-word {
-  color: #fff;
+  color: #f2f0ec;
+}
+
+.v2-sentence--dark .v2-sentence-word:nth-child(2) {
+  color: #e0d8ef;
+}
+
+.v2-sentence--dark .v2-sentence-word:nth-child(3) {
+  color: #d4cce8;
+}
+
+.v2-sentence--dark .v2-sentence-word:nth-child(4) {
+  color: #e0d8ef;
 }
 
 .v2-sentence--light .v2-sentence-word {
@@ -2611,7 +2644,7 @@
 .v2-footer {
   position: relative;
   background: var(--void);
-  padding: 0 0 40px;
+  /* padding: 0 0 40px; */
   overflow: hidden;
 }
 
@@ -2628,7 +2661,13 @@
   display: flex;
   align-items: center;
   width: max-content;
+  animation: v2-marquee-scroll 20s linear infinite;
   will-change: transform;
+}
+
+@keyframes v2-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 .v2-footer-marquee-track span {
