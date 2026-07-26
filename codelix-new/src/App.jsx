@@ -49,6 +49,7 @@ const NotFound                         = lazy(() => import("./MyComponents/NotFo
 const HomepageV2                       = lazy(() => import("./MyComponents/HomepageV2/HomepageV2"));
 const ServicesV2                       = lazy(() => import("./MyComponents/ServicesV2/ServicesV2"));
 const ServiceDetailV2                  = lazy(() => import("./MyComponents/ServiceDetailV2/ServiceDetailV2"));
+const UIUXDesignV2                     = lazy(() => import("./MyComponents/UIUXDesignV2/UIUXDesignV2"));
 
 // ─── Scroll to top on route change ───────────────────────────────────────────
 const ScrollToTop = () => {
@@ -90,6 +91,7 @@ const AppRoutes = () => {
           <Route path="/preview-v2"                                element={<HomepageV2 />} />
           <Route path="/services-v2"                               element={<ServicesV2 />} />
           <Route path="/services-v2/web-development"               element={<ServiceDetailV2 />} />
+          <Route path="/services-v2/ui-ux-design"                  element={<UIUXDesignV2 />} />
           <Route path="/about"                                     element={<About />} />
           <Route path="/work"                                      element={<Work />} />
           <Route path="/services"                                  element={<Services />} />

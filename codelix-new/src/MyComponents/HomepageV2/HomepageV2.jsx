@@ -105,9 +105,9 @@ const SYSTEMS = [
 ];
 
 const SERVICES = [
-  { n: "01", tag: "Development", title: "Web Development", link: "/services/web-development" },
+  { n: "01", tag: "Development", title: "Web Development", link: "/services-v2/web-development" },
   { n: "02", tag: "Development", title: "Application Development", link: "/services/application-development" },
-  { n: "03", tag: "Design", title: "UI/UX Design", link: "/services/ui-ux-design" },
+  { n: "03", tag: "Design", title: "UI/UX Design", link: "/services-v2/ui-ux-design" },
   { n: "04", tag: "Commerce", title: "E-Commerce Solutions", link: "/services/e-commerce-solutions" },
   { n: "05", tag: "Development", title: "Custom Software Development", link: "/services/custom-software-development" },
   { n: "06", tag: "Applied AI", title: "AI Development", link: "/services/ai-development" },
@@ -765,10 +765,10 @@ export default function HomepageV2() {
             <img src={codelixLogo} alt="Codelix" />
           </a>
           <div className="v2-nav-links">
-            <a href="#work">Work</a>
-            <a href="#services">Services</a>
-            <a href="#method">Method</a>
-            <a href="#principles">Principles</a>
+            <a href="/preview-v2">Homepage V2</a>
+            <a href="/services-v2">Services V2</a>
+            <a href="/services-v2/web-development">Web Dev V2</a>
+            <a href="/services-v2/ui-ux-design">UI/UX V2</a>
             <a href="/contact">Contact</a>
           </div>
           <button
@@ -788,10 +788,10 @@ export default function HomepageV2() {
       <div className={`v2-drawer ${mobileOpen ? "open" : ""}`} aria-hidden={!mobileOpen}>
         <div className="v2-drawer-links">
           {[
-            { label: "Work", href: "#work" },
-            { label: "Services", href: "#services" },
-            { label: "Method", href: "#method" },
-            { label: "Principles", href: "#principles" },
+            { label: "Homepage V2", href: "/preview-v2" },
+            { label: "Services V2", href: "/services-v2" },
+            { label: "Web Dev V2", href: "/services-v2/web-development" },
+            { label: "UI/UX V2", href: "/services-v2/ui-ux-design" },
             { label: "Contact", href: "/contact" },
           ].map((l, i) => (
             <a
@@ -1073,7 +1073,7 @@ export default function HomepageV2() {
             </div>
           ))}
           <div className="v2-work-more">
-            <a className="v2-btn" href="/services">View all services →</a>
+            <a className="v2-btn" href="/services-v2">View all services →</a>
           </div>
         </div>
       </section>

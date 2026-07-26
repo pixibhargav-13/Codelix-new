@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
   Globe, Smartphone, PenTool, ShoppingCart, Code2, Sparkles,
-  CalendarCheck, Lock, Eye,
+  CalendarCheck, Lock, Eye, Receipt, Users, LifeBuoy, Clock,
 } from "lucide-react";
 
 /* the v2 design system + the shared tech-stack data live with the homepage —
@@ -11,6 +11,7 @@ import "../HomepageV2/HomepageV2.css";
 import { TECH_STACK } from "../HomepageV2/techStack";
 import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import codelixLogo from "../Images/codelix-logo.png";
+import codelixText from "../Images/codelix-footer-logo.png";
 import "./ServicesV2.css";
 
 /* how delivery actually runs — the question every services page has to answer
@@ -26,10 +27,10 @@ const METHOD = [
 
 /* headline numbers — value is the count-up target, suffix rides along */
 const STATS = [
-  { value: 30, suffix: "+", label: "Projects delivered" },
-  { value: 6, suffix: "", label: "Core services" },
-  { value: 100, suffix: "%", label: "Source-code ownership" },
-  { value: 24, suffix: "h", label: "Response time" },
+  { value: 30, suffix: "+", label: "Projects delivered", icon: Sparkles },
+  { value: 6, suffix: "", label: "Core services", icon: Code2 },
+  { value: 100, suffix: "%", label: "Source-code ownership", icon: Lock },
+  { value: 24, suffix: "h", label: "Response time", icon: Clock },
 ];
 
 /* real service copy, lifted from the live site's WhatWeProvide.jsx, with the
@@ -56,7 +57,7 @@ const SERVICES = [
     icon: PenTool,
     title: "UI/UX Design",
     body: "Designs that make sense to the people using them. We prototype, test, and refine until the interface feels obvious.",
-    path: "/services/ui-ux-design",
+    path: "/services-v2/ui-ux-design",
     capabilities: ["User research", "Wireframing", "Design systems", "Interactive prototypes", "Usability testing"],
   },
   {
@@ -86,15 +87,33 @@ const SERVICES = [
 ];
 
 const ENGAGEMENTS = [
-  { key: "Fixed scope.", claim: "You know the number before we start.", body: "You tell us what you need, we quote it, and that's the price. No creeping invoices, no surprise add-ons halfway through." },
-  { key: "Dedicated team.", claim: "Engineers who work only on you.", body: "A small team on a monthly rate, working your priorities. You scale them up when things get busy, scale them down when they don't." },
-  { key: "Support retainer.", claim: "We stay on after launch.", body: "Once you're live, we keep an eye on things. Bug fixes, small improvements, monitoring — all on a predictable monthly plan." },
+  {
+    n: "01",
+    icon: Receipt,
+    key: "Fixed scope",
+    claim: "You know the number before we start.",
+    body: "You tell us what you need, we quote it, and that's the price. No creeping invoices, no surprise add-ons halfway through.",
+  },
+  {
+    n: "02",
+    icon: Users,
+    key: "Dedicated team",
+    claim: "Engineers who work only on you.",
+    body: "A small team on a monthly rate, working your priorities. You scale them up when things get busy, scale them down when they don't.",
+  },
+  {
+    n: "03",
+    icon: LifeBuoy,
+    key: "Support retainer",
+    claim: "We stay on after launch.",
+    body: "Once you're live, we keep an eye on things. Bug fixes, small improvements, monitoring — all on a predictable monthly plan.",
+  },
 ];
 
 const PRINCIPLES = [
-  { key: "Delivered.", icon: CalendarCheck, claim: "No deadline we don't hold ourselves to.", body: "We pad the schedule honestly upfront so we don't have to renegotiate halfway through. If we say a date, we hit it." },
-  { key: "Owned.", icon: Lock, claim: "No code you don't fully own.", body: "When the invoice is paid, the code is yours. We hand over the repos, the docs, and the keys. No vendor lock-in, no hostage situations." },
-  { key: "Visible.", icon: Eye, claim: "No progress you can't see.", body: "We don't go dark for a month and come back with a surprise. You see the work as it happens, so we can course-correct early." },
+  { key: "Delivered", icon: CalendarCheck, claim: "No deadline we don't hold ourselves to.", body: "We pad the schedule honestly upfront so we don't have to renegotiate halfway through. If we say a date, we hit it." },
+  { key: "Owned", icon: Lock, claim: "No code you don't fully own.", body: "When the invoice is paid, the code is yours. We hand over the repos, the docs, and the keys. No vendor lock-in, no hostage situations." },
+  { key: "Visible", icon: Eye, claim: "No progress you can't see.", body: "We don't go dark for a month and come back with a surprise. You see the work as it happens, so we can course-correct early." },
 ];
 
 const FAQS = [
@@ -219,6 +238,7 @@ export default function ServicesV2() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(-1);
   const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
+  const [svcActive, setSvcActive] = useState(0);
 
   const rootRef = useRef(null);
   const stripRef = useRef(null);
@@ -289,7 +309,7 @@ export default function ServicesV2() {
       { threshold: 0.01, rootMargin: "0px 0px -10% 0px" }
     );
     const sel = [
-      ".sv2-service", ".v2-method-row", ".v2-principle", ".v2-faq-item",
+      ".sv2-svc-showcase", ".sv2-engagement", ".sv2-tenet", ".sv2-stat-card", ".v2-method-row", ".v2-faq-item",
       ".v2-cta", ".v2-strip", ".v2-heading", ".v2-label", ".v2-lede",
     ].join(", ");
     rootRef.current.querySelectorAll(sel).forEach((el) => io.observe(el));
@@ -423,10 +443,10 @@ export default function ServicesV2() {
             <img src={codelixLogo} alt="Codelix" />
           </a>
           <div className="v2-nav-links">
-            <a href="/preview-v2#work">Work</a>
-            <a href="/services-v2">Services</a>
-            <a href="#method">Method</a>
-            <a href="#engagements">Engagements</a>
+            <a href="/preview-v2">Homepage V2</a>
+            <a href="/services-v2">Services V2</a>
+            <a href="/services-v2/web-development">Web Dev V2</a>
+            <a href="/services-v2/ui-ux-design">UI/UX V2</a>
             <a href="/contact">Contact</a>
           </div>
           <button
@@ -443,10 +463,10 @@ export default function ServicesV2() {
       <div className={`v2-drawer ${mobileOpen ? "open" : ""}`} aria-hidden={!mobileOpen}>
         <div className="v2-drawer-links">
           {[
-            { label: "Work", href: "/preview-v2#work" },
-            { label: "Services", href: "/services-v2" },
-            { label: "Method", href: "#method" },
-            { label: "Engagements", href: "#engagements" },
+            { label: "Homepage V2", href: "/preview-v2" },
+            { label: "Services V2", href: "/services-v2" },
+            { label: "Web Dev V2", href: "/services-v2/web-development" },
+            { label: "UI/UX V2", href: "/services-v2/ui-ux-design" },
             { label: "Contact", href: "/contact" },
           ].map((l, i) => (
             <a key={l.label} href={l.href}
@@ -486,8 +506,8 @@ export default function ServicesV2() {
 
           {/* quick jump chips */}
           <div className="sv2-chips sv2-hero-reveal">
-            {SERVICES.map((s) => (
-              <a className="sv2-chip" href={`#svc-${s.n}`} key={s.n}>
+            {SERVICES.map((s, i) => (
+              <a className="sv2-chip" href="#services" onClick={() => setSvcActive(i)} key={s.n}>
                 <s.icon size={14} strokeWidth={1.7} />
                 {s.title}
               </a>
@@ -504,30 +524,71 @@ export default function ServicesV2() {
             Six things we do well. Most projects use a few of them together.
           </p>
         </div>
-        <div className="v2-method-rows">
-          {SERVICES.map((s) => (
-            <article className="sv2-service" id={`svc-${s.n}`} key={s.n}>
-              <div className="sv2-service-index">
-                <span className="sv2-service-n">{s.n}</span>
-                <span className="sv2-service-icon"><s.icon size={20} strokeWidth={1.5} /></span>
+        <div className="sv2-svc-showcase">
+          <div className="sv2-svc-nav" role="tablist" aria-label="What we provide">
+            <span
+              className="sv2-svc-nav-indicator"
+              style={{ transform: `translateY(${svcActive * 100}%)` }}
+              aria-hidden="true"
+            />
+            {SERVICES.map((s, i) => (
+              <div className="sv2-svc-navitem" key={s.n}>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={svcActive === i}
+                  className={`sv2-svc-tab ${svcActive === i ? "is-active" : ""}`}
+                  onMouseEnter={() => setSvcActive(i)}
+                  onFocus={() => setSvcActive(i)}
+                  onClick={() => setSvcActive(i)}
+                >
+                  <span className="sv2-svc-tab-n">{s.n}</span>
+                  <span className="sv2-svc-tab-title">{s.title}</span>
+                  <span className="sv2-svc-tab-icon"><s.icon size={16} strokeWidth={1.6} /></span>
+                </button>
+                {/* mobile-only accordion body — desktop shows the side stage instead */}
+                <div className={`sv2-svc-mobile-body ${svcActive === i ? "is-open" : ""}`}>
+                  <div className="sv2-svc-mobile-body-inner">
+                    <p className="sv2-svc-mobile-body-text">{s.body}</p>
+                    <ul className="sv2-caps sv2-svc-mobile-caps">
+                      {s.capabilities.map((c) => (
+                        <li key={c}>{c}</li>
+                      ))}
+                    </ul>
+                    <a className="sv2-service-link" href={s.path}>
+                      <span>Explore</span>
+                      <i>→</i>
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div className="sv2-service-main">
-                <h3 className="sv2-service-title">{s.title}</h3>
-                <p className="sv2-service-body">{s.body}</p>
-                <ul className="sv2-caps">
+            ))}
+          </div>
+
+          <div className="sv2-svc-stage">
+            {SERVICES.map((s, i) => (
+              <div
+                className={`sv2-svc-panel ${svcActive === i ? "is-active" : ""}`}
+                aria-hidden={svcActive !== i}
+                key={s.n}
+              >
+                <span className="sv2-svc-panel-glow" aria-hidden="true" />
+                <span className="sv2-svc-panel-n" aria-hidden="true">{s.n}</span>
+                <span className="sv2-svc-panel-icon"><s.icon size={36} strokeWidth={1.2} /></span>
+                <h3 className="sv2-svc-panel-title">{s.title}</h3>
+                <p className="sv2-svc-panel-body">{s.body}</p>
+                <ul className="sv2-caps sv2-svc-panel-caps">
                   {s.capabilities.map((c) => (
                     <li key={c}>{c}</li>
                   ))}
                 </ul>
-              </div>
-              <div className="sv2-service-cta">
                 <a className="sv2-service-link" href={s.path}>
                   <span>Explore</span>
                   <i>→</i>
                 </a>
               </div>
-            </article>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
@@ -569,10 +630,11 @@ export default function ServicesV2() {
         </div>
       </section>
 
-      <section className="v2-section v2-stats-section">
-        <div className="v2-stats">
+      <section className="v2-section sv2-stats-band">
+        <div className="sv2-stats-grid">
           {STATS.map((s) => (
-            <div className="v2-stat" key={s.label}>
+            <div className="sv2-stat-card" key={s.label}>
+              <span className="sv2-stat-icon"><s.icon size={18} strokeWidth={1.6} /></span>
               <div className="v2-stat-num">
                 <span className="v2-stat-value" data-target={s.value}>0</span>
                 <span className="v2-stat-suffix">{s.suffix}</span>
@@ -584,20 +646,30 @@ export default function ServicesV2() {
       </section>
 
       {/* ══════════ 4 · ENGAGEMENT MODELS ══════════ */}
-      <section className="v2-section v2-section--void" id="engagements">
-        <p className="v2-label">How We Work</p>
-        <h2 className="v2-heading">Three ways to work with us.</h2>
-        <p className="v2-lede" style={{ marginBottom: 8 }}>
-          Same team, same quality. The only difference is how we scope the work
-          and send the invoice.
-        </p>
-        <div style={{ marginTop: 44 }}>
+      <section className="v2-section v2-section--void sv2-engagements" id="engagements">
+        <div className="sv2-engagements-head">
+          <div>
+            <p className="v2-label">How We Work</p>
+            <h2 className="v2-heading">Three ways to work with us.</h2>
+          </div>
+          <p className="v2-lede">
+            Same team, same quality. The only difference is how we scope the work
+            and send the invoice.
+          </p>
+        </div>
+        <div className="sv2-engagements-grid">
           {ENGAGEMENTS.map((p) => (
-            <div className="v2-principle" key={p.key}>
-              <div className="v2-principle-key">{p.key}</div>
-              <div className="v2-principle-claim">{p.claim}</div>
-              <div className="v2-principle-body">{p.body}</div>
-            </div>
+            <article className="sv2-engagement" key={p.key}>
+              <div className="sv2-engagement-top">
+                <span className="sv2-engagement-n">{p.n}</span>
+                <span className="sv2-engagement-icon">
+                  <p.icon size={20} strokeWidth={1.5} />
+                </span>
+              </div>
+              <p className="sv2-engagement-key">{p.key}</p>
+              <h3 className="sv2-engagement-claim">{p.claim}</h3>
+              <p className="sv2-engagement-body">{p.body}</p>
+            </article>
           ))}
         </div>
       </section>
@@ -628,16 +700,18 @@ export default function ServicesV2() {
       <section className="v2-section" id="principles">
         <p className="v2-label">Our Principles</p>
         <h2 className="v2-heading">Three things we don't bend on.</h2>
-        <div style={{ marginTop: 44 }}>
-          {PRINCIPLES.map((p) => (
-            <div className="v2-principle" key={p.key}>
-              <div className="v2-principle-key">
-                <p.icon size={15} strokeWidth={1.7} style={{ marginRight: 8, verticalAlign: "-2px" }} />
-                {p.key}
+        <div className="sv2-tenet-grid">
+          {PRINCIPLES.map((p, i) => (
+            <article className="sv2-tenet" key={p.key}>
+              <span className="sv2-tenet-shine" aria-hidden="true" />
+              <div className="sv2-tenet-top">
+                <span className="sv2-tenet-icon"><p.icon size={20} strokeWidth={1.5} /></span>
+                <span className="sv2-tenet-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
               </div>
-              <div className="v2-principle-claim">{p.claim}</div>
-              <div className="v2-principle-body">{p.body}</div>
-            </div>
+              <h3 className="sv2-tenet-claim">{p.claim}</h3>
+              <p className="sv2-tenet-body">{p.body}</p>
+              <span className="sv2-tenet-tag">{p.key}</span>
+            </article>
           ))}
         </div>
       </section>
@@ -691,6 +765,13 @@ export default function ServicesV2() {
 
       {/* ══════════ FOOTER ══════════ */}
       <footer className="v2-footer">
+        <div className="v2-footer-marquee">
+          <div className="v2-footer-marquee-track">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <span key={i}>WE LIVE IN IT <em>•</em></span>
+            ))}
+          </div>
+        </div>
         <div className="v2-footer-grid">
           <div className="v2-footer-col">
             <h5>Info</h5>
@@ -731,7 +812,11 @@ export default function ServicesV2() {
             <a href="/terms-of-service">Terms of service</a>
           </div>
         </div>
-        <div className="v2-footer-wordmark" aria-hidden="true">CODELIX</div>
+        <div className="codelix-large-text" style={{ padding: '0 var(--pad-x)' }}>
+          <div className="codelix-text">
+            <img src={codelixText} alt="Codelix" style={{ width: '100%', display: 'block', margin: '0 auto' }} />
+          </div>
+        </div>
       </footer>
     </div>
   );

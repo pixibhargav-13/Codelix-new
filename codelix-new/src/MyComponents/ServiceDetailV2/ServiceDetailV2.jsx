@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import gsap from "gsap";
 import {
   Globe, Gauge, Search, ShieldCheck, Smartphone, Wrench,
   CalendarCheck, Lock, Eye, Check,
@@ -6,12 +7,14 @@ import {
   Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark,
   FileCode2, BookOpen, KeyRound, Palette, Server, GitBranch,
   PenTool, ShoppingCart, Code2, Sparkles,
+  Minus, X, Phone, FileText, PlayCircle,
 } from "lucide-react";
 
 /* v2 design system + shared data — same source of truth as the other v2 pages */
 import "../HomepageV2/HomepageV2.css";
 import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import codelixLogo from "../Images/codelix-logo.png";
+import codelixText from "../Images/codelix-footer-logo.png";
 import "../ServicesV2/ServicesV2.css";
 import "./ServiceDetailV2.css";
 
@@ -79,10 +82,10 @@ const USE_CASES = [
 
 /* quality bars we hold ourselves to — value is the count-up target */
 const BENCHMARKS = [
-  { value: 95, suffix: "+", label: "Lighthouse performance", note: "Measured on mobile, not desktop" },
-  { value: 2, suffix: "s", label: "Target load time", note: "First contentful paint on 4G" },
-  { value: 100, suffix: "%", label: "Responsive coverage", note: "320px through ultrawide" },
-  { value: 0, suffix: "", label: "Known critical bugs", note: "Nothing ships red" },
+  { value: 95, suffix: "+", label: "Lighthouse performance", note: "Measured on mobile, not desktop", ring: 95 },
+  { value: 2, suffix: "s", label: "Target load time", note: "First contentful paint on 4G", ring: 90 },
+  { value: 100, suffix: "%", label: "Responsive coverage", note: "320px through ultrawide", ring: 100 },
+  { value: 0, suffix: "", label: "Known critical bugs", note: "Nothing ships red", ring: 100 },
 ];
 
 /* the actual artifacts handed over — concrete, not vague promises */
@@ -101,6 +104,27 @@ const QUOTE = {
   name: "Rajesh Patel",
   role: "CEO, Harmony Inc.",
 };
+
+/* how we stack up against what a buyer is realistically comparing us to.
+   `vals` order = [Codelix, Template/builder, Freelancer, Large agency] */
+const COMPARE_COLS = ["Codelix", "Template / builder", "Freelancer", "Large agency"];
+const COMPARE_ROWS = [
+  { label: "100% source-code ownership", vals: ["yes", "partial", "maybe", "partial"] },
+  { label: "Timeline you can hold us to", vals: ["yes", "yes", "no", "partial"] },
+  { label: "Built for your exact workflow", vals: ["yes", "no", "maybe", "yes"] },
+  { label: "One team, one point of contact", vals: ["yes", "no", "yes", "no"] },
+  { label: "Post-launch support & docs", vals: ["yes", "no", "maybe", "yes"] },
+  { label: "Transparent, fixed pricing", vals: ["yes", "yes", "maybe", "no"] },
+  { label: "Won't vanish mid-project", vals: ["yes", "yes", "no", "yes"] },
+];
+
+/* the exact next steps after someone reaches out — removes the "what am I
+   signing up for" hesitation right before the CTA */
+const NEXT_STEPS = [
+  { n: "01", icon: Phone, title: "Discovery call", meta: "30 minutes", body: "A no-pressure call to understand what you're building, who it's for, and what success looks like. No slide deck, no sales script." },
+  { n: "02", icon: FileText, title: "Written proposal", meta: "Within 48 hours", body: "A clear scope, a fixed price, and a timeline — in writing. You'll know exactly what you're getting and what it costs before you commit." },
+  { n: "03", icon: PlayCircle, title: "Kickoff", meta: "On your go-ahead", body: "Once you're happy, we lock the scope and start. You get a staging link and a point of contact from day one." },
+];
 
 /* cross-sell to the rest of the catalogue */
 const OTHER_SERVICES = [
@@ -159,9 +183,9 @@ const RELATED = [
 ];
 
 const PRINCIPLES = [
-  { key: "Delivered.", icon: CalendarCheck, claim: "No deadline we don't hold ourselves to.", body: "We pad the schedule honestly upfront so we don't have to renegotiate halfway through. If we say a date, we hit it." },
-  { key: "Owned.", icon: Lock, claim: "No code you don't fully own.", body: "When the invoice is paid, the code is yours. We hand over the repos, the docs, and the keys. No vendor lock-in." },
-  { key: "Visible.", icon: Eye, claim: "No progress you can't see.", body: "We don't go dark for a month and come back with a surprise. You see the work as it happens, so we can course-correct early." },
+  { key: "Delivered", icon: CalendarCheck, claim: "No deadline we don't hold ourselves to.", body: "We pad the schedule honestly upfront so we don't have to renegotiate halfway through. If we say a date, we hit it." },
+  { key: "Owned", icon: Lock, claim: "No code you don't fully own.", body: "When the invoice is paid, the code is yours. We hand over the repos, the docs, and the keys. No vendor lock-in." },
+  { key: "Visible", icon: Eye, claim: "No progress you can't see.", body: "We don't go dark for a month and come back with a surprise. You see the work as it happens, so we can course-correct early." },
 ];
 
 const FAQS = [
@@ -173,11 +197,120 @@ const FAQS = [
   { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that you can take it in-house with the docs we provide, or keep us on a monthly retainer." },
 ];
 
+const SENTENCE = [
+  "YOU GET THE SOURCE.",
+  "YOU GET THE SERVER.",
+  "YOU GET THE DOMAIN.",
+  "NO LOCK-IN.",
+  "NO LICENSE GAMES.",
+];
+
+/* scroll-scrubbed word reveal — identical mechanism to HomepageV2 / ServicesV2
+   (kept as a separate copy rather than a shared import so each page can tune
+   its own word list/timing without a shared-component refactor) */
+const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
+
+function ScrollSentence({ words, tone }) {
+  const ref = useRef(null);
+  const wordRefs = useRef([]);
+  const bgRefs = useRef([]);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let raf = 0, running = false, target = 0, current = 0, primed = false;
+
+    const readTarget = () => {
+      const r = el.getBoundingClientRect();
+      const scrollable = r.height - window.innerHeight;
+      if (scrollable <= 0) return 0;
+      const raw = (-r.top) / scrollable;
+      const norm = Math.min(Math.max((raw - 0.06) / 0.86, 0), 0.9999);
+      return norm * words.length;
+    };
+
+    const IN_END = 0.2;
+    const OUT_START = 0.8;
+
+    const paint = (t) => {
+      words.forEach((_, i) => {
+        const d = Math.min(Math.max(t - i, 0), 1);
+        const wordEl = wordRefs.current[i];
+        const bgEl = bgRefs.current[i];
+
+        let scale, opacity, blur;
+        if (d < IN_END) {
+          const p = scrollSentenceEase(d / IN_END);
+          scale = 0.78 + p * 0.22; opacity = p; blur = 5 * (1 - p);
+        } else if (d <= OUT_START) {
+          scale = 1; opacity = 1; blur = 0;
+        } else {
+          const p = scrollSentenceEase((d - OUT_START) / (1 - OUT_START));
+          scale = 1 + p * 0.22; opacity = 1 - p; blur = 6 * p;
+        }
+
+        if (wordEl) {
+          wordEl.style.opacity = opacity;
+          wordEl.style.transform = `translate3d(-50%,-50%,0) scale(${scale})`;
+          wordEl.style.filter = blur > 0.01 ? `blur(${blur}px)` : "none";
+        }
+        if (bgEl) bgEl.style.opacity = scrollSentenceEase(Math.min(d / IN_END, 1));
+      });
+    };
+
+    const tick = () => {
+      const diff = target - current;
+      if (Math.abs(diff) < 0.0002) {
+        current = target; paint(current); running = false; raf = 0; return;
+      }
+      current += diff * 0.12;
+      paint(current);
+      raf = requestAnimationFrame(tick);
+    };
+    const kick = () => {
+      target = readTarget();
+      if (!primed) { current = target; primed = true; }
+      if (!running) { running = true; raf = requestAnimationFrame(tick); }
+    };
+
+    window.addEventListener("scroll", kick, { passive: true });
+    window.addEventListener("resize", kick);
+    kick();
+    return () => {
+      window.removeEventListener("scroll", kick);
+      window.removeEventListener("resize", kick);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [words]);
+
+  return (
+    <section className={`v2-sentence v2-sentence--${tone} sd2-sentence`} ref={ref}>
+      <div className="v2-sentence-sticky">
+        <div className="v2-sentence-bgs" aria-hidden="true">
+          {words.map((w, i) => (
+            <span className="v2-sentence-bg" style={{ zIndex: i }}
+              ref={(elm) => (bgRefs.current[i] = elm)} key={"bg" + i} />
+          ))}
+        </div>
+        <div className="v2-sentence-words">
+          {words.map((w, i) => (
+            <span className="v2-sentence-word"
+              ref={(elm) => (wordRefs.current[i] = elm)} key={w + i}>{w}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function ServiceDetailV2() {
   const [navScrolled, setNavScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(-1);
   const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
+  const [incActive, setIncActive] = useState(0);
 
   /* estimator state */
   const [estType, setEstType] = useState("marketing");
@@ -239,13 +372,21 @@ export default function ServiceDetailV2() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* hero intro */
+  /* hero intro — same GSAP mechanism as the homepage: the title wipes up
+     line-by-line out of a mask, then the supporting elements settle in with
+     overlapping "-=" offsets so it reads as one continuous motion rather
+     than a row of things fading in on a timer */
   useEffect(() => {
-    const targets = rootRef.current.querySelectorAll(".sv2-hero-reveal");
-    targets.forEach((t, i) => {
-      t.style.transitionDelay = `${0.15 + i * 0.09}s`;
-      requestAnimationFrame(() => t.classList.add("is-in"));
-    });
+    const q = (s) => rootRef.current.querySelectorAll(s);
+    const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
+    tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .7 })
+      .fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")
+      .fromTo(q(".sd2-hero-title .line > span"),
+        { yPercent: 118 }, { yPercent: 0, duration: 1.15, stagger: .1 }, "-=.45")
+      .fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.65")
+      .fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7")
+      .fromTo(q(".sd2-facts.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.75");
+    return () => tl.kill();
   }, []);
 
   /* reveal-on-enter — IntersectionObserver, no stale cached scroll positions */
@@ -267,9 +408,10 @@ export default function ServiceDetailV2() {
       { threshold: 0.01, rootMargin: "0px 0px -10% 0px" }
     );
     const sel = [
-      ".sd2-inc", ".sd2-est", ".sd2-work-card", ".v2-method-row",
+      ".sd2-inc-showcase", ".sd2-est", ".sd2-work-card", ".v2-method-row",
       ".sd2-problem", ".sd2-case", ".sd2-bench", ".sd2-hand", ".sd2-quote",
-      ".sd2-other", ".v2-principle", ".v2-faq-item", ".v2-cta", ".v2-strip",
+      ".sd2-cmp-row", ".sd2-step", ".sd2-other",
+      ".sd2-tenet", ".v2-faq-item", ".v2-cta", ".v2-strip",
       ".v2-heading", ".v2-label", ".v2-lede",
     ].join(", ");
     rootRef.current.querySelectorAll(sel).forEach((el) => io.observe(el));
@@ -408,11 +550,10 @@ export default function ServiceDetailV2() {
             <img src={codelixLogo} alt="Codelix" />
           </a>
           <div className="v2-nav-links">
-            <a href="/preview-v2#work">Work</a>
-            <a href="/services-v2">Services</a>
-            <a href="#included">Included</a>
-            <a href="#estimate">Estimate</a>
-            <a href="#handover">Handover</a>
+            <a href="/preview-v2">Homepage V2</a>
+            <a href="/services-v2">Services V2</a>
+            <a href="/services-v2/web-development">Web Dev V2</a>
+            <a href="/services-v2/ui-ux-design">UI/UX V2</a>
             <a href="/contact">Contact</a>
           </div>
           <button
@@ -429,11 +570,10 @@ export default function ServiceDetailV2() {
       <div className={`v2-drawer ${mobileOpen ? "open" : ""}`} aria-hidden={!mobileOpen}>
         <div className="v2-drawer-links">
           {[
-            { label: "Work", href: "/preview-v2#work" },
-            { label: "Services", href: "/services-v2" },
-            { label: "Included", href: "#included" },
-            { label: "Estimate", href: "#estimate" },
-            { label: "Handover", href: "#handover" },
+            { label: "Homepage V2", href: "/preview-v2" },
+            { label: "Services V2", href: "/services-v2" },
+            { label: "Web Dev V2", href: "/services-v2/web-development" },
+            { label: "UI/UX V2", href: "/services-v2/ui-ux-design" },
             { label: "Contact", href: "/contact" },
           ].map((l, i) => (
             <a key={l.label} href={l.href}
@@ -462,9 +602,9 @@ export default function ServiceDetailV2() {
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Service 01 · Web Development</span>
               </div>
-              <h1 className="sd2-hero-title sv2-hero-reveal">
-                Websites that are<br />
-                <span className="v2-hero-accent">fast, findable, and yours.</span>
+              <h1 className="sd2-hero-title">
+                <span className="line"><span>Websites that are</span></span>
+                <span className="line"><span className="v2-hero-accent">fast, findable, and yours.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">
                 We build high-performance websites and web applications with clean,
@@ -521,6 +661,18 @@ export default function ServiceDetailV2() {
         </div>
       </section>
 
+      {/* ══════════ 2b · CLIENT STRIP ══════════ */}
+      <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
+        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 30+ companies</p>
+        <div className="v2-strip">
+          <div className="v2-strip-track" ref={stripRef}>
+            {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
+              <img key={i} src={logo} alt="" loading="lazy" />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ══════════ 3 · WHAT'S INCLUDED ══════════ */}
       <section className="v2-section" id="included">
         <p className="v2-label">What's Included</p>
@@ -529,14 +681,54 @@ export default function ServiceDetailV2() {
           Not an upsell list — this is the baseline on every web project we take,
           whatever the size.
         </p>
-        <div className="sd2-inc-grid">
-          {INCLUDED.map((it) => (
-            <article className="sd2-inc" key={it.title}>
-              <span className="sd2-inc-icon"><it.icon size={19} strokeWidth={1.5} /></span>
-              <h3 className="sd2-inc-title">{it.title}</h3>
-              <p className="sd2-inc-body">{it.body}</p>
-            </article>
-          ))}
+        <div className="sd2-inc-showcase">
+          <div className="sd2-inc-nav" role="tablist" aria-label="What's included">
+            <span
+              className="sd2-inc-nav-indicator"
+              style={{ transform: `translateY(${incActive * 100}%)` }}
+              aria-hidden="true"
+            />
+            {INCLUDED.map((it, i) => (
+              <div className="sd2-inc-navitem" key={it.title}>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={incActive === i}
+                  className={`sd2-inc-tab ${incActive === i ? "is-active" : ""}`}
+                  onMouseEnter={() => setIncActive(i)}
+                  onFocus={() => setIncActive(i)}
+                  onClick={() => setIncActive(i)}
+                  key={it.title}
+                >
+                  <span className="sd2-inc-tab-n">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="sd2-inc-tab-title">{it.title}</span>
+                  <span className="sd2-inc-tab-icon"><it.icon size={16} strokeWidth={1.6} /></span>
+                </button>
+                {/* mobile-only accordion body — desktop shows the side stage instead */}
+                <div className={`sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`}>
+                  <div className="sd2-inc-mobile-body-inner">
+                    <p className="sd2-inc-mobile-body-text">{it.body}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="sd2-inc-stage">
+            {INCLUDED.map((it, i) => (
+              <div
+                className={`sd2-inc-panel ${incActive === i ? "is-active" : ""}`}
+                aria-hidden={incActive !== i}
+                key={it.title}
+              >
+                <span className="sd2-inc-panel-glow" aria-hidden="true" />
+                <span className="sd2-inc-panel-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                <span className="sd2-inc-panel-icon"><it.icon size={40} strokeWidth={1.2} /></span>
+                <h3 className="sd2-inc-panel-title">{it.title}</h3>
+                <p className="sd2-inc-panel-body">{it.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -688,17 +880,46 @@ export default function ServiceDetailV2() {
           Every build is measured against these before it's allowed to ship —
           not aspirations, gates.
         </p>
-        <div className="sd2-bench-grid">
-          {BENCHMARKS.map((b) => (
-            <div className="sd2-bench" key={b.label}>
-              <div className="sd2-bench-num">
-                <span className="sd2-bench-value" data-target={b.value}>0</span>
-                <span className="sd2-bench-suffix">{b.suffix}</span>
-              </div>
-              <div className="sd2-bench-label">{b.label}</div>
-              <div className="sd2-bench-note">{b.note}</div>
-            </div>
-          ))}
+        <div className="sd2-bench-panel">
+          <div className="sd2-bench-bar">
+            <span className="sd2-bench-bar-dot" aria-hidden="true" />
+            <span className="sd2-bench-bar-title">Live quality gate</span>
+            <span className="sd2-bench-bar-meta">Checked on every build</span>
+          </div>
+          <div className="sd2-bench-grid">
+            {BENCHMARKS.map((b, i) => {
+              const R = 52;
+              const C = 2 * Math.PI * R;
+              const offset = C - (C * b.ring) / 100;
+              return (
+                <div className="sd2-bench" key={b.label}>
+                  <div className="sd2-bench-ring">
+                    <svg viewBox="0 0 120 120" className="sd2-bench-ring-svg" aria-hidden="true">
+                      <defs>
+                        <linearGradient id={`sd2-bench-grad-${i}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="rgba(180,200,230,.55)" />
+                          <stop offset="100%" stopColor="rgba(180,200,230,1)" />
+                        </linearGradient>
+                      </defs>
+                      <circle className="sd2-bench-ring-track" cx="60" cy="60" r={R} />
+                      <circle
+                        className="sd2-bench-ring-fill"
+                        cx="60" cy="60" r={R}
+                        stroke={`url(#sd2-bench-grad-${i})`}
+                        style={{ "--c": C, "--ring-offset": offset }}
+                      />
+                    </svg>
+                    <div className="sd2-bench-num">
+                      <span className="sd2-bench-value" data-target={b.value}>0</span>
+                      <span className="sd2-bench-suffix">{b.suffix}</span>
+                    </div>
+                  </div>
+                  <div className="sd2-bench-label">{b.label}</div>
+                  <div className="sd2-bench-note">{b.note}</div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -724,7 +945,57 @@ export default function ServiceDetailV2() {
         </div>
       </section>
 
-      {/* ══════════ 9 · HANDOVER ══════════ */}
+      {/* ══════════ 10 · RELATED WORK ══════════ */}
+      <section className="v2-section v2-section--void" id="work">
+        <p className="v2-label">Related Work</p>
+        <h2 className="v2-heading">Web builds we've shipped.</h2>
+        <div className="sd2-work-grid">
+          {RELATED.map((w) => (
+            <a className="sd2-work-card" href={w.link} key={w.link}>
+              <span className="sd2-work-media">
+                <img src={w.thumb} alt="" loading="lazy" />
+              </span>
+              <span className="sd2-work-tag">{w.tag}</span>
+              <span className="sd2-work-title">{w.title}</span>
+              <span className="sd2-work-go">Read case study →</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 11 · TESTIMONIAL ══════════ */}
+      <section className="v2-section">
+        <figure className="sd2-quote">
+          <span className="sd2-quote-mark" aria-hidden="true">&ldquo;</span>
+          <blockquote className="sd2-quote-text">{QUOTE.text}</blockquote>
+          <figcaption className="sd2-quote-by">
+            <span className="sd2-quote-name">{QUOTE.name}</span>
+            <span className="sd2-quote-role">{QUOTE.role}</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      {/* ══════════ 8 · PRINCIPLES ══════════ */}
+      <section className="v2-section" id="principles">
+        <p className="v2-label">Our Principles</p>
+        <h2 className="v2-heading">Three commitments that govern every project.</h2>
+        <div className="sd2-tenet-grid">
+          {PRINCIPLES.map((p, i) => (
+            <article className="sd2-tenet" key={p.key}>
+              <span className="sd2-tenet-shine" aria-hidden="true" />
+              <div className="sd2-tenet-top">
+                <span className="sd2-tenet-icon"><p.icon size={20} strokeWidth={1.5} /></span>
+                <span className="sd2-tenet-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+              </div>
+              <h3 className="sd2-tenet-claim">{p.claim}</h3>
+              <p className="sd2-tenet-body">{p.body}</p>
+              <span className="sd2-tenet-tag">{p.key}</span>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 8a · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">
         <div className="sd2-case-head">
           <div>
@@ -775,65 +1046,57 @@ export default function ServiceDetailV2() {
         </div>
       </section>
 
-      {/* ══════════ 10 · RELATED WORK ══════════ */}
-      <section className="v2-section v2-section--void" id="work">
-        <p className="v2-label">Related Work</p>
-        <h2 className="v2-heading">Web builds we've shipped.</h2>
-        <div className="sd2-work-grid">
-          {RELATED.map((w) => (
-            <a className="sd2-work-card" href={w.link} key={w.link}>
-              <span className="sd2-work-media">
-                <img src={w.thumb} alt="" loading="lazy" />
-              </span>
-              <span className="sd2-work-tag">{w.tag}</span>
-              <span className="sd2-work-title">{w.title}</span>
-              <span className="sd2-work-go">Read case study →</span>
-            </a>
-          ))}
+      {/* ══════════ 8b · WHY US vs ALTERNATIVES ══════════ */}
+      <section className="v2-section v2-section--void" id="compare">
+        <div className="sd2-case-head">
+          <div>
+            <p className="v2-label">Why Us</p>
+            <h2 className="v2-heading">Against what you're actually comparing.</h2>
+          </div>
+          <p className="v2-lede">
+            A template, a freelancer, and a big agency all solve part of the
+            problem. Here's where each one tends to leave you exposed.
+          </p>
         </div>
-      </section>
 
-      {/* ══════════ 11 · TESTIMONIAL ══════════ */}
-      <section className="v2-section">
-        <figure className="sd2-quote">
-          <span className="sd2-quote-mark" aria-hidden="true">&ldquo;</span>
-          <blockquote className="sd2-quote-text">{QUOTE.text}</blockquote>
-          <figcaption className="sd2-quote-by">
-            <span className="sd2-quote-name">{QUOTE.name}</span>
-            <span className="sd2-quote-role">{QUOTE.role}</span>
-          </figcaption>
-        </figure>
-      </section>
-
-      {/* ══════════ 12 · CLIENT STRIP ══════════ */}
-      <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
-        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 30+ companies</p>
-        <div className="v2-strip">
-          <div className="v2-strip-track" ref={stripRef}>
-            {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
-              <img key={i} src={logo} alt="" loading="lazy" />
+        <div className="sd2-cmp" role="table" aria-label="Codelix compared to alternatives">
+          <div className="sd2-cmp-head" role="row">
+            <span className="sd2-cmp-rowlabel" role="columnheader" />
+            {COMPARE_COLS.map((c, i) => (
+              <span
+                className={`sd2-cmp-col ${i === 0 ? "is-us" : ""}`}
+                role="columnheader"
+                key={c}
+              >
+                {c}
+              </span>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ══════════ 8 · PRINCIPLES ══════════ */}
-      <section className="v2-section" id="principles">
-        <p className="v2-label">Our Principles</p>
-        <h2 className="v2-heading">Three commitments that govern every project.</h2>
-        <div style={{ marginTop: 44 }}>
-          {PRINCIPLES.map((p) => (
-            <div className="v2-principle" key={p.key}>
-              <div className="v2-principle-key">
-                <p.icon size={15} strokeWidth={1.7} style={{ marginRight: 8, verticalAlign: "-2px" }} />
-                {p.key}
-              </div>
-              <div className="v2-principle-claim">{p.claim}</div>
-              <div className="v2-principle-body">{p.body}</div>
+          {COMPARE_ROWS.map((row) => (
+            <div className="sd2-cmp-row" role="row" key={row.label}>
+              <span className="sd2-cmp-rowlabel" role="rowheader">{row.label}</span>
+              {row.vals.map((v, i) => (
+                <span
+                  className={`sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`}
+                  role="cell"
+                  key={i}
+                >
+                  {v === "yes" && <Check size={16} strokeWidth={2.6} />}
+                  {v === "partial" && <Minus size={16} strokeWidth={2.6} />}
+                  {v === "maybe" && <Minus size={16} strokeWidth={2.6} />}
+                  {v === "no" && <X size={15} strokeWidth={2.6} />}
+                  <em className="sd2-cmp-txt">
+                    {v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe"}
+                  </em>
+                </span>
+              ))}
             </div>
           ))}
         </div>
       </section>
+
+      {/* ══════════ 8.5 · SCROLL SENTENCE ══════════ */}
+      <ScrollSentence words={SENTENCE} tone="dark" />
 
       {/* ══════════ 9 · FAQ ══════════ */}
       <section className="v2-section v2-section--void" id="faq">
@@ -862,6 +1125,35 @@ export default function ServiceDetailV2() {
               </button>
               <div className="v2-faq-a"><p>{f.a}</p></div>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 14b · WHAT HAPPENS NEXT ══════════ */}
+      <section className="v2-section v2-section--void" id="next">
+        <div className="sd2-case-head">
+          <div>
+            <p className="v2-label">What Happens Next</p>
+            <h2 className="v2-heading">Three steps from here to kickoff.</h2>
+          </div>
+          <p className="v2-lede">
+            No drawn-out sales process. Reach out and here's exactly what follows.
+          </p>
+        </div>
+        <div className="sd2-next">
+          <span className="sd2-next-line" aria-hidden="true" />
+          {NEXT_STEPS.map((s) => (
+            <article className="sd2-step" key={s.n}>
+              <div className="sd2-step-node">
+                <span className="sd2-step-num">{s.n}</span>
+                <span className="sd2-step-badge"><s.icon size={15} strokeWidth={1.7} /></span>
+              </div>
+              <div className="sd2-step-inner">
+                <span className="sd2-step-meta">{s.meta}</span>
+                <h3 className="sd2-step-title">{s.title}</h3>
+                <p className="sd2-step-body">{s.body}</p>
+              </div>
+            </article>
           ))}
         </div>
       </section>
@@ -901,6 +1193,13 @@ export default function ServiceDetailV2() {
 
       {/* ══════════ FOOTER ══════════ */}
       <footer className="v2-footer">
+        <div className="v2-footer-marquee">
+          <div className="v2-footer-marquee-track">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <span key={i}>WE LIVE IN IT <em>•</em></span>
+            ))}
+          </div>
+        </div>
         <div className="v2-footer-grid">
           <div className="v2-footer-col">
             <h5>Info</h5>
@@ -944,7 +1243,11 @@ export default function ServiceDetailV2() {
             <a href="/terms-of-service">Terms of service</a>
           </div>
         </div>
-        <div className="v2-footer-wordmark" aria-hidden="true">CODELIX</div>
+        <div className="codelix-large-text" style={{ padding: '0 var(--pad-x)' }}>
+          <div className="codelix-text">
+            <img src={codelixText} alt="Codelix" style={{ width: '100%', display: 'block', margin: '0 auto' }} />
+          </div>
+        </div>
       </footer>
     </div>
   );

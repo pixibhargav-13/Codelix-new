@@ -134,129 +134,274 @@
 }
 
 /* ───────────── SERVICE ROWS ───────────── */
-.sv2-service {
-  position: relative;
+/* ───────────── SERVICES — interactive tab + stage showcase, same
+   mechanism as ServiceDetailV2's "What's Included": a nav rail with a
+   sliding highlight, crossfading into a large detail panel, instead of
+   six long full-bleed rows stacked down the page. ───────────── */
+.sv2-svc-showcase {
   display: grid;
-  grid-template-columns: 108px minmax(0, 1fr) auto;
-  gap: clamp(20px, 3vw, 48px);
-  align-items: center;
-  padding: 46px var(--pad-x);
-  border-top: .8px solid var(--rule);
-  /* reveal-on-enter base state (class added by the IntersectionObserver) */
+  grid-template-columns: minmax(0, 320px) 1fr;
+  gap: clamp(20px, 3vw, 40px);
+  align-items: stretch;
+  /* .v2-method-rows (the shared shell) carries no horizontal padding itself —
+     the old row layout got its page margins from each row's own
+     `padding: 46px var(--pad-x)`, so this needs its own now */
+  padding: 0 var(--pad-x) 64px;
   opacity: 0;
-  transform: translateY(34px);
-  clip-path: inset(0 0 22% 0);
-  transition:
-    opacity 1.25s cubic-bezier(.16, 1, .3, 1),
-    transform 1.25s cubic-bezier(.16, 1, .3, 1),
-    clip-path 1.25s cubic-bezier(.16, 1, .3, 1),
-    background .45s ease;
+  transform: translateY(30px);
+  transition: opacity 1.1s cubic-bezier(.16, 1, .3, 1), transform 1.1s cubic-bezier(.16, 1, .3, 1);
 }
 
-.sv2-service.is-in {
+.sv2-svc-showcase.is-in {
   opacity: 1;
   transform: none;
-  clip-path: inset(0 0 0% 0);
 }
 
-.sv2-service:hover {
-  background: rgba(242, 240, 236, .022);
+@media (max-width: 900px) {
+  .sv2-svc-showcase {
+    grid-template-columns: 1fr;
+    padding-bottom: 40px;
+  }
 }
 
-/* a hairline that draws across the row on hover */
-.sv2-service::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -.8px;
-  height: .8px;
-  background: rgba(180, 200, 230, .55);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .7s var(--ease-expo);
-}
-
-.sv2-service:hover::after {
-  transform: scaleX(1);
-}
-
-/* number + icon sit side by side, anchored together as one unit instead of
-   the icon floating disconnected below the index */
-.sv2-service-index {
+.sv2-svc-nav {
+  position: relative;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  border: .8px solid var(--rule);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(242, 240, 236, .015);
+}
+
+/* assumes exactly 6 rows (SERVICES.length) */
+.sv2-svc-nav-indicator {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: calc(100% / 6);
+  background: linear-gradient(120deg, rgba(180, 200, 230, .14), rgba(180, 200, 230, .04));
+  border-left: 2px solid rgba(180, 200, 230, .85);
+  transition: transform .5s var(--ease-expo);
+  pointer-events: none;
+}
+
+.v2 .sv2-svc-tab {
+  position: relative;
+  z-index: 1;
+  display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+  width: 100%;
+  min-height: 68px;
+  padding: 0 28px;
+  border: none;
+  border-top: .8px solid var(--rule);
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
 }
 
-.sv2-service-n {
-  font-size: 11px;
+.sv2-svc-tab:first-child {
+  border-top: none;
+}
+
+.sv2-svc-tab-n {
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: .1em;
+  letter-spacing: .04em;
   color: var(--text-25);
-  transition: color .4s var(--ease-expo);
+  font-variant-numeric: tabular-nums;
+  transition: color .35s ease;
 }
 
-.sv2-service:hover .sv2-service-n {
+.sv2-svc-tab-title {
+  flex: 1;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: var(--text-55);
+  transition: color .35s ease;
+}
+
+.sv2-svc-tab-icon {
+  display: inline-flex;
+  color: var(--text-25);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity .35s ease, transform .35s ease, color .35s ease;
+}
+
+.sv2-svc-tab.is-active .sv2-svc-tab-n,
+.sv2-svc-tab:hover .sv2-svc-tab-n {
   color: rgba(180, 200, 230, .9);
 }
 
-.sv2-service-icon {
+.sv2-svc-tab.is-active .sv2-svc-tab-title,
+.sv2-svc-tab:hover .sv2-svc-tab-title {
+  color: #fff;
+}
+
+.sv2-svc-tab.is-active .sv2-svc-tab-icon,
+.sv2-svc-tab:hover .sv2-svc-tab-icon {
+  color: rgba(180, 200, 230, .95);
+  opacity: 1;
+  transform: none;
+}
+
+.sv2-svc-stage {
+  position: relative;
+  min-height: 420px;
+  border: .8px solid var(--rule);
+  border-radius: 16px;
+  overflow: hidden;
+  background: radial-gradient(120% 140% at 100% 0%, rgba(180, 200, 230, .08), transparent 60%);
+}
+
+.sv2-svc-panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(32px, 4vw, 56px);
+  opacity: 0;
+  transform: translateY(14px) scale(.985);
+  filter: blur(6px);
+  transition:
+    opacity .55s var(--ease-expo),
+    transform .55s var(--ease-expo),
+    filter .55s var(--ease-expo);
+  pointer-events: none;
+}
+
+.sv2-svc-panel.is-active {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+  pointer-events: auto;
+}
+
+.sv2-svc-panel-glow {
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 60%;
+  height: 160%;
+  background: radial-gradient(circle, rgba(180, 200, 230, .16), transparent 65%);
+  pointer-events: none;
+}
+
+.sv2-svc-panel-n {
+  position: absolute;
+  top: clamp(20px, 3vw, 32px);
+  right: clamp(28px, 4vw, 48px);
+  font-size: 13vw;
+  line-height: 1;
+  font-weight: 700;
+  color: rgba(242, 240, 236, .045);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+.sv2-svc-panel-icon {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border: .8px solid var(--rule);
-  border-radius: 12px;
-  color: var(--text-45);
-  transition:
-    color .4s var(--ease-expo),
-    border-color .4s var(--ease-expo),
-    transform .55s var(--ease-expo);
+  width: 64px;
+  height: 64px;
+  margin-bottom: 22px;
+  border-radius: 18px;
+  background: linear-gradient(155deg, rgba(180, 200, 230, .22), rgba(180, 200, 230, .05));
+  border: .8px solid rgba(180, 200, 230, .3);
+  color: #fff;
 }
 
-.sv2-service:hover .sv2-service-icon {
-  color: var(--text);
-  border-color: var(--rule-strong);
-  transform: translateY(-3px);
-}
-
-.sv2-service-main {
-  min-width: 0;
-}
-
-/* NOTE: these are scoped under .v2 deliberately. HomepageV2.css resets
-   `.v2 h3 / .v2 p / .v2 ul { margin: 0 }` at specificity (0,1,1), which
-   beats a lone class (0,1,0) — so the margins below only apply if they
-   also carry two classes. This is why !important isn't needed here. */
-.v2 .sv2-service-title {
-  font-size: clamp(21px, 2.3vw, 29px);
+.v2 .sv2-svc-panel-title {
+  position: relative;
+  font-size: clamp(22px, 2.6vw, 30px);
   font-weight: 600;
-  line-height: 1.15;
   letter-spacing: -.02em;
   color: #fff;
-  margin-bottom: 16px;
-  transition: transform .6s var(--ease-expo);
+  margin-bottom: 12px;
 }
 
-.sv2-service:hover .sv2-service-title {
-  transform: translateX(8px);
-}
-
-.v2 .sv2-service-body {
+.v2 .sv2-svc-panel-body {
+  position: relative;
   font-size: 14.5px;
-  line-height: 1.75;
-  color: var(--text-45);
-  max-width: 62ch;
-  margin-bottom: 8px;
-  transition: color .4s var(--ease-expo);
+  line-height: 1.72;
+  color: var(--text-55);
+  max-width: 46em;
+  margin-bottom: 6px;
 }
 
-.sv2-service:hover .sv2-service-body {
-  color: var(--text-55);
+.sv2-svc-panel-caps {
+  position: relative;
+  margin-top: 18px;
+  margin-bottom: 26px;
+}
+
+.sv2-svc-panel .sv2-service-link {
+  position: relative;
+}
+
+.sv2-svc-mobile-body {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .sv2-svc-nav-indicator {
+    display: none;
+  }
+
+  .sv2-svc-stage {
+    display: none;
+  }
+
+  .sv2-svc-nav {
+    margin-left: calc(-1 * var(--pad-x));
+    margin-right: calc(-1 * var(--pad-x));
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
+
+  .v2 .sv2-svc-tab.is-active {
+    background: rgba(180, 200, 230, .06);
+    border-left: 2px solid rgba(180, 200, 230, .85);
+    padding-left: 26px;
+  }
+
+  .sv2-svc-mobile-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .45s var(--ease-expo);
+  }
+
+  .sv2-svc-mobile-body.is-open {
+    grid-template-rows: 1fr;
+  }
+
+  .sv2-svc-mobile-body-inner {
+    overflow: hidden;
+  }
+
+  .v2 .sv2-svc-mobile-body-text {
+    padding: 10px 28px 0;
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--text-45);
+  }
+
+  .v2 .sv2-caps.sv2-svc-mobile-caps {
+    padding: 0 28px;
+    margin: 14px 0 4px;
+  }
+
+  .sv2-svc-mobile-body-inner .sv2-service-link {
+    margin: 4px 28px 22px;
+  }
 }
 
 /* capability pills */
@@ -284,21 +429,26 @@
   border-color: var(--rule-strong);
 }
 
-.sv2-service-cta {
-  padding-top: 6px;
-}
-
+/* a real pill button now — it used to just recolor on ".sv2-service:hover",
+   a wrapper class that no longer exists since the tab/stage rebuild, which
+   left it with no hover feedback of its own at all */
 .sv2-service-link {
   display: inline-flex;
   align-items: center;
+  align-self: flex-start;
   gap: 9px;
+  padding: 6px 15px;
+  margin-top: 15px;
+  border: .8px solid rgba(180, 200, 230, .3);
+  border-radius: 100px;
+  background: rgba(180, 200, 230, .06);
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: .16em;
+  letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--text-45);
+  color: #fff;
   white-space: nowrap;
-  transition: color .4s var(--ease-expo);
+  transition: background .4s ease, border-color .4s ease, transform .35s var(--ease-expo);
 }
 
 .sv2-service-link i {
@@ -306,38 +456,579 @@
   transition: transform .5s var(--ease-expo);
 }
 
-.sv2-service:hover .sv2-service-link {
-  color: var(--text);
+.sv2-service-link:hover {
+  background: rgba(180, 200, 230, .16);
+  border-color: rgba(180, 200, 230, .6);
+  transform: translateY(-2px);
 }
 
-.sv2-service:hover .sv2-service-link i {
+.sv2-service-link:hover i {
   transform: translateX(5px);
 }
 
-@media (max-width: 860px) {
-  .sv2-hero {
-    padding-top: 132px;
+/* ───────────── ENGAGEMENT MODELS ───────────── */
+.sv2-engagements {
+  padding-top: 96px;
+  padding-bottom: 112px;
+}
+
+.sv2-engagements-head {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 56px;
+}
+
+@media (min-width: 900px) {
+  .sv2-engagements-head {
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    gap: 48px;
   }
 
-  .sv2-service {
-    grid-template-columns: 56px minmax(0, 1fr);
-    padding-top: 36px;
-    padding-bottom: 36px;
+  .sv2-engagements-head .v2-lede {
+    padding-bottom: 6px;
+    max-width: 42ch;
+    margin-left: auto;
   }
+}
 
-  .sv2-service-index {
-    flex-direction: row;
-    align-items: center;
+.sv2-engagements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .sv2-engagements-grid {
+    grid-template-columns: 1fr;
     gap: 12px;
   }
+}
 
-  .sv2-service-icon {
-    width: 38px;
-    height: 38px;
+.sv2-engagement {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 28px 34px;
+  background: rgba(242, 240, 236, .022);
+  border: .8px solid var(--rule);
+  border-radius: 16px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(34px);
+  clip-path: inset(0 0 22% 0);
+  transition:
+    opacity 1.1s cubic-bezier(.16, 1, .3, 1),
+    transform 1.1s cubic-bezier(.16, 1, .3, 1),
+    clip-path 1.1s cubic-bezier(.16, 1, .3, 1),
+    border-color .45s ease,
+    background .45s ease;
+}
+
+.sv2-engagement.is-in {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 0% 0);
+}
+
+.sv2-engagement:nth-child(1).is-in {
+  transition-delay: 0s;
+}
+
+.sv2-engagement:nth-child(2).is-in {
+  transition-delay: .1s;
+}
+
+.sv2-engagement:nth-child(3).is-in {
+  transition-delay: .2s;
+}
+
+.sv2-engagement::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(180, 200, 230, .7), rgba(120, 150, 220, .35));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .65s var(--ease-expo);
+}
+
+.sv2-engagement:hover {
+  background: rgba(242, 240, 236, .04);
+  border-color: rgba(180, 200, 230, .35);
+  transform: translateY(-6px);
+}
+
+.sv2-engagement:hover::after {
+  transform: scaleX(1);
+}
+
+.sv2-engagement-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.sv2-engagement-n {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  color: var(--text-25);
+  transition: color .4s var(--ease-expo);
+}
+
+.sv2-engagement:hover .sv2-engagement-n {
+  color: rgba(180, 200, 230, .9);
+}
+
+.sv2-engagement-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: .8px solid var(--rule);
+  border-radius: 12px;
+  color: var(--text-45);
+  transition:
+    color .4s var(--ease-expo),
+    border-color .4s var(--ease-expo),
+    transform .55s var(--ease-expo),
+    background .4s ease;
+}
+
+.sv2-engagement:hover .sv2-engagement-icon {
+  color: var(--text);
+  border-color: rgba(180, 200, 230, .45);
+  background: rgba(180, 200, 230, .08);
+  transform: translateY(-3px);
+}
+
+.v2 .sv2-engagement-key {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--text-38);
+  margin-bottom: 12px;
+  transition: color .4s ease, letter-spacing .5s var(--ease-expo);
+}
+
+.sv2-engagement:hover .sv2-engagement-key {
+  color: rgba(180, 200, 230, .85);
+  letter-spacing: .2em;
+}
+
+.v2 .sv2-engagement-claim {
+  font-size: clamp(19px, 2vw, 22px);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -.015em;
+  color: #fff;
+  margin-bottom: 14px;
+  transition: transform .5s var(--ease-expo);
+}
+
+.sv2-engagement:hover .sv2-engagement-claim {
+  transform: translateX(4px);
+}
+
+.v2 .sv2-engagement-body {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text-45);
+  margin-top: auto;
+  transition: color .4s ease;
+}
+
+.sv2-engagement:hover .sv2-engagement-body {
+  color: var(--text-55);
+}
+
+/* ───────────── PRINCIPLES (editorial rows — distinct from engagement cards) ───────────── */
+.sv2-principles {
+  padding-top: 96px;
+  padding-bottom: 0;
+}
+
+.sv2-principles-intro {
+  max-width: 720px;
+  margin-bottom: 52px;
+}
+
+.sv2-principles-rows {
+  margin-left: calc(-1 * var(--pad-x));
+  margin-right: calc(-1 * var(--pad-x));
+  border-top: .8px solid var(--rule);
+}
+
+.sv2-principle-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 148px minmax(0, 1fr) 100px;
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+  padding: 52px var(--pad-x);
+  border-bottom: .8px solid var(--rule);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(-28px);
+  transition:
+    opacity 1s cubic-bezier(.16, 1, .3, 1),
+    transform 1s cubic-bezier(.16, 1, .3, 1),
+    background .45s ease;
+}
+
+.sv2-principle-row.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.sv2-principle-row:nth-child(1).is-in {
+  transition-delay: 0s;
+}
+
+.sv2-principle-row:nth-child(2).is-in {
+  transition-delay: .08s;
+}
+
+.sv2-principle-row:nth-child(3).is-in {
+  transition-delay: .16s;
+}
+
+.sv2-principle-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, rgba(180, 200, 230, .7), rgba(120, 150, 220, .2));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform .7s var(--ease-expo);
+}
+
+.sv2-principle-row:hover {
+  background: rgba(242, 240, 236, .02);
+}
+
+.sv2-principle-row:hover::before {
+  transform: scaleY(1);
+}
+
+.sv2-principle-mark {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding-top: 4px;
+}
+
+.sv2-principle-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(180, 200, 230, .08);
+  color: rgba(180, 200, 230, .85);
+  transition:
+    background .45s ease,
+    color .45s ease,
+    transform .55s var(--ease-expo),
+    box-shadow .45s ease;
+}
+
+.sv2-principle-row:hover .sv2-principle-icon {
+  background: rgba(180, 200, 230, .16);
+  color: #fff;
+  transform: scale(1.06);
+  box-shadow: 0 0 32px rgba(120, 150, 220, .18);
+}
+
+.sv2-principle-key {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--text-38);
+  transition: color .4s ease, letter-spacing .5s var(--ease-expo);
+}
+
+.sv2-principle-row:hover .sv2-principle-key {
+  color: rgba(180, 200, 230, .85);
+  letter-spacing: .24em;
+}
+
+.sv2-principle-content {
+  min-width: 0;
+  padding-top: 2px;
+}
+
+.v2 .sv2-principle-claim {
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -.025em;
+  color: #fff;
+  margin-bottom: 18px;
+  max-width: 22ch;
+  transition: transform .6s var(--ease-expo);
+}
+
+.sv2-principle-row:hover .sv2-principle-claim {
+  transform: translateX(6px);
+}
+
+.v2 .sv2-principle-body {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-45);
+  max-width: 52ch;
+  transition: color .4s ease;
+}
+
+.sv2-principle-row:hover .sv2-principle-body {
+  color: var(--text-55);
+}
+
+.sv2-principle-num {
+  align-self: start;
+  justify-self: end;
+  font-size: clamp(56px, 7vw, 88px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -.04em;
+  color: rgba(242, 240, 236, .04);
+  user-select: none;
+  pointer-events: none;
+  transition: color .5s var(--ease-expo);
+}
+
+.sv2-principle-row:hover .sv2-principle-num {
+  color: rgba(180, 200, 230, .08);
+}
+
+/* ───────────── PRINCIPLES, take two — cards instead of the editorial row
+   list above (.sv2-principle-row is kept only because UIUXDesignV2 still
+   uses it; this page moved to its own .sv2-tenet-* set). ───────────── */
+.sv2-tenet-grid {
+  margin-top: 46px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 860px) {
+  .sv2-tenet-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sv2-tenet {
+  position: relative;
+  overflow: hidden;
+  padding: 32px 28px 30px;
+  border: .8px solid var(--rule);
+  border-radius: 16px;
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 1.1s cubic-bezier(.16, 1, .3, 1),
+    transform 1.1s cubic-bezier(.16, 1, .3, 1),
+    border-color .4s ease;
+}
+
+.sv2-tenet.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.sv2-tenet:hover {
+  border-color: rgba(180, 200, 230, .4);
+}
+
+.sv2-tenet-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 40%, rgba(180, 200, 230, .1) 50%, transparent 60%);
+  transform: translateX(-120%);
+  transition: transform .85s var(--ease-expo);
+  pointer-events: none;
+}
+
+.sv2-tenet:hover .sv2-tenet-shine {
+  transform: translateX(120%);
+}
+
+.sv2-tenet-top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.sv2-tenet-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(155deg, rgba(180, 200, 230, .18), rgba(180, 200, 230, .04));
+  border: .8px solid rgba(180, 200, 230, .28);
+  color: rgba(180, 200, 230, .95);
+  transition: transform .5s var(--ease-expo);
+}
+
+.sv2-tenet:hover .sv2-tenet-icon {
+  transform: translateY(-3px) scale(1.05);
+}
+
+.sv2-tenet-n {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  color: var(--text-25);
+  font-variant-numeric: tabular-nums;
+}
+
+.v2 .sv2-tenet-claim {
+  position: relative;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -.015em;
+  line-height: 1.32;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.v2 .sv2-tenet-body {
+  position: relative;
+  font-size: 13.5px;
+  line-height: 1.72;
+  color: var(--text-45);
+  margin-bottom: 22px;
+}
+
+.sv2-tenet-tag {
+  position: relative;
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(180, 200, 230, .9);
+  padding: 6px 12px;
+  border: .8px solid rgba(180, 200, 230, .3);
+  border-radius: 100px;
+}
+
+/* ───────────── STATS band, take two — icon-card dashboard instead of the
+   plain left-border list HomepageV2.css defines for .v2-stats (shared with
+   the homepage, so this page gets its own wrapper classes instead). ───────────── */
+.sv2-stats-band {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.sv2-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 720px) {
+  .sv2-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+.sv2-stat-card {
+  padding: 26px 22px;
+  border: .8px solid var(--rule);
+  border-radius: 14px;
+  background: rgba(242, 240, 236, .02);
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 1s cubic-bezier(.16, 1, .3, 1),
+    transform 1s cubic-bezier(.16, 1, .3, 1),
+    border-color .4s ease, background .4s ease;
+}
+
+.sv2-stat-card.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.sv2-stat-card:hover {
+  border-color: rgba(180, 200, 230, .4);
+  background: rgba(242, 240, 236, .035);
+}
+
+.sv2-stat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-bottom: 18px;
+  border-radius: 10px;
+  background: linear-gradient(155deg, rgba(180, 200, 230, .16), rgba(180, 200, 230, .03));
+  border: .8px solid rgba(180, 200, 230, .24);
+  color: rgba(180, 200, 230, .9);
+}
+
+/* the shared .v2-stat-num size assumes the old full-width left-border list;
+   scaled down here to fit a compact card */
+.sv2-stat-card .v2-stat-num {
+  font-size: clamp(28px, 3.4vw, 42px);
+}
+
+@media (max-width: 860px) {
+  .sv2-engagements {
+    padding-top: 72px;
+    padding-bottom: 88px;
   }
 
-  .sv2-service-cta {
-    grid-column: 2;
-    padding-top: 18px;
+  .sv2-principles {
+    padding-top: 72px;
+  }
+
+  .sv2-principle-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .sv2-principle-mark {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .v2 .sv2-principle-claim {
+    max-width: none;
+  }
+
+  .sv2-principle-num {
+    position: absolute;
+    top: 28px;
+    right: var(--pad-x);
+    font-size: 48px;
+  }
+
+  .sv2-hero {
+    padding-top: 132px;
   }
 }
