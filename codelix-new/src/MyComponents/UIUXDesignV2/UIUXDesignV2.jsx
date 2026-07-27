@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import gsap from "gsap";
 import {
   PenTool, Layers, Search, Eye, Smartphone, Palette,
   CalendarCheck, Lock, Check,
@@ -61,10 +62,10 @@ const USE_CASES = [
 
 /* quality bars we hold ourselves to */
 const BENCHMARKS = [
-  { value: 90, suffix: "+", label: "Usability score", note: "System Usability Scale (SUS)" },
-  { value: 95, suffix: "%", label: "Task completion rate", note: "Measured in user testing" },
-  { value: 100, suffix: "%", label: "Design consistency", note: "Token-driven, no one-offs" },
-  { value: 0, suffix: "", label: "Unresolved usability issues", note: "Nothing ships untested" },
+  { value: 90, suffix: "+", label: "Usability score", note: "System Usability Scale (SUS)", ring: 90 },
+  { value: 95, suffix: "%", label: "Task completion rate", note: "Measured in user testing", ring: 95 },
+  { value: 100, suffix: "%", label: "Design consistency", note: "Token-driven, no one-offs", ring: 100 },
+  { value: 0, suffix: "", label: "Unresolved usability issues", note: "Nothing ships untested", ring: 100 },
 ];
 
 /* the actual artifacts handed over */
@@ -174,11 +175,119 @@ const FAQS = [
   { q: "Do you do user research?", a: "Yes — it's one of our strongest capabilities. Interviews, surveys, analytics audits, competitive analysis, and usability testing. Research is what separates design from decoration." },
 ];
 
+const SENTENCE = [
+  "YOU GET THE FILES.",
+  "YOU GET THE SYSTEM.",
+  "YOU GET THE RESEARCH.",
+  "NO LOCK-IN.",
+  "NO LICENSE GAMES.",
+];
+
+/* scroll-scrubbed word reveal — same mechanism as ServiceDetailV2's copy,
+   kept as its own local copy so each page can tune timing independently */
+const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
+
+function ScrollSentence({ words, tone }) {
+  const ref = useRef(null);
+  const wordRefs = useRef([]);
+  const bgRefs = useRef([]);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let raf = 0, running = false, target = 0, current = 0, primed = false;
+
+    const readTarget = () => {
+      const r = el.getBoundingClientRect();
+      const scrollable = r.height - window.innerHeight;
+      if (scrollable <= 0) return 0;
+      const raw = (-r.top) / scrollable;
+      const norm = Math.min(Math.max((raw - 0.06) / 0.86, 0), 0.9999);
+      return norm * words.length;
+    };
+
+    const IN_END = 0.2;
+    const OUT_START = 0.8;
+
+    const paint = (t) => {
+      words.forEach((_, i) => {
+        const d = Math.min(Math.max(t - i, 0), 1);
+        const wordEl = wordRefs.current[i];
+        const bgEl = bgRefs.current[i];
+
+        let scale, opacity, blur;
+        if (d < IN_END) {
+          const p = scrollSentenceEase(d / IN_END);
+          scale = 0.78 + p * 0.22; opacity = p; blur = 5 * (1 - p);
+        } else if (d <= OUT_START) {
+          scale = 1; opacity = 1; blur = 0;
+        } else {
+          const p = scrollSentenceEase((d - OUT_START) / (1 - OUT_START));
+          scale = 1 + p * 0.22; opacity = 1 - p; blur = 6 * p;
+        }
+
+        if (wordEl) {
+          wordEl.style.opacity = opacity;
+          wordEl.style.transform = `translate3d(-50%,-50%,0) scale(${scale})`;
+          wordEl.style.filter = blur > 0.01 ? `blur(${blur}px)` : "none";
+        }
+        if (bgEl) bgEl.style.opacity = scrollSentenceEase(Math.min(d / IN_END, 1));
+      });
+    };
+
+    const tick = () => {
+      const diff = target - current;
+      if (Math.abs(diff) < 0.0002) {
+        current = target; paint(current); running = false; raf = 0; return;
+      }
+      current += diff * 0.12;
+      paint(current);
+      raf = requestAnimationFrame(tick);
+    };
+    const kick = () => {
+      target = readTarget();
+      if (!primed) { current = target; primed = true; }
+      if (!running) { running = true; raf = requestAnimationFrame(tick); }
+    };
+
+    window.addEventListener("scroll", kick, { passive: true });
+    window.addEventListener("resize", kick);
+    kick();
+    return () => {
+      window.removeEventListener("scroll", kick);
+      window.removeEventListener("resize", kick);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [words]);
+
+  return (
+    <section className={`v2-sentence v2-sentence--${tone} sd2-sentence`} ref={ref}>
+      <div className="v2-sentence-sticky">
+        <div className="v2-sentence-bgs" aria-hidden="true">
+          {words.map((w, i) => (
+            <span className="v2-sentence-bg" style={{ zIndex: i }}
+              ref={(elm) => (bgRefs.current[i] = elm)} key={"bg" + i} />
+          ))}
+        </div>
+        <div className="v2-sentence-words">
+          {words.map((w, i) => (
+            <span className="v2-sentence-word"
+              ref={(elm) => (wordRefs.current[i] = elm)} key={w + i}>{w}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function UIUXDesignV2() {
   const [navScrolled, setNavScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(-1);
   const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
+  const [incActive, setIncActive] = useState(0);
   const [estType, setEstType] = useState("mobile");
   const [estScale, setEstScale] = useState("s");
   const [estAddons, setEstAddons] = useState(() => new Set());
@@ -238,13 +347,19 @@ export default function UIUXDesignV2() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* hero intro */
+  /* hero intro — GSAP wipe-up for the title, overlapping fade for the rest,
+     matching ServiceDetailV2's hero entrance */
   useEffect(() => {
-    const targets = rootRef.current.querySelectorAll(".sv2-hero-reveal");
-    targets.forEach((t, i) => {
-      t.style.transitionDelay = `${0.15 + i * 0.09}s`;
-      requestAnimationFrame(() => t.classList.add("is-in"));
-    });
+    const q = (s) => rootRef.current.querySelectorAll(s);
+    const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
+    tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .7 })
+      .fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")
+      .fromTo(q(".sd2-hero-title .line > span"),
+        { yPercent: 118 }, { yPercent: 0, duration: 1.15, stagger: .1 }, "-=.45")
+      .fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.65")
+      .fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7")
+      .fromTo(q(".sd2-facts.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.75");
+    return () => tl.kill();
   }, []);
 
   /* reveal-on-enter — IntersectionObserver */
@@ -266,10 +381,10 @@ export default function UIUXDesignV2() {
       { threshold: 0.01, rootMargin: "0px 0px -10% 0px" }
     );
     const sel = [
-      ".sd2-inc", ".sd2-est", ".sd2-work-card", ".v2-method-row",
+      ".sd2-inc-showcase", ".sd2-est", ".sd2-work-card", ".v2-method-row",
       ".sd2-problem", ".sd2-case", ".sd2-bench", ".sd2-hand", ".sd2-quote",
       ".sd2-cmp-row", ".sd2-step", ".sd2-other",
-      ".sv2-principle-row", ".v2-faq-item", ".v2-cta", ".v2-strip",
+      ".sd2-tenet", ".v2-faq-item", ".v2-cta", ".v2-strip",
       ".v2-heading", ".v2-label", ".v2-lede",
     ].join(", ");
     rootRef.current.querySelectorAll(sel).forEach((el) => io.observe(el));
@@ -460,9 +575,9 @@ export default function UIUXDesignV2() {
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Service 03 · UI/UX Design</span>
               </div>
-              <h1 className="sd2-hero-title sv2-hero-reveal">
-                Interfaces that are<br />
-                <span className="v2-hero-accent">intuitive, beautiful, and backed by evidence.</span>
+              <h1 className="sd2-hero-title">
+                <span className="line"><span>Interfaces that are</span></span>
+                <span className="line"><span className="v2-hero-accent">intuitive, beautiful, and backed by evidence.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">
                 We design user interfaces and product experiences grounded in real
@@ -519,6 +634,18 @@ export default function UIUXDesignV2() {
         </div>
       </section>
 
+      {/* ══════════ 2b · CLIENT STRIP ══════════ */}
+      <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
+        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 30+ companies</p>
+        <div className="v2-strip">
+          <div className="v2-strip-track" ref={stripRef}>
+            {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
+              <img key={i} src={logo} alt="" loading="lazy" />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ══════════ 3 · WHAT'S INCLUDED ══════════ */}
       <section className="v2-section" id="included">
         <p className="v2-label">What's Included</p>
@@ -527,14 +654,52 @@ export default function UIUXDesignV2() {
           Not an upsell list — this is the baseline on every UI/UX project we
           take, whatever the size.
         </p>
-        <div className="sd2-inc-grid">
-          {INCLUDED.map((it) => (
-            <article className="sd2-inc" key={it.title}>
-              <span className="sd2-inc-icon"><it.icon size={19} strokeWidth={1.5} /></span>
-              <h3 className="sd2-inc-title">{it.title}</h3>
-              <p className="sd2-inc-body">{it.body}</p>
-            </article>
-          ))}
+        <div className="sd2-inc-showcase">
+          <div className="sd2-inc-nav" role="tablist" aria-label="What's included">
+            <span
+              className="sd2-inc-nav-indicator"
+              style={{ transform: `translateY(${incActive * 100}%)` }}
+              aria-hidden="true"
+            />
+            {INCLUDED.map((it, i) => (
+              <div className="sd2-inc-navitem" key={it.title}>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={incActive === i}
+                  className={`sd2-inc-tab ${incActive === i ? "is-active" : ""}`}
+                  onMouseEnter={() => setIncActive(i)}
+                  onFocus={() => setIncActive(i)}
+                  onClick={() => setIncActive(i)}
+                >
+                  <span className="sd2-inc-tab-n">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="sd2-inc-tab-title">{it.title}</span>
+                  <span className="sd2-inc-tab-icon"><it.icon size={16} strokeWidth={1.6} /></span>
+                </button>
+                <div className={`sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`}>
+                  <div className="sd2-inc-mobile-body-inner">
+                    <p className="sd2-inc-mobile-body-text">{it.body}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="sd2-inc-stage">
+            {INCLUDED.map((it, i) => (
+              <div
+                className={`sd2-inc-panel ${incActive === i ? "is-active" : ""}`}
+                aria-hidden={incActive !== i}
+                key={it.title}
+              >
+                <span className="sd2-inc-panel-glow" aria-hidden="true" />
+                <span className="sd2-inc-panel-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                <span className="sd2-inc-panel-icon"><it.icon size={40} strokeWidth={1.2} /></span>
+                <h3 className="sd2-inc-panel-title">{it.title}</h3>
+                <p className="sd2-inc-panel-body">{it.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -686,17 +851,46 @@ export default function UIUXDesignV2() {
           Every design is measured against these before it's allowed to ship —
           not aspirations, gates.
         </p>
-        <div className="sd2-bench-grid">
-          {BENCHMARKS.map((b) => (
-            <div className="sd2-bench" key={b.label}>
-              <div className="sd2-bench-num">
-                <span className="sd2-bench-value" data-target={b.value}>0</span>
-                <span className="sd2-bench-suffix">{b.suffix}</span>
-              </div>
-              <div className="sd2-bench-label">{b.label}</div>
-              <div className="sd2-bench-note">{b.note}</div>
-            </div>
-          ))}
+        <div className="sd2-bench-panel">
+          <div className="sd2-bench-bar">
+            <span className="sd2-bench-bar-dot" aria-hidden="true" />
+            <span className="sd2-bench-bar-title">Live quality gate</span>
+            <span className="sd2-bench-bar-meta">Checked on every project</span>
+          </div>
+          <div className="sd2-bench-grid">
+            {BENCHMARKS.map((b, i) => {
+              const R = 52;
+              const C = 2 * Math.PI * R;
+              const offset = C - (C * b.ring) / 100;
+              return (
+                <div className="sd2-bench" key={b.label}>
+                  <div className="sd2-bench-ring">
+                    <svg viewBox="0 0 120 120" className="sd2-bench-ring-svg" aria-hidden="true">
+                      <defs>
+                        <linearGradient id={`sd2-bench-grad-ux-${i}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="rgba(180,200,230,.55)" />
+                          <stop offset="100%" stopColor="rgba(180,200,230,1)" />
+                        </linearGradient>
+                      </defs>
+                      <circle className="sd2-bench-ring-track" cx="60" cy="60" r={R} />
+                      <circle
+                        className="sd2-bench-ring-fill"
+                        cx="60" cy="60" r={R}
+                        stroke={`url(#sd2-bench-grad-ux-${i})`}
+                        style={{ "--c": C, "--ring-offset": offset }}
+                      />
+                    </svg>
+                    <div className="sd2-bench-num">
+                      <span className="sd2-bench-value" data-target={b.value}>0</span>
+                      <span className="sd2-bench-suffix">{b.suffix}</span>
+                    </div>
+                  </div>
+                  <div className="sd2-bench-label">{b.label}</div>
+                  <div className="sd2-bench-note">{b.note}</div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -718,6 +912,57 @@ export default function UIUXDesignV2() {
               <img src={t.src} alt={t.name} loading="lazy" />
               <span>{t.name}</span>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 10 · RELATED WORK ══════════ */}
+      <section className="v2-section v2-section--void" id="work">
+        <p className="v2-label">Related Work</p>
+        <h2 className="v2-heading">Designs we've shipped.</h2>
+        <div className="sd2-work-grid">
+          {RELATED.map((w) => (
+            <a className="sd2-work-card" href={w.link} key={w.link}>
+              <span className="sd2-work-media">
+                <img src={w.thumb} alt="" loading="lazy" />
+              </span>
+              <span className="sd2-work-tag">{w.tag}</span>
+              <span className="sd2-work-title">{w.title}</span>
+              <span className="sd2-work-go">Read case study →</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 11 · TESTIMONIAL ══════════ */}
+      <section className="v2-section">
+        <figure className="sd2-quote">
+          <span className="sd2-quote-mark" aria-hidden="true">&ldquo;</span>
+          <blockquote className="sd2-quote-text">{QUOTE.text}</blockquote>
+          <figcaption className="sd2-quote-by">
+            <span className="sd2-quote-name">{QUOTE.name}</span>
+            <span className="sd2-quote-role">{QUOTE.role}</span>
+          </figcaption>
+        </figure>
+      </section>
+
+
+      {/* ══════════ 13 · PRINCIPLES ══════════ */}
+      <section className="v2-section" id="principles">
+        <p className="v2-label">Our Principles</p>
+        <h2 className="v2-heading">Three commitments that govern every project.</h2>
+        <div className="sd2-tenet-grid">
+          {PRINCIPLES.map((p, i) => (
+            <article className="sd2-tenet" key={p.key}>
+              <span className="sd2-tenet-shine" aria-hidden="true" />
+              <div className="sd2-tenet-top">
+                <span className="sd2-tenet-icon"><p.icon size={20} strokeWidth={1.5} /></span>
+                <span className="sd2-tenet-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+              </div>
+              <h3 className="sd2-tenet-claim">{p.claim}</h3>
+              <p className="sd2-tenet-body">{p.body}</p>
+              <span className="sd2-tenet-tag">{p.key}</span>
+            </article>
           ))}
         </div>
       </section>
@@ -771,75 +1016,6 @@ export default function UIUXDesignV2() {
         </div>
       </section>
 
-      {/* ══════════ 10 · RELATED WORK ══════════ */}
-      <section className="v2-section v2-section--void" id="work">
-        <p className="v2-label">Related Work</p>
-        <h2 className="v2-heading">Designs we've shipped.</h2>
-        <div className="sd2-work-grid">
-          {RELATED.map((w) => (
-            <a className="sd2-work-card" href={w.link} key={w.link}>
-              <span className="sd2-work-media">
-                <img src={w.thumb} alt="" loading="lazy" />
-              </span>
-              <span className="sd2-work-tag">{w.tag}</span>
-              <span className="sd2-work-title">{w.title}</span>
-              <span className="sd2-work-go">Read case study →</span>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* ══════════ 11 · TESTIMONIAL ══════════ */}
-      <section className="v2-section">
-        <figure className="sd2-quote">
-          <span className="sd2-quote-mark" aria-hidden="true">&ldquo;</span>
-          <blockquote className="sd2-quote-text">{QUOTE.text}</blockquote>
-          <figcaption className="sd2-quote-by">
-            <span className="sd2-quote-name">{QUOTE.name}</span>
-            <span className="sd2-quote-role">{QUOTE.role}</span>
-          </figcaption>
-        </figure>
-      </section>
-
-      {/* ══════════ 12 · CLIENT STRIP ══════════ */}
-      <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
-        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 30+ companies</p>
-        <div className="v2-strip">
-          <div className="v2-strip-track" ref={stripRef}>
-            {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
-              <img key={i} src={logo} alt="" loading="lazy" />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════ 13 · PRINCIPLES ══════════ */}
-      <section className="v2-section sv2-principles" id="principles">
-        <div className="sv2-principles-intro">
-          <p className="v2-label">Our Principles</p>
-          <h2 className="v2-heading">Three commitments that govern every project.</h2>
-        </div>
-        <div className="sv2-principles-rows">
-          {PRINCIPLES.map((p, i) => (
-            <article className="sv2-principle-row" key={p.key}>
-              <div className="sv2-principle-mark">
-                <span className="sv2-principle-icon">
-                  <p.icon size={18} strokeWidth={1.6} />
-                </span>
-                <span className="sv2-principle-key">{p.key}</span>
-              </div>
-              <div className="sv2-principle-content">
-                <h3 className="sv2-principle-claim">{p.claim}</h3>
-                <p className="sv2-principle-body">{p.body}</p>
-              </div>
-              <span className="sv2-principle-num" aria-hidden="true">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-            </article>
-          ))}
-        </div>
-      </section>
-
       {/* ══════════ 14 · WHY US vs ALTERNATIVES ══════════ */}
       <section className="v2-section v2-section--void" id="compare">
         <div className="sd2-case-head">
@@ -888,6 +1064,9 @@ export default function UIUXDesignV2() {
           ))}
         </div>
       </section>
+
+      {/* ══════════ 14b · SCROLL SENTENCE ══════════ */}
+      <ScrollSentence words={SENTENCE} tone="dark" />
 
       {/* ══════════ 15 · FAQ ══════════ */}
       <section className="v2-section v2-section--void" id="faq">
