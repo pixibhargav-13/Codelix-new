@@ -243,6 +243,24 @@ export default function ServicesV2() {
   const rootRef = useRef(null);
   const stripRef = useRef(null);
 
+  /* on mobile, tapping a service scrolls its row to sit just below the
+     sticky ".v2-method-head" instead of leaving the expanded answer to
+     open off-screen above or below the visible area. Deferred by 480ms —
+     the previously-open row's accordion body takes 450ms to collapse, and
+     scrolling before that settles meant the collapse shifted the whole
+     list upward afterward, dragging the target row back behind the
+     sticky header. */
+  const scrollServiceIntoView = (el) => {
+    if (window.innerWidth > 900 || !el) return;
+    window.setTimeout(() => {
+      const head = rootRef.current.querySelector("#services .v2-method-head");
+      const headH = head ? head.getBoundingClientRect().height : 0;
+      const rect = el.getBoundingClientRect();
+      const target = window.scrollY + rect.top - headH - 8;
+      window.scrollTo({ top: target, behavior: "smooth" });
+    }, 480);
+  };
+
   useEffect(() => {
     const onScroll = () => setNavScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
@@ -540,7 +558,10 @@ export default function ServicesV2() {
                   className={`sv2-svc-tab ${svcActive === i ? "is-active" : ""}`}
                   onMouseEnter={() => setSvcActive(i)}
                   onFocus={() => setSvcActive(i)}
-                  onClick={() => setSvcActive(i)}
+                  onClick={(e) => {
+                    setSvcActive(i);
+                    scrollServiceIntoView(e.currentTarget);
+                  }}
                 >
                   <span className="sv2-svc-tab-n">{s.n}</span>
                   <span className="sv2-svc-tab-title">{s.title}</span>

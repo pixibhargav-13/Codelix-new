@@ -385,6 +385,15 @@
   max-width: 1000px;
 }
 
+@media (max-width: 700px) {
+  /* vertically centers the hero content within the viewport-height hero
+     on mobile — .v2-hero itself is the flex column doing the centering,
+     it was anchored to the bottom (flex-end) before */
+  .v2-hero {
+    justify-content: center;
+  }
+}
+
 /* top row: live-status pill + eyebrow, revealed together by the intro tl */
 .v2-hero-top {
   display: flex;
@@ -657,10 +666,12 @@
 
 @media (max-width: 700px) {
   .v2-hero-words {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
     margin-top: 7vh;
+  }
+
+  .v2-hero-words span {
+    font-size: 10.5px;
   }
 }
 
@@ -829,7 +840,7 @@
   max-width: 14ch;
   font-size: 1em;
   font-weight: 900;
-  line-height: .95;
+  line-height: 1.15;
   letter-spacing: -.04em;
   text-wrap: balance;
   transform-origin: left center;
@@ -1587,7 +1598,7 @@
 @media (max-width: 800px) {
   .v2-wr-pin {
     min-height: auto;
-    padding: 60px 0;
+    padding: 60px 5vw;
   }
 
   .v2-wr {

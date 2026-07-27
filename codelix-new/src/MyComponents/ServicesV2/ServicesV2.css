@@ -5,6 +5,29 @@
    inherited from HomepageV2.css, which this page imports.
    ============================================================ */
 
+/* ───────────── FAQ polish (this page only — #faq scopes it since
+   .v2-faq-* is shared with the homepage) ─────────────
+   The shared component sets .v2-faq-a's height via inline px in JS but the
+   shared stylesheet never gave it a transition, so it snapped open/closed
+   instantly. Adding the transition plus a soft answer fade-in and an
+   open-state background wash for clearer "this one's open" feedback. */
+#faq .v2-faq-a {
+  transition: height .5s var(--ease-expo);
+}
+
+#faq .v2-faq-a p {
+  opacity: 0;
+  transition: opacity .4s ease .05s;
+}
+
+#faq .v2-faq-item.open .v2-faq-a p {
+  opacity: 1;
+}
+
+#faq .v2-faq-item.open {
+  background: rgba(180, 200, 230, .04);
+}
+
 /* ───────────── HERO ───────────── */
 .sv2-hero {
   position: relative;
@@ -396,7 +419,7 @@
 
   .v2 .sv2-caps.sv2-svc-mobile-caps {
     padding: 0 28px;
-    margin: 14px 0 4px;
+    margin: 14px 0 15px;
   }
 
   .sv2-svc-mobile-body-inner .sv2-service-link {
@@ -429,25 +452,23 @@
   border-color: var(--rule-strong);
 }
 
-/* a real pill button now — it used to just recolor on ".sv2-service:hover",
-   a wrapper class that no longer exists since the tab/stage rebuild, which
-   left it with no hover feedback of its own at all */
 .sv2-service-link {
   display: inline-flex;
   align-items: center;
   align-self: flex-start;
+  width: max-content;
   gap: 9px;
-  padding: 6px 15px;
+  padding: 8px 18px;
   margin-top: 15px;
-  border: .8px solid rgba(180, 200, 230, .3);
+  border: 1px solid rgba(180, 200, 230, .15);
   border-radius: 100px;
-  background: rgba(180, 200, 230, .06);
+  background: rgba(180, 200, 230, .04);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: .14em;
-  text-transform: uppercase;
   color: #fff;
   white-space: nowrap;
+  text-transform: uppercase;
   transition: background .4s ease, border-color .4s ease, transform .35s var(--ease-expo);
 }
 
@@ -457,13 +478,13 @@
 }
 
 .sv2-service-link:hover {
-  background: rgba(180, 200, 230, .16);
-  border-color: rgba(180, 200, 230, .6);
+  background: rgba(180, 200, 230, .1);
+  border-color: rgba(180, 200, 230, .4);
   transform: translateY(-2px);
 }
 
 .sv2-service-link:hover i {
-  transform: translateX(5px);
+  transform: translateX(4px);
 }
 
 /* ───────────── ENGAGEMENT MODELS ───────────── */
