@@ -1,0 +1,514 @@
+/* ============================================================
+   Team V2 — page-specific styles only.
+   Design system inherited from HomepageV2.css; shared bits (hero, tenet
+   cards, quote, client strip) come from ServicesV2.css / ServiceDetailV2.css.
+   ============================================================ */
+
+/* ───────────── FAQ polish (unused on this page currently, kept for
+   consistency if a FAQ section is added later) ───────────── */
+#faq .v2-faq-a {
+  transition: height .5s var(--ease-expo);
+}
+
+#faq .v2-faq-a p {
+  opacity: 0;
+  transition: opacity .4s ease .05s;
+}
+
+#faq .v2-faq-item.open .v2-faq-a p {
+  opacity: 1;
+}
+
+#faq .v2-faq-item.open {
+  background: rgba(180, 200, 230, .04);
+}
+
+/* ───────────── GALLERY SECTION — testimonial color overrides ───────────── */
+/* The gallery background is near-white (#faf9f7) so we override the default
+   near-white text vars with dark ink colors so text is clearly readable */
+.v2-section--gallery .sd2-quote-mark {
+  color: rgba(10, 10, 30, .12);
+}
+
+.v2-section--gallery .v2 .sd2-quote-text,
+.v2-section--gallery .sd2-quote-text {
+  color: #0f0f0d;
+}
+
+.v2-section--gallery .sd2-quote-name {
+  color: #0f0f0d;
+}
+
+.v2-section--gallery .sd2-quote-role {
+  color: rgba(15, 15, 13, .5);
+}
+
+
+/* ───────────── LEADERSHIP — alternating split-panel layout ───────────── */
+.team-lead-grid {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Individual founder row ── */
+.team-lead-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 560px;
+  overflow: hidden;
+}
+
+.team-lead-row.is-in {
+  animation: rowFadeUp 1s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+@keyframes rowFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Alternating layout — even index rows flip image to right */
+.team-lead-row--reverse .team-lead-img-panel {
+  order: 2;
+}
+
+.team-lead-row--reverse .team-lead-info-panel {
+  order: 1;
+}
+
+/* Thin rule between rows (except first) */
+.team-lead-row+.team-lead-row::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(180, 200, 230, .18) 20%,
+      rgba(180, 200, 230, .18) 80%,
+      transparent);
+  pointer-events: none;
+}
+
+/* ── Image panel ── */
+.team-lead-img-panel {
+  position: relative;
+  overflow: hidden;
+  background: rgba(10, 14, 26, 1);
+}
+
+/* Ambient glow behind avatar — subtle radial pulse */
+.team-lead-img-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 60%,
+      rgba(100, 150, 255, .12) 0%,
+      transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+  animation: leadGlowPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes leadGlowPulse {
+  from {
+    opacity: .5;
+    transform: scale(.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* Grid mesh overlay */
+.team-lead-img-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(180, 200, 230, .03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180, 200, 230, .03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.team-lead-avatar-wrap {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 560px;
+}
+
+/* Large monogram circle */
+.team-lead-avatar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: rgba(180, 200, 230, .06);
+  border: 1px solid rgba(180, 200, 230, .15);
+  color: rgba(180, 200, 230, .9);
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  transition: transform .6s cubic-bezier(.16, 1, .3, 1);
+  cursor: default;
+}
+
+/* Rotating dashed ring around the monogram */
+.team-lead-avatar::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(180, 200, 230, .18);
+  animation: ringRotate 20s linear infinite;
+}
+
+/* Scanning shimmer inside the circle */
+.team-lead-avatar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg,
+      transparent 30%,
+      rgba(255, 255, 255, .06) 50%,
+      transparent 70%);
+  background-size: 200% 200%;
+  animation: avatarShimmer 3s ease-in-out infinite;
+}
+
+@keyframes ringRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes avatarShimmer {
+  0% {
+    background-position: 200% 200%;
+  }
+
+  50% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 200% 200%;
+  }
+}
+
+.team-lead-row:hover .team-lead-avatar {
+  transform: scale(1.04);
+}
+
+/* Real photo — once headshot is dropped into /public/images/team/ */
+.team-lead-photo {
+  position: absolute;
+  inset: -20px;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform .6s cubic-bezier(.16, 1, .3, 1);
+  z-index: 3;
+}
+
+/* Corner index number */
+.team-lead-index {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: rgba(180, 200, 230, .3);
+  z-index: 5;
+}
+
+/* ── Info panel ── */
+.team-lead-info-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px 72px;
+  background: rgba(8, 10, 18, .96);
+  overflow: hidden;
+}
+
+/* Subtle top-right accent glow on info panel */
+.team-lead-info-panel::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(100, 150, 255, .07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Animated border — top edge */
+.team-lead-info-panel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(180, 200, 230, .4) 40%,
+      rgba(120, 160, 255, .6) 60%,
+      rgba(180, 200, 230, .4) 80%,
+      transparent);
+  background-size: 200% 100%;
+  animation: borderSlide 4s linear infinite;
+  opacity: 0;
+  transition: opacity .6s ease;
+}
+
+.team-lead-row.is-in .team-lead-info-panel::after {
+  opacity: 1;
+}
+
+@keyframes borderSlide {
+  0% {
+    background-position: -100% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Reverse row — border on bottom edge */
+.team-lead-row--reverse .team-lead-info-panel::after {
+  top: auto;
+  bottom: 0;
+}
+
+/* Number label */
+.team-lead-num {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(180, 200, 230, .4);
+  margin-bottom: 24px !important;
+}
+
+.team-lead-num em {
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: rgba(180, 200, 230, .25);
+  font-style: normal;
+}
+
+/* Name */
+.team-lead-name {
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700;
+  letter-spacing: -.025em;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 14px !important;
+}
+
+.team-lead-row.is-in .team-lead-name {
+  animation: nameWipeUp .9s cubic-bezier(.16, 1, .3, 1) .2s both;
+}
+
+@keyframes nameWipeUp {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0% 0);
+  }
+}
+
+/* Title badge */
+.team-lead-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(180, 200, 230, .7);
+  margin-bottom: 28px !important;
+  padding: 6px 14px !important;
+  border: 1px solid rgba(180, 200, 230, .12);
+  border-radius: 100px;
+  width: fit-content;
+  background: rgba(180, 200, 230, .04);
+}
+
+.team-lead-row.is-in .team-lead-title {
+  animation: titleSlideIn .7s cubic-bezier(.16, 1, .3, 1) .45s both;
+}
+
+@keyframes titleSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Bio */
+.team-lead-bio {
+  font-size: 16px;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, .42);
+  margin-bottom: 36px !important;
+  max-width: 440px;
+}
+
+.team-lead-row.is-in .team-lead-bio {
+  animation: bioRiseUp .8s cubic-bezier(.16, 1, .3, 1) .55s both;
+}
+
+@keyframes bioRiseUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* LinkedIn CTA */
+.team-lead-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: rgba(180, 200, 230, .6);
+  padding: 10px 20px;
+  border: 1px solid rgba(180, 200, 230, .14);
+  border-radius: 100px;
+  width: fit-content;
+  background: transparent;
+  transition:
+    color .3s ease,
+    background .3s ease,
+    border-color .3s ease,
+    gap .3s cubic-bezier(.16, 1, .3, 1),
+    transform .3s cubic-bezier(.16, 1, .3, 1);
+}
+
+.team-lead-row.is-in .team-lead-linkedin {
+  animation: linkedinUp .6s cubic-bezier(.16, 1, .3, 1) .7s both;
+}
+
+@keyframes linkedinUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.team-lead-linkedin:hover {
+  color: #fff;
+  background: rgba(180, 200, 230, .06);
+  border-color: rgba(180, 200, 230, .28);
+  gap: 14px;
+  transform: translateY(-2px);
+}
+
+/* Decorative large letter watermark on info panel */
+.team-lead-watermark {
+  position: absolute;
+  bottom: -30px;
+  right: -10px;
+  font-size: 200px;
+  font-weight: 900;
+  letter-spacing: -.05em;
+  color: rgba(180, 200, 230, .025);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  transition: opacity .6s ease;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .team-lead-row {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .team-lead-row--reverse .team-lead-img-panel {
+    order: 1;
+  }
+
+  .team-lead-row--reverse .team-lead-info-panel {
+    order: 2;
+  }
+
+  .team-lead-avatar-wrap {
+    min-height: 320px;
+  }
+
+  .team-lead-avatar {
+    width: 160px;
+    height: 160px;
+    font-size: 48px;
+  }
+
+  .team-lead-info-panel {
+    padding: 48px 32px;
+  }
+
+  .team-lead-bio {
+    max-width: 100%;
+  }
+}

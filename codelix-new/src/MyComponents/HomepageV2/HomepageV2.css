@@ -159,7 +159,11 @@
   color: var(--text);
   transition: opacity .35s ease;
 }
-.v2-nav-logo:hover { opacity: .78; }
+
+.v2-nav-logo:hover {
+  opacity: .78;
+}
+
 .v2-nav-logo img {
   height: 34px;
   width: auto;
@@ -167,10 +171,19 @@
   /* the nav shrinks on scroll — keep the mark in proportion with it */
   transition: height .4s var(--ease-premium);
 }
-.v2-nav.scrolled .v2-nav-logo img { height: 29px; }
+
+.v2-nav.scrolled .v2-nav-logo img {
+  height: 29px;
+}
+
 @media (max-width: 560px) {
-  .v2-nav-logo img { height: 28px; }
-  .v2-nav.scrolled .v2-nav-logo img { height: 25px; }
+  .v2-nav-logo img {
+    height: 28px;
+  }
+
+  .v2-nav.scrolled .v2-nav-logo img {
+    height: 25px;
+  }
 }
 
 .v2-nav-links {
@@ -386,6 +399,7 @@
 }
 
 @media (max-width: 700px) {
+
   /* vertically centers the hero content within the viewport-height hero
      on mobile — .v2-hero itself is the flex column doing the centering,
      it was anchored to the bottom (flex-end) before */
@@ -494,11 +508,11 @@
 /* primary gets a bordered pill in the hero (stronger than the bare-text
    .v2-btn used elsewhere) so the main action has real presence; hover fills */
 .v2-btn--filled {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 28px;
-  border: .8px solid var(--rule-strong);
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 16px 28px !important;
+  border: .8px solid var(--rule-strong) !important;
   border-radius: 100px;
   box-shadow: 0 0 0 0 rgba(111, 157, 255, 0);
   transition:
@@ -506,7 +520,7 @@
     color .4s var(--ease-expo),
     border-color .4s var(--ease-expo),
     box-shadow .4s var(--ease-expo),
-    transform .35s var(--ease-expo);
+    transform .35s var(--ease-expo) !important;
 }
 
 .v2-btn-arrow {
@@ -1511,7 +1525,7 @@
   font-weight: 500;
   line-height: 1.05;
   letter-spacing: -.01em;
-  margin-bottom: 24px;
+  margin-bottom: 24px !important;
 }
 
 .v2-lede {
@@ -2677,8 +2691,13 @@
 }
 
 @keyframes v2-marquee-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .v2-footer-marquee-track span {

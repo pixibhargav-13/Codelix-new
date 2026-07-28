@@ -1,0 +1,255 @@
+/* ============================================================
+   FAQ V2 — page-specific styles only.
+   Design system inherited from HomepageV2.css; shared bits (hero, FAQ
+   accordion base, CTA) come from ServicesV2.css / ServiceDetailV2.css.
+   ============================================================ */
+
+/* ───────────── TOOLBAR — search + category filter (the extraordinary
+   section's controls) ───────────── */
+.faqv2-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+.faqv2-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 280px;
+  max-width: 360px;
+  padding: 12px 16px;
+  border: .8px solid var(--rule);
+  border-radius: 100px;
+  color: var(--text-38);
+  transition: border-color .3s ease;
+}
+
+.faqv2-search:focus-within {
+  border-color: var(--rule-strong);
+  color: var(--text-55);
+}
+
+.faqv2-search input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 13.5px;
+}
+
+.faqv2-search input::placeholder {
+  color: var(--text-38);
+}
+
+.faqv2-cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.faqv2-cat {
+  padding: 9px 16px !important;
+  border-radius: 100px;
+  border: .8px solid var(--rule);
+  background: none;
+  color: var(--text-45);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color .3s ease, border-color .3s ease, background .3s ease;
+}
+
+.faqv2-cat:hover {
+  color: #fff;
+  border-color: var(--rule-strong);
+}
+
+.faqv2-cat.is-active {
+  color: var(--void);
+  background: var(--text);
+  border-color: var(--text);
+}
+
+.faqv2-count {
+  font-size: 12px;
+  color: var(--text-38);
+  margin-bottom: 24px;
+}
+
+.faqv2-count strong {
+  color: var(--text-55);
+  font-weight: 600;
+}
+
+.faqv2-empty {
+  padding: 40px 0;
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--text-38);
+}
+
+/* ───────────── LIST — reuses the .v2-faq-sign plus/minus glyph from the
+   shared stylesheet, styled as its own item so search-filtering doesn't
+   fight the shared homepage FAQ's index numbering ───────────── */
+.faqv2-list {
+  display: flex;
+  flex-direction: column;
+  border: .8px solid var(--rule);
+  border-radius: 18px;
+  padding: 4px 22px;
+  background: rgba(242, 240, 236, .015);
+}
+
+/* section header — replaces a per-row category pill with one shared
+   label above each contiguous run of same-category questions */
+.faqv2-group-head {
+  padding: 22px 4px 10px;
+}
+
+.faqv2-list>.faqv2-group-head:first-child {
+  padding-top: 18px;
+}
+
+.v2 .faqv2-group-head span {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(180, 200, 230, .85);
+}
+
+.faqv2-item {
+  border-bottom: .8px solid var(--rule);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .7s cubic-bezier(.16, 1, .3, 1), transform .7s cubic-bezier(.16, 1, .3, 1), background .3s ease;
+}
+
+.faqv2-item.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.faqv2-item:hover {
+  background: rgba(180, 200, 230, .025);
+}
+
+.faqv2-item.open {
+  background: rgba(180, 200, 230, .05);
+}
+
+.faqv2-item:last-child {
+  border-bottom: none;
+}
+
+.faqv2-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 4px !important;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.v2 .faqv2-q-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-70, rgba(255, 255, 255, .82));
+  transition: color .25s ease;
+}
+
+.faqv2-item.open .faqv2-q-text,
+.faqv2-q:hover .faqv2-q-text {
+  color: #fff;
+}
+
+.faqv2-toggle {
+  position: relative;
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: .8px solid var(--rule);
+  background: rgba(242, 240, 236, .02);
+  transition: border-color .3s ease, background .3s ease;
+}
+
+.faqv2-item.open .faqv2-toggle,
+.faqv2-q:hover .faqv2-toggle {
+  border-color: rgba(180, 200, 230, .5);
+  background: rgba(180, 200, 230, .1);
+}
+
+.faqv2-toggle span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--text-55);
+  transition: background .3s ease, transform .4s var(--ease-expo);
+}
+
+.faqv2-toggle span:first-child {
+  width: 11px;
+  height: 1.5px;
+  transform: translate(-50%, -50%);
+}
+
+.faqv2-toggle span:last-child {
+  width: 1.5px;
+  height: 11px;
+  transform: translate(-50%, -50%);
+}
+
+.faqv2-q:hover .faqv2-toggle span {
+  background: #fff;
+}
+
+.faqv2-item.open .faqv2-toggle span {
+  background: rgba(180, 200, 230, .95);
+}
+
+.faqv2-item.open .faqv2-toggle span:last-child {
+  transform: translate(-50%, -50%) rotate(90deg) scaleX(0);
+}
+
+.v2 .faqv2-a {
+  height: 0;
+  overflow: hidden;
+  transition: height .5s var(--ease-expo);
+}
+
+.v2 .faqv2-a p {
+  margin: 0;
+  padding: 0 42px 22px 4px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text-55);
+  max-width: 68ch;
+  opacity: 0;
+  transition: opacity .4s ease .05s;
+}
+
+.faqv2-item.open .faqv2-a p {
+  opacity: 1;
+}
+
+@media (max-width: 700px) {
+  .faqv2-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .faqv2-search {
+    max-width: none;
+  }
+}
