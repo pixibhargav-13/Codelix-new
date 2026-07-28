@@ -527,7 +527,8 @@ export default function UIUXDesignV2() {
             <a href="/services-v2">Services V2</a>
             <a href="/services-v2/web-development">Web Dev V2</a>
             <a href="/services-v2/ui-ux-design">UI/UX V2</a>
-            <a href="/contact">Contact</a>
+            <a href="/about-v2">About V2</a>
+            <a href="/contact-v2">Contact V2</a>
           </div>
           <button
             className={`v2-burger ${mobileOpen ? "open" : ""}`}
@@ -547,7 +548,8 @@ export default function UIUXDesignV2() {
             { label: "Services V2", href: "/services-v2" },
             { label: "Web Dev V2", href: "/services-v2/web-development" },
             { label: "UI/UX V2", href: "/services-v2/ui-ux-design" },
-            { label: "Contact", href: "/contact" },
+            { label: "About V2", href: "/about-v2" },
+            { label: "Contact V2", href: "/contact-v2" },
           ].map((l, i) => (
             <a key={l.label} href={l.href}
               style={{ transitionDelay: `${0.08 + i * 0.05}s` }}

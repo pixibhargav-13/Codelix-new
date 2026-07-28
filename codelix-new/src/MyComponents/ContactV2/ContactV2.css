@@ -1,0 +1,322 @@
+/* ============================================================
+   Contact V2 — page-specific styles only.
+   Design system inherited from HomepageV2.css; shared bits (hero, sticky
+   process timeline, FAQ, client strip) come from ServicesV2.css /
+   ServiceDetailV2.css. All three are imported by the component.
+   ============================================================ */
+
+/* ───────────── PROCESS (5 steps) — .sd2-next/.sd2-step is shared with the
+   per-service "What Happens Next" sections, but that CSS hardcodes a
+   3-column grid and a 2-hump line gradient built for exactly 3 nodes. With
+   5 steps it wrapped to 3+2 and the connecting line only covered row one.
+   Scoped to #process only, so the 3-step usage elsewhere is untouched. */
+@media (min-width: 861px) {
+  #process .sd2-next {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+  #process .sd2-next-line {
+    left: 10%;
+    right: 10%;
+    background: linear-gradient(90deg,
+      rgba(180, 200, 230, .1) 0%,
+      rgba(180, 200, 230, .5) 12.5%,
+      rgba(180, 200, 230, .1) 25%,
+      rgba(180, 200, 230, .5) 37.5%,
+      rgba(180, 200, 230, .1) 50%,
+      rgba(180, 200, 230, .5) 62.5%,
+      rgba(180, 200, 230, .1) 75%,
+      rgba(180, 200, 230, .5) 87.5%,
+      rgba(180, 200, 230, .1) 100%);
+  }
+}
+
+/* ───────────── FAQ polish (this page only — #faq scopes it since
+   .v2-faq-* is shared with the homepage) ───────────── */
+#faq .v2-faq-a {
+  transition: height .5s var(--ease-expo);
+}
+#faq .v2-faq-a p {
+  opacity: 0;
+  transition: opacity .4s ease .05s;
+}
+#faq .v2-faq-item.open .v2-faq-a p {
+  opacity: 1;
+}
+#faq .v2-faq-item.open {
+  background: rgba(180, 200, 230, .04);
+}
+
+/* ───────────── quick-contact links in the hero ─────────────
+   .sd2-hero-cta already sets gap: 32px at (0,1,0) — scoped as a compound
+   selector here (0,2,0) to win without !important */
+.sd2-hero-cta.contact-hero-links {
+  gap: 22px;
+}
+.contact-quick-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-55);
+  transition: color .35s ease, transform .4s var(--ease-expo);
+}
+.contact-quick-link svg { color: rgba(180, 200, 230, .85); flex: none; }
+.contact-quick-link:hover { color: #fff; transform: translateY(-2px); }
+
+/* ───────────── FORM + LIVE SUMMARY — the extraordinary section ───────────── */
+.contact-form-shell {
+  margin-top: 46px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 340px);
+  gap: clamp(24px, 3vw, 48px);
+  align-items: start;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.1s cubic-bezier(.16, 1, .3, 1), transform 1.1s cubic-bezier(.16, 1, .3, 1);
+}
+.contact-form-shell.is-in { opacity: 1; transform: none; }
+@media (max-width: 900px) {
+  .contact-form-shell { grid-template-columns: 1fr; }
+}
+
+.contact-form-panel {
+  border: .8px solid var(--rule);
+  border-radius: 18px;
+  padding: clamp(24px, 3vw, 40px);
+  background: rgba(242, 240, 236, .015);
+}
+
+.contact-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+@media (max-width: 560px) {
+  .contact-form-row { grid-template-columns: 1fr; }
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.v2 .contact-field label {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-45);
+}
+
+.contact-field input,
+.contact-field select,
+.contact-field textarea {
+  width: 100%;
+  padding: 13px 16px;
+  border: .8px solid var(--rule);
+  border-radius: 10px;
+  background: rgba(242, 240, 236, .03);
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  transition: border-color .35s ease, background .35s ease;
+}
+
+.contact-field input:focus,
+.contact-field select:focus,
+.contact-field textarea:focus {
+  outline: none;
+  border-color: rgba(180, 200, 230, .6);
+  background: rgba(242, 240, 236, .05);
+}
+
+.contact-field textarea { resize: vertical; min-height: 90px; }
+
+.contact-field select { cursor: pointer; }
+.contact-field select option { background: var(--void); color: var(--text); }
+
+.contact-error {
+  font-size: 13px;
+  color: rgba(232, 150, 150, .95);
+  margin: -6px 0 16px;
+}
+
+/* solid-filled from the start, not just on hover — it's the form's one
+   primary action, so it shouldn't need a hover to read as "the button" */
+.v2 .contact-submit {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px 8px 8px 26px;
+  border: none;
+  border-radius: 100px;
+  background: linear-gradient(120deg, #fff, rgba(242, 240, 236, .85));
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--void);
+  cursor: pointer;
+  box-shadow: 0 10px 30px -12px rgba(180, 200, 230, .35);
+  transition: transform .4s var(--ease-expo), box-shadow .4s var(--ease-expo);
+}
+
+.contact-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px -10px rgba(180, 200, 230, .5);
+}
+
+.contact-submit:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.contact-submit-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--void);
+  color: #fff;
+  font-style: normal;
+  font-size: 16px;
+  transition: transform .5s var(--ease-expo);
+}
+
+.contact-submit:hover .contact-submit-arrow {
+  transform: translateX(4px) rotate(-45deg);
+}
+
+.contact-success {
+  text-align: center;
+  padding: 48px 16px;
+}
+.contact-success-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(126, 224, 168, .12);
+  border: 1px solid rgba(126, 224, 168, .4);
+  color: #7ee0a8;
+  margin-bottom: 18px;
+}
+.v2 .contact-success h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.v2 .contact-success p {
+  font-size: 14px;
+  color: var(--text-45);
+  margin-bottom: 24px;
+  max-width: 40ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* live-updating summary card + completion ring */
+.contact-live {
+  position: sticky;
+  top: 100px;
+  border: .8px solid var(--rule);
+  border-radius: 18px;
+  padding: 28px 24px;
+  background: radial-gradient(120% 140% at 100% 0%, rgba(180, 200, 230, .08), transparent 60%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.contact-live-ring {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 14px;
+}
+.contact-live-ring-svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.contact-live-ring-track {
+  fill: none;
+  stroke: var(--rule);
+  stroke-width: 5;
+}
+.contact-live-ring-fill {
+  fill: none;
+  stroke: rgba(180, 200, 230, .9);
+  stroke-width: 5;
+  stroke-linecap: round;
+  transition: stroke-dashoffset .5s var(--ease-expo);
+}
+.contact-live-ring-num {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.contact-live-ring-num em {
+  font-style: normal;
+  font-size: .55em;
+  color: rgba(180, 200, 230, .85);
+  margin-left: 2px;
+}
+
+.contact-live-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-38);
+  margin-bottom: 24px;
+}
+
+.contact-live-card {
+  width: 100%;
+  border-top: .8px solid var(--rule);
+  padding-top: 18px;
+}
+
+.contact-live-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: .8px solid var(--rule);
+  text-align: left;
+}
+.contact-live-row:last-child { border-bottom: none; }
+.contact-live-row span {
+  font-size: 11.5px;
+  color: var(--text-38);
+  flex: none;
+}
+.contact-live-row strong {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 60%;
+}

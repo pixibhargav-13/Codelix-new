@@ -465,7 +465,8 @@ export default function ServicesV2() {
             <a href="/services-v2">Services V2</a>
             <a href="/services-v2/web-development">Web Dev V2</a>
             <a href="/services-v2/ui-ux-design">UI/UX V2</a>
-            <a href="/contact">Contact</a>
+            <a href="/about-v2">About V2</a>
+            <a href="/contact-v2">Contact V2</a>
           </div>
           <button
             className={`v2-burger ${mobileOpen ? "open" : ""}`}
@@ -485,7 +486,8 @@ export default function ServicesV2() {
             { label: "Services V2", href: "/services-v2" },
             { label: "Web Dev V2", href: "/services-v2/web-development" },
             { label: "UI/UX V2", href: "/services-v2/ui-ux-design" },
-            { label: "Contact", href: "/contact" },
+            { label: "About V2", href: "/about-v2" },
+            { label: "Contact V2", href: "/contact-v2" },
           ].map((l, i) => (
             <a key={l.label} href={l.href}
               style={{ transitionDelay: `${0.08 + i * 0.05}s` }}
@@ -603,9 +605,13 @@ export default function ServicesV2() {
                     <li key={c}>{c}</li>
                   ))}
                 </ul>
-                <a className="sv2-service-link" href={s.path}>
+                <a className="sv2-service-link sv2-service-link--panel" href={s.path}>
+                  <i>
+                    <svg className="sv2-svc-link-arrow" viewBox="0 0 34 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M0 7H32M32 7L26 1M32 7L26 13" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </i>
                   <span>Explore</span>
-                  <i>→</i>
                 </a>
               </div>
             ))}
