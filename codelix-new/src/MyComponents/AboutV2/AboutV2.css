@@ -1,0 +1,30 @@
+/* ============================================================
+   About V2 — page-specific styles only.
+   Design system inherited from HomepageV2.css; shared service-page bits
+   (hero, stats ring dashboard, tenet cards, scroll-sentence, method rows,
+   quote) come from ServicesV2.css / ServiceDetailV2.css. All three are
+   imported by the component.
+   ============================================================ */
+
+/* ───────────── FAQ polish (this page only — #faq scopes it since
+   .v2-faq-* is shared with the homepage) ─────────────
+   The shared component sets .v2-faq-a's height via inline px in JS but the
+   shared stylesheet never gave it a transition, so it snapped open/closed
+   instantly. Adding the transition plus a soft answer fade-in and an
+   open-state background wash for clearer "this one's open" feedback. */
+#faq .v2-faq-a {
+  transition: height .5s var(--ease-expo);
+}
+
+#faq .v2-faq-a p {
+  opacity: 0;
+  transition: opacity .4s ease .05s;
+}
+
+#faq .v2-faq-item.open .v2-faq-a p {
+  opacity: 1;
+}
+
+#faq .v2-faq-item.open {
+  background: rgba(180, 200, 230, .04);
+}

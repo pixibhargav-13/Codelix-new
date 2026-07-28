@@ -480,11 +480,96 @@
 .sv2-service-link:hover {
   background: rgba(180, 200, 230, .1);
   border-color: rgba(180, 200, 230, .4);
-  transform: translateY(-2px);
 }
 
 .sv2-service-link:hover i {
   transform: translateX(4px);
+}
+
+/* panel-only variant — a standalone circle+arrow at rest, plain outline,
+   no fill (matches the reference: bare circle + label). On hover the
+   circle's own outline grows into a solid pill wrapping the whole label —
+   same solid-fill convention as .v2-btn--filled (background: var(--text),
+   text flips to var(--void)) so it reads as a real, decisive button
+   instead of a translucent tint. */
+.sv2-service-link.sv2-service-link--panel {
+  position: relative;
+  gap: 20px;
+  padding: 4px 24px 4px 4px;
+  border: none;
+  background: none;
+  color: var(--text);
+  overflow: visible;
+}
+
+.sv2-service-link--panel::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: transparent;
+  transition: width .55s var(--ease-expo), background .55s var(--ease-expo);
+  z-index: 0;
+}
+
+.sv2-service-link--panel:hover::before {
+  width: 100%;
+  background: var(--text);
+}
+
+/* the base rule's :hover also paints its own background/border on the <a>
+   itself — cancelled here so the ::before pill is the only fill layer */
+.sv2-service-link.sv2-service-link--panel:hover {
+  background: none;
+  border-color: transparent;
+  color: var(--void);
+}
+
+.sv2-service-link--panel i {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  padding-left: 35px;
+  overflow: visible;
+  border-radius: 50%;
+  border: 1px solid var(--rule-strong);
+  color: inherit;
+  transition: border-color .5s var(--ease-expo), transform .5s var(--ease-expo), color .4s ease;
+}
+
+/* a custom long-arrow SVG (long shaft, small chevron tip) instead of a
+   stock icon — align-items:center on the circle centers it vertically,
+   the asymmetric padding-left shifts it off centre so it already pokes
+   out past the right edge at rest */
+.sv2-svc-link-arrow {
+  width: 32px;
+  height: auto;
+  flex: none;
+  overflow: visible;
+}
+
+.sv2-service-link--panel:hover i {
+  border-color: transparent;
+  transform: translateX(6px);
+}
+
+.sv2-service-link--panel span {
+  position: relative;
+  z-index: 1;
+  font-size: 12px;
+  transition: color .4s ease, transform .5s var(--ease-expo);
+}
+
+.sv2-service-link--panel:hover span {
+  transform: translateX(2px);
 }
 
 /* ───────────── ENGAGEMENT MODELS ───────────── */
