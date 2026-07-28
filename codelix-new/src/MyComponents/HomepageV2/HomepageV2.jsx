@@ -25,6 +25,7 @@ import { CLIENT_LOGOS } from "./clientLogos";
 import codelixLogo from "../Images/codelix-logo.png";
 
 import "./HomepageV2.css";
+import V2MobileDrawer from "./V2MobileDrawer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -783,33 +784,7 @@ export default function HomepageV2() {
           </button>
         </div>
       </nav>
-
-      {/* mobile drawer — nav links are display:none on small screens, so this
-          is the only way to navigate there; the burger above was previously
-          inert (no handler, no drawer) */}
-      <div className={`v2-drawer ${mobileOpen ? "open" : ""}`} aria-hidden={!mobileOpen}>
-        <div className="v2-drawer-links">
-          {[
-            { label: "Homepage V2", href: "/preview-v2" },
-            { label: "Services V2", href: "/services-v2" },
-            { label: "About V2", href: "/about-v2" },
-            { label: "Work V2", href: "/work-v2" },
-            { label: "Industries V2", href: "/industries-v2" },
-            { label: "Process V2", href: "/process-v2" },
-            { label: "Contact V2", href: "/contact-v2" },
-          ].map((l, i) => (
-            <a
-              key={l.label}
-              href={l.href}
-              style={{ transitionDelay: `${0.08 + i * 0.05}s` }}
-              onClick={() => setMobileOpen(false)}
-            >
-              <span className="v2-drawer-index">{String(i + 1).padStart(2, "0")}</span>
-              {l.label}
-            </a>
-          ))}
-        </div>
-      </div>
+      <V2MobileDrawer open={mobileOpen} onClose={() => setMobileOpen(false)} />
 
       {/* ══════════ 1 · HERO — Codelix's own composition ══════════ */}
       <header className="v2-hero">

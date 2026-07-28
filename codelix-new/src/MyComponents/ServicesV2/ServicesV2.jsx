@@ -7,7 +7,9 @@ import {
 /* the v2 design system + the shared tech-stack data live with the homepage —
    importing them here keeps both pages on one source of truth instead of a
    drifting copy */
+
 import "../HomepageV2/HomepageV2.css";
+import V2MobileDrawer from "../HomepageV2/V2MobileDrawer";
 import { TECH_STACK } from "../HomepageV2/techStack";
 import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import codelixLogo from "../Images/codelix-logo.png";
@@ -480,26 +482,7 @@ export default function ServicesV2() {
         </div>
       </nav>
 
-      <div className={`v2-drawer ${mobileOpen ? "open" : ""}`} aria-hidden={!mobileOpen}>
-        <div className="v2-drawer-links">
-          {[
-            { label: "Homepage V2", href: "/preview-v2" },
-            { label: "Services V2", href: "/services-v2" },
-            { label: "About V2", href: "/about-v2" },
-            { label: "Work V2", href: "/work-v2" },
-            { label: "Industries V2", href: "/industries-v2" },
-            { label: "Process V2", href: "/process-v2" },
-            { label: "Contact V2", href: "/contact-v2" },
-          ].map((l, i) => (
-            <a key={l.label} href={l.href}
-              style={{ transitionDelay: `${0.08 + i * 0.05}s` }}
-              onClick={() => setMobileOpen(false)}>
-              <span className="v2-drawer-index">{String(i + 1).padStart(2, "0")}</span>
-              {l.label}
-            </a>
-          ))}
-        </div>
-      </div>
+      <V2MobileDrawer open={mobileOpen} onClose={() => setMobileOpen(false)} />
 
       {/* ══════════ 1 · HERO ══════════ */}
       <header className="sv2-hero">
