@@ -207,9 +207,10 @@ export default function ContactV2() {
           <div className="v2-nav-links">
             <a href="/preview-v2">Homepage V2</a>
             <a href="/services-v2">Services V2</a>
-            <a href="/services-v2/web-development">Web Dev V2</a>
-            <a href="/services-v2/ui-ux-design">UI/UX V2</a>
             <a href="/about-v2">About V2</a>
+            <a href="/work-v2">Work V2</a>
+            <a href="/industries-v2">Industries V2</a>
+            <a href="/process-v2">Process V2</a>
             <a href="/contact-v2">Contact V2</a>
           </div>
           <button
@@ -228,9 +229,10 @@ export default function ContactV2() {
           {[
             { label: "Homepage V2", href: "/preview-v2" },
             { label: "Services V2", href: "/services-v2" },
-            { label: "Web Dev V2", href: "/services-v2/web-development" },
-            { label: "UI/UX V2", href: "/services-v2/ui-ux-design" },
             { label: "About V2", href: "/about-v2" },
+            { label: "Work V2", href: "/work-v2" },
+            { label: "Industries V2", href: "/industries-v2" },
+            { label: "Process V2", href: "/process-v2" },
             { label: "Contact V2", href: "/contact-v2" },
           ].map((l, i) => (
             <a key={l.label} href={l.href}
@@ -513,27 +515,31 @@ export default function ContactV2() {
         </div>
         <div className="v2-footer-grid">
           <div className="v2-footer-col">
-            <h5>Info</h5>
-            <a href="/">Codelix</a>
-            <a href="/work">Work</a>
+            <h5>Company</h5>
+            <a href="/preview-v2">Codelix</a>
             <a href="/about-v2">About</a>
-            <a href="/services-v2">Services</a>
-            <a href="/blog">Blog</a>
+            <a href="/team-v2">Team</a>
+            <a href="/work-v2">Work</a>
+            <a href="/industries-v2">Industries</a>
+            <a href="/process-v2">Process</a>
             <a href="/contact-v2">Contact</a>
           </div>
           <div className="v2-footer-col">
             <h5>Services</h5>
-            <a href="/services/web-development">Web Development</a>
-            <a href="/services/application-development">Application Development</a>
-            <a href="/services/ui-ux-design">UI/UX Design</a>
-            <a href="/services/e-commerce-solutions">E-Commerce Solutions</a>
-            <a href="/services/custom-software-development">Custom Software</a>
-            <a href="/services/ai-development">AI Development</a>
+            <a href="/services-v2/web-development">Web Development</a>
+            <a href="/services-v2">Application Development</a>
+            <a href="/services-v2/ui-ux-design">UI/UX Design</a>
+            <a href="/services-v2">E-Commerce Solutions</a>
+            <a href="/services-v2">Custom Software</a>
+            <a href="/services-v2">AI Development</a>
           </div>
           <div className="v2-footer-col">
-            <h5>Social</h5>
-            <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <h5>Resources</h5>
+            <a href="/pricing-v2">Pricing</a>
+            <a href="/technologies-v2">Technologies</a>
+            <a href="/careers-v2">Careers</a>
+            <a href="/faq-v2">FAQ</a>
+            <a href="/sitemap-v2">Sitemap</a>
           </div>
           <div className="v2-footer-col">
             <h5>Contact</h5>
@@ -545,13 +551,16 @@ export default function ContactV2() {
               target="_blank" rel="noopener noreferrer">
               A-1308, PNTC — Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat — 380015
             </a>
+            <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
           </div>
         </div>
         <div className="v2-footer-bottom">
           <span>© 2026 Codelix IT Solutions — All Copyright Reserved</span>
           <div className="v2-footer-legal">
-            <a href="/privacy-policy">Privacy Policy</a>
-            <a href="/terms-of-service">Terms of service</a>
+            <a href="/privacy-policy-v2">Privacy Policy</a>
+            <a href="/terms-of-service-v2">Terms of service</a>
+            <a href="/refund-policy-v2">Refund Policy</a>
           </div>
         </div>
         <div className="codelix-large-text" style={{ padding: '0 var(--pad-x)' }}>

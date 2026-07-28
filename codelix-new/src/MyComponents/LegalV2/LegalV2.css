@@ -1,0 +1,98 @@
+/* ============================================================
+   Legal V2 — shared shell for Terms, Privacy, and Refund Policy.
+   Design system inherited from HomepageV2.css / ServicesV2.css /
+   ServiceDetailV2.css, all imported by the component.
+   ============================================================ */
+
+.leg-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+
+/* ───────────── TOC — the extraordinary section. A vertical rail whose
+   fill height tracks live scroll position (painted every animation frame
+   from getBoundingClientRect, not a cached ScrollTrigger position), plus
+   a scrollspy that highlights whichever section is under the reading
+   line. ───────────── */
+.leg-toc { position: sticky; top: 120px; }
+.leg-toc-updated {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-38);
+  margin-bottom: 24px;
+}
+
+.leg-toc-rail { position: relative; padding-left: 22px; }
+.leg-toc-rail-track {
+  position: absolute;
+  left: 0; top: 4px; bottom: 4px;
+  width: 2px;
+  background: var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.leg-toc-rail-fill {
+  position: absolute;
+  inset: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  background: linear-gradient(180deg, rgba(180, 200, 230, .95), rgba(120, 150, 220, .5));
+}
+
+.leg-toc-rail ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.leg-toc-rail a {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 9px 0;
+  font-size: 13px;
+  color: var(--text-45);
+  text-decoration: none;
+  transition: color .3s ease;
+}
+.leg-toc-rail a:hover { color: #fff; }
+.leg-toc-rail a.is-active { color: #fff; font-weight: 600; }
+.leg-toc-n {
+  flex: none;
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-25);
+}
+.leg-toc-rail a.is-active .leg-toc-n { color: rgba(180, 200, 230, .95); }
+
+@media (max-width: 900px) {
+  .leg-shell { grid-template-columns: 1fr; }
+  .leg-toc { position: static; }
+  .leg-toc-rail { padding-left: 0; }
+  .leg-toc-rail-track { display: none; }
+  .leg-toc-rail ul { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+  .leg-toc-rail a { padding: 7px 14px; border: .8px solid var(--rule); border-radius: 100px; }
+}
+
+/* ───────────── DOCUMENT ───────────── */
+.leg-doc { display: flex; flex-direction: column; gap: 56px; max-width: 68ch; }
+
+.leg-section { scroll-margin-top: 120px; }
+.v2 .leg-section h2 {
+  font-size: clamp(19px, 2vw, 23px);
+  font-weight: 600;
+  letter-spacing: -.015em;
+  color: #fff;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: .8px solid var(--rule);
+}
+
+.v2 .leg-body { font-size: 14px; line-height: 1.8; color: var(--text-55); }
+.v2 .leg-body p { margin: 0 0 16px; }
+.v2 .leg-body p:last-child { margin-bottom: 0; }
+.v2 .leg-body a { color: rgba(180, 200, 230, .95); text-decoration: underline; text-underline-offset: 2px; }
+.v2 .leg-body ul { margin: 0 0 16px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+.v2 .leg-body ul:last-child { margin-bottom: 0; }
+.v2 .leg-body li { font-size: 14px; line-height: 1.6; }
+.v2 .leg-body strong { color: #fff; font-weight: 600; }
