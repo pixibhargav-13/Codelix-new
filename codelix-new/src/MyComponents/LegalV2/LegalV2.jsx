@@ -182,19 +182,6 @@ export default function LegalV2({ crumbLabel, statusLabel, titleLine1, titleLine
         </div>
       </section>
 
-      {/* ══════════ 3 · CTA ══════════ */}
-      <section className="v2-section">
-        <div className="v2-cta">
-          <p className="v2-label">Questions?</p>
-          <h2 className="v2-cta-headline">
-            Anything here unclear?<br />We'll walk you through it.
-          </h2>
-          <p className="v2-cta-body">
-            Reach out directly and we'll clarify anything on this page.
-          </p>
-          <a className="v2-btn" href="/contact-v2">Contact us →</a>
-        </div>
-      </section>
 
       {/* ══════════ FOOTER ══════════ */}
       <footer className="v2-footer">
