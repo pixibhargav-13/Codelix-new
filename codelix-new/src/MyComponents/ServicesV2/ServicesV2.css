@@ -122,6 +122,16 @@
   gap: 10px;
 }
 
+@media (max-width: 700px) {
+  .sv2-hero-cta {
+    margin-top: 25px;
+  }
+
+  .sv2-chips {
+    margin-top: 25px;
+  }
+}
+
 .sv2-chip {
   display: inline-flex;
   align-items: center;
@@ -335,7 +345,7 @@
   width: 64px;
   height: 64px;
   margin-bottom: 22px;
-  border-radius: 18px;
+  border-radius: 50%;
   background: linear-gradient(155deg, rgba(180, 200, 230, .22), rgba(180, 200, 230, .05));
   border: .8px solid rgba(180, 200, 230, .3);
   color: #fff;
@@ -695,10 +705,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 45px;
+  height: 45px;
   border: .8px solid var(--rule);
-  border-radius: 12px;
+  border-radius: 50%;
   color: var(--text-45);
   transition:
     color .4s var(--ease-expo),
@@ -985,9 +995,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
   background: linear-gradient(155deg, rgba(180, 200, 230, .18), rgba(180, 200, 230, .04));
   border: .8px solid rgba(180, 200, 230, .28);
   color: rgba(180, 200, 230, .95);
@@ -1085,10 +1095,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 45px;
+  height: 45px;
   margin-bottom: 18px;
-  border-radius: 10px;
+  border-radius: 50%;
   background: linear-gradient(155deg, rgba(180, 200, 230, .16), rgba(180, 200, 230, .03));
   border: .8px solid rgba(180, 200, 230, .24);
   color: rgba(180, 200, 230, .9);

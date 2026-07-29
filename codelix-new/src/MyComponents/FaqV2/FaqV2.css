@@ -251,5 +251,6 @@
 
   .faqv2-search {
     max-width: none;
+    flex: none;
   }
 }

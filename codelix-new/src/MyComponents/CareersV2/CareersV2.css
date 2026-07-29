@@ -4,10 +4,22 @@
    cards, FAQ, client strip) come from ServicesV2.css / ServiceDetailV2.css.
    ============================================================ */
 
-#faq .v2-faq-a { transition: height .5s var(--ease-expo); }
-#faq .v2-faq-a p { opacity: 0; transition: opacity .4s ease .05s; }
-#faq .v2-faq-item.open .v2-faq-a p { opacity: 1; }
-#faq .v2-faq-item.open { background: rgba(180, 200, 230, .04); }
+#faq .v2-faq-a {
+  transition: height .5s var(--ease-expo);
+}
+
+#faq .v2-faq-a p {
+  opacity: 0;
+  transition: opacity .4s ease .05s;
+}
+
+#faq .v2-faq-item.open .v2-faq-a p {
+  opacity: 1;
+}
+
+#faq .v2-faq-item.open {
+  background: rgba(180, 200, 230, .04);
+}
 
 /* ───────────── APPLY — the extraordinary section: a discipline picker
    whose crossfading blurb panel tags the form below it, so the same short
@@ -21,9 +33,19 @@
   transform: translateY(24px);
   transition: opacity 1s cubic-bezier(.16, 1, .3, 1), transform 1s cubic-bezier(.16, 1, .3, 1);
 }
-.cv2-apply.is-in { opacity: 1; transform: none; }
 
-.cv2-disc-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.cv2-apply.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.cv2-disc-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
 .cv2-disc-chip {
   display: inline-flex;
   align-items: center;
@@ -38,8 +60,17 @@
   cursor: pointer;
   transition: color .3s ease, border-color .3s ease, background .3s ease;
 }
-.cv2-disc-chip:hover { color: #fff; border-color: var(--rule-strong); }
-.cv2-disc-chip.is-active { color: var(--void); background: var(--text); border-color: var(--text); }
+
+.cv2-disc-chip:hover {
+  color: #fff;
+  border-color: var(--rule-strong);
+}
+
+.cv2-disc-chip.is-active {
+  color: var(--void);
+  background: var(--text);
+  border-color: var(--text);
+}
 
 .cv2-disc-stage {
   position: relative;
@@ -49,6 +80,7 @@
   overflow: hidden;
   background: radial-gradient(120% 140% at 0% 0%, rgba(180, 200, 230, .08), transparent 60%);
 }
+
 .cv2-disc-panel {
   position: absolute;
   inset: 0;
@@ -61,25 +93,54 @@
   pointer-events: none;
   transition: opacity .5s ease, transform .5s ease;
 }
-.cv2-disc-panel.is-active { opacity: 1; transform: none; pointer-events: auto; }
+
+.cv2-disc-panel.is-active {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
 .cv2-disc-panel-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px; height: 48px;
-  border-radius: 14px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   background: linear-gradient(155deg, rgba(180, 200, 230, .22), rgba(180, 200, 230, .05));
   border: .8px solid rgba(180, 200, 230, .3);
   color: rgba(180, 200, 230, .95);
   margin-bottom: 20px;
 }
-.v2 .cv2-disc-panel p { font-size: 14.5px; line-height: 1.7; color: var(--text-55); max-width: 42ch; }
+
+.v2 .cv2-disc-panel p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text-55);
+  max-width: 42ch;
+}
 
 /* ───────────── FORM — same visual language as the input styling used
    elsewhere; a plain, honest short form (no fake multi-step wizard) ───────────── */
-.cv2-form { display: flex; flex-direction: column; gap: 18px; }
-.cv2-field { display: flex; flex-direction: column; gap: 8px; }
-.cv2-field label { font-size: 11.5px; font-weight: 600; letter-spacing: .04em; color: var(--text-45); }
+.cv2-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cv2-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cv2-field label {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--text-45);
+}
+
 .cv2-field input,
 .cv2-field textarea {
   background: rgba(242, 240, 236, .03);
@@ -92,15 +153,29 @@
   resize: vertical;
   transition: border-color .3s ease, background .3s ease;
 }
+
 .cv2-field input:focus,
 .cv2-field textarea:focus {
   outline: none;
   border-color: rgba(180, 200, 230, .6);
   background: rgba(180, 200, 230, .04);
 }
-.cv2-error { font-size: 12.5px; color: rgba(232, 150, 150, .9); margin: 0; }
-.cv2-submit { align-self: flex-start; margin-top: 6px; }
-.cv2-submit:disabled { opacity: .6; cursor: default; }
+
+.cv2-error {
+  font-size: 12.5px;
+  color: rgba(232, 150, 150, .9);
+  margin: 0;
+}
+
+.cv2-submit {
+  align-self: flex-start;
+  margin-top: 6px;
+}
+
+.cv2-submit:disabled {
+  opacity: .6;
+  cursor: default;
+}
 
 .cv2-success {
   height: 100%;
@@ -112,15 +187,33 @@
   gap: 8px;
   color: rgba(126, 224, 168, .95);
 }
-.v2 .cv2-success h3 { font-size: 20px; font-weight: 600; color: #fff; margin: 4px 0 0; }
-.v2 .cv2-success p { font-size: 13.5px; color: var(--text-55); max-width: 38ch; }
+
+.v2 .cv2-success h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  margin: 4px 0 0;
+}
+
+.v2 .cv2-success p {
+  font-size: 13.5px;
+  color: var(--text-55);
+  max-width: 38ch;
+}
 
 @media (max-width: 820px) {
-  .cv2-apply { grid-template-columns: 1fr; }
+  .cv2-apply {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ───────────── WHAT WE LOOK FOR ───────────── */
-.cv2-look-for { display: flex; flex-direction: column; margin-top: 30px; }
+.cv2-look-for {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
 .cv2-look-row {
   display: grid;
   grid-template-columns: 60px 1fr;
@@ -128,11 +221,36 @@
   padding: 30px 0;
   border-bottom: .8px solid var(--rule);
 }
-.cv2-look-row:first-child { border-top: .8px solid var(--rule); }
-.cv2-look-n { font-size: 13px; font-weight: 700; color: var(--text-25); font-variant-numeric: tabular-nums; }
-.v2 .cv2-look-row h3 { font-size: 17px; font-weight: 600; letter-spacing: -.01em; color: #fff; margin-bottom: 8px; }
-.v2 .cv2-look-row p { font-size: 13.5px; line-height: 1.7; color: var(--text-55); max-width: 60ch; }
+
+.cv2-look-row:first-child {
+  border-top: .8px solid var(--rule);
+}
+
+.cv2-look-n {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-25);
+  font-variant-numeric: tabular-nums;
+}
+
+.v2 .cv2-look-row h3 {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.v2 .cv2-look-row p {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text-55);
+  max-width: 60ch;
+}
 
 @media (max-width: 640px) {
-  .cv2-look-row { grid-template-columns: 1fr; gap: 8px; }
+  .cv2-look-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
 }
