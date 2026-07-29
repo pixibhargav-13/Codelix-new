@@ -358,7 +358,7 @@ export default function HomepageV2() {
 
   /* Every ScrollTrigger below is created synchronously on mount, which means
      each one's "start" pixel position is calculated against whatever layout
-     exists at that instant. Hanken Grotesk / Inter load asynchronously
+     exists at that instant. NoiGroteskFix / Inter load asynchronously
      (index.html webfont link), and every image below the fold loads lazily —
      both reflow the page after these triggers already cached their numbers,
      leaving some rows' true trigger point stale (already passed, or never
@@ -524,7 +524,7 @@ export default function HomepageV2() {
   /* Reveal-on-enter for every row/heading/label, via IntersectionObserver
      rather than GSAP ScrollTrigger. ScrollTrigger caches a pixel "start"
      position at creation time; if webfonts or images below reflow the page
-     afterward (which they do — Hanken Grotesk/Inter load async, images lazy-
+     afterward (which they do — NoiGroteskFix/Inter load async, images lazy-
      load), that cached number goes stale and the element can end up
      permanently stuck at opacity:0 ("Work"'s rows going invisible was this).
      IntersectionObserver has no cache to go stale — it's re-checked against

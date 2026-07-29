@@ -92,7 +92,8 @@
 .v2 .leg-body p { margin: 0 0 16px; }
 .v2 .leg-body p:last-child { margin-bottom: 0; }
 .v2 .leg-body a { color: rgba(180, 200, 230, .95); text-decoration: underline; text-underline-offset: 2px; }
-.v2 .leg-body ul { margin: 0 0 16px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+.v2 .leg-body ul { margin: 0 0 16px; padding-left: 20px; }
 .v2 .leg-body ul:last-child { margin-bottom: 0; }
-.v2 .leg-body li { font-size: 14px; line-height: 1.6; }
+.v2 .leg-body li { font-size: 14px; line-height: 1.6; margin-bottom: 8px; list-style-type: disc; display: list-item; }
+.v2 .leg-body li:last-child { margin-bottom: 0; }
 .v2 .leg-body strong { color: #fff; font-weight: 600; }

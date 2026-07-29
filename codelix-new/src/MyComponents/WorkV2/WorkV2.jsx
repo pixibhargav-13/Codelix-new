@@ -102,6 +102,7 @@ export default function WorkV2() {
   const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [spotlightVisible, setSpotlightVisible] = useState(false);
   const [filter, setFilter] = useState("All");
   const [testimonial, setTestimonial] = useState(0);
 
@@ -146,6 +147,8 @@ export default function WorkV2() {
         if (el.classList.contains("v2-faq-item")) {
           const idx = Number(el.dataset.faqIndex);
           setRevealedFaqs((prev) => (prev.has(idx) ? prev : new Set(prev).add(idx)));
+        } else if (el.classList.contains("wv-spotlight")) {
+          setSpotlightVisible(true);
         } else {
           el.classList.add("is-in");
         }
@@ -308,7 +311,7 @@ export default function WorkV2() {
         </p>
 
         <div
-          className={`wv-spotlight ${paused ? "is-paused" : ""}`}
+          className={`wv-spotlight ${spotlightVisible ? "is-in" : ""} ${paused ? "is-paused" : ""}`}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
