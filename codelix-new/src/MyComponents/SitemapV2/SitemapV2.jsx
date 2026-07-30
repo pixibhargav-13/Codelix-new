@@ -12,6 +12,9 @@ import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./SitemapV2.css";
 
+import { CASE_STUDIES } from "../CaseStudyDetailV2/caseStudiesData";
+import { blogs, slugify } from "../../data/blogData";
+
 /* every route here is a real <Route> registered in App.jsx — only the new
    v2-theme pages, not the legacy site */
 const GROUPS = [
@@ -22,6 +25,8 @@ const GROUPS = [
       { label: "About", href: "/about-v2" },
       { label: "Team", href: "/team-v2" },
       { label: "Work", href: "/work-v2" },
+      { label: "Case Studies", href: "/case-study-v2" },
+      { label: "Blog", href: "/blog-v2" },
       { label: "Industries We Serve", href: "/industries-v2" },
       { label: "Process", href: "/process-v2" },
       { label: "Contact", href: "/contact-v2" },
@@ -34,6 +39,14 @@ const GROUPS = [
       { label: "Web Development", href: "/services-v2/web-development" },
       { label: "UI/UX Design", href: "/services-v2/ui-ux-design" },
     ],
+  },
+  {
+    title: "Case Studies",
+    links: CASE_STUDIES.map(cs => ({ label: cs.title, href: `/case-study-v2/${cs.slug}` }))
+  },
+  {
+    title: "Blog Articles",
+    links: blogs.map(b => ({ label: b.title, href: `/blog-v2/${slugify(b.title)}` }))
   },
   {
     title: "Resources",
@@ -248,6 +261,8 @@ export default function SitemapV2() {
             <a href="/about-v2">About</a>
             <a href="/team-v2">Team</a>
             <a href="/work-v2">Work</a>
+            <a href="/case-study-v2">Case Studies</a>
+            <a href="/blog-v2">Blog</a>
             <a href="/industries-v2">Industries</a>
             <a href="/process-v2">Process</a>
             <a href="/contact-v2">Contact</a>

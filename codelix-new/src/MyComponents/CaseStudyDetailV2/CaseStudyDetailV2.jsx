@@ -283,30 +283,16 @@ export default function CaseStudyDetailV2() {
           solutions list, instead of forcing a 1:1 paired layout that would
           break on case studies with mismatched list lengths. ══════════ */}
       <section className="v2-section" id="challenges">
-        <p className="v2-label">What We Solved</p>
-        <h2 className="v2-heading">The problem, and what we built instead.</h2>
-
-        <div className="csd2-toggle" role="group" aria-label="Show challenges or solutions">
-          <button className={!showSolutions ? "is-active" : ""} onClick={() => setShowSolutions(false)}>
-            <X size={14} strokeWidth={2.5} /> Challenges
-          </button>
-          <button className={showSolutions ? "is-active" : ""} onClick={() => setShowSolutions(true)}>
-            <Check size={14} strokeWidth={2.5} /> Solutions
-          </button>
-          <span className={`csd2-toggle-pill ${showSolutions ? "is-right" : ""}`} aria-hidden="true" />
+        <p className="v2-label">The Challenges</p>
+        <h2 className="v2-heading">The problem we faced.</h2>
+        <div className="csd2-overview">
+          {cs.challenges.map((p, i) => <p key={i}>{p}</p>)}
         </div>
 
-        <div className="csd2-cs">
-          <ul className={showSolutions ? "is-solutions" : ""}>
-            {(showSolutions ? cs.solutions : cs.challenges).map((item, i) => (
-              <li key={i} style={{ transitionDelay: `${i * 0.08}s` }}>
-                <span className={`csd2-cs-icon ${showSolutions ? "is-check" : "is-x"}`}>
-                  {showSolutions ? <Check size={14} strokeWidth={2.5} /> : <X size={14} strokeWidth={2.5} />}
-                </span>
-                <p>{item}</p>
-              </li>
-            ))}
-          </ul>
+        <p className="v2-label" style={{ marginTop: '80px' }}>The Solutions</p>
+        <h2 className="v2-heading">What we built instead.</h2>
+        <div className="csd2-overview">
+          {cs.solutions.map((p, i) => <p key={i}>{p}</p>)}
         </div>
       </section>
 
@@ -371,6 +357,8 @@ export default function CaseStudyDetailV2() {
             <a href="/about-v2">About</a>
             <a href="/team-v2">Team</a>
             <a href="/work-v2">Work</a>
+            <a href="/case-study-v2">Case Studies</a>
+            <a href="/blog-v2">Blog</a>
             <a href="/industries-v2">Industries</a>
             <a href="/process-v2">Process</a>
             <a href="/contact-v2">Contact</a>

@@ -70,10 +70,17 @@
   }
 }
 
-#overview {
+#overview, #challenges {
   max-width: 860px;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media (min-width: 769px) {
+  #overview, #challenges {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .csd2-overview {
