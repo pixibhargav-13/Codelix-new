@@ -39,15 +39,16 @@
 .smv2-empty { padding: 40px 0; text-align: center; font-size: 13.5px; color: var(--text-38); }
 
 .smv2-groups {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(18px, 2.4vw, 24px);
-  align-items: start;
+  column-count: 4;
+  column-gap: clamp(18px, 2.4vw, 24px);
 }
-@media (max-width: 1000px) { .smv2-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .smv2-groups { grid-template-columns: 1fr; } }
+@media (max-width: 1000px) { .smv2-groups { column-count: 2; } }
+@media (max-width: 560px) { .smv2-groups { column-count: 1; } }
 
 .smv2-group {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: clamp(18px, 2.4vw, 24px);
   border: .8px solid var(--rule);
   border-radius: 16px;
   padding: 24px 22px 10px;

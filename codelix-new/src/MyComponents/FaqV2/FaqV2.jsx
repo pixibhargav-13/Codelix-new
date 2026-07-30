@@ -254,6 +254,8 @@ export default function FaqV2() {
             <a href="/about-v2">About</a>
             <a href="/team-v2">Team</a>
             <a href="/work-v2">Work</a>
+            <a href="/case-study-v2">Case Studies</a>
+            <a href="/blog-v2">Blog</a>
             <a href="/industries-v2">Industries</a>
             <a href="/process-v2">Process</a>
             <a href="/contact-v2">Contact</a>
