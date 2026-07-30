@@ -64,6 +64,10 @@ const TechnologiesV2 = lazy(() => import("./MyComponents/TechnologiesV2/Technolo
 const CareersV2 = lazy(() => import("./MyComponents/CareersV2/CareersV2"));
 const PricingV2 = lazy(() => import("./MyComponents/PricingV2/PricingV2"));
 const SitemapV2 = lazy(() => import("./MyComponents/SitemapV2/SitemapV2"));
+const BlogV2 = lazy(() => import("./MyComponents/BlogV2/BlogV2"));
+const BlogDetailV2 = lazy(() => import("./MyComponents/BlogDetailV2/BlogDetailV2"));
+const CaseStudyV2 = lazy(() => import("./MyComponents/CaseStudyV2/CaseStudyV2"));
+const CaseStudyDetailV2 = lazy(() => import("./MyComponents/CaseStudyDetailV2/CaseStudyDetailV2"));
 
 // ─── Scroll to top on route change ───────────────────────────────────────────
 const ScrollToTop = () => {
@@ -120,6 +124,10 @@ const AppRoutes = () => {
           <Route path="/careers-v2" element={<CareersV2 />} />
           <Route path="/pricing-v2" element={<PricingV2 />} />
           <Route path="/sitemap-v2" element={<SitemapV2 />} />
+          <Route path="/blog-v2" element={<BlogV2 />} />
+          <Route path="/blog-v2/:slug" element={<BlogDetailV2 />} />
+          <Route path="/case-study-v2" element={<CaseStudyV2 />} />
+          <Route path="/case-study-v2/:slug" element={<CaseStudyDetailV2 />} />
           <Route path="/about" element={<About />} />
           <Route path="/work" element={<Work />} />
           <Route path="/services" element={<Services />} />

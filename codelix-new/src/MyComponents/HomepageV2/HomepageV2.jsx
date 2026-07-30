@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   Target, PenTool, Code2, CheckCircle2, Rocket,
   Globe, Smartphone, Cloud, Activity, LifeBuoy,
-  CalendarCheck, Lock, Eye, PlayCircle,
+  CalendarCheck, Lock, Eye, PlayCircle, Users, Layers, ShieldCheck, ArrowLeft, ArrowRight
 } from "lucide-react";
 
 /* real project screenshots (same assets the case-study pages use) */
@@ -550,7 +550,7 @@ export default function HomepageV2() {
     );
     const sel = [
       ".v2-method-row", ".v2-work-row", ".v2-principle",
-      ".v2-faq-item", ".v2-quote", ".v2-cta", ".v2-pipe-node", ".v2-map-card", ".v2-strip",
+      ".v2-faq-item", ".v2-deck-shell", ".v2-cta", ".v2-pipe-node", ".v2-map-card", ".v2-strip",
       ".v2-heading", ".v2-map-headline", ".v2-label", ".v2-map-label", ".v2-lede",
     ].join(", ");
     rootRef.current.querySelectorAll(sel).forEach((el) => io.observe(el));
@@ -1073,50 +1073,80 @@ export default function HomepageV2() {
         </div>
       </section>
 
-      {/* ══════════ 8 · TESTIMONIAL (light band) ══════════ */}
+      {/* ══════════ 8 · TESTIMONIAL (light band) — the extraordinary
+          section: a physically stacked card deck instead of a single card
+          with a nav control. Every card is always in the DOM; its position
+          in the stack is computed as (i - activeQuote + length) % length,
+          so as activeQuote advances the front card animates back and down
+          out of the way while the next one scales up to take its place —
+          a real spatial transition, not a crossfade. ══════════ */}
       <section className="v2-section v2-section--gallery">
         <p className="v2-label">Client Voices</p>
-        <div
-          className="v2-quote-card"
-          onMouseEnter={() => setQuotePaused(true)}
-          onMouseLeave={() => setQuotePaused(false)}
-        >
-          <div className="v2-quote">
-            <span className="v2-quote-mark" aria-hidden="true">&ldquo;</span>
-            <blockquote>{TESTIMONIALS[activeQuote].quote}</blockquote>
-            <div className="v2-quote-who">
-              <span className="v2-quote-avatar">
-                {TESTIMONIALS[activeQuote].name.split(" ")[0][0]}
-                {TESTIMONIALS[activeQuote].name.split(" ")[1]?.[0]}
-              </span>
-              <p className="who">
-                {TESTIMONIALS[activeQuote].name}
-                <span>{TESTIMONIALS[activeQuote].position}</span>
-              </p>
-            </div>
-            <div className="v2-quote-dots">
+
+        <div className="v2-bento-grid">
+          {/* Hero Cell (Rotating Testimonials) */}
+          <div className="v2-bento-cell v2-bento-hero"
+            onMouseEnter={() => setQuotePaused(true)}
+            onMouseLeave={() => setQuotePaused(false)}
+          >
+            <div className="v2-bento-quotes">
               {TESTIMONIALS.map((t, i) => (
-                <button
+                <div 
                   key={t.name}
-                  className={`v2-quote-dot ${i === activeQuote ? "is-active" : ""}`}
-                  aria-label={`Show testimonial from ${t.name}`}
-                  onClick={() => setActiveQuote(i)}
+                  className={`v2-bento-quote-item ${activeQuote === i ? "is-active" : ""}`}
+                >
+                  <span className="v2-bento-mark" aria-hidden="true">&ldquo;</span>
+                  <blockquote>{t.quote}</blockquote>
+                  <div className="v2-bento-who">
+                    <span className="v2-bento-avatar">
+                      {t.name.split(" ")[0][0]}
+                      {t.name.split(" ")[1]?.[0]}
+                    </span>
+                    <p className="who">
+                      {t.name}
+                      <span>{t.position}</span>
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* Nav dots */}
+            <div className="v2-bento-dots">
+              {TESTIMONIALS.map((_, idx) => (
+                <button 
+                  key={idx} 
+                  className={`v2-bento-dot ${activeQuote === idx ? "is-active" : ""}`}
+                  onClick={() => setActiveQuote(idx)}
+                  aria-label={`Go to testimonial ${idx + 1}`}
                 />
               ))}
             </div>
           </div>
-          <div className="v2-quote-stats">
-            <div className="v2-quote-stat">
-              <span className="v2-quote-stat-num">30+</span>
-              <span className="v2-quote-stat-label">Companies trust us</span>
+
+          {/* Stat 1 */}
+          <div className="v2-bento-cell v2-bento-stat">
+            <span className="v2-bento-stat-icon"><Users size={28} strokeWidth={1.5} /></span>
+            <div className="v2-bento-stat-content">
+              <span className="v2-bento-stat-num">30+</span>
+              <span className="v2-bento-stat-label">Companies trust us</span>
             </div>
-            <div className="v2-quote-stat">
-              <span className="v2-quote-stat-num">6</span>
-              <span className="v2-quote-stat-label">Services delivered end-to-end</span>
+          </div>
+
+          {/* Stat 2 */}
+          <div className="v2-bento-cell v2-bento-stat">
+            <span className="v2-bento-stat-icon"><Layers size={28} strokeWidth={1.5} /></span>
+            <div className="v2-bento-stat-content">
+              <span className="v2-bento-stat-num">6</span>
+              <span className="v2-bento-stat-label">Services delivered</span>
             </div>
-            <div className="v2-quote-stat">
-              <span className="v2-quote-stat-num">100%</span>
-              <span className="v2-quote-stat-label">Source code ownership on delivery</span>
+          </div>
+
+          {/* Stat 3 */}
+          <div className="v2-bento-cell v2-bento-stat v2-bento-stat--highlight">
+            <span className="v2-bento-stat-icon"><ShieldCheck size={28} strokeWidth={1.5} /></span>
+            <div className="v2-bento-stat-content">
+              <span className="v2-bento-stat-num">100%</span>
+              <span className="v2-bento-stat-label">Source code ownership</span>
             </div>
           </div>
         </div>
