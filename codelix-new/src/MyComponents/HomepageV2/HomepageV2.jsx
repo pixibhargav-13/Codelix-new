@@ -14,7 +14,6 @@ import workTwo from "../Images/work-best-project-two.png";
 import workThree from "../Images/work-best-project-three.png";
 import workFour from "../Images/work-best-project-four.png";
 import workFive from "../Images/work-best-project-five.png";
-import codelixText from "../Images/codelix-footer-logo.png";
 
 /* full real tech-stack set — shared with the services page */
 import { TECH_STACK } from "./techStack";
@@ -23,19 +22,24 @@ import { TECH_STACK } from "./techStack";
 /* shared with the services page */
 import { CLIENT_LOGOS } from "./clientLogos";
 import codelixLogo from "../Images/codelix-logo.png";
+import { FOOTER_SERVICE_KEYWORDS, FOOTER_INDUSTRY_KEYWORDS } from "./footerData";
+import { useTestimonials } from "../../data/useTestimonials";
 
 import "./HomepageV2.css";
 import V2MobileDrawer from "./V2MobileDrawer";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* Three declaration words — the reference pins exactly three at the hero foot. */
-const DECLARATIONS = ["DESIGN.", "BUILD.", "SCALE."];
+/* Three declaration words pinned at the hero foot. Deliberately not
+   SEE./BUILD./COMPOUND. (or any single shared word with it) — chosen instead
+   to echo the hero's own "outlast the brief" line, so the words are ours,
+   not a reskin of someone else's three-word hook. */
+const DECLARATIONS = ["UNDERSTAND.", "ENGINEER.", "OUTLAST."];
 
 const STATEMENTS = [
-  { label: "DESIGN.", body: "Most software fails at the interface, not the database. We design the experience before a line of code is written." },
-  { label: "BUILD.", body: "Every system we ship is built for one business's actual workflow. Not templated. Not resold." },
-  { label: "SCALE.", body: "Architecture decided on day one determines what's possible in year three. We build for the second outcome." },
+  { label: "UNDERSTAND.", body: "We spend real time inside your workflow before a screen gets designed — the brief is where the conversation starts, not a spec we execute blindly." },
+  { label: "ENGINEER.", body: "A five-screen tool and a full platform get the same discipline: scoped to how your team actually works, not pulled from a shelf." },
+  { label: "OUTLAST.", body: "The architecture calls made in week one decide what's still possible in year three — we're optimizing for that, not for a fast demo." },
 ];
 
 const METHOD = [
@@ -107,11 +111,12 @@ const SYSTEMS = [
 
 const SERVICES = [
   { n: "01", tag: "Development", title: "Web Development", link: "/services-v2/web-development" },
-  { n: "02", tag: "Development", title: "Application Development", link: "/services/application-development" },
+  { n: "02", tag: "Development", title: "Application Development", link: "/services-v2/application-development" },
   { n: "03", tag: "Design", title: "UI/UX Design", link: "/services-v2/ui-ux-design" },
-  { n: "04", tag: "Commerce", title: "E-Commerce Solutions", link: "/services/e-commerce-solutions" },
-  { n: "05", tag: "Development", title: "Custom Software Development", link: "/services/custom-software-development" },
-  { n: "06", tag: "Applied AI", title: "AI Development", link: "/services/ai-development" },
+  { n: "04", tag: "Commerce", title: "E-Commerce Solutions", link: "/services-v2/e-commerce-solutions" },
+  { n: "05", tag: "Development", title: "Custom Software Development", link: "/services-v2/custom-software-development" },
+  { n: "06", tag: "Applied AI", title: "AI Development", link: "/services-v2/ai-development" },
+  { n: "07", tag: "Analytics", title: "Data Analytics", link: "/services-v2/data-analytics" },
 ];
 
 /* headline numbers — the value is the count-up target, suffix rides along */
@@ -123,8 +128,11 @@ const STATS = [
 ];
 
 /* same real client quotes already used on the Our Work page — reused here
-   rather than inventing new placeholder testimonials */
-const TESTIMONIALS = [
+   rather than inventing new placeholder testimonials. schema.sql seeds the
+   Supabase testimonials table with these same 5 quotes, so once Supabase
+   responds it REPLACES this static list (see useTestimonials) rather than
+   merging — merging would show each one twice. */
+const STATIC_TESTIMONIALS = [
   { quote: "We were able to successfully complete the project by meeting the best partner. They have a very good understanding of development and skills, and are fully committed to the task schedule.", name: "Rajesh Patel", position: "CEO, Harmony Inc." },
   { quote: "Their communication and problem-solving skills are top-notch. The entire workflow was smooth and professional.", name: "Priya Sharma", position: "Founder, Nexa Digital" },
   { quote: "Amazing team! Delivered everything on time with exceptional quality. Totally recommend!", name: "Amit Kumar", position: "CTO, PixelWave" },
@@ -133,9 +141,9 @@ const TESTIMONIALS = [
 ];
 
 const PRINCIPLES = [
-  { key: "Delivered.", icon: CalendarCheck, claim: "No deadline we don't hold ourselves to.", body: "Our disciplined process ensures every project launches exactly when promised. Deliver before the deadline is not a slogan here — it is how the schedule is built." },
-  { key: "Owned.", icon: Lock, claim: "No code you don't fully own.", body: "On completion you receive 100% ownership of the source code, with documentation and deployment details. No lock-in, no license games, no dependency on us to keep running." },
-  { key: "Visible.", icon: Eye, claim: "No progress you can't see.", body: "From kickoff to delivery you always know what's happening, why it's happening, and when. Clarity builds trust, and trust is what makes the second project easier than the first." },
+  { key: "Delivered.", icon: CalendarCheck, claim: "Deadlines are commitments, not aspirations.", body: "Our disciplined process ensures every project launches exactly when promised. Deliver before the deadline is not a slogan here — it is how the schedule is built." },
+  { key: "Owned.", icon: Lock, claim: "You leave holding all of it — 100%.", body: "On completion you receive 100% ownership of the source code, with documentation and deployment details. No lock-in, no license games, no dependency on us to keep running." },
+  { key: "Visible.", icon: Eye, claim: "Nothing about the build stays behind closed doors.", body: "From kickoff to delivery you always know what's happening, why it's happening, and when. Clarity builds trust, and trust is what makes the second project easier than the first." },
 ];
 
 const FAQS = [
@@ -285,6 +293,7 @@ function ScrollSentence({ words, tone }) {
 }
 
 export default function HomepageV2() {
+  const TESTIMONIALS = useTestimonials(STATIC_TESTIMONIALS);
   const navigate = useNavigate();
   const [navScrolled, setNavScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -307,7 +316,7 @@ export default function HomepageV2() {
       setActiveQuote((i) => (i + 1) % TESTIMONIALS.length);
     }, 6000);
     return () => clearTimeout(t);
-  }, [activeQuote, quotePaused]);
+  }, [activeQuote, quotePaused, TESTIMONIALS.length]);
 
   const rootRef = useRef(null);
   const stripRef = useRef(null);
@@ -502,7 +511,13 @@ export default function HomepageV2() {
     return () => { st.kill(); window.removeEventListener("resize", onResize); };
   }, []);
 
-  /* body copy fades in right after the heading lands, once the section pins */
+  /* body copy fades in right after the heading lands, once the section pins.
+     The accent tick (::before) and background ordinal (::after) on each
+     column are pure CSS pseudo-elements — GSAP can't select them directly,
+     so they're driven by tweening a --wr-decor custom property on the real
+     .v2-wr-col element instead, which the CSS reads via var(--wr-decor, 0)
+     for their opacity. Same timeline as the body, so both arrive together
+     right as each word lands. */
   useEffect(() => {
     const ctx = gsap.context(() => {
       const section = rootRef.current.querySelector(".v2-wr-pin");
@@ -510,13 +525,16 @@ export default function HomepageV2() {
       const bodies = cols.map((c) => c.querySelector(".v2-wr-body"));
 
       gsap.set(bodies, { opacity: 0, y: 20 });
+      gsap.set(cols, { "--wr-decor": 0 });
 
       gsap.timeline({
         scrollTrigger: {
           trigger: section, start: "top top", end: "+=70%",
           scrub: .7, pin: true, anticipatePin: 1,
         },
-      }).to(bodies, { opacity: 1, y: 0, ease: "none", stagger: .12 });
+      })
+        .to(bodies, { opacity: 1, y: 0, ease: "none", stagger: .12 })
+        .to(cols, { "--wr-decor": 1, ease: "none", stagger: .12 }, "<");
     }, rootRef);
     return () => ctx.revert();
   }, []);
@@ -845,8 +863,9 @@ export default function HomepageV2() {
         <div className="v2-method-head">
           <h2 className="v2-method-heading">Our Method.</h2>
           <p className="v2-method-lede">
-            We don't begin with code. We begin with understanding what the
-            business actually needs before anything is built.
+            Every engagement starts the same way — not with a proposal
+            template, but with figuring out what your business actually
+            needs before anything gets built.
           </p>
         </div>
         <div className="v2-method-rows">
@@ -902,52 +921,78 @@ export default function HomepageV2() {
         </div>
       </section>
 
-      {/* ══════════ 4b · DELIVERY PIPELINE — sticky header, matches the
-          reference's "Prospect Engine." layout ══════════ */}
+      {/* ══════════ 4b · DELIVERY PIPELINE ══════════ */}
       <section className="v2-method-shell v2-pipe-shell">
         <div className="v2-method-head v2-pipe-head">
-          <p className="v2-pipe-eyebrow">System 001</p>
-          <h2 className="v2-pipe-heading">Delivery Engine.</h2>
+          <p className="v2-pipe-eyebrow">From Brief To Launch</p>
+          <h2 className="v2-pipe-heading">How We Ship.</h2>
           <p className="v2-pipe-lede">
             Every qualified project moves the same way. One process that
             scopes, designs, builds, and ships without cutting a stage short.
           </p>
         </div>
         <div className="v2-method-rows v2-pipe-rows">
-          <div className="v2-pipe-scroll">
-            <div className="v2-pipe-rail">
-              {PIPELINE.map((n, i) => (
-                <React.Fragment key={n.label}>
-                  <div className={`v2-pipe-node ${n.highlight ? "is-highlight" : ""}`}>
-                    <span className="v2-pipe-step">{String(i + 1).padStart(2, "0")}</span>
-                    <span className="v2-pipe-label"><n.icon />{n.label}</span>
-                    <p className="v2-pipe-body">{n.body}</p>
-                  </div>
-                  {i < PIPELINE.length - 1 && (
-                    <div className="v2-pipe-connector" aria-hidden="true">
-                      <span className="v2-pipe-track" />
-                      <span className="v2-pipe-arrow">→</span>
+          {/* the whole pipeline lives inside a bordered "console" panel — a
+              deliberate tonal break from the light gallery around it, styled
+              like a running terminal/engine readout rather than a plain
+              card rail. */}
+          <div className="v2-pipe-console">
+            <div className="v2-pipe-console-bar">
+              <span className="v2-pipe-console-dots" aria-hidden="true">
+                <i />
+                <i />
+                <i />
+              </span>
+              <span className="v2-pipe-console-title">how-we-ship.sh</span>
+              <span className="v2-pipe-console-live">
+                <i className="v2-pipe-console-live-dot" aria-hidden="true" />
+                running
+              </span>
+            </div>
+            <div className="v2-pipe-scroll">
+              <div className="v2-pipe-rail">
+                {PIPELINE.map((n, i) => (
+                  <React.Fragment key={n.label}>
+                    <div className={`v2-pipe-node ${n.highlight ? "is-highlight" : ""}`}>
+                      <span className="v2-pipe-step">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="v2-pipe-label">
+                        <span className="v2-pipe-icon"><n.icon size={15} strokeWidth={1.8} /></span>
+                        <span className="v2-pipe-name">{n.label}</span>
+                      </span>
+                      <p className="v2-pipe-body">{n.body}</p>
                     </div>
-                  )}
-                </React.Fragment>
+                    {i < PIPELINE.length - 1 && (
+                      <div className="v2-pipe-connector" aria-hidden="true">
+                        <span className="v2-pipe-track" />
+                        <span className="v2-pipe-arrow">→</span>
+                      </div>
+                    )}
+                  </React.Fragment>
+                ))}
+              </div>
+              {/* the one branching beat gets the FULL row's width to itself,
+                  underneath the main rail, instead of squeezing into a column
+                  that also has to hold its own place in that rail */}
+              {PIPELINE.filter((n) => n.branch).map((n) => (
+                <div className="v2-pipe-fork" key={n.label}>
+                  <span className="v2-pipe-fork-connector" aria-hidden="true">
+                    <span className="v2-pipe-fork-connector-track" />
+                  </span>
+                  <span className="v2-pipe-fork-label">Ships to three destinations at once</span>
+                  <div className="v2-pipe-fork-row">
+                    {n.channels.map((c) => (
+                      <div className="v2-pipe-node v2-pipe-node--mini" key={c.label}>
+                        <span className="v2-pipe-label">
+                          <span className="v2-pipe-icon"><c.icon size={13} strokeWidth={1.8} /></span>
+                          <span className="v2-pipe-name">{c.label}</span>
+                        </span>
+                        <p className="v2-pipe-body">{c.body}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
-            {/* the one branching beat gets the FULL row's width to itself,
-                underneath the main rail, instead of squeezing into a column
-                that also has to hold its own place in that rail */}
-            {PIPELINE.filter((n) => n.branch).map((n) => (
-              <div className="v2-pipe-fork" key={n.label}>
-                <span className="v2-pipe-fork-label">{n.label} forks into</span>
-                <div className="v2-pipe-fork-row">
-                  {n.channels.map((c) => (
-                    <div className="v2-pipe-node v2-pipe-node--mini" key={c.label}>
-                      <span className="v2-pipe-label"><c.icon />{c.label}</span>
-                      <p className="v2-pipe-body">{c.body}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -957,7 +1002,7 @@ export default function HomepageV2() {
         <div className="v2-map-header">
           <div>
             <div className="v2-map-label">What We Build</div>
-            <h2 className="v2-map-headline">Eight system types.<br />Already proven.</h2>
+            <h2 className="v2-map-headline">Eight ways we build,<br />all already shipped.</h2>
           </div>
           <div>
             <p className="v2-map-body">
@@ -1036,7 +1081,7 @@ export default function HomepageV2() {
         <div className="v2-method-head">
           <h2 className="v2-method-heading">What We Provide.</h2>
           <p className="v2-method-lede">
-            Six services, one delivery standard — the same process, discipline,
+            Seven services, one delivery standard — the same process, discipline,
             and ownership handoff on every engagement.
           </p>
         </div>
@@ -1187,16 +1232,26 @@ export default function HomepageV2() {
       </section>
 
       {/* ══════════ 10 · CTA ══════════ */}
-      <section className="v2-section v2-section--void">
+      <section className="v2-section v2-section--void v2-cta-shell">
         <div className="v2-cta">
           <p className="v2-label">Start Here</p>
-          <h2 className="v2-cta-headline">Tell us what you're building.<br />We'll tell you how we'd build it.</h2>
+          <h2 className="v2-cta-headline">
+            Bring us the problem.
+            <br />
+            <span className="v2-cta-accent">We'll bring back a scoped plan.</span>
+          </h2>
           <p className="v2-cta-body">
             A structured conversation about your product — your users, your workflows, your constraints.
             We scope what should be built first, what can wait, and what it takes to ship it.
           </p>
-          <a className="v2-btn" href="/contact">Book a consultation →</a>
-          <p className="v2-cta-footnote">Free consultation · NDA on request · No obligation</p>
+          <div className="v2-cta-actions">
+            <a className="v2-btn" href="/contact">Book a consultation →</a>
+          </div>
+          <div className="v2-cta-badges">
+            <span className="v2-cta-badge">Free consultation</span>
+            <span className="v2-cta-badge">NDA on request</span>
+            <span className="v2-cta-badge">No obligation</span>
+          </div>
         </div>
       </section>
 
@@ -1204,74 +1259,101 @@ export default function HomepageV2() {
           (Footer.jsx): same columns, same links, same contact details, the
           "WE LIVE IN IT" marquee, and the oversized wordmark at the base ══════════ */}
       <footer className="v2-footer">
-        <div className="v2-footer-marquee">
-          <div className="v2-footer-marquee-track">
-            {Array.from({ length: 12 }).map((_, i) => (
-              <span key={i}>WE LIVE IN IT <em>•</em></span>
-            ))}
+        {/* tagline header — our own real line ("we live in it," already used
+            in the marquee elsewhere on the site) instead of a borrowed one */}
+        <div className="v2-footer-tagline">
+          <h2 className="v2-footer-wordmark-small">
+            WE LIVE
+            <br />
+            IN <span className="v2-footer-wordmark-accent">IT</span>
+          </h2>
+          <p className="v2-footer-tagline-body">
+            We design and build web, mobile, and AI systems for businesses that
+            intend to still be running them in five years.
+          </p>
+        </div>
+
+        {/* dense keyword strips — everything we build, everything we serve,
+            laid out flat rather than tucked into a dropdown */}
+        <div className="v2-footer-keywords">
+          <div className="v2-footer-keywords-row">
+            <p className="v2-footer-keywords-label">Services</p>
+            <div className="v2-footer-keywords-list">
+              {FOOTER_SERVICE_KEYWORDS.map((k, i) => (
+                <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
+              ))}
+            </div>
+          </div>
+          <div className="v2-footer-keywords-row">
+            <p className="v2-footer-keywords-label">Industries</p>
+            <div className="v2-footer-keywords-list">
+              {FOOTER_INDUSTRY_KEYWORDS.map((k, i) => (
+                <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="v2-footer-grid">
-          <div className="v2-footer-col">
-            <h5>Company</h5>
-            <a href="/preview-v2">Codelix</a>
-            <a href="/about-v2">About</a>
-            <a href="/team-v2">Team</a>
-            <a href="/work-v2">Work</a>
-            <a href="/case-study-v2">Case Studies</a>
-            <a href="/blog-v2">Blog</a>
-            <a href="/industries-v2">Industries</a>
-            <a href="/process-v2">Process</a>
-            <a href="/contact-v2">Contact</a>
-          </div>
-          <div className="v2-footer-col">
-            <h5>Services</h5>
-            <a href="/services-v2/web-development">Web Development</a>
-            <a href="/services-v2">Mobile Development</a>
-            <a href="/services-v2/ui-ux-design">UI/UX Design</a>
-            <a href="/services-v2">Custom Software dev.</a>
-            <a href="/services-v2">E-Commerce Solutions</a>
-            <a href="/services-v2">AI Development</a>
-          </div>
-          <div className="v2-footer-col">
-            <h5>Resources</h5>
-            <a href="/pricing-v2">Pricing</a>
-            <a href="/technologies-v2">Technologies</a>
-            <a href="/careers-v2">Careers</a>
-            <a href="/faq-v2">FAQ</a>
-            <a href="/sitemap-v2">Sitemap</a>
-          </div>
-          <div className="v2-footer-col">
-            <h5>Contact</h5>
-            <a href="mailto:Sales@codelixitsolutions.com">Sales@codelixitsolutions.com</a>
-            <a href="tel:+919429269295">+91 94292 69295</a>
-            <a href="tel:+917490909686">+91 74909 09686</a>
-            <a
-              className="v2-footer-address"
-              href="https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.0095811,72.5203036,17z"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+        {/* office / contact cards — bordered two-up rows, same shape as the
+            reference's address + sales/careers blocks */}
+        <div className="v2-footer-cards">
+          <a
+            className="v2-footer-card"
+            href="https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h5>India (HQ)</h5>
+            <p className="v2-footer-card-addr">
               A-1308, PNTC — Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat — 380015
+            </p>
+          </a>
+          <div className="v2-footer-card">
+            <h5>Phone</h5>
+            <a className="v2-footer-card-strong" href="tel:+919429269295">+91 94292 69295</a>
+            <a className="v2-footer-card-strong" href="tel:+917490909686">+91 74909 09686</a>
+          </div>
+        </div>
+
+        <div className="v2-footer-cards">
+          <div className="v2-footer-card">
+            <h5>For Sales</h5>
+            <a className="v2-footer-card-strong" href="mailto:Sales@codelixitsolutions.com">
+              Sales@codelixitsolutions.com
             </a>
+          </div>
+          <div className="v2-footer-card">
+            <h5>Looking For Jobs</h5>
+            <a className="v2-footer-card-strong" href="/careers-v2">View openings →</a>
+          </div>
+        </div>
+
+        {/* socials + back-to-top, same row as the reference */}
+        <div className="v2-footer-social">
+          <div className="v2-footer-social-links">
             <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
           </div>
+          <button
+            type="button"
+            className="v2-footer-top"
+            aria-label="Back to top"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            ↑
+          </button>
         </div>
 
         <div className="v2-footer-bottom">
-          <span>© 2026 Codelix IT Solutions — All Copyright Reserved</span>
+          <a href="/preview-v2" className="v2-footer-bottom-brand" aria-label="Codelix — home">
+            <img src={codelixLogo} alt="Codelix" />
+          </a>
+          <span className="v2-footer-bottom-copy">© 2026 Codelix IT Solutions — All Copyright Reserved</span>
           <div className="v2-footer-legal">
-            <a href="/privacy-policy-v2">Privacy Policy</a>
-            <a href="/terms-of-service-v2">Terms of service</a>
+            <a href="/sitemap-v2">Sitemap</a>
             <a href="/refund-policy-v2">Refund Policy</a>
-          </div>
-        </div>
-
-        <div className="codelix-large-text" style={{ padding: '0 var(--pad-x)' }}>
-          <div className="codelix-text">
-            <img src={codelixText} alt="Codelix" style={{ width: '100%', display: 'block', margin: '0 auto' }} />
+            <a href="/privacy-policy-v2">Privacy</a>
+            <a href="/terms-of-service-v2">Terms</a>
           </div>
         </div>
       </footer>

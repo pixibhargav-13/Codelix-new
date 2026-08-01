@@ -51,11 +51,6 @@ const testimonials = [
 const Ourwork = () => {
   const [active, setActive] = useState(0);
 
-  // Function to get first name from full name
-  const getFirstName = (fullName) => {
-    return fullName.split(' ')[0];
-  };
-
   // Function to get first letter of first name
   const getFirstLetter = (fullName) => {
     return fullName.split(' ')[0][0].toUpperCase();

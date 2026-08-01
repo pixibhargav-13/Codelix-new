@@ -1,8 +1,18 @@
 import React, { useEffect, lazy, Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import CodelixLoader from "./components/PageLoader";
 import BreadcrumbSchema from "./components/BreadcrumbSchema";
 import CustomCursor from "./components/CustomCursor/CustomCursor";
+import { AuthProvider } from "./admin/AuthContext";
+import RequireAuth from "./admin/RequireAuth";
+
+// ─── Admin panel (Supabase-backed blog + testimonials management) ────────────
+const AdminLogin = lazy(() => import("./admin/pages/AdminLogin"));
+const AdminLayout = lazy(() => import("./admin/AdminLayout"));
+const AdminBlogList = lazy(() => import("./admin/pages/AdminBlogList"));
+const AdminBlogForm = lazy(() => import("./admin/pages/AdminBlogForm"));
+const AdminTestimonialsList = lazy(() => import("./admin/pages/AdminTestimonialsList"));
+const AdminTestimonialForm = lazy(() => import("./admin/pages/AdminTestimonialForm"));
 
 // ─── Eagerly loaded (critical for first paint) ────────────────────────────────
 import { Homepage } from "./MyComponents/Homepage/Homepage";
@@ -50,6 +60,11 @@ const HomepageV2 = lazy(() => import("./MyComponents/HomepageV2/HomepageV2"));
 const ServicesV2 = lazy(() => import("./MyComponents/ServicesV2/ServicesV2"));
 const ServiceDetailV2 = lazy(() => import("./MyComponents/ServiceDetailV2/ServiceDetailV2"));
 const UIUXDesignV2 = lazy(() => import("./MyComponents/UIUXDesignV2/UIUXDesignV2"));
+const DataAnalyticsV2 = lazy(() => import("./MyComponents/DataAnalyticsV2/DataAnalyticsV2"));
+const ApplicationDevelopmentV2 = lazy(() => import("./MyComponents/ApplicationDevelopmentV2/ApplicationDevelopmentV2"));
+const ECommerceSolutionsV2 = lazy(() => import("./MyComponents/ECommerceSolutionsV2/ECommerceSolutionsV2"));
+const CustomSoftwareDevelopmentV2 = lazy(() => import("./MyComponents/CustomSoftwareDevelopmentV2/CustomSoftwareDevelopmentV2"));
+const AIDevelopmentV2 = lazy(() => import("./MyComponents/AIDevelopmentV2/AIDevelopmentV2"));
 const AboutV2 = lazy(() => import("./MyComponents/AboutV2/AboutV2"));
 const ContactV2 = lazy(() => import("./MyComponents/ContactV2/ContactV2"));
 const IndustriesV2 = lazy(() => import("./MyComponents/IndustriesV2/IndustriesV2"));
@@ -76,6 +91,13 @@ const ScrollToTop = () => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
   return null;
+};
+
+// ─── Chatbot is a public-site widget — hide it on the admin panel ────────────
+const ChatbotGate = () => {
+  const location = useLocation();
+  if (location.pathname.startsWith("/admin")) return null;
+  return <Chatbot />;
 };
 
 // ─── Route-change loader: always shows on every navigation ───────────────────
@@ -109,7 +131,12 @@ const AppRoutes = () => {
           <Route path="/preview-v2" element={<HomepageV2 />} />
           <Route path="/services-v2" element={<ServicesV2 />} />
           <Route path="/services-v2/web-development" element={<ServiceDetailV2 />} />
+          <Route path="/services-v2/application-development" element={<ApplicationDevelopmentV2 />} />
           <Route path="/services-v2/ui-ux-design" element={<UIUXDesignV2 />} />
+          <Route path="/services-v2/e-commerce-solutions" element={<ECommerceSolutionsV2 />} />
+          <Route path="/services-v2/custom-software-development" element={<CustomSoftwareDevelopmentV2 />} />
+          <Route path="/services-v2/ai-development" element={<AIDevelopmentV2 />} />
+          <Route path="/services-v2/data-analytics" element={<DataAnalyticsV2 />} />
           <Route path="/about-v2" element={<AboutV2 />} />
           <Route path="/contact-v2" element={<ContactV2 />} />
           <Route path="/industries-v2" element={<IndustriesV2 />} />
@@ -158,6 +185,26 @@ const AppRoutes = () => {
           <Route path="/car-marketplace-case-study" element={<CarMarketplaceCaseStudy />} />
           <Route path="/school-management-case-study" element={<SchoolManagementCaseStudy />} />
           <Route path="/smart-society-management-case-study" element={<SmartSocietyManagementCaseStudy />} />
+
+          {/* ─── Admin panel ─── */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route
+            path="/admin"
+            element={
+              <RequireAuth>
+                <AdminLayout />
+              </RequireAuth>
+            }
+          >
+            <Route index element={<Navigate to="/admin/blog" replace />} />
+            <Route path="blog" element={<AdminBlogList />} />
+            <Route path="blog/new" element={<AdminBlogForm />} />
+            <Route path="blog/:id" element={<AdminBlogForm />} />
+            <Route path="testimonials" element={<AdminTestimonialsList />} />
+            <Route path="testimonials/new" element={<AdminTestimonialForm />} />
+            <Route path="testimonials/:id" element={<AdminTestimonialForm />} />
+          </Route>
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
@@ -169,11 +216,13 @@ const AppRoutes = () => {
 function App() {
   return (
     <Router>
-      <ScrollToTop />
-      <BreadcrumbSchema />
-      <CustomCursor />
-      <Chatbot />
-      <AppRoutes />
+      <AuthProvider>
+        <ScrollToTop />
+        <BreadcrumbSchema />
+        <CustomCursor />
+        <ChatbotGate />
+        <AppRoutes />
+      </AuthProvider>
     </Router>
   );
 }

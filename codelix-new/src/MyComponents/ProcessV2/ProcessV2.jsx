@@ -11,7 +11,7 @@ import "../HomepageV2/HomepageV2.css";
 import V2MobileDrawer from "../HomepageV2/V2MobileDrawer";
 import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import codelixLogo from "../Images/codelix-logo.png";
-import codelixText from "../Images/codelix-footer-logo.png";
+import { FOOTER_SERVICE_KEYWORDS, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./ProcessV2.css";
@@ -503,75 +503,114 @@ export default function ProcessV2() {
             A structured conversation about your project — scoped against
             the same six stages, whichever service it needs.
           </p>
-          <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
-          <p className="v2-cta-footnote">Free consultation · NDA on request · No obligation</p>
+          <div className="v2-cta-actions">
+            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
+          </div>
+          <div className="v2-cta-badges">
+            <span className="v2-cta-badge">Free consultation</span>
+            <span className="v2-cta-badge">NDA on request</span>
+            <span className="v2-cta-badge">No obligation</span>
+          </div>
         </div>
       </section>
 
       {/* ══════════ FOOTER ══════════ */}
-      <footer className="v2-footer">
-        <div className="v2-footer-marquee">
-          <div className="v2-footer-marquee-track">
-            {Array.from({ length: 12 }).map((_, i) => (
-              <span key={i}>WE LIVE IN IT <em>•</em></span>
-            ))}
+            <footer className="v2-footer">
+        {/* tagline header — our own real line ("we live in it," already used
+            in the marquee elsewhere on the site) instead of a borrowed one */}
+        <div className="v2-footer-tagline">
+          <h2 className="v2-footer-wordmark-small">
+            WE LIVE
+            <br />
+            IN <span className="v2-footer-wordmark-accent">IT</span>
+          </h2>
+          <p className="v2-footer-tagline-body">
+            We design and build web, mobile, and AI systems for businesses that
+            intend to still be running them in five years.
+          </p>
+        </div>
+
+        {/* dense keyword strips — everything we build, everything we serve,
+            laid out flat rather than tucked into a dropdown */}
+        <div className="v2-footer-keywords">
+          <div className="v2-footer-keywords-row">
+            <p className="v2-footer-keywords-label">Services</p>
+            <div className="v2-footer-keywords-list">
+              {FOOTER_SERVICE_KEYWORDS.map((k, i) => (
+                <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
+              ))}
+            </div>
+          </div>
+          <div className="v2-footer-keywords-row">
+            <p className="v2-footer-keywords-label">Industries</p>
+            <div className="v2-footer-keywords-list">
+              {FOOTER_INDUSTRY_KEYWORDS.map((k, i) => (
+                <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
+              ))}
+            </div>
           </div>
         </div>
-        <div className="v2-footer-grid">
-          <div className="v2-footer-col">
-            <h5>Company</h5>
-            <a href="/preview-v2">Codelix</a>
-            <a href="/about-v2">About</a>
-            <a href="/team-v2">Team</a>
-            <a href="/work-v2">Work</a>
-            <a href="/case-study-v2">Case Studies</a>
-            <a href="/blog-v2">Blog</a>
-            <a href="/industries-v2">Industries</a>
-            <a href="/process-v2">Process</a>
-            <a href="/contact-v2">Contact</a>
-          </div>
-          <div className="v2-footer-col">
-            <h5>Services</h5>
-            <a href="/services-v2/web-development">Web Development</a>
-            <a href="/services-v2">Application Development</a>
-            <a href="/services-v2/ui-ux-design">UI/UX Design</a>
-            <a href="/services-v2">E-Commerce Solutions</a>
-            <a href="/services-v2">Custom Software</a>
-            <a href="/services-v2">AI Development</a>
-          </div>
-          <div className="v2-footer-col">
-            <h5>Resources</h5>
-            <a href="/pricing-v2">Pricing</a>
-            <a href="/technologies-v2">Technologies</a>
-            <a href="/careers-v2">Careers</a>
-            <a href="/faq-v2">FAQ</a>
-            <a href="/sitemap-v2">Sitemap</a>
-          </div>
-          <div className="v2-footer-col">
-            <h5>Contact</h5>
-            <a href="mailto:Sales@codelixitsolutions.com">Sales@codelixitsolutions.com</a>
-            <a href="tel:+919429269295">+91 94292 69295</a>
-            <a href="tel:+917490909686">+91 74909 09686</a>
-            <a className="v2-footer-address"
-              href="https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.0095811,72.5203036,17z"
-              target="_blank" rel="noopener noreferrer">
+
+        {/* office / contact cards — bordered two-up rows, same shape as the
+            reference's address + sales/careers blocks */}
+        <div className="v2-footer-cards">
+          <a
+            className="v2-footer-card"
+            href="https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h5>India (HQ)</h5>
+            <p className="v2-footer-card-addr">
               A-1308, PNTC — Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat — 380015
+            </p>
+          </a>
+          <div className="v2-footer-card">
+            <h5>Phone</h5>
+            <a className="v2-footer-card-strong" href="tel:+919429269295">+91 94292 69295</a>
+            <a className="v2-footer-card-strong" href="tel:+917490909686">+91 74909 09686</a>
+          </div>
+        </div>
+
+        <div className="v2-footer-cards">
+          <div className="v2-footer-card">
+            <h5>For Sales</h5>
+            <a className="v2-footer-card-strong" href="mailto:Sales@codelixitsolutions.com">
+              Sales@codelixitsolutions.com
             </a>
+          </div>
+          <div className="v2-footer-card">
+            <h5>Looking For Jobs</h5>
+            <a className="v2-footer-card-strong" href="/careers-v2">View openings →</a>
+          </div>
+        </div>
+
+        {/* socials + back-to-top, same row as the reference */}
+        <div className="v2-footer-social">
+          <div className="v2-footer-social-links">
             <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
           </div>
+          <button
+            type="button"
+            className="v2-footer-top"
+            aria-label="Back to top"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            ↑
+          </button>
         </div>
+
         <div className="v2-footer-bottom">
-          <span>© 2026 Codelix IT Solutions — All Copyright Reserved</span>
+          <a href="/preview-v2" className="v2-footer-bottom-brand" aria-label="Codelix — home">
+            <img src={codelixLogo} alt="Codelix" />
+          </a>
+          <span className="v2-footer-bottom-copy">© 2026 Codelix IT Solutions — All Copyright Reserved</span>
           <div className="v2-footer-legal">
-            <a href="/privacy-policy-v2">Privacy Policy</a>
-            <a href="/terms-of-service-v2">Terms of service</a>
+            <a href="/sitemap-v2">Sitemap</a>
             <a href="/refund-policy-v2">Refund Policy</a>
-          </div>
-        </div>
-        <div className="codelix-large-text" style={{ padding: '0 var(--pad-x)' }}>
-          <div className="codelix-text">
-            <img src={codelixText} alt="Codelix" style={{ width: '100%', display: 'block', margin: '0 auto' }} />
+            <a href="/privacy-policy-v2">Privacy</a>
+            <a href="/terms-of-service-v2">Terms</a>
           </div>
         </div>
       </footer>
