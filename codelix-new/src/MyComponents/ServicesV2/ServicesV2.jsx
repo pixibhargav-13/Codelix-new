@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
-  Globe, Smartphone, PenTool, ShoppingCart, Code2, Sparkles,
+  Globe, Smartphone, PenTool, ShoppingCart, Code2, Sparkles, BarChart3,
   CalendarCheck, Lock, Eye, Receipt, Users, LifeBuoy, Clock,
 } from "lucide-react";
 
@@ -13,7 +13,7 @@ import V2MobileDrawer from "../HomepageV2/V2MobileDrawer";
 import { TECH_STACK } from "../HomepageV2/techStack";
 import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import codelixLogo from "../Images/codelix-logo.png";
-import codelixText from "../Images/codelix-footer-logo.png";
+import { FOOTER_SERVICE_KEYWORDS, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import "./ServicesV2.css";
 
 /* how delivery actually runs — the question every services page has to answer
@@ -30,7 +30,7 @@ const METHOD = [
 /* headline numbers — value is the count-up target, suffix rides along */
 const STATS = [
   { value: 30, suffix: "+", label: "Projects delivered", icon: Sparkles },
-  { value: 6, suffix: "", label: "Core services", icon: Code2 },
+  { value: 7, suffix: "", label: "Core services", icon: Code2 },
   { value: 100, suffix: "%", label: "Source-code ownership", icon: Lock },
   { value: 24, suffix: "h", label: "Response time", icon: Clock },
 ];
@@ -51,7 +51,7 @@ const SERVICES = [
     icon: Smartphone,
     title: "Application Development",
     body: "Native and cross-platform apps built from scratch — no cookie-cutter builders, no shortcuts on performance or security.",
-    path: "/services/application-development",
+    path: "/services-v2/application-development",
     capabilities: ["iOS & Android", "Cross-platform (Flutter)", "Progressive web apps", "Desktop apps", "App store delivery"],
   },
   {
@@ -67,7 +67,7 @@ const SERVICES = [
     icon: ShoppingCart,
     title: "E-Commerce Solutions",
     body: "Online stores that are easy to buy from — fast checkout, clear navigation, and a backend you can actually manage yourself.",
-    path: "/services/e-commerce-solutions",
+    path: "/services-v2/e-commerce-solutions",
     capabilities: ["Custom storefronts", "Shopify & WooCommerce", "Payment integration", "Inventory & orders", "Checkout optimisation"],
   },
   {
@@ -75,7 +75,7 @@ const SERVICES = [
     icon: Code2,
     title: "Custom Software Development",
     body: "Software built around how your business actually works — not a generic tool you have to bend your process around.",
-    path: "/services/custom-software-development",
+    path: "/services-v2/custom-software-development",
     capabilities: ["ERP & CRM systems", "Workflow automation", "Third-party integrations", "Admin dashboards", "Legacy modernisation"],
   },
   {
@@ -83,8 +83,16 @@ const SERVICES = [
     icon: Sparkles,
     title: "AI Development",
     body: "Practical AI that does real work — automating the repetitive stuff, answering customers, or surfacing data your team would otherwise miss.",
-    path: "/services/ai-development",
+    path: "/services-v2/ai-development",
     capabilities: ["AI agents & assistants", "Chatbots", "Process automation", "Predictive analytics", "LLM integration"],
+  },
+  {
+    n: "07",
+    icon: BarChart3,
+    title: "Data Analytics",
+    body: "Turn raw data into clear decisions — dashboards, reports, and pipelines that show your team exactly what's happening and why.",
+    path: "/services-v2/data-analytics",
+    capabilities: ["BI dashboards", "Custom reporting", "Data pipelines", "KPI tracking & alerts", "Data visualization"],
   },
 ];
 
@@ -488,7 +496,7 @@ export default function ServicesV2() {
       <header className="sv2-hero">
         <div className="sv2-hero-inner">
           <div className="v2-hero-top sv2-hero-reveal">
-            <span className="v2-hero-status"><i /> Six services · One delivery standard</span>
+            <span className="v2-hero-status"><i /> Seven services · One delivery standard</span>
           </div>
           <h1 className="sv2-hero-title sv2-hero-reveal">
             Everything we build,<br />
@@ -496,8 +504,8 @@ export default function ServicesV2() {
           </h1>
           <p className="sv2-hero-sub sv2-hero-reveal">
             Whether it's a landing page or a full platform — we handle web, mobile, design,
-            e-commerce, custom software, and AI. Same team, same process, same handoff
-            every time.
+            e-commerce, custom software, AI, and data analytics. Same team, same process,
+            same handoff every time.
           </p>
           <div className="sv2-hero-cta sv2-hero-reveal">
             <a className="v2-btn v2-btn--filled" href="/contact">
@@ -526,7 +534,7 @@ export default function ServicesV2() {
         <div className="v2-method-head">
           <h2 className="v2-method-heading">What We Provide.</h2>
           <p className="v2-method-lede">
-            Six things we do well. Most projects use a few of them together.
+            Seven things we do well. Most projects use a few of them together.
           </p>
         </div>
         <div className="sv2-svc-showcase">
@@ -770,72 +778,114 @@ export default function ServicesV2() {
             Walk us through what you're working on. We'll figure out what to build first,
             what can wait, and what it'll take to get it live.
           </p>
-          <a className="v2-btn" href="/contact">Book a consultation →</a>
-          <p className="v2-cta-footnote">Free consultation · NDA on request · No obligation</p>
+          <div className="v2-cta-actions">
+            <a className="v2-btn" href="/contact">Book a consultation →</a>
+          </div>
+          <div className="v2-cta-badges">
+            <span className="v2-cta-badge">Free consultation</span>
+            <span className="v2-cta-badge">NDA on request</span>
+            <span className="v2-cta-badge">No obligation</span>
+          </div>
         </div>
       </section>
 
       {/* ══════════ FOOTER ══════════ */}
-      <footer className="v2-footer">
-        <div className="v2-footer-marquee">
-          <div className="v2-footer-marquee-track">
-            {Array.from({ length: 12 }).map((_, i) => (
-              <span key={i}>WE LIVE IN IT <em>•</em></span>
-            ))}
+            <footer className="v2-footer">
+        {/* tagline header — our own real line ("we live in it," already used
+            in the marquee elsewhere on the site) instead of a borrowed one */}
+        <div className="v2-footer-tagline">
+          <h2 className="v2-footer-wordmark-small">
+            WE LIVE
+            <br />
+            IN <span className="v2-footer-wordmark-accent">IT</span>
+          </h2>
+          <p className="v2-footer-tagline-body">
+            We design and build web, mobile, and AI systems for businesses that
+            intend to still be running them in five years.
+          </p>
+        </div>
+
+        {/* dense keyword strips — everything we build, everything we serve,
+            laid out flat rather than tucked into a dropdown */}
+        <div className="v2-footer-keywords">
+          <div className="v2-footer-keywords-row">
+            <p className="v2-footer-keywords-label">Services</p>
+            <div className="v2-footer-keywords-list">
+              {FOOTER_SERVICE_KEYWORDS.map((k, i) => (
+                <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
+              ))}
+            </div>
+          </div>
+          <div className="v2-footer-keywords-row">
+            <p className="v2-footer-keywords-label">Industries</p>
+            <div className="v2-footer-keywords-list">
+              {FOOTER_INDUSTRY_KEYWORDS.map((k, i) => (
+                <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
+              ))}
+            </div>
           </div>
         </div>
-        <div className="v2-footer-grid">
-          <div className="v2-footer-col">
-            <h5>Company</h5>
-            <a href="/preview-v2">Codelix</a>
-            <a href="/about-v2">About</a>
-            <a href="/team-v2">Team</a>
-            <a href="/work-v2">Work</a>
-            <a href="/case-study-v2">Case Studies</a>
-            <a href="/blog-v2">Blog</a>
-            <a href="/industries-v2">Industries</a>
-            <a href="/process-v2">Process</a>
-            <a href="/contact-v2">Contact</a>
-          </div>
-          <div className="v2-footer-col">
-            <h5>Services</h5>
-            {SERVICES.map((s) => (
-              <a href={s.path} key={s.path}>{s.title}</a>
-            ))}
-          </div>
-          <div className="v2-footer-col">
-            <h5>Resources</h5>
-            <a href="/pricing-v2">Pricing</a>
-            <a href="/technologies-v2">Technologies</a>
-            <a href="/careers-v2">Careers</a>
-            <a href="/faq-v2">FAQ</a>
-            <a href="/sitemap-v2">Sitemap</a>
-          </div>
-          <div className="v2-footer-col">
-            <h5>Contact</h5>
-            <a href="mailto:Sales@codelixitsolutions.com">Sales@codelixitsolutions.com</a>
-            <a href="tel:+919429269295">+91 94292 69295</a>
-            <a href="tel:+917490909686">+91 74909 09686</a>
-            <a className="v2-footer-address"
-              href="https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.0095811,72.5203036,17z"
-              target="_blank" rel="noopener noreferrer">
+
+        {/* office / contact cards — bordered two-up rows, same shape as the
+            reference's address + sales/careers blocks */}
+        <div className="v2-footer-cards">
+          <a
+            className="v2-footer-card"
+            href="https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h5>India (HQ)</h5>
+            <p className="v2-footer-card-addr">
               A-1308, PNTC — Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat — 380015
+            </p>
+          </a>
+          <div className="v2-footer-card">
+            <h5>Phone</h5>
+            <a className="v2-footer-card-strong" href="tel:+919429269295">+91 94292 69295</a>
+            <a className="v2-footer-card-strong" href="tel:+917490909686">+91 74909 09686</a>
+          </div>
+        </div>
+
+        <div className="v2-footer-cards">
+          <div className="v2-footer-card">
+            <h5>For Sales</h5>
+            <a className="v2-footer-card-strong" href="mailto:Sales@codelixitsolutions.com">
+              Sales@codelixitsolutions.com
             </a>
+          </div>
+          <div className="v2-footer-card">
+            <h5>Looking For Jobs</h5>
+            <a className="v2-footer-card-strong" href="/careers-v2">View openings →</a>
+          </div>
+        </div>
+
+        {/* socials + back-to-top, same row as the reference */}
+        <div className="v2-footer-social">
+          <div className="v2-footer-social-links">
             <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
           </div>
+          <button
+            type="button"
+            className="v2-footer-top"
+            aria-label="Back to top"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            ↑
+          </button>
         </div>
+
         <div className="v2-footer-bottom">
-          <span>© 2026 Codelix IT Solutions — All Copyright Reserved</span>
+          <a href="/preview-v2" className="v2-footer-bottom-brand" aria-label="Codelix — home">
+            <img src={codelixLogo} alt="Codelix" />
+          </a>
+          <span className="v2-footer-bottom-copy">© 2026 Codelix IT Solutions — All Copyright Reserved</span>
           <div className="v2-footer-legal">
-            <a href="/privacy-policy-v2">Privacy Policy</a>
-            <a href="/terms-of-service-v2">Terms of service</a>
+            <a href="/sitemap-v2">Sitemap</a>
             <a href="/refund-policy-v2">Refund Policy</a>
-          </div>
-        </div>
-        <div className="codelix-large-text" style={{ padding: '0 var(--pad-x)' }}>
-          <div className="codelix-text">
-            <img src={codelixText} alt="Codelix" style={{ width: '100%', display: 'block', margin: '0 auto' }} />
+            <a href="/privacy-policy-v2">Privacy</a>
+            <a href="/terms-of-service-v2">Terms</a>
           </div>
         </div>
       </footer>

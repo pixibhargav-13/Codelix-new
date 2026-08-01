@@ -207,11 +207,11 @@
   background: rgba(242, 240, 236, .015);
 }
 
-/* assumes exactly 6 rows (SERVICES.length) */
+/* assumes exactly 7 rows (SERVICES.length) */
 .sv2-svc-nav-indicator {
   position: absolute;
   inset: 0 0 auto 0;
-  height: calc(100% / 6);
+  height: calc(100% / 7);
   background: linear-gradient(120deg, rgba(180, 200, 230, .14), rgba(180, 200, 230, .04));
   border-left: 2px solid rgba(180, 200, 230, .85);
   transition: transform .5s var(--ease-expo);
