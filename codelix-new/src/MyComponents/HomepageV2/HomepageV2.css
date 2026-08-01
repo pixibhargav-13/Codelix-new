@@ -3177,28 +3177,26 @@
 
   .v2-footer-wordmark-small {
     white-space: normal;
+    text-align: left;
   }
 }
 
 /* dense keyword strips — every service capability and industry laid out
-   flat, pipe-separated and wrapping, instead of tucked into a dropdown */
-.v2-footer-keywords {
-  padding: 4px var(--pad-x) 4px;
-  border-bottom: .8px solid var(--rule);
-}
-
+   flat, pipe-separated and wrapping, instead of tucked into a dropdown.
+   Each row carries its own horizontal padding + divider now that there's
+   no shared wrapper div around them. */
 .v2-footer-keywords-row {
   position: relative;
-  padding-bottom: 36px;
-  padding-top: 36px;
+  padding: 36px var(--pad-x);
+}
+
+.v2-footer-keywords-row+.v2-footer-keywords-row {
+  padding-top: 28px;
+  border-bottom: .8px solid var(--rule);
 }
 
 /* the rule breaks out of the row's horizontal padding to run the full
    width of the screen, not just the padded content column */
-.v2-footer-keywords-row+.v2-footer-keywords-row {
-  padding-top: 28px;
-}
-
 .v2-footer-keywords-row+.v2-footer-keywords-row::before {
   content: "";
   position: absolute;
@@ -3251,8 +3249,17 @@
 }
 
 @media (max-width: 640px) {
-  .v2-footer-keywords {
-    padding: 40px 5vw 4px;
+  .v2-footer-keywords-row {
+    padding: 32px 5vw;
+  }
+
+  .v2-footer-keywords-row+.v2-footer-keywords-row {
+    padding-top: 24px;
+  }
+
+  .v2-footer-keywords-row+.v2-footer-keywords-row::before {
+    left: calc(-1 * 5vw);
+    right: calc(-1 * 5vw);
   }
 
   .v2-footer-keyword {

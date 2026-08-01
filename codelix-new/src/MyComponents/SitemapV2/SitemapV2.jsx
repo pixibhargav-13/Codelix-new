@@ -268,7 +268,6 @@ export default function SitemapV2() {
 
         {/* dense keyword strips — everything we build, everything we serve,
             laid out flat rather than tucked into a dropdown */}
-        <div className="v2-footer-keywords">
           <div className="v2-footer-keywords-row">
             <p className="v2-footer-keywords-label">Services</p>
             <div className="v2-footer-keywords-list">
@@ -285,7 +284,6 @@ export default function SitemapV2() {
               ))}
             </div>
           </div>
-        </div>
 
         {/* office / contact cards — bordered two-up rows, same shape as the
             reference's address + sales/careers blocks */}
