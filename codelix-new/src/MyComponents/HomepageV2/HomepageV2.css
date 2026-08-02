@@ -170,7 +170,7 @@
 }
 
 .v2-nav-logo img {
-  height: 34px;
+  height: 44px;
   width: auto;
   display: block;
   /* the nav shrinks on scroll — keep the mark in proportion with it */
@@ -178,16 +178,16 @@
 }
 
 .v2-nav.scrolled .v2-nav-logo img {
-  height: 29px;
+  height: 37px;
 }
 
 @media (max-width: 560px) {
   .v2-nav-logo img {
-    height: 28px;
+    height: 34px;
   }
 
   .v2-nav.scrolled .v2-nav-logo img {
-    height: 25px;
+    height: 30px;
   }
 }
 

@@ -526,13 +526,13 @@ export default function DataAnalyticsV2() {
             <img src={codelixLogo} alt="Codelix" />
           </a>
           <div className="v2-nav-links">
-            <a href="/preview-v2">Homepage V2</a>
-            <a href="/services-v2">Services V2</a>
-            <a href="/about-v2">About V2</a>
-            <a href="/work-v2">Work V2</a>
-            <a href="/industries-v2">Industries V2</a>
-            <a href="/process-v2">Process V2</a>
-            <a href="/contact-v2">Contact V2</a>
+            <a href="/preview-v2">Homepage</a>
+            <a href="/services-v2">Services</a>
+            <a href="/about-v2">About</a>
+            <a href="/work-v2">Work</a>
+            <a href="/industries-v2">Industries</a>
+            <a href="/process-v2">Process</a>
+            <a href="/contact-v2">Contact</a>
           </div>
           <button
             className={`v2-burger ${mobileOpen ? "open" : ""}`}

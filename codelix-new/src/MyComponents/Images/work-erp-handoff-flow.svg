@@ -1,0 +1,51 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgHandoffA" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0d" />
+      <stop offset="100%" stop-color="#14161f" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bgHandoffA)" />
+
+  <!-- column headers -->
+  <text x="90" y="90" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="rgba(255,255,255,.4)" letter-spacing="2">SUPPORT</text>
+  <text x="350" y="90" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="rgba(124,155,255,.75)" letter-spacing="2">HANDOFF</text>
+  <text x="610" y="90" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="rgba(255,255,255,.4)" letter-spacing="2">CUST. SUCCESS</text>
+
+  <!-- column bodies -->
+  <rect x="60" y="120" width="220" height="420" rx="16" fill="rgba(255,255,255,.02)" stroke="rgba(255,255,255,.08)" />
+  <rect x="320" y="120" width="160" height="420" rx="16" fill="rgba(124,155,255,.05)" stroke="rgba(124,155,255,.25)" />
+  <rect x="520" y="120" width="220" height="420" rx="16" fill="rgba(255,255,255,.02)" stroke="rgba(255,255,255,.08)" />
+
+  <!-- support cards -->
+  <rect x="84" y="150" width="172" height="70" rx="10" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" />
+  <rect x="100" y="168" width="100" height="9" rx="4" fill="rgba(255,255,255,.18)" />
+  <rect x="100" y="188" width="70" height="8" rx="4" fill="rgba(255,255,255,.1)" />
+
+  <rect x="84" y="238" width="172" height="70" rx="10" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" />
+  <rect x="100" y="256" width="110" height="9" rx="4" fill="rgba(255,255,255,.18)" />
+  <rect x="100" y="276" width="70" height="8" rx="4" fill="rgba(255,255,255,.1)" />
+
+  <!-- in-transit card, glowing -->
+  <rect x="84" y="326" width="172" height="70" rx="10" fill="rgba(126,224,168,.08)" stroke="rgba(126,224,168,.5)" />
+  <rect x="100" y="344" width="95" height="9" rx="4" fill="rgba(255,255,255,.22)" />
+  <rect x="100" y="364" width="60" height="8" rx="4" fill="rgba(126,224,168,.7)" />
+
+  <!-- automated arrow through handoff column -->
+  <line x1="256" y1="361" x2="330" y2="361" stroke="rgba(126,224,168,.7)" stroke-width="2.5" stroke-dasharray="6 6" />
+  <circle cx="400" cy="361" r="26" fill="rgba(126,224,168,.12)" stroke="rgba(126,224,168,.55)" />
+  <path d="M390 361 l8 8 l14 -16" fill="none" stroke="rgba(126,224,168,.95)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  <line x1="426" y1="361" x2="500" y2="361" stroke="rgba(126,224,168,.7)" stroke-width="2.5" stroke-dasharray="6 6" />
+
+  <text x="345" y="420" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="rgba(126,224,168,.75)">AUTO-ROUTED</text>
+  <text x="345" y="438" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="rgba(255,255,255,.35)">AUDIT LOGGED</text>
+
+  <!-- customer success cards -->
+  <rect x="544" y="150" width="172" height="70" rx="10" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" />
+  <rect x="560" y="168" width="105" height="9" rx="4" fill="rgba(255,255,255,.18)" />
+  <rect x="560" y="188" width="70" height="8" rx="4" fill="rgba(255,255,255,.1)" />
+
+  <rect x="544" y="238" width="172" height="70" rx="10" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-dasharray="5 5" />
+  <rect x="560" y="256" width="80" height="9" rx="4" fill="rgba(255,255,255,.12)" />
+  <rect x="560" y="276" width="60" height="8" rx="4" fill="rgba(255,255,255,.08)" />
+</svg>

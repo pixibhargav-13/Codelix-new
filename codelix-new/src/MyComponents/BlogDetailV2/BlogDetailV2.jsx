@@ -117,13 +117,13 @@ export default function BlogDetailV2() {
             <img src={codelixLogo} alt="Codelix" />
           </a>
           <div className="v2-nav-links">
-            <a href="/preview-v2">Homepage V2</a>
-            <a href="/services-v2">Services V2</a>
-            <a href="/about-v2">About V2</a>
-            <a href="/work-v2">Work V2</a>
-            <a href="/industries-v2">Industries V2</a>
-            <a href="/process-v2">Process V2</a>
-            <a href="/contact-v2">Contact V2</a>
+            <a href="/preview-v2">Homepage</a>
+            <a href="/services-v2">Services</a>
+            <a href="/about-v2">About</a>
+            <a href="/work-v2">Work</a>
+            <a href="/industries-v2">Industries</a>
+            <a href="/process-v2">Process</a>
+            <a href="/contact-v2">Contact</a>
           </div>
           <button
             className={`v2-burger ${mobileOpen ? "open" : ""}`}
@@ -139,13 +139,13 @@ export default function BlogDetailV2() {
       <div className={`v2-drawer ${mobileOpen ? "open" : ""}`} aria-hidden={!mobileOpen}>
         <div className="v2-drawer-links">
           {[
-            { label: "Homepage V2", href: "/preview-v2" },
-            { label: "Services V2", href: "/services-v2" },
-            { label: "About V2", href: "/about-v2" },
-            { label: "Work V2", href: "/work-v2" },
-            { label: "Industries V2", href: "/industries-v2" },
-            { label: "Process V2", href: "/process-v2" },
-            { label: "Contact V2", href: "/contact-v2" },
+            { label: "Homepage", href: "/preview-v2" },
+            { label: "Services", href: "/services-v2" },
+            { label: "About", href: "/about-v2" },
+            { label: "Work", href: "/work-v2" },
+            { label: "Industries", href: "/industries-v2" },
+            { label: "Process", href: "/process-v2" },
+            { label: "Contact", href: "/contact-v2" },
           ].map((l, i) => (
             <a key={l.label} href={l.href}
               style={{ transitionDelay: `${0.08 + i * 0.05}s` }}

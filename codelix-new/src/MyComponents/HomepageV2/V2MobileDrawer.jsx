@@ -1,13 +1,13 @@
 import React from "react";
 
 const NAV_LINKS = [
-  { label: "Homepage V2", href: "/preview-v2" },
-  { label: "Services V2", href: "/services-v2" },
-  { label: "About V2", href: "/about-v2" },
-  { label: "Work V2", href: "/work-v2" },
-  { label: "Industries V2", href: "/industries-v2" },
-  { label: "Process V2", href: "/process-v2" },
-  { label: "Contact V2", href: "/contact-v2" },
+  { label: "Homepage", href: "/preview-v2" },
+  { label: "Services", href: "/services-v2" },
+  { label: "About", href: "/about-v2" },
+  { label: "Work", href: "/work-v2" },
+  { label: "Industries", href: "/industries-v2" },
+  { label: "Process", href: "/process-v2" },
+  { label: "Contact", href: "/contact-v2" },
 ];
 
 export default function V2MobileDrawer({ open, onClose }) {

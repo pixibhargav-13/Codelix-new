@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import {
-  Building2, Rocket, Store, GraduationCap, HeartPulse, Landmark,
-  ShieldCheck, Gauge, Eye,
+  Rocket, GraduationCap, HeartPulse, Landmark,
+  ShieldCheck, Gauge, Eye, Factory, Cpu, UtensilsCrossed, ShoppingCart,
+  Building, Layers, Plane,
 } from "lucide-react";
 
 /* v2 design system + shared data — same source of truth as the other v2 pages */
@@ -16,43 +17,39 @@ import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./IndustriesV2.css";
 
-/* same six sectors already referenced across the per-service "Who It's For"
-   sections — expanded here into fuller profiles instead of a new, invented
-   list, so the site stays consistent about who it actually serves */
+/* expanded from the original six into the full set of sectors we take on
+   repeat work in — each profile below maps to real services we actually
+   offer (see FOOTER_SERVICE_KEYWORDS), not an invented capability list */
 const INDUSTRIES = [
   {
-    icon: Building2,
-    title: "Corporate & B2B",
-    tagline: "Credibility-first, for buyers who research before they call.",
-    challenges: ["Buyers evaluate you before ever reaching out", "Dense offerings that are hard to explain simply", "Legacy sites that undersell an established business"],
-    body: "We build sites that carry the weight of an established business — clear positioning, credible proof, and a path from research to real contact.",
-    services: ["Web Development", "UI/UX Design"],
+    slug: "manufacturing",
+    icon: Factory,
+    title: "Manufacturing",
+    tagline: "Operational systems that connect the shop floor to the office.",
+    challenges: ["Inventory and production data scattered across spreadsheets", "Legacy systems that don't talk to newer tools", "Reporting that lags days behind the shop floor"],
+    body: "Custom software that connects inventory, production, and reporting into one system your team can trust, without ripping out equipment that already works.",
+    services: ["Custom Software Development", "Data Analytics"],
   },
   {
-    icon: Rocket,
-    title: "Startups & SaaS",
-    tagline: "Ship the idea clearly, capture the signup.",
-    challenges: ["Explaining a new idea in one scroll", "Needing to look credible with a small team", "Iterating fast without rebuilding from scratch"],
-    body: "Marketing sites and product experiences built to explain something new clearly, capture signups, and evolve fast as the product does.",
-    services: ["Web Development", "Custom Software Development", "AI Development", "Data Analytics"],
+    slug: "fintech",
+    icon: Landmark,
+    title: "FinTech",
+    tagline: "Where compliance and trust can't be an afterthought.",
+    challenges: ["Regulated data that has to be handled correctly from day one", "Trust signals that have to be earned, not decorated", "Integrations with banking and payment infrastructure"],
+    body: "Builds where security, compliance, and clear information architecture are treated as requirements, not a later pass — from onboarding flows to dashboards handling sensitive data.",
+    services: ["Custom Software Development", "Web Development", "UI/UX Design"],
   },
   {
-    icon: Store,
-    title: "Retail & D2C",
-    tagline: "A fast, low-friction path from landing to checkout.",
-    challenges: ["Cart abandonment from slow or clunky checkout", "Inventory and orders spread across tools", "Mobile traffic that converts worse than desktop"],
-    body: "Storefronts engineered around speed and trust — fast product discovery, a frictionless checkout, and a backend your team can actually run.",
-    services: ["E-Commerce Solutions", "Web Development"],
+    slug: "ai-data",
+    icon: Cpu,
+    title: "AI & Data",
+    tagline: "Turning raw data into something a team can act on.",
+    challenges: ["Data spread across disconnected tools", "No clear pipeline from raw data to a usable dashboard", "Wanting AI features without a clear use case"],
+    body: "Data pipelines, dashboards, and AI features built around an actual business question, not a proof-of-concept that never leaves the demo.",
+    services: ["AI Development", "Data Analytics", "Custom Software Development"],
   },
   {
-    icon: GraduationCap,
-    title: "Education",
-    tagline: "Built for real enrolment load, not a demo.",
-    challenges: ["Admissions journeys that lose applicants midway", "Course catalogues that are hard to browse", "Student portals that break under real usage"],
-    body: "Course catalogues, admissions flows, and student portals designed to hold up under real enrolment traffic, not just a polished demo.",
-    services: ["Web Development", "Custom Software Development"],
-  },
-  {
+    slug: "healthcare",
     icon: HeartPulse,
     title: "Healthcare",
     tagline: "Privacy and accessibility as first-class requirements.",
@@ -61,12 +58,67 @@ const INDUSTRIES = [
     services: ["Web Development", "Custom Software Development", "UI/UX Design"],
   },
   {
-    icon: Landmark,
-    title: "Finance & Legal",
-    tagline: "Where trust signals and document handling actually matter.",
-    challenges: ["Dense, regulated content that's hard to make usable", "Document handling that needs to be airtight", "Trust signals that have to be earned, not decorated"],
-    body: "Compliance-conscious builds where trust signals, document handling, and information architecture aren't an afterthought.",
+    slug: "food-beverages",
+    icon: UtensilsCrossed,
+    title: "Food & Beverages",
+    tagline: "Ordering and operations that hold up during a dinner rush.",
+    challenges: ["Online ordering that breaks under peak-hour traffic", "Menu and inventory updates spread across platforms", "Delivery and reservation systems that don't talk to each other"],
+    body: "Ordering, reservation, and inventory systems built to stay reliable during the busiest hour of the night, not just in a quiet demo.",
+    services: ["Web Development", "E-Commerce Solutions", "Custom Software Development"],
+  },
+  {
+    slug: "e-commerce",
+    icon: ShoppingCart,
+    title: "E-Commerce",
+    tagline: "A fast, low-friction path from landing to checkout.",
+    challenges: ["Cart abandonment from slow or clunky checkout", "Inventory and orders spread across tools", "Mobile traffic that converts worse than desktop"],
+    body: "Storefronts engineered around speed and trust — fast product discovery, a frictionless checkout, and a backend your team can actually run.",
+    services: ["E-Commerce Solutions", "Web Development"],
+  },
+  {
+    slug: "real-estate-construction",
+    icon: Building,
+    title: "Real Estate & Construction",
+    tagline: "Listings and project data that stay accurate as things move fast.",
+    challenges: ["Listings and availability that go stale across platforms", "Project and document tracking spread across tools", "Client-facing portals that feel like an afterthought"],
+    body: "Listing platforms and project-tracking tools that keep availability, documents, and client communication in one accurate system.",
     services: ["Web Development", "Custom Software Development"],
+  },
+  {
+    slug: "education",
+    icon: GraduationCap,
+    title: "Education",
+    tagline: "Built for real enrolment load, not a demo.",
+    challenges: ["Admissions journeys that lose applicants midway", "Course catalogues that are hard to browse", "Student portals that break under real usage"],
+    body: "Course catalogues, admissions flows, and student portals designed to hold up under real enrolment traffic, not just a polished demo.",
+    services: ["Web Development", "Custom Software Development"],
+  },
+  {
+    slug: "startups",
+    icon: Rocket,
+    title: "Startups",
+    tagline: "Ship the idea clearly, capture the signup.",
+    challenges: ["Explaining a new idea in one scroll", "Needing to look credible with a small team", "Iterating fast without rebuilding from scratch"],
+    body: "Marketing sites and product experiences built to explain something new clearly, capture signups, and evolve fast as the product does.",
+    services: ["Web Development", "Custom Software Development", "AI Development"],
+  },
+  {
+    slug: "b2b-saas",
+    icon: Layers,
+    title: "B2B SaaS",
+    tagline: "Internal systems and product dashboards that scale with the team.",
+    challenges: ["Internal tools that don't scale past the first few hires", "Onboarding flows that lose enterprise buyers", "Dashboards that can't keep up with growing data"],
+    body: "Product dashboards and internal operations tools built to stay usable as the team, the data, and the customer base all grow at once.",
+    services: ["Custom Software Development", "Application Development", "Data Analytics"],
+  },
+  {
+    slug: "travel-hospitality",
+    icon: Plane,
+    title: "Travel & Hospitality",
+    tagline: "Booking flows that hold up during peak season.",
+    challenges: ["Booking systems that break during high-demand periods", "Availability across properties or routes going out of sync", "Guest-facing tools that feel outdated"],
+    body: "Booking and reservation platforms designed to stay accurate and fast under seasonal demand spikes, not just in a slow month.",
+    services: ["Web Development", "Custom Software Development", "UI/UX Design"],
   },
 ];
 
@@ -77,13 +129,13 @@ const APPROACH = [
 ];
 
 const STATS = [
-  { value: 6, suffix: "", label: "Industries served", note: "Not spread thin across dozens", ring: 60 },
+  { value: 11, suffix: "", label: "Industries served", note: "Not spread thin across dozens", ring: 78 },
   { value: 30, suffix: "+", label: "Projects across sectors", note: "Real deployments, not pilots", ring: 92 },
   { value: 100, suffix: "%", label: "Source-code ownership", note: "Regardless of industry", ring: 100 },
 ];
 
 const FAQS = [
-  { q: "We're not in one of the six industries listed — can you still help?", a: "Almost certainly. These are the sectors we have the deepest repeat experience in, not a hard boundary. Tell us what you're building and we'll tell you honestly if it's a fit." },
+  { q: "We're not in one of the industries listed — can you still help?", a: "Almost certainly. These are the sectors we have the deepest repeat experience in, not a hard boundary. Tell us what you're building and we'll tell you honestly if it's a fit." },
   { q: "Do you handle industry-specific compliance requirements?", a: "We design with privacy and accessibility as requirements for regulated sectors like healthcare and finance. For specific certifications your business needs (HIPAA, PCI-DSS, etc.), we'll work with your compliance team rather than claim expertise we'd need to verify case by case." },
   { q: "Does industry experience change your pricing?", a: "No — pricing is based on scope and complexity, the same estimator and process regardless of sector." },
 ];
@@ -225,13 +277,13 @@ export default function IndustriesV2() {
             <img src={codelixLogo} alt="Codelix" />
           </a>
           <div className="v2-nav-links">
-            <a href="/preview-v2">Homepage V2</a>
-            <a href="/services-v2">Services V2</a>
-            <a href="/about-v2">About V2</a>
-            <a href="/work-v2">Work V2</a>
-            <a href="/industries-v2">Industries V2</a>
-            <a href="/process-v2">Process V2</a>
-            <a href="/contact-v2">Contact V2</a>
+            <a href="/preview-v2">Homepage</a>
+            <a href="/services-v2">Services</a>
+            <a href="/about-v2">About</a>
+            <a href="/work-v2">Work</a>
+            <a href="/industries-v2">Industries</a>
+            <a href="/process-v2">Process</a>
+            <a href="/contact-v2">Contact</a>
           </div>
           <button
             className={`v2-burger ${mobileOpen ? "open" : ""}`}
@@ -258,7 +310,7 @@ export default function IndustriesV2() {
           <div className="sd2-hero-main">
             <div>
               <div className="v2-hero-top sv2-hero-reveal">
-                <span className="v2-hero-status"><i /> Six sectors, real repeat experience</span>
+                <span className="v2-hero-status"><i /> Eleven sectors, real repeat experience</span>
               </div>
               <h1 className="sd2-hero-title">
                 <span className="line"><span>Built for how</span></span>
@@ -293,9 +345,9 @@ export default function IndustriesV2() {
         <div className="ind-scroll-shell">
           <div className="ind-scroll-left">
             <p className="v2-label">Industries We Serve</p>
-            <h2 className="v2-heading">Six sectors. Different problems, different builds.</h2>
+            <h2 className="v2-heading">Eleven sectors. Different problems, different builds.</h2>
             <p className="v2-lede">
-              Not a generic template reskinned six times — each sector has
+              Not a generic template reskinned across sectors — each one has
               different constraints, and we design around the ones that matter.
             </p>
             <ul className="ind-scroll-points">
@@ -318,7 +370,13 @@ export default function IndustriesV2() {
                   style={{ top: `120px`, zIndex: i + 1 }}
                   key={it.title}
                 >
-                  <div className="ind-scroll-card-tab">
+                  <div
+                    className="ind-scroll-card-tab"
+                    style={{
+                      width: `calc(100% / ${INDUSTRIES.length})`,
+                      marginLeft: `calc(100% / ${INDUSTRIES.length} * ${i})`,
+                    }}
+                  >
                     <span className="ind-scroll-card-n">{String(i + 1).padStart(2, "0")}</span>
                   </div>
                   <div className="ind-scroll-card-body">
