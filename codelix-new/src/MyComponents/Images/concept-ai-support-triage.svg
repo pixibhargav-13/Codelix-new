@@ -1,0 +1,28 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgA" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c0d12" />
+      <stop offset="100%" stop-color="#181a2c" />
+    </linearGradient>
+    <linearGradient id="nodeA" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c9bff" />
+      <stop offset="100%" stop-color="#5a78dc" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bgA)" />
+  <g stroke="rgba(124,155,255,0.35)" stroke-width="1.5" fill="none">
+    <line x1="400" y1="300" x2="220" y2="180" />
+    <line x1="400" y1="300" x2="580" y2="180" />
+    <line x1="400" y1="300" x2="220" y2="420" />
+    <line x1="400" y1="300" x2="580" y2="420" />
+    <line x1="400" y1="300" x2="400" y2="150" />
+  </g>
+  <circle cx="400" cy="300" r="46" fill="url(#nodeA)" />
+  <circle cx="220" cy="180" r="16" fill="rgba(124,155,255,0.55)" />
+  <circle cx="580" cy="180" r="16" fill="rgba(124,155,255,0.55)" />
+  <circle cx="220" cy="420" r="16" fill="rgba(124,155,255,0.55)" />
+  <circle cx="580" cy="420" r="16" fill="rgba(124,155,255,0.55)" />
+  <circle cx="400" cy="150" r="12" fill="rgba(124,155,255,0.4)" />
+  <text x="400" y="307" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#0a0b0f" font-weight="700">AI</text>
+  <text x="400" y="540" text-anchor="middle" font-family="system-ui,sans-serif" font-size="20" fill="rgba(242,240,236,0.35)" letter-spacing="2">CONCEPT — NOT A LIVE BUILD</text>
+</svg>

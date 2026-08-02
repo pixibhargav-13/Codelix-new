@@ -32,10 +32,8 @@ import techMongo from "../Images/MongoDB.png";
 import techDocker from "../Images/docker.png";
 import techAws from "../Images/AWS.png";
 
-/* real project screenshots */
-import workTwo from "../Images/work-best-project-two.png";
-import workFive from "../Images/work-best-project-five.png";
-import workThree from "../Images/work-best-project-three.png";
+/* real project screenshots — shared source of truth with WorkV2/CaseStudyV2 */
+import { PROJECTS } from "../WorkV2/projectsData";
 
 const CUSTOM_STACK = [
   { src: techJava, name: "Java" },
@@ -162,11 +160,20 @@ const PROCESS = [
   { n: "06", title: "Support", time: "Ongoing", body: "Post-launch fixes, monitoring, and improvements. You keep the code either way." },
 ];
 
-const RELATED = [
-  { tag: "Enterprise ERP", title: "A Custom ERP Solution for Industrial & Financial Workflows", link: "/erp-case-study", thumb: workTwo },
-  { tag: "Payroll", title: "Custom Payroll Management System — Web & Mobile", link: "/payroll-case-study", thumb: workFive },
-  { tag: "Society Management", title: "A Smart Society Management App for Modern Residential Communities", link: "/smart-society-management-case-study", thumb: workThree },
-];
+/* real custom-software projects — pulled from the same shared portfolio
+   data as the Work page, filtered to the category that actually matches
+   this service (swaps in the Smart Business Operations system, a closer
+   fit than the society-management app) */
+/* the spreadsheet-to-system concept (id 22) and the internal-ops ERP
+   project (id 23) have no v1 twin page like the other real projects, so
+   their links are built for the v2 route instead of the bare v1 href */
+const NO_V1_PAGE_IDS = [22, 23];
+const RELATED = PROJECTS
+  .filter((p) => p.category === "Custom Software Development")
+  .map((p) => ({
+    tag: p.category, title: p.title, thumb: p.image,
+    link: NO_V1_PAGE_IDS.includes(p.id) ? `/case-study-v2${p.href}` : p.href,
+  }));
 
 const PRINCIPLES = [
   { key: "Delivered", icon: CalendarCheck, claim: "No deadline we don't hold ourselves to.", body: "We pad the schedule honestly upfront so we don't have to renegotiate halfway through. If we say a date, we hit it." },
@@ -1183,9 +1190,9 @@ export default function CustomSoftwareDevelopmentV2() {
             </div>
           </div>
 
-        {/* office / contact cards — bordered two-up rows, same shape as the
-            reference's address + sales/careers blocks */}
-        <div className="v2-footer-cards">
+        {/* office / contact info — a single four-up row instead of two
+            stacked 2x2 blocks, so it reads as one info bar */}
+        <div className="v2-footer-cards v2-footer-cards--four">
           <a
             className="v2-footer-card"
             href="https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D"
@@ -1202,18 +1209,27 @@ export default function CustomSoftwareDevelopmentV2() {
             <a className="v2-footer-card-strong" href="tel:+919429269295">+91 94292 69295</a>
             <a className="v2-footer-card-strong" href="tel:+917490909686">+91 74909 09686</a>
           </div>
-        </div>
-
-        <div className="v2-footer-cards">
+          <div className="v2-footer-card">
+            <h5>Looking For Jobs</h5>
+            <a className="v2-footer-card-strong" href="/careers-v2">View openings →</a>
+          </div>
+          <div className="v2-footer-card">
+            <h5>HR</h5>
+            <a className="v2-footer-card-strong" href="mailto:hr@codelixitsolutions.com">
+              hr@codelixitsolutions.com
+            </a>
+          </div>
+          <div className="v2-footer-card">
+            <h5>General</h5>
+            <a className="v2-footer-card-strong" href="mailto:info@codelixitsolutions.com">
+              info@codelixitsolutions.com
+            </a>
+          </div>
           <div className="v2-footer-card">
             <h5>For Sales</h5>
             <a className="v2-footer-card-strong" href="mailto:Sales@codelixitsolutions.com">
               Sales@codelixitsolutions.com
             </a>
-          </div>
-          <div className="v2-footer-card">
-            <h5>Looking For Jobs</h5>
-            <a className="v2-footer-card-strong" href="/careers-v2">View openings →</a>
           </div>
         </div>
 
@@ -1222,6 +1238,7 @@ export default function CustomSoftwareDevelopmentV2() {
           <div className="v2-footer-social-links">
             <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61561748130641" target="_blank" rel="noopener noreferrer">Facebook</a>
           </div>
           <button
             type="button"

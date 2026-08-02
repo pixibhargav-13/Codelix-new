@@ -824,9 +824,9 @@ export default function ServicesV2() {
             </div>
           </div>
 
-        {/* office / contact cards — bordered two-up rows, same shape as the
-            reference's address + sales/careers blocks */}
-        <div className="v2-footer-cards">
+        {/* office / contact info — a single four-up row instead of two
+            stacked 2x2 blocks, so it reads as one info bar */}
+        <div className="v2-footer-cards v2-footer-cards--four">
           <a
             className="v2-footer-card"
             href="https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D"
@@ -843,18 +843,27 @@ export default function ServicesV2() {
             <a className="v2-footer-card-strong" href="tel:+919429269295">+91 94292 69295</a>
             <a className="v2-footer-card-strong" href="tel:+917490909686">+91 74909 09686</a>
           </div>
-        </div>
-
-        <div className="v2-footer-cards">
+          <div className="v2-footer-card">
+            <h5>Looking For Jobs</h5>
+            <a className="v2-footer-card-strong" href="/careers-v2">View openings →</a>
+          </div>
+          <div className="v2-footer-card">
+            <h5>HR</h5>
+            <a className="v2-footer-card-strong" href="mailto:hr@codelixitsolutions.com">
+              hr@codelixitsolutions.com
+            </a>
+          </div>
+          <div className="v2-footer-card">
+            <h5>General</h5>
+            <a className="v2-footer-card-strong" href="mailto:info@codelixitsolutions.com">
+              info@codelixitsolutions.com
+            </a>
+          </div>
           <div className="v2-footer-card">
             <h5>For Sales</h5>
             <a className="v2-footer-card-strong" href="mailto:Sales@codelixitsolutions.com">
               Sales@codelixitsolutions.com
             </a>
-          </div>
-          <div className="v2-footer-card">
-            <h5>Looking For Jobs</h5>
-            <a className="v2-footer-card-strong" href="/careers-v2">View openings →</a>
           </div>
         </div>
 
@@ -863,6 +872,7 @@ export default function ServicesV2() {
           <div className="v2-footer-social-links">
             <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61561748130641" target="_blank" rel="noopener noreferrer">Facebook</a>
           </div>
           <button
             type="button"

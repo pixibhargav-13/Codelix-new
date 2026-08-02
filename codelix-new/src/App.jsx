@@ -109,7 +109,15 @@ const AppRoutes = () => {
   const [loaderKey, setLoaderKey] = React.useState(0);
   const [showLoader, setShowLoader] = React.useState(true);
 
+  // v2 pages skip the loader entirely — every v2 route has "v2" somewhere
+  // in its path (/preview-v2, /about-v2, /services-v2/..., etc.), which
+  // reliably tells it apart from every v1 route (none of which do).
+  const isV2Route = location.pathname.includes("v2");
+
   useEffect(() => {
+    // v2 routes never show the loader, so there's nothing to schedule
+    if (isV2Route) return;
+
     // On every route change: show a fresh loader
     setShowLoader(true);
     setLoaderKey((k) => k + 1);
@@ -117,12 +125,12 @@ const AppRoutes = () => {
     // MIN_DURATION (2200) + EXIT_DURATION (700) + small buffer
     const hideTimer = setTimeout(() => setShowLoader(false), 2950);
     return () => clearTimeout(hideTimer);
-  }, [location.pathname]);
+  }, [location.pathname, isV2Route]);
 
   return (
     <>
-      {/* Loader overlays the page — always triggered on navigation */}
-      {showLoader && <CodelixLoader key={loaderKey} />}
+      {/* Loader overlays the page — triggered on navigation, skipped on v2 pages */}
+      {showLoader && !isV2Route && <CodelixLoader key={loaderKey} />}
 
       {/* Suspense still handles the lazy-chunk loading state */}
       <Suspense fallback={null}>
