@@ -13,10 +13,15 @@ export const FOOTER_SERVICE_KEYWORDS = [
 ];
 
 export const FOOTER_INDUSTRY_KEYWORDS = [
-  { label: "Corporate & B2B", path: "/industries-v2#corporate" },
-  { label: "Startups & SaaS", path: "/industries-v2#startups" },
-  { label: "Retail & D2C", path: "/industries-v2#retail" },
-  { label: "Education", path: "/industries-v2#education" },
+  { label: "Manufacturing", path: "/industries-v2#manufacturing" },
+  { label: "FinTech", path: "/industries-v2#fintech" },
+  { label: "AI & Data", path: "/industries-v2#ai-data" },
   { label: "Healthcare", path: "/industries-v2#healthcare" },
-  { label: "Finance & Legal", path: "/industries-v2#finance" },
+  { label: "Food & Beverages", path: "/industries-v2#food-beverages" },
+  { label: "E-Commerce", path: "/industries-v2#e-commerce" },
+  { label: "Real Estate & Construction", path: "/industries-v2#real-estate-construction" },
+  { label: "Education", path: "/industries-v2#education" },
+  { label: "Startups", path: "/industries-v2#startups" },
+  { label: "B2B SaaS", path: "/industries-v2#b2b-saas" },
+  { label: "Travel & Hospitality", path: "/industries-v2#travel-hospitality" },
 ];

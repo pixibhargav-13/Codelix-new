@@ -5,6 +5,12 @@
    source of truth as the images used site-wide for these projects. */
 import { PROJECTS } from "../WorkV2/projectsData";
 
+/* illustrative diagrams (not real product screenshots) built specifically
+   for the ERP case study's "before Challenges" image duo — same treatment
+   as the other abstract dashboard graphic already used for this project */
+import erpBillingSync from "../Images/work-erp-billing-sync.svg";
+import erpHandoffFlow from "../Images/work-erp-handoff-flow.svg";
+
 const imageFor = (slug) => {
   const p = PROJECTS.find((proj) => proj.href === `/${slug}`);
   return p ? p.image : null;
@@ -780,6 +786,10 @@ export const CASE_STUDIES = [
     title: "Internal Operations ERP for a B2B SaaS Company",
     description: "A centralized internal ERP unifying billing, onboarding, and support data for a 140–180 person B2B SaaS company — replacing department-by-department spreadsheets with one auditable system of record.",
     tags: ["Figma", "React", "Tailwind CSS", "Java", "Spring Boot", "PostgreSQL", "Docker", "AWS"],
+    challengeImages: [
+      { src: erpBillingSync, alt: "Billing and account data reconciliation between systems" },
+      { src: erpHandoffFlow, alt: "Automated account handoff workflow between support and customer success" },
+    ],
     snapshot: [
       { label: "Industry", value: "B2B SaaS" },
       { label: "Client Type", value: "Multi-product subscription software company" },
@@ -795,13 +805,6 @@ export const CASE_STUDIES = [
       "Finance tracked subscription and renewal data separately from what customer success used to manage onboarding, and support tickets lived in yet another system with no shared visibility. Leadership had no single view of account health, renewal risk, or operational bottlenecks across departments.",
       "Given the need to unify data across finance, customer success, and support without disrupting each team's existing day-to-day tools, we built a centralized internal ERP with role-based modules rather than forcing every department onto a single generic interface.",
       "The system consolidates account, subscription, and support data into one database, with department-specific dashboards built on top of shared data rather than duplicated records. Workflow automation was introduced for account handoffs between support and customer success, replacing manual follow-ups with a tracked, auditable process. The backend was designed with an API-first structure so the ERP could pull data from the client's existing billing and support tools instead of requiring a full replacement of either system.",
-    ],
-    objectives: [
-      "Unify subscription, onboarding, and support data into one internal system",
-      "Reduce time spent manually reconciling billing and account records",
-      "Give leadership real-time visibility into account health and renewal risk",
-      "Automate repetitive handoffs between customer success and support teams",
-      "Establish consistent reporting across departments for leadership reviews",
     ],
     services: [
       "Business Analysis",

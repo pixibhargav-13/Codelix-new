@@ -68,7 +68,8 @@ export default function CaseStudyDetailV2() {
         { yPercent: 118 }, { yPercent: 0, duration: 1.15, stagger: .1 }, "-=.45")
       .fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.65")
       .fromTo(q(".csd2-tags.sv2-hero-reveal"), { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .8 }, "-=.7")
-      .fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7");
+      .fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7")
+      .fromTo(q(".csd2-hero-media.sv2-hero-reveal"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1 }, "-=.9");
     return () => tl.kill();
   }, [cs]);
 
@@ -85,7 +86,7 @@ export default function CaseStudyDetailV2() {
     );
     rootRef.current?.querySelectorAll(
       ".csd2-outcomes, .csd2-cs, .csd2-more, .v2-cta, .v2-heading, .v2-label, .v2-lede, .sd2-bench, " +
-      ".csd2-snapshot, .csd2-objectives, .csd2-features, .csd2-whystack, .v2-method-row, .sd2-quote, " +
+      ".csd2-snapshot, .csd2-features, .csd2-whystack, .v2-method-row, .sd2-quote, " +
       ".csd2-ledger, .csd2-roadmap, .csd2-issues"
     ).forEach((el) => io.observe(el));
 
@@ -139,13 +140,13 @@ export default function CaseStudyDetailV2() {
             <img src={codelixLogo} alt="Codelix" />
           </a>
           <div className="v2-nav-links">
-            <a href="/preview-v2">Homepage V2</a>
-            <a href="/services-v2">Services V2</a>
-            <a href="/about-v2">About V2</a>
-            <a href="/work-v2">Work V2</a>
-            <a href="/industries-v2">Industries V2</a>
-            <a href="/process-v2">Process V2</a>
-            <a href="/contact-v2">Contact V2</a>
+            <a href="/preview-v2">Homepage</a>
+            <a href="/services-v2">Services</a>
+            <a href="/about-v2">About</a>
+            <a href="/work-v2">Work</a>
+            <a href="/industries-v2">Industries</a>
+            <a href="/process-v2">Process</a>
+            <a href="/contact-v2">Contact</a>
           </div>
           <button
             className={`v2-burger ${mobileOpen ? "open" : ""}`}
@@ -161,13 +162,13 @@ export default function CaseStudyDetailV2() {
       <div className={`v2-drawer ${mobileOpen ? "open" : ""}`} aria-hidden={!mobileOpen}>
         <div className="v2-drawer-links">
           {[
-            { label: "Homepage V2", href: "/preview-v2" },
-            { label: "Services V2", href: "/services-v2" },
-            { label: "About V2", href: "/about-v2" },
-            { label: "Work V2", href: "/work-v2" },
-            { label: "Industries V2", href: "/industries-v2" },
-            { label: "Process V2", href: "/process-v2" },
-            { label: "Contact V2", href: "/contact-v2" },
+            { label: "Homepage", href: "/preview-v2" },
+            { label: "Services", href: "/services-v2" },
+            { label: "About", href: "/about-v2" },
+            { label: "Work", href: "/work-v2" },
+            { label: "Industries", href: "/industries-v2" },
+            { label: "Process", href: "/process-v2" },
+            { label: "Contact", href: "/contact-v2" },
           ].map((l, i) => (
             <a key={l.label} href={l.href}
               style={{ transitionDelay: `${0.08 + i * 0.05}s` }}
@@ -222,17 +223,15 @@ export default function CaseStudyDetailV2() {
                 </a>
               </div>
             </div>
+
+            {cs.image && (
+              <div className="csd2-hero-media sv2-hero-reveal">
+                <img src={cs.image} alt={cs.title} />
+              </div>
+            )}
           </div>
         </div>
       </header>
-
-      {cs.image && (
-        <div className="csd2-image">
-          <div className="csd2-image-frame">
-            <img src={cs.image} alt={cs.title} />
-          </div>
-        </div>
-      )}
 
       {/* ══════════ 1b · SNAPSHOT — only present on richer, fully-briefed
           case studies; older entries without this data simply skip it. ══ */}
@@ -251,27 +250,32 @@ export default function CaseStudyDetailV2() {
         </section>
       )}
 
-      {/* ══════════ 2 · OVERVIEW ══════════ */}
+      {/* ══════════ 2 · OVERVIEW ══════════
+          Business Objectives was dropped from here — it restated the same
+          points as The Challenges / The Solutions below almost 1:1 (e.g.
+          "give leadership real-time visibility" appeared as an objective,
+          a challenge, and a solution). Challenges → Solutions already
+          carries that story more concretely, so this cuts the repeat
+          instead of trimming the more specific pair. ══════════ */}
       <section className="v2-section" id="overview">
         <p className="v2-label">Project Overview</p>
         <div className="csd2-overview">
           {cs.overview.map((p, i) => <p key={i}>{p}</p>)}
         </div>
-
-        {cs.objectives && (
-          <div className="csd2-objectives-wrap">
-            <p className="v2-label" style={{ marginTop: "56px" }}>Business Objectives</p>
-            <ul className="csd2-objectives">
-              {cs.objectives.map((o, i) => (
-                <li key={i}>
-                  <span className="csd2-objectives-icon"><Check size={13} strokeWidth={2.6} /></span>
-                  <span>{o}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
       </section>
+
+      {/* ══════════ 2a-i · CHALLENGE IMAGES — two illustrative diagrams
+          side by side, giving the problem section a visual anchor before
+          the reader hits the text list. ══════════ */}
+      {cs.challengeImages && (
+        <div className="csd2-duo">
+          {cs.challengeImages.map((img, i) => (
+            <div className="csd2-duo-frame" key={i}>
+              <img src={img.src} alt={img.alt} />
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* ══════════ 2b · CHALLENGES / SOLUTIONS — placed right after the
           objectives so a reader hits problem-then-solution before the
@@ -280,26 +284,32 @@ export default function CaseStudyDetailV2() {
           its own row with a colored icon (red = problem, green = fixed)
           instead of a wall of prose paragraphs. ══════════ */}
       <section className="v2-section" id="challenges">
-        <p className="v2-label">The Challenges</p>
-        <h2 className="v2-heading">The problem we faced.</h2>
-        <div className="csd2-issues csd2-issues--problem">
-          {cs.challenges.map((p, i) => (
-            <div className="csd2-issue-row" key={i}>
-              <span className="csd2-issue-icon"><X size={13} strokeWidth={2.6} /></span>
-              <p>{p}</p>
+        <div className="csd2-challenges-grid">
+          <div className="csd2-challenges-col">
+            <p className="v2-label">The Challenges</p>
+            <h2 className="v2-heading">The problem we faced.</h2>
+            <div className="csd2-issues csd2-issues--problem">
+              {cs.challenges.map((p, i) => (
+                <div className="csd2-issue-row" key={i}>
+                  <span className="csd2-issue-icon"><X size={13} strokeWidth={2.6} /></span>
+                  <p>{p}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
 
-        <p className="v2-label" style={{ marginTop: '64px' }}>The Solutions</p>
-        <h2 className="v2-heading">What we built instead.</h2>
-        <div className="csd2-issues csd2-issues--solution">
-          {cs.solutions.map((p, i) => (
-            <div className="csd2-issue-row" key={i}>
-              <span className="csd2-issue-icon"><Check size={13} strokeWidth={2.6} /></span>
-              <p>{p}</p>
+          <div className="csd2-challenges-col">
+            <p className="v2-label">The Solutions</p>
+            <h2 className="v2-heading">What we built instead.</h2>
+            <div className="csd2-issues csd2-issues--solution">
+              {cs.solutions.map((p, i) => (
+                <div className="csd2-issue-row" key={i}>
+                  <span className="csd2-issue-icon"><Check size={13} strokeWidth={2.6} /></span>
+                  <p>{p}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </section>
 
@@ -334,7 +344,8 @@ export default function CaseStudyDetailV2() {
       {/* ══════════ 3b · OUTCOMES ══════════ */}
       <section className="v2-section v2-section--void" id="outcomes">
         <p className="v2-label">Project Outcomes</p>
-        <h2 className="v2-heading">The transformation after launch.</h2>
+        <h2 className="v2-heading">The results, measured after launch.</h2>
+        <p className="v2-lede">Four numbers that summarize what changed once the system went live.</p>
         <div className="csd2-outcomes">
           {cs.outcomes.map((o, i) => {
             const R = 52;

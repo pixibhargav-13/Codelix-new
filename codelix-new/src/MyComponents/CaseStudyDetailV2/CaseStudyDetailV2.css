@@ -4,12 +4,11 @@
    dashboard stats, CTA) come from ServicesV2.css / ServiceDetailV2.css.
    ============================================================ */
 
-/* hero itself reuses .sd2-hero wholesale (see ServiceDetailV2.css) — only
-   the title needs a wider max-width override since case-study titles run
-   longer than the usual two-line hero headline */
-.v2 .sd2-hero-title.csd2-title {
-  max-width: 20ch;
-}
+/* hero itself reuses .sd2-hero wholesale (see ServiceDetailV2.css) — no
+   max-width override on the title: a fixed ch value forced splitTitle()'s
+   two balanced halves to wrap a second time inside their own .line span,
+   producing an extra, unintended line break. Let it size to the column. */
+
 
 .csd2-tags {
   display: flex;
@@ -37,56 +36,97 @@
   margin-bottom: 24px;
 }
 
-/* the source photos are lifestyle mockups (desk/monitor scenes) with a lot
-   of dead space baked into the shot itself — a fixed aspect-ratio frame
-   with object-fit: cover crops in on the screen instead of showing the
-   whole scene at native proportions with huge letterboxing either side */
-.csd2-image {
-  max-width: 1100px;
-  margin: 0 auto 8px;
-  padding: 0 var(--pad-x);
+/* ───────────── HERO COVER IMAGE — right column of .sd2-hero-main's grid.
+   Overridden to an even 1fr/1fr split (:has scopes this to only the hero
+   that actually contains the image, so other v2 pages using the same
+   .sd2-hero-main/.sd2-facts layout keep their original 1.35fr/.65fr) ──── */
+/* text column keeps slightly more than half so the two-line mask-wipe
+   title (see splitTitle() in the JSX) still fits its intended two lines
+   at this width instead of wrapping into a third — the image column
+   still gets real width, just not a dead-even 50/50 split. Stays side by
+   side at every width (see the font-size override below instead of
+   dropping the image below the text). */
+.sd2-hero-main:has(.csd2-hero-media) {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
 }
 
-.csd2-image-frame {
-  aspect-ratio: 16 / 8;
-  border-radius: 20px;
+/* the shared .sd2-hero-title font-size (clamp maxing out at 66px) is sized
+   for a single full-width column — in the narrower shared column here it
+   made splitTitle()'s longer half wrap a second time. A smaller clamp
+   keeps the title comfortably inside its column at every width instead of
+   dropping the image below the text to make room. */
+.v2 .sd2-hero-title.csd2-title {
+  font-size: clamp(26px, 3.4vw, 54px);
+}
+
+.csd2-hero-media {
+  align-self: center;
+  width: 100%;
+  border-radius: 18px;
   border: .8px solid var(--rule);
   overflow: hidden;
+  aspect-ratio: 16 / 11;
   background: #0a0a0d;
-  box-shadow: 0 32px 64px -32px rgba(0, 0, 0, .5);
+  box-shadow: 0 24px 48px -24px rgba(0, 0, 0, .5);
 }
 
-.csd2-image img {
+.csd2-hero-media img {
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: center 40%;
+}
+
+@media (max-width: 940px) {
+  .sd2-hero-main:has(.csd2-hero-media) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .csd2-hero-media {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* ───────────── CHALLENGE IMAGE DUO — two illustrative diagrams side by
+   side, sitting above the problem/solution list. Full section width (same
+   as Overview/Features/etc.), not capped like the single hero-adjacent
+   image, since the user asked for these specifically full-width. ───── */
+.csd2-duo {
+  margin: 0 auto 8px;
+  padding: 0 var(--pad-x);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.csd2-duo-frame {
+  aspect-ratio: 4 / 3;
+  border-radius: 18px;
+  border: .8px solid var(--rule);
+  overflow: hidden;
+  background: #0a0a0d;
+  box-shadow: 0 24px 48px -24px rgba(0, 0, 0, .5);
+}
+
+.csd2-duo-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 @media (max-width: 700px) {
-  .csd2-image-frame {
-    aspect-ratio: 4 / 3;
+  .csd2-duo {
+    grid-template-columns: 1fr;
   }
 }
 
-#overview,
-#challenges,
-#scalability {
-  max-width: 860px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media (min-width: 769px) {
-
-  #overview,
-  #challenges,
-  #scalability {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
+/* Overview / Objectives / Challenges / Solutions / Built To Grow now
+   render at the same width as Features / Services Delivered / Tools
+   (plain .v2-section width, no extra centering cap) instead of a
+   narrower 860px column, so every section lines up consistently. */
 
 .csd2-overview {
   margin-top: 20px;
@@ -95,7 +135,7 @@
 }
 
 .v2 .csd2-overview p {
-  font-size: 15px;
+  font-size: 16.5px;
   line-height: 1.8;
   color: var(--text-55);
   margin-bottom: 20px;
@@ -177,49 +217,21 @@
   }
 }
 
-/* ───────────── OBJECTIVES / SCALABILITY — shared checklist style ───── */
-.csd2-objectives-wrap {
-  max-width: 860px;
+/* ───────────── CHALLENGES / SOLUTIONS — side-by-side columns instead of
+   stacking Problem then Solution one after another, so a reader can see
+   what broke and what fixed it in the same eye-span instead of scrolling
+   past the whole problem list before reaching the fix. ───────────── */
+.csd2-challenges-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
 }
 
-.csd2-objectives {
-  margin: 20px 0 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  max-width: 76ch;
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity .7s cubic-bezier(.16, 1, .3, 1), transform .7s cubic-bezier(.16, 1, .3, 1);
-}
-
-.csd2-objectives.is-in {
-  opacity: 1;
-  transform: none;
-}
-
-.csd2-objectives li {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  font-size: 14.5px;
-  line-height: 1.6;
-  color: var(--text-55);
-}
-
-.csd2-objectives-icon {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  margin-top: 1px;
-  border-radius: 50%;
-  background: rgba(126, 224, 168, .12);
-  color: rgba(126, 224, 168, .95);
+@media (max-width: 900px) {
+  .csd2-challenges-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
 }
 
 /* ───────────── CHALLENGES / SOLUTIONS — scannable rows instead of a
@@ -257,8 +269,8 @@
 
 .csd2-issue-row p {
   margin: 0;
-  font-size: 14.5px;
-  line-height: 1.6;
+  font-size: 15.5px;
+  line-height: 1.65;
   color: var(--text-55);
 }
 
@@ -493,11 +505,11 @@
 }
 
 .csd2-whystack-label {
-  font-size: 10.5px;
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: .1em;
+  letter-spacing: .06em;
   text-transform: uppercase;
-  color: var(--text-38);
+  color: var(--text-65, rgba(242, 240, 236, .65));
   margin: 0 0 16px !important;
 }
 
@@ -630,8 +642,8 @@
 
 .csd2-roadmap-card p {
   margin: 0;
-  font-size: 14.5px;
-  line-height: 1.6;
+  font-size: 15.5px;
+  line-height: 1.65;
   color: var(--text-55);
 }
 
@@ -719,6 +731,23 @@
   letter-spacing: .03em;
   color: var(--text-65, rgba(242, 240, 236, .65));
   padding: 0 6px;
+}
+
+/* this case study's ring stats reuse the shared .sd2-bench component,
+   sized for a spacious service-page layout — shrink it here so the four
+   cards read as a quick, compact summary rather than a full-height block */
+.csd2-outcomes .sd2-bench {
+  padding: 24px 14px;
+}
+
+.csd2-outcomes .sd2-bench-ring {
+  width: 84px;
+  height: 84px;
+  margin-bottom: 14px;
+}
+
+.csd2-outcomes .sd2-bench-num {
+  font-size: 19px;
 }
 
 /* a qualitative result that doesn't fit the numeric ring-stat format —

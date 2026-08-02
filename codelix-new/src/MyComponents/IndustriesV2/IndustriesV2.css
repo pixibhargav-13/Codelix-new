@@ -134,7 +134,9 @@
 .ind-scroll-card-tab {
   flex: none;
   box-sizing: border-box;
-  width: calc(100% / 6);
+  /* width set inline per-card (calc(100% / count), see IndustriesV2.jsx)
+     so each tab is an even 1/Nth of the card width regardless of how many
+     industries are in the array — was hardcoded to /6 before. */
   padding: 18px 0;
   display: flex;
   align-items: center;
@@ -154,25 +156,9 @@
   --ind-color: #b4c8e6;
 }
 
-.ind-scroll-card:nth-child(2) .ind-scroll-card-tab {
-  margin-left: calc(100% / 6 * 1);
-}
-
-.ind-scroll-card:nth-child(3) .ind-scroll-card-tab {
-  margin-left: calc(100% / 6 * 2);
-}
-
-.ind-scroll-card:nth-child(4) .ind-scroll-card-tab {
-  margin-left: calc(100% / 6 * 3);
-}
-
-.ind-scroll-card:nth-child(5) .ind-scroll-card-tab {
-  margin-left: calc(100% / 6 * 4);
-}
-
-.ind-scroll-card:nth-child(6) .ind-scroll-card-tab {
-  margin-left: calc(100% / 6 * 5);
-}
+/* tab offset is now set inline per-card (margin-left: calc(100% / count * i)
+   in IndustriesV2.jsx) instead of hardcoded nth-child rules, so the stagger
+   still works correctly whatever the number of industries is. */
 
 .ind-scroll-card-tab::after {
   content: "";
@@ -209,11 +195,11 @@
 }
 
 /* Make sure the body corner matches the tab edge for first and last cards */
-.ind-scroll-card:nth-child(1) .ind-scroll-card-body {
+.ind-scroll-card:first-child .ind-scroll-card-body {
   border-radius: 0 16px 16px 16px;
 }
 
-.ind-scroll-card:nth-child(6) .ind-scroll-card-body {
+.ind-scroll-card:last-child .ind-scroll-card-body {
   border-radius: 16px 0 16px 16px;
 }
 
