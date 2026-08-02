@@ -84,17 +84,22 @@ export default function CaseStudyDetailV2() {
       { threshold: 0.01, rootMargin: "0px 0px -8% 0px" }
     );
     rootRef.current?.querySelectorAll(
-      ".csd2-outcomes, .csd2-cs, .csd2-more, .v2-cta, .v2-heading, .v2-label, .v2-lede, .sd2-bench"
+      ".csd2-outcomes, .csd2-cs, .csd2-more, .v2-cta, .v2-heading, .v2-label, .v2-lede, .sd2-bench, " +
+      ".csd2-snapshot, .csd2-objectives, .csd2-features, .csd2-whystack, .v2-method-row, .sd2-quote, " +
+      ".csd2-ledger, .csd2-roadmap, .csd2-issues"
     ).forEach((el) => io.observe(el));
 
     const nums = rootRef.current?.querySelectorAll(".sd2-bench-value") || [];
     const runNum = (el) => {
       const target = Number(el.dataset.target);
+      const isDecimal = target % 1 !== 0;
       const start = performance.now();
       const step = (now) => {
         const p = Math.min((now - start) / 1400, 1);
         const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
-        el.textContent = Math.round(target * eased).toString();
+        el.textContent = isDecimal
+          ? (target * eased).toFixed(1)
+          : Math.round(target * eased).toString();
         if (p < 1) requestAnimationFrame(step);
       };
       requestAnimationFrame(step);
@@ -229,15 +234,104 @@ export default function CaseStudyDetailV2() {
         </div>
       )}
 
+      {/* ══════════ 1b · SNAPSHOT — only present on richer, fully-briefed
+          case studies; older entries without this data simply skip it. ══ */}
+      {cs.snapshot && (
+        <section className="v2-section v2-section--void" id="snapshot">
+          <p className="v2-label">Engagement at a Glance</p>
+          <h2 className="v2-heading">The project, in numbers.</h2>
+          <div className="csd2-snapshot">
+            {cs.snapshot.map((s, i) => (
+              <div className="csd2-snapshot-item" key={i}>
+                <span className="csd2-snapshot-k">{s.label}</span>
+                <span className="csd2-snapshot-v">{s.value}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* ══════════ 2 · OVERVIEW ══════════ */}
       <section className="v2-section" id="overview">
         <p className="v2-label">Project Overview</p>
         <div className="csd2-overview">
           {cs.overview.map((p, i) => <p key={i}>{p}</p>)}
         </div>
+
+        {cs.objectives && (
+          <div className="csd2-objectives-wrap">
+            <p className="v2-label" style={{ marginTop: "56px" }}>Business Objectives</p>
+            <ul className="csd2-objectives">
+              {cs.objectives.map((o, i) => (
+                <li key={i}>
+                  <span className="csd2-objectives-icon"><Check size={13} strokeWidth={2.6} /></span>
+                  <span>{o}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </section>
 
-      {/* ══════════ 3 · OUTCOMES ══════════ */}
+      {/* ══════════ 2b · CHALLENGES / SOLUTIONS — placed right after the
+          objectives so a reader hits problem-then-solution before the
+          results and delivery process, matching how the story actually
+          unfolded rather than leading with the numbers. Each point gets
+          its own row with a colored icon (red = problem, green = fixed)
+          instead of a wall of prose paragraphs. ══════════ */}
+      <section className="v2-section" id="challenges">
+        <p className="v2-label">The Challenges</p>
+        <h2 className="v2-heading">The problem we faced.</h2>
+        <div className="csd2-issues csd2-issues--problem">
+          {cs.challenges.map((p, i) => (
+            <div className="csd2-issue-row" key={i}>
+              <span className="csd2-issue-icon"><X size={13} strokeWidth={2.6} /></span>
+              <p>{p}</p>
+            </div>
+          ))}
+        </div>
+
+        <p className="v2-label" style={{ marginTop: '64px' }}>The Solutions</p>
+        <h2 className="v2-heading">What we built instead.</h2>
+        <div className="csd2-issues csd2-issues--solution">
+          {cs.solutions.map((p, i) => (
+            <div className="csd2-issue-row" key={i}>
+              <span className="csd2-issue-icon"><Check size={13} strokeWidth={2.6} /></span>
+              <p>{p}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 3 · DELIVERY PROCESS — reuses the same sticky-header
+          method-row pattern already proven on the service pages, rather
+          than inventing a new timeline component from scratch. Sits right
+          after the problem/solution so "how we built it" reads before
+          "what happened after launch." ══════════ */}
+      {cs.process && (
+        <section className="v2-method-shell" id="process">
+          <div className="v2-method-head">
+            <h2 className="v2-method-heading">How We Delivered It.</h2>
+            <p className="v2-method-lede">
+              The phase-by-phase path from discovery to go-live.
+            </p>
+          </div>
+          <div className="v2-method-rows">
+            {cs.process.map((m, i) => (
+              <div className="v2-method-row" key={i}>
+                <div className="v2-method-index">{String(i + 1).padStart(2, "0")}</div>
+                <div>
+                  <div className="v2-method-title">{m.phase}</div>
+                  <span className="v2-method-timeframe">{m.time}</span>
+                </div>
+                <div className="v2-method-body">{m.body}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ══════════ 3b · OUTCOMES ══════════ */}
       <section className="v2-section v2-section--void" id="outcomes">
         <p className="v2-label">Project Outcomes</p>
         <h2 className="v2-heading">The transformation after launch.</h2>
@@ -275,35 +369,100 @@ export default function CaseStudyDetailV2() {
             );
           })}
         </div>
+        {cs.resultsNote && <p className="csd2-results-note">{cs.resultsNote}</p>}
       </section>
 
-      {/* ══════════ 4 · CHALLENGES / SOLUTIONS — the extraordinary
-          section: a toggle switch (matching the pattern already proven on
-          Process V2) between the full challenges list and the full
-          solutions list, instead of forcing a 1:1 paired layout that would
-          break on case studies with mismatched list lengths. ══════════ */}
-      <section className="v2-section" id="challenges">
-        <p className="v2-label">The Challenges</p>
-        <h2 className="v2-heading">The problem we faced.</h2>
-        <div className="csd2-overview">
-          {cs.challenges.map((p, i) => <p key={i}>{p}</p>)}
-        </div>
+      {/* ══════════ 4a · SERVICES DELIVERED ══════════ */}
+      {cs.services && (
+        <section className="v2-section v2-section--void" id="services-delivered">
+          <p className="v2-label">Services Delivered</p>
+          <h2 className="v2-heading">What we were engaged to do.</h2>
+          <div className="csd2-ledger">
+            {cs.services.map((s, i) => (
+              <div className="csd2-ledger-row" key={i}>
+                <span className="csd2-ledger-index">{String(i + 1).padStart(2, "0")}</span>
+                <span className="csd2-ledger-text">{s}</span>
+                <span className="csd2-ledger-icon"><Check size={13} strokeWidth={2.6} /></span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
-        <p className="v2-label" style={{ marginTop: '80px' }}>The Solutions</p>
-        <h2 className="v2-heading">What we built instead.</h2>
-        <div className="csd2-overview">
-          {cs.solutions.map((p, i) => <p key={i}>{p}</p>)}
-        </div>
-      </section>
+      {/* ══════════ 4b · CORE FEATURES ══════════ */}
+      {cs.features && (
+        <section className="v2-section" id="features">
+          <p className="v2-label">Core Features</p>
+          <h2 className="v2-heading">What shipped inside the system.</h2>
+          <div className="csd2-features">
+            {cs.features.map((f, i) => (
+              <div className="csd2-feature" key={i}>
+                <div className="csd2-feature-top">
+                  <span className="csd2-feature-icon"><Check size={14} strokeWidth={2.6} /></span>
+                  <span className="csd2-feature-index">{String(i + 1).padStart(2, "0")}</span>
+                </div>
+                <p>{f}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* ══════════ 5 · TOOLS ══════════ */}
       <section className="v2-section v2-section--void" id="tools">
         <p className="v2-label">Tools & Technologies</p>
         <h2 className="v2-heading">What this project was built with.</h2>
         <div className="csd2-tools">
-          {cs.tools.map((t) => <span key={t}>{t}</span>)}
+          {cs.tools.map((t) => (
+            <span key={t}>
+              <i className="csd2-tools-avatar" aria-hidden="true">{t.charAt(0)}</i>
+              {t}
+            </span>
+          ))}
         </div>
+
+        {cs.whyStack && (
+          <div className="csd2-whystack">
+            <p className="csd2-whystack-label">Why this stack</p>
+            <ul>
+              {cs.whyStack.map((w, i) => <li key={i}>{w}</li>)}
+            </ul>
+          </div>
+        )}
       </section>
+
+      {/* ══════════ 5b · FUTURE SCALABILITY ══════════ */}
+      {cs.scalability && (
+        <section className="v2-section" id="scalability">
+          <p className="v2-label">Built To Grow</p>
+          <h2 className="v2-heading">Where this goes from here.</h2>
+          <div className="csd2-roadmap">
+            {cs.scalability.map((s, i) => (
+              <div className="csd2-roadmap-item" key={i}>
+                <span className="csd2-roadmap-marker">{String(i + 1).padStart(2, "0")}</span>
+                <div className="csd2-roadmap-card">
+                  <p>{s}</p>
+                  <span className="csd2-roadmap-arrow"><ArrowUpRight size={15} strokeWidth={2} /></span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ══════════ 5c · CLIENT TESTIMONIAL ══════════ */}
+      {cs.quote && (
+        <section className="v2-section">
+          <figure className="sd2-quote">
+            <span className="sd2-quote-mark" aria-hidden="true">&ldquo;</span>
+            <blockquote className="sd2-quote-text">{cs.quote.text}</blockquote>
+            <figcaption className="sd2-quote-by">
+              {cs.quote.name && <span className="sd2-quote-name">{cs.quote.name}</span>}
+              <span className="sd2-quote-role">{cs.quote.role}</span>
+            </figcaption>
+          </figure>
+        </section>
+      )}
 
       {/* ══════════ 6 · MORE CASE STUDIES ══════════ */}
       <section className="v2-section" id="more">
@@ -376,9 +535,9 @@ export default function CaseStudyDetailV2() {
             </div>
           </div>
 
-        {/* office / contact cards — bordered two-up rows, same shape as the
-            reference's address + sales/careers blocks */}
-        <div className="v2-footer-cards">
+        {/* office / contact info — a single four-up row instead of two
+            stacked 2x2 blocks, so it reads as one info bar */}
+        <div className="v2-footer-cards v2-footer-cards--four">
           <a
             className="v2-footer-card"
             href="https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D"
@@ -395,18 +554,27 @@ export default function CaseStudyDetailV2() {
             <a className="v2-footer-card-strong" href="tel:+919429269295">+91 94292 69295</a>
             <a className="v2-footer-card-strong" href="tel:+917490909686">+91 74909 09686</a>
           </div>
-        </div>
-
-        <div className="v2-footer-cards">
+          <div className="v2-footer-card">
+            <h5>Looking For Jobs</h5>
+            <a className="v2-footer-card-strong" href="/careers-v2">View openings →</a>
+          </div>
+          <div className="v2-footer-card">
+            <h5>HR</h5>
+            <a className="v2-footer-card-strong" href="mailto:hr@codelixitsolutions.com">
+              hr@codelixitsolutions.com
+            </a>
+          </div>
+          <div className="v2-footer-card">
+            <h5>General</h5>
+            <a className="v2-footer-card-strong" href="mailto:info@codelixitsolutions.com">
+              info@codelixitsolutions.com
+            </a>
+          </div>
           <div className="v2-footer-card">
             <h5>For Sales</h5>
             <a className="v2-footer-card-strong" href="mailto:Sales@codelixitsolutions.com">
               Sales@codelixitsolutions.com
             </a>
-          </div>
-          <div className="v2-footer-card">
-            <h5>Looking For Jobs</h5>
-            <a className="v2-footer-card-strong" href="/careers-v2">View openings →</a>
           </div>
         </div>
 
@@ -415,6 +583,7 @@ export default function CaseStudyDetailV2() {
           <div className="v2-footer-social-links">
             <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61561748130641" target="_blank" rel="noopener noreferrer">Facebook</a>
           </div>
           <button
             type="button"

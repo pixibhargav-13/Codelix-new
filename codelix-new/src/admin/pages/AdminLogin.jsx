@@ -29,11 +29,10 @@ export default function AdminLogin() {
   return (
     <div className="adm-shell adm-login-wrap">
       <form className="adm-login-card" onSubmit={handleSubmit}>
-        <span className="adm-login-badge">
-          <img src={codelixLogo} alt="Codelix" />
-        </span>
-        <h1>Codelix Admin</h1>
-        <p className="adm-sub">Sign in to manage blog posts and testimonials.</p>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: "32px" }}>
+          <img src={codelixLogo} alt="Codelix" style={{ height: "38px", marginBottom: "16px" }} />
+          <h1>ADMIN PORTAL</h1>
+        </div>
         {error && <p className="adm-error">{error}</p>}
         <div className="adm-field">
           <label htmlFor="adm-email">Email</label>

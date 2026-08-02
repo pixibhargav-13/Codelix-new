@@ -36,7 +36,34 @@ const CATEGORIES = [
   "UI/UX Design",
   "E-Commerce Solutions",
   "Custom Software Development",
+  "AI Development",
+  "Data Analytics",
 ];
+
+const INDUSTRIES = [
+  "All Industries",
+  "Manufacturing",
+  "FinTech",
+  "Ai & Data",
+  "Healthcare",
+  "Food and Bavarages",
+  "E-commerce",
+  "Real estae and construction",
+  "Education",
+  "Startups",
+  "B2B SaaS",
+  "Travel & Hospitality"
+];
+
+/* the two concept projects (AI support triage, unified ops dashboard) have
+   no v1 twin page like the other 15 real projects do, so they route to
+   their v2 case-study page instead of a bare href that would 404 */
+/* every project id that has no v1 twin page (concept explorations, plus
+   real project #23 which was only ever built as a v2 page) — these route
+   through /case-study-v2/... instead of a bare href that would 404 */
+const NO_V1_PAGE_IDS = [16, 17, 18, 19, 20, 21, 22, 23];
+const linkFor = (p) =>
+  NO_V1_PAGE_IDS.includes(p.id) ? `/case-study-v2${p.href}` : p.href;
 
 /* same five real client quotes already used in Ourwork.jsx, not new/invented
    attributions */
@@ -55,7 +82,7 @@ const STATS = [
 ];
 
 const FAQS = [
-  { q: "Is everything shown here real client work?", a: "Almost all of it — a couple of pieces (like the AI design platform) are concept explorations rather than live client builds, and we say so plainly in the case study itself." },
+  { q: "Is everything shown here real client work?", a: "Almost all of it — a few pieces (like the AI design platform, or the AI support-triage and operations-dashboard concepts) are concept explorations rather than live client builds, and we say so plainly in the case study itself." },
   { q: "Can we speak to a past client before signing?", a: "Yes, on request for shortlisted proposals — we'll connect you with a comparable past client where confidentiality allows." },
   { q: "Do you sign NDAs before sharing more project detail?", a: "Yes — standard practice before any confidential scope discussion." },
   { q: "Why don't all projects link to a live site?", a: "Some are private client deployments we can't publicly link to. The case study covers what we're able to share." },
@@ -70,6 +97,7 @@ export default function WorkV2() {
   const [paused, setPaused] = useState(false);
   const [spotlightVisible, setSpotlightVisible] = useState(false);
   const [filter, setFilter] = useState("All");
+  const [industryFilter, setIndustryFilter] = useState("All Industries");
   const [testimonial, setTestimonial] = useState(0);
 
   const rootRef = useRef(null);
@@ -194,7 +222,11 @@ export default function WorkV2() {
     };
   }, []);
 
-  const filtered = filter === "All" ? PROJECTS : PROJECTS.filter((p) => p.category === filter);
+  const filtered = PROJECTS.filter((p) => {
+    const matchCategory = filter === "All" || p.category === filter;
+    const matchIndustry = industryFilter === "All Industries" || p.industry === industryFilter;
+    return matchCategory && matchIndustry;
+  });
 
   return (
     <div className="v2" ref={rootRef}>
@@ -323,7 +355,7 @@ export default function WorkV2() {
                   <div className="wv-spotlight-tags">
                     {p.tags.map((t) => <span key={t}>{t}</span>)}
                   </div>
-                  <a className="v2-btn v2-btn--filled" href={p.href}>
+                  <a className="v2-btn v2-btn--filled" href={linkFor(p)}>
                     <span>View case study</span>
                     <i className="v2-btn-arrow">→</i>
                   </a>
@@ -339,21 +371,33 @@ export default function WorkV2() {
         <p className="v2-label">All Projects</p>
         <h2 className="v2-heading">The full portfolio.</h2>
 
-        <div className="wv-filters" role="group" aria-label="Filter by category">
-          {CATEGORIES.map((c) => (
-            <button
-              key={c}
-              className={`wv-filter ${filter === c ? "is-active" : ""}`}
-              onClick={() => setFilter(c)}
+        <div className="wv-filters-container">
+          <div className="wv-filters" role="group" aria-label="Filter by category">
+            {CATEGORIES.map((c) => (
+              <button
+                key={c}
+                className={`wv-filter ${filter === c ? "is-active" : ""}`}
+                onClick={() => setFilter(c)}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
+          <div className="wv-filter-industry">
+            <select 
+              value={industryFilter} 
+              onChange={(e) => setIndustryFilter(e.target.value)}
+              className="wv-industry-select"
+              aria-label="Filter by industry"
             >
-              {c}
-            </button>
-          ))}
+              {INDUSTRIES.map(ind => <option key={ind} value={ind}>{ind}</option>)}
+            </select>
+          </div>
         </div>
 
         <div className="wv-grid">
           {filtered.map((p) => (
-            <a className="wv-card" href={p.href} key={p.id}>
+            <a className="wv-card" href={linkFor(p)} key={p.id}>
               <div className="wv-card-media">
                 <img src={p.image} alt={p.title} loading="lazy" />
               </div>
@@ -550,9 +594,9 @@ export default function WorkV2() {
             </div>
           </div>
 
-        {/* office / contact cards — bordered two-up rows, same shape as the
-            reference's address + sales/careers blocks */}
-        <div className="v2-footer-cards">
+        {/* office / contact info — a single four-up row instead of two
+            stacked 2x2 blocks, so it reads as one info bar */}
+        <div className="v2-footer-cards v2-footer-cards--four">
           <a
             className="v2-footer-card"
             href="https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D"
@@ -569,18 +613,27 @@ export default function WorkV2() {
             <a className="v2-footer-card-strong" href="tel:+919429269295">+91 94292 69295</a>
             <a className="v2-footer-card-strong" href="tel:+917490909686">+91 74909 09686</a>
           </div>
-        </div>
-
-        <div className="v2-footer-cards">
+          <div className="v2-footer-card">
+            <h5>Looking For Jobs</h5>
+            <a className="v2-footer-card-strong" href="/careers-v2">View openings →</a>
+          </div>
+          <div className="v2-footer-card">
+            <h5>HR</h5>
+            <a className="v2-footer-card-strong" href="mailto:hr@codelixitsolutions.com">
+              hr@codelixitsolutions.com
+            </a>
+          </div>
+          <div className="v2-footer-card">
+            <h5>General</h5>
+            <a className="v2-footer-card-strong" href="mailto:info@codelixitsolutions.com">
+              info@codelixitsolutions.com
+            </a>
+          </div>
           <div className="v2-footer-card">
             <h5>For Sales</h5>
             <a className="v2-footer-card-strong" href="mailto:Sales@codelixitsolutions.com">
               Sales@codelixitsolutions.com
             </a>
-          </div>
-          <div className="v2-footer-card">
-            <h5>Looking For Jobs</h5>
-            <a className="v2-footer-card-strong" href="/careers-v2">View openings →</a>
           </div>
         </div>
 
@@ -589,6 +642,7 @@ export default function WorkV2() {
           <div className="v2-footer-social-links">
             <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61561748130641" target="_blank" rel="noopener noreferrer">Facebook</a>
           </div>
           <button
             type="button"
