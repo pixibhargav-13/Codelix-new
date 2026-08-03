@@ -26,11 +26,11 @@
 }
 
 .bdv2-header {
-  padding: clamp(120px, 14vw, 160px) var(--pad-x) 40px;
+  padding: clamp(120px, 14vw, 160px) var(--pad-x) 20px;
 }
 
 .bdv2-header-inner {
-  max-width: 860px;
+  /* max-width: 1200px; */
   margin: 0 auto;
 }
 
@@ -64,19 +64,19 @@
   max-width: 24ch;
 }
 
-#article {
-  padding-top: 0px;
-}
+
 
 .bdv2-article-inner {
-  max-width: 860px;
   margin-left: auto;
   margin-right: auto;
 }
 
+#article {
+  padding-top: 20px;
+}
+
 @media (max-width: 768px) {
   #article {
-    padding-top: 0px;
     padding-bottom: 40px;
   }
 }
@@ -96,7 +96,7 @@
 }
 
 .v2 .bdv2-body {
-  font-size: 15.5px;
+  font-size: 16.5px;
   line-height: 1.8;
   color: var(--text-70, rgba(255, 255, 255, .8));
 }
@@ -106,7 +106,7 @@
 }
 
 .v2 .bdv2-body h2 {
-  font-size: clamp(21px, 2.2vw, 26px);
+  font-size: clamp(24px, 2.5vw, 30px);
   font-weight: 600;
   letter-spacing: -.015em;
   color: #fff;
@@ -114,7 +114,7 @@
 }
 
 .v2 .bdv2-body h3 {
-  font-size: 18px;
+  font-size: 21px;
   font-weight: 600;
   color: #fff;
   margin: 32px 0 14px;
@@ -126,7 +126,7 @@
   border-left: 2px solid rgba(180, 200, 230, .6);
   background: rgba(180, 200, 230, .04);
   border-radius: 0 12px 12px 0;
-  font-size: 16.5px;
+  font-size: 17.5px;
   font-style: italic;
   color: #fff;
 }
@@ -143,7 +143,7 @@
 .v2 .bdv2-body li {
   position: relative;
   padding-left: 22px;
-  font-size: 15px;
+  font-size: 16.5px;
   line-height: 1.7;
 }
 
@@ -159,7 +159,7 @@
 }
 
 .bdv2-back {
-  max-width: 860px;
+  /* max-width: 1200px; */
   margin: 40px auto 0;
 }
 
@@ -201,8 +201,9 @@
 }
 
 .bdv2-related-media {
-  aspect-ratio: 16/10;
+  aspect-ratio: 1200/630;
   overflow: hidden;
+  border-bottom: .8px solid var(--rule);
 }
 
 .bdv2-related-media img {
@@ -249,6 +250,13 @@
   opacity: 0;
   transition: opacity .3s ease;
 }
+
+/* ───────────── CTA OVERRIDES ───────────── */
+/* Shrink the CTA visual explicitly for the blog detail page only */
+.bdv2-cta-shell .v2-cta-visual-svg {
+  max-width: 420px;
+}
+
 
 .bdv2-related-card:hover .bdv2-related-arrow {
   opacity: 1;

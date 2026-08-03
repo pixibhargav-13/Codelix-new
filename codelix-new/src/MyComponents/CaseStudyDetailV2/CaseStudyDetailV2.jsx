@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import gsap from "gsap";
 import { ArrowLeft, ArrowUpRight, X, Check } from "lucide-react";
+import CtaVisual from "../HomepageV2/CtaVisual";
 
 /* v2 design system — same source of truth as the other v2 pages */
 import "../HomepageV2/HomepageV2.css";
@@ -35,13 +36,20 @@ export default function CaseStudyDetailV2() {
   const cs = CASE_STUDIES.find((c) => c.slug === slug);
 
   const [navScrolled, setNavScrolled] = useState(false);
+  const [navHidden, setNavHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showSolutions, setShowSolutions] = useState(false);
 
   const rootRef = useRef(null);
 
   useEffect(() => {
-    const onScroll = () => setNavScrolled(window.scrollY > 40);
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setNavScrolled(y > 40);
+      setNavHidden(y > lastY && y > 120);
+      lastY = y;
+    };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -134,46 +142,65 @@ export default function CaseStudyDetailV2() {
       <div className="v2-progress" aria-hidden="true"><span /></div>
 
       {/* ══════════ NAV ══════════ */}
-      <nav className={`v2-nav ${navScrolled ? "scrolled" : ""}`}>
+      <nav className={`v2-nav ${navScrolled ? "scrolled" : ""} ${navHidden ? "nav-hidden" : ""}`}>
         <div className="v2-nav-inner">
           <a href="/preview-v2" className="v2-nav-logo" aria-label="Codelix — home">
             <img src={codelixLogo} alt="Codelix" />
           </a>
           <div className="v2-nav-links">
-            <a href="/preview-v2">Homepage</a>
-            <a href="/services-v2">Services</a>
-            <a href="/about-v2">About</a>
+            <div className="v2-nav-dropdown">
+              <a href="/services-v2">Services <span className="v2-nav-dropdown-chevron">▾</span></a>
+              <div className="v2-nav-dropdown-panel">
+                <div className="v2-nav-dropdown-head">
+                  <div>
+                    <p className="v2-nav-dropdown-head-label">Our Services</p>
+                    <p className="v2-nav-dropdown-head-lede">Everything we build, in one place.</p>
+                  </div>
+                  <a href="/services-v2" className="v2-nav-dropdown-head-all">View all services →</a>
+                </div>
+                {FOOTER_SERVICE_KEYWORDS.map((s) => (
+                  <a href={s.path} key={s.label} className="v2-nav-dropdown-card">
+                    <span className="v2-nav-dropdown-title">{s.label}</span>
+                    <span className="v2-nav-dropdown-blurb">{s.blurb}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
             <a href="/work-v2">Work</a>
             <a href="/industries-v2">Industries</a>
-            <a href="/process-v2">Process</a>
-            <a href="/contact-v2">Contact</a>
           </div>
-          <button
-            className={`v2-burger ${mobileOpen ? "open" : ""}`}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen((o) => !o)}
-          >
-            <span /><span /><span />
-          </button>
+          <div className="v2-nav-actions">
+            <a className="v2-btn v2-btn--filled v2-nav-cta" href="/contact-v2">Book a consultation</a>
+            <button
+              className={`v2-burger ${mobileOpen ? "open" : ""}`}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+              onClick={() => setMobileOpen((o) => !o)}
+            >
+              <span /><span /><span />
+            </button>
+          </div>
         </div>
       </nav>
 
+      <div className={`v2-drawer-backdrop ${mobileOpen ? "open" : ""}`} onClick={() => setMobileOpen(false)} aria-hidden="true" />
       <div className={`v2-drawer ${mobileOpen ? "open" : ""}`} aria-hidden={!mobileOpen}>
+        <button type="button" className="v2-drawer-close" aria-label="Close menu" onClick={() => setMobileOpen(false)}>
+          <span /><span />
+        </button>
         <div className="v2-drawer-links">
           {[
-            { label: "Homepage", href: "/preview-v2" },
-            { label: "Services", href: "/services-v2" },
             { label: "About", href: "/about-v2" },
-            { label: "Work", href: "/work-v2" },
-            { label: "Industries", href: "/industries-v2" },
+            { label: "Team", href: "/team-v2" },
             { label: "Process", href: "/process-v2" },
+            { label: "Pricing", href: "/pricing-v2" },
+            { label: "Technologies", href: "/technologies-v2" },
+            { label: "Blog", href: "/blog-v2" },
+            { label: "FAQ", href: "/faq-v2" },
+            { label: "Careers", href: "/careers-v2" },
             { label: "Contact", href: "/contact-v2" },
-          ].map((l, i) => (
-            <a key={l.label} href={l.href}
-              style={{ transitionDelay: `${0.08 + i * 0.05}s` }}
-              onClick={() => setMobileOpen(false)}>
-              <span className="v2-drawer-index">{String(i + 1).padStart(2, "0")}</span>
+          ].map((l) => (
+            <a key={l.label} href={l.href} onClick={() => setMobileOpen(false)}>
               {l.label}
             </a>
           ))}
@@ -499,15 +526,20 @@ export default function CaseStudyDetailV2() {
 
       {/* ══════════ 7 · CTA ══════════ */}
       <section className="v2-section">
-        <div className="v2-cta">
-          <p className="v2-label">Start Here</p>
-          <h2 className="v2-cta-headline">
-            Like what you see?<br />Let's build yours next.
-          </h2>
-          <a className="v2-btn v2-btn--filled" href="/contact-v2">
-            <span>Start a project</span>
-            <i className="v2-btn-arrow">→</i>
-          </a>
+        <div className="v2-cta-shell csd2-cta-shell">
+          <div className="v2-cta">
+            <p className="v2-label">Start Here</p>
+            <h2 className="v2-cta-headline">
+              Like what you see?<br />Let's build yours next.
+            </h2>
+            <a className="v2-btn v2-btn--filled" href="/contact-v2">
+              <span>Start a project</span>
+              <i className="v2-btn-arrow">→</i>
+            </a>
+          </div>
+          <aside className="v2-cta-visual">
+            <CtaVisual />
+          </aside>
         </div>
       </section>
 
@@ -583,8 +615,8 @@ export default function CaseStudyDetailV2() {
           </div>
           <div className="v2-footer-card">
             <h5>For Sales</h5>
-            <a className="v2-footer-card-strong" href="mailto:Sales@codelixitsolutions.com">
-              Sales@codelixitsolutions.com
+            <a className="v2-footer-card-strong" href="mailto:sales@codelixitsolutions.com">
+              sales@codelixitsolutions.com
             </a>
           </div>
         </div>
@@ -595,6 +627,8 @@ export default function CaseStudyDetailV2() {
             <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="https://www.facebook.com/profile.php?id=61561748130641" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">Behance</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
           </div>
           <button
             type="button"

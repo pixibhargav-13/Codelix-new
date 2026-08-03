@@ -128,3 +128,14 @@
   color: #fff;
   transform: translate(2px, -2px);
 }
+
+/* ───────────── CTA OVERRIDES ───────────── */
+/* Shrink the CTA visual explicitly for the sitemap page */
+.smv2-cta-shell .v2-cta-visual-svg {
+  max-width: 420px;
+}
+
+/* Remove the background gradient */
+.smv2-cta-shell::before {
+  display: none;
+}

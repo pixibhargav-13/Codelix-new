@@ -1031,3 +1031,14 @@
 .csd2-more-card:hover .csd2-more-arrow {
   opacity: 1;
 }
+
+/* ───────────── CTA OVERRIDES ───────────── */
+/* Shrink the CTA visual explicitly for the case study detail page */
+.csd2-cta-shell .v2-cta-visual-svg {
+  max-width: 420px;
+}
+
+/* Remove the background gradient */
+.csd2-cta-shell::before {
+  display: none;
+}

@@ -9,6 +9,7 @@ import V2MobileDrawer from "../HomepageV2/V2MobileDrawer";
 import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import codelixLogo from "../Images/codelix-logo.png";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
+import CtaVisual from "../HomepageV2/CtaVisual";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./PricingV2.css";
@@ -46,6 +47,7 @@ const FAQS = [
 
 export default function PricingV2() {
   const [navScrolled, setNavScrolled] = useState(false);
+  const [navHidden, setNavHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(-1);
   const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
@@ -56,7 +58,13 @@ export default function PricingV2() {
   const stripRef = useRef(null);
 
   useEffect(() => {
-    const onScroll = () => setNavScrolled(window.scrollY > 40);
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setNavScrolled(y > 40);
+      setNavHidden(y > lastY && y > 120);
+      lastY = y;
+    };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -150,28 +158,44 @@ export default function PricingV2() {
       <div className="v2-progress" aria-hidden="true"><span /></div>
 
       {/* ══════════ NAV ══════════ */}
-      <nav className={`v2-nav ${navScrolled ? "scrolled" : ""}`}>
+      <nav className={`v2-nav ${navScrolled ? "scrolled" : ""} ${navHidden ? "nav-hidden" : ""}`}>
         <div className="v2-nav-inner">
           <a href="/preview-v2" className="v2-nav-logo" aria-label="Codelix — home">
             <img src={codelixLogo} alt="Codelix" />
           </a>
           <div className="v2-nav-links">
-            <a href="/preview-v2">Homepage</a>
-            <a href="/services-v2">Services</a>
-            <a href="/about-v2">About</a>
+            <div className="v2-nav-dropdown">
+              <a href="/services-v2">Services <span className="v2-nav-dropdown-chevron">▾</span></a>
+              <div className="v2-nav-dropdown-panel">
+                <div className="v2-nav-dropdown-head">
+                  <div>
+                    <p className="v2-nav-dropdown-head-label">Our Services</p>
+                    <p className="v2-nav-dropdown-head-lede">Everything we build, in one place.</p>
+                  </div>
+                  <a href="/services-v2" className="v2-nav-dropdown-head-all">View all services →</a>
+                </div>
+                {FOOTER_SERVICE_KEYWORDS.map((s) => (
+                  <a href={s.path} key={s.label} className="v2-nav-dropdown-card">
+                    <span className="v2-nav-dropdown-title">{s.label}</span>
+                    <span className="v2-nav-dropdown-blurb">{s.blurb}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
             <a href="/work-v2">Work</a>
             <a href="/industries-v2">Industries</a>
-            <a href="/process-v2">Process</a>
-            <a href="/contact-v2">Contact</a>
           </div>
-          <button
-            className={`v2-burger ${mobileOpen ? "open" : ""}`}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen((o) => !o)}
-          >
-            <span /><span /><span />
-          </button>
+          <div className="v2-nav-actions">
+            <a className="v2-btn v2-btn--filled v2-nav-cta" href="/contact-v2">Book a consultation</a>
+            <button
+              className={`v2-burger ${mobileOpen ? "open" : ""}`}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+              onClick={() => setMobileOpen((o) => !o)}
+            >
+              <span /><span /><span />
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -325,7 +349,7 @@ export default function PricingV2() {
       </section>
 
       {/* ══════════ 6 · CTA ══════════ */}
-      <section className="v2-section">
+      <section className="v2-section v2-section--void v2-cta-shell">
         <div className="v2-cta">
           <p className="v2-label">Start Here</p>
           <h2 className="v2-cta-headline">
@@ -343,6 +367,10 @@ export default function PricingV2() {
             <span className="v2-cta-badge">No obligation</span>
           </div>
         </div>
+
+        <aside className="v2-cta-visual">
+          <CtaVisual />
+        </aside>
       </section>
 
       {/* ══════════ FOOTER ══════════ */}
@@ -417,8 +445,8 @@ export default function PricingV2() {
           </div>
           <div className="v2-footer-card">
             <h5>For Sales</h5>
-            <a className="v2-footer-card-strong" href="mailto:Sales@codelixitsolutions.com">
-              Sales@codelixitsolutions.com
+            <a className="v2-footer-card-strong" href="mailto:sales@codelixitsolutions.com">
+              sales@codelixitsolutions.com
             </a>
           </div>
         </div>
@@ -429,6 +457,8 @@ export default function PricingV2() {
             <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="https://www.facebook.com/profile.php?id=61561748130641" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">Behance</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
           </div>
           <button
             type="button"
