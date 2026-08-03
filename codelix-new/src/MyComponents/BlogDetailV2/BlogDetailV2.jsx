@@ -9,6 +9,7 @@ import codelixLogo from "../Images/codelix-logo.png";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
+import CtaVisual from "../HomepageV2/CtaVisual";
 import "./BlogDetailV2.css";
 
 /* same real article data + slug lookup as the live /blog/:slug page, merged
@@ -23,6 +24,7 @@ export default function BlogDetailV2() {
   const blog = blogs.find((b) => (b.slug ? b.slug === slug : slugify(b.title) === slug));
 
   const [navScrolled, setNavScrolled] = useState(false);
+  const [navHidden, setNavHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [readProgress, setReadProgress] = useState(0);
 
@@ -30,7 +32,13 @@ export default function BlogDetailV2() {
   const articleRef = useRef(null);
 
   useEffect(() => {
-    const onScroll = () => setNavScrolled(window.scrollY > 40);
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setNavScrolled(y > 40);
+      setNavHidden(y > lastY && y > 120);
+      lastY = y;
+    };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -88,7 +96,7 @@ export default function BlogDetailV2() {
       }),
       { threshold: 0.01, rootMargin: "0px 0px -8% 0px" }
     );
-    rootRef.current?.querySelectorAll(".bdv2-related, .v2-cta").forEach((el) => io.observe(el));
+    rootRef.current?.querySelectorAll(".v2-label, .v2-heading, .bdv2-related, .v2-cta").forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, [blog]);
 
@@ -111,46 +119,65 @@ export default function BlogDetailV2() {
       </div>
 
       {/* ══════════ NAV ══════════ */}
-      <nav className={`v2-nav ${navScrolled ? "scrolled" : ""}`}>
+      <nav className={`v2-nav ${navScrolled ? "scrolled" : ""} ${navHidden ? "nav-hidden" : ""}`}>
         <div className="v2-nav-inner">
           <a href="/preview-v2" className="v2-nav-logo" aria-label="Codelix — home">
             <img src={codelixLogo} alt="Codelix" />
           </a>
           <div className="v2-nav-links">
-            <a href="/preview-v2">Homepage</a>
-            <a href="/services-v2">Services</a>
-            <a href="/about-v2">About</a>
+            <div className="v2-nav-dropdown">
+              <a href="/services-v2">Services <span className="v2-nav-dropdown-chevron">▾</span></a>
+              <div className="v2-nav-dropdown-panel">
+                <div className="v2-nav-dropdown-head">
+                  <div>
+                    <p className="v2-nav-dropdown-head-label">Our Services</p>
+                    <p className="v2-nav-dropdown-head-lede">Everything we build, in one place.</p>
+                  </div>
+                  <a href="/services-v2" className="v2-nav-dropdown-head-all">View all services →</a>
+                </div>
+                {FOOTER_SERVICE_KEYWORDS.map((s) => (
+                  <a href={s.path} key={s.label} className="v2-nav-dropdown-card">
+                    <span className="v2-nav-dropdown-title">{s.label}</span>
+                    <span className="v2-nav-dropdown-blurb">{s.blurb}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
             <a href="/work-v2">Work</a>
             <a href="/industries-v2">Industries</a>
-            <a href="/process-v2">Process</a>
-            <a href="/contact-v2">Contact</a>
           </div>
-          <button
-            className={`v2-burger ${mobileOpen ? "open" : ""}`}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen((o) => !o)}
-          >
-            <span /><span /><span />
-          </button>
+          <div className="v2-nav-actions">
+            <a className="v2-btn v2-btn--filled v2-nav-cta" href="/contact-v2">Book a consultation</a>
+            <button
+              className={`v2-burger ${mobileOpen ? "open" : ""}`}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+              onClick={() => setMobileOpen((o) => !o)}
+            >
+              <span /><span /><span />
+            </button>
+          </div>
         </div>
       </nav>
 
+      <div className={`v2-drawer-backdrop ${mobileOpen ? "open" : ""}`} onClick={() => setMobileOpen(false)} aria-hidden="true" />
       <div className={`v2-drawer ${mobileOpen ? "open" : ""}`} aria-hidden={!mobileOpen}>
+        <button type="button" className="v2-drawer-close" aria-label="Close menu" onClick={() => setMobileOpen(false)}>
+          <span /><span />
+        </button>
         <div className="v2-drawer-links">
           {[
-            { label: "Homepage", href: "/preview-v2" },
-            { label: "Services", href: "/services-v2" },
             { label: "About", href: "/about-v2" },
-            { label: "Work", href: "/work-v2" },
-            { label: "Industries", href: "/industries-v2" },
+            { label: "Team", href: "/team-v2" },
             { label: "Process", href: "/process-v2" },
+            { label: "Pricing", href: "/pricing-v2" },
+            { label: "Technologies", href: "/technologies-v2" },
+            { label: "Blog", href: "/blog-v2" },
+            { label: "FAQ", href: "/faq-v2" },
+            { label: "Careers", href: "/careers-v2" },
             { label: "Contact", href: "/contact-v2" },
-          ].map((l, i) => (
-            <a key={l.label} href={l.href}
-              style={{ transitionDelay: `${0.08 + i * 0.05}s` }}
-              onClick={() => setMobileOpen(false)}>
-              <span className="v2-drawer-index">{String(i + 1).padStart(2, "0")}</span>
+          ].map((l) => (
+            <a key={l.label} href={l.href} onClick={() => setMobileOpen(false)}>
               {l.label}
             </a>
           ))}
@@ -242,17 +269,32 @@ export default function BlogDetailV2() {
       )}
 
       {/* ══════════ 4 · CTA ══════════ */}
-      <section className="v2-section">
+      <section className="v2-section v2-section--void v2-cta-shell bdv2-cta-shell">
         <div className="v2-cta">
           <p className="v2-label">Have A Project In Mind?</p>
           <h2 className="v2-cta-headline">
             Reading is one thing.<br />Shipping is another.
           </h2>
-          <a className="v2-btn v2-btn--filled" href="/contact-v2">
-            <span>Start a project</span>
-            <i className="v2-btn-arrow">→</i>
-          </a>
+          <p className="v2-cta-body">
+            A structured conversation about your project — scoped honestly,
+            built the same way as everything above.
+          </p>
+          <div className="v2-cta-actions">
+            <a className="v2-btn v2-btn--filled" href="/contact-v2">
+              <span>Start a project</span>
+              <i className="v2-btn-arrow">→</i>
+            </a>
+          </div>
+          <div className="v2-cta-badges">
+            <span className="v2-cta-badge">Free consultation</span>
+            <span className="v2-cta-badge">NDA on request</span>
+            <span className="v2-cta-badge">No obligation</span>
+          </div>
         </div>
+
+        <aside className="v2-cta-visual">
+          <CtaVisual />
+        </aside>
       </section>
 
       {/* ══════════ FOOTER ══════════ */}
@@ -327,8 +369,8 @@ export default function BlogDetailV2() {
           </div>
           <div className="v2-footer-card">
             <h5>For Sales</h5>
-            <a className="v2-footer-card-strong" href="mailto:Sales@codelixitsolutions.com">
-              Sales@codelixitsolutions.com
+            <a className="v2-footer-card-strong" href="mailto:sales@codelixitsolutions.com">
+              sales@codelixitsolutions.com
             </a>
           </div>
         </div>
@@ -339,6 +381,8 @@ export default function BlogDetailV2() {
             <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="https://www.facebook.com/profile.php?id=61561748130641" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">Behance</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
           </div>
           <button
             type="button"

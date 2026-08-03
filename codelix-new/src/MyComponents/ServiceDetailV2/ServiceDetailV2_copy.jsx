@@ -1221,7 +1221,7 @@ export default function ServiceDetailV2() {
           </div>
           <div className="v2-footer-col">
             <h5>Contact</h5>
-            <a href="mailto:Sales@codelixitsolutions.com">Sales@codelixitsolutions.com</a>
+            <a href="mailto:sales@codelixitsolutions.com">sales@codelixitsolutions.com</a>
             <a href="tel:+919429269295">+91 94292 69295</a>
             <a href="tel:+917490909686">+91 74909 09686</a>
             <a className="v2-footer-address"

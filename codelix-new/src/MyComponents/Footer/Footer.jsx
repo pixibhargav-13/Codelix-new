@@ -40,11 +40,13 @@ const Footer = () => {
     social: [
       { label: "Linkedin", link: "https://www.linkedin.com/company/codelixit-solutions" },
       { label: "Instagram", link: "https://www.instagram.com/codelixitsolutions/" },
+      { label: "Behance", link: "#" },
+      { label: "Dribbble", link: "#" },
     ],
     contact: [
       {
-        label: "Sales@codelixitsolutions.com",
-        link: "mailto:Sales@codelixitsolutions.com",
+        label: "sales@codelixitsolutions.com",
+        link: "mailto:sales@codelixitsolutions.com",
       },
       { label: "+91 94292 69295", link: "tel:+919429269295" },
       { label: "+91 74909 09686", link: "tel:+917490909686" },

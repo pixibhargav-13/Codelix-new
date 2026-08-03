@@ -73,6 +73,13 @@
 .v2 .csv2-card-desc { font-size: 13px; line-height: 1.65; color: var(--text-45); margin-bottom: 16px; flex: 1; }
 .csv2-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
 .csv2-card-tags span { padding: 4px 10px; border: .8px solid var(--rule); border-radius: 100px; font-size: 10.5px; color: var(--text-45); }
+
+/* ───────────── CTA OVERRIDES ───────────── */
+/* Shrink the CTA visual explicitly for the case study detail page */
+.csv2-cta-shell .v2-cta-visual-svg {
+  max-width: 420px;
+}
+
 .csv2-card-link {
   display: inline-flex;
   align-items: center;
