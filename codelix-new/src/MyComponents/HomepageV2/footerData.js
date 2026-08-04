@@ -13,6 +13,7 @@ export const FOOTER_SERVICE_KEYWORDS = [
   { label: "Custom Software Development", path: "/services-v2/custom-software-development", blurb: "Software built around how your business actually works." },
   { label: "AI Development", path: "/services-v2/ai-development", blurb: "Practical AI that does real work." },
   { label: "Data Analytics", path: "/services-v2/data-analytics", blurb: "Turn raw data into clear decisions." },
+  { label: "Support & Managed Services", path: "/services-v2/support-managed-services", blurb: "Ongoing maintenance, monitoring, and support that keeps things running." },
 ];
 
 export const FOOTER_INDUSTRY_KEYWORDS = [

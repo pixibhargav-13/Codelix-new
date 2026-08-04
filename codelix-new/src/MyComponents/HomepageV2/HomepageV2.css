@@ -292,25 +292,28 @@
   transform: rotate(180deg);
 }
 
-/* full-width mega-menu bar spanning the whole viewport under the nav,
-   rather than a floating card anchored to the trigger */
+/* full-width bar again, but as ONE horizontal row of equal columns divided
+   by hairlines — the same "rail of cards" language already used for the
+   Pipeline and System Map sections on the homepage — instead of a boxy
+   grid or a floating list. CSS Grid does the layout: the head spans the
+   full row (forcing a line break), the 8 cards then auto-flow into a
+   second row, one per column. */
 .v2-nav-dropdown-panel {
   position: fixed;
   top: 84px;
   left: 0;
   right: 0;
-  transform: translateY(-10px);
-  padding: 40px var(--pad-x);
+  padding: 30px var(--pad-x) 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 6px 18px;
-  background: rgba(13, 13, 17, .98);
-  backdrop-filter: blur(20px);
+  background: rgba(9, 9, 12, .98);
+  backdrop-filter: blur(24px);
   border-bottom: .8px solid var(--rule);
   box-shadow: 0 32px 64px -20px rgba(0, 0, 0, .65);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transform: translateY(-10px);
   transition: opacity .3s var(--ease-premium), transform .3s var(--ease-premium), visibility 0s linear .3s, top .4s var(--ease-premium);
 }
 
@@ -318,7 +321,7 @@
   top: 64px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .v2-nav-dropdown-panel {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -326,17 +329,15 @@
 
 @media (max-width: 640px) {
   .v2-nav-dropdown-panel {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-/* soft gradient wash + a thin top accent bar, so the panel reads as a
-   considered surface rather than a plain rectangle of links */
 .v2-nav-dropdown-panel::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(60% 140% at 10% 0%, rgba(124, 155, 255, .1), transparent 60%);
+  background: radial-gradient(50% 160% at 0% 0%, rgba(124, 155, 255, .09), transparent 60%);
   pointer-events: none;
 }
 
@@ -359,17 +360,15 @@
   transition: opacity .3s var(--ease-premium), transform .3s var(--ease-premium), visibility 0s linear 0s;
 }
 
-/* header row above the card grid — eyebrow + lede on the left, a jump
-   link to the full services page on the right, separated from the grid
-   by a rule so the panel reads as a considered layout, not just a grid */
 .v2-nav-dropdown-head {
   grid-column: 1 / -1;
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 24px;
   padding-bottom: 22px;
-  margin-bottom: 22px;
   border-bottom: .8px solid var(--rule);
 }
 
@@ -396,8 +395,6 @@
   gap: 8px;
   font-size: 11.5px;
   font-weight: 600;
-  letter-spacing: .04em;
-  text-transform: none;
   color: rgba(242, 240, 236, .55);
   padding: 10px 16px;
   border: .8px solid var(--rule);
@@ -415,55 +412,116 @@
   background: rgba(124, 155, 255, .08);
 }
 
+/* the eight columns — a faint oversized numeral behind the copy, the same
+   motif already used on the System Map / Principles cards, plus hairline
+   dividers standing in for the connector lines used on the Pipeline rail */
+.v2-nav-dropdown-panel {
+  counter-reset: navsvc;
+}
+
 .v2-nav-dropdown-card {
   position: relative;
+  counter-increment: navsvc;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding: 18px 20px;
-  border: .8px solid transparent;
-  border-radius: 14px;
+  padding: 24px 18px 28px;
+  border-left: .8px solid var(--rule);
   overflow: hidden;
-  transition: background .25s ease, border-color .25s ease, transform .25s ease;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .4s var(--ease-premium), transform .4s var(--ease-premium), background .3s ease;
+}
+
+.v2-nav-dropdown-card:nth-child(2),
+.v2-nav-dropdown-card:nth-child(6) {
+  border-left: none;
+}
+
+.v2-nav-dropdown-card:nth-child(n+6) {
+  border-top: .8px solid var(--rule);
+}
+
+@media (max-width: 1000px) {
+  .v2-nav-dropdown-card:nth-child(n) {
+    border-left: none;
+    border-top: .8px solid var(--rule);
+  }
+}
+
+/* +1 offset on every rule — .v2-nav-dropdown-head is grid-sibling #1, so
+   the first CARD is actually the 2nd child, and so on */
+.v2-nav-dropdown-card:nth-child(2) {
+  transition-delay: .03s;
+}
+
+.v2-nav-dropdown-card:nth-child(3) {
+  transition-delay: .06s;
+}
+
+.v2-nav-dropdown-card:nth-child(4) {
+  transition-delay: .09s;
+}
+
+.v2-nav-dropdown-card:nth-child(5) {
+  transition-delay: .12s;
+}
+
+.v2-nav-dropdown-card:nth-child(6) {
+  transition-delay: .15s;
+}
+
+.v2-nav-dropdown-card:nth-child(7) {
+  transition-delay: .18s;
+}
+
+.v2-nav-dropdown-card:nth-child(8) {
+  transition-delay: .21s;
+}
+
+.v2-nav-dropdown-card:nth-child(9) {
+  transition-delay: .24s;
+}
+
+.v2-nav-dropdown:hover .v2-nav-dropdown-card,
+.v2-nav-dropdown-panel:hover .v2-nav-dropdown-card {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .v2-nav-dropdown-card::before {
-  content: "";
+  content: counter(navsvc, decimal-leading-zero);
   position: absolute;
-  top: 10px;
-  bottom: 10px;
-  left: 0;
-  width: 2px;
-  border-radius: 2px;
-  background: linear-gradient(180deg, rgba(124, 155, 255, .9), rgba(160, 120, 240, .6));
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform .3s var(--ease-premium);
-}
-
-.v2-nav-dropdown-card::after {
-  display: none;
-}
-
-.v2-nav-dropdown-card:hover {
-  background: linear-gradient(100deg, rgba(124, 155, 255, .1), rgba(160, 120, 240, .06));
-  border-color: rgba(124, 155, 255, .18);
-  transform: translateY(-3px);
+  right: 12px;
+  bottom: -14px;
+  font-size: 60px;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(124, 155, 255, .06);
+  z-index: 0;
+  transition: color .3s ease, transform .3s var(--ease-premium);
 }
 
 .v2-nav-dropdown-card:hover::before {
-  transform: scaleY(1);
+  color: rgba(124, 155, 255, .16);
+  transform: translateY(-4px);
+}
+
+.v2-nav-dropdown-card:hover {
+  background: linear-gradient(180deg, rgba(124, 155, 255, .06), transparent 70%);
 }
 
 .v2-nav-dropdown-title {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 8px;
+  min-height: 54px;
   font-size: 13.5px;
   font-weight: 600;
-  letter-spacing: 0;
-  text-transform: none;
+  line-height: 1.3;
   color: rgba(242, 240, 236, .92);
   transition: color .25s ease;
 }
@@ -482,24 +540,22 @@
   transform: translateX(0);
 }
 
-.v2-nav-dropdown-blurb {
-  font-size: 11.5px;
-  font-weight: 400;
-  letter-spacing: 0;
-  text-transform: none;
-  line-height: 1.5;
-  color: rgba(242, 240, 236, .42);
-}
-
 .v2-nav-dropdown-card:hover .v2-nav-dropdown-title {
   color: #fff;
 }
 
-@media (max-width: 700px) {
-  .v2-nav-dropdown-panel {
-    grid-template-columns: 1fr;
-    width: 300px;
-  }
+.v2-nav-dropdown-blurb {
+  position: relative;
+  z-index: 1;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: rgba(242, 240, 236, .4);
+  /* the card clips overflow (needed to contain the bleeding background
+     numeral) — clamp so long blurbs never get silently cut off instead */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
 }
 
 /* right-hand group: the primary CTA button + the menu button that opens
@@ -591,15 +647,51 @@
   right: 0;
   bottom: 0;
   z-index: 115;
-  width: min(380px, 88vw);
+  width: clamp(240px, 50vw, 480px);
   background: rgba(12, 12, 16, .98);
+}
+
+/* on real phones, 50vw is too tight for the row layout — give it more
+   breathing room there specifically instead of raising the desktop/tablet
+   floor across the board */
+@media (max-width: 480px) {
+  .v2-drawer {
+    width: 82vw;
+  }
+}
+
+.v2-drawer {
   backdrop-filter: blur(20px);
   border-left: .8px solid var(--rule);
-  box-shadow: -32px 0 64px -32px rgba(0, 0, 0, .6);
-  padding: 110px 30px 30px;
+  /* box-shadow:
+    -32px 0 64px -32px rgba(0, 0, 0, .6),
+    -1px 0 0 rgba(124, 155, 255, .25),
+    -24px 0 60px -20px rgba(90, 110, 240, .18); */
+  padding: 96px 22px 30px;
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
   transform: translateX(100%);
   transition: transform .5s var(--ease-premium);
+}
+
+.v2-drawer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(70% 40% at 100% 0%, rgba(124, 155, 255, .1), transparent 60%);
+  pointer-events: none;
+}
+
+.v2-drawer::after {
+  content: "MENU";
+  position: absolute;
+  top: 40px;
+  left: 22px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .28em;
+  color: rgba(124, 155, 255, .8);
 }
 
 .v2-drawer.open {
@@ -645,37 +737,182 @@
 }
 
 .v2-drawer-links {
+  position: relative;
   display: flex;
   flex-direction: column;
+}
+
+/* every row (the Services accordion trigger + the plain links) cascades in
+   with its own delay when the drawer opens — a dedicated @keyframes
+   animation, NOT a transition. A transition-delay set here would also
+   delay every OTHER transition on the same element (the hover color
+   change, for instance), making later rows feel sluggish to hover for as
+   long as their entrance delay lasted. Animation and transition run on
+   fully independent timelines, so this can't happen. */
+@keyframes v2-drawer-row-in {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.v2-drawer-accordion,
+.v2-drawer-links>a {
+  opacity: 0;
+  transform: translateX(18px);
+}
+
+.v2-drawer.open .v2-drawer-accordion,
+.v2-drawer.open .v2-drawer-links>a {
+  animation: v2-drawer-row-in .5s var(--ease-premium) forwards;
+}
+
+/* same specificity tier as the shorthand rule above (and declared after
+   it), so these delays actually win instead of being silently reset back
+   to 0 by the shorthand's implicit animation-delay:0 */
+.v2-drawer.open .v2-drawer-links>*:nth-child(1) {
+  animation-delay: .06s;
+}
+
+.v2-drawer.open .v2-drawer-links>*:nth-child(2) {
+  animation-delay: .09s;
+}
+
+.v2-drawer.open .v2-drawer-links>*:nth-child(3) {
+  animation-delay: .12s;
+}
+
+.v2-drawer.open .v2-drawer-links>*:nth-child(4) {
+  animation-delay: .15s;
+}
+
+.v2-drawer.open .v2-drawer-links>*:nth-child(5) {
+  animation-delay: .18s;
+}
+
+.v2-drawer.open .v2-drawer-links>*:nth-child(6) {
+  animation-delay: .21s;
+}
+
+.v2-drawer.open .v2-drawer-links>*:nth-child(7) {
+  animation-delay: .24s;
+}
+
+.v2-drawer.open .v2-drawer-links>*:nth-child(8) {
+  animation-delay: .27s;
+}
+
+.v2-drawer.open .v2-drawer-links>*:nth-child(9) {
+  animation-delay: .3s;
+}
+
+.v2-drawer.open .v2-drawer-links>*:nth-child(10) {
+  animation-delay: .33s;
+}
+
+.v2-drawer.open .v2-drawer-links>*:nth-child(11) {
+  animation-delay: .36s;
+}
+
+.v2-drawer.open .v2-drawer-links>*:nth-child(12) {
+  animation-delay: .39s;
 }
 
 .v2-drawer-links>a,
 .v2-drawer-link-btn {
   position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 12px;
   width: 100%;
   background: none;
   border: none;
-  padding: 22px 2px;
-  font-size: 22px;
+  padding: 18px 4px 18px 18px;
+  font-size: 18px;
   font-weight: 500;
   letter-spacing: -.01em;
   color: rgba(242, 240, 236, .75);
   font-family: inherit;
-  transition: color .3s ease, padding-left .3s ease;
-  overflow: hidden;
+  transition: color .3s ease;
   text-align: left;
+}
+
+.v2-drawer-link-btn {
+  justify-content: space-between;
+}
+
+/* groups icon+label together as one flex child so space-between only
+   splits [icon+label] from the chevron, not all three individually */
+.v2-drawer-link-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* a real icon per destination instead of a numbered tab — tinted circular
+   badge, same family as the icon badges used on the Principles cards */
+.v2-drawer-link-icon {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(124, 155, 255, .1);
+  color: rgba(124, 155, 255, .85);
+  transition: background .3s ease, color .3s ease, transform .3s var(--ease-premium);
 }
 
 .v2-drawer-links>a,
 .v2-drawer-accordion {
+  position: relative;
+  overflow: hidden;
   border-bottom: .8px solid var(--rule);
+}
+
+/* a glowing accent rail grows in on the left edge — the same "accent rail"
+   language used on the Principles cards and the testimonial quote, instead
+   of a flat diagonal gradient wash sitting on top of the text. Kept clear
+   of the icon by the row's own left padding, and the glow radius trimmed
+   so it doesn't bleed into it either. Content no longer shifts on hover —
+   the rail growing in is feedback enough on its own. */
+.v2-drawer-links>a::before,
+.v2-drawer-accordion::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 2.5px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, rgba(124, 155, 255, .95), rgba(160, 120, 240, .7));
+  box-shadow: 0 0 8px 0px rgba(124, 155, 255, .45);
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform .35s var(--ease-premium);
+}
+
+.v2-drawer-links>a:hover::before,
+.v2-drawer-accordion:hover::before {
+  transform: scaleY(1);
 }
 
 .v2-drawer-link-btn {
   cursor: pointer;
+}
+
+.v2-drawer-link-btn:hover .v2-drawer-link-icon,
+.v2-drawer-links>a:hover .v2-drawer-link-icon {
+  background: rgba(124, 155, 255, .9);
+  color: #0b0b0f;
+  transform: scale(1.08);
 }
 
 .v2-drawer-chevron {
@@ -718,7 +955,11 @@
 .v2-drawer-links>a:first-child,
 .v2-drawer-accordion:first-child {
   border-top: .8px solid var(--rule) !important;
-  padding: 22px 2px
+}
+
+.v2-drawer-links>a:first-child,
+.v2-drawer-accordion:first-child>.v2-drawer-link-btn {
+  padding: 18px 4px 18px 18px;
 }
 
 @media (min-width: 861px) {
@@ -729,6 +970,7 @@
 
 .v2-drawer-links>a::after {
   content: "→";
+  margin-left: auto;
   font-size: 16px;
   color: rgba(124, 155, 255, .95);
   opacity: 0;
@@ -738,7 +980,6 @@
 
 .v2-drawer-links>a:hover {
   color: var(--text);
-  padding-left: 10px;
 }
 
 .v2-drawer-links>a:hover::after {
@@ -748,6 +989,49 @@
 
 .v2-drawer-index {
   display: none;
+}
+
+/* pinned to the bottom of the flex column — the drawer always ends on a
+   clear action instead of just trailing off after the last link */
+.v2-drawer-cta {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  padding-top: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 35px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .5s var(--ease-premium) .42s, transform .5s var(--ease-premium) .42s;
+}
+
+.v2-drawer.open .v2-drawer-cta {
+  opacity: 1;
+  transform: none;
+}
+
+.v2-drawer-cta .v2-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.v2-drawer-cta-socials {
+  display: flex;
+  gap: 20px;
+}
+
+.v2-drawer-cta-socials a {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--text-45);
+  transition: color .25s ease;
+}
+
+.v2-drawer-cta-socials a:hover {
+  color: var(--text);
 }
 
 /* ───────────── HERO — Codelix's own, not the reference's video wall ─────────────
@@ -2196,6 +2480,25 @@
    Section pins full-viewport while the words grow (see the JS timeline),
    so scrolling this stretch feels like it's driving the words directly
    rather than triggering a fade-in further down the page. */
+
+.v2-wr-section-label {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  margin-bottom: 16px;
+}
+
+.v2-wr-section-title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -.01em;
+  margin-bottom: 24px !important;
+  color: var(--ink-100);
+}
+
 .v2-wr-pin {
   min-height: 100svh;
   display: flex;
@@ -2410,7 +2713,7 @@
     grid-template-columns: 1fr;
     align-items: start;
     gap: 16px;
-    padding-top: 56px;
+    padding-top: 40px;
   }
 
   .v2-method-lede {
@@ -2606,6 +2909,140 @@
 
   .v2-work-title {
     font-size: 18px;
+  }
+}
+
+/* ───────────── services bento grid ───────────── */
+.v2-services-section {
+  padding-bottom: 64px;
+}
+
+.v2-services-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 16px;
+  padding: 0 var(--pad-x);
+  margin-top: 24px;
+}
+
+.v2-svc-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: .8px solid var(--rule);
+  background: rgba(9, 9, 12, 0.4);
+  border-radius: 12px;
+  padding: 32px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s var(--ease-premium), border-color 0.4s ease, background 0.4s ease;
+  min-height: 220px;
+  isolation: isolate;
+}
+
+.v2-svc-card:hover {
+  background: rgba(180, 200, 230, 0.02);
+  border-color: rgba(180, 200, 230, 0.15);
+  transform: translateY(-2px);
+}
+
+.v2-svc-glow {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at top right, rgba(124, 155, 255, 0.08), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.v2-svc-card:hover .v2-svc-glow {
+  opacity: 1;
+}
+
+.v2-svc-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.v2-svc-num {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--text-45);
+}
+
+.v2-svc-tag {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-25);
+}
+
+.v2-svc-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 40px;
+}
+
+.v2-svc-title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: rgba(242, 240, 236, 0.88);
+  max-width: 85%;
+  transition: color 0.4s ease;
+}
+
+.v2-svc-card:hover .v2-svc-title {
+  color: #fff;
+}
+
+.v2-svc-arrow {
+  font-size: 16px;
+  color: var(--text-25);
+  transition: transform 0.4s var(--ease-premium), color 0.4s ease;
+}
+
+.v2-svc-card:hover .v2-svc-arrow {
+  color: #fff;
+  transform: translate(4px, -4px);
+}
+
+/* Asymmetrical Layout for 7 items */
+.v2-svc-card-1 { grid-column: span 5; } /* Web */
+.v2-svc-card-2 { grid-column: span 4; } /* App */
+.v2-svc-card-3 { grid-column: span 3; } /* UI/UX */
+.v2-svc-card-4 { grid-column: span 4; } /* E-commerce */
+.v2-svc-card-5 { grid-column: span 8; } /* Custom Software */
+.v2-svc-card-6 { grid-column: span 6; } /* AI Dev */
+.v2-svc-card-7 { grid-column: span 6; } /* Analytics */
+
+@media (max-width: 1000px) {
+  .v2-services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .v2-svc-card-1, .v2-svc-card-2, .v2-svc-card-3,
+  .v2-svc-card-4, .v2-svc-card-5, .v2-svc-card-6, .v2-svc-card-7 {
+    grid-column: span 1;
+  }
+  .v2-svc-card-5 { grid-column: span 2; }
+}
+
+@media (max-width: 700px) {
+  .v2-services-grid {
+    grid-template-columns: 1fr;
+  }
+  .v2-svc-card-5 { grid-column: span 1; }
+  
+  .v2-svc-card {
+    min-height: 180px;
+    padding: 24px;
   }
 }
 
@@ -4057,6 +4494,67 @@
   transform: translateY(-2px);
 }
 
+.v2-footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.v2-footer-google-review {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-45);
+  padding: 8px 15px;
+  border: .8px solid var(--rule);
+  border-radius: 100px;
+  background: rgba(255, 255, 255, .015);
+  transition: color .3s ease, border-color .3s ease, background .3s ease, transform .3s var(--ease-expo);
+  text-decoration: none;
+}
+
+.v2-google-logo {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.v2-google-review-text {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.v2-google-stars {
+  color: #FBBC05;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+.v2-google-rating {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-60);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.v2-footer-google-review:hover {
+  color: var(--text);
+  border-color: rgba(124, 155, 255, .45);
+  background: rgba(124, 155, 255, .07);
+  transform: translateY(-2px);
+}
+
+.v2-footer-google-review:hover .v2-google-rating {
+  color: var(--text);
+}
+
 .v2-footer-top {
   display: flex;
   align-items: center;
@@ -4187,4 +4685,126 @@
     animation-duration: .001ms !important;
     transition-duration: .001ms !important;
   }
+}
+
+@media (max-width: 640px) {
+  .v2-desktop-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 641px) {
+  .v2-mobile-only {
+    display: none !important;
+  }
+}
+
+.v2-methodology-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+@media (max-width: 640px) {
+  .v2-methodology-container {
+    gap: 2rem;
+  }
+}
+
+
+.v2-methodology-gap {
+  gap: 5rem;
+}
+
+@media (max-width: 640px) {
+  .v2-methodology-gap {
+    gap: 2rem;
+  }
+}
+
+.v2-svc-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.v2-svc-tech-pill {
+  font-size: 11px;
+  color: var(--text-45);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease;
+}
+
+.v2-svc-card:hover .v2-svc-tech-pill {
+  color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.v2-svc-bg-icon {
+  position: absolute;
+  right: -5%;
+  bottom: -15%;
+  width: 180px;
+  height: 180px;
+  color: rgba(255, 255, 255, 0.02);
+  transform: rotate(-15deg);
+  transition: all 0.6s var(--ease-premium);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.v2-svc-card:hover .v2-svc-bg-icon {
+  color: rgba(124, 155, 255, 0.05);
+  transform: rotate(0deg) scale(1.05);
+}
+
+@media (max-width: 900px) {
+  .v2-svc-bg-icon {
+    width: 140px;
+    height: 140px;
+    right: -10%;
+    bottom: -10%;
+  }
+}
+
+
+.v2-wr-intro {
+  margin-bottom: 80px;
+  max-width: 900px;
+  padding: 0 var(--pad-x);
+}
+
+/* On mobile, reduce margin */
+@media (max-width: 900px) {
+  .v2-wr-intro {
+    margin-bottom: 40px;
+  }
+}
+
+
+.v2-wr-intro-label {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  margin: 0 0 16px 0;
+}
+
+.v2-wr-intro-heading {
+  font-family: var(--font-noi, "Noi Grotesk", sans-serif);
+  font-size: clamp(26px, 3.2vw, 42px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0;
+  max-width: 800px;
 }

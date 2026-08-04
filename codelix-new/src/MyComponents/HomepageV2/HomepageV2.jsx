@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   Target, PenTool, Code2, CheckCircle2, Rocket,
   Globe, Smartphone, Cloud, Activity, LifeBuoy,
-  CalendarCheck, Lock, Eye, PlayCircle, Users, Layers, ShieldCheck, ArrowLeft, ArrowRight
+  CalendarCheck, Lock, Eye, PlayCircle, Users, Layers, ShieldCheck, ArrowLeft, ArrowRight, ShoppingCart, Bot, BarChart2
 } from "lucide-react";
 
 /* real project screenshots (same assets the case-study pages use) */
@@ -529,19 +529,26 @@ export default function HomepageV2() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const section = rootRef.current.querySelector(".v2-wr-pin");
+      const intro = section.querySelector(".v2-wr-intro");
       const cols = gsap.utils.toArray(".v2-wr-col", section);
       const bodies = cols.map((c) => c.querySelector(".v2-wr-body"));
 
+      if (intro) gsap.set(intro, { opacity: 0, y: 20 });
       gsap.set(bodies, { opacity: 0, y: 20 });
       gsap.set(cols, { "--wr-decor": 0 });
 
-      gsap.timeline({
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section, start: "top top", end: "+=70%",
           scrub: .7, pin: true, anticipatePin: 1,
         },
-      })
-        .to(bodies, { opacity: 1, y: 0, ease: "none", stagger: .12 })
+      });
+      
+      if (intro) {
+        tl.to(intro, { opacity: 1, y: 0, ease: "none" });
+      }
+      
+      tl.to(bodies, { opacity: 1, y: 0, ease: "none", stagger: .12 }, intro ? "<0.1" : undefined)
         .to(cols, { "--wr-decor": 1, ease: "none", stagger: .12 }, "<");
     }, rootRef);
     return () => ctx.revert();
@@ -871,13 +878,19 @@ export default function HomepageV2() {
       {/* ══════════ 2 · STATEMENTS (light band) — pinned while the hero's foot
           words grow into these three column heads, then releases ══════════ */}
       <section className="v2-section v2-section--gallery v2-wr-pin">
-        <div className="v2-wr">
-          {STATEMENTS.map((s, i) => (
-            <div className="v2-wr-col" key={s.label}>
-              <h2 className="v2-wr-label" ref={(el) => (wrLabelRefs.current[i] = el)}>{s.label}</h2>
-              <p className="v2-wr-body">{s.body}</p>
-            </div>
-          ))}
+        <div style={{ width: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <div className="v2-wr-intro" style={{ textAlign: "center", marginLeft: "auto", marginRight: "auto" }}>
+            <p className="v2-wr-intro-label">Our Philosophy</p>
+            <h2 className="v2-wr-intro-heading">Great software isn't just written. It's engineered.</h2>
+          </div>
+          <div className="v2-wr">
+            {STATEMENTS.map((s, i) => (
+              <div className="v2-wr-col" key={s.label}>
+                <h2 className="v2-wr-label" ref={(el) => (wrLabelRefs.current[i] = el)}>{s.label}</h2>
+                <p className="v2-wr-body">{s.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -1101,9 +1114,8 @@ export default function HomepageV2() {
         </div>
       </section>
 
-      {/* ══════════ 6 · SERVICES — same sticky-header + hairline-row shell
-          as Selected Work above ══════════ */}
-      <section className="v2-method-shell" id="services">
+      {/* ══════════ 6 · SERVICES — Premium Bento Grid ══════════ */}
+      <section className="v2-method-shell v2-services-section" id="services">
         <div className="v2-method-head">
           <h2 className="v2-method-heading">What We Provide.</h2>
           <p className="v2-method-lede">
@@ -1111,20 +1123,27 @@ export default function HomepageV2() {
             and ownership handoff on every engagement.
           </p>
         </div>
-        <div className="v2-method-rows">
-          {SERVICES.map((s) => (
-            <div className="v2-work-row" key={s.n} onClick={() => navigate(s.link)}>
-              <div className="v2-work-index">{s.n}</div>
-              <div>
-                <div className="v2-work-tag">{s.tag}</div>
-                <div className="v2-work-title">{s.title}</div>
+        
+        <div className="v2-services-grid">
+          {SERVICES.map((s, idx) => (
+            <div className={`v2-svc-card v2-svc-card-${idx + 1}`} key={s.n} onClick={() => navigate(s.link)}>
+              <div className="v2-svc-glow"></div>
+              <div className="v2-svc-content">
+                <div className="v2-svc-head">
+                  <span className="v2-svc-num">{s.n}</span>
+                  <span className="v2-svc-tag">{s.tag}</span>
+                </div>
+                <div className="v2-svc-bottom">
+                  <h3 className="v2-svc-title">{s.title}</h3>
+                  <div className="v2-svc-arrow">→</div>
+                </div>
               </div>
-              <div className="v2-work-arrow">→</div>
             </div>
           ))}
-          <div className="v2-work-more">
-            <a className="v2-btn" href="/services-v2">View all services →</a>
-          </div>
+        </div>
+        
+        <div className="v2-work-more" style={{ marginTop: '48px', paddingBottom: '0' }}>
+          <a className="v2-btn" href="/services-v2">View all services →</a>
         </div>
       </section>
 

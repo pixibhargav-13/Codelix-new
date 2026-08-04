@@ -14,6 +14,7 @@ import { FOOTER_SERVICE_KEYWORDS, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./CareersV2.css";
+import GoogleReviewButton from '../Shared/GoogleReviewButton';
 
 /* same honest small-team working style already stated on TeamV2 — Codelix
    is a small, founder-led studio, not a large org with an HR department,
@@ -226,6 +227,7 @@ export default function CareersV2() {
             </div>
             <a href="/work-v2">Work</a>
             <a href="/industries-v2">Industries</a>
+            <a href="/about-v2">About</a>
           </div>
           <div className="v2-nav-actions">
             <a className="v2-btn v2-btn--filled v2-nav-cta" href="/contact-v2">Book a consultation</a>
@@ -239,7 +241,7 @@ export default function CareersV2() {
             </button>
           </div>
         </div>
-      </nav>
+        </nav>
 
       <V2MobileDrawer open={mobileOpen} onClose={() => setMobileOpen(false)} />
 
@@ -508,16 +510,21 @@ export default function CareersV2() {
             <a href="#" target="_blank" rel="noopener noreferrer">Behance</a>
             <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
           </div>
-          <button
-            type="button"
-            className="v2-footer-top"
-            aria-label="Back to top"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            ↑
-          </button>
+          <div className="v2-footer-actions">
+            <GoogleReviewButton className="v2-desktop-only" />
+            <button
+              type="button"
+              className="v2-footer-top"
+              aria-label="Back to top"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              ↑
+            </button>
+          </div>
         </div>
-
+        <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
+          <GoogleReviewButton />
+        </div>
         <div className="v2-footer-bottom">
           <a href="/preview-v2" className="v2-footer-bottom-brand" aria-label="Codelix — home">
             <img src={codelixLogo} alt="Codelix" />

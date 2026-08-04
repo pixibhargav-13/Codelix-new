@@ -11,6 +11,7 @@ import { FOOTER_SERVICE_KEYWORDS, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./FaqV2.css";
+import GoogleReviewButton from '../Shared/GoogleReviewButton';
 
 /* every answer here is the same real, already-established statement used
    elsewhere on the site (HomepageFaq.jsx, ProcessV2, IndustriesV2, WorkV2)
@@ -154,6 +155,7 @@ export default function FaqV2() {
             </div>
             <a href="/work-v2">Work</a>
             <a href="/industries-v2">Industries</a>
+            <a href="/about-v2">About</a>
           </div>
           <div className="v2-nav-actions">
             <a className="v2-btn v2-btn--filled v2-nav-cta" href="/contact-v2">Book a consultation</a>
@@ -167,7 +169,7 @@ export default function FaqV2() {
             </button>
           </div>
         </div>
-      </nav>
+        </nav>
 
       <V2MobileDrawer open={mobileOpen} onClose={() => setMobileOpen(false)} />
 
@@ -348,16 +350,21 @@ export default function FaqV2() {
             <a href="#" target="_blank" rel="noopener noreferrer">Behance</a>
             <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
           </div>
-          <button
-            type="button"
-            className="v2-footer-top"
-            aria-label="Back to top"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            ↑
-          </button>
+          <div className="v2-footer-actions">
+            <GoogleReviewButton className="v2-desktop-only" />
+            <button
+              type="button"
+              className="v2-footer-top"
+              aria-label="Back to top"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              ↑
+            </button>
+          </div>
         </div>
-
+        <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
+          <GoogleReviewButton />
+        </div>
         <div className="v2-footer-bottom">
           <a href="/preview-v2" className="v2-footer-bottom-brand" aria-label="Codelix — home">
             <img src={codelixLogo} alt="Codelix" />

@@ -17,6 +17,7 @@ const AdminTestimonialForm = lazy(() => import("./admin/pages/AdminTestimonialFo
 // ─── Eagerly loaded (critical for first paint) ────────────────────────────────
 import { Homepage } from "./MyComponents/Homepage/Homepage";
 import Chatbot from "./MyComponents/Chatbot/Chatbot";
+import BookingModal from "./MyComponents/BookingModal/BookingModal";
 
 // ─── Lazily loaded pages (only downloaded when the user navigates to them) ────
 const About = lazy(() => import("./MyComponents/About/About"));
@@ -61,6 +62,7 @@ const ServicesV2 = lazy(() => import("./MyComponents/ServicesV2/ServicesV2"));
 const ServiceDetailV2 = lazy(() => import("./MyComponents/ServiceDetailV2/ServiceDetailV2"));
 const UIUXDesignV2 = lazy(() => import("./MyComponents/UIUXDesignV2/UIUXDesignV2"));
 const DataAnalyticsV2 = lazy(() => import("./MyComponents/DataAnalyticsV2/DataAnalyticsV2"));
+const SupportManagedServicesV2 = lazy(() => import("./MyComponents/SupportManagedServicesV2/SupportManagedServicesV2"));
 const ApplicationDevelopmentV2 = lazy(() => import("./MyComponents/ApplicationDevelopmentV2/ApplicationDevelopmentV2"));
 const ECommerceSolutionsV2 = lazy(() => import("./MyComponents/ECommerceSolutionsV2/ECommerceSolutionsV2"));
 const CustomSoftwareDevelopmentV2 = lazy(() => import("./MyComponents/CustomSoftwareDevelopmentV2/CustomSoftwareDevelopmentV2"));
@@ -145,6 +147,7 @@ const AppRoutes = () => {
           <Route path="/services-v2/custom-software-development" element={<CustomSoftwareDevelopmentV2 />} />
           <Route path="/services-v2/ai-development" element={<AIDevelopmentV2 />} />
           <Route path="/services-v2/data-analytics" element={<DataAnalyticsV2 />} />
+          <Route path="/services-v2/support-managed-services" element={<SupportManagedServicesV2 />} />
           <Route path="/about-v2" element={<AboutV2 />} />
           <Route path="/contact-v2" element={<ContactV2 />} />
           <Route path="/industries-v2" element={<IndustriesV2 />} />
@@ -229,6 +232,7 @@ function App() {
         <BreadcrumbSchema />
         <CustomCursor />
         <ChatbotGate />
+        <BookingModal />
         <AppRoutes />
       </AuthProvider>
     </Router>
