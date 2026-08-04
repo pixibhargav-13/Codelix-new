@@ -16,6 +16,7 @@ import codelixLogo from "../Images/codelix-logo.png";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import CtaVisual from "../HomepageV2/CtaVisual";
 import "./ServicesV2.css";
+import GoogleReviewButton from '../Shared/GoogleReviewButton';
 
 /* how delivery actually runs — the question every services page has to answer
    right after "what do you do". Same six stages as the live site's HowWeWork. */
@@ -31,7 +32,7 @@ const METHOD = [
 /* headline numbers — value is the count-up target, suffix rides along */
 const STATS = [
   { value: 30, suffix: "+", label: "Projects delivered", icon: Sparkles },
-  { value: 7, suffix: "", label: "Core services", icon: Code2 },
+  { value: 8, suffix: "", label: "Core services", icon: Code2 },
   { value: 100, suffix: "%", label: "Source-code ownership", icon: Lock },
   { value: 24, suffix: "h", label: "Response time", icon: Clock },
 ];
@@ -94,6 +95,14 @@ const SERVICES = [
     body: "Turn raw data into clear decisions — dashboards, reports, and pipelines that show your team exactly what's happening and why.",
     path: "/services-v2/data-analytics",
     capabilities: ["BI dashboards", "Custom reporting", "Data pipelines", "KPI tracking & alerts", "Data visualization"],
+  },
+  {
+    n: "08",
+    icon: LifeBuoy,
+    title: "Support & Managed Services",
+    body: "Ongoing maintenance and support that keeps things running — monitoring, security updates, performance tuning, and dedicated engineering capacity when you need it.",
+    path: "/services-v2/support-managed-services",
+    capabilities: ["Uptime monitoring", "Security & dependency updates", "Bug fixes & patches", "Performance optimization", "Dedicated team augmentation"],
   },
 ];
 
@@ -499,6 +508,7 @@ export default function ServicesV2() {
             </div>
             <a href="/work-v2">Work</a>
             <a href="/industries-v2">Industries</a>
+            <a href="/about-v2">About</a>
           </div>
           <div className="v2-nav-actions">
             <a className="v2-btn v2-btn--filled v2-nav-cta" href="/contact-v2">Book a consultation</a>
@@ -512,7 +522,7 @@ export default function ServicesV2() {
             </button>
           </div>
         </div>
-      </nav>
+        </nav>
 
       <V2MobileDrawer open={mobileOpen} onClose={() => setMobileOpen(false)} />
 
@@ -904,16 +914,21 @@ export default function ServicesV2() {
             <a href="#" target="_blank" rel="noopener noreferrer">Behance</a>
             <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
           </div>
-          <button
-            type="button"
-            className="v2-footer-top"
-            aria-label="Back to top"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            ↑
-          </button>
+          <div className="v2-footer-actions">
+            <GoogleReviewButton className="v2-desktop-only" />
+            <button
+              type="button"
+              className="v2-footer-top"
+              aria-label="Back to top"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              ↑
+            </button>
+          </div>
         </div>
-
+        <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
+          <GoogleReviewButton />
+        </div>
         <div className="v2-footer-bottom">
           <a href="/preview-v2" className="v2-footer-bottom-brand" aria-label="Codelix — home">
             <img src={codelixLogo} alt="Codelix" />

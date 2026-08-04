@@ -1,0 +1,611 @@
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import gsap from "gsap";
+import {
+  LifeBuoy, Wrench, ShieldCheck, Activity, Users2, Clock, AlertTriangle,
+  Server, RefreshCw, GitBranch, TrendingUp, Headphones, Bell, CheckCircle2,
+  Layers, Search,
+  Globe, Smartphone, Palette, ShoppingCart, Code2, Sparkles, BarChart3,
+  Minus, X, Check, Phone, FileText, PlayCircle, FileCode2,
+  Store, Rocket, GraduationCap, Building2, HeartPulse,
+} from "lucide-react";
+
+/* v2 design system + shared data — same source of truth as the other v2 pages */
+import "../HomepageV2/HomepageV2.css";
+import V2MobileDrawer from "../HomepageV2/V2MobileDrawer";
+import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
+import codelixLogo from "../Images/codelix-logo.png";
+import { FOOTER_SERVICE_KEYWORDS, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
+import CtaVisual from "../HomepageV2/CtaVisual";
+import "../ServicesV2/ServicesV2.css";
+import "../ServiceDetailV2/ServiceDetailV2.css";
+
+/* reusing the same generic stack icons already used on other service pages
+   — no new image assets required */
+import techReact from "../Images/react.png";
+import techAWS from "../Images/AWS.png";
+import techDocker from "../Images/docker.png";
+import techPostgres from "../Images/postgresql.png";
+import techNode from "../Images/Express.png";
+import techMongo from "../Images/MongoDB.png";
+
+import { PROJECTS } from "../WorkV2/projectsData";
+import GoogleReviewButton from '../Shared/GoogleReviewButton';
+
+const SUPPORT_STACK = [
+  { src: techAWS, name: "AWS" },
+  { src: techDocker, name: "Docker" },
+  { src: techReact, name: "React" },
+  { src: techNode, name: "Node.js" },
+  { src: techPostgres, name: "PostgreSQL" },
+  { src: techMongo, name: "MongoDB" },
+];
+
+/* pain points — lets a visitor self-identify before we pitch anything */
+const PROBLEMS = [
+  { icon: AlertTriangle, pain: "Our site breaks and no one notices for days.", fix: "Proactive uptime and error monitoring that alerts us before your users complain." },
+  { icon: Headphones, pain: "We're paying for support but can't reach anyone.", fix: "A named team you can actually reach — not a ticket that vanishes into a queue." },
+  { icon: Clock, pain: "Every 'quick fix' turns into a week-long wait.", fix: "A monthly retainer with guaranteed response times, not best-effort promises." },
+  { icon: ShieldCheck, pain: "Security patches get skipped until something breaks.", fix: "Scheduled dependency and security updates, applied before they're urgent." },
+  { icon: TrendingUp, pain: "Performance quietly degrades as the product grows.", fix: "Regular performance audits and optimization — not just firefighting outages." },
+  { icon: Users2, pain: "We need more engineering hands, but not a full hire.", fix: "Dedicated developers who slot into your team on a flexible monthly basis." },
+];
+
+/* who this service is actually for */
+const USE_CASES = [
+  { icon: Rocket, title: "Post-Launch Startups", body: "You shipped an MVP and need someone watching it while you focus on the next feature, not the last one." },
+  { icon: Store, title: "E-Commerce", body: "Uptime during sales spikes, payment gateway monitoring, and fast fixes when checkout breaks at the worst time." },
+  { icon: Building2, title: "Growing SaaS", body: "A dedicated retainer that scales with usage — more monitoring, more capacity, without a full-time hire." },
+  { icon: GraduationCap, title: "Agencies", body: "Overflow engineering capacity when your own team is stretched thin on a client deadline." },
+  { icon: HeartPulse, title: "Regulated Industries", body: "Documented patch cycles and audit trails for healthcare, fintech, and other compliance-heavy sectors." },
+  { icon: Server, title: "Legacy Systems", body: "Someone who'll actually maintain the old system instead of quietly letting it rot until it fails." },
+];
+
+/* quality bars we hold ourselves to */
+const BENCHMARKS = [
+  { value: 99.9, suffix: "%", label: "Uptime target", note: "Monitored continuously, not sampled", ring: 100 },
+  { value: 4, suffix: "hr", label: "Critical response time", note: "For Priority-1 incidents", ring: 92 },
+  { value: 100, suffix: "%", label: "Patches applied on schedule", note: "No skipped security updates", ring: 100 },
+  { value: 24, suffix: "/7", label: "Uptime monitoring", note: "Automated alerts, always on", ring: 100 },
+];
+
+/* the actual artifacts handed over */
+const HANDOVER = [
+  { icon: FileText, title: "Monthly Health Report", body: "Uptime, performance, and security status in plain language — what happened, what we fixed, what's next." },
+  { icon: Bell, title: "Incident Response Log", body: "A timestamped record of every alert, what triggered it, and how it was resolved." },
+  { icon: GitBranch, title: "Update Changelog", body: "Every dependency bump, patch, and deployment logged, so nothing changes silently." },
+  { icon: Activity, title: "Performance Audit", body: "A recurring pass on load times, queries, and bottlenecks — not just a one-off health check." },
+  { icon: Headphones, title: "Direct Support Channel", body: "A dedicated Slack or email line to the actual people maintaining your system, not a ticket portal." },
+  { icon: FileCode2, title: "SLA Documentation", body: "Written response-time commitments per severity level, so expectations are explicit, not assumed." },
+];
+
+/* real client quote — reused from the site's existing testimonial, not invented for this page */
+const QUOTE = {
+  text: "We were able to successfully complete the project by meeting the best partner. They have a very good understanding of development and skills, and are fully committed to the task schedule.",
+  name: "Rajesh Patel",
+  role: "CEO, Harmony Inc.",
+};
+
+/* comparison table */
+const COMPARE_COLS = ["Codelix", "No support plan", "Freelancer on call", "Big agency retainer"];
+const COMPARE_ROWS = [
+  { label: "Guaranteed response times", vals: ["yes", "no", "maybe", "yes"] },
+  { label: "Direct access to who fixes it", vals: ["yes", "no", "yes", "no"] },
+  { label: "Proactive monitoring, not just reactive", vals: ["yes", "no", "no", "maybe"] },
+  { label: "Scheduled security patching", vals: ["yes", "no", "maybe", "yes"] },
+  { label: "Scales up or down monthly", vals: ["yes", "no", "maybe", "no"] },
+  { label: "No long-term lock-in contract", vals: ["yes", "yes", "yes", "no"] },
+  { label: "Predictable monthly cost", vals: ["yes", "no", "no", "yes"] },
+];
+
+/* next steps */
+const NEXT_STEPS = [
+  { n: "01", icon: Phone, title: "Discovery call", meta: "30 minutes", body: "We talk through your current setup, what's breaking, and what a realistic support plan looks like." },
+  { n: "02", icon: FileText, title: "Support plan proposal", meta: "Within 3 days", body: "A fixed monthly retainer scoped to your actual system — response times, coverage hours, and price, in writing." },
+  { n: "03", icon: PlayCircle, title: "Onboarding & monitoring live", meta: "Within a week", body: "We set up monitoring, get access, and you have a direct line to the team from day one." },
+];
+
+/* cross-sell to the rest of the catalogue */
+const OTHER_SERVICES = [
+  { icon: Globe, n: "01", title: "Web Development", path: "/services-v2/web-development" },
+  { icon: Smartphone, n: "02", title: "Application Development", path: "/services-v2/application-development" },
+  { icon: Palette, n: "03", title: "UI/UX Design", path: "/services-v2/ui-ux-design" },
+  { icon: ShoppingCart, n: "04", title: "E-Commerce Solutions", path: "/services-v2/e-commerce-solutions" },
+  { icon: Code2, n: "05", title: "Custom Software Development", path: "/services-v2/custom-software-development" },
+  { icon: Sparkles, n: "06", title: "AI Development", path: "/services-v2/ai-development" },
+  { icon: BarChart3, n: "07", title: "Data Analytics", path: "/services-v2/data-analytics" },
+];
+
+/* what's included */
+const INCLUDED = [
+  { icon: Activity, title: "Uptime & Error Monitoring", body: "Automated, continuous monitoring of your live system with alerts routed to a real person, not a dashboard nobody checks." },
+  { icon: ShieldCheck, title: "Security & Dependency Updates", body: "Scheduled patching of frameworks, libraries, and infrastructure before vulnerabilities become incidents." },
+  { icon: Wrench, title: "Bug Fixes & Patches", body: "A defined monthly allowance of hours for fixing issues as they're reported, with clear priority tiers." },
+  { icon: TrendingUp, title: "Performance Optimization", body: "Recurring passes on load times, database queries, and infrastructure cost — not just firefighting when it's slow." },
+  { icon: Users2, title: "Dedicated Team Augmentation", body: "Extra engineering hands who already know your codebase, scaled up or down as your roadmap changes." },
+  { icon: FileText, title: "Monthly Reporting", body: "A plain-language summary of uptime, incidents, and what we did — so support isn't a black box." },
+];
+
+/* estimator option sets */
+const EST_TYPES = [
+  { id: "essential", label: "Essential Monitoring", weeks: 1, base: "Uptime alerts and monthly security patching for a stable, low-change system." },
+  { id: "standard", label: "Standard Retainer", weeks: 2, base: "Monitoring, patching, and a monthly bug-fix allowance for an actively used product." },
+  { id: "priority", label: "Priority Support", weeks: 3, base: "Faster response SLAs and a larger fix allowance for business-critical systems." },
+  { id: "augment", label: "Team Augmentation", weeks: 4, base: "Dedicated developer capacity working your roadmap alongside ongoing support." },
+];
+const EST_SCALE = [
+  { id: "s", label: "Small (single app)", mult: 1 },
+  { id: "m", label: "Medium (a few services)", mult: 1.3 },
+  { id: "l", label: "Large (multiple systems)", mult: 1.7 },
+  { id: "xl", label: "Enterprise-wide", mult: 2.3 },
+];
+const EST_ADDONS = [
+  { id: "afterhours", label: "After-hours coverage", weeks: 1 },
+  { id: "security_audit", label: "Security audit", weeks: 1.5 },
+  { id: "perf_audit", label: "Performance audit", weeks: 1 },
+  { id: "onboarding_docs", label: "Documentation cleanup", weeks: 1 },
+  { id: "extra_dev", label: "Additional dedicated developer", weeks: 2 },
+  { id: "dr_plan", label: "Disaster recovery plan", weeks: 1.5 },
+];
+
+const PROCESS = [
+  { n: "01", icon: Search, title: "Onboarding & Audit", time: "1 week", body: "We review your codebase, infrastructure, and current pain points to understand what actually needs watching." },
+  { n: "02", icon: FileText, title: "Plan Selection", time: "2–3 days", body: "You pick the coverage level that matches your risk and budget — no generic one-size-fits-all package." },
+  { n: "03", icon: Activity, title: "Monitoring Goes Live", time: "Within a week", body: "Uptime, error, and performance monitoring configured and alerting to a real person from day one." },
+  { n: "04", icon: RefreshCw, title: "Scheduled Maintenance", time: "Ongoing", body: "Security patches and dependency updates applied on a set cadence, not whenever someone remembers." },
+  { n: "05", icon: Bell, title: "Incident Response", time: "As needed", body: "When something breaks, it's triaged and fixed against the response-time SLA in your plan." },
+  { n: "06", icon: Check, title: "Monthly Review", time: "Every month", body: "A report on uptime, what was fixed, and what we recommend next — so support stays visible, not silent." },
+];
+
+const RELATED = [17, 5, 13].map((id) => {
+  const p = PROJECTS.find((proj) => proj.id === id);
+  const link = id === 17 ? `/case-study-v2${p.href}` : p.href;
+  return { tag: p.category, title: p.title, link, thumb: p.image };
+});
+
+const PRINCIPLES = [
+  { key: "Responsive", icon: Clock, claim: "No ticket that sits for a week.", body: "Response times are written into the plan, not left to best-effort. If we commit to 4 hours, that's what you get." },
+  { key: "Transparent", icon: FileText, claim: "No black-box support.", body: "Every incident, patch, and fix is logged and reported. You always know exactly what's being maintained and why." },
+  { key: "Proactive", icon: Activity, claim: "No waiting for it to break.", body: "Monitoring and scheduled maintenance catch problems before they become downtime, not after your users report them." },
+];
+
+const FAQS = [
+  { q: "Do you only support projects you originally built?", a: "No. We start every new support engagement with a codebase audit so we understand the system properly, whether we built it or not." },
+  { q: "What counts as a Priority-1 incident?", a: "Anything that takes your system down or blocks a core user flow — checkout, login, data loss. Those get our fastest response tier." },
+  { q: "Is there a minimum contract length?", a: "No long-term lock-in. Plans run monthly, and you can scale coverage up or down as your needs change." },
+  { q: "What if our support hours run out mid-month?", a: "We'll flag it before it happens. You can top up hours for that month, or we adjust the plan going forward — no surprise overage bills." },
+  { q: "Can this replace hiring an in-house engineer?", a: "For many teams, yes — especially at the scale where a full-time hire isn't justified yet. For larger teams, we typically augment your existing engineers instead." },
+  { q: "Do you handle hosting and infrastructure, or just the code?", a: "Both, if needed. We can manage your cloud infrastructure directly or work alongside your existing hosting provider." },
+];
+
+const SENTENCE = [
+  "YOU SHIP IT.",
+  "WE KEEP IT RUNNING.",
+  "NO SURPRISE DOWNTIME.",
+  "NO ABANDONED PROJECTS.",
+  "JUST SUPPORT.",
+];
+
+/* scroll-scrubbed word reveal — same mechanism as the other v2 service pages */
+const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
+
+function ScrollSentence({ words, tone }) {
+  const ref = useRef(null);
+  const wordRefs = useRef([]);
+  const bgRefs = useRef([]);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let raf = 0, running = false, target = 0, current = 0, primed = false;
+
+    const readTarget = () => {
+      const r = el.getBoundingClientRect();
+      const scrollable = r.height - window.innerHeight;
+      if (scrollable <= 0) return 0;
+      const raw = (-r.top) / scrollable;
+      const norm = Math.min(Math.max((raw - 0.06) / 0.86, 0), 0.9999);
+      return norm * words.length;
+    };
+
+    const IN_END = 0.2;
+    const OUT_START = 0.8;
+
+    const paint = (t) => {
+      words.forEach((_, i) => {
+        const d = Math.min(Math.max(t - i, 0), 1);
+        const wordEl = wordRefs.current[i];
+        const bgEl = bgRefs.current[i];
+
+        let scale, opacity, blur;
+        if (d < IN_END) {
+          const p = scrollSentenceEase(d / IN_END);
+          scale = 0.78 + p * 0.22; opacity = p; blur = 5 * (1 - p);
+        } else if (d <= OUT_START) {
+          scale = 1; opacity = 1; blur = 0;
+        } else {
+          const p = scrollSentenceEase((d - OUT_START) / (1 - OUT_START));
+          scale = 1 + p * 0.22; opacity = 1 - p; blur = 6 * p;
+        }
+
+        if (wordEl) {
+          wordEl.style.opacity = opacity;
+          wordEl.style.transform = `translate3d(-50%,-50%,0) scale(${scale})`;
+          wordEl.style.filter = blur > 0.01 ? `blur(${blur}px)` : "none";
+        }
+        if (bgEl) bgEl.style.opacity = scrollSentenceEase(Math.min(d / IN_END, 1));
+      });
+    };
+
+    const tick = () => {
+      const diff = target - current;
+      if (Math.abs(diff) < 0.0002) {
+        current = target; paint(current); running = false; raf = 0; return;
+      }
+      current += diff * 0.12;
+      paint(current);
+      raf = requestAnimationFrame(tick);
+    };
+    const kick = () => {
+      target = readTarget();
+      if (!primed) { current = target; primed = true; }
+      if (!running) { running = true; raf = requestAnimationFrame(tick); }
+    };
+
+    window.addEventListener("scroll", kick, { passive: true });
+    window.addEventListener("resize", kick);
+    kick();
+    return () => {
+      window.removeEventListener("scroll", kick);
+      window.removeEventListener("resize", kick);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [words]);
+
+  return (
+    <section className={`v2-sentence v2-sentence--${tone} sd2-sentence`} ref={ref}>
+      <div className="v2-sentence-sticky">
+        <div className="v2-sentence-bgs" aria-hidden="true">
+          {words.map((w, i) => (
+            <span className="v2-sentence-bg" style={{ zIndex: i }}
+              ref={(elm) => (bgRefs.current[i] = elm)} key={"bg" + i} />
+          ))}
+        </div>
+        <div className="v2-sentence-words">
+          {words.map((w, i) => (
+            <span className="v2-sentence-word"
+              ref={(elm) => (wordRefs.current[i] = elm)} key={w + i}>{w}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function SupportManagedServicesV2() {
+  const [navScrolled, setNavScrolled] = useState(false);
+  const [navHidden, setNavHidden] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [openFaq, setOpenFaq] = useState(-1);
+  const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
+  const [incActive, setIncActive] = useState(0);
+  const [estType, setEstType] = useState("standard");
+  const [estScale, setEstScale] = useState("m");
+  const [estAddons, setEstAddons] = useState(() => new Set());
+
+  const rootRef = useRef(null);
+  const stripRef = useRef(null);
+
+  const estimate = useMemo(() => {
+    const t = EST_TYPES.find((x) => x.id === estType) || EST_TYPES[0];
+    const s = EST_SCALE.find((x) => x.id === estScale) || EST_SCALE[0];
+    const addW = [...estAddons].reduce((sum, id) => {
+      const a = EST_ADDONS.find((x) => x.id === id);
+      return sum + (a ? a.weeks : 0);
+    }, 0);
+    const raw = t.weeks * s.mult + addW;
+    return { low: Math.round(raw), high: Math.round(raw * 1.35), base: t.base };
+  }, [estType, estScale, estAddons]);
+
+  const toggleAddon = (id) =>
+    setEstAddons((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+
+  useEffect(() => {
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setNavScrolled(y > 40);
+      setNavHidden(y > lastY && y > 120);
+      lastY = y;
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    const onKey = (e) => { if (e.key === "Escape") setMobileOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [mobileOpen]);
+
+  /* sticky heading bands only show their rule once actually stuck */
+  useEffect(() => {
+    const shells = rootRef.current.querySelectorAll(".v2-method-shell");
+    if (!shells.length) return;
+    const pairs = Array.from(shells)
+      .map((shell) => ({ shell, head: shell.querySelector(".v2-method-head") }))
+      .filter((p) => p.head);
+    const onScroll = () => {
+      pairs.forEach(({ shell, head }) => {
+        const r = shell.getBoundingClientRect();
+        head.classList.toggle("is-stuck", r.top <= 0 && r.bottom > 0);
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  /* hero intro — GSAP wipe-up for the title, overlapping fade for the rest */
+  useEffect(() => {
+    const q = (s) => rootRef.current.querySelectorAll(s);
+    const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
+    tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .7 })
+      .fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")
+      .fromTo(q(".sd2-hero-title .line > span"),
+        { yPercent: 118 }, { yPercent: 0, duration: 1.15, stagger: .1 }, "-=.45")
+      .fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.65")
+      .fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7")
+      .fromTo(q(".sd2-facts.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.75");
+    return () => tl.kill();
+  }, []);
+
+  /* reveal-on-enter — IntersectionObserver */
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          if (el.classList.contains("v2-faq-item")) {
+            const idx = Number(el.dataset.faqIndex);
+            setRevealedFaqs((prev) => (prev.has(idx) ? prev : new Set(prev).add(idx)));
+          } else {
+            el.classList.add("is-in");
+          }
+          io.unobserve(el);
+        });
+      },
+      { threshold: 0.01, rootMargin: "0px 0px -10% 0px" }
+    );
+    const sel = [
+      ".sd2-inc-showcase", ".sd2-est", ".sd2-work-card", ".v2-method-row",
+      ".sd2-problem", ".sd2-case", ".sd2-bench", ".sd2-hand", ".sd2-quote",
+      ".sd2-cmp-row", ".sd2-step", ".sd2-other",
+      ".sd2-tenet", ".v2-faq-item", ".v2-cta", ".v2-strip",
+      ".v2-heading", ".v2-label", ".v2-lede",
+    ].join(", ");
+    rootRef.current.querySelectorAll(sel).forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
+  /* client strip drift, pausing on hover */
+  useEffect(() => {
+    const track = stripRef.current;
+    if (!track) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf = 0, x = 0, paused = false, last = performance.now();
+    const step = (now) => {
+      const dt = now - last; last = now;
+      if (!paused) {
+        x -= 0.00125 * dt;
+        if (x <= -50) x += 50;
+        track.style.transform = `translateX(${x}%)`;
+      }
+      raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    const wrap = track.parentElement;
+    const on = () => { paused = true; };
+    const off = () => { paused = false; };
+    wrap.addEventListener("mouseenter", on);
+    wrap.addEventListener("mouseleave", off);
+    return () => {
+      cancelAnimationFrame(raf);
+      wrap.removeEventListener("mouseenter", on);
+      wrap.removeEventListener("mouseleave", off);
+    };
+  }, []);
+
+  /* benchmark numbers count up when scrolled in */
+  useEffect(() => {
+    const nums = rootRef.current.querySelectorAll(".sd2-bench-value");
+    if (!nums.length) return;
+    const run = (el) => {
+      const target = Number(el.dataset.target);
+      if (target === 0) { el.textContent = "0"; return; }
+      const start = performance.now();
+      const step = (now) => {
+        const p = Math.min((now - start) / 1400, 1);
+        const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
+        el.textContent = target % 1 !== 0 ? (target * eased).toFixed(1) : Math.round(target * eased).toString();
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        run(e.target);
+        io.unobserve(e.target);
+      }),
+      { threshold: 0.01, rootMargin: "0px 0px -12% 0px" }
+    );
+    nums.forEach((n) => io.observe(n));
+    return () => io.disconnect();
+  }, []);
+
+  /* damped scroll-progress bar */
+  useEffect(() => {
+    const bar = rootRef.current.querySelector(".v2-progress span");
+    if (!bar) return;
+    let raf = 0, cur = 0, tgt = 0, running = false;
+    const read = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      return max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+    };
+    const tick = () => {
+      const d = tgt - cur;
+      if (Math.abs(d) < 0.0005) { cur = tgt; running = false; raf = 0; }
+      else { cur += d * 0.15; raf = requestAnimationFrame(tick); }
+      bar.style.transform = `scaleX(${cur})`;
+    };
+    const kick = () => { tgt = read(); if (!running) { running = true; raf = requestAnimationFrame(tick); } };
+    window.addEventListener("scroll", kick, { passive: true });
+    window.addEventListener("resize", kick);
+    kick();
+    return () => {
+      window.removeEventListener("scroll", kick);
+      window.removeEventListener("resize", kick);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  /* magnetic buttons + card tilt */
+  useEffect(() => {
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+    const root = rootRef.current;
+    const bind = (els, fn) => els.map((el) => {
+      const move = (e) => fn(el, e);
+      const leave = () => { el.style.transform = ""; };
+      el.addEventListener("mousemove", move);
+      el.addEventListener("mouseleave", leave);
+      return { el, move, leave };
+    });
+
+    const mags = bind(Array.from(root.querySelectorAll(".v2-btn")), (el, e) => {
+      const r = el.getBoundingClientRect();
+      const mx = e.clientX - (r.left + r.width / 2);
+      const my = e.clientY - (r.top + r.height / 2);
+      el.style.transform = `translate(${mx * 0.28}px, ${my * 0.34}px)`;
+    });
+    const tilts = bind(Array.from(root.querySelectorAll(".sd2-work-card")), (el, e) => {
+      const r = el.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      el.style.transform = `perspective(760px) rotateX(${-py * 6}deg) rotateY(${px * 8}deg) translateY(-6px)`;
+    });
+
+    return () => [...mags, ...tilts].forEach(({ el, move, leave }) => {
+      el.removeEventListener("mousemove", move);
+      el.removeEventListener("mouseleave", leave);
+    });
+  }, []);
+
+  /* FAQ accordion height */
+  useEffect(() => {
+    rootRef.current.querySelectorAll(".v2-faq-a").forEach((el, i) => {
+      const inner = el.querySelector("p");
+      el.style.height = i === openFaq ? `${inner.offsetHeight}px` : "0px";
+    });
+  }, [openFaq]);
+
+  return (
+    <div className="v2" ref={rootRef}>
+      <div className="v2-progress" aria-hidden="true"><span /></div>
+
+      {/* ══════════ NAV ══════════ */}
+      <nav className={`v2-nav ${navScrolled ? "scrolled" : ""} ${navHidden ? "nav-hidden" : ""}`}>
+        <div className="v2-nav-inner">
+          <a href="/preview-v2" className="v2-nav-logo" aria-label="Codelix — home">
+            <img src={codelixLogo} alt="Codelix" />
+          </a>
+          <div className="v2-nav-links">
+            <div className="v2-nav-dropdown">
+              <a href="/services-v2">Services <span className="v2-nav-dropdown-chevron">▾</span></a>
+              <div className="v2-nav-dropdown-panel">
+                <div className="v2-nav-dropdown-head">
+                  <div>
+                    <p className="v2-nav-dropdown-head-label">Our Services</p>
+                    <p className="v2-nav-dropdown-head-lede">Everything we build, in one place.</p>
+                  </div>
+                  <a href="/services-v2" className="v2-nav-dropdown-head-all">View all services →</a>
+                </div>
+                {FOOTER_SERVICE_KEYWORDS.map((s) => (
+                  <a href={s.path} key={s.label} className="v2-nav-dropdown-card">
+                    <span className="v2-nav-dropdown-title">{s.label}</span>
+                    <span className="v2-nav-dropdown-blurb">{s.blurb}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+            <a href="/work-v2">Work</a>
+            <a href="/industries-v2">Industries</a>
+            <a href="/about-v2">About</a>
+          </div>
+                    <div className="v2-nav-actions">
+            <a className="v2-btn v2-btn--filled v2-nav-cta" href="/contact-v2">Book a consultation</a>
+            <button
+              className={`v2-burger ${mobileOpen ? "open" : ""}`}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+              onClick={() => setMobileOpen((o) => !o)}
+            >
+              <span /><span /><span />
+            </button>
+          </div>
+        </div>
+        <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
+          <GoogleReviewButton />
+        </div>
+
+      </nav>
+
+      <V2MobileDrawer open={mobileOpen} onClose={() => setMobileOpen(false)} />
+
+      <footer className="v2-footer">
+        <div className="v2-footer-top">
+          <div className="v2-footer-actions">
+            <GoogleReviewButton className="v2-desktop-only" />
+            <button
+              type="button"
+              className="v2-footer-top"
+              aria-label="Back to top"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              ↑
+            </button>
+          </div>
+        </div>
+        <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
+          <GoogleReviewButton />
+        </div>
+        <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
+          <GoogleReviewButton />
+        </div>
+
+        <div className="v2-footer-bottom">
+          <a href="/preview-v2" className="v2-footer-bottom-brand" aria-label="Codelix — home">
+            <img src={codelixLogo} alt="Codelix" />
+          </a>
+          <span className="v2-footer-bottom-copy">© 2026 Codelix IT Solutions — All Copyright Reserved</span>
+          <div className="v2-footer-legal">
+            <a href="/sitemap-v2">Sitemap</a>
+            <a href="/refund-policy-v2">Refund Policy</a>
+            <a href="/privacy-policy-v2">Privacy</a>
+            <a href="/terms-of-service-v2">Terms</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}

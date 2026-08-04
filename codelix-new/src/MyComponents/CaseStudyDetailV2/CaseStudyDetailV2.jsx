@@ -16,6 +16,7 @@ import "./CaseStudyDetailV2.css";
    components, not new/invented copy — see caseStudiesData.js */
 import { CASE_STUDIES } from "./caseStudiesData";
 import { PROJECTS } from "../WorkV2/projectsData";
+import GoogleReviewButton from '../Shared/GoogleReviewButton';
 
 /* the mask-line wipe animation (shared with every other v2 hero) only
    reads correctly when each .line wraps exactly one visual line of text —
@@ -168,6 +169,7 @@ export default function CaseStudyDetailV2() {
             </div>
             <a href="/work-v2">Work</a>
             <a href="/industries-v2">Industries</a>
+            <a href="/about-v2">About</a>
           </div>
           <div className="v2-nav-actions">
             <a className="v2-btn v2-btn--filled v2-nav-cta" href="/contact-v2">Book a consultation</a>
@@ -181,7 +183,7 @@ export default function CaseStudyDetailV2() {
             </button>
           </div>
         </div>
-      </nav>
+        </nav>
 
       <div className={`v2-drawer-backdrop ${mobileOpen ? "open" : ""}`} onClick={() => setMobileOpen(false)} aria-hidden="true" />
       <div className={`v2-drawer ${mobileOpen ? "open" : ""}`} aria-hidden={!mobileOpen}>
@@ -630,16 +632,21 @@ export default function CaseStudyDetailV2() {
             <a href="#" target="_blank" rel="noopener noreferrer">Behance</a>
             <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
           </div>
-          <button
-            type="button"
-            className="v2-footer-top"
-            aria-label="Back to top"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            ↑
-          </button>
+          <div className="v2-footer-actions">
+            <GoogleReviewButton className="v2-desktop-only" />
+            <button
+              type="button"
+              className="v2-footer-top"
+              aria-label="Back to top"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              ↑
+            </button>
+          </div>
         </div>
-
+        <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
+          <GoogleReviewButton />
+        </div>
         <div className="v2-footer-bottom">
           <a href="/preview-v2" className="v2-footer-bottom-brand" aria-label="Codelix — home">
             <img src={codelixLogo} alt="Codelix" />

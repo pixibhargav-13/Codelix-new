@@ -3,7 +3,7 @@ import gsap from "gsap";
 import {
   Eye, HeartHandshake, ShieldCheck,
   Globe, Smartphone, PenTool, ShoppingCart, Code2, Sparkles,
-  Check, Minus, X, BarChart3,
+  Check, Minus, X, BarChart3, LifeBuoy,
 } from "lucide-react";
 
 /* v2 design system + shared data — same source of truth as the other v2 pages */
@@ -17,6 +17,7 @@ import CtaVisual from "../HomepageV2/CtaVisual";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./AboutV2.css";
+import GoogleReviewButton from '../Shared/GoogleReviewButton';
 
 const STATS = [
   { value: 3, suffix: "+", label: "Years building software", note: "Since day one, same team", ring: 45 },
@@ -67,6 +68,7 @@ const OTHER_SERVICES = [
   { icon: Code2, n: "05", title: "Custom Software Development", path: "/services-v2/custom-software-development" },
   { icon: Sparkles, n: "06", title: "AI Development", path: "/services-v2/ai-development" },
   { icon: BarChart3, n: "07", title: "Data Analytics", path: "/services-v2/data-analytics" },
+  { icon: LifeBuoy, n: "08", title: "Support & Managed Services", path: "/services-v2/support-managed-services" },
 ];
 
 const QUOTE = {
@@ -365,6 +367,7 @@ export default function AboutV2() {
             </div>
             <a href="/work-v2">Work</a>
             <a href="/industries-v2">Industries</a>
+            <a href="/about-v2">About</a>
           </div>
           <div className="v2-nav-actions">
             <a className="v2-btn v2-btn--filled v2-nav-cta" href="/contact-v2">Book a consultation</a>
@@ -378,7 +381,7 @@ export default function AboutV2() {
             </button>
           </div>
         </div>
-      </nav>
+        </nav>
 
       <V2MobileDrawer open={mobileOpen} onClose={() => setMobileOpen(false)} />
 
@@ -745,16 +748,21 @@ export default function AboutV2() {
             <a href="#" target="_blank" rel="noopener noreferrer">Behance</a>
             <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
           </div>
-          <button
-            type="button"
-            className="v2-footer-top"
-            aria-label="Back to top"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            ↑
-          </button>
+          <div className="v2-footer-actions">
+            <GoogleReviewButton className="v2-desktop-only" />
+            <button
+              type="button"
+              className="v2-footer-top"
+              aria-label="Back to top"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              ↑
+            </button>
+          </div>
         </div>
-
+        <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
+          <GoogleReviewButton />
+        </div>
         <div className="v2-footer-bottom">
           <a href="/preview-v2" className="v2-footer-bottom-brand" aria-label="Codelix — home">
             <img src={codelixLogo} alt="Codelix" />
