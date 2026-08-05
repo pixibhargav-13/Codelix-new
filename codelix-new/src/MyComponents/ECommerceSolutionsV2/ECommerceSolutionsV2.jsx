@@ -1,14 +1,6 @@
+import { ShoppingCart, Gauge, CreditCard, ShieldCheck, PackageSearch, Wrench, CalendarCheck, Lock, Eye, Check, TrendingDown, Clock, ShoppingBag, Truck, RotateCcw, AlertTriangle, Building2, Store, Rocket, GraduationCap, Shirt, Utensils, FileCode2, BookOpen, KeyRound, Palette, Server, GitBranch, Globe, Smartphone, Code2, Sparkles, BarChart3, LifeBuoy, Minus, X, Phone, FileText, PlayCircle, Monitor } from "lucide-react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
-import {
-  ShoppingCart, Gauge, CreditCard, ShieldCheck, PackageSearch, Wrench,
-  CalendarCheck, Lock, Eye, Check,
-  TrendingDown, Clock, ShoppingBag, Truck, RotateCcw, AlertTriangle,
-  Building2, Store, Rocket, GraduationCap, Shirt, Utensils,
-  FileCode2, BookOpen, KeyRound, Palette, Server, GitBranch,
-  Globe, Smartphone, Code2, Sparkles, BarChart3, LifeBuoy,
-  Minus, X, Phone, FileText, PlayCircle,
-} from "lucide-react";
 
 /* v2 design system + shared data — same source of truth as the other v2 pages */
 
@@ -36,6 +28,7 @@ import techAws from "../Images/AWS.png";
 import { PROJECTS } from "../WorkV2/projectsData";
 import GoogleReviewButton from "../Shared/GoogleReviewButton";
 import ClutchWidget from "../Shared/ClutchWidget";
+import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 
 const ECOM_STACK = [
   { src: techReact, name: "React" },
@@ -296,6 +289,37 @@ function ScrollSentence({ words, tone }) {
     </section>
   );
 }
+
+
+const TECH_CATEGORIES = [
+  {
+    id: "commerce",
+    title: "Commerce Engines",
+    icon: Server,
+    tools: ["Shopify Plus", "Magento", "WooCommerce", "BigCommerce"],
+    colSpan: 1,
+  },
+  {
+    id: "headless",
+    title: "Headless Storefronts",
+    icon: Monitor,
+    tools: ["Next.js Commerce", "Vue Storefront", "Hydrogen", "Builder.io"],
+    colSpan: 1,
+  },
+  {
+    id: "ops",
+    title: "Payments & Ops",
+    icon: Lock,
+    tools: ["Stripe", "PayPal", "Algolia", "ShipStation"],
+    colSpan: 1,
+  }
+];
+
+const METRICS = [
+  { value: "<1s", label: "Page Load Time" },
+  { value: "99.99%", label: "Checkout Uptime" },
+  { value: "40%", label: "Boost In Conversions" }
+];
 
 export default function ECommerceSolutionsV2() {
   const [navScrolled, setNavScrolled] = useState(false);
@@ -979,7 +1003,16 @@ export default function ECommerceSolutionsV2() {
         </div>
       </section>
 
-      {/* ══════════ 8a · HANDOVER ══════════ */}
+      
+
+      {/* ══════════ TECH STACK ══════════ */}
+      <TechStackShowcaseV2
+        title="High-Conversion Commerce Stacks"
+        description="Scalable headless commerce and enterprise platforms designed to handle traffic spikes and complex inventory logic seamlessly."
+        categories={TECH_CATEGORIES}
+        metrics={METRICS}
+      />
+{/* ══════════ 8a · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">
         <div className="sd2-case-head">
           <div>

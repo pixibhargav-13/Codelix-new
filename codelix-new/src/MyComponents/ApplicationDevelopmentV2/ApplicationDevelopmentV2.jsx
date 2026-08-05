@@ -1,14 +1,6 @@
+import { Smartphone, Gauge, Bell, ShieldCheck, Wifi, Wrench, CalendarCheck, Lock, Eye, Check, BatteryLow, RefreshCcw, Store as StoreOff, Ban, Bug, LayoutGrid, Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark, FileCode2, BookOpen, KeyRound, Palette, Server, GitBranch, Globe, ShoppingCart, Code2, Sparkles, BarChart3, LifeBuoy, Minus, X, Phone, FileText, PlayCircle, Cloud } from "lucide-react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
-import {
-  Smartphone, Gauge, Bell, ShieldCheck, Wifi, Wrench,
-  CalendarCheck, Lock, Eye, Check,
-  BatteryLow, RefreshCcw, Store as StoreOff, Ban, Bug, LayoutGrid,
-  Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark,
-  FileCode2, BookOpen, KeyRound, Palette, Server, GitBranch,
-  Globe, ShoppingCart, Code2, Sparkles, BarChart3, LifeBuoy,
-  Minus, X, Phone, FileText, PlayCircle,
-} from "lucide-react";
 
 /* v2 design system + shared data — same source of truth as the other v2 pages */
 
@@ -36,6 +28,7 @@ import techFigma from "../Images/figma.png";
 import { PROJECTS } from "../WorkV2/projectsData";
 import GoogleReviewButton from "../Shared/GoogleReviewButton";
 import ClutchWidget from "../Shared/ClutchWidget";
+import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 
 const APP_STACK = [
   { src: techFlutter, name: "Flutter" },
@@ -296,6 +289,37 @@ function ScrollSentence({ words, tone }) {
     </section>
   );
 }
+
+
+const TECH_CATEGORIES = [
+  {
+    id: "mobile",
+    title: "Mobile Core",
+    icon: Smartphone,
+    tools: ["Swift (iOS)", "Kotlin (Android)", "React Native", "Flutter"],
+    colSpan: 1,
+  },
+  {
+    id: "backend",
+    title: "Backend Sync",
+    icon: Server,
+    tools: ["Firebase", "Node.js", "GraphQL", "WebSocket"],
+    colSpan: 1,
+  },
+  {
+    id: "cloud",
+    title: "Testing & Distribution",
+    icon: Cloud,
+    tools: ["TestFlight", "Fastlane", "Appium", "Bitrise"],
+    colSpan: 1,
+  }
+];
+
+const METRICS = [
+  { value: "4.8+", label: "Avg. App Store Rating" },
+  { value: "60fps", label: "Guaranteed Render Speed" },
+  { value: "100%", label: "Crash-Free Sessions" }
+];
 
 export default function ApplicationDevelopmentV2() {
   const [navScrolled, setNavScrolled] = useState(false);
@@ -979,7 +1003,16 @@ export default function ApplicationDevelopmentV2() {
         </div>
       </section>
 
-      {/* ══════════ 8a · HANDOVER ══════════ */}
+      
+
+      {/* ══════════ TECH STACK ══════════ */}
+      <TechStackShowcaseV2
+        title="Built for Mobile & Cross-Platform Dominance"
+        description="Native and hybrid mobile technologies engineered for performance, smooth animations, and platform-specific capabilities."
+        categories={TECH_CATEGORIES}
+        metrics={METRICS}
+      />
+{/* ══════════ 8a · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">
         <div className="sd2-case-head">
           <div>

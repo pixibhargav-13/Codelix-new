@@ -22,6 +22,7 @@ import "../ServicesV2/ServicesV2.css";
 import "./ServiceDetailV2.css";
 import GoogleReviewButton from "../Shared/GoogleReviewButton";
 import ClutchWidget from "../Shared/ClutchWidget";
+import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 
 /* web-specific stack subset */
 import techReact from "../Images/react.png";
@@ -1015,6 +1016,9 @@ export default function ServiceDetailV2() {
           ))}
         </div>
       </section>
+
+      {/* ══════════ EXTRAORDINARY SECTION: TECH STACK ══════════ */}
+      <TechStackShowcaseV2 />
 
       {/* ══════════ 8a · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">

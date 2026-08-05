@@ -1,14 +1,6 @@
+import { PenTool, Layers, Search, Eye, Smartphone, Palette, CalendarCheck, Lock, Check, HelpCircle, Paintbrush, MousePointerClick, RefreshCw, Users2, Frown, Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark, FileCode2, BookOpen, KeyRound, Server, GitBranch, Layout, Globe, ShoppingCart, Code2, Sparkles, BarChart3, LifeBuoy, Minus, X, Phone, FileText, PlayCircle, Monitor, Database } from "lucide-react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
-import {
-  PenTool, Layers, Search, Eye, Smartphone, Palette,
-  CalendarCheck, Lock, Check,
-  HelpCircle, Paintbrush, MousePointerClick, RefreshCw, Users2, Frown,
-  Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark,
-  FileCode2, BookOpen, KeyRound, Server, GitBranch, Layout,
-  Globe, ShoppingCart, Code2, Sparkles, BarChart3, LifeBuoy,
-  Minus, X, Phone, FileText, PlayCircle,
-} from "lucide-react";
 
 /* v2 design system + shared data — same source of truth as the other v2 pages */
 
@@ -33,6 +25,7 @@ import techCanva from "../Images/canva.png";
 import { PROJECTS } from "../WorkV2/projectsData";
 import GoogleReviewButton from "../Shared/GoogleReviewButton";
 import ClutchWidget from "../Shared/ClutchWidget";
+import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 
 const UIUX_STACK = [
   { src: techFigma, name: "Figma" },
@@ -294,6 +287,37 @@ function ScrollSentence({ words, tone }) {
     </section>
   );
 }
+
+
+const TECH_CATEGORIES = [
+  {
+    id: "design",
+    title: "Design & Prototyping",
+    icon: PenTool,
+    tools: ["Figma", "Sketch", "Adobe XD", "Principle"],
+    colSpan: 1,
+  },
+  {
+    id: "motion",
+    title: "Motion & Interaction",
+    icon: Monitor,
+    tools: ["After Effects", "Framer", "Lottie", "Rive"],
+    colSpan: 1,
+  },
+  {
+    id: "research",
+    title: "Research & Handoff",
+    icon: Database,
+    tools: ["Maze", "Hotjar", "Zeplin", "Storybook"],
+    colSpan: 1,
+  }
+];
+
+const METRICS = [
+  { value: "300%", label: "Avg. Engagement Increase" },
+  { value: "10ms", label: "Interaction Latency" },
+  { value: "AA", label: "WCAG Accessibility" }
+];
 
 export default function UIUXDesignV2() {
   const [navScrolled, setNavScrolled] = useState(false);
@@ -989,7 +1013,16 @@ export default function UIUXDesignV2() {
         </div>
       </section>
 
-      {/* ══════════ 9 · HANDOVER ══════════ */}
+      
+
+      {/* ══════════ TECH STACK ══════════ */}
+      <TechStackShowcaseV2
+        title="The Modern Design Arsenal"
+        description="Industry-standard design tools and prototyping software we use to create pixel-perfect, accessible, and highly-interactive experiences."
+        categories={TECH_CATEGORIES}
+        metrics={METRICS}
+      />
+{/* ══════════ 9 · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">
         <div className="sd2-case-head">
           <div>

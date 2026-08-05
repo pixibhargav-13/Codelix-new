@@ -1,14 +1,6 @@
+import { PenTool, Layers, Search, Eye, Smartphone, Palette, CalendarCheck, Lock, Check, HelpCircle, Paintbrush, MousePointerClick, RefreshCw, Users2, Frown, Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark, FileCode2, BookOpen, KeyRound, Server, GitBranch, Layout, Globe, ShoppingCart, Code2, Sparkles, BarChart3, Minus, X, Phone, FileText, PlayCircle, PieChart, Database, Network, TrendingUp, Clock, LifeBuoy, Monitor } from "lucide-react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
-import {
-  PenTool, Layers, Search, Eye, Smartphone, Palette,
-  CalendarCheck, Lock, Check,
-  HelpCircle, Paintbrush, MousePointerClick, RefreshCw, Users2, Frown,
-  Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark,
-  FileCode2, BookOpen, KeyRound, Server, GitBranch, Layout,
-  Globe, ShoppingCart, Code2, Sparkles, BarChart3,
-  Minus, X, Phone, FileText, PlayCircle, PieChart, Database, Network, TrendingUp, Clock, LifeBuoy
-} from "lucide-react";
 
 /* v2 design system + shared data — same source of truth as the other v2 pages */
 
@@ -33,6 +25,7 @@ import techMongo from "../Images/MongoDB.png";
 import { PROJECTS } from "../WorkV2/projectsData";
 import GoogleReviewButton from "../Shared/GoogleReviewButton";
 import ClutchWidget from "../Shared/ClutchWidget";
+import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 
 const DATA_STACK = [
   { src: techPython, name: "Python" },
@@ -292,6 +285,37 @@ function ScrollSentence({ words, tone }) {
     </section>
   );
 }
+
+
+const TECH_CATEGORIES = [
+  {
+    id: "warehouse",
+    title: "Data Warehousing",
+    icon: Database,
+    tools: ["Snowflake", "Google BigQuery", "Amazon Redshift"],
+    colSpan: 1,
+  },
+  {
+    id: "elt",
+    title: "Pipelines & ELT",
+    icon: Server,
+    tools: ["dbt", "Fivetran", "Airflow", "Segment"],
+    colSpan: 1,
+  },
+  {
+    id: "viz",
+    title: "Visualization",
+    icon: Monitor,
+    tools: ["Tableau", "Power BI", "Looker", "Metabase"],
+    colSpan: 1,
+  }
+];
+
+const METRICS = [
+  { value: "Real-Time", label: "Data Synchronization" },
+  { value: "100%", label: "Data Accuracy" },
+  { value: "360°", label: "Business Visibility" }
+];
 
 export default function DataAnalyticsV2() {
   const [navScrolled, setNavScrolled] = useState(false);
@@ -988,7 +1012,16 @@ export default function DataAnalyticsV2() {
         </div>
       </section>
 
-      {/* ══════════ 8a · HANDOVER ══════════ */}
+      
+
+      {/* ══════════ TECH STACK ══════════ */}
+      <TechStackShowcaseV2
+        title="The Modern Data Stack"
+        description="Powerful data warehousing, ELT pipelines, and visualization tools to turn raw data into actionable business intelligence."
+        categories={TECH_CATEGORIES}
+        metrics={METRICS}
+      />
+{/* ══════════ 8a · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">
         <div className="sd2-case-head">
           <div>

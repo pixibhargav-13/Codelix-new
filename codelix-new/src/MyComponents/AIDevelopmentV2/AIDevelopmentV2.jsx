@@ -1,14 +1,6 @@
+import { Sparkles, Gauge, MessageSquare, ShieldCheck, Workflow, Wrench, CalendarCheck, Lock, Eye, Check, Repeat2, Clock, HelpCircle, FileWarning, Users2, AlertTriangle, Building2, Store, Rocket, HeartPulse, Landmark, GraduationCap, FileCode2, BookOpen, KeyRound, Palette, Server, GitBranch, Globe, Smartphone, ShoppingCart, Code2, BarChart3, LifeBuoy, Minus, X, Phone, FileText, PlayCircle, Database, Cloud } from "lucide-react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
-import {
-  Sparkles, Gauge, MessageSquare, ShieldCheck, Workflow, Wrench,
-  CalendarCheck, Lock, Eye, Check,
-  Repeat2, Clock, HelpCircle, FileWarning, Users2, AlertTriangle,
-  Building2, Store, Rocket, HeartPulse, Landmark, GraduationCap,
-  FileCode2, BookOpen, KeyRound, Palette, Server, GitBranch,
-  Globe, Smartphone, ShoppingCart, Code2, BarChart3, LifeBuoy,
-  Minus, X, Phone, FileText, PlayCircle,
-} from "lucide-react";
 
 /* v2 design system + shared data — same source of truth as the other v2 pages */
 
@@ -35,6 +27,7 @@ import techAws from "../Images/AWS.png";
 import { PROJECTS } from "../WorkV2/projectsData";
 import GoogleReviewButton from "../Shared/GoogleReviewButton";
 import ClutchWidget from "../Shared/ClutchWidget";
+import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 
 const AI_STACK = [
   { src: techPython, name: "Python" },
@@ -292,6 +285,37 @@ function ScrollSentence({ words, tone }) {
     </section>
   );
 }
+
+
+const TECH_CATEGORIES = [
+  {
+    id: "models",
+    title: "AI Models & Frameworks",
+    icon: Database,
+    tools: ["TensorFlow", "PyTorch", "OpenAI API", "Hugging Face"],
+    colSpan: 1,
+  },
+  {
+    id: "data",
+    title: "Data Engineering",
+    icon: Server,
+    tools: ["Apache Kafka", "Spark", "Databricks", "Snowflake"],
+    colSpan: 1,
+  },
+  {
+    id: "automation",
+    title: "Automation",
+    icon: Cloud,
+    tools: ["Zapier", "Make", "n8n", "UIPath"],
+    colSpan: 1,
+  }
+];
+
+const METRICS = [
+  { value: "10x", label: "Faster Workflows" },
+  { value: "95%", label: "Accuracy In Predictions" },
+  { value: "24/7", label: "Automated Operations" }
+];
 
 export default function AIDevelopmentV2() {
   const [navScrolled, setNavScrolled] = useState(false);
@@ -975,7 +999,16 @@ export default function AIDevelopmentV2() {
         </div>
       </section>
 
-      {/* ══════════ 8a · HANDOVER ══════════ */}
+      
+
+      {/* ══════════ TECH STACK ══════════ */}
+      <TechStackShowcaseV2
+        title="Advanced Machine Learning & Automation Infrastructure"
+        description="Cutting-edge AI frameworks and data processing pipelines that power intelligent decision-making and workflow automation."
+        categories={TECH_CATEGORIES}
+        metrics={METRICS}
+      />
+{/* ══════════ 8a · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">
         <div className="sd2-case-head">
           <div>

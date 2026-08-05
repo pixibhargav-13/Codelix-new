@@ -1,14 +1,6 @@
+import { Code2, Gauge, Layers, ShieldCheck, Workflow, Wrench, CalendarCheck, Lock, Eye, Check, FileSpreadsheet, Clock, Puzzle, Repeat, Users2, AlertOctagon, Building2, Store, Rocket, Factory, HeartPulse, Landmark, FileCode2, BookOpen, KeyRound, Palette, Server, GitBranch, Globe, Smartphone, ShoppingCart, Sparkles, BarChart3, LifeBuoy, Minus, X, Phone, FileText, PlayCircle, Monitor, Cloud } from "lucide-react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
-import {
-  Code2, Gauge, Layers, ShieldCheck, Workflow, Wrench,
-  CalendarCheck, Lock, Eye, Check,
-  FileSpreadsheet, Clock, Puzzle, Repeat, Users2, AlertOctagon,
-  Building2, Store, Rocket, Factory, HeartPulse, Landmark,
-  FileCode2, BookOpen, KeyRound, Palette, Server, GitBranch,
-  Globe, Smartphone, ShoppingCart, Sparkles, BarChart3, LifeBuoy,
-  Minus, X, Phone, FileText, PlayCircle,
-} from "lucide-react";
 
 /* v2 design system + shared data — same source of truth as the other v2 pages */
 
@@ -37,6 +29,7 @@ import techAws from "../Images/AWS.png";
 import { PROJECTS } from "../WorkV2/projectsData";
 import GoogleReviewButton from "../Shared/GoogleReviewButton";
 import ClutchWidget from "../Shared/ClutchWidget";
+import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 
 const CUSTOM_STACK = [
   { src: techJava, name: "Java" },
@@ -300,6 +293,37 @@ function ScrollSentence({ words, tone }) {
     </section>
   );
 }
+
+
+const TECH_CATEGORIES = [
+  {
+    id: "core",
+    title: "Core Architecture",
+    icon: Server,
+    tools: [".NET Core", "Java Spring Boot", "Python FastAPI", "Go"],
+    colSpan: 1,
+  },
+  {
+    id: "frontend",
+    title: "Frontend Systems",
+    icon: Monitor,
+    tools: ["React", "Angular", "Vue.js", "TypeScript"],
+    colSpan: 1,
+  },
+  {
+    id: "infra",
+    title: "Infrastructure",
+    icon: Cloud,
+    tools: ["AWS", "Microsoft Azure", "Google Cloud", "Docker"],
+    colSpan: 1,
+  }
+];
+
+const METRICS = [
+  { value: "Zero", label: "Technical Debt At Launch" },
+  { value: "Tier 1", label: "Enterprise Security" },
+  { value: "100%", label: "System Scalability" }
+];
 
 export default function CustomSoftwareDevelopmentV2() {
   const [navScrolled, setNavScrolled] = useState(false);
@@ -983,7 +1007,16 @@ export default function CustomSoftwareDevelopmentV2() {
         </div>
       </section>
 
-      {/* ══════════ 8a · HANDOVER ══════════ */}
+      
+
+      {/* ══════════ TECH STACK ══════════ */}
+      <TechStackShowcaseV2
+        title="Enterprise-Grade Software Architecture"
+        description="Robust, scalable, and secure technology stacks chosen specifically for complex, bespoke business logic and integrations."
+        categories={TECH_CATEGORIES}
+        metrics={METRICS}
+      />
+{/* ══════════ 8a · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">
         <div className="sd2-case-head">
           <div>

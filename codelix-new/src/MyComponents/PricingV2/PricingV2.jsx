@@ -211,7 +211,7 @@ export default function PricingV2() {
             </button>
           </div>
         </div>
-        </nav>
+      </nav>
 
       <V2MobileDrawer open={mobileOpen} onClose={() => setMobileOpen(false)} />
 
@@ -391,39 +391,36 @@ export default function PricingV2() {
       </section>
 
       {/* ══════════ FOOTER ══════════ */}
-            <footer className="v2-footer">
-        {/* tagline header — our own real line ("we live in it," already used
-            in the marquee elsewhere on the site) instead of a borrowed one */}
-        <div className="v2-footer-tagline">
+      <footer className="v2-footer">
+        {/* tagline header — left-aligned stack layout */}
+        <div className="pv2-footer-tagline-stacked">
           <h2 className="v2-footer-wordmark-small">
-            WE LIVE
-            <br />
-            IN <span className="v2-footer-wordmark-accent">IT</span>
+            WE LIVE IN <span className="v2-footer-wordmark-accent">IT</span>
           </h2>
-          <p className="v2-footer-tagline-body">
-            We design and build web, mobile, and AI systems for businesses that
-            intend to still be running them in five years.
+          <p>
+            We engineer scalable web, mobile, and AI solutions that empower modern 
+            businesses to innovate, grow, and lead their industries.
           </p>
         </div>
 
         {/* dense keyword strips — everything we build, everything we serve,
             laid out flat rather than tucked into a dropdown */}
-          <div className="v2-footer-keywords-row">
-            <p className="v2-footer-keywords-label">Services</p>
-            <div className="v2-footer-keywords-list">
-              {FOOTER_SERVICE_KEYWORDS.map((k, i) => (
-                <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
-              ))}
-            </div>
+        <div className="v2-footer-keywords-row">
+          <p className="v2-footer-keywords-label">Services</p>
+          <div className="v2-footer-keywords-list">
+            {FOOTER_SERVICE_KEYWORDS.map((k, i) => (
+              <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
+            ))}
           </div>
-          <div className="v2-footer-keywords-row">
-            <p className="v2-footer-keywords-label">Industries</p>
-            <div className="v2-footer-keywords-list">
-              {FOOTER_INDUSTRY_KEYWORDS.map((k, i) => (
-                <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
-              ))}
-            </div>
+        </div>
+        <div className="v2-footer-keywords-row">
+          <p className="v2-footer-keywords-label">Industries</p>
+          <div className="v2-footer-keywords-list">
+            {FOOTER_INDUSTRY_KEYWORDS.map((k, i) => (
+              <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
+            ))}
           </div>
+        </div>
 
         {/* office / contact info — a single four-up row instead of two
             stacked 2x2 blocks, so it reads as one info bar */}
