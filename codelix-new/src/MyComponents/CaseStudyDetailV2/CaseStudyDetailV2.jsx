@@ -16,7 +16,8 @@ import "./CaseStudyDetailV2.css";
    components, not new/invented copy — see caseStudiesData.js */
 import { CASE_STUDIES } from "./caseStudiesData";
 import { PROJECTS } from "../WorkV2/projectsData";
-import GoogleReviewButton from '../Shared/GoogleReviewButton';
+import GoogleReviewButton from "../Shared/GoogleReviewButton";
+import ClutchWidget from "../Shared/ClutchWidget";
 
 /* the mask-line wipe animation (shared with every other v2 hero) only
    reads correctly when each .line wraps exactly one visual line of text —
@@ -633,6 +634,7 @@ export default function CaseStudyDetailV2() {
             <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
           </div>
           <div className="v2-footer-actions">
+            <ClutchWidget className="v2-desktop-only" />
             <GoogleReviewButton className="v2-desktop-only" />
             <button
               type="button"
@@ -645,6 +647,7 @@ export default function CaseStudyDetailV2() {
           </div>
         </div>
         <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
+          <ClutchWidget />
           <GoogleReviewButton />
         </div>
         <div className="v2-footer-bottom">

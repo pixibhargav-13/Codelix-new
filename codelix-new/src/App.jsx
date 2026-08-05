@@ -134,8 +134,9 @@ const AppRoutes = () => {
       {/* Loader overlays the page — triggered on navigation, skipped on v2 pages */}
       {showLoader && !isV2Route && <CodelixLoader key={loaderKey} />}
 
-      {/* Suspense still handles the lazy-chunk loading state */}
-      <Suspense fallback={null}>
+      {/* Suspense still handles the lazy-chunk loading state.
+          For V2 pages, we provide a dark background fallback so it doesn't flash white. */}
+      <Suspense fallback={isV2Route ? <div className="v2" style={{ width: '100vw', height: '100vh', backgroundColor: '#050507' }} /> : null}>
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/preview-v2" element={<HomepageV2 />} />

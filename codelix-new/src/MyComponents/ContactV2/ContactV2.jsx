@@ -15,7 +15,8 @@ import { FOOTER_SERVICE_KEYWORDS, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./ContactV2.css";
-import GoogleReviewButton from '../Shared/GoogleReviewButton';
+import GoogleReviewButton from "../Shared/GoogleReviewButton";
+import ClutchWidget from "../Shared/ClutchWidget";
 
 const REQUIRED_FIELDS = ["name", "contact", "email", "company", "designation", "service", "aboutProject"];
 
@@ -601,6 +602,7 @@ export default function ContactV2() {
             <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
           </div>
           <div className="v2-footer-actions">
+            <ClutchWidget className="v2-desktop-only" />
             <GoogleReviewButton className="v2-desktop-only" />
             <button
               type="button"
@@ -613,6 +615,7 @@ export default function ContactV2() {
           </div>
         </div>
         <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
+          <ClutchWidget />
           <GoogleReviewButton />
         </div>
         <div className="v2-footer-bottom">

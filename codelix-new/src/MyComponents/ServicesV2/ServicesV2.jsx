@@ -16,7 +16,8 @@ import codelixLogo from "../Images/codelix-logo.png";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import CtaVisual from "../HomepageV2/CtaVisual";
 import "./ServicesV2.css";
-import GoogleReviewButton from '../Shared/GoogleReviewButton';
+import GoogleReviewButton from "../Shared/GoogleReviewButton";
+import ClutchWidget from "../Shared/ClutchWidget";
 
 /* how delivery actually runs — the question every services page has to answer
    right after "what do you do". Same six stages as the live site's HowWeWork. */
@@ -44,7 +45,7 @@ const SERVICES = [
     n: "01",
     icon: Globe,
     title: "Web Development",
-    body: "Fast, reliable websites that look sharp and actually bring in business — not just another template with your logo on it.",
+    body: "We build modern websites and web applications tailored to your business needs — not just another template with your logo on it.",
     path: "/services-v2/web-development",
     capabilities: ["Corporate websites", "Web applications", "CMS builds", "Landing pages", "Performance & Core Web Vitals"],
   },
@@ -52,15 +53,15 @@ const SERVICES = [
     n: "02",
     icon: Smartphone,
     title: "Application Development",
-    body: "Native and cross-platform apps built from scratch — no cookie-cutter builders, no shortcuts on performance or security.",
+    body: "Mobile apps, SaaS platforms, and cloud-native solutions built from scratch — no cookie-cutter builders, no shortcuts on performance or security.",
     path: "/services-v2/application-development",
     capabilities: ["iOS & Android", "Cross-platform (Flutter)", "Progressive web apps", "Desktop apps", "App store delivery"],
   },
   {
     n: "03",
     icon: PenTool,
-    title: "UI/UX Design",
-    body: "Designs that make sense to the people using them. We prototype, test, and refine until the interface feels obvious.",
+    title: "UI/UX & Product Design",
+    body: "User-centered design services including UX research, wireframes, prototypes, interface design, design systems, and accessibility optimization.",
     path: "/services-v2/ui-ux-design",
     capabilities: ["User research", "Wireframing", "Design systems", "Interactive prototypes", "Usability testing"],
   },
@@ -68,31 +69,31 @@ const SERVICES = [
     n: "04",
     icon: ShoppingCart,
     title: "E-Commerce Solutions",
-    body: "Online stores that are easy to buy from — fast checkout, clear navigation, and a backend you can actually manage yourself.",
+    body: "Custom online stores, B2B commerce platforms, marketplaces, payment integrations, and e-commerce growth optimization.",
     path: "/services-v2/e-commerce-solutions",
     capabilities: ["Custom storefronts", "Shopify & WooCommerce", "Payment integration", "Inventory & orders", "Checkout optimisation"],
   },
   {
     n: "05",
     icon: Code2,
-    title: "Custom Software Development",
-    body: "Software built around how your business actually works — not a generic tool you have to bend your process around.",
+    title: "Enterprise Software Solutions",
+    body: "Business software development including ERP, CRM, workflow automation, legacy system modernization, and enterprise integrations.",
     path: "/services-v2/custom-software-development",
     capabilities: ["ERP & CRM systems", "Workflow automation", "Third-party integrations", "Admin dashboards", "Legacy modernisation"],
   },
   {
     n: "06",
     icon: Sparkles,
-    title: "AI Development",
-    body: "Practical AI that does real work — automating the repetitive stuff, answering customers, or surfacing data your team would otherwise miss.",
+    title: "AI & Automation Solutions",
+    body: "AI agents, chatbots, generative AI applications, workflow automation, and AI consulting to improve productivity and customer experience.",
     path: "/services-v2/ai-development",
     capabilities: ["AI agents & assistants", "Chatbots", "Process automation", "Predictive analytics", "LLM integration"],
   },
   {
     n: "07",
     icon: BarChart3,
-    title: "Data Analytics",
-    body: "Turn raw data into clear decisions — dashboards, reports, and pipelines that show your team exactly what's happening and why.",
+    title: "Data Analytics & Business Intelligence",
+    body: "Dashboards, reporting, data visualization, predictive analytics, data engineering, and business intelligence solutions.",
     path: "/services-v2/data-analytics",
     capabilities: ["BI dashboards", "Custom reporting", "Data pipelines", "KPI tracking & alerts", "Data visualization"],
   },
@@ -100,7 +101,7 @@ const SERVICES = [
     n: "08",
     icon: LifeBuoy,
     title: "Support & Managed Services",
-    body: "Ongoing maintenance and support that keeps things running — monitoring, security updates, performance tuning, and dedicated engineering capacity when you need it.",
+    body: "Ongoing maintenance, technical support, performance optimization, security updates, and dedicated development team augmentation.",
     path: "/services-v2/support-managed-services",
     capabilities: ["Uptime monitoring", "Security & dependency updates", "Bug fixes & patches", "Performance optimization", "Dedicated team augmentation"],
   },
@@ -915,6 +916,7 @@ export default function ServicesV2() {
             <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
           </div>
           <div className="v2-footer-actions">
+            <ClutchWidget className="v2-desktop-only" />
             <GoogleReviewButton className="v2-desktop-only" />
             <button
               type="button"
@@ -927,6 +929,7 @@ export default function ServicesV2() {
           </div>
         </div>
         <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
+          <ClutchWidget />
           <GoogleReviewButton />
         </div>
         <div className="v2-footer-bottom">

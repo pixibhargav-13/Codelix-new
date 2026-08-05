@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   Target, PenTool, Code2, CheckCircle2, Rocket,
   Globe, Smartphone, Cloud, Activity, LifeBuoy,
-  CalendarCheck, Lock, Eye, PlayCircle, Users, Layers, ShieldCheck, ArrowLeft, ArrowRight, ShoppingCart, Bot, BarChart2
+  CalendarCheck, Lock, Eye, PlayCircle, ArrowLeft, ArrowRight, ShoppingCart, Bot, BarChart2
 } from "lucide-react";
 
 /* real project screenshots (same assets the case-study pages use) */
@@ -24,6 +24,8 @@ import { CLIENT_LOGOS } from "./clientLogos";
 import codelixLogo from "../Images/codelix-logo.png";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_INDUSTRY_KEYWORDS } from "./footerData";
 import CtaVisual from "./CtaVisual";
+import GoogleReviewButton from "../Shared/GoogleReviewButton";
+import ClutchWidget from "../Shared/ClutchWidget";
 import { useTestimonials } from "../../data/useTestimonials";
 
 import "./HomepageV2.css";
@@ -111,13 +113,13 @@ const SYSTEMS = [
 ];
 
 const SERVICES = [
-  { n: "01", tag: "Development", title: "Web Development", link: "/services-v2/web-development" },
-  { n: "02", tag: "Development", title: "Application Development", link: "/services-v2/application-development" },
-  { n: "03", tag: "Design", title: "UI/UX Design", link: "/services-v2/ui-ux-design" },
-  { n: "04", tag: "Commerce", title: "E-Commerce Solutions", link: "/services-v2/e-commerce-solutions" },
-  { n: "05", tag: "Development", title: "Custom Software Development", link: "/services-v2/custom-software-development" },
-  { n: "06", tag: "Applied AI", title: "AI Development", link: "/services-v2/ai-development" },
-  { n: "07", tag: "Analytics", title: "Data Analytics", link: "/services-v2/data-analytics" },
+  { n: "01", tag: "Development", title: "Web Development", body: "Modern websites and web applications tailored to your business needs.", link: "/services-v2/web-development" },
+  { n: "02", tag: "Development", title: "Application Development", body: "Mobile apps, SaaS platforms, and cloud-native solutions built from scratch.", link: "/services-v2/application-development" },
+  { n: "03", tag: "Design", title: "UI/UX Design", body: "UX research, wireframes, prototypes, design systems, and accessibility.", link: "/services-v2/ui-ux-design" },
+  { n: "04", tag: "Commerce", title: "E-Commerce Solutions", body: "Custom stores, B2B commerce platforms, marketplaces, and payment integrations.", link: "/services-v2/e-commerce-solutions" },
+  { n: "05", tag: "Development", title: "Custom Software Development", body: "ERP, CRM, workflow automation, legacy modernization, and integrations.", link: "/services-v2/custom-software-development" },
+  { n: "06", tag: "Applied AI", title: "AI Development", body: "AI agents, chatbots, generative AI, and workflow automation that works.", link: "/services-v2/ai-development" },
+  { n: "07", tag: "Analytics", title: "Data Analytics", body: "Dashboards, reporting, data visualization, and predictive analytics.", link: "/services-v2/data-analytics" },
 ];
 
 /* headline numbers — the value is the count-up target, suffix rides along */
@@ -1134,14 +1136,17 @@ export default function HomepageV2() {
                   <span className="v2-svc-tag">{s.tag}</span>
                 </div>
                 <div className="v2-svc-bottom">
-                  <h3 className="v2-svc-title">{s.title}</h3>
+                  <div className="v2-svc-text">
+                    <h3 className="v2-svc-title">{s.title}</h3>
+                    <p className="v2-svc-body">{s.body}</p>
+                  </div>
                   <div className="v2-svc-arrow">→</div>
                 </div>
               </div>
             </div>
           ))}
         </div>
-        
+
         <div className="v2-work-more" style={{ marginTop: '48px', paddingBottom: '0' }}>
           <a className="v2-btn" href="/services-v2">View all services →</a>
         </div>
@@ -1163,81 +1168,72 @@ export default function HomepageV2() {
         </div>
       </section>
 
-      {/* ══════════ 8 · TESTIMONIAL (light band) — the extraordinary
-          section: a physically stacked card deck instead of a single card
-          with a nav control. Every card is always in the DOM; its position
-          in the stack is computed as (i - activeQuote + length) % length,
-          so as activeQuote advances the front card animates back and down
-          out of the way while the next one scales up to take its place —
-          a real spatial transition, not a crossfade. ══════════ */}
-      <section className="v2-section v2-section--gallery">
-        <p className="v2-label">Client Voices</p>
-
-        <div className="v2-bento-grid">
-          {/* Hero Cell (Rotating Testimonials) */}
-          <div className="v2-bento-cell v2-bento-hero"
-            onMouseEnter={() => setQuotePaused(true)}
-            onMouseLeave={() => setQuotePaused(false)}
-          >
-            <div className="v2-bento-quotes">
-              {TESTIMONIALS.map((t, i) => (
-                <div 
-                  key={t.name}
-                  className={`v2-bento-quote-item ${activeQuote === i ? "is-active" : ""}`}
-                >
-                  <span className="v2-bento-mark" aria-hidden="true">&ldquo;</span>
-                  <blockquote>{t.quote}</blockquote>
-                  <div className="v2-bento-who">
-                    <span className="v2-bento-avatar">
-                      {t.name.split(" ")[0][0]}
-                      {t.name.split(" ")[1]?.[0]}
-                    </span>
-                    <p className="who">
-                      {t.name}
-                      <span>{t.position}</span>
-                    </p>
-                  </div>
-                </div>
-              ))}
+      {/* ══════════ 8 · TESTIMONIAL (light band) — bare editorial layout,
+          matching the rest of the site's system: hairline dividers, no
+          cards, no icon chrome, monochrome type. Every quote stays mounted
+          so the crossfade/height transition is driven by .is-active alone. ══════════ */}
+      <section className="v2-section v2-section--gallery" id="testimonials">
+        <div className="v2-quote-head">
+          <div>
+            <p className="v2-label">Client Voices</p>
+            <h2 className="v2-heading">What clients say once we ship.</h2>
+          </div>
+          <div className="v2-quote-stats">
+            <div className="v2-quote-stat">
+              <span className="v2-quote-stat-num">30+</span>
+              <span className="v2-quote-stat-label">Companies trust us</span>
             </div>
-            {/* Nav dots */}
-            <div className="v2-bento-dots">
-              {TESTIMONIALS.map((_, idx) => (
-                <button 
-                  key={idx} 
-                  className={`v2-bento-dot ${activeQuote === idx ? "is-active" : ""}`}
-                  onClick={() => setActiveQuote(idx)}
-                  aria-label={`Go to testimonial ${idx + 1}`}
-                />
-              ))}
+            <div className="v2-quote-stat">
+              <span className="v2-quote-stat-num">6</span>
+              <span className="v2-quote-stat-label">Services delivered</span>
+            </div>
+            <div className="v2-quote-stat">
+              <span className="v2-quote-stat-num">100%</span>
+              <span className="v2-quote-stat-label">Source code ownership</span>
             </div>
           </div>
+        </div>
 
-          {/* Stat 1 */}
-          <div className="v2-bento-cell v2-bento-stat">
-            <span className="v2-bento-stat-icon"><Users size={28} strokeWidth={1.5} /></span>
-            <div className="v2-bento-stat-content">
-              <span className="v2-bento-stat-num">30+</span>
-              <span className="v2-bento-stat-label">Companies trust us</span>
-            </div>
+        <div
+          className="v2-quote-spotlight"
+          onMouseEnter={() => setQuotePaused(true)}
+          onMouseLeave={() => setQuotePaused(false)}
+        >
+          <span className="v2-quote-spotlight-mark" aria-hidden="true">&ldquo;</span>
+
+          <div className="v2-quote-spotlight-stage">
+            {TESTIMONIALS.map((t, i) => (
+              <blockquote
+                key={t.name}
+                className={`v2-quote-spotlight-item ${activeQuote === i ? "is-active" : ""}`}
+              >
+                <p>{t.quote}</p>
+                <footer>
+                  <span className="v2-quote-spotlight-name">{t.name}</span>
+                  <span className="v2-quote-spotlight-role">{t.position}</span>
+                </footer>
+              </blockquote>
+            ))}
           </div>
+        </div>
 
-          {/* Stat 2 */}
-          <div className="v2-bento-cell v2-bento-stat">
-            <span className="v2-bento-stat-icon"><Layers size={28} strokeWidth={1.5} /></span>
-            <div className="v2-bento-stat-content">
-              <span className="v2-bento-stat-num">6</span>
-              <span className="v2-bento-stat-label">Services delivered</span>
-            </div>
-          </div>
-
-          {/* Stat 3 */}
-          <div className="v2-bento-cell v2-bento-stat v2-bento-stat--highlight">
-            <span className="v2-bento-stat-icon"><ShieldCheck size={28} strokeWidth={1.5} /></span>
-            <div className="v2-bento-stat-content">
-              <span className="v2-bento-stat-num">100%</span>
-              <span className="v2-bento-stat-label">Source code ownership</span>
-            </div>
+        {/* auto-scrolling marquee of every client — doubles as the nav
+            control (click a name to jump straight to their quote) instead
+            of a separate arrows/dots widget */}
+        <div className="v2-quote-marquee">
+          <div className="v2-quote-marquee-track">
+            {[...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => (
+              <button
+                type="button"
+                key={i}
+                className={`v2-quote-marquee-item ${activeQuote === i % TESTIMONIALS.length ? "is-active" : ""}`}
+                onClick={() => setActiveQuote(i % TESTIMONIALS.length)}
+              >
+                <span className="v2-quote-marquee-dot" aria-hidden="true" />
+                {t.name}
+                <span className="v2-quote-marquee-role">— {t.position}</span>
+              </button>
+            ))}
           </div>
         </div>
       </section>
@@ -1393,14 +1389,22 @@ export default function HomepageV2() {
             <a href="#" target="_blank" rel="noopener noreferrer">Behance</a>
             <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
           </div>
-          <button
-            type="button"
-            className="v2-footer-top"
-            aria-label="Back to top"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            ↑
-          </button>
+          <div className="v2-footer-actions">
+            <ClutchWidget className="v2-desktop-only" />
+            <GoogleReviewButton className="v2-desktop-only" />
+            <button
+              type="button"
+              className="v2-footer-top"
+              aria-label="Back to top"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              ↑
+            </button>
+          </div>
+        </div>
+        <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
+          <ClutchWidget />
+          <GoogleReviewButton />
         </div>
 
         <div className="v2-footer-bottom">

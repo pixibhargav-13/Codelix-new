@@ -1,14 +1,6 @@
+import { PenTool, Layers, Search, Eye, Smartphone, Palette, CalendarCheck, Lock, Check, HelpCircle, Paintbrush, MousePointerClick, RefreshCw, Users2, Frown, Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark, FileCode2, BookOpen, KeyRound, Server, GitBranch, Layout, Globe, ShoppingCart, Code2, Sparkles, BarChart3, Minus, X, Phone, FileText, PlayCircle, PieChart, Database, Network, TrendingUp, Clock, LifeBuoy, Monitor } from "lucide-react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
-import {
-  PenTool, Layers, Search, Eye, Smartphone, Palette,
-  CalendarCheck, Lock, Check,
-  HelpCircle, Paintbrush, MousePointerClick, RefreshCw, Users2, Frown,
-  Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark,
-  FileCode2, BookOpen, KeyRound, Server, GitBranch, Layout,
-  Globe, ShoppingCart, Code2, Sparkles, BarChart3,
-  Minus, X, Phone, FileText, PlayCircle, PieChart, Database, Network, TrendingUp, Clock, LifeBuoy
-} from "lucide-react";
 
 /* v2 design system + shared data — same source of truth as the other v2 pages */
 
@@ -31,7 +23,9 @@ import techMongo from "../Images/MongoDB.png";
 
 /* real project screenshots */
 import { PROJECTS } from "../WorkV2/projectsData";
-import GoogleReviewButton from '../Shared/GoogleReviewButton';
+import GoogleReviewButton from "../Shared/GoogleReviewButton";
+import ClutchWidget from "../Shared/ClutchWidget";
+import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 
 const DATA_STACK = [
   { src: techPython, name: "Python" },
@@ -108,13 +102,13 @@ const NEXT_STEPS = [
 
 /* cross-sell to the rest of the catalogue */
 const OTHER_SERVICES = [
-  { icon: Globe, n: "01", title: "Web Development", path: "/services-v2/web-development" },
-  { icon: Smartphone, n: "02", title: "Application Development", path: "/services-v2/application-development" },
-  { icon: Palette, n: "03", title: "UI/UX Design", path: "/services-v2/ui-ux-design" },
-  { icon: ShoppingCart, n: "04", title: "E-Commerce Solutions", path: "/services-v2/e-commerce-solutions" },
-  { icon: Code2, n: "05", title: "Custom Software Development", path: "/services-v2/custom-software-development" },
-  { icon: Sparkles, n: "06", title: "AI Development", path: "/services-v2/ai-development" },
-  { icon: LifeBuoy, n: "08", title: "Support & Managed Services", path: "/services-v2/support-managed-services" },
+  { icon: Globe, n: "01", title: "Web Development", body: "Modern websites and web applications tailored to your business needs.", path: "/services-v2/web-development" },
+  { icon: Smartphone, n: "02", title: "Application Development", body: "Mobile apps, SaaS platforms, and cloud-native solutions built from scratch.", path: "/services-v2/application-development" },
+  { icon: Palette, n: "03", title: "UI/UX & Product Design", body: "UX research, wireframes, prototypes, design systems, and accessibility.", path: "/services-v2/ui-ux-design" },
+  { icon: ShoppingCart, n: "04", title: "E-Commerce Solutions", body: "Custom stores, B2B commerce platforms, marketplaces, and payment integrations.", path: "/services-v2/e-commerce-solutions" },
+  { icon: Code2, n: "05", title: "Enterprise Software Solutions", body: "ERP, CRM, workflow automation, legacy modernization, and integrations.", path: "/services-v2/custom-software-development" },
+  { icon: Sparkles, n: "06", title: "AI & Automation Solutions", body: "AI agents, chatbots, generative AI, and workflow automation that works.", path: "/services-v2/ai-development" },
+  { icon: LifeBuoy, n: "08", title: "Support & Managed Services", body: "Ongoing maintenance, technical support, and dedicated team augmentation.", path: "/services-v2/support-managed-services" },
 ];
 
 /* what's included */
@@ -291,6 +285,37 @@ function ScrollSentence({ words, tone }) {
     </section>
   );
 }
+
+
+const TECH_CATEGORIES = [
+  {
+    id: "warehouse",
+    title: "Data Warehousing",
+    icon: Database,
+    tools: ["Snowflake", "Google BigQuery", "Amazon Redshift"],
+    colSpan: 1,
+  },
+  {
+    id: "elt",
+    title: "Pipelines & ELT",
+    icon: Server,
+    tools: ["dbt", "Fivetran", "Airflow", "Segment"],
+    colSpan: 1,
+  },
+  {
+    id: "viz",
+    title: "Visualization",
+    icon: Monitor,
+    tools: ["Tableau", "Power BI", "Looker", "Metabase"],
+    colSpan: 1,
+  }
+];
+
+const METRICS = [
+  { value: "Real-Time", label: "Data Synchronization" },
+  { value: "100%", label: "Data Accuracy" },
+  { value: "360°", label: "Business Visibility" }
+];
 
 export default function DataAnalyticsV2() {
   const [navScrolled, setNavScrolled] = useState(false);
@@ -987,7 +1012,16 @@ export default function DataAnalyticsV2() {
         </div>
       </section>
 
-      {/* ══════════ 8a · HANDOVER ══════════ */}
+      
+
+      {/* ══════════ TECH STACK ══════════ */}
+      <TechStackShowcaseV2
+        title="The Modern Data Stack"
+        description="Powerful data warehousing, ELT pipelines, and visualization tools to turn raw data into actionable business intelligence."
+        categories={TECH_CATEGORIES}
+        metrics={METRICS}
+      />
+{/* ══════════ 8a · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">
         <div className="sd2-case-head">
           <div>
@@ -1155,9 +1189,12 @@ export default function DataAnalyticsV2() {
         <div className="sd2-other-list">
           {OTHER_SERVICES.map((s) => (
             <a className="sd2-other" href={s.path} key={s.path}>
-              <span className="sd2-other-n">{s.n}</span>
-              <span className="sd2-other-icon"><s.icon size={17} strokeWidth={1.5} /></span>
+              <div className="sd2-other-top">
+                <span className="sd2-other-icon"><s.icon size={17} strokeWidth={1.5} /></span>
+                <span className="sd2-other-n">{s.n}</span>
+              </div>
               <span className="sd2-other-title">{s.title}</span>
+              <p className="sd2-other-body">{s.body}</p>
               <span className="sd2-other-go">→</span>
             </a>
           ))}
@@ -1279,6 +1316,7 @@ export default function DataAnalyticsV2() {
             <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
           </div>
           <div className="v2-footer-actions">
+            <ClutchWidget className="v2-desktop-only" />
             <GoogleReviewButton className="v2-desktop-only" />
             <button
               type="button"
@@ -1291,6 +1329,7 @@ export default function DataAnalyticsV2() {
           </div>
         </div>
         <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
+          <ClutchWidget />
           <GoogleReviewButton />
         </div>
         <div className="v2-footer-bottom">

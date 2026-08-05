@@ -207,11 +207,11 @@
   background: rgba(242, 240, 236, .015);
 }
 
-/* assumes exactly 7 rows (SERVICES.length) */
+/* assumes exactly 8 rows (SERVICES.length) */
 .sv2-svc-nav-indicator {
   position: absolute;
   inset: 0 0 auto 0;
-  height: calc(100% / 7);
+  height: calc(100% / 8);
   background: linear-gradient(120deg, rgba(180, 200, 230, .14), rgba(180, 200, 230, .04));
   border-left: 2px solid rgba(180, 200, 230, .85);
   transition: transform .5s var(--ease-expo);
@@ -225,7 +225,7 @@
   align-items: center;
   gap: 14px;
   width: 100%;
-  min-height: 68px;
+  height: 60px;
   padding: 0 28px;
   border: none;
   border-top: .8px solid var(--rule);

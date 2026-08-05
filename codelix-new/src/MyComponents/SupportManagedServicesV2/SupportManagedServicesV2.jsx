@@ -1,13 +1,6 @@
+import { LifeBuoy, Wrench, ShieldCheck, Activity, Users2, Clock, AlertTriangle, Server, RefreshCw, GitBranch, TrendingUp, Headphones, Bell, CheckCircle2, Layers, Search, Globe, Smartphone, Palette, ShoppingCart, Code2, Sparkles, BarChart3, Minus, X, Check, Phone, FileText, PlayCircle, FileCode2, Store, Rocket, GraduationCap, Building2, HeartPulse, Monitor, Cloud, Lock } from "lucide-react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
-import {
-  LifeBuoy, Wrench, ShieldCheck, Activity, Users2, Clock, AlertTriangle,
-  Server, RefreshCw, GitBranch, TrendingUp, Headphones, Bell, CheckCircle2,
-  Layers, Search,
-  Globe, Smartphone, Palette, ShoppingCart, Code2, Sparkles, BarChart3,
-  Minus, X, Check, Phone, FileText, PlayCircle, FileCode2,
-  Store, Rocket, GraduationCap, Building2, HeartPulse,
-} from "lucide-react";
 
 /* v2 design system + shared data — same source of truth as the other v2 pages */
 import "../HomepageV2/HomepageV2.css";
@@ -29,7 +22,9 @@ import techNode from "../Images/Express.png";
 import techMongo from "../Images/MongoDB.png";
 
 import { PROJECTS } from "../WorkV2/projectsData";
-import GoogleReviewButton from '../Shared/GoogleReviewButton';
+import GoogleReviewButton from "../Shared/GoogleReviewButton";
+import ClutchWidget from "../Shared/ClutchWidget";
+import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 
 const SUPPORT_STACK = [
   { src: techAWS, name: "AWS" },
@@ -106,13 +101,13 @@ const NEXT_STEPS = [
 
 /* cross-sell to the rest of the catalogue */
 const OTHER_SERVICES = [
-  { icon: Globe, n: "01", title: "Web Development", path: "/services-v2/web-development" },
-  { icon: Smartphone, n: "02", title: "Application Development", path: "/services-v2/application-development" },
-  { icon: Palette, n: "03", title: "UI/UX Design", path: "/services-v2/ui-ux-design" },
-  { icon: ShoppingCart, n: "04", title: "E-Commerce Solutions", path: "/services-v2/e-commerce-solutions" },
-  { icon: Code2, n: "05", title: "Custom Software Development", path: "/services-v2/custom-software-development" },
-  { icon: Sparkles, n: "06", title: "AI Development", path: "/services-v2/ai-development" },
-  { icon: BarChart3, n: "07", title: "Data Analytics", path: "/services-v2/data-analytics" },
+  { icon: Globe, n: "01", title: "Web Development", body: "Modern websites and web applications tailored to your business needs.", path: "/services-v2/web-development" },
+  { icon: Smartphone, n: "02", title: "Application Development", body: "Mobile apps, SaaS platforms, and cloud-native solutions built from scratch.", path: "/services-v2/application-development" },
+  { icon: Palette, n: "03", title: "UI/UX & Product Design", body: "UX research, wireframes, prototypes, design systems, and accessibility.", path: "/services-v2/ui-ux-design" },
+  { icon: ShoppingCart, n: "04", title: "E-Commerce Solutions", body: "Custom stores, B2B commerce platforms, marketplaces, and payment integrations.", path: "/services-v2/e-commerce-solutions" },
+  { icon: Code2, n: "05", title: "Enterprise Software Solutions", body: "ERP, CRM, workflow automation, legacy modernization, and integrations.", path: "/services-v2/custom-software-development" },
+  { icon: Sparkles, n: "06", title: "AI & Automation Solutions", body: "AI agents, chatbots, generative AI, and workflow automation that works.", path: "/services-v2/ai-development" },
+  { icon: BarChart3, n: "07", title: "Data Analytics & Business Intelligence", body: "Dashboards, reporting, data visualization, and predictive analytics.", path: "/services-v2/data-analytics" },
 ];
 
 /* what's included */
@@ -282,6 +277,37 @@ function ScrollSentence({ words, tone }) {
     </section>
   );
 }
+
+
+const TECH_CATEGORIES = [
+  {
+    id: "monitoring",
+    title: "Monitoring & Alerting",
+    icon: Monitor,
+    tools: ["Datadog", "New Relic", "PagerDuty", "Sentry"],
+    colSpan: 1,
+  },
+  {
+    id: "devops",
+    title: "DevOps & CI/CD",
+    icon: Cloud,
+    tools: ["GitHub Actions", "GitLab CI", "Terraform", "Jenkins"],
+    colSpan: 1,
+  },
+  {
+    id: "security",
+    title: "Security & Backups",
+    icon: Lock,
+    tools: ["Cloudflare", "AWS Shield", "Vault", "Veeam"],
+    colSpan: 1,
+  }
+];
+
+const METRICS = [
+  { value: "<15m", label: "Incident Response Time" },
+  { value: "24/7", label: "Active Monitoring" },
+  { value: "99.99%", label: "Guaranteed Uptime" }
+];
 
 export default function SupportManagedServicesV2() {
   const [navScrolled, setNavScrolled] = useState(false);
@@ -564,17 +590,722 @@ export default function SupportManagedServicesV2() {
             </button>
           </div>
         </div>
-        <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
-          <GoogleReviewButton />
-        </div>
-
       </nav>
 
       <V2MobileDrawer open={mobileOpen} onClose={() => setMobileOpen(false)} />
 
+      {/* ══════════ 1 · HERO ══════════ */}
+      <header className="sd2-hero">
+        <div className="sd2-hero-inner">
+          <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
+            <a href="/preview-v2">Home</a>
+            <span>/</span>
+            <a href="/services-v2">Services</a>
+            <span>/</span>
+            <em>Support &amp; Managed Services</em>
+          </nav>
+
+          <div className="sd2-hero-main">
+            <div>
+              <div className="v2-hero-top sv2-hero-reveal">
+                <span className="v2-hero-status"><i /> Service 08 · Support &amp; Managed Services</span>
+              </div>
+              <h1 className="sd2-hero-title">
+                <span className="line"><span>Ongoing support that</span></span>
+                <span className="line"><span className="v2-hero-accent">keeps things running.</span></span>
+              </h1>
+              <p className="sd2-hero-sub sv2-hero-reveal">
+                Uptime monitoring, security patching, performance tuning, and
+                dedicated engineering capacity — a support plan that catches
+                problems before your users do.
+              </p>
+              <div className="sd2-hero-cta sv2-hero-reveal">
+                <a className="v2-btn v2-btn--filled" href="/contact">
+                  <span>Schedule a call</span>
+                  <i className="v2-btn-arrow">→</i>
+                </a>
+                <a className="v2-hero-secondary" href="#estimate">
+                  <span className="v2-hero-secondary-label">Estimate my project</span>
+                </a>
+              </div>
+            </div>
+
+            {/* at-a-glance facts */}
+            <aside className="sd2-facts sv2-hero-reveal">
+              {[
+                ["Typical setup", "1 week onboarding"],
+                ["Starts with", "Codebase Audit"],
+                ["You receive", "Monitoring & Reports"],
+                ["Contract", "Monthly, no lock-in"],
+              ].map(([k, v]) => (
+                <div className="sd2-fact" key={k}>
+                  <span className="sd2-fact-k">{k}</span>
+                  <span className="sd2-fact-v">{v}</span>
+                </div>
+              ))}
+            </aside>
+          </div>
+        </div>
+      </header>
+
+      {/* ══════════ 2 · PROBLEMS WE SOLVE ══════════ */}
+      <section className="v2-section v2-section--void" id="problems">
+        <p className="v2-label">Sound Familiar?</p>
+        <h2 className="v2-heading">The support problems we fix every day.</h2>
+        <p className="v2-lede">
+          If "support" currently means hoping nothing breaks, it's time for
+          an actual plan.
+        </p>
+        <div className="sd2-problem-grid">
+          {PROBLEMS.map((p) => (
+            <article className="sd2-problem" key={p.pain}>
+              <span className="sd2-problem-icon"><p.icon size={17} strokeWidth={1.6} /></span>
+              <div>
+                <h3 className="sd2-problem-pain">{p.pain}</h3>
+                <p className="sd2-problem-fix">{p.fix}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 2b · CLIENT STRIP ══════════ */}
+      <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
+        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 30+ companies</p>
+        <div className="v2-strip">
+          <div className="v2-strip-track" ref={stripRef}>
+            {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
+              <img key={i} src={logo} alt="" loading="lazy" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════ 3 · WHAT'S INCLUDED ══════════ */}
+      <section className="v2-section" id="included">
+        <p className="v2-label">What's Included</p>
+        <h2 className="v2-heading">Every support plan ships with all of this.</h2>
+        <p className="v2-lede">
+          Not an upsell list — this is the baseline on every support engagement
+          we take, whatever the size.
+        </p>
+        <div className="sd2-inc-showcase">
+          <div className="sd2-inc-nav" role="tablist" aria-label="What's included">
+            <span
+              className="sd2-inc-nav-indicator"
+              style={{ transform: `translateY(${incActive * 100}%)` }}
+              aria-hidden="true"
+            />
+            {INCLUDED.map((it, i) => (
+              <div className="sd2-inc-navitem" key={it.title}>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={incActive === i}
+                  className={`sd2-inc-tab ${incActive === i ? "is-active" : ""}`}
+                  onMouseEnter={() => setIncActive(i)}
+                  onFocus={() => setIncActive(i)}
+                  onClick={() => setIncActive(i)}
+                >
+                  <span className="sd2-inc-tab-n">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="sd2-inc-tab-title">{it.title}</span>
+                  <span className="sd2-inc-tab-icon"><it.icon size={16} strokeWidth={1.6} /></span>
+                </button>
+                <div className={`sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`}>
+                  <div className="sd2-inc-mobile-body-inner">
+                    <p className="sd2-inc-mobile-body-text">{it.body}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="sd2-inc-stage">
+            {INCLUDED.map((it, i) => (
+              <div
+                className={`sd2-inc-panel ${incActive === i ? "is-active" : ""}`}
+                aria-hidden={incActive !== i}
+                key={it.title}
+              >
+                <span className="sd2-inc-panel-glow" aria-hidden="true" />
+                <span className="sd2-inc-panel-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                <span className="sd2-inc-panel-icon"><it.icon size={40} strokeWidth={1.2} /></span>
+                <h3 className="sd2-inc-panel-title">{it.title}</h3>
+                <p className="sd2-inc-panel-body">{it.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════ 4 · WHO IT'S FOR ══════════ */}
+      <section className="v2-section v2-section--void" id="for">
+        <div className="sd2-case-head">
+          <div>
+            <p className="v2-label">Who It's For</p>
+            <h2 className="v2-heading">Support scoped to how you actually run.</h2>
+          </div>
+          <p className="v2-lede">
+            The right support plan depends on how critical the system is and
+            how much is changing month to month.
+          </p>
+        </div>
+        <div className="sd2-case-grid">
+          {USE_CASES.map((c, i) => (
+            <article className="sd2-case" key={c.title}>
+              <div className="sd2-case-top">
+                <span className="sd2-case-icon"><c.icon size={21} strokeWidth={1.6} /></span>
+                <span className="sd2-case-n">{String(i + 1).padStart(2, "0")}</span>
+              </div>
+              <h3 className="sd2-case-title">{c.title}</h3>
+              <p className="sd2-case-body">{c.body}</p>
+              <span className="sd2-case-rule" aria-hidden="true" />
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 5 · INTERACTIVE ESTIMATOR ══════════ */}
+      <section className="v2-section v2-section--void sd2-est-section" id="estimate">
+        <div className="sd2-est">
+          <div className="sd2-est-head">
+            <div>
+              <p className="v2-label">Scope Estimator</p>
+              <h2 className="v2-heading">Rough out your onboarding time in ten seconds.</h2>
+            </div>
+            <p className="v2-lede">
+              Pick what you need and we'll show an honest range. It's an estimate,
+              not a quote — but it's the same maths we start from.
+            </p>
+          </div>
+
+          <div className="sd2-est-body">
+            <div className="sd2-est-controls">
+              <div className="sd2-est-group">
+                <span className="sd2-est-label">01 — What level of support?</span>
+                <div className="sd2-est-opts">
+                  {EST_TYPES.map((t) => (
+                    <button
+                      key={t.id}
+                      className={`sd2-opt ${estType === t.id ? "on" : ""}`}
+                      onClick={() => setEstType(t.id)}
+                      aria-pressed={estType === t.id}
+                    >
+                      {t.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="sd2-est-group">
+                <span className="sd2-est-label">02 — How large is the system?</span>
+                <div className="sd2-est-opts">
+                  {EST_SCALE.map((s) => (
+                    <button
+                      key={s.id}
+                      className={`sd2-opt ${estScale === s.id ? "on" : ""}`}
+                      onClick={() => setEstScale(s.id)}
+                      aria-pressed={estScale === s.id}
+                    >
+                      {s.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="sd2-est-group">
+                <span className="sd2-est-label">03 — Anything else? (optional)</span>
+                <div className="sd2-est-opts">
+                  {EST_ADDONS.map((a) => (
+                    <button
+                      key={a.id}
+                      className={`sd2-opt sd2-opt--check ${estAddons.has(a.id) ? "on" : ""}`}
+                      onClick={() => toggleAddon(a.id)}
+                      aria-pressed={estAddons.has(a.id)}
+                    >
+                      <i><Check size={12} strokeWidth={3} /></i>
+                      {a.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* live readout */}
+            <aside className="sd2-est-out" aria-live="polite">
+              <span className="sd2-est-out-k">Estimated onboarding time</span>
+              <div className="sd2-est-out-v">
+                <span key={estimate.low} className="sd2-est-num">{estimate.low}</span>
+                <span className="sd2-est-dash">–</span>
+                <span key={estimate.high + "h"} className="sd2-est-num">{estimate.high}</span>
+                <span className="sd2-est-unit">weeks</span>
+              </div>
+              <p className="sd2-est-note">{estimate.base}</p>
+              <div className="sd2-est-bar" aria-hidden="true">
+                <span style={{ width: `${Math.min(100, (estimate.high / 12) * 100)}%` }} />
+              </div>
+              <ul className="sd2-est-list">
+                <li><Check size={14} /> Codebase & infrastructure audit</li>
+                <li><Check size={14} /> Monitoring & alerting setup</li>
+                <li><Check size={14} /> Written SLA documentation</li>
+              </ul>
+              <a href="/contact" className="v2-btn v2-btn--outline" style={{ marginTop: 24, width: "100%" }}>
+                <span>Discuss this scope</span>
+              </a>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════ 4b · PROCESS ══════════ */}
+      <section className="v2-method-shell" id="process">
+        <div className="v2-method-head">
+          <h2 className="v2-method-heading">How We Keep Things Running.</h2>
+          <p className="v2-method-lede">
+            Six stages from onboarding to monthly review — nothing runs
+            unmonitored, and nothing changes silently.
+          </p>
+        </div>
+        <div className="v2-method-rows">
+          {PROCESS.map((m) => (
+            <div className="v2-method-row" key={m.n}>
+              <div className="v2-method-index">{m.n}</div>
+              <div>
+                <div className="v2-method-title">{m.title}</div>
+                <span className="v2-method-timeframe">{m.time}</span>
+              </div>
+              <div className="v2-method-body">{m.body}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 7 · QUALITY BENCHMARKS ══════════ */}
+      <section className="v2-section v2-section--void" id="benchmarks">
+        <p className="v2-label">Quality Bar</p>
+        <h2 className="v2-heading">The numbers we hold ourselves to.</h2>
+        <p className="v2-lede">
+          Every support plan is measured against these — not aspirations, gates.
+        </p>
+        <div className="sd2-bench-panel">
+          <div className="sd2-bench-bar">
+            <span className="sd2-bench-bar-dot" aria-hidden="true" />
+            <span className="sd2-bench-bar-title">Live quality gate</span>
+            <span className="sd2-bench-bar-meta">Checked every month</span>
+          </div>
+          <div className="sd2-bench-grid">
+            {BENCHMARKS.map((b, i) => {
+              const R = 52;
+              const C = 2 * Math.PI * R;
+              const offset = C - (C * b.ring) / 100;
+              return (
+                <div className="sd2-bench" key={b.label}>
+                  <div className="sd2-bench-ring">
+                    <svg viewBox="0 0 120 120" className="sd2-bench-ring-svg" aria-hidden="true">
+                      <defs>
+                        <linearGradient id={`sd2-bench-grad-support-${i}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="rgba(180,200,230,.55)" />
+                          <stop offset="100%" stopColor="rgba(180,200,230,1)" />
+                        </linearGradient>
+                      </defs>
+                      <circle className="sd2-bench-ring-track" cx="60" cy="60" r={R} />
+                      <circle
+                        className="sd2-bench-ring-fill"
+                        cx="60" cy="60" r={R}
+                        stroke={`url(#sd2-bench-grad-support-${i})`}
+                        style={{ "--c": C, "--ring-offset": offset }}
+                      />
+                    </svg>
+                    <div className="sd2-bench-num">
+                      <span className="sd2-bench-value" data-target={b.value}>0</span>
+                      <span className="sd2-bench-suffix">{b.suffix}</span>
+                    </div>
+                  </div>
+                  <div className="sd2-bench-label">{b.label}</div>
+                  <div className="sd2-bench-note">{b.note}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════ 8 · TECH ══════════ */}
+      <section className="v2-section v2-tech" id="stack">
+        <div className="v2-tech-head">
+          <div>
+            <p className="v2-label">The Support Stack</p>
+            <h2 className="v2-heading">What we monitor and maintain with.</h2>
+          </div>
+          <p className="v2-lede">
+            Chosen per system, not by habit — the right tooling for your stack,
+            your team, and what you'll need to maintain.
+          </p>
+        </div>
+        <div className="v2-tech-grid">
+          {SUPPORT_STACK.map((t) => (
+            <div className="v2-tech-item" key={t.name}>
+              <img src={t.src} alt={t.name} loading="lazy" />
+              <span>{t.name}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 10 · RELATED WORK ══════════ */}
+      <section className="v2-section v2-section--void" id="work">
+        <p className="v2-label">Related Work</p>
+        <h2 className="v2-heading">Selected work.</h2>
+        <div className="sd2-work-grid">
+          {RELATED.map((w) => (
+            <a className="sd2-work-card" href={w.link} key={w.link}>
+              <span className="sd2-work-media">
+                <img src={w.thumb} alt="" loading="lazy" />
+              </span>
+              <span className="sd2-work-tag">{w.tag}</span>
+              <span className="sd2-work-title">{w.title}</span>
+              <span className="sd2-work-go">Read case study →</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 11 · TESTIMONIAL ══════════ */}
+      <section className="v2-section">
+        <figure className="sd2-quote">
+          <span className="sd2-quote-mark" aria-hidden="true">&ldquo;</span>
+          <blockquote className="sd2-quote-text">{QUOTE.text}</blockquote>
+          <figcaption className="sd2-quote-by">
+            <span className="sd2-quote-name">{QUOTE.name}</span>
+            <span className="sd2-quote-role">{QUOTE.role}</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      {/* ══════════ 8 · PRINCIPLES ══════════ */}
+      <section className="v2-section" id="principles">
+        <p className="v2-label">Our Principles</p>
+        <h2 className="v2-heading">Three commitments that govern every project.</h2>
+        <div className="sd2-tenet-grid">
+          {PRINCIPLES.map((p, i) => (
+            <article className="sd2-tenet" key={p.key}>
+              <span className="sd2-tenet-shine" aria-hidden="true" />
+              <div className="sd2-tenet-top">
+                <span className="sd2-tenet-icon"><p.icon size={20} strokeWidth={1.5} /></span>
+                <span className="sd2-tenet-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+              </div>
+              <h3 className="sd2-tenet-claim">{p.claim}</h3>
+              <p className="sd2-tenet-body">{p.body}</p>
+              <span className="sd2-tenet-tag">{p.key}</span>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      
+
+      {/* ══════════ TECH STACK ══════════ */}
+      <TechStackShowcaseV2
+        title="Proactive Monitoring & DevOps"
+        description="The tools we use to maintain, secure, and continuously monitor your applications ensuring uninterrupted business operations."
+        categories={TECH_CATEGORIES}
+        metrics={METRICS}
+      />
+{/* ══════════ 8a · HANDOVER ══════════ */}
+      <section className="v2-section" id="handover">
+        <div className="sd2-case-head">
+          <div>
+            <p className="v2-label">What You Receive</p>
+            <h2 className="v2-heading">Everything, every month.</h2>
+          </div>
+          <p className="v2-lede">
+            "We've got it covered" is easy to say. Here is the exact list of
+            what lands in your inbox every month.
+          </p>
+        </div>
+        <div className="sd2-manifest">
+          <div className="sd2-manifest-bar">
+            <span className="sd2-manifest-title">
+              <FileCode2 size={14} strokeWidth={1.8} />
+              Support manifest
+            </span>
+            <span className="sd2-manifest-meta">
+              {HANDOVER.length} items
+              <i />
+              Delivered monthly
+            </span>
+          </div>
+
+          <div className="sd2-manifest-grid">
+            {HANDOVER.map((h, i) => (
+              <article className="sd2-hand" key={h.title}>
+                <div className="sd2-hand-top">
+                  <span className="sd2-hand-icon"><h.icon size={16} strokeWidth={1.6} /></span>
+                  <span className="sd2-hand-n">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="sd2-hand-tick"><Check size={12} strokeWidth={3} /></span>
+                </div>
+                <h3 className="sd2-hand-title">{h.title}</h3>
+                <p className="sd2-hand-body">{h.body}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="sd2-manifest-foot">
+            <span className="sd2-manifest-seal"><Check size={13} strokeWidth={3} /></span>
+            <span>
+              Everything above is part of the monthly plan, not billed as
+              surprise extras. <b>No lock-in, cancel with notice.</b>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════ 8b · WHY US vs ALTERNATIVES ══════════ */}
+      <section className="v2-section v2-section--void" id="compare">
+        <div className="sd2-case-head">
+          <div>
+            <p className="v2-label">Why Us</p>
+            <h2 className="v2-heading">Against what you're actually comparing.</h2>
+          </div>
+          <p className="v2-lede">
+            No support plan, a freelancer on call, and a big agency retainer
+            all solve part of the problem. Here's where each one tends to
+            leave you exposed.
+          </p>
+        </div>
+
+        <div className="sd2-cmp" role="table" aria-label="Codelix compared to alternatives">
+          <div className="sd2-cmp-head" role="row">
+            <span className="sd2-cmp-rowlabel" role="columnheader" />
+            {COMPARE_COLS.map((c, i) => (
+              <span
+                className={`sd2-cmp-col ${i === 0 ? "is-us" : ""}`}
+                role="columnheader"
+                key={c}
+              >
+                {c}
+              </span>
+            ))}
+          </div>
+          {COMPARE_ROWS.map((row) => (
+            <div className="sd2-cmp-row" role="row" key={row.label}>
+              <span className="sd2-cmp-rowlabel" role="rowheader">{row.label}</span>
+              {row.vals.map((v, i) => (
+                <span
+                  className={`sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`}
+                  role="cell"
+                  key={i}
+                >
+                  {v === "yes" && <Check size={16} strokeWidth={2.6} />}
+                  {v === "partial" && <Minus size={16} strokeWidth={2.6} />}
+                  {v === "maybe" && <Minus size={16} strokeWidth={2.6} />}
+                  {v === "no" && <X size={15} strokeWidth={2.6} />}
+                  <em className="sd2-cmp-txt">
+                    {v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe"}
+                  </em>
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 8.5 · SCROLL SENTENCE ══════════ */}
+      <ScrollSentence words={SENTENCE} tone="dark" />
+
+      {/* ══════════ 9 · FAQ ══════════ */}
+      <section className="v2-section v2-section--void" id="faq">
+        <div className="v2-faq-intro">
+          <div>
+            <p className="v2-label">FAQ</p>
+            <h2 className="v2-heading">Support &amp; managed services questions.</h2>
+          </div>
+          <p className="v2-lede v2-faq-note">
+            Don't see yours here? <a href="/contact">Ask us directly →</a>
+          </p>
+        </div>
+        <div>
+          {FAQS.map((f, i) => (
+            <div
+              className={`v2-faq-item ${openFaq === i ? "open" : ""} ${revealedFaqs.has(i) ? "is-in" : ""}`}
+              data-faq-index={i}
+              key={f.q}
+            >
+              <button className="v2-faq-q" onClick={() => setOpenFaq(openFaq === i ? -1 : i)}>
+                <span className="v2-faq-q-label">
+                  <span className="v2-faq-index">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="v2-faq-q-text">{f.q}</span>
+                </span>
+                <span className="v2-faq-sign"><span /><span /></span>
+              </button>
+              <div className="v2-faq-a"><p>{f.a}</p></div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 14b · WHAT HAPPENS NEXT ══════════ */}
+      <section className="v2-section v2-section--void" id="next">
+        <div className="sd2-case-head">
+          <div>
+            <p className="v2-label">What Happens Next</p>
+            <h2 className="v2-heading">Three steps from here to onboarding.</h2>
+          </div>
+          <p className="v2-lede">
+            No drawn-out sales process. Reach out and here's exactly what follows.
+          </p>
+        </div>
+        <div className="sd2-next">
+          <span className="sd2-next-line" aria-hidden="true" />
+          {NEXT_STEPS.map((s) => (
+            <article className="sd2-step" key={s.n}>
+              <div className="sd2-step-node">
+                <span className="sd2-step-num">{s.n}</span>
+                <span className="sd2-step-badge"><s.icon size={15} strokeWidth={1.7} /></span>
+              </div>
+              <div className="sd2-step-inner">
+                <span className="sd2-step-meta">{s.meta}</span>
+                <h3 className="sd2-step-title">{s.title}</h3>
+                <p className="sd2-step-body">{s.body}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 15 · OTHER SERVICES ══════════ */}
+      <section className="v2-section" id="other">
+        <p className="v2-label">Explore More</p>
+        <h2 className="v2-heading">The rest of what we do.</h2>
+        <div className="sd2-other-list">
+          {OTHER_SERVICES.map((s) => (
+            <a className="sd2-other" href={s.path} key={s.path}>
+              <div className="sd2-other-top">
+                <span className="sd2-other-icon"><s.icon size={17} strokeWidth={1.5} /></span>
+                <span className="sd2-other-n">{s.n}</span>
+              </div>
+              <span className="sd2-other-title">{s.title}</span>
+              <p className="sd2-other-body">{s.body}</p>
+              <span className="sd2-other-go">→</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 18 · CTA ══════════ */}
+      <section className="v2-section v2-section--void v2-cta-shell">
+        <div className="v2-cta">
+          <p className="v2-label">Start Here</p>
+          <h2 className="v2-cta-headline">
+            Tell us what's keeping you up at night.<br />We'll tell you how we'd cover it.
+          </h2>
+          <p className="v2-cta-body">
+            A structured conversation about your system — what's fragile, what's
+            urgent, and what a realistic support plan looks like.
+          </p>
+          <div className="v2-cta-actions">
+            <a className="v2-btn" href="/contact">Book a consultation →</a>
+          </div>
+          <div className="v2-cta-badges">
+            <span className="v2-cta-badge">Free consultation</span>
+            <span className="v2-cta-badge">NDA on request</span>
+            <span className="v2-cta-badge">No obligation</span>
+          </div>
+        </div>
+
+        <aside className="v2-cta-visual">
+          <CtaVisual />
+        </aside>
+      </section>
+
       <footer className="v2-footer">
-        <div className="v2-footer-top">
+        {/* tagline header — our own real line ("we live in it," already used
+            in the marquee elsewhere on the site) instead of a borrowed one */}
+        <div className="v2-footer-tagline">
+          <h2 className="v2-footer-wordmark-small">
+            WE LIVE
+            <br />
+            IN <span className="v2-footer-wordmark-accent">IT</span>
+          </h2>
+          <p className="v2-footer-tagline-body">
+            We design and build web, mobile, and AI systems for businesses that
+            intend to still be running them in five years.
+          </p>
+        </div>
+
+        {/* dense keyword strips — everything we build, everything we serve,
+            laid out flat rather than tucked into a dropdown */}
+        <div className="v2-footer-keywords-row">
+          <p className="v2-footer-keywords-label">Services</p>
+          <div className="v2-footer-keywords-list">
+            {FOOTER_SERVICE_KEYWORDS.map((k, i) => (
+              <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
+            ))}
+          </div>
+        </div>
+        <div className="v2-footer-keywords-row">
+          <p className="v2-footer-keywords-label">Industries</p>
+          <div className="v2-footer-keywords-list">
+            {FOOTER_INDUSTRY_KEYWORDS.map((k, i) => (
+              <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
+            ))}
+          </div>
+        </div>
+
+        {/* office / contact info — a single four-up row instead of two
+            stacked 2x2 blocks, so it reads as one info bar */}
+        <div className="v2-footer-cards v2-footer-cards--four">
+          <a
+            className="v2-footer-card"
+            href="https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h5>India (HQ)</h5>
+            <p className="v2-footer-card-addr">
+              A-1308, PNTC — Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat — 380015
+            </p>
+          </a>
+          <div className="v2-footer-card">
+            <h5>Phone</h5>
+            <a className="v2-footer-card-strong" href="tel:+919429269295">+91 94292 69295</a>
+            <a className="v2-footer-card-strong" href="tel:+917490909686">+91 74909 09686</a>
+          </div>
+          <div className="v2-footer-card">
+            <h5>Looking For Jobs</h5>
+            <a className="v2-footer-card-strong" href="/careers-v2">View openings →</a>
+          </div>
+          <div className="v2-footer-card">
+            <h5>HR</h5>
+            <a className="v2-footer-card-strong" href="mailto:hr@codelixitsolutions.com">
+              hr@codelixitsolutions.com
+            </a>
+          </div>
+          <div className="v2-footer-card">
+            <h5>General</h5>
+            <a className="v2-footer-card-strong" href="mailto:info@codelixitsolutions.com">
+              info@codelixitsolutions.com
+            </a>
+          </div>
+          <div className="v2-footer-card">
+            <h5>For Sales</h5>
+            <a className="v2-footer-card-strong" href="mailto:sales@codelixitsolutions.com">
+              sales@codelixitsolutions.com
+            </a>
+          </div>
+        </div>
+
+        {/* socials + back-to-top, same row as the reference */}
+        <div className="v2-footer-social">
+          <div className="v2-footer-social-links">
+            <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61561748130641" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">Behance</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
+          </div>
           <div className="v2-footer-actions">
+            <ClutchWidget className="v2-desktop-only" />
             <GoogleReviewButton className="v2-desktop-only" />
             <button
               type="button"
@@ -587,9 +1318,7 @@ export default function SupportManagedServicesV2() {
           </div>
         </div>
         <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
-          <GoogleReviewButton />
-        </div>
-        <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
+          <ClutchWidget />
           <GoogleReviewButton />
         </div>
 

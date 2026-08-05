@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { X, Calendar as CalendarIcon, Clock, ChevronRight, ChevronLeft, CheckCircle2 } from "lucide-react";
 import "./BookingModal.css";
+import { FOOTER_SERVICE_KEYWORDS } from "../HomepageV2/footerData";
 
 const TIME_SLOTS = [
   "10:00 AM",
@@ -26,6 +27,8 @@ export default function BookingModal() {
     email: "",
     phone: "",
     company: "",
+    service: "",
+    customService: "",
     message: "",
   });
 
@@ -36,7 +39,7 @@ export default function BookingModal() {
       setStep(1);
       setSelectedDate(null);
       setSelectedTime(null);
-      setFormData({ name: "", email: "", phone: "", company: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", company: "", service: "", customService: "", message: "" });
     };
 
     const handleGlobalClick = (e) => {
@@ -287,6 +290,34 @@ export default function BookingModal() {
                     onChange={e => setFormData({...formData, company: e.target.value})}
                   />
                 </div>
+
+                <div className="booking-input-group">
+                  <label>Service *</label>
+                  <select 
+                    value={formData.service}
+                    onChange={e => setFormData({...formData, service: e.target.value})}
+                    required
+                  >
+                    <option value="" disabled>Select a service</option>
+                    {FOOTER_SERVICE_KEYWORDS.map(s => (
+                      <option key={s.label} value={s.label}>{s.label}</option>
+                    ))}
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                {formData.service === "Other" && (
+                  <div className="booking-input-group">
+                    <label>Please specify the service *</label>
+                    <input 
+                      type="text" 
+                      required 
+                      placeholder="e.g., Custom Development"
+                      value={formData.customService}
+                      onChange={e => setFormData({...formData, customService: e.target.value})}
+                    />
+                  </div>
+                )}
 
                 <div className="booking-input-group">
                   <label>What would you like to discuss?</label>

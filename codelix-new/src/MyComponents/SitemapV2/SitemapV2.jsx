@@ -15,7 +15,8 @@ import "./SitemapV2.css";
 
 import { CASE_STUDIES } from "../CaseStudyDetailV2/caseStudiesData";
 import { blogs, slugify } from "../../data/blogData";
-import GoogleReviewButton from '../Shared/GoogleReviewButton';
+import GoogleReviewButton from "../Shared/GoogleReviewButton";
+import ClutchWidget from "../Shared/ClutchWidget";
 
 /* every route here is a real <Route> registered in App.jsx — only the new
    v2-theme pages, not the legacy site */
@@ -368,6 +369,7 @@ export default function SitemapV2() {
             <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
           </div>
           <div className="v2-footer-actions">
+            <ClutchWidget className="v2-desktop-only" />
             <GoogleReviewButton className="v2-desktop-only" />
             <button
               type="button"
@@ -380,6 +382,7 @@ export default function SitemapV2() {
           </div>
         </div>
         <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
+          <ClutchWidget />
           <GoogleReviewButton />
         </div>
         <div className="v2-footer-bottom">
