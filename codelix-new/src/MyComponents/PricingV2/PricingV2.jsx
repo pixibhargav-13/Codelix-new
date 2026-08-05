@@ -13,22 +13,34 @@ import CtaVisual from "../HomepageV2/CtaVisual";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./PricingV2.css";
-import GoogleReviewButton from '../Shared/GoogleReviewButton';
+import GoogleReviewButton from "../Shared/GoogleReviewButton";
+import ClutchWidget from "../Shared/ClutchWidget";
 
 /* same real budget bands already used in the live /contact intake form
    (ContactUs.jsx) — not new/invented numbers */
-const PROJECT_TYPES = ["Landing / Marketing Site", "UI/UX Design Only", "E-Commerce Store", "Web App / SaaS Platform", "Mobile App", "Custom Software / ERP"];
+const PROJECT_TYPES = [
+  "Web Development",
+  "Application Development",
+  "UI/UX & Product Design",
+  "E-Commerce Solutions",
+  "Enterprise Software Solutions",
+  "AI & Automation Solutions",
+  "Data Analytics & Business Intelligence",
+  "Support & Managed Services"
+];
 const COMPLEXITY = ["Simple", "Standard", "Complex"];
 
 /* ballpark mapping onto those same real bands — explicitly labeled as an
    estimate, not a quote */
 const ESTIMATE_MAP = {
-  "Landing / Marketing Site": ["Under $1,500", "$1,500 - $5,000", "$5,000 - $10,000"],
-  "UI/UX Design Only": ["$1,500 - $5,000", "$5,000 - $10,000", "$10,000 - $20,000"],
-  "E-Commerce Store": ["$1,500 - $5,000", "$5,000 - $10,000", "$10,000 - $20,000"],
-  "Web App / SaaS Platform": ["$5,000 - $10,000", "$10,000 - $20,000", "$20,000 - $50,000"],
-  "Mobile App": ["$5,000 - $10,000", "$10,000 - $20,000", "$20,000 - $50,000"],
-  "Custom Software / ERP": ["$10,000 - $20,000", "$20,000 - $50,000", "Above $50,000"],
+  "Web Development": ["$1,500 - $5,000", "$5,000 - $10,000", "$10,000 - $25,000"],
+  "Application Development": ["$5,000 - $15,000", "$15,000 - $35,000", "Above $35,000"],
+  "UI/UX & Product Design": ["$2,000 - $5,000", "$5,000 - $12,000", "$12,000 - $25,000"],
+  "E-Commerce Solutions": ["$3,000 - $8,000", "$8,000 - $20,000", "Above $20,000"],
+  "Enterprise Software Solutions": ["$10,000 - $25,000", "$25,000 - $60,000", "Above $60,000"],
+  "AI & Automation Solutions": ["$5,000 - $15,000", "$15,000 - $40,000", "Above $40,000"],
+  "Data Analytics & Business Intelligence": ["$4,000 - $10,000", "$10,000 - $25,000", "Above $25,000"],
+  "Support & Managed Services": ["$500 - $1,500 / mo", "$1,500 - $4,000 / mo", "Custom Retainer"],
 };
 
 /* real engagement structure, grounded in what's already stated on
@@ -273,7 +285,10 @@ export default function PricingV2() {
 
           <div className="pv2-estimator-result">
             <span className="pv2-result-label">Ballpark range</span>
-            <span className="pv2-result-value" key={estimate}>{estimate}</span>
+            <div className="pv2-result-value-wrapper" key={estimate}>
+              <span className="pv2-result-value">{estimate}</span>
+              <span className="pv2-result-approx">Approx.</span>
+            </div>
             <p className="pv2-result-note">
               Based on {complexity === 0 ? "a simple" : complexity === 1 ? "a standard" : "a complex"}{" "}
               {projectType.toLowerCase()} project. Your exact quote depends on the specifics we cover
@@ -463,6 +478,7 @@ export default function PricingV2() {
             <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
           </div>
           <div className="v2-footer-actions">
+            <ClutchWidget className="v2-desktop-only" />
             <GoogleReviewButton className="v2-desktop-only" />
             <button
               type="button"
@@ -475,6 +491,7 @@ export default function PricingV2() {
           </div>
         </div>
         <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
+          <ClutchWidget />
           <GoogleReviewButton />
         </div>
         <div className="v2-footer-bottom">

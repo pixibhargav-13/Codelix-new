@@ -303,22 +303,42 @@
   top: 84px;
   left: 0;
   right: 0;
-  padding: 30px var(--pad-x) 0;
+  padding: 40px 3vw 40px;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  background: rgba(9, 9, 12, .98);
-  backdrop-filter: blur(24px);
-  border-bottom: .8px solid var(--rule);
-  box-shadow: 0 32px 64px -20px rgba(0, 0, 0, .65);
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(130px, auto);
+  gap: 16px;
+  background: #050507;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.9), inset 0 -1px 0 rgba(255, 255, 255, 0.05);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateY(-10px);
-  transition: opacity .3s var(--ease-premium), transform .3s var(--ease-premium), visibility 0s linear .3s, top .4s var(--ease-premium);
+  transform: translateY(-15px) scale(0.98);
+  transform-origin: top center;
+  transition: opacity .4s var(--ease-premium), transform .5s var(--ease-premium), visibility 0s linear .4s, top .4s var(--ease-premium);
+  max-height: calc(100vh - 84px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.v2-nav-dropdown-panel::-webkit-scrollbar {
+  width: 6px;
+}
+.v2-nav-dropdown-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+.v2-nav-dropdown-panel::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+.v2-nav-dropdown-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .v2-nav.scrolled .v2-nav-dropdown-panel {
   top: 64px;
+  max-height: calc(100vh - 64px);
 }
 
 @media (max-width: 1000px) {
@@ -357,7 +377,7 @@
   visibility: visible;
   pointer-events: auto;
   transform: none;
-  transition: opacity .3s var(--ease-premium), transform .3s var(--ease-premium), visibility 0s linear 0s;
+  transition: opacity .4s var(--ease-premium), transform .5s var(--ease-premium), visibility 0s linear 0s;
 }
 
 .v2-nav-dropdown-head {
@@ -365,11 +385,12 @@
   position: relative;
   z-index: 1;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding-bottom: 22px;
-  border-bottom: .8px solid var(--rule);
+  padding: 0 10px 20px;
+  border-bottom: none;
+  margin-bottom: 0;
 }
 
 .v2-nav-dropdown-head-label {
@@ -382,10 +403,11 @@
 }
 
 .v2-nav-dropdown-head-lede {
-  font-size: 19px;
-  font-weight: 500;
-  letter-spacing: -.01em;
-  color: var(--text);
+  font-size: 26px;
+  font-weight: 300;
+  letter-spacing: -.02em;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
 }
 
 .v2-nav-dropdown-head-all {
@@ -424,22 +446,49 @@
   counter-increment: navsvc;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 24px 18px 28px;
-  border-left: .8px solid var(--rule);
+  gap: 12px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   overflow: hidden;
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity .4s var(--ease-premium), transform .4s var(--ease-premium), background .3s ease;
+  transform: translateY(15px);
+  transition: opacity .5s var(--ease-premium), transform .5s var(--ease-premium), background .4s ease, box-shadow .4s ease, border-color .4s ease;
 }
 
-.v2-nav-dropdown-card:nth-child(2),
-.v2-nav-dropdown-card:nth-child(6) {
-  border-left: none;
+/* Bento Layout Rules */
+/* Card 1: Large Featured */
+.v2-nav-dropdown-card:nth-child(2) {
+  grid-column: span 2;
+  grid-row: span 2;
+  background-color: rgba(255, 255, 255, 0.02);
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    radial-gradient(ellipse at 80% 20%, rgba(255, 255, 255, 0.03), transparent 50%);
+  background-size: 24px 24px, 100% 100%;
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
-.v2-nav-dropdown-card:nth-child(n+6) {
-  border-top: .8px solid var(--rule);
+/* Card 6: Wide Rectangle */
+.v2-nav-dropdown-card:nth-child(7) {
+  grid-column: span 2;
+}
+
+@media (max-width: 1000px) {
+  .v2-nav-dropdown-card:nth-child(n) {
+    grid-column: span 2 !important;
+    grid-row: span 1 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .v2-nav-dropdown-panel {
+    grid-template-columns: 1fr;
+  }
+  .v2-nav-dropdown-card:nth-child(n) {
+    grid-column: 1 / -1 !important;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -449,34 +498,36 @@
   }
 }
 
-/* +1 offset on every rule — .v2-nav-dropdown-head is grid-sibling #1, so
-   the first CARD is actually the 2nd child, and so on */
 .v2-nav-dropdown-card:nth-child(2) {
-  transition-delay: .03s;
+  transition-delay: .04s;
 }
 
 .v2-nav-dropdown-card:nth-child(3) {
-  transition-delay: .06s;
+  transition-delay: .08s;
 }
 
 .v2-nav-dropdown-card:nth-child(4) {
-  transition-delay: .09s;
-}
-
-.v2-nav-dropdown-card:nth-child(5) {
   transition-delay: .12s;
 }
 
+.v2-nav-dropdown-card:nth-child(5) {
+  transition-delay: .16s;
+}
+
 .v2-nav-dropdown-card:nth-child(6) {
-  transition-delay: .15s;
+  transition-delay: .20s;
 }
 
 .v2-nav-dropdown-card:nth-child(7) {
-  transition-delay: .18s;
+  transition-delay: .24s;
 }
 
 .v2-nav-dropdown-card:nth-child(8) {
-  transition-delay: .21s;
+  transition-delay: .28s;
+}
+
+.v2-nav-dropdown-card:nth-child(9) {
+  transition-delay: .32s;
 }
 
 .v2-nav-dropdown-card:nth-child(9) {
@@ -492,23 +543,49 @@
 .v2-nav-dropdown-card::before {
   content: counter(navsvc, decimal-leading-zero);
   position: absolute;
-  right: 12px;
-  bottom: -14px;
-  font-size: 60px;
-  font-weight: 800;
+  right: 20px;
+  bottom: -15px;
+  font-size: 80px;
+  font-weight: 200;
   line-height: 1;
-  color: rgba(124, 155, 255, .06);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
   z-index: 0;
-  transition: color .3s ease, transform .3s var(--ease-premium);
+  transition: -webkit-text-stroke .4s ease, transform .5s var(--ease-premium), opacity .4s ease;
+  opacity: 0.6;
+}
+
+/* Make the number massive for the Hero card */
+.v2-nav-dropdown-card:nth-child(2)::before {
+  font-size: 240px;
+  bottom: -40px;
+  right: 20px;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
 }
 
 .v2-nav-dropdown-card:hover::before {
-  color: rgba(124, 155, 255, .16);
-  transform: translateY(-4px);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
+  transform: translateY(-10px) scale(1.05);
+  opacity: 1;
+}
+
+.v2-nav-dropdown-card:nth-child(2):hover::before {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
 }
 
 .v2-nav-dropdown-card:hover {
-  background: linear-gradient(180deg, rgba(124, 155, 255, .06), transparent 70%);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.02);
+}
+
+.v2-nav-dropdown-card:nth-child(2):hover {
+  background-color: rgba(255, 255, 255, 0.04);
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+    radial-gradient(ellipse at 80% 20%, rgba(255, 255, 255, 0.06), transparent 60%);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(255, 255, 255, 0.03);
 }
 
 .v2-nav-dropdown-title {
@@ -518,21 +595,27 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  min-height: 54px;
-  font-size: 13.5px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: .02em;
   line-height: 1.3;
-  color: rgba(242, 240, 236, .92);
-  transition: color .25s ease;
+  color: #fff;
+  transition: color .3s ease, transform .3s ease, text-shadow .3s ease;
+}
+
+.v2-nav-dropdown-card:nth-child(2) .v2-nav-dropdown-title {
+  font-size: 24px;
+  font-weight: 300;
+  margin-bottom: 8px;
 }
 
 .v2-nav-dropdown-title::after {
   content: "→";
-  font-size: 13px;
-  color: rgba(124, 155, 255, .9);
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
   opacity: 0;
-  transform: translateX(-6px);
-  transition: opacity .25s ease, transform .25s ease;
+  transform: translateX(-10px);
+  transition: opacity .3s ease, transform .3s ease;
 }
 
 .v2-nav-dropdown-card:hover .v2-nav-dropdown-title::after {
@@ -542,20 +625,36 @@
 
 .v2-nav-dropdown-card:hover .v2-nav-dropdown-title {
   color: #fff;
+  transform: translateX(4px);
+}
+
+.v2-nav-dropdown-card:nth-child(2):hover .v2-nav-dropdown-title {
+  text-shadow: 0 0 20px rgba(124, 155, 255, 0.5);
 }
 
 .v2-nav-dropdown-blurb {
   position: relative;
   z-index: 1;
-  font-size: 11.5px;
-  line-height: 1.5;
-  color: rgba(242, 240, 236, .4);
-  /* the card clips overflow (needed to contain the bleeding background
-     numeral) — clamp so long blurbs never get silently cut off instead */
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(242, 240, 236, .5);
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   overflow: hidden;
+  transition: color .3s ease;
+  padding-right: 20px;
+}
+
+.v2-nav-dropdown-card:nth-child(2) .v2-nav-dropdown-blurb {
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(242, 240, 236, .7);
+  -webkit-line-clamp: 4;
+}
+
+.v2-nav-dropdown-card:hover .v2-nav-dropdown-blurb {
+  color: rgba(242, 240, 236, .8);
 }
 
 /* right-hand group: the primary CTA button + the menu button that opens
@@ -2920,9 +3019,10 @@
 .v2-services-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 16px;
+  row-gap: 32px;
+  column-gap: 16px;
   padding: 0 var(--pad-x);
-  margin-top: 24px;
+  margin-top: 48px;
 }
 
 .v2-svc-card {
@@ -2933,11 +3033,11 @@
   border: .8px solid var(--rule);
   background: rgba(9, 9, 12, 0.4);
   border-radius: 12px;
-  padding: 32px;
+  padding: 28px 32px;
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.4s var(--ease-premium), border-color 0.4s ease, background 0.4s ease;
-  min-height: 220px;
+  min-height: 150px;
   isolation: isolate;
 }
 
@@ -2986,7 +3086,13 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: 40px;
+  margin-top: 24px;
+}
+
+.v2-svc-text {
+  display: flex;
+  flex-direction: column;
+  max-width: 85%;
 }
 
 .v2-svc-title {
@@ -2995,8 +3101,19 @@
   line-height: 1.25;
   letter-spacing: -0.015em;
   color: rgba(242, 240, 236, 0.88);
-  max-width: 85%;
   transition: color 0.4s ease;
+}
+
+/* compound selector needed to out-specificity the base ".v2 p { margin: 0 }" reset */
+.v2-svc-text .v2-svc-body {
+  margin-top: 18px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text-45);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 .v2-svc-card:hover .v2-svc-title {
@@ -3404,212 +3521,208 @@
    each other and depth 3+ sit fully hidden below. Advancing activeQuote
    just changes each card's --depth, so the whole stack reflows as one
    continuous spatial motion instead of a crossfade. ───────────── */
-/* ───────────── TESTIMONIAL BENTO GRID ───────────── */
-.v2-bento-grid {
-  margin-top: 32px;
+/* ───────────── TESTIMONIAL — bare editorial layout ─────────────
+   No cards, no icon chrome, no shadows — hairline dividers and bare type
+   only, same language as the rest of the site, adapted to the light band's
+   ink-on-gallery palette instead of warm-white-on-black. */
+.v2-quote-head {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, auto);
-  gap: 16px;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: clamp(24px, 4vw, 64px);
 }
 
-.v2-bento-cell {
-  position: relative;
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  border-radius: 20px;
-  padding: 24px;
+.v2-quote-stats {
   display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  transition: all .4s var(--ease-expo);
-  box-shadow: 0 4px 24px -12px rgba(15, 15, 13, .05);
+  gap: clamp(20px, 3vw, 40px);
 }
 
-.v2-bento-cell:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px -12px rgba(15, 15, 13, .1);
-  border-color: rgba(15, 15, 13, .15);
+.v2-quote-stat {
+  padding-left: 18px;
+  border-left: .8px solid rgba(15, 15, 13, .15);
 }
 
-/* Hero takes up 2 cols and 3 rows */
-.v2-bento-hero {
-  grid-column: span 2;
-  grid-row: span 3;
-  background: linear-gradient(145deg, #181816, #0A0A09);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 32px;
-}
-
-.v2-bento-hero:hover {
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 12px 40px -12px rgba(0, 0, 0, .4);
-}
-
-.v2-bento-quotes {
-  position: relative;
-  flex: 1;
-  display: flex;
-}
-
-.v2-bento-quote-item {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: all .5s var(--ease-expo);
-  display: flex;
-  flex-direction: column;
-}
-
-.v2-bento-quote-item.is-active {
-  opacity: 1;
-  pointer-events: auto;
-  transform: none;
-  position: relative;
-}
-
-.v2-bento-mark {
+.v2-quote-stat-num {
   display: block;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 56px;
-  line-height: 1;
-  color: rgba(255, 255, 255, .1);
-  margin-bottom: -16px;
-  margin-left: -4px;
-}
-
-.v2-bento-hero blockquote {
-  font-size: clamp(17px, 1.6vw, 20px);
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -.01em;
-  color: rgba(255, 255, 255, .95);
-  margin-bottom: 24px;
-  flex: 1;
-}
-
-.v2-bento-who {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: auto;
-}
-
-.v2-bento-avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .1);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .02em;
-  color: #fff;
-}
-
-.v2-bento-who .who {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: .01em;
-  color: #fff;
-}
-
-.v2-bento-who .who span {
-  display: block;
-  margin-top: 3px;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, .5);
-}
-
-.v2-bento-dots {
-  display: flex;
-  gap: 6px;
-  margin-top: 20px;
-}
-
-.v2-bento-dot {
-  width: 24px;
-  height: 4px;
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  cursor: pointer;
-  transition: all .3s ease;
-}
-
-.v2-bento-dot:hover {
-  background: rgba(255, 255, 255, 0.4);
-}
-
-.v2-bento-dot.is-active {
-  background: #fff;
-  width: 36px;
-}
-
-.v2-bento-stat {
-  background: linear-gradient(160deg, #fff, #faf9f6);
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 24px;
-}
-
-.v2-bento-stat-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: rgba(15, 15, 13, .04);
-  color: var(--ink);
-  flex: none;
-}
-
-.v2-bento-stat-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.v2-bento-stat-num {
-  font-size: clamp(24px, 2.2vw, 28px);
+  font-size: clamp(26px, 2.4vw, 32px);
   font-weight: 700;
   letter-spacing: -.02em;
   line-height: 1;
   color: var(--ink);
-  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
 }
 
-.v2-bento-stat-label {
-  font-size: 13px;
-  line-height: 1.3;
+.v2-quote-stat-label {
+  display: block;
+  margin-top: 8px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
   color: var(--ink-40);
+}
+
+/* the spotlight: one huge centred quote with a giant watermark quotation
+   mark behind it — the "extraordinary" swap-in for the old bordered card,
+   still bare (no card/shadow/icon chrome), just scaled way up */
+.v2-quote-spotlight {
+  position: relative;
+  margin-top: 64px;
+  padding: 72px clamp(16px, 6vw, 96px) 8px;
+  border-top: .8px solid rgba(15, 15, 13, .15);
+  text-align: center;
+  overflow: hidden;
+}
+
+.v2-quote-spotlight-mark {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(160px, 20vw, 260px);
+  line-height: 1;
+  color: rgba(124, 155, 255, .08);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.v2-quote-spotlight-stage {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  min-height: clamp(160px, 18vw, 210px);
+}
+
+.v2-quote-spotlight-item {
+  display: none;
+}
+
+.v2-quote-spotlight-item.is-active {
+  display: block;
+  animation: v2-quote-fade .7s var(--ease-expo);
+}
+
+@keyframes v2-quote-fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+.v2-quote-spotlight-item p {
+  font-size: clamp(22px, 2.8vw, 34px);
   font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -.015em;
+  color: var(--ink);
 }
 
-.v2-bento-stat--highlight {
-  background: rgba(15, 15, 13, .03);
-  border: 1px solid rgba(15, 15, 13, .08);
+.v2-quote-spotlight-item footer {
+  margin-top: 28px;
 }
 
-@media (max-width: 900px) {
-  .v2-bento-grid {
+.v2-quote-spotlight-name {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .01em;
+  color: var(--ink);
+}
+
+.v2-quote-spotlight-role {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+}
+
+/* the marquee doubles as both decoration and the nav control — no
+   arrows/dots needed, clicking a name jumps straight to their quote */
+.v2-quote-marquee {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: .8px solid rgba(15, 15, 13, .15);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.v2-quote-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 48px;
+  animation: v2-quote-marquee-scroll 28s linear infinite;
+}
+
+.v2-quote-marquee:hover .v2-quote-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes v2-quote-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.v2-quote-marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(15, 15, 13, .3);
+  transition: color .3s ease;
+}
+
+.v2-quote-marquee-item:hover {
+  color: var(--ink);
+}
+
+.v2-quote-marquee-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(124, 155, 255, .5);
+  flex: none;
+}
+
+.v2-quote-marquee-role {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(15, 15, 13, .25);
+}
+
+.v2-quote-marquee-item.is-active {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.v2-quote-marquee-item.is-active .v2-quote-marquee-dot {
+  background: #4b6ee0;
+}
+
+@media (max-width: 800px) {
+  .v2-quote-head {
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
+    align-items: start;
+    gap: 24px;
   }
 
-  .v2-bento-hero {
-    grid-column: 1;
-    grid-row: auto;
+  .v2-quote-stats {
+    gap: 24px;
+  }
+
+  .v2-quote-spotlight {
+    padding-top: 56px;
   }
 }
 
@@ -4515,6 +4628,40 @@
   background: rgba(255, 255, 255, .015);
   transition: color .3s ease, border-color .3s ease, background .3s ease, transform .3s var(--ease-expo);
   text-decoration: none;
+}
+
+/* Clutch's widget only ships as an oversized white card with no text-size
+   control (its colour/size query params are ignored for this account), so
+   we shrink it by a fixed factor (see ClutchWidget.jsx) and size this box
+   to match the scaled-down content exactly — width/height are set inline
+   by JS once the embed finishes loading, so nothing here forces a size
+   that could clip it. */
+.v2-clutch-widget {
+  min-width: 60px;
+  min-height: 24px;
+  border: .8px solid var(--rule);
+  border-radius: 10px;
+  background: var(--void);
+  overflow: hidden;
+  position: relative;
+}
+
+.v2-clutch-widget-inner {
+  /* the embed's iframe is width:100% internally — without a definite width
+     here for that percentage to resolve against, it collapses to almost
+     nothing, which is why the badge was measuring and rendering tiny */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 340px;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+}
+
+.v2-clutch-widget iframe {
+  /* invert(1) maps the widget's white background to near-black, matching
+     the footer's own --void (#050507) background */
+  filter: invert(1) hue-rotate(180deg);
 }
 
 .v2-google-logo {

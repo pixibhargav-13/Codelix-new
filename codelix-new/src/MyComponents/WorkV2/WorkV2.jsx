@@ -24,7 +24,8 @@ import logo5 from "../Images/Our-work-logo-five.png";
 /* the full portfolio — extracted to its own module so WorkV2 and
    CaseStudyV2 share one source of truth instead of duplicating it */
 import { PROJECTS } from "./projectsData";
-import GoogleReviewButton from '../Shared/GoogleReviewButton';
+import GoogleReviewButton from "../Shared/GoogleReviewButton";
+import ClutchWidget from "../Shared/ClutchWidget";
 
 /* the spotlight — a curated, diverse subset of the same 15 real projects
    above (not new content), one per major category */
@@ -677,6 +678,7 @@ export default function WorkV2() {
             <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
           </div>
           <div className="v2-footer-actions">
+            <ClutchWidget className="v2-desktop-only" />
             <GoogleReviewButton className="v2-desktop-only" />
             <button
               type="button"
@@ -689,6 +691,7 @@ export default function WorkV2() {
           </div>
         </div>
         <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
+          <ClutchWidget />
           <GoogleReviewButton />
         </div>
         <div className="v2-footer-bottom">

@@ -33,7 +33,8 @@ import techAws from "../Images/AWS.png";
 
 /* real project screenshots */
 import { PROJECTS } from "../WorkV2/projectsData";
-import GoogleReviewButton from '../Shared/GoogleReviewButton';
+import GoogleReviewButton from "../Shared/GoogleReviewButton";
+import ClutchWidget from "../Shared/ClutchWidget";
 
 const AI_STACK = [
   { src: techPython, name: "Python" },
@@ -109,13 +110,13 @@ const NEXT_STEPS = [
 
 /* cross-sell to the rest of the catalogue */
 const OTHER_SERVICES = [
-  { icon: Globe, n: "01", title: "Web Development", path: "/services-v2/web-development" },
-  { icon: Smartphone, n: "02", title: "Application Development", path: "/services-v2/application-development" },
-  { icon: Palette, n: "03", title: "UI/UX Design", path: "/services-v2/ui-ux-design" },
-  { icon: ShoppingCart, n: "04", title: "E-Commerce Solutions", path: "/services-v2/e-commerce-solutions" },
-  { icon: Code2, n: "05", title: "Custom Software Development", path: "/services-v2/custom-software-development" },
-  { icon: BarChart3, n: "07", title: "Data Analytics", path: "/services-v2/data-analytics" },
-  { icon: LifeBuoy, n: "08", title: "Support & Managed Services", path: "/services-v2/support-managed-services" },
+  { icon: Globe, n: "01", title: "Web Development", body: "Modern websites and web applications tailored to your business needs.", path: "/services-v2/web-development" },
+  { icon: Smartphone, n: "02", title: "Application Development", body: "Mobile apps, SaaS platforms, and cloud-native solutions built from scratch.", path: "/services-v2/application-development" },
+  { icon: Palette, n: "03", title: "UI/UX & Product Design", body: "UX research, wireframes, prototypes, design systems, and accessibility.", path: "/services-v2/ui-ux-design" },
+  { icon: ShoppingCart, n: "04", title: "E-Commerce Solutions", body: "Custom stores, B2B commerce platforms, marketplaces, and payment integrations.", path: "/services-v2/e-commerce-solutions" },
+  { icon: Code2, n: "05", title: "Enterprise Software Solutions", body: "ERP, CRM, workflow automation, legacy modernization, and integrations.", path: "/services-v2/custom-software-development" },
+  { icon: BarChart3, n: "07", title: "Data Analytics & Business Intelligence", body: "Dashboards, reporting, data visualization, and predictive analytics.", path: "/services-v2/data-analytics" },
+  { icon: LifeBuoy, n: "08", title: "Support & Managed Services", body: "Ongoing maintenance, technical support, and dedicated team augmentation.", path: "/services-v2/support-managed-services" },
 ];
 
 /* what's actually included */
@@ -1142,9 +1143,12 @@ export default function AIDevelopmentV2() {
         <div className="sd2-other-list">
           {OTHER_SERVICES.map((s) => (
             <a className="sd2-other" href={s.path} key={s.path}>
-              <span className="sd2-other-n">{s.n}</span>
-              <span className="sd2-other-icon"><s.icon size={17} strokeWidth={1.5} /></span>
+              <div className="sd2-other-top">
+                <span className="sd2-other-icon"><s.icon size={17} strokeWidth={1.5} /></span>
+                <span className="sd2-other-n">{s.n}</span>
+              </div>
               <span className="sd2-other-title">{s.title}</span>
+              <p className="sd2-other-body">{s.body}</p>
               <span className="sd2-other-go">→</span>
             </a>
           ))}
@@ -1266,6 +1270,7 @@ export default function AIDevelopmentV2() {
             <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
           </div>
           <div className="v2-footer-actions">
+            <ClutchWidget className="v2-desktop-only" />
             <GoogleReviewButton className="v2-desktop-only" />
             <button
               type="button"
@@ -1278,6 +1283,7 @@ export default function AIDevelopmentV2() {
           </div>
         </div>
         <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
+          <ClutchWidget />
           <GoogleReviewButton />
         </div>
         <div className="v2-footer-bottom">

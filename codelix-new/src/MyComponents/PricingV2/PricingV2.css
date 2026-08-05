@@ -107,14 +107,28 @@
   margin-bottom: 10px;
 }
 
+.pv2-result-value-wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 14px;
+  animation: pv2-pop .5s cubic-bezier(.2, .9, .3, 1.3);
+}
+
 .v2 .pv2-result-value {
   display: block;
   font-size: clamp(28px, 3.4vw, 38px);
   font-weight: 700;
   letter-spacing: -.02em;
   color: #fff;
-  margin-bottom: 14px;
-  animation: pv2-pop .5s cubic-bezier(.2, .9, .3, 1.3);
+}
+
+.pv2-result-approx {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 @keyframes pv2-pop {

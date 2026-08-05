@@ -15,7 +15,8 @@ import "./CaseStudyV2.css";
 /* the same 15 real projects shared with WorkV2 — one source of truth,
    not a duplicated or re-invented list */
 import { PROJECTS } from "../WorkV2/projectsData";
-import GoogleReviewButton from '../Shared/GoogleReviewButton';
+import GoogleReviewButton from "../Shared/GoogleReviewButton";
+import ClutchWidget from "../Shared/ClutchWidget";
 
 /* v2 case-study detail pages live at /case-study-v2/:slug, reusing the
    same slugs as the existing routes */
@@ -453,6 +454,7 @@ export default function CaseStudyV2() {
             <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
           </div>
           <div className="v2-footer-actions">
+            <ClutchWidget className="v2-desktop-only" />
             <GoogleReviewButton className="v2-desktop-only" />
             <button
               type="button"
@@ -465,6 +467,7 @@ export default function CaseStudyV2() {
           </div>
         </div>
         <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
+          <ClutchWidget />
           <GoogleReviewButton />
         </div>
         <div className="v2-footer-bottom">
