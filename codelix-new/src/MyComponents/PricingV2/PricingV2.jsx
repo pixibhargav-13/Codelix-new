@@ -1,46 +1,87 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import { FileText, Layers, LifeBuoy } from "lucide-react";
 
 /* v2 design system — same source of truth as the other v2 pages */
 
 import "../HomepageV2/HomepageV2.css";
-import V2MobileDrawer from "../HomepageV2/V2MobileDrawer";
+
 import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
-import codelixLogo from "../Images/codelix-logo.png";
-import { FOOTER_SERVICE_KEYWORDS, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
+import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import CtaVisual from "../HomepageV2/CtaVisual";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./PricingV2.css";
-import GoogleReviewButton from "../Shared/GoogleReviewButton";
-import ClutchWidget from "../Shared/ClutchWidget";
+import NavbarV2 from "../Shared/NavbarV2";
+
 
 /* same real budget bands already used in the live /contact intake form
    (ContactUs.jsx) — not new/invented numbers */
-const PROJECT_TYPES = [
-  "Web Development",
-  "Application Development",
-  "UI/UX & Product Design",
-  "E-Commerce Solutions",
-  "Enterprise Software Solutions",
-  "AI & Automation Solutions",
-  "Data Analytics & Business Intelligence",
-  "Support & Managed Services"
+const BASE_ESTIMATES = {
+  "Web": ["$1,500 - $5,000", "$5,000 - $10,000", "$10,000 - $25,000"],
+  "App": ["$5,000 - $15,000", "$15,000 - $35,000", "Above $35,000"],
+  "UI": ["$2,000 - $5,000", "$5,000 - $12,000", "$12,000 - $25,000"],
+  "Ecom": ["$3,000 - $8,000", "$8,000 - $20,000", "Above $20,000"],
+  "Enterprise": ["$10,000 - $25,000", "$25,000 - $60,000", "Above $60,000"],
+  "AI": ["$5,000 - $15,000", "$15,000 - $40,000", "Above $40,000"],
+  "Data": ["$4,000 - $10,000", "$10,000 - $25,000", "Above $25,000"],
+  "Support": ["$500 - $1,500 / mo", "$1,500 - $4,000 / mo", "Custom Retainer"],
+};
+
+/* dynamically generate sorted project types list directly from the shared truth */
+const PROJECT_TYPES = FOOTER_ALL_SERVICES.map(s => s.label);
+
+const COMPLEXITY = [
+  "Simple (MVP / Foundation)",
+  "Standard (Core product / Redesign)",
+  "Complex (Scale / Enterprise)",
 ];
-const COMPLEXITY = ["Simple", "Standard", "Complex"];
 
 /* ballpark mapping onto those same real bands — explicitly labeled as an
    estimate, not a quote */
 const ESTIMATE_MAP = {
-  "Web Development": ["$1,500 - $5,000", "$5,000 - $10,000", "$10,000 - $25,000"],
-  "Application Development": ["$5,000 - $15,000", "$15,000 - $35,000", "Above $35,000"],
-  "UI/UX & Product Design": ["$2,000 - $5,000", "$5,000 - $12,000", "$12,000 - $25,000"],
-  "E-Commerce Solutions": ["$3,000 - $8,000", "$8,000 - $20,000", "Above $20,000"],
-  "Enterprise Software Solutions": ["$10,000 - $25,000", "$25,000 - $60,000", "Above $60,000"],
-  "AI & Automation Solutions": ["$5,000 - $15,000", "$15,000 - $40,000", "Above $40,000"],
-  "Data Analytics & Business Intelligence": ["$4,000 - $10,000", "$10,000 - $25,000", "Above $25,000"],
-  "Support & Managed Services": ["$500 - $1,500 / mo", "$1,500 - $4,000 / mo", "Custom Retainer"],
+  // Web Development Family
+  "Web Development": BASE_ESTIMATES["Web"],
+  "Performance Optimization": BASE_ESTIMATES["Web"],
+  
+  // Application Development Family
+  "Application Development": BASE_ESTIMATES["App"],
+  "SaaS Product Development": BASE_ESTIMATES["App"],
+  
+  // UI/UX Family
+  "UI/UX & Product Design": BASE_ESTIMATES["UI"],
+  "UX Research & Design Systems": BASE_ESTIMATES["UI"],
+  
+  // E-Commerce Family
+  "E-Commerce Solutions": BASE_ESTIMATES["Ecom"],
+  "Marketplace Development": BASE_ESTIMATES["Ecom"],
+  "Payment Integration Services": BASE_ESTIMATES["Ecom"],
+  
+  // Enterprise Software Family
+  "Enterprise Software Solutions": BASE_ESTIMATES["Enterprise"],
+  "ERP & CRM Development": BASE_ESTIMATES["Enterprise"],
+  "API Development & Integration": BASE_ESTIMATES["Enterprise"],
+  "Legacy System Modernization": BASE_ESTIMATES["Enterprise"],
+  
+  // AI & Automation Family
+  "AI & Automation Solutions": BASE_ESTIMATES["AI"],
+  "AI Agent Development": BASE_ESTIMATES["AI"],
+  "Generative AI Solutions": BASE_ESTIMATES["AI"],
+  "Workflow Automation": BASE_ESTIMATES["AI"],
+  
+  // Data Analytics Family
+  "Data Analytics & Business Intelligence": BASE_ESTIMATES["Data"],
+  "Business Intelligence Solutions": BASE_ESTIMATES["Data"],
+  "Predictive Analytics": BASE_ESTIMATES["Data"],
+  "Data Engineering": BASE_ESTIMATES["Data"],
+  
+  // Support & Managed Services Family
+  "Support & Managed Services": BASE_ESTIMATES["Support"],
+  "Cloud Solutions & Migration": BASE_ESTIMATES["Support"],
+  "Cloud Infrastructure Services": BASE_ESTIMATES["Support"],
+  "Security & Maintenance": BASE_ESTIMATES["Support"],
+  "Dedicated Development Teams": BASE_ESTIMATES["Support"],
 };
 
 /* real engagement structure, grounded in what's already stated on
@@ -59,9 +100,9 @@ const FAQS = [
 ];
 
 export default function PricingV2() {
-  const [navScrolled, setNavScrolled] = useState(false);
-  const [navHidden, setNavHidden] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  
+  
+  
   const [openFaq, setOpenFaq] = useState(-1);
   const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
   const [projectType, setProjectType] = useState(PROJECT_TYPES[0]);
@@ -70,27 +111,9 @@ export default function PricingV2() {
   const rootRef = useRef(null);
   const stripRef = useRef(null);
 
-  useEffect(() => {
-    let lastY = window.scrollY;
-    const onScroll = () => {
-      const y = window.scrollY;
-      setNavScrolled(y > 40);
-      setNavHidden(y > lastY && y > 120);
-      lastY = y;
-    };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  
 
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-    const onKey = (e) => { if (e.key === "Escape") setMobileOpen(false); };
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [mobileOpen]);
+  
 
   /* hero intro — masked-line GSAP wipe, matching the other v2 pages */
   useEffect(() => {
@@ -164,56 +187,23 @@ export default function PricingV2() {
     };
   }, []);
 
-  const estimate = useMemo(() => ESTIMATE_MAP[projectType][complexity], [projectType, complexity]);
+  const estimate = useMemo(() => {
+    const bands = ESTIMATE_MAP[projectType];
+    if (!bands) {
+      console.error("Missing estimate for projectType:", projectType);
+      return "TBD";
+    }
+    return bands[complexity];
+  }, [projectType, complexity]);
 
   return (
     <div className="v2" ref={rootRef}>
       <div className="v2-progress" aria-hidden="true"><span /></div>
 
       {/* ══════════ NAV ══════════ */}
-      <nav className={`v2-nav ${navScrolled ? "scrolled" : ""} ${navHidden ? "nav-hidden" : ""}`}>
-        <div className="v2-nav-inner">
-          <a href="/preview-v2" className="v2-nav-logo" aria-label="Codelix — home">
-            <img src={codelixLogo} alt="Codelix" />
-          </a>
-          <div className="v2-nav-links">
-            <div className="v2-nav-dropdown">
-              <a href="/services-v2">Services <span className="v2-nav-dropdown-chevron">▾</span></a>
-              <div className="v2-nav-dropdown-panel">
-                <div className="v2-nav-dropdown-head">
-                  <div>
-                    <p className="v2-nav-dropdown-head-label">Our Services</p>
-                    <p className="v2-nav-dropdown-head-lede">Everything we build, in one place.</p>
-                  </div>
-                  <a href="/services-v2" className="v2-nav-dropdown-head-all">View all services →</a>
-                </div>
-                {FOOTER_SERVICE_KEYWORDS.map((s) => (
-                  <a href={s.path} key={s.label} className="v2-nav-dropdown-card">
-                    <span className="v2-nav-dropdown-title">{s.label}</span>
-                    <span className="v2-nav-dropdown-blurb">{s.blurb}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-            <a href="/work-v2">Work</a>
-            <a href="/industries-v2">Industries</a>
-            <a href="/about-v2">About</a>
-          </div>
-          <div className="v2-nav-actions">
-            <a className="v2-btn v2-btn--filled v2-nav-cta" href="/contact-v2">Book a consultation</a>
-            <button
-              className={`v2-burger ${mobileOpen ? "open" : ""}`}
-              aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileOpen}
-              onClick={() => setMobileOpen((o) => !o)}
-            >
-              <span /><span /><span />
-            </button>
-          </div>
-        </div>
-      </nav>
+      <NavbarV2 />
 
-      <V2MobileDrawer open={mobileOpen} onClose={() => setMobileOpen(false)} />
+      
 
       {/* ══════════ 1 · HERO ══════════ */}
       <header className="sd2-hero">
@@ -391,119 +381,7 @@ export default function PricingV2() {
       </section>
 
       {/* ══════════ FOOTER ══════════ */}
-      <footer className="v2-footer">
-        {/* tagline header — left-aligned stack layout */}
-        <div className="pv2-footer-tagline-stacked">
-          <h2 className="v2-footer-wordmark-small">
-            WE LIVE IN <span className="v2-footer-wordmark-accent">IT</span>
-          </h2>
-          <p>
-            We engineer scalable web, mobile, and AI solutions that empower modern 
-            businesses to innovate, grow, and lead their industries.
-          </p>
-        </div>
-
-        {/* dense keyword strips — everything we build, everything we serve,
-            laid out flat rather than tucked into a dropdown */}
-        <div className="v2-footer-keywords-row">
-          <p className="v2-footer-keywords-label">Services</p>
-          <div className="v2-footer-keywords-list">
-            {FOOTER_SERVICE_KEYWORDS.map((k, i) => (
-              <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
-            ))}
-          </div>
-        </div>
-        <div className="v2-footer-keywords-row">
-          <p className="v2-footer-keywords-label">Industries</p>
-          <div className="v2-footer-keywords-list">
-            {FOOTER_INDUSTRY_KEYWORDS.map((k, i) => (
-              <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
-            ))}
-          </div>
-        </div>
-
-        {/* office / contact info — a single four-up row instead of two
-            stacked 2x2 blocks, so it reads as one info bar */}
-        <div className="v2-footer-cards v2-footer-cards--four">
-          <a
-            className="v2-footer-card"
-            href="https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h5>India (HQ)</h5>
-            <p className="v2-footer-card-addr">
-              A-1308, PNTC — Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat — 380015
-            </p>
-          </a>
-          <div className="v2-footer-card">
-            <h5>Phone</h5>
-            <a className="v2-footer-card-strong" href="tel:+919429269295">+91 94292 69295</a>
-            <a className="v2-footer-card-strong" href="tel:+917490909686">+91 74909 09686</a>
-          </div>
-          <div className="v2-footer-card">
-            <h5>Looking For Jobs</h5>
-            <a className="v2-footer-card-strong" href="/careers-v2">View openings →</a>
-          </div>
-          <div className="v2-footer-card">
-            <h5>HR</h5>
-            <a className="v2-footer-card-strong" href="mailto:hr@codelixitsolutions.com">
-              hr@codelixitsolutions.com
-            </a>
-          </div>
-          <div className="v2-footer-card">
-            <h5>General</h5>
-            <a className="v2-footer-card-strong" href="mailto:info@codelixitsolutions.com">
-              info@codelixitsolutions.com
-            </a>
-          </div>
-          <div className="v2-footer-card">
-            <h5>For Sales</h5>
-            <a className="v2-footer-card-strong" href="mailto:sales@codelixitsolutions.com">
-              sales@codelixitsolutions.com
-            </a>
-          </div>
-        </div>
-
-        {/* socials + back-to-top, same row as the reference */}
-        <div className="v2-footer-social">
-          <div className="v2-footer-social-links">
-            <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href="https://www.facebook.com/profile.php?id=61561748130641" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a href="#" target="_blank" rel="noopener noreferrer">Behance</a>
-            <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
-          </div>
-          <div className="v2-footer-actions">
-            <ClutchWidget className="v2-desktop-only" />
-            <GoogleReviewButton className="v2-desktop-only" />
-            <button
-              type="button"
-              className="v2-footer-top"
-              aria-label="Back to top"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
-              ↑
-            </button>
-          </div>
-        </div>
-        <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
-          <ClutchWidget />
-          <GoogleReviewButton />
-        </div>
-        <div className="v2-footer-bottom">
-          <a href="/preview-v2" className="v2-footer-bottom-brand" aria-label="Codelix — home">
-            <img src={codelixLogo} alt="Codelix" />
-          </a>
-          <span className="v2-footer-bottom-copy">© 2026 Codelix IT Solutions — All Copyright Reserved</span>
-          <div className="v2-footer-legal">
-            <a href="/sitemap-v2">Sitemap</a>
-            <a href="/refund-policy-v2">Refund Policy</a>
-            <a href="/privacy-policy-v2">Privacy</a>
-            <a href="/terms-of-service-v2">Terms</a>
-          </div>
-        </div>
-      </footer>
+      <FooterV2 />
     </div>
   );
 }

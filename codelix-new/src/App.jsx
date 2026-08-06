@@ -60,6 +60,7 @@ const NotFound = lazy(() => import("./MyComponents/NotFound/NotFound"));
 const HomepageV2 = lazy(() => import("./MyComponents/HomepageV2/HomepageV2"));
 const ServicesV2 = lazy(() => import("./MyComponents/ServicesV2/ServicesV2"));
 const ServiceDetailV2 = lazy(() => import("./MyComponents/ServiceDetailV2/ServiceDetailV2"));
+const AdditionalServiceDetailV2 = lazy(() => import("./MyComponents/ServiceDetailV2/AdditionalServiceDetailV2"));
 const UIUXDesignV2 = lazy(() => import("./MyComponents/UIUXDesignV2/UIUXDesignV2"));
 const DataAnalyticsV2 = lazy(() => import("./MyComponents/DataAnalyticsV2/DataAnalyticsV2"));
 const SupportManagedServicesV2 = lazy(() => import("./MyComponents/SupportManagedServicesV2/SupportManagedServicesV2"));
@@ -149,6 +150,12 @@ const AppRoutes = () => {
           <Route path="/services-v2/ai-development" element={<AIDevelopmentV2 />} />
           <Route path="/services-v2/data-analytics" element={<DataAnalyticsV2 />} />
           <Route path="/services-v2/support-managed-services" element={<SupportManagedServicesV2 />} />
+          {/* 18 additional service pages (footer-only, see footerData.js
+              FOOTER_MORE_SERVICES) — one generic template driven by slug,
+              same pattern as CaseStudyDetailV2. React Router ranks the
+              literal paths above by specificity, so this dynamic catch
+              only matches slugs that aren't one of the core 8 services. */}
+          <Route path="/services-v2/:slug" element={<AdditionalServiceDetailV2 />} />
           <Route path="/about-v2" element={<AboutV2 />} />
           <Route path="/contact-v2" element={<ContactV2 />} />
           <Route path="/industries-v2" element={<IndustriesV2 />} />

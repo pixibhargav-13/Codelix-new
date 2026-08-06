@@ -7,7 +7,7 @@ import {
 /* Homepage, Services, Work, and Industries are already reachable from the
    logo and the centered nav links, so this menu carries everything else —
    every remaining real page, not a curated subset. */
-import { FOOTER_SERVICE_KEYWORDS } from "./footerData";
+import { NAVBAR_SERVICES_HIERARCHY } from "./footerData";
 
 const SERVICES_ICON = LayoutGrid;
 
@@ -56,10 +56,17 @@ export default function V2MobileDrawer({ open, onClose }) {
               <a href="/services-v2" onClick={onClose} className="v2-drawer-sublink-all">
                 Overview (All Services)
               </a>
-              {FOOTER_SERVICE_KEYWORDS.map((s) => (
-                <a key={s.label} href={s.path} onClick={onClose}>
-                  {s.label}
-                </a>
+              {NAVBAR_SERVICES_HIERARCHY.map((category) => (
+                <div key={category.title} className="v2-drawer-sublink-category">
+                  <a href={category.path} onClick={onClose} className="v2-drawer-sublink-title">
+                    {category.title}
+                  </a>
+                  {category.items.map((item) => (
+                    <a key={item.label} href={item.path} onClick={onClose} className="v2-drawer-sublink-item">
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
               ))}
             </div>
           </div>

@@ -1,14 +1,14 @@
 import { Smartphone, Gauge, Bell, ShieldCheck, Wifi, Wrench, CalendarCheck, Lock, Eye, Check, BatteryLow, RefreshCcw, Store as StoreOff, Ban, Bug, LayoutGrid, Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark, FileCode2, BookOpen, KeyRound, Palette, Server, GitBranch, Globe, ShoppingCart, Code2, Sparkles, BarChart3, LifeBuoy, Minus, X, Phone, FileText, PlayCircle, Cloud } from "lucide-react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 
 /* v2 design system + shared data — same source of truth as the other v2 pages */
 
 import "../HomepageV2/HomepageV2.css";
-import V2MobileDrawer from "../HomepageV2/V2MobileDrawer";
+
 import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
-import codelixLogo from "../Images/codelix-logo.png";
-import { FOOTER_SERVICE_KEYWORDS, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
+import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import CtaVisual from "../HomepageV2/CtaVisual";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
@@ -26,9 +26,9 @@ import techFigma from "../Images/figma.png";
 
 /* real project screenshots — shared source of truth with WorkV2/CaseStudyV2 */
 import { PROJECTS } from "../WorkV2/projectsData";
-import GoogleReviewButton from "../Shared/GoogleReviewButton";
-import ClutchWidget from "../Shared/ClutchWidget";
 import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
+import NavbarV2 from "../Shared/NavbarV2";
+
 
 const APP_STACK = [
   { src: techFlutter, name: "Flutter" },
@@ -322,9 +322,9 @@ const METRICS = [
 ];
 
 export default function ApplicationDevelopmentV2() {
-  const [navScrolled, setNavScrolled] = useState(false);
-  const [navHidden, setNavHidden] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  
+  
+  
   const [openFaq, setOpenFaq] = useState(-1);
   const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
   const [incActive, setIncActive] = useState(0);
@@ -353,27 +353,9 @@ export default function ApplicationDevelopmentV2() {
       return next;
     });
 
-  useEffect(() => {
-    let lastY = window.scrollY;
-    const onScroll = () => {
-      const y = window.scrollY;
-      setNavScrolled(y > 40);
-      setNavHidden(y > lastY && y > 120);
-      lastY = y;
-    };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  
 
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-    const onKey = (e) => { if (e.key === "Escape") setMobileOpen(false); };
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [mobileOpen]);
+  
 
   useEffect(() => {
     const shells = rootRef.current.querySelectorAll(".v2-method-shell");
@@ -554,49 +536,9 @@ export default function ApplicationDevelopmentV2() {
       <div className="v2-progress" aria-hidden="true"><span /></div>
 
       {/* ══════════ NAV ══════════ */}
-      <nav className={`v2-nav ${navScrolled ? "scrolled" : ""} ${navHidden ? "nav-hidden" : ""}`}>
-        <div className="v2-nav-inner">
-          <a href="/preview-v2" className="v2-nav-logo" aria-label="Codelix — home">
-            <img src={codelixLogo} alt="Codelix" />
-          </a>
-          <div className="v2-nav-links">
-            <div className="v2-nav-dropdown">
-              <a href="/services-v2">Services <span className="v2-nav-dropdown-chevron">▾</span></a>
-              <div className="v2-nav-dropdown-panel">
-                <div className="v2-nav-dropdown-head">
-                  <div>
-                    <p className="v2-nav-dropdown-head-label">Our Services</p>
-                    <p className="v2-nav-dropdown-head-lede">Everything we build, in one place.</p>
-                  </div>
-                  <a href="/services-v2" className="v2-nav-dropdown-head-all">View all services →</a>
-                </div>
-                {FOOTER_SERVICE_KEYWORDS.map((s) => (
-                  <a href={s.path} key={s.label} className="v2-nav-dropdown-card">
-                    <span className="v2-nav-dropdown-title">{s.label}</span>
-                    <span className="v2-nav-dropdown-blurb">{s.blurb}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-            <a href="/work-v2">Work</a>
-            <a href="/industries-v2">Industries</a>
-            <a href="/about-v2">About</a>
-          </div>
-          <div className="v2-nav-actions">
-            <a className="v2-btn v2-btn--filled v2-nav-cta" href="/contact-v2">Book a consultation</a>
-            <button
-              className={`v2-burger ${mobileOpen ? "open" : ""}`}
-              aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileOpen}
-              onClick={() => setMobileOpen((o) => !o)}
-            >
-              <span /><span /><span />
-            </button>
-          </div>
-        </div>
-        </nav>
+      <NavbarV2 />
 
-      <V2MobileDrawer open={mobileOpen} onClose={() => setMobileOpen(false)} />
+      
 
       {/* ══════════ 1 · HERO ══════════ */}
       <header className="sd2-hero">
@@ -1220,122 +1162,7 @@ export default function ApplicationDevelopmentV2() {
       </section>
 
       {/* ══════════ FOOTER ══════════ */}
-            <footer className="v2-footer">
-        {/* tagline header — our own real line ("we live in it," already used
-            in the marquee elsewhere on the site) instead of a borrowed one */}
-        <div className="v2-footer-tagline">
-          <h2 className="v2-footer-wordmark-small">
-            WE LIVE
-            <br />
-            IN <span className="v2-footer-wordmark-accent">IT</span>
-          </h2>
-          <p className="v2-footer-tagline-body">
-            We design and build web, mobile, and AI systems for businesses that
-            intend to still be running them in five years.
-          </p>
-        </div>
-
-        {/* dense keyword strips — everything we build, everything we serve,
-            laid out flat rather than tucked into a dropdown */}
-          <div className="v2-footer-keywords-row">
-            <p className="v2-footer-keywords-label">Services</p>
-            <div className="v2-footer-keywords-list">
-              {FOOTER_SERVICE_KEYWORDS.map((k, i) => (
-                <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
-              ))}
-            </div>
-          </div>
-          <div className="v2-footer-keywords-row">
-            <p className="v2-footer-keywords-label">Industries</p>
-            <div className="v2-footer-keywords-list">
-              {FOOTER_INDUSTRY_KEYWORDS.map((k, i) => (
-                <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
-              ))}
-            </div>
-          </div>
-
-        {/* office / contact info — a single four-up row instead of two
-            stacked 2x2 blocks, so it reads as one info bar */}
-        <div className="v2-footer-cards v2-footer-cards--four">
-          <a
-            className="v2-footer-card"
-            href="https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h5>India (HQ)</h5>
-            <p className="v2-footer-card-addr">
-              A-1308, PNTC — Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat — 380015
-            </p>
-          </a>
-          <div className="v2-footer-card">
-            <h5>Phone</h5>
-            <a className="v2-footer-card-strong" href="tel:+919429269295">+91 94292 69295</a>
-            <a className="v2-footer-card-strong" href="tel:+917490909686">+91 74909 09686</a>
-          </div>
-          <div className="v2-footer-card">
-            <h5>Looking For Jobs</h5>
-            <a className="v2-footer-card-strong" href="/careers-v2">View openings →</a>
-          </div>
-          <div className="v2-footer-card">
-            <h5>HR</h5>
-            <a className="v2-footer-card-strong" href="mailto:hr@codelixitsolutions.com">
-              hr@codelixitsolutions.com
-            </a>
-          </div>
-          <div className="v2-footer-card">
-            <h5>General</h5>
-            <a className="v2-footer-card-strong" href="mailto:info@codelixitsolutions.com">
-              info@codelixitsolutions.com
-            </a>
-          </div>
-          <div className="v2-footer-card">
-            <h5>For Sales</h5>
-            <a className="v2-footer-card-strong" href="mailto:sales@codelixitsolutions.com">
-              sales@codelixitsolutions.com
-            </a>
-          </div>
-        </div>
-
-        {/* socials + back-to-top, same row as the reference */}
-        <div className="v2-footer-social">
-          <div className="v2-footer-social-links">
-            <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href="https://www.facebook.com/profile.php?id=61561748130641" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a href="#" target="_blank" rel="noopener noreferrer">Behance</a>
-            <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
-          </div>
-          <div className="v2-footer-actions">
-            <ClutchWidget className="v2-desktop-only" />
-            <GoogleReviewButton className="v2-desktop-only" />
-            <button
-              type="button"
-              className="v2-footer-top"
-              aria-label="Back to top"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
-              ↑
-            </button>
-          </div>
-        </div>
-        <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
-          <ClutchWidget />
-          <GoogleReviewButton />
-        </div>
-        <div className="v2-footer-bottom">
-          <a href="/preview-v2" className="v2-footer-bottom-brand" aria-label="Codelix — home">
-            <img src={codelixLogo} alt="Codelix" />
-          </a>
-          <span className="v2-footer-bottom-copy">© 2026 Codelix IT Solutions — All Copyright Reserved</span>
-          <div className="v2-footer-legal">
-            <a href="/sitemap-v2">Sitemap</a>
-            <a href="/refund-policy-v2">Refund Policy</a>
-            <a href="/privacy-policy-v2">Privacy</a>
-            <a href="/terms-of-service-v2">Terms</a>
-          </div>
-        </div>
-      </footer>
+            <FooterV2 />
     </div>
   );
 }

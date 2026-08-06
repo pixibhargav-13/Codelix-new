@@ -13,7 +13,7 @@ import {
 /* v2 design system + shared data — same source of truth as the other v2 pages */
 
 import "../HomepageV2/HomepageV2.css";
-import V2MobileDrawer from "../HomepageV2/V2MobileDrawer";
+
 import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import codelixLogo from "../Images/codelix-logo.png";
 import codelixText from "../Images/codelix-footer-logo.png";
@@ -310,7 +310,7 @@ function ScrollSentence({ words, tone }) {
 
 export default function ServiceDetailV2() {
   const [navScrolled, setNavScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  
   const [openFaq, setOpenFaq] = useState(-1);
   const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
   const [incActive, setIncActive] = useState(0);
@@ -347,15 +347,7 @@ export default function ServiceDetailV2() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-    const onKey = (e) => { if (e.key === "Escape") setMobileOpen(false); };
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [mobileOpen]);
+  
 
   /* sticky heading bands only show their rule once actually stuck */
   useEffect(() => {
@@ -572,7 +564,7 @@ export default function ServiceDetailV2() {
         </div>
       </nav>
 
-      <V2MobileDrawer open={mobileOpen} onClose={() => setMobileOpen(false)} />
+      
 
       {/* ══════════ 1 · HERO ══════════ */}
       <header className="sd2-hero">
@@ -1180,73 +1172,7 @@ export default function ServiceDetailV2() {
       </section>
 
       {/* ══════════ FOOTER ══════════ */}
-      <footer className="v2-footer">
-        <div className="v2-footer-marquee">
-          <div className="v2-footer-marquee-track">
-            {Array.from({ length: 12 }).map((_, i) => (
-              <span key={i}>WE LIVE IN IT <em>•</em></span>
-            ))}
-          </div>
-        </div>
-        <div className="v2-footer-grid">
-          <div className="v2-footer-col">
-            <h5>Company</h5>
-            <a href="/preview-v2">Codelix</a>
-            <a href="/about-v2">About</a>
-            <a href="/team-v2">Team</a>
-            <a href="/work-v2">Work</a>
-            <a href="/case-study-v2">Case Studies</a>
-            <a href="/blog-v2">Blog</a>
-            <a href="/industries-v2">Industries</a>
-            <a href="/process-v2">Process</a>
-            <a href="/contact-v2">Contact</a>
-          </div>
-          <div className="v2-footer-col">
-            <h5>Services</h5>
-            <a href="/services-v2/web-development">Web Development</a>
-            <a href="/services-v2">Application Development</a>
-            <a href="/services-v2/ui-ux-design">UI/UX Design</a>
-            <a href="/services-v2">E-Commerce Solutions</a>
-            <a href="/services-v2">Custom Software</a>
-            <a href="/services-v2">AI Development</a>
-            <a href="/services-v2/data-analytics">Data Analytics</a>
-          </div>
-          <div className="v2-footer-col">
-            <h5>Resources</h5>
-            <a href="/pricing-v2">Pricing</a>
-            <a href="/technologies-v2">Technologies</a>
-            <a href="/careers-v2">Careers</a>
-            <a href="/faq-v2">FAQ</a>
-            <a href="/sitemap-v2">Sitemap</a>
-          </div>
-          <div className="v2-footer-col">
-            <h5>Contact</h5>
-            <a href="mailto:sales@codelixitsolutions.com">sales@codelixitsolutions.com</a>
-            <a href="tel:+919429269295">+91 94292 69295</a>
-            <a href="tel:+917490909686">+91 74909 09686</a>
-            <a className="v2-footer-address"
-              href="https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.0095811,72.5203036,17z"
-              target="_blank" rel="noopener noreferrer">
-              A-1308, PNTC — Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat — 380015
-            </a>
-            <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
-          </div>
-        </div>
-        <div className="v2-footer-bottom">
-          <span>© 2026 Codelix IT Solutions — All Copyright Reserved</span>
-          <div className="v2-footer-legal">
-            <a href="/privacy-policy-v2">Privacy Policy</a>
-            <a href="/terms-of-service-v2">Terms of service</a>
-            <a href="/refund-policy-v2">Refund Policy</a>
-          </div>
-        </div>
-        <div className="codelix-large-text" style={{ padding: '0 var(--pad-x)' }}>
-          <div className="codelix-text">
-            <img src={codelixText} alt="Codelix" style={{ width: '100%', display: 'block', margin: '0 auto' }} />
-          </div>
-        </div>
-      </footer>
+      <FooterV2 />
     </div>
   );
 }

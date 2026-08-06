@@ -29,7 +29,8 @@ import ClutchWidget from "../Shared/ClutchWidget";
 import { useTestimonials } from "../../data/useTestimonials";
 
 import "./HomepageV2.css";
-import V2MobileDrawer from "./V2MobileDrawer";
+import NavbarV2 from "../Shared/NavbarV2";
+import FooterV2 from "../Shared/FooterV2";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -113,13 +114,14 @@ const SYSTEMS = [
 ];
 
 const SERVICES = [
-  { n: "01", tag: "Development", title: "Web Development", body: "Modern websites and web applications tailored to your business needs.", link: "/services-v2/web-development" },
-  { n: "02", tag: "Development", title: "Application Development", body: "Mobile apps, SaaS platforms, and cloud-native solutions built from scratch.", link: "/services-v2/application-development" },
-  { n: "03", tag: "Design", title: "UI/UX Design", body: "UX research, wireframes, prototypes, design systems, and accessibility.", link: "/services-v2/ui-ux-design" },
-  { n: "04", tag: "Commerce", title: "E-Commerce Solutions", body: "Custom stores, B2B commerce platforms, marketplaces, and payment integrations.", link: "/services-v2/e-commerce-solutions" },
-  { n: "05", tag: "Development", title: "Custom Software Development", body: "ERP, CRM, workflow automation, legacy modernization, and integrations.", link: "/services-v2/custom-software-development" },
-  { n: "06", tag: "Applied AI", title: "AI Development", body: "AI agents, chatbots, generative AI, and workflow automation that works.", link: "/services-v2/ai-development" },
-  { n: "07", tag: "Analytics", title: "Data Analytics", body: "Dashboards, reporting, data visualization, and predictive analytics.", link: "/services-v2/data-analytics" },
+  { n: "01", tag: "Development", title: "Web Development", items: [{label: "Performance Optimization", path: "/services-v2/performance-optimization"}], link: "/services-v2/web-development" },
+  { n: "02", tag: "Development", title: "Application Development", items: [{label: "SaaS Product Development", path: "/services-v2/saas-product-development"}], link: "/services-v2/application-development" },
+  { n: "03", tag: "Design", title: "UI/UX Design", items: [{label: "UX Research & Design Systems", path: "/services-v2/ux-research-design-systems"}], link: "/services-v2/ui-ux-design" },
+  { n: "04", tag: "Commerce", title: "E-Commerce Solutions", items: [{label: "Marketplace Development", path: "/services-v2/marketplace-development"}, {label: "Payment Integration Services", path: "/services-v2/payment-integration-services"}], link: "/services-v2/e-commerce-solutions" },
+  { n: "05", tag: "Development", title: "Custom Software Development", items: [{label: "ERP & CRM Development", path: "/services-v2/erp-crm-development"}, {label: "API Development & Integration", path: "/services-v2/api-development-integration"}, {label: "Legacy System Modernization", path: "/services-v2/legacy-system-modernization"}], link: "/services-v2/custom-software-development" },
+  { n: "06", tag: "Applied AI", title: "AI Development", items: [{label: "AI Agent Development", path: "/services-v2/ai-agent-development"}, {label: "Generative AI Solutions", path: "/services-v2/generative-ai-solutions"}, {label: "Workflow Automation", path: "/services-v2/workflow-automation"}], link: "/services-v2/ai-development" },
+  { n: "07", tag: "Analytics", title: "Data Analytics", items: [{label: "Business Intelligence Solutions", path: "/services-v2/business-intelligence-solutions"}, {label: "Predictive Analytics", path: "/services-v2/predictive-analytics"}, {label: "Data Engineering", path: "/services-v2/data-engineering"}], link: "/services-v2/data-analytics" },
+  { n: "08", tag: "Support", title: "Support & Managed Services", items: [{label: "Cloud Solutions & Migration", path: "/services-v2/cloud-solutions-migration"}, {label: "Cloud Infrastructure Services", path: "/services-v2/cloud-infrastructure-services"}, {label: "Security & Maintenance", path: "/services-v2/security-maintenance"}, {label: "Dedicated Development Teams", path: "/services-v2/dedicated-development-teams"}], link: "/services-v2/support-managed-services" },
 ];
 
 /* headline numbers — the value is the count-up target, suffix rides along */
@@ -795,47 +797,7 @@ export default function HomepageV2() {
       </div>
 
       {/* ══════════ NAV ══════════ */}
-      <nav className={`v2-nav ${navScrolled ? "scrolled" : ""} ${navHidden ? "nav-hidden" : ""}`}>
-        <div className="v2-nav-inner">
-          <a href="/" className="v2-nav-logo" aria-label="Codelix — home">
-            <img src={codelixLogo} alt="Codelix" />
-          </a>
-          <div className="v2-nav-links">
-            <div className="v2-nav-dropdown">
-              <a href="/services-v2">Services <span className="v2-nav-dropdown-chevron">▾</span></a>
-              <div className="v2-nav-dropdown-panel">
-                <div className="v2-nav-dropdown-head">
-                  <div>
-                    <p className="v2-nav-dropdown-head-label">Our Services</p>
-                    <p className="v2-nav-dropdown-head-lede">Everything we build, in one place.</p>
-                  </div>
-                  <a href="/services-v2" className="v2-nav-dropdown-head-all">View all services →</a>
-                </div>
-                {FOOTER_SERVICE_KEYWORDS.map((s) => (
-                  <a href={s.path} key={s.label} className="v2-nav-dropdown-card">
-                    <span className="v2-nav-dropdown-title">{s.label}</span>
-                    <span className="v2-nav-dropdown-blurb">{s.blurb}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-            <a href="/work-v2">Work</a>
-            <a href="/industries-v2">Industries</a>
-          </div>
-          <div className="v2-nav-actions">
-            <a className="v2-btn v2-btn--filled v2-nav-cta" href="/contact-v2">Book a consultation</a>
-            <button
-              className={`v2-burger ${mobileOpen ? "open" : ""}`}
-              aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileOpen}
-              onClick={() => setMobileOpen((o) => !o)}
-            >
-              <span /><span /><span />
-            </button>
-          </div>
-        </div>
-      </nav>
-      <V2MobileDrawer open={mobileOpen} onClose={() => setMobileOpen(false)} />
+      <NavbarV2 />
 
       {/* ══════════ 1 · HERO — Codelix's own composition ══════════ */}
       <header className="v2-hero">
@@ -1121,7 +1083,7 @@ export default function HomepageV2() {
         <div className="v2-method-head">
           <h2 className="v2-method-heading">What We Provide.</h2>
           <p className="v2-method-lede">
-            Seven services, one delivery standard — the same process, discipline,
+            Eight services, one delivery standard — the same process, discipline,
             and ownership handoff on every engagement.
           </p>
         </div>
@@ -1138,7 +1100,23 @@ export default function HomepageV2() {
                 <div className="v2-svc-bottom">
                   <div className="v2-svc-text">
                     <h3 className="v2-svc-title">{s.title}</h3>
-                    <p className="v2-svc-body">{s.body}</p>
+                    {s.items && (
+                      <ul className="v2-svc-sublist">
+                        {s.items.map((sub, i) => (
+                          <li key={i}>
+                            <span 
+                              className="v2-svc-sublink" 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                navigate(sub.path);
+                              }}
+                            >
+                              {sub.label}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                   <div className="v2-svc-arrow">→</div>
                 </div>
@@ -1213,6 +1191,18 @@ export default function HomepageV2() {
                   <span className="v2-quote-spotlight-role">{t.position}</span>
                 </footer>
               </blockquote>
+            ))}
+          </div>
+
+          <div className="v2-quote-dots">
+            {TESTIMONIALS.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                className={`v2-quote-dot ${activeQuote === i ? "is-active" : ""}`}
+                onClick={() => setActiveQuote(i)}
+                aria-label={`Go to review ${i + 1}`}
+              />
             ))}
           </div>
         </div>
@@ -1303,123 +1293,7 @@ export default function HomepageV2() {
       {/* ══════════ FOOTER — mirrors the live site's real footer content
           (Footer.jsx): same columns, same links, same contact details, the
           "WE LIVE IN IT" marquee, and the oversized wordmark at the base ══════════ */}
-      <footer className="v2-footer">
-        {/* tagline header — our own real line ("we live in it," already used
-            in the marquee elsewhere on the site) instead of a borrowed one */}
-        <div className="v2-footer-tagline">
-          <h2 className="v2-footer-wordmark-small">
-            WE LIVE
-            <br />
-            IN <span className="v2-footer-wordmark-accent">IT</span>
-          </h2>
-          <p className="v2-footer-tagline-body">
-            We design and build web, mobile, and AI systems for businesses that
-            intend to still be running them in five years.
-          </p>
-        </div>
-
-        {/* dense keyword strips — everything we build, everything we serve,
-            laid out flat rather than tucked into a dropdown */}
-          <div className="v2-footer-keywords-row">
-            <p className="v2-footer-keywords-label">Services</p>
-            <div className="v2-footer-keywords-list">
-              {FOOTER_SERVICE_KEYWORDS.map((k, i) => (
-                <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
-              ))}
-            </div>
-          </div>
-          <div className="v2-footer-keywords-row">
-            <p className="v2-footer-keywords-label">Industries</p>
-            <div className="v2-footer-keywords-list">
-              {FOOTER_INDUSTRY_KEYWORDS.map((k, i) => (
-                <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
-              ))}
-            </div>
-          </div>
-
-        {/* office / contact info — a single four-up row instead of two
-            stacked 2x2 blocks, so it reads as one info bar */}
-        <div className="v2-footer-cards v2-footer-cards--four">
-          <a
-            className="v2-footer-card"
-            href="https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h5>India (HQ)</h5>
-            <p className="v2-footer-card-addr">
-              A-1308, PNTC — Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat — 380015
-            </p>
-          </a>
-          <div className="v2-footer-card">
-            <h5>Phone</h5>
-            <a className="v2-footer-card-strong" href="tel:+919429269295">+91 94292 69295</a>
-            <a className="v2-footer-card-strong" href="tel:+917490909686">+91 74909 09686</a>
-          </div>
-          <div className="v2-footer-card">
-            <h5>Looking For Jobs</h5>
-            <a className="v2-footer-card-strong" href="/careers-v2">View openings →</a>
-          </div>
-          <div className="v2-footer-card">
-            <h5>HR</h5>
-            <a className="v2-footer-card-strong" href="mailto:hr@codelixitsolutions.com">
-              hr@codelixitsolutions.com
-            </a>
-          </div>
-          <div className="v2-footer-card">
-            <h5>General</h5>
-            <a className="v2-footer-card-strong" href="mailto:info@codelixitsolutions.com">
-              info@codelixitsolutions.com
-            </a>
-          </div>
-          <div className="v2-footer-card">
-            <h5>For Sales</h5>
-            <a className="v2-footer-card-strong" href="mailto:sales@codelixitsolutions.com">
-              sales@codelixitsolutions.com
-            </a>
-          </div>
-        </div>
-
-        {/* socials + back-to-top, same row as the reference */}
-        <div className="v2-footer-social">
-          <div className="v2-footer-social-links">
-            <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href="https://www.facebook.com/profile.php?id=61561748130641" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a href="#" target="_blank" rel="noopener noreferrer">Behance</a>
-            <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
-          </div>
-          <div className="v2-footer-actions">
-            <ClutchWidget className="v2-desktop-only" />
-            <GoogleReviewButton className="v2-desktop-only" />
-            <button
-              type="button"
-              className="v2-footer-top"
-              aria-label="Back to top"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
-              ↑
-            </button>
-          </div>
-        </div>
-        <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
-          <ClutchWidget />
-          <GoogleReviewButton />
-        </div>
-
-        <div className="v2-footer-bottom">
-          <a href="/preview-v2" className="v2-footer-bottom-brand" aria-label="Codelix — home">
-            <img src={codelixLogo} alt="Codelix" />
-          </a>
-          <span className="v2-footer-bottom-copy">© 2026 Codelix IT Solutions — All Copyright Reserved</span>
-          <div className="v2-footer-legal">
-            <a href="/sitemap-v2">Sitemap</a>
-            <a href="/refund-policy-v2">Refund Policy</a>
-            <a href="/privacy-policy-v2">Privacy</a>
-            <a href="/terms-of-service-v2">Terms</a>
-          </div>
-        </div>
-      </footer>
+      <FooterV2 />
     </div>
   );
 }

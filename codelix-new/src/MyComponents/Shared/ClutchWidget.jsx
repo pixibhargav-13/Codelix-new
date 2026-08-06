@@ -4,33 +4,38 @@ export default function ClutchWidget({ className = "" }) {
   const innerRef = useRef(null);
 
   useEffect(() => {
-    // the widget's own script only initialises on a document
-    // "readystatechange" event, which has already fired by the time this
-    // script loads in a client-rendered SPA — so we call its Init() directly
+    let checkInterval;
+    
     const initClutch = () => {
       if (window.CLUTCHCO && typeof window.CLUTCHCO.Init === "function") {
-        window.CLUTCHCO.Init();
+        const widgetDiv = innerRef.current?.querySelector('.clutch-widget');
+        if (widgetDiv && !widgetDiv.querySelector('iframe')) {
+          window.CLUTCHCO.Init();
+        } else if (widgetDiv && widgetDiv.querySelector('iframe')) {
+          // If iframe is already injected, stop checking
+          clearInterval(checkInterval);
+        }
       }
     };
 
     const existing = document.getElementById('clutch-widget-script');
-    if (existing) {
-      initClutch();
-    } else {
+    if (!existing) {
       const script = document.createElement('script');
       script.id = 'clutch-widget-script';
       script.type = 'text/javascript';
       script.src = 'https://widget.clutch.co/static/js/widget.js';
       script.async = true;
-      script.onload = initClutch;
       document.body.appendChild(script);
     }
 
-    // Clutch's iframe ships at a fixed, oversized natural size that also
-    // varies run to run and resizes in several steps as it loads — instead
-    // of forcing it into a preset box (which clips whenever the box guesses
-    // wrong), shrink it by a fixed factor and size the box to match the
-    // *scaled* content exactly, so it's always fully visible.
+    // Repeatedly try to initialize the widget until the iframe appears
+    checkInterval = setInterval(initClutch, 500);
+    
+    // Fallback: stop checking after 10 seconds to prevent infinite polling
+    const timeoutId = setTimeout(() => {
+      clearInterval(checkInterval);
+    }, 10000);
+
     const el = innerRef.current;
     const wrapper = el?.parentElement;
     if (!el || !wrapper) return;
@@ -61,10 +66,11 @@ export default function ClutchWidget({ className = "" }) {
         <div
           className="clutch-widget"
           data-url="https://widget.clutch.co"
-          data-widget-type="2"
-          data-height="45"
+          data-widget-type="1"
+          data-height="40"
           data-nofollow="false"
           data-expandifr="true"
+          data-scale="100"
           data-clutchcompany-id="2624895"
         />
       </div>
