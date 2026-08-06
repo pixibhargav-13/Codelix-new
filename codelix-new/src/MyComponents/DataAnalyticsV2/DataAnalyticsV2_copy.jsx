@@ -13,7 +13,7 @@ import {
 /* v2 design system + shared data — same source of truth as the other v2 pages */
 
 import "../HomepageV2/HomepageV2.css";
-import V2MobileDrawer from "../HomepageV2/V2MobileDrawer";
+
 import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import codelixLogo from "../Images/codelix-logo.png";
 import codelixText from "../Images/codelix-footer-logo.png";
@@ -287,7 +287,7 @@ function ScrollSentence({ words, tone }) {
 
 export default function DataAnalyticsV2() {
   const [navScrolled, setNavScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  
   const [openFaq, setOpenFaq] = useState(-1);
   const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
   const [incActive, setIncActive] = useState(0);
@@ -322,15 +322,7 @@ export default function DataAnalyticsV2() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-    const onKey = (e) => { if (e.key === "Escape") setMobileOpen(false); };
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [mobileOpen]);
+  
 
   /* sticky heading bands only show their rule once actually stuck */
   useEffect(() => {
@@ -545,7 +537,7 @@ export default function DataAnalyticsV2() {
         </div>
       </nav>
 
-      <V2MobileDrawer open={mobileOpen} onClose={() => setMobileOpen(false)} />
+      
 
       {/* ══════════ 1 · HERO ══════════ */}
       <header className="sd2-hero">
@@ -1073,48 +1065,7 @@ export default function DataAnalyticsV2() {
       </section>
 
       {/* ══════════ FOOTER ══════════ */}
-      <footer className="v2-footer">
-        <div className="v2-footer-inner">
-          <div className="v2-footer-top">
-            <div className="v2-footer-brand">
-              <img src={codelixText} alt="Codelix" className="v2-footer-logo" />
-              <p className="v2-footer-tag">Crafting digital experiences that perform.</p>
-            </div>
-            <div className="v2-footer-links">
-              <div className="v2-footer-col">
-                <h4>Services</h4>
-                <a href="/services-v2/web-development">Web Development</a>
-                <a href="/services/application-development">App Development</a>
-                <a href="/services-v2/ui-ux-design">UI/UX Design</a>
-                <a href="/services/e-commerce-solutions">E-Commerce</a>
-                <a href="/services/custom-software-development">Custom Software</a>
-                <a href="/services/ai-development">AI Development</a>
-                <a href="/services-v2/data-analytics">Data Analytics</a>
-              </div>
-              <div className="v2-footer-col">
-                <h4>Company</h4>
-                <a href="/about-v2">About</a>
-                <a href="/work-v2">Our Work</a>
-                <a href="/industries-v2">Industries</a>
-                <a href="/process-v2">Process</a>
-              </div>
-              <div className="v2-footer-col">
-                <h4>Connect</h4>
-                <a href="/contact-v2">Contact Us</a>
-                <a href="https://linkedin.com">LinkedIn</a>
-                <a href="https://twitter.com">Twitter</a>
-              </div>
-            </div>
-          </div>
-          <div className="v2-footer-bottom">
-            <p>© {new Date().getFullYear()} Codelix. All rights reserved.</p>
-            <div className="v2-footer-legal">
-              <a href="/privacy">Privacy Policy</a>
-              <a href="/terms">Terms of Service</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <FooterV2 />
     </div>
   );
 }
