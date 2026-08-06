@@ -13,6 +13,7 @@ import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import codelixLogo from "../Images/codelix-logo.png";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import manasImg from "../Images/manas_vadodaria.jpeg";
+import kushalImg from "../Images/kushal.jpeg";
 import CtaVisual from "../HomepageV2/CtaVisual";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
@@ -40,7 +41,7 @@ const LEADERSHIP = [
     name: "Kushal Mungalpara",
     title: "Co-Founder",
     initials: "KM",
-    photo: "/images/team/kushal-mungalpara.jpg",
+    photo: kushalImg,
     bio: "Works alongside Manas turning visionary ideas into shipped systems — hands-on across the technical and delivery side of every Codelix engagement.",
     linkedin: "https://www.linkedin.com/in/kushal-mungalpara-60805227b/",
   },
@@ -204,7 +205,7 @@ export default function TeamV2() {
             </button>
           </div>
         </div>
-        </nav>
+      </nav>
 
       <V2MobileDrawer open={mobileOpen} onClose={() => setMobileOpen(false)} />
 
@@ -377,7 +378,7 @@ export default function TeamV2() {
       </section>
 
       {/* ══════════ FOOTER ══════════ */}
-            <footer className="v2-footer">
+      <footer className="v2-footer">
         {/* tagline header — our own real line ("we live in it," already used
             in the marquee elsewhere on the site) instead of a borrowed one */}
         <div className="v2-footer-tagline">
@@ -394,22 +395,22 @@ export default function TeamV2() {
 
         {/* dense keyword strips — everything we build, everything we serve,
             laid out flat rather than tucked into a dropdown */}
-          <div className="v2-footer-keywords-row">
-            <p className="v2-footer-keywords-label">Services</p>
-            <div className="v2-footer-keywords-list">
-              {FOOTER_SERVICE_KEYWORDS.map((k, i) => (
-                <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
-              ))}
-            </div>
+        <div className="v2-footer-keywords-row">
+          <p className="v2-footer-keywords-label">Services</p>
+          <div className="v2-footer-keywords-list">
+            {FOOTER_SERVICE_KEYWORDS.map((k, i) => (
+              <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
+            ))}
           </div>
-          <div className="v2-footer-keywords-row">
-            <p className="v2-footer-keywords-label">Industries</p>
-            <div className="v2-footer-keywords-list">
-              {FOOTER_INDUSTRY_KEYWORDS.map((k, i) => (
-                <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
-              ))}
-            </div>
+        </div>
+        <div className="v2-footer-keywords-row">
+          <p className="v2-footer-keywords-label">Industries</p>
+          <div className="v2-footer-keywords-list">
+            {FOOTER_INDUSTRY_KEYWORDS.map((k, i) => (
+              <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
+            ))}
           </div>
+        </div>
 
         {/* office / contact info — a single four-up row instead of two
             stacked 2x2 blocks, so it reads as one info bar */}
