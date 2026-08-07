@@ -14,7 +14,7 @@ import "./CaseStudyDetailV2.css";
 
 /* real content extracted verbatim from the 15 individual case-study
    components, not new/invented copy — see caseStudiesData.js */
-import { CASE_STUDIES } from "./caseStudiesData";
+import { useCaseStudies } from "./useCaseStudies";
 import { PROJECTS } from "../WorkV2/projectsData";
 import NavbarV2 from "../Shared/NavbarV2";
 
@@ -35,7 +35,8 @@ const splitTitle = (title) => {
 
 export default function CaseStudyDetailV2() {
   const { slug } = useParams();
-  const cs = CASE_STUDIES.find((c) => c.slug === slug);
+  const caseStudies = useCaseStudies();
+  const cs = caseStudies.find((c) => c.slug === slug);
 
   
   
@@ -449,22 +450,31 @@ export default function CaseStudyDetailV2() {
       </section>
 
       {/* ══════════ 7 · CTA ══════════ */}
-      <section className="v2-section">
-        <div className="v2-cta-shell csd2-cta-shell">
-          <div className="v2-cta">
-            <p className="v2-label">Start Here</p>
-            <h2 className="v2-cta-headline">
-              Like what you see?<br />Let's build yours next.
-            </h2>
-            <a className="v2-btn v2-btn--filled" href="/contact-v2">
-              <span>Start a project</span>
-              <i className="v2-btn-arrow">→</i>
-            </a>
+      <section className="v2-section v2-section--void v2-cta-shell csd2-cta-shell">
+        <div className="v2-cta">
+          <p className="v2-label">Start Here</p>
+          <h2 className="v2-cta-headline">
+            Bring us the problem.
+            <br />
+            <span className="v2-cta-accent">We'll bring back a scoped plan.</span>
+          </h2>
+          <p className="v2-cta-body">
+            A structured conversation about your product — your users, your workflows, your constraints.
+            We scope what should be built first, what can wait, and what it takes to ship it.
+          </p>
+          <div className="v2-cta-actions">
+            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
           </div>
-          <aside className="v2-cta-visual">
-            <CtaVisual />
-          </aside>
+          <div className="v2-cta-badges">
+            <span className="v2-cta-badge">Free consultation</span>
+            <span className="v2-cta-badge">NDA on request</span>
+            <span className="v2-cta-badge">No obligation</span>
+          </div>
         </div>
+
+        <aside className="v2-cta-visual">
+          <CtaVisual />
+        </aside>
       </section>
 
       {/* ══════════ FOOTER ══════════ */}

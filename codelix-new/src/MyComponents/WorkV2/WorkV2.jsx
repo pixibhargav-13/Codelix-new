@@ -511,11 +511,13 @@ export default function WorkV2() {
         <div className="v2-cta">
           <p className="v2-label">Start Here</p>
           <h2 className="v2-cta-headline">
-            Like what you see?<br />Let's build yours next.
+            Bring us the problem.
+            <br />
+            <span className="v2-cta-accent">We'll bring back a scoped plan.</span>
           </h2>
           <p className="v2-cta-body">
-            A structured conversation about your project — scoped honestly,
-            built the same way as everything above.
+            A structured conversation about your product — your users, your workflows, your constraints.
+            We scope what should be built first, what can wait, and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
             <a className="v2-btn" href="/contact-v2">Book a consultation →</a>

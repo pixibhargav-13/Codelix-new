@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import { Search } from "lucide-react";
+import CtaVisual from "../HomepageV2/CtaVisual";
 
 /* v2 design system — same source of truth as the other v2 pages */
 
@@ -204,6 +205,33 @@ export default function FaqV2() {
             );
           })}
         </div>
+      </section>
+
+      {/* ══════════ CTA ══════════ */}
+      <section className="v2-section v2-section--void v2-cta-shell">
+        <div className="v2-cta">
+          <p className="v2-label">Still Have Questions?</p>
+          <h2 className="v2-cta-headline">
+            Tell us what you're building.<br />We'll tell you how we'd build it.
+          </h2>
+          <p className="v2-cta-body">
+            A structured conversation about your project — your users, your goals,
+            your constraints. We scope what should be built first, what can wait,
+            and what it takes to ship it.
+          </p>
+          <div className="v2-cta-actions">
+            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
+          </div>
+          <div className="v2-cta-badges">
+            <span className="v2-cta-badge">Free consultation</span>
+            <span className="v2-cta-badge">NDA on request</span>
+            <span className="v2-cta-badge">No obligation</span>
+          </div>
+        </div>
+
+        <aside className="v2-cta-visual">
+          <CtaVisual />
+        </aside>
       </section>
 
       {/* ══════════ FOOTER ══════════ */}

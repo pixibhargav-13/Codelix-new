@@ -15,6 +15,7 @@ import "./CaseStudyV2.css";
 /* the same 15 real projects shared with WorkV2 — one source of truth,
    not a duplicated or re-invented list */
 import { PROJECTS } from "../WorkV2/projectsData";
+import { useCaseStudies } from "../CaseStudyDetailV2/useCaseStudies";
 import NavbarV2 from "../Shared/NavbarV2";
 
 
@@ -125,7 +126,29 @@ export default function CaseStudyV2() {
     };
   }, []);
 
-  const filtered = category === "All" ? PROJECTS : PROJECTS.filter((p) => p.category === category);
+  /* admin-created case studies (published via Supabase) aren't part of the
+     static PROJECTS list, so they need to be reshaped into the same
+     card-shape PROJECTS already has before they can slot into this grid —
+     additive only, the existing 15 keep coming from PROJECTS untouched */
+  const caseStudies = useCaseStudies();
+  const adminCards = useMemo(() => {
+    const existingSlugs = new Set(PROJECTS.map((p) => toV2Slug(p.href)));
+    return caseStudies
+      .filter((cs) => cs.image && !existingSlugs.has(cs.slug))
+      .map((cs) => ({
+        id: `admin-${cs.slug}`,
+        title: cs.title,
+        category: cs.category,
+        industry: cs.category,
+        description: cs.description,
+        tags: cs.tags,
+        image: cs.image,
+        href: `/${cs.slug}`,
+      }));
+  }, [caseStudies]);
+
+  const allProjects = useMemo(() => [...adminCards, ...PROJECTS], [adminCards]);
+  const filtered = category === "All" ? allProjects : allProjects.filter((p) => p.category === category);
 
   return (
     <div className="v2" ref={rootRef}>
@@ -149,7 +172,7 @@ export default function CaseStudyV2() {
           <div className="sd2-hero-main">
             <div>
               <div className="v2-hero-top sv2-hero-reveal">
-                <span className="v2-hero-status"><i /> {PROJECTS.length} documented projects</span>
+                <span className="v2-hero-status"><i /> {allProjects.length} documented projects</span>
               </div>
               <h1 className="sd2-hero-title">
                 <span className="line"><span>The problem, the build,</span></span>
@@ -265,26 +288,29 @@ export default function CaseStudyV2() {
       </section>
 
       {/* ══════════ 5 · CTA ══════════ */}
-      <section className="v2-section">
-        <div className="v2-cta-shell csv2-cta-shell">
-          <div className="v2-cta">
-            <p className="v2-label">Start Here</p>
-            <h2 className="v2-cta-headline">
-              Like what you see?<br />Let's build yours next.
-            </h2>
-            <p className="v2-cta-body">
-              A structured conversation about your project — scoped honestly,
-              built the same way as everything above.
-            </p>
-            <a className="v2-btn v2-btn--filled" href="/contact-v2">
-              <span>Start a project</span>
-              <i className="v2-btn-arrow">→</i>
-            </a>
+      <section className="v2-section v2-section--void v2-cta-shell csv2-cta-shell">
+        <div className="v2-cta">
+          <p className="v2-label">Start Here</p>
+          <h2 className="v2-cta-headline">
+            Like what you see?<br />Let's build yours next.
+          </h2>
+          <p className="v2-cta-body">
+            A structured conversation about your project — scoped honestly,
+            built the same way as everything above.
+          </p>
+          <div className="v2-cta-actions">
+            <a className="v2-btn" href="/contact-v2">Start a project →</a>
           </div>
-          <aside className="v2-cta-visual">
-            <CtaVisual />
-          </aside>
+          <div className="v2-cta-badges">
+            <span className="v2-cta-badge">Free consultation</span>
+            <span className="v2-cta-badge">NDA on request</span>
+            <span className="v2-cta-badge">No obligation</span>
+          </div>
         </div>
+
+        <aside className="v2-cta-visual">
+          <CtaVisual />
+        </aside>
       </section>
 
       {/* ══════════ FOOTER ══════════ */}

@@ -11,6 +11,8 @@ const AdminLogin = lazy(() => import("./admin/pages/AdminLogin"));
 const AdminLayout = lazy(() => import("./admin/AdminLayout"));
 const AdminBlogList = lazy(() => import("./admin/pages/AdminBlogList"));
 const AdminBlogForm = lazy(() => import("./admin/pages/AdminBlogForm"));
+const AdminCaseStudyList = lazy(() => import("./admin/pages/AdminCaseStudyList"));
+const AdminCaseStudyForm = lazy(() => import("./admin/pages/AdminCaseStudyForm"));
 const AdminTestimonialsList = lazy(() => import("./admin/pages/AdminTestimonialsList"));
 const AdminTestimonialForm = lazy(() => import("./admin/pages/AdminTestimonialForm"));
 
@@ -116,10 +118,11 @@ const AppRoutes = () => {
   // in its path (/preview-v2, /about-v2, /services-v2/..., etc.), which
   // reliably tells it apart from every v1 route (none of which do).
   const isV2Route = location.pathname.includes("v2");
+  const isAdminRoute = location.pathname.startsWith("/admin");
 
   useEffect(() => {
-    // v2 routes never show the loader, so there's nothing to schedule
-    if (isV2Route) return;
+    // v2 and admin routes never show the loader, so there's nothing to schedule
+    if (isV2Route || isAdminRoute) return;
 
     // On every route change: show a fresh loader
     setShowLoader(true);
@@ -128,12 +131,12 @@ const AppRoutes = () => {
     // MIN_DURATION (2200) + EXIT_DURATION (700) + small buffer
     const hideTimer = setTimeout(() => setShowLoader(false), 2950);
     return () => clearTimeout(hideTimer);
-  }, [location.pathname, isV2Route]);
+  }, [location.pathname, isV2Route, isAdminRoute]);
 
   return (
     <>
-      {/* Loader overlays the page — triggered on navigation, skipped on v2 pages */}
-      {showLoader && !isV2Route && <CodelixLoader key={loaderKey} />}
+      {/* Loader overlays the page — triggered on navigation, skipped on v2 and admin pages */}
+      {showLoader && !isV2Route && !isAdminRoute && <CodelixLoader key={loaderKey} />}
 
       {/* Suspense still handles the lazy-chunk loading state.
           For V2 pages, we provide a dark background fallback so it doesn't flash white. */}
@@ -219,6 +222,9 @@ const AppRoutes = () => {
             <Route path="blog" element={<AdminBlogList />} />
             <Route path="blog/new" element={<AdminBlogForm />} />
             <Route path="blog/:id" element={<AdminBlogForm />} />
+            <Route path="case-studies" element={<AdminCaseStudyList />} />
+            <Route path="case-studies/new" element={<AdminCaseStudyForm />} />
+            <Route path="case-studies/:id" element={<AdminCaseStudyForm />} />
             <Route path="testimonials" element={<AdminTestimonialsList />} />
             <Route path="testimonials/new" element={<AdminTestimonialForm />} />
             <Route path="testimonials/:id" element={<AdminTestimonialForm />} />

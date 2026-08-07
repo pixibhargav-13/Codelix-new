@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import "./CustomCursor.css";
 
 const HOVER_SELECTOR =
@@ -6,8 +7,18 @@ const HOVER_SELECTOR =
 
 const CustomCursor = () => {
   const cursorRef = useRef(null);
+  const location = useLocation();
+
+  const isV2Route = location.pathname.includes("v2");
+  const isAdminRoute = location.pathname.startsWith("/admin");
+  const shouldHideCursor = isV2Route || isAdminRoute;
 
   useEffect(() => {
+    if (shouldHideCursor) {
+      document.body.classList.remove("has-custom-cursor");
+      return;
+    }
+
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
     const cursor = cursorRef.current;
@@ -82,7 +93,11 @@ const CustomCursor = () => {
       document.documentElement.removeEventListener("mouseenter", onEnterWindow);
       document.body.classList.remove("has-custom-cursor");
     };
-  }, []);
+  }, [shouldHideCursor]);
+
+  if (shouldHideCursor) {
+    return null;
+  }
 
   return <div ref={cursorRef} className="custom-cursor" aria-hidden="true" />;
 };

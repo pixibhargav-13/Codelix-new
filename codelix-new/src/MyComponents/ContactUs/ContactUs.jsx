@@ -7,6 +7,7 @@ import underline from "../Images/what-we-build-underline.png";
 import { Navbar } from "../Navbar/Navbar";
 import Ourwork from "../OurWork/Ourwork";
 import { HomepageFaq } from "../HomepageFaq/HomepageFaq";
+import { FOOTER_ALL_SERVICES } from "../HomepageV2/footerData";
 import Footer from "../Footer/Footer";
 import { SEO } from "../../components/SEO";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
@@ -250,12 +251,10 @@ export const ContactUs = () => {
                               onChange={handleChange}
                             >
                               <option disabled value="Select">Select</option>
-                              <option>Web Development</option>
-                              <option>Mobile Development</option>
-                              <option>UI/UX Design</option>
-                              <option>Custom Software dev.</option>
-                              <option>E-Commerce Solutions</option>
-                              <option>AI Development</option>
+                              {FOOTER_ALL_SERVICES.map(s => (
+                                <option key={s.label} value={s.label}>{s.label}</option>
+                              ))}
+                              <option value="Other">Other</option>
                             </select>
                           </div>
                         </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { FileText, MessageSquareQuote, LogOut } from "lucide-react";
+import { FileText, MessageSquareQuote, LogOut, Briefcase } from "lucide-react";
 import { useAuth } from "./useAuth";
 import codelixLogo from "../MyComponents/Images/codelix-logo.png";
 import "./admin.css";
@@ -26,6 +26,10 @@ export default function AdminLayout() {
           <NavLink to="/admin/blog" className={({ isActive }) => (isActive ? "active" : "")}>
             <FileText size={16} strokeWidth={1.8} />
             <span>Blog Posts</span>
+          </NavLink>
+          <NavLink to="/admin/case-studies" className={({ isActive }) => (isActive ? "active" : "")}>
+            <Briefcase size={16} strokeWidth={1.8} />
+            <span>Case Studies</span>
           </NavLink>
           <NavLink to="/admin/testimonials" className={({ isActive }) => (isActive ? "active" : "")}>
             <MessageSquareQuote size={16} strokeWidth={1.8} />
