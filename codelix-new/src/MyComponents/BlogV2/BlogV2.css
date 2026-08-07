@@ -132,11 +132,3 @@
 
 .bv2-more { display: flex; justify-content: center; margin-top: 40px; }
 
-/* ───────────── CTA OVERRIDES ───────────── */
-.bv2-cta-shell .v2-cta-visual-svg {
-  max-width: 350px;
-}
-
-.bv2-cta-shell::before {
-  display: none;
-}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NAVBAR_SERVICES_HIERARCHY } from "../HomepageV2/footerData";
 import { 
   Globe, Smartphone, Palette, ShoppingCart, 
-  Database, Bot, LineChart, Cloud 
+  Database, Bot, LineChart, Cloud, ChevronRight
 } from "lucide-react";
 import codelixLogo from "../Images/codelix-logo.png";
 import V2MobileDrawer from "../HomepageV2/V2MobileDrawer";
@@ -100,8 +100,11 @@ export default function NavbarV2() {
                       <div className="v2-nav-mega-links">
                         {category.items.map((item) => (
                           <a key={item.label} href={item.path} className="v2-nav-mega-link">
-                            <span className="v2-nav-mega-link-dot"></span>
-                            {item.label}
+                            <span className="v2-nav-mega-link-left">
+                              <span className="v2-nav-mega-link-dot"></span>
+                              {item.label}
+                            </span>
+                            <span className="v2-nav-mega-link-arrow"><ChevronRight size={14} strokeWidth={2} /></span>
                           </a>
                         ))}
                       </div>

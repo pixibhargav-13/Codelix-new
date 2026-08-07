@@ -106,6 +106,7 @@
   justify-content: center;
   width: 48px;
   height: 48px;
+  flex-shrink: 0;
   border-radius: 50%;
   background: linear-gradient(155deg, rgba(180, 200, 230, .22), rgba(180, 200, 230, .05));
   border: .8px solid rgba(180, 200, 230, .3);

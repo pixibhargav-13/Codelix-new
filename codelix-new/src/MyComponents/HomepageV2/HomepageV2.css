@@ -4778,13 +4778,44 @@
    by JS once the embed finishes loading, so nothing here forces a size
    that could clip it. */
 .v2-clutch-widget {
-  min-width: 60px;
-  min-height: 24px;
+  min-width: 88px;
+  min-height: 34px;
   border: .8px solid var(--rule);
   border-radius: 10px;
   background: var(--void);
   overflow: hidden;
   position: relative;
+}
+
+/* the real widget box is kept mounted (not removed) even after timing out,
+   so a late-arriving iframe load event can still recover it — just hidden
+   from view while the static fallback badge takes its place */
+.v2-clutch-widget.is-hidden {
+  display: none;
+}
+
+/* the static fallback badge shown when Clutch's own iframe-resizer
+   handshake times out (see ClutchWidget.jsx) — reuses the Google review
+   button's pill styling (.v2-footer-google-review) for visual parity,
+   but tighter horizontally: "1 review" is short enough that the Google
+   button's own padding/gap leaves visible slack next to it. */
+.v2-clutch-fallback {
+  gap: 6px;
+  padding: 8px 12px;
+}
+
+.v2-clutch-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(230, 60, 70, .16);
+  color: #E63C46;
+  font-size: 9px;
+  font-weight: 800;
 }
 
 .v2-clutch-widget-inner {
@@ -4794,7 +4825,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 250px;
+  width: 125px;
   transform: translate(-50%, -50%);
   transform-origin: center center;
 }
@@ -4803,6 +4834,14 @@
   /* invert(1) maps the widget's white background to near-black, matching
      the footer's own --void (#050507) background */
   filter: invert(1) hue-rotate(180deg);
+  /* Clutch's own embed script asks for data-height="40", but the resizer
+     running *inside* the cross-origin iframe sometimes reports back 0px
+     before it's fully measured its own content and never corrects itself
+     — collapsing the whole badge to nothing next to the Google button.
+     The iframe element is still ours to style even though its content is
+     cross-origin, so force it back to the height Clutch itself asked for. */
+  height: 40px !important;
+  min-height: 40px !important;
 }
 
 .v2-google-logo {
@@ -5078,12 +5117,12 @@
 
 
 .v2-wr-intro-label {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 400;
   letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--ink-40);
-  margin: 0 0 16px 0;
+  margin: 0 0 16px 0 !important;
 }
 
 .v2-wr-intro-heading {

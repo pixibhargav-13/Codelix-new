@@ -8,7 +8,7 @@ import CtaVisual from "../HomepageV2/CtaVisual";
 
 import "../HomepageV2/HomepageV2.css";
 
-import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
+import { FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./SitemapV2.css";
@@ -36,16 +36,16 @@ const GROUPS = [
     ],
   },
   {
+    /* was a hand-picked 7 of the 8 core services — missed Support &
+       Managed Services entirely and all 18 additional service pages
+       (only reachable via the footer's "More Services" row + the
+       /services-v2/:slug catch-all route). FOOTER_ALL_SERVICES is the
+       real, complete, already-arranged list of all 26 — same source of
+       truth as the footer, so nothing here can drift out of sync again. */
     title: "Services",
     links: [
       { label: "Services", href: "/services-v2" },
-      { label: "Web Development", href: "/services-v2/web-development" },
-      { label: "Application Development", href: "/services-v2/application-development" },
-      { label: "UI/UX Design", href: "/services-v2/ui-ux-design" },
-      { label: "E-Commerce Solutions", href: "/services-v2/e-commerce-solutions" },
-      { label: "Custom Software Development", href: "/services-v2/custom-software-development" },
-      { label: "AI Development", href: "/services-v2/ai-development" },
-      { label: "Data Analytics", href: "/services-v2/data-analytics" },
+      ...FOOTER_ALL_SERVICES.map((s) => ({ label: s.label, href: s.path })),
     ],
   },
   {
@@ -207,20 +207,26 @@ export default function SitemapV2() {
       </section>
 
       {/* ══════════ 3 · CTA ══════════ */}
-      <section className="v2-section">
-        <div className="v2-cta-shell smv2-cta-shell">
-          <div className="v2-cta">
-            <p className="v2-label">Can't Find It?</p>
-            <h2 className="v2-cta-headline">
-              Looking for something<br />that's not here?
-            </h2>
-            <p className="v2-cta-body">Just ask — we'll point you in the right direction.</p>
+      <section className="v2-section v2-section--void v2-cta-shell smv2-cta-shell">
+        <div className="v2-cta">
+          <p className="v2-label">Can't Find It?</p>
+          <h2 className="v2-cta-headline">
+            Looking for something<br />that's not here?
+          </h2>
+          <p className="v2-cta-body">Just ask — we'll point you in the right direction.</p>
+          <div className="v2-cta-actions">
             <a className="v2-btn" href="/contact-v2">Contact us →</a>
           </div>
-          <aside className="v2-cta-visual">
-            <CtaVisual />
-          </aside>
+          <div className="v2-cta-badges">
+            <span className="v2-cta-badge">Free consultation</span>
+            <span className="v2-cta-badge">NDA on request</span>
+            <span className="v2-cta-badge">No obligation</span>
+          </div>
         </div>
+
+        <aside className="v2-cta-visual">
+          <CtaVisual />
+        </aside>
       </section>
 
       {/* ══════════ FOOTER ══════════ */}

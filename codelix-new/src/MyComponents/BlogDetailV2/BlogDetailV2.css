@@ -251,12 +251,6 @@
   transition: opacity .3s ease;
 }
 
-/* ───────────── CTA OVERRIDES ───────────── */
-/* Shrink the CTA visual explicitly for the blog detail page only */
-.bdv2-cta-shell .v2-cta-visual-svg {
-  max-width: 420px;
-}
-
 
 .bdv2-related-card:hover .bdv2-related-arrow {
   opacity: 1;

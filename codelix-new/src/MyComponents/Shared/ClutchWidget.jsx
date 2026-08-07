@@ -1,79 +1,31 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+
+/* Clutch's embeddable widget (both their official widget.js/CLUTCHCO.Init()
+   auto-detect, and a hand-built iframe pointed at their same endpoint) only
+   paints reliably when the browser happens to win a race against their own
+   internal resize handshake — which needs a companion "iframeResizer"
+   script running in the parent that we don't (and shouldn't have to) load.
+   That produced inconsistent results per page load rather than a fixable
+   bug on our side, so we always show the static badge instead: same real
+   rating Clutch's own widget reports for this account, styled to match the
+   Google review badge exactly so it reads as one consistent pair. */
+const CLUTCH_PROFILE_URL = "https://clutch.co/profile/codelix-it-solutions";
+const CLUTCH_RATING = "5.0";
+const CLUTCH_REVIEW_COUNT = "1 review";
 
 export default function ClutchWidget({ className = "" }) {
-  const innerRef = useRef(null);
-
-  useEffect(() => {
-    let checkInterval;
-    
-    const initClutch = () => {
-      if (window.CLUTCHCO && typeof window.CLUTCHCO.Init === "function") {
-        const widgetDiv = innerRef.current?.querySelector('.clutch-widget');
-        if (widgetDiv && !widgetDiv.querySelector('iframe')) {
-          window.CLUTCHCO.Init();
-        } else if (widgetDiv && widgetDiv.querySelector('iframe')) {
-          // If iframe is already injected, stop checking
-          clearInterval(checkInterval);
-        }
-      }
-    };
-
-    const existing = document.getElementById('clutch-widget-script');
-    if (!existing) {
-      const script = document.createElement('script');
-      script.id = 'clutch-widget-script';
-      script.type = 'text/javascript';
-      script.src = 'https://widget.clutch.co/static/js/widget.js';
-      script.async = true;
-      document.body.appendChild(script);
-    }
-
-    // Repeatedly try to initialize the widget until the iframe appears
-    checkInterval = setInterval(initClutch, 500);
-    
-    // Fallback: stop checking after 10 seconds to prevent infinite polling
-    const timeoutId = setTimeout(() => {
-      clearInterval(checkInterval);
-    }, 10000);
-
-    const el = innerRef.current;
-    const wrapper = el?.parentElement;
-    if (!el || !wrapper) return;
-
-    const SCALE = 0.62;
-
-    const fit = () => {
-      const naturalW = el.scrollWidth || el.offsetWidth;
-      const naturalH = el.scrollHeight || el.offsetHeight;
-      if (!naturalW || !naturalH) return;
-      el.style.transform = `translate(-50%, -50%) scale(${SCALE})`;
-      // pad the box a little beyond the scaled content so the rounded
-      // corners don't clip text that sits flush against the edge
-      wrapper.style.width = `${Math.round(naturalW * SCALE) + 14}px`;
-      wrapper.style.height = `${Math.round(naturalH * SCALE) + 10}px`;
-    };
-
-    const ro = new ResizeObserver(fit);
-    ro.observe(el);
-    fit();
-
-    return () => ro.disconnect();
-  }, []);
-
   return (
-    <div className={`v2-clutch-widget ${className}`.trim()}>
-      <div className="v2-clutch-widget-inner" ref={innerRef}>
-        <div
-          className="clutch-widget"
-          data-url="https://widget.clutch.co"
-          data-widget-type="1"
-          data-height="40"
-          data-nofollow="false"
-          data-expandifr="true"
-          data-scale="100"
-          data-clutchcompany-id="2624895"
-        />
+    <a
+      className={`v2-footer-google-review v2-clutch-fallback ${className}`.trim()}
+      href={CLUTCH_PROFILE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span className="v2-clutch-mark" aria-hidden="true">C</span>
+      <div className="v2-google-review-text">
+        <span className="v2-google-stars">★★★★★</span>
+        <span className="v2-google-rating">{CLUTCH_RATING} ({CLUTCH_REVIEW_COUNT})</span>
       </div>
-    </div>
+    </a>
   );
 }

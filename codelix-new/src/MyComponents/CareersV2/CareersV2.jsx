@@ -3,6 +3,7 @@ import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import {
   Compass, Users, ShieldCheck, Globe, Smartphone, PenTool, Server, Sparkles, CheckCircle2,
+  Database, Cloud, TestTube, Briefcase
 } from "lucide-react";
 
 /* v2 design system — same source of truth as the other v2 pages */
@@ -10,6 +11,7 @@ import {
 import "../HomepageV2/HomepageV2.css";
 
 import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
+import CtaVisual from "../HomepageV2/CtaVisual";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
@@ -31,8 +33,12 @@ const DISCIPLINES = [
   { key: "Frontend", icon: Globe, blurb: "React, Next, and the rest of what's on our stack page — building interfaces real users actually touch." },
   { key: "Backend", icon: Server, blurb: "Node, Spring Boot, Laravel, Django — APIs and systems that hold up under real production load." },
   { key: "Mobile", icon: Smartphone, blurb: "Flutter and React Native — apps that ship to real app stores for real users." },
-  { key: "Design", icon: PenTool, blurb: "Figma-first UI/UX work that gets handed to development, not filed away as concept art." },
+  { key: "DevOps & Cloud", icon: Cloud, blurb: "AWS, Azure, CI/CD, and infrastructure as code — building secure, scalable, and resilient cloud solutions." },
+  { key: "Data & Analytics", icon: Database, blurb: "Data engineering, business intelligence, and predictive analytics — turning raw data into actionable insights." },
   { key: "AI / Automation", icon: Sparkles, blurb: "Practical AI integration and workflow automation — n8n, Zapier, Make, and applied ML, not buzzword slides." },
+  { key: "QA / Testing", icon: TestTube, blurb: "Automated testing, security maintenance, and performance optimization — ensuring every release is production-ready." },
+  { key: "Design", icon: PenTool, blurb: "Figma-first UI/UX work that gets handed to development, not filed away as concept art." },
+  { key: "Product Management", icon: Briefcase, blurb: "Scrum masters and product owners — driving dedicated development teams and SaaS products from concept to launch." },
 ];
 
 const WHAT_WE_LOOK_FOR = [
@@ -364,6 +370,32 @@ export default function CareersV2() {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* ══════════ 6 · CTA ══════════ */}
+      <section className="v2-section v2-section--void v2-cta-shell">
+        <div className="v2-cta">
+          <p className="v2-label">Start Here</p>
+          <h2 className="v2-cta-headline">
+            Don't see the right role?<br />Tell us what you'd bring.
+          </h2>
+          <p className="v2-cta-body">
+            We hire when a specific project need lines up with what someone
+            brings, not against a running job board. Send your details anyway.
+          </p>
+          <div className="v2-cta-actions">
+            <a className="v2-btn" href="/contact-v2">Get in touch →</a>
+          </div>
+          <div className="v2-cta-badges">
+            <span className="v2-cta-badge">Free consultation</span>
+            <span className="v2-cta-badge">NDA on request</span>
+            <span className="v2-cta-badge">No obligation</span>
+          </div>
+        </div>
+
+        <aside className="v2-cta-visual">
+          <CtaVisual />
+        </aside>
       </section>
 
       {/* ══════════ FOOTER ══════════ */}

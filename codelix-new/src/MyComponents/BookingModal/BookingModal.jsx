@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { X, Calendar as CalendarIcon, Clock, ChevronRight, ChevronLeft, CheckCircle2 } from "lucide-react";
 import "./BookingModal.css";
-import { FOOTER_SERVICE_KEYWORDS } from "../HomepageV2/footerData";
+import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES } from "../HomepageV2/footerData";
 
 const TIME_SLOTS = [
   "10:00 AM",
@@ -299,7 +299,7 @@ export default function BookingModal() {
                     required
                   >
                     <option value="" disabled>Select a service</option>
-                    {FOOTER_SERVICE_KEYWORDS.map(s => (
+                    {FOOTER_ALL_SERVICES.map(s => (
                       <option key={s.label} value={s.label}>{s.label}</option>
                     ))}
                     <option value="Other">Other</option>

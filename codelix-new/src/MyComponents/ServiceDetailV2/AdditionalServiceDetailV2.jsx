@@ -98,14 +98,26 @@ const QUOTE = {
   role: "CEO, Harmony Inc.",
 };
 
-const FAQS = [
-  { q: "How is this priced?", a: "Fixed scope, fixed price — you get a written quote before any work starts, based on what you actually need, not an hourly guess." },
-  { q: "How long does a typical engagement take?", a: "It depends on scope, but most engagements run 2–12 weeks. Use the estimator above for a rough range, then we'll firm it up on a call." },
-  { q: "Do we own the code and IP when it's done?", a: "Yes — 100% source-code ownership transfers to you at project close. No retained access, no dependency on us to keep it running." },
-  { q: "What if our needs don't match a single service on this list?", a: "Most real projects blend a few of these. Tell us what you're building and we'll scope it honestly, even if it spans several service lines." },
-  { q: "Do you work with our existing team?", a: "Yes — plenty of engagements plug into an existing in-house team rather than replacing it. We scope around whatever setup you already have." },
-  { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that you can take it in-house with the docs we provide, or keep us on a monthly retainer." },
-];
+/* interpolated with the actual service name/title so each of the 18 pages
+   reads as answering questions about THAT service, not a copy-pasted
+   generic block — the answers stay universally true (same pricing model,
+   same ownership terms on every engagement) since we don't have real
+   per-service specifics to report, but the questions themselves and one
+   dedicated "does this cover..." item are now service-specific. */
+const getFaqs = (svc) => {
+  const name = svc.title.toLowerCase();
+  const firstCover = svc.covers?.[0];
+  return [
+    { q: `How is ${name} priced?`, a: "Fixed scope, fixed price — you get a written quote before any work starts, based on what you actually need, not an hourly guess." },
+    { q: `How long does a typical ${name} engagement take?`, a: "It depends on scope, but most engagements run 2–12 weeks. Use the estimator above for a rough range, then we'll firm it up on a call." },
+    { q: `Do we own the code and IP once the ${name} work is done?`, a: "Yes — 100% source-code ownership transfers to you at project close. No retained access, no dependency on us to keep it running." },
+    firstCover
+      ? { q: `Does ${name} include ${firstCover}?`, a: `Yes — ${firstCover} is one of the things covered under this service. See "What's Included" above for the full list of what's in scope.` }
+      : { q: `What exactly is included in ${name}?`, a: "See \"What's Included\" above for the full list of what's covered under this service." },
+    { q: `Do you work with our existing team on ${name}?`, a: "Yes — plenty of engagements plug into an existing in-house team rather than replacing it. We scope around whatever setup you already have." },
+    { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that you can take it in-house with the docs we provide, or keep us on a monthly retainer." },
+  ];
+};
 
 const SENTENCE = [
   "YOU GET THE SOURCE.",
@@ -468,6 +480,8 @@ export default function AdditionalServiceDetailV2() {
     ? PROJECTS.filter((p) => p.category === svc.relatedCategory).slice(0, 3)
     : [];
 
+  const faqs = getFaqs(svc);
+
   return (
     <div className="v2" ref={rootRef}>
       <div className="v2-progress" aria-hidden="true"><span /></div>
@@ -614,7 +628,7 @@ export default function AdditionalServiceDetailV2() {
         <div className="sd2-case-head">
           <div>
             <p className="v2-label">Who It's For</p>
-            <h2 className="v2-heading">Built for how your sector actually operates.</h2>
+            <h2 className="v2-heading">Who asks us for {svc.title.toLowerCase()}.</h2>
           </div>
           <p className="v2-lede">The approach changes depending on who's using it and what they came to do.</p>
         </div>
@@ -725,7 +739,7 @@ export default function AdditionalServiceDetailV2() {
       {/* ══════════ 6 · PROCESS ══════════ */}
       <section className="v2-method-shell" id="process">
         <div className="v2-method-head">
-          <h2 className="v2-method-heading">How An Engagement Runs.</h2>
+          <h2 className="v2-method-heading">How A {svc.title} Engagement Runs.</h2>
           <p className="v2-method-lede">
             Six stages from first call to live delivery — nothing advances until the
             stage before it is signed off.
@@ -748,7 +762,7 @@ export default function AdditionalServiceDetailV2() {
       {/* ══════════ 7 · QUALITY BENCHMARKS ══════════ */}
       <section className="v2-section v2-section--void" id="benchmarks">
         <p className="v2-label">Quality Bar</p>
-        <h2 className="v2-heading">The commitments we hold ourselves to.</h2>
+        <h2 className="v2-heading">The commitments we hold ourselves to on {svc.title.toLowerCase()}.</h2>
         <p className="v2-lede">Not aspirations — the same terms on every engagement, regardless of scope.</p>
         <div className="sd2-bench-panel">
           <div className="sd2-bench-bar">
@@ -926,7 +940,7 @@ export default function AdditionalServiceDetailV2() {
         <div className="sd2-case-head">
           <div>
             <p className="v2-label">Why Us</p>
-            <h2 className="v2-heading">Against what you're actually comparing.</h2>
+            <h2 className="v2-heading">What you're actually comparing for {svc.title.toLowerCase()}.</h2>
           </div>
           <p className="v2-lede">
             A template, a freelancer, and a big agency all solve part of the
@@ -974,7 +988,7 @@ export default function AdditionalServiceDetailV2() {
           </p>
         </div>
         <div>
-          {FAQS.map((f, i) => (
+          {faqs.map((f, i) => (
             <div
               className={`v2-faq-item ${openFaq === i ? "open" : ""} ${revealedFaqs.has(i) ? "is-in" : ""}`}
               data-faq-index={i}

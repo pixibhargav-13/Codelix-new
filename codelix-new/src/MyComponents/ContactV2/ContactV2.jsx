@@ -294,13 +294,10 @@ export default function ContactV2() {
                     <label>Service*</label>
                     <select name="service" required value={formData.service} onChange={handleChange}>
                       <option disabled value="Select">Select</option>
-                      <option>Web Development</option>
-                      <option>Mobile Development</option>
-                      <option>UI/UX Design</option>
-                      <option>Custom Software dev.</option>
-                      <option>E-Commerce Solutions</option>
-                      <option>AI Development</option>
-                      <option>Data Analytics</option>
+                      {FOOTER_ALL_SERVICES.map(s => (
+                        <option key={s.label} value={s.label}>{s.label}</option>
+                      ))}
+                      <option value="Other">Other</option>
                     </select>
                   </div>
                 </div>
