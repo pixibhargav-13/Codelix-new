@@ -43,6 +43,22 @@
   color: rgba(15, 15, 13, .5);
 }
 
+/* the shared dot-nav colors (ServiceDetailV2.css) are tuned for the
+   site's dark background — near-invisible against this page's light
+   gallery background, so give this page its own dark-ink dot palette,
+   same idea as the quote text/name/role overrides above */
+.v2 .v2-section--gallery .sd2-quote-dot {
+  background-color: rgba(15, 15, 13, .25);
+}
+
+.v2 .v2-section--gallery .sd2-quote-dot:hover {
+  background-color: rgba(15, 15, 13, .5);
+}
+
+.v2 .v2-section--gallery .sd2-quote-dot.is-active {
+  background-color: #0f0f0d;
+}
+
 
 /* ───────────── LEADERSHIP — alternating split-panel layout ───────────── */
 .team-lead-grid {

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { Plus, X } from "lucide-react";
 import { supabase } from "../../lib/supabaseClient";
 import { uploadImage } from "../uploadImage";
 
@@ -8,46 +9,33 @@ const slugify = (s) =>
 
 const CATEGORIES = ["Web Development", "Application Development", "UI/UX Design", "E-Commerce Solutions", "Custom Software Development", "AI Development", "Data Analytics"];
 
-/* one item per line — kept as plain textareas (no repeatable field-group
-   UI) to match how simple every other admin form field already is here
-   (tags/read_time are plain text, content is a single markdown blob) */
+/* same list as the WorkV2 industry-filter dropdown — must match exactly
+   or an admin-added case study won't show up when a visitor filters
+   /work-v2 by industry */
+const INDUSTRIES = ["Manufacturing", "FinTech", "Ai & Data", "Healthcare", "Food and Bavarages", "E-commerce", "Real estae and construction", "Education", "Startups", "B2B SaaS", "Travel & Hospitality"];
+
+/* one item per line — kept as a plain textarea (no repeatable field-group
+   UI) for the fields that are just a flat list of strings (challenges,
+   solutions, services, features, why-stack, scalability). Snapshot,
+   process and outcomes are the three structured (multi-field) items, so
+   those get their own repeatable row UI instead — see RepeatField below. */
 const linesToArray = (str) => str.split("\n").map((s) => s.trim()).filter(Boolean);
 const arrayToLines = (arr) => (arr || []).join("\n");
 
-/* structured (non-plain-text) fields use a "a|b|c" shorthand per line
-   instead of a dedicated repeatable sub-form */
-const linesToOutcomes = (str) =>
-  linesToArray(str).map((line) => {
-    const [value, suffix = "", label = ""] = line.split("|").map((s) => s.trim());
-    return { value: Number(value) || 0, suffix, label };
-  });
-const outcomesToLines = (outcomes) =>
-  (outcomes || []).map((o) => `${o.value}|${o.suffix || ""}|${o.label || ""}`).join("\n");
-
-const linesToSnapshot = (str) =>
-  linesToArray(str).map((line) => {
-    const [label = "", value = ""] = line.split("|").map((s) => s.trim());
-    return { label, value };
-  });
-const snapshotToLines = (snapshot) =>
-  (snapshot || []).map((s) => `${s.label}|${s.value}`).join("\n");
-
-const linesToProcess = (str) =>
-  linesToArray(str).map((line) => {
-    const [phase = "", time = "", body = ""] = line.split("|").map((s) => s.trim());
-    return { phase, time, body };
-  });
-const processToLines = (process) =>
-  (process || []).map((p) => `${p.phase}|${p.time}|${p.body}`).join("\n");
+const emptySnapshotRow = { label: "", value: "" };
+const emptyProcessRow = { phase: "", time: "", body: "" };
+const emptyOutcomeRow = { value: "", suffix: "", label: "" };
 
 const emptyForm = {
-  title: "", slug: "", description: "", category: CATEGORIES[0],
-  tags: "", tools: "", overview: "", outcomes: "", challenges: "", solutions: "",
+  title: "", slug: "", description: "", category: CATEGORIES[0], industry: INDUSTRIES[0],
+  tags: "", tools: "", overview: "", challenges: "", solutions: "",
   cover_image_url: "", is_concept: false,
-  snapshot: "", challenge_image_1_url: "", challenge_image_1_alt: "",
+  snapshot: [],
+  challenge_image_1_url: "", challenge_image_1_alt: "",
   challenge_image_2_url: "", challenge_image_2_alt: "",
-  process: "", results_note: "", services: "", features: "",
+  process: [], results_note: "", services: "", features: "",
   why_stack: "", scalability: "",
+  outcomes: [],
   quote_text: "", quote_role: "", quote_name: "",
   published: false,
 };
@@ -57,6 +45,56 @@ const SectionHead = ({ children }) => (
     {children}
   </p>
 );
+
+/* generic repeatable field group — used for Snapshot, Process, and
+   Outcomes, the three fields that are arrays of small objects rather
+   than arrays of plain strings. `columns` describes each object's keys
+   in render order: { key, placeholder, type: "text" | "textarea" }. */
+function RepeatField({ rows, onChange, columns, emptyRow, addLabel }) {
+  const updateRow = (i, key, val) => {
+    const next = rows.slice();
+    next[i] = { ...next[i], [key]: val };
+    onChange(next);
+  };
+  const removeRow = (i) => onChange(rows.filter((_, idx) => idx !== i));
+  const addRow = () => onChange([...rows, { ...emptyRow }]);
+
+  return (
+    <div className="adm-repeat">
+      {rows.map((row, i) => (
+        <div className="adm-repeat-row" key={i}>
+          <div className="adm-repeat-row-fields" style={{ gridTemplateColumns: `repeat(${columns.length}, 1fr)` }}>
+            {columns.map((col) =>
+              col.type === "textarea" ? (
+                <textarea
+                  key={col.key}
+                  placeholder={col.placeholder}
+                  value={row[col.key] || ""}
+                  onChange={(e) => updateRow(i, col.key, e.target.value)}
+                  rows={2}
+                />
+              ) : (
+                <input
+                  key={col.key}
+                  placeholder={col.placeholder}
+                  value={row[col.key] || ""}
+                  onChange={(e) => updateRow(i, col.key, e.target.value)}
+                />
+              )
+            )}
+          </div>
+          <button type="button" className="adm-repeat-remove" onClick={() => removeRow(i)} aria-label="Remove">
+            <X size={14} strokeWidth={2} />
+          </button>
+        </div>
+      ))}
+      <button type="button" className="adm-btn adm-btn--ghost adm-repeat-add" onClick={addRow}>
+        <Plus size={13} strokeWidth={2.2} />
+        {addLabel}
+      </button>
+    </div>
+  );
+}
 
 export default function AdminCaseStudyForm() {
   const { id } = useParams();
@@ -78,17 +116,18 @@ export default function AdminCaseStudyForm() {
       if (err) { setError(err.message); setLoading(false); return; }
       setForm({
         title: data.title, slug: data.slug, description: data.description || "",
-        category: data.category, tags: (data.tags || []).join(", "),
+        category: data.category, industry: data.industry || INDUSTRIES[0], tags: (data.tags || []).join(", "),
         tools: (data.tools || []).join(", "),
-        overview: arrayToLines(data.overview), outcomes: outcomesToLines(data.outcomes),
+        overview: arrayToLines(data.overview),
         challenges: arrayToLines(data.challenges), solutions: arrayToLines(data.solutions),
         cover_image_url: data.cover_image_url || "", is_concept: !!data.is_concept,
-        snapshot: snapshotToLines(data.snapshot),
+        snapshot: data.snapshot?.length ? data.snapshot : [],
         challenge_image_1_url: data.challenge_image_1_url || "", challenge_image_1_alt: data.challenge_image_1_alt || "",
         challenge_image_2_url: data.challenge_image_2_url || "", challenge_image_2_alt: data.challenge_image_2_alt || "",
-        process: processToLines(data.process), results_note: data.results_note || "",
+        process: data.process?.length ? data.process : [], results_note: data.results_note || "",
         services: arrayToLines(data.services), features: arrayToLines(data.features),
         why_stack: arrayToLines(data.why_stack), scalability: arrayToLines(data.scalability),
+        outcomes: data.outcomes?.length ? data.outcomes.map((o) => ({ ...o, value: String(o.value) })) : [],
         quote_text: data.quote_text || "", quote_role: data.quote_role || "", quote_name: data.quote_name || "",
         published: data.published,
       });
@@ -143,20 +182,23 @@ export default function AdminCaseStudyForm() {
       slug: form.slug || slugify(form.title),
       description: form.description,
       category: form.category,
+      industry: form.industry,
       tags: form.tags.split(",").map((t) => t.trim()).filter(Boolean),
       tools: form.tools.split(",").map((t) => t.trim()).filter(Boolean),
       overview: linesToArray(form.overview),
-      outcomes: linesToOutcomes(form.outcomes),
+      outcomes: form.outcomes
+        .filter((o) => o.label || o.value)
+        .map((o) => ({ value: Number(o.value) || 0, suffix: o.suffix || "", label: o.label || "" })),
       challenges: linesToArray(form.challenges),
       solutions: linesToArray(form.solutions),
       cover_image_url: form.cover_image_url,
       is_concept: form.is_concept,
-      snapshot: linesToSnapshot(form.snapshot),
+      snapshot: form.snapshot.filter((s) => s.label || s.value),
       challenge_image_1_url: form.challenge_image_1_url || null,
       challenge_image_1_alt: form.challenge_image_1_alt || null,
       challenge_image_2_url: form.challenge_image_2_url || null,
       challenge_image_2_alt: form.challenge_image_2_alt || null,
-      process: linesToProcess(form.process),
+      process: form.process.filter((p) => p.phase || p.time || p.body),
       results_note: form.results_note || null,
       services: linesToArray(form.services),
       features: linesToArray(form.features),
@@ -196,15 +238,21 @@ export default function AdminCaseStudyForm() {
           <label htmlFor="title">Title</label>
           <input id="title" name="title" required value={form.title} onChange={handleChange} />
         </div>
+        <div className="adm-field">
+          <label htmlFor="slug">Slug (URL)</label>
+          <input id="slug" name="slug" required value={form.slug} onChange={handleSlugChange} />
+        </div>
         <div className="adm-form-row">
           <div className="adm-field">
-            <label htmlFor="slug">Slug (URL)</label>
-            <input id="slug" name="slug" required value={form.slug} onChange={handleSlugChange} />
-          </div>
-          <div className="adm-field">
-            <label htmlFor="category">Category</label>
+            <label htmlFor="category">Category (used by the Case Studies page filter)</label>
             <select id="category" name="category" value={form.category} onChange={handleChange}>
               {CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
+            </select>
+          </div>
+          <div className="adm-field">
+            <label htmlFor="industry">Industry (used by the Work page filter)</label>
+            <select id="industry" name="industry" value={form.industry} onChange={handleChange}>
+              {INDUSTRIES.map((i) => <option key={i} value={i}>{i}</option>)}
             </select>
           </div>
         </div>
@@ -239,8 +287,17 @@ export default function AdminCaseStudyForm() {
 
         <SectionHead>Engagement at a Glance (optional)</SectionHead>
         <div className="adm-field">
-          <label htmlFor="snapshot">Snapshot facts — one per line, as <code>label|value</code></label>
-          <textarea id="snapshot" name="snapshot" placeholder={"Industry|B2B SaaS\nTimeline|13 weeks\nTeam Size|6"} value={form.snapshot} onChange={handleChange} rows={4} />
+          <label>Snapshot facts</label>
+          <RepeatField
+            rows={form.snapshot}
+            onChange={(rows) => setForm((prev) => ({ ...prev, snapshot: rows }))}
+            columns={[
+              { key: "label", placeholder: "Label — e.g. Industry" },
+              { key: "value", placeholder: "Value — e.g. B2B SaaS" },
+            ]}
+            emptyRow={emptySnapshotRow}
+            addLabel="Add fact"
+          />
         </div>
 
         <SectionHead>Overview</SectionHead>
@@ -277,14 +334,34 @@ export default function AdminCaseStudyForm() {
 
         <SectionHead>Delivery Process (optional)</SectionHead>
         <div className="adm-field">
-          <label htmlFor="process">Process phases — one per line, as <code>phase|time|body</code></label>
-          <textarea id="process" name="process" placeholder={"Discovery & Analysis|2 weeks|Sessions with stakeholders mapped where data and workflows diverged."} value={form.process} onChange={handleChange} rows={5} />
+          <label>Process phases</label>
+          <RepeatField
+            rows={form.process}
+            onChange={(rows) => setForm((prev) => ({ ...prev, process: rows }))}
+            columns={[
+              { key: "phase", placeholder: "Phase — e.g. Discovery & Analysis" },
+              { key: "time", placeholder: "Time — e.g. 2 weeks" },
+              { key: "body", placeholder: "What happened in this phase", type: "textarea" },
+            ]}
+            emptyRow={emptyProcessRow}
+            addLabel="Add phase"
+          />
         </div>
 
         <SectionHead>Outcomes</SectionHead>
         <div className="adm-field">
-          <label htmlFor="outcomes">Outcomes — one per line, as <code>value|suffix|label</code></label>
-          <textarea id="outcomes" name="outcomes" placeholder={"42|%|increase in product views\n29|%|faster average browsing speed"} value={form.outcomes} onChange={handleChange} rows={4} />
+          <label>Outcomes</label>
+          <RepeatField
+            rows={form.outcomes}
+            onChange={(rows) => setForm((prev) => ({ ...prev, outcomes: rows }))}
+            columns={[
+              { key: "value", placeholder: "Value — e.g. 42" },
+              { key: "suffix", placeholder: "Suffix — e.g. %" },
+              { key: "label", placeholder: "Label — e.g. increase in product views" },
+            ]}
+            emptyRow={emptyOutcomeRow}
+            addLabel="Add outcome"
+          />
         </div>
         <div className="adm-field">
           <label htmlFor="results_note">Results note (optional, one extra qualitative line below the outcomes)</label>

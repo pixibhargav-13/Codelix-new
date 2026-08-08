@@ -486,6 +486,88 @@
   border: 1px solid var(--adm-border);
 }
 
+/* ───────────── REPEATABLE FIELD GROUPS (snapshot / process / outcomes) ── */
+.adm-repeat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.adm-repeat-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px;
+  background: #0c0e14;
+  border: 1px solid var(--adm-border);
+  border-radius: 9px;
+}
+
+.adm-repeat-row-fields {
+  display: grid;
+  gap: 8px;
+  flex: 1;
+}
+
+.adm-repeat-row-fields input,
+.adm-repeat-row-fields textarea {
+  background: var(--adm-panel);
+  border: 1px solid var(--adm-border-soft);
+  border-radius: 7px;
+  padding: 8px 10px;
+  color: var(--adm-text);
+  font-size: 13px;
+  font-family: inherit;
+  width: 100%;
+}
+
+.adm-repeat-row-fields input:focus,
+.adm-repeat-row-fields textarea:focus {
+  outline: none;
+  border-color: var(--adm-accent);
+  box-shadow: 0 0 0 3px var(--adm-accent-dim);
+}
+
+.adm-repeat-row-fields textarea {
+  resize: vertical;
+  min-height: 44px;
+  line-height: 1.5;
+}
+
+.adm-repeat-remove {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 7px;
+  border: 1px solid var(--adm-border);
+  background: none;
+  color: var(--adm-text-dim);
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+
+.adm-repeat-remove svg {
+  flex: none;
+  pointer-events: none;
+}
+
+.adm-repeat-remove:hover {
+  background: rgba(240, 120, 125, .08);
+  color: var(--adm-danger);
+  border-color: rgba(240, 120, 125, .3);
+}
+
+.adm-repeat-add {
+  align-self: flex-start;
+  font-size: 12.5px;
+  padding: 7px 14px;
+}
+
 /* ───────────── RESPONSIVE ───────────── */
 @media (max-width: 760px) {
   .adm-layout {

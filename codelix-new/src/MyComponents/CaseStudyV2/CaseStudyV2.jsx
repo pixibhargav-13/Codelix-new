@@ -139,7 +139,7 @@ export default function CaseStudyV2() {
         id: `admin-${cs.slug}`,
         title: cs.title,
         category: cs.category,
-        industry: cs.category,
+        industry: cs.industry,
         description: cs.description,
         tags: cs.tags,
         image: cs.image,

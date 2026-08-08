@@ -1581,6 +1581,48 @@
   color: var(--text-38);
 }
 
+/* the Homepage carousel's .v2-quote-dot is styled for its light
+   .v2-section--gallery background (near-black dots) — invisible here,
+   since .sd2-quote always sits on the site's dark background. Same
+   dot-nav behavior, colors matched to the dark theme instead. */
+.sd2-quote-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.v2 .sd2-quote-dot {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+  min-height: 8px;
+  border-radius: 50%;
+  background-color: rgba(180, 200, 230, .3);
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  transform: scale(1);
+  transition: background-color .3s ease, transform .3s ease;
+  display: block;
+}
+
+.v2 .sd2-quote-dot:hover {
+  background-color: rgba(180, 200, 230, .6);
+  transform: scale(1.1);
+}
+
+.v2 .sd2-quote-dot.is-active {
+  background-color: var(--text);
+  transform: scale(1.3);
+}
+
 /* ───────────── OTHER SERVICES — bento grid ─────────────
    Was a bordered list of thin rows (icon + title + arrow, no description).
    Now a grid of rounded cards, same surface/hover language as the homepage
@@ -1593,11 +1635,17 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
 }
+
 @media (max-width: 1000px) {
-  .sd2-other-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sd2-other-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
+
 @media (max-width: 560px) {
-  .sd2-other-list { grid-template-columns: 1fr; }
+  .sd2-other-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 .sd2-other {

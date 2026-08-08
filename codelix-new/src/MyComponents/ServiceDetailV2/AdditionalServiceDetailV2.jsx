@@ -22,6 +22,7 @@ import "../ServiceDetailV2/ServiceDetailV2.css";
 import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 
 import { PROJECTS } from "../WorkV2/projectsData";
+import { useCaseStudies } from "../CaseStudyDetailV2/useCaseStudies";
 import { ADDITIONAL_SERVICES, additionalServiceBySlug } from "./additionalServicesData";
 import NavbarV2 from "../Shared/NavbarV2";
 
@@ -254,10 +255,11 @@ function ScrollSentence({ words, tone }) {
 export default function AdditionalServiceDetailV2() {
   const { slug } = useParams();
   const svc = additionalServiceBySlug(slug);
+  const caseStudies = useCaseStudies();
 
-  
-  
-  
+
+
+
   const [openFaq, setOpenFaq] = useState(-1);
   const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
   const [incActive, setIncActive] = useState(0);
@@ -476,9 +478,22 @@ export default function AdditionalServiceDetailV2() {
     ...s, n: String(i + 1).padStart(2, "0"), path: `/services-v2/${s.slug}`,
   }));
 
-  const relatedWork = svc.relatedCategory
-    ? PROJECTS.filter((p) => p.category === svc.relatedCategory).slice(0, 3)
+  /* admin-created case studies (published via Supabase) are prepended by
+     useCaseStudies() ahead of the static list, so mapping them into the
+     same { href, image, category, title } shape PROJECTS cards use and
+     putting them first here means the latest published case study for a
+     matching category shows up first — same additive merge as the
+     WorkV2 / CaseStudyV2 listings. */
+  const existingCaseStudySlugs = new Set(PROJECTS.map((p) => p.href.replace("/", "")));
+  const adminWork = svc.relatedCategory
+    ? caseStudies
+        .filter((cs) => cs.image && cs.category === svc.relatedCategory && !existingCaseStudySlugs.has(cs.slug))
+        .map((cs) => ({ href: `/case-study-v2/${cs.slug}`, image: cs.image, category: cs.category, title: cs.title }))
     : [];
+  const staticWork = svc.relatedCategory
+    ? PROJECTS.filter((p) => p.category === svc.relatedCategory).map((p) => ({ href: p.href, image: p.image, category: p.category, title: p.title }))
+    : [];
+  const relatedWork = [...adminWork, ...staticWork].slice(0, 3);
 
   const faqs = getFaqs(svc);
 

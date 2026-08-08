@@ -14,6 +14,7 @@ import "../HomepageV2/HomepageV2.css";
 import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import CtaVisual from "../HomepageV2/CtaVisual";
+import { useTestimonials } from "../../data/useTestimonials";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./AboutV2.css";
@@ -72,11 +73,19 @@ const OTHER_SERVICES = [
   { icon: LifeBuoy, n: "08", title: "Support & Managed Services", body: "Ongoing maintenance, technical support, and dedicated team augmentation.", path: "/services-v2/support-managed-services" },
 ];
 
-const QUOTE = {
-  text: "We were able to successfully complete the project by meeting the best partner. They have a very good understanding of development and skills, and are fully committed to the task schedule.",
-  name: "Rajesh Patel",
-  role: "CEO, Harmony Inc.",
-};
+/* fallback shown before Supabase responds — same 5 real quotes and same
+   shape useTestimonials() expects, editable from the admin panel's
+   Testimonials section afterwards. Same content as the Homepage carousel's
+   STATIC_TESTIMONIALS, kept as its own copy here (like WorkV2's own
+   TESTIMONIALS array) so this page auto-rotates through them too instead
+   of only ever showing the first one. */
+const STATIC_QUOTE = [
+  { quote: "We were able to successfully complete the project by meeting the best partner. They have a very good understanding of development and skills, and are fully committed to the task schedule.", name: "Rajesh Patel", position: "CEO, Harmony Inc." },
+  { quote: "Their communication and problem-solving skills are top-notch. The entire workflow was smooth and professional.", name: "Priya Sharma", position: "Founder, Nexa Digital" },
+  { quote: "Amazing team! Delivered everything on time with exceptional quality. Totally recommend!", name: "Amit Kumar", position: "CTO, PixelWave" },
+  { quote: "Honestly, we were struggling to keep up with our growth until they stepped in. They didn't just build the tech; they actually understood our users. It's been a total game-changer for our workflow, and the design is just spot on.", name: "Emily Watson", position: "Director, Nova Corp" },
+  { quote: "What I love most is that they don't just say 'yes' to everything — they tell us what's actually going to work. The whole process felt super collaborative, and they genuinely cared about making the project a success.", name: "Chris Taylor", position: "COO, Orbit Labs" },
+];
 
 const MISSION_WORDS = [
   "WE BUILD SOFTWARE.",
@@ -185,9 +194,22 @@ function ScrollSentence({ words, tone }) {
 }
 
 export default function AboutV2() {
-  
-  
-  
+  const testimonials = useTestimonials(STATIC_QUOTE);
+  const [activeQuote, setActiveQuote] = useState(0);
+  const [quotePaused, setQuotePaused] = useState(false);
+  const activeTestimonial = testimonials[activeQuote % testimonials.length];
+  const QUOTE = { text: activeTestimonial.quote, name: activeTestimonial.name, role: activeTestimonial.position };
+
+  /* auto-advance through every live testimonial, same 6s cadence as the
+     Homepage carousel, paused while the quote is hovered */
+  useEffect(() => {
+    if (quotePaused || testimonials.length < 2) return;
+    const t = setTimeout(() => {
+      setActiveQuote((i) => (i + 1) % testimonials.length);
+    }, 6000);
+    return () => clearTimeout(t);
+  }, [activeQuote, quotePaused, testimonials.length]);
+
   const [openFaq, setOpenFaq] = useState(-1);
   const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
 
@@ -509,7 +531,11 @@ export default function AboutV2() {
 
       {/* ══════════ 5c · TESTIMONIAL ══════════ */}
       <section className="v2-section">
-        <figure className="sd2-quote">
+        <figure
+          className="sd2-quote"
+          onMouseEnter={() => setQuotePaused(true)}
+          onMouseLeave={() => setQuotePaused(false)}
+        >
           <span className="sd2-quote-mark" aria-hidden="true">&ldquo;</span>
           <blockquote className="sd2-quote-text">{QUOTE.text}</blockquote>
           <figcaption className="sd2-quote-by">
@@ -517,6 +543,19 @@ export default function AboutV2() {
             <span className="sd2-quote-role">{QUOTE.role}</span>
           </figcaption>
         </figure>
+        {testimonials.length > 1 && (
+          <div className="sd2-quote-dots">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                className={`sd2-quote-dot ${activeQuote % testimonials.length === i ? "is-active" : ""}`}
+                onClick={() => setActiveQuote(i)}
+                aria-label={`Go to review ${i + 1}`}
+              />
+            ))}
+          </div>
+        )}
       </section>
 
       {/* ══════════ 5d · FAQ ══════════ */}
