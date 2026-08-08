@@ -144,18 +144,18 @@ const FAQS = [
 ];
 
 export default function IndustriesV2() {
-  
-  
-  
+
+
+
   const [openFaq, setOpenFaq] = useState(-1);
   const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
 
   const rootRef = useRef(null);
   const stripRef = useRef(null);
 
-  
 
-  
+
+
 
   /* hero intro — masked-line GSAP wipe, matching the other v2 pages */
   useEffect(() => {
@@ -265,7 +265,7 @@ export default function IndustriesV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
-      
+
 
       {/* ══════════ 1 · HERO ══════════ */}
       <header className="sd2-hero">

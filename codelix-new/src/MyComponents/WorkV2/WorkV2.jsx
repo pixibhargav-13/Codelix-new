@@ -24,6 +24,7 @@ import logo5 from "../Images/Our-work-logo-five.png";
 /* the full portfolio — extracted to its own module so WorkV2 and
    CaseStudyV2 share one source of truth instead of duplicating it */
 import { PROJECTS } from "./projectsData";
+import { useCaseStudies } from "../CaseStudyDetailV2/useCaseStudies";
 import NavbarV2 from "../Shared/NavbarV2";
 
 
@@ -214,7 +215,32 @@ export default function WorkV2() {
     };
   }, []);
 
-  const filtered = PROJECTS.filter((p) => {
+  /* admin-created case studies (published via Supabase) aren't part of the
+     static PROJECTS list, so they need to be reshaped into the same
+     card-shape PROJECTS already has before they can slot into this grid —
+     additive only, the existing 15 keep coming from PROJECTS untouched.
+     Same merge as CaseStudyV2.jsx's listing, so a new case study shows up
+     in both places once published. */
+  const caseStudies = useCaseStudies();
+  const adminProjects = React.useMemo(() => {
+    const existingSlugs = new Set(PROJECTS.map((p) => p.href.replace("/", "")));
+    return caseStudies
+      .filter((cs) => cs.image && !existingSlugs.has(cs.slug))
+      .map((cs) => ({
+        id: `admin-${cs.slug}`,
+        title: cs.title,
+        category: cs.category,
+        industry: cs.industry,
+        description: cs.description,
+        tags: cs.tags,
+        image: cs.image,
+        href: `/case-study-v2/${cs.slug}`,
+      }));
+  }, [caseStudies]);
+
+  const allWorkProjects = React.useMemo(() => [...adminProjects, ...PROJECTS], [adminProjects]);
+
+  const filtered = allWorkProjects.filter((p) => {
     const matchCategory = filter === "All" || p.category === filter;
     const matchIndustry = industryFilter === "All Industries" || p.industry === industryFilter;
     return matchCategory && matchIndustry;

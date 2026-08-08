@@ -30,6 +30,7 @@ export function useCaseStudies() {
             title: cs.title,
             description: cs.description,
             category: cs.category,
+            industry: cs.industry || cs.category,
             tags: cs.tags?.length ? cs.tags : [],
             tools: cs.tools?.length ? cs.tools : cs.tags || [],
             overview: cs.overview || [],
