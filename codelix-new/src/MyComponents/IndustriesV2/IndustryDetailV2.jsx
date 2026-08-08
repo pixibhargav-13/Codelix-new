@@ -1,0 +1,677 @@
+import React, { useEffect, useRef, useState } from "react";
+import { useParams } from "react-router-dom";
+import gsap from "gsap";
+import {
+  Check, XCircle, FileCheck2, Layers3, Timer, KeyRound,
+  Globe, Smartphone, PenTool, ShoppingCart, Code2, Sparkles, BarChart3,
+} from "lucide-react";
+import FooterV2 from "../Shared/FooterV2";
+import NavbarV2 from "../Shared/NavbarV2";
+import CtaVisual from "../HomepageV2/CtaVisual";
+import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
+import { TECH_STACK } from "../HomepageV2/techStack";
+import { INDUSTRIES, industryBySlug, WORK_INDUSTRY_MAP } from "./industriesData";
+import { PROJECTS } from "../WorkV2/projectsData";
+import { useCaseStudies } from "../CaseStudyDetailV2/useCaseStudies";
+import { useTestimonials } from "../../data/useTestimonials";
+
+import "../HomepageV2/HomepageV2.css";
+import "../ServicesV2/ServicesV2.css";
+import "../ServiceDetailV2/ServiceDetailV2.css";
+import "./IndustriesV2.css";
+import "./IndustryDetailV2.css";
+
+/* the 7 core service names that ever appear in industriesData.js's
+   `services` arrays — real routes to the actual core service pages, not
+   invented ones, plus one honest line on why that service shows up in
+   this kind of engagement */
+const SERVICE_INFO = {
+  "Web Development": { icon: Globe, path: "/services-v2/web-development", body: "The public-facing or client-facing surface — built for speed and clarity, not just to look finished in a demo." },
+  "Application Development": { icon: Smartphone, path: "/services-v2/application-development", body: "The mobile or SaaS layer, when the work needs to live beyond a browser tab." },
+  "UI/UX Design": { icon: PenTool, path: "/services-v2/ui-ux-design", body: "The interface work, done before code — so the build doesn't get redesigned halfway through." },
+  "E-Commerce Solutions": { icon: ShoppingCart, path: "/services-v2/e-commerce-solutions", body: "The storefront and checkout layer, engineered around conversion and reliability under real traffic." },
+  "Custom Software Development": { icon: Code2, path: "/services-v2/custom-software-development", body: "The system underneath — internal tools, workflows, or a backend built around how you actually operate." },
+  "AI Development": { icon: Sparkles, path: "/services-v2/ai-development", body: "AI features scoped to a real question in this workflow, not bolted on for the sake of a feature list." },
+  "Data Analytics": { icon: BarChart3, path: "/services-v2/data-analytics", body: "The reporting and dashboard layer, built on data your team can actually trust." },
+};
+
+/* fallback shown before Supabase responds — same 5 real quotes used on
+   the Homepage carousel and About/Team pages, so this page also
+   auto-rotates through live, admin-editable testimonials instead of one
+   static quote frozen at build time. */
+const STATIC_QUOTES = [
+  { quote: "We were able to successfully complete the project by meeting the best partner. They have a very good understanding of development and skills, and are fully committed to the task schedule.", name: "Rajesh Patel", position: "CEO, Harmony Inc." },
+  { quote: "Their communication and problem-solving skills are top-notch. The entire workflow was smooth and professional.", name: "Priya Sharma", position: "Founder, Nexa Digital" },
+  { quote: "Amazing team! Delivered everything on time with exceptional quality. Totally recommend!", name: "Amit Kumar", position: "CTO, PixelWave" },
+  { quote: "Honestly, we were struggling to keep up with our growth until they stepped in. They didn't just build the tech; they actually understood our users. It's been a total game-changer for our workflow, and the design is just spot on.", name: "Emily Watson", position: "Director, Nova Corp" },
+  { quote: "What I love most is that they don't just say 'yes' to everything — they tell us what's actually going to work. The whole process felt super collaborative, and they genuinely cared about making the project a success.", name: "Chris Taylor", position: "COO, Orbit Labs" },
+];
+
+/* same real, site-wide facts already shown on the Industries listing
+   page (STATS in IndustriesV2.jsx) — presented as a horizontal ticker
+   here instead of ring gauges, since sd2-bench-panel already owns that
+   visual everywhere else. */
+const TICKER_FACTS = [
+  "11 industries served",
+  "30+ projects across sectors",
+  "100% source-code ownership, every project",
+  "0% retained access after handover",
+  "Fixed scope, fixed price",
+];
+
+/* the honest, universal questions a discovery call actually opens
+   with — true regardless of sector, personalized only by dropping the
+   industry name in, not by inventing sector-specific specifics we don't
+   have. Card front = the question, back = why we ask it. */
+const firstCallQuestions = (title) => [
+  { q: `What's actually broken in your ${title.toLowerCase()} workflow today?`, a: "Not what should be broken — what's actually costing you time or money right now. That's where real scoping starts." },
+  { q: "Who touches this system day to day?", a: "The people using it daily notice friction a stakeholder brief never mentions. We talk to them directly whenever we can." },
+  { q: "What's the one thing this absolutely can't get wrong?", a: "Every project has a non-negotiable — a compliance rule, a peak-load moment, a data type. We scope around that first, not last." },
+  { q: "What happens if you do nothing?", a: "Sometimes the honest answer is 'not much yet.' We'd rather tell you that than invent urgency to close a deal." },
+];
+
+export default function IndustryDetailV2() {
+  const { slug } = useParams();
+  const svc = industryBySlug(slug);
+
+  const [openFaq, setOpenFaq] = useState(-1);
+  const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
+  const [blueprintActive, setBlueprintActive] = useState(-1);
+  const [flippedCards, setFlippedCards] = useState(() => new Set());
+  const [activeQuote, setActiveQuote] = useState(0);
+  const [quotePaused, setQuotePaused] = useState(false);
+
+  const rootRef = useRef(null);
+  const stripRef = useRef(null);
+  const shiftWrapRef = useRef(null);
+  const shiftStageRef = useRef(null);
+  const blueprintWrapRef = useRef(null);
+  const blueprintPathRef = useRef(null);
+  const blueprintActiveRef = useRef(-1);
+
+  const blueprintServices = (svc?.services || []).map((name) => ({ name, ...SERVICE_INFO[name] })).filter((s) => s.icon);
+  const testimonials = useTestimonials(STATIC_QUOTES);
+  const activeTestimonial = testimonials[activeQuote % testimonials.length];
+  const caseStudies = useCaseStudies();
+
+  /* testimonial auto-advance — same 6s cadence as the Homepage carousel */
+  useEffect(() => {
+    if (quotePaused || testimonials.length < 2) return;
+    const t = setTimeout(() => {
+      setActiveQuote((i) => (i + 1) % testimonials.length);
+    }, 6000);
+    return () => clearTimeout(t);
+  }, [activeQuote, quotePaused, testimonials.length]);
+
+  /* hero intro — masked-line GSAP wipe, matching every other v2 hero */
+  useEffect(() => {
+    if (!svc) return;
+    const q = (s) => rootRef.current.querySelectorAll(s);
+    const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
+    tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .7 })
+      .fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")
+      .fromTo(q(".sd2-hero-title .line > span"), { yPercent: 118 }, { yPercent: 0, duration: 1.15 }, "-=.45")
+      .fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.65")
+      .fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7")
+      .fromTo(q(".sd2-facts.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.75");
+    return () => tl.kill();
+  }, [svc]);
+
+  /* reveal-on-enter */
+  useEffect(() => {
+    if (!svc) return;
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        if (el.classList.contains("v2-faq-item")) {
+          const idx = Number(el.dataset.faqIndex);
+          setRevealedFaqs((prev) => (prev.has(idx) ? prev : new Set(prev).add(idx)));
+        } else {
+          el.classList.add("is-in");
+        }
+        io.unobserve(el);
+      }),
+      { threshold: 0.01, rootMargin: "0px 0px -10% 0px" }
+    );
+    const sel = [
+      ".v2-faq-item", ".v2-strip", ".v2-cta", ".v2-heading", ".v2-label", ".v2-lede", ".sd2-other", ".sd2-quote",
+    ].join(", ");
+    rootRef.current?.querySelectorAll(sel).forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [svc]);
+
+  /* FAQ accordion height */
+  useEffect(() => {
+    rootRef.current?.querySelectorAll(".v2-faq-a").forEach((el, i) => {
+      const inner = el.querySelector("p");
+      el.style.height = i === openFaq ? `${inner.offsetHeight}px` : "0px";
+    });
+  }, [openFaq]);
+
+  /* client strip drift, pausing on hover */
+  useEffect(() => {
+    const track = stripRef.current;
+    if (!track) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf = 0, x = 0, paused = false, last = performance.now();
+    const step = (now) => {
+      const dt = now - last; last = now;
+      if (!paused) {
+        x -= 0.00125 * dt;
+        if (x <= -50) x += 50;
+        track.style.transform = `translateX(${x}%)`;
+      }
+      raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    const wrap = track.parentElement;
+    const on = () => { paused = true; };
+    const off = () => { paused = false; };
+    wrap.addEventListener("mouseenter", on);
+    wrap.addEventListener("mouseleave", off);
+    return () => {
+      cancelAnimationFrame(raf);
+      wrap.removeEventListener("mouseenter", on);
+      wrap.removeEventListener("mouseleave", off);
+    };
+  }, []);
+
+  /* the extraordinary section — "The Shift": a scroll-driven wipe reveal.
+     A tall wrapper gives the section scroll length; the stage inside pins
+     via position:sticky. Scroll progress through that wrapper drives a
+     single CSS custom property (--wipe, 0% → 100%) on the stage, and a
+     clip-path on the "after" panel (absolutely positioned on top of the
+     "before" panel) uses that same value to sweep left-to-right, revealing
+     the fixed state underneath the problem state row by row. Nothing else
+     on the site uses a clip-path scroll-wipe — every other scroll effect
+     here uses opacity/scale/rotate/sticky-stacking instead. */
+  useEffect(() => {
+    if (!svc) return;
+    const wrap = shiftWrapRef.current;
+    const stage = shiftStageRef.current;
+    if (!wrap || !stage) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      stage.style.setProperty("--wipe", "100%");
+      return;
+    }
+    let raf = 0;
+    const tick = () => {
+      const rect = wrap.getBoundingClientRect();
+      const total = rect.height - window.innerHeight * 0.7;
+      const raw = total > 0 ? Math.min(Math.max(-rect.top / total, 0), 1) : 0;
+      stage.style.setProperty("--wipe", `${raw * 100}%`);
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [svc]);
+
+  /* second extraordinary section — "The Build, Layer by Layer": a thin
+     SVG spine down the middle of the real services this industry uses,
+     drawn in via stroke-dashoffset as the reader scrolls (a path-draw
+     reveal — a third distinct mechanism on this page, after the clip-path
+     wipe above; nothing here is a click-driven quiz). Each service node
+     lights up once the drawn line reaches it, computed from the same
+     scroll fraction rather than a separate observer per node. */
+  useEffect(() => {
+    if (!svc) return;
+    const wrap = blueprintWrapRef.current;
+    const path = blueprintPathRef.current;
+    if (!wrap || !path) return;
+    const total = blueprintServices.length;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      path.style.strokeDashoffset = "0";
+      setBlueprintActive(total - 1);
+      return;
+    }
+    const len = path.getTotalLength();
+    path.style.strokeDasharray = `${len}`;
+    let raf = 0;
+    const tick = () => {
+      const rect = wrap.getBoundingClientRect();
+      const span = rect.height - window.innerHeight * 0.5;
+      const raw = span > 0 ? Math.min(Math.max(-rect.top / span, 0), 1) : 0;
+      path.style.strokeDashoffset = `${len * (1 - raw)}`;
+      const active = Math.floor(raw * total + 0.0001) - (raw >= 1 ? 0 : 0);
+      const clamped = Math.min(Math.max(active, raw > 0 ? 0 : -1), total - 1);
+      if (clamped !== blueprintActiveRef.current) {
+        blueprintActiveRef.current = clamped;
+        setBlueprintActive(clamped);
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [svc, blueprintServices.length]);
+
+  if (!svc) {
+    return (
+      <div className="v2" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }}>
+        <h1 style={{ color: "#fff", fontSize: 28 }}>Industry not found.</h1>
+        <a className="v2-btn" href="/industries-v2">Back to Industries →</a>
+      </div>
+    );
+  }
+
+  /* real matches only — static PROJECTS (by their `industry` field) plus
+     any admin-published case study whose own industry (set in the admin
+     panel, using the exact same option list) matches this page. Nothing
+     invented; an industry with no real or admin-added match simply skips
+     this section entirely. */
+  const toggleFlip = (i) =>
+    setFlippedCards((prev) => {
+      const next = new Set(prev);
+      if (next.has(i)) next.delete(i); else next.add(i);
+      return next;
+    });
+  const questions = firstCallQuestions(svc.title);
+
+  const adminMatchedWork = caseStudies
+    .filter((cs) => cs.image && cs.industry === WORK_INDUSTRY_MAP[svc.slug])
+    .map((cs) => ({ image: cs.image, category: cs.category, title: cs.title, href: `/case-study-v2/${cs.slug}` }));
+  const staticMatchedWork = PROJECTS
+    .filter((p) => p.industry === WORK_INDUSTRY_MAP[svc.slug])
+    .map((p) => ({ image: p.image, category: p.category, title: p.title, href: `/case-study-v2${p.href}` }));
+  const matchedWork = [...adminMatchedWork, ...staticMatchedWork].slice(0, 3);
+  const otherIndustries = INDUSTRIES.filter((i) => i.slug !== svc.slug).slice(0, 6);
+  const faqs = [
+    { q: `Do you have real experience in ${svc.title.toLowerCase()}?`, a: `Yes — ${svc.title} is one of the sectors we take on repeat work in, not a first attempt. See the problems and process above for what that looks like in practice.` },
+    { q: "How is this priced?", a: "Fixed scope, fixed price — you get a written quote before any work starts, based on what you actually need, not an hourly guess." },
+    { q: "Do we own the code and IP when it's done?", a: "Yes — 100% source-code ownership transfers to you at project close. No retained access, no dependency on us to keep it running." },
+    { q: "We're not exactly this sector — can you still help?", a: "Almost certainly. This page describes where we have the deepest repeat experience, not a hard boundary. Tell us what you're building and we'll tell you honestly if it's a fit." },
+    { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that you can take it in-house with the docs we provide, or keep us on a monthly retainer." },
+  ];
+
+  return (
+    <div className="v2" ref={rootRef}>
+      <div className="v2-progress" aria-hidden="true"><span /></div>
+
+      <NavbarV2 />
+
+      {/* ══════════ 1 · HERO ══════════ */}
+      <header className="sd2-hero">
+        <div className="sd2-hero-inner">
+          <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
+            <a href="/preview-v2">Home</a>
+            <span>/</span>
+            <a href="/industries-v2">Industries</a>
+            <span>/</span>
+            <em>{svc.title}</em>
+          </nav>
+
+          <div className="sd2-hero-main">
+            <div>
+              <div className="v2-hero-top sv2-hero-reveal">
+                <span className="v2-hero-status"><i /> Industry</span>
+              </div>
+              <h1 className="sd2-hero-title">
+                <span className="line"><span>{svc.title}</span></span>
+              </h1>
+              <p className="sd2-hero-sub sv2-hero-reveal">{svc.tagline}</p>
+              <div className="sd2-hero-cta sv2-hero-reveal">
+                <a className="v2-btn v2-btn--filled" href="/contact-v2">
+                  <span>Talk about your sector</span>
+                  <i className="v2-btn-arrow">→</i>
+                </a>
+                <a className="v2-hero-secondary" href="#shift">
+                  <span className="v2-hero-secondary-label">See the shift</span>
+                </a>
+              </div>
+            </div>
+
+            <aside className="sd2-facts sv2-hero-reveal">
+              {[
+                ["Sector", svc.title],
+                ["Typical timeline", "2–12 weeks"],
+                ["You receive", "100% source code"],
+                ["Post-launch", "Support included"],
+              ].map(([k, v]) => (
+                <div className="sd2-fact" key={k}>
+                  <span className="sd2-fact-k">{k}</span>
+                  <span className="sd2-fact-v">{v}</span>
+                </div>
+              ))}
+            </aside>
+          </div>
+        </div>
+      </header>
+
+      {/* ══════════ TICKER — a continuous horizontal marquee of real,
+          site-wide facts. The stats exist elsewhere too (the Industries
+          listing page), but always as ring gauges — this is a different
+          treatment (a moving strip, no numbers counting up on scroll). */}
+      <div className="ind2-ticker" aria-hidden="true">
+        <div className="ind2-ticker-track">
+          {TICKER_FACTS.concat(TICKER_FACTS).map((f, i) => (
+            <span key={i}>{f}</span>
+          ))}
+        </div>
+      </div>
+
+      {/* ══════════ 2b · CLIENT STRIP ══════════ */}
+      <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
+        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 30+ companies</p>
+        <div className="v2-strip">
+          <div className="v2-strip-track" ref={stripRef}>
+            {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
+              <img key={i} src={logo} alt="" loading="lazy" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════ SECTOR OVERVIEW — a large editorial statement built
+          from svc.body, real copy that existed in the data but had no
+          home anywhere on this page until now. A giant watermark index
+          number behind the text is the only decoration — no card, no
+          grid, nothing borrowed from another section on the site. */}
+      <section className="v2-section ind2-overview" id="overview">
+        <span className="ind2-overview-mark" aria-hidden="true">
+          {String(INDUSTRIES.findIndex((i) => i.slug === svc.slug) + 1).padStart(2, "0")}
+        </span>
+        <p className="v2-label">In Short</p>
+        <p className="ind2-overview-text">{svc.body}</p>
+      </section>
+
+      {/* ══════════ 3 · THE SHIFT — extraordinary scroll-wipe section ══════════ */}
+      <section className="v2-section" id="shift">
+        <p className="v2-label">The Shift</p>
+        <h2 className="v2-heading">From daily friction to a system that holds.</h2>
+        <p className="v2-lede">Scroll to sweep from where things stand today to what changes.</p>
+
+        <div className="ind2-shift-wrap" ref={shiftWrapRef}>
+          <div className="ind2-shift-sticky">
+            <div className="ind2-shift-stage" ref={shiftStageRef}>
+              <div className="ind2-shift-before">
+                <span className="ind2-shift-tag ind2-shift-tag--before">Before</span>
+                {svc.problems.map((p) => (
+                  <div className="ind2-shift-row" key={p.pain}>
+                    <span className="ind2-shift-icon ind2-shift-icon--before"><XCircle size={16} strokeWidth={1.8} /></span>
+                    <p>{p.pain}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="ind2-shift-after">
+                <span className="ind2-shift-tag ind2-shift-tag--after">With Codelix</span>
+                {svc.problems.map((p) => (
+                  <div className="ind2-shift-row" key={p.fix}>
+                    <span className="ind2-shift-icon ind2-shift-icon--after"><Check size={16} strokeWidth={2} /></span>
+                    <p>{p.fix}</p>
+                  </div>
+                ))}
+              </div>
+              <span className="ind2-shift-scanline" aria-hidden="true" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════ THIRD SECTION UNIQUE TO THIS PAGE: THE SECTOR FILE —
+          a case-file/dossier styled panel, built only from this industry's
+          real data (no invented process steps or "principles" copy shared
+          with every other detail page on the site). No shared section
+          classes reused here — its own layout, purpose-built for this
+          page only. ══════════ */}
+      <section className="v2-section v2-section--void" id="dossier">
+        <p className="v2-label">The Sector File</p>
+        <h2 className="v2-heading">What we already know, before the first call.</h2>
+        <div className="ind2-file">
+          <div className="ind2-file-tab">
+            <span>SECTOR // {svc.slug.toUpperCase().replace(/-/g, "·")}</span>
+            <span>FILE 01</span>
+          </div>
+          <div className="ind2-file-body">
+            <div className="ind2-file-mark" aria-hidden="true"><svc.icon size={120} strokeWidth={0.8} /></div>
+            <div className="ind2-file-main">
+              <h3>{svc.title}</h3>
+              <p>{svc.tagline}</p>
+            </div>
+            <dl className="ind2-file-specs">
+              <div>
+                <dt><FileCheck2 size={14} strokeWidth={1.8} /> Problems on record</dt>
+                <dd>{svc.problems.length} recurring, see "The Shift" above</dd>
+              </div>
+              <div>
+                <dt><Layers3 size={14} strokeWidth={1.8} /> Services involved</dt>
+                <dd>{svc.services.join(" · ")}</dd>
+              </div>
+              <div>
+                <dt><Timer size={14} strokeWidth={1.8} /> Typical timeline</dt>
+                <dd>2–12 weeks, scope-dependent</dd>
+              </div>
+              <div>
+                <dt><KeyRound size={14} strokeWidth={1.8} /> Ownership on close</dt>
+                <dd>100% source code, no retained access</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════ REAL WORK IN THIS SECTOR — actual shipped projects
+          matched by industry (not category), a real cross-reference that
+          didn't exist on this page before. Renders nothing at all when
+          there's no genuine match, rather than padding with unrelated
+          work. ══════════ */}
+      {matchedWork.length > 0 && (
+        <section className="v2-section v2-section--void" id="sector-work">
+          <p className="v2-label">Real Work</p>
+          <h2 className="v2-heading">Already shipped in {svc.title.toLowerCase()}.</h2>
+          <div className="ind2-work-row">
+            {matchedWork.map((w) => (
+              <a className="ind2-work-card" href={w.href} key={w.href}>
+                <span className="ind2-work-media">
+                  <img src={w.image} alt="" loading="lazy" />
+                </span>
+                <span className="ind2-work-cat">{w.category}</span>
+                <span className="ind2-work-title">{w.title}</span>
+                <span className="ind2-work-go">Read case study →</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ══════════ 6 · TECH ══════════ */}
+      <section className="v2-section v2-tech" id="stack">
+        <div className="v2-tech-head">
+          <div>
+            <p className="v2-label">Our Broader Stack</p>
+            <h2 className="v2-heading">What we build with.</h2>
+          </div>
+          <p className="v2-lede">
+            Chosen per project, not by habit — the right tool for your scale,
+            your team, and what you'll need to maintain.
+          </p>
+        </div>
+        <div className="v2-tech-grid">
+          {TECH_STACK.map((t) => (
+            <div className="v2-tech-item" key={t.name}>
+              <img src={t.src} alt={t.name} loading="lazy" />
+              <span>{t.name}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 7 · TESTIMONIAL — live, admin-editable, auto-rotating
+          (same pattern as Homepage/About/Team), instead of one quote
+          frozen at build time ══════════ */}
+      <section className="v2-section">
+        <figure
+          className="sd2-quote"
+          onMouseEnter={() => setQuotePaused(true)}
+          onMouseLeave={() => setQuotePaused(false)}
+        >
+          <span className="sd2-quote-mark" aria-hidden="true">&ldquo;</span>
+          <blockquote className="sd2-quote-text">{activeTestimonial.quote}</blockquote>
+          <figcaption className="sd2-quote-by">
+            <span className="sd2-quote-name">{activeTestimonial.name}</span>
+            <span className="sd2-quote-role">{activeTestimonial.position}</span>
+          </figcaption>
+        </figure>
+        {testimonials.length > 1 && (
+          <div className="sd2-quote-dots">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                className={`sd2-quote-dot ${activeQuote % testimonials.length === i ? "is-active" : ""}`}
+                onClick={() => setActiveQuote(i)}
+                aria-label={`Go to review ${i + 1}`}
+              />
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* ══════════ EXTRAORDINARY SECTION: THE BUILD, LAYER BY LAYER — a
+          scroll-drawn SVG spine connecting the real services this industry
+          uses, each node lighting up as the line reaches it. Passive,
+          scroll-driven, and a different visual mechanism from "The Shift"
+          above (path-draw vs clip-path wipe) — no quiz, no click required. */}
+      <section className="v2-section" id="blueprint">
+        <p className="v2-label">The Build</p>
+        <h2 className="v2-heading">What actually goes into this, layer by layer.</h2>
+        <p className="v2-lede">Scroll to trace how the real services below combine for {svc.title.toLowerCase()}.</p>
+
+        <div className="ind2-bp-wrap" ref={blueprintWrapRef}>
+          <svg className="ind2-bp-spine" viewBox={`0 0 2 ${blueprintServices.length * 200}`} preserveAspectRatio="none" aria-hidden="true">
+            <path d={`M1 0 L1 ${blueprintServices.length * 200}`} className="ind2-bp-spine-track" />
+            <path ref={blueprintPathRef} d={`M1 0 L1 ${blueprintServices.length * 200}`} className="ind2-bp-spine-draw" />
+          </svg>
+
+          <div className="ind2-bp-nodes">
+            {blueprintServices.map((s, i) => (
+              <a
+                className={`ind2-bp-node ${i <= blueprintActive ? "is-lit" : ""}`}
+                href={s.path}
+                key={s.name}
+              >
+                <span className="ind2-bp-node-dot" aria-hidden="true" />
+                <span className="ind2-bp-node-icon"><s.icon size={20} strokeWidth={1.5} /></span>
+                <span className="ind2-bp-node-n">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="ind2-bp-node-title">{s.name}</h3>
+                <p className="ind2-bp-node-body">{s.body}</p>
+                <span className="ind2-bp-node-go">View this service →</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════ WHAT WE'D ASK FIRST — a 3D flip-card grid. Click a
+          card to flip it (not hover — works on touch too) and see why we
+          ask. Genuinely honest, universal discovery questions, not
+          sector-specific claims we can't back up. A fourth distinct
+          interaction mechanic on this page (flip, after wipe / draw /
+          marquee), and the only click-to-reveal one. ══════════ */}
+      <section className="v2-section" id="first-call">
+        <p className="v2-label">Before Anything Gets Built</p>
+        <h2 className="v2-heading">What we'd actually ask on the first call.</h2>
+        <p className="v2-lede">Click a card to see why it matters.</p>
+        <div className="ind2-flip-grid">
+          {questions.map((item, i) => (
+            <button
+              type="button"
+              key={item.q}
+              className={`ind2-flip-card ${flippedCards.has(i) ? "is-flipped" : ""}`}
+              onClick={() => toggleFlip(i)}
+              aria-label={flippedCards.has(i) ? "Show question" : "Show why we ask"}
+            >
+              <div className="ind2-flip-inner">
+                <div className="ind2-flip-face ind2-flip-front">
+                  <span className="ind2-flip-n">{String(i + 1).padStart(2, "0")}</span>
+                  <p>{item.q}</p>
+                  <span className="ind2-flip-hint">Tap to see why →</span>
+                </div>
+                <div className="ind2-flip-face ind2-flip-back">
+                  <p>{item.a}</p>
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 9 · FAQ ══════════ */}
+      <section className="v2-section v2-section--void" id="faq">
+        <div className="v2-faq-intro">
+          <div>
+            <p className="v2-label">FAQ</p>
+            <h2 className="v2-heading">{svc.title} questions.</h2>
+          </div>
+          <p className="v2-lede v2-faq-note">
+            Don't see yours here? <a href="/contact-v2">Ask us directly →</a>
+          </p>
+        </div>
+        <div>
+          {faqs.map((f, i) => (
+            <div
+              className={`v2-faq-item ${openFaq === i ? "open" : ""} ${revealedFaqs.has(i) ? "is-in" : ""}`}
+              data-faq-index={i}
+              key={f.q}
+            >
+              <button className="v2-faq-q" onClick={() => setOpenFaq(openFaq === i ? -1 : i)}>
+                <span className="v2-faq-q-label">
+                  <span className="v2-faq-index">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="v2-faq-q-text">{f.q}</span>
+                </span>
+                <span className="v2-faq-sign"><span /><span /></span>
+              </button>
+              <div className="v2-faq-a"><p>{f.a}</p></div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 10 · OTHER INDUSTRIES ══════════ */}
+      <section className="v2-section" id="other">
+        <p className="v2-label">Explore More</p>
+        <h2 className="v2-heading">Other sectors we work in.</h2>
+        <div className="sd2-other-list">
+          {otherIndustries.map((s, i) => (
+            <a className="sd2-other" href={`/industries-v2/${s.slug}`} key={s.slug}>
+              <div className="sd2-other-top">
+                <span className="sd2-other-icon"><s.icon size={17} strokeWidth={1.5} /></span>
+                <span className="sd2-other-n">{String(i + 1).padStart(2, "0")}</span>
+              </div>
+              <span className="sd2-other-title">{s.title}</span>
+              <p className="sd2-other-body">{s.tagline}</p>
+              <span className="sd2-other-go">→</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 11 · CTA ══════════ */}
+      <section className="v2-section v2-section--void v2-cta-shell">
+        <div className="v2-cta">
+          <p className="v2-label">Start Here</p>
+          <h2 className="v2-cta-headline">
+            Tell us about your {svc.title.toLowerCase()} project.<br />We'll tell you how we'd build it.
+          </h2>
+          <p className="v2-cta-body">
+            A structured conversation about your sector's real constraints —
+            not a generic pitch reused across every client.
+          </p>
+          <div className="v2-cta-actions">
+            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
+          </div>
+          <div className="v2-cta-badges">
+            <span className="v2-cta-badge">Free consultation</span>
+            <span className="v2-cta-badge">NDA on request</span>
+            <span className="v2-cta-badge">No obligation</span>
+          </div>
+        </div>
+
+        <aside className="v2-cta-visual">
+          <CtaVisual />
+        </aside>
+      </section>
+
+      <FooterV2 />
+    </div>
+  );
+}

@@ -73,6 +73,7 @@ const AIDevelopmentV2 = lazy(() => import("./MyComponents/AIDevelopmentV2/AIDeve
 const AboutV2 = lazy(() => import("./MyComponents/AboutV2/AboutV2"));
 const ContactV2 = lazy(() => import("./MyComponents/ContactV2/ContactV2"));
 const IndustriesV2 = lazy(() => import("./MyComponents/IndustriesV2/IndustriesV2"));
+const IndustryDetailV2 = lazy(() => import("./MyComponents/IndustriesV2/IndustryDetailV2"));
 const ProcessV2 = lazy(() => import("./MyComponents/ProcessV2/ProcessV2"));
 const TeamV2 = lazy(() => import("./MyComponents/TeamV2/TeamV2"));
 const WorkV2 = lazy(() => import("./MyComponents/WorkV2/WorkV2"));
@@ -162,6 +163,7 @@ const AppRoutes = () => {
           <Route path="/about-v2" element={<AboutV2 />} />
           <Route path="/contact-v2" element={<ContactV2 />} />
           <Route path="/industries-v2" element={<IndustriesV2 />} />
+          <Route path="/industries-v2/:slug" element={<IndustryDetailV2 />} />
           <Route path="/process-v2" element={<ProcessV2 />} />
           <Route path="/team-v2" element={<TeamV2 />} />
           <Route path="/work-v2" element={<WorkV2 />} />

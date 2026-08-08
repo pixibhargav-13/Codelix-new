@@ -884,6 +884,7 @@
 
 .v2-drawer.open .v2-drawer-links>*:nth-child(2) {
   animation-delay: .09s;
+  padding: 18px 15px 18px 18px !important;
 }
 
 .v2-drawer.open .v2-drawer-links>*:nth-child(3) {
@@ -1062,7 +1063,7 @@
 
 .v2-drawer-links>a:first-child,
 .v2-drawer-accordion:first-child>.v2-drawer-link-btn {
-  padding: 18px 4px 18px 18px;
+  padding: 18px 15px 18px 18px;
 }
 
 @media (min-width: 861px) {

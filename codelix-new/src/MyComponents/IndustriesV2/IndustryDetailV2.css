@@ -1,0 +1,669 @@
+/* ============================================================
+   Industry Detail V2 — page-specific styles only.
+   Only the hero, client strip, tech grid, quote, FAQ, other-list and CTA
+   still come from HomepageV2.css / ServiceDetailV2.css (universal page
+   chrome, expected everywhere). Every "feature" section on this page —
+   The Shift, The Sector File, The Build — is styled only here, not
+   reused from any other detail page.
+   ============================================================ */
+
+/* ───────────── THE SHIFT — scroll-driven clip-path wipe.
+   .ind2-shift-wrap is a tall scroll-length container; .ind2-shift-sticky
+   pins the stage inside it while the page scrolls. IndustryDetailV2.jsx
+   writes a single --wipe custom property (0% → 100%) on .ind2-shift-stage
+   every frame based on scroll progress through the wrapper — the "after"
+   panel's clip-path reads that same variable to sweep into view left to
+   right, uncovering the "before" panel underneath it row by row. ───── */
+.ind2-shift-wrap {
+  height: 220vh;
+  position: relative;
+  margin-top: 46px;
+}
+
+.ind2-shift-sticky {
+  position: sticky;
+  top: 100px;
+}
+
+.ind2-shift-stage {
+  position: relative;
+  --wipe: 0%;
+  border-radius: 20px;
+  overflow: hidden;
+  border: .8px solid var(--rule);
+  background: #0a0a0d;
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .6);
+}
+
+.ind2-shift-before,
+.ind2-shift-after {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: clamp(28px, 4vw, 48px);
+}
+
+.ind2-shift-before {
+  background: radial-gradient(120% 140% at 0% 0%, rgba(240, 120, 125, .06), transparent 60%);
+}
+
+.ind2-shift-after {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 140% at 100% 0%, rgba(120, 220, 160, .08), transparent 60%), #0a0a0d;
+  clip-path: inset(0 calc(100% - var(--wipe)) 0 0);
+  border-left: 1px solid rgba(180, 200, 230, .5);
+}
+
+.ind2-shift-tag {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.ind2-shift-tag--before {
+  color: #f0787d;
+  background: rgba(240, 120, 125, .1);
+  border: 1px solid rgba(240, 120, 125, .25);
+}
+
+.ind2-shift-tag--after {
+  color: #7ee0a8;
+  background: rgba(120, 220, 160, .1);
+  border: 1px solid rgba(120, 220, 160, .25);
+}
+
+.ind2-shift-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.v2 .ind2-shift-row p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-75, rgba(255, 255, 255, .8));
+  margin: 0;
+}
+
+.ind2-shift-icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  margin-top: 1px;
+}
+
+.ind2-shift-icon--before {
+  color: #f0787d;
+  background: rgba(240, 120, 125, .1);
+}
+
+.ind2-shift-icon--after {
+  color: #7ee0a8;
+  background: rgba(120, 220, 160, .12);
+}
+
+/* the moving scan-line — a thin bright bar sitting exactly at the wipe
+   boundary, giving the sweep a visible "edge" rather than a soft clip */
+.ind2-shift-scanline {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--wipe);
+  width: 2px;
+  background: linear-gradient(rgba(180, 200, 230, 0), rgba(180, 200, 230, .9) 40%, rgba(180, 200, 230, .9) 60%, rgba(180, 200, 230, 0));
+  box-shadow: 0 0 24px 2px rgba(180, 200, 230, .5);
+  pointer-events: none;
+  transform: translateX(-1px);
+}
+
+@media (max-width: 760px) {
+  .ind2-shift-wrap {
+    height: auto;
+  }
+
+  .ind2-shift-sticky {
+    position: static;
+  }
+
+  .ind2-shift-stage {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ind2-shift-after {
+    position: static;
+    clip-path: none;
+    border-left: none;
+    border-top: 1px solid rgba(180, 200, 230, .3);
+  }
+
+  .ind2-shift-scanline {
+    display: none;
+  }
+}
+
+/* ───────────── THE BUILD, LAYER BY LAYER — a scroll-drawn SVG spine.
+   .ind2-bp-wrap holds both the decorative SVG line and the node list in
+   normal flow (nothing pinned here, unlike "The Shift"); the wrap's
+   scroll fraction (read the same getBoundingClientRect way) drives the
+   spine path's stroke-dashoffset directly in JS every frame, and each
+   node's "lit" state is plain React state compared against that same
+   fraction — a path-draw reveal, distinct from the clip-path wipe above
+   and from any click-driven UI. ───────────── */
+.ind2-bp-wrap {
+  position: relative;
+  margin-top: 46px;
+}
+
+.ind2-bp-spine {
+  position: absolute;
+  left: 27px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  height: calc(100% - 12px);
+}
+
+.ind2-bp-spine-track,
+.ind2-bp-spine-draw {
+  fill: none;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.ind2-bp-spine-track {
+  stroke: var(--rule);
+}
+
+.ind2-bp-spine-draw {
+  stroke: rgba(180, 200, 230, .9);
+  filter: drop-shadow(0 0 6px rgba(180, 200, 230, .6));
+}
+
+.ind2-bp-nodes {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.ind2-bp-node {
+  position: relative;
+  display: block;
+  margin-left: 64px;
+  padding: clamp(20px, 3vw, 28px);
+  border: .8px solid var(--rule);
+  border-radius: 16px;
+  background: #0a0a0d;
+  opacity: .5;
+  transition: opacity .5s ease, border-color .5s ease, transform .3s ease;
+}
+
+.ind2-bp-node:hover {
+  transform: translateX(4px);
+}
+
+.ind2-bp-node.is-lit {
+  opacity: 1;
+  border-color: rgba(180, 200, 230, .35);
+}
+
+.ind2-bp-node-dot {
+  position: absolute;
+  left: -46px;
+  top: 28px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #0a0a0d;
+  border: 2px solid var(--rule);
+  transition: background .4s ease, border-color .4s ease, box-shadow .4s ease;
+}
+
+.ind2-bp-node.is-lit .ind2-bp-node-dot {
+  background: rgba(180, 200, 230, .95);
+  border-color: rgba(180, 200, 230, .95);
+  box-shadow: 0 0 14px 2px rgba(180, 200, 230, .55);
+}
+
+.ind2-bp-node-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background: linear-gradient(155deg, rgba(180, 200, 230, .18), rgba(180, 200, 230, .04));
+  border: .8px solid rgba(180, 200, 230, .28);
+  color: rgba(180, 200, 230, .95);
+}
+
+.ind2-bp-node-n {
+  position: absolute;
+  top: clamp(20px, 3vw, 28px);
+  right: clamp(20px, 3vw, 28px);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  color: var(--text-25);
+  font-variant-numeric: tabular-nums;
+}
+
+.v2 .ind2-bp-node-title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.v2 .ind2-bp-node-body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-55);
+  max-width: 56ch;
+  margin-bottom: 14px;
+}
+
+.ind2-bp-node-go {
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: rgba(180, 200, 230, .95);
+}
+
+@media (max-width: 640px) {
+  .ind2-bp-spine {
+    left: 17px;
+  }
+
+  .ind2-bp-node {
+    margin-left: 44px;
+  }
+
+  .ind2-bp-node-dot {
+    left: -34px;
+  }
+}
+
+/* ───────────── THE SECTOR FILE — a case-file/dossier styled panel.
+   Purely static (no scroll/click mechanics, unlike the two sections
+   above), a deliberate change of pace and a completely different visual
+   language: a folder tab, a large watermark icon, a monospace spec list —
+   nothing shared with the ring-gauge stat panels or tenet-card grids used
+   on every other detail page. ───────────── */
+.ind2-file {
+  margin-top: 40px;
+  border: .8px solid var(--rule);
+  border-radius: 4px 16px 16px 16px;
+  overflow: hidden;
+  background: #0a0a0d;
+}
+
+.ind2-file-tab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: rgba(180, 200, 230, .08);
+  border-bottom: .8px solid var(--rule);
+  font-family: "Courier New", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: .06em;
+  color: rgba(180, 200, 230, .85);
+}
+
+.ind2-file-body {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: clamp(24px, 4vw, 56px);
+  padding: clamp(28px, 4vw, 48px);
+  overflow: hidden;
+}
+
+@media (max-width: 760px) {
+  .ind2-file-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ind2-file-mark {
+  position: absolute;
+  right: -10px;
+  bottom: -20px;
+  color: rgba(180, 200, 230, .06);
+  pointer-events: none;
+}
+
+.ind2-file-main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.v2 .ind2-file-main h3 {
+  font-size: clamp(24px, 2.8vw, 32px);
+  font-weight: 600;
+  letter-spacing: -.02em;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.v2 .ind2-file-main p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-55);
+  max-width: 40ch;
+}
+
+.ind2-file-specs {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.ind2-file-specs > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 16px;
+  padding: 14px 0;
+  border-top: .8px solid var(--rule);
+}
+
+.ind2-file-specs > div:last-child {
+  border-bottom: .8px solid var(--rule);
+}
+
+.ind2-file-specs dt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--text-38);
+}
+
+.ind2-file-specs dt svg {
+  flex: none;
+  color: rgba(180, 200, 230, .85);
+}
+
+.ind2-file-specs dd {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, .85);
+}
+
+/* ───────────── TICKER — a continuous CSS-only marquee, no JS driving it
+   (unlike the client-logo strip elsewhere, which pauses on hover via a
+   rAF loop) — pure @keyframes, so it always keeps moving. ───────────── */
+.ind2-ticker {
+  overflow: hidden;
+  border-top: .8px solid var(--rule);
+  border-bottom: .8px solid var(--rule);
+  background: rgba(180, 200, 230, .04);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.ind2-ticker-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: ind2-ticker-scroll 26s linear infinite;
+}
+
+@keyframes ind2-ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.ind2-ticker-track span {
+  flex: none;
+  padding: 14px 28px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  color: var(--text-55);
+  white-space: nowrap;
+  position: relative;
+}
+
+.ind2-ticker-track span::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(180, 200, 230, .5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ind2-ticker-track {
+    animation: none;
+  }
+}
+
+/* ───────────── REAL WORK IN THIS SECTOR — a horizontal row of real
+   matched case studies. Similar spirit to the other pages' work grids
+   but its own class names/proportions (wider cards, 3-up max, no bento
+   grid) rather than reusing .sd2-work-grid verbatim. ───────────── */
+.ind2-work-row {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+
+
+.ind2-work-card {
+  display: flex;
+  flex-direction: column;
+  border: .8px solid var(--rule);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0a0a0d;
+  transition: border-color .3s ease, transform .3s ease;
+}
+
+.ind2-work-card:hover {
+  border-color: rgba(180, 200, 230, .4);
+  transform: translateY(-3px);
+}
+
+.ind2-work-media {
+  display: block;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: #050506;
+}
+
+.ind2-work-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+
+.ind2-work-card:hover .ind2-work-media img {
+  transform: scale(1.05);
+}
+
+.ind2-work-cat {
+  margin: 18px 20px 0;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(180, 200, 230, .85);
+}
+
+.v2 .ind2-work-title {
+  display: block;
+  margin: 8px 20px 16px;
+  font-size: 15.5px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.4;
+}
+
+.ind2-work-go {
+  display: block;
+  margin: 0 20px 20px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-55);
+}
+
+/* ───────────── SECTOR OVERVIEW — a single oversized editorial
+   statement, a giant ghost index number behind it the only decoration.
+   No card, no border, no grid — the plainest, quietest section on the
+   page by design, a deliberate contrast to the denser ones around it. */
+.ind2-overview {
+  position: relative;
+  overflow: hidden;
+}
+
+.ind2-overview-mark {
+  position: absolute;
+  right: 0;
+  top: -0.35em;
+  font-size: clamp(140px, 18vw, 260px);
+  font-weight: 800;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(180, 200, 230, .12);
+  pointer-events: none;
+  user-select: none;
+}
+
+.v2 .ind2-overview-text {
+  position: relative;
+  max-width: 20ch;
+  font-size: clamp(22px, 3.2vw, 34px);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -.015em;
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .ind2-overview-mark {
+    font-size: 110px;
+  }
+}
+
+/* ───────────── WHAT WE'D ASK FIRST — a real 3D flip-card grid
+   (perspective + rotateY), click-triggered via React state rather than a
+   CSS-only :hover/:focus trick, so it works identically on touch. The
+   only click-to-reveal mechanic on the page, distinct from the scroll
+   (Shift, Build) and passive (ticker, overview) sections around it. ─── */
+.ind2-flip-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.ind2-flip-card {
+  perspective: 1200px;
+  height: 220px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.ind2-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform .6s cubic-bezier(.16, 1, .3, 1);
+  transform-style: preserve-3d;
+}
+
+.ind2-flip-card.is-flipped .ind2-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.ind2-flip-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: .8px solid var(--rule);
+  border-radius: 16px;
+  backface-visibility: hidden;
+  background: #0a0a0d;
+}
+
+.ind2-flip-front {
+  justify-content: space-between;
+}
+
+.ind2-flip-back {
+  transform: rotateY(180deg);
+  justify-content: center;
+  background: radial-gradient(140% 140% at 0% 0%, rgba(180, 200, 230, .08), transparent 65%), #0a0a0d;
+  border-color: rgba(180, 200, 230, .35);
+}
+
+.ind2-flip-n {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  color: var(--text-25);
+  font-variant-numeric: tabular-nums;
+}
+
+.v2 .ind2-flip-front p {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #fff;
+  margin: 0;
+}
+
+.ind2-flip-hint {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: rgba(180, 200, 230, .85);
+}
+
+.v2 .ind2-flip-back p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-75, rgba(255, 255, 255, .82));
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .ind2-flip-card {
+    height: 260px;
+  }
+}
