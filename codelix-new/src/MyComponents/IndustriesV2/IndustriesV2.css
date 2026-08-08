@@ -353,3 +353,19 @@
   letter-spacing: .02em;
   color: color-mix(in srgb, var(--ind-color) 90%, white);
 }
+
+.ind-panel-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 24px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--ind-color);
+  transition: gap .25s ease;
+}
+
+.ind-panel-more:hover {
+  gap: 10px;
+}

@@ -7,14 +7,13 @@ import {
 /* Homepage, Services, Work, and Industries are already reachable from the
    logo and the centered nav links, so this menu carries everything else —
    every remaining real page, not a curated subset. */
-import { NAVBAR_SERVICES_HIERARCHY } from "./footerData";
+import { NAVBAR_SERVICES_HIERARCHY, FOOTER_INDUSTRY_KEYWORDS } from "./footerData";
 
 const SERVICES_ICON = LayoutGrid;
 
 /* grouped: primary → who we are → how we work → resources → join/contact */
 const NAV_LINKS = [
   { label: "Work", href: "/work-v2", icon: Briefcase },
-  { label: "Industries", href: "/industries-v2", icon: Building2 },
   { label: "About", href: "/about-v2", icon: Info },
   { label: "Team", href: "/team-v2", icon: Users },
   { label: "Process", href: "/process-v2", icon: Workflow },
@@ -28,6 +27,7 @@ const NAV_LINKS = [
 
 export default function V2MobileDrawer({ open, onClose }) {
   const [servicesOpen, setServicesOpen] = React.useState(false);
+  const [industriesOpen, setIndustriesOpen] = React.useState(false);
 
   return (
     <>
@@ -47,7 +47,7 @@ export default function V2MobileDrawer({ open, onClose }) {
             >
               <span className="v2-drawer-link-label">
                 <span className="v2-drawer-link-icon"><SERVICES_ICON size={17} strokeWidth={1.75} /></span>
-                Services
+                {"Services"}
               </span>
               <ChevronDown className={`v2-drawer-chevron ${servicesOpen ? "open" : ""}`} size={20} strokeWidth={2} />
             </button>
@@ -71,13 +71,41 @@ export default function V2MobileDrawer({ open, onClose }) {
             </div>
           </div>
 
+          {/* Expandable Industries Menu */}
+          <div className="v2-drawer-accordion mobile-only-drawer-link">
+            <button
+              className={`v2-drawer-link-btn ${industriesOpen ? "open" : ""}`}
+              onClick={() => setIndustriesOpen(!industriesOpen)}
+              aria-expanded={industriesOpen}
+            >
+              <span className="v2-drawer-link-label">
+                <span className="v2-drawer-link-icon"><Building2 size={17} strokeWidth={1.75} /></span>
+                {"Industries"}
+              </span>
+              <ChevronDown className={`v2-drawer-chevron ${industriesOpen ? "open" : ""}`} size={20} strokeWidth={2} />
+            </button>
+            
+            <div className={`v2-drawer-sublinks ${industriesOpen ? "open" : ""}`}>
+              <a href="/industries-v2" onClick={onClose} className="v2-drawer-sublink-all">
+                Overview (All Industries)
+              </a>
+              <div className="v2-drawer-sublink-category">
+                {FOOTER_INDUSTRY_KEYWORDS.map((industry) => (
+                  <a key={industry.label} href={industry.path} onClick={onClose} className="v2-drawer-sublink-item" style={{ paddingLeft: "16px" }}>
+                    {industry.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
           {/* Standard Links */}
           {NAV_LINKS.map((l) => (
             <a
               key={l.label}
               href={l.href}
               onClick={onClose}
-              className={(l.label === "Work" || l.label === "Industries" || l.label === "About") ? "mobile-only-drawer-link" : ""}
+              className={(l.label === "Work" || l.label === "About") ? "mobile-only-drawer-link" : ""}
             >
               <span className="v2-drawer-link-icon"><l.icon size={17} strokeWidth={1.75} /></span>
               {l.label}

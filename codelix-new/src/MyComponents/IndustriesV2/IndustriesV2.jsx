@@ -1,11 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
-import {
-  Rocket, GraduationCap, HeartPulse, Landmark,
-  ShieldCheck, Gauge, Eye, Factory, Cpu, UtensilsCrossed, ShoppingCart,
-  Building, Layers, Plane,
-} from "lucide-react";
+import { ShieldCheck, Gauge, Eye } from "lucide-react";
 
 /* v2 design system + shared data — same source of truth as the other v2 pages */
 
@@ -18,112 +14,7 @@ import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./IndustriesV2.css";
 import NavbarV2 from "../Shared/NavbarV2";
-
-
-/* expanded from the original six into the full set of sectors we take on
-   repeat work in — each profile below maps to real services we actually
-   offer (see FOOTER_SERVICE_KEYWORDS), not an invented capability list */
-const INDUSTRIES = [
-  {
-    slug: "manufacturing",
-    icon: Factory,
-    title: "Manufacturing",
-    tagline: "Operational systems that connect the shop floor to the office.",
-    challenges: ["Inventory and production data scattered across spreadsheets", "Legacy systems that don't talk to newer tools", "Reporting that lags days behind the shop floor"],
-    body: "Custom software that connects inventory, production, and reporting into one system your team can trust, without ripping out equipment that already works.",
-    services: ["Custom Software Development", "Data Analytics"],
-  },
-  {
-    slug: "fintech",
-    icon: Landmark,
-    title: "FinTech",
-    tagline: "Where compliance and trust can't be an afterthought.",
-    challenges: ["Regulated data that has to be handled correctly from day one", "Trust signals that have to be earned, not decorated", "Integrations with banking and payment infrastructure"],
-    body: "Builds where security, compliance, and clear information architecture are treated as requirements, not a later pass — from onboarding flows to dashboards handling sensitive data.",
-    services: ["Custom Software Development", "Web Development", "UI/UX Design"],
-  },
-  {
-    slug: "ai-data",
-    icon: Cpu,
-    title: "AI & Data",
-    tagline: "Turning raw data into something a team can act on.",
-    challenges: ["Data spread across disconnected tools", "No clear pipeline from raw data to a usable dashboard", "Wanting AI features without a clear use case"],
-    body: "Data pipelines, dashboards, and AI features built around an actual business question, not a proof-of-concept that never leaves the demo.",
-    services: ["AI Development", "Data Analytics", "Custom Software Development"],
-  },
-  {
-    slug: "healthcare",
-    icon: HeartPulse,
-    title: "Healthcare",
-    tagline: "Privacy and accessibility as first-class requirements.",
-    challenges: ["Patient data that has to be handled carefully", "Appointment flows that need to work for everyone", "Accessibility requirements that are easy to overlook"],
-    body: "Appointment flows and patient-facing tools built with privacy and accessibility as requirements from day one, not a retrofit.",
-    services: ["Web Development", "Custom Software Development", "UI/UX Design"],
-  },
-  {
-    slug: "food-beverages",
-    icon: UtensilsCrossed,
-    title: "Food & Beverages",
-    tagline: "Ordering and operations that hold up during a dinner rush.",
-    challenges: ["Online ordering that breaks under peak-hour traffic", "Menu and inventory updates spread across platforms", "Delivery and reservation systems that don't talk to each other"],
-    body: "Ordering, reservation, and inventory systems built to stay reliable during the busiest hour of the night, not just in a quiet demo.",
-    services: ["Web Development", "E-Commerce Solutions", "Custom Software Development"],
-  },
-  {
-    slug: "e-commerce",
-    icon: ShoppingCart,
-    title: "E-Commerce",
-    tagline: "A fast, low-friction path from landing to checkout.",
-    challenges: ["Cart abandonment from slow or clunky checkout", "Inventory and orders spread across tools", "Mobile traffic that converts worse than desktop"],
-    body: "Storefronts engineered around speed and trust — fast product discovery, a frictionless checkout, and a backend your team can actually run.",
-    services: ["E-Commerce Solutions", "Web Development"],
-  },
-  {
-    slug: "real-estate-construction",
-    icon: Building,
-    title: "Real Estate & Construction",
-    tagline: "Listings and project data that stay accurate as things move fast.",
-    challenges: ["Listings and availability that go stale across platforms", "Project and document tracking spread across tools", "Client-facing portals that feel like an afterthought"],
-    body: "Listing platforms and project-tracking tools that keep availability, documents, and client communication in one accurate system.",
-    services: ["Web Development", "Custom Software Development"],
-  },
-  {
-    slug: "education",
-    icon: GraduationCap,
-    title: "Education",
-    tagline: "Built for real enrolment load, not a demo.",
-    challenges: ["Admissions journeys that lose applicants midway", "Course catalogues that are hard to browse", "Student portals that break under real usage"],
-    body: "Course catalogues, admissions flows, and student portals designed to hold up under real enrolment traffic, not just a polished demo.",
-    services: ["Web Development", "Custom Software Development"],
-  },
-  {
-    slug: "startups",
-    icon: Rocket,
-    title: "Startups",
-    tagline: "Ship the idea clearly, capture the signup.",
-    challenges: ["Explaining a new idea in one scroll", "Needing to look credible with a small team", "Iterating fast without rebuilding from scratch"],
-    body: "Marketing sites and product experiences built to explain something new clearly, capture signups, and evolve fast as the product does.",
-    services: ["Web Development", "Custom Software Development", "AI Development"],
-  },
-  {
-    slug: "b2b-saas",
-    icon: Layers,
-    title: "B2B SaaS",
-    tagline: "Internal systems and product dashboards that scale with the team.",
-    challenges: ["Internal tools that don't scale past the first few hires", "Onboarding flows that lose enterprise buyers", "Dashboards that can't keep up with growing data"],
-    body: "Product dashboards and internal operations tools built to stay usable as the team, the data, and the customer base all grow at once.",
-    services: ["Custom Software Development", "Application Development", "Data Analytics"],
-  },
-  {
-    slug: "travel-hospitality",
-    icon: Plane,
-    title: "Travel & Hospitality",
-    tagline: "Booking flows that hold up during peak season.",
-    challenges: ["Booking systems that break during high-demand periods", "Availability across properties or routes going out of sync", "Guest-facing tools that feel outdated"],
-    body: "Booking and reservation platforms designed to stay accurate and fast under seasonal demand spikes, not just in a slow month.",
-    services: ["Web Development", "Custom Software Development", "UI/UX Design"],
-  },
-];
+import { INDUSTRIES } from "./industriesData";
 
 const APPROACH = [
   { icon: Eye, claim: "We learn the domain, not just the brief.", body: "Before we design a single screen, we understand the regulations, the buyer behaviour, and the operational constraints specific to your sector." },
@@ -367,6 +258,9 @@ export default function IndustriesV2() {
                         </div>
                       </div>
                     </div>
+                    <a className="ind-panel-more" href={`/industries-v2/${it.slug}`}>
+                      Explore {it.title} →
+                    </a>
                   </div>
                 </article>
               ))}
@@ -392,6 +286,9 @@ export default function IndustriesV2() {
               <div className="ind-panel-services">
                 {it.services.map((s) => <span key={s}>{s}</span>)}
               </div>
+              <a className="ind-panel-more" href={`/industries-v2/${it.slug}`}>
+                Explore {it.title} →
+              </a>
             </article>
           ))}
         </div>

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { NAVBAR_SERVICES_HIERARCHY } from "../HomepageV2/footerData";
-import { 
-  Globe, Smartphone, Palette, ShoppingCart, 
-  Database, Bot, LineChart, Cloud, ChevronRight
+import { NAVBAR_SERVICES_HIERARCHY, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
+import {
+  Globe, Smartphone, Palette, ShoppingCart,
+  Database, Bot, LineChart, Cloud, ChevronRight,
+  Factory, Landmark, Cpu, Activity, Coffee, Building2,
+  GraduationCap, Rocket, Plane
 } from "lucide-react";
 import codelixLogo from "../Images/codelix-logo.png";
 import V2MobileDrawer from "../HomepageV2/V2MobileDrawer";
@@ -18,7 +20,24 @@ const getCategoryIcon = (title) => {
     case "AI & Automation Solutions": return <Bot size={18} strokeWidth={1.75} />;
     case "Data Analytics & Business Intelligence": return <LineChart size={18} strokeWidth={1.75} />;
     case "Support & Managed Services": return <Cloud size={18} strokeWidth={1.75} />;
-    default: return null;
+    default: return <Globe size={18} strokeWidth={1.75} />;
+  }
+};
+
+const getIndustryIcon = (label) => {
+  switch (label) {
+    case "Manufacturing": return <Factory size={18} strokeWidth={1.75} />;
+    case "FinTech": return <Landmark size={18} strokeWidth={1.75} />;
+    case "AI & Data": return <Cpu size={18} strokeWidth={1.75} />;
+    case "Healthcare": return <Activity size={18} strokeWidth={1.75} />;
+    case "Food & Beverages": return <Coffee size={18} strokeWidth={1.75} />;
+    case "E-Commerce": return <ShoppingCart size={18} strokeWidth={1.75} />;
+    case "Real Estate & Construction": return <Building2 size={18} strokeWidth={1.75} />;
+    case "Education": return <GraduationCap size={18} strokeWidth={1.75} />;
+    case "Startups": return <Rocket size={18} strokeWidth={1.75} />;
+    case "B2B SaaS": return <Cloud size={18} strokeWidth={1.75} />;
+    case "Travel & Hospitality": return <Plane size={18} strokeWidth={1.75} />;
+    default: return <Globe size={18} strokeWidth={1.75} />;
   }
 };
 
@@ -114,7 +133,36 @@ export default function NavbarV2() {
               </div>
             </div>
             <a href="/work-v2">Work</a>
-            <a href="/industries-v2">Industries</a>
+            <div className="v2-nav-dropdown">
+              <a href="/industries-v2">Industries <span className="v2-nav-dropdown-chevron">▾</span></a>
+              <div className="v2-nav-dropdown-panel">
+                <div className="v2-nav-industry-mega-menu">
+                  <div className="v2-nav-mega-menu-left">
+                    <div className="v2-nav-mega-menu-left-bg-icon">
+                      <Building2 size={160} strokeWidth={0.5} />
+                    </div>
+                    <h3 className="v2-nav-mega-menu-left-title">Industry Expertise</h3>
+                    <p className="v2-nav-mega-menu-left-desc">
+                      We engineer powerful, scalable software solutions perfectly tailored to the unique challenges of your industry.
+                    </p>
+                    <a href="/industries-v2" className="v2-nav-mega-menu-left-btn">Explore All Industries <ChevronRight size={14} strokeWidth={2.5} /></a>
+                  </div>
+                  <div className="v2-nav-mega-menu-right">
+                    {FOOTER_INDUSTRY_KEYWORDS.map((industry) => (
+                      <a key={industry.label} href={industry.path} className="v2-nav-industry-link">
+                        <span className="v2-nav-industry-link-left">
+                          <span className="v2-nav-industry-link-icon-wrap">
+                            {getIndustryIcon(industry.label)}
+                          </span>
+                          <span className="v2-nav-industry-link-text">{industry.label}</span>
+                        </span>
+                        <ChevronRight className="v2-nav-industry-link-arrow" size={16} strokeWidth={2} />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
             <a href="/about-v2">About</a>
           </div>
           <div className="v2-nav-actions">
