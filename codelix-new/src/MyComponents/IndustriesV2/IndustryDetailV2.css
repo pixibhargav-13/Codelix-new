@@ -684,7 +684,7 @@
 
 .ind2-flip-back {
   transform: rotateY(180deg);
-  justify-content: center;
+  justify-content: space-between;
   background: radial-gradient(140% 140% at 0% 0%, rgba(180, 200, 230, .08), transparent 65%), #0a0a0d;
   border-color: rgba(180, 200, 230, .35);
 }

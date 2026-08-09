@@ -77,7 +77,7 @@ export default function IndustryDetailV2() {
   const [openFaq, setOpenFaq] = useState(-1);
   const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
   const [blueprintActive, setBlueprintActive] = useState(-1);
-  const [flippedCards, setFlippedCards] = useState(() => new Set());
+  const [flippedCard, setFlippedCard] = useState(-1);
   const [activeQuote, setActiveQuote] = useState(0);
   const [quotePaused, setQuotePaused] = useState(false);
 
@@ -282,12 +282,7 @@ export default function IndustryDetailV2() {
      panel, using the exact same option list) matches this page. Nothing
      invented; an industry with no real or admin-added match simply skips
      this section entirely. */
-  const toggleFlip = (i) =>
-    setFlippedCards((prev) => {
-      const next = new Set(prev);
-      if (next.has(i)) next.delete(i); else next.add(i);
-      return next;
-    });
+  const toggleFlip = (i) => setFlippedCard((prev) => (prev === i ? -1 : i));
   const questions = firstCallQuestions(svc.title);
 
   const adminMatchedWork = caseStudies
@@ -599,9 +594,9 @@ export default function IndustryDetailV2() {
             <button
               type="button"
               key={item.q}
-              className={`ind2-flip-card ${flippedCards.has(i) ? "is-flipped" : ""}`}
+              className={`ind2-flip-card ${flippedCard === i ? "is-flipped" : ""}`}
               onClick={() => toggleFlip(i)}
-              aria-label={flippedCards.has(i) ? "Show question" : "Show why we ask"}
+              aria-label={flippedCard === i ? "Show question" : "Show why we ask"}
             >
               <div className="ind2-flip-inner">
                 <div className="ind2-flip-face ind2-flip-front">
@@ -610,7 +605,9 @@ export default function IndustryDetailV2() {
                   <span className="ind2-flip-hint">Tap to see why →</span>
                 </div>
                 <div className="ind2-flip-face ind2-flip-back">
+                  <span className="ind2-flip-n">{String(i + 1).padStart(2, "0")}</span>
                   <p>{item.a}</p>
+                  <span className="ind2-flip-hint">Tap to close →</span>
                 </div>
               </div>
             </button>
