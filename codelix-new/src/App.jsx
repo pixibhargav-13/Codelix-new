@@ -1,5 +1,6 @@
 import React, { useEffect, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { ReactLenis } from 'lenis/react';
 import CodelixLoader from "./components/PageLoader";
 import BreadcrumbSchema from "./components/BreadcrumbSchema";
 import CustomCursor from "./components/CustomCursor/CustomCursor";
@@ -242,16 +243,18 @@ const AppRoutes = () => {
 // ─── App ──────────────────────────────────────────────────────────────────────
 function App() {
   return (
-    <Router>
-      <AuthProvider>
-        <ScrollToTop />
-        <BreadcrumbSchema />
-        <CustomCursor />
-        <ChatbotGate />
-        <BookingModal />
-        <AppRoutes />
-      </AuthProvider>
-    </Router>
+    <ReactLenis root>
+      <Router>
+        <AuthProvider>
+          <ScrollToTop />
+          <BreadcrumbSchema />
+          <CustomCursor />
+          <ChatbotGate />
+          <BookingModal />
+          <AppRoutes />
+        </AuthProvider>
+      </Router>
+    </ReactLenis>
   );
 }
 

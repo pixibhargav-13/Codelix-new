@@ -181,7 +181,6 @@
 .ind2-bp-spine-draw {
   fill: none;
   stroke-width: 2;
-  vector-effect: non-scaling-stroke;
 }
 
 .ind2-bp-spine-track {
@@ -207,8 +206,16 @@
   border: .8px solid var(--rule);
   border-radius: 16px;
   background: #0a0a0d;
-  opacity: .5;
-  transition: opacity .5s ease, border-color .5s ease, transform .3s ease;
+  transition: border-color .5s ease, transform .3s ease;
+}
+
+.ind2-bp-node>*:not(.ind2-bp-node-dot) {
+  opacity: 0.4;
+  transition: opacity .5s ease;
+}
+
+.ind2-bp-node.is-lit>*:not(.ind2-bp-node-dot) {
+  opacity: 1;
 }
 
 .ind2-bp-node:hover {
@@ -216,20 +223,23 @@
 }
 
 .ind2-bp-node.is-lit {
-  opacity: 1;
   border-color: rgba(180, 200, 230, .35);
 }
 
 .ind2-bp-node-dot {
   position: absolute;
-  left: -46px;
+  left: -42px;
   top: 28px;
   width: 12px;
   height: 12px;
   border-radius: 50%;
   background: #0a0a0d;
   border: 2px solid var(--rule);
-  transition: background .4s ease, border-color .4s ease, box-shadow .4s ease;
+  transition: background .4s ease, border-color .4s ease, box-shadow .4s ease, transform .3s ease;
+}
+
+.ind2-bp-node:hover .ind2-bp-node-dot {
+  transform: translateX(-4px);
 }
 
 .ind2-bp-node.is-lit .ind2-bp-node-dot {
@@ -295,7 +305,7 @@
   }
 
   .ind2-bp-node-dot {
-    left: -34px;
+    left: -32px;
   }
 }
 
@@ -378,7 +388,7 @@
   margin: 0;
 }
 
-.ind2-file-specs > div {
+.ind2-file-specs>div {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
   gap: 16px;
@@ -386,7 +396,7 @@
   border-top: .8px solid var(--rule);
 }
 
-.ind2-file-specs > div:last-child {
+.ind2-file-specs>div:last-child {
   border-bottom: .8px solid var(--rule);
 }
 
@@ -429,12 +439,17 @@
   display: flex;
   align-items: center;
   width: max-content;
-  animation: ind2-ticker-scroll 26s linear infinite;
+  animation: ind2-ticker-scroll 52s linear infinite;
 }
 
 @keyframes ind2-ticker-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .ind2-ticker-track span {
@@ -538,41 +553,82 @@
   color: var(--text-55);
 }
 
+@media (max-width: 760px) {
+  .ind2-work-row {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ───────────── SECTOR OVERVIEW — a single oversized editorial
-   statement, a giant ghost index number behind it the only decoration.
-   No card, no border, no grid — the plainest, quietest section on the
-   page by design, a deliberate contrast to the denser ones around it. */
+   statement, completely overhauled for a premium, immersive look.
+   Centered text, gradient fills, and a massive ghost index number
+   floating directly behind it. */
 .ind2-overview {
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(60px, 8vw, 120px) 20px !important;
+  background: radial-gradient(circle at 50% -20%, rgba(100, 140, 255, 0.1) 0%, transparent 70%), #0a0a0d;
+  border-top: 1px solid rgba(180, 200, 230, 0.1);
+  border-bottom: 1px solid rgba(180, 200, 230, 0.1);
+  box-shadow: inset 0 20px 40px -20px rgba(100, 140, 255, 0.05);
 }
 
 .ind2-overview-mark {
   position: absolute;
-  right: 0;
-  top: -0.35em;
-  font-size: clamp(140px, 18vw, 260px);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(200px, 35vw, 400px);
   font-weight: 800;
   line-height: 1;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(180, 200, 230, .12);
+  -webkit-text-stroke: 1px rgba(180, 200, 230, 0.08);
   pointer-events: none;
   user-select: none;
+  z-index: 0;
+  filter: drop-shadow(0 0 40px rgba(180, 200, 230, 0.05));
+}
+
+.v2 .ind2-overview .v2-label {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 32px;
+  background: rgba(100, 140, 255, 0.1);
+  padding: 8px 24px;
+  border-radius: 100px;
+  border: 1px solid rgba(100, 140, 255, 0.3);
+  color: #b0c4ff;
+  font-size: 11.5px;
+  letter-spacing: .12em;
+  font-weight: 700;
+  box-shadow: 0 0 20px rgba(100, 140, 255, 0.15), inset 0 0 10px rgba(100, 140, 255, 0.1);
+  text-shadow: 0 0 10px rgba(100, 140, 255, 0.5);
 }
 
 .v2 .ind2-overview-text {
   position: relative;
-  max-width: 20ch;
-  font-size: clamp(22px, 3.2vw, 34px);
+  z-index: 1;
+  max-width: 38ch;
+  font-size: clamp(26px, 3.5vw, 48px);
   font-weight: 500;
   line-height: 1.4;
-  letter-spacing: -.015em;
+  letter-spacing: -.02em;
+  margin: 0 auto;
+  text-align: center;
   color: #fff;
+  background: linear-gradient(180deg, #ffffff 0%, #aebdd4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
 }
 
 @media (max-width: 640px) {
   .ind2-overview-mark {
-    font-size: 110px;
+    font-size: 180px;
   }
 }
 
