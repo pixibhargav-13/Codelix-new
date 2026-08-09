@@ -173,14 +173,6 @@ const EST_ADDONS = [
   { id: "analytics", label: "Analytics & dashboards", weeks: 0.5 },
 ];
 
-const PROCESS = [
-  { n: "01", title: "Discovery", time: "2–3 days", body: "We work out what the site actually has to do — who it's for, what action matters, and what can be cut." },
-  { n: "02", title: "Architecture", time: "3–5 days", body: "Sitemap, page structure, and the technical approach, agreed before design starts so nothing gets rebuilt later." },
-  { n: "03", title: "Design", time: "1–2 weeks", body: "High-fidelity screens for every key template, reviewed with you until the direction is signed off." },
-  { n: "04", title: "Build", time: "2–8 weeks", body: "Front-end and back-end built in sprints, with a staging link you can check at any point." },
-  { n: "05", title: "QA & Launch", time: "1–2 weeks", body: "Cross-browser, cross-device, performance and security testing — then deployment and DNS cutover." },
-  { n: "06", title: "Support", time: "Ongoing", body: "Post-launch fixes, monitoring, and improvements. You keep the code either way." },
-];
 
 /* real web-development projects — pulled from the same shared portfolio
    data as the Work page, filtered to the category that actually matches
@@ -813,28 +805,6 @@ export default function ServiceDetailV2() {
         </div>
       </section>
 
-      {/* ══════════ 4 · PROCESS ══════════ */}
-      <section className="v2-method-shell" id="process">
-        <div className="v2-method-head">
-          <h2 className="v2-method-heading">How A Build Runs.</h2>
-          <p className="v2-method-lede">
-            Six stages from first call to live site — nothing advances until the
-            stage before it is signed off.
-          </p>
-        </div>
-        <div className="v2-method-rows">
-          {PROCESS.map((m) => (
-            <div className="v2-method-row" key={m.n}>
-              <div className="v2-method-index">{m.n}</div>
-              <div>
-                <div className="v2-method-title">{m.title}</div>
-                <span className="v2-method-timeframe">{m.time}</span>
-              </div>
-              <div className="v2-method-body">{m.body}</div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* ══════════ 7 · QUALITY BENCHMARKS ══════════ */}
       <section className="v2-section v2-section--void" id="benchmarks">

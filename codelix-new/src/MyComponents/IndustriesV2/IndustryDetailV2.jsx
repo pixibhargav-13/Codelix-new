@@ -77,7 +77,7 @@ export default function IndustryDetailV2() {
   const [openFaq, setOpenFaq] = useState(-1);
   const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
   const [blueprintActive, setBlueprintActive] = useState(-1);
-  const [flippedCards, setFlippedCards] = useState(() => new Set());
+  const [flippedCard, setFlippedCard] = useState(-1);
   const [activeQuote, setActiveQuote] = useState(0);
   const [quotePaused, setQuotePaused] = useState(false);
 
@@ -117,7 +117,17 @@ export default function IndustryDetailV2() {
     return () => tl.kill();
   }, [svc]);
 
-  /* reveal-on-enter */
+  /* reveal-on-enter. This page adds a couple of async data sources
+     (live testimonials, live case studies) that other detail pages don't
+     have, and a scroll-triggered observer that only ever runs its
+     querySelectorAll once on mount can end up missing elements if the
+     browser doesn't fire an intersection callback for something already
+     in view at setup time — the result is a section stuck permanently at
+     opacity:0, invisible forever, exactly what showed up in the "Other
+     sectors" and testimonial sections. Two fixes: re-run the observer
+     whenever the async data actually changes shape (not just once), and
+     force-reveal anything still unrevealed after a short grace period as
+     a hard safety net so nothing can stay invisible indefinitely. */
   useEffect(() => {
     if (!svc) return;
     const io = new IntersectionObserver(
@@ -132,14 +142,26 @@ export default function IndustryDetailV2() {
         }
         io.unobserve(el);
       }),
-      { threshold: 0.01, rootMargin: "0px 0px -10% 0px" }
+      { threshold: 0, rootMargin: "0px 0px -5% 0px" }
     );
     const sel = [
       ".v2-faq-item", ".v2-strip", ".v2-cta", ".v2-heading", ".v2-label", ".v2-lede", ".sd2-other", ".sd2-quote",
     ].join(", ");
-    rootRef.current?.querySelectorAll(sel).forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, [svc]);
+    const targets = rootRef.current?.querySelectorAll(sel) || [];
+    targets.forEach((el) => io.observe(el));
+
+    const safety = setTimeout(() => {
+      targets.forEach((el) => {
+        if (el.classList.contains("v2-faq-item")) return;
+        el.classList.add("is-in");
+      });
+    }, 2000);
+
+    return () => {
+      io.disconnect();
+      clearTimeout(safety);
+    };
+  }, [svc, testimonials.length, caseStudies.length]);
 
   /* FAQ accordion height */
   useEffect(() => {
@@ -230,8 +252,9 @@ export default function IndustryDetailV2() {
     let raf = 0;
     const tick = () => {
       const rect = wrap.getBoundingClientRect();
-      const span = rect.height - window.innerHeight * 0.5;
-      const raw = span > 0 ? Math.min(Math.max(-rect.top / span, 0), 1) : 0;
+      let span = rect.height - window.innerHeight * 0.35;
+      if (span < rect.height * 0.3) span = rect.height * 0.3;
+      const raw = Math.min(Math.max((window.innerHeight * 0.6 - rect.top) / span, 0), 1);
       path.style.strokeDashoffset = `${len * (1 - raw)}`;
       const active = Math.floor(raw * total + 0.0001) - (raw >= 1 ? 0 : 0);
       const clamped = Math.min(Math.max(active, raw > 0 ? 0 : -1), total - 1);
@@ -259,12 +282,7 @@ export default function IndustryDetailV2() {
      panel, using the exact same option list) matches this page. Nothing
      invented; an industry with no real or admin-added match simply skips
      this section entirely. */
-  const toggleFlip = (i) =>
-    setFlippedCards((prev) => {
-      const next = new Set(prev);
-      if (next.has(i)) next.delete(i); else next.add(i);
-      return next;
-    });
+  const toggleFlip = (i) => setFlippedCard((prev) => (prev === i ? -1 : i));
   const questions = firstCallQuestions(svc.title);
 
   const adminMatchedWork = caseStudies
@@ -343,23 +361,11 @@ export default function IndustryDetailV2() {
           treatment (a moving strip, no numbers counting up on scroll). */}
       <div className="ind2-ticker" aria-hidden="true">
         <div className="ind2-ticker-track">
-          {TICKER_FACTS.concat(TICKER_FACTS).map((f, i) => (
+          {[...TICKER_FACTS, ...TICKER_FACTS, ...TICKER_FACTS, ...TICKER_FACTS].map((f, i) => (
             <span key={i}>{f}</span>
           ))}
         </div>
       </div>
-
-      {/* ══════════ 2b · CLIENT STRIP ══════════ */}
-      <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
-        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 30+ companies</p>
-        <div className="v2-strip">
-          <div className="v2-strip-track" ref={stripRef}>
-            {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
-              <img key={i} src={logo} alt="" loading="lazy" />
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ══════════ SECTOR OVERVIEW — a large editorial statement built
           from svc.body, real copy that existed in the data but had no
@@ -372,6 +378,18 @@ export default function IndustryDetailV2() {
         </span>
         <p className="v2-label">In Short</p>
         <p className="ind2-overview-text">{svc.body}</p>
+      </section>
+
+      {/* ══════════ 2b · CLIENT STRIP ══════════ */}
+      <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
+        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 30+ companies</p>
+        <div className="v2-strip">
+          <div className="v2-strip-track" ref={stripRef}>
+            {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
+              <img key={i} src={logo} alt="" loading="lazy" />
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ══════════ 3 · THE SHIFT — extraordinary scroll-wipe section ══════════ */}
@@ -576,9 +594,9 @@ export default function IndustryDetailV2() {
             <button
               type="button"
               key={item.q}
-              className={`ind2-flip-card ${flippedCards.has(i) ? "is-flipped" : ""}`}
+              className={`ind2-flip-card ${flippedCard === i ? "is-flipped" : ""}`}
               onClick={() => toggleFlip(i)}
-              aria-label={flippedCards.has(i) ? "Show question" : "Show why we ask"}
+              aria-label={flippedCard === i ? "Show question" : "Show why we ask"}
             >
               <div className="ind2-flip-inner">
                 <div className="ind2-flip-face ind2-flip-front">
@@ -587,7 +605,9 @@ export default function IndustryDetailV2() {
                   <span className="ind2-flip-hint">Tap to see why →</span>
                 </div>
                 <div className="ind2-flip-face ind2-flip-back">
+                  <span className="ind2-flip-n">{String(i + 1).padStart(2, "0")}</span>
                   <p>{item.a}</p>
+                  <span className="ind2-flip-hint">Tap to close →</span>
                 </div>
               </div>
             </button>
