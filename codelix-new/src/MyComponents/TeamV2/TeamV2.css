@@ -14,6 +14,12 @@ header.sd2-hero.team-hero .sd2-hero-main {
   width: 100%;
 }
 
+@media (max-width: 940px) {
+  header.sd2-hero.team-hero .sd2-hero-main {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
 
 /* ───────────── FAQ polish (unused on this page currently, kept for
    consistency if a FAQ section is added later) ───────────── */

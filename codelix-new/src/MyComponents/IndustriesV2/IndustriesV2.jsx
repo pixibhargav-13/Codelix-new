@@ -163,14 +163,14 @@ export default function IndustriesV2() {
       {/* ══════════ 1 · HERO ══════════ */}
       <header className="sd2-hero">
         <div className="sd2-hero-inner">
-          <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-            <a href="/preview-v2">Home</a>
-            <span>/</span>
-            <em>Industries</em>
-          </nav>
-
           <div className="sd2-hero-main ind-hero-main">
             <div>
+              <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
+                <a href="/preview-v2">Home</a>
+                <span>/</span>
+                <em>Industries</em>
+              </nav>
+
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Eleven sectors, real repeat experience</span>
               </div>

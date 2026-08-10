@@ -45,3 +45,16 @@
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: clamp(40px, 8vw, 80px);
 }
+
+@media (max-width: 940px) {
+  .sd2-hero.about-hero .sd2-hero-main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  
+  .sd2-hero.about-hero {
+    min-height: auto;
+    padding-top: 140px;
+    padding-bottom: 80px;
+  }
+}
+

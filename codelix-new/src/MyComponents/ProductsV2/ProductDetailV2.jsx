@@ -128,16 +128,16 @@ export default function ProductDetailV2() {
       {/* ══════════ HERO ══════════ */}
       <header className="sd2-hero pd2-hero">
         <div className="sd2-hero-inner">
-          <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-            <a href="/preview-v2">Home</a>
-            <span>/</span>
-            <a href={`/products-v2/${PRODUCTS[0].slug}`}>Products</a>
-            <span>/</span>
-            <em>{p.name}</em>
-          </nav>
-
           <div className="sd2-hero-main">
             <div>
+              <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
+                <a href="/preview-v2">Home</a>
+                <span>/</span>
+                <a href={`/products-v2/${PRODUCTS[0].slug}`}>Products</a>
+                <span>/</span>
+                <em>{p.name}</em>
+              </nav>
+
               <div className="pd2-hero-logo sv2-hero-reveal"><img src={p.logo} alt={`${p.name} logo`} /></div>
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status" style={{ "--dot": p.accent }}><i /> {p.badge}</span>

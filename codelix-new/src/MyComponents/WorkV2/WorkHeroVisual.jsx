@@ -54,6 +54,8 @@ const WorkHeroVisual = () => {
   return (
     <div className="whv-container" ref={containerRef}>
       <div className="whv-gradient-mask top" />
+      <div className="whv-gradient-mask left" />
+      <div className="whv-gradient-mask right" />
       
       <div className="whv-grid">
         <div className="whv-col whv-col-1">

@@ -146,9 +146,11 @@ const PROCESS = [
   { n: "06", icon: Check, title: "Monthly Review", time: "Every month", body: "A report on uptime, what was fixed, and what we recommend next — so support stays visible, not silent." },
 ];
 
+/* every project in PROJECTS now has a matching v2 case-study page, so all
+   links route through /case-study-v2 rather than the old-site v1 href */
 const RELATED = [17, 5, 13].map((id) => {
   const p = PROJECTS.find((proj) => proj.id === id);
-  const link = id === 17 ? `/case-study-v2${p.href}` : p.href;
+  const link = `/case-study-v2${p.href}`;
   return { tag: p.category, title: p.title, link, thumb: p.image };
 });
 
@@ -534,16 +536,16 @@ export default function SupportManagedServicesV2() {
       {/* ══════════ 1 · HERO ══════════ */}
       <header className="sd2-hero">
         <div className="sd2-hero-inner">
-          <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-            <a href="/preview-v2">Home</a>
-            <span>/</span>
-            <a href="/services-v2">Services</a>
-            <span>/</span>
-            <em>Support &amp; Managed Services</em>
-          </nav>
-
           <div className="sd2-hero-main">
             <div>
+              <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
+                <a href="/preview-v2">Home</a>
+                <span>/</span>
+                <a href="/services-v2">Services</a>
+                <span>/</span>
+                <em>Support &amp; Managed Services</em>
+              </nav>
+
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Service 08 · Support &amp; Managed Services</span>
               </div>
@@ -557,7 +559,7 @@ export default function SupportManagedServicesV2() {
                 problems before your users do.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact">
+                <a className="v2-btn v2-btn--filled" href="/contact-v2">
                   <span>Schedule a call</span>
                   <i className="v2-btn-arrow">→</i>
                 </a>
@@ -786,7 +788,7 @@ export default function SupportManagedServicesV2() {
                 <li><Check size={14} /> Monitoring & alerting setup</li>
                 <li><Check size={14} /> Written SLA documentation</li>
               </ul>
-              <a href="/contact" className="v2-btn v2-btn--outline" style={{ marginTop: 24, width: "100%" }}>
+              <a href="/contact-v2" className="v2-btn v2-btn--outline" style={{ marginTop: 24, width: "100%" }}>
                 <span>Discuss this scope</span>
               </a>
             </aside>
@@ -1058,7 +1060,7 @@ export default function SupportManagedServicesV2() {
             <h2 className="v2-heading">Support &amp; managed services questions.</h2>
           </div>
           <p className="v2-lede v2-faq-note">
-            Don't see yours here? <a href="/contact">Ask us directly →</a>
+            Don't see yours here? <a href="/contact-v2">Ask us directly →</a>
           </p>
         </div>
         <div>
@@ -1141,7 +1143,7 @@ export default function SupportManagedServicesV2() {
             urgent, and what a realistic support plan looks like.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a>
+            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
           </div>
           <div className="v2-cta-badges">
             <span className="v2-cta-badge">Free consultation</span>

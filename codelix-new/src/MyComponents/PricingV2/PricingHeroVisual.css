@@ -46,6 +46,7 @@
   z-index: 2;
   transform: rotateY(-8deg) rotateX(4deg);
   animation: phv-float-ui 7s infinite alternate ease-in-out;
+  flex-shrink: 0;
 }
 
 @keyframes phv-float-ui {
@@ -321,7 +322,7 @@
     height: 420px;
   }
   .phv-config-window {
-    transform: scale(0.9) rotateY(-5deg);
+    scale: 0.9;
   }
 }
 
@@ -330,10 +331,15 @@
     height: 380px;
   }
   .phv-config-window {
-    transform: scale(0.8);
-    left: -10px;
+    scale: 0.8;
+    left: 0px;
   }
   .phv-float-tag.tag-1 {
-    right: -20px;
+    right: 0px;
+    scale: 0.85;
+  }
+  .phv-float-tag.tag-2 {
+    left: 0px;
+    scale: 0.85;
   }
 }

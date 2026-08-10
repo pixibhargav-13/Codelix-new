@@ -182,7 +182,7 @@ const HeroVisual = () => {
       <div className="hologram-ui">
         {/* Top Left: Mini Chart */}
         <div className="floating-card mini-chart">
-           <div className="card-title">Network Load</div>
+           <div className="card-title">Development Velocity</div>
            <div className="bars">
               <div className="bar b1"></div>
               <div className="bar b2"></div>
@@ -199,10 +199,10 @@ const HeroVisual = () => {
              <span></span><span></span><span></span>
            </div>
            <pre><code>{`{
-  "status": 200,
-  "uptime": "99.99%",
-  "latency": "14ms",
-  "nodes": 350
+  "projects": 50,
+  "satisfaction": "99%",
+  "delivery": "on-time",
+  "code": "clean"
 }`}</code></pre>
         </div>
 
@@ -213,8 +213,8 @@ const HeroVisual = () => {
               <div className="pulse-dot"></div>
            </div>
            <div className="status-text">
-              <span className="s-val">ACTIVE</span>
-              <span className="s-lbl">US-EAST-1</span>
+              <span className="s-val">BUILDING</span>
+              <span className="s-lbl">NEXT-GEN APPS</span>
            </div>
         </div>
         
@@ -229,15 +229,15 @@ const HeroVisual = () => {
         <div className="stat-item">
            <div className="stat-pulse"></div>
            <div className="stat-content">
-             <span className="stat-val">100K+</span>
-             <span className="stat-lbl">Req/Sec</span>
+             <span className="stat-val">30+</span>
+             <span className="stat-lbl">Shipped</span>
            </div>
         </div>
         <div className="stat-item right">
            <div className="stat-pulse emerald"></div>
            <div className="stat-content">
-             <span className="stat-val">Global</span>
-             <span className="stat-lbl">CDN Edge</span>
+             <span className="stat-val">Full-Stack</span>
+             <span className="stat-lbl">Engineering</span>
            </div>
         </div>
       </div>

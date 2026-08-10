@@ -13,19 +13,36 @@
 /* Gradient masks to fade out top and bottom seamlessly */
 .whv-gradient-mask {
   position: absolute;
-  left: 0;
-  right: 0;
-  height: 120px;
   z-index: 10;
   pointer-events: none;
 }
 .whv-gradient-mask.top {
+  left: 0;
+  right: 0;
   top: -2px; /* slight overlap to avoid subpixel lines */
+  height: 120px;
   background: linear-gradient(to bottom, #0a0a0c 0%, transparent 100%);
 }
 .whv-gradient-mask.bottom {
+  left: 0;
+  right: 0;
   bottom: -2px;
+  height: 120px;
   background: linear-gradient(to top, #0a0a0c 0%, transparent 100%);
+}
+.whv-gradient-mask.left {
+  left: -2px;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  background: linear-gradient(to right, #0a0a0c 0%, transparent 100%);
+}
+.whv-gradient-mask.right {
+  right: -2px;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  background: linear-gradient(to left, #0a0a0c 0%, transparent 100%);
 }
 
 .whv-grid {

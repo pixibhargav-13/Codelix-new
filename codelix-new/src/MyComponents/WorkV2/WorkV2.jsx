@@ -60,15 +60,10 @@ const INDUSTRIES = [
   "Travel & Hospitality"
 ];
 
-/* the two concept projects (AI support triage, unified ops dashboard) have
-   no v1 twin page like the other 15 real projects do, so they route to
-   their v2 case-study page instead of a bare href that would 404 */
-/* every project id that has no v1 twin page (concept explorations, plus
-   real project #23 which was only ever built as a v2 page) — these route
-   through /case-study-v2/... instead of a bare href that would 404 */
-const NO_V1_PAGE_IDS = [16, 17, 18, 19, 20, 21, 22, 23];
-const linkFor = (p) =>
-  NO_V1_PAGE_IDS.includes(p.id) ? `/case-study-v2${p.href}` : p.href;
+/* every project in PROJECTS now has a matching v2 case-study page (see
+   CaseStudyDetailV2/caseStudiesData.js), so every card routes through
+   /case-study-v2 rather than a bare v1 href */
+const linkFor = (p) => `/case-study-v2${p.href}`;
 
 /* same five real client quotes already used in Ourwork.jsx, not new/invented
    attributions */
@@ -260,14 +255,14 @@ export default function WorkV2() {
       {/* ══════════ 1 · HERO ══════════ */}
       <header className="sd2-hero">
         <div className="sd2-hero-inner">
-          <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-            <a href="/preview-v2">Home</a>
-            <span>/</span>
-            <em>Work</em>
-          </nav>
-
           <div className="sd2-hero-main">
             <div>
+              <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
+                <a href="/preview-v2">Home</a>
+                <span>/</span>
+                <em>Work</em>
+              </nav>
+
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> 15+ real projects, six industries</span>
               </div>

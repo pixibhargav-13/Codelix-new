@@ -150,12 +150,12 @@ const PROCESS = [
 
 /* the AI support-triage concept is the one project actually filed under
    this category — paired with two real cross-section pieces, pulled from
-   the same shared portfolio data so titles/thumbnails stay accurate. It
-   only has a v2 case-study page (no v1 twin like the other 15 projects),
-   so its link is built for the v2 route instead of the bare v1 href. */
+   the same shared portfolio data so titles/thumbnails stay accurate. Every
+   project in PROJECTS now has a matching v2 case-study page, so all links
+   route through /case-study-v2 rather than the old-site v1 href. */
 const RELATED = [16, 5, 2].map((id) => {
   const p = PROJECTS.find((proj) => proj.id === id);
-  const link = id === 16 ? `/case-study-v2${p.href}` : p.href;
+  const link = `/case-study-v2${p.href}`;
   return { tag: p.category, title: p.title, link, thumb: p.image };
 });
 
@@ -534,16 +534,16 @@ export default function AIDevelopmentV2() {
       {/* ══════════ 1 · HERO ══════════ */}
       <header className="sd2-hero">
         <div className="sd2-hero-inner">
-          <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-            <a href="/preview-v2">Home</a>
-            <span>/</span>
-            <a href="/services-v2">Services</a>
-            <span>/</span>
-            <em>AI Development</em>
-          </nav>
-
           <div className="sd2-hero-main">
             <div>
+              <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
+                <a href="/preview-v2">Home</a>
+                <span>/</span>
+                <a href="/services-v2">Services</a>
+                <span>/</span>
+                <em>AI Development</em>
+              </nav>
+
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Service 06 · AI Development</span>
               </div>
@@ -557,7 +557,7 @@ export default function AIDevelopmentV2() {
                 your tools, and handed over with full source-code ownership.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact">
+                <a className="v2-btn v2-btn--filled" href="/contact-v2">
                   <span>Schedule a call</span>
                   <i className="v2-btn-arrow">→</i>
                 </a>
@@ -784,7 +784,7 @@ export default function AIDevelopmentV2() {
                 <li><Check size={13} strokeWidth={2.4} /> Fixed price once scoped</li>
                 <li><Check size={13} strokeWidth={2.4} /> Full source-code handover</li>
               </ul>
-              <a className="v2-btn" href="/contact">Get an exact quote →</a>
+              <a className="v2-btn" href="/contact-v2">Get an exact quote →</a>
             </aside>
           </div>
         </div>
@@ -1054,7 +1054,7 @@ export default function AIDevelopmentV2() {
             <h2 className="v2-heading">AI development questions.</h2>
           </div>
           <p className="v2-lede v2-faq-note">
-            Don't see yours here? <a href="/contact">Ask us directly →</a>
+            Don't see yours here? <a href="/contact-v2">Ask us directly →</a>
           </p>
         </div>
         <div>
@@ -1138,7 +1138,7 @@ export default function AIDevelopmentV2() {
             what can wait, and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a>
+            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
           </div>
           <div className="v2-cta-badges">
             <span className="v2-cta-badge">Free consultation</span>

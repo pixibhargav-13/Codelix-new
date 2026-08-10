@@ -342,14 +342,14 @@ export default function AboutV2() {
       {/* ══════════ 1 · HERO ══════════ */}
       <header className="sd2-hero about-hero">
         <div className="sd2-hero-inner">
-          <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-            <a href="/preview-v2">Home</a>
-            <span>/</span>
-            <em>About</em>
-          </nav>
-
           <div className="sd2-hero-main">
             <div>
+              <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
+                <a href="/preview-v2">Home</a>
+                <span>/</span>
+                <em>About</em>
+              </nav>
+
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Est. 2024 · Ahmedabad</span>
               </div>
@@ -363,7 +363,7 @@ export default function AboutV2() {
                 five years. No lock-in, no black boxes — just software you own.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact">
+                <a className="v2-btn v2-btn--filled" href="/contact-v2">
                   <span>Work with us</span>
                   <i className="v2-btn-arrow">→</i>
                 </a>
@@ -543,7 +543,7 @@ export default function AboutV2() {
             <h2 className="v2-heading">Questions people ask before working with us.</h2>
           </div>
           <p className="v2-lede v2-faq-note">
-            Don't see yours here? <a href="/contact">Ask us directly →</a>
+            Don't see yours here? <a href="/contact-v2">Ask us directly →</a>
           </p>
         </div>
         <div>
@@ -609,7 +609,7 @@ export default function AboutV2() {
             about what you're building.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a>
+            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
           </div>
           <div className="v2-cta-badges">
             <span className="v2-cta-badge">Free consultation</span>

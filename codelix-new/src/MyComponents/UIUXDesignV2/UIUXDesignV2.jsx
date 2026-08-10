@@ -151,14 +151,13 @@ const PROCESS = [
    as the Work page, filtered to the category that actually matches this
    service (the previous list mixed in e-commerce/mobile projects and even
    a mistitled entry — this is the honest fix) */
-/* the SaaS-onboarding concept (id 20) has no v1 twin page like the other
-   real projects, so its link is built for the v2 route instead of the
-   bare v1 href */
+/* every project in PROJECTS now has a matching v2 case-study page, so all
+   links route through /case-study-v2 rather than the old-site v1 href */
 const RELATED = PROJECTS
   .filter((p) => p.category === "UI/UX Design")
   .map((p) => ({
     tag: p.category, title: p.title, thumb: p.image,
-    link: p.id === 20 ? `/case-study-v2${p.href}` : p.href,
+    link: `/case-study-v2${p.href}`,
   }));
 
 const PRINCIPLES = [
@@ -545,16 +544,16 @@ export default function UIUXDesignV2() {
       {/* ══════════ 1 · HERO ══════════ */}
       <header className="sd2-hero">
         <div className="sd2-hero-inner">
-          <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-            <a href="/preview-v2">Home</a>
-            <span>/</span>
-            <a href="/services-v2">Services</a>
-            <span>/</span>
-            <em>UI/UX Design</em>
-          </nav>
-
           <div className="sd2-hero-main">
             <div>
+              <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
+                <a href="/preview-v2">Home</a>
+                <span>/</span>
+                <a href="/services-v2">Services</a>
+                <span>/</span>
+                <em>UI/UX Design</em>
+              </nav>
+
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Service 03 · UI/UX Design</span>
               </div>
@@ -568,7 +567,7 @@ export default function UIUXDesignV2() {
                 feels obvious, then handed over with a complete design system.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact">
+                <a className="v2-btn v2-btn--filled" href="/contact-v2">
                   <span>Schedule a call</span>
                   <i className="v2-btn-arrow">→</i>
                 </a>
@@ -797,7 +796,7 @@ export default function UIUXDesignV2() {
                 <li><Check size={13} strokeWidth={2.4} /> Fixed price once scoped</li>
                 <li><Check size={13} strokeWidth={2.4} /> Full Figma handover</li>
               </ul>
-              <a className="v2-btn" href="/contact">Get an exact quote →</a>
+              <a className="v2-btn" href="/contact-v2">Get an exact quote →</a>
             </aside>
           </div>
         </div>
@@ -1068,7 +1067,7 @@ export default function UIUXDesignV2() {
             <h2 className="v2-heading">UI/UX design questions.</h2>
           </div>
           <p className="v2-lede v2-faq-note">
-            Don't see yours here? <a href="/contact">Ask us directly →</a>
+            Don't see yours here? <a href="/contact-v2">Ask us directly →</a>
           </p>
         </div>
         <div>
@@ -1152,7 +1151,7 @@ export default function UIUXDesignV2() {
             and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a>
+            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
           </div>
           <div className="v2-cta-badges">
             <span className="v2-cta-badge">Free consultation</span>
