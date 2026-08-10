@@ -1,0 +1,768 @@
+/* ProductDetailV2 — shares hero/heading/label/lede/faq/cta chrome with the
+   Service and Industry detail pages (imported globally), styled here with a
+   per-product accent color (--prod-accent, set inline on .pd2-root) so
+   Audytee/4bitx/AanganOne each feel distinct without three separate files. */
+
+.pd2-hero .v2-hero-status i {
+  background: var(--dot, #4ade80);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--dot, #4ade80) 50%, transparent);
+}
+
+.pd2-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .7s var(--ease-premium), transform .7s var(--ease-premium);
+}
+
+.pd2-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Stats strip ─────────────────────────────────────────── */
+.pd2-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  border-bottom: .8px solid var(--rule);
+}
+
+.pd2-stat {
+  flex: 1;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0 24px;
+  border-left: .8px solid var(--rule);
+}
+
+.pd2-stat:first-child {
+  border-left: none;
+}
+
+.pd2-stat-num {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 300;
+  letter-spacing: -.02em;
+  color: var(--prod-accent);
+}
+
+.pd2-stat-label {
+  font-size: 12.5px;
+  color: var(--text-55);
+  text-align: center;
+}
+
+/* ── Problem grid ────────────────────────────────────────── */
+.pd2-problem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.pd2-problem-card {
+  padding: 26px;
+  border: .8px solid var(--rule);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.pd2-problem-card svg {
+  color: var(--prod-accent);
+  margin-bottom: 14px;
+}
+
+.pd2-problem-card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.pd2-problem-card p {
+  font-size: 13.5px;
+  color: var(--text-55);
+  line-height: 1.55;
+}
+
+/* ── Positioning (4bitx) ─────────────────────────────────── */
+.pd2-positioning-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.pd2-positioning-col {
+  padding: 28px;
+  border-radius: 18px;
+  border: .8px solid var(--rule);
+}
+
+.pd2-positioning-not {
+  background: rgba(255, 90, 90, 0.03);
+}
+
+.pd2-positioning-is {
+  background: color-mix(in srgb, var(--prod-accent) 6%, transparent);
+  border-color: color-mix(in srgb, var(--prod-accent) 30%, var(--rule));
+}
+
+.pd2-positioning-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-55);
+  margin-bottom: 18px;
+}
+
+.pd2-positioning-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-top: .8px solid var(--rule);
+  font-size: 14px;
+  color: var(--text-80, rgba(242,240,236,.8));
+}
+
+.pd2-positioning-row:first-of-type {
+  border-top: none;
+}
+
+.pd2-positioning-not svg {
+  color: #ff6b6b;
+  flex-shrink: 0;
+}
+
+.pd2-positioning-is svg {
+  color: var(--prod-accent);
+  flex-shrink: 0;
+}
+
+.pd2-industry-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.pd2-industry-tags span {
+  padding: 8px 16px;
+  border-radius: 100px;
+  border: .8px solid var(--rule);
+  font-size: 12.5px;
+  color: var(--text-55);
+}
+
+@media (max-width: 700px) {
+  .pd2-positioning-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Modules ─────────────────────────────────────────────── */
+.pd2-module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 40px;
+}
+
+.pd2-module-card {
+  position: relative;
+  padding: 24px;
+  border: .8px solid var(--rule);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.015);
+  overflow: hidden;
+  transition: border-color .3s ease, transform .3s ease;
+}
+
+.pd2-module-card:hover {
+  border-color: color-mix(in srgb, var(--prod-accent) 40%, var(--rule));
+  transform: translateY(-3px);
+}
+
+.pd2-module-card.is-unique {
+  border-color: color-mix(in srgb, var(--prod-accent) 45%, var(--rule));
+  background: color-mix(in srgb, var(--prod-accent) 5%, transparent);
+}
+
+.pd2-module-n {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 28px;
+  font-weight: 200;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,.1);
+}
+
+.pd2-module-card svg {
+  color: var(--prod-accent);
+  margin-bottom: 12px;
+}
+
+.pd2-module-card h4 {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.pd2-module-card p {
+  font-size: 12.5px;
+  color: var(--text-55);
+  line-height: 1.5;
+}
+
+.pd2-module-badge {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: var(--prod-accent);
+  color: #0a0a0d;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+/* ── AI features ─────────────────────────────────────────── */
+.pd2-ai {
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--prod-accent) 4%, transparent) 40%, transparent);
+}
+
+.pd2-ai-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.pd2-ai-card {
+  padding: 28px;
+  border-radius: 18px;
+  border: .8px solid var(--rule);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.pd2-ai-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--prod-accent) 15%, transparent);
+  color: var(--prod-accent);
+  margin-bottom: 16px;
+}
+
+.pd2-ai-card h4 {
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.pd2-ai-card p {
+  font-size: 13px;
+  color: var(--text-55);
+  line-height: 1.6;
+}
+
+/* ── Users (AanganOne) ───────────────────────────────────── */
+.pd2-users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 40px;
+}
+
+.pd2-user-card {
+  padding: 24px;
+  border: .8px solid var(--rule);
+  border-radius: 16px;
+  border-top: 2.5px solid var(--prod-accent);
+}
+
+.pd2-user-card h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.pd2-user-card p {
+  font-size: 13px;
+  color: var(--text-55);
+  line-height: 1.55;
+}
+
+/* ── Features, grouped (AanganOne) ───────────────────────── */
+.pd2-feature-group {
+  margin-top: 40px;
+}
+
+.pd2-feature-group h3 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--prod-accent);
+  margin-bottom: 16px;
+}
+
+.pd2-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.pd2-feature-card {
+  display: flex;
+  gap: 14px;
+  padding: 18px;
+  border: .8px solid var(--rule);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.015);
+}
+
+.pd2-feature-card svg {
+  flex-shrink: 0;
+  color: var(--prod-accent);
+  margin-top: 2px;
+}
+
+.pd2-feature-card h4 {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.pd2-feature-card p {
+  font-size: 12px;
+  color: var(--text-55);
+  line-height: 1.5;
+}
+
+/* ── How it works ────────────────────────────────────────── */
+.pd2-how-spine {
+  position: relative;
+  margin-top: 40px;
+  padding-left: 40px;
+  border-left: 1.5px solid var(--rule);
+}
+
+.pd2-how-row {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  padding-bottom: 36px;
+}
+
+.pd2-how-row:last-child {
+  padding-bottom: 0;
+}
+
+.pd2-how-n {
+  position: absolute;
+  left: -52px;
+  top: -2px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #0a0a0d;
+  border: 1.5px solid var(--prod-accent);
+  color: var(--prod-accent);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.pd2-how-row h4 {
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.pd2-how-row p {
+  font-size: 13.5px;
+  color: var(--text-55);
+  line-height: 1.6;
+  max-width: 560px;
+}
+
+/* ── Pricing — tiers ─────────────────────────────────────── */
+.pd2-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.pd2-pricing-card {
+  position: relative;
+  padding: 32px 28px;
+  border: .8px solid var(--rule);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.02);
+}
+
+.pd2-pricing-card.is-popular {
+  border-color: var(--prod-accent);
+  background: color-mix(in srgb, var(--prod-accent) 6%, transparent);
+  transform: scale(1.02);
+}
+
+.pd2-pricing-tag {
+  position: absolute;
+  top: -12px;
+  right: 24px;
+  padding: 5px 12px;
+  border-radius: 100px;
+  background: var(--prod-accent);
+  color: #0a0a0d;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.pd2-pricing-card h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.pd2-pricing-desc {
+  font-size: 12.5px;
+  color: var(--text-55);
+  margin-bottom: 20px;
+}
+
+.pd2-pricing-price {
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 24px;
+}
+
+.pd2-pricing-price span {
+  font-size: 13px;
+  color: var(--text-55);
+  font-weight: 400;
+}
+
+.pd2-pricing-card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pd2-pricing-card li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-55);
+  line-height: 1.4;
+}
+
+.pd2-pricing-card li svg {
+  color: var(--prod-accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pd2-pricing-enterprise {
+  margin-top: 28px;
+  font-size: 13px;
+  color: var(--text-55);
+  text-align: center;
+}
+
+/* ── Pricing — components (4bitx) ────────────────────────── */
+.pd2-price-components {
+  margin-top: 40px;
+  border: .8px solid var(--rule);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.pd2-price-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 20px;
+  padding: 20px 24px;
+  border-bottom: .8px solid var(--rule);
+}
+
+.pd2-price-row:last-child {
+  border-bottom: none;
+}
+
+.pd2-price-row-name {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.pd2-price-row-range {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--prod-accent);
+  text-align: right;
+}
+
+.pd2-price-row-body {
+  grid-column: 1 / -1;
+  font-size: 12.5px;
+  color: var(--text-55);
+}
+
+/* ── Compare table ───────────────────────────────────────── */
+.pd2-compare-table-wrap {
+  margin-top: 40px;
+  overflow-x: auto;
+  border: .8px solid var(--rule);
+  border-radius: 16px;
+}
+
+.pd2-compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+}
+
+.pd2-compare-table th,
+.pd2-compare-table td {
+  padding: 14px 18px;
+  text-align: center;
+  font-size: 13px;
+  border-bottom: .8px solid var(--rule);
+}
+
+.pd2-compare-table th {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 12.5px;
+}
+
+.pd2-compare-row-label {
+  text-align: left !important;
+  color: var(--text-55);
+  font-size: 12.5px !important;
+  white-space: nowrap;
+}
+
+.pd2-compare-table th.is-us,
+.pd2-compare-table td.is-us {
+  background: color-mix(in srgb, var(--prod-accent) 8%, transparent);
+}
+
+.pd2-compare-table th.is-us {
+  color: var(--prod-accent);
+}
+
+.pd2-cmp-yes {
+  color: var(--prod-accent);
+}
+
+.pd2-cmp-no {
+  color: rgba(255,255,255,.18);
+}
+
+.pd2-cmp-partial {
+  font-size: 11px;
+  color: var(--text-55);
+}
+
+/* ── Market ──────────────────────────────────────────────── */
+.pd2-market-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.pd2-market-card {
+  padding: 28px;
+  text-align: center;
+  border: .8px solid var(--rule);
+  border-radius: 16px;
+}
+
+.pd2-market-value {
+  display: block;
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--prod-accent);
+  margin-bottom: 8px;
+}
+
+.pd2-market-label {
+  font-size: 12px;
+  color: var(--text-55);
+}
+
+/* ── Differentiators ─────────────────────────────────────── */
+.pd2-diff-list {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pd2-diff-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 0;
+  border-top: .8px solid var(--rule);
+  font-size: 14.5px;
+  color: var(--text);
+}
+
+.pd2-diff-row:last-child {
+  border-bottom: .8px solid var(--rule);
+}
+
+.pd2-diff-n {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--prod-accent);
+  flex-shrink: 0;
+}
+
+/* ── Traction + roadmap ──────────────────────────────────── */
+.pd2-traction-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.pd2-traction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pd2-traction-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-55);
+}
+
+.pd2-traction-list li svg {
+  color: var(--prod-accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pd2-roadmap {
+  display: flex;
+  flex-direction: column;
+}
+
+.pd2-roadmap-row {
+  display: flex;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: .8px solid var(--rule);
+}
+
+.pd2-roadmap-row:last-child {
+  border-bottom: .8px solid var(--rule);
+}
+
+.pd2-roadmap-period {
+  flex-shrink: 0;
+  width: 90px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--prod-accent);
+}
+
+.pd2-roadmap-body {
+  font-size: 13px;
+  color: var(--text-55);
+  line-height: 1.5;
+}
+
+@media (max-width: 800px) {
+  .pd2-traction-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+
+/* ── Other products ──────────────────────────────────────── */
+.pd2-other-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.pd2-other-card {
+  position: relative;
+  display: block;
+  padding: 26px;
+  border: .8px solid var(--rule);
+  border-radius: 18px;
+  text-decoration: none;
+  transition: border-color .3s ease, transform .3s ease;
+}
+
+.pd2-other-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--rule));
+  transform: translateY(-3px);
+}
+
+.pd2-other-badge {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.pd2-other-card h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.pd2-other-card p {
+  font-size: 13px;
+  color: var(--text-55);
+}
+
+.pd2-other-arrow {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  color: var(--text-55);
+}
+
+@media (max-width: 700px) {
+  .pd2-stats { padding: 32px 16px; }
+  .pd2-stat { min-width: 45%; border-left: none; padding: 12px 0; }
+}

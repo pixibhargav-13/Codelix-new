@@ -54,9 +54,20 @@ export default function FaqV2() {
 
   const rootRef = useRef(null);
 
-  
-
-  
+  useEffect(() => {
+    setTimeout(() => {
+      const hero = document.querySelector('.sd2-hero');
+      const v2 = document.querySelector('.v2');
+      const nav = document.querySelector('.v2-nav');
+      console.log("LAYOUT_DEBUG", JSON.stringify({
+        hero: hero?.getBoundingClientRect(),
+        v2: v2?.getBoundingClientRect(),
+        nav: nav?.getBoundingClientRect(),
+        body: document.body.getBoundingClientRect(),
+        window: window.innerWidth
+      }));
+    }, 1000);
+  }, []);
 
   /* hero intro — masked-line GSAP wipe, matching the other v2 pages */
   useEffect(() => {

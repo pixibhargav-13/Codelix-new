@@ -27,23 +27,22 @@ import CtaVisual from "./CtaVisual";
 import GoogleReviewButton from "../Shared/GoogleReviewButton";
 import ClutchWidget from "../Shared/ClutchWidget";
 import { useTestimonials } from "../../data/useTestimonials";
+import { PRODUCTS } from "../ProductsV2/productsData";
 
 import "./HomepageV2.css";
 import NavbarV2 from "../Shared/NavbarV2";
 import FooterV2 from "../Shared/FooterV2";
+import HeroVisual from "./HeroVisual";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* Three declaration words pinned at the hero foot. Deliberately not
-   SEE./BUILD./COMPOUND. (or any single shared word with it) — chosen instead
-   to echo the hero's own "outlast the brief" line, so the words are ours,
-   not a reskin of someone else's three-word hook. */
-const DECLARATIONS = ["UNDERSTAND.", "ENGINEER.", "OUTLAST."];
+/* Core workflow declarations */
+const DECLARATIONS = ["PLAN.", "BUILD.", "SCALE."];
 
 const STATEMENTS = [
-  { label: "UNDERSTAND.", body: "We spend real time inside your workflow before a screen gets designed — the brief is where the conversation starts, not a spec we execute blindly." },
-  { label: "ENGINEER.", body: "A five-screen tool and a full platform get the same discipline: scoped to how your team actually works, not pulled from a shelf." },
-  { label: "OUTLAST.", body: "The architecture calls made in week one decide what's still possible in year three — we're optimizing for that, not for a fast demo." },
+  { label: "PLAN.", body: "We don't just take orders. We sit with your team, map out the edge cases, and design an architecture that won't paint you into a corner six months from now." },
+  { label: "BUILD.", body: "Clean code, strict typing, and comprehensive test coverage. We engineer resilient systems designed to handle real-world traffic without falling apart at the seams." },
+  { label: "SCALE.", body: "You shouldn't have to rewrite your entire backend just because your user base doubled. We build multi-tenant, cloud-native solutions that grow with you." },
 ];
 
 const METHOD = [
@@ -802,35 +801,39 @@ export default function HomepageV2() {
       {/* ══════════ 1 · HERO — Codelix's own composition ══════════ */}
       <header className="v2-hero">
         <div className="v2-hero-inner">
-          <div className="v2-hero-top">
-            <span className="v2-hero-status">
-              <i /> Available for new projects
-            </span>
-            <span className="v2-hero-eyebrow">Web · App · SaaS · AI — Ahmedabad</span>
+          <div className="v2-hero-content-left">
+            <div className="v2-hero-top">
+              <span className="v2-hero-status">
+                <i /> Available for new projects
+              </span>
+              <span className="v2-hero-eyebrow">Premium Software Agency</span>
+            </div>
+            <h1 className="v2-hero-title">
+              <span className="line"><span>We build</span></span>
+              <span className="line"><span>software that</span></span>
+              <span className="line"><span className="v2-hero-accent">actually scales.</span></span>
+            </h1>
+            <p className="v2-hero-sub">
+              Stop rebuilding brittle prototypes. We engineer production-ready web apps, mobile platforms, and enterprise SaaS solutions designed to handle real users.
+            </p>
+            <div className="v2-hero-cta">
+              <a className="v2-btn v2-btn--filled" href="/contact">
+                <span>Start a project</span>
+                <i className="v2-btn-arrow">→</i>
+              </a>
+              <a className="v2-hero-secondary" href="#work">
+                <span className="v2-hero-secondary-icon"><PlayCircle size={17} strokeWidth={1.6} /></span>
+                <span className="v2-hero-secondary-label">See our work</span>
+              </a>
+            </div>
+            <div className="v2-hero-words">
+              {DECLARATIONS.map((w, i) => (
+                <span ref={(el) => (heroWordRefs.current[i] = el)} key={w}>{w}</span>
+              ))}
+            </div>
           </div>
-          <h1 className="v2-hero-title">
-            <span className="line"><span>Software built</span></span>
-            <span className="line"><span>to outlast the</span></span>
-            <span className="line"><span className="v2-hero-accent">brief.</span></span>
-          </h1>
-          <p className="v2-hero-sub">
-            We design and build web, mobile, and AI systems for businesses that intend to
-            still be running them in five years.
-          </p>
-          <div className="v2-hero-cta">
-            <a className="v2-btn v2-btn--filled" href="/contact">
-              <span>Start a project</span>
-              <i className="v2-btn-arrow">→</i>
-            </a>
-            <a className="v2-hero-secondary" href="#work">
-              <span className="v2-hero-secondary-icon"><PlayCircle size={17} strokeWidth={1.6} /></span>
-              <span className="v2-hero-secondary-label">See our work</span>
-            </a>
-          </div>
-          <div className="v2-hero-words">
-            {DECLARATIONS.map((w, i) => (
-              <span ref={(el) => (heroWordRefs.current[i] = el)} key={w}>{w}</span>
-            ))}
+          <div className="v2-hero-content-right">
+            <HeroVisual />
           </div>
         </div>
         <a className="v2-hero-scroll" href="#work" aria-label="Scroll to work">
@@ -1127,6 +1130,29 @@ export default function HomepageV2() {
 
         <div className="v2-work-more" style={{ marginTop: '48px', paddingBottom: '0' }}>
           <a className="v2-btn" href="/services-v2">View all services →</a>
+        </div>
+      </section>
+
+      {/* ══════════ 6.5 · OUR PRODUCTS — real, in-house SaaS products we
+          build and run ourselves, distinct from client project work above. ══════════ */}
+      <section className="v2-section v2-products-section" id="products">
+        <p className="v2-label">Our Products</p>
+        <h2 className="v2-heading">Beyond client work — products we build and run ourselves.</h2>
+        <p className="v2-lede">Three SaaS products, live in the market, engineered with the same craft we bring to every client project.</p>
+        <div className="v2-products-grid">
+          {PRODUCTS.map((p) => (
+            <a href={`/products-v2/${p.slug}`} className="v2-product-card" key={p.slug} style={{ "--accent": p.accent }}>
+              <span className="v2-product-card-badge">{p.badge}</span>
+              <h3 className="v2-product-card-name">{p.name}</h3>
+              <p className="v2-product-card-tagline">{p.tagline}</p>
+              <div className="v2-product-card-stats">
+                {p.stats.slice(0, 2).map((s) => (
+                  <span key={s.label}><b>{s.value}</b>{s.label}</span>
+                ))}
+              </div>
+              <span className="v2-product-card-cta">Explore {p.name} <i>→</i></span>
+            </a>
+          ))}
         </div>
       </section>
 

@@ -1,0 +1,344 @@
+.industry-visual-container {
+  width: 100%;
+  height: 550px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  perspective: 1200px;
+}
+
+/* Background Grid (subtle) */
+.ind-bg-grid {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
+  z-index: 0;
+  transform: perspective(500px) rotateX(60deg) translateY(-100px) scale(2);
+  animation: bgGridMove 20s linear infinite;
+}
+
+@keyframes bgGridMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 40px; }
+}
+
+/* Orbital Rings for epic scale */
+.iso-rings {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 500px; height: 500px;
+  margin-top: -250px; margin-left: -250px;
+  transform-style: preserve-3d;
+  z-index: 1;
+  pointer-events: none;
+}
+.iso-ring {
+  position: absolute;
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  border: 1px dashed rgba(255,255,255,0.15);
+  transform-style: preserve-3d;
+}
+.iso-ring.r1 {
+  border-top: 2px solid rgba(0, 150, 255, 0.6);
+  animation: spinRing1 15s linear infinite;
+}
+.iso-ring.r2 {
+  width: 650px; height: 650px;
+  margin-top: -75px; margin-left: -75px;
+  border-bottom: 2px solid rgba(138, 43, 226, 0.5);
+  animation: spinRing2 25s linear infinite reverse;
+}
+@keyframes spinRing1 {
+  0% { transform: rotateX(75deg) rotateY(10deg) rotateZ(0deg); }
+  100% { transform: rotateX(75deg) rotateY(10deg) rotateZ(360deg); }
+}
+@keyframes spinRing2 {
+  0% { transform: rotateX(65deg) rotateY(-15deg) rotateZ(0deg); }
+  100% { transform: rotateX(65deg) rotateY(-15deg) rotateZ(360deg); }
+}
+
+
+/* Isometric Stack Container */
+.iso-stack {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  transform: rotateX(60deg) rotateZ(-45deg);
+  transform-style: preserve-3d;
+  z-index: 2;
+  animation: stackFloat 6s ease-in-out infinite;
+}
+
+@keyframes stackFloat {
+  0%, 100% { transform: rotateX(60deg) rotateZ(-45deg) translateZ(0px); }
+  50% { transform: rotateX(60deg) rotateZ(-45deg) translateZ(20px); }
+}
+
+/* Base Shadow */
+.iso-shadow {
+  position: absolute;
+  width: 240px; height: 240px;
+  background: rgba(0, 150, 255, 0.2);
+  filter: blur(40px);
+  transform: translateZ(-80px);
+  animation: shadowPulse 6s ease-in-out infinite;
+}
+@keyframes shadowPulse {
+  0%, 100% { opacity: 0.5; transform: translateZ(-80px) scale(1); }
+  50% { opacity: 0.2; transform: translateZ(-100px) scale(0.8); }
+}
+
+/* The Layers */
+.iso-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+  overflow: hidden; /* For scanning laser */
+}
+
+/* Base/Infra Layer */
+.iso-layer.infra {
+  transform: translateZ(0px);
+  border: 1px solid rgba(16, 185, 129, 0.6);
+  background: rgba(16, 185, 129, 0.05);
+  box-shadow: 
+    inset 0 0 20px rgba(16, 185, 129, 0.2),
+    0 20px 40px rgba(16, 185, 129, 0.1);
+}
+
+.iso-layer.infra::after {
+  content: '';
+  position: absolute;
+  width: 110%; height: 110%;
+  border: 1px dashed rgba(16, 185, 129, 0.3);
+  border-radius: 16px;
+  animation: spinSlow 20s linear infinite;
+}
+
+/* Compliance Layer */
+.iso-layer.compliance {
+  transform: translateZ(80px);
+  border: 1px solid rgba(138, 43, 226, 0.6);
+  background: rgba(138, 43, 226, 0.05);
+  box-shadow: 
+    inset 0 0 20px rgba(138, 43, 226, 0.2),
+    0 20px 40px rgba(138, 43, 226, 0.1);
+  animation: layerPulse 4s ease-in-out infinite 1s;
+}
+
+.iso-layer.compliance::after {
+  content: '';
+  position: absolute;
+  width: 110%; height: 110%;
+  border: 1px dashed rgba(138, 43, 226, 0.3);
+  border-radius: 16px;
+  animation: spinSlow 20s linear infinite reverse;
+}
+
+/* Interface/Sector Layer */
+.iso-layer.interface {
+  transform: translateZ(160px);
+  border: 1px solid rgba(0, 150, 255, 0.6);
+  background: rgba(0, 150, 255, 0.05);
+  box-shadow: 
+    inset 0 0 30px rgba(0, 150, 255, 0.3),
+    0 20px 40px rgba(0, 150, 255, 0.2);
+  animation: layerPulse2 4s ease-in-out infinite 0s;
+}
+
+/* Scanning Laser on Top Layer */
+.iso-laser {
+  position: absolute;
+  width: 100%; height: 2px;
+  background: #0096ff;
+  box-shadow: 0 0 15px #0096ff, 0 0 30px #0096ff;
+  animation: laserScan 3s linear infinite alternate;
+}
+@keyframes laserScan {
+  0% { transform: translateY(-120px); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(120px); opacity: 0; }
+}
+
+@keyframes spinSlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes layerPulse {
+  0%, 100% { background: rgba(138, 43, 226, 0.05); }
+  50% { background: rgba(138, 43, 226, 0.15); }
+}
+
+@keyframes layerPulse2 {
+  0%, 100% { background: rgba(0, 150, 255, 0.05); }
+  50% { background: rgba(0, 150, 255, 0.15); }
+}
+
+/* Vertical Beams connecting the layers */
+.iso-beam {
+  position: absolute;
+  width: 2px;
+  height: 160px;
+  background: linear-gradient(to top, rgba(16, 185, 129, 0.3), rgba(138, 43, 226, 0.5), rgba(0, 150, 255, 0.8));
+  transform-style: preserve-3d;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+  z-index: 1;
+}
+
+.beam-1 { top: 0; left: 0; transform: rotateX(-90deg) translateY(-160px); transform-origin: top; }
+.beam-2 { top: 0; right: 0; transform: rotateX(-90deg) translateY(-160px); transform-origin: top; }
+.beam-3 { bottom: 0; left: 0; transform: rotateX(-90deg) translateY(-160px); transform-origin: top; }
+.beam-4 { bottom: 0; right: 0; transform: rotateX(-90deg) translateY(-160px); transform-origin: top; }
+
+/* Data Packets shooting up the beams */
+.data-packet {
+  position: absolute;
+  width: 4px; height: 12px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 15px #fff;
+  animation: dataShoot 2s ease-in infinite;
+}
+.beam-1 .data-packet { animation-delay: 0s; }
+.beam-2 .data-packet { animation-delay: 1.5s; background: #0096ff; box-shadow: 0 0 15px #0096ff; }
+.beam-3 .data-packet { animation-delay: 0.8s; background: #c084fc; box-shadow: 0 0 15px #c084fc; }
+.beam-4 .data-packet { animation-delay: 2.2s; background: #10b981; box-shadow: 0 0 15px #10b981; }
+
+@keyframes dataShoot {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(160px); opacity: 0; }
+}
+
+/* Grid within layers */
+.layer-grid {
+  width: 90%;
+  height: 90%;
+  border: 1px solid rgba(255,255,255,0.05);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2px;
+}
+
+.grid-cell {
+  background: rgba(255,255,255,0.02);
+  transition: background 0.3s;
+}
+.iso-layer.infra .grid-cell:nth-child(2), .iso-layer.infra .grid-cell:nth-child(5) { background: rgba(16, 185, 129, 0.4); }
+.iso-layer.compliance .grid-cell:nth-child(10), .iso-layer.compliance .grid-cell:nth-child(11) { background: rgba(138, 43, 226, 0.4); }
+.iso-layer.interface .grid-cell:nth-child(4), .iso-layer.interface .grid-cell:nth-child(16) { background: rgba(0, 150, 255, 0.4); }
+
+/* Floating Labels (Counter-rotated to face the camera) */
+.iso-label {
+  position: absolute;
+  transform: rotateZ(45deg) rotateX(-90deg) translateY(-10px);
+  color: #fff;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: rgba(10, 15, 30, 0.8);
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.iso-layer.infra .iso-label {
+  bottom: -40px; right: -40px;
+  border-color: rgba(16, 185, 129, 0.5);
+  color: #10b981;
+}
+
+.iso-layer.compliance .iso-label {
+  top: -40px; right: -40px;
+  border-color: rgba(138, 43, 226, 0.5);
+  color: #c084fc;
+}
+
+.iso-layer.interface .iso-label {
+  top: -40px; left: -40px;
+  border-color: rgba(0, 150, 255, 0.5);
+  color: #0096ff;
+}
+
+/* Holographic Floating Panels */
+.holo-panel {
+  position: absolute;
+  background: rgba(10, 15, 30, 0.6);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-family: var(--font-mono, monospace);
+  animation: floatUI 6s ease-in-out infinite;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.holo-panel.left { top: 15%; left: 0%; animation-delay: -2s; border-left: 2px solid #0096ff; }
+.holo-panel.right { bottom: 15%; right: 0%; animation-delay: -4s; border-right: 2px solid #10b981; }
+
+.holo-icon {
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.05);
+}
+.holo-panel.left .holo-icon { color: #0096ff; background: rgba(0,150,255,0.1); }
+.holo-panel.right .holo-icon { color: #10b981; background: rgba(16,185,129,0.1); }
+
+.holo-text { display: flex; flex-direction: column; }
+.holo-val { color: #fff; font-size: 13px; font-weight: bold; letter-spacing: 1px; }
+.holo-lbl { color: rgba(255,255,255,0.4); font-size: 9px; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+@keyframes floatUI {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Ambient Glow */
+.stack-glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(138, 43, 226, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 940px) {
+  .iso-stack {
+    transform: scale(0.65) rotateX(60deg) rotateZ(-45deg);
+  }
+  .iso-rings {
+    transform: scale(0.7);
+  }
+  .holo-panel { display: none; }
+}

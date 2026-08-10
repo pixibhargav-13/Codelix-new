@@ -16,6 +16,7 @@ import CtaVisual from "../HomepageV2/CtaVisual";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./ProcessV2.css";
+import ProcessHeroVisual from "./ProcessHeroVisual";
 import NavbarV2 from "../Shared/NavbarV2";
 
 
@@ -111,7 +112,8 @@ export default function ProcessV2() {
       .fromTo(q(".sd2-hero-title .line > span"),
         { yPercent: 118 }, { yPercent: 0, duration: 1.15, stagger: .1 }, "-=.45")
       .fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.65")
-      .fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7");
+      .fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7")
+      .fromTo(q(".sd2-hero-visual.sv2-hero-reveal"), { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 1 }, "-=.8");
     return () => tl.kill();
   }, []);
 
@@ -235,7 +237,7 @@ export default function ProcessV2() {
       
 
       {/* ══════════ 1 · HERO ══════════ */}
-      <header className="sd2-hero">
+      <header className="sd2-hero process-hero">
         <div className="sd2-hero-inner">
           <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
             <a href="/preview-v2">Home</a>
@@ -266,6 +268,10 @@ export default function ProcessV2() {
                   <span className="v2-hero-secondary-label">See the stages</span>
                 </a>
               </div>
+            </div>
+            {/* Visual Column */}
+            <div className="sd2-hero-visual sv2-hero-reveal">
+              <ProcessHeroVisual />
             </div>
           </div>
         </div>

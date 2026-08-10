@@ -1,8 +1,19 @@
 /* ============================================================
    Team V2 — page-specific styles only.
    Design system inherited from HomepageV2.css; shared bits (hero, tenet
-   cards, quote, client strip) come from ServicesV2.css / ServiceDetailV2.css.
-   ============================================================ */
+
+
+/* ───────────── HERO GRID OVERRIDE & CENTERING ───────────── */
+.sd2-hero.team-hero {
+  padding-top: 180px; /* Space for navbar */
+  padding-bottom: 80px;
+}
+
+header.sd2-hero.team-hero .sd2-hero-main {
+  grid-template-columns: 1fr 1fr !important;
+  width: 100%;
+}
+
 
 /* ───────────── FAQ polish (unused on this page currently, kept for
    consistency if a FAQ section is added later) ───────────── */

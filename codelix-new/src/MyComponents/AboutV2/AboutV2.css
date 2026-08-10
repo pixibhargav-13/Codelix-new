@@ -28,3 +28,20 @@
 #faq .v2-faq-item.open {
   background: rgba(180, 200, 230, .04);
 }
+
+/* ───────────── HERO FULL HEIGHT ───────────── */
+.sd2-hero.about-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 100px; /* Accounts for navbar */
+}
+
+.sd2-hero.about-hero .sd2-hero-inner {
+  width: 100%;
+}
+
+.sd2-hero.about-hero .sd2-hero-main {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(40px, 8vw, 80px);
+}

@@ -4,10 +4,11 @@ import {
   Globe, Smartphone, Palette, ShoppingCart,
   Database, Bot, LineChart, Cloud, ChevronRight,
   Factory, Landmark, Cpu, Activity, Coffee, Building2,
-  GraduationCap, Rocket, Plane
+  GraduationCap, Rocket, Plane, Boxes
 } from "lucide-react";
 import codelixLogo from "../Images/codelix-logo.png";
 import V2MobileDrawer from "../HomepageV2/V2MobileDrawer";
+import { PRODUCTS } from "../ProductsV2/productsData";
 import "./NavbarV2.css";
 
 const getCategoryIcon = (title) => {
@@ -157,6 +158,34 @@ export default function NavbarV2() {
                           <span className="v2-nav-industry-link-text">{industry.label}</span>
                         </span>
                         <ChevronRight className="v2-nav-industry-link-arrow" size={16} strokeWidth={2} />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="v2-nav-dropdown">
+              <a href={`/products-v2/${PRODUCTS[0].slug}`}>Products <span className="v2-nav-dropdown-chevron">▾</span></a>
+              <div className="v2-nav-dropdown-panel">
+                <div className="v2-nav-products-mega-menu">
+                  <div className="v2-nav-mega-menu-left">
+                    <div className="v2-nav-mega-menu-left-bg-icon">
+                      <Boxes size={160} strokeWidth={0.5} />
+                    </div>
+                    <h3 className="v2-nav-mega-menu-left-title">Our Products</h3>
+                    <p className="v2-nav-mega-menu-left-desc">
+                      Beyond client work — SaaS products we design, build, and run ourselves.
+                    </p>
+                  </div>
+                  <div className="v2-nav-products-right">
+                    {PRODUCTS.map((p) => (
+                      <a key={p.slug} href={`/products-v2/${p.slug}`} className="v2-nav-product-link">
+                        <span className="v2-nav-product-link-top">
+                          <span className="v2-nav-product-link-name" style={{ color: p.accent }}>{p.name}</span>
+                          <ChevronRight className="v2-nav-industry-link-arrow" size={16} strokeWidth={2} />
+                        </span>
+                        <span className="v2-nav-product-link-badge">{p.badge}</span>
+                        <span className="v2-nav-product-link-tagline">{p.tagline}</span>
                       </a>
                     ))}
                   </div>

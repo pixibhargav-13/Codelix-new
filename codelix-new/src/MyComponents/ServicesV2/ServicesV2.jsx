@@ -18,6 +18,7 @@ import CtaVisual from "../HomepageV2/CtaVisual";
 import "./ServicesV2.css";
 import GoogleReviewButton from "../Shared/GoogleReviewButton";
 import ClutchWidget from "../Shared/ClutchWidget";
+import ServicesHeroVisual from "./ServicesHeroVisual";
 import NavbarV2 from "../Shared/NavbarV2";
 import FooterV2 from "../Shared/FooterV2";
 
@@ -500,36 +501,34 @@ export default function ServicesV2() {
       {/* ══════════ 1 · HERO ══════════ */}
       <header className="sv2-hero">
         <div className="sv2-hero-inner">
-          <div className="v2-hero-top sv2-hero-reveal">
-            <span className="v2-hero-status"><i /> Seven services · One delivery standard</span>
-          </div>
-          <h1 className="sv2-hero-title sv2-hero-reveal">
-            Everything we build,<br />
-            <span className="v2-hero-accent">and how we build it.</span>
-          </h1>
-          <p className="sv2-hero-sub sv2-hero-reveal">
-            Whether it's a landing page or a full platform — we handle web, mobile, design,
-            e-commerce, custom software, AI, and data analytics. Same team, same process,
-            same handoff every time.
-          </p>
-          <div className="sv2-hero-cta sv2-hero-reveal">
-            <a className="v2-btn v2-btn--filled" href="/contact">
-              <span>Get a free quote</span>
-              <i className="v2-btn-arrow">→</i>
-            </a>
-            <a className="v2-hero-secondary" href="#services">
-              <span className="v2-hero-secondary-label">Browse services</span>
-            </a>
-          </div>
-
-          {/* quick jump chips */}
-          <div className="sv2-chips sv2-hero-reveal">
-            {SERVICES.map((s, i) => (
-              <a className="sv2-chip" href="#services" onClick={() => setSvcActive(i)} key={s.n}>
-                <s.icon size={14} strokeWidth={1.7} />
-                {s.title}
-              </a>
-            ))}
+          <div className="sv2-hero-main">
+            <div className="sv2-hero-left">
+              <div className="v2-hero-top sv2-hero-reveal">
+                <span className="v2-hero-status"><i /> Seven services · One delivery standard</span>
+              </div>
+              <h1 className="sv2-hero-title sv2-hero-reveal">
+                Everything we build,<br />
+                <span className="v2-hero-accent">and how we build it.</span>
+              </h1>
+              <p className="sv2-hero-sub sv2-hero-reveal">
+                Whether it's a landing page or a full platform — we handle web, mobile, design,
+                e-commerce, custom software, AI, and data analytics. Same team, same process,
+                same handoff every time.
+              </p>
+              <div className="sv2-hero-cta sv2-hero-reveal">
+                <a className="v2-btn v2-btn--filled" href="/contact">
+                  <span>Get a free quote</span>
+                  <i className="v2-btn-arrow">→</i>
+                </a>
+                <a className="v2-hero-secondary" href="#services">
+                  <span className="v2-hero-secondary-label">Browse services</span>
+                </a>
+              </div>
+            </div>
+            
+            <div className="sv2-hero-right sv2-hero-reveal">
+              <ServicesHeroVisual />
+            </div>
           </div>
         </div>
       </header>

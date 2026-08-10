@@ -1,0 +1,106 @@
+.whv-container {
+  position: relative;
+  width: 100%;
+  height: 550px;
+  perspective: 1200px;
+  overflow: hidden;
+  user-select: none;
+  /* Add subtle 3D rotation to the whole grid to make it dynamic */
+  transform: rotateY(-10deg) rotateX(5deg);
+  transform-style: preserve-3d;
+}
+
+/* Gradient masks to fade out top and bottom seamlessly */
+.whv-gradient-mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 120px;
+  z-index: 10;
+  pointer-events: none;
+}
+.whv-gradient-mask.top {
+  top: -2px; /* slight overlap to avoid subpixel lines */
+  background: linear-gradient(to bottom, #0a0a0c 0%, transparent 100%);
+}
+.whv-gradient-mask.bottom {
+  bottom: -2px;
+  background: linear-gradient(to top, #0a0a0c 0%, transparent 100%);
+}
+
+.whv-grid {
+  display: flex;
+  gap: 20px;
+  height: 100%;
+  transform: scale(1.15) translateY(-20px); /* Over-scale slightly so it fills nicely without empty edges */
+}
+
+.whv-col {
+  flex: 1;
+  position: relative;
+  height: 100%;
+}
+
+/* Shift middle column down for masonry effect */
+.whv-col-2 {
+  margin-top: -60px;
+}
+
+.whv-track {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.whv-card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  transform: translateZ(0); /* Hardware acceleration */
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+  aspect-ratio: 16/10;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.whv-card:hover {
+  transform: scale(1.05) translateZ(20px);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+.whv-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+  filter: grayscale(40%) contrast(1.1);
+  transition: opacity 0.4s ease, filter 0.4s ease;
+}
+
+.whv-card:hover img {
+  opacity: 1;
+  filter: grayscale(0%) contrast(1);
+}
+
+@media (max-width: 991px) {
+  .whv-container {
+    height: 450px;
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+}
+@media (max-width: 767px) {
+  .whv-container {
+    height: 350px;
+  }
+  .whv-grid {
+    gap: 12px;
+  }
+  .whv-track {
+    gap: 12px;
+  }
+  .whv-card {
+    border-radius: 8px;
+  }
+}

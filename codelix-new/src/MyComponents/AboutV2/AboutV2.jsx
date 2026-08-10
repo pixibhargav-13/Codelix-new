@@ -19,6 +19,7 @@ import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./AboutV2.css";
 import NavbarV2 from "../Shared/NavbarV2";
+import AboutHeroVisual from "./AboutHeroVisual";
 
 
 const STATS = [
@@ -247,7 +248,8 @@ export default function AboutV2() {
       .fromTo(q(".sd2-hero-title .line > span"),
         { yPercent: 118 }, { yPercent: 0, duration: 1.15, stagger: .1 }, "-=.45")
       .fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.65")
-      .fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7");
+      .fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7")
+      .fromTo(q(".sd2-hero-visual.sv2-hero-reveal"), { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 1.2 }, "-=.8");
     return () => tl.kill();
   }, []);
 
@@ -351,7 +353,7 @@ export default function AboutV2() {
       
 
       {/* ══════════ 1 · HERO ══════════ */}
-      <header className="sd2-hero">
+      <header className="sd2-hero about-hero">
         <div className="sd2-hero-inner">
           <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
             <a href="/preview-v2">Home</a>
@@ -382,6 +384,11 @@ export default function AboutV2() {
                   <span className="v2-hero-secondary-label">Our story</span>
                 </a>
               </div>
+            </div>
+            
+            {/* Right side visual */}
+            <div className="sd2-hero-visual sv2-hero-reveal" style={{ display: 'flex', justifyContent: 'center' }}>
+              <AboutHeroVisual />
             </div>
           </div>
         </div>

@@ -15,6 +15,7 @@ import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./IndustriesV2.css";
 import NavbarV2 from "../Shared/NavbarV2";
 import { INDUSTRIES } from "./industriesData";
+import IndustryHeroVisual from "./IndustryHeroVisual";
 
 const APPROACH = [
   { icon: Eye, claim: "We learn the domain, not just the brief.", body: "Before we design a single screen, we understand the regulations, the buyer behaviour, and the operational constraints specific to your sector." },
@@ -57,7 +58,8 @@ export default function IndustriesV2() {
       .fromTo(q(".sd2-hero-title .line > span"),
         { yPercent: 118 }, { yPercent: 0, duration: 1.15, stagger: .1 }, "-=.45")
       .fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.65")
-      .fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7");
+      .fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7")
+      .fromTo(q(".ind-hero-visual-wrapper.sv2-hero-reveal"), { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 1.2 }, "-=.7");
     return () => tl.kill();
   }, []);
 
@@ -167,7 +169,7 @@ export default function IndustriesV2() {
             <em>Industries</em>
           </nav>
 
-          <div className="sd2-hero-main">
+          <div className="sd2-hero-main ind-hero-main">
             <div>
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Eleven sectors, real repeat experience</span>
@@ -190,6 +192,9 @@ export default function IndustriesV2() {
                   <span className="v2-hero-secondary-label">Browse industries</span>
                 </a>
               </div>
+            </div>
+            <div className="ind-hero-visual-wrapper sv2-hero-reveal">
+              <IndustryHeroVisual />
             </div>
           </div>
         </div>

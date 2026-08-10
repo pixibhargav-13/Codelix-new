@@ -369,3 +369,25 @@
 .ind-panel-more:hover {
   gap: 10px;
 }
+
+/* ───────────── HERO VISUAL GRID OVERRIDE ───────────── */
+.v2 .ind-hero-main {
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.ind-hero-visual-wrapper {
+  position: relative;
+  width: 100%;
+  height: 500px; /* Base height for the visual */
+}
+
+@media (max-width: 940px) {
+  .v2 .ind-hero-main {
+    grid-template-columns: 1fr;
+  }
+  .ind-hero-visual-wrapper {
+    height: 400px;
+    margin-top: 40px;
+  }
+}

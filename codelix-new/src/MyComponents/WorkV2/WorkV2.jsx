@@ -26,6 +26,7 @@ import logo5 from "../Images/Our-work-logo-five.png";
 import { PROJECTS } from "./projectsData";
 import { useCaseStudies } from "../CaseStudyDetailV2/useCaseStudies";
 import NavbarV2 from "../Shared/NavbarV2";
+import WorkHeroVisual from "./WorkHeroVisual";
 
 
 /* the spotlight — a curated, diverse subset of the same 15 real projects
@@ -121,7 +122,8 @@ export default function WorkV2() {
       .fromTo(q(".sd2-hero-title .line > span"),
         { yPercent: 118 }, { yPercent: 0, duration: 1.15, stagger: .1 }, "-=.45")
       .fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.65")
-      .fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7");
+      .fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7")
+      .fromTo(q(".wv-hero-visual-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 1.2 }, "-=.8");
     return () => tl.kill();
   }, []);
 
@@ -247,7 +249,7 @@ export default function WorkV2() {
   });
 
   return (
-    <div className="v2" ref={rootRef}>
+    <div className="v2 v2-work" ref={rootRef}>
       <div className="v2-progress" aria-hidden="true"><span /></div>
 
       {/* ══════════ NAV ══════════ */}
@@ -286,6 +288,10 @@ export default function WorkV2() {
                   <span className="v2-hero-secondary-label">Browse all work</span>
                 </a>
               </div>
+            </div>
+            
+            <div className="wv-hero-visual-reveal">
+              <WorkHeroVisual />
             </div>
           </div>
         </div>
