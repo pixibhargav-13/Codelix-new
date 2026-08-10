@@ -16,6 +16,7 @@ import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS 
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./CareersV2.css";
+import CareersHeroVisual from "./CareersHeroVisual";
 import NavbarV2 from "../Shared/NavbarV2";
 
 
@@ -82,7 +83,9 @@ export default function CareersV2() {
       .fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")
       .fromTo(q(".sd2-hero-title .line > span"),
         { yPercent: 118 }, { yPercent: 0, duration: 1.15, stagger: .1 }, "-=.45")
-      .fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.65");
+      .fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.65")
+      .fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7")
+      .fromTo(q(".sd2-hero-visual.sv2-hero-reveal"), { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 1 }, "-=.8");
     return () => tl.kill();
   }, []);
 
@@ -225,6 +228,11 @@ export default function CareersV2() {
                   <span className="v2-hero-secondary-label">Meet the team</span>
                 </a>
               </div>
+            </div>
+            
+            {/* Visual Column */}
+            <div className="sd2-hero-visual sv2-hero-reveal">
+              <CareersHeroVisual />
             </div>
           </div>
         </div>

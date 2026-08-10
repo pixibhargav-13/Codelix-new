@@ -14,6 +14,7 @@ import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./PricingV2.css";
 import NavbarV2 from "../Shared/NavbarV2";
+import PricingHeroVisual from "./PricingHeroVisual";
 
 
 /* same real budget bands already used in the live /contact intake form
@@ -123,7 +124,8 @@ export default function PricingV2() {
       .fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")
       .fromTo(q(".sd2-hero-title .line > span"),
         { yPercent: 118 }, { yPercent: 0, duration: 1.15, stagger: .1 }, "-=.45")
-      .fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.65");
+      .fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.65")
+      .fromTo(q(".sd2-hero-visual.sv2-hero-reveal"), { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 1 }, "-=.7");
     return () => tl.kill();
   }, []);
 
@@ -227,6 +229,10 @@ export default function PricingV2() {
                 No public rate card — pricing follows scope and complexity. Get a
                 ballpark below, then a written quote after a free scoping call.
               </p>
+            </div>
+            
+            <div className="sd2-hero-visual sv2-hero-reveal">
+              <PricingHeroVisual />
             </div>
           </div>
         </div>

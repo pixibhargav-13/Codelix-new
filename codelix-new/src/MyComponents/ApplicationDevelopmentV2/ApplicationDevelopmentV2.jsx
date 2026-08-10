@@ -10,6 +10,8 @@ import "../HomepageV2/HomepageV2.css";
 import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import CtaVisual from "../HomepageV2/CtaVisual";
+import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
+import { STATIC_TESTIMONIALS } from "../../data/staticTestimonials";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 
@@ -78,13 +80,6 @@ const HANDOVER = [
   { icon: Palette, title: "Design files", body: "The Figma project with components and styles, so future work doesn't start from a screenshot." },
   { icon: Server, title: "Backend & deployment setup", body: "Live environment configured and documented, with a runbook for redeploying it yourself." },
 ];
-
-/* real client quote, already used on the live site's Our Work page */
-const QUOTE = {
-  text: "Amazing team! Delivered everything on time with exceptional quality. Totally recommend!",
-  name: "Amit Kumar",
-  role: "CTO, PixelWave",
-};
 
 const COMPARE_COLS = ["Codelix", "No-code app builder", "Freelancer", "Large agency"];
 const COMPARE_ROWS = [
@@ -914,16 +909,16 @@ export default function ApplicationDevelopmentV2() {
       </section>
 
       {/* ══════════ 11 · TESTIMONIAL ══════════ */}
-      <section className="v2-section">
-        <figure className="sd2-quote">
-          <span className="sd2-quote-mark" aria-hidden="true">&ldquo;</span>
-          <blockquote className="sd2-quote-text">{QUOTE.text}</blockquote>
-          <figcaption className="sd2-quote-by">
-            <span className="sd2-quote-name">{QUOTE.name}</span>
-            <span className="sd2-quote-role">{QUOTE.role}</span>
-          </figcaption>
-        </figure>
-      </section>
+      <TestimonialSpotlight
+        testimonials={STATIC_TESTIMONIALS}
+        label="Client Voices"
+        heading="What clients say once we ship."
+        stats={[
+          { num: "30+", label: "Companies trust us" },
+          { num: "6", label: "Services delivered" },
+          { num: "100%", label: "Source code ownership" },
+        ]}
+      />
 
       {/* ══════════ 8 · PRINCIPLES ══════════ */}
       <section className="v2-section" id="principles">

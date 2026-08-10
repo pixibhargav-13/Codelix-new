@@ -3,6 +3,56 @@
    per-product accent color (--prod-accent, set inline on .pd2-root) so
    Audytee/4bitx/AanganOne each feel distinct without three separate files. */
 
+/* the shared .sd2-quote colors are tuned for a dark background —
+   invisible on the light .v2-section--gallery band this page's testimonial
+   sits in, same fix already used on the Team page. */
+.v2-section--gallery .sd2-quote-mark {
+  color: rgba(10, 10, 30, .12);
+}
+
+.v2-section--gallery .v2 .sd2-quote-text,
+.v2-section--gallery .sd2-quote-text {
+  color: #0f0f0d;
+}
+
+.v2-section--gallery .sd2-quote-name {
+  color: #0f0f0d;
+}
+
+.v2-section--gallery .sd2-quote-role {
+  color: rgba(15, 15, 13, .5);
+}
+
+.v2 .v2-section--gallery .sd2-quote-dot {
+  background-color: color-mix(in srgb, var(--prod-accent) 35%, rgba(15, 15, 13, .3));
+}
+
+.v2 .v2-section--gallery .sd2-quote-dot:hover {
+  background-color: color-mix(in srgb, var(--prod-accent) 55%, rgba(15, 15, 13, .3));
+}
+
+.v2 .v2-section--gallery .sd2-quote-dot.is-active {
+  background-color: var(--prod-accent);
+}
+
+.pd2-hero-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: #fff;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.pd2-hero-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .pd2-hero .v2-hero-status i {
   background: var(--dot, #4ade80);
   box-shadow: 0 0 0 0 color-mix(in srgb, var(--dot, #4ade80) 50%, transparent);
@@ -132,7 +182,7 @@
   padding: 10px 0;
   border-top: .8px solid var(--rule);
   font-size: 14px;
-  color: var(--text-80, rgba(242,240,236,.8));
+  color: var(--text-80, rgba(242, 240, 236, .8));
 }
 
 .pd2-positioning-row:first-of-type {
@@ -165,7 +215,9 @@
 }
 
 @media (max-width: 700px) {
-  .pd2-positioning-grid { grid-template-columns: 1fr; }
+  .pd2-positioning-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ── Modules ─────────────────────────────────────────────── */
@@ -203,7 +255,7 @@
   font-size: 28px;
   font-weight: 200;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255,255,255,.1);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, .1);
 }
 
 .pd2-module-card svg {
@@ -335,7 +387,7 @@
   padding: 18px;
   border: .8px solid var(--rule);
   border-radius: 14px;
-  background: rgba(255,255,255,0.015);
+  background: rgba(255, 255, 255, 0.015);
 }
 
 .pd2-feature-card svg {
@@ -420,7 +472,7 @@
   padding: 32px 28px;
   border: .8px solid var(--rule);
   border-radius: 20px;
-  background: rgba(255,255,255,0.02);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .pd2-pricing-card.is-popular {
@@ -491,7 +543,7 @@
 }
 
 .pd2-pricing-enterprise {
-  margin-top: 28px;
+  margin-top: 28px !important;
   font-size: 13px;
   color: var(--text-55);
   text-align: center;
@@ -585,7 +637,7 @@
 }
 
 .pd2-cmp-no {
-  color: rgba(255,255,255,.18);
+  color: rgba(255, 255, 255, .18);
 }
 
 .pd2-cmp-partial {
@@ -707,7 +759,10 @@
 }
 
 @media (max-width: 800px) {
-  .pd2-traction-grid { grid-template-columns: 1fr; gap: 28px; }
+  .pd2-traction-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
 }
 
 /* ── Other products ──────────────────────────────────────── */
@@ -731,6 +786,24 @@
 .pd2-other-card:hover {
   border-color: color-mix(in srgb, var(--accent) 40%, var(--rule));
   transform: translateY(-3px);
+}
+
+.pd2-other-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #fff;
+  padding: 6px;
+  margin-bottom: 14px;
+}
+
+.pd2-other-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .pd2-other-badge {
@@ -763,6 +836,13 @@
 }
 
 @media (max-width: 700px) {
-  .pd2-stats { padding: 32px 16px; }
-  .pd2-stat { min-width: 45%; border-left: none; padding: 12px 0; }
+  .pd2-stats {
+    padding: 32px 16px;
+  }
+
+  .pd2-stat {
+    min-width: 45%;
+    border-left: none;
+    padding: 12px 0;
+  }
 }

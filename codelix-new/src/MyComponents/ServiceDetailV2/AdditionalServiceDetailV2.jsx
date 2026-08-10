@@ -10,6 +10,8 @@ import {
   Phone, FileText, PlayCircle,
 } from "lucide-react";
 import CtaVisual from "../HomepageV2/CtaVisual";
+import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
+import { STATIC_TESTIMONIALS } from "../../data/staticTestimonials";
 
 /* v2 design system + shared data — same source of truth as the other v2 pages */
 import "../HomepageV2/HomepageV2.css";
@@ -92,12 +94,6 @@ const NEXT_STEPS = [
   { n: "02", icon: FileText, meta: "Within 48 hours", title: "Written proposal", body: "A clear scope, a fixed price, and a timeline — in writing. You know exactly what you're getting before you commit." },
   { n: "03", icon: PlayCircle, meta: "On your go-ahead", title: "Kickoff", body: "We lock the scope and start. You get a point of contact and visible progress from day one." },
 ];
-
-const QUOTE = {
-  text: "We were able to successfully complete the project by meeting the best partner. They have a very good understanding of development and skills, and are fully committed to the task schedule.",
-  name: "Rajesh Patel",
-  role: "CEO, Harmony Inc.",
-};
 
 /* interpolated with the actual service name/title so each of the 18 pages
    reads as answering questions about THAT service, not a copy-pasted
@@ -867,16 +863,16 @@ export default function AdditionalServiceDetailV2() {
       )}
 
       {/* ══════════ 10 · TESTIMONIAL ══════════ */}
-      <section className="v2-section">
-        <figure className="sd2-quote">
-          <span className="sd2-quote-mark" aria-hidden="true">&ldquo;</span>
-          <blockquote className="sd2-quote-text">{QUOTE.text}</blockquote>
-          <figcaption className="sd2-quote-by">
-            <span className="sd2-quote-name">{QUOTE.name}</span>
-            <span className="sd2-quote-role">{QUOTE.role}</span>
-          </figcaption>
-        </figure>
-      </section>
+      <TestimonialSpotlight
+        testimonials={STATIC_TESTIMONIALS}
+        label="Client Voices"
+        heading="What clients say once we ship."
+        stats={[
+          { num: "30+", label: "Companies trust us" },
+          { num: "6", label: "Services delivered" },
+          { num: "100%", label: "Source code ownership" },
+        ]}
+      />
 
       {/* ══════════ 11 · PRINCIPLES ══════════ */}
       <section className="v2-section" id="principles">

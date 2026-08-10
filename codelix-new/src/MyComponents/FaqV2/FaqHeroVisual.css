@@ -1,0 +1,294 @@
+.fhv-container {
+  width: 100%;
+  height: 480px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+/* Background Ambient Glow */
+.fhv-glow-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 90%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(94, 106, 210, 0.15) 0%, rgba(138, 43, 226, 0.05) 50%, transparent 70%);
+  filter: blur(50px);
+  z-index: 0;
+  animation: fhv-pulse-bg 6s infinite alternate ease-in-out;
+}
+
+@keyframes fhv-pulse-bg {
+  0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* 3D Scene Wrapper */
+.fhv-matrix-scene {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  transform-style: preserve-3d;
+  /* Isometric perspective */
+  transform: rotateX(60deg) rotateZ(-45deg);
+  animation: fhv-scene-float 10s infinite alternate ease-in-out;
+  z-index: 2;
+  margin-top: -40px;
+}
+
+@keyframes fhv-scene-float {
+  0% { transform: rotateX(60deg) rotateZ(-45deg) translateZ(0px); }
+  100% { transform: rotateX(65deg) rotateZ(-40deg) translateZ(20px); }
+}
+
+/* The Grid Base */
+.fhv-grid-base {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 106px 106px; /* 320 / 3 roughly */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(94, 106, 210, 0.2);
+  transform: translateZ(-30px);
+}
+
+/* The Scanning Ring */
+.fhv-scan-ring {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  border: 1px solid rgba(94, 106, 210, 0.4);
+  border-radius: 50%;
+  box-shadow: inset 0 0 20px rgba(94, 106, 210, 0.2), 0 0 20px rgba(94, 106, 210, 0.2);
+  transform: translateZ(-25px);
+  animation: fhv-scan-pulse 4s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes fhv-scan-pulse {
+  0% { transform: translateZ(-25px) scale(0); opacity: 1; }
+  100% { transform: translateZ(-25px) scale(1); opacity: 0; }
+}
+
+/* 3D Cubes */
+.fhv-cube {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  transform-style: preserve-3d;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Grid Positioning (3x3) - 106px spacing */
+.cube-1 { top: 23px; left: 23px; }
+.cube-2 { top: 23px; left: 129px; }
+.cube-3 { top: 23px; left: 235px; }
+
+.cube-4 { top: 129px; left: 23px; }
+.cube-5 { top: 129px; left: 129px; }
+.cube-6 { top: 129px; left: 235px; }
+
+.cube-7 { top: 235px; left: 23px; }
+.cube-8 { top: 235px; left: 129px; }
+.cube-9 { top: 235px; left: 235px; }
+
+/* Cube Animations / Hover states */
+.fhv-cube {
+  transform: translateZ(0px);
+  /* Slight constant bobbing */
+  animation: cube-bob 4s infinite alternate ease-in-out;
+}
+.cube-1 { animation-delay: 0.1s; }
+.cube-2 { animation-delay: 0.4s; }
+.cube-3 { animation-delay: 0.7s; }
+.cube-4 { animation-delay: 0.2s; }
+.cube-5 { animation-delay: 0.5s; }
+.cube-6 { animation-delay: 0.8s; }
+.cube-7 { animation-delay: 0.3s; }
+.cube-8 { animation-delay: 0.6s; }
+.cube-9 { animation-delay: 0.9s; }
+
+@keyframes cube-bob {
+  0% { transform: translateZ(0px); }
+  100% { transform: translateZ(10px); }
+}
+
+/* Active "Searched" State */
+.fhv-cube.is-active {
+  transform: translateZ(30px) !important;
+}
+.fhv-cube.is-active .fhv-face {
+  border-color: rgba(94, 106, 210, 0.8);
+  background: rgba(94, 106, 210, 0.25);
+}
+.fhv-cube.is-active .top {
+  background: rgba(94, 106, 210, 0.4);
+}
+
+/* Cube Faces */
+.fhv-face {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.4s ease;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* 
+  In our rotated perspective (rotateX 60, rotateZ -45):
+  Top face lies flat on XY plane.
+  Left face folds down along X axis.
+  Right face folds down along Y axis.
+  (Cube height is 60px, so we translateZ(60px) for the top).
+*/
+.fhv-face.top {
+  transform: translateZ(60px);
+  /* Brighter top for glass reflection */
+  background: rgba(255, 255, 255, 0.08); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fhv-face.left {
+  /* Rotates down around X axis, then drops to bottom */
+  transform: rotateX(-90deg) translateZ(30px) translateY(30px);
+  /* Darker left side for shading */
+  background: rgba(0, 0, 0, 0.2); 
+}
+
+.fhv-face.right {
+  /* Rotates down around Y axis */
+  transform: rotateY(90deg) translateZ(30px) translateX(30px);
+  /* Medium shading */
+  background: rgba(0, 0, 0, 0.4); 
+}
+
+/* Inner Glow for active state */
+.cube-glow {
+  width: 40px;
+  height: 40px;
+  background: #5e6ad2;
+  border-radius: 4px;
+  box-shadow: 0 0 20px #5e6ad2, 0 0 40px #8a2be2;
+  animation: glow-pulse 1.5s infinite alternate;
+}
+
+@keyframes glow-pulse {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+
+/* Shadows on the grid */
+.fhv-shadow {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.5);
+  filter: blur(10px);
+  transform: translateZ(-29px);
+  transition: all 0.6s ease;
+}
+
+.fhv-cube.is-active .fhv-shadow {
+  background: rgba(94, 106, 210, 0.4);
+  filter: blur(15px);
+  transform: translateZ(-29px) scale(1.2);
+}
+
+/* Holographic Floating Panels */
+.fhv-holo-panel {
+  position: absolute;
+  background: rgba(15, 20, 28, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.panel-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-blue { color: #5e6ad2; }
+.text-purple { color: #8a2be2; }
+
+.panel-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.panel-text strong {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.panel-text span {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.panel-top {
+  top: 15%;
+  right: 0%;
+  animation: fhv-panel-float 5s infinite alternate ease-in-out;
+}
+
+.panel-bottom {
+  bottom: 15%;
+  left: 0%;
+  animation: fhv-panel-float 6s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes fhv-panel-float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-15px); }
+}
+
+@media (max-width: 940px) {
+  .fhv-container { height: 440px; }
+  .fhv-matrix-scene { transform: rotateX(60deg) rotateZ(-45deg) scale(0.85); }
+  @keyframes fhv-scene-float {
+    0% { transform: rotateX(60deg) rotateZ(-45deg) translateZ(0px) scale(0.85); }
+    100% { transform: rotateX(65deg) rotateZ(-40deg) translateZ(20px) scale(0.85); }
+  }
+}
+
+@media (max-width: 500px) {
+  .fhv-container { height: 380px; }
+  .fhv-matrix-scene { transform: rotateX(60deg) rotateZ(-45deg) scale(0.7); }
+  @keyframes fhv-scene-float {
+    0% { transform: rotateX(60deg) rotateZ(-45deg) translateZ(0px) scale(0.7); }
+    100% { transform: rotateX(65deg) rotateZ(-40deg) translateZ(20px) scale(0.7); }
+  }
+  .fhv-holo-panel { display: none; }
+}

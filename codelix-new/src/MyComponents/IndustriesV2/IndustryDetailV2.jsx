@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import FooterV2 from "../Shared/FooterV2";
 import NavbarV2 from "../Shared/NavbarV2";
+import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
 import CtaVisual from "../HomepageV2/CtaVisual";
 import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import { TECH_STACK } from "../HomepageV2/techStack";
@@ -78,8 +79,6 @@ export default function IndustryDetailV2() {
   const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
   const [blueprintActive, setBlueprintActive] = useState(-1);
   const [flippedCard, setFlippedCard] = useState(-1);
-  const [activeQuote, setActiveQuote] = useState(0);
-  const [quotePaused, setQuotePaused] = useState(false);
 
   const rootRef = useRef(null);
   const stripRef = useRef(null);
@@ -91,17 +90,7 @@ export default function IndustryDetailV2() {
 
   const blueprintServices = (svc?.services || []).map((name) => ({ name, ...SERVICE_INFO[name] })).filter((s) => s.icon);
   const testimonials = useTestimonials(STATIC_QUOTES);
-  const activeTestimonial = testimonials[activeQuote % testimonials.length];
   const caseStudies = useCaseStudies();
-
-  /* testimonial auto-advance — same 6s cadence as the Homepage carousel */
-  useEffect(() => {
-    if (quotePaused || testimonials.length < 2) return;
-    const t = setTimeout(() => {
-      setActiveQuote((i) => (i + 1) % testimonials.length);
-    }, 6000);
-    return () => clearTimeout(t);
-  }, [activeQuote, quotePaused, testimonials.length]);
 
   /* hero intro — masked-line GSAP wipe, matching every other v2 hero */
   useEffect(() => {
@@ -516,33 +505,16 @@ export default function IndustryDetailV2() {
       {/* ══════════ 7 · TESTIMONIAL — live, admin-editable, auto-rotating
           (same pattern as Homepage/About/Team), instead of one quote
           frozen at build time ══════════ */}
-      <section className="v2-section">
-        <figure
-          className="sd2-quote"
-          onMouseEnter={() => setQuotePaused(true)}
-          onMouseLeave={() => setQuotePaused(false)}
-        >
-          <span className="sd2-quote-mark" aria-hidden="true">&ldquo;</span>
-          <blockquote className="sd2-quote-text">{activeTestimonial.quote}</blockquote>
-          <figcaption className="sd2-quote-by">
-            <span className="sd2-quote-name">{activeTestimonial.name}</span>
-            <span className="sd2-quote-role">{activeTestimonial.position}</span>
-          </figcaption>
-        </figure>
-        {testimonials.length > 1 && (
-          <div className="sd2-quote-dots">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                className={`sd2-quote-dot ${activeQuote % testimonials.length === i ? "is-active" : ""}`}
-                onClick={() => setActiveQuote(i)}
-                aria-label={`Go to review ${i + 1}`}
-              />
-            ))}
-          </div>
-        )}
-      </section>
+      <TestimonialSpotlight
+        testimonials={testimonials}
+        label="Client Voices"
+        heading={`What clients say about our ${svc.title.toLowerCase()} work.`}
+        stats={[
+          { num: "11", label: "Industries served" },
+          { num: "30+", label: "Projects across sectors" },
+          { num: "100%", label: "Source code ownership" },
+        ]}
+      />
 
       {/* ══════════ EXTRAORDINARY SECTION: THE BUILD, LAYER BY LAYER — a
           scroll-drawn SVG spine connecting the real services this industry

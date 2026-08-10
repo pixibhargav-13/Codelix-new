@@ -10,6 +10,8 @@ import "../HomepageV2/HomepageV2.css";
 import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import CtaVisual from "../HomepageV2/CtaVisual";
+import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
+import { STATIC_TESTIMONIALS } from "../../data/staticTestimonials";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 
@@ -73,13 +75,6 @@ const HANDOVER = [
   { icon: KeyRound, title: "Asset exports", body: "Every icon, illustration, and image exported in the formats and resolutions your developers need — SVG, PNG, WebP." },
   { icon: GitBranch, title: "Developer handoff", body: "Annotated specs with exact measurements, tokens, and interaction notes — so the build matches the design pixel-for-pixel." },
 ];
-
-/* real client quote */
-const QUOTE = {
-  text: "Their communication and problem-solving skills are top-notch. The entire workflow was smooth and professional.",
-  name: "Priya Sharma",
-  role: "Founder, Nexa Digital",
-};
 
 /* comparison table */
 const COMPARE_COLS = ["Codelix", "DIY / Canva", "Freelancer", "Large agency"];
@@ -923,16 +918,16 @@ export default function UIUXDesignV2() {
       </section>
 
       {/* ══════════ 11 · TESTIMONIAL ══════════ */}
-      <section className="v2-section">
-        <figure className="sd2-quote">
-          <span className="sd2-quote-mark" aria-hidden="true">&ldquo;</span>
-          <blockquote className="sd2-quote-text">{QUOTE.text}</blockquote>
-          <figcaption className="sd2-quote-by">
-            <span className="sd2-quote-name">{QUOTE.name}</span>
-            <span className="sd2-quote-role">{QUOTE.role}</span>
-          </figcaption>
-        </figure>
-      </section>
+      <TestimonialSpotlight
+        testimonials={STATIC_TESTIMONIALS}
+        label="Client Voices"
+        heading="What clients say once we ship."
+        stats={[
+          { num: "30+", label: "Companies trust us" },
+          { num: "6", label: "Services delivered" },
+          { num: "100%", label: "Source code ownership" },
+        ]}
+      />
 
 
       {/* ══════════ 13 · PRINCIPLES ══════════ */}

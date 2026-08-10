@@ -10,6 +10,8 @@ import "../HomepageV2/HomepageV2.css";
 import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import CtaVisual from "../HomepageV2/CtaVisual";
+import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
+import { STATIC_TESTIMONIALS } from "../../data/staticTestimonials";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 
@@ -74,12 +76,12 @@ const HANDOVER = [
   { icon: Users2, title: "Training & Handover", body: "Workshops and documentation ensuring your team knows how to use the dashboards and maintain the pipelines." },
 ];
 
-/* real client quote */
-const QUOTE = {
-  text: "They didn't just build dashboards; they gave us clarity. For the first time, our leadership team trusts the numbers.",
-  name: "Marcus Chen",
-  role: "COO, LogisTech Solutions",
-};
+/* real client quote, specific to this page — kept alongside the shared
+   site-wide quotes below rather than dropped */
+const PAGE_TESTIMONIALS = [
+  { quote: "They didn't just build dashboards; they gave us clarity. For the first time, our leadership team trusts the numbers.", name: "Marcus Chen", position: "COO, LogisTech Solutions" },
+  ...STATIC_TESTIMONIALS,
+];
 
 /* comparison table */
 const COMPARE_COLS = ["Codelix", "Off-the-shelf BI", "Internal Hire", "Generic Agency"];
@@ -923,16 +925,16 @@ export default function DataAnalyticsV2() {
       </section>
 
       {/* ══════════ 11 · TESTIMONIAL ══════════ */}
-      <section className="v2-section">
-        <figure className="sd2-quote">
-          <span className="sd2-quote-mark" aria-hidden="true">&ldquo;</span>
-          <blockquote className="sd2-quote-text">{QUOTE.text}</blockquote>
-          <figcaption className="sd2-quote-by">
-            <span className="sd2-quote-name">{QUOTE.name}</span>
-            <span className="sd2-quote-role">{QUOTE.role}</span>
-          </figcaption>
-        </figure>
-      </section>
+      <TestimonialSpotlight
+        testimonials={PAGE_TESTIMONIALS}
+        label="Client Voices"
+        heading="What clients say once we ship."
+        stats={[
+          { num: "30+", label: "Companies trust us" },
+          { num: "6", label: "Services delivered" },
+          { num: "100%", label: "Source code ownership" },
+        ]}
+      />
 
       {/* ══════════ 8 · PRINCIPLES ══════════ */}
       <section className="v2-section" id="principles">
