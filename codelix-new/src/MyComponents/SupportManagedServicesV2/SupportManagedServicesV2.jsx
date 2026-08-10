@@ -9,6 +9,8 @@ import "../HomepageV2/HomepageV2.css";
 import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import CtaVisual from "../HomepageV2/CtaVisual";
+import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
+import { STATIC_TESTIMONIALS } from "../../data/staticTestimonials";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 
@@ -72,13 +74,6 @@ const HANDOVER = [
   { icon: Headphones, title: "Direct Support Channel", body: "A dedicated Slack or email line to the actual people maintaining your system, not a ticket portal." },
   { icon: FileCode2, title: "SLA Documentation", body: "Written response-time commitments per severity level, so expectations are explicit, not assumed." },
 ];
-
-/* real client quote — reused from the site's existing testimonial, not invented for this page */
-const QUOTE = {
-  text: "We were able to successfully complete the project by meeting the best partner. They have a very good understanding of development and skills, and are fully committed to the task schedule.",
-  name: "Rajesh Patel",
-  role: "CEO, Harmony Inc.",
-};
 
 /* comparison table */
 const COMPARE_COLS = ["Codelix", "No support plan", "Freelancer on call", "Big agency retainer"];
@@ -913,16 +908,16 @@ export default function SupportManagedServicesV2() {
       </section>
 
       {/* ══════════ 11 · TESTIMONIAL ══════════ */}
-      <section className="v2-section">
-        <figure className="sd2-quote">
-          <span className="sd2-quote-mark" aria-hidden="true">&ldquo;</span>
-          <blockquote className="sd2-quote-text">{QUOTE.text}</blockquote>
-          <figcaption className="sd2-quote-by">
-            <span className="sd2-quote-name">{QUOTE.name}</span>
-            <span className="sd2-quote-role">{QUOTE.role}</span>
-          </figcaption>
-        </figure>
-      </section>
+      <TestimonialSpotlight
+        testimonials={STATIC_TESTIMONIALS}
+        label="Client Voices"
+        heading="What clients say once we ship."
+        stats={[
+          { num: "30+", label: "Companies trust us" },
+          { num: "6", label: "Services delivered" },
+          { num: "100%", label: "Source code ownership" },
+        ]}
+      />
 
       {/* ══════════ 8 · PRINCIPLES ══════════ */}
       <section className="v2-section" id="principles">

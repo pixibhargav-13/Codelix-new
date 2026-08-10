@@ -14,10 +14,15 @@ import {
   Wrench, ParkingSquare, BookUser,
 } from "lucide-react";
 
+import audyteeLogo from "../Images/Audity.svg";
+import fourBitxLogo from "../Images/4bitX.svg";
+import aanganOneLogo from "../Images/Aanganone.svg";
+
 export const PRODUCTS = [
   {
     slug: "audytee",
     name: "Audytee",
+    logo: audyteeLogo,
     badge: "Practice Management Software",
     tagline: "Your CA firm. Smarter. Faster. Done.",
     status: "Live",
@@ -141,7 +146,8 @@ export const PRODUCTS = [
   {
     slug: "4bitx",
     name: "4bitx",
-    badge: "Intelligent Manufacturing ERP",
+    logo: fourBitxLogo,
+    badge: "Custom ERP for Every Industry",
     tagline: "Your Factory. Fully Connected. Fully Intelligent.",
     status: "Live",
     website: null,
@@ -236,6 +242,7 @@ export const PRODUCTS = [
   {
     slug: "aanganone",
     name: "AanganOne",
+    logo: aanganOneLogo,
     badge: "Society, Apartment & Community Management",
     tagline: "Smart Living for Modern Societies",
     status: "Live on Google Play · submitted to Apple App Store",

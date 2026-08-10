@@ -20,6 +20,7 @@ import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./AboutV2.css";
 import NavbarV2 from "../Shared/NavbarV2";
 import AboutHeroVisual from "./AboutHeroVisual";
+import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
 
 
 const STATS = [
@@ -196,20 +197,6 @@ function ScrollSentence({ words, tone }) {
 
 export default function AboutV2() {
   const testimonials = useTestimonials(STATIC_QUOTE);
-  const [activeQuote, setActiveQuote] = useState(0);
-  const [quotePaused, setQuotePaused] = useState(false);
-  const activeTestimonial = testimonials[activeQuote % testimonials.length];
-  const QUOTE = { text: activeTestimonial.quote, name: activeTestimonial.name, role: activeTestimonial.position };
-
-  /* auto-advance through every live testimonial, same 6s cadence as the
-     Homepage carousel, paused while the quote is hovered */
-  useEffect(() => {
-    if (quotePaused || testimonials.length < 2) return;
-    const t = setTimeout(() => {
-      setActiveQuote((i) => (i + 1) % testimonials.length);
-    }, 6000);
-    return () => clearTimeout(t);
-  }, [activeQuote, quotePaused, testimonials.length]);
 
   const [openFaq, setOpenFaq] = useState(-1);
   const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
@@ -537,33 +524,16 @@ export default function AboutV2() {
       </section>
 
       {/* ══════════ 5c · TESTIMONIAL ══════════ */}
-      <section className="v2-section">
-        <figure
-          className="sd2-quote"
-          onMouseEnter={() => setQuotePaused(true)}
-          onMouseLeave={() => setQuotePaused(false)}
-        >
-          <span className="sd2-quote-mark" aria-hidden="true">&ldquo;</span>
-          <blockquote className="sd2-quote-text">{QUOTE.text}</blockquote>
-          <figcaption className="sd2-quote-by">
-            <span className="sd2-quote-name">{QUOTE.name}</span>
-            <span className="sd2-quote-role">{QUOTE.role}</span>
-          </figcaption>
-        </figure>
-        {testimonials.length > 1 && (
-          <div className="sd2-quote-dots">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                className={`sd2-quote-dot ${activeQuote % testimonials.length === i ? "is-active" : ""}`}
-                onClick={() => setActiveQuote(i)}
-                aria-label={`Go to review ${i + 1}`}
-              />
-            ))}
-          </div>
-        )}
-      </section>
+      <TestimonialSpotlight
+        testimonials={testimonials}
+        label="Client Voices"
+        heading="What clients say about working with us."
+        stats={[
+          { num: "30+", label: "Projects delivered" },
+          { num: "20+", label: "Clients worldwide" },
+          { num: "100%", label: "Source code ownership" },
+        ]}
+      />
 
       {/* ══════════ 5d · FAQ ══════════ */}
       <section className="v2-section v2-section--void" id="faq">

@@ -181,6 +181,7 @@ export default function NavbarV2() {
                     {PRODUCTS.map((p) => (
                       <a key={p.slug} href={`/products-v2/${p.slug}`} className="v2-nav-product-link">
                         <span className="v2-nav-product-link-top">
+                          <span className="v2-nav-product-link-logo"><img src={p.logo} alt="" /></span>
                           <span className="v2-nav-product-link-name" style={{ color: p.accent }}>{p.name}</span>
                           <ChevronRight className="v2-nav-industry-link-arrow" size={16} strokeWidth={2} />
                         </span>

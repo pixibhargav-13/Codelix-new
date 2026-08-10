@@ -1142,6 +1142,7 @@ export default function HomepageV2() {
         <div className="v2-products-grid">
           {PRODUCTS.map((p) => (
             <a href={`/products-v2/${p.slug}`} className="v2-product-card" key={p.slug} style={{ "--accent": p.accent }}>
+              <span className="v2-product-card-logo"><img src={p.logo} alt="" /></span>
               <span className="v2-product-card-badge">{p.badge}</span>
               <h3 className="v2-product-card-name">{p.name}</h3>
               <p className="v2-product-card-tagline">{p.tagline}</p>

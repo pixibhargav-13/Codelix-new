@@ -138,6 +138,7 @@ export default function ProductDetailV2() {
 
           <div className="sd2-hero-main">
             <div>
+              <div className="pd2-hero-logo sv2-hero-reveal"><img src={p.logo} alt={`${p.name} logo`} /></div>
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status" style={{ "--dot": p.accent }}><i /> {p.badge}</span>
               </div>
@@ -515,6 +516,7 @@ export default function ProductDetailV2() {
           <div className="pd2-other-grid">
             {otherProducts.map((op) => (
               <a href={`/products-v2/${op.slug}`} className="pd2-other-card pd2-reveal" key={op.slug} style={{ "--accent": op.accent }}>
+                <span className="pd2-other-logo"><img src={op.logo} alt="" /></span>
                 <span className="pd2-other-badge">{op.badge}</span>
                 <h4>{op.name}</h4>
                 <p>{op.tagline}</p>

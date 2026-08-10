@@ -12,6 +12,7 @@ import CtaVisual from "../HomepageV2/CtaVisual";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./TechnologiesV2.css";
+import TechHeroVisual from "./TechHeroVisual";
 
 /* real tools — same source of truth as ToolsAndTechUsed.jsx, not a new/
    invented stack list */
@@ -133,7 +134,8 @@ export default function TechnologiesV2() {
       .fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")
       .fromTo(q(".sd2-hero-title .line > span"),
         { yPercent: 118 }, { yPercent: 0, duration: 1.15, stagger: .1 }, "-=.45")
-      .fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.65");
+      .fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.65")
+      .fromTo(q(".sd2-hero-visual.sv2-hero-reveal"), { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 1 }, "-=.7");
     return () => tl.kill();
   }, []);
 
@@ -261,6 +263,10 @@ export default function TechnologiesV2() {
                 Every tool below has shipped in a real client project — picked for
                 the problem at hand, not because it's trending.
               </p>
+            </div>
+            {/* Visual Column */}
+            <div className="sd2-hero-visual sv2-hero-reveal">
+              <TechHeroVisual />
             </div>
           </div>
         </div>

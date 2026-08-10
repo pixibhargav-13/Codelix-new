@@ -1623,6 +1623,40 @@
   transform: scale(1.3);
 }
 
+/* .sd2-quote sits inside a light .v2-section--gallery band on every
+   testimonial section site-wide (Homepage, About, Team, Industry/Service/
+   Product detail pages) — the dark-theme colors above are invisible there,
+   so give the gallery variant its own ink palette. Page-specific CSS
+   loaded after this file (e.g. an accent-colored dot) can still override. */
+.v2-section--gallery .sd2-quote-mark {
+  color: rgba(10, 10, 30, .12);
+}
+
+.v2-section--gallery .v2 .sd2-quote-text,
+.v2-section--gallery .sd2-quote-text {
+  color: #0f0f0d;
+}
+
+.v2-section--gallery .sd2-quote-name {
+  color: #0f0f0d;
+}
+
+.v2-section--gallery .sd2-quote-role {
+  color: rgba(15, 15, 13, .5);
+}
+
+.v2 .v2-section--gallery .sd2-quote-dot {
+  background-color: rgba(15, 15, 13, .25);
+}
+
+.v2 .v2-section--gallery .sd2-quote-dot:hover {
+  background-color: rgba(15, 15, 13, .5);
+}
+
+.v2 .v2-section--gallery .sd2-quote-dot.is-active {
+  background-color: #0f0f0d;
+}
+
 /* ───────────── OTHER SERVICES — bento grid ─────────────
    Was a bordered list of thin rows (icon + title + arrow, no description).
    Now a grid of rounded cards, same surface/hover language as the homepage
