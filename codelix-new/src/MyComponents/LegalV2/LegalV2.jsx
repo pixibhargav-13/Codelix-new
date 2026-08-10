@@ -91,7 +91,7 @@ export default function LegalV2({ crumbLabel, statusLabel, titleLine1, titleLine
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/preview-v2">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
                 <em>{crumbLabel}</em>
               </nav>

@@ -15,6 +15,8 @@ import "./SitemapV2.css";
 
 import { CASE_STUDIES } from "../CaseStudyDetailV2/caseStudiesData";
 import { blogs, slugify } from "../../data/blogData";
+import { INDUSTRIES } from "../IndustriesV2/industriesData";
+import { PRODUCTS } from "../ProductsV2/productsData";
 import NavbarV2 from "../Shared/NavbarV2";
 
 
@@ -24,54 +26,62 @@ const GROUPS = [
   {
     title: "Main",
     links: [
-      { label: "Homepage", href: "/preview-v2" },
-      { label: "About", href: "/about-v2" },
-      { label: "Team", href: "/team-v2" },
-      { label: "Work", href: "/work-v2" },
-      { label: "Case Studies", href: "/case-study-v2" },
-      { label: "Blog", href: "/blog-v2" },
-      { label: "Industries We Serve", href: "/industries-v2" },
-      { label: "Process", href: "/process-v2" },
-      { label: "Contact", href: "/contact-v2" },
+      { label: "Homepage", href: "/" },
+      { label: "About", href: "/about" },
+      { label: "Team", href: "/team" },
+      { label: "Work", href: "/work" },
+      { label: "Case Studies", href: "/case-study" },
+      { label: "Blog", href: "/blog" },
+      { label: "Industries We Serve", href: "/industries" },
+      { label: "Process", href: "/process" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {
     /* was a hand-picked 7 of the 8 core services — missed Support &
        Managed Services entirely and all 18 additional service pages
        (only reachable via the footer's "More Services" row + the
-       /services-v2/:slug catch-all route). FOOTER_ALL_SERVICES is the
+       /services/:slug catch-all route). FOOTER_ALL_SERVICES is the
        real, complete, already-arranged list of all 26 — same source of
        truth as the footer, so nothing here can drift out of sync again. */
     title: "Services",
     links: [
-      { label: "Services", href: "/services-v2" },
+      { label: "Services", href: "/services" },
       ...FOOTER_ALL_SERVICES.map((s) => ({ label: s.label, href: s.path })),
     ],
   },
   {
+    title: "Industries",
+    links: INDUSTRIES.map(ind => ({ label: ind.title, href: `/industries/${ind.slug}` }))
+  },
+  {
+    title: "Products",
+    links: PRODUCTS.map(p => ({ label: p.name, href: `/products/${p.slug}` }))
+  },
+  {
     title: "Case Studies",
-    links: CASE_STUDIES.map(cs => ({ label: cs.title, href: `/case-study-v2/${cs.slug}` }))
+    links: CASE_STUDIES.map(cs => ({ label: cs.title, href: `/case-study/${cs.slug}` }))
   },
   {
     title: "Blog Articles",
-    links: blogs.map(b => ({ label: b.title, href: `/blog-v2/${slugify(b.title)}` }))
+    links: blogs.map(b => ({ label: b.title, href: `/blog/${slugify(b.title)}` }))
   },
   {
     title: "Resources",
     links: [
-      { label: "Pricing", href: "/pricing-v2" },
-      { label: "Technologies", href: "/technologies-v2" },
-      { label: "Careers", href: "/careers-v2" },
-      { label: "FAQ", href: "/faq-v2" },
-      { label: "Sitemap", href: "/sitemap-v2" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Technologies", href: "/technologies" },
+      { label: "Careers", href: "/careers" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Sitemap", href: "/sitemap" },
     ],
   },
   {
     title: "Legal",
     links: [
-      { label: "Terms of Service", href: "/terms-of-service-v2" },
-      { label: "Privacy Policy", href: "/privacy-policy-v2" },
-      { label: "Refund Policy", href: "/refund-policy-v2" },
+      { label: "Terms of Service", href: "/terms-of-service" },
+      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Refund Policy", href: "/refund-policy" },
     ],
   },
 ];
@@ -143,7 +153,7 @@ export default function SitemapV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/preview-v2">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
                 <em>Sitemap</em>
               </nav>
@@ -215,7 +225,7 @@ export default function SitemapV2() {
           </h2>
           <p className="v2-cta-body">Just ask — we'll point you in the right direction.</p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact-v2">Contact us →</a>
+            <a className="v2-btn" href="/contact">Contact us →</a>
           </div>
           <div className="v2-cta-badges">
             <span className="v2-cta-badge">Free consultation</span>

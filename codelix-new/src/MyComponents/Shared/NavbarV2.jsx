@@ -114,19 +114,19 @@ export default function NavbarV2() {
     <>
       <nav className={`v2-nav ${navScrolled ? "scrolled" : ""} ${navHidden ? "nav-hidden" : ""}`}>
         <div className="v2-nav-inner">
-          <a href="/preview-v2" className="v2-nav-logo" aria-label="Codelix — home">
+          <a href="/" className="v2-nav-logo" aria-label="Codelix — home">
             <img src={codelixLogo} alt="Codelix" />
           </a>
           <div className="v2-nav-links">
             <div className="v2-nav-dropdown">
-              <a href="/services-v2">Services <span className="v2-nav-dropdown-chevron">▾</span></a>
+              <a href="/services">Services <span className="v2-nav-dropdown-chevron">▾</span></a>
               <div className="v2-nav-dropdown-panel">
                 <div className="v2-nav-dropdown-head">
                   <div>
                     <p className="v2-nav-dropdown-head-label">Our Services</p>
                     <p className="v2-nav-dropdown-head-lede">Everything we build, in one place.</p>
                   </div>
-                  <a href="/services-v2" className="v2-nav-dropdown-head-all">View all services →</a>
+                  <a href="/services" className="v2-nav-dropdown-head-all">View all services →</a>
                 </div>
                 <div className="v2-nav-mega-menu">
                   {NAVBAR_SERVICES_HIERARCHY.map((category) => (
@@ -160,9 +160,9 @@ export default function NavbarV2() {
                 </div>
               </div>
             </div>
-            <a href="/work-v2">Work</a>
+            <a href="/work">Work</a>
             <div className="v2-nav-dropdown">
-              <a href="/industries-v2">Industries <span className="v2-nav-dropdown-chevron">▾</span></a>
+              <a href="/industries">Industries <span className="v2-nav-dropdown-chevron">▾</span></a>
               <div className="v2-nav-dropdown-panel">
                 <div className="v2-nav-industry-mega-menu">
                   <div className="v2-nav-mega-menu-left">
@@ -173,7 +173,7 @@ export default function NavbarV2() {
                     <p className="v2-nav-mega-menu-left-desc">
                       We engineer powerful, scalable software solutions perfectly tailored to the unique challenges of your industry.
                     </p>
-                    <a href="/industries-v2" className="v2-nav-mega-menu-left-btn">Explore All Industries <ChevronRight size={14} strokeWidth={2.5} /></a>
+                    <a href="/industries" className="v2-nav-mega-menu-left-btn">Explore All Industries <ChevronRight size={14} strokeWidth={2.5} /></a>
                   </div>
                   <div className="v2-nav-mega-menu-right">
                     {FOOTER_INDUSTRY_KEYWORDS.map((industry) => (
@@ -192,7 +192,7 @@ export default function NavbarV2() {
               </div>
             </div>
             <div className="v2-nav-dropdown">
-              <a href={`/products-v2/${PRODUCTS[0].slug}`}>Products <span className="v2-nav-dropdown-chevron">▾</span></a>
+              <a href={`/products/${PRODUCTS[0].slug}`}>Products <span className="v2-nav-dropdown-chevron">▾</span></a>
               <div className="v2-nav-dropdown-panel">
                 <div className="v2-nav-products-mega-menu">
                   <div className="v2-nav-mega-menu-left">
@@ -206,7 +206,7 @@ export default function NavbarV2() {
                   </div>
                   <div className="v2-nav-products-right">
                     {PRODUCTS.map((p) => (
-                      <a key={p.slug} href={`/products-v2/${p.slug}`} className="v2-nav-product-link">
+                      <a key={p.slug} href={`/products/${p.slug}`} className="v2-nav-product-link">
                         <span className="v2-nav-product-link-top">
                           <span className="v2-nav-product-link-logo"><img src={p.logo} alt="" /></span>
                           <span className="v2-nav-product-link-name" style={{ color: p.accent }}>{p.name}</span>
@@ -220,10 +220,10 @@ export default function NavbarV2() {
                 </div>
               </div>
             </div>
-            <a href="/about-v2">About</a>
+            <a href="/about">About</a>
           </div>
           <div className="v2-nav-actions">
-            <a className="v2-btn v2-btn--filled v2-nav-cta" href="/contact-v2">Book a consultation</a>
+            <a className="v2-btn v2-btn--filled v2-nav-cta" href="/contact">Book a consultation</a>
             <button
               className={`v2-burger ${mobileOpen ? "open" : ""}`}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}

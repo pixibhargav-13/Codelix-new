@@ -27,13 +27,13 @@ import "./IndustryDetailV2.css";
    invented ones, plus one honest line on why that service shows up in
    this kind of engagement */
 const SERVICE_INFO = {
-  "Web Development": { icon: Globe, path: "/services-v2/web-development", body: "The public-facing or client-facing surface — built for speed and clarity, not just to look finished in a demo." },
-  "Application Development": { icon: Smartphone, path: "/services-v2/application-development", body: "The mobile or SaaS layer, when the work needs to live beyond a browser tab." },
-  "UI/UX Design": { icon: PenTool, path: "/services-v2/ui-ux-design", body: "The interface work, done before code — so the build doesn't get redesigned halfway through." },
-  "E-Commerce Solutions": { icon: ShoppingCart, path: "/services-v2/e-commerce-solutions", body: "The storefront and checkout layer, engineered around conversion and reliability under real traffic." },
-  "Custom Software Development": { icon: Code2, path: "/services-v2/custom-software-development", body: "The system underneath — internal tools, workflows, or a backend built around how you actually operate." },
-  "AI Development": { icon: Sparkles, path: "/services-v2/ai-development", body: "AI features scoped to a real question in this workflow, not bolted on for the sake of a feature list." },
-  "Data Analytics": { icon: BarChart3, path: "/services-v2/data-analytics", body: "The reporting and dashboard layer, built on data your team can actually trust." },
+  "Web Development": { icon: Globe, path: "/services/web-development", body: "The public-facing or client-facing surface — built for speed and clarity, not just to look finished in a demo." },
+  "Application Development": { icon: Smartphone, path: "/services/application-development", body: "The mobile or SaaS layer, when the work needs to live beyond a browser tab." },
+  "UI/UX Design": { icon: PenTool, path: "/services/ui-ux-design", body: "The interface work, done before code — so the build doesn't get redesigned halfway through." },
+  "E-Commerce Solutions": { icon: ShoppingCart, path: "/services/e-commerce-solutions", body: "The storefront and checkout layer, engineered around conversion and reliability under real traffic." },
+  "Custom Software Development": { icon: Code2, path: "/services/custom-software-development", body: "The system underneath — internal tools, workflows, or a backend built around how you actually operate." },
+  "AI Development": { icon: Sparkles, path: "/services/ai-development", body: "AI features scoped to a real question in this workflow, not bolted on for the sake of a feature list." },
+  "Data Analytics": { icon: BarChart3, path: "/services/data-analytics", body: "The reporting and dashboard layer, built on data your team can actually trust." },
 };
 
 /* fallback shown before Supabase responds — same 5 real quotes used on
@@ -261,7 +261,7 @@ export default function IndustryDetailV2() {
     return (
       <div className="v2" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }}>
         <h1 style={{ color: "#fff", fontSize: 28 }}>Industry not found.</h1>
-        <a className="v2-btn" href="/industries-v2">Back to Industries →</a>
+        <a className="v2-btn" href="/industries">Back to Industries →</a>
       </div>
     );
   }
@@ -276,10 +276,10 @@ export default function IndustryDetailV2() {
 
   const adminMatchedWork = caseStudies
     .filter((cs) => cs.image && cs.industry === WORK_INDUSTRY_MAP[svc.slug])
-    .map((cs) => ({ image: cs.image, category: cs.category, title: cs.title, href: `/case-study-v2/${cs.slug}` }));
+    .map((cs) => ({ image: cs.image, category: cs.category, title: cs.title, href: `/case-study/${cs.slug}` }));
   const staticMatchedWork = PROJECTS
     .filter((p) => p.industry === WORK_INDUSTRY_MAP[svc.slug])
-    .map((p) => ({ image: p.image, category: p.category, title: p.title, href: `/case-study-v2${p.href}` }));
+    .map((p) => ({ image: p.image, category: p.category, title: p.title, href: `/case-study${p.href}` }));
   const matchedWork = [...adminMatchedWork, ...staticMatchedWork].slice(0, 3);
   const otherIndustries = INDUSTRIES.filter((i) => i.slug !== svc.slug).slice(0, 6);
   const faqs = [
@@ -302,9 +302,9 @@ export default function IndustryDetailV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/preview-v2">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
-                <a href="/industries-v2">Industries</a>
+                <a href="/industries">Industries</a>
                 <span>/</span>
                 <em>{svc.title}</em>
               </nav>
@@ -317,7 +317,7 @@ export default function IndustryDetailV2() {
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">{svc.tagline}</p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact-v2">
+                <a className="v2-btn v2-btn--filled" href="/contact">
                   <span>Talk about your sector</span>
                   <i className="v2-btn-arrow">→</i>
                 </a>
@@ -371,7 +371,7 @@ export default function IndustryDetailV2() {
 
       {/* ══════════ 2b · CLIENT STRIP ══════════ */}
       <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
-        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 30+ companies</p>
+        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 40+ companies</p>
         <div className="v2-strip">
           <div className="v2-strip-track" ref={stripRef}>
             {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
@@ -595,7 +595,7 @@ export default function IndustryDetailV2() {
             <h2 className="v2-heading">{svc.title} questions.</h2>
           </div>
           <p className="v2-lede v2-faq-note">
-            Don't see yours here? <a href="/contact-v2">Ask us directly →</a>
+            Don't see yours here? <a href="/contact">Ask us directly →</a>
           </p>
         </div>
         <div>
@@ -624,7 +624,7 @@ export default function IndustryDetailV2() {
         <h2 className="v2-heading">Other sectors we work in.</h2>
         <div className="sd2-other-list">
           {otherIndustries.map((s, i) => (
-            <a className="sd2-other" href={`/industries-v2/${s.slug}`} key={s.slug}>
+            <a className="sd2-other" href={`/industries/${s.slug}`} key={s.slug}>
               <div className="sd2-other-top">
                 <span className="sd2-other-icon"><s.icon size={17} strokeWidth={1.5} /></span>
                 <span className="sd2-other-n">{String(i + 1).padStart(2, "0")}</span>
@@ -649,7 +649,7 @@ export default function IndustryDetailV2() {
             not a generic pitch reused across every client.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
+            <a className="v2-btn" href="/contact">Book a consultation →</a>
           </div>
           <div className="v2-cta-badges">
             <span className="v2-cta-badge">Free consultation</span>

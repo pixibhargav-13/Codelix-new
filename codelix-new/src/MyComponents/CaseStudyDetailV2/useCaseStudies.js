@@ -4,8 +4,8 @@ import { CASE_STUDIES as staticCaseStudies } from "./caseStudiesData";
 
 /* same additive-merge pattern as src/data/useBlogPosts.js — published
    case studies created via the admin panel are prepended to the existing
-   static caseStudiesData.js entries, so /case-study-v2/:slug and the
-   /case-study-v2 listing both keep working for the current 16 studies
+   static caseStudiesData.js entries, so /case-study/:slug and the
+   /case-study listing both keep working for the current 16 studies
    even before any admin-created one exists. */
 export function useCaseStudies() {
   const [studies, setStudies] = useState(staticCaseStudies);
