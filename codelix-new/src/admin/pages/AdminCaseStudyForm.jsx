@@ -11,7 +11,7 @@ const CATEGORIES = ["Web Development", "Application Development", "UI/UX Design"
 
 /* same list as the WorkV2 industry-filter dropdown — must match exactly
    or an admin-added case study won't show up when a visitor filters
-   /work-v2 by industry */
+   /work by industry */
 const INDUSTRIES = ["Manufacturing", "FinTech", "Ai & Data", "Healthcare", "Food and Bavarages", "E-commerce", "Real estae and construction", "Education", "Startups", "B2B SaaS", "Travel & Hospitality"];
 
 /* one item per line — kept as a plain textarea (no repeatable field-group

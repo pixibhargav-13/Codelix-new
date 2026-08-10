@@ -242,7 +242,7 @@ export default function ProcessV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/preview-v2">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
                 <em>Process</em>
               </nav>
@@ -260,7 +260,7 @@ export default function ProcessV2() {
                 nothing gets built on a shifting foundation.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact-v2">
+                <a className="v2-btn v2-btn--filled" href="/contact">
                   <span>Start a project</span>
                   <i className="v2-btn-arrow">→</i>
                 </a>
@@ -444,7 +444,7 @@ export default function ProcessV2() {
             <h2 className="v2-heading">Before you reach out.</h2>
           </div>
           <p className="v2-lede v2-faq-note">
-            Still unsure? <a href="/contact-v2">Ask us directly →</a>
+            Still unsure? <a href="/contact">Ask us directly →</a>
           </p>
         </div>
         <div>
@@ -479,7 +479,7 @@ export default function ProcessV2() {
             the same six stages, whichever service it needs.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
+            <a className="v2-btn" href="/contact">Book a consultation →</a>
           </div>
           <div className="v2-cta-badges">
             <span className="v2-cta-badge">Free consultation</span>

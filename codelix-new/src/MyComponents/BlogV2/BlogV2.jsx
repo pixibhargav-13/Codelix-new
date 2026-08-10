@@ -90,7 +90,7 @@ export default function BlogV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/preview-v2">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
                 <em>Blog</em>
               </nav>
@@ -144,7 +144,7 @@ export default function BlogV2() {
             <p className="bv2-empty">No articles match — try a different search or category.</p>
           )}
           {visible.map((b) => (
-            <a className="bv2-card" href={`/blog-v2/${b.slug || slugify(b.title)}`} key={b.id}>
+            <a className="bv2-card" href={`/blog/${b.slug || slugify(b.title)}`} key={b.id}>
               <div className="bv2-card-media">
                 <img src={b.image} alt={b.title} loading="lazy" />
               </div>
@@ -182,7 +182,7 @@ export default function BlogV2() {
             We scope what should be built first, what can wait, and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
+            <a className="v2-btn" href="/contact">Book a consultation →</a>
           </div>
           <div className="v2-cta-badges">
             <span className="v2-cta-badge">Free consultation</span>

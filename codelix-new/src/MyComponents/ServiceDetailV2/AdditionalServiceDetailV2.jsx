@@ -465,13 +465,13 @@ export default function AdditionalServiceDetailV2() {
     return (
       <div className="v2" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }}>
         <h1 style={{ color: "#fff", fontSize: 28 }}>Service not found.</h1>
-        <a className="v2-btn" href="/services-v2">Back to Services →</a>
+        <a className="v2-btn" href="/services">Back to Services →</a>
       </div>
     );
   }
 
   const related = ADDITIONAL_SERVICES.filter((s) => s.slug !== svc.slug).slice(0, 6).map((s, i) => ({
-    ...s, n: String(i + 1).padStart(2, "0"), path: `/services-v2/${s.slug}`,
+    ...s, n: String(i + 1).padStart(2, "0"), path: `/services/${s.slug}`,
   }));
 
   /* admin-created case studies (published via Supabase) are prepended by
@@ -484,10 +484,10 @@ export default function AdditionalServiceDetailV2() {
   const adminWork = svc.relatedCategory
     ? caseStudies
         .filter((cs) => cs.image && cs.category === svc.relatedCategory && !existingCaseStudySlugs.has(cs.slug))
-        .map((cs) => ({ href: `/case-study-v2/${cs.slug}`, image: cs.image, category: cs.category, title: cs.title }))
+        .map((cs) => ({ href: `/case-study/${cs.slug}`, image: cs.image, category: cs.category, title: cs.title }))
     : [];
   const staticWork = svc.relatedCategory
-    ? PROJECTS.filter((p) => p.category === svc.relatedCategory).map((p) => ({ href: `/case-study-v2${p.href}`, image: p.image, category: p.category, title: p.title }))
+    ? PROJECTS.filter((p) => p.category === svc.relatedCategory).map((p) => ({ href: `/case-study${p.href}`, image: p.image, category: p.category, title: p.title }))
     : [];
   const relatedWork = [...adminWork, ...staticWork].slice(0, 3);
 
@@ -508,9 +508,9 @@ export default function AdditionalServiceDetailV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/preview-v2">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
-                <a href="/services-v2">Services</a>
+                <a href="/services">Services</a>
                 <span>/</span>
                 <em>{svc.title}</em>
               </nav>
@@ -523,7 +523,7 @@ export default function AdditionalServiceDetailV2() {
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">{svc.description}</p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact-v2">
+                <a className="v2-btn v2-btn--filled" href="/contact">
                   <span>Schedule a call</span>
                   <i className="v2-btn-arrow">→</i>
                 </a>
@@ -570,7 +570,7 @@ export default function AdditionalServiceDetailV2() {
 
       {/* ══════════ 2b · CLIENT STRIP ══════════ */}
       <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
-        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 30+ companies</p>
+        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 40+ companies</p>
         <div className="v2-strip">
           <div className="v2-strip-track" ref={stripRef}>
             {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
@@ -741,7 +741,7 @@ export default function AdditionalServiceDetailV2() {
                 <li><Check size={13} strokeWidth={2.4} /> Fixed price once scoped</li>
                 <li><Check size={13} strokeWidth={2.4} /> Full source-code handover</li>
               </ul>
-              <a className="v2-btn" href="/contact-v2">Get an exact quote →</a>
+              <a className="v2-btn" href="/contact">Get an exact quote →</a>
             </aside>
           </div>
         </div>
@@ -868,7 +868,7 @@ export default function AdditionalServiceDetailV2() {
         label="Client Voices"
         heading="What clients say once we ship."
         stats={[
-          { num: "30+", label: "Companies trust us" },
+          { num: "40+", label: "Companies trust us" },
           { num: "6", label: "Services delivered" },
           { num: "100%", label: "Source code ownership" },
         ]}
@@ -995,7 +995,7 @@ export default function AdditionalServiceDetailV2() {
             <h2 className="v2-heading">{svc.title} questions.</h2>
           </div>
           <p className="v2-lede v2-faq-note">
-            Don't see yours here? <a href="/contact-v2">Ask us directly →</a>
+            Don't see yours here? <a href="/contact">Ask us directly →</a>
           </p>
         </div>
         <div>
@@ -1077,7 +1077,7 @@ export default function AdditionalServiceDetailV2() {
             and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
+            <a className="v2-btn" href="/contact">Book a consultation →</a>
           </div>
           <div className="v2-cta-badges">
             <span className="v2-cta-badge">Free consultation</span>

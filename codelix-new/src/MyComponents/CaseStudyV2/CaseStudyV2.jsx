@@ -19,7 +19,7 @@ import { useCaseStudies } from "../CaseStudyDetailV2/useCaseStudies";
 import NavbarV2 from "../Shared/NavbarV2";
 
 
-/* v2 case-study detail pages live at /case-study-v2/:slug, reusing the
+/* v2 case-study detail pages live at /case-study/:slug, reusing the
    same slugs as the existing routes */
 const toV2Slug = (href) => href.replace("/", "");
 
@@ -166,7 +166,7 @@ export default function CaseStudyV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/preview-v2">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
                 <em>Case Studies</em>
               </nav>
@@ -208,7 +208,7 @@ export default function CaseStudyV2() {
 
         <div className="csv2-grid">
           {filtered.map((p) => (
-            <a className="csv2-card" href={`/case-study-v2/${toV2Slug(p.href)}`} key={p.id}>
+            <a className="csv2-card" href={`/case-study/${toV2Slug(p.href)}`} key={p.id}>
               <div className="csv2-card-media">
                 <img src={p.image} alt={p.title} loading="lazy" />
                 <span className="csv2-card-cat">{p.category}</span>
@@ -277,7 +277,7 @@ export default function CaseStudyV2() {
 
       {/* ══════════ 4 · CLIENT STRIP ══════════ */}
       <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
-        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 30+ companies</p>
+        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 40+ companies</p>
         <div className="v2-strip">
           <div className="v2-strip-track" ref={stripRef}>
             {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
@@ -299,7 +299,7 @@ export default function CaseStudyV2() {
             built the same way as everything above.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact-v2">Start a project →</a>
+            <a className="v2-btn" href="/contact">Start a project →</a>
           </div>
           <div className="v2-cta-badges">
             <span className="v2-cta-badge">Free consultation</span>

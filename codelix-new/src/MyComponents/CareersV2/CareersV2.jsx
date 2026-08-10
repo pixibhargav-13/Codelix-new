@@ -155,7 +155,7 @@ export default function CareersV2() {
   };
 
   /* real submission — same Web3Forms integration used on /contact and
-     /contact-v2, not a new/mocked endpoint */
+     /contact, not a new/mocked endpoint */
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSending(true);
@@ -203,7 +203,7 @@ export default function CareersV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/preview-v2">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
                 <em>Careers</em>
               </nav>
@@ -224,7 +224,7 @@ export default function CareersV2() {
                   <span>Apply now</span>
                   <i className="v2-btn-arrow">→</i>
                 </a>
-                <a className="v2-hero-secondary" href="/team-v2">
+                <a className="v2-hero-secondary" href="/team">
                   <span className="v2-hero-secondary-label">Meet the team</span>
                 </a>
               </div>
@@ -357,7 +357,7 @@ export default function CareersV2() {
             <h2 className="v2-heading">Before you apply.</h2>
           </div>
           <p className="v2-lede v2-faq-note">
-            Something else on your mind? <a href="/contact-v2">Ask us directly →</a>
+            Something else on your mind? <a href="/contact">Ask us directly →</a>
           </p>
         </div>
         <div>
@@ -392,7 +392,7 @@ export default function CareersV2() {
             brings, not against a running job board. Send your details anyway.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact-v2">Get in touch →</a>
+            <a className="v2-btn" href="/contact">Get in touch →</a>
           </div>
           <div className="v2-cta-badges">
             <span className="v2-cta-badge">Free consultation</span>

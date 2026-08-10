@@ -97,13 +97,13 @@ const NEXT_STEPS = [
 
 /* cross-sell to the rest of the catalogue */
 const OTHER_SERVICES = [
-  { icon: Globe, n: "01", title: "Web Development", body: "Modern websites and web applications tailored to your business needs.", path: "/services-v2/web-development" },
-  { icon: Smartphone, n: "02", title: "Application Development", body: "Mobile apps, SaaS platforms, and cloud-native solutions built from scratch.", path: "/services-v2/application-development" },
-  { icon: ShoppingCart, n: "04", title: "E-Commerce Solutions", body: "Custom stores, B2B commerce platforms, marketplaces, and payment integrations.", path: "/services-v2/e-commerce-solutions" },
-  { icon: Code2, n: "05", title: "Enterprise Software Solutions", body: "ERP, CRM, workflow automation, legacy modernization, and integrations.", path: "/services-v2/custom-software-development" },
-  { icon: Sparkles, n: "06", title: "AI & Automation Solutions", body: "AI agents, chatbots, generative AI, and workflow automation that works.", path: "/services-v2/ai-development" },
-  { icon: BarChart3, n: "07", title: "Data Analytics & Business Intelligence", body: "Dashboards, reporting, data visualization, and predictive analytics.", path: "/services-v2/data-analytics" },
-  { icon: LifeBuoy, n: "08", title: "Support & Managed Services", body: "Ongoing maintenance, technical support, and dedicated team augmentation.", path: "/services-v2/support-managed-services" },
+  { icon: Globe, n: "01", title: "Web Development", body: "Modern websites and web applications tailored to your business needs.", path: "/services/web-development" },
+  { icon: Smartphone, n: "02", title: "Application Development", body: "Mobile apps, SaaS platforms, and cloud-native solutions built from scratch.", path: "/services/application-development" },
+  { icon: ShoppingCart, n: "04", title: "E-Commerce Solutions", body: "Custom stores, B2B commerce platforms, marketplaces, and payment integrations.", path: "/services/e-commerce-solutions" },
+  { icon: Code2, n: "05", title: "Enterprise Software Solutions", body: "ERP, CRM, workflow automation, legacy modernization, and integrations.", path: "/services/custom-software-development" },
+  { icon: Sparkles, n: "06", title: "AI & Automation Solutions", body: "AI agents, chatbots, generative AI, and workflow automation that works.", path: "/services/ai-development" },
+  { icon: BarChart3, n: "07", title: "Data Analytics & Business Intelligence", body: "Dashboards, reporting, data visualization, and predictive analytics.", path: "/services/data-analytics" },
+  { icon: LifeBuoy, n: "08", title: "Support & Managed Services", body: "Ongoing maintenance, technical support, and dedicated team augmentation.", path: "/services/support-managed-services" },
 ];
 
 /* what's included */
@@ -152,12 +152,12 @@ const PROCESS = [
    service (the previous list mixed in e-commerce/mobile projects and even
    a mistitled entry — this is the honest fix) */
 /* every project in PROJECTS now has a matching v2 case-study page, so all
-   links route through /case-study-v2 rather than the old-site v1 href */
+   links route through /case-study rather than the old-site v1 href */
 const RELATED = PROJECTS
   .filter((p) => p.category === "UI/UX Design")
   .map((p) => ({
     tag: p.category, title: p.title, thumb: p.image,
-    link: `/case-study-v2${p.href}`,
+    link: `/case-study${p.href}`,
   }));
 
 const PRINCIPLES = [
@@ -547,9 +547,9 @@ export default function UIUXDesignV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/preview-v2">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
-                <a href="/services-v2">Services</a>
+                <a href="/services">Services</a>
                 <span>/</span>
                 <em>UI/UX Design</em>
               </nav>
@@ -567,7 +567,7 @@ export default function UIUXDesignV2() {
                 feels obvious, then handed over with a complete design system.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact-v2">
+                <a className="v2-btn v2-btn--filled" href="/contact">
                   <span>Schedule a call</span>
                   <i className="v2-btn-arrow">→</i>
                 </a>
@@ -618,7 +618,7 @@ export default function UIUXDesignV2() {
 
       {/* ══════════ 2b · CLIENT STRIP ══════════ */}
       <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
-        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 30+ companies</p>
+        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 40+ companies</p>
         <div className="v2-strip">
           <div className="v2-strip-track" ref={stripRef}>
             {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
@@ -796,7 +796,7 @@ export default function UIUXDesignV2() {
                 <li><Check size={13} strokeWidth={2.4} /> Fixed price once scoped</li>
                 <li><Check size={13} strokeWidth={2.4} /> Full Figma handover</li>
               </ul>
-              <a className="v2-btn" href="/contact-v2">Get an exact quote →</a>
+              <a className="v2-btn" href="/contact">Get an exact quote →</a>
             </aside>
           </div>
         </div>
@@ -922,7 +922,7 @@ export default function UIUXDesignV2() {
         label="Client Voices"
         heading="What clients say once we ship."
         stats={[
-          { num: "30+", label: "Companies trust us" },
+          { num: "40+", label: "Companies trust us" },
           { num: "6", label: "Services delivered" },
           { num: "100%", label: "Source code ownership" },
         ]}
@@ -1067,7 +1067,7 @@ export default function UIUXDesignV2() {
             <h2 className="v2-heading">UI/UX design questions.</h2>
           </div>
           <p className="v2-lede v2-faq-note">
-            Don't see yours here? <a href="/contact-v2">Ask us directly →</a>
+            Don't see yours here? <a href="/contact">Ask us directly →</a>
           </p>
         </div>
         <div>
@@ -1151,7 +1151,7 @@ export default function UIUXDesignV2() {
             and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
+            <a className="v2-btn" href="/contact">Book a consultation →</a>
           </div>
           <div className="v2-cta-badges">
             <span className="v2-cta-badge">Free consultation</span>

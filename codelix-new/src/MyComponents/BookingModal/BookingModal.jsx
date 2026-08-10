@@ -47,11 +47,11 @@ export default function BookingModal() {
       const anchor = e.target.closest("a");
       if (anchor) {
         const href = anchor.getAttribute("href");
-        if (href === "/contact-v2" || href === "/contact") {
-          const isV2NavCta = anchor.classList.contains("v2-nav-cta");
+        if (href === "/contact") {
+          const isNavCta = anchor.classList.contains("v2-nav-cta");
           const isContactButton = anchor.textContent?.trim().toLowerCase().includes("book");
-          
-          if (isV2NavCta || isContactButton) {
+
+          if (isNavCta || isContactButton) {
             e.preventDefault();
             handleOpen();
           }

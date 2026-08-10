@@ -55,11 +55,11 @@ const METHOD = [
 ];
 
 const WORK = [
-  { n: "SYS · 01", tag: "Society Management", title: "A Smart Society Management App for Modern Residential Communities", link: "/case-study-v2/smart-society-management-case-study", thumb: workThree },
-  { n: "SYS · 02", tag: "Enterprise ERP", title: "A Custom ERP Solution for Industrial & Financial Workflows", link: "/case-study-v2/erp-case-study", thumb: workTwo },
-  { n: "SYS · 03", tag: "E-Commerce", title: "A High-Performance Platform for Premium Book Collections", link: "/case-study-v2/book-collections-case-study", thumb: workOne },
-  { n: "SYS · 04", tag: "Marketplace", title: "A Feature-Rich Mobile Marketplace for Buying & Selling Cars", link: "/case-study-v2/car-marketplace-case-study", thumb: workFour },
-  { n: "SYS · 05", tag: "Payroll", title: "Custom Payroll Management System — Web & Mobile", link: "/case-study-v2/payroll-case-study", thumb: workFive },
+  { n: "SYS · 01", tag: "Society Management", title: "A Smart Society Management App for Modern Residential Communities", link: "/case-study/smart-society-management-case-study", thumb: workThree },
+  { n: "SYS · 02", tag: "Enterprise ERP", title: "A Custom ERP Solution for Industrial & Financial Workflows", link: "/case-study/erp-case-study", thumb: workTwo },
+  { n: "SYS · 03", tag: "E-Commerce", title: "A High-Performance Platform for Premium Book Collections", link: "/case-study/book-collections-case-study", thumb: workOne },
+  { n: "SYS · 04", tag: "Marketplace", title: "A Feature-Rich Mobile Marketplace for Buying & Selling Cars", link: "/case-study/car-marketplace-case-study", thumb: workFour },
+  { n: "SYS · 05", tag: "Payroll", title: "Custom Payroll Management System — Web & Mobile", link: "/case-study/payroll-case-study", thumb: workFive },
 ];
 /* Sticky scroll sentences — the reference's signature full-screen moment */
 const SENTENCE_ONE = [
@@ -113,14 +113,14 @@ const SYSTEMS = [
 ];
 
 const SERVICES = [
-  { n: "01", tag: "Development", title: "Web Development", items: [{label: "Performance Optimization", path: "/services-v2/performance-optimization"}], link: "/services-v2/web-development" },
-  { n: "02", tag: "Development", title: "Application Development", items: [{label: "SaaS Product Development", path: "/services-v2/saas-product-development"}], link: "/services-v2/application-development" },
-  { n: "03", tag: "Design", title: "UI/UX Design", items: [{label: "UX Research & Design Systems", path: "/services-v2/ux-research-design-systems"}], link: "/services-v2/ui-ux-design" },
-  { n: "04", tag: "Commerce", title: "E-Commerce Solutions", items: [{label: "Marketplace Development", path: "/services-v2/marketplace-development"}, {label: "Payment Integration Services", path: "/services-v2/payment-integration-services"}], link: "/services-v2/e-commerce-solutions" },
-  { n: "05", tag: "Development", title: "Custom Software Development", items: [{label: "ERP & CRM Development", path: "/services-v2/erp-crm-development"}, {label: "API Development & Integration", path: "/services-v2/api-development-integration"}, {label: "Legacy System Modernization", path: "/services-v2/legacy-system-modernization"}], link: "/services-v2/custom-software-development" },
-  { n: "06", tag: "Applied AI", title: "AI Development", items: [{label: "AI Agent Development", path: "/services-v2/ai-agent-development"}, {label: "Generative AI Solutions", path: "/services-v2/generative-ai-solutions"}, {label: "Workflow Automation", path: "/services-v2/workflow-automation"}], link: "/services-v2/ai-development" },
-  { n: "07", tag: "Analytics", title: "Data Analytics", items: [{label: "Business Intelligence Solutions", path: "/services-v2/business-intelligence-solutions"}, {label: "Predictive Analytics", path: "/services-v2/predictive-analytics"}, {label: "Data Engineering", path: "/services-v2/data-engineering"}], link: "/services-v2/data-analytics" },
-  { n: "08", tag: "Support", title: "Support & Managed Services", items: [{label: "Cloud Solutions & Migration", path: "/services-v2/cloud-solutions-migration"}, {label: "Cloud Infrastructure Services", path: "/services-v2/cloud-infrastructure-services"}, {label: "Security & Maintenance", path: "/services-v2/security-maintenance"}, {label: "Dedicated Development Teams", path: "/services-v2/dedicated-development-teams"}], link: "/services-v2/support-managed-services" },
+  { n: "01", tag: "Development", title: "Web Development", items: [{label: "Performance Optimization", path: "/services/performance-optimization"}], link: "/services/web-development" },
+  { n: "02", tag: "Development", title: "Application Development", items: [{label: "SaaS Product Development", path: "/services/saas-product-development"}], link: "/services/application-development" },
+  { n: "03", tag: "Design", title: "UI/UX Design", items: [{label: "UX Research & Design Systems", path: "/services/ux-research-design-systems"}], link: "/services/ui-ux-design" },
+  { n: "04", tag: "Commerce", title: "E-Commerce Solutions", items: [{label: "Marketplace Development", path: "/services/marketplace-development"}, {label: "Payment Integration Services", path: "/services/payment-integration-services"}], link: "/services/e-commerce-solutions" },
+  { n: "05", tag: "Development", title: "Custom Software Development", items: [{label: "ERP & CRM Development", path: "/services/erp-crm-development"}, {label: "API Development & Integration", path: "/services/api-development-integration"}, {label: "Legacy System Modernization", path: "/services/legacy-system-modernization"}], link: "/services/custom-software-development" },
+  { n: "06", tag: "Applied AI", title: "AI Development", items: [{label: "AI Agent Development", path: "/services/ai-agent-development"}, {label: "Generative AI Solutions", path: "/services/generative-ai-solutions"}, {label: "Workflow Automation", path: "/services/workflow-automation"}], link: "/services/ai-development" },
+  { n: "07", tag: "Analytics", title: "Data Analytics", items: [{label: "Business Intelligence Solutions", path: "/services/business-intelligence-solutions"}, {label: "Predictive Analytics", path: "/services/predictive-analytics"}, {label: "Data Engineering", path: "/services/data-engineering"}], link: "/services/data-analytics" },
+  { n: "08", tag: "Support", title: "Support & Managed Services", items: [{label: "Cloud Solutions & Migration", path: "/services/cloud-solutions-migration"}, {label: "Cloud Infrastructure Services", path: "/services/cloud-infrastructure-services"}, {label: "Security & Maintenance", path: "/services/security-maintenance"}, {label: "Dedicated Development Teams", path: "/services/dedicated-development-teams"}], link: "/services/support-managed-services" },
 ];
 
 /* headline numbers — the value is the count-up target, suffix rides along */
@@ -817,7 +817,7 @@ export default function HomepageV2() {
               Stop rebuilding brittle prototypes. We engineer production-ready web apps, mobile platforms, and enterprise SaaS solutions designed to handle real users.
             </p>
             <div className="v2-hero-cta">
-              <a className="v2-btn v2-btn--filled" href="/contact-v2">
+              <a className="v2-btn v2-btn--filled" href="/contact">
                 <span>Start a project</span>
                 <i className="v2-btn-arrow">→</i>
               </a>
@@ -863,7 +863,7 @@ export default function HomepageV2() {
 
       {/* ══════════ CLIENT STRIP ══════════ */}
       <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
-        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 30+ companies</p>
+        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 40+ companies</p>
         <div className="v2-strip">
           <div className="v2-strip-track" ref={stripRef}>
             {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
@@ -927,7 +927,7 @@ export default function HomepageV2() {
             </div>
           ))}
           <div className="v2-work-more">
-            <a className="v2-btn" href="/work-v2">View all work →</a>
+            <a className="v2-btn" href="/work">View all work →</a>
           </div>
         </div>
         {/* floating preview — follows the cursor, swaps to the hovered row's
@@ -1025,13 +1025,13 @@ export default function HomepageV2() {
               Each one maps to work we have already shipped. You don't need to know which
               belongs in your business before you talk to us — that's what the first call is for.
             </p>
-            <a className="v2-map-link" href="/work-v2">See the case studies →</a>
+            <a className="v2-map-link" href="/work">See the case studies →</a>
           </div>
         </div>
         <div className="v2-map-scroll">
           <div className="v2-map-track">
             {SYSTEMS.map((s) => (
-              <a className="v2-map-card" key={s.id} href="/work-v2">
+              <a className="v2-map-card" key={s.id} href="/work">
                 <span className="v2-map-id">{s.id}</span>
                 <span className="v2-map-cluster">{s.cluster}</span>
                 <h4 className="v2-map-title">{s.title}</h4>
@@ -1129,7 +1129,7 @@ export default function HomepageV2() {
         </div>
 
         <div className="v2-work-more" style={{ marginTop: '48px', paddingBottom: '0' }}>
-          <a className="v2-btn" href="/services-v2">View all services →</a>
+          <a className="v2-btn" href="/services">View all services →</a>
         </div>
       </section>
 
@@ -1141,7 +1141,7 @@ export default function HomepageV2() {
         <p className="v2-lede">Three SaaS products, live in the market, engineered with the same craft we bring to every client project.</p>
         <div className="v2-products-grid">
           {PRODUCTS.map((p) => (
-            <a href={`/products-v2/${p.slug}`} className="v2-product-card" key={p.slug} style={{ "--accent": p.accent }}>
+            <a href={`/products/${p.slug}`} className="v2-product-card" key={p.slug} style={{ "--accent": p.accent }}>
               <span className="v2-product-card-logo"><img src={p.logo} alt="" /></span>
               <span className="v2-product-card-badge">{p.badge}</span>
               <h3 className="v2-product-card-name">{p.name}</h3>
@@ -1185,7 +1185,7 @@ export default function HomepageV2() {
           </div>
           <div className="v2-quote-stats">
             <div className="v2-quote-stat">
-              <span className="v2-quote-stat-num">30+</span>
+              <span className="v2-quote-stat-num">40+</span>
               <span className="v2-quote-stat-label">Companies trust us</span>
             </div>
             <div className="v2-quote-stat">
@@ -1266,7 +1266,7 @@ export default function HomepageV2() {
             <h2 className="v2-heading">Questions we're asked before every engagement.</h2>
           </div>
           <p className="v2-lede v2-faq-note">
-            Don't see yours here? <a href="/contact-v2">Ask us directly →</a>
+            Don't see yours here? <a href="/contact">Ask us directly →</a>
           </p>
         </div>
         <div>
@@ -1303,7 +1303,7 @@ export default function HomepageV2() {
             We scope what should be built first, what can wait, and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
+            <a className="v2-btn" href="/contact">Book a consultation →</a>
           </div>
           <div className="v2-cta-badges">
             <span className="v2-cta-badge">Free consultation</span>

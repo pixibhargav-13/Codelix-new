@@ -50,9 +50,9 @@ const SERVICES = [
     icon: Globe,
     title: "Web Development",
     body: "We build modern websites and web applications tailored to your business needs — not just another template with your logo on it.",
-    path: "/services-v2/web-development",
+    path: "/services/web-development",
     capabilities: [
-      { label: "Performance Optimization", path: "/services-v2/performance-optimization" }
+      { label: "Performance Optimization", path: "/services/performance-optimization" }
     ],
   },
   {
@@ -60,9 +60,9 @@ const SERVICES = [
     icon: Smartphone,
     title: "Application Development",
     body: "Mobile apps, SaaS platforms, and cloud-native solutions built from scratch — no cookie-cutter builders, no shortcuts on performance or security.",
-    path: "/services-v2/application-development",
+    path: "/services/application-development",
     capabilities: [
-      { label: "SaaS Product Development", path: "/services-v2/saas-product-development" }
+      { label: "SaaS Product Development", path: "/services/saas-product-development" }
     ],
   },
   {
@@ -70,9 +70,9 @@ const SERVICES = [
     icon: PenTool,
     title: "UI/UX & Product Design",
     body: "User-centered design services including UX research, wireframes, prototypes, interface design, design systems, and accessibility optimization.",
-    path: "/services-v2/ui-ux-design",
+    path: "/services/ui-ux-design",
     capabilities: [
-      { label: "UX Research & Design Systems", path: "/services-v2/ux-research-design-systems" }
+      { label: "UX Research & Design Systems", path: "/services/ux-research-design-systems" }
     ],
   },
   {
@@ -80,10 +80,10 @@ const SERVICES = [
     icon: ShoppingCart,
     title: "E-Commerce Solutions",
     body: "Custom online stores, B2B commerce platforms, marketplaces, payment integrations, and e-commerce growth optimization.",
-    path: "/services-v2/e-commerce-solutions",
+    path: "/services/e-commerce-solutions",
     capabilities: [
-      { label: "Marketplace Development", path: "/services-v2/marketplace-development" },
-      { label: "Payment Integration Services", path: "/services-v2/payment-integration-services" }
+      { label: "Marketplace Development", path: "/services/marketplace-development" },
+      { label: "Payment Integration Services", path: "/services/payment-integration-services" }
     ],
   },
   {
@@ -91,11 +91,11 @@ const SERVICES = [
     icon: Code2,
     title: "Enterprise Software Solutions",
     body: "Business software development including ERP, CRM, workflow automation, legacy system modernization, and enterprise integrations.",
-    path: "/services-v2/custom-software-development",
+    path: "/services/custom-software-development",
     capabilities: [
-      { label: "ERP & CRM Development", path: "/services-v2/erp-crm-development" },
-      { label: "API Development & Integration", path: "/services-v2/api-development-integration" },
-      { label: "Legacy System Modernization", path: "/services-v2/legacy-system-modernization" }
+      { label: "ERP & CRM Development", path: "/services/erp-crm-development" },
+      { label: "API Development & Integration", path: "/services/api-development-integration" },
+      { label: "Legacy System Modernization", path: "/services/legacy-system-modernization" }
     ],
   },
   {
@@ -103,11 +103,11 @@ const SERVICES = [
     icon: Sparkles,
     title: "AI & Automation Solutions",
     body: "AI agents, chatbots, generative AI applications, workflow automation, and AI consulting to improve productivity and customer experience.",
-    path: "/services-v2/ai-development",
+    path: "/services/ai-development",
     capabilities: [
-      { label: "AI Agent Development", path: "/services-v2/ai-agent-development" },
-      { label: "Generative AI Solutions", path: "/services-v2/generative-ai-solutions" },
-      { label: "Workflow Automation", path: "/services-v2/workflow-automation" }
+      { label: "AI Agent Development", path: "/services/ai-agent-development" },
+      { label: "Generative AI Solutions", path: "/services/generative-ai-solutions" },
+      { label: "Workflow Automation", path: "/services/workflow-automation" }
     ],
   },
   {
@@ -115,11 +115,11 @@ const SERVICES = [
     icon: BarChart3,
     title: "Data Analytics & Business Intelligence",
     body: "Dashboards, reporting, data visualization, predictive analytics, data engineering, and business intelligence solutions.",
-    path: "/services-v2/data-analytics",
+    path: "/services/data-analytics",
     capabilities: [
-      { label: "Business Intelligence Solutions", path: "/services-v2/business-intelligence-solutions" },
-      { label: "Predictive Analytics", path: "/services-v2/predictive-analytics" },
-      { label: "Data Engineering", path: "/services-v2/data-engineering" }
+      { label: "Business Intelligence Solutions", path: "/services/business-intelligence-solutions" },
+      { label: "Predictive Analytics", path: "/services/predictive-analytics" },
+      { label: "Data Engineering", path: "/services/data-engineering" }
     ],
   },
   {
@@ -127,12 +127,12 @@ const SERVICES = [
     icon: LifeBuoy,
     title: "Support & Managed Services",
     body: "Ongoing maintenance, technical support, performance optimization, security updates, and dedicated development team augmentation.",
-    path: "/services-v2/support-managed-services",
+    path: "/services/support-managed-services",
     capabilities: [
-      { label: "Cloud Solutions & Migration", path: "/services-v2/cloud-solutions-migration" },
-      { label: "Cloud Infrastructure Services", path: "/services-v2/cloud-infrastructure-services" },
-      { label: "Security & Maintenance", path: "/services-v2/security-maintenance" },
-      { label: "Dedicated Development Teams", path: "/services-v2/dedicated-development-teams" }
+      { label: "Cloud Solutions & Migration", path: "/services/cloud-solutions-migration" },
+      { label: "Cloud Infrastructure Services", path: "/services/cloud-infrastructure-services" },
+      { label: "Security & Maintenance", path: "/services/security-maintenance" },
+      { label: "Dedicated Development Teams", path: "/services/dedicated-development-teams" }
     ],
   },
 ];
@@ -516,7 +516,7 @@ export default function ServicesV2() {
                 same handoff every time.
               </p>
               <div className="sv2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact-v2">
+                <a className="v2-btn v2-btn--filled" href="/contact">
                   <span>Get a free quote</span>
                   <i className="v2-btn-arrow">→</i>
                 </a>
@@ -656,7 +656,7 @@ export default function ServicesV2() {
 
       {/* ══════════ 3c · CLIENT PROOF + STATS ══════════ */}
       <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
-        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 30+ companies</p>
+        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 40+ companies</p>
         <div className="v2-strip">
           <div className="v2-strip-track" ref={stripRef}>
             {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
@@ -760,7 +760,7 @@ export default function ServicesV2() {
             <h2 className="v2-heading">Questions we're asked about services.</h2>
           </div>
           <p className="v2-lede v2-faq-note">
-            Don't see yours here? <a href="/contact-v2">Ask us directly →</a>
+            Don't see yours here? <a href="/contact">Ask us directly →</a>
           </p>
         </div>
         <div>
@@ -795,7 +795,7 @@ export default function ServicesV2() {
             what can wait, and what it'll take to get it live.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
+            <a className="v2-btn" href="/contact">Book a consultation →</a>
           </div>
           <div className="v2-cta-badges">
             <span className="v2-cta-badge">Free consultation</span>

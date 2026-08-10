@@ -247,7 +247,7 @@ export default function TechnologiesV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/preview-v2">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
                 <em>Technologies</em>
               </nav>
@@ -373,7 +373,7 @@ export default function TechnologiesV2() {
             <h2 className="v2-heading">Before you reach out.</h2>
           </div>
           <p className="v2-lede v2-faq-note">
-            Something specific in mind? <a href="/contact-v2">Ask us directly →</a>
+            Something specific in mind? <a href="/contact">Ask us directly →</a>
           </p>
         </div>
         <div>
@@ -407,7 +407,7 @@ export default function TechnologiesV2() {
             A structured conversation about your project and the stack it actually calls for.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
+            <a className="v2-btn" href="/contact">Book a consultation →</a>
           </div>
           <div className="v2-cta-badges">
             <span className="v2-cta-badge">Free consultation</span>

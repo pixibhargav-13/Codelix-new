@@ -166,7 +166,7 @@ export default function IndustriesV2() {
           <div className="sd2-hero-main ind-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/preview-v2">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
                 <em>Industries</em>
               </nav>
@@ -184,7 +184,7 @@ export default function IndustriesV2() {
                 Here's where we have the deepest repeat experience.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact-v2">
+                <a className="v2-btn v2-btn--filled" href="/contact">
                   <span>Talk about your sector</span>
                   <i className="v2-btn-arrow">→</i>
                 </a>
@@ -221,7 +221,7 @@ export default function IndustriesV2() {
               <li>Faster onboarding — fewer "actually, in our industry…" surprises</li>
               <li>Same process and pricing, tuned per sector</li>
             </ul>
-            <a className="v2-btn v2-btn--filled" href="/contact-v2">
+            <a className="v2-btn v2-btn--filled" href="/contact">
               <span>Talk about your sector</span>
               <i className="v2-btn-arrow">→</i>
             </a>
@@ -263,7 +263,7 @@ export default function IndustriesV2() {
                         </div>
                       </div>
                     </div>
-                    <a className="ind-panel-more" href={`/industries-v2/${it.slug}`}>
+                    <a className="ind-panel-more" href={`/industries/${it.slug}`}>
                       Explore {it.title} →
                     </a>
                   </div>
@@ -291,7 +291,7 @@ export default function IndustriesV2() {
               <div className="ind-panel-services">
                 {it.services.map((s) => <span key={s}>{s}</span>)}
               </div>
-              <a className="ind-panel-more" href={`/industries-v2/${it.slug}`}>
+              <a className="ind-panel-more" href={`/industries/${it.slug}`}>
                 Explore {it.title} →
               </a>
             </article>
@@ -373,7 +373,7 @@ export default function IndustriesV2() {
             <h2 className="v2-heading">Before you reach out.</h2>
           </div>
           <p className="v2-lede v2-faq-note">
-            Don't see your industry? <a href="/contact-v2">Ask us directly →</a>
+            Don't see your industry? <a href="/contact">Ask us directly →</a>
           </p>
         </div>
         <div>
@@ -398,7 +398,7 @@ export default function IndustriesV2() {
 
       {/* ══════════ 6 · CLIENT STRIP ══════════ */}
       <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
-        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 30+ companies</p>
+        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 40+ companies</p>
         <div className="v2-strip">
           <div className="v2-strip-track" ref={stripRef}>
             {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
@@ -420,7 +420,7 @@ export default function IndustriesV2() {
             not a generic pitch reused across every client.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
+            <a className="v2-btn" href="/contact">Book a consultation →</a>
           </div>
           <div className="v2-cta-badges">
             <span className="v2-cta-badge">Free consultation</span>

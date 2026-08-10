@@ -14,16 +14,16 @@ const SERVICES_ICON = LayoutGrid;
 
 /* grouped: primary → who we are → how we work → resources → join/contact */
 const NAV_LINKS = [
-  { label: "Work", href: "/work-v2", icon: Briefcase },
-  { label: "About", href: "/about-v2", icon: Info },
-  { label: "Team", href: "/team-v2", icon: Users },
-  { label: "Process", href: "/process-v2", icon: Workflow },
-  { label: "Pricing", href: "/pricing-v2", icon: Tag },
-  { label: "Technologies", href: "/technologies-v2", icon: Cpu },
-  { label: "Blog", href: "/blog-v2", icon: Newspaper },
-  { label: "FAQ", href: "/faq-v2", icon: HelpCircle },
-  { label: "Careers", href: "/careers-v2", icon: Rocket },
-  { label: "Contact", href: "/contact-v2", icon: Mail },
+  { label: "Work", href: "/work", icon: Briefcase },
+  { label: "About", href: "/about", icon: Info },
+  { label: "Team", href: "/team", icon: Users },
+  { label: "Process", href: "/process", icon: Workflow },
+  { label: "Pricing", href: "/pricing", icon: Tag },
+  { label: "Technologies", href: "/technologies", icon: Cpu },
+  { label: "Blog", href: "/blog", icon: Newspaper },
+  { label: "FAQ", href: "/faq", icon: HelpCircle },
+  { label: "Careers", href: "/careers", icon: Rocket },
+  { label: "Contact", href: "/contact", icon: Mail },
 ];
 
 export default function V2MobileDrawer({ open, onClose }) {
@@ -56,7 +56,7 @@ export default function V2MobileDrawer({ open, onClose }) {
               </button>
               
               <div className={`v2-drawer-sublinks ${servicesOpen ? "open" : ""}`}>
-                <a href="/services-v2" onClick={onClose} className="v2-drawer-sublink-all">
+                <a href="/services" onClick={onClose} className="v2-drawer-sublink-all">
                   Overview (All Services)
                 </a>
                 {NAVBAR_SERVICES_HIERARCHY.map((category) => (
@@ -89,7 +89,7 @@ export default function V2MobileDrawer({ open, onClose }) {
               </button>
               
               <div className={`v2-drawer-sublinks ${industriesOpen ? "open" : ""}`}>
-                <a href="/industries-v2" onClick={onClose} className="v2-drawer-sublink-all">
+                <a href="/industries" onClick={onClose} className="v2-drawer-sublink-all">
                   Overview (All Industries)
                 </a>
                 <div className="v2-drawer-sublink-category">
@@ -119,7 +119,7 @@ export default function V2MobileDrawer({ open, onClose }) {
               <div className={`v2-drawer-sublinks ${productsOpen ? "open" : ""}`}>
                 <div className="v2-drawer-sublink-category">
                   {PRODUCTS.map((p) => (
-                    <a key={p.slug} href={`/products-v2/${p.slug}`} onClick={onClose} className="v2-drawer-sublink-item">
+                    <a key={p.slug} href={`/products/${p.slug}`} onClick={onClose} className="v2-drawer-sublink-item">
                       {p.name}
                     </a>
                   ))}
@@ -142,7 +142,7 @@ export default function V2MobileDrawer({ open, onClose }) {
           </div>
 
           <div className="v2-drawer-cta">
-            <a className="v2-btn v2-btn--filled" href="/contact-v2" onClick={onClose}>
+            <a className="v2-btn v2-btn--filled" href="/contact" onClick={onClose}>
               <span>Book a consultation</span>
               <i className="v2-btn-arrow">→</i>
             </a>

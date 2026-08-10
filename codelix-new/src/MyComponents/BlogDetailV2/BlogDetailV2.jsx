@@ -88,7 +88,7 @@ export default function BlogDetailV2() {
     return (
       <div className="v2" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }}>
         <h1 style={{ color: "#fff", fontSize: 28 }}>Article not found.</h1>
-        <a className="v2-btn" href="/blog-v2">Back to Blog →</a>
+        <a className="v2-btn" href="/blog">Back to Blog →</a>
       </div>
     );
   }
@@ -112,9 +112,9 @@ export default function BlogDetailV2() {
       <header className="bdv2-header">
         <div className="bdv2-header-inner">
           <nav className="sd2-crumbs" aria-label="Breadcrumb">
-            <a href="/preview-v2">Home</a>
+            <a href="/">Home</a>
             <span>/</span>
-            <a href="/blog-v2">Blog</a>
+            <a href="/blog">Blog</a>
             <span>/</span>
             <em>{blog.title}</em>
           </nav>
@@ -162,7 +162,7 @@ export default function BlogDetailV2() {
           </article>
 
           <div className="bdv2-back">
-            <a className="v2-hero-secondary" href="/blog-v2">
+            <a className="v2-hero-secondary" href="/blog">
               <ArrowLeft size={15} strokeWidth={2} />
               <span className="v2-hero-secondary-label">Back to all articles</span>
             </a>
@@ -177,7 +177,7 @@ export default function BlogDetailV2() {
           <h2 className="v2-heading">Related articles.</h2>
           <div className="bdv2-related">
             {related.map((b) => (
-              <a className="bdv2-related-card" href={`/blog-v2/${b.slug || slugify(b.title)}`} key={b.id}>
+              <a className="bdv2-related-card" href={`/blog/${b.slug || slugify(b.title)}`} key={b.id}>
                 <div className="bdv2-related-media">
                   <img src={b.image} alt={b.title} loading="lazy" />
                 </div>
@@ -206,7 +206,7 @@ export default function BlogDetailV2() {
             We scope what should be built first, what can wait, and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
+            <a className="v2-btn" href="/contact">Book a consultation →</a>
           </div>
           <div className="v2-cta-badges">
             <span className="v2-cta-badge">Free consultation</span>

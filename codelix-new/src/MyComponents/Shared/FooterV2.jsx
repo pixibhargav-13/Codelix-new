@@ -58,7 +58,7 @@ export default function FooterV2() {
         </div>
         <div className="v2-footer-card">
           <h5>Looking For Jobs</h5>
-          <a className="v2-footer-card-strong" href="/careers-v2">View openings →</a>
+          <a className="v2-footer-card-strong" href="/careers">View openings →</a>
         </div>
         <div className="v2-footer-card">
           <h5>HR</h5>
@@ -107,15 +107,15 @@ export default function FooterV2() {
         <GoogleReviewButton />
       </div>
       <div className="v2-footer-bottom">
-        <a href="/preview-v2" className="v2-footer-bottom-brand" aria-label="Codelix — home">
+        <a href="/" className="v2-footer-bottom-brand" aria-label="Codelix — home">
           <img src={codelixLogo} alt="Codelix" />
         </a>
         <span className="v2-footer-bottom-copy">© 2026 Codelix IT Solutions — All Copyright Reserved</span>
         <div className="v2-footer-legal">
-          <a href="/sitemap-v2">Sitemap</a>
-          <a href="/refund-policy-v2">Refund Policy</a>
-          <a href="/privacy-policy-v2">Privacy</a>
-          <a href="/terms-of-service-v2">Terms</a>
+          <a href="/sitemap">Sitemap</a>
+          <a href="/refund-policy">Refund Policy</a>
+          <a href="/privacy-policy">Privacy</a>
+          <a href="/terms-of-service">Terms</a>
         </div>
       </div>
     </footer>

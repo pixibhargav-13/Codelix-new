@@ -115,7 +115,7 @@ export default function CaseStudyDetailV2() {
     return (
       <div className="v2" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }}>
         <h1 style={{ color: "#fff", fontSize: 28 }}>Case study not found.</h1>
-        <a className="v2-btn" href="/case-study-v2">Back to Case Studies →</a>
+        <a className="v2-btn" href="/case-study">Back to Case Studies →</a>
       </div>
     );
   }
@@ -140,9 +140,9 @@ export default function CaseStudyDetailV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/preview-v2">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
-                <a href="/case-study-v2">Case Studies</a>
+                <a href="/case-study">Case Studies</a>
                 <span>/</span>
                 <em>{cs.title}</em>
               </nav>
@@ -165,11 +165,11 @@ export default function CaseStudyDetailV2() {
                 </p>
               )}
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact-v2">
+                <a className="v2-btn v2-btn--filled" href="/contact">
                   <span>Start a similar project</span>
                   <i className="v2-btn-arrow">→</i>
                 </a>
-                <a className="v2-hero-secondary" href="/case-study-v2">
+                <a className="v2-hero-secondary" href="/case-study">
                   <ArrowLeft size={15} strokeWidth={2} />
                   <span className="v2-hero-secondary-label">All case studies</span>
                 </a>
@@ -433,7 +433,7 @@ export default function CaseStudyDetailV2() {
         <h2 className="v2-heading">Other real projects.</h2>
         <div className="csd2-more">
           {more.map((p) => (
-            <a className="csd2-more-card" href={`/case-study-v2${p.href}`} key={p.id}>
+            <a className="csd2-more-card" href={`/case-study${p.href}`} key={p.id}>
               <div className="csd2-more-media">
                 <img src={p.image} alt={p.title} loading="lazy" />
               </div>
@@ -463,7 +463,7 @@ export default function CaseStudyDetailV2() {
             We scope what should be built first, what can wait, and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
+            <a className="v2-btn" href="/contact">Book a consultation →</a>
           </div>
           <div className="v2-cta-badges">
             <span className="v2-cta-badge">Free consultation</span>

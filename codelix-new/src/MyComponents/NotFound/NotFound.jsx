@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { SEO } from "../../components/SEO";
-import { Navbar } from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
+import NavbarV2 from "../Shared/NavbarV2";
+import FooterV2 from "../Shared/FooterV2";
+import "../HomepageV2/HomepageV2.css";
 import "./NotFound.css";
 
 const NotFound = () => {
@@ -13,9 +14,9 @@ const NotFound = () => {
         description="The page you're looking for doesn't exist or has been moved. Browse our services or return to the homepage."
         keywords="404, page not found"
       />
-      <div className="not-found-page">
+      <div className="v2 not-found-page">
         <div className="not-found-hero-section">
-          <Navbar />
+          <NavbarV2 />
           <div className="not-found-content">
             <h1 className="not-found-code">404</h1>
             <h2 className="not-found-title">Page Not Found</h2>
@@ -33,7 +34,7 @@ const NotFound = () => {
             </div>
           </div>
         </div>
-        <Footer />
+        <FooterV2 />
       </div>
     </>
   );

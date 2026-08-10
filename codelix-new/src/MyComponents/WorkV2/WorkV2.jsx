@@ -62,8 +62,8 @@ const INDUSTRIES = [
 
 /* every project in PROJECTS now has a matching v2 case-study page (see
    CaseStudyDetailV2/caseStudiesData.js), so every card routes through
-   /case-study-v2 rather than a bare v1 href */
-const linkFor = (p) => `/case-study-v2${p.href}`;
+   /case-study rather than a bare v1 href */
+const linkFor = (p) => `/case-study${p.href}`;
 
 /* same five real client quotes already used in Ourwork.jsx, not new/invented
    attributions */
@@ -231,7 +231,7 @@ export default function WorkV2() {
         description: cs.description,
         tags: cs.tags,
         image: cs.image,
-        href: `/case-study-v2/${cs.slug}`,
+        href: `/case-study/${cs.slug}`,
       }));
   }, [caseStudies]);
 
@@ -258,7 +258,7 @@ export default function WorkV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/preview-v2">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
                 <em>Work</em>
               </nav>
@@ -275,7 +275,7 @@ export default function WorkV2() {
                 business — no concept mockups dressed up as case studies.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact-v2">
+                <a className="v2-btn v2-btn--filled" href="/contact">
                   <span>Start your project</span>
                   <i className="v2-btn-arrow">→</i>
                 </a>
@@ -498,7 +498,7 @@ export default function WorkV2() {
             <h2 className="v2-heading">Before you reach out.</h2>
           </div>
           <p className="v2-lede v2-faq-note">
-            Want to see something specific? <a href="/contact-v2">Ask us directly →</a>
+            Want to see something specific? <a href="/contact">Ask us directly →</a>
           </p>
         </div>
         <div>
@@ -523,7 +523,7 @@ export default function WorkV2() {
 
       {/* ══════════ 7 · CLIENT STRIP ══════════ */}
       <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
-        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 30+ companies</p>
+        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 40+ companies</p>
         <div className="v2-strip">
           <div className="v2-strip-track" ref={stripRef}>
             {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
@@ -547,7 +547,7 @@ export default function WorkV2() {
             We scope what should be built first, what can wait, and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact-v2">Book a consultation →</a>
+            <a className="v2-btn" href="/contact">Book a consultation →</a>
           </div>
           <div className="v2-cta-badges">
             <span className="v2-cta-badge">Free consultation</span>
