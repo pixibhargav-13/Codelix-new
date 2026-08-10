@@ -1,13 +1,14 @@
 import React from "react";
 import {
   ChevronDown, LayoutGrid, Briefcase, Building2, Info, Users,
-  Workflow, Tag, Cpu, Newspaper, HelpCircle, Rocket, Mail,
+  Workflow, Tag, Cpu, Newspaper, HelpCircle, Rocket, Mail, Boxes,
 } from "lucide-react";
 
 /* Homepage, Services, Work, and Industries are already reachable from the
    logo and the centered nav links, so this menu carries everything else —
    every remaining real page, not a curated subset. */
 import { NAVBAR_SERVICES_HIERARCHY, FOOTER_INDUSTRY_KEYWORDS } from "./footerData";
+import { PRODUCTS } from "../ProductsV2/productsData";
 
 const SERVICES_ICON = LayoutGrid;
 
@@ -28,6 +29,7 @@ const NAV_LINKS = [
 export default function V2MobileDrawer({ open, onClose }) {
   const [servicesOpen, setServicesOpen] = React.useState(false);
   const [industriesOpen, setIndustriesOpen] = React.useState(false);
+  const [productsOpen, setProductsOpen] = React.useState(false);
 
   return (
     <>
@@ -93,6 +95,31 @@ export default function V2MobileDrawer({ open, onClose }) {
                 {FOOTER_INDUSTRY_KEYWORDS.map((industry) => (
                   <a key={industry.label} href={industry.path} onClick={onClose} className="v2-drawer-sublink-item" style={{ paddingLeft: "16px" }}>
                     {industry.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Expandable Products Menu */}
+          <div className="v2-drawer-accordion mobile-only-drawer-link">
+            <button
+              className={`v2-drawer-link-btn ${productsOpen ? "open" : ""}`}
+              onClick={() => setProductsOpen(!productsOpen)}
+              aria-expanded={productsOpen}
+            >
+              <span className="v2-drawer-link-label">
+                <span className="v2-drawer-link-icon"><Boxes size={17} strokeWidth={1.75} /></span>
+                {"Products"}
+              </span>
+              <ChevronDown className={`v2-drawer-chevron ${productsOpen ? "open" : ""}`} size={20} strokeWidth={2} />
+            </button>
+
+            <div className={`v2-drawer-sublinks ${productsOpen ? "open" : ""}`}>
+              <div className="v2-drawer-sublink-category">
+                {PRODUCTS.map((p) => (
+                  <a key={p.slug} href={`/products-v2/${p.slug}`} onClick={onClose} className="v2-drawer-sublink-item">
+                    {p.name}
                   </a>
                 ))}
               </div>

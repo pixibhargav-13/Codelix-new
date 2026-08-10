@@ -1146,8 +1146,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 0 var(--pad-x) 8vh;
+  justify-content: center;
+  padding: 90px var(--pad-x) 0;
   background: var(--void);
   overflow: hidden;
 }
@@ -1210,7 +1210,35 @@
   position: relative;
   z-index: 2;
   /* above the drifting grid (::before) and breathing glow (::after) */
-  max-width: 1000px;
+  /* max-width: 1300px; */
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.v2-hero-content-left {
+  flex: 1;
+}
+
+.v2-hero-content-right {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 900px) {
+  .v2-hero-inner {
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .v2-hero-content-left {
+    max-width: 1000px;
+  }
 }
 
 @media (max-width: 700px) {
@@ -1218,9 +1246,6 @@
   /* vertically centers the hero content within the viewport-height hero
      on mobile — .v2-hero itself is the flex column doing the centering,
      it was anchored to the bottom (flex-end) before */
-  .v2-hero {
-    justify-content: center;
-  }
 }
 
 /* top row: live-status pill + eyebrow, revealed together by the intro tl */
@@ -1230,7 +1255,7 @@
   gap: 18px;
   flex-wrap: wrap;
   opacity: 0;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 @media (max-width: 700px) {
@@ -1286,8 +1311,7 @@
   line-height: 1 !important;
   letter-spacing: -.035em;
   color: var(--text);
-  max-width: 15ch;
-  margin-bottom: 15px !important;
+  margin-bottom: 10px !important;
 }
 
 /* the last word carries a soft gradient accent so the headline has a focal
@@ -1310,16 +1334,16 @@
 }
 
 .v2-hero-sub {
-  margin-top: 26px;
-  font-size: 15px;
-  line-height: 1.75;
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.6;
   color: var(--text-55);
-  max-width: 52ch;
+  max-width: 60ch;
   opacity: 0;
 }
 
 .v2-hero-cta {
-  margin-top: 30px;
+  margin-top: 25px;
   opacity: 0;
   display: flex;
   align-items: center;
@@ -1482,7 +1506,7 @@
 /* three declaration words on a hairline, at the hero foot */
 .v2-hero-words {
   position: relative;
-  margin-top: 9vh;
+  margin-top: 4vh;
   padding-top: 22px;
   border-top: .8px solid var(--rule);
   display: flex;
@@ -5124,6 +5148,120 @@
   text-transform: uppercase;
   color: var(--ink-40);
   margin: 0 0 16px 0 !important;
+}
+
+/* ── Products teaser (Homepage) ──────────────────────────────
+   Three real in-house SaaS products, each card carrying its own
+   product's accent color via an inline --accent custom property. */
+.v2-products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 44px;
+}
+
+.v2-product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 28px;
+  border: .8px solid var(--rule);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.015);
+  text-decoration: none;
+  overflow: hidden;
+  transition: border-color .35s ease, transform .35s ease, background .35s ease;
+}
+
+.v2-product-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 80% at 0% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 60%);
+  opacity: 0;
+  transition: opacity .35s ease;
+  pointer-events: none;
+}
+
+.v2-product-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--rule));
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.v2-product-card:hover::before {
+  opacity: 1;
+}
+
+.v2-product-card-badge {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.v2-product-card-name {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: var(--text);
+  margin-bottom: 8px !important;
+}
+
+.v2-product-card-tagline {
+  font-size: 13.5px;
+  color: var(--text-55);
+  line-height: 1.5;
+  margin-bottom: 24px !important;
+  flex: 1;
+}
+
+.v2-product-card-stats {
+  display: flex;
+  gap: 20px;
+  padding-top: 18px;
+  margin-bottom: 18px;
+  border-top: .8px solid var(--rule);
+}
+
+.v2-product-card-stats span {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 10.5px;
+  color: var(--text-55);
+}
+
+.v2-product-card-stats b {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.v2-product-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.v2-product-card-cta i {
+  font-style: normal;
+  transition: transform .3s ease;
+}
+
+.v2-product-card:hover .v2-product-card-cta i {
+  transform: translateX(4px);
+}
+
+@media (max-width: 900px) {
+  .v2-products-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .v2-wr-intro-heading {

@@ -1,11 +1,15 @@
 import React, { useEffect, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
-import { ReactLenis } from 'lenis/react';
+import { ReactLenis, useLenis } from 'lenis/react';
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CodelixLoader from "./components/PageLoader";
 import BreadcrumbSchema from "./components/BreadcrumbSchema";
 import CustomCursor from "./components/CustomCursor/CustomCursor";
 import { AuthProvider } from "./admin/AuthContext";
 import RequireAuth from "./admin/RequireAuth";
+
+gsap.registerPlugin(ScrollTrigger);
 
 // ─── Admin panel (Supabase-backed blog + testimonials management) ────────────
 const AdminLogin = lazy(() => import("./admin/pages/AdminLogin"));
@@ -75,6 +79,7 @@ const AboutV2 = lazy(() => import("./MyComponents/AboutV2/AboutV2"));
 const ContactV2 = lazy(() => import("./MyComponents/ContactV2/ContactV2"));
 const IndustriesV2 = lazy(() => import("./MyComponents/IndustriesV2/IndustriesV2"));
 const IndustryDetailV2 = lazy(() => import("./MyComponents/IndustriesV2/IndustryDetailV2"));
+const ProductDetailV2 = lazy(() => import("./MyComponents/ProductsV2/ProductDetailV2"));
 const ProcessV2 = lazy(() => import("./MyComponents/ProcessV2/ProcessV2"));
 const TeamV2 = lazy(() => import("./MyComponents/TeamV2/TeamV2"));
 const WorkV2 = lazy(() => import("./MyComponents/WorkV2/WorkV2"));
@@ -105,6 +110,24 @@ const ChatbotGate = () => {
   const location = useLocation();
   if (location.pathname.startsWith("/admin")) return null;
   return <Chatbot />;
+};
+
+// ─── Sync Lenis with GSAP ScrollTrigger for extra smooth animations ────────────
+const LenisGsapSync = () => {
+  const lenis = useLenis();
+  useEffect(() => {
+    if (!lenis) return;
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+    return () => {
+      lenis.off('scroll', ScrollTrigger.update);
+      gsap.ticker.remove((time) => lenis.raf(time * 1000));
+    };
+  }, [lenis]);
+  return null;
 };
 
 // ─── Route-change loader: always shows on every navigation ───────────────────
@@ -165,6 +188,7 @@ const AppRoutes = () => {
           <Route path="/contact-v2" element={<ContactV2 />} />
           <Route path="/industries-v2" element={<IndustriesV2 />} />
           <Route path="/industries-v2/:slug" element={<IndustryDetailV2 />} />
+          <Route path="/products-v2/:slug" element={<ProductDetailV2 />} />
           <Route path="/process-v2" element={<ProcessV2 />} />
           <Route path="/team-v2" element={<TeamV2 />} />
           <Route path="/work-v2" element={<WorkV2 />} />
@@ -243,9 +267,10 @@ const AppRoutes = () => {
 // ─── App ──────────────────────────────────────────────────────────────────────
 function App() {
   return (
-    <ReactLenis root>
+    <ReactLenis root options={{ lerp: 0.05, duration: 1.5, smoothWheel: true }}>
       <Router>
         <AuthProvider>
+          <LenisGsapSync />
           <ScrollToTop />
           <BreadcrumbSchema />
           <CustomCursor />
