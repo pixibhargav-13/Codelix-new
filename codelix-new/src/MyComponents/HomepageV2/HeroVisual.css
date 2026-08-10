@@ -592,23 +592,23 @@
    the stat badges into a static row under it instead of floating them. */
 @media (max-width: 700px) {
   .premium-globe-visual {
-    height: 320px;
+    height: 420px;
   }
 
   .globe-canvas {
-    transform: scale(0.5);
+    transform: scale(0.75);
   }
 
   .orbital-rings,
   .tech-rings-container {
-    transform: translate(-50%, -50%) scale(0.5);
+    transform: translate(-50%, -50%) scale(0.75);
   }
 
   .hologram-ui {
     height: 550px;
     top: 50%;
     margin-top: -275px;
-    transform: scale(0.5);
+    transform: scale(0.75);
   }
 
   .globe-overlay-stats {
@@ -630,10 +630,15 @@
     position: static;
     flex-direction: row;
     text-align: left;
-    padding: 8px 12px;
+    padding: 6px 10px;
+    gap: 8px;
   }
 
   .stat-val {
-    font-size: 13px;
+    font-size: 11px;
+  }
+
+  .stat-lbl {
+    font-size: 8.5px;
   }
 }

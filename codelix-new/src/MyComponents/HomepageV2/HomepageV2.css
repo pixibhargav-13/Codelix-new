@@ -5340,3 +5340,37 @@
   margin: 0;
   max-width: 800px;
 }
+
+@media (max-width: 900px) {
+  /* Increase hero title size on mobile/tablet */
+  .v2-hero-title {
+    font-size: clamp(48px, 11vw, 76px) !important;
+  }
+
+  /* Increase hero badge/status size on mobile */
+  .v2-hero-status {
+    font-size: 13px;
+    padding: 9px 18px 9px 15px;
+  }
+  .v2-hero-eyebrow {
+    font-size: 11px;
+  }
+
+  /* Keep CTA buttons side-by-side on mobile */
+  .v2-hero-cta {
+    flex-wrap: nowrap !important;
+    gap: 10px !important;
+    justify-content: flex-start;
+  }
+  
+  /* Shrink button padding significantly so they fit cleanly on 320px screens */
+  .v2-btn--filled {
+    padding: 10px 16px !important;
+    font-size: 12px !important;
+  }
+  
+  .v2-hero-secondary {
+    font-size: 10px !important;
+    gap: 6px !important;
+  }
+}
