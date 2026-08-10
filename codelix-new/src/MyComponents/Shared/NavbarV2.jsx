@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLenis } from 'lenis/react';
 import { NAVBAR_SERVICES_HIERARCHY, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import {
   Globe, Smartphone, Palette, ShoppingCart,
@@ -60,6 +61,7 @@ export default function NavbarV2() {
   const [navScrolled, setNavScrolled] = useState(false);
   const [navHidden, setNavHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const lenis = useLenis();
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -74,11 +76,36 @@ export default function NavbarV2() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    let scrollY = 0;
+    if (mobileOpen) {
+      if (lenis) lenis.stop();
+      scrollY = window.scrollY;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = "100%";
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+      document.body.dataset.scrollY = scrollY;
+    } else {
+      if (lenis) lenis.start();
+      scrollY = document.body.dataset.scrollY || 0;
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY));
+      }
+    }
     const onKey = (e) => { if (e.key === "Escape") setMobileOpen(false); };
     window.addEventListener("keydown", onKey);
     return () => {
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
       window.removeEventListener("keydown", onKey);
     };
   }, [mobileOpen]);

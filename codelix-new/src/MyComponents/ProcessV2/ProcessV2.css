@@ -16,6 +16,12 @@ header.sd2-hero.process-hero .sd2-hero-main {
   width: 100%;
 }
 
+@media (max-width: 940px) {
+  header.sd2-hero.process-hero .sd2-hero-main {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
 /* ───────────── FAQ polish (this page only — #faq scopes it since
    .v2-faq-* is shared with the homepage) ───────────── */
 #faq .v2-faq-a {

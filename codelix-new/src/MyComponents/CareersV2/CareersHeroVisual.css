@@ -46,6 +46,7 @@
   z-index: 2;
   transform: rotateY(-6deg) rotateX(3deg);
   animation: chv-float-ui 6s infinite alternate ease-in-out;
+  flex-shrink: 0;
 }
 
 @keyframes chv-float-ui {
@@ -366,7 +367,7 @@
     height: 440px;
   }
   .chv-ui-window {
-    transform: scale(0.9) rotateY(-3deg);
+    scale: 0.9;
   }
 }
 
@@ -375,10 +376,15 @@
     height: 400px;
   }
   .chv-ui-window {
-    transform: scale(0.75);
-    left: -10px;
+    scale: 0.75;
+    left: 0px;
   }
   .chv-float-badge.badge-1 {
-    right: -10px;
+    right: 0px;
+    scale: 0.85;
+  }
+  .chv-float-badge.badge-2 {
+    left: 0px;
+    scale: 0.85;
   }
 }

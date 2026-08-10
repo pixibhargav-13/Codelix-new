@@ -569,22 +569,71 @@
 }
 
 @media (max-width: 900px) {
-
-  .globe-canvas,
-  .orbital-rings,
-  .tech-rings-container {
-    transform: scale(0.7) translate(-50%, -50%);
-    transform-origin: top left;
+  .globe-canvas {
+    transform: scale(0.7);
   }
 
   .orbital-rings,
   .tech-rings-container {
-    margin-left: 250px;
-    margin-top: 250px;
+    transform: translate(-50%, -50%) scale(0.7);
   }
 
   .hologram-ui {
-    display: none;
-    /* Hide complex UI on mobile to avoid clutter */
+    transform: scale(0.7);
+  }
+}
+
+/* below 700px the 550px-tall visual (sized for the desktop two-column
+   layout) sits alone in its own stacked row under the hero text, and the
+   absolutely-positioned .stat-item badges (percentage/pixel offsets tuned
+   for a ~500px-wide box) end up scattered across that tall empty area
+   instead of sitting near the globe — shrink the box to what the scaled
+   visual actually needs, scale the globe down further to fit, and drop
+   the stat badges into a static row under it instead of floating them. */
+@media (max-width: 700px) {
+  .premium-globe-visual {
+    height: 320px;
+  }
+
+  .globe-canvas {
+    transform: scale(0.5);
+  }
+
+  .orbital-rings,
+  .tech-rings-container {
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  .hologram-ui {
+    height: 550px;
+    top: 50%;
+    margin-top: -275px;
+    transform: scale(0.5);
+  }
+
+  .globe-overlay-stats {
+    /* stays absolute (out of the parent's flex flow) so it can't add to
+       the row's layout width the way the 500px canvas does — only its
+       anchor point moves, to the bottom of the now-320px-tall box */
+    top: auto;
+    bottom: 6px;
+    left: 0;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    pointer-events: auto;
+  }
+
+  .stat-item,
+  .stat-item.right {
+    position: static;
+    flex-direction: row;
+    text-align: left;
+    padding: 8px 12px;
+  }
+
+  .stat-val {
+    font-size: 13px;
   }
 }

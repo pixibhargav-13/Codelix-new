@@ -137,16 +137,16 @@ export default function CaseStudyDetailV2() {
           row), not a bespoke layout. ══════════ */}
       <header className="sd2-hero">
         <div className="sd2-hero-inner">
-          <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-            <a href="/preview-v2">Home</a>
-            <span>/</span>
-            <a href="/case-study-v2">Case Studies</a>
-            <span>/</span>
-            <em>{cs.title}</em>
-          </nav>
-
           <div className="sd2-hero-main">
             <div>
+              <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
+                <a href="/preview-v2">Home</a>
+                <span>/</span>
+                <a href="/case-study-v2">Case Studies</a>
+                <span>/</span>
+                <em>{cs.title}</em>
+              </nav>
+
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Case Study{cs.isConcept ? " · Concept" : ""}</span>
               </div>

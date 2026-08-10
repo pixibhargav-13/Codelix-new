@@ -766,16 +766,34 @@
 .v2-drawer {
   backdrop-filter: blur(20px);
   border-left: .8px solid var(--rule);
-  /* box-shadow:
-    -32px 0 64px -32px rgba(0, 0, 0, .6),
-    -1px 0 0 rgba(124, 155, 255, .25),
-    -24px 0 60px -20px rgba(90, 110, 240, .18); */
-  padding: 96px 22px 30px;
+  padding: 96px 0 0;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
   transform: translateX(100%);
   transition: transform .5s var(--ease-premium);
+  height: 100%;
+  height: 100dvh;
+  touch-action: none;
+  overscroll-behavior: none;
+}
+
+.v2-drawer-scroll-area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 22px 30px;
+  touch-action: pan-y;
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.v2-drawer-scroll-area::-webkit-scrollbar {
+  display: none;
 }
 
 .v2-drawer::before {
@@ -889,6 +907,7 @@
 
 .v2-drawer.open .v2-drawer-links>*:nth-child(3) {
   animation-delay: .12s;
+  padding: 15px 18px 18px 18px !important;
 }
 
 .v2-drawer.open .v2-drawer-links>*:nth-child(4) {
@@ -1231,17 +1250,42 @@
 }
 
 @media (max-width: 900px) {
+  .v2-hero {
+    min-height: 100vh;
+    padding-top: 140px;
+    padding-bottom: 80px;
+    justify-content: center;
+  }
+
   .v2-hero-inner {
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
   }
 
   .v2-hero-content-left {
     max-width: 1000px;
+    width: 100%;
+  }
+
+  /* in a column flex container `flex: 1` only grows the height, not the
+     width — without an explicit width this box (and the 728px-wide globe
+     visual inside it) sizes to its own oversized content instead of the
+     viewport, pushing the absolutely-positioned stat badges off past the
+     right edge instead of near the globe */
+  .v2-hero-content-right {
+    width: 100%;
+    justify-content: center;
+    margin-top: 40px;
   }
 }
 
 @media (max-width: 700px) {
+  .v2-hero {
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    justify-content: center;
+  }
 
   /* vertically centers the hero content within the viewport-height hero
      on mobile — .v2-hero itself is the flex column doing the centering,

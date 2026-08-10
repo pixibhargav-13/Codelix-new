@@ -359,6 +359,34 @@
   .about-studio-container {
     height: 400px;
   }
-  .studio-assembly { transform: scale(0.6) rotateX(15deg) rotateY(-20deg); }
-  .iso-rings { transform: scale(0.7); }
+  .studio-assembly { 
+    scale: 0.6; 
+    /* Keep any rotation tweaks if needed, but animation will override transform anyway. 
+       If we want rotation, we should use rotate property. */
+  }
+  .iso-rings { scale: 0.7; }
+  .tag-team { right: 0px; bottom: 0px; }
+  .tag-ownership { left: 20px; }
 }
+
+@media (max-width: 700px) {
+  .about-studio-container {
+    height: 350px;
+    margin-top: 20px;
+  }
+  .studio-assembly { scale: 0.55; }
+  .iso-rings { scale: 0.6; }
+  .tag-team { right: 10px; bottom: 10px; }
+  .tag-ownership { left: 30px; }
+}
+
+@media (max-width: 480px) {
+  .about-studio-container {
+    height: 300px;
+    margin-top: 0px;
+  }
+  .studio-assembly { scale: 0.45; }
+  .iso-rings { scale: 0.5; }
+}
+
+

@@ -487,7 +487,7 @@ export default function AdditionalServiceDetailV2() {
         .map((cs) => ({ href: `/case-study-v2/${cs.slug}`, image: cs.image, category: cs.category, title: cs.title }))
     : [];
   const staticWork = svc.relatedCategory
-    ? PROJECTS.filter((p) => p.category === svc.relatedCategory).map((p) => ({ href: p.href, image: p.image, category: p.category, title: p.title }))
+    ? PROJECTS.filter((p) => p.category === svc.relatedCategory).map((p) => ({ href: `/case-study-v2${p.href}`, image: p.image, category: p.category, title: p.title }))
     : [];
   const relatedWork = [...adminWork, ...staticWork].slice(0, 3);
 
@@ -505,16 +505,16 @@ export default function AdditionalServiceDetailV2() {
       {/* ══════════ 1 · HERO ══════════ */}
       <header className="sd2-hero">
         <div className="sd2-hero-inner">
-          <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-            <a href="/preview-v2">Home</a>
-            <span>/</span>
-            <a href="/services-v2">Services</a>
-            <span>/</span>
-            <em>{svc.title}</em>
-          </nav>
-
           <div className="sd2-hero-main">
             <div>
+              <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
+                <a href="/preview-v2">Home</a>
+                <span>/</span>
+                <a href="/services-v2">Services</a>
+                <span>/</span>
+                <em>{svc.title}</em>
+              </nav>
+
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Service</span>
               </div>

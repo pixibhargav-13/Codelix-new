@@ -22,8 +22,15 @@
 }
 
 @keyframes slowPulse {
-  0% { opacity: 0.7; transform: translate(-50%, -50%) scale(0.95); }
-  100% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+  0% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
 }
 
 /* The Board */
@@ -32,6 +39,7 @@
   width: 500px;
   height: 420px;
   z-index: 2;
+  flex-shrink: 0;
 }
 
 /* ────────── NODES ────────── */
@@ -41,7 +49,7 @@
   height: 140px;
   border-radius: 16px;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.02));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.02));
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 10;
   opacity: 0.5;
@@ -62,10 +70,25 @@
 }
 
 /* Node Positioning */
-.node-1 { top: 0; left: 0; }
-.node-2 { top: 0; right: 0; }
-.node-3 { bottom: 0; right: 0; }
-.node-4 { bottom: 0; left: 0; }
+.node-1 {
+  top: 0;
+  left: 0;
+}
+
+.node-2 {
+  top: 0;
+  right: 0;
+}
+
+.node-3 {
+  bottom: 0;
+  right: 0;
+}
+
+.node-4 {
+  bottom: 0;
+  left: 0;
+}
 
 .node-glass {
   position: relative;
@@ -151,23 +174,52 @@
   animation: waveAnim 1.2s ease-in-out infinite alternate;
   opacity: 0.6;
 }
-.flow-node.current .mini-wave { opacity: 1; box-shadow: 0 0 8px #0096ff; }
 
-.w-1 { height: 12px; animation-delay: 0.0s; }
-.w-2 { height: 20px; animation-delay: 0.2s; }
-.w-3 { height: 28px; animation-delay: 0.4s; }
-.w-4 { height: 16px; animation-delay: 0.6s; }
-.w-5 { height: 10px; animation-delay: 0.8s; }
+.flow-node.current .mini-wave {
+  opacity: 1;
+  box-shadow: 0 0 8px #0096ff;
+}
+
+.w-1 {
+  height: 12px;
+  animation-delay: 0.0s;
+}
+
+.w-2 {
+  height: 20px;
+  animation-delay: 0.2s;
+}
+
+.w-3 {
+  height: 28px;
+  animation-delay: 0.4s;
+}
+
+.w-4 {
+  height: 16px;
+  animation-delay: 0.6s;
+}
+
+.w-5 {
+  height: 10px;
+  animation-delay: 0.8s;
+}
 
 @keyframes waveAnim {
-  0% { transform: scaleY(0.4); }
-  100% { transform: scaleY(1); }
+  0% {
+    transform: scaleY(0.4);
+  }
+
+  100% {
+    transform: scaleY(1);
+  }
 }
 
 /* 2. Scope Grid */
 .visual-grid {
   gap: 6px;
 }
+
 .vg-box {
   width: 30%;
   height: 24px;
@@ -175,6 +227,7 @@
   border-radius: 4px;
   border: 1px solid transparent;
 }
+
 .flow-node.current .vg-box {
   background: rgba(0, 150, 255, 0.15);
   border-color: rgba(0, 150, 255, 0.4);
@@ -190,14 +243,24 @@
   color: rgba(255, 255, 255, 0.5);
   gap: 2px;
 }
-.flow-node.current .visual-term { color: #a3c2ff; }
-.vt-line.success { color: rgba(255, 255, 255, 0.3); }
-.flow-node.current .vt-line.success { color: #4ade80; }
+
+.flow-node.current .visual-term {
+  color: #a3c2ff;
+}
+
+.vt-line.success {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.flow-node.current .vt-line.success {
+  color: #4ade80;
+}
 
 /* 4. Launch Progress */
 .visual-launch {
   width: 100%;
 }
+
 .vl-bar {
   width: 100%;
   height: 6px;
@@ -205,6 +268,7 @@
   border-radius: 3px;
   overflow: hidden;
 }
+
 .vl-progress {
   width: 0%;
   height: 100%;
@@ -212,6 +276,7 @@
   border-radius: 3px;
   transition: width 1s ease;
 }
+
 .flow-node.current .vl-progress {
   width: 100%;
   box-shadow: 0 0 10px #4ade80;
@@ -228,8 +293,15 @@
 }
 
 @keyframes expandRing {
-  0% { transform: scale(1); opacity: 0.5; }
-  100% { transform: scale(1.1); opacity: 0; }
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1.1);
+    opacity: 0;
+  }
 }
 
 /* ────────── PATH CONNECTIONS ────────── */
@@ -237,7 +309,8 @@
   position: absolute;
   background: rgba(255, 255, 255, 0.15);
   border-radius: 2px;
-  z-index: 1; /* Always stays safely behind nodes */
+  z-index: 1;
+  /* Always stays safely behind nodes */
 }
 
 .flow-path.active {
@@ -261,17 +334,32 @@
 }
 
 .pulse-right {
-  top: -1px; left: 0;
-  width: 20px; height: 4px;
+  top: -1px;
+  left: 0;
+  width: 20px;
+  height: 4px;
   background: linear-gradient(90deg, transparent, #0096ff 50%, #fff);
   animation: runRight 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 @keyframes runRight {
-  0% { left: 0; opacity: 0; }
-  15% { opacity: 1; }
-  85% { opacity: 1; }
-  100% { left: 40px; opacity: 0; }
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 40px;
+    opacity: 0;
+  }
 }
 
 /* Path 2 -> 3 (Right vertical) */
@@ -283,17 +371,32 @@
 }
 
 .pulse-down {
-  top: 0; left: -1px;
-  width: 4px; height: 30px;
+  top: 0;
+  left: -1px;
+  width: 4px;
+  height: 30px;
   background: linear-gradient(180deg, transparent, #0096ff 50%, #fff);
   animation: runDown 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 @keyframes runDown {
-  0% { top: 0; opacity: 0; }
-  15% { opacity: 1; }
-  85% { opacity: 1; }
-  100% { top: 110px; opacity: 0; }
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 110px;
+    opacity: 0;
+  }
 }
 
 /* Path 3 -> 4 (Bottom horizontal, right to left) */
@@ -305,17 +408,32 @@
 }
 
 .pulse-left {
-  top: -1px; right: 0;
-  width: 20px; height: 4px;
+  top: -1px;
+  right: 0;
+  width: 20px;
+  height: 4px;
   background: linear-gradient(270deg, transparent, #0096ff 50%, #fff);
   animation: runLeft 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 @keyframes runLeft {
-  0% { right: 0; opacity: 0; }
-  15% { opacity: 1; }
-  85% { opacity: 1; }
-  100% { right: 40px; opacity: 0; }
+  0% {
+    right: 0;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    right: 40px;
+    opacity: 0;
+  }
 }
 
 /* Responsive constraints */
@@ -323,9 +441,22 @@
   .process-flow-container {
     height: auto;
     margin-left: 0;
-    padding: 40px 0;
+    padding: 0px 0;
   }
+
   .flowchart-board {
-    transform: scale(0.8);
+    scale: 0.85;
+  }
+}
+
+@media (max-width: 700px) {
+  .flowchart-board {
+    scale: 0.75;
+  }
+}
+
+@media (max-width: 480px) {
+  .flowchart-board {
+    scale: 0.7;
   }
 }
