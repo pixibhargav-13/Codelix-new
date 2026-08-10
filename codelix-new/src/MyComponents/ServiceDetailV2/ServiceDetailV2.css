@@ -151,6 +151,12 @@
   overflow: hidden;
 }
 
+@media (max-width: 860px) {
+  .sd2-hero {
+    padding-top: 118px !important;
+  }
+}
+
 .sd2-hero::before {
   content: "";
   position: absolute;

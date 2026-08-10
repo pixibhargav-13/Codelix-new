@@ -1,6 +1,22 @@
 .shv-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .shv-container {
+    transform: scale(0.85);
+    transform-origin: center center;
+    height: 425px;
+  }
+}
+
+.shv-inner {
   position: relative;
   width: 100%;
+  max-width: 500px;
   height: 500px;
   display: flex;
   align-items: center;

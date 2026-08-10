@@ -36,7 +36,8 @@ const ServicesHeroVisual = () => {
   }, []);
 
   return (
-    <div className="shv-container" ref={containerRef}>
+    <div className="shv-container">
+      <div className="shv-inner" ref={containerRef}>
       
       {/* Background Glow */}
       <div className="shv-glow"></div>
@@ -159,6 +160,7 @@ const ServicesHeroVisual = () => {
         </div>
       </div>
 
+      </div>
     </div>
   );
 };
