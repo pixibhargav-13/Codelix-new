@@ -13,82 +13,84 @@ import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./SitemapV2.css";
 
 import { CASE_STUDIES } from "../CaseStudyDetailV2/caseStudiesData";
+import { useCaseStudies } from "../CaseStudyDetailV2/useCaseStudies";
 import { blogs, slugify } from "../../data/blogData";
+import { useBlogPosts } from "../../data/useBlogPosts";
 import { INDUSTRIES } from "../IndustriesV2/industriesData";
 import { PRODUCTS } from "../ProductsV2/productsData";
 import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from '../Shared/CtaSection';
 
 
-/* every route here is a real <Route> registered in App.jsx — only the new
-   v2-theme pages, not the legacy site */
-const GROUPS = [
-  {
-    title: "Main",
-    links: [
-      { label: "Homepage", href: "/" },
-      { label: "About", href: "/about" },
-      { label: "Team", href: "/team" },
-      { label: "Work", href: "/work" },
-      { label: "Case Studies", href: "/case-study" },
-      { label: "Blog", href: "/blog" },
-      { label: "Industries We Serve", href: "/industries" },
-      { label: "Process", href: "/process" },
-      { label: "Contact", href: "/contact" },
-    ],
-  },
-  {
-    /* was a hand-picked 7 of the 8 core services — missed Support &
-       Managed Services entirely and all 18 additional service pages
-       (only reachable via the footer's "More Services" row + the
-       /services/:slug catch-all route). FOOTER_ALL_SERVICES is the
-       real, complete, already-arranged list of all 26 — same source of
-       truth as the footer, so nothing here can drift out of sync again. */
-    title: "Services",
-    links: [
-      { label: "Services", href: "/services" },
-      ...FOOTER_ALL_SERVICES.map((s) => ({ label: s.label, href: s.path })),
-    ],
-  },
-  {
-    title: "Industries",
-    links: INDUSTRIES.map(ind => ({ label: ind.title, href: `/industries/${ind.slug}` }))
-  },
-  {
-    title: "Products",
-    links: PRODUCTS.map(p => ({ label: p.name, href: `/products/${p.slug}` }))
-  },
-  {
-    title: "Case Studies",
-    links: CASE_STUDIES.map(cs => ({ label: cs.title, href: `/case-study/${cs.slug}` }))
-  },
-  {
-    title: "Blog Articles",
-    links: blogs.map(b => ({ label: b.title, href: `/blog/${slugify(b.title)}` }))
-  },
-  {
-    title: "Resources",
-    links: [
-      { label: "Pricing", href: "/pricing" },
-      { label: "Technologies", href: "/technologies" },
-      { label: "Careers", href: "/careers" },
-      { label: "FAQ", href: "/faq" },
-      { label: "Sitemap", href: "/sitemap" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { label: "Terms of Service", href: "/terms-of-service" },
-      { label: "Privacy Policy", href: "/privacy-policy" },
-      { label: "Refund Policy", href: "/refund-policy" },
-    ],
-  },
-];
-
-const TOTAL_LINKS = GROUPS.reduce((n, g) => n + g.links.length, 0);
-
 export default function SitemapV2() {
+  const caseStudiesDynamic = useCaseStudies();
+  const blogsDynamic = useBlogPosts();
+
+  const GROUPS = useMemo(() => [
+    {
+      title: "Main",
+      links: [
+        { label: "Homepage", href: "/" },
+        { label: "About", href: "/about" },
+        { label: "Team", href: "/team" },
+        { label: "Work", href: "/work" },
+        { label: "Case Studies", href: "/case-study" },
+        { label: "Blog", href: "/blog" },
+        { label: "Industries We Serve", href: "/industries" },
+        { label: "Process", href: "/process" },
+        { label: "Contact", href: "/contact" },
+      ],
+    },
+    {
+      /* was a hand-picked 7 of the 8 core services — missed Support &
+         Managed Services entirely and all 18 additional service pages
+         (only reachable via the footer's "More Services" row + the
+         /services/:slug catch-all route). FOOTER_ALL_SERVICES is the
+         real, complete, already-arranged list of all 26 — same source of
+         truth as the footer, so nothing here can drift out of sync again. */
+      title: "Services",
+      links: [
+        { label: "Services", href: "/services" },
+        ...FOOTER_ALL_SERVICES.map((s) => ({ label: s.label, href: s.path })),
+      ],
+    },
+    {
+      title: "Industries",
+      links: INDUSTRIES.map(ind => ({ label: ind.title, href: `/industries/${ind.slug}` }))
+    },
+    {
+      title: "Products",
+      links: PRODUCTS.map(p => ({ label: p.name, href: `/products/${p.slug}` }))
+    },
+    {
+      title: "Case Studies",
+      links: caseStudiesDynamic.map(cs => ({ label: cs.title, href: `/case-study/${cs.slug}` }))
+    },
+    {
+      title: "Blog Articles",
+      links: blogsDynamic.map(b => ({ label: b.title, href: `/blog/${b.slug || slugify(b.title)}` }))
+    },
+    {
+      title: "Resources",
+      links: [
+        { label: "Pricing", href: "/pricing" },
+        { label: "Technologies", href: "/technologies" },
+        { label: "Careers", href: "/careers" },
+        { label: "FAQ", href: "/faq" },
+        { label: "Sitemap", href: "/sitemap" },
+      ],
+    },
+    {
+      title: "Legal",
+      links: [
+        { label: "Terms of Service", href: "/terms-of-service" },
+        { label: "Privacy Policy", href: "/privacy-policy" },
+        { label: "Refund Policy", href: "/refund-policy" },
+      ],
+    },
+  ], [caseStudiesDynamic, blogsDynamic]);
+
+  const TOTAL_LINKS = useMemo(() => GROUPS.reduce((n, g) => n + g.links.length, 0), [GROUPS]);
   
   
   
