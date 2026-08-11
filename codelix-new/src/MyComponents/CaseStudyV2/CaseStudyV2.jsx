@@ -2,11 +2,9 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import { ArrowUpRight } from "lucide-react";
-import CtaVisual from "../HomepageV2/CtaVisual";
 
 /* v2 design system — same source of truth as the other v2 pages */
 import "../HomepageV2/HomepageV2.css";
-import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
@@ -17,6 +15,8 @@ import "./CaseStudyV2.css";
 import { PROJECTS } from "../WorkV2/projectsData";
 import { useCaseStudies } from "../CaseStudyDetailV2/useCaseStudies";
 import NavbarV2 from "../Shared/NavbarV2";
+import CtaSection from '../Shared/CtaSection';
+import ClientStrip from '../Shared/ClientStrip';
 
 
 /* v2 case-study detail pages live at /case-study/:slug, reusing the
@@ -38,7 +38,6 @@ export default function CaseStudyV2() {
   const [category, setCategory] = useState("All");
 
   const rootRef = useRef(null);
-  const stripRef = useRef(null);
 
   
 
@@ -98,33 +97,6 @@ export default function CaseStudyV2() {
     return () => io.disconnect();
   }, []);
 
-  /* client strip drift, pausing on hover */
-  useEffect(() => {
-    const track = stripRef.current;
-    if (!track) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let raf = 0, x = 0, paused = false, last = performance.now();
-    const step = (now) => {
-      const dt = now - last; last = now;
-      if (!paused) {
-        x -= 0.00125 * dt;
-        if (x <= -50) x += 50;
-        track.style.transform = `translateX(${x}%)`;
-      }
-      raf = requestAnimationFrame(step);
-    };
-    raf = requestAnimationFrame(step);
-    const wrap = track.parentElement;
-    const on = () => { paused = true; };
-    const off = () => { paused = false; };
-    wrap.addEventListener("mouseenter", on);
-    wrap.addEventListener("mouseleave", off);
-    return () => {
-      cancelAnimationFrame(raf);
-      wrap.removeEventListener("mouseenter", on);
-      wrap.removeEventListener("mouseleave", off);
-    };
-  }, []);
 
   /* admin-created case studies (published via Supabase) aren't part of the
      static PROJECTS list, so they need to be reshaped into the same
@@ -276,20 +248,11 @@ export default function CaseStudyV2() {
       </section>
 
       {/* ══════════ 4 · CLIENT STRIP ══════════ */}
-      <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
-        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 40+ companies</p>
-        <div className="v2-strip">
-          <div className="v2-strip-track" ref={stripRef}>
-            {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
-              <img key={i} src={logo} alt="" loading="lazy" />
-            ))}
-          </div>
-        </div>
-      </section>
+      <ClientStrip />
 
       {/* ══════════ 5 · CTA ══════════ */}
-      <section className="v2-section v2-section--void v2-cta-shell csv2-cta-shell">
-        <div className="v2-cta">
+      <CtaSection className="v2-section--void  csv2-cta-shell">
+        
           <p className="v2-label">Start Here</p>
           <h2 className="v2-cta-headline">
             Like what you see?<br />Let's build yours next.
@@ -299,19 +262,8 @@ export default function CaseStudyV2() {
             built the same way as everything above.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Start a project →</a>
-          </div>
-          <div className="v2-cta-badges">
-            <span className="v2-cta-badge">Free consultation</span>
-            <span className="v2-cta-badge">NDA on request</span>
-            <span className="v2-cta-badge">No obligation</span>
-          </div>
-        </div>
-
-        <aside className="v2-cta-visual">
-          <CtaVisual />
-        </aside>
-      </section>
+            <a className="v2-btn" href="/contact">Start a project →</a></div>
+</CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
             <FooterV2 />

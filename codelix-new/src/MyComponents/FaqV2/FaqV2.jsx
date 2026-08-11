@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import { Search } from "lucide-react";
-import CtaVisual from "../HomepageV2/CtaVisual";
 
 /* v2 design system — same source of truth as the other v2 pages */
 
@@ -14,6 +13,8 @@ import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./FaqV2.css";
 import FaqHeroVisual from "./FaqHeroVisual";
 import NavbarV2 from "../Shared/NavbarV2";
+import FaqSection from '../Shared/FaqSection';
+import CtaSection from '../Shared/CtaSection';
 
 
 /* every answer here is the same real, already-established statement used
@@ -165,69 +166,11 @@ export default function FaqV2() {
       {/* ══════════ 2 · SEARCHABLE FAQ — the extraordinary section: a live
           search + category filter that narrows the list in real time, with
           each surviving row re-animating in via IntersectionObserver. ══════════ */}
-      <section className="v2-section" id="faq">
-        <div className="faqv2-toolbar">
-          <div className="faqv2-search">
-            <Search size={16} strokeWidth={1.8} aria-hidden="true" />
-            <input
-              type="text"
-              placeholder="Search a question…"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </div>
-          <div className="faqv2-cats" role="group" aria-label="Filter by category">
-            {CATEGORIES.map((c) => (
-              <button
-                key={c}
-                className={`faqv2-cat ${category === c ? "is-active" : ""}`}
-                onClick={() => setCategory(c)}
-              >
-                {c}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="faqv2-count">
-          {filtered.length} {filtered.length === 1 ? "question" : "questions"}
-          {search && <> matching "<strong>{search}</strong>"</>}
-        </div>
-
-        <div className="faqv2-list">
-          {filtered.length === 0 && (
-            <p className="faqv2-empty">No matches — try a different search or category.</p>
-          )}
-          {filtered.map((f, i) => {
-            const isNewGroup = i === 0 || filtered[i - 1].category !== f.category;
-            return (
-              <React.Fragment key={f.category + f.q}>
-                {isNewGroup && (
-                  <div className="faqv2-group-head">
-                    <span>{f.category}</span>
-                  </div>
-                )}
-                <div
-                  className={`faqv2-item ${openIdx === i ? "open" : ""} ${revealed.has(i) ? "is-in" : ""}`}
-                  data-idx={i}
-                >
-                  <button className="faqv2-q" onClick={() => setOpenIdx(openIdx === i ? -1 : i)}>
-                    <span className="faqv2-q-text">{f.q}</span>
-                    <span className="faqv2-toggle" aria-hidden="true">
-                      <span /><span />
-                    </span>
-                  </button>
-                  <div className="faqv2-a"><p>{f.a}</p></div>
-                </div>
-              </React.Fragment>
-            );
-          })}
-        </div>
-      </section>
+      <FaqSection faqs={FAQS} />
 
       {/* ══════════ CTA ══════════ */}
-      <section className="v2-section v2-section--void v2-cta-shell">
-        <div className="v2-cta">
+      <CtaSection className="v2-section--void">
+        
           <p className="v2-label">Still Have Questions?</p>
           <h2 className="v2-cta-headline">
             Tell us what you're building.<br />We'll tell you how we'd build it.
@@ -238,19 +181,8 @@ export default function FaqV2() {
             and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a>
-          </div>
-          <div className="v2-cta-badges">
-            <span className="v2-cta-badge">Free consultation</span>
-            <span className="v2-cta-badge">NDA on request</span>
-            <span className="v2-cta-badge">No obligation</span>
-          </div>
-        </div>
-
-        <aside className="v2-cta-visual">
-          <CtaVisual />
-        </aside>
-      </section>
+            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+</CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
             <FooterV2 />

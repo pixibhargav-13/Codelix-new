@@ -4,7 +4,6 @@ import gsap from "gsap";
 import { Check, X, ArrowUpRight, ExternalLink } from "lucide-react";
 import FooterV2 from "../Shared/FooterV2";
 import NavbarV2 from "../Shared/NavbarV2";
-import CtaVisual from "../HomepageV2/CtaVisual";
 import { PRODUCTS, productBySlug } from "./productsData";
 
 import "../HomepageV2/HomepageV2.css";
@@ -12,14 +11,14 @@ import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "../IndustriesV2/IndustryDetailV2.css";
 import "./ProductDetailV2.css";
+import CtaSection from '../Shared/CtaSection';
+import FaqSection from "../Shared/FaqSection";
 
 export default function ProductDetailV2() {
   const { slug } = useParams();
   const p = productBySlug(slug);
 
   const rootRef = useRef(null);
-  const [openFaq, setOpenFaq] = useState(-1);
-  const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
   const [statsRevealed, setStatsRevealed] = useState(false);
   const statsRef = useRef(null);
 
@@ -48,40 +47,20 @@ export default function ProductDetailV2() {
     const io = new IntersectionObserver(
       (entries) => entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        const el = entry.target;
-        if (el.classList.contains("v2-faq-item")) {
-          const idx = Number(el.dataset.faqIndex);
-          setRevealedFaqs((prev) => (prev.has(idx) ? prev : new Set(prev).add(idx)));
-        } else if (el.classList.contains("pd2-stats")) {
-          setStatsRevealed(true);
-          el.classList.add("is-in");
-        } else {
-          el.classList.add("is-in");
-        }
-        io.unobserve(el);
+        entry.target.classList.add("is-in");
+        io.unobserve(entry.target);
       }),
       { threshold: 0, rootMargin: "0px 0px -5% 0px" }
     );
-    const sel = [".v2-faq-item", ".v2-strip", ".v2-cta", ".v2-heading", ".v2-label", ".v2-lede", ".pd2-stats", ".pd2-reveal"].join(", ");
+    const sel = [".v2-strip", ".v2-cta", ".v2-heading", ".v2-label", ".v2-lede", ".pd2-stats", ".pd2-reveal"].join(", ");
     const targets = rootRef.current?.querySelectorAll(sel) || [];
     targets.forEach((el) => io.observe(el));
     const safety = setTimeout(() => {
-      targets.forEach((el) => {
-        if (el.classList.contains("v2-faq-item")) return;
-        el.classList.add("is-in");
-      });
+      targets.forEach((el) => el.classList.add("is-in"));
       setStatsRevealed(true);
     }, 2000);
     return () => { io.disconnect(); clearTimeout(safety); };
   }, [p]);
-
-  /* FAQ accordion height */
-  useEffect(() => {
-    rootRef.current?.querySelectorAll(".v2-faq-a").forEach((el, i) => {
-      const inner = el.querySelector("p");
-      el.style.height = i === openFaq ? `${inner.offsetHeight}px` : "0px";
-    });
-  }, [openFaq]);
 
   /* stat count-up — runs once the stats strip enters view. Numbers with
      a "+" or non-numeric characters (₹, Cr, commas) count up on the
@@ -487,27 +466,11 @@ export default function ProductDetailV2() {
 
       {/* ══════════ FAQ ══════════ */}
       {faqs.length > 0 && (
-        <section className="v2-section v2-faq-section">
-          <div className="v2-container">
-            <span className="v2-label pd2-reveal">FAQ</span>
-            <h2 className="v2-heading pd2-reveal">Common questions about {p.name}.</h2>
-            <div className="v2-faq-list">
-              {faqs.map((f, i) => (
-                <div
-                  className={`v2-faq-item ${revealedFaqs.has(i) ? "is-in" : ""} ${openFaq === i ? "open" : ""}`}
-                  key={i}
-                  data-faq-index={i}
-                >
-                  <button className="v2-faq-q" onClick={() => setOpenFaq((o) => (o === i ? -1 : i))}>
-                    <span>{f.q}</span>
-                    <i className="v2-faq-plus" />
-                  </button>
-                  <div className="v2-faq-a"><p>{f.a}</p></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <FaqSection
+          faqs={faqs}
+          label="FAQ"
+          heading={`Common questions about ${p.name}.`}
+        />
       )}
 
       {/* ══════════ OTHER PRODUCTS ══════════ */}
@@ -529,27 +492,16 @@ export default function ProductDetailV2() {
       </section>
 
       {/* ══════════ CTA ══════════ */}
-      <section className="v2-section v2-section--void v2-cta-shell">
-        <div className="v2-cta">
+      <CtaSection className="v2-section--void">
+        
           <p className="v2-label">Get Started</p>
           <h2 className="v2-cta-headline">Want {p.name} for your business?</h2>
           <p className="v2-cta-body">
             Tell us about your team and we'll walk you through a live demo.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a demo →</a>
-          </div>
-          <div className="v2-cta-badges">
-            <span className="v2-cta-badge">Free consultation</span>
-            <span className="v2-cta-badge">NDA on request</span>
-            <span className="v2-cta-badge">No obligation</span>
-          </div>
-        </div>
-
-        <aside className="v2-cta-visual">
-          <CtaVisual />
-        </aside>
-      </section>
+            <a className="v2-btn" href="/contact">Book a demo →</a></div>
+</CtaSection>
 
       <FooterV2 />
     </div>

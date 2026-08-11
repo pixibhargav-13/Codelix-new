@@ -11,20 +11,7 @@
    without needing !important.
    ============================================================ */
 
-/* ───────────── SCROLL SENTENCE (this page's copy only — the JS transform
-   was changed to translate3d(-50%,-50%,0) to match) ───────────── */
-.sd2-sentence .v2-sentence-words {
-  text-align: center;
-  font-size: clamp(38px, 8.4vw, 128px);
-}
 
-.sd2-sentence .v2-sentence-word {
-  left: 50%;
-  max-width: 20ch;
-  text-align: center;
-  line-height: 1.25;
-  transform-origin: center center;
-}
 
 /* ───────────── PRINCIPLES — rebuilt as cards, not the row-list ServicesV2
    uses for the same data shape (.sv2-principle-row), so the two pages

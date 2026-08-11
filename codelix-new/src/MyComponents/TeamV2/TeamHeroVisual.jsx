@@ -1,83 +1,117 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./TeamHeroVisual.css";
 
+/* ─── Team Command Center ───
+   An extraordinary hero visual: a glowing orbital system with the
+   founders at the center, circled by animated stat-cards, floating
+   particles, and a pulsing energy ring. Feels like a mission-control
+   dashboard from a sci-fi film. */
+
+const STATS = [
+  { value: "40+", label: "Projects shipped" },
+  { value: "100%", label: "Source-code ownership" },
+  { value: "2", label: "Founders — zero layers" },
+  { value: "24h", label: "Response time" },
+];
+
 export default function TeamHeroVisual() {
+  const containerRef = useRef(null);
+
+  /* Parallax tilt on mouse move — subtle, premium feel */
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const onMove = (e) => {
+      const rect = el.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = (e.clientX - cx) / rect.width;
+      const dy = (e.clientY - cy) / rect.height;
+      el.style.setProperty("--mx", dx.toFixed(3));
+      el.style.setProperty("--my", dy.toFixed(3));
+    };
+
+    window.addEventListener("mousemove", onMove, { passive: true });
+    return () => window.removeEventListener("mousemove", onMove);
+  }, []);
+
   return (
-    <div className="team-workspace-container">
-      {/* Ambient background glow */}
-      <div className="workspace-glow"></div>
+    <div className="thv-container" ref={containerRef}>
+      {/* Ambient glow layers */}
+      <div className="thv-glow thv-glow--1" aria-hidden="true" />
+      <div className="thv-glow thv-glow--2" aria-hidden="true" />
 
-      <div className="workspace-assembly">
-        
-        {/* The Design / UI Window (Founder 1) */}
-        <div className="founder-window design-window">
-          <div className="window-header">
-            <div className="mac-dots">
-              <span className="dot red"></span>
-              <span className="dot yellow"></span>
-              <span className="dot green"></span>
-            </div>
-            <div className="window-title">ui_architecture.fig</div>
-          </div>
-          <div className="window-body design-body">
-            {/* Abstract UI Wireframes */}
-            <div className="wire-nav"></div>
-            <div className="wire-hero">
-              <div className="wire-text-block">
-                <div className="wire-line w-80"></div>
-                <div className="wire-line w-60"></div>
-              </div>
-              <div className="wire-image-block"></div>
-            </div>
-            <div className="wire-grid">
-              <div className="wire-card"></div>
-              <div className="wire-card"></div>
-              <div className="wire-card"></div>
-            </div>
-            {/* Animated Cursor */}
-            <div className="animated-cursor design-cursor">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="#0096ff" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 2L20 12L11 14L8 22L4 2Z" stroke="#fff" strokeWidth="2" strokeLinejoin="round"/>
-              </svg>
-              <span className="cursor-name">Founder 1</span>
-            </div>
-          </div>
-        </div>
-
-        {/* The Code / Engineering Window (Founder 2) */}
-        <div className="founder-window code-window">
-          <div className="window-header">
-            <div className="mac-dots">
-              <span className="dot red"></span>
-              <span className="dot yellow"></span>
-              <span className="dot green"></span>
-            </div>
-            <div className="window-title">system_core.tsx</div>
-          </div>
-          <div className="window-body code-body">
-            {/* Abstract Code Lines */}
-            <div className="code-line"><span className="keyword">import</span> <span className="variable">&#123; core &#125;</span> <span className="keyword">from</span> <span className="string">'@codelix/engine'</span>;</div>
-            <br/>
-            <div className="code-line"><span className="keyword">export async function</span> <span className="function">deployProject</span>() &#123;</div>
-            <div className="code-line indent">  <span className="keyword">const</span> scope = <span className="keyword">await</span> <span className="function">analyze</span>();</div>
-            <div className="code-line indent">  <span className="keyword">if</span> (!scope.hasIntermediaries) &#123;</div>
-            <div className="code-line indent-2">    <span className="keyword">return</span> <span className="function">executeDirectDelivery</span>();</div>
-            <div className="code-line indent">  &#125;</div>
-            <div className="code-line">&#125;</div>
-            
-            {/* Animated Typing Cursor */}
-            <div className="typing-cursor"></div>
-          </div>
-        </div>
-
-        {/* Central "Shipped" Badge connecting them */}
-        <div className="ship-badge">
-          <div className="ship-glow"></div>
-          <span className="ship-icon">⚡</span>
-          <span className="ship-text">WE SHIP</span>
-        </div>
-
+      {/* Orbital rings */}
+      <div className="thv-orbit thv-orbit--1" aria-hidden="true">
+        <span className="thv-orbit-dot" />
       </div>
+      <div className="thv-orbit thv-orbit--2" aria-hidden="true">
+        <span className="thv-orbit-dot" />
+      </div>
+      <div className="thv-orbit thv-orbit--3" aria-hidden="true">
+        <span className="thv-orbit-dot" />
+      </div>
+
+      {/* Floating particles */}
+      <div className="thv-particles" aria-hidden="true">
+        {Array.from({ length: 20 }, (_, i) => (
+          <span
+            key={i}
+            className="thv-particle"
+            style={{
+              "--p-x": `${10 + Math.random() * 80}%`,
+              "--p-y": `${10 + Math.random() * 80}%`,
+              "--p-delay": `${Math.random() * 6}s`,
+              "--p-dur": `${3 + Math.random() * 4}s`,
+              "--p-size": `${2 + Math.random() * 3}px`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Central core — pulsing energy hub */}
+      <div className="thv-core">
+        <div className="thv-core-ring thv-core-ring--outer" />
+        <div className="thv-core-ring thv-core-ring--mid" />
+        <div className="thv-core-ring thv-core-ring--inner" />
+        <div className="thv-core-label">
+          <span className="thv-core-icon">⚡</span>
+          <span className="thv-core-text">DIRECT<br />ACCESS</span>
+        </div>
+      </div>
+
+      {/* Glassmorphic stat cards — orbiting */}
+      <div className="thv-stats">
+        {STATS.map((s, i) => (
+          <div
+            key={s.label}
+            className="thv-stat-card"
+            style={{ "--card-i": i, "--card-total": STATS.length }}
+          >
+            <span className="thv-stat-value">{s.value}</span>
+            <span className="thv-stat-label">{s.label}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Corner accents — tech grid lines */}
+      <svg className="thv-grid-lines" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+        {/* top-left corner bracket */}
+        <path d="M2,40 L2,2 L40,2" stroke="rgba(79,178,255,.25)" strokeWidth="1" />
+        {/* top-right corner bracket */}
+        <path d="M360,2 L398,2 L398,40" stroke="rgba(168,107,255,.25)" strokeWidth="1" />
+        {/* bottom-left corner bracket */}
+        <path d="M2,360 L2,398 L40,398" stroke="rgba(168,107,255,.25)" strokeWidth="1" />
+        {/* bottom-right corner bracket */}
+        <path d="M360,398 L398,398 L398,360" stroke="rgba(79,178,255,.25)" strokeWidth="1" />
+        {/* Cross-hair lines through center */}
+        <line x1="200" y1="0" x2="200" y2="400" stroke="rgba(255,255,255,.03)" strokeWidth="1" strokeDasharray="4 8" />
+        <line x1="0" y1="200" x2="400" y2="200" stroke="rgba(255,255,255,.03)" strokeWidth="1" strokeDasharray="4 8" />
+      </svg>
+
+      {/* Bottom tag */}
+      <span className="thv-tag">FOUNDER-LED · NO MIDDLEMEN · FULL TRANSPARENCY</span>
     </div>
   );
 }

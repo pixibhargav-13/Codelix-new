@@ -8,8 +8,6 @@ import {
 import FooterV2 from "../Shared/FooterV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
-import CtaVisual from "../HomepageV2/CtaVisual";
-import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import { TECH_STACK } from "../HomepageV2/techStack";
 import { INDUSTRIES, industryBySlug, WORK_INDUSTRY_MAP } from "./industriesData";
 import { PROJECTS } from "../WorkV2/projectsData";
@@ -21,6 +19,9 @@ import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./IndustriesV2.css";
 import "./IndustryDetailV2.css";
+import FaqSection from '../Shared/FaqSection';
+import CtaSection from '../Shared/CtaSection';
+import ClientStrip from '../Shared/ClientStrip';
 
 /* the 7 core service names that ever appear in industriesData.js's
    `services` arrays — real routes to the actual core service pages, not
@@ -54,7 +55,7 @@ const STATIC_QUOTES = [
    visual everywhere else. */
 const TICKER_FACTS = [
   "11 industries served",
-  "30+ projects across sectors",
+  "40+ projects across sectors",
   "100% source-code ownership, every project",
   "0% retained access after handover",
   "Fixed scope, fixed price",
@@ -75,13 +76,10 @@ export default function IndustryDetailV2() {
   const { slug } = useParams();
   const svc = industryBySlug(slug);
 
-  const [openFaq, setOpenFaq] = useState(-1);
-  const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
   const [blueprintActive, setBlueprintActive] = useState(-1);
   const [flippedCard, setFlippedCard] = useState(-1);
 
   const rootRef = useRef(null);
-  const stripRef = useRef(null);
   const shiftWrapRef = useRef(null);
   const shiftStageRef = useRef(null);
   const blueprintWrapRef = useRef(null);
@@ -123,12 +121,9 @@ export default function IndustryDetailV2() {
       (entries) => entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         const el = entry.target;
-        if (el.classList.contains("v2-faq-item")) {
-          const idx = Number(el.dataset.faqIndex);
-          setRevealedFaqs((prev) => (prev.has(idx) ? prev : new Set(prev).add(idx)));
-        } else {
+        
           el.classList.add("is-in");
-        }
+        
         io.unobserve(el);
       }),
       { threshold: 0, rootMargin: "0px 0px -5% 0px" }
@@ -151,42 +146,6 @@ export default function IndustryDetailV2() {
       clearTimeout(safety);
     };
   }, [svc, testimonials.length, caseStudies.length]);
-
-  /* FAQ accordion height */
-  useEffect(() => {
-    rootRef.current?.querySelectorAll(".v2-faq-a").forEach((el, i) => {
-      const inner = el.querySelector("p");
-      el.style.height = i === openFaq ? `${inner.offsetHeight}px` : "0px";
-    });
-  }, [openFaq]);
-
-  /* client strip drift, pausing on hover */
-  useEffect(() => {
-    const track = stripRef.current;
-    if (!track) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let raf = 0, x = 0, paused = false, last = performance.now();
-    const step = (now) => {
-      const dt = now - last; last = now;
-      if (!paused) {
-        x -= 0.00125 * dt;
-        if (x <= -50) x += 50;
-        track.style.transform = `translateX(${x}%)`;
-      }
-      raf = requestAnimationFrame(step);
-    };
-    raf = requestAnimationFrame(step);
-    const wrap = track.parentElement;
-    const on = () => { paused = true; };
-    const off = () => { paused = false; };
-    wrap.addEventListener("mouseenter", on);
-    wrap.addEventListener("mouseleave", off);
-    return () => {
-      cancelAnimationFrame(raf);
-      wrap.removeEventListener("mouseenter", on);
-      wrap.removeEventListener("mouseleave", off);
-    };
-  }, []);
 
   /* the extraordinary section — "The Shift": a scroll-driven wipe reveal.
      A tall wrapper gives the section scroll length; the stage inside pins
@@ -370,16 +329,7 @@ export default function IndustryDetailV2() {
       </section>
 
       {/* ══════════ 2b · CLIENT STRIP ══════════ */}
-      <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
-        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 40+ companies</p>
-        <div className="v2-strip">
-          <div className="v2-strip-track" ref={stripRef}>
-            {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
-              <img key={i} src={logo} alt="" loading="lazy" />
-            ))}
-          </div>
-        </div>
-      </section>
+      <ClientStrip />
 
       {/* ══════════ 3 · THE SHIFT — extraordinary scroll-wipe section ══════════ */}
       <section className="v2-section" id="shift">
@@ -511,7 +461,7 @@ export default function IndustryDetailV2() {
         heading={`What clients say about our ${svc.title.toLowerCase()} work.`}
         stats={[
           { num: "11", label: "Industries served" },
-          { num: "30+", label: "Projects across sectors" },
+          { num: "40+", label: "Projects across sectors" },
           { num: "100%", label: "Source code ownership" },
         ]}
       />
@@ -588,35 +538,7 @@ export default function IndustryDetailV2() {
       </section>
 
       {/* ══════════ 9 · FAQ ══════════ */}
-      <section className="v2-section v2-section--void" id="faq">
-        <div className="v2-faq-intro">
-          <div>
-            <p className="v2-label">FAQ</p>
-            <h2 className="v2-heading">{svc.title} questions.</h2>
-          </div>
-          <p className="v2-lede v2-faq-note">
-            Don't see yours here? <a href="/contact">Ask us directly →</a>
-          </p>
-        </div>
-        <div>
-          {faqs.map((f, i) => (
-            <div
-              className={`v2-faq-item ${openFaq === i ? "open" : ""} ${revealedFaqs.has(i) ? "is-in" : ""}`}
-              data-faq-index={i}
-              key={f.q}
-            >
-              <button className="v2-faq-q" onClick={() => setOpenFaq(openFaq === i ? -1 : i)}>
-                <span className="v2-faq-q-label">
-                  <span className="v2-faq-index">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="v2-faq-q-text">{f.q}</span>
-                </span>
-                <span className="v2-faq-sign"><span /><span /></span>
-              </button>
-              <div className="v2-faq-a"><p>{f.a}</p></div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <FaqSection faqs={faqs} className="v2-section--void" />
 
       {/* ══════════ 10 · OTHER INDUSTRIES ══════════ */}
       <section className="v2-section" id="other">
@@ -638,8 +560,8 @@ export default function IndustryDetailV2() {
       </section>
 
       {/* ══════════ 11 · CTA ══════════ */}
-      <section className="v2-section v2-section--void v2-cta-shell">
-        <div className="v2-cta">
+      <CtaSection className="v2-section--void">
+        
           <p className="v2-label">Start Here</p>
           <h2 className="v2-cta-headline">
             Tell us about your {svc.title.toLowerCase()} project.<br />We'll tell you how we'd build it.
@@ -649,19 +571,8 @@ export default function IndustryDetailV2() {
             not a generic pitch reused across every client.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a>
-          </div>
-          <div className="v2-cta-badges">
-            <span className="v2-cta-badge">Free consultation</span>
-            <span className="v2-cta-badge">NDA on request</span>
-            <span className="v2-cta-badge">No obligation</span>
-          </div>
-        </div>
-
-        <aside className="v2-cta-visual">
-          <CtaVisual />
-        </aside>
-      </section>
+            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+</CtaSection>
 
       <FooterV2 />
     </div>

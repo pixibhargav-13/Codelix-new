@@ -7,11 +7,9 @@ import gsap from "gsap";
 
 import "../HomepageV2/HomepageV2.css";
 
-import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
-import CtaVisual from "../HomepageV2/CtaVisual";
 import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
-import { STATIC_TESTIMONIALS } from "../../data/staticTestimonials";
+import { STATIC_TESTIMONIALS } from "../../data/testimonialsData";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 
@@ -27,6 +25,10 @@ import techCanva from "../Images/canva.png";
 import { PROJECTS } from "../WorkV2/projectsData";
 import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 import NavbarV2 from "../Shared/NavbarV2";
+import ScrollSentence from '../Shared/ScrollSentence';
+import FaqSection from '../Shared/FaqSection';
+import CtaSection from '../Shared/CtaSection';
+import ClientStrip from '../Shared/ClientStrip';
 
 
 const UIUX_STACK = [
@@ -187,100 +189,6 @@ const SENTENCE = [
    kept as its own local copy so each page can tune timing independently */
 const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
 
-function ScrollSentence({ words, tone }) {
-  const ref = useRef(null);
-  const wordRefs = useRef([]);
-  const bgRefs = useRef([]);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    let raf = 0, running = false, target = 0, current = 0, primed = false;
-
-    const readTarget = () => {
-      const r = el.getBoundingClientRect();
-      const scrollable = r.height - window.innerHeight;
-      if (scrollable <= 0) return 0;
-      const raw = (-r.top) / scrollable;
-      const norm = Math.min(Math.max((raw - 0.06) / 0.86, 0), 0.9999);
-      return norm * words.length;
-    };
-
-    const IN_END = 0.2;
-    const OUT_START = 0.8;
-
-    const paint = (t) => {
-      words.forEach((_, i) => {
-        const d = Math.min(Math.max(t - i, 0), 1);
-        const wordEl = wordRefs.current[i];
-        const bgEl = bgRefs.current[i];
-
-        let scale, opacity, blur;
-        if (d < IN_END) {
-          const p = scrollSentenceEase(d / IN_END);
-          scale = 0.78 + p * 0.22; opacity = p; blur = 5 * (1 - p);
-        } else if (d <= OUT_START) {
-          scale = 1; opacity = 1; blur = 0;
-        } else {
-          const p = scrollSentenceEase((d - OUT_START) / (1 - OUT_START));
-          scale = 1 + p * 0.22; opacity = 1 - p; blur = 6 * p;
-        }
-
-        if (wordEl) {
-          wordEl.style.opacity = opacity;
-          wordEl.style.transform = `translate3d(-50%,-50%,0) scale(${scale})`;
-          wordEl.style.filter = blur > 0.01 ? `blur(${blur}px)` : "none";
-        }
-        if (bgEl) bgEl.style.opacity = scrollSentenceEase(Math.min(d / IN_END, 1));
-      });
-    };
-
-    const tick = () => {
-      const diff = target - current;
-      if (Math.abs(diff) < 0.0002) {
-        current = target; paint(current); running = false; raf = 0; return;
-      }
-      current += diff * 0.12;
-      paint(current);
-      raf = requestAnimationFrame(tick);
-    };
-    const kick = () => {
-      target = readTarget();
-      if (!primed) { current = target; primed = true; }
-      if (!running) { running = true; raf = requestAnimationFrame(tick); }
-    };
-
-    window.addEventListener("scroll", kick, { passive: true });
-    window.addEventListener("resize", kick);
-    kick();
-    return () => {
-      window.removeEventListener("scroll", kick);
-      window.removeEventListener("resize", kick);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, [words]);
-
-  return (
-    <section className={`v2-sentence v2-sentence--${tone} sd2-sentence`} ref={ref}>
-      <div className="v2-sentence-sticky">
-        <div className="v2-sentence-bgs" aria-hidden="true">
-          {words.map((w, i) => (
-            <span className="v2-sentence-bg" style={{ zIndex: i }}
-              ref={(elm) => (bgRefs.current[i] = elm)} key={"bg" + i} />
-          ))}
-        </div>
-        <div className="v2-sentence-words">
-          {words.map((w, i) => (
-            <span className="v2-sentence-word"
-              ref={(elm) => (wordRefs.current[i] = elm)} key={w + i}>{w}</span>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 
 const TECH_CATEGORIES = [
@@ -317,15 +225,12 @@ export default function UIUXDesignV2() {
   
   
   
-  const [openFaq, setOpenFaq] = useState(-1);
-  const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
   const [incActive, setIncActive] = useState(0);
   const [estType, setEstType] = useState("mobile");
   const [estScale, setEstScale] = useState("s");
   const [estAddons, setEstAddons] = useState(() => new Set());
 
   const rootRef = useRef(null);
-  const stripRef = useRef(null);
 
   const estimate = useMemo(() => {
     const t = EST_TYPES.find((x) => x.id === estType) || EST_TYPES[0];
@@ -389,12 +294,9 @@ export default function UIUXDesignV2() {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           const el = entry.target;
-          if (el.classList.contains("v2-faq-item")) {
-            const idx = Number(el.dataset.faqIndex);
-            setRevealedFaqs((prev) => (prev.has(idx) ? prev : new Set(prev).add(idx)));
-          } else {
+          
             el.classList.add("is-in");
-          }
+          
           io.unobserve(el);
         });
       },
@@ -411,33 +313,6 @@ export default function UIUXDesignV2() {
     return () => io.disconnect();
   }, []);
 
-  /* client strip drift, pausing on hover */
-  useEffect(() => {
-    const track = stripRef.current;
-    if (!track) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let raf = 0, x = 0, paused = false, last = performance.now();
-    const step = (now) => {
-      const dt = now - last; last = now;
-      if (!paused) {
-        x -= 0.00125 * dt;
-        if (x <= -50) x += 50;
-        track.style.transform = `translateX(${x}%)`;
-      }
-      raf = requestAnimationFrame(step);
-    };
-    raf = requestAnimationFrame(step);
-    const wrap = track.parentElement;
-    const on = () => { paused = true; };
-    const off = () => { paused = false; };
-    wrap.addEventListener("mouseenter", on);
-    wrap.addEventListener("mouseleave", off);
-    return () => {
-      cancelAnimationFrame(raf);
-      wrap.removeEventListener("mouseenter", on);
-      wrap.removeEventListener("mouseleave", off);
-    };
-  }, []);
 
   /* benchmark numbers count up when scrolled in */
   useEffect(() => {
@@ -524,13 +399,6 @@ export default function UIUXDesignV2() {
     });
   }, []);
 
-  /* FAQ accordion height */
-  useEffect(() => {
-    rootRef.current.querySelectorAll(".v2-faq-a").forEach((el, i) => {
-      const inner = el.querySelector("p");
-      el.style.height = i === openFaq ? `${inner.offsetHeight}px` : "0px";
-    });
-  }, [openFaq]);
 
   return (
     <div className="v2" ref={rootRef}>
@@ -617,16 +485,7 @@ export default function UIUXDesignV2() {
       </section>
 
       {/* ══════════ 2b · CLIENT STRIP ══════════ */}
-      <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
-        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 40+ companies</p>
-        <div className="v2-strip">
-          <div className="v2-strip-track" ref={stripRef}>
-            {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
-              <img key={i} src={logo} alt="" loading="lazy" />
-            ))}
-          </div>
-        </div>
-      </section>
+      <ClientStrip />
 
       {/* ══════════ 3 · WHAT'S INCLUDED ══════════ */}
       <section className="v2-section" id="included">
@@ -923,7 +782,7 @@ export default function UIUXDesignV2() {
         heading="What clients say once we ship."
         stats={[
           { num: "40+", label: "Companies trust us" },
-          { num: "6", label: "Services delivered" },
+          { num: "11", label: "Industries served" },
           { num: "100%", label: "Source code ownership" },
         ]}
       />
@@ -1057,38 +916,10 @@ export default function UIUXDesignV2() {
       </section>
 
       {/* ══════════ 14b · SCROLL SENTENCE ══════════ */}
-      <ScrollSentence words={SENTENCE} tone="dark" />
+      <ScrollSentence words={SENTENCE} tone="dark"  centered={true} />
 
       {/* ══════════ 15 · FAQ ══════════ */}
-      <section className="v2-section v2-section--void" id="faq">
-        <div className="v2-faq-intro">
-          <div>
-            <p className="v2-label">FAQ</p>
-            <h2 className="v2-heading">UI/UX design questions.</h2>
-          </div>
-          <p className="v2-lede v2-faq-note">
-            Don't see yours here? <a href="/contact">Ask us directly →</a>
-          </p>
-        </div>
-        <div>
-          {FAQS.map((f, i) => (
-            <div
-              className={`v2-faq-item ${openFaq === i ? "open" : ""} ${revealedFaqs.has(i) ? "is-in" : ""}`}
-              data-faq-index={i}
-              key={f.q}
-            >
-              <button className="v2-faq-q" onClick={() => setOpenFaq(openFaq === i ? -1 : i)}>
-                <span className="v2-faq-q-label">
-                  <span className="v2-faq-index">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="v2-faq-q-text">{f.q}</span>
-                </span>
-                <span className="v2-faq-sign"><span /><span /></span>
-              </button>
-              <div className="v2-faq-a"><p>{f.a}</p></div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <FaqSection faqs={FAQS} className="v2-section--void" />
 
       {/* ══════════ 16 · WHAT HAPPENS NEXT ══════════ */}
       <section className="v2-section v2-section--void" id="next">
@@ -1139,8 +970,8 @@ export default function UIUXDesignV2() {
       </section>
 
       {/* ══════════ 18 · CTA ══════════ */}
-      <section className="v2-section v2-section--void v2-cta-shell">
-        <div className="v2-cta">
+      <CtaSection className="v2-section--void">
+        
           <p className="v2-label">Start Here</p>
           <h2 className="v2-cta-headline">
             Tell us what you're designing.<br />We'll tell you how we'd approach it.
@@ -1151,19 +982,8 @@ export default function UIUXDesignV2() {
             and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a>
-          </div>
-          <div className="v2-cta-badges">
-            <span className="v2-cta-badge">Free consultation</span>
-            <span className="v2-cta-badge">NDA on request</span>
-            <span className="v2-cta-badge">No obligation</span>
-          </div>
-        </div>
-
-        <aside className="v2-cta-visual">
-          <CtaVisual />
-        </aside>
-      </section>
+            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+</CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
             <FooterV2 />

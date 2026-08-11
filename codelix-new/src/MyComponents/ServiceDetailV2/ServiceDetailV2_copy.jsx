@@ -14,7 +14,7 @@ import {
 
 import "../HomepageV2/HomepageV2.css";
 
-import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
+
 import codelixLogo from "../Images/codelix-logo.png";
 import codelixText from "../Images/codelix-footer-logo.png";
 import "../ServicesV2/ServicesV2.css";
@@ -210,6 +210,9 @@ const SENTENCE = [
 
 /* scroll-scrubbed word reveal — identical mechanism to HomepageV2 / ServicesV2
    (kept as a separate copy rather than a shared import so each page can tune
+import ScrollSentence from '../Shared/ScrollSentence';
+import FaqSection from '../Shared/FaqSection';
+import ClientStrip from '../Shared/ClientStrip';
    its own word list/timing without a shared-component refactor) */
 const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
 
@@ -391,12 +394,9 @@ export default function ServiceDetailV2() {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           const el = entry.target;
-          if (el.classList.contains("v2-faq-item")) {
-            const idx = Number(el.dataset.faqIndex);
-            setRevealedFaqs((prev) => (prev.has(idx) ? prev : new Set(prev).add(idx)));
-          } else {
+          
             el.classList.add("is-in");
-          }
+          
           io.unobserve(el);
         });
       },
@@ -642,16 +642,7 @@ export default function ServiceDetailV2() {
       </section>
 
       {/* ══════════ 2b · CLIENT STRIP ══════════ */}
-      <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
-        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 30+ companies</p>
-        <div className="v2-strip">
-          <div className="v2-strip-track" ref={stripRef}>
-            {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
-              <img key={i} src={logo} alt="" loading="lazy" />
-            ))}
-          </div>
-        </div>
-      </section>
+      <ClientStrip />
 
       {/* ══════════ 3 · WHAT'S INCLUDED ══════════ */}
       <section className="v2-section" id="included">
@@ -1076,38 +1067,10 @@ export default function ServiceDetailV2() {
       </section>
 
       {/* ══════════ 8.5 · SCROLL SENTENCE ══════════ */}
-      <ScrollSentence words={SENTENCE} tone="dark" />
+      <ScrollSentence words={SENTENCE} tone="dark"  centered={true} />
 
       {/* ══════════ 9 · FAQ ══════════ */}
-      <section className="v2-section v2-section--void" id="faq">
-        <div className="v2-faq-intro">
-          <div>
-            <p className="v2-label">FAQ</p>
-            <h2 className="v2-heading">Web development questions.</h2>
-          </div>
-          <p className="v2-lede v2-faq-note">
-            Don't see yours here? <a href="/contact">Ask us directly →</a>
-          </p>
-        </div>
-        <div>
-          {FAQS.map((f, i) => (
-            <div
-              className={`v2-faq-item ${openFaq === i ? "open" : ""} ${revealedFaqs.has(i) ? "is-in" : ""}`}
-              data-faq-index={i}
-              key={f.q}
-            >
-              <button className="v2-faq-q" onClick={() => setOpenFaq(openFaq === i ? -1 : i)}>
-                <span className="v2-faq-q-label">
-                  <span className="v2-faq-index">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="v2-faq-q-text">{f.q}</span>
-                </span>
-                <span className="v2-faq-sign"><span /><span /></span>
-              </button>
-              <div className="v2-faq-a"><p>{f.a}</p></div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <FaqSection faqs={FAQS} className="v2-section--void" />
 
       {/* ══════════ 14b · WHAT HAPPENS NEXT ══════════ */}
       <section className="v2-section v2-section--void" id="next">

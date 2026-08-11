@@ -9,7 +9,6 @@ import "../HomepageV2/HomepageV2.css";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
-import CtaVisual from "../HomepageV2/CtaVisual";
 import "./BlogDetailV2.css";
 
 /* same real article data + slug lookup as the live /blog/:slug page, merged
@@ -18,6 +17,7 @@ import "./BlogDetailV2.css";
 import { slugify } from "../../data/blogData";
 import { useBlogPosts } from "../../data/useBlogPosts";
 import NavbarV2 from "../Shared/NavbarV2";
+import CtaSection from '../Shared/CtaSection';
 
 
 export default function BlogDetailV2() {
@@ -193,8 +193,8 @@ export default function BlogDetailV2() {
       )}
 
       {/* ══════════ 4 · CTA ══════════ */}
-      <section className="v2-section v2-section--void v2-cta-shell bdv2-cta-shell">
-        <div className="v2-cta">
+      <CtaSection className="v2-section--void  bdv2-cta-shell">
+        
           <p className="v2-label">Start Here</p>
           <h2 className="v2-cta-headline">
             Bring us the problem.
@@ -206,19 +206,8 @@ export default function BlogDetailV2() {
             We scope what should be built first, what can wait, and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a>
-          </div>
-          <div className="v2-cta-badges">
-            <span className="v2-cta-badge">Free consultation</span>
-            <span className="v2-cta-badge">NDA on request</span>
-            <span className="v2-cta-badge">No obligation</span>
-          </div>
-        </div>
-
-        <aside className="v2-cta-visual">
-          <CtaVisual />
-        </aside>
-      </section>
+            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+</CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
             <FooterV2 />

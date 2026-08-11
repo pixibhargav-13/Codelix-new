@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import { ShieldCheck, Gauge, Eye } from "lucide-react";
@@ -7,15 +7,16 @@ import { ShieldCheck, Gauge, Eye } from "lucide-react";
 
 import "../HomepageV2/HomepageV2.css";
 
-import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
-import CtaVisual from "../HomepageV2/CtaVisual";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./IndustriesV2.css";
 import NavbarV2 from "../Shared/NavbarV2";
 import { INDUSTRIES } from "./industriesData";
 import IndustryHeroVisual from "./IndustryHeroVisual";
+import FaqSection from '../Shared/FaqSection';
+import CtaSection from '../Shared/CtaSection';
+import ClientStrip from '../Shared/ClientStrip';
 
 const APPROACH = [
   { icon: Eye, claim: "We learn the domain, not just the brief.", body: "Before we design a single screen, we understand the regulations, the buyer behaviour, and the operational constraints specific to your sector." },
@@ -25,7 +26,7 @@ const APPROACH = [
 
 const STATS = [
   { value: 11, suffix: "", label: "Industries served", note: "Not spread thin across dozens", ring: 78 },
-  { value: 30, suffix: "+", label: "Projects across sectors", note: "Real deployments, not pilots", ring: 92 },
+  { value: 40, suffix: "+", label: "Projects across sectors", note: "Real deployments, not pilots", ring: 92 },
   { value: 100, suffix: "%", label: "Source-code ownership", note: "Regardless of industry", ring: 100 },
 ];
 
@@ -39,11 +40,8 @@ export default function IndustriesV2() {
 
 
 
-  const [openFaq, setOpenFaq] = useState(-1);
-  const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
 
   const rootRef = useRef(null);
-  const stripRef = useRef(null);
 
 
 
@@ -69,12 +67,9 @@ export default function IndustriesV2() {
       (entries) => entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         const el = entry.target;
-        if (el.classList.contains("v2-faq-item")) {
-          const idx = Number(el.dataset.faqIndex);
-          setRevealedFaqs((prev) => (prev.has(idx) ? prev : new Set(prev).add(idx)));
-        } else {
+        
           el.classList.add("is-in");
-        }
+        
         io.unobserve(el);
       }),
       { threshold: 0.01, rootMargin: "0px 0px -10% 0px" }
@@ -87,13 +82,6 @@ export default function IndustriesV2() {
     return () => io.disconnect();
   }, []);
 
-  /* FAQ accordion height */
-  useEffect(() => {
-    rootRef.current.querySelectorAll(".v2-faq-a").forEach((el, i) => {
-      const inner = el.querySelector("p");
-      el.style.height = i === openFaq ? `${inner.offsetHeight}px` : "0px";
-    });
-  }, [openFaq]);
 
   /* stat numbers count up when scrolled in */
   useEffect(() => {
@@ -123,33 +111,7 @@ export default function IndustriesV2() {
     return () => io.disconnect();
   }, []);
 
-  /* client strip drift, pausing on hover */
-  useEffect(() => {
-    const track = stripRef.current;
-    if (!track) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let raf = 0, x = 0, paused = false, last = performance.now();
-    const step = (now) => {
-      const dt = now - last; last = now;
-      if (!paused) {
-        x -= 0.00125 * dt;
-        if (x <= -50) x += 50;
-        track.style.transform = `translateX(${x}%)`;
-      }
-      raf = requestAnimationFrame(step);
-    };
-    raf = requestAnimationFrame(step);
-    const wrap = track.parentElement;
-    const on = () => { paused = true; };
-    const off = () => { paused = false; };
-    wrap.addEventListener("mouseenter", on);
-    wrap.addEventListener("mouseleave", off);
-    return () => {
-      cancelAnimationFrame(raf);
-      wrap.removeEventListener("mouseenter", on);
-      wrap.removeEventListener("mouseleave", off);
-    };
-  }, []);
+
 
   return (
     <div className="v2" ref={rootRef}>
@@ -366,51 +328,14 @@ export default function IndustriesV2() {
       </section>
 
       {/* ══════════ 5 · FAQ ══════════ */}
-      <section className="v2-section v2-section--void" id="faq">
-        <div className="v2-faq-intro">
-          <div>
-            <p className="v2-label">FAQ</p>
-            <h2 className="v2-heading">Before you reach out.</h2>
-          </div>
-          <p className="v2-lede v2-faq-note">
-            Don't see your industry? <a href="/contact">Ask us directly →</a>
-          </p>
-        </div>
-        <div>
-          {FAQS.map((f, i) => (
-            <div
-              className={`v2-faq-item ${openFaq === i ? "open" : ""} ${revealedFaqs.has(i) ? "is-in" : ""}`}
-              data-faq-index={i}
-              key={f.q}
-            >
-              <button className="v2-faq-q" onClick={() => setOpenFaq(openFaq === i ? -1 : i)}>
-                <span className="v2-faq-q-label">
-                  <span className="v2-faq-index">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="v2-faq-q-text">{f.q}</span>
-                </span>
-                <span className="v2-faq-sign"><span /><span /></span>
-              </button>
-              <div className="v2-faq-a"><p>{f.a}</p></div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <FaqSection faqs={FAQS} className="v2-section--void" />
 
       {/* ══════════ 6 · CLIENT STRIP ══════════ */}
-      <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
-        <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 40+ companies</p>
-        <div className="v2-strip">
-          <div className="v2-strip-track" ref={stripRef}>
-            {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
-              <img key={i} src={logo} alt="" loading="lazy" />
-            ))}
-          </div>
-        </div>
-      </section>
+      <ClientStrip />
 
       {/* ══════════ 7 · CTA ══════════ */}
-      <section className="v2-section v2-section--void v2-cta-shell">
-        <div className="v2-cta">
+      <CtaSection className="v2-section--void">
+        
           <p className="v2-label">Start Here</p>
           <h2 className="v2-cta-headline">
             Tell us your sector.<br />We'll tell you what actually matters.
@@ -420,19 +345,8 @@ export default function IndustriesV2() {
             not a generic pitch reused across every client.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a>
-          </div>
-          <div className="v2-cta-badges">
-            <span className="v2-cta-badge">Free consultation</span>
-            <span className="v2-cta-badge">NDA on request</span>
-            <span className="v2-cta-badge">No obligation</span>
-          </div>
-        </div>
-
-        <aside className="v2-cta-visual">
-          <CtaVisual />
-        </aside>
-      </section>
+            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+</CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
             <FooterV2 />

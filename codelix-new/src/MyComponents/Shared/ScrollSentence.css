@@ -1,0 +1,225 @@
+.v2-sentence {
+  position: relative;
+  height: 350vh;
+  /* reference uses ~5.5× viewport */
+}
+
+.v2-sentence--dark {
+  background: #050507;
+}
+
+.v2-sentence--light {
+  background: var(--gallery);
+}
+
+.v2-sentence-sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--pad-x);
+  overflow: hidden;
+  /* forces this element to be an unambiguous containing block for its
+     absolutely-positioned .v2-sentence-bgs child. Without this, some
+     browsers resolve that child's inset:0 against the outer 420vh
+     .v2-sentence container instead of this sticky box — the panel then
+     behaves as a fixed-size block scrolling normally underneath the pinned
+     text, so only part of it is ever visible in the viewport at once. That
+     was the moving seam: not a color mismatch, but the panel and the text
+     failing to stay locked together. */
+  transform: translateZ(0);
+}
+
+/* matches each run's first panel exactly — if the panel stack ever fails to
+   cover the full sticky box for any reason, this shows instead of the outer
+   .v2-sentence's own (different) background, so there's never a visible
+   seam between two mismatched tones */
+.v2-sentence--dark .v2-sentence-sticky {
+  background: #050507;
+}
+
+.v2-sentence--light .v2-sentence-sticky {
+  background: #faf9f7;
+}
+
+/* the light run hands off straight into the dark FAQ section right after it —
+   a soft fade at the base blends the two instead of an instant hard cut */
+.v2-sentence--light .v2-sentence-sticky::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 22svh;
+  background: linear-gradient(to bottom, transparent, var(--canvas));
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* stacked backdrops — each slides up over the previous as its line arrives,
+   so the background visibly moves between beats */
+/* transform is set every scroll frame from JS, in lockstep with scroll
+   position — no CSS transition here, or it would fight the per-frame value
+   and reintroduce the "plays on its own" feel we don't want. */
+.v2-sentence-bgs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.v2-sentence-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  will-change: opacity;
+}
+
+/* dark run: starts and ends at #050507 (--void) so it blends with adjacent
+   sections; the middle beats shift through a subtle warm-cool palette */
+.v2-sentence--dark .v2-sentence-bg:nth-child(1) {
+  background: #050507;
+}
+
+.v2-sentence--dark .v2-sentence-bg:nth-child(2) {
+  background: #0d0a10;
+}
+
+.v2-sentence--dark .v2-sentence-bg:nth-child(3) {
+  background: #110e16;
+}
+
+.v2-sentence--dark .v2-sentence-bg:nth-child(4) {
+  background: #0d0a10;
+}
+
+.v2-sentence--dark .v2-sentence-bg:nth-child(5) {
+  background: #050507;
+}
+
+/* light run: a genuine light → dark gradient across all 5 beats, not a flat
+   near-white run with one big jump to black at the very end. The midpoint
+   (beat 3) is a true mid-gray, and that's also where the text flips from
+   dark to light below — background and font cross over together. Beat 5
+   lands exactly on the FAQ section's own bg, so the handoff into it is
+   already the destination color before the fade even begins. */
+.v2-sentence--light .v2-sentence-bg:nth-child(1) {
+  background: #faf9f7;
+}
+
+.v2-sentence--light .v2-sentence-bg:nth-child(2) {
+  background: #cfccc3;
+}
+
+.v2-sentence--light .v2-sentence-bg:nth-child(3) {
+  background: #7d7b76;
+}
+
+.v2-sentence--light .v2-sentence-bg:nth-child(4) {
+  background: #38352f;
+}
+
+.v2-sentence--light .v2-sentence-bg:nth-child(5) {
+  background: var(--canvas);
+}
+
+/* text crosses from dark to light at the same beat (3) the background
+   crosses its midpoint — font and background transition together instead of
+   the font snapping to light only at the very last, darkest beat */
+.v2-sentence--light .v2-sentence-word:nth-child(3),
+.v2-sentence--light .v2-sentence-word:nth-child(4),
+.v2-sentence--light .v2-sentence-word:nth-child(5) {
+  color: var(--text);
+}
+
+/* one line occupies the stage at a time — they stack in the same cell */
+.v2-sentence-words {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 2.9em;
+  font-size: clamp(34px, 6.6vw, 104px);
+}
+
+.v2-sentence-word {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  display: block;
+  max-width: 14ch;
+  font-size: 1em;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -.04em;
+  text-wrap: balance;
+  transform-origin: left center;
+  /* opacity / transform / filter are all written every scroll frame from JS,
+     so there is deliberately no transition — scrolling a pixel moves the
+     type a pixel, and scrolling back reverses it exactly. */
+  opacity: 0;
+  transform: translateY(-50%) scale(.78);
+  filter: blur(5px);
+  will-change: opacity, transform;
+  pointer-events: none;
+  /* keep glyph edges crisp while the line is held at scale(1) */
+  -webkit-font-smoothing: antialiased;
+  backface-visibility: hidden;
+}
+
+/* font color shifts subtly through the beats — slightly warmer in the
+   middle to complement the background shift, bright at the edges */
+.v2-sentence--dark .v2-sentence-word {
+  color: #f2f0ec;
+}
+
+.v2-sentence--dark .v2-sentence-word:nth-child(2) {
+  color: #e0d8ef;
+}
+
+.v2-sentence--dark .v2-sentence-word:nth-child(3) {
+  color: #d4cce8;
+}
+
+.v2-sentence--dark .v2-sentence-word:nth-child(4) {
+  color: #e0d8ef;
+}
+
+.v2-sentence--light .v2-sentence-word {
+  color: var(--ink);
+}
+
+@media (max-width: 700px) {
+  .v2-sentence-words {
+    font-size: clamp(28px, 9.2vw, 46px);
+    min-height: 4em;
+  }
+
+  .v2-sentence-word {
+    max-width: 100%;
+  }
+}
+
+/* ───────────── CENTERED VARIANT (used in About/Services) ───────────── */
+.v2-sentence--centered .v2-sentence-words {
+  text-align: center;
+  font-size: clamp(38px, 8.4vw, 128px);
+}
+
+.v2-sentence--centered .v2-sentence-word {
+  left: 50%;
+  max-width: 20ch;
+  text-align: center;
+  line-height: 1.25;
+  transform-origin: center center;
+}
