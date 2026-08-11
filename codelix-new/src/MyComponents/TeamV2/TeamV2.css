@@ -347,27 +347,6 @@ header.sd2-hero.team-hero .sd2-hero-main {
   bottom: 0;
 }
 
-/* Number label */
-.team-lead-num {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: rgba(180, 200, 230, .4);
-  margin-bottom: 24px !important;
-}
-
-.team-lead-num em {
-  display: block;
-  width: 32px;
-  height: 1px;
-  background: rgba(180, 200, 230, .25);
-  font-style: normal;
-}
-
 /* Name */
 .team-lead-name {
   font-size: clamp(28px, 3.5vw, 42px);

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { X, Calendar as CalendarIcon, Clock, ChevronRight, ChevronLeft, CheckCircle2 } from "lucide-react";
+import { useLenis } from 'lenis/react';
 import "./BookingModal.css";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES } from "../HomepageV2/footerData";
 
@@ -21,6 +22,8 @@ export default function BookingModal() {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
+  
+  const lenis = useLenis();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -74,18 +77,21 @@ export default function BookingModal() {
       document.body.style.overflow = "hidden";
       document.documentElement.style.overflow = "hidden";
       document.body.classList.add("booking-modal-open");
+      if (lenis) lenis.stop();
     } else {
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
       document.body.classList.remove("booking-modal-open");
+      if (lenis) lenis.start();
     }
     
     return () => {
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
       document.body.classList.remove("booking-modal-open");
+      if (lenis) lenis.start();
     };
-  }, [isOpen]);
+  }, [isOpen, lenis]);
 
   if (!isOpen) return null;
 
@@ -174,7 +180,7 @@ export default function BookingModal() {
   };
 
   return (
-    <div className="booking-modal-overlay">
+    <div className="booking-modal-overlay" data-lenis-prevent="true">
       <div className="booking-modal-backdrop" onClick={() => setIsOpen(false)}></div>
       <div className="booking-modal-content">
         <button className="booking-modal-close" onClick={() => setIsOpen(false)}>

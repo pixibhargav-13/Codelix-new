@@ -1,0 +1,40 @@
+.v2-client-strip {
+  border-top: .8px solid var(--rule);
+  border-bottom: .8px solid var(--rule);
+}
+
+.v2-strip {
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.1s cubic-bezier(.16, 1, .3, 1), transform 1.1s cubic-bezier(.16, 1, .3, 1);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.v2-strip.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.v2-strip-track {
+  display: flex;
+  align-items: center;
+  gap: 68px;
+  width: max-content;
+  will-change: transform;
+}
+
+.v2-strip-track img {
+  height: 42px;
+  width: auto;
+  opacity: .4;
+  filter: grayscale(1) brightness(2.2);
+  transition: opacity .5s var(--ease-expo), filter .5s var(--ease-expo), transform .5s var(--ease-expo);
+}
+
+.v2-strip-track img:hover {
+  opacity: 1;
+  filter: grayscale(0) brightness(1);
+  transform: scale(1.06);
+}

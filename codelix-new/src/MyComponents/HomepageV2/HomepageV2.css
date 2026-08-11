@@ -1582,217 +1582,6 @@
 /* ───────────── SCROLL SENTENCE (the reference's signature moment) ─────────────
    A tall container with a sticky viewport-height child. As you scroll the
    container's length, each word of the sentence lights up in turn. */
-.v2-sentence {
-  position: relative;
-  height: 350vh;
-  /* reference uses ~5.5× viewport */
-}
-
-.v2-sentence--dark {
-  background: #050507;
-}
-
-.v2-sentence--light {
-  background: var(--gallery);
-}
-
-.v2-sentence-sticky {
-  position: sticky;
-  top: 0;
-  height: 100svh;
-  display: flex;
-  align-items: center;
-  padding: 0 var(--pad-x);
-  overflow: hidden;
-  /* forces this element to be an unambiguous containing block for its
-     absolutely-positioned .v2-sentence-bgs child. Without this, some
-     browsers resolve that child's inset:0 against the outer 420vh
-     .v2-sentence container instead of this sticky box — the panel then
-     behaves as a fixed-size block scrolling normally underneath the pinned
-     text, so only part of it is ever visible in the viewport at once. That
-     was the moving seam: not a color mismatch, but the panel and the text
-     failing to stay locked together. */
-  transform: translateZ(0);
-}
-
-/* matches each run's first panel exactly — if the panel stack ever fails to
-   cover the full sticky box for any reason, this shows instead of the outer
-   .v2-sentence's own (different) background, so there's never a visible
-   seam between two mismatched tones */
-.v2-sentence--dark .v2-sentence-sticky {
-  background: #050507;
-}
-
-.v2-sentence--light .v2-sentence-sticky {
-  background: #faf9f7;
-}
-
-/* the light run hands off straight into the dark FAQ section right after it —
-   a soft fade at the base blends the two instead of an instant hard cut */
-.v2-sentence--light .v2-sentence-sticky::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 22svh;
-  background: linear-gradient(to bottom, transparent, var(--canvas));
-  pointer-events: none;
-  z-index: 5;
-}
-
-/* stacked backdrops — each slides up over the previous as its line arrives,
-   so the background visibly moves between beats */
-/* transform is set every scroll frame from JS, in lockstep with scroll
-   position — no CSS transition here, or it would fight the per-frame value
-   and reintroduce the "plays on its own" feel we don't want. */
-.v2-sentence-bgs {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 0;
-}
-
-.v2-sentence-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  will-change: opacity;
-}
-
-/* dark run: starts and ends at #050507 (--void) so it blends with adjacent
-   sections; the middle beats shift through a subtle warm-cool palette */
-.v2-sentence--dark .v2-sentence-bg:nth-child(1) {
-  background: #050507;
-}
-
-.v2-sentence--dark .v2-sentence-bg:nth-child(2) {
-  background: #0d0a10;
-}
-
-.v2-sentence--dark .v2-sentence-bg:nth-child(3) {
-  background: #110e16;
-}
-
-.v2-sentence--dark .v2-sentence-bg:nth-child(4) {
-  background: #0d0a10;
-}
-
-.v2-sentence--dark .v2-sentence-bg:nth-child(5) {
-  background: #050507;
-}
-
-/* light run: a genuine light → dark gradient across all 5 beats, not a flat
-   near-white run with one big jump to black at the very end. The midpoint
-   (beat 3) is a true mid-gray, and that's also where the text flips from
-   dark to light below — background and font cross over together. Beat 5
-   lands exactly on the FAQ section's own bg, so the handoff into it is
-   already the destination color before the fade even begins. */
-.v2-sentence--light .v2-sentence-bg:nth-child(1) {
-  background: #faf9f7;
-}
-
-.v2-sentence--light .v2-sentence-bg:nth-child(2) {
-  background: #cfccc3;
-}
-
-.v2-sentence--light .v2-sentence-bg:nth-child(3) {
-  background: #7d7b76;
-}
-
-.v2-sentence--light .v2-sentence-bg:nth-child(4) {
-  background: #38352f;
-}
-
-.v2-sentence--light .v2-sentence-bg:nth-child(5) {
-  background: var(--canvas);
-}
-
-/* text crosses from dark to light at the same beat (3) the background
-   crosses its midpoint — font and background transition together instead of
-   the font snapping to light only at the very last, darkest beat */
-.v2-sentence--light .v2-sentence-word:nth-child(3),
-.v2-sentence--light .v2-sentence-word:nth-child(4),
-.v2-sentence--light .v2-sentence-word:nth-child(5) {
-  color: var(--text);
-}
-
-/* one line occupies the stage at a time — they stack in the same cell */
-.v2-sentence-words {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  min-height: 2.9em;
-  font-size: clamp(34px, 6.6vw, 104px);
-}
-
-.v2-sentence-word {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  display: block;
-  max-width: 14ch;
-  font-size: 1em;
-  font-weight: 900;
-  line-height: 1.15;
-  letter-spacing: -.04em;
-  text-wrap: balance;
-  transform-origin: left center;
-  /* opacity / transform / filter are all written every scroll frame from JS,
-     so there is deliberately no transition — scrolling a pixel moves the
-     type a pixel, and scrolling back reverses it exactly. */
-  opacity: 0;
-  transform: translateY(-50%) scale(.78);
-  filter: blur(5px);
-  will-change: opacity, transform;
-  pointer-events: none;
-  /* keep glyph edges crisp while the line is held at scale(1) */
-  -webkit-font-smoothing: antialiased;
-  backface-visibility: hidden;
-}
-
-/* font color shifts subtly through the beats — slightly warmer in the
-   middle to complement the background shift, bright at the edges */
-.v2-sentence--dark .v2-sentence-word {
-  color: #f2f0ec;
-}
-
-.v2-sentence--dark .v2-sentence-word:nth-child(2) {
-  color: #e0d8ef;
-}
-
-.v2-sentence--dark .v2-sentence-word:nth-child(3) {
-  color: #d4cce8;
-}
-
-.v2-sentence--dark .v2-sentence-word:nth-child(4) {
-  color: #e0d8ef;
-}
-
-.v2-sentence--light .v2-sentence-word {
-  color: var(--ink);
-}
-
-@media (max-width: 700px) {
-  .v2-sentence-words {
-    font-size: clamp(28px, 9.2vw, 46px);
-    min-height: 4em;
-  }
-
-  .v2-sentence-word {
-    max-width: 100%;
-  }
-}
 
 
 /* ───────────── PIPELINE (light band, matches .wf-rail) ─────────────
@@ -2441,34 +2230,6 @@
     background .5s var(--ease-expo),
     box-shadow .5s var(--ease-expo),
     transform .5s var(--ease-expo);
-}
-
-/* a faint oversized index numeral behind the copy — decorative depth, and a
-   second reinforcement (beyond "WEB · 01") that these are steps in a set */
-.v2-map-track {
-  counter-reset: mapcard;
-}
-
-.v2-map-card {
-  counter-increment: mapcard;
-}
-
-.v2-map-card::after {
-  content: counter(mapcard, decimal-leading-zero);
-  position: absolute;
-  right: 10px;
-  bottom: -18px;
-  font-size: 72px;
-  font-weight: 800;
-  line-height: 1;
-  color: rgba(242, 240, 236, .05);
-  z-index: -1;
-  transition: color .5s ease, transform .5s var(--ease-expo);
-}
-
-.v2-map-card:hover::after {
-  color: rgba(180, 200, 230, .1);
-  transform: translateY(-6px);
 }
 
 /* accent rail wipes down the left edge on hover, with a soft glow instead of
@@ -3458,12 +3219,6 @@
   color: var(--text-45);
 }
 
-/* ───────────── tech / clients strip ───────────── */
-.v2-client-strip {
-  border-top: .8px solid var(--rule);
-  border-bottom: .8px solid var(--rule);
-}
-
 /* ───────────── TECH STACK ───────────── */
 .v2-tech-head {
   display: grid;
@@ -3592,19 +3347,20 @@
 }
 
 .v2-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
   gap: 24px;
 }
 
 @media (max-width: 720px) {
   .v2-stats {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px 24px;
   }
 }
 
 .v2-stat {
+  flex: 1;
   padding-left: 22px;
   border-left: .8px solid var(--rule);
 }
@@ -3634,41 +3390,7 @@
   color: var(--text-38);
 }
 
-.v2-strip {
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1.1s cubic-bezier(.16, 1, .3, 1), transform 1.1s cubic-bezier(.16, 1, .3, 1);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-}
 
-.v2-strip.is-in {
-  opacity: 1;
-  transform: none;
-}
-
-.v2-strip-track {
-  display: flex;
-  align-items: center;
-  gap: 68px;
-  width: max-content;
-  will-change: transform;
-}
-
-.v2-strip-track img {
-  height: 42px;
-  width: auto;
-  opacity: .4;
-  filter: grayscale(1) brightness(2.2);
-  transition: opacity .5s var(--ease-expo), filter .5s var(--ease-expo), transform .5s var(--ease-expo);
-}
-
-.v2-strip-track img:hover {
-  opacity: 1;
-  filter: grayscale(0) brightness(1);
-  transform: scale(1.06);
-}
 
 /* ───────────── testimonial (gallery band) ───────────── */
 /* one bordered panel holding both halves, instead of two loose columns
@@ -3934,376 +3656,6 @@
   .v2-quote-spotlight {
     padding-top: 56px;
   }
-}
-
-/* ───────────── CTA ───────────── */
-/* two columns so the right side isn't a dead flat rectangle next to the
-   left-aligned max-width:640px text block — an abstract vector fills it
-   instead (CtaVisual.jsx), generic on purpose since this same CTA shell
-   repeats across ~16 pages with different headline/body copy. */
-.v2-cta-shell {
-  position: relative;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: center;
-  gap: 16px;
-}
-
-@media (max-width: 900px) {
-  .v2-cta-shell {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-}
-
-.v2-cta-visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.v2-cta-visual-svg {
-  width: 100%;
-  max-width: 550px;
-  height: auto;
-  animation: v2-cta-visual-spin 60s linear infinite;
-}
-
-@keyframes v2-cta-visual-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (max-width: 900px) {
-  .v2-cta-visual {
-    display: none;
-  }
-}
-
-/* ambient glow behind the headline — the section's one bit of atmosphere,
-   instead of a flat dark rectangle of text */
-.v2-cta-shell::before {
-  content: "";
-  position: absolute;
-  inset: -30% -10% auto -10%;
-  height: 75%;
-  background: radial-gradient(55% 100% at 22% 10%, rgba(100, 130, 230, .16), transparent 72%);
-  pointer-events: none;
-}
-
-.v2-cta {
-  position: relative;
-  opacity: 0;
-  padding: 20px 0;
-  max-width: 640px;
-}
-
-/* a small accent tick before the eyebrow — scoped to this section only,
-   since .v2-label is shared site-wide */
-.v2-cta .v2-label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.v2-cta .v2-label::before {
-  content: "";
-  width: 22px;
-  height: 2px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, rgba(120, 150, 255, .9), rgba(160, 120, 240, .7));
-}
-
-.v2-cta-headline {
-  font-size: clamp(30px, 4.2vw, 46px);
-  font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: -.018em;
-  margin-bottom: 28px !important;
-}
-
-/* the second line carries the actual promise, so it gets the one splash of
-   colour in an otherwise monochrome headline */
-.v2-cta-accent {
-  background: linear-gradient(100deg, #fff 10%, rgba(150, 175, 255, .95));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.v2-cta-body {
-  font-size: 16.5px;
-  line-height: 1.7;
-  color: var(--text-55);
-  max-width: 52ch;
-  margin-bottom: 40px !important;
-}
-
-.v2-cta-actions {
-  display: inline-block;
-}
-
-.v2-cta-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 36px;
-}
-
-.v2-cta-badge {
-  padding: 7px 14px;
-  border-radius: 100px;
-  border: 1px solid rgba(255, 255, 255, .12);
-  background: rgba(255, 255, 255, .03);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--text-55);
-  transition: border-color .3s ease, color .3s ease, background .3s ease;
-}
-
-.v2-cta-badge:hover {
-  border-color: rgba(120, 150, 255, .4);
-  color: var(--text);
-  background: rgba(120, 150, 255, .06);
-}
-
-/* bare text button — the only button style on the site */
-.v2-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 16px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--text);
-  border-bottom: .8px solid var(--rule-strong);
-  /* transform is written by the magnetic-button effect on mousemove; the
-     transition here is what turns those raw cursor positions into a smooth
-     magnetic pull and an eased release */
-  transition: border-color .3s ease, gap .3s var(--ease-expo), transform .35s var(--ease-expo);
-  will-change: transform;
-}
-
-.v2-btn:hover {
-  border-color: var(--text);
-  gap: 16px;
-}
-
-.v2-section--gallery .v2-btn {
-  color: var(--ink);
-  border-color: rgba(15, 15, 13, .2);
-}
-
-.v2-section--gallery .v2-btn:hover {
-  border-color: var(--ink);
-}
-
-/* ───────────── FAQ ───────────── */
-.v2-faq-intro {
-  display: grid;
-  gap: 20px;
-  margin-bottom: 44px;
-}
-
-.v2-faq-intro .v2-heading {
-  margin-bottom: 0 !important;
-}
-
-.v2-faq-note {
-  max-width: none;
-  text-align: left;
-  justify-self: start;
-  margin-left: 0;
-}
-
-@media (min-width: 900px) {
-  .v2-faq-intro {
-    grid-template-columns: 1fr 1fr;
-    align-items: end;
-  }
-
-  .v2-faq-note {
-    padding-left: 32px !important;
-    text-align: right;
-    margin-left: auto;
-    justify-self: end;
-  }
-}
-
-.v2-faq-note a {
-  color: var(--text);
-  border-bottom: .8px solid var(--rule-strong);
-  padding-bottom: 2px;
-  transition: border-color .3s ease;
-}
-
-.v2-faq-note a:hover {
-  border-color: var(--text);
-}
-
-.v2-faq-item {
-  position: relative;
-  border-top: .8px solid var(--rule);
-  opacity: 0;
-  transition: background .4s ease, padding .4s ease;
-}
-
-.v2-faq-item.is-in {
-  padding-top: 14px;
-  padding-bottom: 14px;
-}
-
-/* 
-.v2-faq-item:hover {
-  background: rgba(242, 240, 236, .025);
-} */
-
-/* rule brightens across the row while open or hovered */
-.v2-faq-item::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -.8px;
-  height: .8px;
-  background: rgba(180, 200, 230, .6);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .7s var(--ease-expo);
-}
-
-.v2-faq-item:hover::after,
-.v2-faq-item.open::after {
-  transform: scaleX(1);
-}
-
-.v2-faq-q {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  padding: 32px clamp(16px, 2vw, 28px);
-  text-align: left;
-}
-
-/* the hover shift is scoped to the label (index+question) only — the "+"
-   sign stays put on the far right, so the shift can never push it past the
-   container's edge and get clipped by the page's overflow-x: clip */
-.v2-faq-q-label {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  flex: 1;
-  min-width: 0;
-  transition: transform .55s var(--ease-expo);
-}
-
-.v2-faq-q:hover .v2-faq-q-label {
-  transform: translateX(8px);
-}
-
-.v2-faq-index {
-  flex: none;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .08em;
-  color: var(--text-25);
-  transition: color .35s ease;
-}
-
-.v2-faq-item.open .v2-faq-index,
-.v2-faq-q:hover .v2-faq-index {
-  color: rgba(180, 200, 230, .9);
-}
-
-.v2-faq-q-text {
-  flex: 1;
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: -.01em;
-  line-height: 1.4;
-  color: rgba(242, 240, 236, .9);
-  transition: color .35s ease;
-}
-
-.v2-faq-q:hover .v2-faq-q-text {
-  color: #fff;
-}
-
-.v2-faq-item.open .v2-faq-q-text {
-  color: #fff;
-}
-
-/* plus/minus built from two bars in a circle, instead of a literal "+"
-   glyph — rotates to a minus when open */
-.v2-faq-sign {
-  position: relative;
-  flex: none;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: .8px solid var(--rule);
-  transition: border-color .35s ease, transform .5s var(--ease-expo), background .35s ease;
-}
-
-.v2-faq-sign span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background: var(--text-55);
-  transition: background .35s ease, transform .5s var(--ease-expo);
-}
-
-.v2-faq-sign span:first-child {
-  width: 12px;
-  height: 1.5px;
-  transform: translate(-50%, -50%);
-}
-
-.v2-faq-sign span:last-child {
-  width: 1.5px;
-  height: 12px;
-  transform: translate(-50%, -50%);
-}
-
-.v2-faq-q:hover .v2-faq-sign {
-  border-color: rgba(180, 200, 230, .5);
-}
-
-.v2-faq-q:hover .v2-faq-sign span {
-  background: #fff;
-}
-
-.v2-faq-item.open .v2-faq-sign {
-  border-color: rgba(180, 200, 230, .7);
-  background: rgba(180, 200, 230, .12);
-}
-
-.v2-faq-item.open .v2-faq-sign span {
-  background: var(--text);
-}
-
-.v2-faq-item.open .v2-faq-sign span:last-child {
-  transform: translate(-50%, -50%) scaleY(0);
-}
-
-.v2-faq-a {
-  overflow: hidden;
-  height: 0;
-}
-
-.v2-faq-a p {
-  padding: 20px 36px 0px;
-  font-size: 14.5px;
-  line-height: 1.75;
-  color: var(--text-45);
-  max-width: 68ch;
 }
 
 /* ───────────── footer ───────────── */
@@ -5373,4 +4725,32 @@
     font-size: 10px !important;
     gap: 6px !important;
   }
+}/* bare text button — the only button style on the site */
+.v2-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--text);
+  border-bottom: .8px solid var(--rule-strong);
+  transition: border-color .3s ease, gap .3s var(--ease-expo), transform .35s var(--ease-expo);
+  will-change: transform;
+}
+
+.v2-btn:hover {
+  border-color: var(--text);
+  gap: 16px;
+}
+
+.v2-section--gallery .v2-btn {
+  color: var(--ink);
+  border-color: rgba(15, 15, 13, .2);
+}
+
+.v2-section--gallery .v2-btn:hover {
+  border-color: var(--ink);
 }

@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import { Search, ArrowUpRight } from "lucide-react";
-import CtaVisual from "../HomepageV2/CtaVisual";
 
 /* v2 design system — same source of truth as the other v2 pages */
 
@@ -18,6 +17,7 @@ import { blogs, slugify } from "../../data/blogData";
 import { INDUSTRIES } from "../IndustriesV2/industriesData";
 import { PRODUCTS } from "../ProductsV2/productsData";
 import NavbarV2 from "../Shared/NavbarV2";
+import CtaSection from '../Shared/CtaSection';
 
 
 /* every route here is a real <Route> registered in App.jsx — only the new
@@ -217,27 +217,16 @@ export default function SitemapV2() {
       </section>
 
       {/* ══════════ 3 · CTA ══════════ */}
-      <section className="v2-section v2-section--void v2-cta-shell smv2-cta-shell">
-        <div className="v2-cta">
+      <CtaSection className="v2-section--void  smv2-cta-shell">
+        
           <p className="v2-label">Can't Find It?</p>
           <h2 className="v2-cta-headline">
             Looking for something<br />that's not here?
           </h2>
           <p className="v2-cta-body">Just ask — we'll point you in the right direction.</p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Contact us →</a>
-          </div>
-          <div className="v2-cta-badges">
-            <span className="v2-cta-badge">Free consultation</span>
-            <span className="v2-cta-badge">NDA on request</span>
-            <span className="v2-cta-badge">No obligation</span>
-          </div>
-        </div>
-
-        <aside className="v2-cta-visual">
-          <CtaVisual />
-        </aside>
-      </section>
+            <a className="v2-btn" href="/contact">Contact us →</a></div>
+</CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
             <FooterV2 />

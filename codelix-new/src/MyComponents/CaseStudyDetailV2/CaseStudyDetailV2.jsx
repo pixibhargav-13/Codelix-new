@@ -3,7 +3,6 @@ import FooterV2 from "../Shared/FooterV2";
 import { useParams } from "react-router-dom";
 import gsap from "gsap";
 import { ArrowLeft, ArrowUpRight, X, Check } from "lucide-react";
-import CtaVisual from "../HomepageV2/CtaVisual";
 
 /* v2 design system — same source of truth as the other v2 pages */
 import "../HomepageV2/HomepageV2.css";
@@ -17,6 +16,7 @@ import "./CaseStudyDetailV2.css";
 import { useCaseStudies } from "./useCaseStudies";
 import { PROJECTS } from "../WorkV2/projectsData";
 import NavbarV2 from "../Shared/NavbarV2";
+import CtaSection from '../Shared/CtaSection';
 
 
 /* the mask-line wipe animation (shared with every other v2 hero) only
@@ -450,8 +450,8 @@ export default function CaseStudyDetailV2() {
       </section>
 
       {/* ══════════ 7 · CTA ══════════ */}
-      <section className="v2-section v2-section--void v2-cta-shell csd2-cta-shell">
-        <div className="v2-cta">
+      <CtaSection className="v2-section--void  csd2-cta-shell">
+        
           <p className="v2-label">Start Here</p>
           <h2 className="v2-cta-headline">
             Bring us the problem.
@@ -463,19 +463,8 @@ export default function CaseStudyDetailV2() {
             We scope what should be built first, what can wait, and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a>
-          </div>
-          <div className="v2-cta-badges">
-            <span className="v2-cta-badge">Free consultation</span>
-            <span className="v2-cta-badge">NDA on request</span>
-            <span className="v2-cta-badge">No obligation</span>
-          </div>
-        </div>
-
-        <aside className="v2-cta-visual">
-          <CtaVisual />
-        </aside>
-      </section>
+            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+</CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
             <FooterV2 />

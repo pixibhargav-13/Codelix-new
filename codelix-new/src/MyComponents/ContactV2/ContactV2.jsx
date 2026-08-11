@@ -10,13 +10,13 @@ import {
 
 import "../HomepageV2/HomepageV2.css";
 
-import { CLIENT_LOGOS } from "../HomepageV2/clientLogos";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./ContactV2.css";
 import ContactHeroVisual from "./ContactHeroVisual";
 import NavbarV2 from "../Shared/NavbarV2";
+import FaqSection from '../Shared/FaqSection';
 
 
 const REQUIRED_FIELDS = ["name", "contact", "email", "company", "designation", "service", "aboutProject"];
@@ -41,11 +41,8 @@ export default function ContactV2() {
   
   
   
-  const [openFaq, setOpenFaq] = useState(-1);
-  const [revealedFaqs, setRevealedFaqs] = useState(() => new Set());
 
   const rootRef = useRef(null);
-  const stripRef = useRef(null);
 
   /* real form state + submission logic, ported from /contact */
   const [formData, setFormData] = useState({
@@ -135,12 +132,9 @@ export default function ContactV2() {
       (entries) => entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         const el = entry.target;
-        if (el.classList.contains("v2-faq-item")) {
-          const idx = Number(el.dataset.faqIndex);
-          setRevealedFaqs((prev) => (prev.has(idx) ? prev : new Set(prev).add(idx)));
-        } else {
+        
           el.classList.add("is-in");
-        }
+        
         io.unobserve(el);
       }),
       { threshold: 0.01, rootMargin: "0px 0px -10% 0px" }
@@ -153,41 +147,7 @@ export default function ContactV2() {
     return () => io.disconnect();
   }, []);
 
-  /* FAQ accordion height */
-  useEffect(() => {
-    rootRef.current.querySelectorAll(".v2-faq-a").forEach((el, i) => {
-      const inner = el.querySelector("p");
-      el.style.height = i === openFaq ? `${inner.offsetHeight}px` : "0px";
-    });
-  }, [openFaq]);
 
-  /* client strip drift, pausing on hover */
-  useEffect(() => {
-    const track = stripRef.current;
-    if (!track) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let raf = 0, x = 0, paused = false, last = performance.now();
-    const step = (now) => {
-      const dt = now - last; last = now;
-      if (!paused) {
-        x -= 0.00125 * dt;
-        if (x <= -50) x += 50;
-        track.style.transform = `translateX(${x}%)`;
-      }
-      raf = requestAnimationFrame(step);
-    };
-    raf = requestAnimationFrame(step);
-    const wrap = track.parentElement;
-    const on = () => { paused = true; };
-    const off = () => { paused = false; };
-    wrap.addEventListener("mouseenter", on);
-    wrap.addEventListener("mouseleave", off);
-    return () => {
-      cancelAnimationFrame(raf);
-      wrap.removeEventListener("mouseenter", on);
-      wrap.removeEventListener("mouseleave", off);
-    };
-  }, []);
 
   return (
     <div className="v2" ref={rootRef}>
@@ -430,35 +390,7 @@ export default function ContactV2() {
       </section>
 
       {/* ══════════ 4 · FAQ ══════════ */}
-      <section className="v2-section v2-section--void" id="faq">
-        <div className="v2-faq-intro">
-          <div>
-            <p className="v2-label">FAQ</p>
-            <h2 className="v2-heading">Before you reach out.</h2>
-          </div>
-          <p className="v2-lede v2-faq-note">
-            Still unsure? <a href="mailto:sales@codelixitsolutions.com">Email us directly →</a>
-          </p>
-        </div>
-        <div>
-          {FAQS.map((f, i) => (
-            <div
-              className={`v2-faq-item ${openFaq === i ? "open" : ""} ${revealedFaqs.has(i) ? "is-in" : ""}`}
-              data-faq-index={i}
-              key={f.q}
-            >
-              <button className="v2-faq-q" onClick={() => setOpenFaq(openFaq === i ? -1 : i)}>
-                <span className="v2-faq-q-label">
-                  <span className="v2-faq-index">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="v2-faq-q-text">{f.q}</span>
-                </span>
-                <span className="v2-faq-sign"><span /><span /></span>
-              </button>
-              <div className="v2-faq-a"><p>{f.a}</p></div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <FaqSection faqs={FAQS} className="v2-section--void" />
 
       {/* ══════════ FOOTER ══════════ */}
             <FooterV2 />

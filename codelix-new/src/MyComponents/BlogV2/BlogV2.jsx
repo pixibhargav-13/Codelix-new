@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import { Search, ArrowUpRight } from "lucide-react";
-import CtaVisual from "../HomepageV2/CtaVisual";
 
 /* v2 design system — same source of truth as the other v2 pages */
 import "../HomepageV2/HomepageV2.css";
@@ -17,6 +16,7 @@ import "./BlogV2.css";
 import { slugify } from "../../data/blogData";
 import { useBlogPosts } from "../../data/useBlogPosts";
 import NavbarV2 from "../Shared/NavbarV2";
+import CtaSection from '../Shared/CtaSection';
 
 
 const CATEGORIES = ["All Articles", "business", "CMS", "UI/UX", "Tech", "E-Commerce", "Development", "Artificial Intelligence"];
@@ -169,8 +169,8 @@ export default function BlogV2() {
       </section>
 
       {/* ══════════ 3 · CTA ══════════ */}
-      <section className="v2-section v2-section--void v2-cta-shell bv2-cta-shell">
-        <div className="v2-cta">
+      <CtaSection className="v2-section--void  bv2-cta-shell">
+        
           <p className="v2-label">Start Here</p>
           <h2 className="v2-cta-headline">
             Bring us the problem.
@@ -182,19 +182,8 @@ export default function BlogV2() {
             We scope what should be built first, what can wait, and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a>
-          </div>
-          <div className="v2-cta-badges">
-            <span className="v2-cta-badge">Free consultation</span>
-            <span className="v2-cta-badge">NDA on request</span>
-            <span className="v2-cta-badge">No obligation</span>
-          </div>
-        </div>
-
-        <aside className="v2-cta-visual">
-          <CtaVisual />
-        </aside>
-      </section>
+            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+</CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
       <FooterV2 />

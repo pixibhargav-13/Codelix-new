@@ -163,12 +163,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https://www.codelixitsolutions.com/ai-powered-design-case-study</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+
   <url>
     <loc>https://www.codelixitsolutions.com/car-marketplace-case-study</loc>
     <lastmod>2026-05-13</lastmod>
@@ -183,6 +178,12 @@
   </url>
   <url>
     <loc>https://www.codelixitsolutions.com/smart-society-management-case-study</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.codelixitsolutions.com/internal-ops-erp-case-study</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

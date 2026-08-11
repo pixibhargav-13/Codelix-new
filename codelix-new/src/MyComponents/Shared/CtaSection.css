@@ -1,0 +1,157 @@
+/* ───────────── CTA ───────────── */
+/* two columns so the right side isn't a dead flat rectangle next to the
+   left-aligned max-width:640px text block — an abstract vector fills it
+   instead (CtaVisual.jsx), generic on purpose since this same CTA shell
+   repeats across ~16 pages with different headline/body copy. */
+.v2-cta-shell {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .v2-cta-shell {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+.v2-cta-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v2-cta-visual-svg {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  animation: v2-cta-visual-spin 60s linear infinite;
+}
+
+@keyframes v2-cta-visual-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .v2-cta-visual {
+    display: none;
+  }
+}
+
+/* ambient glow behind the headline — the section's one bit of atmosphere,
+   instead of a flat dark rectangle of text */
+.v2-cta-shell::before {
+  content: "";
+  position: absolute;
+  inset: -30% -10% auto -10%;
+  height: 75%;
+  background: radial-gradient(55% 100% at 22% 10%, rgba(100, 130, 230, .16), transparent 72%);
+  pointer-events: none;
+}
+
+.v2-cta {
+  position: relative;
+  opacity: 0;
+  padding: 20px 0;
+  max-width: 640px;
+}
+
+/* a small accent tick before the eyebrow — scoped to this section only,
+   since .v2-label is shared site-wide */
+.v2-cta .v2-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.v2-cta .v2-label::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(120, 150, 255, .9), rgba(160, 120, 240, .7));
+}
+
+.v2-cta-headline {
+  font-size: clamp(30px, 4.2vw, 46px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -.018em;
+  margin-bottom: 28px !important;
+}
+
+/* the second line carries the actual promise, so it gets the one splash of
+   colour in an otherwise monochrome headline */
+.v2-cta-accent {
+  background: linear-gradient(100deg, #fff 10%, rgba(150, 175, 255, .95));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.v2-cta-body {
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--text-55);
+  max-width: 52ch;
+  margin-bottom: 40px !important;
+}
+
+.v2-cta-actions {
+  display: inline-block;
+}
+
+.v2-cta-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 36px;
+}
+
+.v2-cta-badge {
+  padding: 7px 14px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  background: rgba(255, 255, 255, .03);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-55);
+  transition: border-color .3s ease, color .3s ease, background .3s ease;
+}
+
+.v2-cta-badge:hover {
+  border-color: rgba(120, 150, 255, .4);
+  color: var(--text);
+  background: rgba(120, 150, 255, .06);
+}
+
+/* bare text button — the standard .v2-btn is too heavy next to the delicate vector */
+.v2-cta .v2-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text);
+  padding: 0 0 16px 0;
+  border: none;
+  border-radius: 0;
+  border-bottom: .8px solid rgba(255, 255, 255, .15);
+  background: none;
+}
+
+.v2-cta .v2-btn:hover {
+  border-color: rgba(120, 150, 255, .6);
+  background: none;
+  transform: none;
+}
