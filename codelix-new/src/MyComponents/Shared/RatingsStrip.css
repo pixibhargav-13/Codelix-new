@@ -1,0 +1,148 @@
+.v2-ratings-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  background-color: transparent;
+}
+
+.v2-ratings-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.v2-rating-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.v2-rating-score {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1;
+}
+
+.v2-rating-logo {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.5px;
+}
+
+.google-logo {
+  font-family: 'Product Sans', 'Inter', sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.glassdoor-logo {
+  color: #0CAA41;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.clutch-logo {
+  color: #FFFFFF;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.clutch-c {
+  position: relative;
+  display: inline-block;
+}
+
+.clutch-c::after {
+  content: '';
+  position: absolute;
+  top: 55%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  width: 5px;
+  height: 5px;
+  background-color: #FF3B30;
+  border-radius: 50%;
+}
+
+.goodfirms-logo {
+  color: #4384F5;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+}
+
+.gf-icon {
+  width: 15px;
+  height: 15px;
+  color: #4384F5;
+}
+
+.v2-rating-divider {
+  width: 1px;
+  height: 28px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 12px;
+}
+
+@media (max-width: 768px) {
+  .v2-ratings-container {
+    padding: 10px 5px;
+  }
+
+  .v2-ratings-inner {
+    flex-wrap: nowrap;
+    gap: 15px;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .v2-rating-divider {
+    display: block;
+    margin: 0;
+    height: 20px;
+  }
+  
+  .v2-rating-block {
+    align-items: center;
+    width: auto;
+  }
+
+  .v2-rating-score {
+    font-size: 13px;
+  }
+
+  .v2-rating-logo {
+    font-size: 14px;
+  }
+
+  .google-logo {
+    font-size: 15px;
+  }
+
+  .goodfirms-logo {
+    font-size: 13px;
+    gap: 3px;
+  }
+
+  .gf-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .clutch-c::after {
+    width: 4px;
+    height: 4px;
+  }
+}

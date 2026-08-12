@@ -495,9 +495,9 @@ export default function ProductDetailV2() {
       <CtaSection className="v2-section--void">
         
           <p className="v2-label">Get Started</p>
-          <h2 className="v2-cta-headline">Want {p.name} for your business?</h2>
+          <h2 className="v2-cta-headline">Want {p.name} for your {p.slug === 'aanganone' ? 'society' : 'business'}?</h2>
           <p className="v2-cta-body">
-            Tell us about your team and we'll walk you through a live demo.
+            Tell us about your {p.slug === 'aanganone' ? 'society' : 'team'} and we'll walk you through a live demo.
           </p>
           <div className="v2-cta-actions">
             <a className="v2-btn" href="/contact">Book a demo →</a></div>
