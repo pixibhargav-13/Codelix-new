@@ -105,7 +105,15 @@ async function serveBaseHtml(req, res, meta) {
     
   } catch (e) {
     console.error("HTML Serving Error:", e);
-    res.status(500).send('Internal Server Error');
+    // Send detailed error instead of generic 500
+    res.status(500).send(`
+      <h1>Internal Server Error</h1>
+      <h2>Dynamic SEO Execution Failed</h2>
+      <pre>${e.message}</pre>
+      <pre>${e.stack}</pre>
+      <p>Host: ${req.headers.host}</p>
+      <p>Supabase URL Configured: ${!!(process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL)}</p>
+    `);
   }
 }
 
@@ -113,25 +121,36 @@ async function getIndexHtml(req) {
   // First attempt: Read dist/index.html directly from filesystem
   // This is the fastest and most reliable if Vercel includes it in the lambda.
   try {
-    const distPaths = [
-      path.join(process.cwd(), 'dist', 'index.html'),
-      path.join(process.cwd(), '..', 'dist', 'index.html')
+    const cwd = process.cwd();
+    const possiblePaths = [
+      path.join(cwd, 'dist', 'index.html'),
+      path.join(cwd, '..', 'dist', 'index.html'),
+      path.join(__dirname, 'dist', 'index.html'),
+      path.join(__dirname, '..', 'dist', 'index.html'),
+      path.join(cwd, 'index.html'), // Sometimes Vercel copies it to root
+      '/var/task/dist/index.html',
+      '/var/task/index.html'
     ];
-    for (const dp of distPaths) {
+    for (const dp of possiblePaths) {
       if (fs.existsSync(dp)) {
         return fs.readFileSync(dp, 'utf8');
       }
     }
   } catch (e) {
-    console.warn('Could not read dist/index.html locally, falling back to fetch.', e.message);
+    console.warn('Could not read index.html locally, falling back to fetch.', e.message);
   }
   
   // Fallback: Fetch from self. This is required if the static output isn't bundled with the API function.
   const host = req.headers['x-forwarded-host'] || req.headers.host;
-  const protocol = host && host.includes('localhost') ? 'http' : 'https';
+  const protocol = req.headers['x-forwarded-proto'] || (host && host.includes('localhost') ? 'http' : 'https');
   const baseUrl = host ? `${protocol}://${host}` : 'https://www.codelixitsolutions.com';
   
-  const response = await fetch(baseUrl + '/');
+  const response = await fetch(baseUrl + '/', {
+    headers: {
+      'User-Agent': 'Vercel-Dynamic-SEO-Bot/1.0',
+      'Accept': 'text/html'
+    }
+  });
   
   if (!response.ok) {
     throw new Error(`Failed to fetch base HTML: ${response.status} ${response.statusText}`);
