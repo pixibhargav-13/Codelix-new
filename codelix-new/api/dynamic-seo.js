@@ -106,13 +106,32 @@ async function serveBaseHtml(req, res, meta) {
   } catch (e) {
     console.error("HTML Serving Error:", e);
     // Send detailed error instead of generic 500
+    let dirTree = '';
+    try {
+      const getTree = (d, depth=0) => {
+        if(depth>2) return '';
+        let s = '';
+        const fs = require('fs');
+        const files = fs.readdirSync(d);
+        for (const f of files) {
+          s += '  '.repeat(depth) + f + '\n';
+          const p = require('path').join(d, f);
+          if (fs.statSync(p).isDirectory() && !f.includes('node_modules')) {
+             s += getTree(p, depth+1);
+          }
+        }
+        return s;
+      };
+      dirTree = 'CWD:\\n' + getTree(process.cwd()) + '\\nDIRNAME:\\n' + getTree(__dirname);
+    } catch(err) {}
+
     res.status(500).send(`
       <h1>Internal Server Error</h1>
       <h2>Dynamic SEO Execution Failed</h2>
       <pre>${e.message}</pre>
       <pre>${e.stack}</pre>
-      <p>Host: ${req.headers.host}</p>
-      <p>Supabase URL Configured: ${!!(process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL)}</p>
+      <pre>DirTree:
+${dirTree}</pre>
     `);
   }
 }
@@ -122,22 +141,33 @@ async function getIndexHtml(req) {
   // This is the fastest and most reliable if Vercel includes it in the lambda.
   try {
     const cwd = process.cwd();
-    const possiblePaths = [
-      path.join(cwd, 'dist', 'index.html'),
-      path.join(cwd, '..', 'dist', 'index.html'),
-      path.join(__dirname, 'dist', 'index.html'),
-      path.join(__dirname, '..', 'dist', 'index.html'),
-      path.join(cwd, 'index.html'), // Sometimes Vercel copies it to root
-      '/var/task/dist/index.html',
-      '/var/task/index.html'
-    ];
-    for (const dp of possiblePaths) {
-      if (fs.existsSync(dp)) {
-        return fs.readFileSync(dp, 'utf8');
-      }
+    // Helper to search for index.html
+    const findIndexHtml = (dir, depth = 0) => {
+      if (depth > 3) return null;
+      try {
+        const files = fs.readdirSync(dir);
+        if (files.includes('index.html')) return path.join(dir, 'index.html');
+        for (const file of files) {
+          const fullPath = path.join(dir, file);
+          if (fs.statSync(fullPath).isDirectory() && !file.includes('node_modules')) {
+            const found = findIndexHtml(fullPath, depth + 1);
+            if (found) return found;
+          }
+        }
+      } catch (e) {}
+      return null;
+    };
+
+    let indexPath = findIndexHtml(cwd);
+    if (!indexPath && cwd !== __dirname) {
+      indexPath = findIndexHtml(__dirname);
+    }
+    
+    if (indexPath) {
+      return fs.readFileSync(indexPath, 'utf8');
     }
   } catch (e) {
-    console.warn('Could not read index.html locally, falling back to fetch.', e.message);
+    console.warn('Could not read index.html locally.', e.message);
   }
   
   // Fallback: Fetch from self. This is required if the static output isn't bundled with the API function.
