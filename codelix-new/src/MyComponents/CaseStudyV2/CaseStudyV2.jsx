@@ -68,7 +68,7 @@ export default function CaseStudyV2() {
     const sel = [".csv2-grid", ".sd2-bench", ".v2-strip", ".v2-cta", ".v2-heading", ".v2-label", ".v2-lede"].join(", ");
     rootRef.current.querySelectorAll(sel).forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, [category]);
+  }, [allProjects.map(p => p.id).join(","), category]);
 
   /* stat numbers count up when scrolled in */
   useEffect(() => {
@@ -106,7 +106,7 @@ export default function CaseStudyV2() {
   const adminCards = useMemo(() => {
     const existingSlugs = new Set(PROJECTS.map((p) => toV2Slug(p.href)));
     return caseStudies
-      .filter((cs) => cs.image && !existingSlugs.has(cs.slug))
+      .filter((cs) => !existingSlugs.has(cs.slug))
       .map((cs) => ({
         id: `admin-${cs.slug}`,
         title: cs.title,
@@ -178,7 +178,7 @@ export default function CaseStudyV2() {
           ))}
         </div>
 
-        <div className="csv2-grid">
+        <div className="csv2-grid is-in">
           {filtered.map((p) => (
             <a className="csv2-card" href={`/case-study/${toV2Slug(p.href)}`} key={p.id}>
               <div className="csv2-card-media">
@@ -189,7 +189,7 @@ export default function CaseStudyV2() {
                 <h3 className="csv2-card-title">{p.title}</h3>
                 <p className="csv2-card-desc">{p.description}</p>
                 <div className="csv2-card-tags">
-                  {p.tags.slice(0, 4).map((t) => <span key={t}>{t}</span>)}
+                  {Array.isArray(p.tags) ? p.tags.slice(0, 4).map((t) => <span key={t}>{t}</span>) : null}
                 </div>
                 <span className="csv2-card-link">
                   Read case study <ArrowUpRight size={15} strokeWidth={1.8} />

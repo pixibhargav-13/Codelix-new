@@ -72,7 +72,7 @@ export default function BlogV2() {
     );
     rootRef.current?.querySelectorAll(".v2-label, .v2-heading, .bv2-card, .v2-cta").forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, [visible.length, category, search]);
+  }, [visible.map(b => b.id).join(","), category, search]);
 
   return (
     <div className="v2" ref={rootRef}>
