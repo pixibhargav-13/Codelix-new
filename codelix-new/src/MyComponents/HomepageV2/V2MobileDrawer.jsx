@@ -149,7 +149,6 @@ export default function V2MobileDrawer({ open, onClose }) {
             <div className="v2-drawer-cta-socials">
               <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
-              <a href="https://github.com/Codelix-IT-Solutions" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
           </div>
         </div>

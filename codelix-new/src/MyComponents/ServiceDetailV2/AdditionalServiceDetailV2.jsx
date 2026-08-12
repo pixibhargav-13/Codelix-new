@@ -152,11 +152,14 @@ const EST_ADDONS = [
 
 /* scroll-scrubbed word reveal — identical mechanism to the core service
    pages, kept as its own copy rather than a shared import so each page
+import { useTestimonials } from "../../data/useTestimonials";
    can tune timing independently */
 const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
 
 
 export default function AdditionalServiceDetailV2() {
+  const testimonials = useTestimonials(STATIC_TESTIMONIALS);
+
   const { slug } = useParams();
   const svc = additionalServiceBySlug(slug);
   const caseStudies = useCaseStudies();
@@ -721,7 +724,7 @@ export default function AdditionalServiceDetailV2() {
 
       {/* ══════════ 10 · TESTIMONIAL ══════════ */}
       <TestimonialSpotlight
-        testimonials={STATIC_TESTIMONIALS}
+        testimonials={testimonials}
         label="Client Voices"
         heading="What clients say once we ship."
         stats={[

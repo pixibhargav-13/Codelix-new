@@ -29,6 +29,7 @@ import ScrollSentence from '../Shared/ScrollSentence';
 import FaqSection from '../Shared/FaqSection';
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
+import { useTestimonials } from "../../data/useTestimonials";
 
 
 const DATA_STACK = [
@@ -227,6 +228,8 @@ const METRICS = [
 ];
 
 export default function DataAnalyticsV2() {
+  const testimonials = useTestimonials(STATIC_TESTIMONIALS);
+
   
   
   

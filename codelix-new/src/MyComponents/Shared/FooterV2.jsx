@@ -1,8 +1,7 @@
 import React from 'react';
 import codelixLogo from "../Images/codelix-logo.png";
-import { FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
-import GoogleReviewButton from "./GoogleReviewButton";
-import ClutchWidget from "./ClutchWidget";
+import { FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS, FOOTER_PRODUCTS } from "../HomepageV2/footerData";
+import RatingsStrip from "./RatingsStrip";
 
 export default function FooterV2() {
   return (
@@ -33,6 +32,14 @@ export default function FooterV2() {
         <p className="v2-footer-keywords-label">Industries</p>
         <div className="v2-footer-keywords-list">
           {FOOTER_INDUSTRY_KEYWORDS.map((k, i) => (
+            <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
+          ))}
+        </div>
+      </div>
+      <div className="v2-footer-keywords-row">
+        <p className="v2-footer-keywords-label">Products</p>
+        <div className="v2-footer-keywords-list">
+          {FOOTER_PRODUCTS.map((k, i) => (
             <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
           ))}
         </div>
@@ -87,11 +94,12 @@ export default function FooterV2() {
           <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
           <a href="https://www.facebook.com/profile.php?id=61561748130641" target="_blank" rel="noopener noreferrer">Facebook</a>
           <a href="#" target="_blank" rel="noopener noreferrer">Behance</a>
-          <a href="#" target="_blank" rel="noopener noreferrer">Dribbble</a>
+          <a href="https://dribbble.com/codelixitsolutions" target="_blank" rel="noopener noreferrer">Dribbble</a>
         </div>
         <div className="v2-footer-actions">
-          <ClutchWidget className="v2-desktop-only" />
-          <GoogleReviewButton className="v2-desktop-only" />
+          <div className="v2-desktop-only">
+            <RatingsStrip />
+          </div>
           <button
             type="button"
             className="v2-footer-top"
@@ -102,9 +110,8 @@ export default function FooterV2() {
           </button>
         </div>
       </div>
-      <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: 0, paddingBottom: "20px", justifyContent: "center" }}>
-        <ClutchWidget />
-        <GoogleReviewButton />
+      <div className="v2-footer-social v2-mobile-only" style={{ borderTop: "none", paddingTop: "20px", paddingBottom: "20px", justifyContent: "center", flexWrap: "wrap", gap: "10px", width: "100%" }}>
+        <RatingsStrip />
       </div>
       <div className="v2-footer-bottom">
         <a href="/" className="v2-footer-bottom-brand" aria-label="Codelix — home">

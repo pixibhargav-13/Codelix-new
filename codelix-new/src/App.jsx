@@ -172,7 +172,7 @@ const AppRoutes = () => {
 // ─── App ──────────────────────────────────────────────────────────────────────
 function App() {
   return (
-    <ReactLenis root options={{ lerp: 0.075, duration: 1.5, smoothWheel: true, wheelMultiplier: 0.7 }}>
+    <ReactLenis root options={{ lerp: 0.09, duration: 1.35, smoothWheel: true, wheelMultiplier: 0.85 }}>
       <Router>
         <AuthProvider>
           <LenisGsapSync />

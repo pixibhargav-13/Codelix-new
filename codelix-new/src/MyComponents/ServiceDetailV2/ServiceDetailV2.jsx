@@ -208,11 +208,14 @@ const SENTENCE = [
 
 /* scroll-scrubbed word reveal — identical mechanism to HomepageV2 / ServicesV2
    (kept as a separate copy rather than a shared import so each page can tune
+import { useTestimonials } from "../../data/useTestimonials";
    its own word list/timing without a shared-component refactor) */
 const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
 
 
 export default function ServiceDetailV2() {
+  const testimonials = useTestimonials(STATIC_TESTIMONIALS);
+
   
   
   
@@ -752,7 +755,7 @@ export default function ServiceDetailV2() {
 
       {/* ══════════ 11 · TESTIMONIAL ══════════ */}
       <TestimonialSpotlight
-        testimonials={STATIC_TESTIMONIALS}
+        testimonials={testimonials}
         label="Client Voices"
         heading="What clients say once we ship."
         stats={[

@@ -136,3 +136,9 @@ export const NAVBAR_SERVICES_HIERARCHY = [
     ]
   }
 ];
+
+export const FOOTER_PRODUCTS = [
+  { label: "Audytee", path: "/products/audytee" },
+  { label: "4bitx", path: "/products/4bitx" },
+  { label: "AanganOne", path: "/products/aanganone" }
+];

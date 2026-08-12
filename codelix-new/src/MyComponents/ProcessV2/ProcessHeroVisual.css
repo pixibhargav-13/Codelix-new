@@ -33,263 +33,60 @@
   }
 }
 
-/* The Board */
 .flowchart-board {
   position: relative;
-  width: 500px;
-  height: 420px;
+  width: 440px;
   z-index: 2;
   flex-shrink: 0;
+  display: grid;
+  grid-template-columns: 180px 40px 180px;
+  grid-template-rows: 100px 40px 100px 40px 100px;
+  align-items: center;
+  justify-items: center;
 }
 
-/* ────────── NODES ────────── */
-.flow-node {
-  position: absolute;
-  width: 220px;
-  height: 140px;
-  border-radius: 16px;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.02));
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 10;
+/* CARDS */
+.ahv-card {
+  width: 100%;
+  height: 100%;
+  background: #11141a;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
   opacity: 0.5;
   transform: scale(0.95);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
 }
 
-.flow-node.done {
+.ahv-card.done {
   opacity: 0.85;
   transform: scale(1);
 }
 
-.flow-node.current {
+.ahv-card.current {
   opacity: 1;
   transform: scale(1.05);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 150, 255, 0.2);
-  background: linear-gradient(135deg, rgba(0, 150, 255, 0.5), rgba(138, 43, 226, 0.2));
-  z-index: 20;
-}
-
-/* Node Positioning */
-.node-1 {
-  top: 0;
-  left: 0;
-}
-
-.node-2 {
-  top: 0;
-  right: 0;
-}
-
-.node-3 {
-  bottom: 0;
-  right: 0;
-}
-
-.node-4 {
-  bottom: 0;
-  left: 0;
-}
-
-.node-glass {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(20, 25, 35, 0.6), rgba(10, 12, 18, 0.8));
-  border-radius: 15px;
-  padding: 18px 20px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.flow-node.current .node-glass {
-  background: linear-gradient(135deg, rgba(25, 35, 50, 0.8), rgba(10, 15, 25, 0.95));
-}
-
-.node-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-
-.node-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 26px;
-  height: 26px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
-  color: rgba(255, 255, 255, 0.8);
-  transition: all 0.4s ease;
-}
-
-.flow-node.current .node-icon {
-  background: rgba(0, 150, 255, 0.2);
-  color: #0096ff;
-  transform: scale(1.1);
-}
-
-.node-num {
-  font-family: var(--mono-font, monospace);
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.flow-node.current .node-num {
-  color: #0096ff;
-}
-
-.node-body {
-  margin-bottom: 12px;
-}
-
-.node-title {
-  font-size: 18px;
-  font-weight: 600;
-  color: #fff;
-  margin: 0;
-  letter-spacing: -0.3px;
-}
-
-/* ────────── MICRO-VISUALS ────────── */
-.node-visual {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  flex: 1;
-}
-
-/* 1. Message Wave */
-.mini-wave {
-  width: 4px;
-  background: #0096ff;
-  border-radius: 2px;
-  animation: waveAnim 1.2s ease-in-out infinite alternate;
-  opacity: 0.6;
-}
-
-.flow-node.current .mini-wave {
-  opacity: 1;
-  box-shadow: 0 0 8px #0096ff;
-}
-
-.w-1 {
-  height: 12px;
-  animation-delay: 0.0s;
-}
-
-.w-2 {
-  height: 20px;
-  animation-delay: 0.2s;
-}
-
-.w-3 {
-  height: 28px;
-  animation-delay: 0.4s;
-}
-
-.w-4 {
-  height: 16px;
-  animation-delay: 0.6s;
-}
-
-.w-5 {
-  height: 10px;
-  animation-delay: 0.8s;
-}
-
-@keyframes waveAnim {
-  0% {
-    transform: scaleY(0.4);
-  }
-
-  100% {
-    transform: scaleY(1);
-  }
-}
-
-/* 2. Scope Grid */
-.visual-grid {
-  gap: 6px;
-}
-
-.vg-box {
-  width: 30%;
-  height: 24px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  border: 1px solid transparent;
-}
-
-.flow-node.current .vg-box {
-  background: rgba(0, 150, 255, 0.15);
-  border-color: rgba(0, 150, 255, 0.4);
-}
-
-/* 3. Build Term */
-.visual-term {
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  font-family: var(--mono-font, monospace);
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.5);
-  gap: 2px;
-}
-
-.flow-node.current .visual-term {
-  color: #a3c2ff;
-}
-
-.vt-line.success {
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.flow-node.current .vt-line.success {
-  color: #4ade80;
-}
-
-/* 4. Launch Progress */
-.visual-launch {
-  width: 100%;
-}
-
-.vl-bar {
-  width: 100%;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.vl-progress {
-  width: 0%;
-  height: 100%;
-  background: linear-gradient(90deg, #0096ff, #4ade80);
-  border-radius: 3px;
-  transition: width 1s ease;
-}
-
-.flow-node.current .vl-progress {
-  width: 100%;
-  box-shadow: 0 0 10px #4ade80;
+  border-color: rgba(0, 150, 255, 0.3);
+  box-shadow: 0 0 20px rgba(0, 150, 255, 0.1), inset 0 0 10px rgba(0, 150, 255, 0.05);
+  background: #0f1624;
+  z-index: 10;
 }
 
 /* Active Ring */
 .node-active-ring {
   position: absolute;
   inset: 0;
-  border-radius: 15px;
+  border-radius: 12px;
   border: 1px solid #0096ff;
   opacity: 0;
-  animation: expandRing 2.8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  animation: expandRing 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: none;
 }
 
 @keyframes expandRing {
@@ -304,33 +101,226 @@
   }
 }
 
-/* ────────── PATH CONNECTIONS ────────── */
-.flow-path {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 2px;
-  z-index: 1;
-  /* Always stays safely behind nodes */
+.ahc-card-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #71717a;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
-.flow-path.active {
+.ahv-card.current .ahc-card-top {
+  color: #0096ff;
+}
+
+.ahc-card-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #d4d4d8;
+  letter-spacing: -0.01em;
+}
+
+.ahv-card.current .ahc-card-title {
+  color: #fff;
+}
+
+/* MINI VISUALS */
+.ahc-card-visual {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+.ahc-card-visual.wave {
+  gap: 4px;
+  align-items: center;
+  height: 18px;
+  margin-top: auto;
+}
+
+.ahc-card-visual.wave span {
+  width: 4px;
+  background: rgba(0, 150, 255, 0.4);
+  border-radius: 2px;
+}
+
+.ahc-card-visual.wave span:nth-child(1) {
+  height: 8px;
+}
+
+.ahc-card-visual.wave span:nth-child(2) {
+  height: 12px;
+}
+
+.ahc-card-visual.wave span:nth-child(3) {
+  height: 18px;
+}
+
+.ahc-card-visual.wave span:nth-child(4) {
+  height: 14px;
+}
+
+.ahc-card-visual.wave span:nth-child(5) {
+  height: 10px;
+}
+
+.ahv-card.current .ahc-card-visual.wave span {
+  background: #0096ff;
+  box-shadow: 0 0 8px #0096ff;
+}
+
+.ahc-card-visual.boxes {
+  gap: 6px;
+  align-items: flex-end;
+}
+
+.ahc-card-visual.boxes span {
+  flex: 1;
+  height: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.ahv-card.current .ahc-card-visual.boxes span {
+  border-color: rgba(0, 150, 255, 0.4);
+  background: rgba(0, 150, 255, 0.1);
+}
+
+.ahc-card-visual.code-text {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  font-size: 10px;
+  font-family: monospace;
+  color: #71717a;
+  gap: 2px;
+  line-height: 1;
+}
+
+.ahc-card-visual.code-text .text-gray {
+  opacity: 0.5;
+}
+
+.ahv-card.current .ahc-card-visual.code-text {
+  color: #a3c2ff;
+}
+
+.ahv-card.current .ahc-card-visual.code-text .text-gray {
+  color: #4ade80;
+  opacity: 1;
+}
+
+.ahc-card-visual.wireframe {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 4px;
+  padding-bottom: 2px;
+  width: 100%;
+}
+
+.ahc-card-visual.wireframe .wf-line {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.ahc-card-visual.wireframe .w-full {
+  width: 80%;
+}
+
+.ahc-card-visual.wireframe .w-half {
+  width: 40%;
+}
+
+.ahv-card.current .ahc-card-visual.wireframe .wf-line {
+  background: rgba(0, 150, 255, 0.5);
+}
+
+.ahc-card-visual.launch-progress {
+  align-items: center;
+  width: 100%;
+  padding-bottom: 2px;
+}
+
+.prog-bar {
+  width: 100%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.prog-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #0096ff, #4ade80);
+  border-radius: 3px;
+  transition: width 1s ease;
+}
+
+.ahv-card.current .prog-fill {
+  width: 100%;
+  box-shadow: 0 0 10px #4ade80;
+}
+
+.ahc-card-visual.pulse-dot {
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 2px;
+  opacity: 0.5;
+}
+
+.ahc-card-visual.pulse-dot .dot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.ahc-card-visual.pulse-dot .dot-label {
+  font-size: 10px;
+  color: #71717a;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.ahv-card.current .ahc-card-visual.pulse-dot {
+  opacity: 1;
+}
+
+/* LINES */
+.ahv-line {
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.ahv-line.active {
   background: rgba(0, 150, 255, 0.4);
   box-shadow: 0 0 10px rgba(0, 150, 255, 0.2);
 }
 
+.ahv-line.h-line {
+  height: 2px;
+  width: 100%;
+}
+
+.ahv-line.v-line {
+  width: 2px;
+  height: 100%;
+}
+
+/* PULSES */
 .light-pulse {
   position: absolute;
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 0 15px 3px #0096ff;
-}
-
-/* Path 1 -> 2 (Top horizontal) */
-.path-1-2 {
-  top: 70px;
-  left: 220px;
-  width: 60px;
-  height: 2px;
 }
 
 .pulse-right {
@@ -339,7 +329,7 @@
   width: 20px;
   height: 4px;
   background: linear-gradient(90deg, transparent, #0096ff 50%, #fff);
-  animation: runRight 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: runRight 1.15s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes runRight {
@@ -357,54 +347,9 @@
   }
 
   100% {
-    left: 40px;
+    left: 20px;
     opacity: 0;
   }
-}
-
-/* Path 2 -> 3 (Right vertical) */
-.path-2-3 {
-  top: 140px;
-  right: 110px;
-  width: 2px;
-  height: 140px;
-}
-
-.pulse-down {
-  top: 0;
-  left: -1px;
-  width: 4px;
-  height: 30px;
-  background: linear-gradient(180deg, transparent, #0096ff 50%, #fff);
-  animation: runDown 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-@keyframes runDown {
-  0% {
-    top: 0;
-    opacity: 0;
-  }
-
-  15% {
-    opacity: 1;
-  }
-
-  85% {
-    opacity: 1;
-  }
-
-  100% {
-    top: 110px;
-    opacity: 0;
-  }
-}
-
-/* Path 3 -> 4 (Bottom horizontal, right to left) */
-.path-3-4 {
-  bottom: 70px;
-  right: 220px;
-  width: 60px;
-  height: 2px;
 }
 
 .pulse-left {
@@ -413,7 +358,7 @@
   width: 20px;
   height: 4px;
   background: linear-gradient(270deg, transparent, #0096ff 50%, #fff);
-  animation: runLeft 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: runLeft 1.15s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes runLeft {
@@ -431,12 +376,97 @@
   }
 
   100% {
-    right: 40px;
+    right: 20px;
     opacity: 0;
   }
 }
 
-/* Responsive constraints */
+.pulse-down {
+  top: 0;
+  left: -1px;
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(180deg, transparent, #0096ff 50%, #fff);
+  animation: runDown 1.15s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes runDown {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 20px;
+    opacity: 0;
+  }
+}
+
+/* GRID PLACEMENTS */
+.c1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.l1-2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.c2 {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.l2-3 {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.c3 {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+.l3-4 {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.c4 {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.l4-5 {
+  grid-column: 1;
+  grid-row: 4;
+}
+
+.c5 {
+  grid-column: 1;
+  grid-row: 5;
+}
+
+.l5-6 {
+  grid-column: 2;
+  grid-row: 5;
+}
+
+.c6 {
+  grid-column: 3;
+  grid-row: 5;
+}
+
+/* Responsive */
 @media (max-width: 940px) {
   .process-flow-container {
     height: auto;
@@ -445,13 +475,13 @@
   }
 
   .flowchart-board {
-    scale: 0.85;
+    scale: 0.9;
   }
 }
 
 @media (max-width: 700px) {
   .flowchart-board {
-    scale: 0.75;
+    scale: 0.8;
   }
 }
 

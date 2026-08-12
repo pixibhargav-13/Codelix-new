@@ -31,6 +31,7 @@ import ScrollSentence from '../Shared/ScrollSentence';
 import FaqSection from '../Shared/FaqSection';
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
+import { useTestimonials } from "../../data/useTestimonials";
 
 
 const AI_STACK = [
@@ -221,6 +222,8 @@ const METRICS = [
 ];
 
 export default function AIDevelopmentV2() {
+  const testimonials = useTestimonials(STATIC_TESTIMONIALS);
+
   
   
   
@@ -767,7 +770,7 @@ export default function AIDevelopmentV2() {
 
       {/* ══════════ 11 · TESTIMONIAL ══════════ */}
       <TestimonialSpotlight
-        testimonials={STATIC_TESTIMONIALS}
+        testimonials={testimonials}
         label="Client Voices"
         heading="What clients say once we ship."
         stats={[

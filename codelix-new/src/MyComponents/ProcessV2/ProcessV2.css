@@ -7,7 +7,8 @@
 
 /* ───────────── HERO GRID OVERRIDE & CENTERING ───────────── */
 .sd2-hero.process-hero {
-  padding-top: 180px; /* Space for navbar */
+  padding-top: 132 px;
+  /* Space for navbar */
   padding-bottom: 80px;
 }
 

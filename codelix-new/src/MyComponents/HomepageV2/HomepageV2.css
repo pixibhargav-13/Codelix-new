@@ -4119,6 +4119,7 @@
   justify-content: space-between;
   padding: 20px var(--pad-x);
   border-top: .8px solid var(--rule);
+  border-bottom: .8px solid var(--rule);
   gap: 12px;
 }
 
@@ -4246,7 +4247,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 125px;
+  width: 180px;
   transform: translate(-50%, -50%);
   transform-origin: center center;
 }
@@ -4694,6 +4695,7 @@
 }
 
 @media (max-width: 900px) {
+
   /* Increase hero title size on mobile/tablet */
   .v2-hero-title {
     font-size: clamp(48px, 11vw, 76px) !important;
@@ -4704,6 +4706,7 @@
     font-size: 13px;
     padding: 9px 18px 9px 15px;
   }
+
   .v2-hero-eyebrow {
     font-size: 11px;
   }
@@ -4714,18 +4717,20 @@
     gap: 10px !important;
     justify-content: flex-start;
   }
-  
+
   /* Shrink button padding significantly so they fit cleanly on 320px screens */
   .v2-btn--filled {
     padding: 10px 16px !important;
     font-size: 12px !important;
   }
-  
+
   .v2-hero-secondary {
     font-size: 10px !important;
     gap: 6px !important;
   }
-}/* bare text button — the only button style on the site */
+}
+
+/* bare text button — the only button style on the site */
 .v2-btn {
   display: inline-flex;
   align-items: center;
@@ -4753,4 +4758,25 @@
 
 .v2-section--gallery .v2-btn:hover {
   border-color: var(--ink);
+}
+
+/* Goodfirms iframe invert for dark footer */
+.v2-goodfirms-widget-container {
+  background-color: #050507;
+  border-radius: 6px;
+  overflow: hidden;
+  display: inline-flex;
+  width: 171px;
+  /* Scaled down from 245px */
+  height: 42px;
+  /* Scaled down from 61px */
+}
+
+.v2-goodfirms-widget-container iframe {
+  filter: invert(1) hue-rotate(180deg);
+  mix-blend-mode: lighten;
+  width: 245px !important;
+  height: 61px !important;
+  transform: scale(0.7);
+  transform-origin: top left;
 }
