@@ -28,39 +28,12 @@ const staticUrls = [
   "https://www.codelixitsolutions.com/work",
   "https://www.codelixitsolutions.com/blog",
   "https://www.codelixitsolutions.com/contact",
-  "https://www.codelixitsolutions.com/case-study",
-  "https://www.codelixitsolutions.com/nextgen-case-study",
-  "https://www.codelixitsolutions.com/erp-case-study",
-  "https://www.codelixitsolutions.com/payroll-case-study",
-  "https://www.codelixitsolutions.com/smart-business-case-study",
-  "https://www.codelixitsolutions.com/book-collections-case-study",
-  "https://www.codelixitsolutions.com/makhana-store-case-study",
-  "https://www.codelixitsolutions.com/freight-shipping-case-study",
-  "https://www.codelixitsolutions.com/hr-portal-case-study",
-  "https://www.codelixitsolutions.com/edtech-case-study",
-  "https://www.codelixitsolutions.com/modern-creative-agency-case-study",
-  "https://www.codelixitsolutions.com/elegant-creative-agency-case-study",
-  "https://www.codelixitsolutions.com/car-marketplace-case-study",
-  "https://www.codelixitsolutions.com/school-management-case-study",
-  "https://www.codelixitsolutions.com/smart-society-management-case-study",
-  "https://www.codelixitsolutions.com/internal-ops-erp-case-study",
-  "https://www.codelixitsolutions.com/blog/why-digital-presence-matters-more-than-ever-in-2025",
-  "https://www.codelixitsolutions.com/blog/design-system-component-based-uis-efficiency-at-scale",
-  "https://www.codelixitsolutions.com/blog/progressive-web-apps-pwas-as-the-new-standard",
-  "https://www.codelixitsolutions.com/blog/saas-vs-on-premise-whats-best-for-your-business",
-  "https://www.codelixitsolutions.com/blog/how-e-commerce-platforms-boost-retail-transformation",
-  "https://www.codelixitsolutions.com/blog/how-end-to-end-web-development-delivers-better-results",
-  "https://www.codelixitsolutions.com/blog/top-5-reasons-to-choose-laravel-for-faster-web-app-development",
-  "https://www.codelixitsolutions.com/blog/ai-powered-solutions-transforming-modern-businesses",
-  "https://www.codelixitsolutions.com/blog/mastering-wordpress-advanced-cms-techniques",
-  "https://www.codelixitsolutions.com/blog/building-scalable-web-applications-with-modern-frameworks",
-  "https://www.codelixitsolutions.com/blog/the-future-of-mobile-app-development-trends-and-insights",
-  "https://www.codelixitsolutions.com/blog/optimizing-user-experience-through-better-uiux-design"
+  "https://www.codelixitsolutions.com/case-study"
 ];
 
 export default async function handler(req, res) {
-  const supabaseUrl = process.env.VITE_SUPABASE_URL;
-  const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY;
+  const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  const supabaseKey = process.env.SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY;
   
   if (!supabaseUrl || !supabaseKey) {
     return res.status(500).send('Missing Supabase configuration');
@@ -109,9 +82,15 @@ export default async function handler(req, res) {
       xml += '  <url>\n';
       xml += `    <loc>${data.loc}</loc>\n`;
       if (data.lastmod) {
-        // Format to YYYY-MM-DD
-        const dateStr = new Date(data.lastmod).toISOString().split('T')[0];
-        xml += `    <lastmod>${dateStr}</lastmod>\n`;
+        try {
+          const dateObj = new Date(data.lastmod);
+          if (!isNaN(dateObj.getTime())) {
+            const dateStr = dateObj.toISOString().split('T')[0];
+            xml += `    <lastmod>${dateStr}</lastmod>\n`;
+          }
+        } catch (e) {
+          // ignore invalid dates
+        }
       }
       xml += '    <changefreq>monthly</changefreq>\n';
       xml += '    <priority>0.7</priority>\n';

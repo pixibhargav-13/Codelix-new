@@ -4,6 +4,7 @@ import { ReactLenis, useLenis } from 'lenis/react';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import BreadcrumbSchema from "./components/BreadcrumbSchema";
+import { StructuredData } from "./components/StructuredData";
 import { AuthProvider } from "./admin/AuthContext";
 import RequireAuth from "./admin/RequireAuth";
 
@@ -178,6 +179,7 @@ function App() {
           <LenisGsapSync />
           <ScrollToTop />
           <BreadcrumbSchema />
+          <StructuredData type="Organization" />
           <ChatbotGate />
           <BookingModal />
           <AppRoutes />
