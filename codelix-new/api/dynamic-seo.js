@@ -141,13 +141,15 @@ async function getIndexHtml(req) {
   }
   
   // Fallback: Fetch from self. This is required if the static output isn't bundled with the API function.
-  const host = req.headers['x-forwarded-host'] || req.headers.host;
-  const protocol = req.headers['x-forwarded-proto'] || (host && host.includes('localhost') ? 'http' : 'https');
+  // We MUST use the internal Vercel URL to bypass Cloudflare 403 Forbidden on datacenter IPs.
+  const vercelUrl = req.headers['x-vercel-deployment-url'] || process.env.VERCEL_URL;
+  const host = vercelUrl || req.headers['x-forwarded-host'] || req.headers.host;
+  const protocol = host && (host.includes('localhost') || host.includes('127.0.0.1')) ? 'http' : 'https';
   const baseUrl = host ? `${protocol}://${host}` : 'https://www.codelixitsolutions.com';
   
   const response = await fetch(baseUrl + '/', {
     headers: {
-      'User-Agent': 'Vercel-Dynamic-SEO-Bot/1.0',
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
       'Accept': 'text/html'
     }
   });
