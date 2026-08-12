@@ -17,6 +17,7 @@ import { useCaseStudies } from "./useCaseStudies";
 import { PROJECTS } from "../WorkV2/projectsData";
 import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from '../Shared/CtaSection';
+import { StructuredData } from "../StructuredData";
 
 
 /* the mask-line wipe animation (shared with every other v2 hero) only
@@ -128,6 +129,7 @@ export default function CaseStudyDetailV2() {
 
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
+      <StructuredData type="Article" data={cs} />
 
       
       

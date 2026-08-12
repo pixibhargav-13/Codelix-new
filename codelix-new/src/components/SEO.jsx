@@ -5,6 +5,7 @@ export const SEO = ({
   title,
   description,
   keywords = '',
+  robots = 'index, follow, max-image-preview:large, max-snippet:-1',
 }) => {
   const siteUrl = 'https://www.codelixitsolutions.com';
   const location = useLocation();
@@ -19,6 +20,16 @@ export const SEO = ({
     // Canonical & URL tags
     document.getElementById('meta-canonical')?.setAttribute('href', fullCanonical);
     document.getElementById('meta-og-url')?.setAttribute('content', fullCanonical);
+    
+    // Some systems look for a specific twitter:url, though og:url often suffices.
+    let twUrl = document.getElementById('meta-tw-url');
+    if (!twUrl) {
+      twUrl = document.createElement('meta');
+      twUrl.setAttribute('name', 'twitter:url');
+      twUrl.setAttribute('id', 'meta-tw-url');
+      document.head.appendChild(twUrl);
+    }
+    twUrl.setAttribute('content', fullCanonical);
 
     // Description
     if (description) {
@@ -35,7 +46,17 @@ export const SEO = ({
     // Titles (OG & Twitter)
     document.getElementById('meta-og-title')?.setAttribute('content', fullTitle);
     document.getElementById('meta-tw-title')?.setAttribute('content', fullTitle);
-  }, [fullTitle, description, keywords, fullCanonical]);
+    
+    // Robots
+    let robotsMeta = document.querySelector('meta[name="robots"]');
+    if (!robotsMeta) {
+      robotsMeta = document.createElement('meta');
+      robotsMeta.setAttribute('name', 'robots');
+      document.head.appendChild(robotsMeta);
+    }
+    robotsMeta.setAttribute('content', robots);
+    
+  }, [fullTitle, description, keywords, robots, fullCanonical]);
 
   return null;
 };
