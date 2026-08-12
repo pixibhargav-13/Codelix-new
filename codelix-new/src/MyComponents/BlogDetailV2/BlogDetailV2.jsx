@@ -18,7 +18,7 @@ import { slugify } from "../../data/blogData";
 import { useBlogPosts } from "../../data/useBlogPosts";
 import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from '../Shared/CtaSection';
-import { StructuredData } from "../StructuredData";
+import { StructuredData } from "../../components/StructuredData";
 
 
 export default function BlogDetailV2() {
