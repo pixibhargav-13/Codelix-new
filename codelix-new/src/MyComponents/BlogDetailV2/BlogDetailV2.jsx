@@ -19,6 +19,7 @@ import { useBlogPosts } from "../../data/useBlogPosts";
 import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from '../Shared/CtaSection';
 import { StructuredData } from "../../components/StructuredData";
+import { SEO } from "../../components/SEO";
 
 
 export default function BlogDetailV2() {
@@ -98,6 +99,7 @@ export default function BlogDetailV2() {
 
   return (
     <div className="v2" ref={rootRef}>
+      <SEO title={`${blog.title} | Codelix IT Solutions`} description={blog.excerpt || blog.subtitle || `Read ${blog.title} on Codelix IT Solutions.`} />
       <div className="v2-progress" aria-hidden="true"><span /></div>
       <div className="bdv2-read-rail" aria-hidden="true">
         <div className="bdv2-read-fill" style={{ transform: `scaleX(${readProgress})` }} />
