@@ -126,8 +126,11 @@ export default function WorkV2() {
       (entries) => entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         const el = entry.target;
+        el.classList.add("is-in");
         
-          el.classList.add("is-in");
+        if (el.classList.contains("wv-spotlight")) {
+          setSpotlightVisible(true);
+        }
         
         io.unobserve(el);
       }),

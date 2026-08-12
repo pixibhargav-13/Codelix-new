@@ -3,6 +3,7 @@ import FooterV2 from "../Shared/FooterV2";
 import { useParams } from "react-router-dom";
 import gsap from "gsap";
 import { ArrowLeft, ArrowUpRight, X, Check } from "lucide-react";
+import { SEO } from "../../components/SEO";
 
 /* v2 design system — same source of truth as the other v2 pages */
 import "../HomepageV2/HomepageV2.css";
@@ -125,6 +126,7 @@ export default function CaseStudyDetailV2() {
 
   return (
     <div className="v2" ref={rootRef}>
+      <SEO title={`${cs.title} | Case Study | Codelix`} description={cs.description || `Read about how we solved ${cs.title} at Codelix IT Solutions.`} />
       <div className="v2-progress" aria-hidden="true"><span /></div>
 
       {/* ══════════ NAV ══════════ */}
