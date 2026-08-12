@@ -113,21 +113,28 @@ async function getIndexHtml(req) {
   // First attempt: Read dist/index.html directly from filesystem
   // This is the fastest and most reliable if Vercel includes it in the lambda.
   try {
-    const distPath = path.join(process.cwd(), 'dist', 'index.html');
-    if (fs.existsSync(distPath)) {
-      return fs.readFileSync(distPath, 'utf8');
+    const distPaths = [
+      path.join(process.cwd(), 'dist', 'index.html'),
+      path.join(process.cwd(), '..', 'dist', 'index.html')
+    ];
+    for (const dp of distPaths) {
+      if (fs.existsSync(dp)) {
+        return fs.readFileSync(dp, 'utf8');
+      }
     }
   } catch (e) {
-    console.warn('Could not read dist/index.html locally, falling back to fetch.');
+    console.warn('Could not read dist/index.html locally, falling back to fetch.', e.message);
   }
   
   // Fallback: Fetch from self. This is required if the static output isn't bundled with the API function.
-  const protocol = req.headers.host?.includes('localhost') ? 'http' : 'https';
-  const baseUrl = `${protocol}://${req.headers.host}`;
+  const host = req.headers['x-forwarded-host'] || req.headers.host;
+  const protocol = host && host.includes('localhost') ? 'http' : 'https';
+  const baseUrl = host ? `${protocol}://${host}` : 'https://www.codelixitsolutions.com';
+  
   const response = await fetch(baseUrl + '/');
   
   if (!response.ok) {
-    throw new Error('Failed to fetch base HTML');
+    throw new Error(`Failed to fetch base HTML: ${response.status} ${response.statusText}`);
   }
   return await response.text();
 }

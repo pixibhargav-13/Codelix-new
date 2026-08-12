@@ -180,7 +180,7 @@ export default function WorkV2() {
   const adminProjects = React.useMemo(() => {
     const existingSlugs = new Set(PROJECTS.map((p) => p.href.replace("/", "")));
     return caseStudies
-      .filter((cs) => cs.image && !existingSlugs.has(cs.slug))
+      .filter((cs) => !existingSlugs.has(cs.slug))
       .map((cs) => ({
         id: `admin-${cs.slug}`,
         title: cs.title,
@@ -189,7 +189,7 @@ export default function WorkV2() {
         description: cs.description,
         tags: cs.tags,
         image: cs.image,
-        href: `/case-study/${cs.slug}`,
+        href: `/${cs.slug}`,
       }));
   }, [caseStudies]);
 
@@ -349,7 +349,7 @@ export default function WorkV2() {
           </div>
         </div>
 
-        <div className="wv-grid">
+        <div className="wv-grid is-in">
           {filtered.map((p) => (
             <a className="wv-card" href={linkFor(p)} key={p.id}>
               <div className="wv-card-media">
@@ -359,7 +359,7 @@ export default function WorkV2() {
                 <span className="wv-card-cat">{p.category}</span>
                 <h3 className="wv-card-title">{p.title}</h3>
                 <div className="wv-card-tags">
-                  {p.tags.slice(0, 3).map((t) => <span key={t}>{t}</span>)}
+                  {Array.isArray(p.tags) ? p.tags.slice(0, 3).map((t) => <span key={t}>{t}</span>) : null}
                 </div>
               </div>
               <span className="wv-card-arrow" aria-hidden="true"><ArrowUpRight size={18} strokeWidth={1.8} /></span>

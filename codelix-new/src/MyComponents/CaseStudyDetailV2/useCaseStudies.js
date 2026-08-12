@@ -18,8 +18,12 @@ export function useCaseStudies() {
       .eq("published", true)
       .order("published_at", { ascending: false })
       .then(({ data, error }) => {
-        if (!active || error || !data || data.length === 0) return;
-        const fromSupabase = data.map((cs) => {
+        if (!active || error) {
+          console.error("Supabase case_studies fetch error:", error);
+          return;
+        }
+        console.log("Fetched case studies:", data);
+        const fromSupabase = (data || []).map((cs) => {
           const challengeImages = [
             cs.challenge_image_1_url ? { src: cs.challenge_image_1_url, alt: cs.challenge_image_1_alt || "" } : null,
             cs.challenge_image_2_url ? { src: cs.challenge_image_2_url, alt: cs.challenge_image_2_alt || "" } : null,
@@ -37,7 +41,7 @@ export function useCaseStudies() {
             outcomes: cs.outcomes || [],
             challenges: cs.challenges || [],
             solutions: cs.solutions || [],
-            image: cs.cover_image_url || null,
+            image: cs.cover_image_url || "https://laravel.com/img/logomark.min.svg",
             isConcept: !!cs.is_concept,
             snapshot: cs.snapshot?.length ? cs.snapshot : undefined,
             challengeImages: challengeImages.length ? challengeImages : undefined,

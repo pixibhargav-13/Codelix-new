@@ -1,4 +1,9 @@
 {
+  "functions": {
+    "api/dynamic-seo.js": {
+      "includeFiles": "dist/index.html"
+    }
+  },
   "rewrites": [
     { "source": "/sitemap.xml", "destination": "/api/sitemap" },
     { "source": "/blog/:slug", "destination": "/api/dynamic-seo" },
