@@ -5,6 +5,7 @@ import { Check, X, ArrowUpRight, ExternalLink } from "lucide-react";
 import FooterV2 from "../Shared/FooterV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import { PRODUCTS, productBySlug } from "./productsData";
+import { SEO } from "../../components/SEO";
 
 import "../HomepageV2/HomepageV2.css";
 import "../ServicesV2/ServicesV2.css";
@@ -102,6 +103,7 @@ export default function ProductDetailV2() {
 
   return (
     <div className="v2 pd2-root" ref={rootRef} style={{ "--prod-accent": p.accent }}>
+      <SEO title={`${p.name} | Codelix IT Solutions`} description={p.tagline || `Learn about ${p.name} at Codelix IT Solutions.`} />
       <div className="v2-progress" aria-hidden="true"><span /></div>
       <NavbarV2 />
 
