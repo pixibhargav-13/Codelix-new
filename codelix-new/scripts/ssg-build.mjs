@@ -7,9 +7,12 @@ import { getGeneratedRoutes } from "../src/lib/route-config.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// We need the Supabase URL and ANON KEY from the environment, just like the client does.
 import dotenv from "dotenv";
-dotenv.config();
+if (fs.existsSync(path.resolve(__dirname, "../.env.local"))) {
+  dotenv.config({ path: path.resolve(__dirname, "../.env.local") });
+} else {
+  dotenv.config();
+}
 
 const supabaseUrl = process.env.VITE_SUPABASE_URL || "https://uivndohrtcthphqymqej.supabase.co";
 const supabaseAnonKey = process.env.VITE_SUPABASE_ANON_KEY || "eyJhb... (fallback won't work in real life without real key, but we rely on .env)";
@@ -22,18 +25,30 @@ async function build() {
 
   // 1. Fetch dynamic data from Supabase
   console.log("Fetching case studies from Supabase...");
-  const { data: caseStudiesRaw } = await supabase
+  const { data: caseStudiesRaw, error: caseStudiesError } = await supabase
     .from("case_studies")
     .select("*")
     .eq("published", true)
     .order("published_at", { ascending: false });
 
+  if (caseStudiesError) {
+    console.error("❌ Error fetching case studies:", caseStudiesError.message);
+  } else {
+    console.log(`✅ Fetched ${caseStudiesRaw?.length || 0} case studies`);
+  }
+
   console.log("Fetching blog posts from Supabase...");
-  const { data: blogPostsRaw } = await supabase
+  const { data: blogPostsRaw, error: blogPostsError } = await supabase
     .from("blog_posts")
     .select("*")
     .eq("published", true)
     .order("published_at", { ascending: false });
+
+  if (blogPostsError) {
+    console.error("❌ Error fetching blog posts:", blogPostsError.message);
+  } else {
+    console.log(`✅ Fetched ${blogPostsRaw?.length || 0} blog posts`);
+  }
 
   // Map to the format the application expects
   const caseStudies = (caseStudiesRaw || []).map((cs) => {
