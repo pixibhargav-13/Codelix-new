@@ -10,7 +10,6 @@ export function useCaseStudies() {
   );
 
   useEffect(() => {
-    if (initialContext?.caseStudies) return; // Skip fetch if we already hydrated from SSG
 
     let active = true;
     supabase
