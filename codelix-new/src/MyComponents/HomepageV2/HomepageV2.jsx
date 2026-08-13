@@ -130,14 +130,14 @@ const SYSTEMS = [
 ];
 
 const SERVICES = [
-  { n: "01", tag: "Development", title: "Web Development", items: [{label: "Performance Optimization", path: "/services/performance-optimization"}], link: "/services/web-development" },
-  { n: "02", tag: "Development", title: "Application Development", items: [{label: "SaaS Product Development", path: "/services/saas-product-development"}], link: "/services/application-development" },
-  { n: "03", tag: "Design", title: "UI/UX Design", items: [{label: "UX Research & Design Systems", path: "/services/ux-research-design-systems"}], link: "/services/ui-ux-design" },
-  { n: "04", tag: "Commerce", title: "E-Commerce Solutions", items: [{label: "Marketplace Development", path: "/services/marketplace-development"}, {label: "Payment Integration Services", path: "/services/payment-integration-services"}], link: "/services/e-commerce-solutions" },
-  { n: "05", tag: "Development", title: "Custom Software Development", items: [{label: "ERP & CRM Development", path: "/services/erp-crm-development"}, {label: "API Development & Integration", path: "/services/api-development-integration"}, {label: "Legacy System Modernization", path: "/services/legacy-system-modernization"}], link: "/services/custom-software-development" },
-  { n: "06", tag: "Applied AI", title: "AI Development", items: [{label: "AI Agent Development", path: "/services/ai-agent-development"}, {label: "Generative AI Solutions", path: "/services/generative-ai-solutions"}, {label: "Workflow Automation", path: "/services/workflow-automation"}], link: "/services/ai-development" },
-  { n: "07", tag: "Analytics", title: "Data Analytics", items: [{label: "Business Intelligence Solutions", path: "/services/business-intelligence-solutions"}, {label: "Predictive Analytics", path: "/services/predictive-analytics"}, {label: "Data Engineering", path: "/services/data-engineering"}], link: "/services/data-analytics" },
-  { n: "08", tag: "Support", title: "Support & Managed Services", items: [{label: "Cloud Solutions & Migration", path: "/services/cloud-solutions-migration"}, {label: "Cloud Infrastructure Services", path: "/services/cloud-infrastructure-services"}, {label: "Security & Maintenance", path: "/services/security-maintenance"}, {label: "Dedicated Development Teams", path: "/services/dedicated-development-teams"}], link: "/services/support-managed-services" },
+  { n: "01", tag: "Development", title: "Web Development", items: [{ label: "Performance Optimization", path: "/services/performance-optimization" }], link: "/services/web-development" },
+  { n: "02", tag: "Development", title: "Application Development", items: [{ label: "SaaS Product Development", path: "/services/saas-product-development" }], link: "/services/application-development" },
+  { n: "03", tag: "Design", title: "UI/UX Design", items: [{ label: "UX Research & Design Systems", path: "/services/ux-research-design-systems" }], link: "/services/ui-ux-design" },
+  { n: "04", tag: "Commerce", title: "E-Commerce Solutions", items: [{ label: "Marketplace Development", path: "/services/marketplace-development" }, { label: "Payment Integration Services", path: "/services/payment-integration-services" }], link: "/services/e-commerce-solutions" },
+  { n: "05", tag: "Development", title: "Custom Software Development", items: [{ label: "ERP & CRM Development", path: "/services/erp-crm-development" }, { label: "API Development & Integration", path: "/services/api-development-integration" }, { label: "Legacy System Modernization", path: "/services/legacy-system-modernization" }], link: "/services/custom-software-development" },
+  { n: "06", tag: "Applied AI", title: "AI Development", items: [{ label: "AI Agent Development", path: "/services/ai-agent-development" }, { label: "Generative AI Solutions", path: "/services/generative-ai-solutions" }, { label: "Workflow Automation", path: "/services/workflow-automation" }], link: "/services/ai-development" },
+  { n: "07", tag: "Analytics", title: "Data Analytics", items: [{ label: "Business Intelligence Solutions", path: "/services/business-intelligence-solutions" }, { label: "Predictive Analytics", path: "/services/predictive-analytics" }, { label: "Data Engineering", path: "/services/data-engineering" }], link: "/services/data-analytics" },
+  { n: "08", tag: "Support", title: "Support & Managed Services", items: [{ label: "Cloud Solutions & Migration", path: "/services/cloud-solutions-migration" }, { label: "Cloud Infrastructure Services", path: "/services/cloud-infrastructure-services" }, { label: "Security & Maintenance", path: "/services/security-maintenance" }, { label: "Dedicated Development Teams", path: "/services/dedicated-development-teams" }], link: "/services/support-managed-services" },
 ];
 
 /* headline numbers — the value is the count-up target, suffix rides along */
@@ -182,9 +182,9 @@ export default function HomepageV2() {
   // Tracking revealed indices in React state instead means "is-in" is part
   // of the same JSX-driven className, so it survives every re-render.
   // of the same JSX-driven className, so it survives every re-render.
-  
 
-  
+
+
 
   const rootRef = useRef(null);
   const heroWordRefs = useRef([]);
@@ -408,11 +408,11 @@ export default function HomepageV2() {
           scrub: .7, pin: true, anticipatePin: 1,
         },
       });
-      
+
       if (intro) {
         tl.to(intro, { opacity: 1, y: 0, ease: "none" });
       }
-      
+
       tl.to(bodies, { opacity: 1, y: 0, ease: "none", stagger: .12 }, intro ? "<0.1" : undefined)
         .to(cols, { "--wr-decor": 1, ease: "none", stagger: .12 }, "<");
     }, rootRef);
@@ -433,9 +433,9 @@ export default function HomepageV2() {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           const el = entry.target;
-          
-            el.classList.add("is-in");
-          
+
+          el.classList.add("is-in");
+
           io.unobserve(el);
         });
       },
@@ -912,7 +912,7 @@ export default function HomepageV2() {
             and ownership handoff on every engagement.
           </p>
         </div>
-        
+
         <div className="v2-services-grid">
           {SERVICES.map((s, idx) => (
             <div className={`v2-svc-card v2-svc-card-${idx + 1}`} key={s.n} onClick={() => navigate(s.link)}>
@@ -929,14 +929,16 @@ export default function HomepageV2() {
                       <ul className="v2-svc-sublist">
                         {s.items.map((sub, i) => (
                           <li key={i}>
-                            <span 
-                              className="v2-svc-sublink" 
+                            <span
+                              className="v2-svc-sublink"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 navigate(sub.path);
                               }}
+                              style={{ display: 'inline-flex', alignItems: 'center', textAlign: 'left' }}
                             >
-                              {sub.label}
+                              <span>{sub.label}</span>
+                              <span style={{ opacity: 0.4, fontSize: '0.9em', marginLeft: '8px' }}>→</span>
                             </span>
                           </li>
                         ))}
@@ -999,7 +1001,7 @@ export default function HomepageV2() {
           matching the rest of the site's system: hairline dividers, no
           cards, no icon chrome, monochrome type. Every quote stays mounted
           so the crossfade/height transition is driven by .is-active alone. ══════════ */}
-            {/* ══════════ 8 · TESTIMONIAL ══════════ */}
+      {/* ══════════ 8 · TESTIMONIAL ══════════ */}
       <TestimonialSpotlight
         testimonials={TESTIMONIALS}
         heading="What clients say once we ship."
@@ -1018,25 +1020,25 @@ export default function HomepageV2() {
 
       {/* ══════════ 10 · CTA ══════════ */}
       <CtaSection className="v2-section--void">
-        
-          <p className="v2-label">Start Here</p>
-          <h2 className="v2-cta-headline">
-            Bring us the problem.
-            <br />
-            <span className="v2-cta-accent">We'll bring back a scoped plan.</span>
-          </h2>
-          <p className="v2-cta-body">
-            A structured conversation about your product — your users, your workflows, your constraints.
-            We scope what should be built first, what can wait, and what it takes to ship it.
-          </p>
-          <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a>
-          </div>
-          <div className="v2-cta-badges">
-            <span className="v2-cta-badge">Free consultation</span>
-            <span className="v2-cta-badge">NDA on request</span>
-            <span className="v2-cta-badge">No obligation</span>
-          </div>
+
+        <p className="v2-label">Start Here</p>
+        <h2 className="v2-cta-headline">
+          Bring us the problem.
+          <br />
+          <span className="v2-cta-accent">We'll bring back a scoped plan.</span>
+        </h2>
+        <p className="v2-cta-body">
+          A structured conversation about your product — your users, your workflows, your constraints.
+          We scope what should be built first, what can wait, and what it takes to ship it.
+        </p>
+        <div className="v2-cta-actions">
+          <a className="v2-btn" href="/contact">Book a consultation →</a>
+        </div>
+        <div className="v2-cta-badges">
+          <span className="v2-cta-badge">Free consultation</span>
+          <span className="v2-cta-badge">NDA on request</span>
+          <span className="v2-cta-badge">No obligation</span>
+        </div>
       </CtaSection>
 
       {/* ══════════ FOOTER — mirrors the live site's real footer content
