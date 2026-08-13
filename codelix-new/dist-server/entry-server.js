@@ -1843,13 +1843,21 @@ const SEO = ({
     /* @__PURE__ */ jsx("meta", { name: "description", content: finalDesc }),
     keywords && /* @__PURE__ */ jsx("meta", { name: "keywords", content: keywords }),
     /* @__PURE__ */ jsx("meta", { name: "robots", content: robots }),
+    /* @__PURE__ */ jsx("meta", { name: "author", content: "Codelix IT Solutions" }),
+    /* @__PURE__ */ jsx("meta", { name: "theme-color", content: "#000000" }),
     /* @__PURE__ */ jsx("link", { rel: "canonical", href: fullCanonical }),
+    /* @__PURE__ */ jsx("meta", { property: "og:site_name", content: "Codelix IT Solutions" }),
+    /* @__PURE__ */ jsx("meta", { property: "og:locale", content: "en_US" }),
     /* @__PURE__ */ jsx("meta", { property: "og:title", content: fullTitle }),
     /* @__PURE__ */ jsx("meta", { property: "og:description", content: finalDesc }),
     /* @__PURE__ */ jsx("meta", { property: "og:url", content: fullCanonical }),
     /* @__PURE__ */ jsx("meta", { property: "og:type", content: "website" }),
     /* @__PURE__ */ jsx("meta", { property: "og:image", content: defaultImage }),
+    /* @__PURE__ */ jsx("meta", { property: "og:image:width", content: "1200" }),
+    /* @__PURE__ */ jsx("meta", { property: "og:image:height", content: "630" }),
+    /* @__PURE__ */ jsx("meta", { property: "og:image:alt", content: "Codelix IT Solutions - AI-Powered Web, App & SaaS Development" }),
     /* @__PURE__ */ jsx("meta", { name: "twitter:card", content: "summary_large_image" }),
+    /* @__PURE__ */ jsx("meta", { name: "twitter:site", content: "@codelixitsolutions" }),
     /* @__PURE__ */ jsx("meta", { name: "twitter:title", content: fullTitle }),
     /* @__PURE__ */ jsx("meta", { name: "twitter:description", content: finalDesc }),
     /* @__PURE__ */ jsx("meta", { name: "twitter:url", content: fullCanonical }),
@@ -6267,6 +6275,34 @@ const CASE_STUDIES = [
     tools: ["Figma", "React", "Tailwind CSS", "Java", "Spring Boot", "PostgreSQL", "Docker", "AWS"]
   }
 ].map((cs) => ({ ...cs, image: imageFor(cs.slug) }));
+const seoData = {
+  "/": { title: "AI-Powered IT Solutions | Codelix IT Solutions", description: "Empower your business with AI-centric software solutions, world-class UI/UX design, and scalable web apps by Codelix IT Solutions." },
+  "/services": { title: "Our Services | Web & App Development | Codelix IT Solutions", description: "Explore our comprehensive suite of IT services including Web Development, App Development, UI/UX Design, AI, and Custom Software." },
+  "/services/web-development": { title: "Web Development Services | Codelix IT Solutions", description: "High-performance, scalable web development services tailored to your business needs." },
+  "/services/application-development": { title: "Application Development | iOS & Android | Codelix IT Solutions", description: "Custom mobile application development for iOS and Android platforms." },
+  "/services/ui-ux-design": { title: "UI/UX Design Services | Codelix IT Solutions", description: "User-centric UI/UX design services to elevate your digital products and user engagement." },
+  "/services/e-commerce-solutions": { title: "E-Commerce Solutions | Codelix IT Solutions", description: "End-to-end e-commerce solutions to help you sell online efficiently and securely." },
+  "/services/custom-software-development": { title: "Custom Software Development | Codelix IT Solutions", description: "Bespoke software development tailored precisely to your unique business operations." },
+  "/services/ai-development": { title: "AI Development Services | Codelix IT Solutions", description: "Integrate powerful Artificial Intelligence into your products with our expert AI development." },
+  "/services/data-analytics": { title: "Data Analytics Services | Codelix IT Solutions", description: "Turn your raw data into actionable insights with our comprehensive data analytics services." },
+  "/services/support-managed-services": { title: "Support & Managed Services | Codelix IT Solutions", description: "Reliable IT support and managed services to keep your operations running smoothly." },
+  "/about": { title: "About Us | Codelix IT Solutions", description: "Learn about Codelix IT Solutions, our mission, our team, and how we deliver world-class tech." },
+  "/contact": { title: "Contact Us | Codelix IT Solutions", description: "Get in touch with Codelix IT Solutions to discuss your next big project." },
+  "/industries": { title: "Industries We Serve | Codelix IT Solutions", description: "Discover the various industries we provide specialized IT solutions for." },
+  "/process": { title: "Our Process | Codelix IT Solutions", description: "Discover our proven, transparent development process from ideation to launch." },
+  "/team": { title: "Our Team | Codelix IT Solutions", description: "Meet the experts behind the code at Codelix IT Solutions." },
+  "/work": { title: "Our Work & Case Studies | Codelix IT Solutions", description: "Browse our portfolio of shipped projects and detailed case studies." },
+  "/faq": { title: "Frequently Asked Questions | Codelix IT Solutions", description: "Got questions? We have answers. Check out our FAQ." },
+  "/technologies": { title: "Technologies We Use | Codelix IT Solutions", description: "Explore the modern tech stack we use to build scalable, secure applications." },
+  "/careers": { title: "Careers | Codelix IT Solutions", description: "Join our team of talented engineers and designers at Codelix IT Solutions." },
+  "/pricing": { title: "Pricing | Codelix IT Solutions", description: "Transparent, flexible pricing for our professional development services." },
+  "/blog": { title: "Blog | Insights & Updates | Codelix IT Solutions", description: "Read the latest insights, tech trends, and company updates on the Codelix blog." },
+  "/case-study": { title: "Case Studies | Codelix IT Solutions", description: "Deep dives into how we solved complex problems for our clients." }
+};
+const defaultSEO = {
+  title: "Codelix IT Solutions | AI-Powered Web, App & SaaS Development",
+  description: "Craft AI-powered web, app & SaaS solutions with world-class UI/UX design. Trusted by 25+ companies for professional development services."
+};
 gsap.registerPlugin(ScrollTrigger);
 const InitialDataContext$1 = React.createContext(null);
 lazy(() => Promise.resolve().then(() => AdminLogin$1));
@@ -6315,7 +6351,6 @@ function useCaseStudies() {
     initialContext?.caseStudies || CASE_STUDIES
   );
   useEffect(() => {
-    if (initialContext?.caseStudies) return;
     let active = true;
     supabase.from("case_studies").select("*").eq("published", true).order("published_at", { ascending: false }).then(({ data, error }) => {
       if (!active || error) {
@@ -6908,7 +6943,7 @@ function AdditionalServiceDetailV2() {
   const staticWork = svc.relatedCategory ? PROJECTS.filter((p) => p.category === svc.relatedCategory).map((p) => ({ href: `/case-study${p.href}`, image: p.image, category: p.category, title: p.title })) : [];
   const relatedWork = [...adminWork, ...staticWork].slice(0, 3);
   const faqs = getFaqs(svc);
-  return /* @__PURE__ */ jsxs("main", { className: "sd2", ref: rootRef, children: [
+  return /* @__PURE__ */ jsxs("main", { className: "v2 sd2", ref: rootRef, children: [
     /* @__PURE__ */ jsx(SEO, { title: `${svc.title} | Codelix IT Solutions`, description: svc.description }),
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
@@ -14548,6 +14583,7 @@ function ProductDetailV2() {
   const otherProducts = PRODUCTS.filter((x) => x.slug !== p.slug);
   const faqs = p.faq || [];
   return /* @__PURE__ */ jsxs("div", { className: "v2 pd2-root", ref: rootRef, style: { "--prod-accent": p.accent }, children: [
+    /* @__PURE__ */ jsx(SEO, { title: `${p.name} | Codelix IT Solutions`, description: p.tagline || `Learn about ${p.name} at Codelix IT Solutions.` }),
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
     /* @__PURE__ */ jsx("header", { className: "sd2-hero pd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
@@ -17560,7 +17596,6 @@ function useBlogPosts() {
     return [...ssgPosts, ...blogs];
   });
   useEffect(() => {
-    if (initialContext?.blogPosts) return;
     let active = true;
     supabase.from("blog_posts").select("*").eq("published", true).order("published_at", { ascending: false }).then(({ data, error }) => {
       if (!active || error || !data || data.length === 0) return;
@@ -18501,31 +18536,7 @@ const RouteSEO = () => {
       return null;
     }
   }
-  const seoData = {
-    "/": { title: "Codelix IT Solutions | AI-Powered Web, App & SaaS Development", description: "Craft AI-powered web, app & SaaS solutions with world-class UI/UX design. Trusted by 25+ companies for professional development services." },
-    "/services": { title: "Our Services | Web & App Development | Codelix IT Solutions", description: "Explore our comprehensive suite of IT services including Web Development, App Development, UI/UX Design, AI, and Custom Software." },
-    "/services/web-development": { title: "Web Development Services | Codelix IT Solutions", description: "High-performance, scalable web development services tailored to your business needs." },
-    "/services/application-development": { title: "Application Development | iOS & Android | Codelix IT Solutions", description: "Custom mobile application development for iOS and Android platforms." },
-    "/services/ui-ux-design": { title: "UI/UX Design Services | Codelix IT Solutions", description: "User-centric UI/UX design services to elevate your digital products and user engagement." },
-    "/services/e-commerce-solutions": { title: "E-Commerce Solutions | Codelix IT Solutions", description: "End-to-end e-commerce solutions to help you sell online efficiently and securely." },
-    "/services/custom-software-development": { title: "Custom Software Development | Codelix IT Solutions", description: "Bespoke software development tailored precisely to your unique business operations." },
-    "/services/ai-development": { title: "AI Development Services | Codelix IT Solutions", description: "Integrate powerful Artificial Intelligence into your products with our expert AI development." },
-    "/services/data-analytics": { title: "Data Analytics Services | Codelix IT Solutions", description: "Turn your raw data into actionable insights with our comprehensive data analytics services." },
-    "/services/support-managed-services": { title: "Support & Managed Services | Codelix IT Solutions", description: "Reliable IT support and managed services to keep your operations running smoothly." },
-    "/about": { title: "About Us | Codelix IT Solutions", description: "Learn about Codelix IT Solutions, our mission, our team, and how we deliver world-class tech." },
-    "/contact": { title: "Contact Us | Codelix IT Solutions", description: "Get in touch with Codelix IT Solutions to discuss your next big project." },
-    "/industries": { title: "Industries We Serve | Codelix IT Solutions", description: "Discover the various industries we provide specialized IT solutions for." },
-    "/process": { title: "Our Process | Codelix IT Solutions", description: "Discover our proven, transparent development process from ideation to launch." },
-    "/team": { title: "Our Team | Codelix IT Solutions", description: "Meet the experts behind the code at Codelix IT Solutions." },
-    "/work": { title: "Our Work & Case Studies | Codelix IT Solutions", description: "Browse our portfolio of shipped projects and detailed case studies." },
-    "/faq": { title: "Frequently Asked Questions | Codelix IT Solutions", description: "Got questions? We have answers. Check out our FAQ." },
-    "/technologies": { title: "Technologies We Use | Codelix IT Solutions", description: "Explore the modern tech stack we use to build scalable, secure applications." },
-    "/careers": { title: "Careers | Codelix IT Solutions", description: "Join our team of talented engineers and designers at Codelix IT Solutions." },
-    "/pricing": { title: "Pricing | Codelix IT Solutions", description: "Transparent, flexible pricing for our professional development services." },
-    "/blog": { title: "Blog | Insights & Updates | Codelix IT Solutions", description: "Read the latest insights, tech trends, and company updates on the Codelix blog." },
-    "/case-study": { title: "Case Studies | Codelix IT Solutions", description: "Deep dives into how we solved complex problems for our clients." }
-  };
-  const currentSEO = seoData[path] || { title: "Codelix IT Solutions | AI-Powered Web, App & SaaS Development", description: "Craft AI-powered web, app & SaaS solutions with world-class UI/UX design. Trusted by 25+ companies for professional development services." };
+  const currentSEO = seoData[path] || defaultSEO;
   return /* @__PURE__ */ jsx(SEO, { title: currentSEO.title, description: currentSEO.description });
 };
 const AppRoutes = () => {

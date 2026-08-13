@@ -364,7 +364,7 @@ export default function AdditionalServiceDetailV2() {
   const faqs = getFaqs(svc);
 
   return (
-    <main className="sd2" ref={rootRef}>
+    <main className="v2 sd2" ref={rootRef}>
       <SEO title={`${svc.title} | Codelix IT Solutions`} description={svc.description} />
       <div className="v2-progress" aria-hidden="true"><span /></div>
 

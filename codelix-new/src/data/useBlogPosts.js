@@ -29,8 +29,6 @@ export function useBlogPosts() {
   });
 
   useEffect(() => {
-    // If we already have SSG data, no need to fetch again on client mount
-    if (initialContext?.blogPosts) return; 
     
     let active = true;
     supabase
