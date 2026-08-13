@@ -1,5 +1,5 @@
 import React, { useEffect, lazy, Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { ReactLenis, useLenis } from 'lenis/react';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,6 +9,8 @@ import { AuthProvider } from "./admin/AuthContext";
 import RequireAuth from "./admin/RequireAuth";
 
 gsap.registerPlugin(ScrollTrigger);
+
+export const InitialDataContext = React.createContext(null);
 
 // ─── Admin panel (Supabase-backed blog + testimonials management) ────────────
 const AdminLogin = lazy(() => import("./admin/pages/AdminLogin"));
@@ -226,10 +228,10 @@ const AppRoutes = () => {
 };
 
 // ─── App ──────────────────────────────────────────────────────────────────────
-function App() {
+function App({ initialData }) {
   return (
     <ReactLenis root options={{ lerp: 0.09, duration: 1.35, smoothWheel: true, wheelMultiplier: 0.85 }}>
-      <Router>
+      <InitialDataContext.Provider value={initialData}>
         <AuthProvider>
           <LenisGsapSync />
           <ScrollToTop />
@@ -239,7 +241,7 @@ function App() {
           <BookingModal />
           <AppRoutes />
         </AuthProvider>
-      </Router>
+      </InitialDataContext.Provider>
     </ReactLenis>
   );
 }

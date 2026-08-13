@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { blogs as staticBlogs } from "./blogData";
+import { InitialDataContext } from "../App";
 
-/* merges posts published via the Supabase admin panel with the existing
-   static blogData.js entries — additive, not a replacement, so the live
-   site's current content keeps working even before any admin posts exist */
 export function useBlogPosts() {
-  const [posts, setPosts] = useState(staticBlogs);
+  const initialContext = useContext(InitialDataContext);
+  const [posts, setPosts] = useState(
+    initialContext?.blogPosts || staticBlogs
+  );
 
   useEffect(() => {
+    if (initialContext?.blogPosts) return; // Skip fetch if we already hydrated from SSG
+    
     let active = true;
     supabase
       .from("blog_posts")

@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
 export const SEO = ({
@@ -12,51 +13,36 @@ export const SEO = ({
   const fullTitle = title || 'Codelix IT Solutions | AI-Powered Web, App & SaaS Development';
   const pathName = location.pathname === '/' ? '/' : location.pathname.replace(/\/+$/, '');
   const fullCanonical = `${siteUrl}${pathName}`;
+  const defaultDesc = 'Craft AI-powered web, app & SaaS solutions with world-class UI/UX design. Trusted by 25+ companies for professional development services.';
+  const finalDesc = description || defaultDesc;
+  const defaultImage = `${siteUrl}/og-image.png`;
 
-  useEffect(() => {
-    // Title
-    document.title = fullTitle;
+  return (
+    <Helmet>
+      {/* Title */}
+      <title>{fullTitle}</title>
 
-    // Canonical & URL tags
-    document.getElementById('meta-canonical')?.setAttribute('href', fullCanonical);
-    document.getElementById('meta-og-url')?.setAttribute('content', fullCanonical);
-    
-    // Some systems look for a specific twitter:url, though og:url often suffices.
-    let twUrl = document.getElementById('meta-tw-url');
-    if (!twUrl) {
-      twUrl = document.createElement('meta');
-      twUrl.setAttribute('name', 'twitter:url');
-      twUrl.setAttribute('id', 'meta-tw-url');
-      document.head.appendChild(twUrl);
-    }
-    twUrl.setAttribute('content', fullCanonical);
+      {/* Meta Description */}
+      <meta name="description" content={finalDesc} />
+      {keywords && <meta name="keywords" content={keywords} />}
+      <meta name="robots" content={robots} />
 
-    // Description
-    if (description) {
-      document.getElementById('meta-description')?.setAttribute('content', description);
-      document.getElementById('meta-og-description')?.setAttribute('content', description);
-      document.getElementById('meta-tw-description')?.setAttribute('content', description);
-    }
+      {/* Canonical URL */}
+      <link rel="canonical" href={fullCanonical} />
 
-    // Keywords
-    if (keywords) {
-      document.getElementById('meta-keywords')?.setAttribute('content', keywords);
-    }
+      {/* Open Graph */}
+      <meta property="og:title" content={fullTitle} />
+      <meta property="og:description" content={finalDesc} />
+      <meta property="og:url" content={fullCanonical} />
+      <meta property="og:type" content="website" />
+      <meta property="og:image" content={defaultImage} />
 
-    // Titles (OG & Twitter)
-    document.getElementById('meta-og-title')?.setAttribute('content', fullTitle);
-    document.getElementById('meta-tw-title')?.setAttribute('content', fullTitle);
-    
-    // Robots
-    let robotsMeta = document.querySelector('meta[name="robots"]');
-    if (!robotsMeta) {
-      robotsMeta = document.createElement('meta');
-      robotsMeta.setAttribute('name', 'robots');
-      document.head.appendChild(robotsMeta);
-    }
-    robotsMeta.setAttribute('content', robots);
-    
-  }, [fullTitle, description, keywords, robots, fullCanonical]);
-
-  return null;
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:description" content={finalDesc} />
+      <meta name="twitter:url" content={fullCanonical} />
+      <meta name="twitter:image" content={defaultImage} />
+    </Helmet>
+  );
 };
