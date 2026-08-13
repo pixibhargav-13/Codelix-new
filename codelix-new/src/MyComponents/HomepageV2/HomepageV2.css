@@ -1352,7 +1352,7 @@
 .v2-hero-title {
   font-size: clamp(38px, 6.2vw, 76px);
   font-weight: 600;
-  line-height: 1 !important;
+  line-height: 1.2 !important;
   letter-spacing: -.035em;
   color: var(--text);
   margin-bottom: 10px !important;

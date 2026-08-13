@@ -152,8 +152,8 @@ const EST_ADDONS = [
 
 /* scroll-scrubbed word reveal — identical mechanism to the core service
    pages, kept as its own copy rather than a shared import so each page
-import { useTestimonials } from "../../data/useTestimonials";
    can tune timing independently */
+import { useTestimonials } from "../../data/useTestimonials";
 const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
 
 
