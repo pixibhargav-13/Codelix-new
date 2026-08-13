@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
-// Human-readable names for URL slugs (auto-generated names are ugly for abbreviations)
 const SLUG_NAMES = {
   'about': 'About',
   'work': 'Our Work',
@@ -46,7 +46,6 @@ const SLUG_NAMES = {
   'smart-society-management-case-study': 'Smart Society Management Case Study',
 };
 
-// Fallback: convert slug to title case (e.g. "new-page" → "New Page")
 const slugToName = (slug) => {
   if (SLUG_NAMES[slug]) return SLUG_NAMES[slug];
   return slug
@@ -57,69 +56,47 @@ const slugToName = (slug) => {
 
 const BreadcrumbSchema = () => {
   const location = useLocation();
+  const pathnames = location.pathname.split('/').filter((x) => x);
 
-  useEffect(() => {
-    const pathnames = location.pathname.split('/').filter((x) => x);
+  if (pathnames.length === 0) {
+    return null;
+  }
 
-    // 1. Remove the old script if it exists so we don't have duplicates
-    const existingScript = document.getElementById('dynamic-breadcrumb-schema');
-    if (existingScript) {
-      existingScript.remove();
+  const itemListElement = [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.codelixitsolutions.com/"
     }
+  ];
 
-    // 2. If we are on the homepage, do nothing (no breadcrumbs)
-    if (pathnames.length === 0) {
-      return;
-    }
+  let currentUrl = "https://www.codelixitsolutions.com";
 
-    // 3. Build the schema array
-    const itemListElement = [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.codelixitsolutions.com/"
-      }
-    ];
+  pathnames.forEach((value, index) => {
+    currentUrl += `/${value}`;
 
-    let currentUrl = "https://www.codelixitsolutions.com";
-
-    pathnames.forEach((value, index) => {
-      currentUrl += `/${value}`;
-
-      itemListElement.push({
-        "@type": "ListItem",
-        position: index + 2,
-        name: slugToName(value),
-        item: currentUrl
-      });
+    itemListElement.push({
+      "@type": "ListItem",
+      position: index + 2,
+      name: slugToName(value),
+      item: currentUrl
     });
+  });
 
-    const schema = {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": itemListElement
-    };
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": itemListElement
+  };
 
-    // 4. Create and inject the new script at the VERY TOP of the head
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.id = 'dynamic-breadcrumb-schema';
-    script.text = JSON.stringify(schema);
-
-    // Insert it at the top of <head> so you don't have to scroll past injected CSS
-    document.head.insertBefore(script, document.head.firstChild);
-
-    // 5. Cleanup function
-    return () => {
-      const scriptToRemove = document.getElementById('dynamic-breadcrumb-schema');
-      if (scriptToRemove) {
-        scriptToRemove.remove();
-      }
-    };
-  }, [location.pathname]);
-
-  return null;
+  return (
+    <Helmet>
+      <script type="application/ld+json">
+        {JSON.stringify(schema)}
+      </script>
+    </Helmet>
+  );
 };
 
 export default BreadcrumbSchema;

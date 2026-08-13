@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { SEO } from "../../components/SEO";
 import { useParams } from "react-router-dom";
 import gsap from "gsap";
 import {
@@ -251,6 +252,7 @@ export default function IndustryDetailV2() {
 
   return (
     <div className="v2" ref={rootRef}>
+      <SEO title={`${svc.title} Software Solutions | Codelix IT Solutions`} description={svc.tagline} />
       <div className="v2-progress" aria-hidden="true"><span /></div>
 
       <NavbarV2 />

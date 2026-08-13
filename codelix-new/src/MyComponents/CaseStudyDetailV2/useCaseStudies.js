@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import { CASE_STUDIES as staticCaseStudies } from "./caseStudiesData";
+import { InitialDataContext } from "../../App";
 
-/* same additive-merge pattern as src/data/useBlogPosts.js — published
-   case studies created via the admin panel are prepended to the existing
-   static caseStudiesData.js entries, so /case-study/:slug and the
-   /case-study listing both keep working for the current 16 studies
-   even before any admin-created one exists. */
 export function useCaseStudies() {
-  const [studies, setStudies] = useState(staticCaseStudies);
+  const initialContext = useContext(InitialDataContext);
+  const [studies, setStudies] = useState(
+    initialContext?.caseStudies || staticCaseStudies
+  );
 
   useEffect(() => {
+    if (initialContext?.caseStudies) return; // Skip fetch if we already hydrated from SSG
+
     let active = true;
     supabase
       .from("case_studies")

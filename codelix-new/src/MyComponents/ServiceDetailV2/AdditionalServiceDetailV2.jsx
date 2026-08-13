@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { SEO } from "../../components/SEO";
 import FooterV2 from "../Shared/FooterV2";
 import { useParams } from "react-router-dom";
 import gsap from "gsap";
@@ -215,9 +216,9 @@ export default function AdditionalServiceDetailV2() {
     return () => window.removeEventListener("resize", measure);
   }, [incActive, svc]);
 
-  
 
-  
+
+
 
   /* sticky heading bands only show their rule once actually stuck */
   useEffect(() => {
@@ -257,9 +258,9 @@ export default function AdditionalServiceDetailV2() {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           const el = entry.target;
-          
-            el.classList.add("is-in");
-          
+
+          el.classList.add("is-in");
+
           io.unobserve(el);
         });
       },
@@ -352,8 +353,8 @@ export default function AdditionalServiceDetailV2() {
   const existingCaseStudySlugs = new Set(PROJECTS.map((p) => p.href.replace("/", "")));
   const adminWork = svc.relatedCategory
     ? caseStudies
-        .filter((cs) => cs.image && cs.category === svc.relatedCategory && !existingCaseStudySlugs.has(cs.slug))
-        .map((cs) => ({ href: `/case-study/${cs.slug}`, image: cs.image, category: cs.category, title: cs.title }))
+      .filter((cs) => cs.image && cs.category === svc.relatedCategory && !existingCaseStudySlugs.has(cs.slug))
+      .map((cs) => ({ href: `/case-study/${cs.slug}`, image: cs.image, category: cs.category, title: cs.title }))
     : [];
   const staticWork = svc.relatedCategory
     ? PROJECTS.filter((p) => p.category === svc.relatedCategory).map((p) => ({ href: `/case-study${p.href}`, image: p.image, category: p.category, title: p.title }))
@@ -363,13 +364,14 @@ export default function AdditionalServiceDetailV2() {
   const faqs = getFaqs(svc);
 
   return (
-    <div className="v2" ref={rootRef}>
+    <main className="sd2" ref={rootRef}>
+      <SEO title={`${svc.title} | Codelix IT Solutions`} description={svc.description} />
       <div className="v2-progress" aria-hidden="true"><span /></div>
 
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
-      
+
 
       {/* ══════════ 1 · HERO ══════════ */}
       <header className="sd2-hero">
@@ -845,7 +847,7 @@ export default function AdditionalServiceDetailV2() {
       </section>
 
       {/* ══════════ 13.5 · SCROLL SENTENCE ══════════ */}
-      <ScrollSentence words={SENTENCE} tone="dark"  centered={true} />
+      <ScrollSentence words={SENTENCE} tone="dark" centered={true} />
 
       {/* ══════════ 14 · FAQ ══════════ */}
       <FaqSection faqs={faqs} className="v2-section--void" />
@@ -898,22 +900,22 @@ export default function AdditionalServiceDetailV2() {
 
       {/* ══════════ 17 · CTA ══════════ */}
       <CtaSection className="v2-section--void">
-        
-          <p className="v2-label">Start Here</p>
-          <h2 className="v2-cta-headline">
-            Tell us what you're building.<br />We'll tell you how we'd build it.
-          </h2>
-          <p className="v2-cta-body">
-            A structured conversation about {svc.title.toLowerCase()} — your users, your goals,
-            your constraints. We scope what should be built first, what can wait,
-            and what it takes to ship it.
-          </p>
-          <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
-</CtaSection>
+
+        <p className="v2-label">Start Here</p>
+        <h2 className="v2-cta-headline">
+          Tell us what you're building.<br />We'll tell you how we'd build it.
+        </h2>
+        <p className="v2-cta-body">
+          A structured conversation about {svc.title.toLowerCase()} — your users, your goals,
+          your constraints. We scope what should be built first, what can wait,
+          and what it takes to ship it.
+        </p>
+        <div className="v2-cta-actions">
+          <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+      </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
       <FooterV2 />
-    </div>
+    </main>
   );
 }

@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const siteUrl = 'https://www.codelixitsolutions.com';
 
@@ -31,61 +32,45 @@ const websiteSchema = {
 
 export const StructuredData = ({ type = 'Organization', data = null }) => {
   const location = useLocation();
+  let schemaObj = null;
 
-  useEffect(() => {
-    const scriptId = `dynamic-schema-${type.toLowerCase()}`;
-    let existingScript = document.getElementById(scriptId);
-    if (existingScript) {
-      existingScript.remove();
-    }
-
-    let schemaObj = null;
-
-    if (type === 'Organization' && location.pathname === '/') {
-      schemaObj = [orgSchema, websiteSchema];
-    } else if (type === 'BlogPosting' && data) {
-      schemaObj = {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": data.title,
-        "image": data.image || `${siteUrl}/og-image.png`,
-        "url": `${siteUrl}${location.pathname}`,
-        "datePublished": data.date ? new Date(data.date).toISOString() : undefined,
-        "author": {
-          "@type": "Organization",
-          "name": "Codelix IT Solutions"
-        }
-      };
-    } else if (type === 'Article' && data) { // For Case Studies
-      schemaObj = {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": data.title,
-        "description": data.description,
-        "image": data.image || `${siteUrl}/og-image.png`,
-        "url": `${siteUrl}${location.pathname}`,
-        "author": {
-          "@type": "Organization",
-          "name": "Codelix IT Solutions"
-        }
-      };
-    }
-
-    if (schemaObj) {
-      const script = document.createElement('script');
-      script.type = 'application/ld+json';
-      script.id = scriptId;
-      script.text = JSON.stringify(schemaObj);
-      document.head.appendChild(script);
-    }
-
-    return () => {
-      const scriptToRemove = document.getElementById(scriptId);
-      if (scriptToRemove) {
-        scriptToRemove.remove();
+  if (type === 'Organization' && location.pathname === '/') {
+    schemaObj = [orgSchema, websiteSchema];
+  } else if (type === 'BlogPosting' && data) {
+    schemaObj = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": data.title,
+      "image": data.image || `${siteUrl}/og-image.png`,
+      "url": `${siteUrl}${location.pathname}`,
+      "datePublished": data.date ? new Date(data.date).toISOString() : undefined,
+      "author": {
+        "@type": "Organization",
+        "name": "Codelix IT Solutions"
       }
     };
-  }, [type, data, location.pathname]);
+  } else if (type === 'Article' && data) { // For Case Studies
+    schemaObj = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": data.title,
+      "description": data.description,
+      "image": data.image || `${siteUrl}/og-image.png`,
+      "url": `${siteUrl}${location.pathname}`,
+      "author": {
+        "@type": "Organization",
+        "name": "Codelix IT Solutions"
+      }
+    };
+  }
 
-  return null;
+  if (!schemaObj) return null;
+
+  return (
+    <Helmet>
+      <script type="application/ld+json">
+        {JSON.stringify(schemaObj)}
+      </script>
+    </Helmet>
+  );
 };
