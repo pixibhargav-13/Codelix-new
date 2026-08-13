@@ -26,19 +26,27 @@ export const SEO = ({
       <meta name="description" content={finalDesc} />
       {keywords && <meta name="keywords" content={keywords} />}
       <meta name="robots" content={robots} />
+      <meta name="author" content="Codelix IT Solutions" />
+      <meta name="theme-color" content="#000000" />
 
       {/* Canonical URL */}
       <link rel="canonical" href={fullCanonical} />
 
       {/* Open Graph */}
+      <meta property="og:site_name" content="Codelix IT Solutions" />
+      <meta property="og:locale" content="en_US" />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={finalDesc} />
       <meta property="og:url" content={fullCanonical} />
       <meta property="og:type" content="website" />
       <meta property="og:image" content={defaultImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content="Codelix IT Solutions - AI-Powered Web, App & SaaS Development" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@codelixitsolutions" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={finalDesc} />
       <meta name="twitter:url" content={fullCanonical} />
