@@ -32,5 +32,6 @@ export const STATIC_ROUTES = [
 export function getGeneratedRoutes() {
   const industryRoutes = INDUSTRIES.map((i) => `/industries/${i.slug}`);
   const extraServices = ADDITIONAL_SERVICES.map((s) => `/services/${s.slug}`);
-  return [...STATIC_ROUTES, ...industryRoutes, ...extraServices];
+  const productRoutes = ["/products/audytee", "/products/4bitx", "/products/aanganone"];
+  return [...STATIC_ROUTES, ...industryRoutes, ...extraServices, ...productRoutes];
 }
