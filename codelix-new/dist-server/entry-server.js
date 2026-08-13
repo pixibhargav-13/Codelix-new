@@ -17543,9 +17543,22 @@ const slugify = (text) => {
 };
 function useBlogPosts() {
   const initialContext = useContext(InitialDataContext$1);
-  const [posts, setPosts] = useState(
-    initialContext?.blogPosts || blogs
-  );
+  const [posts, setPosts] = useState(() => {
+    let ssgPosts = [];
+    if (initialContext?.blogPosts && initialContext.blogPosts.length > 0) {
+      ssgPosts = initialContext.blogPosts.map((p) => ({
+        id: `sb-${p.id}`,
+        slug: p.slug,
+        title: p.title,
+        date: p.published_at ? new Date(p.published_at).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) : "",
+        readTime: p.read_time || "",
+        image: p.cover_image_url || blogs[0]?.image,
+        tags: p.tags?.length ? p.tags : ["All Articles"],
+        content: p.content
+      }));
+    }
+    return [...ssgPosts, ...blogs];
+  });
   useEffect(() => {
     if (initialContext?.blogPosts) return;
     let active = true;
