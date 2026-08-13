@@ -208,8 +208,8 @@ const SENTENCE = [
 
 /* scroll-scrubbed word reveal — identical mechanism to HomepageV2 / ServicesV2
    (kept as a separate copy rather than a shared import so each page can tune
-import { useTestimonials } from "../../data/useTestimonials";
    its own word list/timing without a shared-component refactor) */
+import { useTestimonials } from "../../data/useTestimonials";
 const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
 
 

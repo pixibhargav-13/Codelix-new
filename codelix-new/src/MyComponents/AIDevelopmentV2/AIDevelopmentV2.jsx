@@ -156,7 +156,7 @@ const PROCESS = [
    the same shared portfolio data so titles/thumbnails stay accurate. Every
    project in PROJECTS now has a matching v2 case-study page, so all links
    route through /case-study rather than the old-site v1 href. */
-const RELATED = [16, 5, 2].map((id) => {
+const RELATED = [14, 5, 2].map((id) => {
   const p = PROJECTS.find((proj) => proj.id === id);
   const link = `/case-study${p.href}`;
   return { tag: p.category, title: p.title, link, thumb: p.image };
