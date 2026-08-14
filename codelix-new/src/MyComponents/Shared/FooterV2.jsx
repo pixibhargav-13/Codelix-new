@@ -60,7 +60,7 @@ export default function FooterV2() {
         </a>
         <div className="v2-footer-card">
           <h5>Phone</h5>
-          <a className="v2-footer-card-strong" href="tel:+919429269295">+91 94292 69295</a>
+          <a className="v2-footer-card-strong" href="tel:+919998263282">+91 99982 63282</a>
           <a className="v2-footer-card-strong" href="tel:+917490909686">+91 74909 09686</a>
         </div>
         <div className="v2-footer-card">
@@ -93,8 +93,7 @@ export default function FooterV2() {
           <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
           <a href="https://www.facebook.com/profile.php?id=61561748130641" target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a href="#" target="_blank" rel="noopener noreferrer">Behance</a>
-          <a href="https://dribbble.com/codelixitsolutions" target="_blank" rel="noopener noreferrer">Dribbble</a>
+          <a href="https://www.behance.net/kushalmungalp" target="_blank" rel="noopener noreferrer">Behance</a>
         </div>
         <div className="v2-footer-actions">
           <div className="v2-desktop-only">
