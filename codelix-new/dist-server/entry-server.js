@@ -2585,7 +2585,7 @@ function FooterV2() {
       ),
       /* @__PURE__ */ jsxs("div", { className: "v2-footer-card", children: [
         /* @__PURE__ */ jsx("h5", { children: "Phone" }),
-        /* @__PURE__ */ jsx("a", { className: "v2-footer-card-strong", href: "tel:+919429269295", children: "+91 94292 69295" }),
+        /* @__PURE__ */ jsx("a", { className: "v2-footer-card-strong", href: "tel:+919998263282", children: "+91 99982 63282" }),
         /* @__PURE__ */ jsx("a", { className: "v2-footer-card-strong", href: "tel:+917490909686", children: "+91 74909 09686" })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "v2-footer-card", children: [
@@ -2610,8 +2610,7 @@ function FooterV2() {
         /* @__PURE__ */ jsx("a", { href: "https://www.linkedin.com/company/codelixit-solutions", target: "_blank", rel: "noopener noreferrer", children: "LinkedIn" }),
         /* @__PURE__ */ jsx("a", { href: "https://www.instagram.com/codelixitsolutions/", target: "_blank", rel: "noopener noreferrer", children: "Instagram" }),
         /* @__PURE__ */ jsx("a", { href: "https://www.facebook.com/profile.php?id=61561748130641", target: "_blank", rel: "noopener noreferrer", children: "Facebook" }),
-        /* @__PURE__ */ jsx("a", { href: "#", target: "_blank", rel: "noopener noreferrer", children: "Behance" }),
-        /* @__PURE__ */ jsx("a", { href: "https://dribbble.com/codelixitsolutions", target: "_blank", rel: "noopener noreferrer", children: "Dribbble" })
+        /* @__PURE__ */ jsx("a", { href: "https://www.behance.net/kushalmungalp", target: "_blank", rel: "noopener noreferrer", children: "Behance" })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "v2-footer-actions", children: [
         /* @__PURE__ */ jsx("div", { className: "v2-desktop-only", children: /* @__PURE__ */ jsx(RatingsStrip, {}) }),
@@ -13460,9 +13459,9 @@ function ContactV2() {
             /* @__PURE__ */ jsx(Mail, { size: 15, strokeWidth: 1.7 }),
             /* @__PURE__ */ jsx("span", { children: "sales@codelixitsolutions.com" })
           ] }),
-          /* @__PURE__ */ jsxs("a", { className: "contact-quick-link", href: "tel:+919429269295", children: [
+          /* @__PURE__ */ jsxs("a", { className: "contact-quick-link", href: "tel:+919998263282", children: [
             /* @__PURE__ */ jsx(Phone, { size: 15, strokeWidth: 1.7 }),
-            /* @__PURE__ */ jsx("span", { children: "+91 94292 69295" })
+            /* @__PURE__ */ jsx("span", { children: "+91 99982 63282" })
           ] }),
           /* @__PURE__ */ jsxs(
             "a",
@@ -18051,6 +18050,22 @@ const STATS = [
 function CaseStudyV2() {
   const [category, setCategory] = useState("All");
   const rootRef = useRef(null);
+  const caseStudies = useCaseStudies();
+  const adminCards = useMemo(() => {
+    const existingSlugs = new Set(PROJECTS.map((p) => toV2Slug(p.href)));
+    return caseStudies.filter((cs) => !existingSlugs.has(cs.slug)).map((cs) => ({
+      id: `admin-${cs.slug}`,
+      title: cs.title,
+      category: cs.category,
+      industry: cs.industry,
+      description: cs.description,
+      tags: cs.tags,
+      image: cs.image,
+      href: `/${cs.slug}`
+    }));
+  }, [caseStudies]);
+  const allProjects = useMemo(() => [...adminCards, ...PROJECTS], [adminCards]);
+  const filtered = category === "All" ? allProjects : allProjects.filter((p) => p.category === category);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
@@ -18100,22 +18115,6 @@ function CaseStudyV2() {
     nums.forEach((n) => io.observe(n));
     return () => io.disconnect();
   }, []);
-  const caseStudies = useCaseStudies();
-  const adminCards = useMemo(() => {
-    const existingSlugs = new Set(PROJECTS.map((p) => toV2Slug(p.href)));
-    return caseStudies.filter((cs) => !existingSlugs.has(cs.slug)).map((cs) => ({
-      id: `admin-${cs.slug}`,
-      title: cs.title,
-      category: cs.category,
-      industry: cs.industry,
-      description: cs.description,
-      tags: cs.tags,
-      image: cs.image,
-      href: `/${cs.slug}`
-    }));
-  }, [caseStudies]);
-  const allProjects = useMemo(() => [...adminCards, ...PROJECTS], [adminCards]);
-  const filtered = category === "All" ? allProjects : allProjects.filter((p) => p.category === category);
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
