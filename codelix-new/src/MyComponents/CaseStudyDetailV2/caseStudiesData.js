@@ -3,7 +3,7 @@
    ERPCaseStudy.jsx, etc.) — not new/invented copy. Images are pulled from
    the shared WorkV2 project list by matching href, since that's the same
    source of truth as the images used site-wide for these projects. */
-import { PROJECTS } from "../WorkV2/projectsData";
+import { PROJECTS } from "../WorkV2/projectsData.js";
 
 /* illustrative diagrams (not real product screenshots) built specifically
    for the ERP case study's "before Challenges" image duo — same treatment

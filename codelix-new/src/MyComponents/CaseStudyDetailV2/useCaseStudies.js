@@ -6,7 +6,9 @@ import { InitialDataContext } from "../../App";
 export function useCaseStudies() {
   const initialContext = useContext(InitialDataContext);
   const [studies, setStudies] = useState(
-    initialContext?.caseStudies || staticCaseStudies
+    initialContext?.caseStudies?.length
+      ? [...initialContext.caseStudies, ...staticCaseStudies]
+      : staticCaseStudies
   );
 
   useEffect(() => {

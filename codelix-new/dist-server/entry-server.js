@@ -6347,7 +6347,7 @@ lazy(() => Promise.resolve().then(() => CaseStudyDetailV2$1));
 function useCaseStudies() {
   const initialContext = useContext(InitialDataContext$1);
   const [studies, setStudies] = useState(
-    initialContext?.caseStudies || CASE_STUDIES
+    initialContext?.caseStudies?.length ? [...initialContext.caseStudies, ...CASE_STUDIES] : CASE_STUDIES
   );
   useEffect(() => {
     let active = true;
