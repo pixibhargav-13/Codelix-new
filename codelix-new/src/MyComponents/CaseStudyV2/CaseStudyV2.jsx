@@ -39,9 +39,29 @@ export default function CaseStudyV2() {
 
   const rootRef = useRef(null);
 
-  
+  /* admin-created case studies (published via Supabase) aren't part of the
+     static PROJECTS list, so they need to be reshaped into the same
+     card-shape PROJECTS already has before they can slot into this grid —
+     additive only, the existing 15 keep coming from PROJECTS untouched */
+  const caseStudies = useCaseStudies();
+  const adminCards = useMemo(() => {
+    const existingSlugs = new Set(PROJECTS.map((p) => toV2Slug(p.href)));
+    return caseStudies
+      .filter((cs) => !existingSlugs.has(cs.slug))
+      .map((cs) => ({
+        id: `admin-${cs.slug}`,
+        title: cs.title,
+        category: cs.category,
+        industry: cs.industry,
+        description: cs.description,
+        tags: cs.tags,
+        image: cs.image,
+        href: `/${cs.slug}`,
+      }));
+  }, [caseStudies]);
 
-  
+  const allProjects = useMemo(() => [...adminCards, ...PROJECTS], [adminCards]);
+  const filtered = category === "All" ? allProjects : allProjects.filter((p) => p.category === category);
 
   /* hero intro — masked-line GSAP wipe, matching the other v2 pages */
   useEffect(() => {
@@ -96,31 +116,6 @@ export default function CaseStudyV2() {
     nums.forEach((n) => io.observe(n));
     return () => io.disconnect();
   }, []);
-
-
-  /* admin-created case studies (published via Supabase) aren't part of the
-     static PROJECTS list, so they need to be reshaped into the same
-     card-shape PROJECTS already has before they can slot into this grid —
-     additive only, the existing 15 keep coming from PROJECTS untouched */
-  const caseStudies = useCaseStudies();
-  const adminCards = useMemo(() => {
-    const existingSlugs = new Set(PROJECTS.map((p) => toV2Slug(p.href)));
-    return caseStudies
-      .filter((cs) => !existingSlugs.has(cs.slug))
-      .map((cs) => ({
-        id: `admin-${cs.slug}`,
-        title: cs.title,
-        category: cs.category,
-        industry: cs.industry,
-        description: cs.description,
-        tags: cs.tags,
-        image: cs.image,
-        href: `/${cs.slug}`,
-      }));
-  }, [caseStudies]);
-
-  const allProjects = useMemo(() => [...adminCards, ...PROJECTS], [adminCards]);
-  const filtered = category === "All" ? allProjects : allProjects.filter((p) => p.category === category);
 
   return (
     <div className="v2" ref={rootRef}>
