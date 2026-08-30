@@ -68,7 +68,7 @@ const ServicesHeroVisual = () => {
             <div className="shv-code-line">
               <span className="shv-kw">import</span> {`{`} Codelix {`}`} <span className="shv-kw">from</span> <span className="shv-str">"@core/services"</span>;
             </div>
-            <div className="shv-code-line mt-2">
+            <div className="shv-code-line shv-mt-2">
               <span className="shv-kw">const</span> <span className="shv-var">activeServices</span> = [
             </div>
             <div className="shv-code-line indent">
@@ -98,7 +98,7 @@ const ServicesHeroVisual = () => {
             <div className="shv-code-line">
               ];
             </div>
-            <div className="shv-code-line mt-4">
+            <div className="shv-code-line shv-mt-4">
               <span className="shv-class">Codelix</span>.<span className="shv-fn">deploy</span>(<span className="shv-var">activeServices</span>).<span className="shv-fn">then</span>(() {`=>`} {`{`}
             </div>
             <div className="shv-code-line indent">

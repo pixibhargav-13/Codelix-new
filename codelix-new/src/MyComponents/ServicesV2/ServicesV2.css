@@ -1172,3 +1172,7 @@
     padding-top: 132px;
   }
 }
+/* replaced bootstrap's mt-2 / mt-4 (0.5rem / 1.5rem) when bootstrap was
+   dropped — it was shipping ~230KB of CSS site-wide for three utilities */
+.shv-mt-2 { margin-top: .5rem; }
+.shv-mt-4 { margin-top: 1.5rem; }

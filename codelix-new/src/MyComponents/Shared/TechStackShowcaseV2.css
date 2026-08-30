@@ -202,3 +202,13 @@
     background: linear-gradient(to right, transparent, var(--rule-strong), transparent);
   }
 }
+/* Column spans, previously an inline style computed from window.innerWidth
+   during render (which broke server rendering). Same values as before:
+   colSpan 1.5 -> 6 desktop / 12 mobile, colSpan 2 -> 8, otherwise 4. */
+.v2 .tech-v2-card--span-wide { grid-column: span 12; }
+.v2 .tech-v2-card--span-full { grid-column: span 8; }
+.v2 .tech-v2-card--span-third { grid-column: span 4; }
+
+@media (min-width: 769px) {
+  .v2 .tech-v2-card--span-wide { grid-column: span 6; }
+}

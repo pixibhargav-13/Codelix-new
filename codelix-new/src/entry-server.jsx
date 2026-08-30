@@ -3,7 +3,6 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App.server';
-import "bootstrap/dist/css/bootstrap.min.css";
 
 export function render(url, initialData) {
   const helmetContext = {};
