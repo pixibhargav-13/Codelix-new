@@ -23,6 +23,7 @@ import "./IndustryDetailV2.css";
 import FaqSection from '../Shared/FaqSection';
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
+import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 
 /* the 7 core service names that ever appear in industriesData.js's
    `services` arrays — real routes to the actual core service pages, not
@@ -95,6 +96,7 @@ export default function IndustryDetailV2() {
   useEffect(() => {
     if (!svc) return;
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .7 })
       .fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")

@@ -1,0 +1,130 @@
+/* Hero titles used to be hand-split across <span class="line"> blocks, which
+   hardcoded where every break fell — so the same title that read well at
+   1440px broke awkwardly at 1024px or on a phone.
+
+   This measures the rendered text instead and rebuilds the same
+   .line > span structure around each REAL visual line, so titles wrap to
+   whatever width they're given while the existing GSAP mask-wipe (which
+   targets ".<title> .line > span") keeps working untouched.
+
+   It flattens whatever markup is already there first, so the old
+   hand-authored breaks disappear on their own — no markup edits needed
+   in the page components. */
+
+const WORDS_KEY = "__splitWords";
+const OBSERVED = new WeakMap();
+
+/* Pull the title down to a flat word list, remembering which words carried
+   an accent class (e.g. v2-hero-accent) so the colour survives a rebuild
+   even when a run of accented words gets broken across two lines. */
+function readWords(el) {
+  if (el[WORDS_KEY]) return el[WORDS_KEY];
+
+  const words = [];
+  const walk = (node, accent) => {
+    node.childNodes.forEach((child) => {
+      if (child.nodeType === Node.TEXT_NODE) {
+        child.textContent
+          .split(/\s+/)
+          .filter(Boolean)
+          .forEach((text) => words.push({ text, accent }));
+        return;
+      }
+      if (child.nodeType !== Node.ELEMENT_NODE) return;
+
+      /* "line" is structural, anything else (the accent span) is styling
+         we need to carry through */
+      const own = [...child.classList].filter((c) => c !== "line");
+      walk(child, own.length ? own.join(" ") : accent);
+    });
+  };
+  walk(el, null);
+
+  el[WORDS_KEY] = words;
+  return words;
+}
+
+function buildWordSpan(word, doc) {
+  const span = doc.createElement("span");
+  span.textContent = word.text;
+  if (word.accent) span.className = word.accent;
+  return span;
+}
+
+export function splitTitleLines(el) {
+  if (!el) return;
+  const words = readWords(el);
+  if (!words.length) return;
+
+  const doc = el.ownerDocument;
+
+  /* 1. lay the words out flat so the browser decides the breaks */
+  el.textContent = "";
+  const probes = words.map((w, i) => {
+    const span = buildWordSpan(w, doc);
+    el.appendChild(span);
+    if (i < words.length - 1) el.appendChild(doc.createTextNode(" "));
+    return span;
+  });
+
+  /* 2. group by the line each word actually landed on */
+  const lines = [];
+  let currentTop = null;
+  probes.forEach((span, i) => {
+    const top = span.offsetTop;
+    if (currentTop === null || Math.abs(top - currentTop) > 1) {
+      currentTop = top;
+      lines.push([]);
+    }
+    lines[lines.length - 1].push(words[i]);
+  });
+
+  /* 3. rebuild as .line > span, the shape the GSAP wipe expects */
+  el.textContent = "";
+  lines.forEach((line) => {
+    const outer = doc.createElement("span");
+    outer.className = "line";
+    const inner = doc.createElement("span");
+
+    line.forEach((w, i) => {
+      if (w.accent) {
+        inner.appendChild(buildWordSpan(w, doc));
+      } else {
+        inner.appendChild(doc.createTextNode(w.text));
+      }
+      if (i < line.length - 1) inner.appendChild(doc.createTextNode(" "));
+    });
+
+    outer.appendChild(inner);
+    el.appendChild(outer);
+  });
+}
+
+/* Split now, then re-split on resize. The re-split is debounced and skips
+   identical widths so a scroll-driven mobile URL-bar resize doesn't rebuild
+   the DOM (and stomp a running animation) for nothing. */
+export function splitTitleLinesIn(root, selector = ".sd2-hero-title") {
+  if (!root || typeof window === "undefined") return () => {};
+
+  const els = [...root.querySelectorAll(selector)];
+  if (!els.length) return () => {};
+
+  els.forEach(splitTitleLines);
+
+  let lastWidth = window.innerWidth;
+  let timer = 0;
+  const onResize = () => {
+    if (window.innerWidth === lastWidth) return;
+    lastWidth = window.innerWidth;
+    clearTimeout(timer);
+    timer = setTimeout(() => els.forEach(splitTitleLines), 150);
+  };
+
+  window.addEventListener("resize", onResize, { passive: true });
+  OBSERVED.set(root, onResize);
+
+  return () => {
+    clearTimeout(timer);
+    window.removeEventListener("resize", onResize);
+  };
+}

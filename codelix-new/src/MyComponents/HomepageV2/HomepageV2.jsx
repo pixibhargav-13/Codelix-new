@@ -32,12 +32,15 @@ import { PRODUCTS } from "../ProductsV2/productsData";
 
 import "./HomepageV2.css";
 import NavbarV2 from "../Shared/NavbarV2";
+import PageLoader from "../Shared/PageLoader";
+import { introWillPlay, onIntroHandoff } from "../../lib/introGate";
 import FooterV2 from "../Shared/FooterV2";
 import HeroVisual from "./HeroVisual";
 import ClientStrip from "../Shared/ClientStrip";
 import FaqSection from "../Shared/FaqSection";
 import ScrollSentence from "../Shared/ScrollSentence";
 import CtaSection from "../Shared/CtaSection";
+import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -261,10 +264,20 @@ export default function HomepageV2() {
     };
   }, []);
 
-  /* hero intro — title lines wipe up, then supporting copy settles in */
+  /* hero intro — title lines wipe up, then supporting copy settles in.
+     When the session intro is running this must NOT start on mount: it
+     would play out behind the loader's plate and reveal an already
+     finished, static hero. It's held paused and released by the loader
+     as the plate begins clearing, so the wipe happens in view. */
   useEffect(() => {
+    const held = introWillPlay();
     const q = (s) => rootRef.current.querySelectorAll(s);
-    const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.25 });
+    splitTitleLinesIn(rootRef.current, ".v2-hero-title");
+    const tl = gsap.timeline({
+      defaults: { ease: "power4.out" },
+      delay: held ? 0 : 0.25,
+      paused: held,
+    });
     tl.fromTo(q(".v2-hero-top"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 })
       .fromTo(q(".v2-hero-title .line > span"),
         { yPercent: 118 }, { yPercent: 0, duration: 1.15, stagger: .1 }, "-=.45")
@@ -272,7 +285,16 @@ export default function HomepageV2() {
       .fromTo(q(".v2-hero-cta"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7")
       .fromTo(q(".v2-hero-words span"),
         { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .9, stagger: .1 }, "-=.6");
-    return () => tl.kill();
+
+    if (!held) return () => tl.kill();
+
+    const play = () => tl.play();
+    const off = onIntroHandoff(play);
+    /* safety net — if the loader ever fails to signal, the hero must
+       still animate rather than sit invisible forever */
+    const failsafe = setTimeout(play, 2600);
+
+    return () => { tl.kill(); off(); clearTimeout(failsafe); };
   }, []);
 
   /* THE handoff — this is not two separate texts (hero fades out, section
@@ -512,17 +534,37 @@ export default function HomepageV2() {
       tx = e.clientX; ty = e.clientY;
       if (!raf) raf = requestAnimationFrame(loop);
     };
-    const enter = (row) => {
+    const enter = (row, ev) => {
       const src = row.dataset.thumb;
       if (src) img.src = src;
+
+      /* mouseenter also fires when a row scrolls up under a stationary
+         cursor — and in that case no mousemove has run, so tx/ty would
+         still be their initial 0,0 and the thumbnail would open at the
+         top-left corner instead of at the pointer. The event carries the
+         real coordinates however it was triggered, so seed from it. */
+      if (ev && typeof ev.clientX === "number") {
+        tx = ev.clientX;
+        ty = ev.clientY;
+      }
+
+      /* place it at the cursor on first show rather than letting the
+         damped follow glide it in from wherever it was left */
+      if (!active) {
+        cx = tx;
+        cy = ty;
+        preview.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
+      }
+
       preview.classList.add("show");
       active = true;
+      if (!raf) raf = requestAnimationFrame(loop);
     };
     const leave = () => { preview.classList.remove("show"); active = false; };
 
     section.addEventListener("mousemove", onMove);
     const perRow = rows.map((row) => {
-      const e = () => enter(row);
+      const e = (ev) => enter(row, ev);
       row.addEventListener("mouseenter", e);
       row.addEventListener("mouseleave", leave);
       return { row, e };
@@ -616,6 +658,7 @@ export default function HomepageV2() {
 
   return (
     <div className="v2" ref={rootRef}>
+      <PageLoader />
       <div className="v2-progress" aria-hidden="true"><span /></div>
 
       {/* the travelling clone of DESIGN./BUILD./SCALE. — the real hero words

@@ -353,20 +353,47 @@ header.sd2-hero.process-hero .sd2-hero-main {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-@media (max-width: 820px) {
-  .proc-stats-grid {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
-}
-
 .proc-stats-grid .sd2-bench:nth-child(3n+1) {
   border-left: none;
 }
 
+/* Mobile: 2 across instead of a single stacked column. There are three
+   stats, so the third can't pair off — it spans the full width of the
+   second row rather than sitting beside an empty cell. */
 @media (max-width: 820px) {
-  .proc-stats-grid .sd2-bench:nth-child(n) {
+  .proc-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* row 1 — divider between the pair only */
+  .proc-stats-grid .sd2-bench:nth-child(1),
+  .proc-stats-grid .sd2-bench:nth-child(2) {
+    border-top: none;
+  }
+  .proc-stats-grid .sd2-bench:nth-child(1) {
+    border-left: none;
+  }
+  .proc-stats-grid .sd2-bench:nth-child(2) {
+    border-left: .8px solid var(--rule);
+  }
+
+  /* row 2 — full-width, separated by a rule above it */
+  .proc-stats-grid .sd2-bench:nth-child(3) {
+    grid-column: 1 / -1;
     border-left: none;
     border-top: .8px solid var(--rule);
+  }
+}
+
+/* two rings side by side need less room than one centred on its own */
+@media (max-width: 520px) {
+  .proc-stats-grid .sd2-bench {
+    padding: 28px 10px;
+  }
+  .proc-stats-grid .sd2-bench-ring {
+    width: 96px;
+    height: 96px;
+    margin-bottom: 14px;
   }
 }
 

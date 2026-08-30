@@ -11,6 +11,7 @@ import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./LegalV2.css";
 import NavbarV2 from "../Shared/NavbarV2";
+import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 
 
 /* shared shell for every long-form legal page (Terms, Privacy, Refund) —
@@ -36,6 +37,7 @@ export default function LegalV2({ crumbLabel, statusLabel, titleLine1, titleLine
   /* hero intro — masked-line GSAP wipe, matching the other v2 pages */
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .7 })
       .fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")

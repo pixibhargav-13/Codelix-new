@@ -25,12 +25,16 @@ const AdminTestimonialForm = lazy(() => import("./admin/pages/AdminTestimonialFo
 // ─── Eagerly loaded (critical for first paint) ────────────────────────────────
 import Chatbot from "./MyComponents/Chatbot/Chatbot";
 import BookingModal from "./MyComponents/BookingModal/BookingModal";
+/* the homepage is what almost every first-time visitor lands on — lazy-loading
+   it bought nothing (no smaller bundle for that visit) but added a full extra
+   discover-then-fetch round trip before its ~38 shared sub-chunks (tech-stack
+   logos, icons) even start downloading. Load it in the main bundle instead. */
+import Homepage from "./MyComponents/HomepageV2/HomepageV2";
 
 // ─── 404 Not Found ─────────────────────────────────────────────────────────────
 const NotFound = lazy(() => import("./MyComponents/NotFound/NotFound"));
 
 // ─── Site pages ────────────────────────────────────────────────────────────────
-const Homepage = lazy(() => import("./MyComponents/HomepageV2/HomepageV2"));
 const Services = lazy(() => import("./MyComponents/ServicesV2/ServicesV2"));
 const WebDevelopment = lazy(() => import("./MyComponents/ServiceDetailV2/ServiceDetailV2"));
 const AdditionalServiceDetail = lazy(() => import("./MyComponents/ServiceDetailV2/AdditionalServiceDetailV2"));

@@ -52,6 +52,11 @@ const HeroVisual = () => {
     let currentMouseRotY = 0;
 
     const handleMouseMove = (e) => {
+      /* getBoundingClientRect forces a synchronous layout, so skip it
+         entirely once the globe is scrolled out of view — otherwise every
+         mouse move anywhere on the page pays for a reflow the user can
+         never see the result of */
+      if (!onScreen) return;
       const rect = canvas.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
@@ -59,9 +64,47 @@ const HeroVisual = () => {
       targetRotationX = 0.2 + y * 0.8;
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
-    let animationId;
+    /* the projection maths below runs over 350 points and several hundred
+       connecting lines every frame. Left unconditional it keeps doing that
+       forever — while the user is scrolled far past the hero, and even
+       while the tab is in the background — competing with Lenis and
+       ScrollTrigger for the same main thread. That contention is what
+       reads as general "stuttery" scrolling, so gate the loop on the
+       canvas actually being visible. */
+    let animationId = null;
+    let onScreen = true;
+    let pageVisible = !document.hidden;
+
+    const isRunnable = () => onScreen && pageVisible;
+
+    const start = () => {
+      if (animationId === null && isRunnable()) animationId = requestAnimationFrame(render);
+    };
+
+    const stop = () => {
+      if (animationId !== null) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+    };
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        onScreen = entry.isIntersecting;
+        isRunnable() ? start() : stop();
+      },
+      { threshold: 0 }
+    );
+    io.observe(canvas);
+
+    const onVisibility = () => {
+      pageVisible = !document.hidden;
+      isRunnable() ? start() : stop();
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
@@ -147,14 +190,18 @@ const HeroVisual = () => {
         }
       });
 
-      animationId = requestAnimationFrame(render);
+      animationId = isRunnable() ? requestAnimationFrame(render) : null;
     };
 
-    render();
+    /* paint one frame immediately so the globe is never blank before the
+       observer's first callback lands, then let the gates drive it */
+    animationId = requestAnimationFrame(render);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      cancelAnimationFrame(animationId);
+      document.removeEventListener('visibilitychange', onVisibility);
+      io.disconnect();
+      stop();
     };
   }, []);
 

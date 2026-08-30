@@ -35,6 +35,7 @@ import workFive from "../Images/work-best-project-five.png";
 import ScrollSentence from '../Shared/ScrollSentence';
 import FaqSection from '../Shared/FaqSection';
 import ClientStrip from '../Shared/ClientStrip';
+import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 
 const DATA_STACK = [
   { src: techPython, name: "Python" },
@@ -349,6 +350,7 @@ export default function DataAnalyticsV2() {
      matching ServiceDetailV2's hero entrance */
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .7 })
       .fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")

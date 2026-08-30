@@ -706,18 +706,42 @@
   border-left: none;
 }
 
+/* Mobile: 2 across rather than a single stacked column. The outcome count
+   is driven by the case study's data, not fixed at four, so the dividers
+   are expressed positionally — left border on the right-hand column, top
+   border on everything past the first row — instead of being hardcoded
+   to a known number of cells. */
 @media (max-width: 760px) {
   .csd2-outcomes {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .csd2-outcomes .sd2-bench {
     border-left: none;
-    border-top: .8px solid var(--rule);
+    border-top: none;
   }
 
-  .csd2-outcomes .sd2-bench:first-child {
-    border-top: none;
+  /* right-hand column of each row */
+  .csd2-outcomes .sd2-bench:nth-child(even) {
+    border-left: .8px solid var(--rule);
+  }
+
+  /* every row after the first */
+  .csd2-outcomes .sd2-bench:nth-child(n + 3) {
+    border-top: .8px solid var(--rule);
+  }
+}
+
+/* two rings side by side need less room than one centred on its own */
+@media (max-width: 520px) {
+  .csd2-outcomes .sd2-bench {
+    padding: 28px 10px;
+  }
+
+  .csd2-outcomes .sd2-bench-ring {
+    width: 96px;
+    height: 96px;
+    margin-bottom: 14px;
   }
 }
 

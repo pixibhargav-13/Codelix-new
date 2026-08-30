@@ -1818,7 +1818,7 @@ function BookingModal() {
             formData.email || "your email",
             "."
           ] }),
-          /* @__PURE__ */ jsx("button", { className: "v2-btn", onClick: () => setIsOpen(false), style: { marginTop: 32 }, children: "Done" })
+          /* @__PURE__ */ jsx("button", { className: "booking-done-btn", onClick: () => setIsOpen(false), children: "Done" })
         ] })
       ] })
     ] })
@@ -2414,7 +2414,7 @@ function NavbarV2() {
             "Services ",
             /* @__PURE__ */ jsx("span", { className: "v2-nav-dropdown-chevron", children: "▾" })
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "v2-nav-dropdown-panel", children: [
+          /* @__PURE__ */ jsxs("div", { className: "v2-nav-dropdown-panel", "data-lenis-prevent": true, children: [
             /* @__PURE__ */ jsxs("div", { className: "v2-nav-dropdown-head", children: [
               /* @__PURE__ */ jsxs("div", { children: [
                 /* @__PURE__ */ jsx("p", { className: "v2-nav-dropdown-head-label", children: "Our Services" }),
@@ -2450,7 +2450,7 @@ function NavbarV2() {
             "Industries ",
             /* @__PURE__ */ jsx("span", { className: "v2-nav-dropdown-chevron", children: "▾" })
           ] }),
-          /* @__PURE__ */ jsx("div", { className: "v2-nav-dropdown-panel", children: /* @__PURE__ */ jsxs("div", { className: "v2-nav-industry-mega-menu", children: [
+          /* @__PURE__ */ jsx("div", { className: "v2-nav-dropdown-panel", "data-lenis-prevent": true, children: /* @__PURE__ */ jsxs("div", { className: "v2-nav-industry-mega-menu", children: [
             /* @__PURE__ */ jsxs("div", { className: "v2-nav-mega-menu-left", children: [
               /* @__PURE__ */ jsx("div", { className: "v2-nav-mega-menu-left-bg-icon", children: /* @__PURE__ */ jsx(Building2, { size: 160, strokeWidth: 0.5 }) }),
               /* @__PURE__ */ jsx("h3", { className: "v2-nav-mega-menu-left-title", children: "Industry Expertise" }),
@@ -2474,7 +2474,7 @@ function NavbarV2() {
             "Products ",
             /* @__PURE__ */ jsx("span", { className: "v2-nav-dropdown-chevron", children: "▾" })
           ] }),
-          /* @__PURE__ */ jsx("div", { className: "v2-nav-dropdown-panel", children: /* @__PURE__ */ jsxs("div", { className: "v2-nav-products-mega-menu", children: [
+          /* @__PURE__ */ jsx("div", { className: "v2-nav-dropdown-panel", "data-lenis-prevent": true, children: /* @__PURE__ */ jsxs("div", { className: "v2-nav-products-mega-menu", children: [
             /* @__PURE__ */ jsxs("div", { className: "v2-nav-mega-menu-left", children: [
               /* @__PURE__ */ jsx("div", { className: "v2-nav-mega-menu-left-bg-icon", children: /* @__PURE__ */ jsx(Boxes, { size: 160, strokeWidth: 0.5 }) }),
               /* @__PURE__ */ jsx("h3", { className: "v2-nav-mega-menu-left-title", children: "Our Products" }),
@@ -2982,6 +2982,85 @@ function CtaVisual() {
     }
   );
 }
+const KEY = "codelix_intro_seen";
+const EVENT = "codelix:intro-handoff";
+let decided = null;
+function introWillPlay() {
+  if (typeof window === "undefined") return false;
+  if (decided === null) {
+    decided = sessionStorage.getItem(KEY) !== "1";
+    if (decided) sessionStorage.setItem(KEY, "1");
+  }
+  return decided;
+}
+function handOffIntro() {
+  window.dispatchEvent(new Event(EVENT));
+}
+function onIntroHandoff(fn) {
+  window.addEventListener(EVENT, fn, { once: true });
+  return () => window.removeEventListener(EVENT, fn);
+}
+const COLUMNS = 7;
+function PageLoader() {
+  const [mounted, setMounted] = useState(false);
+  const rootRef = useRef(null);
+  const colRefs = useRef([]);
+  const lenis = useLenis();
+  useEffect(() => {
+    if (introWillPlay()) setMounted(true);
+  }, []);
+  useEffect(() => {
+    if (!mounted) return;
+    lenis?.stop();
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    let handedOff = false;
+    const releaseHero = () => {
+      if (handedOff) return;
+      handedOff = true;
+      handOffIntro();
+    };
+    const cleanup = () => {
+      document.body.style.overflow = prevOverflow;
+      lenis?.start();
+      releaseHero();
+    };
+    const finish = () => {
+      cleanup();
+      setMounted(false);
+    };
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const t = gsap.to(rootRef.current, { opacity: 0, duration: 0.3, onComplete: finish });
+      return () => {
+        t.kill();
+        cleanup();
+      };
+    }
+    const cols = colRefs.current.filter(Boolean);
+    const tl = gsap.timeline({ onComplete: finish });
+    tl.to({}, { duration: 0.32 }).add(releaseHero, ">-0.02").to(cols, {
+      /* alternating travel — odd slices drop, even slices rise, so the
+         plate splits apart rather than sliding off as one piece */
+      yPercent: (i) => i % 2 ? 100 : -100,
+      duration: 1,
+      ease: "expo.inOut",
+      stagger: { each: 0.055, from: "center" }
+    });
+    return () => {
+      tl.kill();
+      cleanup();
+    };
+  }, [mounted, lenis]);
+  if (!mounted) return null;
+  return /* @__PURE__ */ jsx("div", { className: "pl-root", ref: rootRef, "aria-hidden": "true", children: Array.from({ length: COLUMNS }, (_, i) => /* @__PURE__ */ jsx(
+    "span",
+    {
+      className: "pl-col",
+      ref: (el) => colRefs.current[i] = el
+    },
+    i
+  )) });
+}
 const HeroVisual = () => {
   const canvasRef = useRef(null);
   useEffect(() => {
@@ -3026,14 +3105,40 @@ const HeroVisual = () => {
     let targetRotationY = 0;
     let currentMouseRotY = 0;
     const handleMouseMove = (e) => {
+      if (!onScreen) return;
       const rect = canvas.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
       targetRotationY = x * 0.8;
       targetRotationX = 0.2 + y * 0.8;
     };
-    window.addEventListener("mousemove", handleMouseMove);
-    let animationId;
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    let animationId = null;
+    let onScreen = true;
+    let pageVisible = !document.hidden;
+    const isRunnable = () => onScreen && pageVisible;
+    const start = () => {
+      if (animationId === null && isRunnable()) animationId = requestAnimationFrame(render2);
+    };
+    const stop = () => {
+      if (animationId !== null) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+    };
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        onScreen = entry.isIntersecting;
+        isRunnable() ? start() : stop();
+      },
+      { threshold: 0 }
+    );
+    io.observe(canvas);
+    const onVisibility = () => {
+      pageVisible = !document.hidden;
+      isRunnable() ? start() : stop();
+    };
+    document.addEventListener("visibilitychange", onVisibility);
     const render2 = () => {
       ctx.clearRect(0, 0, width, height);
       rotationY += 2e-3;
@@ -3098,12 +3203,14 @@ const HeroVisual = () => {
           }
         }
       });
-      animationId = requestAnimationFrame(render2);
+      animationId = isRunnable() ? requestAnimationFrame(render2) : null;
     };
-    render2();
+    animationId = requestAnimationFrame(render2);
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(animationId);
+      document.removeEventListener("visibilitychange", onVisibility);
+      io.disconnect();
+      stop();
     };
   }, []);
   return /* @__PURE__ */ jsxs("div", { className: "premium-globe-visual", children: [
@@ -3236,6 +3343,8 @@ function FaqSection({ faqs, className = "", label = "FAQ", heading = "Questions 
           if (targetEl.classList.contains("v2-faq-item")) {
             const idx = Number(targetEl.dataset.faqIndex);
             setRevealedFaqs((prev) => prev.has(idx) ? prev : new Set(prev).add(idx));
+          } else {
+            targetEl.classList.add("is-in");
           }
           io.unobserve(targetEl);
         });
@@ -3244,6 +3353,7 @@ function FaqSection({ faqs, className = "", label = "FAQ", heading = "Questions 
     );
     const items = el.querySelectorAll(".v2-faq-item");
     items.forEach((item) => io.observe(item));
+    el.querySelectorAll(".v2-faq-intro .v2-label, .v2-faq-intro .v2-heading, .v2-faq-intro .v2-lede").forEach((node) => io.observe(node));
     return () => io.disconnect();
   }, [faqs]);
   useEffect(() => {
@@ -3412,10 +3522,116 @@ function ScrollSentence({ words, tone, centered = false }) {
   );
 }
 function CtaSection({ children, className = "" }) {
-  return /* @__PURE__ */ jsxs("section", { className: `v2-section v2-cta-shell ${className}`.trim(), children: [
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-in");
+          io.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.01, rootMargin: "0px 0px -10% 0px" }
+    );
+    const panel = el.querySelector(".v2-cta");
+    if (panel) io.observe(panel);
+    el.querySelectorAll(".v2-cta .v2-label, .v2-cta .v2-lede").forEach((node) => io.observe(node));
+    return () => io.disconnect();
+  }, [children]);
+  return /* @__PURE__ */ jsxs("section", { className: `v2-section v2-cta-shell ${className}`.trim(), ref, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-cta", children }),
     /* @__PURE__ */ jsx("aside", { className: "v2-cta-visual", children: /* @__PURE__ */ jsx(CtaVisual, {}) })
   ] });
+}
+const WORDS_KEY = "__splitWords";
+const OBSERVED = /* @__PURE__ */ new WeakMap();
+function readWords(el) {
+  if (el[WORDS_KEY]) return el[WORDS_KEY];
+  const words = [];
+  const walk = (node, accent) => {
+    node.childNodes.forEach((child) => {
+      if (child.nodeType === Node.TEXT_NODE) {
+        child.textContent.split(/\s+/).filter(Boolean).forEach((text) => words.push({ text, accent }));
+        return;
+      }
+      if (child.nodeType !== Node.ELEMENT_NODE) return;
+      const own = [...child.classList].filter((c) => c !== "line");
+      walk(child, own.length ? own.join(" ") : accent);
+    });
+  };
+  walk(el, null);
+  el[WORDS_KEY] = words;
+  return words;
+}
+function buildWordSpan(word, doc) {
+  const span = doc.createElement("span");
+  span.textContent = word.text;
+  if (word.accent) span.className = word.accent;
+  return span;
+}
+function splitTitleLines(el) {
+  if (!el) return;
+  const words = readWords(el);
+  if (!words.length) return;
+  const doc = el.ownerDocument;
+  el.textContent = "";
+  const probes = words.map((w, i) => {
+    const span = buildWordSpan(w, doc);
+    el.appendChild(span);
+    if (i < words.length - 1) el.appendChild(doc.createTextNode(" "));
+    return span;
+  });
+  const lines = [];
+  let currentTop = null;
+  probes.forEach((span, i) => {
+    const top = span.offsetTop;
+    if (currentTop === null || Math.abs(top - currentTop) > 1) {
+      currentTop = top;
+      lines.push([]);
+    }
+    lines[lines.length - 1].push(words[i]);
+  });
+  el.textContent = "";
+  lines.forEach((line) => {
+    const outer = doc.createElement("span");
+    outer.className = "line";
+    const inner = doc.createElement("span");
+    line.forEach((w, i) => {
+      if (w.accent) {
+        inner.appendChild(buildWordSpan(w, doc));
+      } else {
+        inner.appendChild(doc.createTextNode(w.text));
+      }
+      if (i < line.length - 1) inner.appendChild(doc.createTextNode(" "));
+    });
+    outer.appendChild(inner);
+    el.appendChild(outer);
+  });
+}
+function splitTitleLinesIn(root, selector = ".sd2-hero-title") {
+  if (!root || typeof window === "undefined") return () => {
+  };
+  const els = [...root.querySelectorAll(selector)];
+  if (!els.length) return () => {
+  };
+  els.forEach(splitTitleLines);
+  let lastWidth = window.innerWidth;
+  let timer = 0;
+  const onResize = () => {
+    if (window.innerWidth === lastWidth) return;
+    lastWidth = window.innerWidth;
+    clearTimeout(timer);
+    timer = setTimeout(() => els.forEach(splitTitleLines), 150);
+  };
+  window.addEventListener("resize", onResize, { passive: true });
+  OBSERVED.set(root, onResize);
+  return () => {
+    clearTimeout(timer);
+    window.removeEventListener("resize", onResize);
+  };
 }
 gsap.registerPlugin(ScrollTrigger);
 const DECLARATIONS = ["PLAN.", "BUILD.", "SCALE."];
@@ -3572,8 +3788,14 @@ function HomepageV2() {
     };
   }, []);
   useEffect(() => {
+    const held = introWillPlay();
     const q = (s) => rootRef.current.querySelectorAll(s);
-    const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.25 });
+    splitTitleLinesIn(rootRef.current, ".v2-hero-title");
+    const tl = gsap.timeline({
+      defaults: { ease: "power4.out" },
+      delay: held ? 0 : 0.25,
+      paused: held
+    });
     tl.fromTo(q(".v2-hero-top"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }).fromTo(
       q(".v2-hero-title .line > span"),
       { yPercent: 118 },
@@ -3585,7 +3807,15 @@ function HomepageV2() {
       { opacity: 1, y: 0, duration: 0.9, stagger: 0.1 },
       "-=.6"
     );
-    return () => tl.kill();
+    if (!held) return () => tl.kill();
+    const play = () => tl.play();
+    const off = onIntroHandoff(play);
+    const failsafe = setTimeout(play, 2600);
+    return () => {
+      tl.kill();
+      off();
+      clearTimeout(failsafe);
+    };
   }, []);
   useEffect(() => {
     const heroEl = rootRef.current.querySelector(".v2-hero");
@@ -3777,11 +4007,21 @@ function HomepageV2() {
       ty = e.clientY;
       if (!raf) raf = requestAnimationFrame(loop);
     };
-    const enter = (row) => {
+    const enter = (row, ev) => {
       const src = row.dataset.thumb;
       if (src) img.src = src;
+      if (ev && typeof ev.clientX === "number") {
+        tx = ev.clientX;
+        ty = ev.clientY;
+      }
+      if (!active) {
+        cx = tx;
+        cy = ty;
+        preview.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
+      }
       preview.classList.add("show");
       active = true;
+      if (!raf) raf = requestAnimationFrame(loop);
     };
     const leave = () => {
       preview.classList.remove("show");
@@ -3789,7 +4029,7 @@ function HomepageV2() {
     };
     section.addEventListener("mousemove", onMove);
     const perRow = rows.map((row) => {
-      const e = () => enter(row);
+      const e = (ev) => enter(row, ev);
       row.addEventListener("mouseenter", e);
       row.addEventListener("mouseleave", leave);
       return { row, e };
@@ -3884,6 +4124,7 @@ function HomepageV2() {
     };
   }, []);
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
+    /* @__PURE__ */ jsx(PageLoader, {}),
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx("div", { className: "v2-word-flyer", "aria-hidden": "true", children: DECLARATIONS.map((w, i) => /* @__PURE__ */ jsx("span", { ref: (el) => flyerRefs.current[i] = el, children: w }, w)) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
@@ -4165,10 +4406,6 @@ function HomepageV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const HomepageV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: HomepageV2
-}, Symbol.toStringTag, { value: "Module" }));
 const ServicesHeroVisual = () => {
   const containerRef = useRef(null);
   useEffect(() => {
@@ -5108,6 +5345,7 @@ function ServiceDetailV2() {
   }, []);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -6313,7 +6551,6 @@ lazy(() => Promise.resolve().then(() => AdminCaseStudyForm$1));
 lazy(() => Promise.resolve().then(() => AdminTestimonialsList$1));
 lazy(() => Promise.resolve().then(() => AdminTestimonialForm$1));
 lazy(() => Promise.resolve().then(() => NotFound$1));
-lazy(() => Promise.resolve().then(() => HomepageV2$1));
 lazy(() => Promise.resolve().then(() => ServicesV2$1));
 lazy(() => Promise.resolve().then(() => ServiceDetailV2$1));
 lazy(() => Promise.resolve().then(() => AdditionalServiceDetailV2$1));
@@ -6820,6 +7057,7 @@ function AdditionalServiceDetailV2() {
   useEffect(() => {
     if (!svc) return;
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(q(".sd2-hero-title .line > span"), { yPercent: 118 }, { yPercent: 0, duration: 1.15 }, "-=.45").fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.9 }, "-=.65").fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.9 }, "-=.7").fromTo(q(".sd2-facts.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.9 }, "-=.75");
     return () => tl.kill();
@@ -7595,6 +7833,7 @@ function UIUXDesignV2() {
   }, []);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -8384,6 +8623,7 @@ function DataAnalyticsV2() {
   }, []);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -9170,6 +9410,7 @@ function SupportManagedServicesV2() {
   }, []);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -9955,6 +10196,7 @@ function ApplicationDevelopmentV2() {
   }, []);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -10740,6 +10982,7 @@ function ECommerceSolutionsV2() {
   }, []);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -11526,6 +11769,7 @@ function CustomSoftwareDevelopmentV2() {
   }, []);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -12309,6 +12553,7 @@ function AIDevelopmentV2() {
   }, []);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -12997,6 +13242,7 @@ function AboutV2() {
   }, []);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -13404,6 +13650,7 @@ function ContactV2() {
   const ringOffset = RING_C - RING_C * completion / 100;
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -13868,6 +14115,7 @@ function IndustriesV2() {
   const rootRef = useRef(null);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -14026,7 +14274,9 @@ function IndustriesV2() {
         ] }),
         /* @__PURE__ */ jsx("h3", { className: "ind-panel-title", children: it.title }),
         /* @__PURE__ */ jsx("p", { className: "ind-panel-tagline", children: it.tagline }),
+        /* @__PURE__ */ jsx("span", { className: "ind-panel-sub", children: "What we see a lot" }),
         /* @__PURE__ */ jsx("ul", { className: "ind-panel-challenges", children: it.challenges.map((c) => /* @__PURE__ */ jsx("li", { children: c }, c)) }),
+        /* @__PURE__ */ jsx("span", { className: "ind-panel-sub", children: "What we deliver" }),
         /* @__PURE__ */ jsx("p", { className: "ind-panel-body", children: it.body }),
         /* @__PURE__ */ jsx("div", { className: "ind-panel-services", children: it.services.map((s) => /* @__PURE__ */ jsx("span", { children: s }, s)) }),
         /* @__PURE__ */ jsxs("a", { className: "ind-panel-more", href: `/industries/${it.slug}`, children: [
@@ -14158,6 +14408,7 @@ function IndustryDetailV2() {
   useEffect(() => {
     if (!svc) return;
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(q(".sd2-hero-title .line > span"), { yPercent: 118 }, { yPercent: 0, duration: 1.15 }, "-=.45").fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.9 }, "-=.65").fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.9 }, "-=.7").fromTo(q(".sd2-facts.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.9 }, "-=.75");
     return () => tl.kill();
@@ -14525,6 +14776,7 @@ function ProductDetailV2() {
   useEffect(() => {
     if (!p) return;
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".pd2-hero-logo.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.6").fromTo(q(".sd2-hero-title .line > span"), { yPercent: 118 }, { yPercent: 0, duration: 1.15 }, "-=.45").fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.9 }, "-=.65").fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.9 }, "-=.7").fromTo(q(".sd2-facts.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.9 }, "-=.75");
     return () => tl.kill();
@@ -15043,6 +15295,7 @@ function ProcessV2() {
   const fillRef = useRef(null);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -15395,6 +15648,7 @@ function TeamV2() {
   const rootRef = useRef(null);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -15671,6 +15925,7 @@ function WorkV2() {
   const rootRef = useRef(null);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -15974,6 +16229,7 @@ function LegalV2({ crumbLabel, statusLabel, titleLine1, titleLine2, sub, updated
   const railFillRef = useRef(null);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -16498,21 +16754,8 @@ function FaqV2() {
   const [revealed, setRevealed] = useState(() => /* @__PURE__ */ new Set());
   const rootRef = useRef(null);
   useEffect(() => {
-    setTimeout(() => {
-      const hero = document.querySelector(".sd2-hero");
-      const v2 = document.querySelector(".v2");
-      const nav = document.querySelector(".v2-nav");
-      console.log("LAYOUT_DEBUG", JSON.stringify({
-        hero: hero?.getBoundingClientRect(),
-        v2: v2?.getBoundingClientRect(),
-        nav: nav?.getBoundingClientRect(),
-        body: document.body.getBoundingClientRect(),
-        window: window.innerWidth
-      }));
-    }, 1e3);
-  }, []);
-  useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -16543,7 +16786,7 @@ function FaqV2() {
       }),
       { threshold: 0.01, rootMargin: "0px 0px -8% 0px" }
     );
-    rootRef.current?.querySelectorAll(".faqv2-item, .v2-cta").forEach((el) => io.observe(el));
+    rootRef.current?.querySelectorAll(".faqv2-item").forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, [filtered]);
   useEffect(() => {
@@ -16694,6 +16937,7 @@ function TechnologiesV2() {
   const rootRef = useRef(null);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -16988,6 +17232,7 @@ function CareersV2() {
   const rootRef = useRef(null);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -17318,6 +17563,7 @@ function PricingV2() {
   const rootRef = useRef(null);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -17687,6 +17933,7 @@ function SitemapV2() {
   const rootRef = useRef(null);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -17797,6 +18044,7 @@ function BlogV2() {
   const rootRef = useRef(null);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -18068,6 +18316,7 @@ function CaseStudyV2() {
   const filtered = category === "All" ? allProjects : allProjects.filter((p) => p.category === category);
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),
@@ -18241,6 +18490,7 @@ function CaseStudyDetailV2() {
   useEffect(() => {
     if (!cs) return;
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }).fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, "-=.4").fromTo(
       q(".sd2-hero-title .line > span"),

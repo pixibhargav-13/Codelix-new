@@ -1,0 +1,20 @@
+.pl-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  /* the slices travel beyond the viewport, so nothing may spill */
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.pl-col {
+  flex: 1 1 0;
+  height: 100%;
+  background: var(--void, #050507);
+  /* 1px bleed on every side — adjacent flex children can land on
+     subpixel boundaries and leave hairline seams of the page showing
+     through the plate before the shutter opens */
+  box-shadow: 0 0 0 1px var(--void, #050507);
+  will-change: transform;
+}

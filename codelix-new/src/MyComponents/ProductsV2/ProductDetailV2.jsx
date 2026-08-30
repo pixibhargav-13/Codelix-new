@@ -14,6 +14,7 @@ import "../IndustriesV2/IndustryDetailV2.css";
 import "./ProductDetailV2.css";
 import CtaSection from '../Shared/CtaSection';
 import FaqSection from "../Shared/FaqSection";
+import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 
 export default function ProductDetailV2() {
   const { slug } = useParams();
@@ -28,6 +29,7 @@ export default function ProductDetailV2() {
   useEffect(() => {
     if (!p) return;
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .7 })
       .fromTo(q(".pd2-hero-logo.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")
