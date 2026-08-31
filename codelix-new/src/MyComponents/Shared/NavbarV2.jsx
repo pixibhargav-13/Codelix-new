@@ -120,7 +120,7 @@ export default function NavbarV2() {
           <div className="v2-nav-links">
             <div className="v2-nav-dropdown">
               <a href="/services">Services <span className="v2-nav-dropdown-chevron">▾</span></a>
-              <div className="v2-nav-dropdown-panel">
+              <div className="v2-nav-dropdown-panel" data-lenis-prevent>
                 <div className="v2-nav-dropdown-head">
                   <div>
                     <p className="v2-nav-dropdown-head-label">Our Services</p>
@@ -163,7 +163,7 @@ export default function NavbarV2() {
             <a href="/work">Work</a>
             <div className="v2-nav-dropdown">
               <a href="/industries">Industries <span className="v2-nav-dropdown-chevron">▾</span></a>
-              <div className="v2-nav-dropdown-panel">
+              <div className="v2-nav-dropdown-panel" data-lenis-prevent>
                 <div className="v2-nav-industry-mega-menu">
                   <div className="v2-nav-mega-menu-left">
                     <div className="v2-nav-mega-menu-left-bg-icon">
@@ -193,7 +193,7 @@ export default function NavbarV2() {
             </div>
             <div className="v2-nav-dropdown">
               <a href={`/products/${PRODUCTS[0].slug}`}>Products <span className="v2-nav-dropdown-chevron">▾</span></a>
-              <div className="v2-nav-dropdown-panel">
+              <div className="v2-nav-dropdown-panel" data-lenis-prevent>
                 <div className="v2-nav-products-mega-menu">
                   <div className="v2-nav-mega-menu-left">
                     <div className="v2-nav-mega-menu-left-bg-icon">

@@ -17,6 +17,7 @@ import IndustryHeroVisual from "./IndustryHeroVisual";
 import FaqSection from '../Shared/FaqSection';
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
+import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 
 const APPROACH = [
   { icon: Eye, claim: "We learn the domain, not just the brief.", body: "Before we design a single screen, we understand the regulations, the buyer behaviour, and the operational constraints specific to your sector." },
@@ -50,6 +51,7 @@ export default function IndustriesV2() {
   /* hero intro — masked-line GSAP wipe, matching the other v2 pages */
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .7 })
       .fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")
@@ -246,9 +248,15 @@ export default function IndustriesV2() {
               </div>
               <h3 className="ind-panel-title">{it.title}</h3>
               <p className="ind-panel-tagline">{it.tagline}</p>
+              {/* the desktop panel puts these two blocks in separate
+                  columns under their own headings; stacked on mobile they
+                  need the same headings or the bullets read as one
+                  continuous run of text with the paragraph below */}
+              <span className="ind-panel-sub">What we see a lot</span>
               <ul className="ind-panel-challenges">
                 {it.challenges.map((c) => <li key={c}>{c}</li>)}
               </ul>
+              <span className="ind-panel-sub">What we deliver</span>
               <p className="ind-panel-body">{it.body}</p>
               <div className="ind-panel-services">
                 {it.services.map((s) => <span key={s}>{s}</span>)}

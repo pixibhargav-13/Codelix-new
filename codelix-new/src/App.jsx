@@ -5,7 +5,13 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import BreadcrumbSchema from "./components/BreadcrumbSchema";
 import { StructuredData } from "./components/StructuredData";
-import { AuthProvider } from "./admin/AuthContext";
+/* AuthProvider statically imports the Supabase client (~208KB). Wrapping the
+   whole app in it put that in the entry graph, so every public page
+   downloaded the admin auth client it never uses. Lazy + scoped to the
+   /admin routes below instead. */
+const AuthProvider = lazy(() =>
+  import("./admin/AuthContext").then((m) => ({ default: m.AuthProvider }))
+);
 import RequireAuth from "./admin/RequireAuth";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -25,11 +31,15 @@ const AdminTestimonialForm = lazy(() => import("./admin/pages/AdminTestimonialFo
 // ─── Eagerly loaded (critical for first paint) ────────────────────────────────
 import Chatbot from "./MyComponents/Chatbot/Chatbot";
 import BookingModal from "./MyComponents/BookingModal/BookingModal";
-
 // ─── 404 Not Found ─────────────────────────────────────────────────────────────
 const NotFound = lazy(() => import("./MyComponents/NotFound/NotFound"));
 
 // ─── Site pages ────────────────────────────────────────────────────────────────
+/* Homepage is lazy like every other route. It was briefly a static import to
+   kill a load waterfall, but that dragged the whole homepage into the shared
+   entry bundle — 206KB to 748KB — so every OTHER page paid for it. The
+   waterfall is solved in vite.config.js instead, by grouping the ~38 tiny
+   image/icon modules into single chunks rather than inlining the page here. */
 const Homepage = lazy(() => import("./MyComponents/HomepageV2/HomepageV2"));
 const Services = lazy(() => import("./MyComponents/ServicesV2/ServicesV2"));
 const WebDevelopment = lazy(() => import("./MyComponents/ServiceDetailV2/ServiceDetailV2"));
@@ -102,7 +112,14 @@ import { seoData, defaultSEO } from "./lib/seoData";
 
 const RouteSEO = () => {
   const location = useLocation();
-  const path = location.pathname;
+  /* seoData is keyed without a trailing slash, and the lookup below is an
+     exact match — so "/pricing/" missed every key and the page fell back to
+     the generic default title after hydration, overwriting the correct
+     prerendered one. Normalise before matching. */
+  const path =
+    location.pathname.length > 1
+      ? location.pathname.replace(/\/+$/, "")
+      : location.pathname;
 
   // Let dynamic pages handle their own SEO overrides
   if (path.startsWith("/blog/") || path.startsWith("/case-study/") || path.startsWith("/services/") || path.startsWith("/industries/") || path.startsWith("/products/") || path.startsWith("/admin")) {
@@ -176,13 +193,26 @@ const AppRoutes = () => {
           <Route path="/case-study/:slug" element={<CaseStudyDetail />} />
 
           {/* ─── Admin panel ─── */}
-          <Route path="/admin/login" element={<AdminLogin />} />
+          {/* AuthProvider is mounted here rather than around the whole app so
+              the Supabase auth client only downloads for /admin. Nested
+              children render through AdminLayout's Outlet, so they sit inside
+              this provider too. */}
+          <Route
+            path="/admin/login"
+            element={
+              <AuthProvider>
+                <AdminLogin />
+              </AuthProvider>
+            }
+          />
           <Route
             path="/admin"
             element={
-              <RequireAuth>
-                <AdminLayout />
-              </RequireAuth>
+              <AuthProvider>
+                <RequireAuth>
+                  <AdminLayout />
+                </RequireAuth>
+              </AuthProvider>
             }
           >
             <Route index element={<Navigate to="/admin/blog" replace />} />
@@ -209,15 +239,13 @@ function App({ initialData }) {
   return (
     <ReactLenis root options={{ lerp: 0.09, duration: 1.35, smoothWheel: true, wheelMultiplier: 0.85 }}>
       <InitialDataContext.Provider value={initialData}>
-        <AuthProvider>
-          <LenisGsapSync />
-          <ScrollToTop />
-          <BreadcrumbSchema />
-          <StructuredData type="Organization" />
-          <ChatbotGate />
-          <BookingModal />
-          <AppRoutes />
-        </AuthProvider>
+        <LenisGsapSync />
+        <ScrollToTop />
+        <BreadcrumbSchema />
+        <StructuredData type="Organization" />
+        <ChatbotGate />
+        <BookingModal />
+        <AppRoutes />
       </InitialDataContext.Provider>
     </ReactLenis>
   );

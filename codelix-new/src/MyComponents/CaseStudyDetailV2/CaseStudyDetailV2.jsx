@@ -19,6 +19,7 @@ import { PROJECTS } from "../WorkV2/projectsData";
 import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from '../Shared/CtaSection';
 import { StructuredData } from "../../components/StructuredData";
+import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 
 
 /* the mask-line wipe animation (shared with every other v2 hero) only
@@ -56,6 +57,7 @@ export default function CaseStudyDetailV2() {
   useEffect(() => {
     if (!cs) return;
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .7 })
       .fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")

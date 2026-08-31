@@ -88,13 +88,18 @@ export default function TechStackShowcaseV2({
       </div>
 
       <div className="tech-v2-grid" ref={containerRef}>
+        {/* The column span used to be an inline style computed from
+            window.innerWidth, which is read during render — that threw
+            "window is not defined" on the server, so every page using this
+            component prerendered an empty body and shipped no content to
+            crawlers. The span is a class now and the breakpoint lives in
+            CSS, where it belongs. */}
         {categories.map((cat) => (
-          <div 
-            key={cat.id} 
-            className="tech-v2-card"
-            style={{ 
-              gridColumn: `span ${cat.colSpan === 1.5 ? (window.innerWidth > 768 ? 6 : 12) : cat.colSpan === 2 ? 8 : 4}` 
-            }}
+          <div
+            key={cat.id}
+            className={`tech-v2-card tech-v2-card--span-${
+              cat.colSpan === 1.5 ? "wide" : cat.colSpan === 2 ? "full" : "third"
+            }`}
           >
             <div className="tech-v2-card-border" />
             <div className="tech-v2-card-content">

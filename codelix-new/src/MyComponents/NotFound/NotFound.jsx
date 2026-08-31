@@ -25,10 +25,10 @@ const NotFound = () => {
               Let's get you back on track.
             </p>
             <div className="not-found-actions">
-              <Link to="/" className="btn not-found-home-btn">
+              <Link to="/" className="not-found-home-btn">
                 Go to Homepage
               </Link>
-              <Link to="/contact" className="btn not-found-contact-btn">
+              <Link to="/contact" className="not-found-contact-btn">
                 Contact Us
               </Link>
             </div>

@@ -15,6 +15,7 @@ import FaqHeroVisual from "./FaqHeroVisual";
 import NavbarV2 from "../Shared/NavbarV2";
 import FaqSection from '../Shared/FaqSection';
 import CtaSection from '../Shared/CtaSection';
+import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 
 
 /* every answer here is the same real, already-established statement used
@@ -56,24 +57,10 @@ export default function FaqV2() {
 
   const rootRef = useRef(null);
 
-  useEffect(() => {
-    setTimeout(() => {
-      const hero = document.querySelector('.sd2-hero');
-      const v2 = document.querySelector('.v2');
-      const nav = document.querySelector('.v2-nav');
-      console.log("LAYOUT_DEBUG", JSON.stringify({
-        hero: hero?.getBoundingClientRect(),
-        v2: v2?.getBoundingClientRect(),
-        nav: nav?.getBoundingClientRect(),
-        body: document.body.getBoundingClientRect(),
-        window: window.innerWidth
-      }));
-    }, 1000);
-  }, []);
-
   /* hero intro — masked-line GSAP wipe, matching the other v2 pages */
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .7 })
       .fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")
@@ -111,7 +98,11 @@ export default function FaqV2() {
       }),
       { threshold: 0.01, rootMargin: "0px 0px -8% 0px" }
     );
-    rootRef.current?.querySelectorAll(".faqv2-item, .v2-cta").forEach((el) => io.observe(el));
+    /* .v2-cta used to be observed here too, but this callback keys off
+       data-idx — which the CTA panel doesn't have — so it only ever added
+       NaN to the revealed set and never revealed the panel. CtaSection
+       now reveals itself. */
+    rootRef.current?.querySelectorAll(".faqv2-item").forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, [filtered]);
 

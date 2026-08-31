@@ -10,9 +10,12 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  /* the site (and the admin panel) are dark-only. "light dark" let the
+     browser paint scrollbars and native controls from the OS theme, so
+     on a light-mode machine the scrollbars rendered white. */
+  color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #050507;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -22,6 +25,48 @@
 
 html {
   /* scroll-behavior: smooth; removed for lenis */
+}
+
+/* ── minimal reboot ──
+   Stands in for the parts of Bootstrap's reboot the site's CSS was written
+   against, now that Bootstrap is no longer loaded. Without these the
+   browser defaults return (h1 margin .67em, p margin 1em, content-box
+   sizing) and spacing shifts across every page. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: .5rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+ul, ol {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+
+img, svg {
+  vertical-align: middle;
+}
+
+button, input, optgroup, select, textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+table {
+  border-collapse: collapse;
 }
 
 a {
@@ -39,6 +84,10 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   width: 100%;
+  /* body carried no background at all, so wherever page content didn't
+     reach — the strip below the last section, or the gap exposed when a
+     modal releases the scroll lock — the root's colour showed through */
+  background-color: #050507;
 }
 
 #root {
@@ -71,15 +120,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+/* The Vite starter's light-theme block used to live here. It repainted
+   :root white and buttons #f9f9f9 whenever the visitor's OS was in light
+   mode — on a dark-only site that only ever surfaced as white flashes
+   behind the page. Removed rather than overridden. */

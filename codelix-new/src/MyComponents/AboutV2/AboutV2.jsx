@@ -20,6 +20,7 @@ import "../HomepageV2/HomepageV2.css";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./AboutV2.css";
+import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 
 
 
@@ -110,6 +111,7 @@ export default function AboutV2() {
   /* hero intro — masked-line GSAP wipe, matching the other v2 pages */
   useEffect(() => {
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .7 })
       .fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")

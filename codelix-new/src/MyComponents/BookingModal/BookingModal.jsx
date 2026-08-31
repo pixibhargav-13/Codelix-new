@@ -353,7 +353,7 @@ export default function BookingModal() {
               <h2>Booking Confirmed</h2>
               <p>You're all set for <strong>{formatDate(selectedDate)}</strong> at <strong>{selectedTime}</strong>.</p>
               <p className="booking-success-sub">A calendar invitation has been sent to {formData.email || "your email"}.</p>
-              <button className="v2-btn" onClick={() => setIsOpen(false)} style={{ marginTop: 32 }}>
+              <button className="booking-done-btn" onClick={() => setIsOpen(false)}>
                 Done
               </button>
             </div>

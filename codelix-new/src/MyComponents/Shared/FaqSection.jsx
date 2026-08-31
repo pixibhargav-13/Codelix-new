@@ -19,6 +19,11 @@ export default function FaqSection({ faqs, className = "", label = "FAQ", headin
           if (targetEl.classList.contains("v2-faq-item")) {
             const idx = Number(targetEl.dataset.faqIndex);
             setRevealedFaqs((prev) => (prev.has(idx) ? prev : new Set(prev).add(idx)));
+          } else {
+            /* intro copy — plain static classNames, so adding the class
+               imperatively is safe here (unlike the items above, whose
+               className React recomputes on every open/close) */
+            targetEl.classList.add("is-in");
           }
           io.unobserve(targetEl);
         });
@@ -28,6 +33,15 @@ export default function FaqSection({ faqs, className = "", label = "FAQ", headin
 
     const items = el.querySelectorAll(".v2-faq-item");
     items.forEach((item) => io.observe(item));
+
+    /* The label/heading/lede start at opacity:0 and only become visible
+       once they carry .is-in. This component is dropped into 20+ pages,
+       and previously it depended on each host page's own reveal observer
+       to do that — so on any host that doesn't watch these selectors the
+       heading stayed invisible forever, leaving a blank gap above the
+       questions. Reveal our own intro instead of relying on the host. */
+    el.querySelectorAll(".v2-faq-intro .v2-label, .v2-faq-intro .v2-heading, .v2-faq-intro .v2-lede")
+      .forEach((node) => io.observe(node));
 
     return () => io.disconnect();
   }, [faqs]);

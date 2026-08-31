@@ -155,6 +155,7 @@ const EST_ADDONS = [
    pages, kept as its own copy rather than a shared import so each page
    can tune timing independently */
 import { useTestimonials } from "../../data/useTestimonials";
+import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
 
 
@@ -241,6 +242,7 @@ export default function AdditionalServiceDetailV2() {
   useEffect(() => {
     if (!svc) return;
     const q = (s) => rootRef.current.querySelectorAll(s);
+    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .7 })
       .fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")

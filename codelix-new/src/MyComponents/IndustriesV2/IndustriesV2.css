@@ -152,7 +152,14 @@
 
 /* Stagger the tabs; one accent color throughout — same rgba(180,200,230)
    blue used site-wide, not a different color per card */
-.ind-scroll-card {
+/* The mobile stack reuses every .ind-panel-* class, and those resolve
+   their accent through --ind-color: the bullet dots, the "What we see a
+   lot" / "What we deliver" headings, and the service-tag borders all
+   read it. It used to be declared on .ind-scroll-card alone, so on
+   mobile the dots and headings rendered with no colour at all — i.e.
+   invisible — and the tags lost their outline. */
+.ind-scroll-card,
+.ind-mobile-card {
   --ind-color: #b4c8e6;
 }
 
@@ -226,7 +233,7 @@
   .ind-mobile-card {
     border: .8px solid var(--rule);
     border-radius: 16px;
-    padding: 24px;
+    padding: 22px 18px;
   }
 
   .ind-mobile-card-top {
@@ -241,6 +248,54 @@
     font-weight: 700;
     color: var(--text-25);
     font-variant-numeric: tabular-nums;
+  }
+
+  /* ── stacked-card typography ──
+     the panel type is sized for a wide two-column layout; at 375px the
+     title and tagline dominate the card and push the actual content
+     below the fold */
+  .v2 .ind-mobile-card .ind-panel-title {
+    font-size: 21px;
+    margin-bottom: 6px;
+  }
+
+  .v2 .ind-mobile-card .ind-panel-tagline {
+    font-size: 14px;
+    line-height: 1.55;
+    margin-bottom: 22px;
+  }
+
+  .ind-mobile-card .ind-panel-sub {
+    margin-bottom: 10px;
+  }
+
+  /* .ind-panel-challenges is margin:0 because the desktop grid handles
+     the gap between columns — stacked, it has to space itself off the
+     "What we deliver" heading that now follows it */
+  .v2 .ind-mobile-card .ind-panel-challenges {
+    margin-bottom: 24px;
+  }
+
+  .ind-mobile-card .ind-panel-challenges li {
+    font-size: 13.5px;
+  }
+
+  .v2 .ind-mobile-card .ind-panel-body {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .ind-mobile-card .ind-panel-services {
+    gap: 7px;
+  }
+
+  .ind-mobile-card .ind-panel-services span {
+    padding: 5px 11px;
+    font-size: 11.5px;
+  }
+
+  .ind-mobile-card .ind-panel-more {
+    margin-top: 20px;
   }
 }
 

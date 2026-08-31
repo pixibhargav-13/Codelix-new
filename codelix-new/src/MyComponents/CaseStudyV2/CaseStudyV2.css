@@ -6,10 +6,48 @@
    ============================================================ */
 
 .csv2-stats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-@media (max-width: 820px) { .csv2-stats-grid { grid-template-columns: repeat(1, minmax(0, 1fr)); } }
 .csv2-stats-grid .sd2-bench:nth-child(3n+1) { border-left: none; }
-@media (max-width: 820px) { .csv2-stats-grid .sd2-bench:nth-child(n) { border-left: none; border-top: .8px solid var(--rule); } }
-.csv2-stats-grid .sd2-bench:first-child { border-top: none; }
+
+/* Mobile: 2 across instead of a single stacked column. Dividers are
+   positional — left border on the right-hand column, top border on
+   everything past the first row — so a fourth stat would slot in as a
+   true 2x2 without further changes; with the current three, the last one
+   spans the full second row rather than sitting beside an empty cell. */
+@media (max-width: 820px) {
+  .csv2-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .csv2-stats-grid .sd2-bench {
+    border-left: none;
+    border-top: none;
+  }
+
+  .csv2-stats-grid .sd2-bench:nth-child(even) {
+    border-left: .8px solid var(--rule);
+  }
+
+  .csv2-stats-grid .sd2-bench:nth-child(n + 3) {
+    border-top: .8px solid var(--rule);
+  }
+
+  /* odd one out — no partner to sit beside */
+  .csv2-stats-grid .sd2-bench:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* two rings side by side need less room than one centred on its own */
+@media (max-width: 520px) {
+  .csv2-stats-grid .sd2-bench {
+    padding: 28px 10px;
+  }
+  .csv2-stats-grid .sd2-bench-ring {
+    width: 96px;
+    height: 96px;
+    margin-bottom: 14px;
+  }
+}
 
 .csv2-filters { display: flex; flex-wrap: wrap; gap: 10px; margin: 30px 0 36px; }
 .csv2-filter {
