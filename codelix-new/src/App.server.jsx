@@ -102,7 +102,12 @@ import { seoData, defaultSEO } from "./lib/seoData";
 
 const RouteSEO = () => {
   const location = useLocation();
-  const path = location.pathname;
+  /* keep in step with App.jsx — seoData is keyed without a trailing slash
+     and the lookup is an exact match */
+  const path =
+    location.pathname.length > 1
+      ? location.pathname.replace(/\/+$/, "")
+      : location.pathname;
 
   // Let dynamic pages handle their own SEO overrides
   if (path.startsWith("/blog/") || path.startsWith("/case-study/") || path.startsWith("/services/") || path.startsWith("/industries/") || path.startsWith("/products/") || path.startsWith("/admin")) {

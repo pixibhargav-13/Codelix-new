@@ -144,6 +144,23 @@ async function build() {
       // Inject the rendered app HTML
       html = html.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`);
 
+      /* The homepage intro mounts from a React effect, which only runs after
+         hydration — so the prerendered page painted first and the plate
+         dropped over it a moment later, producing a visible flash of the
+         homepage. This paints the plate in the markup itself, before any JS
+         runs, and PageLoader removes it once its own plate is on screen.
+         Homepage only: every other route must never be covered. The inline
+         timeout is a safety net so a JS failure can't leave the site hidden. */
+      if (url === "/") {
+        html = html.replace(
+          "<body>",
+          `<body>
+  <style>#pl-preboot{position:fixed;inset:0;z-index:9998;background:#050507}</style>
+  <div id="pl-preboot"></div>
+  <script>setTimeout(function(){var e=document.getElementById('pl-preboot');if(e&&e.parentNode)e.parentNode.removeChild(e);},4000)</script>`
+        );
+      }
+
       // Inject the initial data before closing body
       html = html.replace(
         '</body>',

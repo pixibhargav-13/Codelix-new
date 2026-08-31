@@ -3,18 +3,182 @@
   inset: 0;
   z-index: 9999;
   display: flex;
-  /* the slices travel beyond the viewport, so nothing may spill */
+  align-items: center;
+  justify-content: center;
+  background: var(--void, #050507);
   overflow: hidden;
-  pointer-events: none;
+  will-change: transform;
 }
 
-.pl-col {
-  flex: 1 1 0;
-  height: 100%;
-  background: var(--void, #050507);
-  /* 1px bleed on every side — adjacent flex children can land on
-     subpixel boundaries and leave hairline seams of the page showing
-     through the plate before the shutter opens */
-  box-shadow: 0 0 0 1px var(--void, #050507);
-  will-change: transform;
+/* ── drifting fields of brand light ──
+   These stop the plate reading as an empty black rectangle: the whole
+   screen has slow movement behind the lockup. */
+.pl-aura {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(10px);
+  will-change: transform, opacity;
+}
+
+.pl-aura--a {
+  left: 50%;
+  top: 46%;
+  width: min(120vw, 1100px);
+  height: min(120vw, 1100px);
+  margin-left: min(-60vw, -550px);
+  margin-top: min(-60vw, -550px);
+  background: radial-gradient(circle, rgba(62, 125, 252, .2), rgba(62, 125, 252, .05) 42%, transparent 66%);
+}
+
+.pl-aura--b {
+  left: 50%;
+  top: 52%;
+  width: min(78vw, 720px);
+  height: min(78vw, 720px);
+  margin-left: min(-39vw, -360px);
+  margin-top: min(-39vw, -360px);
+  background: radial-gradient(circle, rgba(140, 180, 255, .14), transparent 60%);
+}
+
+/* faint concentric rings for texture, faded out at the edges */
+.pl-root::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-radial-gradient(
+    circle at 50% 48%,
+    rgba(150, 185, 255, .045) 0 1px,
+    transparent 1px 92px
+  );
+}
+
+.pl-root::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 48%, transparent 34%, var(--void, #050507) 82%);
+}
+
+/* ── logo + tagline lockup ── */
+.pl-stack {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  /* flex: none is load-bearing — as a flex item this would otherwise shrink
+     to nothing in a narrow container, which is how earlier versions of this
+     loader ended up rendering an empty plate */
+  flex: none;
+}
+
+.pl-logo-mask,
+.pl-tagline-mask {
+  display: block;
+  overflow: hidden;
+  line-height: 0;
+}
+
+/* holds the logo and its shine in one stacking context so the band can sit
+   exactly over the artwork */
+.pl-logo-holder {
+  position: relative;
+  display: block;
+  line-height: 0;
+  will-change: transform, opacity, filter;
+}
+
+.pl-logo {
+  display: block;
+  /* explicit width with a floor: a bare min()/percentage collapses wherever
+     the viewport or container resolves to zero */
+  width: clamp(150px, 17vw, 230px);
+  height: auto;
+}
+
+/* band of light clipped to the logo's alpha channel — the mask-image URL is
+   set inline from the imported asset, so it always matches the <img> */
+.pl-shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(
+    100deg,
+    transparent 40%,
+    rgba(255, 255, 255, .9) 50%,
+    transparent 60%
+  );
+  background-size: 280% 100%;
+  background-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  mix-blend-mode: screen;
+}
+
+/* Tagline: sentence case and set large, rather than the small wide-tracked
+   uppercase label it was. It reads as a statement the company makes, not as
+   a caption under a logo. */
+.pl-tagline-mask {
+  display: flex;
+  align-items: baseline;
+  line-height: 1.1;
+}
+
+.pl-letter-mask {
+  overflow: hidden;
+  display: inline-block;
+  line-height: 1.1;
+}
+
+.pl-letter {
+  display: inline-block;
+  font-family: var(--font, "NoiGroteskFix", system-ui, sans-serif);
+  font-size: clamp(20px, 2.6vw, 34px);
+  font-weight: 500;
+  letter-spacing: -.02em;
+  color: var(--text, #f2f0ec);
+  white-space: pre;
+  will-change: transform, opacity, filter;
+}
+
+/* the closing "IT" in brand blue */
+.pl-letter.is-accent {
+  color: #6f9dff;
+}
+
+/* ── short determinate bar ──
+   progress without a numeric readout, which is what made an earlier version
+   read as a sci-fi HUD */
+.pl-bar {
+  position: relative;
+  width: 132px;
+  height: 2px;
+  border-radius: 2px;
+  background: rgba(242, 240, 236, .1);
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.pl-bar-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #3e7dfc, #8cb6ff);
+  box-shadow: 0 0 10px rgba(62, 125, 252, .6);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+@media (max-width: 640px) {
+  .pl-logo { width: clamp(130px, 44vw, 190px); }
+  .pl-letter { font-size: clamp(17px, 6.4vw, 24px); }
+  .pl-bar { width: 108px; }
 }

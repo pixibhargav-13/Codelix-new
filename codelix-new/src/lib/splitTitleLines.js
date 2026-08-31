@@ -86,14 +86,32 @@ export function splitTitleLines(el) {
     outer.className = "line";
     const inner = doc.createElement("span");
 
-    line.forEach((w, i) => {
-      if (w.accent) {
-        inner.appendChild(buildWordSpan(w, doc));
+    /* Consecutive words sharing an accent are emitted as ONE span rather
+       than one span per word. The accent is a gradient drawn with
+       background-clip:text, which resolves against each element's own box —
+       so a span per word restarted the sweep on every word ("Real" going
+       full white-to-blue by itself) instead of running once across the
+       whole phrase. Runs are grouped per line, so a phrase broken over two
+       lines still gets a clean sweep on each. */
+    let i = 0;
+    while (i < line.length) {
+      const { accent } = line[i];
+      let end = i;
+      while (end + 1 < line.length && line[end + 1].accent === accent) end++;
+
+      const text = line.slice(i, end + 1).map((w) => w.text).join(" ");
+      if (accent) {
+        const span = doc.createElement("span");
+        span.className = accent;
+        span.textContent = text;
+        inner.appendChild(span);
       } else {
-        inner.appendChild(doc.createTextNode(w.text));
+        inner.appendChild(doc.createTextNode(text));
       }
-      if (i < line.length - 1) inner.appendChild(doc.createTextNode(" "));
-    });
+
+      if (end < line.length - 1) inner.appendChild(doc.createTextNode(" "));
+      i = end + 1;
+    }
 
     outer.appendChild(inner);
     el.appendChild(outer);

@@ -112,7 +112,14 @@ import { seoData, defaultSEO } from "./lib/seoData";
 
 const RouteSEO = () => {
   const location = useLocation();
-  const path = location.pathname;
+  /* seoData is keyed without a trailing slash, and the lookup below is an
+     exact match — so "/pricing/" missed every key and the page fell back to
+     the generic default title after hydration, overwriting the correct
+     prerendered one. Normalise before matching. */
+  const path =
+    location.pathname.length > 1
+      ? location.pathname.replace(/\/+$/, "")
+      : location.pathname;
 
   // Let dynamic pages handle their own SEO overrides
   if (path.startsWith("/blog/") || path.startsWith("/case-study/") || path.startsWith("/services/") || path.startsWith("/industries/") || path.startsWith("/products/") || path.startsWith("/admin")) {
