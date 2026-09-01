@@ -683,8 +683,8 @@ export default function HomepageV2() {
               <span className="v2-hero-eyebrow">Premium Software Agency</span>
             </div>
             <h1 className="v2-hero-title">
-              <span className="line"><span>We build</span></span>
-              <span className="line"><span>software that</span></span>
+              <span className="line"><span>We build</span></span>{" "}
+              <span className="line"><span>software that</span></span>{" "}
               <span className="line"><span className="v2-hero-accent">actually scales.</span></span>
             </h1>
             <p className="v2-hero-sub">

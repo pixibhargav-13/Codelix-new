@@ -585,7 +585,7 @@ export default function ServiceDetailV2() {
                 <span className="v2-hero-status"><i /> Service 01 · Web Development</span>
               </div>
               <h1 className="sd2-hero-title">
-                <span className="line"><span>Websites that are</span></span>
+                <span className="line"><span>Websites that are</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">fast, findable, and yours.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">

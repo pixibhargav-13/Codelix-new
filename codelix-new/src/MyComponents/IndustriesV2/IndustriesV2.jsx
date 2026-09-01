@@ -139,7 +139,7 @@ export default function IndustriesV2() {
                 <span className="v2-hero-status"><i /> Eleven sectors, real repeat experience</span>
               </div>
               <h1 className="sd2-hero-title">
-                <span className="line"><span>Built for how</span></span>
+                <span className="line"><span>Built for how</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">your sector actually operates.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">

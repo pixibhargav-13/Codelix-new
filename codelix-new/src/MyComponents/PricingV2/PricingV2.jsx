@@ -185,7 +185,7 @@ export default function PricingV2() {
                 <span className="v2-hero-status"><i /> Scope-based, not a rate card</span>
               </div>
               <h1 className="sd2-hero-title">
-                <span className="line"><span>How pricing</span></span>
+                <span className="line"><span>How pricing</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">actually works.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">

@@ -101,7 +101,7 @@ export default function BlogV2() {
                 <span className="v2-hero-status"><i /> {blogs.length} articles, no fluff</span>
               </div>
               <h1 className="sd2-hero-title">
-                <span className="line"><span>Notes on building</span></span>
+                <span className="line"><span>Notes on building</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">software that lasts.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">

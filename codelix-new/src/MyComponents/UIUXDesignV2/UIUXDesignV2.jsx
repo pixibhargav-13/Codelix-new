@@ -431,7 +431,7 @@ export default function UIUXDesignV2() {
                 <span className="v2-hero-status"><i /> Service 03 · UI/UX Design</span>
               </div>
               <h1 className="sd2-hero-title">
-                <span className="line"><span>Interfaces that are</span></span>
+                <span className="line"><span>Interfaces that are</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">intuitive, beautiful, and backed by evidence.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">

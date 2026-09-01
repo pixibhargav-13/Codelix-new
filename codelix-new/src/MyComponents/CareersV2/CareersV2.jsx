@@ -174,7 +174,7 @@ export default function CareersV2() {
                 <span className="v2-hero-status"><i /> Small team, real client work</span>
               </div>
               <h1 className="sd2-hero-title">
-                <span className="line"><span>Work directly with</span></span>
+                <span className="line"><span>Work directly with</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">the people who build it.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">

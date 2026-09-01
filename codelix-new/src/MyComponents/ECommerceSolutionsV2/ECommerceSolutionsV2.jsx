@@ -426,7 +426,7 @@ export default function ECommerceSolutionsV2() {
                 <span className="v2-hero-status"><i /> Service 04 · E-Commerce Solutions</span>
               </div>
               <h1 className="sd2-hero-title">
-                <span className="line"><span>Storefronts built</span></span>
+                <span className="line"><span>Storefronts built</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">backwards from payment.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">

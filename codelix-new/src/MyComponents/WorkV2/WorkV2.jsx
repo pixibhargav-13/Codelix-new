@@ -230,7 +230,7 @@ export default function WorkV2() {
                 <span className="v2-hero-status"><i /> 15+ real projects, six industries</span>
               </div>
               <h1 className="sd2-hero-title">
-                <span className="line"><span>Real constraints.</span></span>
+                <span className="line"><span>Real constraints.</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">Real shipped work.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">

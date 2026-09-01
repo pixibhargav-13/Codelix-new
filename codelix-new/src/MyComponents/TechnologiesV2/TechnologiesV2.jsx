@@ -218,7 +218,7 @@ export default function TechnologiesV2() {
                 <span className="v2-hero-status"><i /> {STACK.length}+ tools, six categories</span>
               </div>
               <h1 className="sd2-hero-title">
-                <span className="line"><span>The stack behind</span></span>
+                <span className="line"><span>The stack behind</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">what we build.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">

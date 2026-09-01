@@ -175,7 +175,7 @@ export default function ContactV2() {
                 <span className="v2-hero-status"><i /> Usually reply within 1 business day</span>
               </div>
               <h1 className="sd2-hero-title">
-                <span className="line"><span>Tell us what</span></span>
+                <span className="line"><span>Tell us what</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">you're building.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">
