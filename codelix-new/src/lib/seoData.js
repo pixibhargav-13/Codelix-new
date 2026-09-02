@@ -21,6 +21,15 @@ export const seoData = {
   "/pricing": { title: "Pricing | Codelix IT Solutions", description: "Transparent, flexible pricing for our professional development services." },
   "/blog": { title: "Blog | Insights & Updates | Codelix IT Solutions", description: "Read the latest insights, tech trends, and company updates on the Codelix blog." },
   "/case-study": { title: "Case Studies | Codelix IT Solutions", description: "Deep dives into how we solved complex problems for our clients." },
+
+  /* These had no entry and fell back to defaultSEO, so every one of them
+     served the generic site description — which is why the terms page was
+     showing "Craft AI-powered web, app & SaaS solutions..." as its snippet
+     in search results instead of anything about the terms. */
+  "/terms-of-service": { title: "Terms & Conditions | Codelix IT Solutions", description: "The terms covering how you may use the Codelix IT Solutions website, its content, and any third-party integrations." },
+  "/privacy-policy": { title: "Privacy Policy | Codelix IT Solutions", description: "What data Codelix IT Solutions collects, how it is used and stored, and the choices you have over your information." },
+  "/refund-policy": { title: "Refund & Cancellation Policy | Codelix IT Solutions", description: "How cancellations are handled, how billing works up to the cancellation date, and when refunds are issued." },
+  "/sitemap": { title: "Sitemap | Codelix IT Solutions", description: "Every page on the Codelix IT Solutions site, grouped by services, industries, products, work and company." },
 };
 
 export const defaultSEO = {
