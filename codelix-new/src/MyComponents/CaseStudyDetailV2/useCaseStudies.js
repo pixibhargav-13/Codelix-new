@@ -20,11 +20,15 @@ export function useCaseStudies() {
       .eq("published", true)
       .order("published_at", { ascending: false })
       .then(({ data, error }) => {
-        if (!active || error) {
+        /* An unmounted component is not a failure — it just means the
+           reader navigated away before the request came back, which happens
+           on every route change now that navigation is client-side. Only a
+           real Supabase error is worth reporting. */
+        if (!active) return;
+        if (error) {
           console.error("Supabase case_studies fetch error:", error);
           return;
         }
-        console.log("Fetched case studies:", data);
         const fromSupabase = (data || []).map((cs) => {
           const challengeImages = [
             cs.challenge_image_1_url ? { src: cs.challenge_image_1_url, alt: cs.challenge_image_1_alt || "" } : null,

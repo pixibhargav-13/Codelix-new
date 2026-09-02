@@ -4921,11 +4921,11 @@ function useCaseStudies() {
   useEffect(() => {
     let active = true;
     supabase.from("case_studies").select("*").eq("published", true).order("published_at", { ascending: false }).then(({ data, error }) => {
-      if (!active || error) {
+      if (!active) return;
+      if (error) {
         console.error("Supabase case_studies fetch error:", error);
         return;
       }
-      console.log("Fetched case studies:", data);
       const fromSupabase = (data || []).map((cs) => {
         const challengeImages = [
           cs.challenge_image_1_url ? { src: cs.challenge_image_1_url, alt: cs.challenge_image_1_alt || "" } : null,
