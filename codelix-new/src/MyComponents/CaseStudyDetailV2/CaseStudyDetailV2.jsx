@@ -157,8 +157,15 @@ export default function CaseStudyDetailV2() {
                 <span className="v2-hero-status"><i /> Case Study{cs.isConcept ? " · Concept" : ""}</span>
               </div>
               <h1 className="sd2-hero-title csd2-title">
+                {/* the separator matters: .line is display:block so this reads
+                    as two lines either way, but without a whitespace text node
+                    between them the extracted title concatenates — Google was
+                    indexing "Marketplace forBuying & Selling Cars" */}
                 {splitTitle(cs.title).map((part, i) => (
-                  <span className="line" key={i}><span>{part}</span></span>
+                  <React.Fragment key={i}>
+                    {i > 0 ? " " : null}
+                    <span className="line"><span>{part}</span></span>
+                  </React.Fragment>
                 ))}
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">{cs.description}</p>
