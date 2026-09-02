@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   ChevronDown, LayoutGrid, Briefcase, Building2, Info, Users,
   Workflow, Tag, Cpu, Newspaper, HelpCircle, Rocket, Mail, Boxes,
@@ -34,7 +35,17 @@ export default function V2MobileDrawer({ open, onClose }) {
   return (
     <>
       <div className={`v2-drawer-backdrop ${open ? "open" : ""}`} onClick={onClose} aria-hidden="true" data-lenis-prevent="true" />
-      <div className={`v2-drawer ${open ? "open" : ""}`} aria-hidden={!open} data-lenis-prevent="true">
+      {/* inert, not just aria-hidden: while closed the drawer is off-screen
+          but its links and buttons stayed in the tab order, so keyboard users
+          tabbed into an invisible menu — and aria-hidden on a container that
+          holds focusable children is itself invalid. inert removes the whole
+          subtree from focus and from the accessibility tree. */}
+      <div
+        className={`v2-drawer ${open ? "open" : ""}`}
+        aria-hidden={!open}
+        inert={!open}
+        data-lenis-prevent="true"
+      >
         <button type="button" className="v2-drawer-close" aria-label="Close menu" onClick={onClose}>
           <span /><span />
         </button>
@@ -56,18 +67,18 @@ export default function V2MobileDrawer({ open, onClose }) {
               </button>
               
               <div className={`v2-drawer-sublinks ${servicesOpen ? "open" : ""}`}>
-                <a href="/services" onClick={onClose} className="v2-drawer-sublink-all">
+                <Link to="/services" onClick={onClose} className="v2-drawer-sublink-all">
                   Overview (All Services)
-                </a>
+                </Link>
                 {NAVBAR_SERVICES_HIERARCHY.map((category) => (
                   <div key={category.title} className="v2-drawer-sublink-category">
-                    <a href={category.path} onClick={onClose} className="v2-drawer-sublink-title">
+                    <Link to={category.path} onClick={onClose} className="v2-drawer-sublink-title">
                       {category.title}
-                    </a>
+                    </Link>
                     {category.items.map((item) => (
-                      <a key={item.label} href={item.path} onClick={onClose} className="v2-drawer-sublink-item">
+                      <Link key={item.label} to={item.path} onClick={onClose} className="v2-drawer-sublink-item">
                         {item.label}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 ))}
@@ -89,14 +100,14 @@ export default function V2MobileDrawer({ open, onClose }) {
               </button>
               
               <div className={`v2-drawer-sublinks ${industriesOpen ? "open" : ""}`}>
-                <a href="/industries" onClick={onClose} className="v2-drawer-sublink-all">
+                <Link to="/industries" onClick={onClose} className="v2-drawer-sublink-all">
                   Overview (All Industries)
-                </a>
+                </Link>
                 <div className="v2-drawer-sublink-category">
                   {FOOTER_INDUSTRY_KEYWORDS.map((industry) => (
-                    <a key={industry.label} href={industry.path} onClick={onClose} className="v2-drawer-sublink-item" style={{ paddingLeft: "16px" }}>
+                    <Link key={industry.label} to={industry.path} onClick={onClose} className="v2-drawer-sublink-item" style={{ paddingLeft: "16px" }}>
                       {industry.label}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -119,9 +130,9 @@ export default function V2MobileDrawer({ open, onClose }) {
               <div className={`v2-drawer-sublinks ${productsOpen ? "open" : ""}`}>
                 <div className="v2-drawer-sublink-category">
                   {PRODUCTS.map((p) => (
-                    <a key={p.slug} href={`/products/${p.slug}`} onClick={onClose} className="v2-drawer-sublink-item">
+                    <Link key={p.slug} to={`/products/${p.slug}`} onClick={onClose} className="v2-drawer-sublink-item">
                       {p.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -129,23 +140,23 @@ export default function V2MobileDrawer({ open, onClose }) {
 
             {/* Standard Links */}
             {NAV_LINKS.map((l) => (
-              <a
+              <Link
                 key={l.label}
-                href={l.href}
+                to={l.href}
                 onClick={onClose}
                 className={(l.label === "Work" || l.label === "About") ? "mobile-only-drawer-link" : ""}
               >
                 <span className="v2-drawer-link-icon"><l.icon size={17} strokeWidth={1.75} /></span>
                 {l.label}
-              </a>
+              </Link>
             ))}
           </div>
 
           <div className="v2-drawer-cta">
-            <a className="v2-btn v2-btn--filled" href="/contact" onClick={onClose}>
+            <Link className="v2-btn v2-btn--filled" to="/contact" onClick={onClose}>
               <span>Book a consultation</span>
               <i className="v2-btn-arrow">→</i>
-            </a>
+            </Link>
             <div className="v2-drawer-cta-socials">
               <a href="https://www.linkedin.com/company/codelixit-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               <a href="https://www.instagram.com/codelixitsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a>

@@ -8,10 +8,10 @@ import { useLenis, ReactLenis } from "lenis/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { createClient } from "@supabase/supabase-js";
-import { $ as codelixLogo, a0 as projectThree, a1 as projectTwo, a2 as projectOne, a3 as projectFour, a4 as projectFive, a5 as projectSix, a6 as projectSeven, a7 as projectEight, a8 as projectNine, a9 as projectTen, aa as projectEleven, ab as projectThirteen, ac as projectFourteen, ad as projectFifteen, ae as projectTwentyThree, r as reactLogo, n as nextLogo, t as tsLogo, j as jsLogo, b as viteLogo, c as tailwindLogo, d as bootstrapLogo, g as nodeLogo, l as laravelLogo, m as phpLogo, w as postgresqlLogo, u as techMongo, y as techAws, z as dockerLogo, A as figmaLogo, H as webflowLogo, af as erpBillingSync, ag as erpHandoffFlow, B as adobeXdLogo, C as sketchLogo, D as framerLogo, ah as techPhotoshop, E as canvaLogo, p as pythonLogo, ai as techNode, f as flutterLogo, s as swiftLogo, e as androidLogo, i as javaLogo, x as techFirebase, F as shopifyLogo, G as woocommerceLogo, k as springLogo, o as csharpLogo, h as djangoLogo, aj as manasImg, ak as kushalImg, al as logo1, am as logo2, an as logo3, ao as logo4, ap as logo5, a as angularLogo, v as vueLogo, q as nust, I as n8nLogo, J as zapierLogo, K as makeLogo, aq as blogImg1, ar as blogImg2, as as blogImg3 } from "./assets/site-images-BsojGprN.js";
+import { $ as codelixLogo, a0 as projectThree, a1 as projectTwo, a2 as projectOne, a3 as projectFour, a4 as projectFive, a5 as projectSix, a6 as projectSeven, a7 as projectEight, a8 as projectNine, a9 as projectTen, aa as projectEleven, ab as projectThirteen, ac as projectFourteen, ad as projectFifteen, ae as projectTwentyThree, r as reactLogo, n as nextLogo, t as tsLogo, j as jsLogo, b as viteLogo, c as tailwindLogo, d as bootstrapLogo, g as nodeLogo, l as laravelLogo, m as phpLogo, w as postgresqlLogo, u as techMongo, y as techAws, z as dockerLogo, A as figmaLogo, H as webflowLogo, af as erpBillingSync, ag as erpHandoffFlow, B as adobeXdLogo, C as sketchLogo, D as framerLogo, ah as techPhotoshop, E as canvaLogo, p as pythonLogo, ai as techNode, f as flutterLogo, s as swiftLogo, e as androidLogo, i as javaLogo, x as techFirebase, F as shopifyLogo, G as woocommerceLogo, k as springLogo, o as csharpLogo, h as djangoLogo, aj as manasImg, ak as kushalImg, al as logo1, am as logo2, an as logo3, ao as logo4, ap as logo5, a as angularLogo, v as vueLogo, q as nust, I as n8nLogo, J as zapierLogo, K as makeLogo, aq as blogImg1, ar as blogImg2, as as blogImg3 } from "./assets/site-images-DRvRo0sp.js";
 import { FileText, Briefcase, MessageSquareQuote, LogOut, Plus, X, Calendar, ChevronLeft, Clock, CheckCircle2, ChevronRight, PlayCircle, Target, PenTool, Code2, Globe, Smartphone, Cloud, Rocket, Activity, LifeBuoy, CalendarCheck, Lock, Eye, ShoppingCart, Sparkles, BarChart3, Receipt, Users, EyeOff, Unlink, TrendingDown, PhoneOff, Puzzle, Gauge, Search, ShieldCheck, Wrench, Building2, Store, GraduationCap, HeartPulse, Landmark, Check, FileCode2, GitBranch, BookOpen, KeyRound, Palette, Server, Minus, Phone, CloudCog, Plug, Workflow, Bot, CreditCard, RefreshCw, TrendingUp, Database, AlertTriangle, HelpCircle, Paintbrush, MousePointerClick, Users2, Frown, Layers, Monitor, Layout, Network, PieChart, Headphones, Bell, BatteryLow, RefreshCcw, Wifi, Bug, Ban, LayoutGrid, ShoppingBag, PackageSearch, RotateCcw, Shirt, Utensils, FileSpreadsheet, Repeat, AlertOctagon, Factory, Repeat2, FileWarning, MessageSquare, HeartHandshake, CheckCheck, Send, Mail, MapPin, Wallet, Handshake, Cpu, UtensilsCrossed, Building, Plane, XCircle, FileCheck2, Layers3, Timer, ExternalLink, ArrowUpRight, ClipboardList, Linkedin, Compass, MonitorSmartphone, Terminal, GitPullRequest, GitMerge, TestTube, Settings2, LayoutTemplate, ArrowLeft } from "lucide-react";
-import { a as FOOTER_ALL_SERVICES, T as TECH_STACK } from "./assets/site-data-BYekvB5e.js";
-import { N as NavbarV2, F as FooterV2, i as introWillPlay, s as splitTitleLinesIn, o as onIntroHandoff, P as PageLoader, C as ClientStrip, S as ScrollSentence, a as PRODUCTS, T as TestimonialSpotlight, b as FaqSection, c as CtaSection, d as TechStackShowcaseV2, p as productBySlug } from "./assets/site-shared-BewHr3S3.js";
+import { a as FOOTER_ALL_SERVICES, T as TECH_STACK } from "./assets/site-data-ES8yYkGU.js";
+import { N as NavbarV2, F as FooterV2, i as introWillPlay, s as splitTitleLinesIn, o as onIntroHandoff, P as PageLoader, C as ClientStrip, S as ScrollSentence, a as PRODUCTS, T as TestimonialSpotlight, b as FaqSection, c as CtaSection, d as TechStackShowcaseV2, p as productBySlug } from "./assets/site-shared-2_2CPPLM.js";
 const SLUG_NAMES = {
   "about": "About",
   "work": "Our Work",
@@ -1396,6 +1396,23 @@ const Chatbot = () => {
     )
   ] });
 };
+const Chatbot$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: Chatbot
+}, Symbol.toStringTag, { value: "Module" }));
+const isBrowser = () => typeof window !== "undefined";
+function send(name, params = {}) {
+  if (!isBrowser()) return;
+  const gtag = window.gtag;
+  if (typeof gtag !== "function") return;
+  try {
+    gtag("event", name, params);
+  } catch {
+  }
+}
+function trackLead(source, extra = {}) {
+  send("generate_lead", { lead_source: source, ...extra });
+}
 const TIME_SLOTS = [
   "10:00 AM",
   "11:00 AM",
@@ -1527,6 +1544,9 @@ function BookingModal() {
   const handleBook = (e) => {
     e.preventDefault();
     setTimeout(() => {
+      trackLead("consultation_booking", {
+        booking_time: selectedTime || void 0
+      });
       setStep(3);
     }, 600);
   };
@@ -2547,7 +2567,9 @@ function HomepageV2() {
           ] }),
           /* @__PURE__ */ jsxs("h1", { className: "v2-hero-title", children: [
             /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "We build" }) }),
+            " ",
             /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "software that" }) }),
+            " ",
             /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "actually scales." }) })
           ] }),
           /* @__PURE__ */ jsx("p", { className: "v2-hero-sub", children: "Stop rebuilding brittle prototypes. We engineer production-ready web apps, mobile platforms, and enterprise SaaS solutions designed to handle real users." }),
@@ -3801,6 +3823,7 @@ function ServiceDetailV2() {
         ] }) }),
         /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Websites that are" }) }),
+          " ",
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "fast, findable, and yours." }) })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We build high-performance websites and web applications with clean, hand-written code — designed to convert visitors into customers, and handed over with full source-code ownership." }),
@@ -4830,7 +4853,15 @@ const seoData = {
   "/careers": { title: "Careers | Codelix IT Solutions", description: "Join our team of talented engineers and designers at Codelix IT Solutions." },
   "/pricing": { title: "Pricing | Codelix IT Solutions", description: "Transparent, flexible pricing for our professional development services." },
   "/blog": { title: "Blog | Insights & Updates | Codelix IT Solutions", description: "Read the latest insights, tech trends, and company updates on the Codelix blog." },
-  "/case-study": { title: "Case Studies | Codelix IT Solutions", description: "Deep dives into how we solved complex problems for our clients." }
+  "/case-study": { title: "Case Studies | Codelix IT Solutions", description: "Deep dives into how we solved complex problems for our clients." },
+  /* These had no entry and fell back to defaultSEO, so every one of them
+     served the generic site description — which is why the terms page was
+     showing "Craft AI-powered web, app & SaaS solutions..." as its snippet
+     in search results instead of anything about the terms. */
+  "/terms-of-service": { title: "Terms & Conditions | Codelix IT Solutions", description: "The terms covering how you may use the Codelix IT Solutions website, its content, and any third-party integrations." },
+  "/privacy-policy": { title: "Privacy Policy | Codelix IT Solutions", description: "What data Codelix IT Solutions collects, how it is used and stored, and the choices you have over your information." },
+  "/refund-policy": { title: "Refund & Cancellation Policy | Codelix IT Solutions", description: "How cancellations are handled, how billing works up to the cancellation date, and when refunds are issued." },
+  "/sitemap": { title: "Sitemap | Codelix IT Solutions", description: "Every page on the Codelix IT Solutions site, grouped by services, industries, products, work and company." }
 };
 const defaultSEO = {
   title: "Codelix IT Solutions | AI-Powered Web, App & SaaS Development",
@@ -4849,6 +4880,7 @@ lazy(() => Promise.resolve().then(() => AdminCaseStudyList$1));
 lazy(() => Promise.resolve().then(() => AdminCaseStudyForm$1));
 lazy(() => Promise.resolve().then(() => AdminTestimonialsList$1));
 lazy(() => Promise.resolve().then(() => AdminTestimonialForm$1));
+lazy(() => Promise.resolve().then(() => Chatbot$1));
 lazy(() => Promise.resolve().then(() => NotFound$1));
 lazy(() => Promise.resolve().then(() => HomepageV2$1));
 lazy(() => Promise.resolve().then(() => ServicesV2$1));
@@ -6290,6 +6322,7 @@ function UIUXDesignV2() {
         ] }) }),
         /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Interfaces that are" }) }),
+          " ",
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "intuitive, beautiful, and backed by evidence." }) })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We design user interfaces and product experiences grounded in real research — prototyped, tested, and refined until the interface feels obvious, then handed over with a complete design system." }),
@@ -7080,6 +7113,7 @@ function DataAnalyticsV2() {
         ] }) }),
         /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Turn raw data into" }) }),
+          " ",
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "clarity and action." }) })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We build automated pipelines, centralized data warehouses, and fast, intuitive dashboards that give you a single source of truth—so you can stop guessing and start growing." }),
@@ -7866,6 +7900,7 @@ function SupportManagedServicesV2() {
         ] }) }),
         /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Ongoing support that" }) }),
+          " ",
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "keeps things running." }) })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Uptime monitoring, security patching, performance tuning, and dedicated engineering capacity — a support plan that catches problems before your users do." }),
@@ -8652,6 +8687,7 @@ function ApplicationDevelopmentV2() {
         ] }) }),
         /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Apps that feel" }) }),
+          " ",
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "native, not bolted on." }) })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We build cross-platform and native mobile apps with clean, hand-written code — one Flutter codebase where it fits, fully native where the platform demands it, handed over with full source-code ownership." }),
@@ -9438,6 +9474,7 @@ function ECommerceSolutionsV2() {
         ] }) }),
         /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Storefronts built" }) }),
+          " ",
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "backwards from payment." }) })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We build high-performance storefronts and checkout flows with clean, hand-written code — designed to convert browsers into buyers, and handed over with full source-code ownership." }),
@@ -10225,6 +10262,7 @@ function CustomSoftwareDevelopmentV2() {
         ] }) }),
         /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Software built around" }) }),
+          " ",
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "how you actually work." }) })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We build custom systems and internal tools with clean, hand-written code — designed around your exact workflow instead of bending your process to fit someone else's product, handed over with full ownership." }),
@@ -11009,6 +11047,7 @@ function AIDevelopmentV2() {
         ] }) }),
         /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Automation for the handoff," }) }),
+          " ",
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "not the judgement." }) })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We build AI agents and automation with clean, hand-written code — explainable by default, aimed at the repetitive handoff between your tools, and handed over with full source-code ownership." }),
@@ -11622,6 +11661,7 @@ function AboutV2() {
         ] }) }),
         /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "A small team that" }) }),
+          " ",
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "builds like it's theirs." }) })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Codelix is an IT solutions studio that builds web, mobile, and AI systems for businesses that intend to still be running them in five years. No lock-in, no black boxes — just software you own." }),
@@ -11913,6 +11953,7 @@ function ContactV2() {
       });
       const data = await response.json();
       if (data.success) {
+        trackLead("contact_form", { service: formData.service, budget: formData.budget });
         setSubmitted(true);
         e.target.reset();
         setFormData({
@@ -11996,6 +12037,7 @@ function ContactV2() {
         ] }) }),
         /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Tell us what" }) }),
+          " ",
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "you're building." }) })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Whether you're looking for guidance, support, or a custom solution, we're here to help you every step of the way." }),
@@ -12492,6 +12534,7 @@ function IndustriesV2() {
         ] }) }),
         /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Built for how" }) }),
+          " ",
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "your sector actually operates." }) })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "The stack, the compliance posture, and the structure change depending on who's using the site and what they came to do. Here's where we have the deepest repeat experience." }),
@@ -13688,6 +13731,7 @@ function ProcessV2() {
         ] }) }),
         /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "How we go from" }) }),
+          " ",
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "message to launch." }) })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Same process regardless of the service — a fixed sequence of stages, each signed off before the next one starts, so nothing gets built on a shifting foundation." }),
@@ -13993,6 +14037,7 @@ function TeamV2() {
         ] }) }),
         /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "The people behind" }) }),
+          " ",
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "what Codelix ships." }) })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "No account managers, no anonymous contractors — every project is scoped and delivered by the two people who founded this studio." }),
@@ -14319,6 +14364,7 @@ function WorkV2() {
         ] }) }),
         /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Real constraints." }) }),
+          " ",
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "Real shipped work." }) })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Every project below solved an actual problem for an actual business." }),
@@ -14571,6 +14617,7 @@ function LegalV2({ crumbLabel, statusLabel, titleLine1, titleLine2, sub, updated
       ] }) }),
       /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
         /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: titleLine1 }) }),
+        " ",
         /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: titleLine2 }) })
       ] }),
       /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: sub })
@@ -14890,11 +14937,14 @@ const SECTIONS$1 = [
       /* @__PURE__ */ jsx("br", {}),
       /* @__PURE__ */ jsx("br", {}),
       "Codelix IT Solutions",
+      " ",
       /* @__PURE__ */ jsx("br", {}),
       "Ahmedabad, India",
+      " ",
       /* @__PURE__ */ jsx("br", {}),
       "Email: ",
       /* @__PURE__ */ jsx("a", { href: "mailto:sales@codelixitsolutions.com", children: "sales@codelixitsolutions.com" }),
+      " ",
       /* @__PURE__ */ jsx("br", {}),
       "Website: ",
       /* @__PURE__ */ jsx("a", { href: "https://www.codelixitsolutions.com", children: "www.codelixitsolutions.com" })
@@ -15104,6 +15154,7 @@ function FaqV2() {
         ] }) }),
         /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Everything people" }) }),
+          " ",
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "ask us, in one place." }) })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Search or filter by category — every answer here is the same one you'd get if you asked us directly." })
@@ -15313,6 +15364,7 @@ function TechnologiesV2() {
         ] }) }),
         /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "The stack behind" }) }),
+          " ",
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "what we build." }) })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Every tool below has shipped in a real client project — picked for the problem at hand, not because it's trending." })
@@ -15605,6 +15657,7 @@ function CareersV2() {
         ] }) }),
         /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Work directly with" }) }),
+          " ",
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "the people who build it." }) })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "No account managers, no anonymous bench. If you join, you're shipping real client projects alongside the founders." }),
@@ -15911,6 +15964,7 @@ function PricingV2() {
         ] }) }),
         /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "How pricing" }) }),
+          " ",
           /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "actually works." }) })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "No public rate card — pricing follows scope and complexity. Get a ballpark below, then a written quote after a free scoping call." })
@@ -16266,6 +16320,7 @@ function SitemapV2() {
       ] }) }),
       /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
         /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Every page," }) }),
+        " ",
         /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "one place to find it." }) })
       ] }),
       /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "A complete map of the site — search or browse by section." })
@@ -16380,6 +16435,7 @@ function BlogV2() {
       ] }) }),
       /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
         /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Notes on building" }) }),
+        " ",
         /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "software that lasts." }) })
       ] }),
       /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Practical writing on web, mobile, design, and the decisions behind them — not recycled listicles." })
@@ -16669,6 +16725,7 @@ function CaseStudyV2() {
       ] }) }),
       /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
         /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "The problem, the build," }) }),
+        " ",
         /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "and what changed." }) })
       ] }),
       /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Every case study here covers the same three things — what was broken, what we built, and the outcome — not just a screenshot gallery." })
@@ -16854,7 +16911,10 @@ function CaseStudyDetailV2() {
           " Case Study",
           cs.isConcept ? " · Concept" : ""
         ] }) }),
-        /* @__PURE__ */ jsx("h1", { className: "sd2-hero-title csd2-title", children: splitTitle(cs.title).map((part, i) => /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: part }) }, i)) }),
+        /* @__PURE__ */ jsx("h1", { className: "sd2-hero-title csd2-title", children: splitTitle(cs.title).map((part, i) => /* @__PURE__ */ jsxs(React.Fragment, { children: [
+          i > 0 ? " " : null,
+          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: part }) })
+        ] }, i)) }),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: cs.description }),
         /* @__PURE__ */ jsx("div", { className: "csd2-tags sv2-hero-reveal", children: cs.tags.map((t) => /* @__PURE__ */ jsx("span", { children: t }, t)) }),
         cs.isConcept && /* @__PURE__ */ jsx("p", { className: "csd2-concept-note", children: "This is a concept exploration, not a live client build — shown here honestly as design work, not a deployed product." }),
@@ -17067,7 +17127,7 @@ const LenisGsapSync = () => {
 };
 const RouteSEO = () => {
   const location = useLocation();
-  const path = location.pathname;
+  const path = location.pathname.length > 1 ? location.pathname.replace(/\/+$/, "") : location.pathname;
   if (path.startsWith("/blog/") || path.startsWith("/case-study/") || path.startsWith("/services/") || path.startsWith("/industries/") || path.startsWith("/products/") || path.startsWith("/admin")) {
     if (path !== "/services" && path !== "/services/web-development" && path !== "/services/application-development" && path !== "/services/ui-ux-design" && path !== "/services/e-commerce-solutions" && path !== "/services/custom-software-development" && path !== "/services/ai-development" && path !== "/services/data-analytics" && path !== "/services/support-managed-services" && path !== "/industries" && path !== "/blog" && path !== "/case-study") {
       return null;

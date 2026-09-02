@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import codelixLogo from "../Images/codelix-logo.png";
 import { FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS, FOOTER_PRODUCTS } from "../HomepageV2/footerData";
 import RatingsStrip from "./RatingsStrip";
@@ -24,7 +25,7 @@ export default function FooterV2() {
         <p className="v2-footer-keywords-label">Services</p>
         <div className="v2-footer-keywords-list">
           {FOOTER_ALL_SERVICES.map((k, i) => (
-            <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
+            <Link to={k.path} className="v2-footer-keyword" key={i}>{k.label}</Link>
           ))}
         </div>
       </div>
@@ -32,7 +33,7 @@ export default function FooterV2() {
         <p className="v2-footer-keywords-label">Industries</p>
         <div className="v2-footer-keywords-list">
           {FOOTER_INDUSTRY_KEYWORDS.map((k, i) => (
-            <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
+            <Link to={k.path} className="v2-footer-keyword" key={i}>{k.label}</Link>
           ))}
         </div>
       </div>
@@ -40,7 +41,7 @@ export default function FooterV2() {
         <p className="v2-footer-keywords-label">Products</p>
         <div className="v2-footer-keywords-list">
           {FOOTER_PRODUCTS.map((k, i) => (
-            <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
+            <Link to={k.path} className="v2-footer-keyword" key={i}>{k.label}</Link>
           ))}
         </div>
       </div>
@@ -65,7 +66,7 @@ export default function FooterV2() {
         </div>
         <div className="v2-footer-card">
           <h5>Looking For Jobs</h5>
-          <a className="v2-footer-card-strong" href="/careers">View openings →</a>
+          <Link className="v2-footer-card-strong" to="/careers">View openings →</Link>
         </div>
         <div className="v2-footer-card">
           <h5>HR</h5>
@@ -113,15 +114,15 @@ export default function FooterV2() {
         <RatingsStrip />
       </div>
       <div className="v2-footer-bottom">
-        <a href="/" className="v2-footer-bottom-brand" aria-label="Codelix — home">
+        <Link to="/" className="v2-footer-bottom-brand" aria-label="Codelix — home">
           <img src={codelixLogo} alt="Codelix" />
-        </a>
+        </Link>
         <span className="v2-footer-bottom-copy">© 2026 Codelix IT Solutions — All Copyright Reserved</span>
         <div className="v2-footer-legal">
-          <a href="/sitemap">Sitemap</a>
-          <a href="/refund-policy">Refund Policy</a>
-          <a href="/privacy-policy">Privacy</a>
-          <a href="/terms-of-service">Terms</a>
+          <Link to="/sitemap">Sitemap</Link>
+          <Link to="/refund-policy">Refund Policy</Link>
+          <Link to="/privacy-policy">Privacy</Link>
+          <Link to="/terms-of-service">Terms</Link>
         </div>
       </div>
     </footer>

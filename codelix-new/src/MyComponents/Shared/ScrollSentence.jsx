@@ -25,11 +25,25 @@ export default function ScrollSentence({ words, tone, centered = false }) {
     let current = 0;  // where the type actually is — chases target
     let primed = false;
 
-    const readTarget = () => {
+    /* The block's document-space position and height only change on resize,
+       but this used to read getBoundingClientRect() on every scroll event —
+       and since paint() writes styles every frame, each of those reads forced
+       a synchronous layout. Measure once and derive the scroll position
+       arithmetically instead; same technique the homepage word-flyer already
+       uses. */
+    let docTop = 0, blockHeight = 0, viewportH = 0;
+    const measure = () => {
       const r = el.getBoundingClientRect();
-      const scrollable = r.height - window.innerHeight;
+      docTop = r.top + window.scrollY;
+      blockHeight = r.height;
+      viewportH = window.innerHeight;
+    };
+
+    const readTarget = () => {
+      const scrollable = blockHeight - viewportH;
       if (scrollable <= 0) return 0;
-      const raw = (-r.top) / scrollable;
+      /* -r.top in viewport space is exactly scrollY - docTop */
+      const raw = (window.scrollY - docTop) / scrollable;
       const norm = Math.min(Math.max(raw / 0.92, 0), 0.9999);
       return norm * words.length;
     };
@@ -109,13 +123,25 @@ export default function ScrollSentence({ words, tone, centered = false }) {
       }
     };
 
+    /* only these re-measure; scroll just reads the cached numbers.
+       Caching trades a per-scroll layout read for a staleness risk, so
+       re-measure on everything that can move the block after mount — late
+       images and webfonts both reflow the page well after the effect runs. */
+    const onResize = () => { measure(); handleScroll(); };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll, { passive: true });
+    window.addEventListener("resize", onResize, { passive: true });
+    window.addEventListener("load", onResize);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(onResize).catch(() => {});
+    }
+    measure();
     handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("load", onResize);
       cancelAnimationFrame(raf);
     };
   }, [words.length, centered]);

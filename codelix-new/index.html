@@ -23,10 +23,10 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet">
-  <!-- FontAwesome cdn -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- FontAwesome was removed: it blocked first render for ~240ms and 17.2KiB
+       on every page, and the site uses zero fa-* classes (icons come from
+       lucide-react instead). If icons are ever needed here again, import them
+       through the bundle rather than a render-blocking CDN stylesheet. -->
 
 
   <!-- Structured Data for Site Name -->
@@ -51,7 +51,7 @@
       "image": "https://www.codelixitsolutions.com/codelix.svg",
       "logo": "https://www.codelixitsolutions.com/codelix.svg",
       "url": "https://www.codelixitsolutions.com/",
-      "telephone": "+917490909686",
+      "telephone": "+919998263282",
       "email": "sales@codelixitsolutions.com",
       "priceRange": "$$",
       "address": {
@@ -68,7 +68,7 @@
       },
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+917490909686",
+        "telephone": "+919998263282",
         "email": "sales@codelixitsolutions.com",
         "contactType": "sales",
         "areaServed": "Worldwide",

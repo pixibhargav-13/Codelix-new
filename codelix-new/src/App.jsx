@@ -1,6 +1,7 @@
-import React, { useEffect, lazy, Suspense } from "react";
+import React, { useEffect, useRef, useState, lazy, Suspense } from "react";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { ReactLenis, useLenis } from 'lenis/react';
+import { trackPageView } from "./lib/analytics";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import BreadcrumbSchema from "./components/BreadcrumbSchema";
@@ -29,7 +30,14 @@ const AdminTestimonialsList = lazy(() => import("./admin/pages/AdminTestimonials
 const AdminTestimonialForm = lazy(() => import("./admin/pages/AdminTestimonialForm"));
 
 // ─── Eagerly loaded (critical for first paint) ────────────────────────────────
-import Chatbot from "./MyComponents/Chatbot/Chatbot";
+/* The chatbot is a floating widget — nothing about first paint depends on
+   it, but eagerly importing it put its parse+evaluate cost on the critical
+   path of every page. Lazy, and only mounted once the browser is idle.
+
+   BookingModal deliberately stays eager: it installs a global click listener
+   that intercepts "Book a consultation" links, so deferring it would let
+   early clicks fall through to /contact instead of opening the modal. */
+const Chatbot = lazy(() => import("./MyComponents/Chatbot/Chatbot"));
 import BookingModal from "./MyComponents/BookingModal/BookingModal";
 // ─── 404 Not Found ─────────────────────────────────────────────────────────────
 const NotFound = lazy(() => import("./MyComponents/NotFound/NotFound"));
@@ -75,17 +83,66 @@ const CaseStudyDetail = lazy(() => import("./MyComponents/CaseStudyDetailV2/Case
 // ─── Scroll to top on route change ───────────────────────────────────────────
 const ScrollToTop = () => {
   const location = useLocation();
+  const lenis = useLenis();
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+    /* Lenis keeps its own scroll position and drives the page from it, so a
+       bare window.scrollTo gets animated straight back to where Lenis thinks
+       it is. Tell Lenis instead when it's running. This only started to matter
+       once the nav and footer became client-side <Link>s — before that every
+       internal click was a full reload, which reset scroll for free. */
+    if (lenis) lenis.scrollTo(0, { immediate: true });
+    else window.scrollTo(0, 0);
+  }, [location.pathname, lenis]);
+  return null;
+};
+
+/* Client-side navigation doesn't produce GA4 page views by itself — the tag
+   in index.html fires one on first load and nothing after. Without this every
+   visit looks like a single-page session, which makes the whole funnel
+   unreadable. Skips the very first route so it doesn't double-count the
+   page view the tag has already sent. */
+const AnalyticsRouteTracker = () => {
+  const location = useLocation();
+  const firstRoute = useRef(true);
+
+  useEffect(() => {
+    if (firstRoute.current) {
+      firstRoute.current = false;
+      return;
+    }
+    /* let the new route's <SEO> update document.title first, so the page view
+       is filed under the right page name rather than the previous one */
+    const t = setTimeout(() => trackPageView(location.pathname + location.search), 60);
+    return () => clearTimeout(t);
+  }, [location.pathname, location.search]);
+
   return null;
 };
 
 // ─── Chatbot is a public-site widget — hide it on the admin panel ────────────
 const ChatbotGate = () => {
   const location = useLocation();
+  const [idle, setIdle] = useState(false);
+
+  useEffect(() => {
+    const mount = () => setIdle(true);
+    if (typeof window.requestIdleCallback === "function") {
+      const id = window.requestIdleCallback(mount, { timeout: 3000 });
+      return () => window.cancelIdleCallback(id);
+    }
+    /* Safari has no requestIdleCallback */
+    const t = setTimeout(mount, 1500);
+    return () => clearTimeout(t);
+  }, []);
+
   if (location.pathname.startsWith("/admin")) return null;
-  return <Chatbot />;
+  if (!idle) return null;
+
+  return (
+    <Suspense fallback={null}>
+      <Chatbot />
+    </Suspense>
+  );
 };
 
 // ─── Sync Lenis with GSAP ScrollTrigger for extra smooth animations ────────────
@@ -241,6 +298,7 @@ function App({ initialData }) {
       <InitialDataContext.Provider value={initialData}>
         <LenisGsapSync />
         <ScrollToTop />
+        <AnalyticsRouteTracker />
         <BreadcrumbSchema />
         <StructuredData type="Organization" />
         <ChatbotGate />

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { trackLead } from "../../lib/analytics";
 import { X, Calendar as CalendarIcon, Clock, ChevronRight, ChevronLeft, CheckCircle2 } from "lucide-react";
 import { useLenis } from 'lenis/react';
 import "./BookingModal.css";
@@ -170,6 +171,10 @@ export default function BookingModal() {
     e.preventDefault();
     // Simulate API call
     setTimeout(() => {
+      /* a booking only counts as a lead once it reaches confirmation */
+      trackLead("consultation_booking", {
+        booking_time: selectedTime || undefined,
+      });
       setStep(3);
     }, 600);
   };

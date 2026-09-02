@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { useLenis } from 'lenis/react';
 import { NAVBAR_SERVICES_HIERARCHY, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import {
@@ -62,6 +63,12 @@ export default function NavbarV2() {
   const [navHidden, setNavHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const lenis = useLenis();
+  /* Did THIS instance lock the page scroll? Every one of the 30 page
+     components renders its own <NavbarV2 />, so following a drawer link
+     unmounts this navbar and mounts a fresh one — refs and all. The body's
+     dataset.scrollY outlives that, which is exactly how a stale offset used to
+     get restored on the new page. */
+  const lockedRef = useRef(false);
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -86,16 +93,37 @@ export default function NavbarV2() {
       document.body.style.overflow = "hidden";
       document.documentElement.style.overflow = "hidden";
       document.body.dataset.scrollY = scrollY;
+      lockedRef.current = true;
     } else {
       if (lenis) lenis.start();
-      scrollY = document.body.dataset.scrollY || 0;
+      /* consumed exactly once, so a later mount can't find it and act on it */
+      const stored = document.body.dataset.scrollY;
+      delete document.body.dataset.scrollY;
       document.body.style.position = "";
       document.body.style.top = "";
       document.body.style.width = "";
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY));
+
+      if (lockedRef.current) {
+        /* same instance, same page: the drawer was simply dismissed, so put
+           the reader back where they were */
+        lockedRef.current = false;
+        if (stored) window.scrollTo(0, parseInt(stored));
+      } else if (stored) {
+        /* a fresh navbar mounting on top of someone else's lock — a drawer
+           link was followed. Restoring here would drop the reader part-way
+           down the new page. Take the top instead: dropping position:fixed
+           gives the document its height back and the browser reapplies the old
+           offset when that layout lands, so flush it first, then re-assert
+           next frame in case Lenis is still easing toward its stored target. */
+        void document.body.offsetHeight;
+        const toTop = () => {
+          if (lenis) lenis.scrollTo(0, { immediate: true, force: true });
+          else window.scrollTo(0, 0);
+        };
+        toTop();
+        requestAnimationFrame(toTop);
       }
     }
     const onKey = (e) => { if (e.key === "Escape") setMobileOpen(false); };
@@ -114,24 +142,24 @@ export default function NavbarV2() {
     <>
       <nav className={`v2-nav ${navScrolled ? "scrolled" : ""} ${navHidden ? "nav-hidden" : ""}`}>
         <div className="v2-nav-inner">
-          <a href="/" className="v2-nav-logo" aria-label="Codelix — home">
+          <Link to="/" className="v2-nav-logo" aria-label="Codelix — home">
             <img src={codelixLogo} alt="Codelix" />
-          </a>
+          </Link>
           <div className="v2-nav-links">
             <div className="v2-nav-dropdown">
-              <a href="/services">Services <span className="v2-nav-dropdown-chevron">▾</span></a>
+              <Link to="/services">Services <span className="v2-nav-dropdown-chevron">▾</span></Link>
               <div className="v2-nav-dropdown-panel" data-lenis-prevent>
                 <div className="v2-nav-dropdown-head">
                   <div>
                     <p className="v2-nav-dropdown-head-label">Our Services</p>
                     <p className="v2-nav-dropdown-head-lede">Everything we build, in one place.</p>
                   </div>
-                  <a href="/services" className="v2-nav-dropdown-head-all">View all services →</a>
+                  <Link to="/services" className="v2-nav-dropdown-head-all">View all services →</Link>
                 </div>
                 <div className="v2-nav-mega-menu">
                   {NAVBAR_SERVICES_HIERARCHY.map((category) => (
                     <div key={category.title} className="v2-nav-mega-category">
-                      <a href={category.path} className="v2-nav-mega-title-wrapper">
+                      <Link to={category.path} className="v2-nav-mega-title-wrapper">
                         <div className="v2-nav-mega-icon-box">
                           {getCategoryIcon(category.title)}
                         </div>
@@ -143,16 +171,16 @@ export default function NavbarV2() {
                             {getCategoryDescription(category.title)}
                           </span>
                         </div>
-                      </a>
+                      </Link>
                       <div className="v2-nav-mega-links">
                         {category.items.map((item) => (
-                          <a key={item.label} href={item.path} className="v2-nav-mega-link">
+                          <Link key={item.label} to={item.path} className="v2-nav-mega-link">
                             <span className="v2-nav-mega-link-left">
                               <span className="v2-nav-mega-link-dot"></span>
                               {item.label}
                             </span>
                             <span className="v2-nav-mega-link-arrow"><ChevronRight size={14} strokeWidth={2} /></span>
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </div>
@@ -160,9 +188,9 @@ export default function NavbarV2() {
                 </div>
               </div>
             </div>
-            <a href="/work">Work</a>
+            <Link to="/work">Work</Link>
             <div className="v2-nav-dropdown">
-              <a href="/industries">Industries <span className="v2-nav-dropdown-chevron">▾</span></a>
+              <Link to="/industries">Industries <span className="v2-nav-dropdown-chevron">▾</span></Link>
               <div className="v2-nav-dropdown-panel" data-lenis-prevent>
                 <div className="v2-nav-industry-mega-menu">
                   <div className="v2-nav-mega-menu-left">
@@ -173,11 +201,11 @@ export default function NavbarV2() {
                     <p className="v2-nav-mega-menu-left-desc">
                       We engineer powerful, scalable software solutions perfectly tailored to the unique challenges of your industry.
                     </p>
-                    <a href="/industries" className="v2-nav-mega-menu-left-btn">Explore All Industries <ChevronRight size={14} strokeWidth={2.5} /></a>
+                    <Link to="/industries" className="v2-nav-mega-menu-left-btn">Explore All Industries <ChevronRight size={14} strokeWidth={2.5} /></Link>
                   </div>
                   <div className="v2-nav-mega-menu-right">
                     {FOOTER_INDUSTRY_KEYWORDS.map((industry) => (
-                      <a key={industry.label} href={industry.path} className="v2-nav-industry-link">
+                      <Link key={industry.label} to={industry.path} className="v2-nav-industry-link">
                         <span className="v2-nav-industry-link-left">
                           <span className="v2-nav-industry-link-icon-wrap">
                             {getIndustryIcon(industry.label)}
@@ -185,14 +213,14 @@ export default function NavbarV2() {
                           <span className="v2-nav-industry-link-text">{industry.label}</span>
                         </span>
                         <ChevronRight className="v2-nav-industry-link-arrow" size={16} strokeWidth={2} />
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
               </div>
             </div>
             <div className="v2-nav-dropdown">
-              <a href={`/products/${PRODUCTS[0].slug}`}>Products <span className="v2-nav-dropdown-chevron">▾</span></a>
+              <Link to={`/products/${PRODUCTS[0].slug}`}>Products <span className="v2-nav-dropdown-chevron">▾</span></Link>
               <div className="v2-nav-dropdown-panel" data-lenis-prevent>
                 <div className="v2-nav-products-mega-menu">
                   <div className="v2-nav-mega-menu-left">
@@ -206,7 +234,7 @@ export default function NavbarV2() {
                   </div>
                   <div className="v2-nav-products-right">
                     {PRODUCTS.map((p) => (
-                      <a key={p.slug} href={`/products/${p.slug}`} className="v2-nav-product-link">
+                      <Link key={p.slug} to={`/products/${p.slug}`} className="v2-nav-product-link">
                         <span className="v2-nav-product-link-top">
                           <span className="v2-nav-product-link-logo"><img src={p.logo} alt="" /></span>
                           <span className="v2-nav-product-link-name" style={{ color: p.accent }}>{p.name}</span>
@@ -214,16 +242,16 @@ export default function NavbarV2() {
                         </span>
                         <span className="v2-nav-product-link-badge">{p.badge}</span>
                         <span className="v2-nav-product-link-tagline">{p.tagline}</span>
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
               </div>
             </div>
-            <a href="/about">About</a>
+            <Link to="/about">About</Link>
           </div>
           <div className="v2-nav-actions">
-            <a className="v2-btn v2-btn--filled v2-nav-cta" href="/contact">Book a consultation</a>
+            <Link className="v2-btn v2-btn--filled v2-nav-cta" to="/contact">Book a consultation</Link>
             <button
               className={`v2-burger ${mobileOpen ? "open" : ""}`}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}

@@ -3,6 +3,10 @@
   src: url('./assets/fonts/NoiGroteskFix-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  /* without this the browser blocks painting any text in this face until the
+     .ttf arrives — the headings simply weren't drawn. swap paints them in a
+     fallback immediately and re-renders once the font lands. */
+  font-display: swap;
 }
 
 :root {

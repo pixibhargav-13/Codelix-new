@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { trackLead } from "../../lib/analytics";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import {
@@ -78,6 +79,9 @@ export default function ContactV2() {
       const data = await response.json();
 
       if (data.success) {
+        /* fires only on a confirmed success from the form API, so the count
+           reflects real enquiries rather than submit-button clicks */
+        trackLead("contact_form", { service: formData.service, budget: formData.budget });
         setSubmitted(true);
         e.target.reset();
         setFormData({
