@@ -16,6 +16,7 @@ import "./BlogDetailV2.css";
    the article body, dates, and tags are not duplicated or rewritten here */
 import { slugify } from "../../data/blogData";
 import { useBlogPosts } from "../../data/useBlogPosts";
+import ArticleSkeleton from "../Shared/ArticleSkeleton";
 import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from '../Shared/CtaSection';
 import { StructuredData } from "../../components/StructuredData";
@@ -92,13 +93,7 @@ export default function BlogDetailV2() {
      a flash of the error screen before the real content replaced it. Wait for
      the read to settle before saying anything is missing; posts that are
      already in hand still render immediately, with no spinner. */
-  if (!blog && loading) {
-    return (
-      <div className="v2" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <span className="bdv2-loading" aria-live="polite">Loading article…</span>
-      </div>
-    );
-  }
+  if (!blog && loading) return <ArticleSkeleton label="Loading article" />;
 
   if (!blog) {
     return (

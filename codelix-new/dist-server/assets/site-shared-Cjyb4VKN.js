@@ -1,11 +1,11 @@
 import { jsxs, Fragment, jsx } from "react/jsx-runtime";
 import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
-import { useLenis } from "lenis/react";
-import { N as NAVBAR_SERVICES_HIERARCHY, F as FOOTER_INDUSTRY_KEYWORDS, a as FOOTER_ALL_SERVICES, b as FOOTER_PRODUCTS, C as CLIENT_LOGOS } from "./site-data-ES8yYkGU.js";
-import { Sparkles, Zap, Radio, MessageSquare, LineChart, Bot, Contact, ClipboardList, CalendarCheck, Wallet, UserCog, FolderLock, ShieldCheck, UserCheck, MessageCircle, KeyRound, Users, BarChart3, BookOpen, Workflow, GraduationCap, TrendingUp, FileText, BellRing, Receipt, ShieldAlert, Calculator, Package, Cog, ScanLine, Handshake, UsersRound, FolderCog, HardHat, Brain, QrCode, CreditCard, Megaphone, MessagesSquare, Wrench, ParkingSquare, BookUser, Briefcase, Info, Tag, Cpu, Newspaper, HelpCircle, Rocket, Mail, LayoutGrid, ChevronDown, Building2, Boxes, ChevronRight, Globe, Cloud, Database, ShoppingCart, Palette, Smartphone, Plane, Coffee, Activity, Landmark, Factory, Monitor, Server, PenTool, Lock } from "lucide-react";
 import { Y as audyteeLogo, Z as fourBitxLogo, _ as aanganOneLogo, $ as codelixLogo } from "./site-images-DRvRo0sp.js";
+import { N as NAVBAR_SERVICES_HIERARCHY, F as FOOTER_INDUSTRY_KEYWORDS, a as FOOTER_ALL_SERVICES, b as FOOTER_PRODUCTS, C as CLIENT_LOGOS } from "./site-data-ES8yYkGU.js";
 import gsap from "gsap";
+import { useLenis } from "lenis/react";
+import { Sparkles, Zap, Radio, MessageSquare, LineChart, Bot, Contact, ClipboardList, CalendarCheck, Wallet, UserCog, FolderLock, ShieldCheck, UserCheck, MessageCircle, KeyRound, Users, BarChart3, BookOpen, Workflow, GraduationCap, TrendingUp, FileText, BellRing, Receipt, ShieldAlert, Calculator, Package, Cog, ScanLine, Handshake, UsersRound, FolderCog, HardHat, Brain, QrCode, CreditCard, Megaphone, MessagesSquare, Wrench, ParkingSquare, BookUser, Briefcase, Info, Tag, Cpu, Newspaper, HelpCircle, Rocket, Mail, LayoutGrid, ChevronDown, Building2, Boxes, ChevronRight, Globe, Cloud, Database, ShoppingCart, Palette, Smartphone, Plane, Coffee, Activity, Landmark, Factory, Monitor, Server, PenTool, Lock } from "lucide-react";
 const PRODUCTS = [
   {
     slug: "audytee",
@@ -1613,7 +1613,42 @@ function TechStackShowcaseV2({
     ] }, index)) })
   ] });
 }
+function ArticleSkeleton({ label = "Loading article" }) {
+  return /* @__PURE__ */ jsxs("div", { className: "v2 artsk", "aria-busy": "true", children: [
+    /* @__PURE__ */ jsx(NavbarV2, {}),
+    /* @__PURE__ */ jsxs("span", { className: "artsk-sr", role: "status", "aria-live": "polite", children: [
+      label,
+      "…"
+    ] }),
+    /* @__PURE__ */ jsx("header", { className: "artsk-header", children: /* @__PURE__ */ jsxs("div", { className: "artsk-inner", children: [
+      /* @__PURE__ */ jsxs("div", { className: "artsk-row", children: [
+        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 48 } }),
+        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 10 } }),
+        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 42 } })
+      ] }),
+      /* @__PURE__ */ jsxs("div", { className: "artsk-row", children: [
+        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 88 } }),
+        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 116 } }),
+        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 74 } })
+      ] }),
+      /* @__PURE__ */ jsxs("div", { className: "artsk-title", children: [
+        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "82%" } }),
+        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "54%" } })
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsxs("div", { className: "artsk-body", children: [
+      /* @__PURE__ */ jsx("span", { className: "artsk-bar artsk-hero" }),
+      [0, 1, 2].map((block) => /* @__PURE__ */ jsxs("div", { className: "artsk-para", children: [
+        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "100%" } }),
+        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "96%" } }),
+        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "99%" } }),
+        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "61%" } })
+      ] }, block))
+    ] })
+  ] });
+}
 export {
+  ArticleSkeleton as A,
   ClientStrip as C,
   FooterV2 as F,
   NavbarV2 as N,

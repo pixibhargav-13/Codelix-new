@@ -1,0 +1,105 @@
+/* Placeholder shown while a Supabase-backed article is still arriving.
+   Deliberately mirrors the real article header and body so the page doesn't
+   visibly re-flow when the content lands — same rhythm, same spacing. */
+
+.artsk {
+  min-height: 100vh;
+}
+
+/* matched to .bdv2-header so the header doesn't shift when the real article
+   replaces this */
+.artsk-header {
+  padding: clamp(120px, 14vw, 160px) var(--pad-x, 5vw) 20px;
+}
+
+.artsk-inner {
+  margin: 0 auto;
+}
+
+.artsk-body {
+  width: min(760px, 92vw);
+  margin: 0 auto;
+  padding-bottom: 120px;
+}
+
+/* one grey bar; width is set per-instance so the shapes read as text */
+.artsk-bar {
+  display: block;
+  height: 14px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.artsk-bar + .artsk-bar {
+  margin-top: 14px;
+}
+
+.artsk-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
+.artsk-row .artsk-bar + .artsk-bar {
+  margin-top: 0;
+}
+
+.artsk-title .artsk-bar {
+  height: clamp(30px, 4.4vw, 52px);
+  border-radius: 10px;
+}
+
+.artsk-hero {
+  height: clamp(200px, 34vh, 380px);
+  border-radius: 16px;
+  margin: 36px 0 44px;
+}
+
+.artsk-para {
+  margin-bottom: 34px;
+}
+
+/* the sweep: one travelling highlight, not a pulsing opacity — reads as
+   "loading" without flashing the whole page */
+.artsk-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.09) 50%,
+    transparent 100%
+  );
+  animation: artsk-sweep 1.5s ease-in-out infinite;
+}
+
+@keyframes artsk-sweep {
+  100% { transform: translateX(100%); }
+}
+
+/* stagger so the bars don't sweep in lockstep */
+.artsk-bar:nth-child(2)::after { animation-delay: 0.08s; }
+.artsk-bar:nth-child(3)::after { animation-delay: 0.16s; }
+.artsk-bar:nth-child(4)::after { animation-delay: 0.24s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .artsk-bar::after { animation: none; }
+}
+
+/* announced to screen readers, invisible on screen */
+.artsk-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

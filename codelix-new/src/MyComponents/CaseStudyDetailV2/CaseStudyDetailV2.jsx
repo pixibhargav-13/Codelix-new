@@ -15,6 +15,7 @@ import "./CaseStudyDetailV2.css";
 /* real content extracted verbatim from the 15 individual case-study
    components, not new/invented copy — see caseStudiesData.js */
 import { useCaseStudies } from "./useCaseStudies";
+import ArticleSkeleton from "../Shared/ArticleSkeleton";
 import { PROJECTS } from "../WorkV2/projectsData";
 import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from '../Shared/CtaSection';
@@ -118,13 +119,7 @@ export default function CaseStudyDetailV2() {
   /* same reasoning as the blog detail page: don't call it missing until the
      Supabase read has settled, or an admin-published study opens with a flash
      of the error screen */
-  if (!cs && loading) {
-    return (
-      <div className="v2" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <span aria-live="polite">Loading case study…</span>
-      </div>
-    );
-  }
+  if (!cs && loading) return <ArticleSkeleton label="Loading case study" />;
 
   if (!cs) {
     return (
