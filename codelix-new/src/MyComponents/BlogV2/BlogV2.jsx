@@ -24,7 +24,7 @@ import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 const CATEGORIES = ["All Articles", "business", "CMS", "UI/UX", "Tech", "E-Commerce", "Development", "Artificial Intelligence"];
 
 export default function BlogV2() {
-  const blogs = useBlogPosts();
+  const { posts: blogs } = useBlogPosts();
   
   
   

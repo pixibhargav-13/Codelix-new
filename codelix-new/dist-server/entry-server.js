@@ -4918,10 +4918,12 @@ function useCaseStudies() {
   const [studies, setStudies] = useState(
     initialContext?.caseStudies?.length ? [...initialContext.caseStudies, ...CASE_STUDIES] : CASE_STUDIES
   );
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     let active = true;
     supabase.from("case_studies").select("*").eq("published", true).order("published_at", { ascending: false }).then(({ data, error }) => {
       if (!active) return;
+      setLoading(false);
       if (error) {
         console.error("Supabase case_studies fetch error:", error);
         return;
@@ -4957,12 +4959,14 @@ function useCaseStudies() {
         };
       });
       setStudies([...fromSupabase, ...CASE_STUDIES]);
+    }).catch(() => {
+      if (active) setLoading(false);
     });
     return () => {
       active = false;
     };
   }, []);
-  return studies;
+  return { studies, loading };
 }
 const PAIN_ICONS$1 = [AlertTriangle, Clock, Puzzle];
 const pains = (rows) => rows.map((p, i) => ({ ...p, icon: PAIN_ICONS$1[i % PAIN_ICONS$1.length] }));
@@ -5337,7 +5341,7 @@ function AdditionalServiceDetailV2() {
   const testimonials = useTestimonials(STATIC_TESTIMONIALS);
   const { slug } = useParams();
   const svc = additionalServiceBySlug(slug);
-  const caseStudies = useCaseStudies();
+  const { studies: caseStudies } = useCaseStudies();
   const [incActive, setIncActive] = useState(0);
   const [incIndicator, setIncIndicator] = useState({ top: 0, height: 0 });
   const [estType, setEstType] = useState("standard");
@@ -12745,7 +12749,7 @@ function IndustryDetailV2() {
   const blueprintActiveRef = useRef(-1);
   const blueprintServices = (svc?.services || []).map((name) => ({ name, ...SERVICE_INFO[name] })).filter((s) => s.icon);
   const testimonials = useTestimonials(STATIC_QUOTES);
-  const caseStudies = useCaseStudies();
+  const { studies: caseStudies } = useCaseStudies();
   useEffect(() => {
     if (!svc) return;
     const q = (s) => rootRef.current.querySelectorAll(s);
@@ -14328,7 +14332,7 @@ function WorkV2() {
     nums.forEach((n) => io.observe(n));
     return () => io.disconnect();
   }, []);
-  const caseStudies = useCaseStudies();
+  const { studies: caseStudies } = useCaseStudies();
   const adminProjects = React.useMemo(() => {
     const existingSlugs = new Set(PROJECTS.map((p) => p.href.replace("/", "")));
     return caseStudies.filter((cs) => !existingSlugs.has(cs.slug)).map((cs) => ({
@@ -16182,10 +16186,13 @@ function useBlogPosts() {
     }
     return [...ssgPosts, ...blogs];
   });
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     let active = true;
     supabase.from("blog_posts").select("*").eq("published", true).order("published_at", { ascending: false }).then(({ data, error }) => {
-      if (!active || error || !data || data.length === 0) return;
+      if (!active) return;
+      setLoading(false);
+      if (error || !data || data.length === 0) return;
       const fromSupabase = data.map((p) => ({
         id: `sb-${p.id}`,
         slug: p.slug,
@@ -16197,16 +16204,18 @@ function useBlogPosts() {
         content: p.content
       }));
       setPosts([...fromSupabase, ...blogs]);
+    }).catch(() => {
+      if (active) setLoading(false);
     });
     return () => {
       active = false;
     };
   }, []);
-  return posts;
+  return { posts, loading };
 }
 function SitemapV2() {
-  const caseStudiesDynamic = useCaseStudies();
-  const blogsDynamic = useBlogPosts();
+  const { studies: caseStudiesDynamic } = useCaseStudies();
+  const { posts: blogsDynamic } = useBlogPosts();
   const GROUPS = useMemo(() => [
     {
       title: "Main",
@@ -16380,7 +16389,7 @@ const SitemapV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineP
 }, Symbol.toStringTag, { value: "Module" }));
 const CATEGORIES$1 = ["All Articles", "business", "CMS", "UI/UX", "Tech", "E-Commerce", "Development", "Artificial Intelligence"];
 function BlogV2() {
-  const blogs2 = useBlogPosts();
+  const { posts: blogs2 } = useBlogPosts();
   const [category, setCategory] = useState("All Articles");
   const [search, setSearch] = useState("");
   const [visibleCount, setVisibleCount] = useState(9);
@@ -16506,7 +16515,7 @@ const BlogV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProp
 }, Symbol.toStringTag, { value: "Module" }));
 function BlogDetailV2() {
   const { slug } = useParams();
-  const blogs2 = useBlogPosts();
+  const { posts: blogs2, loading } = useBlogPosts();
   const blog = blogs2.find((b) => b.slug ? b.slug === slug : slugify(b.title) === slug);
   const [readProgress, setReadProgress] = useState(0);
   const rootRef = useRef(null);
@@ -16547,6 +16556,9 @@ function BlogDetailV2() {
     rootRef.current?.querySelectorAll(".v2-label, .v2-heading, .bdv2-related, .v2-cta").forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, [blog]);
+  if (!blog && loading) {
+    return /* @__PURE__ */ jsx("div", { className: "v2", style: { minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center" }, children: /* @__PURE__ */ jsx("span", { className: "bdv2-loading", "aria-live": "polite", children: "Loading article…" }) });
+  }
   if (!blog) {
     return /* @__PURE__ */ jsxs("div", { className: "v2", style: { minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }, children: [
       /* @__PURE__ */ jsx("h1", { style: { color: "#fff", fontSize: 28 }, children: "Article not found." }),
@@ -16642,7 +16654,7 @@ const STATS = [
 function CaseStudyV2() {
   const [category, setCategory] = useState("All");
   const rootRef = useRef(null);
-  const caseStudies = useCaseStudies();
+  const { studies: caseStudies } = useCaseStudies();
   const adminCards = useMemo(() => {
     const existingSlugs = new Set(PROJECTS.map((p) => toV2Slug(p.href)));
     return caseStudies.filter((cs) => !existingSlugs.has(cs.slug)).map((cs) => ({
@@ -16828,7 +16840,7 @@ const splitTitle = (title) => {
 };
 function CaseStudyDetailV2() {
   const { slug } = useParams();
-  const caseStudies = useCaseStudies();
+  const { studies: caseStudies, loading } = useCaseStudies();
   const cs = caseStudies.find((c) => c.slug === slug);
   const [showSolutions, setShowSolutions] = useState(false);
   const rootRef = useRef(null);
@@ -16885,6 +16897,9 @@ function CaseStudyDetailV2() {
       numIo.disconnect();
     };
   }, [cs]);
+  if (!cs && loading) {
+    return /* @__PURE__ */ jsx("div", { className: "v2", style: { minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center" }, children: /* @__PURE__ */ jsx("span", { "aria-live": "polite", children: "Loading case study…" }) });
+  }
   if (!cs) {
     return /* @__PURE__ */ jsxs("div", { className: "v2", style: { minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }, children: [
       /* @__PURE__ */ jsx("h1", { style: { color: "#fff", fontSize: 28 }, children: "Case study not found." }),

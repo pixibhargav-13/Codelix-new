@@ -90,7 +90,7 @@ export default function IndustryDetailV2() {
 
   const blueprintServices = (svc?.services || []).map((name) => ({ name, ...SERVICE_INFO[name] })).filter((s) => s.icon);
   const testimonials = useTestimonials(STATIC_QUOTES);
-  const caseStudies = useCaseStudies();
+  const { studies: caseStudies } = useCaseStudies();
 
   /* hero intro — masked-line GSAP wipe, matching every other v2 hero */
   useEffect(() => {

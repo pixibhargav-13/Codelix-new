@@ -24,7 +24,7 @@ import { SEO } from "../../components/SEO";
 
 export default function BlogDetailV2() {
   const { slug } = useParams();
-  const blogs = useBlogPosts();
+  const { posts: blogs, loading } = useBlogPosts();
   const blog = blogs.find((b) => (b.slug ? b.slug === slug : slugify(b.title) === slug));
 
   
@@ -85,6 +85,20 @@ export default function BlogDetailV2() {
     rootRef.current?.querySelectorAll(".v2-label, .v2-heading, .bdv2-related, .v2-cta").forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, [blog]);
+
+  /* A post published from the admin panel lives only in Supabase, so it is
+     absent from the first render and only arrives when that read lands.
+     Showing "not found" in the meantime meant every such article opened with
+     a flash of the error screen before the real content replaced it. Wait for
+     the read to settle before saying anything is missing; posts that are
+     already in hand still render immediately, with no spinner. */
+  if (!blog && loading) {
+    return (
+      <div className="v2" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <span className="bdv2-loading" aria-live="polite">Loading article…</span>
+      </div>
+    );
+  }
 
   if (!blog) {
     return (

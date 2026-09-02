@@ -45,7 +45,7 @@ export default function CaseStudyV2() {
      static PROJECTS list, so they need to be reshaped into the same
      card-shape PROJECTS already has before they can slot into this grid —
      additive only, the existing 15 keep coming from PROJECTS untouched */
-  const caseStudies = useCaseStudies();
+  const { studies: caseStudies } = useCaseStudies();
   const adminCards = useMemo(() => {
     const existingSlugs = new Set(PROJECTS.map((p) => toV2Slug(p.href)));
     return caseStudies

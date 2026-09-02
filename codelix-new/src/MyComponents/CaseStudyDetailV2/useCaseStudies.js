@@ -11,6 +11,10 @@ export function useCaseStudies() {
       : staticCaseStudies
   );
 
+  /* in flight until the Supabase read settles — a study published from the
+     admin panel exists only there, so an unknown slug may still be arriving */
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
 
     let active = true;
@@ -25,6 +29,7 @@ export function useCaseStudies() {
            on every route change now that navigation is client-side. Only a
            real Supabase error is worth reporting. */
         if (!active) return;
+        setLoading(false);
         if (error) {
           console.error("Supabase case_studies fetch error:", error);
           return;
@@ -61,9 +66,10 @@ export function useCaseStudies() {
           };
         });
         setStudies([...fromSupabase, ...staticCaseStudies]);
-      });
+      })
+      .catch(() => { if (active) setLoading(false); });
     return () => { active = false; };
   }, []);
 
-  return studies;
+  return { studies, loading };
 }

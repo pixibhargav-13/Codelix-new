@@ -38,7 +38,7 @@ const splitTitle = (title) => {
 
 export default function CaseStudyDetailV2() {
   const { slug } = useParams();
-  const caseStudies = useCaseStudies();
+  const { studies: caseStudies, loading } = useCaseStudies();
   const cs = caseStudies.find((c) => c.slug === slug);
 
   
@@ -114,6 +114,17 @@ export default function CaseStudyDetailV2() {
 
     return () => { io.disconnect(); numIo.disconnect(); };
   }, [cs]);
+
+  /* same reasoning as the blog detail page: don't call it missing until the
+     Supabase read has settled, or an admin-published study opens with a flash
+     of the error screen */
+  if (!cs && loading) {
+    return (
+      <div className="v2" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <span aria-live="polite">Loading case study…</span>
+      </div>
+    );
+  }
 
   if (!cs) {
     return (

@@ -164,7 +164,7 @@ export default function AdditionalServiceDetailV2() {
 
   const { slug } = useParams();
   const svc = additionalServiceBySlug(slug);
-  const caseStudies = useCaseStudies();
+  const { studies: caseStudies } = useCaseStudies();
 
 
 

@@ -182,7 +182,7 @@ export default function WorkV2() {
      additive only, the existing 15 keep coming from PROJECTS untouched.
      Same merge as CaseStudyV2.jsx's listing, so a new case study shows up
      in both places once published. */
-  const caseStudies = useCaseStudies();
+  const { studies: caseStudies } = useCaseStudies();
   const adminProjects = React.useMemo(() => {
     const existingSlugs = new Set(PROJECTS.map((p) => p.href.replace("/", "")));
     return caseStudies

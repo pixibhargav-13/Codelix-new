@@ -25,8 +25,8 @@ import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 
 
 export default function SitemapV2() {
-  const caseStudiesDynamic = useCaseStudies();
-  const blogsDynamic = useBlogPosts();
+  const { studies: caseStudiesDynamic } = useCaseStudies();
+  const { posts: blogsDynamic } = useBlogPosts();
 
   const GROUPS = useMemo(() => [
     {
