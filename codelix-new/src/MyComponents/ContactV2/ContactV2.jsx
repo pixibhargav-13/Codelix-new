@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { trackLead } from "../../lib/analytics";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
@@ -170,7 +171,7 @@ export default function ContactV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
                 <em>Contact</em>
               </nav>

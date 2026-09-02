@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import {
@@ -204,7 +205,7 @@ export default function ProcessV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
                 <em>Process</em>
               </nav>
@@ -222,10 +223,10 @@ export default function ProcessV2() {
                 nothing gets built on a shifting foundation.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact">
+                <Link className="v2-btn v2-btn--filled" to="/contact">
                   <span>Start a project</span>
                   <i className="v2-btn-arrow">→</i>
-                </a>
+                </Link>
                 <a className="v2-hero-secondary" href="#stages">
                   <span className="v2-hero-secondary-label">See the stages</span>
                 </a>
@@ -413,7 +414,7 @@ export default function ProcessV2() {
             the same six stages, whichever service it needs.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+            <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}

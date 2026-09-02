@@ -1,4 +1,5 @@
 import { Smartphone, Gauge, Bell, ShieldCheck, Wifi, Wrench, CalendarCheck, Lock, Eye, Check, BatteryLow, RefreshCcw, Store as StoreOff, Ban, Bug, LayoutGrid, Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark, FileCode2, BookOpen, KeyRound, Palette, Server, GitBranch, Globe, ShoppingCart, Code2, Sparkles, BarChart3, LifeBuoy, Minus, X, Phone, FileText, PlayCircle, Cloud } from "lucide-react";
+import { Link } from "react-router-dom";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
@@ -415,9 +416,9 @@ export default function ApplicationDevelopmentV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
-                <a href="/services">Services</a>
+                <Link to="/services">Services</Link>
                 <span>/</span>
                 <em>Application Development</em>
               </nav>
@@ -435,10 +436,10 @@ export default function ApplicationDevelopmentV2() {
                 platform demands it, handed over with full source-code ownership.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact">
+                <Link className="v2-btn v2-btn--filled" to="/contact">
                   <span>Schedule a call</span>
                   <i className="v2-btn-arrow">→</i>
-                </a>
+                </Link>
                 <a className="v2-hero-secondary" href="#estimate">
                   <span className="v2-hero-secondary-label">Estimate my project</span>
                 </a>
@@ -653,7 +654,7 @@ export default function ApplicationDevelopmentV2() {
                 <li><Check size={13} strokeWidth={2.4} /> Fixed price once scoped</li>
                 <li><Check size={13} strokeWidth={2.4} /> Full source-code handover</li>
               </ul>
-              <a className="v2-btn" href="/contact">Get an exact quote →</a>
+              <Link className="v2-btn" to="/contact">Get an exact quote →</Link>
             </aside>
           </div>
         </div>
@@ -761,14 +762,14 @@ export default function ApplicationDevelopmentV2() {
         <h2 className="v2-heading">App builds we've shipped.</h2>
         <div className="sd2-work-grid">
           {RELATED.map((w) => (
-            <a className="sd2-work-card" href={w.link} key={w.link}>
+            <Link className="sd2-work-card" to={w.link} key={w.link}>
               <span className="sd2-work-media">
                 <img src={w.thumb} alt="" loading="lazy" />
               </span>
               <span className="sd2-work-tag">{w.tag}</span>
               <span className="sd2-work-title">{w.title}</span>
               <span className="sd2-work-go">Read case study →</span>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
@@ -953,7 +954,7 @@ export default function ApplicationDevelopmentV2() {
         <h2 className="v2-heading">The rest of what we do.</h2>
         <div className="sd2-other-list">
           {OTHER_SERVICES.map((s) => (
-            <a className="sd2-other" href={s.path} key={s.path}>
+            <Link className="sd2-other" to={s.path} key={s.path}>
               <div className="sd2-other-top">
                 <span className="sd2-other-icon"><s.icon size={17} strokeWidth={1.5} /></span>
                 <span className="sd2-other-n">{s.n}</span>
@@ -961,7 +962,7 @@ export default function ApplicationDevelopmentV2() {
               <span className="sd2-other-title">{s.title}</span>
               <p className="sd2-other-body">{s.body}</p>
               <span className="sd2-other-go">→</span>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
@@ -979,7 +980,7 @@ export default function ApplicationDevelopmentV2() {
             and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+            <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}

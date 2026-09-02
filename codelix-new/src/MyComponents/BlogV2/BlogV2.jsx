@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import { Search, ArrowUpRight } from "lucide-react";
@@ -92,7 +93,7 @@ export default function BlogV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
                 <em>Blog</em>
               </nav>
@@ -146,7 +147,7 @@ export default function BlogV2() {
             <p className="bv2-empty">No articles match — try a different search or category.</p>
           )}
           {visible.map((b) => (
-            <a className="bv2-card" href={`/blog/${b.slug || slugify(b.title)}`} key={b.id}>
+            <Link className="bv2-card" to={`/blog/${b.slug || slugify(b.title)}`} key={b.id}>
               <div className="bv2-card-media">
                 <img src={b.image} alt={b.title} loading="lazy" />
               </div>
@@ -159,7 +160,7 @@ export default function BlogV2() {
                 <span className="bv2-card-date">{b.date}</span>
               </div>
               <span className="bv2-card-arrow" aria-hidden="true"><ArrowUpRight size={18} strokeWidth={1.8} /></span>
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -184,7 +185,7 @@ export default function BlogV2() {
             We scope what should be built first, what can wait, and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+            <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}

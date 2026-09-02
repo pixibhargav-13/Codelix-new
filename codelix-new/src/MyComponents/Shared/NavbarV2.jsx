@@ -119,8 +119,8 @@ export default function NavbarV2() {
            next frame in case Lenis is still easing toward its stored target. */
         void document.body.offsetHeight;
         const toTop = () => {
+          window.scrollTo(0, 0);
           if (lenis) lenis.scrollTo(0, { immediate: true, force: true });
-          else window.scrollTo(0, 0);
         };
         toTop();
         requestAnimationFrame(toTop);

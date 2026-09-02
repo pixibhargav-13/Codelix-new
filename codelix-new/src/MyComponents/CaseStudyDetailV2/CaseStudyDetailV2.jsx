@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import gsap from "gsap";
 import { ArrowLeft, ArrowUpRight, X, Check } from "lucide-react";
 import { SEO } from "../../components/SEO";
@@ -119,7 +119,7 @@ export default function CaseStudyDetailV2() {
     return (
       <div className="v2" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }}>
         <h1 style={{ color: "#fff", fontSize: 28 }}>Case study not found.</h1>
-        <a className="v2-btn" href="/case-study">Back to Case Studies →</a>
+        <Link className="v2-btn" to="/case-study">Back to Case Studies →</Link>
       </div>
     );
   }
@@ -146,9 +146,9 @@ export default function CaseStudyDetailV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
-                <a href="/case-study">Case Studies</a>
+                <Link to="/case-study">Case Studies</Link>
                 <span>/</span>
                 <em>{cs.title}</em>
               </nav>
@@ -178,14 +178,14 @@ export default function CaseStudyDetailV2() {
                 </p>
               )}
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact">
+                <Link className="v2-btn v2-btn--filled" to="/contact">
                   <span>Start a similar project</span>
                   <i className="v2-btn-arrow">→</i>
-                </a>
-                <a className="v2-hero-secondary" href="/case-study">
+                </Link>
+                <Link className="v2-hero-secondary" to="/case-study">
                   <ArrowLeft size={15} strokeWidth={2} />
                   <span className="v2-hero-secondary-label">All case studies</span>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -446,7 +446,7 @@ export default function CaseStudyDetailV2() {
         <h2 className="v2-heading">Other real projects.</h2>
         <div className="csd2-more">
           {more.map((p) => (
-            <a className="csd2-more-card" href={`/case-study${p.href}`} key={p.id}>
+            <Link className="csd2-more-card" to={`/case-study${p.href}`} key={p.id}>
               <div className="csd2-more-media">
                 <img src={p.image} alt={p.title} loading="lazy" />
               </div>
@@ -457,7 +457,7 @@ export default function CaseStudyDetailV2() {
                 </div>
               </div>
               <span className="csd2-more-arrow" aria-hidden="true"><ArrowUpRight size={16} strokeWidth={1.8} /></span>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
@@ -476,7 +476,7 @@ export default function CaseStudyDetailV2() {
             We scope what should be built first, what can wait, and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+            <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}

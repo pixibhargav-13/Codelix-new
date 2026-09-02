@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import { ArrowUpRight } from "lucide-react";
@@ -221,7 +222,7 @@ export default function WorkV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
                 <em>Work</em>
               </nav>
@@ -238,10 +239,10 @@ export default function WorkV2() {
                 business.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact">
+                <Link className="v2-btn v2-btn--filled" to="/contact">
                   <span>Start your project</span>
                   <i className="v2-btn-arrow">→</i>
-                </a>
+                </Link>
                 <a className="v2-hero-secondary" href="#projects">
                   <span className="v2-hero-secondary-label">Browse all work</span>
                 </a>
@@ -314,10 +315,10 @@ export default function WorkV2() {
                   <div className="wv-spotlight-tags">
                     {p.tags.map((t) => <span key={t}>{t}</span>)}
                   </div>
-                  <a className="v2-btn v2-btn--filled" href={linkFor(p)}>
+                  <Link className="v2-btn v2-btn--filled" to={linkFor(p)}>
                     <span>View case study</span>
                     <i className="v2-btn-arrow">→</i>
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -356,7 +357,7 @@ export default function WorkV2() {
 
         <div className="wv-grid is-in">
           {filtered.map((p) => (
-            <a className="wv-card" href={linkFor(p)} key={p.id}>
+            <Link className="wv-card" to={linkFor(p)} key={p.id}>
               <div className="wv-card-media">
                 <img src={p.image} alt={p.title} loading="lazy" />
               </div>
@@ -368,7 +369,7 @@ export default function WorkV2() {
                 </div>
               </div>
               <span className="wv-card-arrow" aria-hidden="true"><ArrowUpRight size={18} strokeWidth={1.8} /></span>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
@@ -473,7 +474,7 @@ export default function WorkV2() {
             We scope what should be built first, what can wait, and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+            <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import {
@@ -165,7 +166,7 @@ export default function CareersV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
                 <em>Careers</em>
               </nav>
@@ -186,9 +187,9 @@ export default function CareersV2() {
                   <span>Apply now</span>
                   <i className="v2-btn-arrow">→</i>
                 </a>
-                <a className="v2-hero-secondary" href="/team">
+                <Link className="v2-hero-secondary" to="/team">
                   <span className="v2-hero-secondary-label">Meet the team</span>
-                </a>
+                </Link>
               </div>
             </div>
             
@@ -326,7 +327,7 @@ export default function CareersV2() {
             brings, not against a running job board. Send your details anyway.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Get in touch →</a></div>
+            <Link className="v2-btn" to="/contact">Get in touch →</Link></div>
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}

@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import { ArrowUpRight } from "lucide-react";
@@ -135,7 +136,7 @@ export default function CaseStudyV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
                 <em>Case Studies</em>
               </nav>
@@ -177,7 +178,7 @@ export default function CaseStudyV2() {
 
         <div className="csv2-grid is-in">
           {filtered.map((p) => (
-            <a className="csv2-card" href={`/case-study/${toV2Slug(p.href)}`} key={p.id}>
+            <Link className="csv2-card" to={`/case-study/${toV2Slug(p.href)}`} key={p.id}>
               <div className="csv2-card-media">
                 <img src={p.image} alt={p.title} loading="lazy" />
                 <span className="csv2-card-cat">{p.category}</span>
@@ -192,7 +193,7 @@ export default function CaseStudyV2() {
                   Read case study <ArrowUpRight size={15} strokeWidth={1.8} />
                 </span>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
@@ -259,7 +260,7 @@ export default function CaseStudyV2() {
             built the same way as everything above.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Start a project →</a></div>
+            <Link className="v2-btn" to="/contact">Start a project →</Link></div>
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}

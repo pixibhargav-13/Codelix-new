@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Globe, Smartphone, PenTool, ShoppingCart, Code2, Sparkles, BarChart3,
   CalendarCheck, Lock, Eye, Receipt, Users, LifeBuoy, Clock,
@@ -381,10 +382,10 @@ export default function ServicesV2() {
                 same handoff every time.
               </p>
               <div className="sv2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact">
+                <Link className="v2-btn v2-btn--filled" to="/contact">
                   <span>Get a free quote</span>
                   <i className="v2-btn-arrow">→</i>
-                </a>
+                </Link>
                 <a className="v2-hero-secondary" href="#services">
                   <span className="v2-hero-secondary-label">Browse services</span>
                 </a>
@@ -439,17 +440,17 @@ export default function ServicesV2() {
                       {s.capabilities.map((c) => (
                         <li key={c.label}>
                           {c.path ? (
-                            <a href={c.path} style={{ color: "inherit", textDecoration: "none" }}>{c.label}</a>
+                            <Link to={c.path} style={{ color: "inherit", textDecoration: "none" }}>{c.label}</Link>
                           ) : (
                             c.label
                           )}
                         </li>
                       ))}
                     </ul>
-                    <a className="sv2-service-link" href={s.path}>
+                    <Link className="sv2-service-link" to={s.path}>
                       <span>Explore</span>
                       <i>→</i>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -472,21 +473,21 @@ export default function ServicesV2() {
                   {s.capabilities.map((c) => (
                     <li key={c.label}>
                       {c.path ? (
-                        <a href={c.path} style={{ color: "inherit", textDecoration: "none" }}>{c.label}</a>
+                        <Link to={c.path} style={{ color: "inherit", textDecoration: "none" }}>{c.label}</Link>
                       ) : (
                         c.label
                       )}
                     </li>
                   ))}
                 </ul>
-                <a className="sv2-service-link sv2-service-link--panel" href={s.path}>
+                <Link className="sv2-service-link sv2-service-link--panel" to={s.path}>
                   <i>
                     <svg className="sv2-svc-link-arrow" viewBox="0 0 34 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                       <path d="M0 7H32M32 7L26 1M32 7L26 13" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </i>
                   <span>Explore</span>
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -623,7 +624,7 @@ export default function ServicesV2() {
             what can wait, and what it'll take to get it live.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+            <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}

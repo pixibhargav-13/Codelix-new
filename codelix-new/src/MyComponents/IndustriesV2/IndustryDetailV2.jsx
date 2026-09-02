@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { SEO } from "../../components/SEO";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import gsap from "gsap";
 import {
   Check, XCircle, FileCheck2, Layers3, Timer, KeyRound,
@@ -223,7 +223,7 @@ export default function IndustryDetailV2() {
     return (
       <div className="v2" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }}>
         <h1 style={{ color: "#fff", fontSize: 28 }}>Industry not found.</h1>
-        <a className="v2-btn" href="/industries">Back to Industries →</a>
+        <Link className="v2-btn" to="/industries">Back to Industries →</Link>
       </div>
     );
   }
@@ -265,9 +265,9 @@ export default function IndustryDetailV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
-                <a href="/industries">Industries</a>
+                <Link to="/industries">Industries</Link>
                 <span>/</span>
                 <em>{svc.title}</em>
               </nav>
@@ -280,10 +280,10 @@ export default function IndustryDetailV2() {
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">{svc.tagline}</p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact">
+                <Link className="v2-btn v2-btn--filled" to="/contact">
                   <span>Talk about your sector</span>
                   <i className="v2-btn-arrow">→</i>
-                </a>
+                </Link>
                 <a className="v2-hero-secondary" href="#shift">
                   <span className="v2-hero-secondary-label">See the shift</span>
                 </a>
@@ -421,14 +421,14 @@ export default function IndustryDetailV2() {
           <h2 className="v2-heading">Already shipped in {svc.title.toLowerCase()}.</h2>
           <div className="ind2-work-row">
             {matchedWork.map((w) => (
-              <a className="ind2-work-card" href={w.href} key={w.href}>
+              <Link className="ind2-work-card" to={w.href} key={w.href}>
                 <span className="ind2-work-media">
                   <img src={w.image} alt="" loading="lazy" />
                 </span>
                 <span className="ind2-work-cat">{w.category}</span>
                 <span className="ind2-work-title">{w.title}</span>
                 <span className="ind2-work-go">Read case study →</span>
-              </a>
+              </Link>
             ))}
           </div>
         </section>
@@ -488,9 +488,9 @@ export default function IndustryDetailV2() {
 
           <div className="ind2-bp-nodes">
             {blueprintServices.map((s, i) => (
-              <a
+              <Link
                 className={`ind2-bp-node ${i <= blueprintActive ? "is-lit" : ""}`}
-                href={s.path}
+                to={s.path}
                 key={s.name}
               >
                 <span className="ind2-bp-node-dot" aria-hidden="true" />
@@ -499,7 +499,7 @@ export default function IndustryDetailV2() {
                 <h3 className="ind2-bp-node-title">{s.name}</h3>
                 <p className="ind2-bp-node-body">{s.body}</p>
                 <span className="ind2-bp-node-go">View this service →</span>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -550,7 +550,7 @@ export default function IndustryDetailV2() {
         <h2 className="v2-heading">Other sectors we work in.</h2>
         <div className="sd2-other-list">
           {otherIndustries.map((s, i) => (
-            <a className="sd2-other" href={`/industries/${s.slug}`} key={s.slug}>
+            <Link className="sd2-other" to={`/industries/${s.slug}`} key={s.slug}>
               <div className="sd2-other-top">
                 <span className="sd2-other-icon"><s.icon size={17} strokeWidth={1.5} /></span>
                 <span className="sd2-other-n">{String(i + 1).padStart(2, "0")}</span>
@@ -558,7 +558,7 @@ export default function IndustryDetailV2() {
               <span className="sd2-other-title">{s.title}</span>
               <p className="sd2-other-body">{s.tagline}</p>
               <span className="sd2-other-go">→</span>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
@@ -575,7 +575,7 @@ export default function IndustryDetailV2() {
             not a generic pitch reused across every client.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+            <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
 </CtaSection>
 
       <FooterV2 />

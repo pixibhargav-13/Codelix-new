@@ -545,8 +545,8 @@ function NavbarV2() {
       } else if (stored) {
         void document.body.offsetHeight;
         const toTop = () => {
+          window.scrollTo(0, 0);
           if (lenis) lenis.scrollTo(0, { immediate: true, force: true });
-          else window.scrollTo(0, 0);
         };
         toTop();
         requestAnimationFrame(toTop);
@@ -1231,7 +1231,7 @@ function FaqSection({ faqs, className = "", label = "FAQ", heading = "Questions 
       ] }),
       /* @__PURE__ */ jsxs("p", { className: "v2-lede v2-faq-note", children: [
         "Don't see yours here? ",
-        /* @__PURE__ */ jsx("a", { href: "/contact", children: "Ask us directly →" })
+        /* @__PURE__ */ jsx(Link, { to: "/contact", children: "Ask us directly →" })
       ] })
     ] }),
     /* @__PURE__ */ jsx("div", { children: faqs.map((f, i) => /* @__PURE__ */ jsxs(

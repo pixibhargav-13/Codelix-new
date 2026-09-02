@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from "react-router-dom";
 import gsap from 'gsap';
 import './FaqSection.css';
 
@@ -69,7 +70,7 @@ export default function FaqSection({ faqs, className = "", label = "FAQ", headin
           <h2 className="v2-heading">{heading}</h2>
         </div>
         <p className="v2-lede v2-faq-note">
-          Don't see yours here? <a href="/contact">Ask us directly →</a>
+          Don't see yours here? <Link to="/contact">Ask us directly →</Link>
         </p>
       </div>
       <div>

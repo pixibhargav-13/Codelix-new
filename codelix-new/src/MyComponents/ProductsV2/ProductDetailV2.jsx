@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import gsap from "gsap";
 import { Check, X, ArrowUpRight, ExternalLink } from "lucide-react";
 import FooterV2 from "../Shared/FooterV2";
@@ -95,7 +95,7 @@ export default function ProductDetailV2() {
     return (
       <div className="v2" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }}>
         <h1 style={{ color: "#fff", fontSize: 28 }}>Product not found.</h1>
-        <a className="v2-btn" href={`/products/${PRODUCTS[0].slug}`}>Back to Products →</a>
+        <Link className="v2-btn" to={`/products/${PRODUCTS[0].slug}`}>Back to Products →</Link>
       </div>
     );
   }
@@ -115,9 +115,9 @@ export default function ProductDetailV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
-                <a href={`/products/${PRODUCTS[0].slug}`}>Products</a>
+                <Link to={`/products/${PRODUCTS[0].slug}`}>Products</Link>
                 <span>/</span>
                 <em>{p.name}</em>
               </nav>
@@ -131,10 +131,10 @@ export default function ProductDetailV2() {
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">{p.tagline}</p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact">
+                <Link className="v2-btn v2-btn--filled" to="/contact">
                   <span>Talk to us about {p.name}</span>
                   <i className="v2-btn-arrow">→</i>
-                </a>
+                </Link>
                 {p.website && (
                   <a className="v2-hero-secondary" href={p.website} target="_blank" rel="noopener noreferrer">
                     <span className="v2-hero-secondary-label">Visit {p.website.replace("https://", "")}</span>
@@ -483,13 +483,13 @@ export default function ProductDetailV2() {
           <span className="v2-label pd2-reveal">More From Codelix</span>
           <div className="pd2-other-grid">
             {otherProducts.map((op) => (
-              <a href={`/products/${op.slug}`} className="pd2-other-card pd2-reveal" key={op.slug} style={{ "--accent": op.accent }}>
+              <Link to={`/products/${op.slug}`} className="pd2-other-card pd2-reveal" key={op.slug} style={{ "--accent": op.accent }}>
                 <span className="pd2-other-logo"><img src={op.logo} alt="" /></span>
                 <span className="pd2-other-badge">{op.badge}</span>
                 <h4>{op.name}</h4>
                 <p>{op.tagline}</p>
                 <span className="pd2-other-arrow"><ArrowUpRight size={18} strokeWidth={2} /></span>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -504,7 +504,7 @@ export default function ProductDetailV2() {
             Tell us about your {p.slug === 'aanganone' ? 'society' : 'team'} and we'll walk you through a live demo.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a demo →</a></div>
+            <Link className="v2-btn" to="/contact">Book a demo →</Link></div>
 </CtaSection>
 
       <FooterV2 />

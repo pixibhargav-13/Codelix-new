@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import { Search, ArrowUpRight } from "lucide-react";
@@ -157,7 +158,7 @@ export default function SitemapV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
                 <em>Sitemap</em>
               </nav>
@@ -208,10 +209,10 @@ export default function SitemapV2() {
               <div className="smv2-hatched-bg">
                 <div className="smv2-links-grid">
                   {g.links.map((l) => (
-                    <a href={l.href} key={l.href} className="smv2-link-card">
+                    <Link to={l.href} key={l.href} className="smv2-link-card">
                       <span>{l.label}</span>
                       <ArrowUpRight size={18} strokeWidth={1.5} aria-hidden="true" />
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -229,7 +230,7 @@ export default function SitemapV2() {
           </h2>
           <p className="v2-cta-body">Just ask — we'll point you in the right direction.</p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Contact us →</a></div>
+            <Link className="v2-btn" to="/contact">Contact us →</Link></div>
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}

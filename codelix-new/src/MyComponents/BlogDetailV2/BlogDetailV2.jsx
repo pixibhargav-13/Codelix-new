@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import gsap from "gsap";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
@@ -90,7 +90,7 @@ export default function BlogDetailV2() {
     return (
       <div className="v2" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }}>
         <h1 style={{ color: "#fff", fontSize: 28 }}>Article not found.</h1>
-        <a className="v2-btn" href="/blog">Back to Blog →</a>
+        <Link className="v2-btn" to="/blog">Back to Blog →</Link>
       </div>
     );
   }
@@ -116,9 +116,9 @@ export default function BlogDetailV2() {
       <header className="bdv2-header">
         <div className="bdv2-header-inner">
           <nav className="sd2-crumbs" aria-label="Breadcrumb">
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
             <span>/</span>
-            <a href="/blog">Blog</a>
+            <Link to="/blog">Blog</Link>
             <span>/</span>
             <em>{blog.title}</em>
           </nav>
@@ -166,10 +166,10 @@ export default function BlogDetailV2() {
           </article>
 
           <div className="bdv2-back">
-            <a className="v2-hero-secondary" href="/blog">
+            <Link className="v2-hero-secondary" to="/blog">
               <ArrowLeft size={15} strokeWidth={2} />
               <span className="v2-hero-secondary-label">Back to all articles</span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -181,7 +181,7 @@ export default function BlogDetailV2() {
           <h2 className="v2-heading">Related articles.</h2>
           <div className="bdv2-related">
             {related.map((b) => (
-              <a className="bdv2-related-card" href={`/blog/${b.slug || slugify(b.title)}`} key={b.id}>
+              <Link className="bdv2-related-card" to={`/blog/${b.slug || slugify(b.title)}`} key={b.id}>
                 <div className="bdv2-related-media">
                   <img src={b.image} alt={b.title} loading="lazy" />
                 </div>
@@ -190,7 +190,7 @@ export default function BlogDetailV2() {
                   <span>{b.date} · {b.readTime}</span>
                 </div>
                 <span className="bdv2-related-arrow" aria-hidden="true"><ArrowUpRight size={16} strokeWidth={1.8} /></span>
-              </a>
+              </Link>
             ))}
           </div>
         </section>
@@ -210,7 +210,7 @@ export default function BlogDetailV2() {
             We scope what should be built first, what can wait, and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+            <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}

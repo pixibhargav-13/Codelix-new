@@ -90,8 +90,25 @@ const ScrollToTop = () => {
        it is. Tell Lenis instead when it's running. This only started to matter
        once the nav and footer became client-side <Link>s — before that every
        internal click was a full reload, which reset scroll for free. */
-    if (lenis) lenis.scrollTo(0, { immediate: true });
-    else window.scrollTo(0, 0);
+    /* Swapping the route changes the document height, and the browser
+       reapplies the old offset when that layout lands — flush it first so the
+       scroll below is the last word. */
+    void document.body.offsetHeight;
+    const toTop = () => {
+      /* Both, deliberately, and in this order. window.scrollTo is what
+         actually moves the document and works even when Lenis's rAF loop
+         isn't running (a backgrounded tab freezes it). Lenis is then told the
+         same destination so its internal position agrees and it doesn't ease
+         the page back to where it thought it was. They can't fight: both are
+         aimed at 0. force: true because Lenis ignores scrollTo while it
+         considers itself stopped or locked. */
+      window.scrollTo(0, 0);
+      if (lenis) lenis.scrollTo(0, { immediate: true, force: true });
+    };
+    toTop();
+    /* re-assert once the new route has laid out, in case anything shifted */
+    const raf = requestAnimationFrame(toTop);
+    return () => cancelAnimationFrame(raf);
   }, [location.pathname, lenis]);
   return null;
 };
