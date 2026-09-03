@@ -391,7 +391,7 @@ export default function AdditionalServiceDetailV2() {
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Service</span>
               </div>
-              <h1 className="sd2-hero-title">
+              <h1 key={slug} className="sd2-hero-title">
                 <span className="line"><span>{svc.title}</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">{svc.description}</p>

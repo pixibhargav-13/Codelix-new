@@ -128,7 +128,7 @@ export default function ProductDetailV2() {
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status" style={{ "--dot": p.accent }}><i /> {p.badge}</span>
               </div>
-              <h1 className="sd2-hero-title">
+              <h1 key={slug} className="sd2-hero-title">
                 <span className="line"><span>{p.name}</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">{p.tagline}</p>

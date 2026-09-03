@@ -164,7 +164,7 @@ export default function CaseStudyDetailV2() {
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Case Study{cs.isConcept ? " · Concept" : ""}</span>
               </div>
-              <h1 className="sd2-hero-title csd2-title">
+              <h1 key={slug} className="sd2-hero-title csd2-title">
                 {/* the separator matters: .line is display:block so this reads
                     as two lines either way, but without a whitespace text node
                     between them the extracted title concatenates — Google was

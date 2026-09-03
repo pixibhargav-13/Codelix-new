@@ -5539,7 +5539,7 @@ function AdditionalServiceDetailV2() {
           /* @__PURE__ */ jsx("i", {}),
           " Service"
         ] }) }),
-        /* @__PURE__ */ jsx("h1", { className: "sd2-hero-title", children: /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: svc.title }) }) }),
+        /* @__PURE__ */ jsx("h1", { className: "sd2-hero-title", children: /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: svc.title }) }) }, slug),
         /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: svc.description }),
         /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
           /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
@@ -12906,7 +12906,7 @@ function IndustryDetailV2() {
             /* @__PURE__ */ jsx("i", {}),
             " Industry"
           ] }) }),
-          /* @__PURE__ */ jsx("h1", { className: "sd2-hero-title", children: /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: svc.title }) }) }),
+          /* @__PURE__ */ jsx("h1", { className: "sd2-hero-title", children: /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: svc.title }) }) }, slug),
           /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: svc.tagline }),
           /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
             /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
@@ -13226,7 +13226,7 @@ function ProductDetailV2() {
             " ",
             p.badge
           ] }) }),
-          /* @__PURE__ */ jsx("h1", { className: "sd2-hero-title", children: /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: p.name }) }) }),
+          /* @__PURE__ */ jsx("h1", { className: "sd2-hero-title", children: /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: p.name }) }) }, slug),
           /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: p.tagline }),
           /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
             /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
@@ -16980,7 +16980,7 @@ function CaseStudyDetailV2() {
           /* @__PURE__ */ jsx("h1", { className: "sd2-hero-title csd2-title", children: splitTitle(cs.title).map((part, i) => /* @__PURE__ */ jsxs(React.Fragment, { children: [
             i > 0 ? " " : null,
             /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: part }) })
-          ] }, i)) }),
+          ] }, i)) }, slug),
           /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: cs.description }),
           /* @__PURE__ */ jsx("div", { className: "csd2-tags sv2-hero-reveal", children: cs.tags.map((t) => /* @__PURE__ */ jsx("span", { children: t }, t)) }),
           cs.isConcept && /* @__PURE__ */ jsx("p", { className: "csd2-concept-note", children: "This is a concept exploration, not a live client build — shown here honestly as design work, not a deployed product." }),
