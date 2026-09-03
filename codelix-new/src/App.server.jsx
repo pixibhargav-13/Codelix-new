@@ -10,7 +10,8 @@ import RequireAuth from "./admin/RequireAuth";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const InitialDataContext = React.createContext(null);
+export { InitialDataContext } from "./lib/initialDataContext";
+import { InitialDataContext } from "./lib/initialDataContext";
 
 // ─── Admin panel (Supabase-backed blog + testimonials management) ────────────
 import AdminLogin from "./admin/pages/AdminLogin";

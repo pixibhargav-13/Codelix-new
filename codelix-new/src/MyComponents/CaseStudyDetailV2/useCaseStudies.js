@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import { CASE_STUDIES as staticCaseStudies } from "./caseStudiesData";
-import { InitialDataContext } from "../../App";
+import { InitialDataContext } from "../../lib/initialDataContext";
 
 export function useCaseStudies() {
   const initialContext = useContext(InitialDataContext);

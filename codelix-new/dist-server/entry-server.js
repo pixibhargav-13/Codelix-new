@@ -1,5 +1,5 @@
 import { jsx, jsxs, Fragment } from "react/jsx-runtime";
-import React, { createContext, useState, useEffect, useContext, useRef, useMemo, lazy, Suspense } from "react";
+import React, { createContext, useState, useEffect, useContext, useRef, useMemo, Suspense } from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router";
 import { Helmet, HelmetProvider } from "react-helmet-async";
@@ -162,7 +162,7 @@ const supabase = createClient(
   supabaseUrl,
   supabaseAnonKey
 );
-const AuthContext$1 = createContext(null);
+const AuthContext = createContext(null);
 function AuthProvider({ children }) {
   const [session, setSession] = useState(void 0);
   useEffect(() => {
@@ -174,14 +174,10 @@ function AuthProvider({ children }) {
   }, []);
   const signIn = (email, password) => supabase.auth.signInWithPassword({ email, password });
   const signOut = () => supabase.auth.signOut();
-  return /* @__PURE__ */ jsx(AuthContext$1.Provider, { value: { session, loading: session === void 0, signIn, signOut }, children });
+  return /* @__PURE__ */ jsx(AuthContext.Provider, { value: { session, loading: session === void 0, signIn, signOut }, children });
 }
-const AuthContext = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  AuthProvider
-}, Symbol.toStringTag, { value: "Module" }));
 function useAuth() {
-  const ctx = useContext(AuthContext$1);
+  const ctx = useContext(AuthContext);
   if (!ctx) throw new Error("useAuth must be used within AuthProvider");
   return ctx;
 }
@@ -193,6 +189,7 @@ function RequireAuth({ children }) {
   if (!session) return /* @__PURE__ */ jsx(Navigate, { to: "/admin/login", replace: true });
   return children;
 }
+const InitialDataContext = createContext(null);
 function AdminLogin() {
   const { session, loading, signIn } = useAuth();
   const location = useLocation();
@@ -229,10 +226,6 @@ function AdminLogin() {
     /* @__PURE__ */ jsx("button", { className: "adm-btn", type: "submit", disabled: submitting, style: { width: "100%" }, children: submitting ? "Signing in…" : "Sign in" })
   ] }) });
 }
-const AdminLogin$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: AdminLogin
-}, Symbol.toStringTag, { value: "Module" }));
 function AdminLayout() {
   const { session, signOut } = useAuth();
   const navigate = useNavigate();
@@ -272,10 +265,6 @@ function AdminLayout() {
     /* @__PURE__ */ jsx("main", { className: "adm-main", children: /* @__PURE__ */ jsx(Outlet, {}) })
   ] });
 }
-const AdminLayout$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: AdminLayout
-}, Symbol.toStringTag, { value: "Module" }));
 function AdminBlogList() {
   const [posts, setPosts] = useState(null);
   const [error, setError] = useState("");
@@ -328,10 +317,6 @@ function AdminBlogList() {
     ] }) })
   ] });
 }
-const AdminBlogList$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: AdminBlogList
-}, Symbol.toStringTag, { value: "Module" }));
 async function uploadImage(file, folder) {
   const ext = file.name.split(".").pop();
   const uuid = typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).substring(2);
@@ -486,10 +471,6 @@ function AdminBlogForm() {
     ] })
   ] });
 }
-const AdminBlogForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: AdminBlogForm
-}, Symbol.toStringTag, { value: "Module" }));
 function AdminCaseStudyList() {
   const [studies, setStudies] = useState(null);
   const [error, setError] = useState("");
@@ -544,10 +525,6 @@ function AdminCaseStudyList() {
     ] }) })
   ] });
 }
-const AdminCaseStudyList$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: AdminCaseStudyList
-}, Symbol.toStringTag, { value: "Module" }));
 const slugify$1 = (s) => s.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 const CATEGORIES$5 = ["Web Development", "Application Development", "UI/UX Design", "E-Commerce Solutions", "Custom Software Development", "AI Development", "Data Analytics"];
 const INDUSTRIES$2 = ["Manufacturing", "FinTech", "Ai & Data", "Healthcare", "Food and Bavarages", "E-commerce", "Real estae and construction", "Education", "Startups", "B2B SaaS", "Travel & Hospitality"];
@@ -936,10 +913,6 @@ function AdminCaseStudyForm() {
     ] })
   ] });
 }
-const AdminCaseStudyForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: AdminCaseStudyForm
-}, Symbol.toStringTag, { value: "Module" }));
 function AdminTestimonialsList() {
   const [rows, setRows] = useState(null);
   const [error, setError] = useState("");
@@ -992,10 +965,6 @@ function AdminTestimonialsList() {
     ] }) })
   ] });
 }
-const AdminTestimonialsList$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: AdminTestimonialsList
-}, Symbol.toStringTag, { value: "Module" }));
 const emptyForm = { name: "", role: "", quote: "", avatar_url: "", is_featured: true, sort_order: 0 };
 function AdminTestimonialForm() {
   const { id } = useParams();
@@ -1107,10 +1076,6 @@ function AdminTestimonialForm() {
     ] })
   ] });
 }
-const AdminTestimonialForm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: AdminTestimonialForm
-}, Symbol.toStringTag, { value: "Module" }));
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
@@ -1396,10 +1361,6 @@ const Chatbot = () => {
     )
   ] });
 };
-const Chatbot$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: Chatbot
-}, Symbol.toStringTag, { value: "Module" }));
 const isBrowser = () => typeof window !== "undefined";
 function send(name, params = {}) {
   if (!isBrowser()) return;
@@ -1800,10 +1761,6 @@ const NotFound = () => {
     ] })
   ] });
 };
-const NotFound$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: NotFound
-}, Symbol.toStringTag, { value: "Module" }));
 const STATIC_TESTIMONIALS = [
   { quote: "We were able to successfully complete the project by meeting the best partner. They have a very good understanding of development and skills, and are fully committed to the task schedule.", name: "Rajesh Patel", position: "CEO, Harmony Inc." },
   { quote: "Their communication and problem-solving skills are top-notch. The entire workflow was smooth and professional.", name: "Priya Sharma", position: "Founder, Nexa Digital" },
@@ -2838,10 +2795,6 @@ function HomepageV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const HomepageV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: HomepageV2
-}, Symbol.toStringTag, { value: "Module" }));
 const ServicesHeroVisual = () => {
   const containerRef = useRef(null);
   useEffect(() => {
@@ -3488,10 +3441,6 @@ function ServicesV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const ServicesV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: ServicesV2
-}, Symbol.toStringTag, { value: "Module" }));
 const PROJECTS = [
   { id: 1, title: "NextGen — Modern Fashion E-Commerce Website", category: "E-Commerce Solutions", industry: "E-commerce", description: "A modern and fully responsive e-commerce website built for a fashion and lifestyle brand offering clothing, eyewear, and accessories. Clean UI, intuitive navigation, and a shopping experience designed to maximize conversions.", tags: ["Nodejs", "ReactJS", "Postgres", "AWS"], image: projectOne, href: "/nextgen-case-study" },
   { id: 2, title: "A Custom ERP Solution for Industrial & Financial Workflows", category: "Custom Software Development", industry: "Manufacturing", description: "A robust and scalable ERP system designed to handle complex industrial workflows, streamline financial processes, and support high-volume operational activities with accuracy and transparency.", tags: ["Spring Boot", "ReactJS", "MySQL", "AWS"], image: projectTwo, href: "/erp-case-study" },
@@ -4246,10 +4195,6 @@ function ServiceDetailV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const ServiceDetailV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: ServiceDetailV2
-}, Symbol.toStringTag, { value: "Module" }));
 const imageFor = (slug) => {
   const p = PROJECTS.find((proj) => proj.href === `/${slug}`);
   return p ? p.image : null;
@@ -4840,90 +4785,8 @@ const CASE_STUDIES = [
     tools: ["Figma", "React", "Tailwind CSS", "Java", "Spring Boot", "PostgreSQL", "Docker", "AWS"]
   }
 ].map((cs) => ({ ...cs, image: imageFor(cs.slug) }));
-const seoData = {
-  "/": { title: "AI-Powered IT Solutions | Codelix IT Solutions", description: "Empower your business with AI-centric software solutions, world-class UI/UX design, and scalable web apps by Codelix IT Solutions." },
-  "/services": { title: "Our Services | Web & App Development | Codelix IT Solutions", description: "Explore our comprehensive suite of IT services including Web Development, App Development, UI/UX Design, AI, and Custom Software." },
-  "/services/web-development": { title: "Web Development Services | Codelix IT Solutions", description: "High-performance, scalable web development services tailored to your business needs." },
-  "/services/application-development": { title: "Application Development | iOS & Android | Codelix IT Solutions", description: "Custom mobile application development for iOS and Android platforms." },
-  "/services/ui-ux-design": { title: "UI/UX Design Services | Codelix IT Solutions", description: "User-centric UI/UX design services to elevate your digital products and user engagement." },
-  "/services/e-commerce-solutions": { title: "E-Commerce Solutions | Codelix IT Solutions", description: "End-to-end e-commerce solutions to help you sell online efficiently and securely." },
-  "/services/custom-software-development": { title: "Custom Software Development | Codelix IT Solutions", description: "Bespoke software development tailored precisely to your unique business operations." },
-  "/services/ai-development": { title: "AI Development Services | Codelix IT Solutions", description: "Integrate powerful Artificial Intelligence into your products with our expert AI development." },
-  "/services/data-analytics": { title: "Data Analytics Services | Codelix IT Solutions", description: "Turn your raw data into actionable insights with our comprehensive data analytics services." },
-  "/services/support-managed-services": { title: "Support & Managed Services | Codelix IT Solutions", description: "Reliable IT support and managed services to keep your operations running smoothly." },
-  "/about": { title: "About Us | Codelix IT Solutions", description: "Learn about Codelix IT Solutions, our mission, our team, and how we deliver world-class tech." },
-  "/contact": { title: "Contact Us | Codelix IT Solutions", description: "Get in touch with Codelix IT Solutions to discuss your next big project." },
-  "/industries": { title: "Industries We Serve | Codelix IT Solutions", description: "Discover the various industries we provide specialized IT solutions for." },
-  "/process": { title: "Our Process | Codelix IT Solutions", description: "Discover our proven, transparent development process from ideation to launch." },
-  "/team": { title: "Our Team | Codelix IT Solutions", description: "Meet the experts behind the code at Codelix IT Solutions." },
-  "/work": { title: "Our Work & Case Studies | Codelix IT Solutions", description: "Browse our portfolio of shipped projects and detailed case studies." },
-  "/faq": { title: "Frequently Asked Questions | Codelix IT Solutions", description: "Got questions? We have answers. Check out our FAQ." },
-  "/technologies": { title: "Technologies We Use | Codelix IT Solutions", description: "Explore the modern tech stack we use to build scalable, secure applications." },
-  "/careers": { title: "Careers | Codelix IT Solutions", description: "Join our team of talented engineers and designers at Codelix IT Solutions." },
-  "/pricing": { title: "Pricing | Codelix IT Solutions", description: "Transparent, flexible pricing for our professional development services." },
-  "/blog": { title: "Blog | Insights & Updates | Codelix IT Solutions", description: "Read the latest insights, tech trends, and company updates on the Codelix blog." },
-  "/case-study": { title: "Case Studies | Codelix IT Solutions", description: "Deep dives into how we solved complex problems for our clients." },
-  /* These had no entry and fell back to defaultSEO, so every one of them
-     served the generic site description — which is why the terms page was
-     showing "Craft AI-powered web, app & SaaS solutions..." as its snippet
-     in search results instead of anything about the terms. */
-  "/terms-of-service": { title: "Terms & Conditions | Codelix IT Solutions", description: "The terms covering how you may use the Codelix IT Solutions website, its content, and any third-party integrations." },
-  "/privacy-policy": { title: "Privacy Policy | Codelix IT Solutions", description: "What data Codelix IT Solutions collects, how it is used and stored, and the choices you have over your information." },
-  "/refund-policy": { title: "Refund & Cancellation Policy | Codelix IT Solutions", description: "How cancellations are handled, how billing works up to the cancellation date, and when refunds are issued." },
-  "/sitemap": { title: "Sitemap | Codelix IT Solutions", description: "Every page on the Codelix IT Solutions site, grouped by services, industries, products, work and company." }
-};
-const defaultSEO = {
-  title: "Codelix IT Solutions | AI-Powered Web, App & SaaS Development",
-  description: "Craft AI-powered web, app & SaaS solutions with world-class UI/UX design. Trusted by 25+ companies for professional development services."
-};
-lazy(
-  () => Promise.resolve().then(() => AuthContext).then((m) => ({ default: m.AuthProvider }))
-);
-gsap.registerPlugin(ScrollTrigger);
-const InitialDataContext$1 = React.createContext(null);
-lazy(() => Promise.resolve().then(() => AdminLogin$1));
-lazy(() => Promise.resolve().then(() => AdminLayout$1));
-lazy(() => Promise.resolve().then(() => AdminBlogList$1));
-lazy(() => Promise.resolve().then(() => AdminBlogForm$1));
-lazy(() => Promise.resolve().then(() => AdminCaseStudyList$1));
-lazy(() => Promise.resolve().then(() => AdminCaseStudyForm$1));
-lazy(() => Promise.resolve().then(() => AdminTestimonialsList$1));
-lazy(() => Promise.resolve().then(() => AdminTestimonialForm$1));
-lazy(() => Promise.resolve().then(() => Chatbot$1));
-lazy(() => Promise.resolve().then(() => NotFound$1));
-lazy(() => Promise.resolve().then(() => HomepageV2$1));
-lazy(() => Promise.resolve().then(() => ServicesV2$1));
-lazy(() => Promise.resolve().then(() => ServiceDetailV2$1));
-lazy(() => Promise.resolve().then(() => AdditionalServiceDetailV2$1));
-lazy(() => Promise.resolve().then(() => UIUXDesignV2$1));
-lazy(() => Promise.resolve().then(() => DataAnalyticsV2$1));
-lazy(() => Promise.resolve().then(() => SupportManagedServicesV2$1));
-lazy(() => Promise.resolve().then(() => ApplicationDevelopmentV2$1));
-lazy(() => Promise.resolve().then(() => ECommerceSolutionsV2$1));
-lazy(() => Promise.resolve().then(() => CustomSoftwareDevelopmentV2$1));
-lazy(() => Promise.resolve().then(() => AIDevelopmentV2$1));
-lazy(() => Promise.resolve().then(() => AboutV2$1));
-lazy(() => Promise.resolve().then(() => ContactV2$1));
-lazy(() => Promise.resolve().then(() => IndustriesV2$1));
-lazy(() => Promise.resolve().then(() => IndustryDetailV2$1));
-lazy(() => Promise.resolve().then(() => ProductDetailV2$1));
-lazy(() => Promise.resolve().then(() => ProcessV2$1));
-lazy(() => Promise.resolve().then(() => TeamV2$1));
-lazy(() => Promise.resolve().then(() => WorkV2$1));
-lazy(() => Promise.resolve().then(() => TermsConditionsV2$1));
-lazy(() => Promise.resolve().then(() => PrivacyPolicyV2$1));
-lazy(() => Promise.resolve().then(() => RefundPolicyV2$1));
-lazy(() => Promise.resolve().then(() => FaqV2$1));
-lazy(() => Promise.resolve().then(() => TechnologiesV2$1));
-lazy(() => Promise.resolve().then(() => CareersV2$1));
-lazy(() => Promise.resolve().then(() => PricingV2$1));
-lazy(() => Promise.resolve().then(() => SitemapV2$1));
-lazy(() => Promise.resolve().then(() => BlogV2$1));
-lazy(() => Promise.resolve().then(() => BlogDetailV2$1));
-lazy(() => Promise.resolve().then(() => CaseStudyV2$1));
-lazy(() => Promise.resolve().then(() => CaseStudyDetailV2$1));
 function useCaseStudies() {
-  const initialContext = useContext(InitialDataContext$1);
+  const initialContext = useContext(InitialDataContext);
   const [studies, setStudies] = useState(
     initialContext?.caseStudies?.length ? [...initialContext.caseStudies, ...CASE_STUDIES] : CASE_STUDIES
   );
@@ -5983,10 +5846,6 @@ function AdditionalServiceDetailV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const AdditionalServiceDetailV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: AdditionalServiceDetailV2
-}, Symbol.toStringTag, { value: "Module" }));
 const UIUX_STACK = [
   { src: figmaLogo, name: "Figma" },
   { src: adobeXdLogo, name: "Adobe XD" },
@@ -6774,10 +6633,6 @@ function UIUXDesignV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const UIUXDesignV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: UIUXDesignV2
-}, Symbol.toStringTag, { value: "Module" }));
 const DATA_STACK = [
   { src: pythonLogo, name: "Python" },
   { src: techAws, name: "AWS" },
@@ -7568,10 +7423,6 @@ function DataAnalyticsV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const DataAnalyticsV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: DataAnalyticsV2
-}, Symbol.toStringTag, { value: "Module" }));
 const SUPPORT_STACK = [
   { src: techAws, name: "AWS" },
   { src: dockerLogo, name: "Docker" },
@@ -8358,10 +8209,6 @@ function SupportManagedServicesV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const SupportManagedServicesV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: SupportManagedServicesV2
-}, Symbol.toStringTag, { value: "Module" }));
 const APP_STACK = [
   { src: flutterLogo, name: "Flutter" },
   { src: swiftLogo, name: "Swift" },
@@ -9148,10 +8995,6 @@ function ApplicationDevelopmentV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const ApplicationDevelopmentV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: ApplicationDevelopmentV2
-}, Symbol.toStringTag, { value: "Module" }));
 const ECOM_STACK = [
   { src: reactLogo, name: "React" },
   { src: nextLogo, name: "Next.js" },
@@ -9938,10 +9781,6 @@ function ECommerceSolutionsV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const ECommerceSolutionsV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: ECommerceSolutionsV2
-}, Symbol.toStringTag, { value: "Module" }));
 const CUSTOM_STACK = [
   { src: javaLogo, name: "Java" },
   { src: springLogo, name: "Spring Boot" },
@@ -10729,10 +10568,6 @@ function CustomSoftwareDevelopmentV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const CustomSoftwareDevelopmentV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: CustomSoftwareDevelopmentV2
-}, Symbol.toStringTag, { value: "Module" }));
 const AI_STACK = [
   { src: pythonLogo, name: "Python" },
   { src: nodeLogo, name: "Node.js" },
@@ -11517,10 +11352,6 @@ function AIDevelopmentV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const AIDevelopmentV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: AIDevelopmentV2
-}, Symbol.toStringTag, { value: "Module" }));
 function AboutHeroVisual() {
   return /* @__PURE__ */ jsxs("div", { className: "ahv-typo-container", children: [
     /* @__PURE__ */ jsx("div", { className: "ahv-typo-glow" }),
@@ -11867,10 +11698,6 @@ function AboutV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const AboutV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: AboutV2
-}, Symbol.toStringTag, { value: "Module" }));
 function ContactHeroVisual() {
   const [step, setStep] = useState(0);
   useEffect(() => {
@@ -12267,10 +12094,6 @@ function ContactV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const ContactV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: ContactV2
-}, Symbol.toStringTag, { value: "Module" }));
 const PAIN_ICONS = [AlertTriangle, Clock, Puzzle];
 const withFixes = (challenges, fixes) => challenges.map((pain, i) => ({ pain, fix: fixes[i], icon: PAIN_ICONS[i % PAIN_ICONS.length] }));
 const INDUSTRIES$1 = [
@@ -12741,10 +12564,6 @@ function IndustriesV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const IndustriesV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: IndustriesV2
-}, Symbol.toStringTag, { value: "Module" }));
 const SERVICE_INFO = {
   "Web Development": { icon: Globe, path: "/services/web-development", body: "The public-facing or client-facing surface — built for speed and clarity, not just to look finished in a demo." },
   "Application Development": { icon: Smartphone, path: "/services/application-development", body: "The mobile or SaaS layer, when the work needs to live beyond a browser tab." },
@@ -13148,10 +12967,6 @@ function IndustryDetailV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const IndustryDetailV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: IndustryDetailV2
-}, Symbol.toStringTag, { value: "Module" }));
 function ProductDetailV2() {
   const { slug } = useParams();
   const p = productBySlug(slug);
@@ -13494,10 +13309,6 @@ function ProductDetailV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const ProductDetailV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: ProductDetailV2
-}, Symbol.toStringTag, { value: "Module" }));
 function ProcessHeroVisual() {
   const [activeStep, setActiveStep] = useState(1);
   useEffect(() => {
@@ -13929,10 +13740,6 @@ function ProcessV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const ProcessV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: ProcessV2
-}, Symbol.toStringTag, { value: "Module" }));
 const STATS$3 = [
   { value: "40+", label: "Projects shipped" },
   { value: "100%", label: "Source-code ownership" },
@@ -14206,10 +14013,6 @@ function TeamV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const TeamV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: TeamV2
-}, Symbol.toStringTag, { value: "Module" }));
 const WorkHeroVisual = () => {
   const containerRef = useRef(null);
   const col1Images = PROJECTS.slice(0, 5).map((p) => p.image);
@@ -14607,10 +14410,6 @@ function WorkV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const WorkV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: WorkV2
-}, Symbol.toStringTag, { value: "Module" }));
 function LegalV2({ crumbLabel, statusLabel, titleLine1, titleLine2, sub, updated, sections }) {
   const [activeId, setActiveId] = useState(sections[0]?.id);
   const rootRef = useRef(null);
@@ -14819,10 +14618,6 @@ function TermsConditionsV2() {
     }
   );
 }
-const TermsConditionsV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: TermsConditionsV2
-}, Symbol.toStringTag, { value: "Module" }));
 const SECTIONS$1 = [
   {
     id: "priority",
@@ -15019,10 +14814,6 @@ function PrivacyPolicyV2() {
     }
   );
 }
-const PrivacyPolicyV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: PrivacyPolicyV2
-}, Symbol.toStringTag, { value: "Module" }));
 const SECTIONS = [
   {
     id: "overview",
@@ -15074,10 +14865,6 @@ function RefundPolicyV2() {
     }
   );
 }
-const RefundPolicyV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: RefundPolicyV2
-}, Symbol.toStringTag, { value: "Module" }));
 function FaqHeroVisual() {
   const [activeCube, setActiveCube] = useState(4);
   useEffect(() => {
@@ -15231,10 +15018,6 @@ function FaqV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const FaqV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: FaqV2
-}, Symbol.toStringTag, { value: "Module" }));
 function TechHeroVisual() {
   return /* @__PURE__ */ jsxs("div", { className: "thv-container", children: [
     /* @__PURE__ */ jsx("div", { className: "thv-ambient-glow" }),
@@ -15514,10 +15297,6 @@ function TechnologiesV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const TechnologiesV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: TechnologiesV2
-}, Symbol.toStringTag, { value: "Module" }));
 function CareersHeroVisual() {
   return /* @__PURE__ */ jsxs("div", { className: "chv-container", children: [
     /* @__PURE__ */ jsx("div", { className: "chv-glow-bg" }),
@@ -15824,10 +15603,6 @@ function CareersV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const CareersV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: CareersV2
-}, Symbol.toStringTag, { value: "Module" }));
 function PricingHeroVisual() {
   return /* @__PURE__ */ jsxs("div", { className: "phv-container", children: [
     /* @__PURE__ */ jsx("div", { className: "phv-glow-bg" }),
@@ -16109,10 +15884,6 @@ function PricingV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const PricingV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: PricingV2
-}, Symbol.toStringTag, { value: "Module" }));
 const blogs = [
   {
     id: 1,
@@ -16227,7 +15998,7 @@ const slugify = (text) => {
   return text.toString().toLowerCase().replace(/\s+/g, "-").replace(/[^\w\-]+/g, "").replace(/\-\-+/g, "-").replace(/^-+/, "").replace(/-+$/, "");
 };
 function useBlogPosts() {
-  const initialContext = useContext(InitialDataContext$1);
+  const initialContext = useContext(InitialDataContext);
   const [posts, setPosts] = useState(() => {
     let ssgPosts = [];
     if (initialContext?.blogPosts && initialContext.blogPosts.length > 0) {
@@ -16443,10 +16214,6 @@ function SitemapV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const SitemapV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: SitemapV2
-}, Symbol.toStringTag, { value: "Module" }));
 const CATEGORIES$1 = ["All Articles", "business", "CMS", "UI/UX", "Tech", "E-Commerce", "Development", "Artificial Intelligence"];
 function BlogV2() {
   const { posts: blogs2 } = useBlogPosts();
@@ -16571,10 +16338,6 @@ function BlogV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const BlogV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: BlogV2
-}, Symbol.toStringTag, { value: "Module" }));
 function BlogDetailV2() {
   const { slug } = useParams();
   const { posts: blogs2, loading } = useBlogPosts();
@@ -16702,10 +16465,6 @@ function BlogDetailV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const BlogDetailV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: BlogDetailV2
-}, Symbol.toStringTag, { value: "Module" }));
 const toV2Slug = (href) => href.replace("/", "");
 const CATEGORIES = ["All", "Web Development", "Application Development", "UI/UX Design", "E-Commerce Solutions", "Custom Software Development", "AI Development", "Data Analytics"];
 const STATS = [
@@ -16892,10 +16651,6 @@ function CaseStudyV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const CaseStudyV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: CaseStudyV2
-}, Symbol.toStringTag, { value: "Module" }));
 const splitTitle = (title) => {
   const words = title.split(" ");
   if (words.length < 4) return [title];
@@ -17170,12 +16925,43 @@ function CaseStudyDetailV2() {
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
-const CaseStudyDetailV2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: CaseStudyDetailV2
-}, Symbol.toStringTag, { value: "Module" }));
+const seoData = {
+  "/": { title: "AI-Powered IT Solutions | Codelix IT Solutions", description: "Empower your business with AI-centric software solutions, world-class UI/UX design, and scalable web apps by Codelix IT Solutions." },
+  "/services": { title: "Our Services | Web & App Development | Codelix IT Solutions", description: "Explore our comprehensive suite of IT services including Web Development, App Development, UI/UX Design, AI, and Custom Software." },
+  "/services/web-development": { title: "Web Development Services | Codelix IT Solutions", description: "High-performance, scalable web development services tailored to your business needs." },
+  "/services/application-development": { title: "Application Development | iOS & Android | Codelix IT Solutions", description: "Custom mobile application development for iOS and Android platforms." },
+  "/services/ui-ux-design": { title: "UI/UX Design Services | Codelix IT Solutions", description: "User-centric UI/UX design services to elevate your digital products and user engagement." },
+  "/services/e-commerce-solutions": { title: "E-Commerce Solutions | Codelix IT Solutions", description: "End-to-end e-commerce solutions to help you sell online efficiently and securely." },
+  "/services/custom-software-development": { title: "Custom Software Development | Codelix IT Solutions", description: "Bespoke software development tailored precisely to your unique business operations." },
+  "/services/ai-development": { title: "AI Development Services | Codelix IT Solutions", description: "Integrate powerful Artificial Intelligence into your products with our expert AI development." },
+  "/services/data-analytics": { title: "Data Analytics Services | Codelix IT Solutions", description: "Turn your raw data into actionable insights with our comprehensive data analytics services." },
+  "/services/support-managed-services": { title: "Support & Managed Services | Codelix IT Solutions", description: "Reliable IT support and managed services to keep your operations running smoothly." },
+  "/about": { title: "About Us | Codelix IT Solutions", description: "Learn about Codelix IT Solutions, our mission, our team, and how we deliver world-class tech." },
+  "/contact": { title: "Contact Us | Codelix IT Solutions", description: "Get in touch with Codelix IT Solutions to discuss your next big project." },
+  "/industries": { title: "Industries We Serve | Codelix IT Solutions", description: "Discover the various industries we provide specialized IT solutions for." },
+  "/process": { title: "Our Process | Codelix IT Solutions", description: "Discover our proven, transparent development process from ideation to launch." },
+  "/team": { title: "Our Team | Codelix IT Solutions", description: "Meet the experts behind the code at Codelix IT Solutions." },
+  "/work": { title: "Our Work & Case Studies | Codelix IT Solutions", description: "Browse our portfolio of shipped projects and detailed case studies." },
+  "/faq": { title: "Frequently Asked Questions | Codelix IT Solutions", description: "Got questions? We have answers. Check out our FAQ." },
+  "/technologies": { title: "Technologies We Use | Codelix IT Solutions", description: "Explore the modern tech stack we use to build scalable, secure applications." },
+  "/careers": { title: "Careers | Codelix IT Solutions", description: "Join our team of talented engineers and designers at Codelix IT Solutions." },
+  "/pricing": { title: "Pricing | Codelix IT Solutions", description: "Transparent, flexible pricing for our professional development services." },
+  "/blog": { title: "Blog | Insights & Updates | Codelix IT Solutions", description: "Read the latest insights, tech trends, and company updates on the Codelix blog." },
+  "/case-study": { title: "Case Studies | Codelix IT Solutions", description: "Deep dives into how we solved complex problems for our clients." },
+  /* These had no entry and fell back to defaultSEO, so every one of them
+     served the generic site description — which is why the terms page was
+     showing "Craft AI-powered web, app & SaaS solutions..." as its snippet
+     in search results instead of anything about the terms. */
+  "/terms-of-service": { title: "Terms & Conditions | Codelix IT Solutions", description: "The terms covering how you may use the Codelix IT Solutions website, its content, and any third-party integrations." },
+  "/privacy-policy": { title: "Privacy Policy | Codelix IT Solutions", description: "What data Codelix IT Solutions collects, how it is used and stored, and the choices you have over your information." },
+  "/refund-policy": { title: "Refund & Cancellation Policy | Codelix IT Solutions", description: "How cancellations are handled, how billing works up to the cancellation date, and when refunds are issued." },
+  "/sitemap": { title: "Sitemap | Codelix IT Solutions", description: "Every page on the Codelix IT Solutions site, grouped by services, industries, products, work and company." }
+};
+const defaultSEO = {
+  title: "Codelix IT Solutions | AI-Powered Web, App & SaaS Development",
+  description: "Craft AI-powered web, app & SaaS solutions with world-class UI/UX design. Trusted by 25+ companies for professional development services."
+};
 gsap.registerPlugin(ScrollTrigger);
-const InitialDataContext = React.createContext(null);
 const ScrollToTop = () => {
   const location = useLocation();
   useEffect(() => {

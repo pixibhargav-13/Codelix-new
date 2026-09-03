@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { blogs as staticBlogs } from "./blogData";
-import { InitialDataContext } from "../App";
+import { InitialDataContext } from "../lib/initialDataContext";
 
 export function useBlogPosts() {
   const initialContext = useContext(InitialDataContext);
