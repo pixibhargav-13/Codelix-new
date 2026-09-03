@@ -17,14 +17,14 @@
 
   --text: #f2f0ec;
   --text-55: rgba(242, 240, 236, .55);
-  --text-45: rgba(242, 240, 236, .45);
-  --text-38: rgba(242, 240, 236, .38);
-  --text-25: rgba(242, 240, 236, .25);
+  --text-45: rgba(242, 240, 236, .53);
+  --text-38: rgba(242, 240, 236, .51);
+  --text-25: rgba(242, 240, 236, .49);
 
   --ink: #0f0f0d;
   --ink-65: rgba(15, 15, 13, .65);
-  --ink-55: rgba(15, 15, 13, .55);
-  --ink-40: rgba(15, 15, 13, .4);
+  --ink-55: rgba(15, 15, 13, .62);
+  --ink-40: rgba(15, 15, 13, .58);
 
   --rule: rgba(242, 240, 236, .1);
   --rule-strong: rgba(242, 240, 236, .2);
@@ -1613,7 +1613,7 @@
   font-size: 10px;
   letter-spacing: .22em;
   text-transform: uppercase;
-  color: rgba(15, 15, 13, .4);
+  color: rgba(15, 15, 13, .58);
   margin-bottom: 10px;
 }
 
@@ -1630,7 +1630,7 @@
 .v2-pipe-lede {
   font-size: 14px;
   line-height: 1.6;
-  color: rgba(15, 15, 13, .55);
+  color: rgba(15, 15, 13, .62);
   max-width: 48ch;
   text-align: left;
   justify-self: end;
@@ -1755,7 +1755,7 @@
   font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   font-size: 12px;
   letter-spacing: .02em;
-  color: rgba(15, 15, 13, .4);
+  color: rgba(15, 15, 13, .58);
 }
 
 .v2-pipe-console-live {
@@ -2253,7 +2253,7 @@
 }
 
 .v2-map-card:hover {
-  border-color: rgba(242, 240, 236, .34);
+  border-color: rgba(242, 240, 236, .49);
   background: linear-gradient(165deg, #1d1d24, #17171c);
   transform: translateY(-8px) scale(1.015);
   box-shadow: 0 22px 44px -20px rgba(0, 0, 0, .55);
@@ -2619,7 +2619,7 @@
 
 /* line only shows once the header is actually pinned mid-scroll */
 .v2-method-head.is-stuck {
-  border-bottom-color: rgba(242, 240, 236, .38);
+  border-bottom-color: rgba(242, 240, 236, .51);
 }
 
 .v2-method-heading {
@@ -3609,7 +3609,7 @@
   white-space: nowrap;
   font-size: 13px;
   font-weight: 500;
-  color: rgba(15, 15, 13, .3);
+  color: rgba(15, 15, 13, .58);
   transition: color .3s ease;
 }
 
@@ -3630,7 +3630,7 @@
   font-weight: 500;
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: rgba(15, 15, 13, .25);
+  color: rgba(15, 15, 13, .58);
 }
 
 .v2-quote-marquee-item.is-active {
@@ -4753,7 +4753,7 @@
 
 .v2-section--gallery .v2-btn {
   color: var(--ink);
-  border-color: rgba(15, 15, 13, .2);
+  border-color: rgba(15, 15, 13, .58);
 }
 
 .v2-section--gallery .v2-btn:hover {
