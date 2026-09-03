@@ -129,12 +129,30 @@ async function build() {
 
       let html = template;
 
-      // Extract helmet tags
-      const helmetTags = helmet ? `
+      /* react-helmet-async's context extraction returns nothing under React 19 -
+         helmet comes back undefined and the SEO tags render inline into the app
+         markup instead, which leaves them inside <div id="root">. A browser hoists
+         them into <head> at hydration, so Google (which runs JS) has been fine;
+         anything reading the HTML without executing it is not. That includes
+         Lighthouse, which reports no meta description, and every social scraper -
+         Facebook, LinkedIn, WhatsApp, Twitter - which sees no OG tags and renders
+         a shared link with no title, description or preview image.
+
+         So lift them into the head here. Copied rather than moved: renderToString
+         emitted them as ordinary children, so React expects them at those
+         positions when it hydrates and removing them would mismatch every page. */
+      const hoistable = [
+        ...(appHtml.match(/<title>[\s\S]*?<\/title>/g) || []),
+        ...(appHtml.match(/<meta\b[^>]*?>/g) || []),
+        ...(appHtml.match(/<link\b[^>]*?rel="(?:canonical|preload)"[^>]*?>/g) || []),
+      ];
+      const helmetTags = helmet
+        ? `
         ${helmet.title?.toString() || ''}
         ${helmet.meta?.toString() || ''}
         ${helmet.link?.toString() || ''}
-      ` : '';
+      `
+        : hoistable.join(String.fromCharCode(10));
 
       // Inject helmet tags before </head>
       if (helmetTags) {
