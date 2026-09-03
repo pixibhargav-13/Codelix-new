@@ -2193,10 +2193,11 @@ function HomepageV2() {
     if (!shells.length) return;
     const pairs = Array.from(shells).map((shell) => ({ shell, head: shell.querySelector(".v2-method-head") })).filter((p) => p.head);
     const onScroll = () => {
-      pairs.forEach(({ shell, head }) => {
+      const stuck = pairs.map(({ shell }) => {
         const r = shell.getBoundingClientRect();
-        head.classList.toggle("is-stuck", r.top <= 0 && r.bottom > 0);
+        return r.top <= 0 && r.bottom > 0;
       });
+      pairs.forEach(({ head }, i) => head.classList.toggle("is-stuck", stuck[i]));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
@@ -3176,10 +3177,11 @@ function ServicesV2() {
     if (!shells.length) return;
     const pairs = Array.from(shells).map((shell) => ({ shell, head: shell.querySelector(".v2-method-head") })).filter((p) => p.head);
     const onScroll = () => {
-      pairs.forEach(({ shell, head }) => {
+      const stuck = pairs.map(({ shell }) => {
         const r = shell.getBoundingClientRect();
-        head.classList.toggle("is-stuck", r.top <= 0 && r.bottom > 0);
+        return r.top <= 0 && r.bottom > 0;
       });
+      pairs.forEach(({ head }, i) => head.classList.toggle("is-stuck", stuck[i]));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
@@ -3658,10 +3660,11 @@ function ServiceDetailV2() {
     if (!shells.length) return;
     const pairs = Array.from(shells).map((shell) => ({ shell, head: shell.querySelector(".v2-method-head") })).filter((p) => p.head);
     const onScroll = () => {
-      pairs.forEach(({ shell, head }) => {
+      const stuck = pairs.map(({ shell }) => {
         const r = shell.getBoundingClientRect();
-        head.classList.toggle("is-stuck", r.top <= 0 && r.bottom > 0);
+        return r.top <= 0 && r.bottom > 0;
       });
+      pairs.forEach(({ head }, i) => head.classList.toggle("is-stuck", stuck[i]));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
@@ -5387,10 +5390,11 @@ function AdditionalServiceDetailV2() {
     if (!shells || !shells.length) return;
     const pairs = Array.from(shells).map((shell) => ({ shell, head: shell.querySelector(".v2-method-head") })).filter((p) => p.head);
     const onScroll = () => {
-      pairs.forEach(({ shell, head }) => {
+      const stuck = pairs.map(({ shell }) => {
         const r = shell.getBoundingClientRect();
-        head.classList.toggle("is-stuck", r.top <= 0 && r.bottom > 0);
+        return r.top <= 0 && r.bottom > 0;
       });
+      pairs.forEach(({ head }, i) => head.classList.toggle("is-stuck", stuck[i]));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
@@ -6163,10 +6167,11 @@ function UIUXDesignV2() {
     if (!shells.length) return;
     const pairs = Array.from(shells).map((shell) => ({ shell, head: shell.querySelector(".v2-method-head") })).filter((p) => p.head);
     const onScroll = () => {
-      pairs.forEach(({ shell, head }) => {
+      const stuck = pairs.map(({ shell }) => {
         const r = shell.getBoundingClientRect();
-        head.classList.toggle("is-stuck", r.top <= 0 && r.bottom > 0);
+        return r.top <= 0 && r.bottom > 0;
       });
+      pairs.forEach(({ head }, i) => head.classList.toggle("is-stuck", stuck[i]));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
@@ -6956,10 +6961,11 @@ function DataAnalyticsV2() {
     if (!shells.length) return;
     const pairs = Array.from(shells).map((shell) => ({ shell, head: shell.querySelector(".v2-method-head") })).filter((p) => p.head);
     const onScroll = () => {
-      pairs.forEach(({ shell, head }) => {
+      const stuck = pairs.map(({ shell }) => {
         const r = shell.getBoundingClientRect();
-        head.classList.toggle("is-stuck", r.top <= 0 && r.bottom > 0);
+        return r.top <= 0 && r.bottom > 0;
       });
+      pairs.forEach(({ head }, i) => head.classList.toggle("is-stuck", stuck[i]));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
@@ -7745,10 +7751,11 @@ function SupportManagedServicesV2() {
     if (!shells.length) return;
     const pairs = Array.from(shells).map((shell) => ({ shell, head: shell.querySelector(".v2-method-head") })).filter((p) => p.head);
     const onScroll = () => {
-      pairs.forEach(({ shell, head }) => {
+      const stuck = pairs.map(({ shell }) => {
         const r = shell.getBoundingClientRect();
-        head.classList.toggle("is-stuck", r.top <= 0 && r.bottom > 0);
+        return r.top <= 0 && r.bottom > 0;
       });
+      pairs.forEach(({ head }, i) => head.classList.toggle("is-stuck", stuck[i]));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
@@ -8534,10 +8541,11 @@ function ApplicationDevelopmentV2() {
     if (!shells.length) return;
     const pairs = Array.from(shells).map((shell) => ({ shell, head: shell.querySelector(".v2-method-head") })).filter((p) => p.head);
     const onScroll = () => {
-      pairs.forEach(({ shell, head }) => {
+      const stuck = pairs.map(({ shell }) => {
         const r = shell.getBoundingClientRect();
-        head.classList.toggle("is-stuck", r.top <= 0 && r.bottom > 0);
+        return r.top <= 0 && r.bottom > 0;
       });
+      pairs.forEach(({ head }, i) => head.classList.toggle("is-stuck", stuck[i]));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
@@ -9323,10 +9331,11 @@ function ECommerceSolutionsV2() {
     if (!shells.length) return;
     const pairs = Array.from(shells).map((shell) => ({ shell, head: shell.querySelector(".v2-method-head") })).filter((p) => p.head);
     const onScroll = () => {
-      pairs.forEach(({ shell, head }) => {
+      const stuck = pairs.map(({ shell }) => {
         const r = shell.getBoundingClientRect();
-        head.classList.toggle("is-stuck", r.top <= 0 && r.bottom > 0);
+        return r.top <= 0 && r.bottom > 0;
       });
+      pairs.forEach(({ head }, i) => head.classList.toggle("is-stuck", stuck[i]));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
@@ -10113,10 +10122,11 @@ function CustomSoftwareDevelopmentV2() {
     if (!shells.length) return;
     const pairs = Array.from(shells).map((shell) => ({ shell, head: shell.querySelector(".v2-method-head") })).filter((p) => p.head);
     const onScroll = () => {
-      pairs.forEach(({ shell, head }) => {
+      const stuck = pairs.map(({ shell }) => {
         const r = shell.getBoundingClientRect();
-        head.classList.toggle("is-stuck", r.top <= 0 && r.bottom > 0);
+        return r.top <= 0 && r.bottom > 0;
       });
+      pairs.forEach(({ head }, i) => head.classList.toggle("is-stuck", stuck[i]));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
@@ -10900,10 +10910,11 @@ function AIDevelopmentV2() {
     if (!shells.length) return;
     const pairs = Array.from(shells).map((shell) => ({ shell, head: shell.querySelector(".v2-method-head") })).filter((p) => p.head);
     const onScroll = () => {
-      pairs.forEach(({ shell, head }) => {
+      const stuck = pairs.map(({ shell }) => {
         const r = shell.getBoundingClientRect();
-        head.classList.toggle("is-stuck", r.top <= 0 && r.bottom > 0);
+        return r.top <= 0 && r.bottom > 0;
       });
+      pairs.forEach(({ head }, i) => head.classList.toggle("is-stuck", stuck[i]));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
@@ -11592,10 +11603,11 @@ function AboutV2() {
     if (!shells.length) return;
     const pairs = Array.from(shells).map((shell) => ({ shell, head: shell.querySelector(".v2-method-head") })).filter((p) => p.head);
     const onScroll = () => {
-      pairs.forEach(({ shell, head }) => {
+      const stuck = pairs.map(({ shell }) => {
         const r = shell.getBoundingClientRect();
-        head.classList.toggle("is-stuck", r.top <= 0 && r.bottom > 0);
+        return r.top <= 0 && r.bottom > 0;
       });
+      pairs.forEach(({ head }, i) => head.classList.toggle("is-stuck", stuck[i]));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();

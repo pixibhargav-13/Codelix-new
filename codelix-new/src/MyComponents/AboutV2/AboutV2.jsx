@@ -98,11 +98,15 @@ export default function AboutV2() {
     const pairs = Array.from(shells)
       .map((shell) => ({ shell, head: shell.querySelector(".v2-method-head") }))
       .filter((p) => p.head);
+    /* Read every rect first, then write every class. Interleaved, each
+       toggle invalidated layout for the next getBoundingClientRect, so a page
+       with N sticky bands forced N layout flushes on every scroll event. */
     const onScroll = () => {
-      pairs.forEach(({ shell, head }) => {
+      const stuck = pairs.map(({ shell }) => {
         const r = shell.getBoundingClientRect();
-        head.classList.toggle("is-stuck", r.top <= 0 && r.bottom > 0);
+        return r.top <= 0 && r.bottom > 0;
       });
+      pairs.forEach(({ head }, i) => head.classList.toggle("is-stuck", stuck[i]));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
