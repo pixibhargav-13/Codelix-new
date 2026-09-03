@@ -3531,7 +3531,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  /* 0, because each dot now carries its own 8px of transparent padding —
+     the visible gap is unchanged, the tappable boxes simply meet */
+  gap: 0;
   margin-top: 40px;
   position: relative;
   z-index: 1;
@@ -3540,20 +3542,52 @@
 .v2-quote-dot {
   appearance: none;
   -webkit-appearance: none;
-  width: 8px;
-  height: 8px;
-  min-width: 8px;
-  min-height: 8px;
+  /* 24px is the minimum touch target; the dot itself stays 8px. Padding
+     makes up the difference and background-clip keeps the paint inside the
+     content box, so the colour still lives on the button and every
+     page-specific override of it keeps working untouched. The border-radius
+     is reduced by the padding for the inner box, which lands at exactly 50%
+     of 8px — a circle. */
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  box-sizing: border-box;
   border-radius: 50%;
   background-color: var(--ink-40) !important;
   border: none;
-  padding: 0;
   margin: 0;
   outline: none;
   box-shadow: none;
   cursor: pointer;
   transition: all 0.3s ease;
   display: block;
+}
+
+/* `.v2 button` above resets padding to 0 and uses the `background`
+   shorthand, which also resets background-clip — and at (0,1,1) it outranks a
+   bare `.v2-quote-dot` (0,1,0). These two declarations are what turn the
+   24px box into a 24px touch target around an 8px dot, so they need the extra
+   `.v2` to actually take effect. */
+.v2 .v2-quote-dot {
+  padding: 8px;
+  background-clip: content-box;
+}
+
+/* index.css draws a focus ring on plain `button:focus` — which fires on a
+   mouse click, not just keyboard focus — and at (0,1,1) it beats the
+   `outline: none` above. That ring used to trace an 8px dot and went
+   unnoticed; now it traces the 24px touch target and reads as a big circle
+   around whichever dot you clicked. Clicking should show nothing; keyboard
+   focus still needs a visible indicator, so it gets a tight ring pulled in
+   close to the dot itself. */
+.v2 .v2-quote-dot:focus {
+  outline: none;
+}
+
+.v2 .v2-quote-dot:focus-visible {
+  outline: 2px solid var(--ink-65);
+  outline-offset: -6px;
 }
 
 .v2-quote-dot:hover {
