@@ -123,6 +123,8 @@ export default function IndustriesV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
 
 
       {/* ══════════ 1 · HERO ══════════ */}
@@ -358,6 +360,8 @@ export default function IndustriesV2() {
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
+      </main>
+
             <FooterV2 />
     </div>
   );

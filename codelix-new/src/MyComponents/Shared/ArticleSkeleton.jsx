@@ -13,6 +13,7 @@ export default function ArticleSkeleton({ label = "Loading article" }) {
       <NavbarV2 />
       <span className="artsk-sr" role="status" aria-live="polite">{label}…</span>
 
+      <main>
       <header className="artsk-header">
         <div className="artsk-inner">
           {/* breadcrumb */}
@@ -46,6 +47,7 @@ export default function ArticleSkeleton({ label = "Loading article" }) {
           </div>
         ))}
       </div>
+      </main>
     </div>
   );
 }

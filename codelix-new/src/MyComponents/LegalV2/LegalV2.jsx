@@ -86,6 +86,8 @@ export default function LegalV2({ crumbLabel, statusLabel, titleLine1, titleLine
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
       
 
       {/* ══════════ 1 · HERO ══════════ */}
@@ -160,6 +162,8 @@ export default function LegalV2({ crumbLabel, statusLabel, titleLine1, titleLine
 
 
       {/* ══════════ FOOTER ══════════ */}
+      </main>
+
             <FooterV2 />
     </div>
   );

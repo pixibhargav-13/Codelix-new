@@ -84,6 +84,8 @@ export default function BlogV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
       
       
 
@@ -156,7 +158,7 @@ export default function BlogV2() {
                   <span>{b.tags[1] || b.tags[0]}</span>
                   <span>{b.readTime}</span>
                 </div>
-                <h3 className="bv2-card-title">{b.title}</h3>
+                <h2 className="bv2-card-title">{b.title}</h2>
                 <span className="bv2-card-date">{b.date}</span>
               </div>
               <span className="bv2-card-arrow" aria-hidden="true"><ArrowUpRight size={18} strokeWidth={1.8} /></span>
@@ -189,6 +191,8 @@ export default function BlogV2() {
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
+      </main>
+
       <FooterV2 />
     </div>
   );

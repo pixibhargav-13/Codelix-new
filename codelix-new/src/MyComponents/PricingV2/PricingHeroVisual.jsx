@@ -45,7 +45,7 @@ export default function PricingHeroVisual() {
           <div className="phv-config-main">
             <div className="phv-module-card added">
               <div className="phv-mod-info">
-                <h6>Core Architecture</h6>
+                <span className="phv-mod-name">Core Architecture</span>
                 <p>Base platform setup</p>
               </div>
               <div className="phv-mod-check">
@@ -55,7 +55,7 @@ export default function PricingHeroVisual() {
 
             <div className="phv-module-card added">
               <div className="phv-mod-info">
-                <h6>Payment Gateway</h6>
+                <span className="phv-mod-name">Payment Gateway</span>
                 <p>Stripe Custom Connect</p>
               </div>
               <div className="phv-mod-check">
@@ -65,7 +65,7 @@ export default function PricingHeroVisual() {
 
             <div className="phv-module-card optional">
               <div className="phv-mod-info">
-                <h6>AI Assistant</h6>
+                <span className="phv-mod-name">AI Assistant</span>
                 <p>LLM Integration</p>
               </div>
               <div className="phv-mod-add">

@@ -405,6 +405,8 @@ export default function SupportManagedServicesV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
       
 
       {/* ══════════ 1 · HERO ══════════ */}
@@ -982,6 +984,8 @@ export default function SupportManagedServicesV2() {
           <div className="v2-cta-actions">
             <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
 </CtaSection>
+
+      </main>
 
       <FooterV2 />
     </div>

@@ -411,6 +411,8 @@ export default function CustomSoftwareDevelopmentV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
       
 
       {/* ══════════ 1 · HERO ══════════ */}
@@ -987,6 +989,8 @@ export default function CustomSoftwareDevelopmentV2() {
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
+      </main>
+
             <FooterV2 />
     </div>
   );

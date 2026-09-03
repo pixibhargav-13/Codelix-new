@@ -109,6 +109,8 @@ export default function ProductDetailV2() {
       <div className="v2-progress" aria-hidden="true"><span /></div>
       <NavbarV2 />
 
+      <main>
+
       {/* ══════════ HERO ══════════ */}
       <header className="sd2-hero pd2-hero">
         <div className="sd2-hero-inner">
@@ -181,7 +183,7 @@ export default function ProductDetailV2() {
               {p.problem.points.map((pt, i) => (
                 <div className="pd2-problem-card pd2-reveal" key={i}>
                   <pt.icon size={22} strokeWidth={1.5} />
-                  <h4>{pt.title}</h4>
+                  <h3>{pt.title}</h3>
                   <p>{pt.body}</p>
                 </div>
               ))}
@@ -229,7 +231,7 @@ export default function ProductDetailV2() {
                 <div className={`pd2-module-card pd2-reveal ${m.unique ? "is-unique" : ""}`} key={m.n}>
                   <span className="pd2-module-n">{m.n}</span>
                   <m.icon size={20} strokeWidth={1.5} />
-                  <h4>{m.title}</h4>
+                  <h3>{m.title}</h3>
                   <p>{m.body}</p>
                   {m.unique && <span className="pd2-module-badge">Only in {p.name}</span>}
                 </div>
@@ -250,7 +252,7 @@ export default function ProductDetailV2() {
               {p.ai.items.map((it, i) => (
                 <div className="pd2-ai-card pd2-reveal" key={i}>
                   <div className="pd2-ai-icon"><it.icon size={22} strokeWidth={1.5} /></div>
-                  <h4>{it.title}</h4>
+                  <h3>{it.title}</h3>
                   <p>{it.body}</p>
                 </div>
               ))}
@@ -268,7 +270,7 @@ export default function ProductDetailV2() {
             <div className="pd2-users-grid">
               {p.users.map((u) => (
                 <div className="pd2-user-card pd2-reveal" key={u.role}>
-                  <h4>{u.role}</h4>
+                  <h3>{u.role}</h3>
                   <p>{u.body}</p>
                 </div>
               ))}
@@ -291,7 +293,7 @@ export default function ProductDetailV2() {
                     <div className="pd2-feature-card" key={it.title}>
                       <it.icon size={20} strokeWidth={1.5} />
                       <div>
-                        <h4>{it.title}</h4>
+                        <h3>{it.title}</h3>
                         <p>{it.body}</p>
                       </div>
                     </div>
@@ -314,7 +316,7 @@ export default function ProductDetailV2() {
                 <div className="pd2-how-row pd2-reveal" key={i}>
                   <span className="pd2-how-n">{String(i + 1).padStart(2, "0")}</span>
                   <div>
-                    <h4>{step.title}</h4>
+                    <h3>{step.title}</h3>
                     <p>{step.body}</p>
                   </div>
                 </div>
@@ -335,7 +337,7 @@ export default function ProductDetailV2() {
               {p.pricing.tiers.map((t) => (
                 <div className={`pd2-pricing-card pd2-reveal ${t.popular ? "is-popular" : ""}`} key={t.name}>
                   {t.popular && <span className="pd2-pricing-tag">Most Popular</span>}
-                  <h4>{t.name}</h4>
+                  <h3>{t.name}</h3>
                   <p className="pd2-pricing-desc">{t.desc}</p>
                   <div className="pd2-pricing-price">{t.price}<span>{t.period}</span></div>
                   <ul>
@@ -486,7 +488,7 @@ export default function ProductDetailV2() {
               <Link to={`/products/${op.slug}`} className="pd2-other-card pd2-reveal" key={op.slug} style={{ "--accent": op.accent }}>
                 <span className="pd2-other-logo"><img src={op.logo} alt="" /></span>
                 <span className="pd2-other-badge">{op.badge}</span>
-                <h4>{op.name}</h4>
+                <h3>{op.name}</h3>
                 <p>{op.tagline}</p>
                 <span className="pd2-other-arrow"><ArrowUpRight size={18} strokeWidth={2} /></span>
               </Link>
@@ -506,6 +508,8 @@ export default function ProductDetailV2() {
           <div className="v2-cta-actions">
             <Link className="v2-btn" to="/contact">Book a demo →</Link></div>
 </CtaSection>
+
+      </main>
 
       <FooterV2 />
     </div>

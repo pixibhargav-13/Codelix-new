@@ -127,6 +127,8 @@ export default function CaseStudyV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
       
       
 
@@ -264,6 +266,8 @@ export default function CaseStudyV2() {
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
+      </main>
+
             <FooterV2 />
     </div>
   );

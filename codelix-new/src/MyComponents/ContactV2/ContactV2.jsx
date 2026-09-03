@@ -163,6 +163,8 @@ export default function ContactV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
       
 
       {/* ══════════ 1 · HERO ══════════ */}
@@ -400,6 +402,8 @@ export default function ContactV2() {
       <FaqSection faqs={FAQS} className="v2-section--void" />
 
       {/* ══════════ FOOTER ══════════ */}
+      </main>
+
             <FooterV2 />
     </div>
   );

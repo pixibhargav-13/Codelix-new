@@ -54,34 +54,34 @@ export default function FooterV2() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h5>India (HQ)</h5>
+          <h3>India (HQ)</h3>
           <p className="v2-footer-card-addr">
             A-1308, PNTC — Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat — 380015
           </p>
         </a>
         <div className="v2-footer-card">
-          <h5>Phone</h5>
+          <h3>Phone</h3>
           <a className="v2-footer-card-strong" href="tel:+919998263282">+91 99982 63282</a>
           <a className="v2-footer-card-strong" href="tel:+917490909686">+91 74909 09686</a>
         </div>
         <div className="v2-footer-card">
-          <h5>Looking For Jobs</h5>
+          <h3>Looking For Jobs</h3>
           <Link className="v2-footer-card-strong" to="/careers">View openings →</Link>
         </div>
         <div className="v2-footer-card">
-          <h5>HR</h5>
+          <h3>HR</h3>
           <a className="v2-footer-card-strong" href="mailto:hr@codelixitsolutions.com">
             hr@codelixitsolutions.com
           </a>
         </div>
         <div className="v2-footer-card">
-          <h5>General</h5>
+          <h3>General</h3>
           <a className="v2-footer-card-strong" href="mailto:info@codelixitsolutions.com">
             info@codelixitsolutions.com
           </a>
         </div>
         <div className="v2-footer-card">
-          <h5>For Sales</h5>
+          <h3>For Sales</h3>
           <a className="v2-footer-card-strong" href="mailto:sales@codelixitsolutions.com">
             sales@codelixitsolutions.com
           </a>

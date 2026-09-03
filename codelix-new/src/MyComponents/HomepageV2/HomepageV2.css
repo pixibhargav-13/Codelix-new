@@ -3911,7 +3911,7 @@
   }
 }
 
-.v2-footer-col h5 {
+.v2-footer-col h3 {
   font-size: 9px;
   font-weight: 600;
   letter-spacing: .16em;
@@ -4074,7 +4074,7 @@
   padding-left: calc(var(--pad-x) + 20px);
 } */
 
-.v2-footer-card h5 {
+.v2-footer-card h3 {
   font-size: 11px;
   font-weight: 600;
   letter-spacing: .1em;

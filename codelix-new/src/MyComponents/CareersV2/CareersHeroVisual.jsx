@@ -25,7 +25,7 @@ export default function CareersHeroVisual() {
 
         {/* Window Body */}
         <div className="chv-pr-body">
-          <h3 className="chv-pr-title">Feature: Client Dashboard Launch</h3>
+          <span className="chv-pr-title">Feature: Client Dashboard Launch</span>
           <div className="chv-pr-meta">
             <div className="chv-avatar you">You</div>
             <span className="chv-meta-text">requested review from</span>

@@ -11,7 +11,7 @@ import { createClient } from "@supabase/supabase-js";
 import { $ as codelixLogo, a0 as projectThree, a1 as projectTwo, a2 as projectOne, a3 as projectFour, a4 as projectFive, a5 as projectSix, a6 as projectSeven, a7 as projectEight, a8 as projectNine, a9 as projectTen, aa as projectEleven, ab as projectThirteen, ac as projectFourteen, ad as projectFifteen, ae as projectTwentyThree, r as reactLogo, n as nextLogo, t as tsLogo, j as jsLogo, b as viteLogo, c as tailwindLogo, d as bootstrapLogo, g as nodeLogo, l as laravelLogo, m as phpLogo, w as postgresqlLogo, u as techMongo, y as techAws, z as dockerLogo, A as figmaLogo, H as webflowLogo, af as erpBillingSync, ag as erpHandoffFlow, B as adobeXdLogo, C as sketchLogo, D as framerLogo, ah as techPhotoshop, E as canvaLogo, p as pythonLogo, ai as techNode, f as flutterLogo, s as swiftLogo, e as androidLogo, i as javaLogo, x as techFirebase, F as shopifyLogo, G as woocommerceLogo, k as springLogo, o as csharpLogo, h as djangoLogo, aj as manasImg, ak as kushalImg, al as logo1, am as logo2, an as logo3, ao as logo4, ap as logo5, a as angularLogo, v as vueLogo, q as nust, I as n8nLogo, J as zapierLogo, K as makeLogo, aq as blogImg1, ar as blogImg2, as as blogImg3 } from "./assets/site-images-DRvRo0sp.js";
 import { FileText, Briefcase, MessageSquareQuote, LogOut, Plus, X, Calendar, ChevronLeft, Clock, CheckCircle2, ChevronRight, PlayCircle, Target, PenTool, Code2, Globe, Smartphone, Cloud, Rocket, Activity, LifeBuoy, CalendarCheck, Lock, Eye, ShoppingCart, Sparkles, BarChart3, Receipt, Users, EyeOff, Unlink, TrendingDown, PhoneOff, Puzzle, Gauge, Search, ShieldCheck, Wrench, Building2, Store, GraduationCap, HeartPulse, Landmark, Check, FileCode2, GitBranch, BookOpen, KeyRound, Palette, Server, Minus, Phone, CloudCog, Plug, Workflow, Bot, CreditCard, RefreshCw, TrendingUp, Database, AlertTriangle, HelpCircle, Paintbrush, MousePointerClick, Users2, Frown, Layers, Monitor, Layout, Network, PieChart, Headphones, Bell, BatteryLow, RefreshCcw, Wifi, Bug, Ban, LayoutGrid, ShoppingBag, PackageSearch, RotateCcw, Shirt, Utensils, FileSpreadsheet, Repeat, AlertOctagon, Factory, Repeat2, FileWarning, MessageSquare, HeartHandshake, CheckCheck, Send, Mail, MapPin, Wallet, Handshake, Cpu, UtensilsCrossed, Building, Plane, XCircle, FileCheck2, Layers3, Timer, ExternalLink, ArrowUpRight, ClipboardList, Linkedin, Compass, MonitorSmartphone, Terminal, GitPullRequest, GitMerge, TestTube, Settings2, LayoutTemplate, ArrowLeft } from "lucide-react";
 import { a as FOOTER_ALL_SERVICES, T as TECH_STACK } from "./assets/site-data-ES8yYkGU.js";
-import { N as NavbarV2, F as FooterV2, i as introWillPlay, s as splitTitleLinesIn, o as onIntroHandoff, P as PageLoader, C as ClientStrip, S as ScrollSentence, a as PRODUCTS, T as TestimonialSpotlight, b as FaqSection, c as CtaSection, d as TechStackShowcaseV2, p as productBySlug, A as ArticleSkeleton } from "./assets/site-shared-Cjyb4VKN.js";
+import { N as NavbarV2, F as FooterV2, i as introWillPlay, s as splitTitleLinesIn, o as onIntroHandoff, P as PageLoader, C as ClientStrip, S as ScrollSentence, a as PRODUCTS, T as TestimonialSpotlight, b as FaqSection, c as CtaSection, d as TechStackShowcaseV2, p as productBySlug, A as ArticleSkeleton } from "./assets/site-shared-BndzqYP6.js";
 const SLUG_NAMES = {
   "about": "About",
   "work": "Our Work",
@@ -1786,7 +1786,7 @@ const NotFound = () => {
     /* @__PURE__ */ jsxs("div", { className: "v2 not-found-page", children: [
       /* @__PURE__ */ jsxs("div", { className: "not-found-hero-section", children: [
         /* @__PURE__ */ jsx(NavbarV2, {}),
-        /* @__PURE__ */ jsxs("div", { className: "not-found-content", children: [
+        /* @__PURE__ */ jsx("main", { children: /* @__PURE__ */ jsxs("div", { className: "not-found-content", children: [
           /* @__PURE__ */ jsx("h1", { className: "not-found-code", children: "404" }),
           /* @__PURE__ */ jsx("h2", { className: "not-found-title", children: "Page Not Found" }),
           /* @__PURE__ */ jsx("p", { className: "not-found-description", children: "Oops! The page you're looking for doesn't exist or has been moved. Let's get you back on track." }),
@@ -1794,7 +1794,7 @@ const NotFound = () => {
             /* @__PURE__ */ jsx(Link, { to: "/", className: "not-found-home-btn", children: "Go to Homepage" }),
             /* @__PURE__ */ jsx(Link, { to: "/contact", className: "not-found-contact-btn", children: "Contact Us" })
           ] })
-        ] })
+        ] }) })
       ] }),
       /* @__PURE__ */ jsx(FooterV2, {})
     ] })
@@ -2555,281 +2555,283 @@ function HomepageV2() {
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx("div", { className: "v2-word-flyer", "aria-hidden": "true", children: DECLARATIONS.map((w, i) => /* @__PURE__ */ jsx("span", { ref: (el) => flyerRefs.current[i] = el, children: w }, w)) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsxs("header", { className: "v2-hero", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-hero-inner", children: [
-        /* @__PURE__ */ jsxs("div", { className: "v2-hero-content-left", children: [
-          /* @__PURE__ */ jsxs("div", { className: "v2-hero-top", children: [
-            /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsxs("header", { className: "v2-hero", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-hero-inner", children: [
+          /* @__PURE__ */ jsxs("div", { className: "v2-hero-content-left", children: [
+            /* @__PURE__ */ jsxs("div", { className: "v2-hero-top", children: [
+              /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+                /* @__PURE__ */ jsx("i", {}),
+                " Available for new projects"
+              ] }),
+              /* @__PURE__ */ jsx("span", { className: "v2-hero-eyebrow", children: "Premium Software Agency" })
+            ] }),
+            /* @__PURE__ */ jsxs("h1", { className: "v2-hero-title", children: [
+              /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "We build" }) }),
+              " ",
+              /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "software that" }) }),
+              " ",
+              /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "actually scales." }) })
+            ] }),
+            /* @__PURE__ */ jsx("p", { className: "v2-hero-sub", children: "Stop rebuilding brittle prototypes. We engineer production-ready web apps, mobile platforms, and enterprise SaaS solutions designed to handle real users." }),
+            /* @__PURE__ */ jsxs("div", { className: "v2-hero-cta", children: [
+              /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+                /* @__PURE__ */ jsx("span", { children: "Start a project" }),
+                /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+              ] }),
+              /* @__PURE__ */ jsxs("a", { className: "v2-hero-secondary", href: "#work", children: [
+                /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-icon", children: /* @__PURE__ */ jsx(PlayCircle, { size: 17, strokeWidth: 1.6 }) }),
+                /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "See our work" })
+              ] })
+            ] }),
+            /* @__PURE__ */ jsx("div", { className: "v2-hero-words", children: DECLARATIONS.map((w, i) => /* @__PURE__ */ jsx("span", { ref: (el) => heroWordRefs.current[i] = el, children: w }, w)) })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-content-right", children: /* @__PURE__ */ jsx(HeroVisual, {}) })
+        ] }),
+        /* @__PURE__ */ jsxs("a", { className: "v2-hero-scroll", href: "#work", "aria-label": "Scroll to work", children: [
+          /* @__PURE__ */ jsx("span", { children: "Scroll" }),
+          /* @__PURE__ */ jsx("i", {})
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx("section", { className: "v2-section v2-section--gallery v2-wr-pin", children: /* @__PURE__ */ jsxs("div", { style: { width: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }, children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-wr-intro", style: { textAlign: "center", marginLeft: "auto", marginRight: "auto" }, children: [
+          /* @__PURE__ */ jsx("p", { className: "v2-wr-intro-label", children: "Our Philosophy" }),
+          /* @__PURE__ */ jsx("h2", { className: "v2-wr-intro-heading", children: "Great software isn't just written. It's engineered." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-wr", children: STATEMENTS.map((s, i) => /* @__PURE__ */ jsxs("div", { className: "v2-wr-col", children: [
+          /* @__PURE__ */ jsx("h2", { className: "v2-wr-label", ref: (el) => wrLabelRefs.current[i] = el, children: s.label }),
+          /* @__PURE__ */ jsx("p", { className: "v2-wr-body", children: s.body })
+        ] }, s.label)) })
+      ] }) }),
+      /* @__PURE__ */ jsx(ClientStrip, {}),
+      /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "method", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
+          /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "Our Method." }),
+          /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Every engagement starts the same way — not with a proposal template, but with figuring out what your business actually needs before anything gets built." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: METHOD$1.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
+          /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
+            /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
+        ] }, m.n)) })
+      ] }),
+      /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE_ONE, tone: "dark" }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "work", ref: workSectionRef, children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
+          /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "Selected Work." }),
+          /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Forty projects delivered across society management, enterprise ERP, commerce, and marketplaces." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "v2-method-rows", children: [
+          WORK.map((w) => /* @__PURE__ */ jsxs(
+            "div",
+            {
+              className: "v2-work-row",
+              "data-thumb": w.thumb,
+              onClick: () => navigate(w.link),
+              children: [
+                /* @__PURE__ */ jsx("div", { className: "v2-work-index", children: w.n }),
+                /* @__PURE__ */ jsxs("div", { children: [
+                  /* @__PURE__ */ jsx("div", { className: "v2-work-tag", children: w.tag }),
+                  /* @__PURE__ */ jsx("div", { className: "v2-work-title", children: w.title })
+                ] }),
+                /* @__PURE__ */ jsx("div", { className: "v2-work-arrow", children: "→" })
+              ]
+            },
+            w.n
+          )),
+          /* @__PURE__ */ jsx("div", { className: "v2-work-more", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/work", children: "View all work →" }) })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-work-preview", ref: workPreviewRef, "aria-hidden": "true", children: /* @__PURE__ */ jsx("img", { alt: "", ref: workPreviewImgRef }) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-method-shell v2-pipe-shell", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-method-head v2-pipe-head", children: [
+          /* @__PURE__ */ jsx("p", { className: "v2-pipe-eyebrow", children: "From Brief To Launch" }),
+          /* @__PURE__ */ jsx("h2", { className: "v2-pipe-heading", children: "How We Ship." }),
+          /* @__PURE__ */ jsx("p", { className: "v2-pipe-lede", children: "Every qualified project moves the same way. One process that scopes, designs, builds, and ships without cutting a stage short." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-method-rows v2-pipe-rows", children: /* @__PURE__ */ jsxs("div", { className: "v2-pipe-console", children: [
+          /* @__PURE__ */ jsxs("div", { className: "v2-pipe-console-bar", children: [
+            /* @__PURE__ */ jsxs("span", { className: "v2-pipe-console-dots", "aria-hidden": "true", children: [
               /* @__PURE__ */ jsx("i", {}),
-              " Available for new projects"
+              /* @__PURE__ */ jsx("i", {}),
+              /* @__PURE__ */ jsx("i", {})
             ] }),
-            /* @__PURE__ */ jsx("span", { className: "v2-hero-eyebrow", children: "Premium Software Agency" })
-          ] }),
-          /* @__PURE__ */ jsxs("h1", { className: "v2-hero-title", children: [
-            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "We build" }) }),
-            " ",
-            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "software that" }) }),
-            " ",
-            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "actually scales." }) })
-          ] }),
-          /* @__PURE__ */ jsx("p", { className: "v2-hero-sub", children: "Stop rebuilding brittle prototypes. We engineer production-ready web apps, mobile platforms, and enterprise SaaS solutions designed to handle real users." }),
-          /* @__PURE__ */ jsxs("div", { className: "v2-hero-cta", children: [
-            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-              /* @__PURE__ */ jsx("span", { children: "Start a project" }),
-              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
-            ] }),
-            /* @__PURE__ */ jsxs("a", { className: "v2-hero-secondary", href: "#work", children: [
-              /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-icon", children: /* @__PURE__ */ jsx(PlayCircle, { size: 17, strokeWidth: 1.6 }) }),
-              /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "See our work" })
+            /* @__PURE__ */ jsx("span", { className: "v2-pipe-console-title", children: "how-we-ship.sh" }),
+            /* @__PURE__ */ jsxs("span", { className: "v2-pipe-console-live", children: [
+              /* @__PURE__ */ jsx("i", { className: "v2-pipe-console-live-dot", "aria-hidden": "true" }),
+              "running"
             ] })
           ] }),
-          /* @__PURE__ */ jsx("div", { className: "v2-hero-words", children: DECLARATIONS.map((w, i) => /* @__PURE__ */ jsx("span", { ref: (el) => heroWordRefs.current[i] = el, children: w }, w)) })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-content-right", children: /* @__PURE__ */ jsx(HeroVisual, {}) })
-      ] }),
-      /* @__PURE__ */ jsxs("a", { className: "v2-hero-scroll", href: "#work", "aria-label": "Scroll to work", children: [
-        /* @__PURE__ */ jsx("span", { children: "Scroll" }),
-        /* @__PURE__ */ jsx("i", {})
-      ] })
-    ] }),
-    /* @__PURE__ */ jsx("section", { className: "v2-section v2-section--gallery v2-wr-pin", children: /* @__PURE__ */ jsxs("div", { style: { width: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }, children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-wr-intro", style: { textAlign: "center", marginLeft: "auto", marginRight: "auto" }, children: [
-        /* @__PURE__ */ jsx("p", { className: "v2-wr-intro-label", children: "Our Philosophy" }),
-        /* @__PURE__ */ jsx("h2", { className: "v2-wr-intro-heading", children: "Great software isn't just written. It's engineered." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-wr", children: STATEMENTS.map((s, i) => /* @__PURE__ */ jsxs("div", { className: "v2-wr-col", children: [
-        /* @__PURE__ */ jsx("h2", { className: "v2-wr-label", ref: (el) => wrLabelRefs.current[i] = el, children: s.label }),
-        /* @__PURE__ */ jsx("p", { className: "v2-wr-body", children: s.body })
-      ] }, s.label)) })
-    ] }) }),
-    /* @__PURE__ */ jsx(ClientStrip, {}),
-    /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "method", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
-        /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "Our Method." }),
-        /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Every engagement starts the same way — not with a proposal template, but with figuring out what your business actually needs before anything gets built." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: METHOD$1.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
-        /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
-          /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
-      ] }, m.n)) })
-    ] }),
-    /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE_ONE, tone: "dark" }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "work", ref: workSectionRef, children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
-        /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "Selected Work." }),
-        /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Forty projects delivered across society management, enterprise ERP, commerce, and marketplaces." })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "v2-method-rows", children: [
-        WORK.map((w) => /* @__PURE__ */ jsxs(
-          "div",
-          {
-            className: "v2-work-row",
-            "data-thumb": w.thumb,
-            onClick: () => navigate(w.link),
-            children: [
-              /* @__PURE__ */ jsx("div", { className: "v2-work-index", children: w.n }),
-              /* @__PURE__ */ jsxs("div", { children: [
-                /* @__PURE__ */ jsx("div", { className: "v2-work-tag", children: w.tag }),
-                /* @__PURE__ */ jsx("div", { className: "v2-work-title", children: w.title })
+          /* @__PURE__ */ jsxs("div", { className: "v2-pipe-scroll", children: [
+            /* @__PURE__ */ jsx("div", { className: "v2-pipe-rail", children: PIPELINE.map((n, i) => /* @__PURE__ */ jsxs(React.Fragment, { children: [
+              /* @__PURE__ */ jsxs("div", { className: `v2-pipe-node ${n.highlight ? "is-highlight" : ""}`, children: [
+                /* @__PURE__ */ jsx("span", { className: "v2-pipe-step", children: String(i + 1).padStart(2, "0") }),
+                /* @__PURE__ */ jsxs("span", { className: "v2-pipe-label", children: [
+                  /* @__PURE__ */ jsx("span", { className: "v2-pipe-icon", children: /* @__PURE__ */ jsx(n.icon, { size: 15, strokeWidth: 1.8 }) }),
+                  /* @__PURE__ */ jsx("span", { className: "v2-pipe-name", children: n.label })
+                ] }),
+                /* @__PURE__ */ jsx("p", { className: "v2-pipe-body", children: n.body })
               ] }),
-              /* @__PURE__ */ jsx("div", { className: "v2-work-arrow", children: "→" })
-            ]
-          },
-          w.n
-        )),
-        /* @__PURE__ */ jsx("div", { className: "v2-work-more", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/work", children: "View all work →" }) })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-work-preview", ref: workPreviewRef, "aria-hidden": "true", children: /* @__PURE__ */ jsx("img", { alt: "", ref: workPreviewImgRef }) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-method-shell v2-pipe-shell", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-method-head v2-pipe-head", children: [
-        /* @__PURE__ */ jsx("p", { className: "v2-pipe-eyebrow", children: "From Brief To Launch" }),
-        /* @__PURE__ */ jsx("h2", { className: "v2-pipe-heading", children: "How We Ship." }),
-        /* @__PURE__ */ jsx("p", { className: "v2-pipe-lede", children: "Every qualified project moves the same way. One process that scopes, designs, builds, and ships without cutting a stage short." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-method-rows v2-pipe-rows", children: /* @__PURE__ */ jsxs("div", { className: "v2-pipe-console", children: [
-        /* @__PURE__ */ jsxs("div", { className: "v2-pipe-console-bar", children: [
-          /* @__PURE__ */ jsxs("span", { className: "v2-pipe-console-dots", "aria-hidden": "true", children: [
-            /* @__PURE__ */ jsx("i", {}),
-            /* @__PURE__ */ jsx("i", {}),
-            /* @__PURE__ */ jsx("i", {})
-          ] }),
-          /* @__PURE__ */ jsx("span", { className: "v2-pipe-console-title", children: "how-we-ship.sh" }),
-          /* @__PURE__ */ jsxs("span", { className: "v2-pipe-console-live", children: [
-            /* @__PURE__ */ jsx("i", { className: "v2-pipe-console-live-dot", "aria-hidden": "true" }),
-            "running"
+              i < PIPELINE.length - 1 && /* @__PURE__ */ jsxs("div", { className: "v2-pipe-connector", "aria-hidden": "true", children: [
+                /* @__PURE__ */ jsx("span", { className: "v2-pipe-track" }),
+                /* @__PURE__ */ jsx("span", { className: "v2-pipe-arrow", children: "→" })
+              ] })
+            ] }, n.label)) }),
+            PIPELINE.filter((n) => n.branch).map((n) => /* @__PURE__ */ jsxs("div", { className: "v2-pipe-fork", children: [
+              /* @__PURE__ */ jsx("span", { className: "v2-pipe-fork-connector", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", { className: "v2-pipe-fork-connector-track" }) }),
+              /* @__PURE__ */ jsx("span", { className: "v2-pipe-fork-label", children: "Ships to three destinations at once" }),
+              /* @__PURE__ */ jsx("div", { className: "v2-pipe-fork-row", children: n.channels.map((c) => /* @__PURE__ */ jsxs("div", { className: "v2-pipe-node v2-pipe-node--mini", children: [
+                /* @__PURE__ */ jsxs("span", { className: "v2-pipe-label", children: [
+                  /* @__PURE__ */ jsx("span", { className: "v2-pipe-icon", children: /* @__PURE__ */ jsx(c.icon, { size: 13, strokeWidth: 1.8 }) }),
+                  /* @__PURE__ */ jsx("span", { className: "v2-pipe-name", children: c.label })
+                ] }),
+                /* @__PURE__ */ jsx("p", { className: "v2-pipe-body", children: c.body })
+              ] }, c.label)) })
+            ] }, n.label))
           ] })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: "v2-pipe-scroll", children: [
-          /* @__PURE__ */ jsx("div", { className: "v2-pipe-rail", children: PIPELINE.map((n, i) => /* @__PURE__ */ jsxs(React.Fragment, { children: [
-            /* @__PURE__ */ jsxs("div", { className: `v2-pipe-node ${n.highlight ? "is-highlight" : ""}`, children: [
-              /* @__PURE__ */ jsx("span", { className: "v2-pipe-step", children: String(i + 1).padStart(2, "0") }),
-              /* @__PURE__ */ jsxs("span", { className: "v2-pipe-label", children: [
-                /* @__PURE__ */ jsx("span", { className: "v2-pipe-icon", children: /* @__PURE__ */ jsx(n.icon, { size: 15, strokeWidth: 1.8 }) }),
-                /* @__PURE__ */ jsx("span", { className: "v2-pipe-name", children: n.label })
-              ] }),
-              /* @__PURE__ */ jsx("p", { className: "v2-pipe-body", children: n.body })
-            ] }),
-            i < PIPELINE.length - 1 && /* @__PURE__ */ jsxs("div", { className: "v2-pipe-connector", "aria-hidden": "true", children: [
-              /* @__PURE__ */ jsx("span", { className: "v2-pipe-track" }),
-              /* @__PURE__ */ jsx("span", { className: "v2-pipe-arrow", children: "→" })
+        ] }) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-map", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-map-header", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("div", { className: "v2-map-label", children: "What We Build" }),
+            /* @__PURE__ */ jsxs("h2", { className: "v2-map-headline", children: [
+              "Eight ways we build,",
+              /* @__PURE__ */ jsx("br", {}),
+              "all already shipped."
             ] })
-          ] }, n.label)) }),
-          PIPELINE.filter((n) => n.branch).map((n) => /* @__PURE__ */ jsxs("div", { className: "v2-pipe-fork", children: [
-            /* @__PURE__ */ jsx("span", { className: "v2-pipe-fork-connector", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", { className: "v2-pipe-fork-connector-track" }) }),
-            /* @__PURE__ */ jsx("span", { className: "v2-pipe-fork-label", children: "Ships to three destinations at once" }),
-            /* @__PURE__ */ jsx("div", { className: "v2-pipe-fork-row", children: n.channels.map((c) => /* @__PURE__ */ jsxs("div", { className: "v2-pipe-node v2-pipe-node--mini", children: [
-              /* @__PURE__ */ jsxs("span", { className: "v2-pipe-label", children: [
-                /* @__PURE__ */ jsx("span", { className: "v2-pipe-icon", children: /* @__PURE__ */ jsx(c.icon, { size: 13, strokeWidth: 1.8 }) }),
-                /* @__PURE__ */ jsx("span", { className: "v2-pipe-name", children: c.label })
-              ] }),
-              /* @__PURE__ */ jsx("p", { className: "v2-pipe-body", children: c.body })
-            ] }, c.label)) })
-          ] }, n.label))
-        ] })
-      ] }) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-map", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-map-header", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("div", { className: "v2-map-label", children: "What We Build" }),
-          /* @__PURE__ */ jsxs("h2", { className: "v2-map-headline", children: [
-            "Eight ways we build,",
-            /* @__PURE__ */ jsx("br", {}),
-            "all already shipped."
-          ] })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-map-body", children: "Each one maps to work we have already shipped. You don't need to know which belongs in your business before you talk to us — that's what the first call is for." }),
-          /* @__PURE__ */ jsx(Link, { className: "v2-map-link", to: "/work", children: "See the case studies →" })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-map-scroll", children: /* @__PURE__ */ jsx("div", { className: "v2-map-track", children: SYSTEMS.map((s) => /* @__PURE__ */ jsxs(Link, { className: "v2-map-card", to: "/work", children: [
-        /* @__PURE__ */ jsx("span", { className: "v2-map-id", children: s.id }),
-        /* @__PURE__ */ jsx("span", { className: "v2-map-cluster", children: s.cluster }),
-        /* @__PURE__ */ jsx("h4", { className: "v2-map-title", children: s.title }),
-        /* @__PURE__ */ jsx("p", { className: "v2-map-reality", children: s.reality })
-      ] }, s.id)) }) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Stack" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Built on tools we trust in production." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No experimental dependencies on client work — a proven stack across front-end, mobile, back-end, data, and cloud." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: TECH_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
-        /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
-        /* @__PURE__ */ jsx("span", { children: t.name })
-      ] }, t.name)) })
-    ] }),
-    /* @__PURE__ */ jsx("section", { className: "v2-section v2-stats-section", children: /* @__PURE__ */ jsx("div", { className: "v2-stats", children: STATS$8.map((s) => /* @__PURE__ */ jsxs("div", { className: "v2-stat", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-stat-num", children: [
-        /* @__PURE__ */ jsx("span", { className: "v2-stat-value", "data-target": s.value, children: "0" }),
-        /* @__PURE__ */ jsx("span", { className: "v2-stat-suffix", children: s.suffix })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-stat-label", children: s.label })
-    ] }, s.label)) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-method-shell v2-services-section", id: "services", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
-        /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "What We Provide." }),
-        /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Eight services, one delivery standard — the same process, discipline, and ownership handoff on every engagement." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-services-grid", children: SERVICES$1.map((s, idx) => /* @__PURE__ */ jsxs("div", { className: `v2-svc-card v2-svc-card-${idx + 1}`, onClick: () => navigate(s.link), children: [
-        /* @__PURE__ */ jsx("div", { className: "v2-svc-glow" }),
-        /* @__PURE__ */ jsxs("div", { className: "v2-svc-content", children: [
-          /* @__PURE__ */ jsxs("div", { className: "v2-svc-head", children: [
-            /* @__PURE__ */ jsx("span", { className: "v2-svc-num", children: s.n }),
-            /* @__PURE__ */ jsx("span", { className: "v2-svc-tag", children: s.tag })
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "v2-svc-bottom", children: [
-            /* @__PURE__ */ jsxs("div", { className: "v2-svc-text", children: [
-              /* @__PURE__ */ jsx("h3", { className: "v2-svc-title", children: s.title }),
-              s.items && /* @__PURE__ */ jsx("ul", { className: "v2-svc-sublist", children: s.items.map((sub, i) => /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsxs(
-                "span",
-                {
-                  className: "v2-svc-sublink",
-                  onClick: (e) => {
-                    e.stopPropagation();
-                    navigate(sub.path);
-                  },
-                  style: { display: "inline-flex", alignItems: "center", textAlign: "left" },
-                  children: [
-                    /* @__PURE__ */ jsx("span", { children: sub.label }),
-                    /* @__PURE__ */ jsx("span", { style: { opacity: 0.4, fontSize: "0.9em", marginLeft: "8px" }, children: "→" })
-                  ]
-                }
-              ) }, i)) })
-            ] }),
-            /* @__PURE__ */ jsx("div", { className: "v2-svc-arrow", children: "→" })
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-map-body", children: "Each one maps to work we have already shipped. You don't need to know which belongs in your business before you talk to us — that's what the first call is for." }),
+            /* @__PURE__ */ jsx(Link, { className: "v2-map-link", to: "/work", children: "See the case studies →" })
           ] })
-        ] })
-      ] }, s.n)) }),
-      /* @__PURE__ */ jsx("div", { className: "v2-work-more", style: { marginTop: "48px", paddingBottom: "0" }, children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/services", children: "View all services →" }) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-products-section", id: "products", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Products" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Beyond client work — products we build and run ourselves." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Three SaaS products, live in the market, engineered with the same craft we bring to every client project." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-products-grid", children: PRODUCTS.map((p) => /* @__PURE__ */ jsxs(Link, { to: `/products/${p.slug}`, className: "v2-product-card", style: { "--accent": p.accent }, children: [
-        /* @__PURE__ */ jsx("span", { className: "v2-product-card-logo", children: /* @__PURE__ */ jsx("img", { src: p.logo, alt: "" }) }),
-        /* @__PURE__ */ jsx("span", { className: "v2-product-card-badge", children: p.badge }),
-        /* @__PURE__ */ jsx("h3", { className: "v2-product-card-name", children: p.name }),
-        /* @__PURE__ */ jsx("p", { className: "v2-product-card-tagline", children: p.tagline }),
-        /* @__PURE__ */ jsx("div", { className: "v2-product-card-stats", children: p.stats.slice(0, 2).map((s) => /* @__PURE__ */ jsxs("span", { children: [
-          /* @__PURE__ */ jsx("b", { children: s.value }),
-          s.label
-        ] }, s.label)) }),
-        /* @__PURE__ */ jsxs("span", { className: "v2-product-card-cta", children: [
-          "Explore ",
-          p.name,
-          " ",
-          /* @__PURE__ */ jsx("i", { children: "→" })
-        ] })
-      ] }, p.slug)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void v2-principles-section", id: "principles", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three commitments that govern every project we take." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-principles-grid", children: PRINCIPLES$b.map((p) => /* @__PURE__ */ jsxs("div", { className: "v2-principle", children: [
-        /* @__PURE__ */ jsx("div", { className: "v2-principle-icon", children: /* @__PURE__ */ jsx(p.icon, {}) }),
-        /* @__PURE__ */ jsx("div", { className: "v2-principle-key", children: p.key }),
-        /* @__PURE__ */ jsx("div", { className: "v2-principle-claim", children: p.claim }),
-        /* @__PURE__ */ jsx("div", { className: "v2-principle-body", children: p.body })
-      ] }, p.key)) })
-    ] }),
-    /* @__PURE__ */ jsx(
-      TestimonialSpotlight,
-      {
-        testimonials: TESTIMONIALS2,
-        heading: "What clients say once we ship.",
-        stats: [
-          { num: "40+", label: "Companies trust us" },
-          { num: "11", label: "Industries served" },
-          { num: "100%", label: "Source code ownership" }
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE_TWO, tone: "light" }),
-    /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$h }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Bring us the problem.",
-        /* @__PURE__ */ jsx("br", {}),
-        /* @__PURE__ */ jsx("span", { className: "v2-cta-accent", children: "We'll bring back a scoped plan." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-map-scroll", children: /* @__PURE__ */ jsx("div", { className: "v2-map-track", children: SYSTEMS.map((s) => /* @__PURE__ */ jsxs(Link, { className: "v2-map-card", to: "/work", children: [
+          /* @__PURE__ */ jsx("span", { className: "v2-map-id", children: s.id }),
+          /* @__PURE__ */ jsx("span", { className: "v2-map-cluster", children: s.cluster }),
+          /* @__PURE__ */ jsx("h3", { className: "v2-map-title", children: s.title }),
+          /* @__PURE__ */ jsx("p", { className: "v2-map-reality", children: s.reality })
+        ] }, s.id)) }) })
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your product — your users, your workflows, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) }),
-      /* @__PURE__ */ jsxs("div", { className: "v2-cta-badges", children: [
-        /* @__PURE__ */ jsx("span", { className: "v2-cta-badge", children: "Free consultation" }),
-        /* @__PURE__ */ jsx("span", { className: "v2-cta-badge", children: "NDA on request" }),
-        /* @__PURE__ */ jsx("span", { className: "v2-cta-badge", children: "No obligation" })
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Stack" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Built on tools we trust in production." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No experimental dependencies on client work — a proven stack across front-end, mobile, back-end, data, and cloud." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: TECH_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
+          /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
+          /* @__PURE__ */ jsx("span", { children: t.name })
+        ] }, t.name)) })
+      ] }),
+      /* @__PURE__ */ jsx("section", { className: "v2-section v2-stats-section", children: /* @__PURE__ */ jsx("div", { className: "v2-stats", children: STATS$8.map((s) => /* @__PURE__ */ jsxs("div", { className: "v2-stat", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-stat-num", children: [
+          /* @__PURE__ */ jsx("span", { className: "v2-stat-value", "data-target": s.value, children: "0" }),
+          /* @__PURE__ */ jsx("span", { className: "v2-stat-suffix", children: s.suffix })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-stat-label", children: s.label })
+      ] }, s.label)) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-method-shell v2-services-section", id: "services", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
+          /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "What We Provide." }),
+          /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Eight services, one delivery standard — the same process, discipline, and ownership handoff on every engagement." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-services-grid", children: SERVICES$1.map((s, idx) => /* @__PURE__ */ jsxs("div", { className: `v2-svc-card v2-svc-card-${idx + 1}`, onClick: () => navigate(s.link), children: [
+          /* @__PURE__ */ jsx("div", { className: "v2-svc-glow" }),
+          /* @__PURE__ */ jsxs("div", { className: "v2-svc-content", children: [
+            /* @__PURE__ */ jsxs("div", { className: "v2-svc-head", children: [
+              /* @__PURE__ */ jsx("span", { className: "v2-svc-num", children: s.n }),
+              /* @__PURE__ */ jsx("span", { className: "v2-svc-tag", children: s.tag })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "v2-svc-bottom", children: [
+              /* @__PURE__ */ jsxs("div", { className: "v2-svc-text", children: [
+                /* @__PURE__ */ jsx("h3", { className: "v2-svc-title", children: s.title }),
+                s.items && /* @__PURE__ */ jsx("ul", { className: "v2-svc-sublist", children: s.items.map((sub, i) => /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsxs(
+                  "span",
+                  {
+                    className: "v2-svc-sublink",
+                    onClick: (e) => {
+                      e.stopPropagation();
+                      navigate(sub.path);
+                    },
+                    style: { display: "inline-flex", alignItems: "center", textAlign: "left" },
+                    children: [
+                      /* @__PURE__ */ jsx("span", { children: sub.label }),
+                      /* @__PURE__ */ jsx("span", { style: { opacity: 0.4, fontSize: "0.9em", marginLeft: "8px" }, children: "→" })
+                    ]
+                  }
+                ) }, i)) })
+              ] }),
+              /* @__PURE__ */ jsx("div", { className: "v2-svc-arrow", children: "→" })
+            ] })
+          ] })
+        ] }, s.n)) }),
+        /* @__PURE__ */ jsx("div", { className: "v2-work-more", style: { marginTop: "48px", paddingBottom: "0" }, children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/services", children: "View all services →" }) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-products-section", id: "products", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Products" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Beyond client work — products we build and run ourselves." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Three SaaS products, live in the market, engineered with the same craft we bring to every client project." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-products-grid", children: PRODUCTS.map((p) => /* @__PURE__ */ jsxs(Link, { to: `/products/${p.slug}`, className: "v2-product-card", style: { "--accent": p.accent }, children: [
+          /* @__PURE__ */ jsx("span", { className: "v2-product-card-logo", children: /* @__PURE__ */ jsx("img", { src: p.logo, alt: "" }) }),
+          /* @__PURE__ */ jsx("span", { className: "v2-product-card-badge", children: p.badge }),
+          /* @__PURE__ */ jsx("h3", { className: "v2-product-card-name", children: p.name }),
+          /* @__PURE__ */ jsx("p", { className: "v2-product-card-tagline", children: p.tagline }),
+          /* @__PURE__ */ jsx("div", { className: "v2-product-card-stats", children: p.stats.slice(0, 2).map((s) => /* @__PURE__ */ jsxs("span", { children: [
+            /* @__PURE__ */ jsx("b", { children: s.value }),
+            s.label
+          ] }, s.label)) }),
+          /* @__PURE__ */ jsxs("span", { className: "v2-product-card-cta", children: [
+            "Explore ",
+            p.name,
+            " ",
+            /* @__PURE__ */ jsx("i", { children: "→" })
+          ] })
+        ] }, p.slug)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void v2-principles-section", id: "principles", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three commitments that govern every project we take." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-principles-grid", children: PRINCIPLES$b.map((p) => /* @__PURE__ */ jsxs("div", { className: "v2-principle", children: [
+          /* @__PURE__ */ jsx("div", { className: "v2-principle-icon", children: /* @__PURE__ */ jsx(p.icon, {}) }),
+          /* @__PURE__ */ jsx("div", { className: "v2-principle-key", children: p.key }),
+          /* @__PURE__ */ jsx("div", { className: "v2-principle-claim", children: p.claim }),
+          /* @__PURE__ */ jsx("div", { className: "v2-principle-body", children: p.body })
+        ] }, p.key)) })
+      ] }),
+      /* @__PURE__ */ jsx(
+        TestimonialSpotlight,
+        {
+          testimonials: TESTIMONIALS2,
+          heading: "What clients say once we ship.",
+          stats: [
+            { num: "40+", label: "Companies trust us" },
+            { num: "11", label: "Industries served" },
+            { num: "100%", label: "Source code ownership" }
+          ]
+        }
+      ),
+      /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE_TWO, tone: "light" }),
+      /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$h }),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Bring us the problem.",
+          /* @__PURE__ */ jsx("br", {}),
+          /* @__PURE__ */ jsx("span", { className: "v2-cta-accent", children: "We'll bring back a scoped plan." })
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your product — your users, your workflows, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) }),
+        /* @__PURE__ */ jsxs("div", { className: "v2-cta-badges", children: [
+          /* @__PURE__ */ jsx("span", { className: "v2-cta-badge", children: "Free consultation" }),
+          /* @__PURE__ */ jsx("span", { className: "v2-cta-badge", children: "NDA on request" }),
+          /* @__PURE__ */ jsx("span", { className: "v2-cta-badge", children: "No obligation" })
+        ] })
       ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
@@ -3309,175 +3311,177 @@ function ServicesV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sv2-hero", children: /* @__PURE__ */ jsx("div", { className: "sv2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sv2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sv2-hero-left", children: [
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " Seven services · One delivery standard"
-        ] }) }),
-        /* @__PURE__ */ jsxs("h1", { className: "sv2-hero-title sv2-hero-reveal", children: [
-          "Everything we build,",
-          /* @__PURE__ */ jsx("br", {}),
-          /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "and how we build it." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "sv2-hero-sub sv2-hero-reveal", children: "Whether it's a landing page or a full platform — we handle web, mobile, design, e-commerce, custom software, AI, and data analytics. Same team, same process, same handoff every time." }),
-        /* @__PURE__ */ jsxs("div", { className: "sv2-hero-cta sv2-hero-reveal", children: [
-          /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-            /* @__PURE__ */ jsx("span", { children: "Get a free quote" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sv2-hero", children: /* @__PURE__ */ jsx("div", { className: "sv2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sv2-hero-main", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sv2-hero-left", children: [
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " Seven services · One delivery standard"
+          ] }) }),
+          /* @__PURE__ */ jsxs("h1", { className: "sv2-hero-title sv2-hero-reveal", children: [
+            "Everything we build,",
+            /* @__PURE__ */ jsx("br", {}),
+            /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "and how we build it." })
           ] }),
-          /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#services", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Browse services" }) })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "sv2-hero-right sv2-hero-reveal", children: /* @__PURE__ */ jsx(ServicesHeroVisual, {}) })
-    ] }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "services", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
-        /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "What We Provide." }),
-        /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Seven things we do well. Most projects use a few of them together." })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sv2-svc-showcase", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sv2-svc-nav", role: "tablist", "aria-label": "What we provide", children: [
-          /* @__PURE__ */ jsx(
-            "span",
-            {
-              className: "sv2-svc-nav-indicator",
-              style: { transform: `translateY(${svcActive * 100}%)` },
-              "aria-hidden": "true"
-            }
-          ),
-          SERVICES.map((s, i) => /* @__PURE__ */ jsxs("div", { className: "sv2-svc-navitem", children: [
-            /* @__PURE__ */ jsxs(
-              "button",
+          /* @__PURE__ */ jsx("p", { className: "sv2-hero-sub sv2-hero-reveal", children: "Whether it's a landing page or a full platform — we handle web, mobile, design, e-commerce, custom software, AI, and data analytics. Same team, same process, same handoff every time." }),
+          /* @__PURE__ */ jsxs("div", { className: "sv2-hero-cta sv2-hero-reveal", children: [
+            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+              /* @__PURE__ */ jsx("span", { children: "Get a free quote" }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+            ] }),
+            /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#services", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Browse services" }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "sv2-hero-right sv2-hero-reveal", children: /* @__PURE__ */ jsx(ServicesHeroVisual, {}) })
+      ] }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "services", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
+          /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "What We Provide." }),
+          /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Seven things we do well. Most projects use a few of them together." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sv2-svc-showcase", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sv2-svc-nav", role: "tablist", "aria-label": "What we provide", children: [
+            /* @__PURE__ */ jsx(
+              "span",
               {
-                type: "button",
-                role: "tab",
-                "aria-selected": svcActive === i,
-                className: `sv2-svc-tab ${svcActive === i ? "is-active" : ""}`,
-                onMouseEnter: () => setSvcActive(i),
-                onFocus: () => setSvcActive(i),
-                onClick: (e) => {
-                  setSvcActive(i);
-                  scrollServiceIntoView(e.currentTarget);
-                },
-                children: [
-                  /* @__PURE__ */ jsx("span", { className: "sv2-svc-tab-n", children: s.n }),
-                  /* @__PURE__ */ jsx("span", { className: "sv2-svc-tab-title", children: s.title }),
-                  /* @__PURE__ */ jsx("span", { className: "sv2-svc-tab-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 16, strokeWidth: 1.6 }) })
-                ]
+                className: "sv2-svc-nav-indicator",
+                style: { transform: `translateY(${svcActive * 100}%)` },
+                "aria-hidden": "true"
               }
             ),
-            /* @__PURE__ */ jsx("div", { className: `sv2-svc-mobile-body ${svcActive === i ? "is-open" : ""}`, children: /* @__PURE__ */ jsxs("div", { className: "sv2-svc-mobile-body-inner", children: [
-              /* @__PURE__ */ jsx("p", { className: "sv2-svc-mobile-body-text", children: s.body }),
-              /* @__PURE__ */ jsx("ul", { className: "sv2-caps sv2-svc-mobile-caps", children: s.capabilities.map((c) => /* @__PURE__ */ jsx("li", { children: c.path ? /* @__PURE__ */ jsx(Link, { to: c.path, style: { color: "inherit", textDecoration: "none" }, children: c.label }) : c.label }, c.label)) }),
-              /* @__PURE__ */ jsxs(Link, { className: "sv2-service-link", to: s.path, children: [
-                /* @__PURE__ */ jsx("span", { children: "Explore" }),
-                /* @__PURE__ */ jsx("i", { children: "→" })
-              ] })
-            ] }) })
-          ] }, s.n))
+            SERVICES.map((s, i) => /* @__PURE__ */ jsxs("div", { className: "sv2-svc-navitem", children: [
+              /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  type: "button",
+                  role: "tab",
+                  "aria-selected": svcActive === i,
+                  className: `sv2-svc-tab ${svcActive === i ? "is-active" : ""}`,
+                  onMouseEnter: () => setSvcActive(i),
+                  onFocus: () => setSvcActive(i),
+                  onClick: (e) => {
+                    setSvcActive(i);
+                    scrollServiceIntoView(e.currentTarget);
+                  },
+                  children: [
+                    /* @__PURE__ */ jsx("span", { className: "sv2-svc-tab-n", children: s.n }),
+                    /* @__PURE__ */ jsx("span", { className: "sv2-svc-tab-title", children: s.title }),
+                    /* @__PURE__ */ jsx("span", { className: "sv2-svc-tab-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 16, strokeWidth: 1.6 }) })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ jsx("div", { className: `sv2-svc-mobile-body ${svcActive === i ? "is-open" : ""}`, children: /* @__PURE__ */ jsxs("div", { className: "sv2-svc-mobile-body-inner", children: [
+                /* @__PURE__ */ jsx("p", { className: "sv2-svc-mobile-body-text", children: s.body }),
+                /* @__PURE__ */ jsx("ul", { className: "sv2-caps sv2-svc-mobile-caps", children: s.capabilities.map((c) => /* @__PURE__ */ jsx("li", { children: c.path ? /* @__PURE__ */ jsx(Link, { to: c.path, style: { color: "inherit", textDecoration: "none" }, children: c.label }) : c.label }, c.label)) }),
+                /* @__PURE__ */ jsxs(Link, { className: "sv2-service-link", to: s.path, children: [
+                  /* @__PURE__ */ jsx("span", { children: "Explore" }),
+                  /* @__PURE__ */ jsx("i", { children: "→" })
+                ] })
+              ] }) })
+            ] }, s.n))
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sv2-svc-stage", children: SERVICES.map((s, i) => /* @__PURE__ */ jsxs(
+            "div",
+            {
+              className: `sv2-svc-panel ${svcActive === i ? "is-active" : ""}`,
+              "aria-hidden": svcActive !== i,
+              children: [
+                /* @__PURE__ */ jsx("span", { className: "sv2-svc-panel-glow", "aria-hidden": "true" }),
+                /* @__PURE__ */ jsx("span", { className: "sv2-svc-panel-n", "aria-hidden": "true", children: s.n }),
+                /* @__PURE__ */ jsx("span", { className: "sv2-svc-panel-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 36, strokeWidth: 1.2 }) }),
+                /* @__PURE__ */ jsx("h3", { className: "sv2-svc-panel-title", children: s.title }),
+                /* @__PURE__ */ jsx("p", { className: "sv2-svc-panel-body", children: s.body }),
+                /* @__PURE__ */ jsx("ul", { className: "sv2-caps sv2-svc-panel-caps", children: s.capabilities.map((c) => /* @__PURE__ */ jsx("li", { children: c.path ? /* @__PURE__ */ jsx(Link, { to: c.path, style: { color: "inherit", textDecoration: "none" }, children: c.label }) : c.label }, c.label)) }),
+                /* @__PURE__ */ jsxs(Link, { className: "sv2-service-link sv2-service-link--panel", to: s.path, children: [
+                  /* @__PURE__ */ jsx("i", { children: /* @__PURE__ */ jsx("svg", { className: "sv2-svc-link-arrow", viewBox: "0 0 34 14", fill: "none", xmlns: "http://www.w3.org/2000/svg", "aria-hidden": "true", children: /* @__PURE__ */ jsx("path", { d: "M0 7H32M32 7L26 1M32 7L26 13", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round", strokeLinejoin: "round" }) }) }),
+                  /* @__PURE__ */ jsx("span", { children: "Explore" })
+                ] })
+              ]
+            },
+            s.n
+          )) })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE$9, tone: "dark" }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "method", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
+          /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How We Deliver." }),
+          /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Same six steps regardless of the service. Each one gets signed off before the next one starts." })
         ] }),
-        /* @__PURE__ */ jsx("div", { className: "sv2-svc-stage", children: SERVICES.map((s, i) => /* @__PURE__ */ jsxs(
-          "div",
-          {
-            className: `sv2-svc-panel ${svcActive === i ? "is-active" : ""}`,
-            "aria-hidden": svcActive !== i,
-            children: [
-              /* @__PURE__ */ jsx("span", { className: "sv2-svc-panel-glow", "aria-hidden": "true" }),
-              /* @__PURE__ */ jsx("span", { className: "sv2-svc-panel-n", "aria-hidden": "true", children: s.n }),
-              /* @__PURE__ */ jsx("span", { className: "sv2-svc-panel-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 36, strokeWidth: 1.2 }) }),
-              /* @__PURE__ */ jsx("h3", { className: "sv2-svc-panel-title", children: s.title }),
-              /* @__PURE__ */ jsx("p", { className: "sv2-svc-panel-body", children: s.body }),
-              /* @__PURE__ */ jsx("ul", { className: "sv2-caps sv2-svc-panel-caps", children: s.capabilities.map((c) => /* @__PURE__ */ jsx("li", { children: c.path ? /* @__PURE__ */ jsx(Link, { to: c.path, style: { color: "inherit", textDecoration: "none" }, children: c.label }) : c.label }, c.label)) }),
-              /* @__PURE__ */ jsxs(Link, { className: "sv2-service-link sv2-service-link--panel", to: s.path, children: [
-                /* @__PURE__ */ jsx("i", { children: /* @__PURE__ */ jsx("svg", { className: "sv2-svc-link-arrow", viewBox: "0 0 34 14", fill: "none", xmlns: "http://www.w3.org/2000/svg", "aria-hidden": "true", children: /* @__PURE__ */ jsx("path", { d: "M0 7H32M32 7L26 1M32 7L26 13", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round", strokeLinejoin: "round" }) }) }),
-                /* @__PURE__ */ jsx("span", { children: "Explore" })
-              ] })
-            ]
-          },
-          s.n
-        )) })
+        /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: METHOD.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
+          /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
+            /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
+        ] }, m.n)) })
+      ] }),
+      /* @__PURE__ */ jsx(ClientStrip, {}),
+      /* @__PURE__ */ jsx("section", { className: "v2-section sv2-stats-band", children: /* @__PURE__ */ jsx("div", { className: "sv2-stats-grid", children: STATS$7.map((s) => /* @__PURE__ */ jsxs("div", { className: "sv2-stat-card", children: [
+        /* @__PURE__ */ jsx("span", { className: "sv2-stat-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 18, strokeWidth: 1.6 }) }),
+        /* @__PURE__ */ jsxs("div", { className: "v2-stat-num", children: [
+          /* @__PURE__ */ jsx("span", { className: "v2-stat-value", "data-target": s.value, children: "0" }),
+          /* @__PURE__ */ jsx("span", { className: "v2-stat-suffix", children: s.suffix })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-stat-label", children: s.label })
+      ] }, s.label)) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void sv2-engagements", id: "engagements", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sv2-engagements-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "How We Work" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three ways to work with us." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Same team, same quality. The only difference is how we scope the work and send the invoice." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "sv2-engagements-grid", children: ENGAGEMENTS.map((p) => /* @__PURE__ */ jsxs("article", { className: "sv2-engagement", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sv2-engagement-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sv2-engagement-n", children: p.n }),
+            /* @__PURE__ */ jsx("span", { className: "sv2-engagement-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "sv2-engagement-key", children: p.key }),
+          /* @__PURE__ */ jsx("h3", { className: "sv2-engagement-claim", children: p.claim }),
+          /* @__PURE__ */ jsx("p", { className: "sv2-engagement-body", children: p.body })
+        ] }, p.key)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Stack" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Tools we've shipped with, not just tried." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "We don't test new frameworks on your project. Everything here has been through production on real client work." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: TECH_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
+          /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
+          /* @__PURE__ */ jsx("span", { children: t.name })
+        ] }, t.name)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three things we don't bend on." }),
+        /* @__PURE__ */ jsx("div", { className: "sv2-tenet-grid", children: PRINCIPLES$a.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sv2-tenet", children: [
+          /* @__PURE__ */ jsx("span", { className: "sv2-tenet-shine", "aria-hidden": "true" }),
+          /* @__PURE__ */ jsxs("div", { className: "sv2-tenet-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sv2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sv2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sv2-tenet-claim", children: p.claim }),
+          /* @__PURE__ */ jsx("p", { className: "sv2-tenet-body", children: p.body }),
+          /* @__PURE__ */ jsx("span", { className: "sv2-tenet-tag", children: p.key })
+        ] }, p.key)) })
+      ] }),
+      /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$g, className: "v2-section--void" }),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Tell us what you're building.",
+          /* @__PURE__ */ jsx("br", {}),
+          "We'll tell you how we'd build it."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "Walk us through what you're working on. We'll figure out what to build first, what can wait, and what it'll take to get it live." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
       ] })
-    ] }),
-    /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE$9, tone: "dark" }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "method", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
-        /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How We Deliver." }),
-        /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Same six steps regardless of the service. Each one gets signed off before the next one starts." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: METHOD.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
-        /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
-          /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
-      ] }, m.n)) })
-    ] }),
-    /* @__PURE__ */ jsx(ClientStrip, {}),
-    /* @__PURE__ */ jsx("section", { className: "v2-section sv2-stats-band", children: /* @__PURE__ */ jsx("div", { className: "sv2-stats-grid", children: STATS$7.map((s) => /* @__PURE__ */ jsxs("div", { className: "sv2-stat-card", children: [
-      /* @__PURE__ */ jsx("span", { className: "sv2-stat-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 18, strokeWidth: 1.6 }) }),
-      /* @__PURE__ */ jsxs("div", { className: "v2-stat-num", children: [
-        /* @__PURE__ */ jsx("span", { className: "v2-stat-value", "data-target": s.value, children: "0" }),
-        /* @__PURE__ */ jsx("span", { className: "v2-stat-suffix", children: s.suffix })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-stat-label", children: s.label })
-    ] }, s.label)) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void sv2-engagements", id: "engagements", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sv2-engagements-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "How We Work" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three ways to work with us." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Same team, same quality. The only difference is how we scope the work and send the invoice." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "sv2-engagements-grid", children: ENGAGEMENTS.map((p) => /* @__PURE__ */ jsxs("article", { className: "sv2-engagement", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sv2-engagement-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sv2-engagement-n", children: p.n }),
-          /* @__PURE__ */ jsx("span", { className: "sv2-engagement-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "sv2-engagement-key", children: p.key }),
-        /* @__PURE__ */ jsx("h3", { className: "sv2-engagement-claim", children: p.claim }),
-        /* @__PURE__ */ jsx("p", { className: "sv2-engagement-body", children: p.body })
-      ] }, p.key)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Stack" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Tools we've shipped with, not just tried." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "We don't test new frameworks on your project. Everything here has been through production on real client work." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: TECH_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
-        /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
-        /* @__PURE__ */ jsx("span", { children: t.name })
-      ] }, t.name)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three things we don't bend on." }),
-      /* @__PURE__ */ jsx("div", { className: "sv2-tenet-grid", children: PRINCIPLES$a.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sv2-tenet", children: [
-        /* @__PURE__ */ jsx("span", { className: "sv2-tenet-shine", "aria-hidden": "true" }),
-        /* @__PURE__ */ jsxs("div", { className: "sv2-tenet-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sv2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sv2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sv2-tenet-claim", children: p.claim }),
-        /* @__PURE__ */ jsx("p", { className: "sv2-tenet-body", children: p.body }),
-        /* @__PURE__ */ jsx("span", { className: "sv2-tenet-tag", children: p.key })
-      ] }, p.key)) })
-    ] }),
-    /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$g, className: "v2-section--void" }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Tell us what you're building.",
-        /* @__PURE__ */ jsx("br", {}),
-        "We'll tell you how we'd build it."
-      ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "Walk us through what you're working on. We'll figure out what to build first, what can wait, and what it'll take to get it live." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -3808,431 +3812,433 @@ function ServiceDetailV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx(Link, { to: "/services", children: "Services" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: "Web Development" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " Service 01 · Web Development"
-        ] }) }),
-        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Websites that are" }) }),
-          " ",
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "fast, findable, and yours." }) })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We build high-performance websites and web applications with clean, hand-written code — designed to convert visitors into customers, and handed over with full source-code ownership." }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
-          /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-            /* @__PURE__ */ jsx("span", { children: "Schedule a call" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
-          ] }),
-          /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#estimate", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Estimate my project" }) })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
-        ["Typical timeline", "2–12 weeks"],
-        ["Starts with", "Discovery call"],
-        ["You receive", "100% source code"],
-        ["Post-launch", "Support included"]
-      ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
-      ] }, k)) })
-    ] }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "problems", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Sound Familiar?" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The problems we get called in to fix." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "If you recognise two or three of these, a rebuild will pay for itself faster than another round of patches." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-problem-grid", children: PROBLEMS$7.map((p) => /* @__PURE__ */ jsxs("article", { className: "sd2-problem", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-problem-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 17, strokeWidth: 1.6 }) }),
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
         /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("h3", { className: "sd2-problem-pain", children: p.pain }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-problem-fix", children: p.fix })
-        ] })
-      ] }, p.pain)) })
-    ] }),
-    /* @__PURE__ */ jsx(ClientStrip, {}),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "included", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What's Included" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Every build ships with all of this." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Not an upsell list — this is the baseline on every web project we take, whatever the size." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-inc-showcase", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-inc-nav", role: "tablist", "aria-label": "What's included", children: [
-          /* @__PURE__ */ jsx(
-            "span",
-            {
-              className: "sd2-inc-nav-indicator",
-              style: { transform: `translateY(${incActive * 100}%)` },
-              "aria-hidden": "true"
-            }
-          ),
-          INCLUDED$7.map((it, i) => /* @__PURE__ */ jsxs("div", { className: "sd2-inc-navitem", children: [
-            /* @__PURE__ */ jsxs(
-              "button",
-              {
-                type: "button",
-                role: "tab",
-                "aria-selected": incActive === i,
-                className: `sd2-inc-tab ${incActive === i ? "is-active" : ""}`,
-                onMouseEnter: () => setIncActive(i),
-                onFocus: () => setIncActive(i),
-                onClick: () => setIncActive(i),
-                children: [
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-n", children: String(i + 1).padStart(2, "0") }),
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-title", children: it.title }),
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 16, strokeWidth: 1.6 }) })
-                ]
-              },
-              it.title
-            ),
-            /* @__PURE__ */ jsx("div", { className: `sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`, children: /* @__PURE__ */ jsx("div", { className: "sd2-inc-mobile-body-inner", children: /* @__PURE__ */ jsx("p", { className: "sd2-inc-mobile-body-text", children: it.body }) }) })
-          ] }, it.title))
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-inc-stage", children: INCLUDED$7.map((it, i) => /* @__PURE__ */ jsxs(
-          "div",
-          {
-            className: `sd2-inc-panel ${incActive === i ? "is-active" : ""}`,
-            "aria-hidden": incActive !== i,
-            children: [
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-glow", "aria-hidden": "true" }),
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") }),
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 40, strokeWidth: 1.2 }) }),
-              /* @__PURE__ */ jsx("h3", { className: "sd2-inc-panel-title", children: it.title }),
-              /* @__PURE__ */ jsx("p", { className: "sd2-inc-panel-body", children: it.body })
-            ]
-          },
-          it.title
-        )) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "for", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Who It's For" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Built for how your sector actually operates." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "The stack and the structure change depending on who's using the site and what they came to do." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-case-grid", children: USE_CASES$8.map((c, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-case", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-case-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-case-icon", children: /* @__PURE__ */ jsx(c.icon, { size: 21, strokeWidth: 1.6 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-case-n", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-case-title", children: c.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-case-body", children: c.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-case-rule", "aria-hidden": "true" })
-      ] }, c.title)) })
-    ] }),
-    /* @__PURE__ */ jsx("section", { className: "v2-section v2-section--void sd2-est-section", id: "estimate", children: /* @__PURE__ */ jsxs("div", { className: "sd2-est", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-est-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Scope Estimator" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Rough out your timeline in ten seconds." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Pick what you're building and we'll show an honest range. It's an estimate, not a quote — but it's the same maths we start from." })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-est-body", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-est-controls", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "01 — What are you building?" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_TYPES$8.map((t) => /* @__PURE__ */ jsx(
-              "button",
-              {
-                className: `sd2-opt ${estType === t.id ? "on" : ""}`,
-                onClick: () => setEstType(t.id),
-                "aria-pressed": estType === t.id,
-                children: t.label
-              },
-              t.id
-            )) })
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx(Link, { to: "/services", children: "Services" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: "Web Development" })
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "02 — How big is it?" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_SCALE$8.map((s) => /* @__PURE__ */ jsx(
-              "button",
-              {
-                className: `sd2-opt ${estScale === s.id ? "on" : ""}`,
-                onClick: () => setEstScale(s.id),
-                "aria-pressed": estScale === s.id,
-                children: s.label
-              },
-              s.id
-            )) })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "03 — Anything else? (optional)" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_ADDONS$8.map((a) => /* @__PURE__ */ jsxs(
-              "button",
-              {
-                className: `sd2-opt sd2-opt--check ${estAddons.has(a.id) ? "on" : ""}`,
-                onClick: () => toggleAddon(a.id),
-                "aria-pressed": estAddons.has(a.id),
-                children: [
-                  /* @__PURE__ */ jsx("i", { children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) }),
-                  a.label
-                ]
-              },
-              a.id
-            )) })
-          ] })
-        ] }),
-        /* @__PURE__ */ jsxs("aside", { className: "sd2-est-out", "aria-live": "polite", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-est-out-k", children: "Estimated build time" }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-out-v", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.low }, estimate.low),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-dash", children: "–" }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.high }, estimate.high + "h"),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-unit", children: "weeks" })
-          ] }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-est-note", children: estimate.base }),
-          /* @__PURE__ */ jsx("div", { className: "sd2-est-bar", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", { style: { width: `${Math.min(100, estimate.high / 30 * 100)}%` } }) }),
-          /* @__PURE__ */ jsxs("ul", { className: "sd2-est-list", children: [
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
-              " Design + build + QA included"
-            ] }),
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
-              " Fixed price once scoped"
-            ] }),
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
-              " Full source-code handover"
-            ] })
-          ] }),
-          /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Get an exact quote →" })
-        ] })
-      ] })
-    ] }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "benchmarks", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Quality Bar" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The numbers we hold ourselves to." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Every build is measured against these before it's allowed to ship — not aspirations, gates." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Live quality gate" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Checked on every build" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid", children: BENCHMARKS$8.map((b, i) => {
-          const R = 52;
-          const C = 2 * Math.PI * R;
-          const offset = C - C * b.ring / 100;
-          return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
-            /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
-              /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
-                /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `sd2-bench-grad-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
-                  /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
-                  /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
-                ] }) }),
-                /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
-                /* @__PURE__ */ jsx(
-                  "circle",
-                  {
-                    className: "sd2-bench-ring-fill",
-                    cx: "60",
-                    cy: "60",
-                    r: R,
-                    stroke: `url(#sd2-bench-grad-${i})`,
-                    style: { "--c": C, "--ring-offset": offset }
-                  }
-                )
-              ] }),
-              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
-          ] }, b.label);
-        }) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Web Stack" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we build websites with." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Chosen per project, not by habit — the right tool for your scale, your team, and what you'll need to maintain." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: WEB_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
-        /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
-        /* @__PURE__ */ jsx("span", { children: t.name })
-      ] }, t.name)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "work", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Related Work" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Web builds we've shipped." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-work-grid", children: RELATED$7.map((w) => /* @__PURE__ */ jsxs(Link, { className: "sd2-work-card", to: w.link, children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-media", children: /* @__PURE__ */ jsx("img", { src: w.thumb, alt: "", loading: "lazy" }) }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-tag", children: w.tag }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-title", children: w.title }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-go", children: "Read case study →" })
-      ] }, w.link)) })
-    ] }),
-    /* @__PURE__ */ jsx(
-      TestimonialSpotlight,
-      {
-        testimonials,
-        label: "Client Voices",
-        heading: "What clients say once we ship.",
-        stats: [
-          { num: "40+", label: "Companies trust us" },
-          { num: "11", label: "Industries served" },
-          { num: "100%", label: "Source code ownership" }
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three commitments that govern every project." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: PRINCIPLES$9.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
-      ] }, p.key)) })
-    ] }),
-    /* @__PURE__ */ jsx(TechStackShowcaseV2, {}),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "handover", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What You Receive" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Everything, at handover." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: '"You own the code" is easy to say. Here is the exact list of what lands in your accounts when the project closes.' })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-manifest", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-bar", children: [
-          /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-title", children: [
-            /* @__PURE__ */ jsx(FileCode2, { size: 14, strokeWidth: 1.8 }),
-            "Handover manifest"
-          ] }),
-          /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-meta", children: [
-            HANDOVER$8.length,
-            " items",
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
             /* @__PURE__ */ jsx("i", {}),
-            "Transferred on completion"
-          ] })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-manifest-grid", children: HANDOVER$8.map((h, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-hand", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-hand-top", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-icon", children: /* @__PURE__ */ jsx(h.icon, { size: 16, strokeWidth: 1.6 }) }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-n", children: String(i + 1).padStart(2, "0") }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-tick", children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) })
+            " Service 01 · Web Development"
+          ] }) }),
+          /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Websites that are" }) }),
+            " ",
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "fast, findable, and yours." }) })
           ] }),
-          /* @__PURE__ */ jsx("h3", { className: "sd2-hand-title", children: h.title }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-hand-body", children: h.body })
-        ] }, h.title)) }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-foot", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-manifest-seal", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 3 }) }),
-          /* @__PURE__ */ jsxs("span", { children: [
-            "Everything above transfers to your accounts when the project closes.",
-            /* @__PURE__ */ jsx("b", { children: " No lock-in, no retained access, no dependency on us." })
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We build high-performance websites and web applications with clean, hand-written code — designed to convert visitors into customers, and handed over with full source-code ownership." }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
+            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+              /* @__PURE__ */ jsx("span", { children: "Schedule a call" }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+            ] }),
+            /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#estimate", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Estimate my project" }) })
           ] })
-        ] })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "compare", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why Us" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Against what you're actually comparing." })
         ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "A template, a freelancer, and a big agency all solve part of the problem. Here's where each one tends to leave you exposed." })
+        /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
+          ["Typical timeline", "2–12 weeks"],
+          ["Starts with", "Discovery call"],
+          ["You receive", "100% source code"],
+          ["Post-launch", "Support included"]
+        ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
+        ] }, k)) })
+      ] }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "problems", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Sound Familiar?" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The problems we get called in to fix." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "If you recognise two or three of these, a rebuild will pay for itself faster than another round of patches." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-problem-grid", children: PROBLEMS$7.map((p) => /* @__PURE__ */ jsxs("article", { className: "sd2-problem", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-problem-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 17, strokeWidth: 1.6 }) }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("h3", { className: "sd2-problem-pain", children: p.pain }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-problem-fix", children: p.fix })
+          ] })
+        ] }, p.pain)) })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-cmp", role: "table", "aria-label": "Codelix compared to alternatives", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-head", role: "row", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "columnheader" }),
-          COMPARE_COLS$9.map((c, i) => /* @__PURE__ */ jsx(
-            "span",
+      /* @__PURE__ */ jsx(ClientStrip, {}),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "included", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What's Included" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Every build ships with all of this." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Not an upsell list — this is the baseline on every web project we take, whatever the size." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-inc-showcase", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-inc-nav", role: "tablist", "aria-label": "What's included", children: [
+            /* @__PURE__ */ jsx(
+              "span",
+              {
+                className: "sd2-inc-nav-indicator",
+                style: { transform: `translateY(${incActive * 100}%)` },
+                "aria-hidden": "true"
+              }
+            ),
+            INCLUDED$7.map((it, i) => /* @__PURE__ */ jsxs("div", { className: "sd2-inc-navitem", children: [
+              /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  type: "button",
+                  role: "tab",
+                  "aria-selected": incActive === i,
+                  className: `sd2-inc-tab ${incActive === i ? "is-active" : ""}`,
+                  onMouseEnter: () => setIncActive(i),
+                  onFocus: () => setIncActive(i),
+                  onClick: () => setIncActive(i),
+                  children: [
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-n", children: String(i + 1).padStart(2, "0") }),
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-title", children: it.title }),
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 16, strokeWidth: 1.6 }) })
+                  ]
+                },
+                it.title
+              ),
+              /* @__PURE__ */ jsx("div", { className: `sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`, children: /* @__PURE__ */ jsx("div", { className: "sd2-inc-mobile-body-inner", children: /* @__PURE__ */ jsx("p", { className: "sd2-inc-mobile-body-text", children: it.body }) }) })
+            ] }, it.title))
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-inc-stage", children: INCLUDED$7.map((it, i) => /* @__PURE__ */ jsxs(
+            "div",
             {
-              className: `sd2-cmp-col ${i === 0 ? "is-us" : ""}`,
-              role: "columnheader",
-              children: c
-            },
-            c
-          ))
-        ] }),
-        COMPARE_ROWS$9.map((row) => /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-row", role: "row", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "rowheader", children: row.label }),
-          row.vals.map((v, i) => /* @__PURE__ */ jsxs(
-            "span",
-            {
-              className: `sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`,
-              role: "cell",
+              className: `sd2-inc-panel ${incActive === i ? "is-active" : ""}`,
+              "aria-hidden": incActive !== i,
               children: [
-                v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.6 }),
-                v === "partial" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
-                v === "maybe" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
-                v === "no" && /* @__PURE__ */ jsx(X, { size: 15, strokeWidth: 2.6 }),
-                /* @__PURE__ */ jsx("em", { className: "sd2-cmp-txt", children: v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe" })
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-glow", "aria-hidden": "true" }),
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") }),
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 40, strokeWidth: 1.2 }) }),
+                /* @__PURE__ */ jsx("h3", { className: "sd2-inc-panel-title", children: it.title }),
+                /* @__PURE__ */ jsx("p", { className: "sd2-inc-panel-body", children: it.body })
               ]
             },
-            i
-          ))
-        ] }, row.label))
-      ] })
-    ] }),
-    /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE$8, tone: "dark", centered: true }),
-    /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$f, className: "v2-section--void" }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "next", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What Happens Next" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three steps from here to kickoff." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No drawn-out sales process. Reach out and here's exactly what follows." })
+            it.title
+          )) })
+        ] })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-next", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-next-line", "aria-hidden": "true" }),
-        NEXT_STEPS$8.map((s) => /* @__PURE__ */ jsxs("article", { className: "sd2-step", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-step-node", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-num", children: s.n }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-badge", children: /* @__PURE__ */ jsx(s.icon, { size: 15, strokeWidth: 1.7 }) })
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "for", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Who It's For" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Built for how your sector actually operates." })
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-step-inner", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-meta", children: s.meta }),
-            /* @__PURE__ */ jsx("h3", { className: "sd2-step-title", children: s.title }),
-            /* @__PURE__ */ jsx("p", { className: "sd2-step-body", children: s.body })
-          ] })
-        ] }, s.n))
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The rest of what we do." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES$9.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "The stack and the structure change depending on who's using the site and what they came to do." })
         ] }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
-      ] }, s.path)) })
-    ] }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Tell us what you're building.",
-        /* @__PURE__ */ jsx("br", {}),
-        "We'll tell you how we'd build it."
+        /* @__PURE__ */ jsx("div", { className: "sd2-case-grid", children: USE_CASES$8.map((c, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-case", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-case-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-case-icon", children: /* @__PURE__ */ jsx(c.icon, { size: 21, strokeWidth: 1.6 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-case-n", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-case-title", children: c.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-case-body", children: c.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-case-rule", "aria-hidden": "true" })
+        ] }, c.title)) })
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your site — your users, your goals, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      /* @__PURE__ */ jsx("section", { className: "v2-section v2-section--void sd2-est-section", id: "estimate", children: /* @__PURE__ */ jsxs("div", { className: "sd2-est", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-est-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Scope Estimator" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Rough out your timeline in ten seconds." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Pick what you're building and we'll show an honest range. It's an estimate, not a quote — but it's the same maths we start from." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-est-body", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-est-controls", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "01 — What are you building?" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_TYPES$8.map((t) => /* @__PURE__ */ jsx(
+                "button",
+                {
+                  className: `sd2-opt ${estType === t.id ? "on" : ""}`,
+                  onClick: () => setEstType(t.id),
+                  "aria-pressed": estType === t.id,
+                  children: t.label
+                },
+                t.id
+              )) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "02 — How big is it?" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_SCALE$8.map((s) => /* @__PURE__ */ jsx(
+                "button",
+                {
+                  className: `sd2-opt ${estScale === s.id ? "on" : ""}`,
+                  onClick: () => setEstScale(s.id),
+                  "aria-pressed": estScale === s.id,
+                  children: s.label
+                },
+                s.id
+              )) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "03 — Anything else? (optional)" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_ADDONS$8.map((a) => /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  className: `sd2-opt sd2-opt--check ${estAddons.has(a.id) ? "on" : ""}`,
+                  onClick: () => toggleAddon(a.id),
+                  "aria-pressed": estAddons.has(a.id),
+                  children: [
+                    /* @__PURE__ */ jsx("i", { children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) }),
+                    a.label
+                  ]
+                },
+                a.id
+              )) })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxs("aside", { className: "sd2-est-out", "aria-live": "polite", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-est-out-k", children: "Estimated build time" }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-out-v", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.low }, estimate.low),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-dash", children: "–" }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.high }, estimate.high + "h"),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-unit", children: "weeks" })
+            ] }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-est-note", children: estimate.base }),
+            /* @__PURE__ */ jsx("div", { className: "sd2-est-bar", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", { style: { width: `${Math.min(100, estimate.high / 30 * 100)}%` } }) }),
+            /* @__PURE__ */ jsxs("ul", { className: "sd2-est-list", children: [
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
+                " Design + build + QA included"
+              ] }),
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
+                " Fixed price once scoped"
+              ] }),
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
+                " Full source-code handover"
+              ] })
+            ] }),
+            /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Get an exact quote →" })
+          ] })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "benchmarks", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Quality Bar" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The numbers we hold ourselves to." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Every build is measured against these before it's allowed to ship — not aspirations, gates." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Live quality gate" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Checked on every build" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid", children: BENCHMARKS$8.map((b, i) => {
+            const R = 52;
+            const C = 2 * Math.PI * R;
+            const offset = C - C * b.ring / 100;
+            return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
+              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
+                /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
+                  /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `sd2-bench-grad-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
+                    /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
+                    /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
+                  ] }) }),
+                  /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
+                  /* @__PURE__ */ jsx(
+                    "circle",
+                    {
+                      className: "sd2-bench-ring-fill",
+                      cx: "60",
+                      cy: "60",
+                      r: R,
+                      stroke: `url(#sd2-bench-grad-${i})`,
+                      style: { "--c": C, "--ring-offset": offset }
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
+            ] }, b.label);
+          }) })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Web Stack" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we build websites with." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Chosen per project, not by habit — the right tool for your scale, your team, and what you'll need to maintain." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: WEB_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
+          /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
+          /* @__PURE__ */ jsx("span", { children: t.name })
+        ] }, t.name)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "work", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Related Work" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Web builds we've shipped." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-work-grid", children: RELATED$7.map((w) => /* @__PURE__ */ jsxs(Link, { className: "sd2-work-card", to: w.link, children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-media", children: /* @__PURE__ */ jsx("img", { src: w.thumb, alt: "", loading: "lazy" }) }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-tag", children: w.tag }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-title", children: w.title }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-go", children: "Read case study →" })
+        ] }, w.link)) })
+      ] }),
+      /* @__PURE__ */ jsx(
+        TestimonialSpotlight,
+        {
+          testimonials,
+          label: "Client Voices",
+          heading: "What clients say once we ship.",
+          stats: [
+            { num: "40+", label: "Companies trust us" },
+            { num: "11", label: "Industries served" },
+            { num: "100%", label: "Source code ownership" }
+          ]
+        }
+      ),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three commitments that govern every project." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: PRINCIPLES$9.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
+        ] }, p.key)) })
+      ] }),
+      /* @__PURE__ */ jsx(TechStackShowcaseV2, {}),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "handover", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What You Receive" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Everything, at handover." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: '"You own the code" is easy to say. Here is the exact list of what lands in your accounts when the project closes.' })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-bar", children: [
+            /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-title", children: [
+              /* @__PURE__ */ jsx(FileCode2, { size: 14, strokeWidth: 1.8 }),
+              "Handover manifest"
+            ] }),
+            /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-meta", children: [
+              HANDOVER$8.length,
+              " items",
+              /* @__PURE__ */ jsx("i", {}),
+              "Transferred on completion"
+            ] })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-manifest-grid", children: HANDOVER$8.map((h, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-hand", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-hand-top", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-icon", children: /* @__PURE__ */ jsx(h.icon, { size: 16, strokeWidth: 1.6 }) }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-n", children: String(i + 1).padStart(2, "0") }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-tick", children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) })
+            ] }),
+            /* @__PURE__ */ jsx("h3", { className: "sd2-hand-title", children: h.title }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-hand-body", children: h.body })
+          ] }, h.title)) }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-foot", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-manifest-seal", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 3 }) }),
+            /* @__PURE__ */ jsxs("span", { children: [
+              "Everything above transfers to your accounts when the project closes.",
+              /* @__PURE__ */ jsx("b", { children: " No lock-in, no retained access, no dependency on us." })
+            ] })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "compare", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why Us" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Against what you're actually comparing." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "A template, a freelancer, and a big agency all solve part of the problem. Here's where each one tends to leave you exposed." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-cmp", role: "table", "aria-label": "Codelix compared to alternatives", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-head", role: "row", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "columnheader" }),
+            COMPARE_COLS$9.map((c, i) => /* @__PURE__ */ jsx(
+              "span",
+              {
+                className: `sd2-cmp-col ${i === 0 ? "is-us" : ""}`,
+                role: "columnheader",
+                children: c
+              },
+              c
+            ))
+          ] }),
+          COMPARE_ROWS$9.map((row) => /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-row", role: "row", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "rowheader", children: row.label }),
+            row.vals.map((v, i) => /* @__PURE__ */ jsxs(
+              "span",
+              {
+                className: `sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`,
+                role: "cell",
+                children: [
+                  v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.6 }),
+                  v === "partial" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
+                  v === "maybe" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
+                  v === "no" && /* @__PURE__ */ jsx(X, { size: 15, strokeWidth: 2.6 }),
+                  /* @__PURE__ */ jsx("em", { className: "sd2-cmp-txt", children: v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe" })
+                ]
+              },
+              i
+            ))
+          ] }, row.label))
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE$8, tone: "dark", centered: true }),
+      /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$f, className: "v2-section--void" }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "next", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What Happens Next" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three steps from here to kickoff." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No drawn-out sales process. Reach out and here's exactly what follows." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-next", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-next-line", "aria-hidden": "true" }),
+          NEXT_STEPS$8.map((s) => /* @__PURE__ */ jsxs("article", { className: "sd2-step", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-step-node", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-num", children: s.n }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-badge", children: /* @__PURE__ */ jsx(s.icon, { size: 15, strokeWidth: 1.7 }) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-step-inner", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-meta", children: s.meta }),
+              /* @__PURE__ */ jsx("h3", { className: "sd2-step-title", children: s.title }),
+              /* @__PURE__ */ jsx("p", { className: "sd2-step-body", children: s.body })
+            ] })
+          ] }, s.n))
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The rest of what we do." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES$9.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
+          ] }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
+        ] }, s.path)) })
+      ] }),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Tell us what you're building.",
+          /* @__PURE__ */ jsx("br", {}),
+          "We'll tell you how we'd build it."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your site — your users, your goals, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -6311,452 +6317,454 @@ function UIUXDesignV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx(Link, { to: "/services", children: "Services" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: "UI/UX Design" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " Service 03 · UI/UX Design"
-        ] }) }),
-        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Interfaces that are" }) }),
-          " ",
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "intuitive, beautiful, and backed by evidence." }) })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We design user interfaces and product experiences grounded in real research — prototyped, tested, and refined until the interface feels obvious, then handed over with a complete design system." }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
-          /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-            /* @__PURE__ */ jsx("span", { children: "Schedule a call" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
-          ] }),
-          /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#estimate", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Estimate my project" }) })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
-        ["Typical timeline", "1–6 weeks"],
-        ["Starts with", "Discovery call"],
-        ["You receive", "Full Figma files"],
-        ["Post-handoff", "Support included"]
-      ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
-      ] }, k)) })
-    ] }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "problems", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Sound Familiar?" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The problems we get called in to fix." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "If you recognise two or three of these, a proper design process will save you more than another round of ad-hoc tweaks." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-problem-grid", children: PROBLEMS$6.map((p) => /* @__PURE__ */ jsxs("article", { className: "sd2-problem", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-problem-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 17, strokeWidth: 1.6 }) }),
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
         /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("h3", { className: "sd2-problem-pain", children: p.pain }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-problem-fix", children: p.fix })
-        ] })
-      ] }, p.pain)) })
-    ] }),
-    /* @__PURE__ */ jsx(ClientStrip, {}),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "included", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What's Included" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Every design project ships with all of this." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Not an upsell list — this is the baseline on every UI/UX project we take, whatever the size." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-inc-showcase", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-inc-nav", role: "tablist", "aria-label": "What's included", children: [
-          /* @__PURE__ */ jsx(
-            "span",
-            {
-              className: "sd2-inc-nav-indicator",
-              style: { transform: `translateY(${incActive * 100}%)` },
-              "aria-hidden": "true"
-            }
-          ),
-          INCLUDED$6.map((it, i) => /* @__PURE__ */ jsxs("div", { className: "sd2-inc-navitem", children: [
-            /* @__PURE__ */ jsxs(
-              "button",
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx(Link, { to: "/services", children: "Services" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: "UI/UX Design" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " Service 03 · UI/UX Design"
+          ] }) }),
+          /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Interfaces that are" }) }),
+            " ",
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "intuitive, beautiful, and backed by evidence." }) })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We design user interfaces and product experiences grounded in real research — prototyped, tested, and refined until the interface feels obvious, then handed over with a complete design system." }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
+            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+              /* @__PURE__ */ jsx("span", { children: "Schedule a call" }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+            ] }),
+            /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#estimate", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Estimate my project" }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
+          ["Typical timeline", "1–6 weeks"],
+          ["Starts with", "Discovery call"],
+          ["You receive", "Full Figma files"],
+          ["Post-handoff", "Support included"]
+        ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
+        ] }, k)) })
+      ] }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "problems", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Sound Familiar?" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The problems we get called in to fix." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "If you recognise two or three of these, a proper design process will save you more than another round of ad-hoc tweaks." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-problem-grid", children: PROBLEMS$6.map((p) => /* @__PURE__ */ jsxs("article", { className: "sd2-problem", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-problem-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 17, strokeWidth: 1.6 }) }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("h3", { className: "sd2-problem-pain", children: p.pain }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-problem-fix", children: p.fix })
+          ] })
+        ] }, p.pain)) })
+      ] }),
+      /* @__PURE__ */ jsx(ClientStrip, {}),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "included", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What's Included" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Every design project ships with all of this." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Not an upsell list — this is the baseline on every UI/UX project we take, whatever the size." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-inc-showcase", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-inc-nav", role: "tablist", "aria-label": "What's included", children: [
+            /* @__PURE__ */ jsx(
+              "span",
               {
-                type: "button",
-                role: "tab",
-                "aria-selected": incActive === i,
-                className: `sd2-inc-tab ${incActive === i ? "is-active" : ""}`,
-                onMouseEnter: () => setIncActive(i),
-                onFocus: () => setIncActive(i),
-                onClick: () => setIncActive(i),
-                children: [
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-n", children: String(i + 1).padStart(2, "0") }),
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-title", children: it.title }),
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 16, strokeWidth: 1.6 }) })
-                ]
+                className: "sd2-inc-nav-indicator",
+                style: { transform: `translateY(${incActive * 100}%)` },
+                "aria-hidden": "true"
               }
             ),
-            /* @__PURE__ */ jsx("div", { className: `sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`, children: /* @__PURE__ */ jsx("div", { className: "sd2-inc-mobile-body-inner", children: /* @__PURE__ */ jsx("p", { className: "sd2-inc-mobile-body-text", children: it.body }) }) })
-          ] }, it.title))
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-inc-stage", children: INCLUDED$6.map((it, i) => /* @__PURE__ */ jsxs(
-          "div",
-          {
-            className: `sd2-inc-panel ${incActive === i ? "is-active" : ""}`,
-            "aria-hidden": incActive !== i,
-            children: [
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-glow", "aria-hidden": "true" }),
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") }),
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 40, strokeWidth: 1.2 }) }),
-              /* @__PURE__ */ jsx("h3", { className: "sd2-inc-panel-title", children: it.title }),
-              /* @__PURE__ */ jsx("p", { className: "sd2-inc-panel-body", children: it.body })
-            ]
-          },
-          it.title
-        )) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "for", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Who It's For" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Designed for how your sector actually operates." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "The approach changes depending on your users, your industry, and what they're trying to accomplish." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-case-grid", children: USE_CASES$6.map((c, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-case", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-case-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-case-icon", children: /* @__PURE__ */ jsx(c.icon, { size: 21, strokeWidth: 1.6 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-case-n", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-case-title", children: c.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-case-body", children: c.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-case-rule", "aria-hidden": "true" })
-      ] }, c.title)) })
-    ] }),
-    /* @__PURE__ */ jsx("section", { className: "v2-section v2-section--void sd2-est-section", id: "estimate", children: /* @__PURE__ */ jsxs("div", { className: "sd2-est", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-est-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Scope Estimator" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Rough out your timeline in ten seconds." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Pick what you need and we'll show an honest range. It's an estimate, not a quote — but it's the same maths we start from." })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-est-body", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-est-controls", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "01 — What do you need?" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_TYPES$6.map((t) => /* @__PURE__ */ jsx(
-              "button",
-              {
-                className: `sd2-opt ${estType === t.id ? "on" : ""}`,
-                onClick: () => setEstType(t.id),
-                "aria-pressed": estType === t.id,
-                children: t.label
-              },
-              t.id
-            )) })
+            INCLUDED$6.map((it, i) => /* @__PURE__ */ jsxs("div", { className: "sd2-inc-navitem", children: [
+              /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  type: "button",
+                  role: "tab",
+                  "aria-selected": incActive === i,
+                  className: `sd2-inc-tab ${incActive === i ? "is-active" : ""}`,
+                  onMouseEnter: () => setIncActive(i),
+                  onFocus: () => setIncActive(i),
+                  onClick: () => setIncActive(i),
+                  children: [
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-n", children: String(i + 1).padStart(2, "0") }),
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-title", children: it.title }),
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 16, strokeWidth: 1.6 }) })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ jsx("div", { className: `sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`, children: /* @__PURE__ */ jsx("div", { className: "sd2-inc-mobile-body-inner", children: /* @__PURE__ */ jsx("p", { className: "sd2-inc-mobile-body-text", children: it.body }) }) })
+            ] }, it.title))
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "02 — How big is it?" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_SCALE$6.map((s) => /* @__PURE__ */ jsx(
-              "button",
-              {
-                className: `sd2-opt ${estScale === s.id ? "on" : ""}`,
-                onClick: () => setEstScale(s.id),
-                "aria-pressed": estScale === s.id,
-                children: s.label
-              },
-              s.id
-            )) })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "03 — Anything else? (optional)" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_ADDONS$6.map((a) => /* @__PURE__ */ jsxs(
-              "button",
-              {
-                className: `sd2-opt sd2-opt--check ${estAddons.has(a.id) ? "on" : ""}`,
-                onClick: () => toggleAddon(a.id),
-                "aria-pressed": estAddons.has(a.id),
-                children: [
-                  /* @__PURE__ */ jsx("i", { children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) }),
-                  a.label
-                ]
-              },
-              a.id
-            )) })
-          ] })
-        ] }),
-        /* @__PURE__ */ jsxs("aside", { className: "sd2-est-out", "aria-live": "polite", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-est-out-k", children: "Estimated design time" }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-out-v", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.low }, estimate.low),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-dash", children: "–" }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.high }, estimate.high + "h"),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-unit", children: "weeks" })
-          ] }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-est-note", children: estimate.base }),
-          /* @__PURE__ */ jsx("div", { className: "sd2-est-bar", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", { style: { width: `${Math.min(100, estimate.high / 20 * 100)}%` } }) }),
-          /* @__PURE__ */ jsxs("ul", { className: "sd2-est-list", children: [
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
-              " Research + design + testing included"
-            ] }),
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
-              " Fixed price once scoped"
-            ] }),
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
-              " Full Figma handover"
-            ] })
-          ] }),
-          /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Get an exact quote →" })
-        ] })
-      ] })
-    ] }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "process", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
-        /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How A Design Project Runs." }),
-        /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Six stages from first call to final handoff — nothing advances until the stage before it is signed off." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: PROCESS$8.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
-        /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
-          /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
-      ] }, m.n)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "benchmarks", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Quality Bar" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The numbers we hold ourselves to." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Every design is measured against these before it's allowed to ship — not aspirations, gates." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Live quality gate" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Checked on every project" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid", children: BENCHMARKS$6.map((b, i) => {
-          const R = 52;
-          const C = 2 * Math.PI * R;
-          const offset = C - C * b.ring / 100;
-          return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
-            /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
-              /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
-                /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `sd2-bench-grad-ux-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
-                  /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
-                  /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
-                ] }) }),
-                /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
-                /* @__PURE__ */ jsx(
-                  "circle",
-                  {
-                    className: "sd2-bench-ring-fill",
-                    cx: "60",
-                    cy: "60",
-                    r: R,
-                    stroke: `url(#sd2-bench-grad-ux-${i})`,
-                    style: { "--c": C, "--ring-offset": offset }
-                  }
-                )
-              ] }),
-              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
-          ] }, b.label);
-        }) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Design Stack" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we design with." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Chosen per project, not by habit — the right tool for your team's workflow and your developers' handoff needs." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: UIUX_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
-        /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
-        /* @__PURE__ */ jsx("span", { children: t.name })
-      ] }, t.name)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "work", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Related Work" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Designs we've shipped." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-work-grid", children: RELATED$6.map((w) => /* @__PURE__ */ jsxs(Link, { className: "sd2-work-card", to: w.link, children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-media", children: /* @__PURE__ */ jsx("img", { src: w.thumb, alt: "", loading: "lazy" }) }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-tag", children: w.tag }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-title", children: w.title }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-go", children: "Read case study →" })
-      ] }, w.link)) })
-    ] }),
-    /* @__PURE__ */ jsx(
-      TestimonialSpotlight,
-      {
-        testimonials,
-        label: "Client Voices",
-        heading: "What clients say once we ship.",
-        stats: [
-          { num: "40+", label: "Companies trust us" },
-          { num: "11", label: "Industries served" },
-          { num: "100%", label: "Source code ownership" }
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three commitments that govern every project." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: PRINCIPLES$7.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
-      ] }, p.key)) })
-    ] }),
-    /* @__PURE__ */ jsx(
-      TechStackShowcaseV2,
-      {
-        title: "The Modern Design Arsenal",
-        description: "Industry-standard design tools and prototyping software we use to create pixel-perfect, accessible, and highly-interactive experiences.",
-        categories: TECH_CATEGORIES$6,
-        metrics: METRICS$6
-      }
-    ),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "handover", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What You Receive" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Everything, at handoff." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: '"You own the designs" is easy to say. Here is the exact list of what lands in your accounts when the project closes.' })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-manifest", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-bar", children: [
-          /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-title", children: [
-            /* @__PURE__ */ jsx(FileCode2, { size: 14, strokeWidth: 1.8 }),
-            "Handoff manifest"
-          ] }),
-          /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-meta", children: [
-            HANDOVER$6.length,
-            " items",
-            /* @__PURE__ */ jsx("i", {}),
-            "Transferred on completion"
-          ] })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-manifest-grid", children: HANDOVER$6.map((h, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-hand", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-hand-top", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-icon", children: /* @__PURE__ */ jsx(h.icon, { size: 16, strokeWidth: 1.6 }) }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-n", children: String(i + 1).padStart(2, "0") }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-tick", children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) })
-          ] }),
-          /* @__PURE__ */ jsx("h3", { className: "sd2-hand-title", children: h.title }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-hand-body", children: h.body })
-        ] }, h.title)) }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-foot", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-manifest-seal", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 3 }) }),
-          /* @__PURE__ */ jsxs("span", { children: [
-            "Everything above transfers to your accounts when the project closes.",
-            /* @__PURE__ */ jsx("b", { children: " No lock-in, no retained access, no dependency on us." })
-          ] })
-        ] })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "compare", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why Us" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Against what you're actually comparing." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "A template kit, a freelancer, and a big agency all solve part of the problem. Here's where each one tends to leave you exposed." })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-cmp", role: "table", "aria-label": "Codelix compared to alternatives", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-head", role: "row", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "columnheader" }),
-          COMPARE_COLS$7.map((c, i) => /* @__PURE__ */ jsx(
-            "span",
+          /* @__PURE__ */ jsx("div", { className: "sd2-inc-stage", children: INCLUDED$6.map((it, i) => /* @__PURE__ */ jsxs(
+            "div",
             {
-              className: `sd2-cmp-col ${i === 0 ? "is-us" : ""}`,
-              role: "columnheader",
-              children: c
-            },
-            c
-          ))
-        ] }),
-        COMPARE_ROWS$7.map((row) => /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-row", role: "row", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "rowheader", children: row.label }),
-          row.vals.map((v, i) => /* @__PURE__ */ jsxs(
-            "span",
-            {
-              className: `sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`,
-              role: "cell",
+              className: `sd2-inc-panel ${incActive === i ? "is-active" : ""}`,
+              "aria-hidden": incActive !== i,
               children: [
-                v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.6 }),
-                v === "partial" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
-                v === "maybe" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
-                v === "no" && /* @__PURE__ */ jsx(X, { size: 15, strokeWidth: 2.6 }),
-                /* @__PURE__ */ jsx("em", { className: "sd2-cmp-txt", children: v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe" })
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-glow", "aria-hidden": "true" }),
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") }),
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 40, strokeWidth: 1.2 }) }),
+                /* @__PURE__ */ jsx("h3", { className: "sd2-inc-panel-title", children: it.title }),
+                /* @__PURE__ */ jsx("p", { className: "sd2-inc-panel-body", children: it.body })
               ]
             },
-            i
-          ))
-        ] }, row.label))
-      ] })
-    ] }),
-    /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE$6, tone: "dark", centered: true }),
-    /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$e, className: "v2-section--void" }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "next", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What Happens Next" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three steps from here to kickoff." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No drawn-out sales process. Reach out and here's exactly what follows." })
+            it.title
+          )) })
+        ] })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-next", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-next-line", "aria-hidden": "true" }),
-        NEXT_STEPS$6.map((s) => /* @__PURE__ */ jsxs("article", { className: "sd2-step", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-step-node", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-num", children: s.n }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-badge", children: /* @__PURE__ */ jsx(s.icon, { size: 15, strokeWidth: 1.7 }) })
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "for", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Who It's For" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Designed for how your sector actually operates." })
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-step-inner", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-meta", children: s.meta }),
-            /* @__PURE__ */ jsx("h3", { className: "sd2-step-title", children: s.title }),
-            /* @__PURE__ */ jsx("p", { className: "sd2-step-body", children: s.body })
-          ] })
-        ] }, s.n))
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The rest of what we do." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES$8.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "The approach changes depending on your users, your industry, and what they're trying to accomplish." })
         ] }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
-      ] }, s.path)) })
-    ] }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Tell us what you're designing.",
-        /* @__PURE__ */ jsx("br", {}),
-        "We'll tell you how we'd approach it."
+        /* @__PURE__ */ jsx("div", { className: "sd2-case-grid", children: USE_CASES$6.map((c, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-case", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-case-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-case-icon", children: /* @__PURE__ */ jsx(c.icon, { size: 21, strokeWidth: 1.6 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-case-n", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-case-title", children: c.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-case-body", children: c.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-case-rule", "aria-hidden": "true" })
+        ] }, c.title)) })
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your product — your users, your goals, your constraints. We scope what should be designed first, what can wait, and what it takes to ship it." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      /* @__PURE__ */ jsx("section", { className: "v2-section v2-section--void sd2-est-section", id: "estimate", children: /* @__PURE__ */ jsxs("div", { className: "sd2-est", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-est-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Scope Estimator" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Rough out your timeline in ten seconds." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Pick what you need and we'll show an honest range. It's an estimate, not a quote — but it's the same maths we start from." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-est-body", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-est-controls", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "01 — What do you need?" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_TYPES$6.map((t) => /* @__PURE__ */ jsx(
+                "button",
+                {
+                  className: `sd2-opt ${estType === t.id ? "on" : ""}`,
+                  onClick: () => setEstType(t.id),
+                  "aria-pressed": estType === t.id,
+                  children: t.label
+                },
+                t.id
+              )) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "02 — How big is it?" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_SCALE$6.map((s) => /* @__PURE__ */ jsx(
+                "button",
+                {
+                  className: `sd2-opt ${estScale === s.id ? "on" : ""}`,
+                  onClick: () => setEstScale(s.id),
+                  "aria-pressed": estScale === s.id,
+                  children: s.label
+                },
+                s.id
+              )) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "03 — Anything else? (optional)" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_ADDONS$6.map((a) => /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  className: `sd2-opt sd2-opt--check ${estAddons.has(a.id) ? "on" : ""}`,
+                  onClick: () => toggleAddon(a.id),
+                  "aria-pressed": estAddons.has(a.id),
+                  children: [
+                    /* @__PURE__ */ jsx("i", { children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) }),
+                    a.label
+                  ]
+                },
+                a.id
+              )) })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxs("aside", { className: "sd2-est-out", "aria-live": "polite", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-est-out-k", children: "Estimated design time" }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-out-v", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.low }, estimate.low),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-dash", children: "–" }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.high }, estimate.high + "h"),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-unit", children: "weeks" })
+            ] }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-est-note", children: estimate.base }),
+            /* @__PURE__ */ jsx("div", { className: "sd2-est-bar", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", { style: { width: `${Math.min(100, estimate.high / 20 * 100)}%` } }) }),
+            /* @__PURE__ */ jsxs("ul", { className: "sd2-est-list", children: [
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
+                " Research + design + testing included"
+              ] }),
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
+                " Fixed price once scoped"
+              ] }),
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
+                " Full Figma handover"
+              ] })
+            ] }),
+            /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Get an exact quote →" })
+          ] })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "process", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
+          /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How A Design Project Runs." }),
+          /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Six stages from first call to final handoff — nothing advances until the stage before it is signed off." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: PROCESS$8.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
+          /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
+            /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
+        ] }, m.n)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "benchmarks", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Quality Bar" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The numbers we hold ourselves to." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Every design is measured against these before it's allowed to ship — not aspirations, gates." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Live quality gate" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Checked on every project" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid", children: BENCHMARKS$6.map((b, i) => {
+            const R = 52;
+            const C = 2 * Math.PI * R;
+            const offset = C - C * b.ring / 100;
+            return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
+              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
+                /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
+                  /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `sd2-bench-grad-ux-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
+                    /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
+                    /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
+                  ] }) }),
+                  /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
+                  /* @__PURE__ */ jsx(
+                    "circle",
+                    {
+                      className: "sd2-bench-ring-fill",
+                      cx: "60",
+                      cy: "60",
+                      r: R,
+                      stroke: `url(#sd2-bench-grad-ux-${i})`,
+                      style: { "--c": C, "--ring-offset": offset }
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
+            ] }, b.label);
+          }) })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Design Stack" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we design with." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Chosen per project, not by habit — the right tool for your team's workflow and your developers' handoff needs." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: UIUX_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
+          /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
+          /* @__PURE__ */ jsx("span", { children: t.name })
+        ] }, t.name)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "work", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Related Work" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Designs we've shipped." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-work-grid", children: RELATED$6.map((w) => /* @__PURE__ */ jsxs(Link, { className: "sd2-work-card", to: w.link, children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-media", children: /* @__PURE__ */ jsx("img", { src: w.thumb, alt: "", loading: "lazy" }) }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-tag", children: w.tag }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-title", children: w.title }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-go", children: "Read case study →" })
+        ] }, w.link)) })
+      ] }),
+      /* @__PURE__ */ jsx(
+        TestimonialSpotlight,
+        {
+          testimonials,
+          label: "Client Voices",
+          heading: "What clients say once we ship.",
+          stats: [
+            { num: "40+", label: "Companies trust us" },
+            { num: "11", label: "Industries served" },
+            { num: "100%", label: "Source code ownership" }
+          ]
+        }
+      ),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three commitments that govern every project." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: PRINCIPLES$7.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
+        ] }, p.key)) })
+      ] }),
+      /* @__PURE__ */ jsx(
+        TechStackShowcaseV2,
+        {
+          title: "The Modern Design Arsenal",
+          description: "Industry-standard design tools and prototyping software we use to create pixel-perfect, accessible, and highly-interactive experiences.",
+          categories: TECH_CATEGORIES$6,
+          metrics: METRICS$6
+        }
+      ),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "handover", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What You Receive" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Everything, at handoff." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: '"You own the designs" is easy to say. Here is the exact list of what lands in your accounts when the project closes.' })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-bar", children: [
+            /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-title", children: [
+              /* @__PURE__ */ jsx(FileCode2, { size: 14, strokeWidth: 1.8 }),
+              "Handoff manifest"
+            ] }),
+            /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-meta", children: [
+              HANDOVER$6.length,
+              " items",
+              /* @__PURE__ */ jsx("i", {}),
+              "Transferred on completion"
+            ] })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-manifest-grid", children: HANDOVER$6.map((h, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-hand", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-hand-top", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-icon", children: /* @__PURE__ */ jsx(h.icon, { size: 16, strokeWidth: 1.6 }) }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-n", children: String(i + 1).padStart(2, "0") }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-tick", children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) })
+            ] }),
+            /* @__PURE__ */ jsx("h3", { className: "sd2-hand-title", children: h.title }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-hand-body", children: h.body })
+          ] }, h.title)) }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-foot", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-manifest-seal", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 3 }) }),
+            /* @__PURE__ */ jsxs("span", { children: [
+              "Everything above transfers to your accounts when the project closes.",
+              /* @__PURE__ */ jsx("b", { children: " No lock-in, no retained access, no dependency on us." })
+            ] })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "compare", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why Us" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Against what you're actually comparing." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "A template kit, a freelancer, and a big agency all solve part of the problem. Here's where each one tends to leave you exposed." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-cmp", role: "table", "aria-label": "Codelix compared to alternatives", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-head", role: "row", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "columnheader" }),
+            COMPARE_COLS$7.map((c, i) => /* @__PURE__ */ jsx(
+              "span",
+              {
+                className: `sd2-cmp-col ${i === 0 ? "is-us" : ""}`,
+                role: "columnheader",
+                children: c
+              },
+              c
+            ))
+          ] }),
+          COMPARE_ROWS$7.map((row) => /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-row", role: "row", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "rowheader", children: row.label }),
+            row.vals.map((v, i) => /* @__PURE__ */ jsxs(
+              "span",
+              {
+                className: `sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`,
+                role: "cell",
+                children: [
+                  v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.6 }),
+                  v === "partial" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
+                  v === "maybe" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
+                  v === "no" && /* @__PURE__ */ jsx(X, { size: 15, strokeWidth: 2.6 }),
+                  /* @__PURE__ */ jsx("em", { className: "sd2-cmp-txt", children: v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe" })
+                ]
+              },
+              i
+            ))
+          ] }, row.label))
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE$6, tone: "dark", centered: true }),
+      /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$e, className: "v2-section--void" }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "next", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What Happens Next" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three steps from here to kickoff." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No drawn-out sales process. Reach out and here's exactly what follows." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-next", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-next-line", "aria-hidden": "true" }),
+          NEXT_STEPS$6.map((s) => /* @__PURE__ */ jsxs("article", { className: "sd2-step", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-step-node", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-num", children: s.n }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-badge", children: /* @__PURE__ */ jsx(s.icon, { size: 15, strokeWidth: 1.7 }) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-step-inner", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-meta", children: s.meta }),
+              /* @__PURE__ */ jsx("h3", { className: "sd2-step-title", children: s.title }),
+              /* @__PURE__ */ jsx("p", { className: "sd2-step-body", children: s.body })
+            ] })
+          ] }, s.n))
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The rest of what we do." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES$8.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
+          ] }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
+        ] }, s.path)) })
+      ] }),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Tell us what you're designing.",
+          /* @__PURE__ */ jsx("br", {}),
+          "We'll tell you how we'd approach it."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your product — your users, your goals, your constraints. We scope what should be designed first, what can wait, and what it takes to ship it." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -7102,452 +7110,454 @@ function DataAnalyticsV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx(Link, { to: "/services", children: "Services" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: "Data Analytics" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " Service 07 · Data Analytics"
-        ] }) }),
-        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Turn raw data into" }) }),
-          " ",
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "clarity and action." }) })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We build automated pipelines, centralized data warehouses, and fast, intuitive dashboards that give you a single source of truth—so you can stop guessing and start growing." }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
-          /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-            /* @__PURE__ */ jsx("span", { children: "Schedule a call" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
-          ] }),
-          /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#estimate", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Estimate my project" }) })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
-        ["Typical timeline", "2–8 weeks"],
-        ["Starts with", "Data Audit"],
-        ["You receive", "Dashboards & Pipelines"],
-        ["Post-handoff", "Support included"]
-      ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
-      ] }, k)) })
-    ] }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "problems", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Sound Familiar?" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The data problems we fix every day." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "If you're spending more time wrangling spreadsheets than analyzing the results, it's time to upgrade your data infrastructure." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-problem-grid", children: PROBLEMS$5.map((p) => /* @__PURE__ */ jsxs("article", { className: "sd2-problem", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-problem-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 17, strokeWidth: 1.6 }) }),
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
         /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("h3", { className: "sd2-problem-pain", children: p.pain }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-problem-fix", children: p.fix })
-        ] })
-      ] }, p.pain)) })
-    ] }),
-    /* @__PURE__ */ jsx(ClientStrip, {}),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "included", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What's Included" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Every data project ships with all of this." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Not an upsell list — this is the baseline on every data analytics project we take, whatever the size." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-inc-showcase", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-inc-nav", role: "tablist", "aria-label": "What's included", children: [
-          /* @__PURE__ */ jsx(
-            "span",
-            {
-              className: "sd2-inc-nav-indicator",
-              style: { transform: `translateY(${incActive * 100}%)` },
-              "aria-hidden": "true"
-            }
-          ),
-          INCLUDED$5.map((it, i) => /* @__PURE__ */ jsxs("div", { className: "sd2-inc-navitem", children: [
-            /* @__PURE__ */ jsxs(
-              "button",
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx(Link, { to: "/services", children: "Services" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: "Data Analytics" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " Service 07 · Data Analytics"
+          ] }) }),
+          /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Turn raw data into" }) }),
+            " ",
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "clarity and action." }) })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We build automated pipelines, centralized data warehouses, and fast, intuitive dashboards that give you a single source of truth—so you can stop guessing and start growing." }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
+            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+              /* @__PURE__ */ jsx("span", { children: "Schedule a call" }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+            ] }),
+            /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#estimate", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Estimate my project" }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
+          ["Typical timeline", "2–8 weeks"],
+          ["Starts with", "Data Audit"],
+          ["You receive", "Dashboards & Pipelines"],
+          ["Post-handoff", "Support included"]
+        ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
+        ] }, k)) })
+      ] }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "problems", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Sound Familiar?" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The data problems we fix every day." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "If you're spending more time wrangling spreadsheets than analyzing the results, it's time to upgrade your data infrastructure." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-problem-grid", children: PROBLEMS$5.map((p) => /* @__PURE__ */ jsxs("article", { className: "sd2-problem", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-problem-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 17, strokeWidth: 1.6 }) }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("h3", { className: "sd2-problem-pain", children: p.pain }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-problem-fix", children: p.fix })
+          ] })
+        ] }, p.pain)) })
+      ] }),
+      /* @__PURE__ */ jsx(ClientStrip, {}),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "included", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What's Included" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Every data project ships with all of this." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Not an upsell list — this is the baseline on every data analytics project we take, whatever the size." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-inc-showcase", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-inc-nav", role: "tablist", "aria-label": "What's included", children: [
+            /* @__PURE__ */ jsx(
+              "span",
               {
-                type: "button",
-                role: "tab",
-                "aria-selected": incActive === i,
-                className: `sd2-inc-tab ${incActive === i ? "is-active" : ""}`,
-                onMouseEnter: () => setIncActive(i),
-                onFocus: () => setIncActive(i),
-                onClick: () => setIncActive(i),
-                children: [
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-n", children: String(i + 1).padStart(2, "0") }),
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-title", children: it.title }),
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 16, strokeWidth: 1.6 }) })
-                ]
+                className: "sd2-inc-nav-indicator",
+                style: { transform: `translateY(${incActive * 100}%)` },
+                "aria-hidden": "true"
               }
             ),
-            /* @__PURE__ */ jsx("div", { className: `sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`, children: /* @__PURE__ */ jsx("div", { className: "sd2-inc-mobile-body-inner", children: /* @__PURE__ */ jsx("p", { className: "sd2-inc-mobile-body-text", children: it.body }) }) })
-          ] }, it.title))
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-inc-stage", children: INCLUDED$5.map((it, i) => /* @__PURE__ */ jsxs(
-          "div",
-          {
-            className: `sd2-inc-panel ${incActive === i ? "is-active" : ""}`,
-            "aria-hidden": incActive !== i,
-            children: [
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-glow", "aria-hidden": "true" }),
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") }),
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 40, strokeWidth: 1.2 }) }),
-              /* @__PURE__ */ jsx("h3", { className: "sd2-inc-panel-title", children: it.title }),
-              /* @__PURE__ */ jsx("p", { className: "sd2-inc-panel-body", children: it.body })
-            ]
-          },
-          it.title
-        )) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "for", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Who It's For" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Actionable metrics for your specific sector." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "The data stack changes depending on your business model, scale, and what decisions you're trying to drive." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-case-grid", children: USE_CASES$5.map((c, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-case", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-case-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-case-icon", children: /* @__PURE__ */ jsx(c.icon, { size: 21, strokeWidth: 1.6 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-case-n", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-case-title", children: c.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-case-body", children: c.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-case-rule", "aria-hidden": "true" })
-      ] }, c.title)) })
-    ] }),
-    /* @__PURE__ */ jsx("section", { className: "v2-section v2-section--void sd2-est-section", id: "estimate", children: /* @__PURE__ */ jsxs("div", { className: "sd2-est", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-est-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Scope Estimator" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Rough out your timeline in ten seconds." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Pick what you need and we'll show an honest range. It's an estimate, not a quote — but it's the same maths we start from." })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-est-body", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-est-controls", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "01 — What do you need?" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_TYPES$5.map((t) => /* @__PURE__ */ jsx(
-              "button",
-              {
-                className: `sd2-opt ${estType === t.id ? "on" : ""}`,
-                onClick: () => setEstType(t.id),
-                "aria-pressed": estType === t.id,
-                children: t.label
-              },
-              t.id
-            )) })
+            INCLUDED$5.map((it, i) => /* @__PURE__ */ jsxs("div", { className: "sd2-inc-navitem", children: [
+              /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  type: "button",
+                  role: "tab",
+                  "aria-selected": incActive === i,
+                  className: `sd2-inc-tab ${incActive === i ? "is-active" : ""}`,
+                  onMouseEnter: () => setIncActive(i),
+                  onFocus: () => setIncActive(i),
+                  onClick: () => setIncActive(i),
+                  children: [
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-n", children: String(i + 1).padStart(2, "0") }),
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-title", children: it.title }),
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 16, strokeWidth: 1.6 }) })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ jsx("div", { className: `sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`, children: /* @__PURE__ */ jsx("div", { className: "sd2-inc-mobile-body-inner", children: /* @__PURE__ */ jsx("p", { className: "sd2-inc-mobile-body-text", children: it.body }) }) })
+            ] }, it.title))
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "02 — How complex is the data?" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_SCALE$5.map((s) => /* @__PURE__ */ jsx(
-              "button",
-              {
-                className: `sd2-opt ${estScale === s.id ? "on" : ""}`,
-                onClick: () => setEstScale(s.id),
-                "aria-pressed": estScale === s.id,
-                children: s.label
-              },
-              s.id
-            )) })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "03 — Anything else? (optional)" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_ADDONS$5.map((a) => /* @__PURE__ */ jsxs(
-              "button",
-              {
-                className: `sd2-opt sd2-opt--check ${estAddons.has(a.id) ? "on" : ""}`,
-                onClick: () => toggleAddon(a.id),
-                "aria-pressed": estAddons.has(a.id),
-                children: [
-                  /* @__PURE__ */ jsx("i", { children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) }),
-                  a.label
-                ]
-              },
-              a.id
-            )) })
-          ] })
-        ] }),
-        /* @__PURE__ */ jsxs("aside", { className: "sd2-est-out", "aria-live": "polite", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-est-out-k", children: "Estimated project time" }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-out-v", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.low }, estimate.low),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-dash", children: "–" }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.high }, estimate.high + "h"),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-unit", children: "weeks" })
-          ] }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-est-note", children: estimate.base }),
-          /* @__PURE__ */ jsx("div", { className: "sd2-est-bar", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", { style: { width: `${Math.min(100, estimate.high / 20 * 100)}%` } }) }),
-          /* @__PURE__ */ jsxs("ul", { className: "sd2-est-list", children: [
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 14 }),
-              " Full strategy & architecture"
-            ] }),
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 14 }),
-              " QA and data validation"
-            ] }),
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 14 }),
-              " Comprehensive documentation"
-            ] })
-          ] }),
-          /* @__PURE__ */ jsx(Link, { to: "/contact", className: "v2-btn v2-btn--outline", style: { marginTop: 24, width: "100%" }, children: /* @__PURE__ */ jsx("span", { children: "Discuss this scope" }) })
-        ] })
-      ] })
-    ] }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "process", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
-        /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How We Turn Data Into Decisions." }),
-        /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Six stages from first call to a live dashboard — nothing advances until the stage before it is signed off." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: PROCESS$7.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
-        /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
-          /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
-      ] }, m.n)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "benchmarks", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Quality Bar" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The numbers we hold ourselves to." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Every build is measured against these before it's allowed to ship — not aspirations, gates." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Live quality gate" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Checked on every build" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid", children: BENCHMARKS$5.map((b, i) => {
-          const R = 52;
-          const C = 2 * Math.PI * R;
-          const offset = C - C * b.ring / 100;
-          return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
-            /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
-              /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
-                /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `sd2-bench-grad-data-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
-                  /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
-                  /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
-                ] }) }),
-                /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
-                /* @__PURE__ */ jsx(
-                  "circle",
-                  {
-                    className: "sd2-bench-ring-fill",
-                    cx: "60",
-                    cy: "60",
-                    r: R,
-                    stroke: `url(#sd2-bench-grad-data-${i})`,
-                    style: { "--c": C, "--ring-offset": offset }
-                  }
-                )
-              ] }),
-              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
-          ] }, b.label);
-        }) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Data Stack" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we build pipelines and dashboards with." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Chosen per project, not by habit — the right tool for your data, your team, and what you'll need to maintain." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: DATA_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
-        /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
-        /* @__PURE__ */ jsx("span", { children: t.name })
-      ] }, t.name)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "work", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Related Work" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Selected work." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-work-grid", children: RELATED$5.map((w) => /* @__PURE__ */ jsxs(Link, { className: "sd2-work-card", to: w.link, children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-media", children: /* @__PURE__ */ jsx("img", { src: w.thumb, alt: "", loading: "lazy" }) }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-tag", children: w.tag }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-title", children: w.title }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-go", children: "Read case study →" })
-      ] }, w.link)) })
-    ] }),
-    /* @__PURE__ */ jsx(
-      TestimonialSpotlight,
-      {
-        testimonials: PAGE_TESTIMONIALS,
-        label: "Client Voices",
-        heading: "What clients say once we ship.",
-        stats: [
-          { num: "40+", label: "Companies trust us" },
-          { num: "11", label: "Industries served" },
-          { num: "100%", label: "Source code ownership" }
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three commitments that govern every project." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: PRINCIPLES$6.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
-      ] }, p.key)) })
-    ] }),
-    /* @__PURE__ */ jsx(
-      TechStackShowcaseV2,
-      {
-        title: "The Modern Data Stack",
-        description: "Powerful data warehousing, ELT pipelines, and visualization tools to turn raw data into actionable business intelligence.",
-        categories: TECH_CATEGORIES$5,
-        metrics: METRICS$5
-      }
-    ),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "handover", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What You Receive" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Everything, at handover." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: '"You own the code" is easy to say. Here is the exact list of what lands in your accounts when the project closes.' })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-manifest", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-bar", children: [
-          /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-title", children: [
-            /* @__PURE__ */ jsx(FileCode2, { size: 14, strokeWidth: 1.8 }),
-            "Handover manifest"
-          ] }),
-          /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-meta", children: [
-            HANDOVER$5.length,
-            " items",
-            /* @__PURE__ */ jsx("i", {}),
-            "Transferred on completion"
-          ] })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-manifest-grid", children: HANDOVER$5.map((h, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-hand", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-hand-top", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-icon", children: /* @__PURE__ */ jsx(h.icon, { size: 16, strokeWidth: 1.6 }) }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-n", children: String(i + 1).padStart(2, "0") }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-tick", children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) })
-          ] }),
-          /* @__PURE__ */ jsx("h3", { className: "sd2-hand-title", children: h.title }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-hand-body", children: h.body })
-        ] }, h.title)) }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-foot", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-manifest-seal", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 3 }) }),
-          /* @__PURE__ */ jsxs("span", { children: [
-            "Everything above transfers to your accounts when the project closes.",
-            /* @__PURE__ */ jsx("b", { children: " No lock-in, no retained access, no dependency on us." })
-          ] })
-        ] })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "compare", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why Us" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Against what you're actually comparing." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Off-the-shelf BI, an internal hire, and a generic agency all solve part of the problem. Here's where each one tends to leave you exposed." })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-cmp", role: "table", "aria-label": "Codelix compared to alternatives", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-head", role: "row", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "columnheader" }),
-          COMPARE_COLS$6.map((c, i) => /* @__PURE__ */ jsx(
-            "span",
+          /* @__PURE__ */ jsx("div", { className: "sd2-inc-stage", children: INCLUDED$5.map((it, i) => /* @__PURE__ */ jsxs(
+            "div",
             {
-              className: `sd2-cmp-col ${i === 0 ? "is-us" : ""}`,
-              role: "columnheader",
-              children: c
-            },
-            c
-          ))
-        ] }),
-        COMPARE_ROWS$6.map((row) => /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-row", role: "row", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "rowheader", children: row.label }),
-          row.vals.map((v, i) => /* @__PURE__ */ jsxs(
-            "span",
-            {
-              className: `sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`,
-              role: "cell",
+              className: `sd2-inc-panel ${incActive === i ? "is-active" : ""}`,
+              "aria-hidden": incActive !== i,
               children: [
-                v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.6 }),
-                v === "partial" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
-                v === "maybe" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
-                v === "no" && /* @__PURE__ */ jsx(X, { size: 15, strokeWidth: 2.6 }),
-                /* @__PURE__ */ jsx("em", { className: "sd2-cmp-txt", children: v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe" })
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-glow", "aria-hidden": "true" }),
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") }),
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 40, strokeWidth: 1.2 }) }),
+                /* @__PURE__ */ jsx("h3", { className: "sd2-inc-panel-title", children: it.title }),
+                /* @__PURE__ */ jsx("p", { className: "sd2-inc-panel-body", children: it.body })
               ]
             },
-            i
-          ))
-        ] }, row.label))
-      ] })
-    ] }),
-    /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE$5, tone: "dark", centered: true }),
-    /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$d, className: "v2-section--void" }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "next", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What Happens Next" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three steps from here to kickoff." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No drawn-out sales process. Reach out and here's exactly what follows." })
+            it.title
+          )) })
+        ] })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-next", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-next-line", "aria-hidden": "true" }),
-        NEXT_STEPS$5.map((s) => /* @__PURE__ */ jsxs("article", { className: "sd2-step", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-step-node", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-num", children: s.n }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-badge", children: /* @__PURE__ */ jsx(s.icon, { size: 15, strokeWidth: 1.7 }) })
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "for", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Who It's For" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Actionable metrics for your specific sector." })
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-step-inner", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-meta", children: s.meta }),
-            /* @__PURE__ */ jsx("h3", { className: "sd2-step-title", children: s.title }),
-            /* @__PURE__ */ jsx("p", { className: "sd2-step-body", children: s.body })
-          ] })
-        ] }, s.n))
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The rest of what we do." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES$7.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "The data stack changes depending on your business model, scale, and what decisions you're trying to drive." })
         ] }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
-      ] }, s.path)) })
-    ] }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Tell us what you're measuring.",
-        /* @__PURE__ */ jsx("br", {}),
-        "We'll tell you how we'd build it."
+        /* @__PURE__ */ jsx("div", { className: "sd2-case-grid", children: USE_CASES$5.map((c, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-case", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-case-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-case-icon", children: /* @__PURE__ */ jsx(c.icon, { size: 21, strokeWidth: 1.6 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-case-n", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-case-title", children: c.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-case-body", children: c.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-case-rule", "aria-hidden": "true" })
+        ] }, c.title)) })
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your data — your sources, your reporting gaps, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      /* @__PURE__ */ jsx("section", { className: "v2-section v2-section--void sd2-est-section", id: "estimate", children: /* @__PURE__ */ jsxs("div", { className: "sd2-est", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-est-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Scope Estimator" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Rough out your timeline in ten seconds." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Pick what you need and we'll show an honest range. It's an estimate, not a quote — but it's the same maths we start from." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-est-body", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-est-controls", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "01 — What do you need?" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_TYPES$5.map((t) => /* @__PURE__ */ jsx(
+                "button",
+                {
+                  className: `sd2-opt ${estType === t.id ? "on" : ""}`,
+                  onClick: () => setEstType(t.id),
+                  "aria-pressed": estType === t.id,
+                  children: t.label
+                },
+                t.id
+              )) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "02 — How complex is the data?" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_SCALE$5.map((s) => /* @__PURE__ */ jsx(
+                "button",
+                {
+                  className: `sd2-opt ${estScale === s.id ? "on" : ""}`,
+                  onClick: () => setEstScale(s.id),
+                  "aria-pressed": estScale === s.id,
+                  children: s.label
+                },
+                s.id
+              )) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "03 — Anything else? (optional)" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_ADDONS$5.map((a) => /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  className: `sd2-opt sd2-opt--check ${estAddons.has(a.id) ? "on" : ""}`,
+                  onClick: () => toggleAddon(a.id),
+                  "aria-pressed": estAddons.has(a.id),
+                  children: [
+                    /* @__PURE__ */ jsx("i", { children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) }),
+                    a.label
+                  ]
+                },
+                a.id
+              )) })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxs("aside", { className: "sd2-est-out", "aria-live": "polite", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-est-out-k", children: "Estimated project time" }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-out-v", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.low }, estimate.low),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-dash", children: "–" }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.high }, estimate.high + "h"),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-unit", children: "weeks" })
+            ] }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-est-note", children: estimate.base }),
+            /* @__PURE__ */ jsx("div", { className: "sd2-est-bar", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", { style: { width: `${Math.min(100, estimate.high / 20 * 100)}%` } }) }),
+            /* @__PURE__ */ jsxs("ul", { className: "sd2-est-list", children: [
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 14 }),
+                " Full strategy & architecture"
+              ] }),
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 14 }),
+                " QA and data validation"
+              ] }),
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 14 }),
+                " Comprehensive documentation"
+              ] })
+            ] }),
+            /* @__PURE__ */ jsx(Link, { to: "/contact", className: "v2-btn v2-btn--outline", style: { marginTop: 24, width: "100%" }, children: /* @__PURE__ */ jsx("span", { children: "Discuss this scope" }) })
+          ] })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "process", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
+          /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How We Turn Data Into Decisions." }),
+          /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Six stages from first call to a live dashboard — nothing advances until the stage before it is signed off." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: PROCESS$7.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
+          /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
+            /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
+        ] }, m.n)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "benchmarks", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Quality Bar" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The numbers we hold ourselves to." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Every build is measured against these before it's allowed to ship — not aspirations, gates." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Live quality gate" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Checked on every build" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid", children: BENCHMARKS$5.map((b, i) => {
+            const R = 52;
+            const C = 2 * Math.PI * R;
+            const offset = C - C * b.ring / 100;
+            return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
+              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
+                /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
+                  /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `sd2-bench-grad-data-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
+                    /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
+                    /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
+                  ] }) }),
+                  /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
+                  /* @__PURE__ */ jsx(
+                    "circle",
+                    {
+                      className: "sd2-bench-ring-fill",
+                      cx: "60",
+                      cy: "60",
+                      r: R,
+                      stroke: `url(#sd2-bench-grad-data-${i})`,
+                      style: { "--c": C, "--ring-offset": offset }
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
+            ] }, b.label);
+          }) })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Data Stack" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we build pipelines and dashboards with." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Chosen per project, not by habit — the right tool for your data, your team, and what you'll need to maintain." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: DATA_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
+          /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
+          /* @__PURE__ */ jsx("span", { children: t.name })
+        ] }, t.name)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "work", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Related Work" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Selected work." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-work-grid", children: RELATED$5.map((w) => /* @__PURE__ */ jsxs(Link, { className: "sd2-work-card", to: w.link, children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-media", children: /* @__PURE__ */ jsx("img", { src: w.thumb, alt: "", loading: "lazy" }) }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-tag", children: w.tag }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-title", children: w.title }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-go", children: "Read case study →" })
+        ] }, w.link)) })
+      ] }),
+      /* @__PURE__ */ jsx(
+        TestimonialSpotlight,
+        {
+          testimonials: PAGE_TESTIMONIALS,
+          label: "Client Voices",
+          heading: "What clients say once we ship.",
+          stats: [
+            { num: "40+", label: "Companies trust us" },
+            { num: "11", label: "Industries served" },
+            { num: "100%", label: "Source code ownership" }
+          ]
+        }
+      ),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three commitments that govern every project." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: PRINCIPLES$6.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
+        ] }, p.key)) })
+      ] }),
+      /* @__PURE__ */ jsx(
+        TechStackShowcaseV2,
+        {
+          title: "The Modern Data Stack",
+          description: "Powerful data warehousing, ELT pipelines, and visualization tools to turn raw data into actionable business intelligence.",
+          categories: TECH_CATEGORIES$5,
+          metrics: METRICS$5
+        }
+      ),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "handover", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What You Receive" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Everything, at handover." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: '"You own the code" is easy to say. Here is the exact list of what lands in your accounts when the project closes.' })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-bar", children: [
+            /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-title", children: [
+              /* @__PURE__ */ jsx(FileCode2, { size: 14, strokeWidth: 1.8 }),
+              "Handover manifest"
+            ] }),
+            /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-meta", children: [
+              HANDOVER$5.length,
+              " items",
+              /* @__PURE__ */ jsx("i", {}),
+              "Transferred on completion"
+            ] })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-manifest-grid", children: HANDOVER$5.map((h, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-hand", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-hand-top", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-icon", children: /* @__PURE__ */ jsx(h.icon, { size: 16, strokeWidth: 1.6 }) }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-n", children: String(i + 1).padStart(2, "0") }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-tick", children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) })
+            ] }),
+            /* @__PURE__ */ jsx("h3", { className: "sd2-hand-title", children: h.title }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-hand-body", children: h.body })
+          ] }, h.title)) }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-foot", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-manifest-seal", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 3 }) }),
+            /* @__PURE__ */ jsxs("span", { children: [
+              "Everything above transfers to your accounts when the project closes.",
+              /* @__PURE__ */ jsx("b", { children: " No lock-in, no retained access, no dependency on us." })
+            ] })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "compare", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why Us" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Against what you're actually comparing." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Off-the-shelf BI, an internal hire, and a generic agency all solve part of the problem. Here's where each one tends to leave you exposed." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-cmp", role: "table", "aria-label": "Codelix compared to alternatives", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-head", role: "row", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "columnheader" }),
+            COMPARE_COLS$6.map((c, i) => /* @__PURE__ */ jsx(
+              "span",
+              {
+                className: `sd2-cmp-col ${i === 0 ? "is-us" : ""}`,
+                role: "columnheader",
+                children: c
+              },
+              c
+            ))
+          ] }),
+          COMPARE_ROWS$6.map((row) => /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-row", role: "row", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "rowheader", children: row.label }),
+            row.vals.map((v, i) => /* @__PURE__ */ jsxs(
+              "span",
+              {
+                className: `sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`,
+                role: "cell",
+                children: [
+                  v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.6 }),
+                  v === "partial" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
+                  v === "maybe" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
+                  v === "no" && /* @__PURE__ */ jsx(X, { size: 15, strokeWidth: 2.6 }),
+                  /* @__PURE__ */ jsx("em", { className: "sd2-cmp-txt", children: v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe" })
+                ]
+              },
+              i
+            ))
+          ] }, row.label))
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE$5, tone: "dark", centered: true }),
+      /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$d, className: "v2-section--void" }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "next", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What Happens Next" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three steps from here to kickoff." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No drawn-out sales process. Reach out and here's exactly what follows." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-next", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-next-line", "aria-hidden": "true" }),
+          NEXT_STEPS$5.map((s) => /* @__PURE__ */ jsxs("article", { className: "sd2-step", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-step-node", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-num", children: s.n }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-badge", children: /* @__PURE__ */ jsx(s.icon, { size: 15, strokeWidth: 1.7 }) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-step-inner", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-meta", children: s.meta }),
+              /* @__PURE__ */ jsx("h3", { className: "sd2-step-title", children: s.title }),
+              /* @__PURE__ */ jsx("p", { className: "sd2-step-body", children: s.body })
+            ] })
+          ] }, s.n))
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The rest of what we do." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES$7.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
+          ] }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
+        ] }, s.path)) })
+      ] }),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Tell us what you're measuring.",
+          /* @__PURE__ */ jsx("br", {}),
+          "We'll tell you how we'd build it."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your data — your sources, your reporting gaps, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -7889,452 +7899,454 @@ function SupportManagedServicesV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx(Link, { to: "/services", children: "Services" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: "Support & Managed Services" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " Service 08 · Support & Managed Services"
-        ] }) }),
-        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Ongoing support that" }) }),
-          " ",
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "keeps things running." }) })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Uptime monitoring, security patching, performance tuning, and dedicated engineering capacity — a support plan that catches problems before your users do." }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
-          /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-            /* @__PURE__ */ jsx("span", { children: "Schedule a call" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
-          ] }),
-          /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#estimate", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Estimate my project" }) })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
-        ["Typical setup", "1 week onboarding"],
-        ["Starts with", "Codebase Audit"],
-        ["You receive", "Monitoring & Reports"],
-        ["Contract", "Monthly, no lock-in"]
-      ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
-      ] }, k)) })
-    ] }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "problems", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Sound Familiar?" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The support problems we fix every day." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: `If "support" currently means hoping nothing breaks, it's time for an actual plan.` }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-problem-grid", children: PROBLEMS$4.map((p) => /* @__PURE__ */ jsxs("article", { className: "sd2-problem", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-problem-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 17, strokeWidth: 1.6 }) }),
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
         /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("h3", { className: "sd2-problem-pain", children: p.pain }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-problem-fix", children: p.fix })
-        ] })
-      ] }, p.pain)) })
-    ] }),
-    /* @__PURE__ */ jsx(ClientStrip, {}),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "included", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What's Included" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Every support plan ships with all of this." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Not an upsell list — this is the baseline on every support engagement we take, whatever the size." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-inc-showcase", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-inc-nav", role: "tablist", "aria-label": "What's included", children: [
-          /* @__PURE__ */ jsx(
-            "span",
-            {
-              className: "sd2-inc-nav-indicator",
-              style: { transform: `translateY(${incActive * 100}%)` },
-              "aria-hidden": "true"
-            }
-          ),
-          INCLUDED$4.map((it, i) => /* @__PURE__ */ jsxs("div", { className: "sd2-inc-navitem", children: [
-            /* @__PURE__ */ jsxs(
-              "button",
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx(Link, { to: "/services", children: "Services" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: "Support & Managed Services" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " Service 08 · Support & Managed Services"
+          ] }) }),
+          /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Ongoing support that" }) }),
+            " ",
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "keeps things running." }) })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Uptime monitoring, security patching, performance tuning, and dedicated engineering capacity — a support plan that catches problems before your users do." }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
+            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+              /* @__PURE__ */ jsx("span", { children: "Schedule a call" }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+            ] }),
+            /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#estimate", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Estimate my project" }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
+          ["Typical setup", "1 week onboarding"],
+          ["Starts with", "Codebase Audit"],
+          ["You receive", "Monitoring & Reports"],
+          ["Contract", "Monthly, no lock-in"]
+        ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
+        ] }, k)) })
+      ] }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "problems", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Sound Familiar?" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The support problems we fix every day." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: `If "support" currently means hoping nothing breaks, it's time for an actual plan.` }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-problem-grid", children: PROBLEMS$4.map((p) => /* @__PURE__ */ jsxs("article", { className: "sd2-problem", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-problem-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 17, strokeWidth: 1.6 }) }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("h3", { className: "sd2-problem-pain", children: p.pain }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-problem-fix", children: p.fix })
+          ] })
+        ] }, p.pain)) })
+      ] }),
+      /* @__PURE__ */ jsx(ClientStrip, {}),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "included", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What's Included" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Every support plan ships with all of this." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Not an upsell list — this is the baseline on every support engagement we take, whatever the size." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-inc-showcase", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-inc-nav", role: "tablist", "aria-label": "What's included", children: [
+            /* @__PURE__ */ jsx(
+              "span",
               {
-                type: "button",
-                role: "tab",
-                "aria-selected": incActive === i,
-                className: `sd2-inc-tab ${incActive === i ? "is-active" : ""}`,
-                onMouseEnter: () => setIncActive(i),
-                onFocus: () => setIncActive(i),
-                onClick: () => setIncActive(i),
-                children: [
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-n", children: String(i + 1).padStart(2, "0") }),
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-title", children: it.title }),
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 16, strokeWidth: 1.6 }) })
-                ]
+                className: "sd2-inc-nav-indicator",
+                style: { transform: `translateY(${incActive * 100}%)` },
+                "aria-hidden": "true"
               }
             ),
-            /* @__PURE__ */ jsx("div", { className: `sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`, children: /* @__PURE__ */ jsx("div", { className: "sd2-inc-mobile-body-inner", children: /* @__PURE__ */ jsx("p", { className: "sd2-inc-mobile-body-text", children: it.body }) }) })
-          ] }, it.title))
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-inc-stage", children: INCLUDED$4.map((it, i) => /* @__PURE__ */ jsxs(
-          "div",
-          {
-            className: `sd2-inc-panel ${incActive === i ? "is-active" : ""}`,
-            "aria-hidden": incActive !== i,
-            children: [
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-glow", "aria-hidden": "true" }),
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") }),
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 40, strokeWidth: 1.2 }) }),
-              /* @__PURE__ */ jsx("h3", { className: "sd2-inc-panel-title", children: it.title }),
-              /* @__PURE__ */ jsx("p", { className: "sd2-inc-panel-body", children: it.body })
-            ]
-          },
-          it.title
-        )) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "for", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Who It's For" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Support scoped to how you actually run." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "The right support plan depends on how critical the system is and how much is changing month to month." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-case-grid", children: USE_CASES$4.map((c, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-case", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-case-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-case-icon", children: /* @__PURE__ */ jsx(c.icon, { size: 21, strokeWidth: 1.6 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-case-n", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-case-title", children: c.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-case-body", children: c.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-case-rule", "aria-hidden": "true" })
-      ] }, c.title)) })
-    ] }),
-    /* @__PURE__ */ jsx("section", { className: "v2-section v2-section--void sd2-est-section", id: "estimate", children: /* @__PURE__ */ jsxs("div", { className: "sd2-est", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-est-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Scope Estimator" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Rough out your onboarding time in ten seconds." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Pick what you need and we'll show an honest range. It's an estimate, not a quote — but it's the same maths we start from." })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-est-body", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-est-controls", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "01 — What level of support?" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_TYPES$4.map((t) => /* @__PURE__ */ jsx(
-              "button",
-              {
-                className: `sd2-opt ${estType === t.id ? "on" : ""}`,
-                onClick: () => setEstType(t.id),
-                "aria-pressed": estType === t.id,
-                children: t.label
-              },
-              t.id
-            )) })
+            INCLUDED$4.map((it, i) => /* @__PURE__ */ jsxs("div", { className: "sd2-inc-navitem", children: [
+              /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  type: "button",
+                  role: "tab",
+                  "aria-selected": incActive === i,
+                  className: `sd2-inc-tab ${incActive === i ? "is-active" : ""}`,
+                  onMouseEnter: () => setIncActive(i),
+                  onFocus: () => setIncActive(i),
+                  onClick: () => setIncActive(i),
+                  children: [
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-n", children: String(i + 1).padStart(2, "0") }),
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-title", children: it.title }),
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 16, strokeWidth: 1.6 }) })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ jsx("div", { className: `sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`, children: /* @__PURE__ */ jsx("div", { className: "sd2-inc-mobile-body-inner", children: /* @__PURE__ */ jsx("p", { className: "sd2-inc-mobile-body-text", children: it.body }) }) })
+            ] }, it.title))
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "02 — How large is the system?" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_SCALE$4.map((s) => /* @__PURE__ */ jsx(
-              "button",
-              {
-                className: `sd2-opt ${estScale === s.id ? "on" : ""}`,
-                onClick: () => setEstScale(s.id),
-                "aria-pressed": estScale === s.id,
-                children: s.label
-              },
-              s.id
-            )) })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "03 — Anything else? (optional)" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_ADDONS$4.map((a) => /* @__PURE__ */ jsxs(
-              "button",
-              {
-                className: `sd2-opt sd2-opt--check ${estAddons.has(a.id) ? "on" : ""}`,
-                onClick: () => toggleAddon(a.id),
-                "aria-pressed": estAddons.has(a.id),
-                children: [
-                  /* @__PURE__ */ jsx("i", { children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) }),
-                  a.label
-                ]
-              },
-              a.id
-            )) })
-          ] })
-        ] }),
-        /* @__PURE__ */ jsxs("aside", { className: "sd2-est-out", "aria-live": "polite", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-est-out-k", children: "Estimated onboarding time" }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-out-v", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.low }, estimate.low),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-dash", children: "–" }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.high }, estimate.high + "h"),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-unit", children: "weeks" })
-          ] }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-est-note", children: estimate.base }),
-          /* @__PURE__ */ jsx("div", { className: "sd2-est-bar", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", { style: { width: `${Math.min(100, estimate.high / 12 * 100)}%` } }) }),
-          /* @__PURE__ */ jsxs("ul", { className: "sd2-est-list", children: [
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 14 }),
-              " Codebase & infrastructure audit"
-            ] }),
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 14 }),
-              " Monitoring & alerting setup"
-            ] }),
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 14 }),
-              " Written SLA documentation"
-            ] })
-          ] }),
-          /* @__PURE__ */ jsx(Link, { to: "/contact", className: "v2-btn v2-btn--outline", style: { marginTop: 24, width: "100%" }, children: /* @__PURE__ */ jsx("span", { children: "Discuss this scope" }) })
-        ] })
-      ] })
-    ] }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "process", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
-        /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How We Keep Things Running." }),
-        /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Six stages from onboarding to monthly review — nothing runs unmonitored, and nothing changes silently." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: PROCESS$6.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
-        /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
-          /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
-      ] }, m.n)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "benchmarks", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Quality Bar" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The numbers we hold ourselves to." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Every support plan is measured against these — not aspirations, gates." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Live quality gate" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Checked every month" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid", children: BENCHMARKS$4.map((b, i) => {
-          const R = 52;
-          const C = 2 * Math.PI * R;
-          const offset = C - C * b.ring / 100;
-          return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
-            /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
-              /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
-                /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `sd2-bench-grad-support-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
-                  /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
-                  /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
-                ] }) }),
-                /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
-                /* @__PURE__ */ jsx(
-                  "circle",
-                  {
-                    className: "sd2-bench-ring-fill",
-                    cx: "60",
-                    cy: "60",
-                    r: R,
-                    stroke: `url(#sd2-bench-grad-support-${i})`,
-                    style: { "--c": C, "--ring-offset": offset }
-                  }
-                )
-              ] }),
-              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
-          ] }, b.label);
-        }) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Support Stack" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we monitor and maintain with." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Chosen per system, not by habit — the right tooling for your stack, your team, and what you'll need to maintain." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: SUPPORT_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
-        /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
-        /* @__PURE__ */ jsx("span", { children: t.name })
-      ] }, t.name)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "work", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Related Work" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Selected work." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-work-grid", children: RELATED$4.map((w) => /* @__PURE__ */ jsxs(Link, { className: "sd2-work-card", to: w.link, children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-media", children: /* @__PURE__ */ jsx("img", { src: w.thumb, alt: "", loading: "lazy" }) }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-tag", children: w.tag }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-title", children: w.title }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-go", children: "Read case study →" })
-      ] }, w.link)) })
-    ] }),
-    /* @__PURE__ */ jsx(
-      TestimonialSpotlight,
-      {
-        testimonials,
-        label: "Client Voices",
-        heading: "What clients say once we ship.",
-        stats: [
-          { num: "40+", label: "Companies trust us" },
-          { num: "11", label: "Industries served" },
-          { num: "100%", label: "Source code ownership" }
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three commitments that govern every project." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: PRINCIPLES$5.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
-      ] }, p.key)) })
-    ] }),
-    /* @__PURE__ */ jsx(
-      TechStackShowcaseV2,
-      {
-        title: "Proactive Monitoring & DevOps",
-        description: "The tools we use to maintain, secure, and continuously monitor your applications ensuring uninterrupted business operations.",
-        categories: TECH_CATEGORIES$4,
-        metrics: METRICS$4
-      }
-    ),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "handover", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What You Receive" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Everything, every month." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: `"We've got it covered" is easy to say. Here is the exact list of what lands in your inbox every month.` })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-manifest", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-bar", children: [
-          /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-title", children: [
-            /* @__PURE__ */ jsx(FileCode2, { size: 14, strokeWidth: 1.8 }),
-            "Support manifest"
-          ] }),
-          /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-meta", children: [
-            HANDOVER$4.length,
-            " items",
-            /* @__PURE__ */ jsx("i", {}),
-            "Delivered monthly"
-          ] })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-manifest-grid", children: HANDOVER$4.map((h, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-hand", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-hand-top", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-icon", children: /* @__PURE__ */ jsx(h.icon, { size: 16, strokeWidth: 1.6 }) }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-n", children: String(i + 1).padStart(2, "0") }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-tick", children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) })
-          ] }),
-          /* @__PURE__ */ jsx("h3", { className: "sd2-hand-title", children: h.title }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-hand-body", children: h.body })
-        ] }, h.title)) }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-foot", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-manifest-seal", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 3 }) }),
-          /* @__PURE__ */ jsxs("span", { children: [
-            "Everything above is part of the monthly plan, not billed as surprise extras. ",
-            /* @__PURE__ */ jsx("b", { children: "No lock-in, cancel with notice." })
-          ] })
-        ] })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "compare", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why Us" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Against what you're actually comparing." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No support plan, a freelancer on call, and a big agency retainer all solve part of the problem. Here's where each one tends to leave you exposed." })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-cmp", role: "table", "aria-label": "Codelix compared to alternatives", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-head", role: "row", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "columnheader" }),
-          COMPARE_COLS$5.map((c, i) => /* @__PURE__ */ jsx(
-            "span",
+          /* @__PURE__ */ jsx("div", { className: "sd2-inc-stage", children: INCLUDED$4.map((it, i) => /* @__PURE__ */ jsxs(
+            "div",
             {
-              className: `sd2-cmp-col ${i === 0 ? "is-us" : ""}`,
-              role: "columnheader",
-              children: c
-            },
-            c
-          ))
-        ] }),
-        COMPARE_ROWS$5.map((row) => /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-row", role: "row", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "rowheader", children: row.label }),
-          row.vals.map((v, i) => /* @__PURE__ */ jsxs(
-            "span",
-            {
-              className: `sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`,
-              role: "cell",
+              className: `sd2-inc-panel ${incActive === i ? "is-active" : ""}`,
+              "aria-hidden": incActive !== i,
               children: [
-                v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.6 }),
-                v === "partial" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
-                v === "maybe" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
-                v === "no" && /* @__PURE__ */ jsx(X, { size: 15, strokeWidth: 2.6 }),
-                /* @__PURE__ */ jsx("em", { className: "sd2-cmp-txt", children: v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe" })
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-glow", "aria-hidden": "true" }),
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") }),
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 40, strokeWidth: 1.2 }) }),
+                /* @__PURE__ */ jsx("h3", { className: "sd2-inc-panel-title", children: it.title }),
+                /* @__PURE__ */ jsx("p", { className: "sd2-inc-panel-body", children: it.body })
               ]
             },
-            i
-          ))
-        ] }, row.label))
-      ] })
-    ] }),
-    /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE$4, tone: "dark", centered: true }),
-    /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$c, className: "v2-section--void" }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "next", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What Happens Next" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three steps from here to onboarding." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No drawn-out sales process. Reach out and here's exactly what follows." })
+            it.title
+          )) })
+        ] })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-next", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-next-line", "aria-hidden": "true" }),
-        NEXT_STEPS$4.map((s) => /* @__PURE__ */ jsxs("article", { className: "sd2-step", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-step-node", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-num", children: s.n }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-badge", children: /* @__PURE__ */ jsx(s.icon, { size: 15, strokeWidth: 1.7 }) })
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "for", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Who It's For" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Support scoped to how you actually run." })
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-step-inner", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-meta", children: s.meta }),
-            /* @__PURE__ */ jsx("h3", { className: "sd2-step-title", children: s.title }),
-            /* @__PURE__ */ jsx("p", { className: "sd2-step-body", children: s.body })
-          ] })
-        ] }, s.n))
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The rest of what we do." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES$6.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "The right support plan depends on how critical the system is and how much is changing month to month." })
         ] }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
-      ] }, s.path)) })
-    ] }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Tell us what's keeping you up at night.",
-        /* @__PURE__ */ jsx("br", {}),
-        "We'll tell you how we'd cover it."
+        /* @__PURE__ */ jsx("div", { className: "sd2-case-grid", children: USE_CASES$4.map((c, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-case", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-case-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-case-icon", children: /* @__PURE__ */ jsx(c.icon, { size: 21, strokeWidth: 1.6 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-case-n", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-case-title", children: c.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-case-body", children: c.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-case-rule", "aria-hidden": "true" })
+        ] }, c.title)) })
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your system — what's fragile, what's urgent, and what a realistic support plan looks like." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      /* @__PURE__ */ jsx("section", { className: "v2-section v2-section--void sd2-est-section", id: "estimate", children: /* @__PURE__ */ jsxs("div", { className: "sd2-est", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-est-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Scope Estimator" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Rough out your onboarding time in ten seconds." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Pick what you need and we'll show an honest range. It's an estimate, not a quote — but it's the same maths we start from." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-est-body", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-est-controls", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "01 — What level of support?" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_TYPES$4.map((t) => /* @__PURE__ */ jsx(
+                "button",
+                {
+                  className: `sd2-opt ${estType === t.id ? "on" : ""}`,
+                  onClick: () => setEstType(t.id),
+                  "aria-pressed": estType === t.id,
+                  children: t.label
+                },
+                t.id
+              )) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "02 — How large is the system?" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_SCALE$4.map((s) => /* @__PURE__ */ jsx(
+                "button",
+                {
+                  className: `sd2-opt ${estScale === s.id ? "on" : ""}`,
+                  onClick: () => setEstScale(s.id),
+                  "aria-pressed": estScale === s.id,
+                  children: s.label
+                },
+                s.id
+              )) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "03 — Anything else? (optional)" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_ADDONS$4.map((a) => /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  className: `sd2-opt sd2-opt--check ${estAddons.has(a.id) ? "on" : ""}`,
+                  onClick: () => toggleAddon(a.id),
+                  "aria-pressed": estAddons.has(a.id),
+                  children: [
+                    /* @__PURE__ */ jsx("i", { children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) }),
+                    a.label
+                  ]
+                },
+                a.id
+              )) })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxs("aside", { className: "sd2-est-out", "aria-live": "polite", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-est-out-k", children: "Estimated onboarding time" }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-out-v", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.low }, estimate.low),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-dash", children: "–" }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.high }, estimate.high + "h"),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-unit", children: "weeks" })
+            ] }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-est-note", children: estimate.base }),
+            /* @__PURE__ */ jsx("div", { className: "sd2-est-bar", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", { style: { width: `${Math.min(100, estimate.high / 12 * 100)}%` } }) }),
+            /* @__PURE__ */ jsxs("ul", { className: "sd2-est-list", children: [
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 14 }),
+                " Codebase & infrastructure audit"
+              ] }),
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 14 }),
+                " Monitoring & alerting setup"
+              ] }),
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 14 }),
+                " Written SLA documentation"
+              ] })
+            ] }),
+            /* @__PURE__ */ jsx(Link, { to: "/contact", className: "v2-btn v2-btn--outline", style: { marginTop: 24, width: "100%" }, children: /* @__PURE__ */ jsx("span", { children: "Discuss this scope" }) })
+          ] })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "process", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
+          /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How We Keep Things Running." }),
+          /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Six stages from onboarding to monthly review — nothing runs unmonitored, and nothing changes silently." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: PROCESS$6.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
+          /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
+            /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
+        ] }, m.n)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "benchmarks", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Quality Bar" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The numbers we hold ourselves to." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Every support plan is measured against these — not aspirations, gates." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Live quality gate" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Checked every month" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid", children: BENCHMARKS$4.map((b, i) => {
+            const R = 52;
+            const C = 2 * Math.PI * R;
+            const offset = C - C * b.ring / 100;
+            return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
+              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
+                /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
+                  /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `sd2-bench-grad-support-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
+                    /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
+                    /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
+                  ] }) }),
+                  /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
+                  /* @__PURE__ */ jsx(
+                    "circle",
+                    {
+                      className: "sd2-bench-ring-fill",
+                      cx: "60",
+                      cy: "60",
+                      r: R,
+                      stroke: `url(#sd2-bench-grad-support-${i})`,
+                      style: { "--c": C, "--ring-offset": offset }
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
+            ] }, b.label);
+          }) })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Support Stack" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we monitor and maintain with." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Chosen per system, not by habit — the right tooling for your stack, your team, and what you'll need to maintain." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: SUPPORT_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
+          /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
+          /* @__PURE__ */ jsx("span", { children: t.name })
+        ] }, t.name)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "work", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Related Work" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Selected work." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-work-grid", children: RELATED$4.map((w) => /* @__PURE__ */ jsxs(Link, { className: "sd2-work-card", to: w.link, children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-media", children: /* @__PURE__ */ jsx("img", { src: w.thumb, alt: "", loading: "lazy" }) }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-tag", children: w.tag }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-title", children: w.title }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-go", children: "Read case study →" })
+        ] }, w.link)) })
+      ] }),
+      /* @__PURE__ */ jsx(
+        TestimonialSpotlight,
+        {
+          testimonials,
+          label: "Client Voices",
+          heading: "What clients say once we ship.",
+          stats: [
+            { num: "40+", label: "Companies trust us" },
+            { num: "11", label: "Industries served" },
+            { num: "100%", label: "Source code ownership" }
+          ]
+        }
+      ),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three commitments that govern every project." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: PRINCIPLES$5.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
+        ] }, p.key)) })
+      ] }),
+      /* @__PURE__ */ jsx(
+        TechStackShowcaseV2,
+        {
+          title: "Proactive Monitoring & DevOps",
+          description: "The tools we use to maintain, secure, and continuously monitor your applications ensuring uninterrupted business operations.",
+          categories: TECH_CATEGORIES$4,
+          metrics: METRICS$4
+        }
+      ),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "handover", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What You Receive" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Everything, every month." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: `"We've got it covered" is easy to say. Here is the exact list of what lands in your inbox every month.` })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-bar", children: [
+            /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-title", children: [
+              /* @__PURE__ */ jsx(FileCode2, { size: 14, strokeWidth: 1.8 }),
+              "Support manifest"
+            ] }),
+            /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-meta", children: [
+              HANDOVER$4.length,
+              " items",
+              /* @__PURE__ */ jsx("i", {}),
+              "Delivered monthly"
+            ] })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-manifest-grid", children: HANDOVER$4.map((h, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-hand", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-hand-top", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-icon", children: /* @__PURE__ */ jsx(h.icon, { size: 16, strokeWidth: 1.6 }) }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-n", children: String(i + 1).padStart(2, "0") }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-tick", children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) })
+            ] }),
+            /* @__PURE__ */ jsx("h3", { className: "sd2-hand-title", children: h.title }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-hand-body", children: h.body })
+          ] }, h.title)) }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-foot", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-manifest-seal", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 3 }) }),
+            /* @__PURE__ */ jsxs("span", { children: [
+              "Everything above is part of the monthly plan, not billed as surprise extras. ",
+              /* @__PURE__ */ jsx("b", { children: "No lock-in, cancel with notice." })
+            ] })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "compare", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why Us" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Against what you're actually comparing." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No support plan, a freelancer on call, and a big agency retainer all solve part of the problem. Here's where each one tends to leave you exposed." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-cmp", role: "table", "aria-label": "Codelix compared to alternatives", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-head", role: "row", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "columnheader" }),
+            COMPARE_COLS$5.map((c, i) => /* @__PURE__ */ jsx(
+              "span",
+              {
+                className: `sd2-cmp-col ${i === 0 ? "is-us" : ""}`,
+                role: "columnheader",
+                children: c
+              },
+              c
+            ))
+          ] }),
+          COMPARE_ROWS$5.map((row) => /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-row", role: "row", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "rowheader", children: row.label }),
+            row.vals.map((v, i) => /* @__PURE__ */ jsxs(
+              "span",
+              {
+                className: `sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`,
+                role: "cell",
+                children: [
+                  v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.6 }),
+                  v === "partial" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
+                  v === "maybe" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
+                  v === "no" && /* @__PURE__ */ jsx(X, { size: 15, strokeWidth: 2.6 }),
+                  /* @__PURE__ */ jsx("em", { className: "sd2-cmp-txt", children: v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe" })
+                ]
+              },
+              i
+            ))
+          ] }, row.label))
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE$4, tone: "dark", centered: true }),
+      /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$c, className: "v2-section--void" }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "next", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What Happens Next" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three steps from here to onboarding." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No drawn-out sales process. Reach out and here's exactly what follows." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-next", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-next-line", "aria-hidden": "true" }),
+          NEXT_STEPS$4.map((s) => /* @__PURE__ */ jsxs("article", { className: "sd2-step", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-step-node", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-num", children: s.n }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-badge", children: /* @__PURE__ */ jsx(s.icon, { size: 15, strokeWidth: 1.7 }) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-step-inner", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-meta", children: s.meta }),
+              /* @__PURE__ */ jsx("h3", { className: "sd2-step-title", children: s.title }),
+              /* @__PURE__ */ jsx("p", { className: "sd2-step-body", children: s.body })
+            ] })
+          ] }, s.n))
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The rest of what we do." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES$6.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
+          ] }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
+        ] }, s.path)) })
+      ] }),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Tell us what's keeping you up at night.",
+          /* @__PURE__ */ jsx("br", {}),
+          "We'll tell you how we'd cover it."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your system — what's fragile, what's urgent, and what a realistic support plan looks like." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -8676,452 +8688,454 @@ function ApplicationDevelopmentV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx(Link, { to: "/services", children: "Services" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: "Application Development" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " Service 02 · Application Development"
-        ] }) }),
-        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Apps that feel" }) }),
-          " ",
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "native, not bolted on." }) })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We build cross-platform and native mobile apps with clean, hand-written code — one Flutter codebase where it fits, fully native where the platform demands it, handed over with full source-code ownership." }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
-          /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-            /* @__PURE__ */ jsx("span", { children: "Schedule a call" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
-          ] }),
-          /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#estimate", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Estimate my project" }) })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
-        ["Typical timeline", "4–12 weeks"],
-        ["Starts with", "Discovery call"],
-        ["You receive", "100% source code"],
-        ["Post-launch", "Support included"]
-      ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
-      ] }, k)) })
-    ] }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "problems", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Sound Familiar?" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The problems we get called in to fix." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "If you recognise two or three of these, a rebuild will pay for itself faster than another round of patches." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-problem-grid", children: PROBLEMS$3.map((p) => /* @__PURE__ */ jsxs("article", { className: "sd2-problem", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-problem-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 17, strokeWidth: 1.6 }) }),
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
         /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("h3", { className: "sd2-problem-pain", children: p.pain }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-problem-fix", children: p.fix })
-        ] })
-      ] }, p.pain)) })
-    ] }),
-    /* @__PURE__ */ jsx(ClientStrip, {}),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "included", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What's Included" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Every build ships with all of this." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Not an upsell list — this is the baseline on every app project we take, whatever the size." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-inc-showcase", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-inc-nav", role: "tablist", "aria-label": "What's included", children: [
-          /* @__PURE__ */ jsx(
-            "span",
-            {
-              className: "sd2-inc-nav-indicator",
-              style: { transform: `translateY(${incActive * 100}%)` },
-              "aria-hidden": "true"
-            }
-          ),
-          INCLUDED$3.map((it, i) => /* @__PURE__ */ jsxs("div", { className: "sd2-inc-navitem", children: [
-            /* @__PURE__ */ jsxs(
-              "button",
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx(Link, { to: "/services", children: "Services" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: "Application Development" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " Service 02 · Application Development"
+          ] }) }),
+          /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Apps that feel" }) }),
+            " ",
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "native, not bolted on." }) })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We build cross-platform and native mobile apps with clean, hand-written code — one Flutter codebase where it fits, fully native where the platform demands it, handed over with full source-code ownership." }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
+            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+              /* @__PURE__ */ jsx("span", { children: "Schedule a call" }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+            ] }),
+            /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#estimate", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Estimate my project" }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
+          ["Typical timeline", "4–12 weeks"],
+          ["Starts with", "Discovery call"],
+          ["You receive", "100% source code"],
+          ["Post-launch", "Support included"]
+        ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
+        ] }, k)) })
+      ] }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "problems", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Sound Familiar?" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The problems we get called in to fix." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "If you recognise two or three of these, a rebuild will pay for itself faster than another round of patches." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-problem-grid", children: PROBLEMS$3.map((p) => /* @__PURE__ */ jsxs("article", { className: "sd2-problem", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-problem-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 17, strokeWidth: 1.6 }) }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("h3", { className: "sd2-problem-pain", children: p.pain }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-problem-fix", children: p.fix })
+          ] })
+        ] }, p.pain)) })
+      ] }),
+      /* @__PURE__ */ jsx(ClientStrip, {}),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "included", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What's Included" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Every build ships with all of this." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Not an upsell list — this is the baseline on every app project we take, whatever the size." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-inc-showcase", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-inc-nav", role: "tablist", "aria-label": "What's included", children: [
+            /* @__PURE__ */ jsx(
+              "span",
               {
-                type: "button",
-                role: "tab",
-                "aria-selected": incActive === i,
-                className: `sd2-inc-tab ${incActive === i ? "is-active" : ""}`,
-                onMouseEnter: () => setIncActive(i),
-                onFocus: () => setIncActive(i),
-                onClick: () => setIncActive(i),
-                children: [
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-n", children: String(i + 1).padStart(2, "0") }),
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-title", children: it.title }),
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 16, strokeWidth: 1.6 }) })
-                ]
+                className: "sd2-inc-nav-indicator",
+                style: { transform: `translateY(${incActive * 100}%)` },
+                "aria-hidden": "true"
               }
             ),
-            /* @__PURE__ */ jsx("div", { className: `sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`, children: /* @__PURE__ */ jsx("div", { className: "sd2-inc-mobile-body-inner", children: /* @__PURE__ */ jsx("p", { className: "sd2-inc-mobile-body-text", children: it.body }) }) })
-          ] }, it.title))
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-inc-stage", children: INCLUDED$3.map((it, i) => /* @__PURE__ */ jsxs(
-          "div",
-          {
-            className: `sd2-inc-panel ${incActive === i ? "is-active" : ""}`,
-            "aria-hidden": incActive !== i,
-            children: [
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-glow", "aria-hidden": "true" }),
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") }),
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 40, strokeWidth: 1.2 }) }),
-              /* @__PURE__ */ jsx("h3", { className: "sd2-inc-panel-title", children: it.title }),
-              /* @__PURE__ */ jsx("p", { className: "sd2-inc-panel-body", children: it.body })
-            ]
-          },
-          it.title
-        )) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "for", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Who It's For" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Built for how your users actually behave." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "The platform and the architecture change depending on who's using the app and what they came to do." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-case-grid", children: USE_CASES$3.map((c, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-case", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-case-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-case-icon", children: /* @__PURE__ */ jsx(c.icon, { size: 21, strokeWidth: 1.6 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-case-n", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-case-title", children: c.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-case-body", children: c.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-case-rule", "aria-hidden": "true" })
-      ] }, c.title)) })
-    ] }),
-    /* @__PURE__ */ jsx("section", { className: "v2-section v2-section--void sd2-est-section", id: "estimate", children: /* @__PURE__ */ jsxs("div", { className: "sd2-est", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-est-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Scope Estimator" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Rough out your timeline in ten seconds." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Pick what you're building and we'll show an honest range. It's an estimate, not a quote — but it's the same maths we start from." })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-est-body", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-est-controls", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "01 — What are you building?" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_TYPES$3.map((t) => /* @__PURE__ */ jsx(
-              "button",
-              {
-                className: `sd2-opt ${estType === t.id ? "on" : ""}`,
-                onClick: () => setEstType(t.id),
-                "aria-pressed": estType === t.id,
-                children: t.label
-              },
-              t.id
-            )) })
+            INCLUDED$3.map((it, i) => /* @__PURE__ */ jsxs("div", { className: "sd2-inc-navitem", children: [
+              /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  type: "button",
+                  role: "tab",
+                  "aria-selected": incActive === i,
+                  className: `sd2-inc-tab ${incActive === i ? "is-active" : ""}`,
+                  onMouseEnter: () => setIncActive(i),
+                  onFocus: () => setIncActive(i),
+                  onClick: () => setIncActive(i),
+                  children: [
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-n", children: String(i + 1).padStart(2, "0") }),
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-title", children: it.title }),
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 16, strokeWidth: 1.6 }) })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ jsx("div", { className: `sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`, children: /* @__PURE__ */ jsx("div", { className: "sd2-inc-mobile-body-inner", children: /* @__PURE__ */ jsx("p", { className: "sd2-inc-mobile-body-text", children: it.body }) }) })
+            ] }, it.title))
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "02 — Which platforms?" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_SCALE$3.map((s) => /* @__PURE__ */ jsx(
-              "button",
-              {
-                className: `sd2-opt ${estScale === s.id ? "on" : ""}`,
-                onClick: () => setEstScale(s.id),
-                "aria-pressed": estScale === s.id,
-                children: s.label
-              },
-              s.id
-            )) })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "03 — Anything else? (optional)" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_ADDONS$3.map((a) => /* @__PURE__ */ jsxs(
-              "button",
-              {
-                className: `sd2-opt sd2-opt--check ${estAddons.has(a.id) ? "on" : ""}`,
-                onClick: () => toggleAddon(a.id),
-                "aria-pressed": estAddons.has(a.id),
-                children: [
-                  /* @__PURE__ */ jsx("i", { children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) }),
-                  a.label
-                ]
-              },
-              a.id
-            )) })
-          ] })
-        ] }),
-        /* @__PURE__ */ jsxs("aside", { className: "sd2-est-out", "aria-live": "polite", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-est-out-k", children: "Estimated build time" }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-out-v", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.low }, estimate.low),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-dash", children: "–" }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.high }, estimate.high + "h"),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-unit", children: "weeks" })
-          ] }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-est-note", children: estimate.base }),
-          /* @__PURE__ */ jsx("div", { className: "sd2-est-bar", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", { style: { width: `${Math.min(100, estimate.high / 30 * 100)}%` } }) }),
-          /* @__PURE__ */ jsxs("ul", { className: "sd2-est-list", children: [
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
-              " Design + build + QA included"
-            ] }),
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
-              " Fixed price once scoped"
-            ] }),
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
-              " Full source-code handover"
-            ] })
-          ] }),
-          /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Get an exact quote →" })
-        ] })
-      ] })
-    ] }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "process", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
-        /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How A Build Runs." }),
-        /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Six stages from first call to a live app — nothing advances until the stage before it is signed off." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: PROCESS$5.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
-        /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
-          /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
-      ] }, m.n)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "benchmarks", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Quality Bar" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The numbers we hold ourselves to." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Every build is measured against these before it's allowed to ship — not aspirations, gates." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Live quality gate" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Checked on every build" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid", children: BENCHMARKS$3.map((b, i) => {
-          const R = 52;
-          const C = 2 * Math.PI * R;
-          const offset = C - C * b.ring / 100;
-          return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
-            /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
-              /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
-                /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `sd2-bench-grad-app-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
-                  /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
-                  /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
-                ] }) }),
-                /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
-                /* @__PURE__ */ jsx(
-                  "circle",
-                  {
-                    className: "sd2-bench-ring-fill",
-                    cx: "60",
-                    cy: "60",
-                    r: R,
-                    stroke: `url(#sd2-bench-grad-app-${i})`,
-                    style: { "--c": C, "--ring-offset": offset }
-                  }
-                )
-              ] }),
-              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
-          ] }, b.label);
-        }) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The App Stack" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we build apps with." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Chosen per project, not by habit — the right tool for your platform, your team, and what you'll need to maintain." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: APP_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
-        /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
-        /* @__PURE__ */ jsx("span", { children: t.name })
-      ] }, t.name)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "work", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Related Work" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "App builds we've shipped." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-work-grid", children: RELATED$3.map((w) => /* @__PURE__ */ jsxs(Link, { className: "sd2-work-card", to: w.link, children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-media", children: /* @__PURE__ */ jsx("img", { src: w.thumb, alt: "", loading: "lazy" }) }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-tag", children: w.tag }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-title", children: w.title }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-go", children: "Read case study →" })
-      ] }, w.link)) })
-    ] }),
-    /* @__PURE__ */ jsx(
-      TestimonialSpotlight,
-      {
-        testimonials,
-        label: "Client Voices",
-        heading: "What clients say once we ship.",
-        stats: [
-          { num: "40+", label: "Companies trust us" },
-          { num: "11", label: "Industries served" },
-          { num: "100%", label: "Source code ownership" }
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three commitments that govern every project." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: PRINCIPLES$4.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
-      ] }, p.key)) })
-    ] }),
-    /* @__PURE__ */ jsx(
-      TechStackShowcaseV2,
-      {
-        title: "Built for Mobile & Cross-Platform Dominance",
-        description: "Native and hybrid mobile technologies engineered for performance, smooth animations, and platform-specific capabilities.",
-        categories: TECH_CATEGORIES$3,
-        metrics: METRICS$3
-      }
-    ),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "handover", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What You Receive" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Everything, at handover." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: '"You own the code" is easy to say. Here is the exact list of what lands in your accounts when the project closes.' })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-manifest", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-bar", children: [
-          /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-title", children: [
-            /* @__PURE__ */ jsx(FileCode2, { size: 14, strokeWidth: 1.8 }),
-            "Handover manifest"
-          ] }),
-          /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-meta", children: [
-            HANDOVER$3.length,
-            " items",
-            /* @__PURE__ */ jsx("i", {}),
-            "Transferred on completion"
-          ] })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-manifest-grid", children: HANDOVER$3.map((h, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-hand", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-hand-top", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-icon", children: /* @__PURE__ */ jsx(h.icon, { size: 16, strokeWidth: 1.6 }) }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-n", children: String(i + 1).padStart(2, "0") }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-tick", children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) })
-          ] }),
-          /* @__PURE__ */ jsx("h3", { className: "sd2-hand-title", children: h.title }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-hand-body", children: h.body })
-        ] }, h.title)) }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-foot", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-manifest-seal", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 3 }) }),
-          /* @__PURE__ */ jsxs("span", { children: [
-            "Everything above transfers to your accounts when the project closes.",
-            /* @__PURE__ */ jsx("b", { children: " No lock-in, no retained access, no dependency on us." })
-          ] })
-        ] })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "compare", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why Us" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Against what you're actually comparing." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "A no-code builder, a freelancer, and a big agency all solve part of the problem. Here's where each one tends to leave you exposed." })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-cmp", role: "table", "aria-label": "Codelix compared to alternatives", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-head", role: "row", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "columnheader" }),
-          COMPARE_COLS$4.map((c, i) => /* @__PURE__ */ jsx(
-            "span",
+          /* @__PURE__ */ jsx("div", { className: "sd2-inc-stage", children: INCLUDED$3.map((it, i) => /* @__PURE__ */ jsxs(
+            "div",
             {
-              className: `sd2-cmp-col ${i === 0 ? "is-us" : ""}`,
-              role: "columnheader",
-              children: c
-            },
-            c
-          ))
-        ] }),
-        COMPARE_ROWS$4.map((row) => /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-row", role: "row", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "rowheader", children: row.label }),
-          row.vals.map((v, i) => /* @__PURE__ */ jsxs(
-            "span",
-            {
-              className: `sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`,
-              role: "cell",
+              className: `sd2-inc-panel ${incActive === i ? "is-active" : ""}`,
+              "aria-hidden": incActive !== i,
               children: [
-                v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.6 }),
-                v === "partial" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
-                v === "maybe" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
-                v === "no" && /* @__PURE__ */ jsx(X, { size: 15, strokeWidth: 2.6 }),
-                /* @__PURE__ */ jsx("em", { className: "sd2-cmp-txt", children: v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe" })
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-glow", "aria-hidden": "true" }),
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") }),
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 40, strokeWidth: 1.2 }) }),
+                /* @__PURE__ */ jsx("h3", { className: "sd2-inc-panel-title", children: it.title }),
+                /* @__PURE__ */ jsx("p", { className: "sd2-inc-panel-body", children: it.body })
               ]
             },
-            i
-          ))
-        ] }, row.label))
-      ] })
-    ] }),
-    /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE$3, tone: "dark", centered: true }),
-    /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$b, className: "v2-section--void" }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "next", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What Happens Next" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three steps from here to kickoff." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No drawn-out sales process. Reach out and here's exactly what follows." })
+            it.title
+          )) })
+        ] })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-next", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-next-line", "aria-hidden": "true" }),
-        NEXT_STEPS$3.map((s) => /* @__PURE__ */ jsxs("article", { className: "sd2-step", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-step-node", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-num", children: s.n }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-badge", children: /* @__PURE__ */ jsx(s.icon, { size: 15, strokeWidth: 1.7 }) })
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "for", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Who It's For" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Built for how your users actually behave." })
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-step-inner", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-meta", children: s.meta }),
-            /* @__PURE__ */ jsx("h3", { className: "sd2-step-title", children: s.title }),
-            /* @__PURE__ */ jsx("p", { className: "sd2-step-body", children: s.body })
-          ] })
-        ] }, s.n))
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The rest of what we do." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES$5.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "The platform and the architecture change depending on who's using the app and what they came to do." })
         ] }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
-      ] }, s.path)) })
-    ] }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Tell us what you're building.",
-        /* @__PURE__ */ jsx("br", {}),
-        "We'll tell you how we'd build it."
+        /* @__PURE__ */ jsx("div", { className: "sd2-case-grid", children: USE_CASES$3.map((c, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-case", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-case-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-case-icon", children: /* @__PURE__ */ jsx(c.icon, { size: 21, strokeWidth: 1.6 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-case-n", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-case-title", children: c.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-case-body", children: c.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-case-rule", "aria-hidden": "true" })
+        ] }, c.title)) })
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your app — your users, your goals, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      /* @__PURE__ */ jsx("section", { className: "v2-section v2-section--void sd2-est-section", id: "estimate", children: /* @__PURE__ */ jsxs("div", { className: "sd2-est", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-est-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Scope Estimator" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Rough out your timeline in ten seconds." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Pick what you're building and we'll show an honest range. It's an estimate, not a quote — but it's the same maths we start from." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-est-body", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-est-controls", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "01 — What are you building?" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_TYPES$3.map((t) => /* @__PURE__ */ jsx(
+                "button",
+                {
+                  className: `sd2-opt ${estType === t.id ? "on" : ""}`,
+                  onClick: () => setEstType(t.id),
+                  "aria-pressed": estType === t.id,
+                  children: t.label
+                },
+                t.id
+              )) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "02 — Which platforms?" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_SCALE$3.map((s) => /* @__PURE__ */ jsx(
+                "button",
+                {
+                  className: `sd2-opt ${estScale === s.id ? "on" : ""}`,
+                  onClick: () => setEstScale(s.id),
+                  "aria-pressed": estScale === s.id,
+                  children: s.label
+                },
+                s.id
+              )) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "03 — Anything else? (optional)" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_ADDONS$3.map((a) => /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  className: `sd2-opt sd2-opt--check ${estAddons.has(a.id) ? "on" : ""}`,
+                  onClick: () => toggleAddon(a.id),
+                  "aria-pressed": estAddons.has(a.id),
+                  children: [
+                    /* @__PURE__ */ jsx("i", { children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) }),
+                    a.label
+                  ]
+                },
+                a.id
+              )) })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxs("aside", { className: "sd2-est-out", "aria-live": "polite", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-est-out-k", children: "Estimated build time" }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-out-v", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.low }, estimate.low),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-dash", children: "–" }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.high }, estimate.high + "h"),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-unit", children: "weeks" })
+            ] }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-est-note", children: estimate.base }),
+            /* @__PURE__ */ jsx("div", { className: "sd2-est-bar", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", { style: { width: `${Math.min(100, estimate.high / 30 * 100)}%` } }) }),
+            /* @__PURE__ */ jsxs("ul", { className: "sd2-est-list", children: [
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
+                " Design + build + QA included"
+              ] }),
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
+                " Fixed price once scoped"
+              ] }),
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
+                " Full source-code handover"
+              ] })
+            ] }),
+            /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Get an exact quote →" })
+          ] })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "process", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
+          /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How A Build Runs." }),
+          /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Six stages from first call to a live app — nothing advances until the stage before it is signed off." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: PROCESS$5.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
+          /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
+            /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
+        ] }, m.n)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "benchmarks", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Quality Bar" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The numbers we hold ourselves to." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Every build is measured against these before it's allowed to ship — not aspirations, gates." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Live quality gate" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Checked on every build" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid", children: BENCHMARKS$3.map((b, i) => {
+            const R = 52;
+            const C = 2 * Math.PI * R;
+            const offset = C - C * b.ring / 100;
+            return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
+              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
+                /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
+                  /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `sd2-bench-grad-app-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
+                    /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
+                    /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
+                  ] }) }),
+                  /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
+                  /* @__PURE__ */ jsx(
+                    "circle",
+                    {
+                      className: "sd2-bench-ring-fill",
+                      cx: "60",
+                      cy: "60",
+                      r: R,
+                      stroke: `url(#sd2-bench-grad-app-${i})`,
+                      style: { "--c": C, "--ring-offset": offset }
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
+            ] }, b.label);
+          }) })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The App Stack" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we build apps with." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Chosen per project, not by habit — the right tool for your platform, your team, and what you'll need to maintain." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: APP_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
+          /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
+          /* @__PURE__ */ jsx("span", { children: t.name })
+        ] }, t.name)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "work", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Related Work" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "App builds we've shipped." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-work-grid", children: RELATED$3.map((w) => /* @__PURE__ */ jsxs(Link, { className: "sd2-work-card", to: w.link, children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-media", children: /* @__PURE__ */ jsx("img", { src: w.thumb, alt: "", loading: "lazy" }) }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-tag", children: w.tag }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-title", children: w.title }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-go", children: "Read case study →" })
+        ] }, w.link)) })
+      ] }),
+      /* @__PURE__ */ jsx(
+        TestimonialSpotlight,
+        {
+          testimonials,
+          label: "Client Voices",
+          heading: "What clients say once we ship.",
+          stats: [
+            { num: "40+", label: "Companies trust us" },
+            { num: "11", label: "Industries served" },
+            { num: "100%", label: "Source code ownership" }
+          ]
+        }
+      ),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three commitments that govern every project." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: PRINCIPLES$4.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
+        ] }, p.key)) })
+      ] }),
+      /* @__PURE__ */ jsx(
+        TechStackShowcaseV2,
+        {
+          title: "Built for Mobile & Cross-Platform Dominance",
+          description: "Native and hybrid mobile technologies engineered for performance, smooth animations, and platform-specific capabilities.",
+          categories: TECH_CATEGORIES$3,
+          metrics: METRICS$3
+        }
+      ),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "handover", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What You Receive" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Everything, at handover." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: '"You own the code" is easy to say. Here is the exact list of what lands in your accounts when the project closes.' })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-bar", children: [
+            /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-title", children: [
+              /* @__PURE__ */ jsx(FileCode2, { size: 14, strokeWidth: 1.8 }),
+              "Handover manifest"
+            ] }),
+            /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-meta", children: [
+              HANDOVER$3.length,
+              " items",
+              /* @__PURE__ */ jsx("i", {}),
+              "Transferred on completion"
+            ] })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-manifest-grid", children: HANDOVER$3.map((h, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-hand", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-hand-top", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-icon", children: /* @__PURE__ */ jsx(h.icon, { size: 16, strokeWidth: 1.6 }) }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-n", children: String(i + 1).padStart(2, "0") }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-tick", children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) })
+            ] }),
+            /* @__PURE__ */ jsx("h3", { className: "sd2-hand-title", children: h.title }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-hand-body", children: h.body })
+          ] }, h.title)) }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-foot", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-manifest-seal", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 3 }) }),
+            /* @__PURE__ */ jsxs("span", { children: [
+              "Everything above transfers to your accounts when the project closes.",
+              /* @__PURE__ */ jsx("b", { children: " No lock-in, no retained access, no dependency on us." })
+            ] })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "compare", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why Us" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Against what you're actually comparing." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "A no-code builder, a freelancer, and a big agency all solve part of the problem. Here's where each one tends to leave you exposed." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-cmp", role: "table", "aria-label": "Codelix compared to alternatives", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-head", role: "row", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "columnheader" }),
+            COMPARE_COLS$4.map((c, i) => /* @__PURE__ */ jsx(
+              "span",
+              {
+                className: `sd2-cmp-col ${i === 0 ? "is-us" : ""}`,
+                role: "columnheader",
+                children: c
+              },
+              c
+            ))
+          ] }),
+          COMPARE_ROWS$4.map((row) => /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-row", role: "row", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "rowheader", children: row.label }),
+            row.vals.map((v, i) => /* @__PURE__ */ jsxs(
+              "span",
+              {
+                className: `sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`,
+                role: "cell",
+                children: [
+                  v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.6 }),
+                  v === "partial" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
+                  v === "maybe" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
+                  v === "no" && /* @__PURE__ */ jsx(X, { size: 15, strokeWidth: 2.6 }),
+                  /* @__PURE__ */ jsx("em", { className: "sd2-cmp-txt", children: v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe" })
+                ]
+              },
+              i
+            ))
+          ] }, row.label))
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE$3, tone: "dark", centered: true }),
+      /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$b, className: "v2-section--void" }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "next", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What Happens Next" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three steps from here to kickoff." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No drawn-out sales process. Reach out and here's exactly what follows." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-next", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-next-line", "aria-hidden": "true" }),
+          NEXT_STEPS$3.map((s) => /* @__PURE__ */ jsxs("article", { className: "sd2-step", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-step-node", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-num", children: s.n }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-badge", children: /* @__PURE__ */ jsx(s.icon, { size: 15, strokeWidth: 1.7 }) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-step-inner", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-meta", children: s.meta }),
+              /* @__PURE__ */ jsx("h3", { className: "sd2-step-title", children: s.title }),
+              /* @__PURE__ */ jsx("p", { className: "sd2-step-body", children: s.body })
+            ] })
+          ] }, s.n))
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The rest of what we do." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES$5.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
+          ] }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
+        ] }, s.path)) })
+      ] }),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Tell us what you're building.",
+          /* @__PURE__ */ jsx("br", {}),
+          "We'll tell you how we'd build it."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your app — your users, your goals, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -9463,452 +9477,454 @@ function ECommerceSolutionsV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx(Link, { to: "/services", children: "Services" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: "E-Commerce Solutions" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " Service 04 · E-Commerce Solutions"
-        ] }) }),
-        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Storefronts built" }) }),
-          " ",
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "backwards from payment." }) })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We build high-performance storefronts and checkout flows with clean, hand-written code — designed to convert browsers into buyers, and handed over with full source-code ownership." }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
-          /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-            /* @__PURE__ */ jsx("span", { children: "Schedule a call" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
-          ] }),
-          /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#estimate", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Estimate my project" }) })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
-        ["Typical timeline", "3–10 weeks"],
-        ["Starts with", "Discovery call"],
-        ["You receive", "100% source code"],
-        ["Post-launch", "Support included"]
-      ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
-      ] }, k)) })
-    ] }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "problems", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Sound Familiar?" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The problems we get called in to fix." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "If you recognise two or three of these, a rebuild will pay for itself faster than another round of patches." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-problem-grid", children: PROBLEMS$2.map((p) => /* @__PURE__ */ jsxs("article", { className: "sd2-problem", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-problem-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 17, strokeWidth: 1.6 }) }),
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
         /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("h3", { className: "sd2-problem-pain", children: p.pain }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-problem-fix", children: p.fix })
-        ] })
-      ] }, p.pain)) })
-    ] }),
-    /* @__PURE__ */ jsx(ClientStrip, {}),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "included", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What's Included" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Every build ships with all of this." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Not an upsell list — this is the baseline on every commerce project we take, whatever the size." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-inc-showcase", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-inc-nav", role: "tablist", "aria-label": "What's included", children: [
-          /* @__PURE__ */ jsx(
-            "span",
-            {
-              className: "sd2-inc-nav-indicator",
-              style: { transform: `translateY(${incActive * 100}%)` },
-              "aria-hidden": "true"
-            }
-          ),
-          INCLUDED$2.map((it, i) => /* @__PURE__ */ jsxs("div", { className: "sd2-inc-navitem", children: [
-            /* @__PURE__ */ jsxs(
-              "button",
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx(Link, { to: "/services", children: "Services" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: "E-Commerce Solutions" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " Service 04 · E-Commerce Solutions"
+          ] }) }),
+          /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Storefronts built" }) }),
+            " ",
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "backwards from payment." }) })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We build high-performance storefronts and checkout flows with clean, hand-written code — designed to convert browsers into buyers, and handed over with full source-code ownership." }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
+            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+              /* @__PURE__ */ jsx("span", { children: "Schedule a call" }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+            ] }),
+            /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#estimate", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Estimate my project" }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
+          ["Typical timeline", "3–10 weeks"],
+          ["Starts with", "Discovery call"],
+          ["You receive", "100% source code"],
+          ["Post-launch", "Support included"]
+        ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
+        ] }, k)) })
+      ] }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "problems", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Sound Familiar?" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The problems we get called in to fix." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "If you recognise two or three of these, a rebuild will pay for itself faster than another round of patches." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-problem-grid", children: PROBLEMS$2.map((p) => /* @__PURE__ */ jsxs("article", { className: "sd2-problem", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-problem-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 17, strokeWidth: 1.6 }) }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("h3", { className: "sd2-problem-pain", children: p.pain }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-problem-fix", children: p.fix })
+          ] })
+        ] }, p.pain)) })
+      ] }),
+      /* @__PURE__ */ jsx(ClientStrip, {}),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "included", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What's Included" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Every build ships with all of this." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Not an upsell list — this is the baseline on every commerce project we take, whatever the size." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-inc-showcase", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-inc-nav", role: "tablist", "aria-label": "What's included", children: [
+            /* @__PURE__ */ jsx(
+              "span",
               {
-                type: "button",
-                role: "tab",
-                "aria-selected": incActive === i,
-                className: `sd2-inc-tab ${incActive === i ? "is-active" : ""}`,
-                onMouseEnter: () => setIncActive(i),
-                onFocus: () => setIncActive(i),
-                onClick: () => setIncActive(i),
-                children: [
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-n", children: String(i + 1).padStart(2, "0") }),
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-title", children: it.title }),
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 16, strokeWidth: 1.6 }) })
-                ]
+                className: "sd2-inc-nav-indicator",
+                style: { transform: `translateY(${incActive * 100}%)` },
+                "aria-hidden": "true"
               }
             ),
-            /* @__PURE__ */ jsx("div", { className: `sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`, children: /* @__PURE__ */ jsx("div", { className: "sd2-inc-mobile-body-inner", children: /* @__PURE__ */ jsx("p", { className: "sd2-inc-mobile-body-text", children: it.body }) }) })
-          ] }, it.title))
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-inc-stage", children: INCLUDED$2.map((it, i) => /* @__PURE__ */ jsxs(
-          "div",
-          {
-            className: `sd2-inc-panel ${incActive === i ? "is-active" : ""}`,
-            "aria-hidden": incActive !== i,
-            children: [
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-glow", "aria-hidden": "true" }),
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") }),
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 40, strokeWidth: 1.2 }) }),
-              /* @__PURE__ */ jsx("h3", { className: "sd2-inc-panel-title", children: it.title }),
-              /* @__PURE__ */ jsx("p", { className: "sd2-inc-panel-body", children: it.body })
-            ]
-          },
-          it.title
-        )) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "for", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Who It's For" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Built for how your customers actually shop." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "The stack and the checkout flow change depending on what you sell and how your buyers actually pay." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-case-grid", children: USE_CASES$2.map((c, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-case", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-case-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-case-icon", children: /* @__PURE__ */ jsx(c.icon, { size: 21, strokeWidth: 1.6 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-case-n", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-case-title", children: c.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-case-body", children: c.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-case-rule", "aria-hidden": "true" })
-      ] }, c.title)) })
-    ] }),
-    /* @__PURE__ */ jsx("section", { className: "v2-section v2-section--void sd2-est-section", id: "estimate", children: /* @__PURE__ */ jsxs("div", { className: "sd2-est", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-est-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Scope Estimator" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Rough out your timeline in ten seconds." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Pick what you're building and we'll show an honest range. It's an estimate, not a quote — but it's the same maths we start from." })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-est-body", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-est-controls", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "01 — What are you building?" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_TYPES$2.map((t) => /* @__PURE__ */ jsx(
-              "button",
-              {
-                className: `sd2-opt ${estType === t.id ? "on" : ""}`,
-                onClick: () => setEstType(t.id),
-                "aria-pressed": estType === t.id,
-                children: t.label
-              },
-              t.id
-            )) })
+            INCLUDED$2.map((it, i) => /* @__PURE__ */ jsxs("div", { className: "sd2-inc-navitem", children: [
+              /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  type: "button",
+                  role: "tab",
+                  "aria-selected": incActive === i,
+                  className: `sd2-inc-tab ${incActive === i ? "is-active" : ""}`,
+                  onMouseEnter: () => setIncActive(i),
+                  onFocus: () => setIncActive(i),
+                  onClick: () => setIncActive(i),
+                  children: [
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-n", children: String(i + 1).padStart(2, "0") }),
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-title", children: it.title }),
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 16, strokeWidth: 1.6 }) })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ jsx("div", { className: `sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`, children: /* @__PURE__ */ jsx("div", { className: "sd2-inc-mobile-body-inner", children: /* @__PURE__ */ jsx("p", { className: "sd2-inc-mobile-body-text", children: it.body }) }) })
+            ] }, it.title))
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "02 — How big is your catalogue?" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_SCALE$2.map((s) => /* @__PURE__ */ jsx(
-              "button",
-              {
-                className: `sd2-opt ${estScale === s.id ? "on" : ""}`,
-                onClick: () => setEstScale(s.id),
-                "aria-pressed": estScale === s.id,
-                children: s.label
-              },
-              s.id
-            )) })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "03 — Anything else? (optional)" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_ADDONS$2.map((a) => /* @__PURE__ */ jsxs(
-              "button",
-              {
-                className: `sd2-opt sd2-opt--check ${estAddons.has(a.id) ? "on" : ""}`,
-                onClick: () => toggleAddon(a.id),
-                "aria-pressed": estAddons.has(a.id),
-                children: [
-                  /* @__PURE__ */ jsx("i", { children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) }),
-                  a.label
-                ]
-              },
-              a.id
-            )) })
-          ] })
-        ] }),
-        /* @__PURE__ */ jsxs("aside", { className: "sd2-est-out", "aria-live": "polite", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-est-out-k", children: "Estimated build time" }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-out-v", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.low }, estimate.low),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-dash", children: "–" }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.high }, estimate.high + "h"),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-unit", children: "weeks" })
-          ] }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-est-note", children: estimate.base }),
-          /* @__PURE__ */ jsx("div", { className: "sd2-est-bar", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", { style: { width: `${Math.min(100, estimate.high / 30 * 100)}%` } }) }),
-          /* @__PURE__ */ jsxs("ul", { className: "sd2-est-list", children: [
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
-              " Design + build + QA included"
-            ] }),
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
-              " Fixed price once scoped"
-            ] }),
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
-              " Full source-code handover"
-            ] })
-          ] }),
-          /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Get an exact quote →" })
-        ] })
-      ] })
-    ] }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "process", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
-        /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How A Build Runs." }),
-        /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Six stages from first call to live store — nothing advances until the stage before it is signed off." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: PROCESS$4.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
-        /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
-          /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
-      ] }, m.n)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "benchmarks", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Quality Bar" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The numbers we hold ourselves to." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Every build is measured against these before it's allowed to ship — not aspirations, gates." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Live quality gate" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Checked on every build" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid", children: BENCHMARKS$2.map((b, i) => {
-          const R = 52;
-          const C = 2 * Math.PI * R;
-          const offset = C - C * b.ring / 100;
-          return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
-            /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
-              /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
-                /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `sd2-bench-grad-ecom-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
-                  /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
-                  /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
-                ] }) }),
-                /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
-                /* @__PURE__ */ jsx(
-                  "circle",
-                  {
-                    className: "sd2-bench-ring-fill",
-                    cx: "60",
-                    cy: "60",
-                    r: R,
-                    stroke: `url(#sd2-bench-grad-ecom-${i})`,
-                    style: { "--c": C, "--ring-offset": offset }
-                  }
-                )
-              ] }),
-              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
-          ] }, b.label);
-        }) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Commerce Stack" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we build storefronts with." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Chosen per project, not by habit — the right tool for your catalogue, your team, and what you'll need to maintain." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: ECOM_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
-        /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
-        /* @__PURE__ */ jsx("span", { children: t.name })
-      ] }, t.name)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "work", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Related Work" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Commerce builds we've shipped." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-work-grid", children: RELATED$2.map((w) => /* @__PURE__ */ jsxs(Link, { className: "sd2-work-card", to: w.link, children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-media", children: /* @__PURE__ */ jsx("img", { src: w.thumb, alt: "", loading: "lazy" }) }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-tag", children: w.tag }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-title", children: w.title }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-go", children: "Read case study →" })
-      ] }, w.link)) })
-    ] }),
-    /* @__PURE__ */ jsx(
-      TestimonialSpotlight,
-      {
-        testimonials,
-        label: "Client Voices",
-        heading: "What clients say once we ship.",
-        stats: [
-          { num: "40+", label: "Companies trust us" },
-          { num: "11", label: "Industries served" },
-          { num: "100%", label: "Source code ownership" }
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three commitments that govern every project." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: PRINCIPLES$3.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
-      ] }, p.key)) })
-    ] }),
-    /* @__PURE__ */ jsx(
-      TechStackShowcaseV2,
-      {
-        title: "High-Conversion Commerce Stacks",
-        description: "Scalable headless commerce and enterprise platforms designed to handle traffic spikes and complex inventory logic seamlessly.",
-        categories: TECH_CATEGORIES$2,
-        metrics: METRICS$2
-      }
-    ),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "handover", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What You Receive" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Everything, at handover." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: '"You own the code" is easy to say. Here is the exact list of what lands in your accounts when the project closes.' })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-manifest", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-bar", children: [
-          /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-title", children: [
-            /* @__PURE__ */ jsx(FileCode2, { size: 14, strokeWidth: 1.8 }),
-            "Handover manifest"
-          ] }),
-          /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-meta", children: [
-            HANDOVER$2.length,
-            " items",
-            /* @__PURE__ */ jsx("i", {}),
-            "Transferred on completion"
-          ] })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-manifest-grid", children: HANDOVER$2.map((h, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-hand", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-hand-top", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-icon", children: /* @__PURE__ */ jsx(h.icon, { size: 16, strokeWidth: 1.6 }) }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-n", children: String(i + 1).padStart(2, "0") }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-tick", children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) })
-          ] }),
-          /* @__PURE__ */ jsx("h3", { className: "sd2-hand-title", children: h.title }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-hand-body", children: h.body })
-        ] }, h.title)) }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-foot", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-manifest-seal", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 3 }) }),
-          /* @__PURE__ */ jsxs("span", { children: [
-            "Everything above transfers to your accounts when the project closes.",
-            /* @__PURE__ */ jsx("b", { children: " No lock-in, no retained access, no dependency on us." })
-          ] })
-        ] })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "compare", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why Us" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Against what you're actually comparing." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "A template, a freelancer, and a big agency all solve part of the problem. Here's where each one tends to leave you exposed." })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-cmp", role: "table", "aria-label": "Codelix compared to alternatives", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-head", role: "row", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "columnheader" }),
-          COMPARE_COLS$3.map((c, i) => /* @__PURE__ */ jsx(
-            "span",
+          /* @__PURE__ */ jsx("div", { className: "sd2-inc-stage", children: INCLUDED$2.map((it, i) => /* @__PURE__ */ jsxs(
+            "div",
             {
-              className: `sd2-cmp-col ${i === 0 ? "is-us" : ""}`,
-              role: "columnheader",
-              children: c
-            },
-            c
-          ))
-        ] }),
-        COMPARE_ROWS$3.map((row) => /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-row", role: "row", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "rowheader", children: row.label }),
-          row.vals.map((v, i) => /* @__PURE__ */ jsxs(
-            "span",
-            {
-              className: `sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`,
-              role: "cell",
+              className: `sd2-inc-panel ${incActive === i ? "is-active" : ""}`,
+              "aria-hidden": incActive !== i,
               children: [
-                v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.6 }),
-                v === "partial" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
-                v === "maybe" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
-                v === "no" && /* @__PURE__ */ jsx(X, { size: 15, strokeWidth: 2.6 }),
-                /* @__PURE__ */ jsx("em", { className: "sd2-cmp-txt", children: v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe" })
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-glow", "aria-hidden": "true" }),
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") }),
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 40, strokeWidth: 1.2 }) }),
+                /* @__PURE__ */ jsx("h3", { className: "sd2-inc-panel-title", children: it.title }),
+                /* @__PURE__ */ jsx("p", { className: "sd2-inc-panel-body", children: it.body })
               ]
             },
-            i
-          ))
-        ] }, row.label))
-      ] })
-    ] }),
-    /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE$2, tone: "dark", centered: true }),
-    /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$a, className: "v2-section--void" }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "next", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What Happens Next" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three steps from here to kickoff." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No drawn-out sales process. Reach out and here's exactly what follows." })
+            it.title
+          )) })
+        ] })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-next", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-next-line", "aria-hidden": "true" }),
-        NEXT_STEPS$2.map((s) => /* @__PURE__ */ jsxs("article", { className: "sd2-step", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-step-node", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-num", children: s.n }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-badge", children: /* @__PURE__ */ jsx(s.icon, { size: 15, strokeWidth: 1.7 }) })
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "for", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Who It's For" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Built for how your customers actually shop." })
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-step-inner", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-meta", children: s.meta }),
-            /* @__PURE__ */ jsx("h3", { className: "sd2-step-title", children: s.title }),
-            /* @__PURE__ */ jsx("p", { className: "sd2-step-body", children: s.body })
-          ] })
-        ] }, s.n))
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The rest of what we do." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES$4.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "The stack and the checkout flow change depending on what you sell and how your buyers actually pay." })
         ] }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
-      ] }, s.path)) })
-    ] }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Tell us what you're selling.",
-        /* @__PURE__ */ jsx("br", {}),
-        "We'll tell you how we'd build it."
+        /* @__PURE__ */ jsx("div", { className: "sd2-case-grid", children: USE_CASES$2.map((c, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-case", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-case-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-case-icon", children: /* @__PURE__ */ jsx(c.icon, { size: 21, strokeWidth: 1.6 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-case-n", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-case-title", children: c.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-case-body", children: c.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-case-rule", "aria-hidden": "true" })
+        ] }, c.title)) })
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your store — your catalogue, your customers, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      /* @__PURE__ */ jsx("section", { className: "v2-section v2-section--void sd2-est-section", id: "estimate", children: /* @__PURE__ */ jsxs("div", { className: "sd2-est", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-est-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Scope Estimator" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Rough out your timeline in ten seconds." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Pick what you're building and we'll show an honest range. It's an estimate, not a quote — but it's the same maths we start from." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-est-body", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-est-controls", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "01 — What are you building?" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_TYPES$2.map((t) => /* @__PURE__ */ jsx(
+                "button",
+                {
+                  className: `sd2-opt ${estType === t.id ? "on" : ""}`,
+                  onClick: () => setEstType(t.id),
+                  "aria-pressed": estType === t.id,
+                  children: t.label
+                },
+                t.id
+              )) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "02 — How big is your catalogue?" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_SCALE$2.map((s) => /* @__PURE__ */ jsx(
+                "button",
+                {
+                  className: `sd2-opt ${estScale === s.id ? "on" : ""}`,
+                  onClick: () => setEstScale(s.id),
+                  "aria-pressed": estScale === s.id,
+                  children: s.label
+                },
+                s.id
+              )) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "03 — Anything else? (optional)" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_ADDONS$2.map((a) => /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  className: `sd2-opt sd2-opt--check ${estAddons.has(a.id) ? "on" : ""}`,
+                  onClick: () => toggleAddon(a.id),
+                  "aria-pressed": estAddons.has(a.id),
+                  children: [
+                    /* @__PURE__ */ jsx("i", { children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) }),
+                    a.label
+                  ]
+                },
+                a.id
+              )) })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxs("aside", { className: "sd2-est-out", "aria-live": "polite", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-est-out-k", children: "Estimated build time" }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-out-v", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.low }, estimate.low),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-dash", children: "–" }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.high }, estimate.high + "h"),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-unit", children: "weeks" })
+            ] }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-est-note", children: estimate.base }),
+            /* @__PURE__ */ jsx("div", { className: "sd2-est-bar", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", { style: { width: `${Math.min(100, estimate.high / 30 * 100)}%` } }) }),
+            /* @__PURE__ */ jsxs("ul", { className: "sd2-est-list", children: [
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
+                " Design + build + QA included"
+              ] }),
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
+                " Fixed price once scoped"
+              ] }),
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
+                " Full source-code handover"
+              ] })
+            ] }),
+            /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Get an exact quote →" })
+          ] })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "process", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
+          /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How A Build Runs." }),
+          /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Six stages from first call to live store — nothing advances until the stage before it is signed off." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: PROCESS$4.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
+          /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
+            /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
+        ] }, m.n)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "benchmarks", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Quality Bar" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The numbers we hold ourselves to." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Every build is measured against these before it's allowed to ship — not aspirations, gates." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Live quality gate" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Checked on every build" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid", children: BENCHMARKS$2.map((b, i) => {
+            const R = 52;
+            const C = 2 * Math.PI * R;
+            const offset = C - C * b.ring / 100;
+            return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
+              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
+                /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
+                  /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `sd2-bench-grad-ecom-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
+                    /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
+                    /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
+                  ] }) }),
+                  /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
+                  /* @__PURE__ */ jsx(
+                    "circle",
+                    {
+                      className: "sd2-bench-ring-fill",
+                      cx: "60",
+                      cy: "60",
+                      r: R,
+                      stroke: `url(#sd2-bench-grad-ecom-${i})`,
+                      style: { "--c": C, "--ring-offset": offset }
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
+            ] }, b.label);
+          }) })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Commerce Stack" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we build storefronts with." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Chosen per project, not by habit — the right tool for your catalogue, your team, and what you'll need to maintain." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: ECOM_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
+          /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
+          /* @__PURE__ */ jsx("span", { children: t.name })
+        ] }, t.name)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "work", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Related Work" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Commerce builds we've shipped." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-work-grid", children: RELATED$2.map((w) => /* @__PURE__ */ jsxs(Link, { className: "sd2-work-card", to: w.link, children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-media", children: /* @__PURE__ */ jsx("img", { src: w.thumb, alt: "", loading: "lazy" }) }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-tag", children: w.tag }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-title", children: w.title }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-go", children: "Read case study →" })
+        ] }, w.link)) })
+      ] }),
+      /* @__PURE__ */ jsx(
+        TestimonialSpotlight,
+        {
+          testimonials,
+          label: "Client Voices",
+          heading: "What clients say once we ship.",
+          stats: [
+            { num: "40+", label: "Companies trust us" },
+            { num: "11", label: "Industries served" },
+            { num: "100%", label: "Source code ownership" }
+          ]
+        }
+      ),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three commitments that govern every project." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: PRINCIPLES$3.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
+        ] }, p.key)) })
+      ] }),
+      /* @__PURE__ */ jsx(
+        TechStackShowcaseV2,
+        {
+          title: "High-Conversion Commerce Stacks",
+          description: "Scalable headless commerce and enterprise platforms designed to handle traffic spikes and complex inventory logic seamlessly.",
+          categories: TECH_CATEGORIES$2,
+          metrics: METRICS$2
+        }
+      ),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "handover", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What You Receive" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Everything, at handover." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: '"You own the code" is easy to say. Here is the exact list of what lands in your accounts when the project closes.' })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-bar", children: [
+            /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-title", children: [
+              /* @__PURE__ */ jsx(FileCode2, { size: 14, strokeWidth: 1.8 }),
+              "Handover manifest"
+            ] }),
+            /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-meta", children: [
+              HANDOVER$2.length,
+              " items",
+              /* @__PURE__ */ jsx("i", {}),
+              "Transferred on completion"
+            ] })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-manifest-grid", children: HANDOVER$2.map((h, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-hand", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-hand-top", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-icon", children: /* @__PURE__ */ jsx(h.icon, { size: 16, strokeWidth: 1.6 }) }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-n", children: String(i + 1).padStart(2, "0") }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-tick", children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) })
+            ] }),
+            /* @__PURE__ */ jsx("h3", { className: "sd2-hand-title", children: h.title }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-hand-body", children: h.body })
+          ] }, h.title)) }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-foot", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-manifest-seal", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 3 }) }),
+            /* @__PURE__ */ jsxs("span", { children: [
+              "Everything above transfers to your accounts when the project closes.",
+              /* @__PURE__ */ jsx("b", { children: " No lock-in, no retained access, no dependency on us." })
+            ] })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "compare", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why Us" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Against what you're actually comparing." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "A template, a freelancer, and a big agency all solve part of the problem. Here's where each one tends to leave you exposed." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-cmp", role: "table", "aria-label": "Codelix compared to alternatives", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-head", role: "row", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "columnheader" }),
+            COMPARE_COLS$3.map((c, i) => /* @__PURE__ */ jsx(
+              "span",
+              {
+                className: `sd2-cmp-col ${i === 0 ? "is-us" : ""}`,
+                role: "columnheader",
+                children: c
+              },
+              c
+            ))
+          ] }),
+          COMPARE_ROWS$3.map((row) => /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-row", role: "row", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "rowheader", children: row.label }),
+            row.vals.map((v, i) => /* @__PURE__ */ jsxs(
+              "span",
+              {
+                className: `sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`,
+                role: "cell",
+                children: [
+                  v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.6 }),
+                  v === "partial" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
+                  v === "maybe" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
+                  v === "no" && /* @__PURE__ */ jsx(X, { size: 15, strokeWidth: 2.6 }),
+                  /* @__PURE__ */ jsx("em", { className: "sd2-cmp-txt", children: v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe" })
+                ]
+              },
+              i
+            ))
+          ] }, row.label))
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE$2, tone: "dark", centered: true }),
+      /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$a, className: "v2-section--void" }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "next", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What Happens Next" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three steps from here to kickoff." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No drawn-out sales process. Reach out and here's exactly what follows." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-next", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-next-line", "aria-hidden": "true" }),
+          NEXT_STEPS$2.map((s) => /* @__PURE__ */ jsxs("article", { className: "sd2-step", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-step-node", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-num", children: s.n }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-badge", children: /* @__PURE__ */ jsx(s.icon, { size: 15, strokeWidth: 1.7 }) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-step-inner", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-meta", children: s.meta }),
+              /* @__PURE__ */ jsx("h3", { className: "sd2-step-title", children: s.title }),
+              /* @__PURE__ */ jsx("p", { className: "sd2-step-body", children: s.body })
+            ] })
+          ] }, s.n))
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The rest of what we do." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES$4.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
+          ] }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
+        ] }, s.path)) })
+      ] }),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Tell us what you're selling.",
+          /* @__PURE__ */ jsx("br", {}),
+          "We'll tell you how we'd build it."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your store — your catalogue, your customers, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -10251,452 +10267,454 @@ function CustomSoftwareDevelopmentV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx(Link, { to: "/services", children: "Services" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: "Custom Software Development" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " Service 05 · Custom Software Development"
-        ] }) }),
-        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Software built around" }) }),
-          " ",
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "how you actually work." }) })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We build custom systems and internal tools with clean, hand-written code — designed around your exact workflow instead of bending your process to fit someone else's product, handed over with full ownership." }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
-          /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-            /* @__PURE__ */ jsx("span", { children: "Schedule a call" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
-          ] }),
-          /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#estimate", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Estimate my project" }) })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
-        ["Typical timeline", "4–14 weeks"],
-        ["Starts with", "Discovery call"],
-        ["You receive", "100% source code"],
-        ["Post-launch", "Support included"]
-      ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
-      ] }, k)) })
-    ] }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "problems", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Sound Familiar?" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The problems we get called in to fix." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "If you recognise two or three of these, a custom system will pay for itself faster than another workaround." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-problem-grid", children: PROBLEMS$1.map((p) => /* @__PURE__ */ jsxs("article", { className: "sd2-problem", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-problem-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 17, strokeWidth: 1.6 }) }),
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
         /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("h3", { className: "sd2-problem-pain", children: p.pain }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-problem-fix", children: p.fix })
-        ] })
-      ] }, p.pain)) })
-    ] }),
-    /* @__PURE__ */ jsx(ClientStrip, {}),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "included", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What's Included" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Every build ships with all of this." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Not an upsell list — this is the baseline on every custom software project we take, whatever the size." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-inc-showcase", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-inc-nav", role: "tablist", "aria-label": "What's included", children: [
-          /* @__PURE__ */ jsx(
-            "span",
-            {
-              className: "sd2-inc-nav-indicator",
-              style: { transform: `translateY(${incActive * 100}%)` },
-              "aria-hidden": "true"
-            }
-          ),
-          INCLUDED$1.map((it, i) => /* @__PURE__ */ jsxs("div", { className: "sd2-inc-navitem", children: [
-            /* @__PURE__ */ jsxs(
-              "button",
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx(Link, { to: "/services", children: "Services" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: "Custom Software Development" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " Service 05 · Custom Software Development"
+          ] }) }),
+          /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Software built around" }) }),
+            " ",
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "how you actually work." }) })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We build custom systems and internal tools with clean, hand-written code — designed around your exact workflow instead of bending your process to fit someone else's product, handed over with full ownership." }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
+            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+              /* @__PURE__ */ jsx("span", { children: "Schedule a call" }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+            ] }),
+            /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#estimate", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Estimate my project" }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
+          ["Typical timeline", "4–14 weeks"],
+          ["Starts with", "Discovery call"],
+          ["You receive", "100% source code"],
+          ["Post-launch", "Support included"]
+        ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
+        ] }, k)) })
+      ] }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "problems", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Sound Familiar?" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The problems we get called in to fix." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "If you recognise two or three of these, a custom system will pay for itself faster than another workaround." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-problem-grid", children: PROBLEMS$1.map((p) => /* @__PURE__ */ jsxs("article", { className: "sd2-problem", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-problem-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 17, strokeWidth: 1.6 }) }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("h3", { className: "sd2-problem-pain", children: p.pain }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-problem-fix", children: p.fix })
+          ] })
+        ] }, p.pain)) })
+      ] }),
+      /* @__PURE__ */ jsx(ClientStrip, {}),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "included", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What's Included" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Every build ships with all of this." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Not an upsell list — this is the baseline on every custom software project we take, whatever the size." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-inc-showcase", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-inc-nav", role: "tablist", "aria-label": "What's included", children: [
+            /* @__PURE__ */ jsx(
+              "span",
               {
-                type: "button",
-                role: "tab",
-                "aria-selected": incActive === i,
-                className: `sd2-inc-tab ${incActive === i ? "is-active" : ""}`,
-                onMouseEnter: () => setIncActive(i),
-                onFocus: () => setIncActive(i),
-                onClick: () => setIncActive(i),
-                children: [
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-n", children: String(i + 1).padStart(2, "0") }),
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-title", children: it.title }),
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 16, strokeWidth: 1.6 }) })
-                ]
+                className: "sd2-inc-nav-indicator",
+                style: { transform: `translateY(${incActive * 100}%)` },
+                "aria-hidden": "true"
               }
             ),
-            /* @__PURE__ */ jsx("div", { className: `sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`, children: /* @__PURE__ */ jsx("div", { className: "sd2-inc-mobile-body-inner", children: /* @__PURE__ */ jsx("p", { className: "sd2-inc-mobile-body-text", children: it.body }) }) })
-          ] }, it.title))
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-inc-stage", children: INCLUDED$1.map((it, i) => /* @__PURE__ */ jsxs(
-          "div",
-          {
-            className: `sd2-inc-panel ${incActive === i ? "is-active" : ""}`,
-            "aria-hidden": incActive !== i,
-            children: [
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-glow", "aria-hidden": "true" }),
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") }),
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 40, strokeWidth: 1.2 }) }),
-              /* @__PURE__ */ jsx("h3", { className: "sd2-inc-panel-title", children: it.title }),
-              /* @__PURE__ */ jsx("p", { className: "sd2-inc-panel-body", children: it.body })
-            ]
-          },
-          it.title
-        )) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "for", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Who It's For" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Built for how your sector actually operates." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "The architecture changes depending on your industry, your compliance needs, and how many teams the system has to serve." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-case-grid", children: USE_CASES$1.map((c, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-case", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-case-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-case-icon", children: /* @__PURE__ */ jsx(c.icon, { size: 21, strokeWidth: 1.6 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-case-n", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-case-title", children: c.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-case-body", children: c.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-case-rule", "aria-hidden": "true" })
-      ] }, c.title)) })
-    ] }),
-    /* @__PURE__ */ jsx("section", { className: "v2-section v2-section--void sd2-est-section", id: "estimate", children: /* @__PURE__ */ jsxs("div", { className: "sd2-est", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-est-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Scope Estimator" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Rough out your timeline in ten seconds." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Pick what you're building and we'll show an honest range. It's an estimate, not a quote — but it's the same maths we start from." })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-est-body", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-est-controls", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "01 — What are you building?" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_TYPES$1.map((t) => /* @__PURE__ */ jsx(
-              "button",
-              {
-                className: `sd2-opt ${estType === t.id ? "on" : ""}`,
-                onClick: () => setEstType(t.id),
-                "aria-pressed": estType === t.id,
-                children: t.label
-              },
-              t.id
-            )) })
+            INCLUDED$1.map((it, i) => /* @__PURE__ */ jsxs("div", { className: "sd2-inc-navitem", children: [
+              /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  type: "button",
+                  role: "tab",
+                  "aria-selected": incActive === i,
+                  className: `sd2-inc-tab ${incActive === i ? "is-active" : ""}`,
+                  onMouseEnter: () => setIncActive(i),
+                  onFocus: () => setIncActive(i),
+                  onClick: () => setIncActive(i),
+                  children: [
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-n", children: String(i + 1).padStart(2, "0") }),
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-title", children: it.title }),
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 16, strokeWidth: 1.6 }) })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ jsx("div", { className: `sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`, children: /* @__PURE__ */ jsx("div", { className: "sd2-inc-mobile-body-inner", children: /* @__PURE__ */ jsx("p", { className: "sd2-inc-mobile-body-text", children: it.body }) }) })
+            ] }, it.title))
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "02 — How wide is the reach?" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_SCALE$1.map((s) => /* @__PURE__ */ jsx(
-              "button",
-              {
-                className: `sd2-opt ${estScale === s.id ? "on" : ""}`,
-                onClick: () => setEstScale(s.id),
-                "aria-pressed": estScale === s.id,
-                children: s.label
-              },
-              s.id
-            )) })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "03 — Anything else? (optional)" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_ADDONS$1.map((a) => /* @__PURE__ */ jsxs(
-              "button",
-              {
-                className: `sd2-opt sd2-opt--check ${estAddons.has(a.id) ? "on" : ""}`,
-                onClick: () => toggleAddon(a.id),
-                "aria-pressed": estAddons.has(a.id),
-                children: [
-                  /* @__PURE__ */ jsx("i", { children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) }),
-                  a.label
-                ]
-              },
-              a.id
-            )) })
-          ] })
-        ] }),
-        /* @__PURE__ */ jsxs("aside", { className: "sd2-est-out", "aria-live": "polite", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-est-out-k", children: "Estimated build time" }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-out-v", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.low }, estimate.low),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-dash", children: "–" }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.high }, estimate.high + "h"),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-unit", children: "weeks" })
-          ] }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-est-note", children: estimate.base }),
-          /* @__PURE__ */ jsx("div", { className: "sd2-est-bar", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", { style: { width: `${Math.min(100, estimate.high / 30 * 100)}%` } }) }),
-          /* @__PURE__ */ jsxs("ul", { className: "sd2-est-list", children: [
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
-              " Design + build + QA included"
-            ] }),
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
-              " Fixed price once scoped"
-            ] }),
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
-              " Full source-code handover"
-            ] })
-          ] }),
-          /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Get an exact quote →" })
-        ] })
-      ] })
-    ] }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "process", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
-        /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How A Build Runs." }),
-        /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Six stages from first call to live system — nothing advances until the stage before it is signed off." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: PROCESS$3.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
-        /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
-          /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
-      ] }, m.n)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "benchmarks", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Quality Bar" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The numbers we hold ourselves to." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Every build is measured against these before it's allowed to ship — not aspirations, gates." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Live quality gate" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Checked on every build" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid", children: BENCHMARKS$1.map((b, i) => {
-          const R = 52;
-          const C = 2 * Math.PI * R;
-          const offset = C - C * b.ring / 100;
-          return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
-            /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
-              /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
-                /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `sd2-bench-grad-custom-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
-                  /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
-                  /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
-                ] }) }),
-                /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
-                /* @__PURE__ */ jsx(
-                  "circle",
-                  {
-                    className: "sd2-bench-ring-fill",
-                    cx: "60",
-                    cy: "60",
-                    r: R,
-                    stroke: `url(#sd2-bench-grad-custom-${i})`,
-                    style: { "--c": C, "--ring-offset": offset }
-                  }
-                )
-              ] }),
-              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
-          ] }, b.label);
-        }) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Software Stack" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we build custom systems with." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Chosen per project, not by habit — the right tool for your scale, your team, and what you'll need to maintain." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: CUSTOM_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
-        /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
-        /* @__PURE__ */ jsx("span", { children: t.name })
-      ] }, t.name)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "work", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Related Work" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Custom systems we've shipped." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-work-grid", children: RELATED$1.map((w) => /* @__PURE__ */ jsxs(Link, { className: "sd2-work-card", to: w.link, children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-media", children: /* @__PURE__ */ jsx("img", { src: w.thumb, alt: "", loading: "lazy" }) }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-tag", children: w.tag }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-title", children: w.title }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-go", children: "Read case study →" })
-      ] }, w.link)) })
-    ] }),
-    /* @__PURE__ */ jsx(
-      TestimonialSpotlight,
-      {
-        testimonials,
-        label: "Client Voices",
-        heading: "What clients say once we ship.",
-        stats: [
-          { num: "40+", label: "Companies trust us" },
-          { num: "11", label: "Industries served" },
-          { num: "100%", label: "Source code ownership" }
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three commitments that govern every project." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: PRINCIPLES$2.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
-      ] }, p.key)) })
-    ] }),
-    /* @__PURE__ */ jsx(
-      TechStackShowcaseV2,
-      {
-        title: "Enterprise-Grade Software Architecture",
-        description: "Robust, scalable, and secure technology stacks chosen specifically for complex, bespoke business logic and integrations.",
-        categories: TECH_CATEGORIES$1,
-        metrics: METRICS$1
-      }
-    ),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "handover", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What You Receive" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Everything, at handover." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: '"You own the code" is easy to say. Here is the exact list of what lands in your accounts when the project closes.' })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-manifest", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-bar", children: [
-          /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-title", children: [
-            /* @__PURE__ */ jsx(FileCode2, { size: 14, strokeWidth: 1.8 }),
-            "Handover manifest"
-          ] }),
-          /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-meta", children: [
-            HANDOVER$1.length,
-            " items",
-            /* @__PURE__ */ jsx("i", {}),
-            "Transferred on completion"
-          ] })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-manifest-grid", children: HANDOVER$1.map((h, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-hand", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-hand-top", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-icon", children: /* @__PURE__ */ jsx(h.icon, { size: 16, strokeWidth: 1.6 }) }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-n", children: String(i + 1).padStart(2, "0") }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-tick", children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) })
-          ] }),
-          /* @__PURE__ */ jsx("h3", { className: "sd2-hand-title", children: h.title }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-hand-body", children: h.body })
-        ] }, h.title)) }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-foot", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-manifest-seal", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 3 }) }),
-          /* @__PURE__ */ jsxs("span", { children: [
-            "Everything above transfers to your accounts when the project closes.",
-            /* @__PURE__ */ jsx("b", { children: " No lock-in, no retained access, no dependency on us." })
-          ] })
-        ] })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "compare", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why Us" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Against what you're actually comparing." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Off-the-shelf software, a freelancer, and a big agency all solve part of the problem. Here's where each one tends to leave you exposed." })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-cmp", role: "table", "aria-label": "Codelix compared to alternatives", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-head", role: "row", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "columnheader" }),
-          COMPARE_COLS$2.map((c, i) => /* @__PURE__ */ jsx(
-            "span",
+          /* @__PURE__ */ jsx("div", { className: "sd2-inc-stage", children: INCLUDED$1.map((it, i) => /* @__PURE__ */ jsxs(
+            "div",
             {
-              className: `sd2-cmp-col ${i === 0 ? "is-us" : ""}`,
-              role: "columnheader",
-              children: c
-            },
-            c
-          ))
-        ] }),
-        COMPARE_ROWS$2.map((row) => /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-row", role: "row", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "rowheader", children: row.label }),
-          row.vals.map((v, i) => /* @__PURE__ */ jsxs(
-            "span",
-            {
-              className: `sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`,
-              role: "cell",
+              className: `sd2-inc-panel ${incActive === i ? "is-active" : ""}`,
+              "aria-hidden": incActive !== i,
               children: [
-                v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.6 }),
-                v === "partial" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
-                v === "maybe" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
-                v === "no" && /* @__PURE__ */ jsx(X, { size: 15, strokeWidth: 2.6 }),
-                /* @__PURE__ */ jsx("em", { className: "sd2-cmp-txt", children: v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe" })
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-glow", "aria-hidden": "true" }),
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") }),
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 40, strokeWidth: 1.2 }) }),
+                /* @__PURE__ */ jsx("h3", { className: "sd2-inc-panel-title", children: it.title }),
+                /* @__PURE__ */ jsx("p", { className: "sd2-inc-panel-body", children: it.body })
               ]
             },
-            i
-          ))
-        ] }, row.label))
-      ] })
-    ] }),
-    /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE$1, tone: "dark", centered: true }),
-    /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$9, className: "v2-section--void" }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "next", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What Happens Next" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three steps from here to kickoff." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No drawn-out sales process. Reach out and here's exactly what follows." })
+            it.title
+          )) })
+        ] })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-next", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-next-line", "aria-hidden": "true" }),
-        NEXT_STEPS$1.map((s) => /* @__PURE__ */ jsxs("article", { className: "sd2-step", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-step-node", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-num", children: s.n }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-badge", children: /* @__PURE__ */ jsx(s.icon, { size: 15, strokeWidth: 1.7 }) })
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "for", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Who It's For" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Built for how your sector actually operates." })
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-step-inner", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-meta", children: s.meta }),
-            /* @__PURE__ */ jsx("h3", { className: "sd2-step-title", children: s.title }),
-            /* @__PURE__ */ jsx("p", { className: "sd2-step-body", children: s.body })
-          ] })
-        ] }, s.n))
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The rest of what we do." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES$3.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "The architecture changes depending on your industry, your compliance needs, and how many teams the system has to serve." })
         ] }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
-      ] }, s.path)) })
-    ] }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Tell us how you work today.",
-        /* @__PURE__ */ jsx("br", {}),
-        "We'll tell you how we'd build it."
+        /* @__PURE__ */ jsx("div", { className: "sd2-case-grid", children: USE_CASES$1.map((c, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-case", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-case-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-case-icon", children: /* @__PURE__ */ jsx(c.icon, { size: 21, strokeWidth: 1.6 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-case-n", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-case-title", children: c.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-case-body", children: c.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-case-rule", "aria-hidden": "true" })
+        ] }, c.title)) })
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your process — your teams, your bottlenecks, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      /* @__PURE__ */ jsx("section", { className: "v2-section v2-section--void sd2-est-section", id: "estimate", children: /* @__PURE__ */ jsxs("div", { className: "sd2-est", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-est-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Scope Estimator" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Rough out your timeline in ten seconds." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Pick what you're building and we'll show an honest range. It's an estimate, not a quote — but it's the same maths we start from." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-est-body", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-est-controls", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "01 — What are you building?" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_TYPES$1.map((t) => /* @__PURE__ */ jsx(
+                "button",
+                {
+                  className: `sd2-opt ${estType === t.id ? "on" : ""}`,
+                  onClick: () => setEstType(t.id),
+                  "aria-pressed": estType === t.id,
+                  children: t.label
+                },
+                t.id
+              )) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "02 — How wide is the reach?" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_SCALE$1.map((s) => /* @__PURE__ */ jsx(
+                "button",
+                {
+                  className: `sd2-opt ${estScale === s.id ? "on" : ""}`,
+                  onClick: () => setEstScale(s.id),
+                  "aria-pressed": estScale === s.id,
+                  children: s.label
+                },
+                s.id
+              )) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "03 — Anything else? (optional)" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_ADDONS$1.map((a) => /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  className: `sd2-opt sd2-opt--check ${estAddons.has(a.id) ? "on" : ""}`,
+                  onClick: () => toggleAddon(a.id),
+                  "aria-pressed": estAddons.has(a.id),
+                  children: [
+                    /* @__PURE__ */ jsx("i", { children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) }),
+                    a.label
+                  ]
+                },
+                a.id
+              )) })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxs("aside", { className: "sd2-est-out", "aria-live": "polite", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-est-out-k", children: "Estimated build time" }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-out-v", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.low }, estimate.low),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-dash", children: "–" }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.high }, estimate.high + "h"),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-unit", children: "weeks" })
+            ] }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-est-note", children: estimate.base }),
+            /* @__PURE__ */ jsx("div", { className: "sd2-est-bar", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", { style: { width: `${Math.min(100, estimate.high / 30 * 100)}%` } }) }),
+            /* @__PURE__ */ jsxs("ul", { className: "sd2-est-list", children: [
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
+                " Design + build + QA included"
+              ] }),
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
+                " Fixed price once scoped"
+              ] }),
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
+                " Full source-code handover"
+              ] })
+            ] }),
+            /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Get an exact quote →" })
+          ] })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "process", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
+          /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How A Build Runs." }),
+          /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Six stages from first call to live system — nothing advances until the stage before it is signed off." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: PROCESS$3.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
+          /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
+            /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
+        ] }, m.n)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "benchmarks", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Quality Bar" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The numbers we hold ourselves to." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Every build is measured against these before it's allowed to ship — not aspirations, gates." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Live quality gate" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Checked on every build" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid", children: BENCHMARKS$1.map((b, i) => {
+            const R = 52;
+            const C = 2 * Math.PI * R;
+            const offset = C - C * b.ring / 100;
+            return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
+              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
+                /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
+                  /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `sd2-bench-grad-custom-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
+                    /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
+                    /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
+                  ] }) }),
+                  /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
+                  /* @__PURE__ */ jsx(
+                    "circle",
+                    {
+                      className: "sd2-bench-ring-fill",
+                      cx: "60",
+                      cy: "60",
+                      r: R,
+                      stroke: `url(#sd2-bench-grad-custom-${i})`,
+                      style: { "--c": C, "--ring-offset": offset }
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
+            ] }, b.label);
+          }) })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Software Stack" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we build custom systems with." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Chosen per project, not by habit — the right tool for your scale, your team, and what you'll need to maintain." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: CUSTOM_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
+          /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
+          /* @__PURE__ */ jsx("span", { children: t.name })
+        ] }, t.name)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "work", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Related Work" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Custom systems we've shipped." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-work-grid", children: RELATED$1.map((w) => /* @__PURE__ */ jsxs(Link, { className: "sd2-work-card", to: w.link, children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-media", children: /* @__PURE__ */ jsx("img", { src: w.thumb, alt: "", loading: "lazy" }) }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-tag", children: w.tag }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-title", children: w.title }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-go", children: "Read case study →" })
+        ] }, w.link)) })
+      ] }),
+      /* @__PURE__ */ jsx(
+        TestimonialSpotlight,
+        {
+          testimonials,
+          label: "Client Voices",
+          heading: "What clients say once we ship.",
+          stats: [
+            { num: "40+", label: "Companies trust us" },
+            { num: "11", label: "Industries served" },
+            { num: "100%", label: "Source code ownership" }
+          ]
+        }
+      ),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three commitments that govern every project." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: PRINCIPLES$2.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
+        ] }, p.key)) })
+      ] }),
+      /* @__PURE__ */ jsx(
+        TechStackShowcaseV2,
+        {
+          title: "Enterprise-Grade Software Architecture",
+          description: "Robust, scalable, and secure technology stacks chosen specifically for complex, bespoke business logic and integrations.",
+          categories: TECH_CATEGORIES$1,
+          metrics: METRICS$1
+        }
+      ),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "handover", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What You Receive" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Everything, at handover." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: '"You own the code" is easy to say. Here is the exact list of what lands in your accounts when the project closes.' })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-bar", children: [
+            /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-title", children: [
+              /* @__PURE__ */ jsx(FileCode2, { size: 14, strokeWidth: 1.8 }),
+              "Handover manifest"
+            ] }),
+            /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-meta", children: [
+              HANDOVER$1.length,
+              " items",
+              /* @__PURE__ */ jsx("i", {}),
+              "Transferred on completion"
+            ] })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-manifest-grid", children: HANDOVER$1.map((h, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-hand", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-hand-top", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-icon", children: /* @__PURE__ */ jsx(h.icon, { size: 16, strokeWidth: 1.6 }) }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-n", children: String(i + 1).padStart(2, "0") }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-tick", children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) })
+            ] }),
+            /* @__PURE__ */ jsx("h3", { className: "sd2-hand-title", children: h.title }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-hand-body", children: h.body })
+          ] }, h.title)) }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-foot", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-manifest-seal", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 3 }) }),
+            /* @__PURE__ */ jsxs("span", { children: [
+              "Everything above transfers to your accounts when the project closes.",
+              /* @__PURE__ */ jsx("b", { children: " No lock-in, no retained access, no dependency on us." })
+            ] })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "compare", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why Us" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Against what you're actually comparing." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Off-the-shelf software, a freelancer, and a big agency all solve part of the problem. Here's where each one tends to leave you exposed." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-cmp", role: "table", "aria-label": "Codelix compared to alternatives", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-head", role: "row", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "columnheader" }),
+            COMPARE_COLS$2.map((c, i) => /* @__PURE__ */ jsx(
+              "span",
+              {
+                className: `sd2-cmp-col ${i === 0 ? "is-us" : ""}`,
+                role: "columnheader",
+                children: c
+              },
+              c
+            ))
+          ] }),
+          COMPARE_ROWS$2.map((row) => /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-row", role: "row", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "rowheader", children: row.label }),
+            row.vals.map((v, i) => /* @__PURE__ */ jsxs(
+              "span",
+              {
+                className: `sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`,
+                role: "cell",
+                children: [
+                  v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.6 }),
+                  v === "partial" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
+                  v === "maybe" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
+                  v === "no" && /* @__PURE__ */ jsx(X, { size: 15, strokeWidth: 2.6 }),
+                  /* @__PURE__ */ jsx("em", { className: "sd2-cmp-txt", children: v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe" })
+                ]
+              },
+              i
+            ))
+          ] }, row.label))
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE$1, tone: "dark", centered: true }),
+      /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$9, className: "v2-section--void" }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "next", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What Happens Next" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three steps from here to kickoff." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No drawn-out sales process. Reach out and here's exactly what follows." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-next", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-next-line", "aria-hidden": "true" }),
+          NEXT_STEPS$1.map((s) => /* @__PURE__ */ jsxs("article", { className: "sd2-step", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-step-node", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-num", children: s.n }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-badge", children: /* @__PURE__ */ jsx(s.icon, { size: 15, strokeWidth: 1.7 }) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-step-inner", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-meta", children: s.meta }),
+              /* @__PURE__ */ jsx("h3", { className: "sd2-step-title", children: s.title }),
+              /* @__PURE__ */ jsx("p", { className: "sd2-step-body", children: s.body })
+            ] })
+          ] }, s.n))
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The rest of what we do." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES$3.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
+          ] }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
+        ] }, s.path)) })
+      ] }),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Tell us how you work today.",
+          /* @__PURE__ */ jsx("br", {}),
+          "We'll tell you how we'd build it."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your process — your teams, your bottlenecks, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -11036,452 +11054,454 @@ function AIDevelopmentV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx(Link, { to: "/services", children: "Services" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: "AI Development" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " Service 06 · AI Development"
-        ] }) }),
-        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Automation for the handoff," }) }),
-          " ",
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "not the judgement." }) })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We build AI agents and automation with clean, hand-written code — explainable by default, aimed at the repetitive handoff between your tools, and handed over with full source-code ownership." }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
-          /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-            /* @__PURE__ */ jsx("span", { children: "Schedule a call" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
-          ] }),
-          /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#estimate", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Estimate my project" }) })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
-        ["Typical timeline", "2–10 weeks"],
-        ["Starts with", "Workflow audit"],
-        ["You receive", "100% source code"],
-        ["Post-launch", "Support included"]
-      ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
-      ] }, k)) })
-    ] }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "problems", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Sound Familiar?" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The problems we get called in to fix." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "If you recognise two or three of these, an audit will pay for itself faster than another manual workaround." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-problem-grid", children: PROBLEMS.map((p) => /* @__PURE__ */ jsxs("article", { className: "sd2-problem", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-problem-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 17, strokeWidth: 1.6 }) }),
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
         /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("h3", { className: "sd2-problem-pain", children: p.pain }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-problem-fix", children: p.fix })
-        ] })
-      ] }, p.pain)) })
-    ] }),
-    /* @__PURE__ */ jsx(ClientStrip, {}),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "included", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What's Included" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Every build ships with all of this." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Not an upsell list — this is the baseline on every applied-AI project we take, whatever the size." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-inc-showcase", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-inc-nav", role: "tablist", "aria-label": "What's included", children: [
-          /* @__PURE__ */ jsx(
-            "span",
-            {
-              className: "sd2-inc-nav-indicator",
-              style: { transform: `translateY(${incActive * 100}%)` },
-              "aria-hidden": "true"
-            }
-          ),
-          INCLUDED.map((it, i) => /* @__PURE__ */ jsxs("div", { className: "sd2-inc-navitem", children: [
-            /* @__PURE__ */ jsxs(
-              "button",
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx(Link, { to: "/services", children: "Services" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: "AI Development" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " Service 06 · AI Development"
+          ] }) }),
+          /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Automation for the handoff," }) }),
+            " ",
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "not the judgement." }) })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "We build AI agents and automation with clean, hand-written code — explainable by default, aimed at the repetitive handoff between your tools, and handed over with full source-code ownership." }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
+            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+              /* @__PURE__ */ jsx("span", { children: "Schedule a call" }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+            ] }),
+            /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#estimate", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Estimate my project" }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
+          ["Typical timeline", "2–10 weeks"],
+          ["Starts with", "Workflow audit"],
+          ["You receive", "100% source code"],
+          ["Post-launch", "Support included"]
+        ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
+        ] }, k)) })
+      ] }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "problems", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Sound Familiar?" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The problems we get called in to fix." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "If you recognise two or three of these, an audit will pay for itself faster than another manual workaround." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-problem-grid", children: PROBLEMS.map((p) => /* @__PURE__ */ jsxs("article", { className: "sd2-problem", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-problem-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 17, strokeWidth: 1.6 }) }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("h3", { className: "sd2-problem-pain", children: p.pain }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-problem-fix", children: p.fix })
+          ] })
+        ] }, p.pain)) })
+      ] }),
+      /* @__PURE__ */ jsx(ClientStrip, {}),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "included", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What's Included" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Every build ships with all of this." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Not an upsell list — this is the baseline on every applied-AI project we take, whatever the size." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-inc-showcase", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-inc-nav", role: "tablist", "aria-label": "What's included", children: [
+            /* @__PURE__ */ jsx(
+              "span",
               {
-                type: "button",
-                role: "tab",
-                "aria-selected": incActive === i,
-                className: `sd2-inc-tab ${incActive === i ? "is-active" : ""}`,
-                onMouseEnter: () => setIncActive(i),
-                onFocus: () => setIncActive(i),
-                onClick: () => setIncActive(i),
-                children: [
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-n", children: String(i + 1).padStart(2, "0") }),
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-title", children: it.title }),
-                  /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 16, strokeWidth: 1.6 }) })
-                ]
+                className: "sd2-inc-nav-indicator",
+                style: { transform: `translateY(${incActive * 100}%)` },
+                "aria-hidden": "true"
               }
             ),
-            /* @__PURE__ */ jsx("div", { className: `sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`, children: /* @__PURE__ */ jsx("div", { className: "sd2-inc-mobile-body-inner", children: /* @__PURE__ */ jsx("p", { className: "sd2-inc-mobile-body-text", children: it.body }) }) })
-          ] }, it.title))
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-inc-stage", children: INCLUDED.map((it, i) => /* @__PURE__ */ jsxs(
-          "div",
-          {
-            className: `sd2-inc-panel ${incActive === i ? "is-active" : ""}`,
-            "aria-hidden": incActive !== i,
-            children: [
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-glow", "aria-hidden": "true" }),
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") }),
-              /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 40, strokeWidth: 1.2 }) }),
-              /* @__PURE__ */ jsx("h3", { className: "sd2-inc-panel-title", children: it.title }),
-              /* @__PURE__ */ jsx("p", { className: "sd2-inc-panel-body", children: it.body })
-            ]
-          },
-          it.title
-        )) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "for", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Who It's For" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Built for where your workflow actually stalls." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "The right automation changes depending on your sector, your data, and how much human oversight the decision needs." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-case-grid", children: USE_CASES.map((c, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-case", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-case-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-case-icon", children: /* @__PURE__ */ jsx(c.icon, { size: 21, strokeWidth: 1.6 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-case-n", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-case-title", children: c.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-case-body", children: c.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-case-rule", "aria-hidden": "true" })
-      ] }, c.title)) })
-    ] }),
-    /* @__PURE__ */ jsx("section", { className: "v2-section v2-section--void sd2-est-section", id: "estimate", children: /* @__PURE__ */ jsxs("div", { className: "sd2-est", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-est-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Scope Estimator" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Rough out your timeline in ten seconds." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Pick what you need and we'll show an honest range. It's an estimate, not a quote — but it's the same maths we start from." })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-est-body", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-est-controls", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "01 — What do you need?" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_TYPES.map((t) => /* @__PURE__ */ jsx(
-              "button",
-              {
-                className: `sd2-opt ${estType === t.id ? "on" : ""}`,
-                onClick: () => setEstType(t.id),
-                "aria-pressed": estType === t.id,
-                children: t.label
-              },
-              t.id
-            )) })
+            INCLUDED.map((it, i) => /* @__PURE__ */ jsxs("div", { className: "sd2-inc-navitem", children: [
+              /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  type: "button",
+                  role: "tab",
+                  "aria-selected": incActive === i,
+                  className: `sd2-inc-tab ${incActive === i ? "is-active" : ""}`,
+                  onMouseEnter: () => setIncActive(i),
+                  onFocus: () => setIncActive(i),
+                  onClick: () => setIncActive(i),
+                  children: [
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-n", children: String(i + 1).padStart(2, "0") }),
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-title", children: it.title }),
+                    /* @__PURE__ */ jsx("span", { className: "sd2-inc-tab-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 16, strokeWidth: 1.6 }) })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ jsx("div", { className: `sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`, children: /* @__PURE__ */ jsx("div", { className: "sd2-inc-mobile-body-inner", children: /* @__PURE__ */ jsx("p", { className: "sd2-inc-mobile-body-text", children: it.body }) }) })
+            ] }, it.title))
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "02 — How wide is the reach?" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_SCALE.map((s) => /* @__PURE__ */ jsx(
-              "button",
-              {
-                className: `sd2-opt ${estScale === s.id ? "on" : ""}`,
-                onClick: () => setEstScale(s.id),
-                "aria-pressed": estScale === s.id,
-                children: s.label
-              },
-              s.id
-            )) })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "03 — Anything else? (optional)" }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_ADDONS.map((a) => /* @__PURE__ */ jsxs(
-              "button",
-              {
-                className: `sd2-opt sd2-opt--check ${estAddons.has(a.id) ? "on" : ""}`,
-                onClick: () => toggleAddon(a.id),
-                "aria-pressed": estAddons.has(a.id),
-                children: [
-                  /* @__PURE__ */ jsx("i", { children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) }),
-                  a.label
-                ]
-              },
-              a.id
-            )) })
-          ] })
-        ] }),
-        /* @__PURE__ */ jsxs("aside", { className: "sd2-est-out", "aria-live": "polite", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-est-out-k", children: "Estimated build time" }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-est-out-v", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.low }, estimate.low),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-dash", children: "–" }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.high }, estimate.high + "h"),
-            /* @__PURE__ */ jsx("span", { className: "sd2-est-unit", children: "weeks" })
-          ] }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-est-note", children: estimate.base }),
-          /* @__PURE__ */ jsx("div", { className: "sd2-est-bar", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", { style: { width: `${Math.min(100, estimate.high / 20 * 100)}%` } }) }),
-          /* @__PURE__ */ jsxs("ul", { className: "sd2-est-list", children: [
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
-              " Design + build + QA included"
-            ] }),
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
-              " Fixed price once scoped"
-            ] }),
-            /* @__PURE__ */ jsxs("li", { children: [
-              /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
-              " Full source-code handover"
-            ] })
-          ] }),
-          /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Get an exact quote →" })
-        ] })
-      ] })
-    ] }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "process", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
-        /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How A Build Runs." }),
-        /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Six stages from first call to live automation — nothing advances until the stage before it is signed off." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: PROCESS$2.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
-        /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
-          /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
-      ] }, m.n)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "benchmarks", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Quality Bar" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The numbers we hold ourselves to." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Every build is measured against these before it's allowed to ship — not aspirations, gates." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Live quality gate" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Checked on every build" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid", children: BENCHMARKS.map((b, i) => {
-          const R = 52;
-          const C = 2 * Math.PI * R;
-          const offset = C - C * b.ring / 100;
-          return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
-            /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
-              /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
-                /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `sd2-bench-grad-ai-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
-                  /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
-                  /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
-                ] }) }),
-                /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
-                /* @__PURE__ */ jsx(
-                  "circle",
-                  {
-                    className: "sd2-bench-ring-fill",
-                    cx: "60",
-                    cy: "60",
-                    r: R,
-                    stroke: `url(#sd2-bench-grad-ai-${i})`,
-                    style: { "--c": C, "--ring-offset": offset }
-                  }
-                )
-              ] }),
-              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
-          ] }, b.label);
-        }) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Automation Stack" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we build automation with." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Chosen per project, not by habit — the right tool for your data, your team, and what you'll need to maintain." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: AI_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
-        /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
-        /* @__PURE__ */ jsx("span", { children: t.name })
-      ] }, t.name)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "work", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Related Work" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Selected work." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-work-grid", children: RELATED.map((w) => /* @__PURE__ */ jsxs(Link, { className: "sd2-work-card", to: w.link, children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-media", children: /* @__PURE__ */ jsx("img", { src: w.thumb, alt: "", loading: "lazy" }) }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-tag", children: w.tag }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-title", children: w.title }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-work-go", children: "Read case study →" })
-      ] }, w.link)) })
-    ] }),
-    /* @__PURE__ */ jsx(
-      TestimonialSpotlight,
-      {
-        testimonials,
-        label: "Client Voices",
-        heading: "What clients say once we ship.",
-        stats: [
-          { num: "40+", label: "Companies trust us" },
-          { num: "11", label: "Industries served" },
-          { num: "100%", label: "Source code ownership" }
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three commitments that govern every project." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: PRINCIPLES$1.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
-      ] }, p.key)) })
-    ] }),
-    /* @__PURE__ */ jsx(
-      TechStackShowcaseV2,
-      {
-        title: "Advanced Machine Learning & Automation Infrastructure",
-        description: "Cutting-edge AI frameworks and data processing pipelines that power intelligent decision-making and workflow automation.",
-        categories: TECH_CATEGORIES,
-        metrics: METRICS
-      }
-    ),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "handover", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What You Receive" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Everything, at handover." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: '"You own the code" is easy to say. Here is the exact list of what lands in your accounts when the project closes.' })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-manifest", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-bar", children: [
-          /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-title", children: [
-            /* @__PURE__ */ jsx(FileCode2, { size: 14, strokeWidth: 1.8 }),
-            "Handover manifest"
-          ] }),
-          /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-meta", children: [
-            HANDOVER.length,
-            " items",
-            /* @__PURE__ */ jsx("i", {}),
-            "Transferred on completion"
-          ] })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-manifest-grid", children: HANDOVER.map((h, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-hand", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-hand-top", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-icon", children: /* @__PURE__ */ jsx(h.icon, { size: 16, strokeWidth: 1.6 }) }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-n", children: String(i + 1).padStart(2, "0") }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-hand-tick", children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) })
-          ] }),
-          /* @__PURE__ */ jsx("h3", { className: "sd2-hand-title", children: h.title }),
-          /* @__PURE__ */ jsx("p", { className: "sd2-hand-body", children: h.body })
-        ] }, h.title)) }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-foot", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-manifest-seal", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 3 }) }),
-          /* @__PURE__ */ jsxs("span", { children: [
-            "Everything above transfers to your accounts when the project closes.",
-            /* @__PURE__ */ jsx("b", { children: " No lock-in, no retained access, no dependency on us." })
-          ] })
-        ] })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "compare", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why Us" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Against what you're actually comparing." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "An off-the-shelf AI tool, a freelancer, and a big agency all solve part of the problem. Here's where each one tends to leave you exposed." })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-cmp", role: "table", "aria-label": "Codelix compared to alternatives", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-head", role: "row", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "columnheader" }),
-          COMPARE_COLS$1.map((c, i) => /* @__PURE__ */ jsx(
-            "span",
+          /* @__PURE__ */ jsx("div", { className: "sd2-inc-stage", children: INCLUDED.map((it, i) => /* @__PURE__ */ jsxs(
+            "div",
             {
-              className: `sd2-cmp-col ${i === 0 ? "is-us" : ""}`,
-              role: "columnheader",
-              children: c
-            },
-            c
-          ))
-        ] }),
-        COMPARE_ROWS$1.map((row) => /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-row", role: "row", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "rowheader", children: row.label }),
-          row.vals.map((v, i) => /* @__PURE__ */ jsxs(
-            "span",
-            {
-              className: `sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`,
-              role: "cell",
+              className: `sd2-inc-panel ${incActive === i ? "is-active" : ""}`,
+              "aria-hidden": incActive !== i,
               children: [
-                v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.6 }),
-                v === "partial" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
-                v === "maybe" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
-                v === "no" && /* @__PURE__ */ jsx(X, { size: 15, strokeWidth: 2.6 }),
-                /* @__PURE__ */ jsx("em", { className: "sd2-cmp-txt", children: v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe" })
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-glow", "aria-hidden": "true" }),
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") }),
+                /* @__PURE__ */ jsx("span", { className: "sd2-inc-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 40, strokeWidth: 1.2 }) }),
+                /* @__PURE__ */ jsx("h3", { className: "sd2-inc-panel-title", children: it.title }),
+                /* @__PURE__ */ jsx("p", { className: "sd2-inc-panel-body", children: it.body })
               ]
             },
-            i
-          ))
-        ] }, row.label))
-      ] })
-    ] }),
-    /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE, tone: "dark", centered: true }),
-    /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$8, className: "v2-section--void" }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "next", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What Happens Next" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three steps from here to kickoff." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No drawn-out sales process. Reach out and here's exactly what follows." })
+            it.title
+          )) })
+        ] })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-next", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-next-line", "aria-hidden": "true" }),
-        NEXT_STEPS.map((s) => /* @__PURE__ */ jsxs("article", { className: "sd2-step", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-step-node", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-num", children: s.n }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-badge", children: /* @__PURE__ */ jsx(s.icon, { size: 15, strokeWidth: 1.7 }) })
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "for", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Who It's For" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Built for where your workflow actually stalls." })
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-step-inner", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-meta", children: s.meta }),
-            /* @__PURE__ */ jsx("h3", { className: "sd2-step-title", children: s.title }),
-            /* @__PURE__ */ jsx("p", { className: "sd2-step-body", children: s.body })
-          ] })
-        ] }, s.n))
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The rest of what we do." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES$2.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "The right automation changes depending on your sector, your data, and how much human oversight the decision needs." })
         ] }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
-      ] }, s.path)) })
-    ] }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Tell us where it slows down.",
-        /* @__PURE__ */ jsx("br", {}),
-        "We'll tell you how we'd automate it."
+        /* @__PURE__ */ jsx("div", { className: "sd2-case-grid", children: USE_CASES.map((c, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-case", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-case-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-case-icon", children: /* @__PURE__ */ jsx(c.icon, { size: 21, strokeWidth: 1.6 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-case-n", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-case-title", children: c.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-case-body", children: c.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-case-rule", "aria-hidden": "true" })
+        ] }, c.title)) })
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your workflow — where the manual work actually sits, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      /* @__PURE__ */ jsx("section", { className: "v2-section v2-section--void sd2-est-section", id: "estimate", children: /* @__PURE__ */ jsxs("div", { className: "sd2-est", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-est-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Scope Estimator" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Rough out your timeline in ten seconds." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Pick what you need and we'll show an honest range. It's an estimate, not a quote — but it's the same maths we start from." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-est-body", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-est-controls", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "01 — What do you need?" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_TYPES.map((t) => /* @__PURE__ */ jsx(
+                "button",
+                {
+                  className: `sd2-opt ${estType === t.id ? "on" : ""}`,
+                  onClick: () => setEstType(t.id),
+                  "aria-pressed": estType === t.id,
+                  children: t.label
+                },
+                t.id
+              )) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "02 — How wide is the reach?" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_SCALE.map((s) => /* @__PURE__ */ jsx(
+                "button",
+                {
+                  className: `sd2-opt ${estScale === s.id ? "on" : ""}`,
+                  onClick: () => setEstScale(s.id),
+                  "aria-pressed": estScale === s.id,
+                  children: s.label
+                },
+                s.id
+              )) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-group", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-label", children: "03 — Anything else? (optional)" }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-est-opts", children: EST_ADDONS.map((a) => /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  className: `sd2-opt sd2-opt--check ${estAddons.has(a.id) ? "on" : ""}`,
+                  onClick: () => toggleAddon(a.id),
+                  "aria-pressed": estAddons.has(a.id),
+                  children: [
+                    /* @__PURE__ */ jsx("i", { children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) }),
+                    a.label
+                  ]
+                },
+                a.id
+              )) })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxs("aside", { className: "sd2-est-out", "aria-live": "polite", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-est-out-k", children: "Estimated build time" }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-est-out-v", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.low }, estimate.low),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-dash", children: "–" }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-num", children: estimate.high }, estimate.high + "h"),
+              /* @__PURE__ */ jsx("span", { className: "sd2-est-unit", children: "weeks" })
+            ] }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-est-note", children: estimate.base }),
+            /* @__PURE__ */ jsx("div", { className: "sd2-est-bar", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", { style: { width: `${Math.min(100, estimate.high / 20 * 100)}%` } }) }),
+            /* @__PURE__ */ jsxs("ul", { className: "sd2-est-list", children: [
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
+                " Design + build + QA included"
+              ] }),
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
+                " Fixed price once scoped"
+              ] }),
+              /* @__PURE__ */ jsxs("li", { children: [
+                /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.4 }),
+                " Full source-code handover"
+              ] })
+            ] }),
+            /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Get an exact quote →" })
+          ] })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "process", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
+          /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How A Build Runs." }),
+          /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Six stages from first call to live automation — nothing advances until the stage before it is signed off." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: PROCESS$2.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
+          /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
+            /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
+        ] }, m.n)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "benchmarks", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Quality Bar" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The numbers we hold ourselves to." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Every build is measured against these before it's allowed to ship — not aspirations, gates." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Live quality gate" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Checked on every build" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid", children: BENCHMARKS.map((b, i) => {
+            const R = 52;
+            const C = 2 * Math.PI * R;
+            const offset = C - C * b.ring / 100;
+            return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
+              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
+                /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
+                  /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `sd2-bench-grad-ai-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
+                    /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
+                    /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
+                  ] }) }),
+                  /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
+                  /* @__PURE__ */ jsx(
+                    "circle",
+                    {
+                      className: "sd2-bench-ring-fill",
+                      cx: "60",
+                      cy: "60",
+                      r: R,
+                      stroke: `url(#sd2-bench-grad-ai-${i})`,
+                      style: { "--c": C, "--ring-offset": offset }
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
+            ] }, b.label);
+          }) })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Automation Stack" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we build automation with." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Chosen per project, not by habit — the right tool for your data, your team, and what you'll need to maintain." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: AI_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
+          /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
+          /* @__PURE__ */ jsx("span", { children: t.name })
+        ] }, t.name)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "work", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Related Work" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Selected work." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-work-grid", children: RELATED.map((w) => /* @__PURE__ */ jsxs(Link, { className: "sd2-work-card", to: w.link, children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-media", children: /* @__PURE__ */ jsx("img", { src: w.thumb, alt: "", loading: "lazy" }) }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-tag", children: w.tag }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-title", children: w.title }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-work-go", children: "Read case study →" })
+        ] }, w.link)) })
+      ] }),
+      /* @__PURE__ */ jsx(
+        TestimonialSpotlight,
+        {
+          testimonials,
+          label: "Client Voices",
+          heading: "What clients say once we ship.",
+          stats: [
+            { num: "40+", label: "Companies trust us" },
+            { num: "11", label: "Industries served" },
+            { num: "100%", label: "Source code ownership" }
+          ]
+        }
+      ),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Principles" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three commitments that govern every project." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: PRINCIPLES$1.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
+        ] }, p.key)) })
+      ] }),
+      /* @__PURE__ */ jsx(
+        TechStackShowcaseV2,
+        {
+          title: "Advanced Machine Learning & Automation Infrastructure",
+          description: "Cutting-edge AI frameworks and data processing pipelines that power intelligent decision-making and workflow automation.",
+          categories: TECH_CATEGORIES,
+          metrics: METRICS
+        }
+      ),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "handover", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What You Receive" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Everything, at handover." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: '"You own the code" is easy to say. Here is the exact list of what lands in your accounts when the project closes.' })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-manifest", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-bar", children: [
+            /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-title", children: [
+              /* @__PURE__ */ jsx(FileCode2, { size: 14, strokeWidth: 1.8 }),
+              "Handover manifest"
+            ] }),
+            /* @__PURE__ */ jsxs("span", { className: "sd2-manifest-meta", children: [
+              HANDOVER.length,
+              " items",
+              /* @__PURE__ */ jsx("i", {}),
+              "Transferred on completion"
+            ] })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-manifest-grid", children: HANDOVER.map((h, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-hand", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-hand-top", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-icon", children: /* @__PURE__ */ jsx(h.icon, { size: 16, strokeWidth: 1.6 }) }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-n", children: String(i + 1).padStart(2, "0") }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-hand-tick", children: /* @__PURE__ */ jsx(Check, { size: 12, strokeWidth: 3 }) })
+            ] }),
+            /* @__PURE__ */ jsx("h3", { className: "sd2-hand-title", children: h.title }),
+            /* @__PURE__ */ jsx("p", { className: "sd2-hand-body", children: h.body })
+          ] }, h.title)) }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-manifest-foot", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-manifest-seal", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 3 }) }),
+            /* @__PURE__ */ jsxs("span", { children: [
+              "Everything above transfers to your accounts when the project closes.",
+              /* @__PURE__ */ jsx("b", { children: " No lock-in, no retained access, no dependency on us." })
+            ] })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "compare", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why Us" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Against what you're actually comparing." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "An off-the-shelf AI tool, a freelancer, and a big agency all solve part of the problem. Here's where each one tends to leave you exposed." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-cmp", role: "table", "aria-label": "Codelix compared to alternatives", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-head", role: "row", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "columnheader" }),
+            COMPARE_COLS$1.map((c, i) => /* @__PURE__ */ jsx(
+              "span",
+              {
+                className: `sd2-cmp-col ${i === 0 ? "is-us" : ""}`,
+                role: "columnheader",
+                children: c
+              },
+              c
+            ))
+          ] }),
+          COMPARE_ROWS$1.map((row) => /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-row", role: "row", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "rowheader", children: row.label }),
+            row.vals.map((v, i) => /* @__PURE__ */ jsxs(
+              "span",
+              {
+                className: `sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`,
+                role: "cell",
+                children: [
+                  v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.6 }),
+                  v === "partial" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
+                  v === "maybe" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
+                  v === "no" && /* @__PURE__ */ jsx(X, { size: 15, strokeWidth: 2.6 }),
+                  /* @__PURE__ */ jsx("em", { className: "sd2-cmp-txt", children: v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe" })
+                ]
+              },
+              i
+            ))
+          ] }, row.label))
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx(ScrollSentence, { words: SENTENCE, tone: "dark", centered: true }),
+      /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$8, className: "v2-section--void" }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "next", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What Happens Next" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three steps from here to kickoff." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No drawn-out sales process. Reach out and here's exactly what follows." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-next", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-next-line", "aria-hidden": "true" }),
+          NEXT_STEPS.map((s) => /* @__PURE__ */ jsxs("article", { className: "sd2-step", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-step-node", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-num", children: s.n }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-badge", children: /* @__PURE__ */ jsx(s.icon, { size: 15, strokeWidth: 1.7 }) })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "sd2-step-inner", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-meta", children: s.meta }),
+              /* @__PURE__ */ jsx("h3", { className: "sd2-step-title", children: s.title }),
+              /* @__PURE__ */ jsx("p", { className: "sd2-step-body", children: s.body })
+            ] })
+          ] }, s.n))
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The rest of what we do." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES$2.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
+          ] }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
+        ] }, s.path)) })
+      ] }),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Tell us where it slows down.",
+          /* @__PURE__ */ jsx("br", {}),
+          "We'll tell you how we'd automate it."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your workflow — where the manual work actually sits, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -11652,183 +11672,185 @@ function AboutV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero about-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: "About" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " Est. 2024 · Ahmedabad"
-        ] }) }),
-        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "A small team that" }) }),
-          " ",
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "builds like it's theirs." }) })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Codelix is an IT solutions studio that builds web, mobile, and AI systems for businesses that intend to still be running them in five years. No lock-in, no black boxes — just software you own." }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
-          /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-            /* @__PURE__ */ jsx("span", { children: "Work with us" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero about-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
+        /* @__PURE__ */ jsxs("div", { children: [
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: "About" })
           ] }),
-          /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#story", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Our story" }) })
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " Est. 2024 · Ahmedabad"
+          ] }) }),
+          /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "A small team that" }) }),
+            " ",
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "builds like it's theirs." }) })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Codelix is an IT solutions studio that builds web, mobile, and AI systems for businesses that intend to still be running them in five years. No lock-in, no black boxes — just software you own." }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
+            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+              /* @__PURE__ */ jsx("span", { children: "Work with us" }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+            ] }),
+            /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#story", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Our story" }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-hero-visual sv2-hero-reveal", style: { display: "flex", justifyContent: "center" }, children: /* @__PURE__ */ jsx(AboutHeroVisual, {}) })
+      ] }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "stats", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "By The Numbers" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Six years of shipping, not pitching." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Codelix, at a glance" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Updated 2026" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid", children: STATS$6.map((b, i) => {
+            const R = 52;
+            const C = 2 * Math.PI * R;
+            const offset = C - C * b.ring / 100;
+            return /* @__PURE__ */ jsxs("div", { className: "sd2-bench about-stat", children: [
+              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
+                /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
+                  /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `about-bench-grad-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
+                    /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
+                    /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
+                  ] }) }),
+                  /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
+                  /* @__PURE__ */ jsx(
+                    "circle",
+                    {
+                      className: "sd2-bench-ring-fill",
+                      cx: "60",
+                      cy: "60",
+                      r: R,
+                      stroke: `url(#about-bench-grad-${i})`,
+                      style: { "--c": C, "--ring-offset": offset }
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
+            ] }, b.label);
+          }) })
         ] })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-hero-visual sv2-hero-reveal", style: { display: "flex", justifyContent: "center" }, children: /* @__PURE__ */ jsx(AboutHeroVisual, {}) })
-    ] }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "stats", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "By The Numbers" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Six years of shipping, not pitching." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Codelix, at a glance" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Updated 2026" })
+      /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "process", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
+          /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How We Work." }),
+          /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Same six stages regardless of the project — nothing advances until the stage before it is signed off." })
         ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid", children: STATS$6.map((b, i) => {
-          const R = 52;
-          const C = 2 * Math.PI * R;
-          const offset = C - C * b.ring / 100;
-          return /* @__PURE__ */ jsxs("div", { className: "sd2-bench about-stat", children: [
-            /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
-              /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
-                /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `about-bench-grad-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
-                  /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
-                  /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
-                ] }) }),
-                /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
-                /* @__PURE__ */ jsx(
-                  "circle",
-                  {
-                    className: "sd2-bench-ring-fill",
-                    cx: "60",
-                    cy: "60",
-                    r: R,
-                    stroke: `url(#about-bench-grad-${i})`,
-                    style: { "--c": C, "--ring-offset": offset }
-                  }
-                )
-              ] }),
-              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
-          ] }, b.label);
-        }) })
+        /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: PROCESS$1.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
+          /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
+            /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
+        ] }, m.n)) })
+      ] }),
+      /* @__PURE__ */ jsx(ScrollSentence, { words: MISSION_WORDS, tone: "dark", centered: true }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "values", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What We Actually Believe" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three things that don't change per client." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: VALUES.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
+        ] }, p.key)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "compare", children: [
+        /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why Us" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Against what you're actually comparing." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "A template, a freelancer, and a big agency all solve part of the problem. Here's where each one tends to leave you exposed." })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-cmp", role: "table", "aria-label": "Codelix compared to alternatives", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-head", role: "row", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "columnheader" }),
+            COMPARE_COLS.map((c, i) => /* @__PURE__ */ jsx(
+              "span",
+              {
+                className: `sd2-cmp-col ${i === 0 ? "is-us" : ""}`,
+                role: "columnheader",
+                children: c
+              },
+              c
+            ))
+          ] }),
+          COMPARE_ROWS.map((row) => /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-row", role: "row", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "rowheader", children: row.label }),
+            row.vals.map((v, i) => /* @__PURE__ */ jsxs(
+              "span",
+              {
+                className: `sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`,
+                role: "cell",
+                children: [
+                  v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.6 }),
+                  v === "partial" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
+                  v === "maybe" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
+                  v === "no" && /* @__PURE__ */ jsx(X, { size: 15, strokeWidth: 2.6 }),
+                  /* @__PURE__ */ jsx("em", { className: "sd2-cmp-txt", children: v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe" })
+                ]
+              },
+              i
+            ))
+          ] }, row.label))
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx(
+        TestimonialSpotlight,
+        {
+          testimonials,
+          label: "Client Voices",
+          heading: "What clients say about working with us.",
+          stats: [
+            { num: "40+", label: "Projects delivered" },
+            { num: "20+", label: "Clients worldwide" },
+            { num: "100%", label: "Source code ownership" }
+          ]
+        }
+      ),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we build." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES$1.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
+          ] }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
+        ] }, s.path)) })
+      ] }),
+      /* @__PURE__ */ jsx(ClientStrip, {}),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Same team you meet today",
+          /* @__PURE__ */ jsx("br", {}),
+          "builds what you use in year three."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "No handoffs to a different team after the sales call. Talk to us about what you're building." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
       ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "process", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
-        /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How We Work." }),
-        /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "Same six stages regardless of the project — nothing advances until the stage before it is signed off." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: PROCESS$1.map((m) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
-        /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: m.n }),
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.title }),
-          /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
-      ] }, m.n)) })
-    ] }),
-    /* @__PURE__ */ jsx(ScrollSentence, { words: MISSION_WORDS, tone: "dark", centered: true }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "values", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What We Actually Believe" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three things that don't change per client." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: VALUES.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
-      ] }, p.key)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "compare", children: [
-      /* @__PURE__ */ jsxs("div", { className: "sd2-case-head", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why Us" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Against what you're actually comparing." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "A template, a freelancer, and a big agency all solve part of the problem. Here's where each one tends to leave you exposed." })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-cmp", role: "table", "aria-label": "Codelix compared to alternatives", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-head", role: "row", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "columnheader" }),
-          COMPARE_COLS.map((c, i) => /* @__PURE__ */ jsx(
-            "span",
-            {
-              className: `sd2-cmp-col ${i === 0 ? "is-us" : ""}`,
-              role: "columnheader",
-              children: c
-            },
-            c
-          ))
-        ] }),
-        COMPARE_ROWS.map((row) => /* @__PURE__ */ jsxs("div", { className: "sd2-cmp-row", role: "row", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-cmp-rowlabel", role: "rowheader", children: row.label }),
-          row.vals.map((v, i) => /* @__PURE__ */ jsxs(
-            "span",
-            {
-              className: `sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`,
-              role: "cell",
-              children: [
-                v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.6 }),
-                v === "partial" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
-                v === "maybe" && /* @__PURE__ */ jsx(Minus, { size: 16, strokeWidth: 2.6 }),
-                v === "no" && /* @__PURE__ */ jsx(X, { size: 15, strokeWidth: 2.6 }),
-                /* @__PURE__ */ jsx("em", { className: "sd2-cmp-txt", children: v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe" })
-              ]
-            },
-            i
-          ))
-        ] }, row.label))
-      ] })
-    ] }),
-    /* @__PURE__ */ jsx(
-      TestimonialSpotlight,
-      {
-        testimonials,
-        label: "Client Voices",
-        heading: "What clients say about working with us.",
-        stats: [
-          { num: "40+", label: "Projects delivered" },
-          { num: "20+", label: "Clients worldwide" },
-          { num: "100%", label: "Source code ownership" }
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we build." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES$1.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
-        ] }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
-      ] }, s.path)) })
-    ] }),
-    /* @__PURE__ */ jsx(ClientStrip, {}),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Same team you meet today",
-        /* @__PURE__ */ jsx("br", {}),
-        "builds what you use in year three."
-      ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "No handoffs to a different team after the sales call. Talk to us about what you're building." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -12028,206 +12050,208 @@ function ContactV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: "Contact" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " Usually reply within 1 business day"
-        ] }) }),
-        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Tell us what" }) }),
-          " ",
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "you're building." }) })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Whether you're looking for guidance, support, or a custom solution, we're here to help you every step of the way." }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal contact-hero-links", children: [
-          /* @__PURE__ */ jsxs("a", { className: "contact-quick-link", href: "mailto:sales@codelixitsolutions.com", children: [
-            /* @__PURE__ */ jsx(Mail, { size: 15, strokeWidth: 1.7 }),
-            /* @__PURE__ */ jsx("span", { children: "sales@codelixitsolutions.com" })
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
+        /* @__PURE__ */ jsxs("div", { children: [
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: "Contact" })
           ] }),
-          /* @__PURE__ */ jsxs("a", { className: "contact-quick-link", href: "tel:+919998263282", children: [
-            /* @__PURE__ */ jsx(Phone, { size: 15, strokeWidth: 1.7 }),
-            /* @__PURE__ */ jsx("span", { children: "+91 99982 63282" })
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " Usually reply within 1 business day"
+          ] }) }),
+          /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Tell us what" }) }),
+            " ",
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "you're building." }) })
           ] }),
-          /* @__PURE__ */ jsxs(
-            "a",
-            {
-              className: "contact-quick-link",
-              href: "https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D",
-              target: "_blank",
-              rel: "noopener noreferrer",
-              children: [
-                /* @__PURE__ */ jsx(MapPin, { size: 15, strokeWidth: 1.7 }),
-                /* @__PURE__ */ jsx("span", { children: "Ahmedabad, Gujarat" })
-              ]
-            }
-          )
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Whether you're looking for guidance, support, or a custom solution, we're here to help you every step of the way." }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal contact-hero-links", children: [
+            /* @__PURE__ */ jsxs("a", { className: "contact-quick-link", href: "mailto:sales@codelixitsolutions.com", children: [
+              /* @__PURE__ */ jsx(Mail, { size: 15, strokeWidth: 1.7 }),
+              /* @__PURE__ */ jsx("span", { children: "sales@codelixitsolutions.com" })
+            ] }),
+            /* @__PURE__ */ jsxs("a", { className: "contact-quick-link", href: "tel:+919998263282", children: [
+              /* @__PURE__ */ jsx(Phone, { size: 15, strokeWidth: 1.7 }),
+              /* @__PURE__ */ jsx("span", { children: "+91 99982 63282" })
+            ] }),
+            /* @__PURE__ */ jsxs(
+              "a",
+              {
+                className: "contact-quick-link",
+                href: "https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                children: [
+                  /* @__PURE__ */ jsx(MapPin, { size: 15, strokeWidth: 1.7 }),
+                  /* @__PURE__ */ jsx("span", { children: "Ahmedabad, Gujarat" })
+                ]
+              }
+            )
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-hero-visual sv2-hero-reveal", children: /* @__PURE__ */ jsx(ContactHeroVisual, {}) })
+      ] }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "contact-form", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Schedule A Meeting" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Leave us a little info — we'll get in touch." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "With our design and development team, there's nothing we can't achieve — a proven end-to-end process from strategy to launch." }),
+        /* @__PURE__ */ jsxs("div", { className: "contact-form-shell", children: [
+          /* @__PURE__ */ jsx("div", { className: "contact-form-panel", children: submitted ? /* @__PURE__ */ jsxs("div", { className: "contact-success", children: [
+            /* @__PURE__ */ jsx("span", { className: "contact-success-icon", children: /* @__PURE__ */ jsx(Check, { size: 26, strokeWidth: 2.2 }) }),
+            /* @__PURE__ */ jsx("h3", { children: "Thank you!" }),
+            /* @__PURE__ */ jsx("p", { children: "Your message has been received. Our team will get back to you shortly." }),
+            /* @__PURE__ */ jsx("button", { className: "v2-btn", onClick: () => setSubmitted(false), children: "Send another →" })
+          ] }) : /* @__PURE__ */ jsxs("form", { onSubmit: handleSubmit, className: "contact-form", children: [
+            /* @__PURE__ */ jsx("input", { type: "checkbox", name: "botcheck", style: { display: "none" } }),
+            /* @__PURE__ */ jsxs("div", { className: "contact-form-row", children: [
+              /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
+                /* @__PURE__ */ jsx("label", { children: "Your Name*" }),
+                /* @__PURE__ */ jsx("input", { type: "text", name: "name", required: true, value: formData.name, onChange: handleChange })
+              ] }),
+              /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
+                /* @__PURE__ */ jsx("label", { children: "Email*" }),
+                /* @__PURE__ */ jsx("input", { type: "email", name: "email", required: true, value: formData.email, onChange: handleChange })
+              ] })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "contact-form-row", children: [
+              /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
+                /* @__PURE__ */ jsx("label", { children: "Contact*" }),
+                /* @__PURE__ */ jsx("input", { type: "text", name: "contact", required: true, value: formData.contact, onChange: handleChange })
+              ] }),
+              /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
+                /* @__PURE__ */ jsx("label", { children: "Company*" }),
+                /* @__PURE__ */ jsx("input", { type: "text", name: "company", required: true, value: formData.company, onChange: handleChange })
+              ] })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "contact-form-row", children: [
+              /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
+                /* @__PURE__ */ jsx("label", { children: "Designation*" }),
+                /* @__PURE__ */ jsx("input", { type: "text", name: "designation", required: true, value: formData.designation, onChange: handleChange })
+              ] }),
+              /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
+                /* @__PURE__ */ jsx("label", { children: "Service*" }),
+                /* @__PURE__ */ jsxs("select", { name: "service", required: true, value: formData.service, onChange: handleChange, children: [
+                  /* @__PURE__ */ jsx("option", { disabled: true, value: "Select", children: "Select" }),
+                  FOOTER_ALL_SERVICES.map((s) => /* @__PURE__ */ jsx("option", { value: s.label, children: s.label }, s.label)),
+                  /* @__PURE__ */ jsx("option", { value: "Other", children: "Other" })
+                ] })
+              ] })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
+              /* @__PURE__ */ jsx("label", { children: "About Project*" }),
+              /* @__PURE__ */ jsx("textarea", { rows: "4", name: "aboutProject", required: true, value: formData.aboutProject, onChange: handleChange })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "contact-form-row", children: [
+              /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
+                /* @__PURE__ */ jsx("label", { children: "Budget" }),
+                /* @__PURE__ */ jsxs("select", { name: "budget", value: formData.budget, onChange: handleChange, children: [
+                  /* @__PURE__ */ jsx("option", { disabled: true, value: "Select", children: "Select" }),
+                  /* @__PURE__ */ jsx("option", { children: "Under $1500" }),
+                  /* @__PURE__ */ jsx("option", { children: "$1500 - $5,000" }),
+                  /* @__PURE__ */ jsx("option", { children: "$5,000 - $10,000" }),
+                  /* @__PURE__ */ jsx("option", { children: "$10,000 - $20,000" }),
+                  /* @__PURE__ */ jsx("option", { children: "$20,000 - $50,000" }),
+                  /* @__PURE__ */ jsx("option", { children: "Above $50,000" })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
+                /* @__PURE__ */ jsx("label", { children: "Timeline" }),
+                /* @__PURE__ */ jsxs("select", { name: "timeline", value: formData.timeline, onChange: handleChange, children: [
+                  /* @__PURE__ */ jsx("option", { disabled: true, value: "Select", children: "Select" }),
+                  /* @__PURE__ */ jsx("option", { children: "1-3 months" }),
+                  /* @__PURE__ */ jsx("option", { children: "3-6 months" }),
+                  /* @__PURE__ */ jsx("option", { children: "6-12 months" }),
+                  /* @__PURE__ */ jsx("option", { children: "12+ months" }),
+                  /* @__PURE__ */ jsx("option", { children: "Flexible" })
+                ] })
+              ] })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
+              /* @__PURE__ */ jsx("label", { children: "How did you hear about us?" }),
+              /* @__PURE__ */ jsx("textarea", { rows: "3", name: "howHeard", value: formData.howHeard, onChange: handleChange })
+            ] }),
+            error && /* @__PURE__ */ jsxs("p", { className: "contact-error", children: [
+              "⚠️ ",
+              error
+            ] }),
+            /* @__PURE__ */ jsxs("button", { type: "submit", className: "contact-submit", disabled: sending, children: [
+              /* @__PURE__ */ jsx("span", { children: sending ? "Sending…" : "Submit" }),
+              !sending && /* @__PURE__ */ jsx("i", { className: "contact-submit-arrow", children: "→" })
+            ] })
+          ] }) }),
+          /* @__PURE__ */ jsxs("aside", { className: "contact-live", children: [
+            /* @__PURE__ */ jsxs("div", { className: "contact-live-ring", children: [
+              /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "contact-live-ring-svg", "aria-hidden": "true", children: [
+                /* @__PURE__ */ jsx("circle", { className: "contact-live-ring-track", cx: "60", cy: "60", r: RING_R }),
+                /* @__PURE__ */ jsx(
+                  "circle",
+                  {
+                    className: "contact-live-ring-fill",
+                    cx: "60",
+                    cy: "60",
+                    r: RING_R,
+                    style: {
+                      strokeDasharray: RING_C,
+                      strokeDashoffset: ringOffset
+                    }
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ jsxs("div", { className: "contact-live-ring-num", children: [
+                /* @__PURE__ */ jsx("span", { children: completion }),
+                /* @__PURE__ */ jsx("em", { children: "%" })
+              ] })
+            ] }),
+            /* @__PURE__ */ jsx("p", { className: "contact-live-label", children: "Inquiry completeness" }),
+            /* @__PURE__ */ jsxs("div", { className: "contact-live-card", children: [
+              /* @__PURE__ */ jsxs("div", { className: "contact-live-row", children: [
+                /* @__PURE__ */ jsx("span", { children: "Name" }),
+                /* @__PURE__ */ jsx("strong", { children: formData.name || "—" })
+              ] }),
+              /* @__PURE__ */ jsxs("div", { className: "contact-live-row", children: [
+                /* @__PURE__ */ jsx("span", { children: "Company" }),
+                /* @__PURE__ */ jsx("strong", { children: formData.company || "—" })
+              ] }),
+              /* @__PURE__ */ jsxs("div", { className: "contact-live-row", children: [
+                /* @__PURE__ */ jsx("span", { children: "Service" }),
+                /* @__PURE__ */ jsx("strong", { children: formData.service !== "Select" ? formData.service : "—" })
+              ] }),
+              /* @__PURE__ */ jsxs("div", { className: "contact-live-row", children: [
+                /* @__PURE__ */ jsx("span", { children: "Budget" }),
+                /* @__PURE__ */ jsx("strong", { children: formData.budget !== "Select" ? formData.budget : "—" })
+              ] }),
+              /* @__PURE__ */ jsxs("div", { className: "contact-live-row", children: [
+                /* @__PURE__ */ jsx("span", { children: "Timeline" }),
+                /* @__PURE__ */ jsx("strong", { children: formData.timeline !== "Select" ? formData.timeline : "—" })
+              ] })
+            ] })
+          ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-hero-visual sv2-hero-reveal", children: /* @__PURE__ */ jsx(ContactHeroVisual, {}) })
-    ] }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "contact-form", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Schedule A Meeting" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Leave us a little info — we'll get in touch." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "With our design and development team, there's nothing we can't achieve — a proven end-to-end process from strategy to launch." }),
-      /* @__PURE__ */ jsxs("div", { className: "contact-form-shell", children: [
-        /* @__PURE__ */ jsx("div", { className: "contact-form-panel", children: submitted ? /* @__PURE__ */ jsxs("div", { className: "contact-success", children: [
-          /* @__PURE__ */ jsx("span", { className: "contact-success-icon", children: /* @__PURE__ */ jsx(Check, { size: 26, strokeWidth: 2.2 }) }),
-          /* @__PURE__ */ jsx("h3", { children: "Thank you!" }),
-          /* @__PURE__ */ jsx("p", { children: "Your message has been received. Our team will get back to you shortly." }),
-          /* @__PURE__ */ jsx("button", { className: "v2-btn", onClick: () => setSubmitted(false), children: "Send another →" })
-        ] }) : /* @__PURE__ */ jsxs("form", { onSubmit: handleSubmit, className: "contact-form", children: [
-          /* @__PURE__ */ jsx("input", { type: "checkbox", name: "botcheck", style: { display: "none" } }),
-          /* @__PURE__ */ jsxs("div", { className: "contact-form-row", children: [
-            /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
-              /* @__PURE__ */ jsx("label", { children: "Your Name*" }),
-              /* @__PURE__ */ jsx("input", { type: "text", name: "name", required: true, value: formData.name, onChange: handleChange })
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "process", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What Happens Next" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Five steps from message to launch." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No drawn-out sales process — reach out and here's exactly what follows." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-next", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-next-line", "aria-hidden": "true" }),
+          PROCESS.map((s) => /* @__PURE__ */ jsxs("article", { className: "sd2-step", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-step-node", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-num", children: s.n }),
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-badge", children: /* @__PURE__ */ jsx(s.icon, { size: 15, strokeWidth: 1.7 }) })
             ] }),
-            /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
-              /* @__PURE__ */ jsx("label", { children: "Email*" }),
-              /* @__PURE__ */ jsx("input", { type: "email", name: "email", required: true, value: formData.email, onChange: handleChange })
+            /* @__PURE__ */ jsxs("div", { className: "sd2-step-inner", children: [
+              /* @__PURE__ */ jsx("span", { className: "sd2-step-meta", children: s.meta }),
+              /* @__PURE__ */ jsx("h3", { className: "sd2-step-title", children: s.title }),
+              /* @__PURE__ */ jsx("p", { className: "sd2-step-body", children: s.body })
             ] })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "contact-form-row", children: [
-            /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
-              /* @__PURE__ */ jsx("label", { children: "Contact*" }),
-              /* @__PURE__ */ jsx("input", { type: "text", name: "contact", required: true, value: formData.contact, onChange: handleChange })
-            ] }),
-            /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
-              /* @__PURE__ */ jsx("label", { children: "Company*" }),
-              /* @__PURE__ */ jsx("input", { type: "text", name: "company", required: true, value: formData.company, onChange: handleChange })
-            ] })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "contact-form-row", children: [
-            /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
-              /* @__PURE__ */ jsx("label", { children: "Designation*" }),
-              /* @__PURE__ */ jsx("input", { type: "text", name: "designation", required: true, value: formData.designation, onChange: handleChange })
-            ] }),
-            /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
-              /* @__PURE__ */ jsx("label", { children: "Service*" }),
-              /* @__PURE__ */ jsxs("select", { name: "service", required: true, value: formData.service, onChange: handleChange, children: [
-                /* @__PURE__ */ jsx("option", { disabled: true, value: "Select", children: "Select" }),
-                FOOTER_ALL_SERVICES.map((s) => /* @__PURE__ */ jsx("option", { value: s.label, children: s.label }, s.label)),
-                /* @__PURE__ */ jsx("option", { value: "Other", children: "Other" })
-              ] })
-            ] })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
-            /* @__PURE__ */ jsx("label", { children: "About Project*" }),
-            /* @__PURE__ */ jsx("textarea", { rows: "4", name: "aboutProject", required: true, value: formData.aboutProject, onChange: handleChange })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "contact-form-row", children: [
-            /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
-              /* @__PURE__ */ jsx("label", { children: "Budget" }),
-              /* @__PURE__ */ jsxs("select", { name: "budget", value: formData.budget, onChange: handleChange, children: [
-                /* @__PURE__ */ jsx("option", { disabled: true, value: "Select", children: "Select" }),
-                /* @__PURE__ */ jsx("option", { children: "Under $1500" }),
-                /* @__PURE__ */ jsx("option", { children: "$1500 - $5,000" }),
-                /* @__PURE__ */ jsx("option", { children: "$5,000 - $10,000" }),
-                /* @__PURE__ */ jsx("option", { children: "$10,000 - $20,000" }),
-                /* @__PURE__ */ jsx("option", { children: "$20,000 - $50,000" }),
-                /* @__PURE__ */ jsx("option", { children: "Above $50,000" })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
-              /* @__PURE__ */ jsx("label", { children: "Timeline" }),
-              /* @__PURE__ */ jsxs("select", { name: "timeline", value: formData.timeline, onChange: handleChange, children: [
-                /* @__PURE__ */ jsx("option", { disabled: true, value: "Select", children: "Select" }),
-                /* @__PURE__ */ jsx("option", { children: "1-3 months" }),
-                /* @__PURE__ */ jsx("option", { children: "3-6 months" }),
-                /* @__PURE__ */ jsx("option", { children: "6-12 months" }),
-                /* @__PURE__ */ jsx("option", { children: "12+ months" }),
-                /* @__PURE__ */ jsx("option", { children: "Flexible" })
-              ] })
-            ] })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
-            /* @__PURE__ */ jsx("label", { children: "How did you hear about us?" }),
-            /* @__PURE__ */ jsx("textarea", { rows: "3", name: "howHeard", value: formData.howHeard, onChange: handleChange })
-          ] }),
-          error && /* @__PURE__ */ jsxs("p", { className: "contact-error", children: [
-            "⚠️ ",
-            error
-          ] }),
-          /* @__PURE__ */ jsxs("button", { type: "submit", className: "contact-submit", disabled: sending, children: [
-            /* @__PURE__ */ jsx("span", { children: sending ? "Sending…" : "Submit" }),
-            !sending && /* @__PURE__ */ jsx("i", { className: "contact-submit-arrow", children: "→" })
-          ] })
-        ] }) }),
-        /* @__PURE__ */ jsxs("aside", { className: "contact-live", children: [
-          /* @__PURE__ */ jsxs("div", { className: "contact-live-ring", children: [
-            /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "contact-live-ring-svg", "aria-hidden": "true", children: [
-              /* @__PURE__ */ jsx("circle", { className: "contact-live-ring-track", cx: "60", cy: "60", r: RING_R }),
-              /* @__PURE__ */ jsx(
-                "circle",
-                {
-                  className: "contact-live-ring-fill",
-                  cx: "60",
-                  cy: "60",
-                  r: RING_R,
-                  style: {
-                    strokeDasharray: RING_C,
-                    strokeDashoffset: ringOffset
-                  }
-                }
-              )
-            ] }),
-            /* @__PURE__ */ jsxs("div", { className: "contact-live-ring-num", children: [
-              /* @__PURE__ */ jsx("span", { children: completion }),
-              /* @__PURE__ */ jsx("em", { children: "%" })
-            ] })
-          ] }),
-          /* @__PURE__ */ jsx("p", { className: "contact-live-label", children: "Inquiry completeness" }),
-          /* @__PURE__ */ jsxs("div", { className: "contact-live-card", children: [
-            /* @__PURE__ */ jsxs("div", { className: "contact-live-row", children: [
-              /* @__PURE__ */ jsx("span", { children: "Name" }),
-              /* @__PURE__ */ jsx("strong", { children: formData.name || "—" })
-            ] }),
-            /* @__PURE__ */ jsxs("div", { className: "contact-live-row", children: [
-              /* @__PURE__ */ jsx("span", { children: "Company" }),
-              /* @__PURE__ */ jsx("strong", { children: formData.company || "—" })
-            ] }),
-            /* @__PURE__ */ jsxs("div", { className: "contact-live-row", children: [
-              /* @__PURE__ */ jsx("span", { children: "Service" }),
-              /* @__PURE__ */ jsx("strong", { children: formData.service !== "Select" ? formData.service : "—" })
-            ] }),
-            /* @__PURE__ */ jsxs("div", { className: "contact-live-row", children: [
-              /* @__PURE__ */ jsx("span", { children: "Budget" }),
-              /* @__PURE__ */ jsx("strong", { children: formData.budget !== "Select" ? formData.budget : "—" })
-            ] }),
-            /* @__PURE__ */ jsxs("div", { className: "contact-live-row", children: [
-              /* @__PURE__ */ jsx("span", { children: "Timeline" }),
-              /* @__PURE__ */ jsx("strong", { children: formData.timeline !== "Select" ? formData.timeline : "—" })
-            ] })
-          ] })
+          ] }, s.n))
         ] })
-      ] })
+      ] }),
+      /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$7, className: "v2-section--void" })
     ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "process", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What Happens Next" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Five steps from message to launch." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "No drawn-out sales process — reach out and here's exactly what follows." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-next", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-next-line", "aria-hidden": "true" }),
-        PROCESS.map((s) => /* @__PURE__ */ jsxs("article", { className: "sd2-step", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-step-node", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-num", children: s.n }),
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-badge", children: /* @__PURE__ */ jsx(s.icon, { size: 15, strokeWidth: 1.7 }) })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "sd2-step-inner", children: [
-            /* @__PURE__ */ jsx("span", { className: "sd2-step-meta", children: s.meta }),
-            /* @__PURE__ */ jsx("h3", { className: "sd2-step-title", children: s.title }),
-            /* @__PURE__ */ jsx("p", { className: "sd2-step-body", children: s.body })
-          ] })
-        ] }, s.n))
-      ] })
-    ] }),
-    /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$7, className: "v2-section--void" }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
@@ -12525,180 +12549,182 @@ function IndustriesV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main ind-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: "Industries" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " Eleven sectors, real repeat experience"
-        ] }) }),
-        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Built for how" }) }),
-          " ",
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "your sector actually operates." }) })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "The stack, the compliance posture, and the structure change depending on who's using the site and what they came to do. Here's where we have the deepest repeat experience." }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
-          /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-            /* @__PURE__ */ jsx("span", { children: "Talk about your sector" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main ind-hero-main", children: [
+        /* @__PURE__ */ jsxs("div", { children: [
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: "Industries" })
           ] }),
-          /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#industries", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Browse industries" }) })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "ind-hero-visual-wrapper sv2-hero-reveal", children: /* @__PURE__ */ jsx(IndustryHeroVisual, {}) })
-    ] }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "industries", children: [
-      /* @__PURE__ */ jsxs("div", { className: "ind-scroll-shell", children: [
-        /* @__PURE__ */ jsxs("div", { className: "ind-scroll-left", children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Industries We Serve" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Eleven sectors. Different problems, different builds." }),
-          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Not a generic template reskinned across sectors — each one has different constraints, and we design around the ones that matter." }),
-          /* @__PURE__ */ jsxs("ul", { className: "ind-scroll-points", children: [
-            /* @__PURE__ */ jsx("li", { children: "Sector-specific compliance designed in, not bolted on" }),
-            /* @__PURE__ */ jsx("li", { children: "Real repeat experience, not a first attempt at your industry" }),
-            /* @__PURE__ */ jsx("li", { children: 'Faster onboarding — fewer "actually, in our industry…" surprises' }),
-            /* @__PURE__ */ jsx("li", { children: "Same process and pricing, tuned per sector" })
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " Eleven sectors, real repeat experience"
+          ] }) }),
+          /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Built for how" }) }),
+            " ",
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "your sector actually operates." }) })
           ] }),
-          /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-            /* @__PURE__ */ jsx("span", { children: "Talk about your sector" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "The stack, the compliance posture, and the structure change depending on who's using the site and what they came to do. Here's where we have the deepest repeat experience." }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
+            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+              /* @__PURE__ */ jsx("span", { children: "Talk about your sector" }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+            ] }),
+            /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#industries", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Browse industries" }) })
           ] })
         ] }),
-        /* @__PURE__ */ jsx("div", { className: "ind-scroll-right", children: /* @__PURE__ */ jsx("div", { className: "ind-scroll-stack", children: INDUSTRIES$1.map((it, i) => /* @__PURE__ */ jsxs(
-          "article",
-          {
-            className: "ind-scroll-card",
-            style: { top: `120px`, zIndex: i + 1 },
-            children: [
-              /* @__PURE__ */ jsx(
-                "div",
-                {
-                  className: "ind-scroll-card-tab",
-                  style: {
-                    width: `calc(100% / ${INDUSTRIES$1.length})`,
-                    marginLeft: `calc(100% / ${INDUSTRIES$1.length} * ${i})`
-                  },
-                  children: /* @__PURE__ */ jsx("span", { className: "ind-scroll-card-n", children: String(i + 1).padStart(2, "0") })
-                }
-              ),
-              /* @__PURE__ */ jsxs("div", { className: "ind-scroll-card-body", children: [
-                /* @__PURE__ */ jsx("span", { className: "ind-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 22, strokeWidth: 1.4 }) }),
-                /* @__PURE__ */ jsx("h3", { className: "ind-panel-title", children: it.title }),
-                /* @__PURE__ */ jsx("p", { className: "ind-panel-tagline", children: it.tagline }),
-                /* @__PURE__ */ jsxs("div", { className: "ind-panel-cols", children: [
-                  /* @__PURE__ */ jsxs("div", { children: [
-                    /* @__PURE__ */ jsx("span", { className: "ind-panel-sub", children: "What we see a lot" }),
-                    /* @__PURE__ */ jsx("ul", { className: "ind-panel-challenges", children: it.challenges.map((c) => /* @__PURE__ */ jsx("li", { children: c }, c)) })
-                  ] }),
-                  /* @__PURE__ */ jsxs("div", { children: [
-                    /* @__PURE__ */ jsx("span", { className: "ind-panel-sub", children: "What we deliver" }),
-                    /* @__PURE__ */ jsx("p", { className: "ind-panel-body", children: it.body }),
-                    /* @__PURE__ */ jsx("div", { className: "ind-panel-services", children: it.services.map((s) => /* @__PURE__ */ jsx("span", { children: s }, s)) })
-                  ] })
-                ] }),
-                /* @__PURE__ */ jsxs(Link, { className: "ind-panel-more", to: `/industries/${it.slug}`, children: [
-                  "Explore ",
-                  it.title,
-                  " →"
-                ] })
-              ] })
-            ]
-          },
-          it.title
-        )) }) })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "ind-mobile-stack", children: INDUSTRIES$1.map((it, i) => /* @__PURE__ */ jsxs("article", { className: "ind-mobile-card", children: [
-        /* @__PURE__ */ jsxs("div", { className: "ind-mobile-card-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "ind-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 22, strokeWidth: 1.4 }) }),
-          /* @__PURE__ */ jsx("span", { className: "ind-mobile-n", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "ind-panel-title", children: it.title }),
-        /* @__PURE__ */ jsx("p", { className: "ind-panel-tagline", children: it.tagline }),
-        /* @__PURE__ */ jsx("span", { className: "ind-panel-sub", children: "What we see a lot" }),
-        /* @__PURE__ */ jsx("ul", { className: "ind-panel-challenges", children: it.challenges.map((c) => /* @__PURE__ */ jsx("li", { children: c }, c)) }),
-        /* @__PURE__ */ jsx("span", { className: "ind-panel-sub", children: "What we deliver" }),
-        /* @__PURE__ */ jsx("p", { className: "ind-panel-body", children: it.body }),
-        /* @__PURE__ */ jsx("div", { className: "ind-panel-services", children: it.services.map((s) => /* @__PURE__ */ jsx("span", { children: s }, s)) }),
-        /* @__PURE__ */ jsxs(Link, { className: "ind-panel-more", to: `/industries/${it.slug}`, children: [
-          "Explore ",
-          it.title,
-          " →"
-        ] })
-      ] }, it.title)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "approach", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Approach" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Why sector experience actually matters." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: APPROACH.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body })
-      ] }, p.claim)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "stats", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Across Sectors" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Depth, not a scattershot client list." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Codelix, across industries" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Updated 2026" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid ind-stats-grid", children: STATS$5.map((b, i) => {
-          const R = 52;
-          const C = 2 * Math.PI * R;
-          const offset = C - C * b.ring / 100;
-          return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
-            /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
-              /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
-                /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `ind-bench-grad-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
-                  /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
-                  /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
-                ] }) }),
-                /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
-                /* @__PURE__ */ jsx(
-                  "circle",
-                  {
-                    className: "sd2-bench-ring-fill",
-                    cx: "60",
-                    cy: "60",
-                    r: R,
-                    stroke: `url(#ind-bench-grad-${i})`,
-                    style: { "--c": C, "--ring-offset": offset }
-                  }
-                )
-              ] }),
-              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
-              ] })
+        /* @__PURE__ */ jsx("div", { className: "ind-hero-visual-wrapper sv2-hero-reveal", children: /* @__PURE__ */ jsx(IndustryHeroVisual, {}) })
+      ] }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "industries", children: [
+        /* @__PURE__ */ jsxs("div", { className: "ind-scroll-shell", children: [
+          /* @__PURE__ */ jsxs("div", { className: "ind-scroll-left", children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Industries We Serve" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Eleven sectors. Different problems, different builds." }),
+            /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Not a generic template reskinned across sectors — each one has different constraints, and we design around the ones that matter." }),
+            /* @__PURE__ */ jsxs("ul", { className: "ind-scroll-points", children: [
+              /* @__PURE__ */ jsx("li", { children: "Sector-specific compliance designed in, not bolted on" }),
+              /* @__PURE__ */ jsx("li", { children: "Real repeat experience, not a first attempt at your industry" }),
+              /* @__PURE__ */ jsx("li", { children: 'Faster onboarding — fewer "actually, in our industry…" surprises' }),
+              /* @__PURE__ */ jsx("li", { children: "Same process and pricing, tuned per sector" })
             ] }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
-          ] }, b.label);
-        }) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$6, className: "v2-section--void" }),
-    /* @__PURE__ */ jsx(ClientStrip, {}),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Tell us your sector.",
-        /* @__PURE__ */ jsx("br", {}),
-        "We'll tell you what actually matters."
+            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+              /* @__PURE__ */ jsx("span", { children: "Talk about your sector" }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "ind-scroll-right", children: /* @__PURE__ */ jsx("div", { className: "ind-scroll-stack", children: INDUSTRIES$1.map((it, i) => /* @__PURE__ */ jsxs(
+            "article",
+            {
+              className: "ind-scroll-card",
+              style: { top: `120px`, zIndex: i + 1 },
+              children: [
+                /* @__PURE__ */ jsx(
+                  "div",
+                  {
+                    className: "ind-scroll-card-tab",
+                    style: {
+                      width: `calc(100% / ${INDUSTRIES$1.length})`,
+                      marginLeft: `calc(100% / ${INDUSTRIES$1.length} * ${i})`
+                    },
+                    children: /* @__PURE__ */ jsx("span", { className: "ind-scroll-card-n", children: String(i + 1).padStart(2, "0") })
+                  }
+                ),
+                /* @__PURE__ */ jsxs("div", { className: "ind-scroll-card-body", children: [
+                  /* @__PURE__ */ jsx("span", { className: "ind-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 22, strokeWidth: 1.4 }) }),
+                  /* @__PURE__ */ jsx("h3", { className: "ind-panel-title", children: it.title }),
+                  /* @__PURE__ */ jsx("p", { className: "ind-panel-tagline", children: it.tagline }),
+                  /* @__PURE__ */ jsxs("div", { className: "ind-panel-cols", children: [
+                    /* @__PURE__ */ jsxs("div", { children: [
+                      /* @__PURE__ */ jsx("span", { className: "ind-panel-sub", children: "What we see a lot" }),
+                      /* @__PURE__ */ jsx("ul", { className: "ind-panel-challenges", children: it.challenges.map((c) => /* @__PURE__ */ jsx("li", { children: c }, c)) })
+                    ] }),
+                    /* @__PURE__ */ jsxs("div", { children: [
+                      /* @__PURE__ */ jsx("span", { className: "ind-panel-sub", children: "What we deliver" }),
+                      /* @__PURE__ */ jsx("p", { className: "ind-panel-body", children: it.body }),
+                      /* @__PURE__ */ jsx("div", { className: "ind-panel-services", children: it.services.map((s) => /* @__PURE__ */ jsx("span", { children: s }, s)) })
+                    ] })
+                  ] }),
+                  /* @__PURE__ */ jsxs(Link, { className: "ind-panel-more", to: `/industries/${it.slug}`, children: [
+                    "Explore ",
+                    it.title,
+                    " →"
+                  ] })
+                ] })
+              ]
+            },
+            it.title
+          )) }) })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "ind-mobile-stack", children: INDUSTRIES$1.map((it, i) => /* @__PURE__ */ jsxs("article", { className: "ind-mobile-card", children: [
+          /* @__PURE__ */ jsxs("div", { className: "ind-mobile-card-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "ind-panel-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 22, strokeWidth: 1.4 }) }),
+            /* @__PURE__ */ jsx("span", { className: "ind-mobile-n", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "ind-panel-title", children: it.title }),
+          /* @__PURE__ */ jsx("p", { className: "ind-panel-tagline", children: it.tagline }),
+          /* @__PURE__ */ jsx("span", { className: "ind-panel-sub", children: "What we see a lot" }),
+          /* @__PURE__ */ jsx("ul", { className: "ind-panel-challenges", children: it.challenges.map((c) => /* @__PURE__ */ jsx("li", { children: c }, c)) }),
+          /* @__PURE__ */ jsx("span", { className: "ind-panel-sub", children: "What we deliver" }),
+          /* @__PURE__ */ jsx("p", { className: "ind-panel-body", children: it.body }),
+          /* @__PURE__ */ jsx("div", { className: "ind-panel-services", children: it.services.map((s) => /* @__PURE__ */ jsx("span", { children: s }, s)) }),
+          /* @__PURE__ */ jsxs(Link, { className: "ind-panel-more", to: `/industries/${it.slug}`, children: [
+            "Explore ",
+            it.title,
+            " →"
+          ] })
+        ] }, it.title)) })
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your industry's real constraints — not a generic pitch reused across every client." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "approach", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Approach" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Why sector experience actually matters." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: APPROACH.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body })
+        ] }, p.claim)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "stats", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Across Sectors" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Depth, not a scattershot client list." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Codelix, across industries" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Updated 2026" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid ind-stats-grid", children: STATS$5.map((b, i) => {
+            const R = 52;
+            const C = 2 * Math.PI * R;
+            const offset = C - C * b.ring / 100;
+            return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
+              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
+                /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
+                  /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `ind-bench-grad-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
+                    /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
+                    /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
+                  ] }) }),
+                  /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
+                  /* @__PURE__ */ jsx(
+                    "circle",
+                    {
+                      className: "sd2-bench-ring-fill",
+                      cx: "60",
+                      cy: "60",
+                      r: R,
+                      stroke: `url(#ind-bench-grad-${i})`,
+                      style: { "--c": C, "--ring-offset": offset }
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
+            ] }, b.label);
+          }) })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$6, className: "v2-section--void" }),
+      /* @__PURE__ */ jsx(ClientStrip, {}),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Tell us your sector.",
+          /* @__PURE__ */ jsx("br", {}),
+          "We'll tell you what actually matters."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your industry's real constraints — not a generic pitch reused across every client." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -12866,244 +12892,246 @@ function IndustryDetailV2() {
     /* @__PURE__ */ jsx(SEO, { title: `${svc.title} Software Solutions | Codelix IT Solutions`, description: svc.tagline }),
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx(Link, { to: "/industries", children: "Industries" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: svc.title })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " Industry"
-        ] }) }),
-        /* @__PURE__ */ jsx("h1", { className: "sd2-hero-title", children: /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: svc.title }) }) }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: svc.tagline }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
-          /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-            /* @__PURE__ */ jsx("span", { children: "Talk about your sector" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
-          ] }),
-          /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#shift", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "See the shift" }) })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
-        ["Sector", svc.title],
-        ["Typical timeline", "2–12 weeks"],
-        ["You receive", "100% source code"],
-        ["Post-launch", "Support included"]
-      ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
-      ] }, k)) })
-    ] }) }) }),
-    /* @__PURE__ */ jsx("div", { className: "ind2-ticker", "aria-hidden": "true", children: /* @__PURE__ */ jsx("div", { className: "ind2-ticker-track", children: [...TICKER_FACTS, ...TICKER_FACTS, ...TICKER_FACTS, ...TICKER_FACTS].map((f, i) => /* @__PURE__ */ jsx("span", { children: f }, i)) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section ind2-overview", id: "overview", children: [
-      /* @__PURE__ */ jsx("span", { className: "ind2-overview-mark", "aria-hidden": "true", children: String(INDUSTRIES$1.findIndex((i) => i.slug === svc.slug) + 1).padStart(2, "0") }),
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "In Short" }),
-      /* @__PURE__ */ jsx("p", { className: "ind2-overview-text", children: svc.body })
-    ] }),
-    /* @__PURE__ */ jsx(ClientStrip, {}),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "shift", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Shift" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "From daily friction to a system that holds." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Scroll to sweep from where things stand today to what changes." }),
-      /* @__PURE__ */ jsx("div", { className: "ind2-shift-wrap", ref: shiftWrapRef, children: /* @__PURE__ */ jsx("div", { className: "ind2-shift-sticky", children: /* @__PURE__ */ jsxs("div", { className: "ind2-shift-stage", ref: shiftStageRef, children: [
-        /* @__PURE__ */ jsxs("div", { className: "ind2-shift-before", children: [
-          /* @__PURE__ */ jsx("span", { className: "ind2-shift-tag ind2-shift-tag--before", children: "Before" }),
-          svc.problems.map((p) => /* @__PURE__ */ jsxs("div", { className: "ind2-shift-row", children: [
-            /* @__PURE__ */ jsx("span", { className: "ind2-shift-icon ind2-shift-icon--before", children: /* @__PURE__ */ jsx(XCircle, { size: 16, strokeWidth: 1.8 }) }),
-            /* @__PURE__ */ jsx("p", { children: p.pain })
-          ] }, p.pain))
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: "ind2-shift-after", children: [
-          /* @__PURE__ */ jsx("span", { className: "ind2-shift-tag ind2-shift-tag--after", children: "With Codelix" }),
-          svc.problems.map((p) => /* @__PURE__ */ jsxs("div", { className: "ind2-shift-row", children: [
-            /* @__PURE__ */ jsx("span", { className: "ind2-shift-icon ind2-shift-icon--after", children: /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2 }) }),
-            /* @__PURE__ */ jsx("p", { children: p.fix })
-          ] }, p.fix))
-        ] }),
-        /* @__PURE__ */ jsx("span", { className: "ind2-shift-scanline", "aria-hidden": "true" })
-      ] }) }) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "dossier", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Sector File" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we already know, before the first call." }),
-      /* @__PURE__ */ jsxs("div", { className: "ind2-file", children: [
-        /* @__PURE__ */ jsxs("div", { className: "ind2-file-tab", children: [
-          /* @__PURE__ */ jsxs("span", { children: [
-            "SECTOR // ",
-            svc.slug.toUpperCase().replace(/-/g, "·")
-          ] }),
-          /* @__PURE__ */ jsx("span", { children: "FILE 01" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: "ind2-file-body", children: [
-          /* @__PURE__ */ jsx("div", { className: "ind2-file-mark", "aria-hidden": "true", children: /* @__PURE__ */ jsx(svc.icon, { size: 120, strokeWidth: 0.8 }) }),
-          /* @__PURE__ */ jsxs("div", { className: "ind2-file-main", children: [
-            /* @__PURE__ */ jsx("h3", { children: svc.title }),
-            /* @__PURE__ */ jsx("p", { children: svc.tagline })
-          ] }),
-          /* @__PURE__ */ jsxs("dl", { className: "ind2-file-specs", children: [
-            /* @__PURE__ */ jsxs("div", { children: [
-              /* @__PURE__ */ jsxs("dt", { children: [
-                /* @__PURE__ */ jsx(FileCheck2, { size: 14, strokeWidth: 1.8 }),
-                " Problems on record"
-              ] }),
-              /* @__PURE__ */ jsxs("dd", { children: [
-                svc.problems.length,
-                ' recurring, see "The Shift" above'
-              ] })
-            ] }),
-            /* @__PURE__ */ jsxs("div", { children: [
-              /* @__PURE__ */ jsxs("dt", { children: [
-                /* @__PURE__ */ jsx(Layers3, { size: 14, strokeWidth: 1.8 }),
-                " Services involved"
-              ] }),
-              /* @__PURE__ */ jsx("dd", { children: svc.services.join(" · ") })
-            ] }),
-            /* @__PURE__ */ jsxs("div", { children: [
-              /* @__PURE__ */ jsxs("dt", { children: [
-                /* @__PURE__ */ jsx(Timer, { size: 14, strokeWidth: 1.8 }),
-                " Typical timeline"
-              ] }),
-              /* @__PURE__ */ jsx("dd", { children: "2–12 weeks, scope-dependent" })
-            ] }),
-            /* @__PURE__ */ jsxs("div", { children: [
-              /* @__PURE__ */ jsxs("dt", { children: [
-                /* @__PURE__ */ jsx(KeyRound, { size: 14, strokeWidth: 1.8 }),
-                " Ownership on close"
-              ] }),
-              /* @__PURE__ */ jsx("dd", { children: "100% source code, no retained access" })
-            ] })
-          ] })
-        ] })
-      ] })
-    ] }),
-    matchedWork.length > 0 && /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "sector-work", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Real Work" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-heading", children: [
-        "Already shipped in ",
-        svc.title.toLowerCase(),
-        "."
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "ind2-work-row", children: matchedWork.map((w) => /* @__PURE__ */ jsxs(Link, { className: "ind2-work-card", to: w.href, children: [
-        /* @__PURE__ */ jsx("span", { className: "ind2-work-media", children: /* @__PURE__ */ jsx("img", { src: w.image, alt: "", loading: "lazy" }) }),
-        /* @__PURE__ */ jsx("span", { className: "ind2-work-cat", children: w.category }),
-        /* @__PURE__ */ jsx("span", { className: "ind2-work-title", children: w.title }),
-        /* @__PURE__ */ jsx("span", { className: "ind2-work-go", children: "Read case study →" })
-      ] }, w.href)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
         /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Broader Stack" }),
-          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we build with." })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Chosen per project, not by habit — the right tool for your scale, your team, and what you'll need to maintain." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: TECH_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
-        /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
-        /* @__PURE__ */ jsx("span", { children: t.name })
-      ] }, t.name)) })
-    ] }),
-    /* @__PURE__ */ jsx(
-      TestimonialSpotlight,
-      {
-        testimonials,
-        label: "Client Voices",
-        heading: `What clients say about our ${svc.title.toLowerCase()} work.`,
-        stats: [
-          { num: "11", label: "Industries served" },
-          { num: "40+", label: "Projects across sectors" },
-          { num: "100%", label: "Source code ownership" }
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "blueprint", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Build" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What actually goes into this, layer by layer." }),
-      /* @__PURE__ */ jsxs("p", { className: "v2-lede", children: [
-        "Scroll to trace how the real services below combine for ",
-        svc.title.toLowerCase(),
-        "."
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "ind2-bp-wrap", ref: blueprintWrapRef, children: [
-        /* @__PURE__ */ jsxs("svg", { className: "ind2-bp-spine", viewBox: `0 0 2 ${blueprintServices.length * 200}`, preserveAspectRatio: "none", "aria-hidden": "true", children: [
-          /* @__PURE__ */ jsx("path", { d: `M1 0 L1 ${blueprintServices.length * 200}`, className: "ind2-bp-spine-track" }),
-          /* @__PURE__ */ jsx("path", { ref: blueprintPathRef, d: `M1 0 L1 ${blueprintServices.length * 200}`, className: "ind2-bp-spine-draw" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "ind2-bp-nodes", children: blueprintServices.map((s, i) => /* @__PURE__ */ jsxs(
-          Link,
-          {
-            className: `ind2-bp-node ${i <= blueprintActive ? "is-lit" : ""}`,
-            to: s.path,
-            children: [
-              /* @__PURE__ */ jsx("span", { className: "ind2-bp-node-dot", "aria-hidden": "true" }),
-              /* @__PURE__ */ jsx("span", { className: "ind2-bp-node-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 20, strokeWidth: 1.5 }) }),
-              /* @__PURE__ */ jsx("span", { className: "ind2-bp-node-n", children: String(i + 1).padStart(2, "0") }),
-              /* @__PURE__ */ jsx("h3", { className: "ind2-bp-node-title", children: s.name }),
-              /* @__PURE__ */ jsx("p", { className: "ind2-bp-node-body", children: s.body }),
-              /* @__PURE__ */ jsx("span", { className: "ind2-bp-node-go", children: "View this service →" })
-            ]
-          },
-          s.name
-        )) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "first-call", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Before Anything Gets Built" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we'd actually ask on the first call." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Click a card to see why it matters." }),
-      /* @__PURE__ */ jsx("div", { className: "ind2-flip-grid", children: questions.map((item, i) => /* @__PURE__ */ jsx(
-        "button",
-        {
-          type: "button",
-          className: `ind2-flip-card ${flippedCard === i ? "is-flipped" : ""}`,
-          onClick: () => toggleFlip(i),
-          "aria-label": flippedCard === i ? "Show question" : "Show why we ask",
-          children: /* @__PURE__ */ jsxs("div", { className: "ind2-flip-inner", children: [
-            /* @__PURE__ */ jsxs("div", { className: "ind2-flip-face ind2-flip-front", children: [
-              /* @__PURE__ */ jsx("span", { className: "ind2-flip-n", children: String(i + 1).padStart(2, "0") }),
-              /* @__PURE__ */ jsx("p", { children: item.q }),
-              /* @__PURE__ */ jsx("span", { className: "ind2-flip-hint", children: "Tap to see why →" })
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx(Link, { to: "/industries", children: "Industries" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: svc.title })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " Industry"
+          ] }) }),
+          /* @__PURE__ */ jsx("h1", { className: "sd2-hero-title", children: /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: svc.title }) }) }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: svc.tagline }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
+            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+              /* @__PURE__ */ jsx("span", { children: "Talk about your sector" }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
             ] }),
-            /* @__PURE__ */ jsxs("div", { className: "ind2-flip-face ind2-flip-back", children: [
-              /* @__PURE__ */ jsx("span", { className: "ind2-flip-n", children: String(i + 1).padStart(2, "0") }),
-              /* @__PURE__ */ jsx("p", { children: item.a }),
-              /* @__PURE__ */ jsx("span", { className: "ind2-flip-hint", children: "Tap to close →" })
+            /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#shift", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "See the shift" }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
+          ["Sector", svc.title],
+          ["Typical timeline", "2–12 weeks"],
+          ["You receive", "100% source code"],
+          ["Post-launch", "Support included"]
+        ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
+        ] }, k)) })
+      ] }) }) }),
+      /* @__PURE__ */ jsx("div", { className: "ind2-ticker", "aria-hidden": "true", children: /* @__PURE__ */ jsx("div", { className: "ind2-ticker-track", children: [...TICKER_FACTS, ...TICKER_FACTS, ...TICKER_FACTS, ...TICKER_FACTS].map((f, i) => /* @__PURE__ */ jsx("span", { children: f }, i)) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section ind2-overview", id: "overview", children: [
+        /* @__PURE__ */ jsx("span", { className: "ind2-overview-mark", "aria-hidden": "true", children: String(INDUSTRIES$1.findIndex((i) => i.slug === svc.slug) + 1).padStart(2, "0") }),
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "In Short" }),
+        /* @__PURE__ */ jsx("p", { className: "ind2-overview-text", children: svc.body })
+      ] }),
+      /* @__PURE__ */ jsx(ClientStrip, {}),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "shift", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Shift" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "From daily friction to a system that holds." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Scroll to sweep from where things stand today to what changes." }),
+        /* @__PURE__ */ jsx("div", { className: "ind2-shift-wrap", ref: shiftWrapRef, children: /* @__PURE__ */ jsx("div", { className: "ind2-shift-sticky", children: /* @__PURE__ */ jsxs("div", { className: "ind2-shift-stage", ref: shiftStageRef, children: [
+          /* @__PURE__ */ jsxs("div", { className: "ind2-shift-before", children: [
+            /* @__PURE__ */ jsx("span", { className: "ind2-shift-tag ind2-shift-tag--before", children: "Before" }),
+            svc.problems.map((p) => /* @__PURE__ */ jsxs("div", { className: "ind2-shift-row", children: [
+              /* @__PURE__ */ jsx("span", { className: "ind2-shift-icon ind2-shift-icon--before", children: /* @__PURE__ */ jsx(XCircle, { size: 16, strokeWidth: 1.8 }) }),
+              /* @__PURE__ */ jsx("p", { children: p.pain })
+            ] }, p.pain))
+          ] }),
+          /* @__PURE__ */ jsxs("div", { className: "ind2-shift-after", children: [
+            /* @__PURE__ */ jsx("span", { className: "ind2-shift-tag ind2-shift-tag--after", children: "With Codelix" }),
+            svc.problems.map((p) => /* @__PURE__ */ jsxs("div", { className: "ind2-shift-row", children: [
+              /* @__PURE__ */ jsx("span", { className: "ind2-shift-icon ind2-shift-icon--after", children: /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2 }) }),
+              /* @__PURE__ */ jsx("p", { children: p.fix })
+            ] }, p.fix))
+          ] }),
+          /* @__PURE__ */ jsx("span", { className: "ind2-shift-scanline", "aria-hidden": "true" })
+        ] }) }) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "dossier", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Sector File" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we already know, before the first call." }),
+        /* @__PURE__ */ jsxs("div", { className: "ind2-file", children: [
+          /* @__PURE__ */ jsxs("div", { className: "ind2-file-tab", children: [
+            /* @__PURE__ */ jsxs("span", { children: [
+              "SECTOR // ",
+              svc.slug.toUpperCase().replace(/-/g, "·")
+            ] }),
+            /* @__PURE__ */ jsx("span", { children: "FILE 01" })
+          ] }),
+          /* @__PURE__ */ jsxs("div", { className: "ind2-file-body", children: [
+            /* @__PURE__ */ jsx("div", { className: "ind2-file-mark", "aria-hidden": "true", children: /* @__PURE__ */ jsx(svc.icon, { size: 120, strokeWidth: 0.8 }) }),
+            /* @__PURE__ */ jsxs("div", { className: "ind2-file-main", children: [
+              /* @__PURE__ */ jsx("h3", { children: svc.title }),
+              /* @__PURE__ */ jsx("p", { children: svc.tagline })
+            ] }),
+            /* @__PURE__ */ jsxs("dl", { className: "ind2-file-specs", children: [
+              /* @__PURE__ */ jsxs("div", { children: [
+                /* @__PURE__ */ jsxs("dt", { children: [
+                  /* @__PURE__ */ jsx(FileCheck2, { size: 14, strokeWidth: 1.8 }),
+                  " Problems on record"
+                ] }),
+                /* @__PURE__ */ jsxs("dd", { children: [
+                  svc.problems.length,
+                  ' recurring, see "The Shift" above'
+                ] })
+              ] }),
+              /* @__PURE__ */ jsxs("div", { children: [
+                /* @__PURE__ */ jsxs("dt", { children: [
+                  /* @__PURE__ */ jsx(Layers3, { size: 14, strokeWidth: 1.8 }),
+                  " Services involved"
+                ] }),
+                /* @__PURE__ */ jsx("dd", { children: svc.services.join(" · ") })
+              ] }),
+              /* @__PURE__ */ jsxs("div", { children: [
+                /* @__PURE__ */ jsxs("dt", { children: [
+                  /* @__PURE__ */ jsx(Timer, { size: 14, strokeWidth: 1.8 }),
+                  " Typical timeline"
+                ] }),
+                /* @__PURE__ */ jsx("dd", { children: "2–12 weeks, scope-dependent" })
+              ] }),
+              /* @__PURE__ */ jsxs("div", { children: [
+                /* @__PURE__ */ jsxs("dt", { children: [
+                  /* @__PURE__ */ jsx(KeyRound, { size: 14, strokeWidth: 1.8 }),
+                  " Ownership on close"
+                ] }),
+                /* @__PURE__ */ jsx("dd", { children: "100% source code, no retained access" })
+              ] })
             ] })
           ] })
-        },
-        item.q
-      )) })
-    ] }),
-    /* @__PURE__ */ jsx(FaqSection, { faqs, className: "v2-section--void" }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Other sectors we work in." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: otherIndustries.map((s, i) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: `/industries/${s.slug}`, children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.tagline }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
-      ] }, s.slug)) })
-    ] }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Tell us about your ",
-        svc.title.toLowerCase(),
-        " project.",
-        /* @__PURE__ */ jsx("br", {}),
-        "We'll tell you how we'd build it."
+        ] })
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your sector's real constraints — not a generic pitch reused across every client." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      matchedWork.length > 0 && /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "sector-work", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Real Work" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-heading", children: [
+          "Already shipped in ",
+          svc.title.toLowerCase(),
+          "."
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "ind2-work-row", children: matchedWork.map((w) => /* @__PURE__ */ jsxs(Link, { className: "ind2-work-card", to: w.href, children: [
+          /* @__PURE__ */ jsx("span", { className: "ind2-work-media", children: /* @__PURE__ */ jsx("img", { src: w.image, alt: "", loading: "lazy" }) }),
+          /* @__PURE__ */ jsx("span", { className: "ind2-work-cat", children: w.category }),
+          /* @__PURE__ */ jsx("span", { className: "ind2-work-title", children: w.title }),
+          /* @__PURE__ */ jsx("span", { className: "ind2-work-go", children: "Read case study →" })
+        ] }, w.href)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-tech", id: "stack", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-tech-head", children: [
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Broader Stack" }),
+            /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we build with." })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Chosen per project, not by habit — the right tool for your scale, your team, and what you'll need to maintain." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-tech-grid", children: TECH_STACK.map((t) => /* @__PURE__ */ jsxs("div", { className: "v2-tech-item", children: [
+          /* @__PURE__ */ jsx("img", { src: t.src, alt: t.name, loading: "lazy" }),
+          /* @__PURE__ */ jsx("span", { children: t.name })
+        ] }, t.name)) })
+      ] }),
+      /* @__PURE__ */ jsx(
+        TestimonialSpotlight,
+        {
+          testimonials,
+          label: "Client Voices",
+          heading: `What clients say about our ${svc.title.toLowerCase()} work.`,
+          stats: [
+            { num: "11", label: "Industries served" },
+            { num: "40+", label: "Projects across sectors" },
+            { num: "100%", label: "Source code ownership" }
+          ]
+        }
+      ),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "blueprint", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Build" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What actually goes into this, layer by layer." }),
+        /* @__PURE__ */ jsxs("p", { className: "v2-lede", children: [
+          "Scroll to trace how the real services below combine for ",
+          svc.title.toLowerCase(),
+          "."
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "ind2-bp-wrap", ref: blueprintWrapRef, children: [
+          /* @__PURE__ */ jsxs("svg", { className: "ind2-bp-spine", viewBox: `0 0 2 ${blueprintServices.length * 200}`, preserveAspectRatio: "none", "aria-hidden": "true", children: [
+            /* @__PURE__ */ jsx("path", { d: `M1 0 L1 ${blueprintServices.length * 200}`, className: "ind2-bp-spine-track" }),
+            /* @__PURE__ */ jsx("path", { ref: blueprintPathRef, d: `M1 0 L1 ${blueprintServices.length * 200}`, className: "ind2-bp-spine-draw" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "ind2-bp-nodes", children: blueprintServices.map((s, i) => /* @__PURE__ */ jsxs(
+            Link,
+            {
+              className: `ind2-bp-node ${i <= blueprintActive ? "is-lit" : ""}`,
+              to: s.path,
+              children: [
+                /* @__PURE__ */ jsx("span", { className: "ind2-bp-node-dot", "aria-hidden": "true" }),
+                /* @__PURE__ */ jsx("span", { className: "ind2-bp-node-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 20, strokeWidth: 1.5 }) }),
+                /* @__PURE__ */ jsx("span", { className: "ind2-bp-node-n", children: String(i + 1).padStart(2, "0") }),
+                /* @__PURE__ */ jsx("h3", { className: "ind2-bp-node-title", children: s.name }),
+                /* @__PURE__ */ jsx("p", { className: "ind2-bp-node-body", children: s.body }),
+                /* @__PURE__ */ jsx("span", { className: "ind2-bp-node-go", children: "View this service →" })
+              ]
+            },
+            s.name
+          )) })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "first-call", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Before Anything Gets Built" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we'd actually ask on the first call." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Click a card to see why it matters." }),
+        /* @__PURE__ */ jsx("div", { className: "ind2-flip-grid", children: questions.map((item, i) => /* @__PURE__ */ jsx(
+          "button",
+          {
+            type: "button",
+            className: `ind2-flip-card ${flippedCard === i ? "is-flipped" : ""}`,
+            onClick: () => toggleFlip(i),
+            "aria-label": flippedCard === i ? "Show question" : "Show why we ask",
+            children: /* @__PURE__ */ jsxs("div", { className: "ind2-flip-inner", children: [
+              /* @__PURE__ */ jsxs("div", { className: "ind2-flip-face ind2-flip-front", children: [
+                /* @__PURE__ */ jsx("span", { className: "ind2-flip-n", children: String(i + 1).padStart(2, "0") }),
+                /* @__PURE__ */ jsx("p", { children: item.q }),
+                /* @__PURE__ */ jsx("span", { className: "ind2-flip-hint", children: "Tap to see why →" })
+              ] }),
+              /* @__PURE__ */ jsxs("div", { className: "ind2-flip-face ind2-flip-back", children: [
+                /* @__PURE__ */ jsx("span", { className: "ind2-flip-n", children: String(i + 1).padStart(2, "0") }),
+                /* @__PURE__ */ jsx("p", { children: item.a }),
+                /* @__PURE__ */ jsx("span", { className: "ind2-flip-hint", children: "Tap to close →" })
+              ] })
+            ] })
+          },
+          item.q
+        )) })
+      ] }),
+      /* @__PURE__ */ jsx(FaqSection, { faqs, className: "v2-section--void" }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Other sectors we work in." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: otherIndustries.map((s, i) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: `/industries/${s.slug}`, children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.tagline }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
+        ] }, s.slug)) })
+      ] }),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Tell us about your ",
+          svc.title.toLowerCase(),
+          " project.",
+          /* @__PURE__ */ jsx("br", {}),
+          "We'll tell you how we'd build it."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your sector's real constraints — not a generic pitch reused across every client." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -13182,272 +13210,274 @@ function ProductDetailV2() {
     /* @__PURE__ */ jsx(SEO, { title: `${p.name} | Codelix IT Solutions`, description: p.tagline || `Learn about ${p.name} at Codelix IT Solutions.` }),
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero pd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx(Link, { to: `/products/${PRODUCTS[0].slug}`, children: "Products" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: p.name })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "pd2-hero-logo sv2-hero-reveal", children: /* @__PURE__ */ jsx("img", { src: p.logo, alt: `${p.name} logo` }) }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", style: { "--dot": p.accent }, children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " ",
-          p.badge
-        ] }) }),
-        /* @__PURE__ */ jsx("h1", { className: "sd2-hero-title", children: /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: p.name }) }) }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: p.tagline }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
-          /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-            /* @__PURE__ */ jsxs("span", { children: [
-              "Talk to us about ",
-              p.name
-            ] }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
-          ] }),
-          p.website && /* @__PURE__ */ jsxs("a", { className: "v2-hero-secondary", href: p.website, target: "_blank", rel: "noopener noreferrer", children: [
-            /* @__PURE__ */ jsxs("span", { className: "v2-hero-secondary-label", children: [
-              "Visit ",
-              p.website.replace("https://", "")
-            ] }),
-            /* @__PURE__ */ jsx(ExternalLink, { size: 14, strokeWidth: 2 })
-          ] })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
-        ["Status", p.status],
-        ["Built by", "Codelix IT Solutions"],
-        ["Category", p.badge]
-      ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
-      ] }, k)) })
-    ] }) }) }),
-    /* @__PURE__ */ jsx("section", { className: "pd2-stats pd2-reveal", ref: statsRef, children: p.stats.map((s) => /* @__PURE__ */ jsxs("div", { className: "pd2-stat", children: [
-      /* @__PURE__ */ jsx("span", { className: "pd2-stat-num", "data-value": s.value, children: s.value }),
-      /* @__PURE__ */ jsx("span", { className: "pd2-stat-label", children: s.label })
-    ] }, s.label)) }),
-    p.problem && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-problem", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
-      /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: p.problem.label }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading pd2-reveal", children: p.problem.heading }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede pd2-reveal", children: p.problem.body }),
-      /* @__PURE__ */ jsx("div", { className: "pd2-problem-grid", children: p.problem.points.map((pt, i) => /* @__PURE__ */ jsxs("div", { className: "pd2-problem-card pd2-reveal", children: [
-        /* @__PURE__ */ jsx(pt.icon, { size: 22, strokeWidth: 1.5 }),
-        /* @__PURE__ */ jsx("h4", { children: pt.title }),
-        /* @__PURE__ */ jsx("p", { children: pt.body })
-      ] }, i)) })
-    ] }) }),
-    p.positioning && p.positioning.not && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-positioning", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
-      /* @__PURE__ */ jsxs("h2", { className: "v2-heading pd2-reveal", children: [
-        "What ",
-        p.name,
-        " actually is."
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "pd2-positioning-grid", children: [
-        /* @__PURE__ */ jsxs("div", { className: "pd2-positioning-col pd2-positioning-not pd2-reveal", children: [
-          /* @__PURE__ */ jsx("span", { className: "pd2-positioning-label", children: "4bitx is not" }),
-          p.positioning.not.map((t) => /* @__PURE__ */ jsxs("div", { className: "pd2-positioning-row", children: [
-            /* @__PURE__ */ jsx(X, { size: 16, strokeWidth: 2 }),
-            /* @__PURE__ */ jsx("span", { children: t })
-          ] }, t))
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: "pd2-positioning-col pd2-positioning-is pd2-reveal", children: [
-          /* @__PURE__ */ jsx("span", { className: "pd2-positioning-label", children: "4bitx is" }),
-          p.positioning.is.map((t) => /* @__PURE__ */ jsxs("div", { className: "pd2-positioning-row", children: [
-            /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2 }),
-            /* @__PURE__ */ jsx("span", { children: t })
-          ] }, t))
-        ] })
-      ] }),
-      p.industries && /* @__PURE__ */ jsx("div", { className: "pd2-industry-tags pd2-reveal", children: p.industries.map((ind) => /* @__PURE__ */ jsx("span", { children: ind }, ind)) })
-    ] }) }),
-    p.modules && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-modules", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
-      /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "The Platform" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-heading pd2-reveal", children: [
-        p.modules.length,
-        " modules. One connected system."
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "pd2-module-grid", children: p.modules.map((m) => /* @__PURE__ */ jsxs("div", { className: `pd2-module-card pd2-reveal ${m.unique ? "is-unique" : ""}`, children: [
-        /* @__PURE__ */ jsx("span", { className: "pd2-module-n", children: m.n }),
-        /* @__PURE__ */ jsx(m.icon, { size: 20, strokeWidth: 1.5 }),
-        /* @__PURE__ */ jsx("h4", { children: m.title }),
-        /* @__PURE__ */ jsx("p", { children: m.body }),
-        m.unique && /* @__PURE__ */ jsxs("span", { className: "pd2-module-badge", children: [
-          "Only in ",
-          p.name
-        ] })
-      ] }, m.n)) })
-    ] }) }),
-    p.ai && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-ai", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
-      /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: p.ai.label }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading pd2-reveal", children: p.ai.heading }),
-      p.ai.body && /* @__PURE__ */ jsx("p", { className: "v2-lede pd2-reveal", children: p.ai.body }),
-      /* @__PURE__ */ jsx("div", { className: "pd2-ai-grid", children: p.ai.items.map((it, i) => /* @__PURE__ */ jsxs("div", { className: "pd2-ai-card pd2-reveal", children: [
-        /* @__PURE__ */ jsx("div", { className: "pd2-ai-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 22, strokeWidth: 1.5 }) }),
-        /* @__PURE__ */ jsx("h4", { children: it.title }),
-        /* @__PURE__ */ jsx("p", { children: it.body })
-      ] }, i)) })
-    ] }) }),
-    p.users && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-users", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
-      /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "Who It's For" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading pd2-reveal", children: "Four roles. One shared platform." }),
-      /* @__PURE__ */ jsx("div", { className: "pd2-users-grid", children: p.users.map((u) => /* @__PURE__ */ jsxs("div", { className: "pd2-user-card pd2-reveal", children: [
-        /* @__PURE__ */ jsx("h4", { children: u.role }),
-        /* @__PURE__ */ jsx("p", { children: u.body })
-      ] }, u.role)) })
-    ] }) }),
-    p.features && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-features", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
-      /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "Everything Inside" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-heading pd2-reveal", children: [
-        p.features.reduce((a, g) => a + g.items.length, 0),
-        " features across ",
-        p.features.length,
-        " categories."
-      ] }),
-      p.features.map((group) => /* @__PURE__ */ jsxs("div", { className: "pd2-feature-group pd2-reveal", children: [
-        /* @__PURE__ */ jsx("h3", { children: group.group }),
-        /* @__PURE__ */ jsx("div", { className: "pd2-feature-grid", children: group.items.map((it) => /* @__PURE__ */ jsxs("div", { className: "pd2-feature-card", children: [
-          /* @__PURE__ */ jsx(it.icon, { size: 20, strokeWidth: 1.5 }),
-          /* @__PURE__ */ jsxs("div", { children: [
-            /* @__PURE__ */ jsx("h4", { children: it.title }),
-            /* @__PURE__ */ jsx("p", { children: it.body })
-          ] })
-        ] }, it.title)) })
-      ] }, group.group))
-    ] }) }),
-    p.howItWorks && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-how", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
-      /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "How It Works" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading pd2-reveal", children: "From first call to going live." }),
-      /* @__PURE__ */ jsx("div", { className: "pd2-how-spine", children: p.howItWorks.map((step, i) => /* @__PURE__ */ jsxs("div", { className: "pd2-how-row pd2-reveal", children: [
-        /* @__PURE__ */ jsx("span", { className: "pd2-how-n", children: String(i + 1).padStart(2, "0") }),
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero pd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
         /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("h4", { children: step.title }),
-          /* @__PURE__ */ jsx("p", { children: step.body })
-        ] })
-      ] }, i)) })
-    ] }) }),
-    p.pricing?.tiers && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-pricing", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
-      /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "Pricing" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading pd2-reveal", children: "Simple, transparent plans." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede pd2-reveal", children: p.pricing.note }),
-      /* @__PURE__ */ jsx("div", { className: "pd2-pricing-grid", children: p.pricing.tiers.map((t) => /* @__PURE__ */ jsxs("div", { className: `pd2-pricing-card pd2-reveal ${t.popular ? "is-popular" : ""}`, children: [
-        t.popular && /* @__PURE__ */ jsx("span", { className: "pd2-pricing-tag", children: "Most Popular" }),
-        /* @__PURE__ */ jsx("h4", { children: t.name }),
-        /* @__PURE__ */ jsx("p", { className: "pd2-pricing-desc", children: t.desc }),
-        /* @__PURE__ */ jsxs("div", { className: "pd2-pricing-price", children: [
-          t.price,
-          /* @__PURE__ */ jsx("span", { children: t.period })
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx(Link, { to: `/products/${PRODUCTS[0].slug}`, children: "Products" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: p.name })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "pd2-hero-logo sv2-hero-reveal", children: /* @__PURE__ */ jsx("img", { src: p.logo, alt: `${p.name} logo` }) }),
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", style: { "--dot": p.accent }, children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " ",
+            p.badge
+          ] }) }),
+          /* @__PURE__ */ jsx("h1", { className: "sd2-hero-title", children: /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: p.name }) }) }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: p.tagline }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
+            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+              /* @__PURE__ */ jsxs("span", { children: [
+                "Talk to us about ",
+                p.name
+              ] }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+            ] }),
+            p.website && /* @__PURE__ */ jsxs("a", { className: "v2-hero-secondary", href: p.website, target: "_blank", rel: "noopener noreferrer", children: [
+              /* @__PURE__ */ jsxs("span", { className: "v2-hero-secondary-label", children: [
+                "Visit ",
+                p.website.replace("https://", "")
+              ] }),
+              /* @__PURE__ */ jsx(ExternalLink, { size: 14, strokeWidth: 2 })
+            ] })
+          ] })
         ] }),
-        /* @__PURE__ */ jsx("ul", { children: t.features.map((f) => /* @__PURE__ */ jsxs("li", { children: [
-          /* @__PURE__ */ jsx(Check, { size: 14, strokeWidth: 2.5 }),
-          f
-        ] }, f)) })
-      ] }, t.name)) }),
-      p.pricing.enterprise && /* @__PURE__ */ jsx("p", { className: "pd2-pricing-enterprise pd2-reveal", children: p.pricing.enterprise })
-    ] }) }),
-    p.pricing?.components && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-pricing", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
-      /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "Investment" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-heading pd2-reveal", children: [
-        "What it costs to run ",
-        p.name,
-        "."
-      ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede pd2-reveal", children: p.pricing.note }),
-      /* @__PURE__ */ jsx("div", { className: "pd2-price-components pd2-reveal", children: p.pricing.components.map((c) => /* @__PURE__ */ jsxs("div", { className: "pd2-price-row", children: [
-        /* @__PURE__ */ jsx("div", { className: "pd2-price-row-name", children: c.name }),
-        /* @__PURE__ */ jsx("div", { className: "pd2-price-row-range", children: c.range }),
-        /* @__PURE__ */ jsx("div", { className: "pd2-price-row-body", children: c.body })
-      ] }, c.name)) }),
-      p.pricing.enterprise && /* @__PURE__ */ jsx("p", { className: "pd2-pricing-enterprise pd2-reveal", children: p.pricing.enterprise })
-    ] }) }),
-    p.compare && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-compare", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
-      /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "Comparison" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading pd2-reveal", children: p.compare.heading }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede pd2-reveal", children: p.compare.body }),
-      /* @__PURE__ */ jsx("div", { className: "pd2-compare-table-wrap pd2-reveal", children: /* @__PURE__ */ jsxs("table", { className: "pd2-compare-table", children: [
-        /* @__PURE__ */ jsx("thead", { children: /* @__PURE__ */ jsxs("tr", { children: [
-          /* @__PURE__ */ jsx("th", {}),
-          p.compare.cols.map((c, i) => /* @__PURE__ */ jsx("th", { className: i === 0 ? "is-us" : "", children: c }, c))
-        ] }) }),
-        /* @__PURE__ */ jsx("tbody", { children: p.compare.rows.map((row) => /* @__PURE__ */ jsxs("tr", { children: [
-          /* @__PURE__ */ jsx("td", { className: "pd2-compare-row-label", children: row.label }),
-          row.vals.map((v, i) => /* @__PURE__ */ jsxs("td", { className: i === 0 ? "is-us" : "", children: [
-            v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.5, className: "pd2-cmp-yes" }),
-            v === "no" && /* @__PURE__ */ jsx(X, { size: 16, strokeWidth: 2.5, className: "pd2-cmp-no" }),
-            v === "partial" && /* @__PURE__ */ jsx("span", { className: "pd2-cmp-partial", children: "Partial" })
-          ] }, i))
-        ] }, row.label)) })
-      ] }) })
-    ] }) }),
-    p.market && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-market", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
-      /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "The Opportunity" }),
-      /* @__PURE__ */ jsx("div", { className: "pd2-market-grid", children: p.market.map((m) => /* @__PURE__ */ jsxs("div", { className: "pd2-market-card pd2-reveal", children: [
-        /* @__PURE__ */ jsx("span", { className: "pd2-market-value", children: m.value }),
-        /* @__PURE__ */ jsx("span", { className: "pd2-market-label", children: m.label })
-      ] }, m.label)) })
-    ] }) }),
-    p.differentiators && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-diff", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
-      /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "Why It's Different" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading pd2-reveal", children: "Built to feel premium, not just functional." }),
-      p.positioning?.body && /* @__PURE__ */ jsx("p", { className: "v2-lede pd2-reveal", children: p.positioning.body }),
-      /* @__PURE__ */ jsx("div", { className: "pd2-diff-list", children: p.differentiators.map((d, i) => /* @__PURE__ */ jsxs("div", { className: "pd2-diff-row pd2-reveal", children: [
-        /* @__PURE__ */ jsx("span", { className: "pd2-diff-n", children: String(i + 1).padStart(2, "0") }),
-        /* @__PURE__ */ jsx("span", { children: d })
-      ] }, i)) })
-    ] }) }),
-    p.traction && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-traction", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
-      /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "Traction" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-heading pd2-reveal", children: [
-        "Where ",
-        p.name,
-        " stands today."
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "pd2-traction-grid", children: [
-        /* @__PURE__ */ jsx("ul", { className: "pd2-traction-list pd2-reveal", children: p.traction.points.map((pt, i) => /* @__PURE__ */ jsxs("li", { children: [
-          /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.5 }),
-          pt
-        ] }, i)) }),
-        p.traction.roadmap && /* @__PURE__ */ jsx("div", { className: "pd2-roadmap pd2-reveal", children: p.traction.roadmap.map((r, i) => /* @__PURE__ */ jsxs("div", { className: "pd2-roadmap-row", children: [
-          /* @__PURE__ */ jsx("span", { className: "pd2-roadmap-period", children: r.period }),
-          /* @__PURE__ */ jsx("span", { className: "pd2-roadmap-body", children: r.body })
+        /* @__PURE__ */ jsx("aside", { className: "sd2-facts sv2-hero-reveal", children: [
+          ["Status", p.status],
+          ["Built by", "Codelix IT Solutions"],
+          ["Category", p.badge]
+        ].map(([k, v]) => /* @__PURE__ */ jsxs("div", { className: "sd2-fact", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-k", children: k }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-fact-v", children: v })
+        ] }, k)) })
+      ] }) }) }),
+      /* @__PURE__ */ jsx("section", { className: "pd2-stats pd2-reveal", ref: statsRef, children: p.stats.map((s) => /* @__PURE__ */ jsxs("div", { className: "pd2-stat", children: [
+        /* @__PURE__ */ jsx("span", { className: "pd2-stat-num", "data-value": s.value, children: s.value }),
+        /* @__PURE__ */ jsx("span", { className: "pd2-stat-label", children: s.label })
+      ] }, s.label)) }),
+      p.problem && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-problem", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
+        /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: p.problem.label }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading pd2-reveal", children: p.problem.heading }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede pd2-reveal", children: p.problem.body }),
+        /* @__PURE__ */ jsx("div", { className: "pd2-problem-grid", children: p.problem.points.map((pt, i) => /* @__PURE__ */ jsxs("div", { className: "pd2-problem-card pd2-reveal", children: [
+          /* @__PURE__ */ jsx(pt.icon, { size: 22, strokeWidth: 1.5 }),
+          /* @__PURE__ */ jsx("h3", { children: pt.title }),
+          /* @__PURE__ */ jsx("p", { children: pt.body })
         ] }, i)) })
+      ] }) }),
+      p.positioning && p.positioning.not && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-positioning", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
+        /* @__PURE__ */ jsxs("h2", { className: "v2-heading pd2-reveal", children: [
+          "What ",
+          p.name,
+          " actually is."
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "pd2-positioning-grid", children: [
+          /* @__PURE__ */ jsxs("div", { className: "pd2-positioning-col pd2-positioning-not pd2-reveal", children: [
+            /* @__PURE__ */ jsx("span", { className: "pd2-positioning-label", children: "4bitx is not" }),
+            p.positioning.not.map((t) => /* @__PURE__ */ jsxs("div", { className: "pd2-positioning-row", children: [
+              /* @__PURE__ */ jsx(X, { size: 16, strokeWidth: 2 }),
+              /* @__PURE__ */ jsx("span", { children: t })
+            ] }, t))
+          ] }),
+          /* @__PURE__ */ jsxs("div", { className: "pd2-positioning-col pd2-positioning-is pd2-reveal", children: [
+            /* @__PURE__ */ jsx("span", { className: "pd2-positioning-label", children: "4bitx is" }),
+            p.positioning.is.map((t) => /* @__PURE__ */ jsxs("div", { className: "pd2-positioning-row", children: [
+              /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2 }),
+              /* @__PURE__ */ jsx("span", { children: t })
+            ] }, t))
+          ] })
+        ] }),
+        p.industries && /* @__PURE__ */ jsx("div", { className: "pd2-industry-tags pd2-reveal", children: p.industries.map((ind) => /* @__PURE__ */ jsx("span", { children: ind }, ind)) })
+      ] }) }),
+      p.modules && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-modules", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
+        /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "The Platform" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-heading pd2-reveal", children: [
+          p.modules.length,
+          " modules. One connected system."
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "pd2-module-grid", children: p.modules.map((m) => /* @__PURE__ */ jsxs("div", { className: `pd2-module-card pd2-reveal ${m.unique ? "is-unique" : ""}`, children: [
+          /* @__PURE__ */ jsx("span", { className: "pd2-module-n", children: m.n }),
+          /* @__PURE__ */ jsx(m.icon, { size: 20, strokeWidth: 1.5 }),
+          /* @__PURE__ */ jsx("h3", { children: m.title }),
+          /* @__PURE__ */ jsx("p", { children: m.body }),
+          m.unique && /* @__PURE__ */ jsxs("span", { className: "pd2-module-badge", children: [
+            "Only in ",
+            p.name
+          ] })
+        ] }, m.n)) })
+      ] }) }),
+      p.ai && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-ai", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
+        /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: p.ai.label }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading pd2-reveal", children: p.ai.heading }),
+        p.ai.body && /* @__PURE__ */ jsx("p", { className: "v2-lede pd2-reveal", children: p.ai.body }),
+        /* @__PURE__ */ jsx("div", { className: "pd2-ai-grid", children: p.ai.items.map((it, i) => /* @__PURE__ */ jsxs("div", { className: "pd2-ai-card pd2-reveal", children: [
+          /* @__PURE__ */ jsx("div", { className: "pd2-ai-icon", children: /* @__PURE__ */ jsx(it.icon, { size: 22, strokeWidth: 1.5 }) }),
+          /* @__PURE__ */ jsx("h3", { children: it.title }),
+          /* @__PURE__ */ jsx("p", { children: it.body })
+        ] }, i)) })
+      ] }) }),
+      p.users && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-users", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
+        /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "Who It's For" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading pd2-reveal", children: "Four roles. One shared platform." }),
+        /* @__PURE__ */ jsx("div", { className: "pd2-users-grid", children: p.users.map((u) => /* @__PURE__ */ jsxs("div", { className: "pd2-user-card pd2-reveal", children: [
+          /* @__PURE__ */ jsx("h3", { children: u.role }),
+          /* @__PURE__ */ jsx("p", { children: u.body })
+        ] }, u.role)) })
+      ] }) }),
+      p.features && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-features", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
+        /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "Everything Inside" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-heading pd2-reveal", children: [
+          p.features.reduce((a, g) => a + g.items.length, 0),
+          " features across ",
+          p.features.length,
+          " categories."
+        ] }),
+        p.features.map((group) => /* @__PURE__ */ jsxs("div", { className: "pd2-feature-group pd2-reveal", children: [
+          /* @__PURE__ */ jsx("h3", { children: group.group }),
+          /* @__PURE__ */ jsx("div", { className: "pd2-feature-grid", children: group.items.map((it) => /* @__PURE__ */ jsxs("div", { className: "pd2-feature-card", children: [
+            /* @__PURE__ */ jsx(it.icon, { size: 20, strokeWidth: 1.5 }),
+            /* @__PURE__ */ jsxs("div", { children: [
+              /* @__PURE__ */ jsx("h3", { children: it.title }),
+              /* @__PURE__ */ jsx("p", { children: it.body })
+            ] })
+          ] }, it.title)) })
+        ] }, group.group))
+      ] }) }),
+      p.howItWorks && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-how", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
+        /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "How It Works" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading pd2-reveal", children: "From first call to going live." }),
+        /* @__PURE__ */ jsx("div", { className: "pd2-how-spine", children: p.howItWorks.map((step, i) => /* @__PURE__ */ jsxs("div", { className: "pd2-how-row pd2-reveal", children: [
+          /* @__PURE__ */ jsx("span", { className: "pd2-how-n", children: String(i + 1).padStart(2, "0") }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("h3", { children: step.title }),
+            /* @__PURE__ */ jsx("p", { children: step.body })
+          ] })
+        ] }, i)) })
+      ] }) }),
+      p.pricing?.tiers && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-pricing", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
+        /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "Pricing" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading pd2-reveal", children: "Simple, transparent plans." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede pd2-reveal", children: p.pricing.note }),
+        /* @__PURE__ */ jsx("div", { className: "pd2-pricing-grid", children: p.pricing.tiers.map((t) => /* @__PURE__ */ jsxs("div", { className: `pd2-pricing-card pd2-reveal ${t.popular ? "is-popular" : ""}`, children: [
+          t.popular && /* @__PURE__ */ jsx("span", { className: "pd2-pricing-tag", children: "Most Popular" }),
+          /* @__PURE__ */ jsx("h3", { children: t.name }),
+          /* @__PURE__ */ jsx("p", { className: "pd2-pricing-desc", children: t.desc }),
+          /* @__PURE__ */ jsxs("div", { className: "pd2-pricing-price", children: [
+            t.price,
+            /* @__PURE__ */ jsx("span", { children: t.period })
+          ] }),
+          /* @__PURE__ */ jsx("ul", { children: t.features.map((f) => /* @__PURE__ */ jsxs("li", { children: [
+            /* @__PURE__ */ jsx(Check, { size: 14, strokeWidth: 2.5 }),
+            f
+          ] }, f)) })
+        ] }, t.name)) }),
+        p.pricing.enterprise && /* @__PURE__ */ jsx("p", { className: "pd2-pricing-enterprise pd2-reveal", children: p.pricing.enterprise })
+      ] }) }),
+      p.pricing?.components && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-pricing", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
+        /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "Investment" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-heading pd2-reveal", children: [
+          "What it costs to run ",
+          p.name,
+          "."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede pd2-reveal", children: p.pricing.note }),
+        /* @__PURE__ */ jsx("div", { className: "pd2-price-components pd2-reveal", children: p.pricing.components.map((c) => /* @__PURE__ */ jsxs("div", { className: "pd2-price-row", children: [
+          /* @__PURE__ */ jsx("div", { className: "pd2-price-row-name", children: c.name }),
+          /* @__PURE__ */ jsx("div", { className: "pd2-price-row-range", children: c.range }),
+          /* @__PURE__ */ jsx("div", { className: "pd2-price-row-body", children: c.body })
+        ] }, c.name)) }),
+        p.pricing.enterprise && /* @__PURE__ */ jsx("p", { className: "pd2-pricing-enterprise pd2-reveal", children: p.pricing.enterprise })
+      ] }) }),
+      p.compare && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-compare", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
+        /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "Comparison" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading pd2-reveal", children: p.compare.heading }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede pd2-reveal", children: p.compare.body }),
+        /* @__PURE__ */ jsx("div", { className: "pd2-compare-table-wrap pd2-reveal", children: /* @__PURE__ */ jsxs("table", { className: "pd2-compare-table", children: [
+          /* @__PURE__ */ jsx("thead", { children: /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("th", {}),
+            p.compare.cols.map((c, i) => /* @__PURE__ */ jsx("th", { className: i === 0 ? "is-us" : "", children: c }, c))
+          ] }) }),
+          /* @__PURE__ */ jsx("tbody", { children: p.compare.rows.map((row) => /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { className: "pd2-compare-row-label", children: row.label }),
+            row.vals.map((v, i) => /* @__PURE__ */ jsxs("td", { className: i === 0 ? "is-us" : "", children: [
+              v === "yes" && /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.5, className: "pd2-cmp-yes" }),
+              v === "no" && /* @__PURE__ */ jsx(X, { size: 16, strokeWidth: 2.5, className: "pd2-cmp-no" }),
+              v === "partial" && /* @__PURE__ */ jsx("span", { className: "pd2-cmp-partial", children: "Partial" })
+            ] }, i))
+          ] }, row.label)) })
+        ] }) })
+      ] }) }),
+      p.market && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-market", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
+        /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "The Opportunity" }),
+        /* @__PURE__ */ jsx("div", { className: "pd2-market-grid", children: p.market.map((m) => /* @__PURE__ */ jsxs("div", { className: "pd2-market-card pd2-reveal", children: [
+          /* @__PURE__ */ jsx("span", { className: "pd2-market-value", children: m.value }),
+          /* @__PURE__ */ jsx("span", { className: "pd2-market-label", children: m.label })
+        ] }, m.label)) })
+      ] }) }),
+      p.differentiators && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-diff", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
+        /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "Why It's Different" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading pd2-reveal", children: "Built to feel premium, not just functional." }),
+        p.positioning?.body && /* @__PURE__ */ jsx("p", { className: "v2-lede pd2-reveal", children: p.positioning.body }),
+        /* @__PURE__ */ jsx("div", { className: "pd2-diff-list", children: p.differentiators.map((d, i) => /* @__PURE__ */ jsxs("div", { className: "pd2-diff-row pd2-reveal", children: [
+          /* @__PURE__ */ jsx("span", { className: "pd2-diff-n", children: String(i + 1).padStart(2, "0") }),
+          /* @__PURE__ */ jsx("span", { children: d })
+        ] }, i)) })
+      ] }) }),
+      p.traction && /* @__PURE__ */ jsx("section", { className: "v2-section pd2-traction", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
+        /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "Traction" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-heading pd2-reveal", children: [
+          "Where ",
+          p.name,
+          " stands today."
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "pd2-traction-grid", children: [
+          /* @__PURE__ */ jsx("ul", { className: "pd2-traction-list pd2-reveal", children: p.traction.points.map((pt, i) => /* @__PURE__ */ jsxs("li", { children: [
+            /* @__PURE__ */ jsx(Check, { size: 16, strokeWidth: 2.5 }),
+            pt
+          ] }, i)) }),
+          p.traction.roadmap && /* @__PURE__ */ jsx("div", { className: "pd2-roadmap pd2-reveal", children: p.traction.roadmap.map((r, i) => /* @__PURE__ */ jsxs("div", { className: "pd2-roadmap-row", children: [
+            /* @__PURE__ */ jsx("span", { className: "pd2-roadmap-period", children: r.period }),
+            /* @__PURE__ */ jsx("span", { className: "pd2-roadmap-body", children: r.body })
+          ] }, i)) })
+        ] })
+      ] }) }),
+      faqs.length > 0 && /* @__PURE__ */ jsx(
+        FaqSection,
+        {
+          faqs,
+          label: "FAQ",
+          heading: `Common questions about ${p.name}.`
+        }
+      ),
+      /* @__PURE__ */ jsx("section", { className: "v2-section pd2-other-products", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
+        /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "More From Codelix" }),
+        /* @__PURE__ */ jsx("div", { className: "pd2-other-grid", children: otherProducts.map((op) => /* @__PURE__ */ jsxs(Link, { to: `/products/${op.slug}`, className: "pd2-other-card pd2-reveal", style: { "--accent": op.accent }, children: [
+          /* @__PURE__ */ jsx("span", { className: "pd2-other-logo", children: /* @__PURE__ */ jsx("img", { src: op.logo, alt: "" }) }),
+          /* @__PURE__ */ jsx("span", { className: "pd2-other-badge", children: op.badge }),
+          /* @__PURE__ */ jsx("h3", { children: op.name }),
+          /* @__PURE__ */ jsx("p", { children: op.tagline }),
+          /* @__PURE__ */ jsx("span", { className: "pd2-other-arrow", children: /* @__PURE__ */ jsx(ArrowUpRight, { size: 18, strokeWidth: 2 }) })
+        ] }, op.slug)) })
+      ] }) }),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Get Started" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Want ",
+          p.name,
+          " for your ",
+          p.slug === "aanganone" ? "society" : "business",
+          "?"
+        ] }),
+        /* @__PURE__ */ jsxs("p", { className: "v2-cta-body", children: [
+          "Tell us about your ",
+          p.slug === "aanganone" ? "society" : "team",
+          " and we'll walk you through a live demo."
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a demo →" }) })
       ] })
-    ] }) }),
-    faqs.length > 0 && /* @__PURE__ */ jsx(
-      FaqSection,
-      {
-        faqs,
-        label: "FAQ",
-        heading: `Common questions about ${p.name}.`
-      }
-    ),
-    /* @__PURE__ */ jsx("section", { className: "v2-section pd2-other-products", children: /* @__PURE__ */ jsxs("div", { className: "v2-container", children: [
-      /* @__PURE__ */ jsx("span", { className: "v2-label pd2-reveal", children: "More From Codelix" }),
-      /* @__PURE__ */ jsx("div", { className: "pd2-other-grid", children: otherProducts.map((op) => /* @__PURE__ */ jsxs(Link, { to: `/products/${op.slug}`, className: "pd2-other-card pd2-reveal", style: { "--accent": op.accent }, children: [
-        /* @__PURE__ */ jsx("span", { className: "pd2-other-logo", children: /* @__PURE__ */ jsx("img", { src: op.logo, alt: "" }) }),
-        /* @__PURE__ */ jsx("span", { className: "pd2-other-badge", children: op.badge }),
-        /* @__PURE__ */ jsx("h4", { children: op.name }),
-        /* @__PURE__ */ jsx("p", { children: op.tagline }),
-        /* @__PURE__ */ jsx("span", { className: "pd2-other-arrow", children: /* @__PURE__ */ jsx(ArrowUpRight, { size: 18, strokeWidth: 2 }) })
-      ] }, op.slug)) })
-    ] }) }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Get Started" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Want ",
-        p.name,
-        " for your ",
-        p.slug === "aanganone" ? "society" : "business",
-        "?"
-      ] }),
-      /* @__PURE__ */ jsxs("p", { className: "v2-cta-body", children: [
-        "Tell us about your ",
-        p.slug === "aanganone" ? "society" : "team",
-        " and we'll walk you through a live demo."
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a demo →" }) })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -13722,165 +13752,167 @@ function ProcessV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero process-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: "Process" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " Six stages, every project"
-        ] }) }),
-        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "How we go from" }) }),
-          " ",
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "message to launch." }) })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Same process regardless of the service — a fixed sequence of stages, each signed off before the next one starts, so nothing gets built on a shifting foundation." }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
-          /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-            /* @__PURE__ */ jsx("span", { children: "Start a project" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero process-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
+        /* @__PURE__ */ jsxs("div", { children: [
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: "Process" })
           ] }),
-          /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#stages", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "See the stages" }) })
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " Six stages, every project"
+          ] }) }),
+          /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "How we go from" }) }),
+            " ",
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "message to launch." }) })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Same process regardless of the service — a fixed sequence of stages, each signed off before the next one starts, so nothing gets built on a shifting foundation." }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
+            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+              /* @__PURE__ */ jsx("span", { children: "Start a project" }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+            ] }),
+            /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#stages", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "See the stages" }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-hero-visual sv2-hero-reveal", children: /* @__PURE__ */ jsx(ProcessHeroVisual, {}) })
+      ] }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "stages", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Process" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Six stages. Nothing skipped." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Same sequence whether it's a landing page or a full platform — the depth changes with project size, the order doesn't." }),
+        /* @__PURE__ */ jsxs("div", { className: "proc-timeline", ref: timelineRef, children: [
+          /* @__PURE__ */ jsx("div", { className: "proc-line", "aria-hidden": "true", children: /* @__PURE__ */ jsx("div", { className: "proc-line-fill", ref: fillRef }) }),
+          STAGES.map((s) => /* @__PURE__ */ jsxs("article", { className: "proc-stage", children: [
+            /* @__PURE__ */ jsx("div", { className: "proc-stage-node", children: /* @__PURE__ */ jsx(s.icon, { size: 18, strokeWidth: 1.7 }) }),
+            /* @__PURE__ */ jsxs("div", { className: "proc-stage-card", children: [
+              /* @__PURE__ */ jsxs("div", { className: "proc-stage-head", children: [
+                /* @__PURE__ */ jsx("span", { className: "proc-stage-n", children: s.n }),
+                /* @__PURE__ */ jsx("h3", { className: "proc-stage-title", children: s.title }),
+                /* @__PURE__ */ jsx("span", { className: "proc-stage-time", children: s.time })
+              ] }),
+              /* @__PURE__ */ jsx("p", { className: "proc-stage-body", children: s.body }),
+              /* @__PURE__ */ jsx("div", { className: "proc-stage-foot", children: /* @__PURE__ */ jsxs("div", { children: [
+                /* @__PURE__ */ jsx("span", { className: "proc-stage-sub", children: "What you get" }),
+                /* @__PURE__ */ jsx("ul", { className: "proc-stage-deliverables", children: s.deliverables.map((d) => /* @__PURE__ */ jsx("li", { children: d }, d)) })
+              ] }) })
+            ] })
+          ] }, s.n))
         ] })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-hero-visual sv2-hero-reveal", children: /* @__PURE__ */ jsx(ProcessHeroVisual, {}) })
-    ] }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "stages", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Process" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Six stages. Nothing skipped." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Same sequence whether it's a landing page or a full platform — the depth changes with project size, the order doesn't." }),
-      /* @__PURE__ */ jsxs("div", { className: "proc-timeline", ref: timelineRef, children: [
-        /* @__PURE__ */ jsx("div", { className: "proc-line", "aria-hidden": "true", children: /* @__PURE__ */ jsx("div", { className: "proc-line-fill", ref: fillRef }) }),
-        STAGES.map((s) => /* @__PURE__ */ jsxs("article", { className: "proc-stage", children: [
-          /* @__PURE__ */ jsx("div", { className: "proc-stage-node", children: /* @__PURE__ */ jsx(s.icon, { size: 18, strokeWidth: 1.7 }) }),
-          /* @__PURE__ */ jsxs("div", { className: "proc-stage-card", children: [
-            /* @__PURE__ */ jsxs("div", { className: "proc-stage-head", children: [
-              /* @__PURE__ */ jsx("span", { className: "proc-stage-n", children: s.n }),
-              /* @__PURE__ */ jsx("h3", { className: "proc-stage-title", children: s.title }),
-              /* @__PURE__ */ jsx("span", { className: "proc-stage-time", children: s.time })
-            ] }),
-            /* @__PURE__ */ jsx("p", { className: "proc-stage-body", children: s.body }),
-            /* @__PURE__ */ jsx("div", { className: "proc-stage-foot", children: /* @__PURE__ */ jsxs("div", { children: [
-              /* @__PURE__ */ jsx("span", { className: "proc-stage-sub", children: "What you get" }),
-              /* @__PURE__ */ jsx("ul", { className: "proc-stage-deliverables", children: s.deliverables.map((d) => /* @__PURE__ */ jsx("li", { children: d }, d)) })
-            ] }) })
-          ] })
-        ] }, s.n))
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "risk", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Cost Of Skipping A Stage" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Every shortcut here has a price later." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Flip the switch — this is exactly what each stage above is actually preventing." }),
-      /* @__PURE__ */ jsxs("div", { className: "proc-risk-toggle", role: "group", "aria-label": "Show risk or fix", children: [
-        /* @__PURE__ */ jsx(
-          "button",
-          {
-            className: !showFix ? "is-active" : "",
-            onClick: () => setShowFix(false),
-            children: "The risk"
-          }
-        ),
-        /* @__PURE__ */ jsx(
-          "button",
-          {
-            className: showFix ? "is-active" : "",
-            onClick: () => setShowFix(true),
-            children: "Our fix"
-          }
-        ),
-        /* @__PURE__ */ jsx("span", { className: `proc-risk-toggle-pill ${showFix ? "is-right" : ""}`, "aria-hidden": "true" })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: `proc-risk-list ${showFix ? "is-fix" : ""}`, children: RISKS.map((r, i) => /* @__PURE__ */ jsxs("article", { className: "proc-risk", style: { "--i": i }, children: [
-        /* @__PURE__ */ jsx("span", { className: "proc-risk-bg-num", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") }),
-        /* @__PURE__ */ jsxs("div", { className: "proc-risk-stage", children: [
-          /* @__PURE__ */ jsx("span", { className: "proc-risk-stage-icon", children: /* @__PURE__ */ jsx(r.icon, { size: 15 }) }),
-          r.stage
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "risk", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Cost Of Skipping A Stage" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Every shortcut here has a price later." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Flip the switch — this is exactly what each stage above is actually preventing." }),
+        /* @__PURE__ */ jsxs("div", { className: "proc-risk-toggle", role: "group", "aria-label": "Show risk or fix", children: [
+          /* @__PURE__ */ jsx(
+            "button",
+            {
+              className: !showFix ? "is-active" : "",
+              onClick: () => setShowFix(false),
+              children: "The risk"
+            }
+          ),
+          /* @__PURE__ */ jsx(
+            "button",
+            {
+              className: showFix ? "is-active" : "",
+              onClick: () => setShowFix(true),
+              children: "Our fix"
+            }
+          ),
+          /* @__PURE__ */ jsx("span", { className: `proc-risk-toggle-pill ${showFix ? "is-right" : ""}`, "aria-hidden": "true" })
         ] }),
-        /* @__PURE__ */ jsx("div", { className: "proc-risk-flip", children: /* @__PURE__ */ jsxs("div", { className: "proc-risk-flip-inner", children: [
-          /* @__PURE__ */ jsxs("div", { className: "proc-risk-face proc-risk-face--cost", children: [
-            /* @__PURE__ */ jsx("span", { className: "proc-risk-icon proc-risk-icon--x", children: /* @__PURE__ */ jsx(X, { size: 18, strokeWidth: 2.5 }) }),
-            /* @__PURE__ */ jsx("p", { children: r.cost })
+        /* @__PURE__ */ jsx("div", { className: `proc-risk-list ${showFix ? "is-fix" : ""}`, children: RISKS.map((r, i) => /* @__PURE__ */ jsxs("article", { className: "proc-risk", style: { "--i": i }, children: [
+          /* @__PURE__ */ jsx("span", { className: "proc-risk-bg-num", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") }),
+          /* @__PURE__ */ jsxs("div", { className: "proc-risk-stage", children: [
+            /* @__PURE__ */ jsx("span", { className: "proc-risk-stage-icon", children: /* @__PURE__ */ jsx(r.icon, { size: 15 }) }),
+            r.stage
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "proc-risk-face proc-risk-face--fix", children: [
-            /* @__PURE__ */ jsx("span", { className: "proc-risk-icon proc-risk-icon--check", children: /* @__PURE__ */ jsx(Check, { size: 18, strokeWidth: 2.5 }) }),
-            /* @__PURE__ */ jsx("p", { children: r.fix })
-          ] })
-        ] }) })
-      ] }, r.stage)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why This Order Matters" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three rules that hold across every stage." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: PRINCIPLES.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
-      ] }, p.key)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "stats", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "By The Process" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Structure, not guesswork." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Same process, every project" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Updated 2026" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid proc-stats-grid", children: STATS$4.map((b, i) => {
-          const R = 52;
-          const C = 2 * Math.PI * R;
-          const offset = C - C * b.ring / 100;
-          return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
-            /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
-              /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
-                /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `proc-bench-grad-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
-                  /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
-                  /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
-                ] }) }),
-                /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
-                /* @__PURE__ */ jsx(
-                  "circle",
-                  {
-                    className: "sd2-bench-ring-fill",
-                    cx: "60",
-                    cy: "60",
-                    r: R,
-                    stroke: `url(#proc-bench-grad-${i})`,
-                    style: { "--c": C, "--ring-offset": offset }
-                  }
-                )
-              ] }),
-              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
-              ] })
+          /* @__PURE__ */ jsx("div", { className: "proc-risk-flip", children: /* @__PURE__ */ jsxs("div", { className: "proc-risk-flip-inner", children: [
+            /* @__PURE__ */ jsxs("div", { className: "proc-risk-face proc-risk-face--cost", children: [
+              /* @__PURE__ */ jsx("span", { className: "proc-risk-icon proc-risk-icon--x", children: /* @__PURE__ */ jsx(X, { size: 18, strokeWidth: 2.5 }) }),
+              /* @__PURE__ */ jsx("p", { children: r.cost })
             ] }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
-          ] }, b.label);
-        }) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$5, className: "v2-section--void" }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Tell us what you're building.",
-        /* @__PURE__ */ jsx("br", {}),
-        "We'll tell you which stage comes first."
+            /* @__PURE__ */ jsxs("div", { className: "proc-risk-face proc-risk-face--fix", children: [
+              /* @__PURE__ */ jsx("span", { className: "proc-risk-icon proc-risk-icon--check", children: /* @__PURE__ */ jsx(Check, { size: 18, strokeWidth: 2.5 }) }),
+              /* @__PURE__ */ jsx("p", { children: r.fix })
+            ] })
+          ] }) })
+        ] }, r.stage)) })
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your project — scoped against the same six stages, whichever service it needs." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "principles", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why This Order Matters" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three rules that hold across every stage." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: PRINCIPLES.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
+        ] }, p.key)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "stats", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "By The Process" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Structure, not guesswork." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Same process, every project" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Updated 2026" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid proc-stats-grid", children: STATS$4.map((b, i) => {
+            const R = 52;
+            const C = 2 * Math.PI * R;
+            const offset = C - C * b.ring / 100;
+            return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
+              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
+                /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
+                  /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `proc-bench-grad-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
+                    /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
+                    /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
+                  ] }) }),
+                  /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
+                  /* @__PURE__ */ jsx(
+                    "circle",
+                    {
+                      className: "sd2-bench-ring-fill",
+                      cx: "60",
+                      cy: "60",
+                      r: R,
+                      stroke: `url(#proc-bench-grad-${i})`,
+                      style: { "--c": C, "--ring-offset": offset }
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
+            ] }, b.label);
+          }) })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$5, className: "v2-section--void" }),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Tell us what you're building.",
+          /* @__PURE__ */ jsx("br", {}),
+          "We'll tell you which stage comes first."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your project — scoped against the same six stages, whichever service it needs." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -14028,134 +14060,136 @@ function TeamV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero team-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: "Team" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " Est. 2024 · Ahmedabad"
-        ] }) }),
-        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "The people behind" }) }),
-          " ",
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "what Codelix ships." }) })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "No account managers, no anonymous contractors — every project is scoped and delivered by the two people who founded this studio." }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
-          /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-            /* @__PURE__ */ jsx("span", { children: "Work with us" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero team-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
+        /* @__PURE__ */ jsxs("div", { children: [
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: "Team" })
           ] }),
-          /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#leadership", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Meet the founders" }) })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-hero-visual sv2-hero-reveal", children: /* @__PURE__ */ jsx(TeamHeroVisual, {}) })
-    ] }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "leadership", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Leadership" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Two founders, one team." }),
-      /* @__PURE__ */ jsx("div", { className: "team-lead-grid", children: LEADERSHIP.map((p, i) => /* @__PURE__ */ jsxs(
-        "article",
-        {
-          className: `team-lead-row${i % 2 !== 0 ? " team-lead-row--reverse" : ""}`,
-          children: [
-            /* @__PURE__ */ jsxs("div", { className: "team-lead-img-panel", children: [
-              /* @__PURE__ */ jsxs("span", { className: "team-lead-index", children: [
-                "0",
-                i + 1
-              ] }),
-              /* @__PURE__ */ jsx("div", { className: "team-lead-avatar-wrap", children: /* @__PURE__ */ jsxs("div", { className: "team-lead-avatar", children: [
-                p.initials,
-                /* @__PURE__ */ jsx(
-                  "img",
-                  {
-                    className: "team-lead-photo",
-                    src: p.photo,
-                    alt: p.name,
-                    onError: (e) => {
-                      e.currentTarget.style.display = "none";
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " Est. 2024 · Ahmedabad"
+          ] }) }),
+          /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "The people behind" }) }),
+            " ",
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "what Codelix ships." }) })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "No account managers, no anonymous contractors — every project is scoped and delivered by the two people who founded this studio." }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
+            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+              /* @__PURE__ */ jsx("span", { children: "Work with us" }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+            ] }),
+            /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#leadership", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Meet the founders" }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-hero-visual sv2-hero-reveal", children: /* @__PURE__ */ jsx(TeamHeroVisual, {}) })
+      ] }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "leadership", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Leadership" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Two founders, one team." }),
+        /* @__PURE__ */ jsx("div", { className: "team-lead-grid", children: LEADERSHIP.map((p, i) => /* @__PURE__ */ jsxs(
+          "article",
+          {
+            className: `team-lead-row${i % 2 !== 0 ? " team-lead-row--reverse" : ""}`,
+            children: [
+              /* @__PURE__ */ jsxs("div", { className: "team-lead-img-panel", children: [
+                /* @__PURE__ */ jsxs("span", { className: "team-lead-index", children: [
+                  "0",
+                  i + 1
+                ] }),
+                /* @__PURE__ */ jsx("div", { className: "team-lead-avatar-wrap", children: /* @__PURE__ */ jsxs("div", { className: "team-lead-avatar", children: [
+                  p.initials,
+                  /* @__PURE__ */ jsx(
+                    "img",
+                    {
+                      className: "team-lead-photo",
+                      src: p.photo,
+                      alt: p.name,
+                      onError: (e) => {
+                        e.currentTarget.style.display = "none";
+                      }
                     }
+                  )
+                ] }) })
+              ] }),
+              /* @__PURE__ */ jsxs("div", { className: "team-lead-info-panel", children: [
+                /* @__PURE__ */ jsx("span", { className: "team-lead-watermark", "aria-hidden": "true", children: p.initials }),
+                /* @__PURE__ */ jsx("h3", { className: "team-lead-name", children: p.name }),
+                /* @__PURE__ */ jsx("p", { className: "team-lead-title", children: p.title }),
+                /* @__PURE__ */ jsx("p", { className: "team-lead-bio", children: p.bio }),
+                /* @__PURE__ */ jsxs(
+                  "a",
+                  {
+                    className: "team-lead-linkedin",
+                    href: p.linkedin,
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                    children: [
+                      /* @__PURE__ */ jsx(Linkedin, { size: 14, strokeWidth: 2 }),
+                      /* @__PURE__ */ jsx("span", { children: "Connect on LinkedIn" })
+                    ]
                   }
                 )
-              ] }) })
-            ] }),
-            /* @__PURE__ */ jsxs("div", { className: "team-lead-info-panel", children: [
-              /* @__PURE__ */ jsx("span", { className: "team-lead-watermark", "aria-hidden": "true", children: p.initials }),
-              /* @__PURE__ */ jsx("h3", { className: "team-lead-name", children: p.name }),
-              /* @__PURE__ */ jsx("p", { className: "team-lead-title", children: p.title }),
-              /* @__PURE__ */ jsx("p", { className: "team-lead-bio", children: p.bio }),
-              /* @__PURE__ */ jsxs(
-                "a",
-                {
-                  className: "team-lead-linkedin",
-                  href: p.linkedin,
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                  children: [
-                    /* @__PURE__ */ jsx(Linkedin, { size: 14, strokeWidth: 2 }),
-                    /* @__PURE__ */ jsx("span", { children: "Connect on LinkedIn" })
-                  ]
-                }
-              )
-            ] })
-          ]
-        },
-        p.name
-      )) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "how-we-lead", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "How We Lead" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three things that don't change as we grow." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: HOW_WE_LEAD.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
-      ] }, p.key)) })
-    ] }),
-    /* @__PURE__ */ jsx(
-      TestimonialSpotlight,
-      {
-        testimonials,
-        label: "Client Voices",
-        heading: "What clients say about the team.",
-        stats: [
-          { num: "40+", label: "Projects delivered" },
-          { num: "20+", label: "Clients worldwide" },
-          { num: "100%", label: "Source code ownership" }
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we build." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
-        ] }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
-      ] }, s.path)) })
-    ] }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Talk to the founders,",
-        /* @__PURE__ */ jsx("br", {}),
-        "not an account manager."
+              ] })
+            ]
+          },
+          p.name
+        )) })
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "Every engagement starts and ends with the same two people. Tell us what you're building." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "how-we-lead", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "How We Lead" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three things that don't change as we grow." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: HOW_WE_LEAD.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
+        ] }, p.key)) })
+      ] }),
+      /* @__PURE__ */ jsx(
+        TestimonialSpotlight,
+        {
+          testimonials,
+          label: "Client Voices",
+          heading: "What clients say about the team.",
+          stats: [
+            { num: "40+", label: "Projects delivered" },
+            { num: "20+", label: "Clients worldwide" },
+            { num: "100%", label: "Source code ownership" }
+          ]
+        }
+      ),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "other", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Explore More" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we build." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-other-list", children: OTHER_SERVICES.map((s) => /* @__PURE__ */ jsxs(Link, { className: "sd2-other", to: s.path, children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-other-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-icon", children: /* @__PURE__ */ jsx(s.icon, { size: 17, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-other-n", children: s.n })
+          ] }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-title", children: s.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-other-body", children: s.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-other-go", children: "→" })
+        ] }, s.path)) })
+      ] }),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Talk to the founders,",
+          /* @__PURE__ */ jsx("br", {}),
+          "not an account manager."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "Every engagement starts and ends with the same two people. Tell us what you're building." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -14355,206 +14389,208 @@ function WorkV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2 v2-work", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: "Work" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " 15+ real projects, six industries"
-        ] }) }),
-        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Real constraints." }) }),
-          " ",
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "Real shipped work." }) })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Every project below solved an actual problem for an actual business." }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
-          /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-            /* @__PURE__ */ jsx("span", { children: "Start your project" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
+        /* @__PURE__ */ jsxs("div", { children: [
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: "Work" })
           ] }),
-          /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#projects", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Browse all work" }) })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "wv-hero-visual-reveal", children: /* @__PURE__ */ jsx(WorkHeroVisual, {}) })
-    ] }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "spotlight", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Featured Work" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Five projects, five different problems." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "A cross-section of the work below — one from each major category we build in." }),
-      /* @__PURE__ */ jsxs(
-        "div",
-        {
-          className: `wv-spotlight ${spotlightVisible ? "is-in" : ""} ${paused ? "is-paused" : ""}`,
-          onMouseEnter: () => setPaused(true),
-          onMouseLeave: () => setPaused(false),
-          children: [
-            /* @__PURE__ */ jsx("div", { className: "wv-spotlight-segs", role: "tablist", "aria-label": "Featured projects", children: FEATURED.map((p, i) => /* @__PURE__ */ jsxs(
-              "button",
-              {
-                className: "wv-seg",
-                role: "tab",
-                "aria-selected": i === active,
-                "aria-label": p.title,
-                onClick: () => setActive(i),
-                children: [
-                  /* @__PURE__ */ jsxs("span", { className: "wv-seg-track", children: [
-                    i < active && /* @__PURE__ */ jsx("span", { className: "wv-seg-fill wv-seg-fill--done" }),
-                    i === active && /* @__PURE__ */ jsx(
-                      "span",
-                      {
-                        className: "wv-seg-fill wv-seg-fill--active",
-                        onAnimationEnd: () => {
-                          if (paused) return;
-                          setActive((a) => (a + 1) % FEATURED.length);
-                        }
-                      },
-                      active
-                    )
-                  ] }),
-                  /* @__PURE__ */ jsx("span", { className: "wv-seg-label", children: p.title.split("—")[0].split(":")[0].trim() })
-                ]
-              },
-              p.id
-            )) }),
-            /* @__PURE__ */ jsx("div", { className: "wv-spotlight-stage", children: FEATURED.map((p, i) => /* @__PURE__ */ jsxs("div", { className: `wv-spotlight-panel ${i === active ? "is-active" : ""}`, children: [
-              /* @__PURE__ */ jsx("div", { className: "wv-spotlight-media", children: /* @__PURE__ */ jsx("img", { src: p.image, alt: p.title, loading: "lazy" }) }),
-              /* @__PURE__ */ jsxs("div", { className: "wv-spotlight-info", children: [
-                /* @__PURE__ */ jsx("span", { className: "wv-spotlight-n", children: String(i + 1).padStart(2, "0") }),
-                /* @__PURE__ */ jsx("span", { className: "wv-spotlight-cat", children: p.category }),
-                /* @__PURE__ */ jsx("h3", { children: p.title }),
-                /* @__PURE__ */ jsx("p", { children: p.description }),
-                /* @__PURE__ */ jsx("div", { className: "wv-spotlight-tags", children: p.tags.map((t) => /* @__PURE__ */ jsx("span", { children: t }, t)) }),
-                /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: linkFor(p), children: [
-                  /* @__PURE__ */ jsx("span", { children: "View case study" }),
-                  /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
-                ] })
-              ] })
-            ] }, p.id)) })
-          ]
-        }
-      )
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "projects", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "All Projects" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The full portfolio." }),
-      /* @__PURE__ */ jsxs("div", { className: "wv-filters-container", children: [
-        /* @__PURE__ */ jsx("div", { className: "wv-filters", role: "group", "aria-label": "Filter by category", children: CATEGORIES$4.map((c) => /* @__PURE__ */ jsx(
-          "button",
-          {
-            className: `wv-filter ${filter === c ? "is-active" : ""}`,
-            onClick: () => setFilter(c),
-            children: c
-          },
-          c
-        )) }),
-        /* @__PURE__ */ jsx("div", { className: "wv-filter-industry", children: /* @__PURE__ */ jsx(
-          "select",
-          {
-            value: industryFilter,
-            onChange: (e) => setIndustryFilter(e.target.value),
-            className: "wv-industry-select",
-            "aria-label": "Filter by industry",
-            children: INDUSTRIES.map((ind) => /* @__PURE__ */ jsx("option", { value: ind, children: ind }, ind))
-          }
-        ) })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "wv-grid is-in", children: filtered.map((p) => /* @__PURE__ */ jsxs(Link, { className: "wv-card", to: linkFor(p), children: [
-        /* @__PURE__ */ jsx("div", { className: "wv-card-media", children: /* @__PURE__ */ jsx("img", { src: p.image, alt: p.title, loading: "lazy" }) }),
-        /* @__PURE__ */ jsxs("div", { className: "wv-card-body", children: [
-          /* @__PURE__ */ jsx("span", { className: "wv-card-cat", children: p.category }),
-          /* @__PURE__ */ jsx("h3", { className: "wv-card-title", children: p.title }),
-          /* @__PURE__ */ jsx("div", { className: "wv-card-tags", children: Array.isArray(p.tags) ? p.tags.slice(0, 3).map((t) => /* @__PURE__ */ jsx("span", { children: t }, t)) : null })
-        ] }),
-        /* @__PURE__ */ jsx("span", { className: "wv-card-arrow", "aria-hidden": "true", children: /* @__PURE__ */ jsx(ArrowUpRight, { size: 18, strokeWidth: 1.8 }) })
-      ] }, p.id)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "stats", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "By The Portfolio" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Depth across a real range of work." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Codelix, across projects" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Updated 2026" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid wv-stats-grid", children: STATS$2.map((b, i) => {
-          const R = 52;
-          const C = 2 * Math.PI * R;
-          const offset = C - C * b.ring / 100;
-          return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
-            /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
-              /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
-                /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `wv-bench-grad-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
-                  /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
-                  /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
-                ] }) }),
-                /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
-                /* @__PURE__ */ jsx(
-                  "circle",
-                  {
-                    className: "sd2-bench-ring-fill",
-                    cx: "60",
-                    cy: "60",
-                    r: R,
-                    stroke: `url(#wv-bench-grad-${i})`,
-                    style: { "--c": C, "--ring-offset": offset }
-                  }
-                )
-              ] }),
-              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
-              ] })
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " 15+ real projects, six industries"
+          ] }) }),
+          /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Real constraints." }) }),
+            " ",
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "Real shipped work." }) })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Every project below solved an actual problem for an actual business." }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
+            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+              /* @__PURE__ */ jsx("span", { children: "Start your project" }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
             ] }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
-          ] }, b.label);
-        }) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "testimonials", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "In Their Words" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What it's like working with us." }),
-      /* @__PURE__ */ jsxs("div", { className: "wv-testimonial", children: [
-        /* @__PURE__ */ jsxs("div", { className: "wv-testimonial-quote", children: [
-          /* @__PURE__ */ jsx("span", { className: "wv-testimonial-mark", "aria-hidden": "true", children: "“" }),
-          /* @__PURE__ */ jsx("p", { children: TESTIMONIALS[testimonial].quote }),
-          /* @__PURE__ */ jsxs("div", { className: "wv-testimonial-person", children: [
-            /* @__PURE__ */ jsx("span", { className: "wv-testimonial-avatar", children: TESTIMONIALS[testimonial].name[0] }),
-            /* @__PURE__ */ jsxs("div", { children: [
-              /* @__PURE__ */ jsx("strong", { children: TESTIMONIALS[testimonial].name }),
-              /* @__PURE__ */ jsx("span", { children: TESTIMONIALS[testimonial].role })
-            ] })
+            /* @__PURE__ */ jsx("a", { className: "v2-hero-secondary", href: "#projects", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Browse all work" }) })
           ] })
         ] }),
-        /* @__PURE__ */ jsx("div", { className: "wv-testimonial-list", children: TESTIMONIALS.map((t, i) => /* @__PURE__ */ jsx(
-          "button",
+        /* @__PURE__ */ jsx("div", { className: "wv-hero-visual-reveal", children: /* @__PURE__ */ jsx(WorkHeroVisual, {}) })
+      ] }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "spotlight", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Featured Work" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Five projects, five different problems." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "A cross-section of the work below — one from each major category we build in." }),
+        /* @__PURE__ */ jsxs(
+          "div",
           {
-            className: `wv-testimonial-logo ${i === testimonial ? "is-active" : ""}`,
-            onClick: () => setTestimonial(i),
-            "aria-label": t.name,
-            children: /* @__PURE__ */ jsx("img", { src: t.logo, alt: "" })
-          },
-          t.name
-        )) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$4 }),
-    /* @__PURE__ */ jsx(ClientStrip, {}),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Bring us the problem.",
-        /* @__PURE__ */ jsx("br", {}),
-        /* @__PURE__ */ jsx("span", { className: "v2-cta-accent", children: "We'll bring back a scoped plan." })
+            className: `wv-spotlight ${spotlightVisible ? "is-in" : ""} ${paused ? "is-paused" : ""}`,
+            onMouseEnter: () => setPaused(true),
+            onMouseLeave: () => setPaused(false),
+            children: [
+              /* @__PURE__ */ jsx("div", { className: "wv-spotlight-segs", role: "tablist", "aria-label": "Featured projects", children: FEATURED.map((p, i) => /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  className: "wv-seg",
+                  role: "tab",
+                  "aria-selected": i === active,
+                  "aria-label": p.title,
+                  onClick: () => setActive(i),
+                  children: [
+                    /* @__PURE__ */ jsxs("span", { className: "wv-seg-track", children: [
+                      i < active && /* @__PURE__ */ jsx("span", { className: "wv-seg-fill wv-seg-fill--done" }),
+                      i === active && /* @__PURE__ */ jsx(
+                        "span",
+                        {
+                          className: "wv-seg-fill wv-seg-fill--active",
+                          onAnimationEnd: () => {
+                            if (paused) return;
+                            setActive((a) => (a + 1) % FEATURED.length);
+                          }
+                        },
+                        active
+                      )
+                    ] }),
+                    /* @__PURE__ */ jsx("span", { className: "wv-seg-label", children: p.title.split("—")[0].split(":")[0].trim() })
+                  ]
+                },
+                p.id
+              )) }),
+              /* @__PURE__ */ jsx("div", { className: "wv-spotlight-stage", children: FEATURED.map((p, i) => /* @__PURE__ */ jsxs("div", { className: `wv-spotlight-panel ${i === active ? "is-active" : ""}`, children: [
+                /* @__PURE__ */ jsx("div", { className: "wv-spotlight-media", children: /* @__PURE__ */ jsx("img", { src: p.image, alt: p.title, loading: "lazy" }) }),
+                /* @__PURE__ */ jsxs("div", { className: "wv-spotlight-info", children: [
+                  /* @__PURE__ */ jsx("span", { className: "wv-spotlight-n", children: String(i + 1).padStart(2, "0") }),
+                  /* @__PURE__ */ jsx("span", { className: "wv-spotlight-cat", children: p.category }),
+                  /* @__PURE__ */ jsx("h3", { children: p.title }),
+                  /* @__PURE__ */ jsx("p", { children: p.description }),
+                  /* @__PURE__ */ jsx("div", { className: "wv-spotlight-tags", children: p.tags.map((t) => /* @__PURE__ */ jsx("span", { children: t }, t)) }),
+                  /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: linkFor(p), children: [
+                    /* @__PURE__ */ jsx("span", { children: "View case study" }),
+                    /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+                  ] })
+                ] })
+              ] }, p.id)) })
+            ]
+          }
+        )
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your product — your users, your workflows, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "projects", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "All Projects" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The full portfolio." }),
+        /* @__PURE__ */ jsxs("div", { className: "wv-filters-container", children: [
+          /* @__PURE__ */ jsx("div", { className: "wv-filters", role: "group", "aria-label": "Filter by category", children: CATEGORIES$4.map((c) => /* @__PURE__ */ jsx(
+            "button",
+            {
+              className: `wv-filter ${filter === c ? "is-active" : ""}`,
+              onClick: () => setFilter(c),
+              children: c
+            },
+            c
+          )) }),
+          /* @__PURE__ */ jsx("div", { className: "wv-filter-industry", children: /* @__PURE__ */ jsx(
+            "select",
+            {
+              value: industryFilter,
+              onChange: (e) => setIndustryFilter(e.target.value),
+              className: "wv-industry-select",
+              "aria-label": "Filter by industry",
+              children: INDUSTRIES.map((ind) => /* @__PURE__ */ jsx("option", { value: ind, children: ind }, ind))
+            }
+          ) })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "wv-grid is-in", children: filtered.map((p) => /* @__PURE__ */ jsxs(Link, { className: "wv-card", to: linkFor(p), children: [
+          /* @__PURE__ */ jsx("div", { className: "wv-card-media", children: /* @__PURE__ */ jsx("img", { src: p.image, alt: p.title, loading: "lazy" }) }),
+          /* @__PURE__ */ jsxs("div", { className: "wv-card-body", children: [
+            /* @__PURE__ */ jsx("span", { className: "wv-card-cat", children: p.category }),
+            /* @__PURE__ */ jsx("h3", { className: "wv-card-title", children: p.title }),
+            /* @__PURE__ */ jsx("div", { className: "wv-card-tags", children: Array.isArray(p.tags) ? p.tags.slice(0, 3).map((t) => /* @__PURE__ */ jsx("span", { children: t }, t)) : null })
+          ] }),
+          /* @__PURE__ */ jsx("span", { className: "wv-card-arrow", "aria-hidden": "true", children: /* @__PURE__ */ jsx(ArrowUpRight, { size: 18, strokeWidth: 1.8 }) })
+        ] }, p.id)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "stats", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "By The Portfolio" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Depth across a real range of work." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Codelix, across projects" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Updated 2026" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid wv-stats-grid", children: STATS$2.map((b, i) => {
+            const R = 52;
+            const C = 2 * Math.PI * R;
+            const offset = C - C * b.ring / 100;
+            return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
+              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
+                /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
+                  /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `wv-bench-grad-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
+                    /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
+                    /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
+                  ] }) }),
+                  /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
+                  /* @__PURE__ */ jsx(
+                    "circle",
+                    {
+                      className: "sd2-bench-ring-fill",
+                      cx: "60",
+                      cy: "60",
+                      r: R,
+                      stroke: `url(#wv-bench-grad-${i})`,
+                      style: { "--c": C, "--ring-offset": offset }
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
+            ] }, b.label);
+          }) })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "testimonials", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "In Their Words" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What it's like working with us." }),
+        /* @__PURE__ */ jsxs("div", { className: "wv-testimonial", children: [
+          /* @__PURE__ */ jsxs("div", { className: "wv-testimonial-quote", children: [
+            /* @__PURE__ */ jsx("span", { className: "wv-testimonial-mark", "aria-hidden": "true", children: "“" }),
+            /* @__PURE__ */ jsx("p", { children: TESTIMONIALS[testimonial].quote }),
+            /* @__PURE__ */ jsxs("div", { className: "wv-testimonial-person", children: [
+              /* @__PURE__ */ jsx("span", { className: "wv-testimonial-avatar", children: TESTIMONIALS[testimonial].name[0] }),
+              /* @__PURE__ */ jsxs("div", { children: [
+                /* @__PURE__ */ jsx("strong", { children: TESTIMONIALS[testimonial].name }),
+                /* @__PURE__ */ jsx("span", { children: TESTIMONIALS[testimonial].role })
+              ] })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "wv-testimonial-list", children: TESTIMONIALS.map((t, i) => /* @__PURE__ */ jsx(
+            "button",
+            {
+              className: `wv-testimonial-logo ${i === testimonial ? "is-active" : ""}`,
+              onClick: () => setTestimonial(i),
+              "aria-label": t.name,
+              children: /* @__PURE__ */ jsx("img", { src: t.logo, alt: "" })
+            },
+            t.name
+          )) })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$4 }),
+      /* @__PURE__ */ jsx(ClientStrip, {}),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Bring us the problem.",
+          /* @__PURE__ */ jsx("br", {}),
+          /* @__PURE__ */ jsx("span", { className: "v2-cta-accent", children: "We'll bring back a scoped plan." })
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your product — your users, your workflows, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -14608,54 +14644,56 @@ function LegalV2({ crumbLabel, statusLabel, titleLine1, titleLine2, sub, updated
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-main", children: /* @__PURE__ */ jsxs("div", { children: [
-      /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-        /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-        /* @__PURE__ */ jsx("span", { children: "/" }),
-        /* @__PURE__ */ jsx("em", { children: crumbLabel })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-        /* @__PURE__ */ jsx("i", {}),
-        " ",
-        statusLabel
-      ] }) }),
-      /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-        /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: titleLine1 }) }),
-        " ",
-        /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: titleLine2 }) })
-      ] }),
-      /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: sub })
-    ] }) }) }) }),
-    /* @__PURE__ */ jsx("section", { className: "v2-section", id: "document", children: /* @__PURE__ */ jsxs("div", { className: "leg-shell", children: [
-      /* @__PURE__ */ jsxs("aside", { className: "leg-toc", children: [
-        /* @__PURE__ */ jsxs("span", { className: "leg-toc-updated", children: [
-          "Last updated ",
-          updated
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-main", children: /* @__PURE__ */ jsxs("div", { children: [
+        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+          /* @__PURE__ */ jsx("span", { children: "/" }),
+          /* @__PURE__ */ jsx("em", { children: crumbLabel })
         ] }),
-        /* @__PURE__ */ jsxs("div", { className: "leg-toc-rail", ref: railRef, children: [
-          /* @__PURE__ */ jsx("div", { className: "leg-toc-rail-track", "aria-hidden": "true", children: /* @__PURE__ */ jsx("div", { className: "leg-toc-rail-fill", ref: railFillRef }) }),
-          /* @__PURE__ */ jsx("ul", { children: sections.map((s, i) => /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsxs(
-            "a",
-            {
-              href: `#${s.id}`,
-              className: activeId === s.id ? "is-active" : "",
-              onClick: (e) => {
-                e.preventDefault();
-                document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-              },
-              children: [
-                /* @__PURE__ */ jsx("span", { className: "leg-toc-n", children: String(i + 1).padStart(2, "0") }),
-                s.heading
-              ]
-            }
-          ) }, s.id)) })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "leg-doc", children: sections.map((s) => /* @__PURE__ */ jsxs("article", { className: "leg-section", id: s.id, children: [
-        /* @__PURE__ */ jsx("h2", { children: s.heading }),
-        /* @__PURE__ */ jsx("div", { className: "leg-body", children: s.body })
-      ] }, s.id)) })
-    ] }) }),
+        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+          /* @__PURE__ */ jsx("i", {}),
+          " ",
+          statusLabel
+        ] }) }),
+        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: titleLine1 }) }),
+          " ",
+          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: titleLine2 }) })
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: sub })
+      ] }) }) }) }),
+      /* @__PURE__ */ jsx("section", { className: "v2-section", id: "document", children: /* @__PURE__ */ jsxs("div", { className: "leg-shell", children: [
+        /* @__PURE__ */ jsxs("aside", { className: "leg-toc", children: [
+          /* @__PURE__ */ jsxs("span", { className: "leg-toc-updated", children: [
+            "Last updated ",
+            updated
+          ] }),
+          /* @__PURE__ */ jsxs("div", { className: "leg-toc-rail", ref: railRef, children: [
+            /* @__PURE__ */ jsx("div", { className: "leg-toc-rail-track", "aria-hidden": "true", children: /* @__PURE__ */ jsx("div", { className: "leg-toc-rail-fill", ref: railFillRef }) }),
+            /* @__PURE__ */ jsx("ul", { children: sections.map((s, i) => /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsxs(
+              "a",
+              {
+                href: `#${s.id}`,
+                className: activeId === s.id ? "is-active" : "",
+                onClick: (e) => {
+                  e.preventDefault();
+                  document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+                },
+                children: [
+                  /* @__PURE__ */ jsx("span", { className: "leg-toc-n", children: String(i + 1).padStart(2, "0") }),
+                  s.heading
+                ]
+              }
+            ) }, s.id)) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "leg-doc", children: sections.map((s) => /* @__PURE__ */ jsxs("article", { className: "leg-section", id: s.id, children: [
+          /* @__PURE__ */ jsx("h2", { children: s.heading }),
+          /* @__PURE__ */ jsx("div", { className: "leg-body", children: s.body })
+        ] }, s.id)) })
+      ] }) })
+    ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
 }
@@ -15143,38 +15181,40 @@ function FaqV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main faqv2-hero-grid", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: "FAQ" })
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main faqv2-hero-grid", children: [
+        /* @__PURE__ */ jsxs("div", { children: [
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: "FAQ" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " ",
+            FAQS$3.length,
+            " answers, straight talk"
+          ] }) }),
+          /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Everything people" }) }),
+            " ",
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "ask us, in one place." }) })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Search or filter by category — every answer here is the same one you'd get if you asked us directly." })
         ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " ",
-          FAQS$3.length,
-          " answers, straight talk"
-        ] }) }),
-        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Everything people" }) }),
-          " ",
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "ask us, in one place." }) })
+        /* @__PURE__ */ jsx("div", { className: "sd2-hero-visual sv2-hero-reveal", children: /* @__PURE__ */ jsx(FaqHeroVisual, {}) })
+      ] }) }) }),
+      /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$3 }),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Still Have Questions?" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Tell us what you're building.",
+          /* @__PURE__ */ jsx("br", {}),
+          "We'll tell you how we'd build it."
         ] }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Search or filter by category — every answer here is the same one you'd get if you asked us directly." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-hero-visual sv2-hero-reveal", children: /* @__PURE__ */ jsx(FaqHeroVisual, {}) })
-    ] }) }) }),
-    /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$3 }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Still Have Questions?" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Tell us what you're building.",
-        /* @__PURE__ */ jsx("br", {}),
-        "We'll tell you how we'd build it."
-      ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your project — your users, your goals, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your project — your users, your goals, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -15191,7 +15231,7 @@ function TechHeroVisual() {
       /* @__PURE__ */ jsxs("div", { className: "thv-glass-card card-front", children: [
         /* @__PURE__ */ jsx("div", { className: "thv-card-icon glow-blue", children: /* @__PURE__ */ jsx(MonitorSmartphone, { size: 22, color: "#0096ff" }) }),
         /* @__PURE__ */ jsxs("div", { className: "thv-card-text", children: [
-          /* @__PURE__ */ jsx("h4", { children: "Frontend & Mobile" }),
+          /* @__PURE__ */ jsx("span", { className: "thv-card-name", children: "Frontend & Mobile" }),
           /* @__PURE__ */ jsx("p", { children: "React, Next.js, Vue, Tailwind" })
         ] }),
         /* @__PURE__ */ jsxs("div", { className: "thv-mini-bar-group", children: [
@@ -15202,7 +15242,7 @@ function TechHeroVisual() {
       /* @__PURE__ */ jsxs("div", { className: "thv-glass-card card-mid", children: [
         /* @__PURE__ */ jsx("div", { className: "thv-card-icon glow-purple", children: /* @__PURE__ */ jsx(Server, { size: 22, color: "#8a2be2" }) }),
         /* @__PURE__ */ jsxs("div", { className: "thv-card-text", children: [
-          /* @__PURE__ */ jsx("h4", { children: "Backend & APIs" }),
+          /* @__PURE__ */ jsx("span", { className: "thv-card-name", children: "Backend & APIs" }),
           /* @__PURE__ */ jsx("p", { children: "Node.js, Python, Laravel, Java" })
         ] }),
         /* @__PURE__ */ jsxs("div", { className: "thv-mini-bar-group", children: [
@@ -15214,7 +15254,7 @@ function TechHeroVisual() {
       /* @__PURE__ */ jsxs("div", { className: "thv-glass-card card-bot", children: [
         /* @__PURE__ */ jsx("div", { className: "thv-card-icon glow-green", children: /* @__PURE__ */ jsx(Database, { size: 22, color: "#10b981" }) }),
         /* @__PURE__ */ jsxs("div", { className: "thv-card-text", children: [
-          /* @__PURE__ */ jsx("h4", { children: "Data & Cloud" }),
+          /* @__PURE__ */ jsx("span", { className: "thv-card-name", children: "Data & Cloud" }),
           /* @__PURE__ */ jsx("p", { children: "PostgreSQL, Docker, AWS" })
         ] }),
         /* @__PURE__ */ jsxs("div", { className: "thv-mini-bar-group", children: [
@@ -15353,109 +15393,111 @@ function TechnologiesV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: "Technologies" })
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
+        /* @__PURE__ */ jsxs("div", { children: [
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: "Technologies" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " ",
+            STACK.length,
+            "+ tools, six categories"
+          ] }) }),
+          /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "The stack behind" }) }),
+            " ",
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "what we build." }) })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Every tool below has shipped in a real client project — picked for the problem at hand, not because it's trending." })
         ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " ",
-          STACK.length,
-          "+ tools, six categories"
-        ] }) }),
-        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "The stack behind" }) }),
-          " ",
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "what we build." }) })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Every tool below has shipped in a real client project — picked for the problem at hand, not because it's trending." })
+        /* @__PURE__ */ jsx("div", { className: "sd2-hero-visual sv2-hero-reveal", children: /* @__PURE__ */ jsx(TechHeroVisual, {}) })
+      ] }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "stack", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Stack" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Filter by what you're building." }),
+        /* @__PURE__ */ jsx("div", { className: "tv2-filters", role: "group", "aria-label": "Filter by category", children: CATEGORIES$2.map((c) => /* @__PURE__ */ jsx(
+          "button",
+          {
+            className: `tv2-filter ${category === c ? "is-active" : ""}`,
+            onClick: () => setCategory(c),
+            children: c
+          },
+          c
+        )) }),
+        /* @__PURE__ */ jsx("div", { className: "tv2-grid", children: filtered.map((t, i) => /* @__PURE__ */ jsxs("div", { className: "tv2-tile", style: { "--d": `${i % 10 * 0.04}s` }, children: [
+          /* @__PURE__ */ jsx("img", { src: t.img, alt: t.name, loading: "lazy" }),
+          /* @__PURE__ */ jsx("span", { children: t.name })
+        ] }, t.name + t.cat)) })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-hero-visual sv2-hero-reveal", children: /* @__PURE__ */ jsx(TechHeroVisual, {}) })
-    ] }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "stack", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Our Stack" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Filter by what you're building." }),
-      /* @__PURE__ */ jsx("div", { className: "tv2-filters", role: "group", "aria-label": "Filter by category", children: CATEGORIES$2.map((c) => /* @__PURE__ */ jsx(
-        "button",
-        {
-          className: `tv2-filter ${category === c ? "is-active" : ""}`,
-          onClick: () => setCategory(c),
-          children: c
-        },
-        c
-      )) }),
-      /* @__PURE__ */ jsx("div", { className: "tv2-grid", children: filtered.map((t, i) => /* @__PURE__ */ jsxs("div", { className: "tv2-tile", style: { "--d": `${i % 10 * 0.04}s` }, children: [
-        /* @__PURE__ */ jsx("img", { src: t.img, alt: t.name, loading: "lazy" }),
-        /* @__PURE__ */ jsx("span", { children: t.name })
-      ] }, t.name + t.cat)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "why", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why This Stack" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Chosen for the project, not the resume." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: TENETS.map((t) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-tenet-top", children: /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: t.n }) }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: t.claim }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: t.body })
-      ] }, t.n)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "stats", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "By The Stack" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Breadth, without spreading thin." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Codelix, across the stack" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Updated 2026" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid tv2-stats-grid", children: STATS$1.map((b, i) => {
-          const R = 52;
-          const C = 2 * Math.PI * R;
-          const offset = C - C * b.ring / 100;
-          return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
-            /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
-              /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
-                /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `tv2-bench-grad-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
-                  /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
-                  /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
-                ] }) }),
-                /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
-                /* @__PURE__ */ jsx(
-                  "circle",
-                  {
-                    className: "sd2-bench-ring-fill",
-                    cx: "60",
-                    cy: "60",
-                    r: R,
-                    stroke: `url(#tv2-bench-grad-${i})`,
-                    style: { "--c": C, "--ring-offset": offset }
-                  }
-                )
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "why", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Why This Stack" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Chosen for the project, not the resume." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: TENETS.map((t) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-tenet-top", children: /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: t.n }) }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: t.claim }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: t.body })
+        ] }, t.n)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "stats", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "By The Stack" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Breadth, without spreading thin." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Codelix, across the stack" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Updated 2026" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid tv2-stats-grid", children: STATS$1.map((b, i) => {
+            const R = 52;
+            const C = 2 * Math.PI * R;
+            const offset = C - C * b.ring / 100;
+            return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
+              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
+                /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
+                  /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `tv2-bench-grad-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
+                    /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
+                    /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
+                  ] }) }),
+                  /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
+                  /* @__PURE__ */ jsx(
+                    "circle",
+                    {
+                      className: "sd2-bench-ring-fill",
+                      cx: "60",
+                      cy: "60",
+                      r: R,
+                      stroke: `url(#tv2-bench-grad-${i})`,
+                      style: { "--c": C, "--ring-offset": offset }
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
+                ] })
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
-          ] }, b.label);
-        }) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$2, className: "v2-section--void" }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Tell us what you're building.",
-        /* @__PURE__ */ jsx("br", {}),
-        "We'll tell you what it needs."
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
+            ] }, b.label);
+          }) })
+        ] })
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your project and the stack it actually calls for." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$2, className: "v2-section--void" }),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Tell us what you're building.",
+          /* @__PURE__ */ jsx("br", {}),
+          "We'll tell you what it needs."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your project and the stack it actually calls for." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -15480,7 +15522,7 @@ function CareersHeroVisual() {
         ] })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "chv-pr-body", children: [
-        /* @__PURE__ */ jsx("h3", { className: "chv-pr-title", children: "Feature: Client Dashboard Launch" }),
+        /* @__PURE__ */ jsx("span", { className: "chv-pr-title", children: "Feature: Client Dashboard Launch" }),
         /* @__PURE__ */ jsxs("div", { className: "chv-pr-meta", children: [
           /* @__PURE__ */ jsx("div", { className: "chv-avatar you", children: "You" }),
           /* @__PURE__ */ jsx("span", { className: "chv-meta-text", children: "requested review from" }),
@@ -15648,122 +15690,124 @@ function CareersV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: "Careers" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " Small team, real client work"
-        ] }) }),
-        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Work directly with" }) }),
-          " ",
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "the people who build it." }) })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "No account managers, no anonymous bench. If you join, you're shipping real client projects alongside the founders." }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
-          /* @__PURE__ */ jsxs("a", { className: "v2-btn v2-btn--filled", href: "#apply", children: [
-            /* @__PURE__ */ jsx("span", { children: "Apply now" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
-          ] }),
-          /* @__PURE__ */ jsx(Link, { className: "v2-hero-secondary", to: "/team", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Meet the team" }) })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-hero-visual sv2-hero-reveal", children: /* @__PURE__ */ jsx(CareersHeroVisual, {}) })
-    ] }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "how-we-work", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "How We Work" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What it's actually like day to day." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: HOW_WE_WORK.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
-      ] }, p.key)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "apply", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Open To" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "We hire when the work calls for it." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "We don't run a fixed job board — send your details for whichever area fits, and we'll reach out when it lines up with real work." }),
-      /* @__PURE__ */ jsxs("div", { className: "cv2-apply", children: [
-        /* @__PURE__ */ jsxs("div", { className: "cv2-apply-left", children: [
-          /* @__PURE__ */ jsx("div", { className: "cv2-disc-chips", role: "group", "aria-label": "Choose a discipline", children: DISCIPLINES.map((d) => /* @__PURE__ */ jsxs(
-            "button",
-            {
-              className: `cv2-disc-chip ${discipline === d.key ? "is-active" : ""}`,
-              onClick: () => setDiscipline(d.key),
-              type: "button",
-              children: [
-                /* @__PURE__ */ jsx(d.icon, { size: 16, strokeWidth: 1.7 }),
-                d.key
-              ]
-            },
-            d.key
-          )) }),
-          /* @__PURE__ */ jsx("div", { className: "cv2-disc-stage", children: DISCIPLINES.map((d) => /* @__PURE__ */ jsxs("div", { className: `cv2-disc-panel ${discipline === d.key ? "is-active" : ""}`, children: [
-            /* @__PURE__ */ jsx("span", { className: "cv2-disc-panel-icon", children: /* @__PURE__ */ jsx(d.icon, { size: 26, strokeWidth: 1.4 }) }),
-            /* @__PURE__ */ jsx("p", { children: d.blurb })
-          ] }, d.key)) })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "cv2-apply-right", children: submitted ? /* @__PURE__ */ jsxs("div", { className: "cv2-success", children: [
-          /* @__PURE__ */ jsx(CheckCircle2, { size: 40, strokeWidth: 1.4 }),
-          /* @__PURE__ */ jsx("h3", { children: "Got it." }),
-          /* @__PURE__ */ jsx("p", { children: "We'll review your details and reach out if it's a fit for something we're working on." })
-        ] }) : /* @__PURE__ */ jsxs("form", { onSubmit: handleSubmit, className: "cv2-form", children: [
-          /* @__PURE__ */ jsxs("div", { className: "cv2-field", children: [
-            /* @__PURE__ */ jsx("label", { htmlFor: "cv2-name", children: "Name" }),
-            /* @__PURE__ */ jsx("input", { id: "cv2-name", name: "name", type: "text", required: true, value: formData.name, onChange: handleChange })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "cv2-field", children: [
-            /* @__PURE__ */ jsx("label", { htmlFor: "cv2-email", children: "Email" }),
-            /* @__PURE__ */ jsx("input", { id: "cv2-email", name: "email", type: "email", required: true, value: formData.email, onChange: handleChange })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "cv2-field", children: [
-            /* @__PURE__ */ jsx("label", { htmlFor: "cv2-portfolio", children: "Portfolio / LinkedIn / GitHub" }),
-            /* @__PURE__ */ jsx("input", { id: "cv2-portfolio", name: "portfolio", type: "url", placeholder: "https://", required: true, value: formData.portfolio, onChange: handleChange })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "cv2-field", children: [
-            /* @__PURE__ */ jsx("label", { htmlFor: "cv2-message", children: "Anything else?" }),
-            /* @__PURE__ */ jsx("textarea", { id: "cv2-message", name: "message", rows: 4, placeholder: "Optional — what you've shipped, what you're looking for", value: formData.message, onChange: handleChange })
-          ] }),
-          /* @__PURE__ */ jsx("input", { type: "hidden", name: "discipline", value: discipline }),
-          error && /* @__PURE__ */ jsx("p", { className: "cv2-error", children: error }),
-          /* @__PURE__ */ jsxs("button", { type: "submit", className: "v2-btn v2-btn--filled cv2-submit", disabled: sending, children: [
-            /* @__PURE__ */ jsx("span", { children: sending ? "Sending…" : `Apply for ${discipline}` }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
-          ] })
-        ] }) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "look-for", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What We Look For" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three things that matter more than a resume." }),
-      /* @__PURE__ */ jsx("div", { className: "cv2-look-for", children: WHAT_WE_LOOK_FOR.map((w) => /* @__PURE__ */ jsxs("div", { className: "cv2-look-row", children: [
-        /* @__PURE__ */ jsx("span", { className: "cv2-look-n", children: w.n }),
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
         /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("h3", { children: w.title }),
-          /* @__PURE__ */ jsx("p", { children: w.body })
-        ] })
-      ] }, w.n)) })
-    ] }),
-    /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$1, className: "v2-section--void" }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Don't see the right role?",
-        /* @__PURE__ */ jsx("br", {}),
-        "Tell us what you'd bring."
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: "Careers" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " Small team, real client work"
+          ] }) }),
+          /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Work directly with" }) }),
+            " ",
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "the people who build it." }) })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "No account managers, no anonymous bench. If you join, you're shipping real client projects alongside the founders." }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
+            /* @__PURE__ */ jsxs("a", { className: "v2-btn v2-btn--filled", href: "#apply", children: [
+              /* @__PURE__ */ jsx("span", { children: "Apply now" }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+            ] }),
+            /* @__PURE__ */ jsx(Link, { className: "v2-hero-secondary", to: "/team", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Meet the team" }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-hero-visual sv2-hero-reveal", children: /* @__PURE__ */ jsx(CareersHeroVisual, {}) })
+      ] }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "how-we-work", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "How We Work" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What it's actually like day to day." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: HOW_WE_WORK.map((p, i) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(p.icon, { size: 20, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: p.claim }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: p.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: p.key })
+        ] }, p.key)) })
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "We hire when a specific project need lines up with what someone brings, not against a running job board. Send your details anyway." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Get in touch →" }) })
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "apply", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Open To" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "We hire when the work calls for it." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "We don't run a fixed job board — send your details for whichever area fits, and we'll reach out when it lines up with real work." }),
+        /* @__PURE__ */ jsxs("div", { className: "cv2-apply", children: [
+          /* @__PURE__ */ jsxs("div", { className: "cv2-apply-left", children: [
+            /* @__PURE__ */ jsx("div", { className: "cv2-disc-chips", role: "group", "aria-label": "Choose a discipline", children: DISCIPLINES.map((d) => /* @__PURE__ */ jsxs(
+              "button",
+              {
+                className: `cv2-disc-chip ${discipline === d.key ? "is-active" : ""}`,
+                onClick: () => setDiscipline(d.key),
+                type: "button",
+                children: [
+                  /* @__PURE__ */ jsx(d.icon, { size: 16, strokeWidth: 1.7 }),
+                  d.key
+                ]
+              },
+              d.key
+            )) }),
+            /* @__PURE__ */ jsx("div", { className: "cv2-disc-stage", children: DISCIPLINES.map((d) => /* @__PURE__ */ jsxs("div", { className: `cv2-disc-panel ${discipline === d.key ? "is-active" : ""}`, children: [
+              /* @__PURE__ */ jsx("span", { className: "cv2-disc-panel-icon", children: /* @__PURE__ */ jsx(d.icon, { size: 26, strokeWidth: 1.4 }) }),
+              /* @__PURE__ */ jsx("p", { children: d.blurb })
+            ] }, d.key)) })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "cv2-apply-right", children: submitted ? /* @__PURE__ */ jsxs("div", { className: "cv2-success", children: [
+            /* @__PURE__ */ jsx(CheckCircle2, { size: 40, strokeWidth: 1.4 }),
+            /* @__PURE__ */ jsx("h3", { children: "Got it." }),
+            /* @__PURE__ */ jsx("p", { children: "We'll review your details and reach out if it's a fit for something we're working on." })
+          ] }) : /* @__PURE__ */ jsxs("form", { onSubmit: handleSubmit, className: "cv2-form", children: [
+            /* @__PURE__ */ jsxs("div", { className: "cv2-field", children: [
+              /* @__PURE__ */ jsx("label", { htmlFor: "cv2-name", children: "Name" }),
+              /* @__PURE__ */ jsx("input", { id: "cv2-name", name: "name", type: "text", required: true, value: formData.name, onChange: handleChange })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "cv2-field", children: [
+              /* @__PURE__ */ jsx("label", { htmlFor: "cv2-email", children: "Email" }),
+              /* @__PURE__ */ jsx("input", { id: "cv2-email", name: "email", type: "email", required: true, value: formData.email, onChange: handleChange })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "cv2-field", children: [
+              /* @__PURE__ */ jsx("label", { htmlFor: "cv2-portfolio", children: "Portfolio / LinkedIn / GitHub" }),
+              /* @__PURE__ */ jsx("input", { id: "cv2-portfolio", name: "portfolio", type: "url", placeholder: "https://", required: true, value: formData.portfolio, onChange: handleChange })
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "cv2-field", children: [
+              /* @__PURE__ */ jsx("label", { htmlFor: "cv2-message", children: "Anything else?" }),
+              /* @__PURE__ */ jsx("textarea", { id: "cv2-message", name: "message", rows: 4, placeholder: "Optional — what you've shipped, what you're looking for", value: formData.message, onChange: handleChange })
+            ] }),
+            /* @__PURE__ */ jsx("input", { type: "hidden", name: "discipline", value: discipline }),
+            error && /* @__PURE__ */ jsx("p", { className: "cv2-error", children: error }),
+            /* @__PURE__ */ jsxs("button", { type: "submit", className: "v2-btn v2-btn--filled cv2-submit", disabled: sending, children: [
+              /* @__PURE__ */ jsx("span", { children: sending ? "Sending…" : `Apply for ${discipline}` }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+            ] })
+          ] }) })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "look-for", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "What We Look For" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three things that matter more than a resume." }),
+        /* @__PURE__ */ jsx("div", { className: "cv2-look-for", children: WHAT_WE_LOOK_FOR.map((w) => /* @__PURE__ */ jsxs("div", { className: "cv2-look-row", children: [
+          /* @__PURE__ */ jsx("span", { className: "cv2-look-n", children: w.n }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("h3", { children: w.title }),
+            /* @__PURE__ */ jsx("p", { children: w.body })
+          ] })
+        ] }, w.n)) })
+      ] }),
+      /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS$1, className: "v2-section--void" }),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Don't see the right role?",
+          /* @__PURE__ */ jsx("br", {}),
+          "Tell us what you'd bring."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "We hire when a specific project need lines up with what someone brings, not against a running job board. Send your details anyway." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Get in touch →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -15805,21 +15849,21 @@ function PricingHeroVisual() {
         /* @__PURE__ */ jsxs("div", { className: "phv-config-main", children: [
           /* @__PURE__ */ jsxs("div", { className: "phv-module-card added", children: [
             /* @__PURE__ */ jsxs("div", { className: "phv-mod-info", children: [
-              /* @__PURE__ */ jsx("h6", { children: "Core Architecture" }),
+              /* @__PURE__ */ jsx("span", { className: "phv-mod-name", children: "Core Architecture" }),
               /* @__PURE__ */ jsx("p", { children: "Base platform setup" })
             ] }),
             /* @__PURE__ */ jsx("div", { className: "phv-mod-check", children: /* @__PURE__ */ jsx(Check, { size: 14, strokeWidth: 3 }) })
           ] }),
           /* @__PURE__ */ jsxs("div", { className: "phv-module-card added", children: [
             /* @__PURE__ */ jsxs("div", { className: "phv-mod-info", children: [
-              /* @__PURE__ */ jsx("h6", { children: "Payment Gateway" }),
+              /* @__PURE__ */ jsx("span", { className: "phv-mod-name", children: "Payment Gateway" }),
               /* @__PURE__ */ jsx("p", { children: "Stripe Custom Connect" })
             ] }),
             /* @__PURE__ */ jsx("div", { className: "phv-mod-check", children: /* @__PURE__ */ jsx(Check, { size: 14, strokeWidth: 3 }) })
           ] }),
           /* @__PURE__ */ jsxs("div", { className: "phv-module-card optional", children: [
             /* @__PURE__ */ jsxs("div", { className: "phv-mod-info", children: [
-              /* @__PURE__ */ jsx("h6", { children: "AI Assistant" }),
+              /* @__PURE__ */ jsx("span", { className: "phv-mod-name", children: "AI Assistant" }),
               /* @__PURE__ */ jsx("p", { children: "LLM Integration" })
             ] }),
             /* @__PURE__ */ jsx("div", { className: "phv-mod-add", children: /* @__PURE__ */ jsx(Plus, { size: 14, strokeWidth: 3 }) })
@@ -15955,98 +15999,100 @@ function PricingV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: "Pricing" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " Scope-based, not a rate card"
-        ] }) }),
-        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "How pricing" }) }),
-          " ",
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "actually works." }) })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "No public rate card — pricing follows scope and complexity. Get a ballpark below, then a written quote after a free scoping call." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-hero-visual sv2-hero-reveal", children: /* @__PURE__ */ jsx(PricingHeroVisual, {}) })
-    ] }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "estimator", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Ballpark Estimator" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What are you building?" }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "A rough range based on what similar projects have cost — not a quote. Every real number comes after a scoping call." }),
-      /* @__PURE__ */ jsxs("div", { className: "pv2-estimator", children: [
-        /* @__PURE__ */ jsxs("div", { className: "pv2-estimator-controls", children: [
-          /* @__PURE__ */ jsx("span", { className: "pv2-estimator-label", children: "Project type" }),
-          /* @__PURE__ */ jsx("div", { className: "pv2-chip-row", children: PROJECT_TYPES.map((t) => /* @__PURE__ */ jsx(
-            "button",
-            {
-              className: `pv2-chip ${projectType === t ? "is-active" : ""}`,
-              onClick: () => setProjectType(t),
-              children: t
-            },
-            t
-          )) }),
-          /* @__PURE__ */ jsx("span", { className: "pv2-estimator-label", children: "Complexity" }),
-          /* @__PURE__ */ jsx("div", { className: "pv2-complexity-row", children: COMPLEXITY.map((c, i) => /* @__PURE__ */ jsx(
-            "button",
-            {
-              className: `pv2-complexity ${complexity === i ? "is-active" : ""}`,
-              onClick: () => setComplexity(i),
-              children: c
-            },
-            c
-          )) })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: "pv2-estimator-result", children: [
-          /* @__PURE__ */ jsx("span", { className: "pv2-result-label", children: "Ballpark range" }),
-          /* @__PURE__ */ jsxs("div", { className: "pv2-result-value-wrapper", children: [
-            /* @__PURE__ */ jsx("span", { className: "pv2-result-value", children: estimate }),
-            /* @__PURE__ */ jsx("span", { className: "pv2-result-approx", children: "Approx." })
-          ] }, estimate),
-          /* @__PURE__ */ jsxs("p", { className: "pv2-result-note", children: [
-            "Based on ",
-            complexity === 0 ? "a simple" : complexity === 1 ? "a standard" : "a complex",
-            " ",
-            projectType.toLowerCase(),
-            " project. Your exact quote depends on the specifics we cover on a scoping call."
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
+        /* @__PURE__ */ jsxs("div", { children: [
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: "Pricing" })
           ] }),
-          /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-            /* @__PURE__ */ jsx("span", { children: "Get a real quote" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " Scope-based, not a rate card"
+          ] }) }),
+          /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "How pricing" }) }),
+            " ",
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "actually works." }) })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "No public rate card — pricing follows scope and complexity. Get a ballpark below, then a written quote after a free scoping call." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-hero-visual sv2-hero-reveal", children: /* @__PURE__ */ jsx(PricingHeroVisual, {}) })
+      ] }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "estimator", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Ballpark Estimator" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What are you building?" }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "A rough range based on what similar projects have cost — not a quote. Every real number comes after a scoping call." }),
+        /* @__PURE__ */ jsxs("div", { className: "pv2-estimator", children: [
+          /* @__PURE__ */ jsxs("div", { className: "pv2-estimator-controls", children: [
+            /* @__PURE__ */ jsx("span", { className: "pv2-estimator-label", children: "Project type" }),
+            /* @__PURE__ */ jsx("div", { className: "pv2-chip-row", children: PROJECT_TYPES.map((t) => /* @__PURE__ */ jsx(
+              "button",
+              {
+                className: `pv2-chip ${projectType === t ? "is-active" : ""}`,
+                onClick: () => setProjectType(t),
+                children: t
+              },
+              t
+            )) }),
+            /* @__PURE__ */ jsx("span", { className: "pv2-estimator-label", children: "Complexity" }),
+            /* @__PURE__ */ jsx("div", { className: "pv2-complexity-row", children: COMPLEXITY.map((c, i) => /* @__PURE__ */ jsx(
+              "button",
+              {
+                className: `pv2-complexity ${complexity === i ? "is-active" : ""}`,
+                onClick: () => setComplexity(i),
+                children: c
+              },
+              c
+            )) })
+          ] }),
+          /* @__PURE__ */ jsxs("div", { className: "pv2-estimator-result", children: [
+            /* @__PURE__ */ jsx("span", { className: "pv2-result-label", children: "Ballpark range" }),
+            /* @__PURE__ */ jsxs("div", { className: "pv2-result-value-wrapper", children: [
+              /* @__PURE__ */ jsx("span", { className: "pv2-result-value", children: estimate }),
+              /* @__PURE__ */ jsx("span", { className: "pv2-result-approx", children: "Approx." })
+            ] }, estimate),
+            /* @__PURE__ */ jsxs("p", { className: "pv2-result-note", children: [
+              "Based on ",
+              complexity === 0 ? "a simple" : complexity === 1 ? "a standard" : "a complex",
+              " ",
+              projectType.toLowerCase(),
+              " project. Your exact quote depends on the specifics we cover on a scoping call."
+            ] }),
+            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+              /* @__PURE__ */ jsx("span", { children: "Get a real quote" }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+            ] })
           ] })
         ] })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "models", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Engagement Models" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three ways we structure a project." }),
-      /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: MODELS.map((m) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(m.icon, { size: 20, strokeWidth: 1.5 }) }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: m.n })
-        ] }),
-        /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: m.title }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: m.body }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: m.best })
-      ] }, m.n)) })
-    ] }),
-    /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS }),
-    /* @__PURE__ */ jsx(ClientStrip, {}),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Tell us what you're building.",
-        /* @__PURE__ */ jsx("br", {}),
-        "We'll tell you what it costs."
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A free scoping call and a written proposal — no obligation to proceed." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "models", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Engagement Models" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Three ways we structure a project." }),
+        /* @__PURE__ */ jsx("div", { className: "sd2-tenet-grid", children: MODELS.map((m) => /* @__PURE__ */ jsxs("article", { className: "sd2-tenet", children: [
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-shine", "aria-hidden": "true" }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-tenet-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-icon", children: /* @__PURE__ */ jsx(m.icon, { size: 20, strokeWidth: 1.5 }) }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-tenet-n", "aria-hidden": "true", children: m.n })
+          ] }),
+          /* @__PURE__ */ jsx("h3", { className: "sd2-tenet-claim", children: m.title }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-tenet-body", children: m.body }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-tenet-tag", children: m.best })
+        ] }, m.n)) })
+      ] }),
+      /* @__PURE__ */ jsx(FaqSection, { faqs: FAQS }),
+      /* @__PURE__ */ jsx(ClientStrip, {}),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Tell us what you're building.",
+          /* @__PURE__ */ jsx("br", {}),
+          "We'll tell you what it costs."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A free scoping call and a written proposal — no obligation to proceed." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -16315,70 +16361,72 @@ function SitemapV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-main", children: /* @__PURE__ */ jsxs("div", { children: [
-      /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-        /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-        /* @__PURE__ */ jsx("span", { children: "/" }),
-        /* @__PURE__ */ jsx("em", { children: "Sitemap" })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-        /* @__PURE__ */ jsx("i", {}),
-        " ",
-        TOTAL_LINKS,
-        " pages, one map"
-      ] }) }),
-      /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-        /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Every page," }) }),
-        " ",
-        /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "one place to find it." }) })
-      ] }),
-      /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "A complete map of the site — search or browse by section." })
-    ] }) }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "sitemap", children: [
-      /* @__PURE__ */ jsxs("div", { className: "smv2-toolbar", children: [
-        /* @__PURE__ */ jsxs("div", { className: "smv2-search", children: [
-          /* @__PURE__ */ jsx(Search, { size: 16, strokeWidth: 1.8, "aria-hidden": "true" }),
-          /* @__PURE__ */ jsx(
-            "input",
-            {
-              type: "text",
-              placeholder: "Search pages…",
-              value: search,
-              onChange: (e) => setSearch(e.target.value)
-            }
-          )
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-main", children: /* @__PURE__ */ jsxs("div", { children: [
+        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+          /* @__PURE__ */ jsx("span", { children: "/" }),
+          /* @__PURE__ */ jsx("em", { children: "Sitemap" })
         ] }),
-        /* @__PURE__ */ jsxs("span", { className: "smv2-count", children: [
-          matchCount,
-          " of ",
+        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+          /* @__PURE__ */ jsx("i", {}),
+          " ",
           TOTAL_LINKS,
-          " pages"
+          " pages, one map"
+        ] }) }),
+        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Every page," }) }),
+          " ",
+          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "one place to find it." }) })
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "A complete map of the site — search or browse by section." })
+      ] }) }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "sitemap", children: [
+        /* @__PURE__ */ jsxs("div", { className: "smv2-toolbar", children: [
+          /* @__PURE__ */ jsxs("div", { className: "smv2-search", children: [
+            /* @__PURE__ */ jsx(Search, { size: 16, strokeWidth: 1.8, "aria-hidden": "true" }),
+            /* @__PURE__ */ jsx(
+              "input",
+              {
+                type: "text",
+                placeholder: "Search pages…",
+                value: search,
+                onChange: (e) => setSearch(e.target.value)
+              }
+            )
+          ] }),
+          /* @__PURE__ */ jsxs("span", { className: "smv2-count", children: [
+            matchCount,
+            " of ",
+            TOTAL_LINKS,
+            " pages"
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "smv2-groups-vertical", children: [
+          filteredGroups.length === 0 && /* @__PURE__ */ jsxs("p", { className: "smv2-empty", children: [
+            'No pages match "',
+            search,
+            '".'
+          ] }),
+          filteredGroups.map((g) => /* @__PURE__ */ jsxs("div", { className: "smv2-group-vertical", children: [
+            /* @__PURE__ */ jsx("h2", { className: "smv2-group-vertical-title", children: g.title }),
+            /* @__PURE__ */ jsx("div", { className: "smv2-hatched-bg", children: /* @__PURE__ */ jsx("div", { className: "smv2-links-grid", children: g.links.map((l) => /* @__PURE__ */ jsxs(Link, { to: l.href, className: "smv2-link-card", children: [
+              /* @__PURE__ */ jsx("span", { children: l.label }),
+              /* @__PURE__ */ jsx(ArrowUpRight, { size: 18, strokeWidth: 1.5, "aria-hidden": "true" })
+            ] }, l.href)) }) })
+          ] }, g.title))
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: "smv2-groups-vertical", children: [
-        filteredGroups.length === 0 && /* @__PURE__ */ jsxs("p", { className: "smv2-empty", children: [
-          'No pages match "',
-          search,
-          '".'
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void  smv2-cta-shell", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Can't Find It?" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Looking for something",
+          /* @__PURE__ */ jsx("br", {}),
+          "that's not here?"
         ] }),
-        filteredGroups.map((g) => /* @__PURE__ */ jsxs("div", { className: "smv2-group-vertical", children: [
-          /* @__PURE__ */ jsx("h2", { className: "smv2-group-vertical-title", children: g.title }),
-          /* @__PURE__ */ jsx("div", { className: "smv2-hatched-bg", children: /* @__PURE__ */ jsx("div", { className: "smv2-links-grid", children: g.links.map((l) => /* @__PURE__ */ jsxs(Link, { to: l.href, className: "smv2-link-card", children: [
-            /* @__PURE__ */ jsx("span", { children: l.label }),
-            /* @__PURE__ */ jsx(ArrowUpRight, { size: 18, strokeWidth: 1.5, "aria-hidden": "true" })
-          ] }, l.href)) }) })
-        ] }, g.title))
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "Just ask — we'll point you in the right direction." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Contact us →" }) })
       ] })
-    ] }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void  smv2-cta-shell", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Can't Find It?" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Looking for something",
-        /* @__PURE__ */ jsx("br", {}),
-        "that's not here?"
-      ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "Just ask — we'll point you in the right direction." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Contact us →" }) })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -16430,81 +16478,83 @@ function BlogV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-main", children: /* @__PURE__ */ jsxs("div", { children: [
-      /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-        /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-        /* @__PURE__ */ jsx("span", { children: "/" }),
-        /* @__PURE__ */ jsx("em", { children: "Blog" })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-        /* @__PURE__ */ jsx("i", {}),
-        " ",
-        blogs2.length,
-        " articles, no fluff"
-      ] }) }),
-      /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-        /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Notes on building" }) }),
-        " ",
-        /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "software that lasts." }) })
-      ] }),
-      /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Practical writing on web, mobile, design, and the decisions behind them — not recycled listicles." })
-    ] }) }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "articles", children: [
-      /* @__PURE__ */ jsxs("div", { className: "bv2-toolbar", children: [
-        /* @__PURE__ */ jsxs("div", { className: "bv2-search", children: [
-          /* @__PURE__ */ jsx(Search, { size: 16, strokeWidth: 1.8, "aria-hidden": "true" }),
-          /* @__PURE__ */ jsx(
-            "input",
-            {
-              type: "text",
-              placeholder: "Search articles…",
-              value: search,
-              onChange: (e) => {
-                setSearch(e.target.value);
-                setVisibleCount(9);
-              }
-            }
-          )
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-main", children: /* @__PURE__ */ jsxs("div", { children: [
+        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+          /* @__PURE__ */ jsx("span", { children: "/" }),
+          /* @__PURE__ */ jsx("em", { children: "Blog" })
         ] }),
-        /* @__PURE__ */ jsx("div", { className: "bv2-cats", children: CATEGORIES$1.map((c) => /* @__PURE__ */ jsx(
-          "button",
-          {
-            className: `bv2-cat ${category === c ? "is-active" : ""}`,
-            onClick: () => {
-              setCategory(c);
-              setVisibleCount(9);
-            },
-            children: c
-          },
-          c
-        )) })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "bv2-grid", children: [
-        visible.length === 0 && /* @__PURE__ */ jsx("p", { className: "bv2-empty", children: "No articles match — try a different search or category." }),
-        visible.map((b) => /* @__PURE__ */ jsxs(Link, { className: "bv2-card", to: `/blog/${b.slug || slugify(b.title)}`, children: [
-          /* @__PURE__ */ jsx("div", { className: "bv2-card-media", children: /* @__PURE__ */ jsx("img", { src: b.image, alt: b.title, loading: "lazy" }) }),
-          /* @__PURE__ */ jsxs("div", { className: "bv2-card-body", children: [
-            /* @__PURE__ */ jsxs("div", { className: "bv2-card-meta", children: [
-              /* @__PURE__ */ jsx("span", { children: b.tags[1] || b.tags[0] }),
-              /* @__PURE__ */ jsx("span", { children: b.readTime })
-            ] }),
-            /* @__PURE__ */ jsx("h3", { className: "bv2-card-title", children: b.title }),
-            /* @__PURE__ */ jsx("span", { className: "bv2-card-date", children: b.date })
+        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+          /* @__PURE__ */ jsx("i", {}),
+          " ",
+          blogs2.length,
+          " articles, no fluff"
+        ] }) }),
+        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "Notes on building" }) }),
+          " ",
+          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "software that lasts." }) })
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Practical writing on web, mobile, design, and the decisions behind them — not recycled listicles." })
+      ] }) }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "articles", children: [
+        /* @__PURE__ */ jsxs("div", { className: "bv2-toolbar", children: [
+          /* @__PURE__ */ jsxs("div", { className: "bv2-search", children: [
+            /* @__PURE__ */ jsx(Search, { size: 16, strokeWidth: 1.8, "aria-hidden": "true" }),
+            /* @__PURE__ */ jsx(
+              "input",
+              {
+                type: "text",
+                placeholder: "Search articles…",
+                value: search,
+                onChange: (e) => {
+                  setSearch(e.target.value);
+                  setVisibleCount(9);
+                }
+              }
+            )
           ] }),
-          /* @__PURE__ */ jsx("span", { className: "bv2-card-arrow", "aria-hidden": "true", children: /* @__PURE__ */ jsx(ArrowUpRight, { size: 18, strokeWidth: 1.8 }) })
-        ] }, b.id))
+          /* @__PURE__ */ jsx("div", { className: "bv2-cats", children: CATEGORIES$1.map((c) => /* @__PURE__ */ jsx(
+            "button",
+            {
+              className: `bv2-cat ${category === c ? "is-active" : ""}`,
+              onClick: () => {
+                setCategory(c);
+                setVisibleCount(9);
+              },
+              children: c
+            },
+            c
+          )) })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "bv2-grid", children: [
+          visible.length === 0 && /* @__PURE__ */ jsx("p", { className: "bv2-empty", children: "No articles match — try a different search or category." }),
+          visible.map((b) => /* @__PURE__ */ jsxs(Link, { className: "bv2-card", to: `/blog/${b.slug || slugify(b.title)}`, children: [
+            /* @__PURE__ */ jsx("div", { className: "bv2-card-media", children: /* @__PURE__ */ jsx("img", { src: b.image, alt: b.title, loading: "lazy" }) }),
+            /* @__PURE__ */ jsxs("div", { className: "bv2-card-body", children: [
+              /* @__PURE__ */ jsxs("div", { className: "bv2-card-meta", children: [
+                /* @__PURE__ */ jsx("span", { children: b.tags[1] || b.tags[0] }),
+                /* @__PURE__ */ jsx("span", { children: b.readTime })
+              ] }),
+              /* @__PURE__ */ jsx("h2", { className: "bv2-card-title", children: b.title }),
+              /* @__PURE__ */ jsx("span", { className: "bv2-card-date", children: b.date })
+            ] }),
+            /* @__PURE__ */ jsx("span", { className: "bv2-card-arrow", "aria-hidden": "true", children: /* @__PURE__ */ jsx(ArrowUpRight, { size: 18, strokeWidth: 1.8 }) })
+          ] }, b.id))
+        ] }),
+        visibleCount < filtered.length && /* @__PURE__ */ jsx("div", { className: "bv2-more", children: /* @__PURE__ */ jsx("button", { className: "v2-btn", onClick: () => setVisibleCount((n) => n + 9), children: "Load more articles" }) })
       ] }),
-      visibleCount < filtered.length && /* @__PURE__ */ jsx("div", { className: "bv2-more", children: /* @__PURE__ */ jsx("button", { className: "v2-btn", onClick: () => setVisibleCount((n) => n + 9), children: "Load more articles" }) })
-    ] }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void  bv2-cta-shell", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Bring us the problem.",
-        /* @__PURE__ */ jsx("br", {}),
-        /* @__PURE__ */ jsx("span", { className: "v2-cta-accent", children: "We'll bring back a scoped plan." })
-      ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your product — your users, your workflows, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void  bv2-cta-shell", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Bring us the problem.",
+          /* @__PURE__ */ jsx("br", {}),
+          /* @__PURE__ */ jsx("span", { className: "v2-cta-accent", children: "We'll bring back a scoped plan." })
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your product — your users, your workflows, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -16558,10 +16608,10 @@ function BlogDetailV2() {
   }, [blog]);
   if (!blog && loading) return /* @__PURE__ */ jsx(ArticleSkeleton, { label: "Loading article" });
   if (!blog) {
-    return /* @__PURE__ */ jsxs("div", { className: "v2", style: { minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }, children: [
+    return /* @__PURE__ */ jsx("div", { className: "v2", style: { minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }, children: /* @__PURE__ */ jsxs("main", { children: [
       /* @__PURE__ */ jsx("h1", { style: { color: "#fff", fontSize: 28 }, children: "Article not found." }),
       /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/blog", children: "Back to Blog →" })
-    ] });
+    ] }) });
   }
   const related = blogs2.filter((b) => b.id !== blog.id && b.tags.some((t) => blog.tags.includes(t))).slice(0, 3);
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
@@ -16569,71 +16619,73 @@ function BlogDetailV2() {
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx("div", { className: "bdv2-read-rail", "aria-hidden": "true", children: /* @__PURE__ */ jsx("div", { className: "bdv2-read-fill", style: { transform: `scaleX(${readProgress})` } }) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx(StructuredData, { type: "BlogPosting", data: blog }),
-    /* @__PURE__ */ jsx("header", { className: "bdv2-header", children: /* @__PURE__ */ jsxs("div", { className: "bdv2-header-inner", children: [
-      /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs", "aria-label": "Breadcrumb", children: [
-        /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-        /* @__PURE__ */ jsx("span", { children: "/" }),
-        /* @__PURE__ */ jsx(Link, { to: "/blog", children: "Blog" }),
-        /* @__PURE__ */ jsx("span", { children: "/" }),
-        /* @__PURE__ */ jsx("em", { children: blog.title })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "bdv2-meta", children: [
-        /* @__PURE__ */ jsx("span", { className: "bdv2-tag", children: blog.tags[1] || blog.tags[0] }),
-        /* @__PURE__ */ jsx("span", { children: blog.date }),
-        /* @__PURE__ */ jsx("span", { children: blog.readTime })
-      ] }),
-      /* @__PURE__ */ jsx("h1", { className: "bdv2-title", children: blog.title })
-    ] }) }),
-    /* @__PURE__ */ jsx("section", { className: "v2-section", id: "article", children: /* @__PURE__ */ jsxs("div", { className: "bdv2-article-inner", children: [
-      /* @__PURE__ */ jsx("div", { className: "bdv2-image", children: /* @__PURE__ */ jsx("img", { src: blog.image, alt: blog.title }) }),
-      /* @__PURE__ */ jsx("article", { className: "bdv2-body", ref: articleRef, children: blog.content.split(/\n\n|\\n\\n/).map((block, index) => {
-        const trimmed = block.trim();
-        if (trimmed.startsWith("### ")) {
-          return /* @__PURE__ */ jsx("h3", { children: trimmed.replace("### ", "") }, index);
-        }
-        if (trimmed.startsWith("## ")) {
-          return /* @__PURE__ */ jsx("h2", { children: trimmed.replace("## ", "") }, index);
-        }
-        if (trimmed.startsWith("> ")) {
-          return /* @__PURE__ */ jsx("blockquote", { children: trimmed.replace("> ", "") }, index);
-        }
-        if (trimmed.startsWith("- ")) {
-          const items = trimmed.split(/\\n|\\\\n|\n/).filter((l) => l.trim().startsWith("- "));
-          return /* @__PURE__ */ jsx("ul", { children: items.map((item, i) => /* @__PURE__ */ jsx("li", { children: item.replace(/^-\s*/, "") }, i)) }, index);
-        }
-        return /* @__PURE__ */ jsx("p", { children: trimmed }, index);
-      }) }),
-      /* @__PURE__ */ jsx("div", { className: "bdv2-back", children: /* @__PURE__ */ jsxs(Link, { className: "v2-hero-secondary", to: "/blog", children: [
-        /* @__PURE__ */ jsx(ArrowLeft, { size: 15, strokeWidth: 2 }),
-        /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Back to all articles" })
-      ] }) })
-    ] }) }),
-    related.length > 0 && /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "related", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Keep Reading" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Related articles." }),
-      /* @__PURE__ */ jsx("div", { className: "bdv2-related", children: related.map((b) => /* @__PURE__ */ jsxs(Link, { className: "bdv2-related-card", to: `/blog/${b.slug || slugify(b.title)}`, children: [
-        /* @__PURE__ */ jsx("div", { className: "bdv2-related-media", children: /* @__PURE__ */ jsx("img", { src: b.image, alt: b.title, loading: "lazy" }) }),
-        /* @__PURE__ */ jsxs("div", { className: "bdv2-related-body", children: [
-          /* @__PURE__ */ jsx("h3", { children: b.title }),
-          /* @__PURE__ */ jsxs("span", { children: [
-            b.date,
-            " · ",
-            b.readTime
-          ] })
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx(StructuredData, { type: "BlogPosting", data: blog }),
+      /* @__PURE__ */ jsx("header", { className: "bdv2-header", children: /* @__PURE__ */ jsxs("div", { className: "bdv2-header-inner", children: [
+        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs", "aria-label": "Breadcrumb", children: [
+          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+          /* @__PURE__ */ jsx("span", { children: "/" }),
+          /* @__PURE__ */ jsx(Link, { to: "/blog", children: "Blog" }),
+          /* @__PURE__ */ jsx("span", { children: "/" }),
+          /* @__PURE__ */ jsx("em", { children: blog.title })
         ] }),
-        /* @__PURE__ */ jsx("span", { className: "bdv2-related-arrow", "aria-hidden": "true", children: /* @__PURE__ */ jsx(ArrowUpRight, { size: 16, strokeWidth: 1.8 }) })
-      ] }, b.id)) })
-    ] }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void  bdv2-cta-shell", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Bring us the problem.",
-        /* @__PURE__ */ jsx("br", {}),
-        /* @__PURE__ */ jsx("span", { className: "v2-cta-accent", children: "We'll bring back a scoped plan." })
+        /* @__PURE__ */ jsxs("div", { className: "bdv2-meta", children: [
+          /* @__PURE__ */ jsx("span", { className: "bdv2-tag", children: blog.tags[1] || blog.tags[0] }),
+          /* @__PURE__ */ jsx("span", { children: blog.date }),
+          /* @__PURE__ */ jsx("span", { children: blog.readTime })
+        ] }),
+        /* @__PURE__ */ jsx("h1", { className: "bdv2-title", children: blog.title })
+      ] }) }),
+      /* @__PURE__ */ jsx("section", { className: "v2-section", id: "article", children: /* @__PURE__ */ jsxs("div", { className: "bdv2-article-inner", children: [
+        /* @__PURE__ */ jsx("div", { className: "bdv2-image", children: /* @__PURE__ */ jsx("img", { src: blog.image, alt: blog.title }) }),
+        /* @__PURE__ */ jsx("article", { className: "bdv2-body", ref: articleRef, children: blog.content.split(/\n\n|\\n\\n/).map((block, index) => {
+          const trimmed = block.trim();
+          if (trimmed.startsWith("### ")) {
+            return /* @__PURE__ */ jsx("h3", { children: trimmed.replace("### ", "") }, index);
+          }
+          if (trimmed.startsWith("## ")) {
+            return /* @__PURE__ */ jsx("h2", { children: trimmed.replace("## ", "") }, index);
+          }
+          if (trimmed.startsWith("> ")) {
+            return /* @__PURE__ */ jsx("blockquote", { children: trimmed.replace("> ", "") }, index);
+          }
+          if (trimmed.startsWith("- ")) {
+            const items = trimmed.split(/\\n|\\\\n|\n/).filter((l) => l.trim().startsWith("- "));
+            return /* @__PURE__ */ jsx("ul", { children: items.map((item, i) => /* @__PURE__ */ jsx("li", { children: item.replace(/^-\s*/, "") }, i)) }, index);
+          }
+          return /* @__PURE__ */ jsx("p", { children: trimmed }, index);
+        }) }),
+        /* @__PURE__ */ jsx("div", { className: "bdv2-back", children: /* @__PURE__ */ jsxs(Link, { className: "v2-hero-secondary", to: "/blog", children: [
+          /* @__PURE__ */ jsx(ArrowLeft, { size: 15, strokeWidth: 2 }),
+          /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "Back to all articles" })
+        ] }) })
+      ] }) }),
+      related.length > 0 && /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "related", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Keep Reading" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Related articles." }),
+        /* @__PURE__ */ jsx("div", { className: "bdv2-related", children: related.map((b) => /* @__PURE__ */ jsxs(Link, { className: "bdv2-related-card", to: `/blog/${b.slug || slugify(b.title)}`, children: [
+          /* @__PURE__ */ jsx("div", { className: "bdv2-related-media", children: /* @__PURE__ */ jsx("img", { src: b.image, alt: b.title, loading: "lazy" }) }),
+          /* @__PURE__ */ jsxs("div", { className: "bdv2-related-body", children: [
+            /* @__PURE__ */ jsx("h3", { children: b.title }),
+            /* @__PURE__ */ jsxs("span", { children: [
+              b.date,
+              " · ",
+              b.readTime
+            ] })
+          ] }),
+          /* @__PURE__ */ jsx("span", { className: "bdv2-related-arrow", "aria-hidden": "true", children: /* @__PURE__ */ jsx(ArrowUpRight, { size: 16, strokeWidth: 1.8 }) })
+        ] }, b.id)) })
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your product — your users, your workflows, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void  bdv2-cta-shell", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Bring us the problem.",
+          /* @__PURE__ */ jsx("br", {}),
+          /* @__PURE__ */ jsx("span", { className: "v2-cta-accent", children: "We'll bring back a scoped plan." })
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your product — your users, your workflows, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -16721,107 +16773,109 @@ function CaseStudyV2() {
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-main", children: /* @__PURE__ */ jsxs("div", { children: [
-      /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-        /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-        /* @__PURE__ */ jsx("span", { children: "/" }),
-        /* @__PURE__ */ jsx("em", { children: "Case Studies" })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-        /* @__PURE__ */ jsx("i", {}),
-        " ",
-        allProjects.length,
-        " documented projects"
-      ] }) }),
-      /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
-        /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "The problem, the build," }) }),
-        " ",
-        /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "and what changed." }) })
-      ] }),
-      /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Every case study here covers the same three things — what was broken, what we built, and the outcome — not just a screenshot gallery." })
-    ] }) }) }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "case-studies", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Browse By Category" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Filter by what you're building." }),
-      /* @__PURE__ */ jsx("div", { className: "csv2-filters", role: "group", "aria-label": "Filter by category", children: CATEGORIES.map((c) => /* @__PURE__ */ jsx(
-        "button",
-        {
-          className: `csv2-filter ${category === c ? "is-active" : ""}`,
-          onClick: () => setCategory(c),
-          children: c
-        },
-        c
-      )) }),
-      /* @__PURE__ */ jsx("div", { className: "csv2-grid is-in", children: filtered.map((p) => /* @__PURE__ */ jsxs(Link, { className: "csv2-card", to: `/case-study/${toV2Slug(p.href)}`, children: [
-        /* @__PURE__ */ jsxs("div", { className: "csv2-card-media", children: [
-          /* @__PURE__ */ jsx("img", { src: p.image, alt: p.title, loading: "lazy" }),
-          /* @__PURE__ */ jsx("span", { className: "csv2-card-cat", children: p.category })
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-main", children: /* @__PURE__ */ jsxs("div", { children: [
+        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+          /* @__PURE__ */ jsx("span", { children: "/" }),
+          /* @__PURE__ */ jsx("em", { children: "Case Studies" })
         ] }),
-        /* @__PURE__ */ jsxs("div", { className: "csv2-card-body", children: [
-          /* @__PURE__ */ jsx("h3", { className: "csv2-card-title", children: p.title }),
-          /* @__PURE__ */ jsx("p", { className: "csv2-card-desc", children: p.description }),
-          /* @__PURE__ */ jsx("div", { className: "csv2-card-tags", children: Array.isArray(p.tags) ? p.tags.slice(0, 4).map((t) => /* @__PURE__ */ jsx("span", { children: t }, t)) : null }),
-          /* @__PURE__ */ jsxs("span", { className: "csv2-card-link", children: [
-            "Read case study ",
-            /* @__PURE__ */ jsx(ArrowUpRight, { size: 15, strokeWidth: 1.8 })
+        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+          /* @__PURE__ */ jsx("i", {}),
+          " ",
+          allProjects.length,
+          " documented projects"
+        ] }) }),
+        /* @__PURE__ */ jsxs("h1", { className: "sd2-hero-title", children: [
+          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: "The problem, the build," }) }),
+          " ",
+          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { className: "v2-hero-accent", children: "and what changed." }) })
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: "Every case study here covers the same three things — what was broken, what we built, and the outcome — not just a screenshot gallery." })
+      ] }) }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "case-studies", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Browse By Category" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Filter by what you're building." }),
+        /* @__PURE__ */ jsx("div", { className: "csv2-filters", role: "group", "aria-label": "Filter by category", children: CATEGORIES.map((c) => /* @__PURE__ */ jsx(
+          "button",
+          {
+            className: `csv2-filter ${category === c ? "is-active" : ""}`,
+            onClick: () => setCategory(c),
+            children: c
+          },
+          c
+        )) }),
+        /* @__PURE__ */ jsx("div", { className: "csv2-grid is-in", children: filtered.map((p) => /* @__PURE__ */ jsxs(Link, { className: "csv2-card", to: `/case-study/${toV2Slug(p.href)}`, children: [
+          /* @__PURE__ */ jsxs("div", { className: "csv2-card-media", children: [
+            /* @__PURE__ */ jsx("img", { src: p.image, alt: p.title, loading: "lazy" }),
+            /* @__PURE__ */ jsx("span", { className: "csv2-card-cat", children: p.category })
+          ] }),
+          /* @__PURE__ */ jsxs("div", { className: "csv2-card-body", children: [
+            /* @__PURE__ */ jsx("h3", { className: "csv2-card-title", children: p.title }),
+            /* @__PURE__ */ jsx("p", { className: "csv2-card-desc", children: p.description }),
+            /* @__PURE__ */ jsx("div", { className: "csv2-card-tags", children: Array.isArray(p.tags) ? p.tags.slice(0, 4).map((t) => /* @__PURE__ */ jsx("span", { children: t }, t)) : null }),
+            /* @__PURE__ */ jsxs("span", { className: "csv2-card-link", children: [
+              "Read case study ",
+              /* @__PURE__ */ jsx(ArrowUpRight, { size: 15, strokeWidth: 1.8 })
+            ] })
           ] })
-        ] })
-      ] }, p.id)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "stats", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "By The Portfolio" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Depth across a real range of work." }),
-      /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
-        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Codelix, across case studies" }),
-          /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Updated 2026" })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid csv2-stats-grid", children: STATS.map((b, i) => {
-          const R = 52;
-          const C = 2 * Math.PI * R;
-          const offset = C - C * b.ring / 100;
-          return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
-            /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
-              /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
-                /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `csv2-bench-grad-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
-                  /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
-                  /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
-                ] }) }),
-                /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
-                /* @__PURE__ */ jsx(
-                  "circle",
-                  {
-                    className: "sd2-bench-ring-fill",
-                    cx: "60",
-                    cy: "60",
-                    r: R,
-                    stroke: `url(#csv2-bench-grad-${i})`,
-                    style: { "--c": C, "--ring-offset": offset }
-                  }
-                )
-              ] }),
-              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
-                /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
-            /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
-          ] }, b.label);
-        }) })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsx(ClientStrip, {}),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void  csv2-cta-shell", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Like what you see?",
-        /* @__PURE__ */ jsx("br", {}),
-        "Let's build yours next."
+        ] }, p.id)) })
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your project — scoped honestly, built the same way as everything above." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Start a project →" }) })
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "stats", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "By The Portfolio" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Depth across a real range of work." }),
+        /* @__PURE__ */ jsxs("div", { className: "sd2-bench-panel", children: [
+          /* @__PURE__ */ jsxs("div", { className: "sd2-bench-bar", children: [
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-dot", "aria-hidden": "true" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-title", children: "Codelix, across case studies" }),
+            /* @__PURE__ */ jsx("span", { className: "sd2-bench-bar-meta", children: "Updated 2026" })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "sd2-bench-grid csv2-stats-grid", children: STATS.map((b, i) => {
+            const R = 52;
+            const C = 2 * Math.PI * R;
+            const offset = C - C * b.ring / 100;
+            return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
+              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
+                /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
+                  /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `csv2-bench-grad-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
+                    /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
+                    /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
+                  ] }) }),
+                  /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
+                  /* @__PURE__ */ jsx(
+                    "circle",
+                    {
+                      className: "sd2-bench-ring-fill",
+                      cx: "60",
+                      cy: "60",
+                      r: R,
+                      stroke: `url(#csv2-bench-grad-${i})`,
+                      style: { "--c": C, "--ring-offset": offset }
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": b.value, children: "0" }),
+                  /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: b.suffix })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: b.label }),
+              /* @__PURE__ */ jsx("div", { className: "sd2-bench-note", children: b.note })
+            ] }, b.label);
+          }) })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx(ClientStrip, {}),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void  csv2-cta-shell", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Like what you see?",
+          /* @__PURE__ */ jsx("br", {}),
+          "Let's build yours next."
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your project — scoped honestly, built the same way as everything above." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Start a project →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });
@@ -16897,207 +16951,209 @@ function CaseStudyDetailV2() {
   }, [cs]);
   if (!cs && loading) return /* @__PURE__ */ jsx(ArticleSkeleton, { label: "Loading case study" });
   if (!cs) {
-    return /* @__PURE__ */ jsxs("div", { className: "v2", style: { minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }, children: [
+    return /* @__PURE__ */ jsx("div", { className: "v2", style: { minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }, children: /* @__PURE__ */ jsxs("main", { children: [
       /* @__PURE__ */ jsx("h1", { style: { color: "#fff", fontSize: 28 }, children: "Case study not found." }),
       /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/case-study", children: "Back to Case Studies →" })
-    ] });
+    ] }) });
   }
   const more = PROJECTS.filter((p) => p.href !== `/${cs.slug}`).slice(0, 3);
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
     /* @__PURE__ */ jsx(SEO, { title: `${cs.title} | Case Study | Codelix`, description: cs.description || `Read about how we solved ${cs.title} at Codelix IT Solutions.` }),
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
-    /* @__PURE__ */ jsx(StructuredData, { type: "Article", data: cs }),
-    /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
-          /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx(Link, { to: "/case-study", children: "Case Studies" }),
-          /* @__PURE__ */ jsx("span", { children: "/" }),
-          /* @__PURE__ */ jsx("em", { children: cs.title })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
-          /* @__PURE__ */ jsx("i", {}),
-          " Case Study",
-          cs.isConcept ? " · Concept" : ""
-        ] }) }),
-        /* @__PURE__ */ jsx("h1", { className: "sd2-hero-title csd2-title", children: splitTitle(cs.title).map((part, i) => /* @__PURE__ */ jsxs(React.Fragment, { children: [
-          i > 0 ? " " : null,
-          /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: part }) })
-        ] }, i)) }),
-        /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: cs.description }),
-        /* @__PURE__ */ jsx("div", { className: "csd2-tags sv2-hero-reveal", children: cs.tags.map((t) => /* @__PURE__ */ jsx("span", { children: t }, t)) }),
-        cs.isConcept && /* @__PURE__ */ jsx("p", { className: "csd2-concept-note", children: "This is a concept exploration, not a live client build — shown here honestly as design work, not a deployed product." }),
-        /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
-          /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
-            /* @__PURE__ */ jsx("span", { children: "Start a similar project" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
-          ] }),
-          /* @__PURE__ */ jsxs(Link, { className: "v2-hero-secondary", to: "/case-study", children: [
-            /* @__PURE__ */ jsx(ArrowLeft, { size: 15, strokeWidth: 2 }),
-            /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "All case studies" })
-          ] })
-        ] })
-      ] }),
-      cs.image && /* @__PURE__ */ jsx("div", { className: "csd2-hero-media sv2-hero-reveal", children: /* @__PURE__ */ jsx("img", { src: cs.image, alt: cs.title }) })
-    ] }) }) }),
-    cs.snapshot && /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "snapshot", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Engagement at a Glance" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The project, in numbers." }),
-      /* @__PURE__ */ jsx("div", { className: "csd2-snapshot", children: cs.snapshot.map((s, i) => /* @__PURE__ */ jsxs("div", { className: "csd2-snapshot-item", children: [
-        /* @__PURE__ */ jsx("span", { className: "csd2-snapshot-k", children: s.label }),
-        /* @__PURE__ */ jsx("span", { className: "csd2-snapshot-v", children: s.value })
-      ] }, i)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "overview", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Project Overview" }),
-      /* @__PURE__ */ jsx("div", { className: "csd2-overview", children: cs.overview.map((p, i) => /* @__PURE__ */ jsx("p", { children: p }, i)) })
-    ] }),
-    cs.challengeImages && /* @__PURE__ */ jsx("div", { className: "csd2-duo", children: cs.challengeImages.map((img, i) => /* @__PURE__ */ jsx("div", { className: "csd2-duo-frame", children: /* @__PURE__ */ jsx("img", { src: img.src, alt: img.alt }) }, i)) }),
-    /* @__PURE__ */ jsx("section", { className: "v2-section", id: "challenges", children: /* @__PURE__ */ jsxs("div", { className: "csd2-challenges-grid", children: [
-      /* @__PURE__ */ jsxs("div", { className: "csd2-challenges-col", children: [
-        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Challenges" }),
-        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The problem we faced." }),
-        /* @__PURE__ */ jsx("div", { className: "csd2-issues csd2-issues--problem", children: cs.challenges.map((p, i) => /* @__PURE__ */ jsxs("div", { className: "csd2-issue-row", children: [
-          /* @__PURE__ */ jsx("span", { className: "csd2-issue-icon", children: /* @__PURE__ */ jsx(X, { size: 13, strokeWidth: 2.6 }) }),
-          /* @__PURE__ */ jsx("p", { children: p })
-        ] }, i)) })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "csd2-challenges-col", children: [
-        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Solutions" }),
-        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we built instead." }),
-        /* @__PURE__ */ jsx("div", { className: "csd2-issues csd2-issues--solution", children: cs.solutions.map((p, i) => /* @__PURE__ */ jsxs("div", { className: "csd2-issue-row", children: [
-          /* @__PURE__ */ jsx("span", { className: "csd2-issue-icon", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.6 }) }),
-          /* @__PURE__ */ jsx("p", { children: p })
-        ] }, i)) })
-      ] })
-    ] }) }),
-    cs.process && /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "process", children: [
-      /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
-        /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How We Delivered It." }),
-        /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "The phase-by-phase path from discovery to go-live." })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: cs.process.map((m, i) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
-        /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: String(i + 1).padStart(2, "0") }),
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx(StructuredData, { type: "Article", data: cs }),
+      /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
         /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.phase }),
-          /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
-      ] }, i)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "outcomes", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Project Outcomes" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The results, measured after launch." }),
-      /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Four numbers that summarize what changed once the system went live." }),
-      /* @__PURE__ */ jsx("div", { className: "csd2-outcomes", children: cs.outcomes.map((o, i) => {
-        const R = 52;
-        const C = 2 * Math.PI * R;
-        const ring = Math.min(o.value, 100);
-        const offset = C - C * ring / 100;
-        return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
-          /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
-            /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
-              /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `csd2-grad-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
-                /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
-                /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
-              ] }) }),
-              /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
-              /* @__PURE__ */ jsx(
-                "circle",
-                {
-                  className: "sd2-bench-ring-fill",
-                  cx: "60",
-                  cy: "60",
-                  r: R,
-                  stroke: `url(#csd2-grad-${i})`,
-                  style: { "--c": C, "--ring-offset": offset }
-                }
-              )
-            ] }),
-            /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
-              /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": o.value, children: "0" }),
-              /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: o.suffix })
-            ] })
+          /* @__PURE__ */ jsxs("nav", { className: "sd2-crumbs sv2-hero-reveal", "aria-label": "Breadcrumb", children: [
+            /* @__PURE__ */ jsx(Link, { to: "/", children: "Home" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx(Link, { to: "/case-study", children: "Case Studies" }),
+            /* @__PURE__ */ jsx("span", { children: "/" }),
+            /* @__PURE__ */ jsx("em", { children: cs.title })
           ] }),
-          /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: o.label })
-        ] }, i);
-      }) }),
-      cs.resultsNote && /* @__PURE__ */ jsx("p", { className: "csd2-results-note", children: cs.resultsNote })
-    ] }),
-    cs.services && /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "services-delivered", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Services Delivered" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we were engaged to do." }),
-      /* @__PURE__ */ jsx("div", { className: "csd2-ledger", children: cs.services.map((s, i) => /* @__PURE__ */ jsxs("div", { className: "csd2-ledger-row", children: [
-        /* @__PURE__ */ jsx("span", { className: "csd2-ledger-index", children: String(i + 1).padStart(2, "0") }),
-        /* @__PURE__ */ jsx("span", { className: "csd2-ledger-text", children: s }),
-        /* @__PURE__ */ jsx("span", { className: "csd2-ledger-icon", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.6 }) })
-      ] }, i)) })
-    ] }),
-    cs.features && /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "features", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Core Features" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What shipped inside the system." }),
-      /* @__PURE__ */ jsx("div", { className: "csd2-features", children: cs.features.map((f, i) => /* @__PURE__ */ jsxs("div", { className: "csd2-feature", children: [
-        /* @__PURE__ */ jsxs("div", { className: "csd2-feature-top", children: [
-          /* @__PURE__ */ jsx("span", { className: "csd2-feature-icon", children: /* @__PURE__ */ jsx(Check, { size: 14, strokeWidth: 2.6 }) }),
-          /* @__PURE__ */ jsx("span", { className: "csd2-feature-index", children: String(i + 1).padStart(2, "0") })
+          /* @__PURE__ */ jsx("div", { className: "v2-hero-top sv2-hero-reveal", children: /* @__PURE__ */ jsxs("span", { className: "v2-hero-status", children: [
+            /* @__PURE__ */ jsx("i", {}),
+            " Case Study",
+            cs.isConcept ? " · Concept" : ""
+          ] }) }),
+          /* @__PURE__ */ jsx("h1", { className: "sd2-hero-title csd2-title", children: splitTitle(cs.title).map((part, i) => /* @__PURE__ */ jsxs(React.Fragment, { children: [
+            i > 0 ? " " : null,
+            /* @__PURE__ */ jsx("span", { className: "line", children: /* @__PURE__ */ jsx("span", { children: part }) })
+          ] }, i)) }),
+          /* @__PURE__ */ jsx("p", { className: "sd2-hero-sub sv2-hero-reveal", children: cs.description }),
+          /* @__PURE__ */ jsx("div", { className: "csd2-tags sv2-hero-reveal", children: cs.tags.map((t) => /* @__PURE__ */ jsx("span", { children: t }, t)) }),
+          cs.isConcept && /* @__PURE__ */ jsx("p", { className: "csd2-concept-note", children: "This is a concept exploration, not a live client build — shown here honestly as design work, not a deployed product." }),
+          /* @__PURE__ */ jsxs("div", { className: "sd2-hero-cta sv2-hero-reveal", children: [
+            /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", children: [
+              /* @__PURE__ */ jsx("span", { children: "Start a similar project" }),
+              /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+            ] }),
+            /* @__PURE__ */ jsxs(Link, { className: "v2-hero-secondary", to: "/case-study", children: [
+              /* @__PURE__ */ jsx(ArrowLeft, { size: 15, strokeWidth: 2 }),
+              /* @__PURE__ */ jsx("span", { className: "v2-hero-secondary-label", children: "All case studies" })
+            ] })
+          ] })
         ] }),
-        /* @__PURE__ */ jsx("p", { children: f })
-      ] }, i)) })
-    ] }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "tools", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Tools & Technologies" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What this project was built with." }),
-      /* @__PURE__ */ jsx("div", { className: "csd2-tools", children: cs.tools.map((t) => /* @__PURE__ */ jsxs("span", { children: [
-        /* @__PURE__ */ jsx("i", { className: "csd2-tools-avatar", "aria-hidden": "true", children: t.charAt(0) }),
-        t
-      ] }, t)) }),
-      cs.whyStack && /* @__PURE__ */ jsxs("div", { className: "csd2-whystack", children: [
-        /* @__PURE__ */ jsx("p", { className: "csd2-whystack-label", children: "Why this stack" }),
-        /* @__PURE__ */ jsx("ul", { children: cs.whyStack.map((w, i) => /* @__PURE__ */ jsx("li", { children: w }, i)) })
-      ] })
-    ] }),
-    cs.scalability && /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "scalability", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Built To Grow" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Where this goes from here." }),
-      /* @__PURE__ */ jsx("div", { className: "csd2-roadmap", children: cs.scalability.map((s, i) => /* @__PURE__ */ jsxs("div", { className: "csd2-roadmap-item", children: [
-        /* @__PURE__ */ jsx("span", { className: "csd2-roadmap-marker", children: String(i + 1).padStart(2, "0") }),
-        /* @__PURE__ */ jsxs("div", { className: "csd2-roadmap-card", children: [
-          /* @__PURE__ */ jsx("p", { children: s }),
-          /* @__PURE__ */ jsx("span", { className: "csd2-roadmap-arrow", children: /* @__PURE__ */ jsx(ArrowUpRight, { size: 15, strokeWidth: 2 }) })
-        ] })
-      ] }, i)) })
-    ] }),
-    cs.quote && /* @__PURE__ */ jsx("section", { className: "v2-section", children: /* @__PURE__ */ jsxs("figure", { className: "sd2-quote", children: [
-      /* @__PURE__ */ jsx("span", { className: "sd2-quote-mark", "aria-hidden": "true", children: "“" }),
-      /* @__PURE__ */ jsx("blockquote", { className: "sd2-quote-text", children: cs.quote.text }),
-      /* @__PURE__ */ jsxs("figcaption", { className: "sd2-quote-by", children: [
-        cs.quote.name && /* @__PURE__ */ jsx("span", { className: "sd2-quote-name", children: cs.quote.name }),
-        /* @__PURE__ */ jsx("span", { className: "sd2-quote-role", children: cs.quote.role })
-      ] })
-    ] }) }),
-    /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "more", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "More Work" }),
-      /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Other real projects." }),
-      /* @__PURE__ */ jsx("div", { className: "csd2-more", children: more.map((p) => /* @__PURE__ */ jsxs(Link, { className: "csd2-more-card", to: `/case-study${p.href}`, children: [
-        /* @__PURE__ */ jsx("div", { className: "csd2-more-media", children: /* @__PURE__ */ jsx("img", { src: p.image, alt: p.title, loading: "lazy" }) }),
-        /* @__PURE__ */ jsxs("div", { className: "csd2-more-body", children: [
-          /* @__PURE__ */ jsx("h3", { children: p.title }),
-          /* @__PURE__ */ jsx("div", { className: "csd2-more-tags", children: p.tags.slice(0, 3).map((t) => /* @__PURE__ */ jsx("span", { children: t }, t)) })
-        ] }),
-        /* @__PURE__ */ jsx("span", { className: "csd2-more-arrow", "aria-hidden": "true", children: /* @__PURE__ */ jsx(ArrowUpRight, { size: 16, strokeWidth: 1.8 }) })
-      ] }, p.id)) })
-    ] }),
-    /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void  csd2-cta-shell", children: [
-      /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
-      /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
-        "Bring us the problem.",
-        /* @__PURE__ */ jsx("br", {}),
-        /* @__PURE__ */ jsx("span", { className: "v2-cta-accent", children: "We'll bring back a scoped plan." })
+        cs.image && /* @__PURE__ */ jsx("div", { className: "csd2-hero-media sv2-hero-reveal", children: /* @__PURE__ */ jsx("img", { src: cs.image, alt: cs.title }) })
+      ] }) }) }),
+      cs.snapshot && /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "snapshot", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Engagement at a Glance" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The project, in numbers." }),
+        /* @__PURE__ */ jsx("div", { className: "csd2-snapshot", children: cs.snapshot.map((s, i) => /* @__PURE__ */ jsxs("div", { className: "csd2-snapshot-item", children: [
+          /* @__PURE__ */ jsx("span", { className: "csd2-snapshot-k", children: s.label }),
+          /* @__PURE__ */ jsx("span", { className: "csd2-snapshot-v", children: s.value })
+        ] }, i)) })
       ] }),
-      /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your product — your users, your workflows, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
-      /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "overview", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Project Overview" }),
+        /* @__PURE__ */ jsx("div", { className: "csd2-overview", children: cs.overview.map((p, i) => /* @__PURE__ */ jsx("p", { children: p }, i)) })
+      ] }),
+      cs.challengeImages && /* @__PURE__ */ jsx("div", { className: "csd2-duo", children: cs.challengeImages.map((img, i) => /* @__PURE__ */ jsx("div", { className: "csd2-duo-frame", children: /* @__PURE__ */ jsx("img", { src: img.src, alt: img.alt }) }, i)) }),
+      /* @__PURE__ */ jsx("section", { className: "v2-section", id: "challenges", children: /* @__PURE__ */ jsxs("div", { className: "csd2-challenges-grid", children: [
+        /* @__PURE__ */ jsxs("div", { className: "csd2-challenges-col", children: [
+          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Challenges" }),
+          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The problem we faced." }),
+          /* @__PURE__ */ jsx("div", { className: "csd2-issues csd2-issues--problem", children: cs.challenges.map((p, i) => /* @__PURE__ */ jsxs("div", { className: "csd2-issue-row", children: [
+            /* @__PURE__ */ jsx("span", { className: "csd2-issue-icon", children: /* @__PURE__ */ jsx(X, { size: 13, strokeWidth: 2.6 }) }),
+            /* @__PURE__ */ jsx("p", { children: p })
+          ] }, i)) })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "csd2-challenges-col", children: [
+          /* @__PURE__ */ jsx("p", { className: "v2-label", children: "The Solutions" }),
+          /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we built instead." }),
+          /* @__PURE__ */ jsx("div", { className: "csd2-issues csd2-issues--solution", children: cs.solutions.map((p, i) => /* @__PURE__ */ jsxs("div", { className: "csd2-issue-row", children: [
+            /* @__PURE__ */ jsx("span", { className: "csd2-issue-icon", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.6 }) }),
+            /* @__PURE__ */ jsx("p", { children: p })
+          ] }, i)) })
+        ] })
+      ] }) }),
+      cs.process && /* @__PURE__ */ jsxs("section", { className: "v2-method-shell", id: "process", children: [
+        /* @__PURE__ */ jsxs("div", { className: "v2-method-head", children: [
+          /* @__PURE__ */ jsx("h2", { className: "v2-method-heading", children: "How We Delivered It." }),
+          /* @__PURE__ */ jsx("p", { className: "v2-method-lede", children: "The phase-by-phase path from discovery to go-live." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "v2-method-rows", children: cs.process.map((m, i) => /* @__PURE__ */ jsxs("div", { className: "v2-method-row", children: [
+          /* @__PURE__ */ jsx("div", { className: "v2-method-index", children: String(i + 1).padStart(2, "0") }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("div", { className: "v2-method-title", children: m.phase }),
+            /* @__PURE__ */ jsx("span", { className: "v2-method-timeframe", children: m.time })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "v2-method-body", children: m.body })
+        ] }, i)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "outcomes", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Project Outcomes" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "The results, measured after launch." }),
+        /* @__PURE__ */ jsx("p", { className: "v2-lede", children: "Four numbers that summarize what changed once the system went live." }),
+        /* @__PURE__ */ jsx("div", { className: "csd2-outcomes", children: cs.outcomes.map((o, i) => {
+          const R = 52;
+          const C = 2 * Math.PI * R;
+          const ring = Math.min(o.value, 100);
+          const offset = C - C * ring / 100;
+          return /* @__PURE__ */ jsxs("div", { className: "sd2-bench", children: [
+            /* @__PURE__ */ jsxs("div", { className: "sd2-bench-ring", children: [
+              /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 120 120", className: "sd2-bench-ring-svg", "aria-hidden": "true", children: [
+                /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsxs("linearGradient", { id: `csd2-grad-${i}`, x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
+                  /* @__PURE__ */ jsx("stop", { offset: "0%", stopColor: "rgba(180,200,230,.55)" }),
+                  /* @__PURE__ */ jsx("stop", { offset: "100%", stopColor: "rgba(180,200,230,1)" })
+                ] }) }),
+                /* @__PURE__ */ jsx("circle", { className: "sd2-bench-ring-track", cx: "60", cy: "60", r: R }),
+                /* @__PURE__ */ jsx(
+                  "circle",
+                  {
+                    className: "sd2-bench-ring-fill",
+                    cx: "60",
+                    cy: "60",
+                    r: R,
+                    stroke: `url(#csd2-grad-${i})`,
+                    style: { "--c": C, "--ring-offset": offset }
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ jsxs("div", { className: "sd2-bench-num", children: [
+                /* @__PURE__ */ jsx("span", { className: "sd2-bench-value", "data-target": o.value, children: "0" }),
+                /* @__PURE__ */ jsx("span", { className: "sd2-bench-suffix", children: o.suffix })
+              ] })
+            ] }),
+            /* @__PURE__ */ jsx("div", { className: "sd2-bench-label", children: o.label })
+          ] }, i);
+        }) }),
+        cs.resultsNote && /* @__PURE__ */ jsx("p", { className: "csd2-results-note", children: cs.resultsNote })
+      ] }),
+      cs.services && /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "services-delivered", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Services Delivered" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What we were engaged to do." }),
+        /* @__PURE__ */ jsx("div", { className: "csd2-ledger", children: cs.services.map((s, i) => /* @__PURE__ */ jsxs("div", { className: "csd2-ledger-row", children: [
+          /* @__PURE__ */ jsx("span", { className: "csd2-ledger-index", children: String(i + 1).padStart(2, "0") }),
+          /* @__PURE__ */ jsx("span", { className: "csd2-ledger-text", children: s }),
+          /* @__PURE__ */ jsx("span", { className: "csd2-ledger-icon", children: /* @__PURE__ */ jsx(Check, { size: 13, strokeWidth: 2.6 }) })
+        ] }, i)) })
+      ] }),
+      cs.features && /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "features", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Core Features" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What shipped inside the system." }),
+        /* @__PURE__ */ jsx("div", { className: "csd2-features", children: cs.features.map((f, i) => /* @__PURE__ */ jsxs("div", { className: "csd2-feature", children: [
+          /* @__PURE__ */ jsxs("div", { className: "csd2-feature-top", children: [
+            /* @__PURE__ */ jsx("span", { className: "csd2-feature-icon", children: /* @__PURE__ */ jsx(Check, { size: 14, strokeWidth: 2.6 }) }),
+            /* @__PURE__ */ jsx("span", { className: "csd2-feature-index", children: String(i + 1).padStart(2, "0") })
+          ] }),
+          /* @__PURE__ */ jsx("p", { children: f })
+        ] }, i)) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section v2-section--void", id: "tools", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Tools & Technologies" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "What this project was built with." }),
+        /* @__PURE__ */ jsx("div", { className: "csd2-tools", children: cs.tools.map((t) => /* @__PURE__ */ jsxs("span", { children: [
+          /* @__PURE__ */ jsx("i", { className: "csd2-tools-avatar", "aria-hidden": "true", children: t.charAt(0) }),
+          t
+        ] }, t)) }),
+        cs.whyStack && /* @__PURE__ */ jsxs("div", { className: "csd2-whystack", children: [
+          /* @__PURE__ */ jsx("p", { className: "csd2-whystack-label", children: "Why this stack" }),
+          /* @__PURE__ */ jsx("ul", { children: cs.whyStack.map((w, i) => /* @__PURE__ */ jsx("li", { children: w }, i)) })
+        ] })
+      ] }),
+      cs.scalability && /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "scalability", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Built To Grow" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Where this goes from here." }),
+        /* @__PURE__ */ jsx("div", { className: "csd2-roadmap", children: cs.scalability.map((s, i) => /* @__PURE__ */ jsxs("div", { className: "csd2-roadmap-item", children: [
+          /* @__PURE__ */ jsx("span", { className: "csd2-roadmap-marker", children: String(i + 1).padStart(2, "0") }),
+          /* @__PURE__ */ jsxs("div", { className: "csd2-roadmap-card", children: [
+            /* @__PURE__ */ jsx("p", { children: s }),
+            /* @__PURE__ */ jsx("span", { className: "csd2-roadmap-arrow", children: /* @__PURE__ */ jsx(ArrowUpRight, { size: 15, strokeWidth: 2 }) })
+          ] })
+        ] }, i)) })
+      ] }),
+      cs.quote && /* @__PURE__ */ jsx("section", { className: "v2-section", children: /* @__PURE__ */ jsxs("figure", { className: "sd2-quote", children: [
+        /* @__PURE__ */ jsx("span", { className: "sd2-quote-mark", "aria-hidden": "true", children: "“" }),
+        /* @__PURE__ */ jsx("blockquote", { className: "sd2-quote-text", children: cs.quote.text }),
+        /* @__PURE__ */ jsxs("figcaption", { className: "sd2-quote-by", children: [
+          cs.quote.name && /* @__PURE__ */ jsx("span", { className: "sd2-quote-name", children: cs.quote.name }),
+          /* @__PURE__ */ jsx("span", { className: "sd2-quote-role", children: cs.quote.role })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ jsxs("section", { className: "v2-section", id: "more", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "More Work" }),
+        /* @__PURE__ */ jsx("h2", { className: "v2-heading", children: "Other real projects." }),
+        /* @__PURE__ */ jsx("div", { className: "csd2-more", children: more.map((p) => /* @__PURE__ */ jsxs(Link, { className: "csd2-more-card", to: `/case-study${p.href}`, children: [
+          /* @__PURE__ */ jsx("div", { className: "csd2-more-media", children: /* @__PURE__ */ jsx("img", { src: p.image, alt: p.title, loading: "lazy" }) }),
+          /* @__PURE__ */ jsxs("div", { className: "csd2-more-body", children: [
+            /* @__PURE__ */ jsx("h3", { children: p.title }),
+            /* @__PURE__ */ jsx("div", { className: "csd2-more-tags", children: p.tags.slice(0, 3).map((t) => /* @__PURE__ */ jsx("span", { children: t }, t)) })
+          ] }),
+          /* @__PURE__ */ jsx("span", { className: "csd2-more-arrow", "aria-hidden": "true", children: /* @__PURE__ */ jsx(ArrowUpRight, { size: 16, strokeWidth: 1.8 }) })
+        ] }, p.id)) })
+      ] }),
+      /* @__PURE__ */ jsxs(CtaSection, { className: "v2-section--void  csd2-cta-shell", children: [
+        /* @__PURE__ */ jsx("p", { className: "v2-label", children: "Start Here" }),
+        /* @__PURE__ */ jsxs("h2", { className: "v2-cta-headline", children: [
+          "Bring us the problem.",
+          /* @__PURE__ */ jsx("br", {}),
+          /* @__PURE__ */ jsx("span", { className: "v2-cta-accent", children: "We'll bring back a scoped plan." })
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "v2-cta-body", children: "A structured conversation about your product — your users, your workflows, your constraints. We scope what should be built first, what can wait, and what it takes to ship it." }),
+        /* @__PURE__ */ jsx("div", { className: "v2-cta-actions", children: /* @__PURE__ */ jsx(Link, { className: "v2-btn", to: "/contact", children: "Book a consultation →" }) })
+      ] })
     ] }),
     /* @__PURE__ */ jsx(FooterV2, {})
   ] });

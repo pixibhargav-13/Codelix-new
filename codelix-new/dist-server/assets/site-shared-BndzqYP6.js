@@ -738,30 +738,30 @@ function FooterV2() {
           target: "_blank",
           rel: "noopener noreferrer",
           children: [
-            /* @__PURE__ */ jsx("h5", { children: "India (HQ)" }),
+            /* @__PURE__ */ jsx("h3", { children: "India (HQ)" }),
             /* @__PURE__ */ jsx("p", { className: "v2-footer-card-addr", children: "A-1308, PNTC — Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat — 380015" })
           ]
         }
       ),
       /* @__PURE__ */ jsxs("div", { className: "v2-footer-card", children: [
-        /* @__PURE__ */ jsx("h5", { children: "Phone" }),
+        /* @__PURE__ */ jsx("h3", { children: "Phone" }),
         /* @__PURE__ */ jsx("a", { className: "v2-footer-card-strong", href: "tel:+919998263282", children: "+91 99982 63282" }),
         /* @__PURE__ */ jsx("a", { className: "v2-footer-card-strong", href: "tel:+917490909686", children: "+91 74909 09686" })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "v2-footer-card", children: [
-        /* @__PURE__ */ jsx("h5", { children: "Looking For Jobs" }),
+        /* @__PURE__ */ jsx("h3", { children: "Looking For Jobs" }),
         /* @__PURE__ */ jsx(Link, { className: "v2-footer-card-strong", to: "/careers", children: "View openings →" })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "v2-footer-card", children: [
-        /* @__PURE__ */ jsx("h5", { children: "HR" }),
+        /* @__PURE__ */ jsx("h3", { children: "HR" }),
         /* @__PURE__ */ jsx("a", { className: "v2-footer-card-strong", href: "mailto:hr@codelixitsolutions.com", children: "hr@codelixitsolutions.com" })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "v2-footer-card", children: [
-        /* @__PURE__ */ jsx("h5", { children: "General" }),
+        /* @__PURE__ */ jsx("h3", { children: "General" }),
         /* @__PURE__ */ jsx("a", { className: "v2-footer-card-strong", href: "mailto:info@codelixitsolutions.com", children: "info@codelixitsolutions.com" })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "v2-footer-card", children: [
-        /* @__PURE__ */ jsx("h5", { children: "For Sales" }),
+        /* @__PURE__ */ jsx("h3", { children: "For Sales" }),
         /* @__PURE__ */ jsx("a", { className: "v2-footer-card-strong", href: "mailto:sales@codelixitsolutions.com", children: "sales@codelixitsolutions.com" })
       ] })
     ] }),
@@ -1620,30 +1620,32 @@ function ArticleSkeleton({ label = "Loading article" }) {
       label,
       "…"
     ] }),
-    /* @__PURE__ */ jsx("header", { className: "artsk-header", children: /* @__PURE__ */ jsxs("div", { className: "artsk-inner", children: [
-      /* @__PURE__ */ jsxs("div", { className: "artsk-row", children: [
-        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 48 } }),
-        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 10 } }),
-        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 42 } })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "artsk-row", children: [
-        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 88 } }),
-        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 116 } }),
-        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 74 } })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "artsk-title", children: [
-        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "82%" } }),
-        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "54%" } })
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "artsk-header", children: /* @__PURE__ */ jsxs("div", { className: "artsk-inner", children: [
+        /* @__PURE__ */ jsxs("div", { className: "artsk-row", children: [
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 48 } }),
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 10 } }),
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 42 } })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "artsk-row", children: [
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 88 } }),
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 116 } }),
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 74 } })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "artsk-title", children: [
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "82%" } }),
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "54%" } })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ jsxs("div", { className: "artsk-body", children: [
+        /* @__PURE__ */ jsx("span", { className: "artsk-bar artsk-hero" }),
+        [0, 1, 2].map((block) => /* @__PURE__ */ jsxs("div", { className: "artsk-para", children: [
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "100%" } }),
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "96%" } }),
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "99%" } }),
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "61%" } })
+        ] }, block))
       ] })
-    ] }) }),
-    /* @__PURE__ */ jsxs("div", { className: "artsk-body", children: [
-      /* @__PURE__ */ jsx("span", { className: "artsk-bar artsk-hero" }),
-      [0, 1, 2].map((block) => /* @__PURE__ */ jsxs("div", { className: "artsk-para", children: [
-        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "100%" } }),
-        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "96%" } }),
-        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "99%" } }),
-        /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "61%" } })
-      ] }, block))
     ] })
   ] });
 }

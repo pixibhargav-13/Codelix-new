@@ -133,7 +133,7 @@ span.v2-label.pd2-reveal {
   margin-bottom: 20px;
 }
 
-.pd2-problem-card h4 {
+.pd2-problem-card h3 {
   font-size: 16px;
   font-weight: 600;
   color: var(--text);
@@ -267,7 +267,7 @@ span.v2-label.pd2-reveal {
   margin-bottom: 12px;
 }
 
-.pd2-module-card h4 {
+.pd2-module-card h3 {
   font-size: 14.5px;
   font-weight: 600;
   color: var(--text);
@@ -324,7 +324,7 @@ span.v2-label.pd2-reveal {
   margin-bottom: 16px;
 }
 
-.pd2-ai-card h4 {
+.pd2-ai-card h3 {
   font-size: 15.5px;
   font-weight: 600;
   color: var(--text);
@@ -352,7 +352,7 @@ span.v2-label.pd2-reveal {
   border-top: 2.5px solid var(--prod-accent);
 }
 
-.pd2-user-card h4 {
+.pd2-user-card h3 {
   font-size: 15px;
   font-weight: 600;
   color: var(--text);
@@ -400,7 +400,7 @@ span.v2-label.pd2-reveal {
   margin-top: 2px;
 }
 
-.pd2-feature-card h4 {
+.pd2-feature-card h3 {
   font-size: 13.5px;
   font-weight: 600;
   color: var(--text);
@@ -449,7 +449,7 @@ span.v2-label.pd2-reveal {
   font-weight: 700;
 }
 
-.pd2-how-row h4 {
+.pd2-how-row h3 {
   font-size: 15.5px;
   font-weight: 600;
   color: var(--text);
@@ -499,7 +499,7 @@ span.v2-label.pd2-reveal {
   text-transform: uppercase;
 }
 
-.pd2-pricing-card h4 {
+.pd2-pricing-card h3 {
   font-size: 18px;
   font-weight: 600;
   color: var(--text);
@@ -820,7 +820,7 @@ span.v2-label.pd2-reveal {
   margin-bottom: 10px;
 }
 
-.pd2-other-card h4 {
+.pd2-other-card h3 {
   font-size: 18px;
   font-weight: 600;
   color: var(--text);

@@ -124,9 +124,9 @@ export default function CaseStudyDetailV2() {
   if (!cs) {
     return (
       <div className="v2" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }}>
-        <h1 style={{ color: "#fff", fontSize: 28 }}>Case study not found.</h1>
+        <main><h1 style={{ color: "#fff", fontSize: 28 }}>Case study not found.</h1>
         <Link className="v2-btn" to="/case-study">Back to Case Studies →</Link>
-      </div>
+      </main></div>
     );
   }
 
@@ -139,6 +139,8 @@ export default function CaseStudyDetailV2() {
 
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
+
+      <main>
       <StructuredData type="Article" data={cs} />
 
       
@@ -486,6 +488,8 @@ export default function CaseStudyDetailV2() {
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
+      </main>
+
             <FooterV2 />
     </div>
   );

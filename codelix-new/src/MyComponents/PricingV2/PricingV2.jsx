@@ -169,6 +169,8 @@ export default function PricingV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
       
 
       {/* ══════════ 1 · HERO ══════════ */}
@@ -303,6 +305,8 @@ export default function PricingV2() {
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
+      </main>
+
       <FooterV2 />
     </div>
   );

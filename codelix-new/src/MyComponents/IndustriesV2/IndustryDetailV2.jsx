@@ -259,6 +259,8 @@ export default function IndustryDetailV2() {
 
       <NavbarV2 />
 
+      <main>
+
       {/* ══════════ 1 · HERO ══════════ */}
       <header className="sd2-hero">
         <div className="sd2-hero-inner">
@@ -577,6 +579,8 @@ export default function IndustryDetailV2() {
           <div className="v2-cta-actions">
             <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
 </CtaSection>
+
+      </main>
 
       <FooterV2 />
     </div>

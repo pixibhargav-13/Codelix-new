@@ -96,6 +96,8 @@ export default function TeamV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
 
 
       {/* ══════════ 1 · HERO ══════════ */}
@@ -257,6 +259,8 @@ export default function TeamV2() {
       </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
+      </main>
+
       <FooterV2 />
     </div>
   );

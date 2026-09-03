@@ -672,6 +672,8 @@ export default function HomepageV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
       {/* ══════════ 1 · HERO — Codelix's own composition ══════════ */}
       <header className="v2-hero">
         <div className="v2-hero-inner">
@@ -899,7 +901,7 @@ export default function HomepageV2() {
               <Link className="v2-map-card" key={s.id} to="/work">
                 <span className="v2-map-id">{s.id}</span>
                 <span className="v2-map-cluster">{s.cluster}</span>
-                <h4 className="v2-map-title">{s.title}</h4>
+                <h3 className="v2-map-title">{s.title}</h3>
                 <p className="v2-map-reality">{s.reality}</p>
               </Link>
             ))}
@@ -1087,6 +1089,8 @@ export default function HomepageV2() {
       {/* ══════════ FOOTER — mirrors the live site's real footer content
           (Footer.jsx): same columns, same links, same contact details, the
           "WE LIVE IN IT" marquee, and the oversized wordmark at the base ══════════ */}
+      </main>
+
       <FooterV2 />
     </div>
   );
