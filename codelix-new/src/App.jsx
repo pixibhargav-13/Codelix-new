@@ -310,8 +310,13 @@ const AppRoutes = () => {
 
 // ─── App ──────────────────────────────────────────────────────────────────────
 function App({ initialData }) {
+  /* wheelMultiplier is back to 1: at 0.85 every wheel tick moved the page 15%
+     less than any other site, which reads as heaviness rather than polish.
+     lerp is raised from 0.09 so the page follows the wheel closely instead of
+     trailing it — Lenis uses lerp whenever it is set, so duration now applies
+     only to programmatic scrollTo calls. */
   return (
-    <ReactLenis root options={{ lerp: 0.09, duration: 1.35, smoothWheel: true, wheelMultiplier: 0.85 }}>
+    <ReactLenis root options={{ lerp: 0.14, duration: 1, smoothWheel: true, wheelMultiplier: 1 }}>
       <InitialDataContext.Provider value={initialData}>
         <LenisGsapSync />
         <ScrollToTop />
