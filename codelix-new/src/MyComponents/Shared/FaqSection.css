@@ -84,6 +84,21 @@
   cursor: pointer;
 }
 
+/* index.css draws a focus ring on plain `button:focus` - plain :focus, so it
+   fires on a mouse click and not only on keyboard focus - and at (0,1,1) it
+   outranks anything set on .v2-faq-q alone. That is the rounded outline that
+   appeared around a row as soon as you opened it. Clicking should show
+   nothing; keyboard users still need to see where they are, so :focus-visible
+   keeps a tidy ring tucked inside the row. */
+.v2 .v2-faq-q:focus {
+  outline: none;
+}
+
+.v2 .v2-faq-q:focus-visible {
+  outline: 2px solid var(--text-55);
+  outline-offset: -6px;
+}
+
 /* the hover shift is scoped to the label (index+question) only — the "+"
    sign stays put on the far right, so the shift can never push it past the
    container's edge and get clipped by the page's overflow-x: clip */
