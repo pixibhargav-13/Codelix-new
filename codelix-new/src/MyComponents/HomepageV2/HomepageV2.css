@@ -3581,10 +3581,6 @@
    around whichever dot you clicked. Clicking should show nothing; keyboard
    focus still needs a visible indicator, so it gets a tight ring pulled in
    close to the dot itself. */
-.v2 .v2-quote-dot:focus {
-  outline: none;
-}
-
 .v2 .v2-quote-dot:focus-visible {
   outline: 2px solid var(--ink-65);
   outline-offset: -6px;

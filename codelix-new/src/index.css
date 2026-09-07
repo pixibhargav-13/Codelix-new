@@ -119,7 +119,10 @@ button {
 button:hover {
   border-color: #646cff;
 }
-button:focus,
+/* :focus-visible only, deliberately. With plain `button:focus` here too, the
+   ring also fired on a mouse click - so clicking a FAQ row or a carousel dot
+   drew an outline around it, and at (0,1,1) this rule outranked anything the
+   components set on themselves. Keyboard users still get the ring. */
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }

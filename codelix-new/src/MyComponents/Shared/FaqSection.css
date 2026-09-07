@@ -90,10 +90,6 @@
    appeared around a row as soon as you opened it. Clicking should show
    nothing; keyboard users still need to see where they are, so :focus-visible
    keeps a tidy ring tucked inside the row. */
-.v2 .v2-faq-q:focus {
-  outline: none;
-}
-
 .v2 .v2-faq-q:focus-visible {
   outline: 2px solid var(--text-55);
   outline-offset: -6px;
