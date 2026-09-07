@@ -233,11 +233,15 @@ const SECTIONS = [
         If you have any questions or concerns about this Privacy Policy or our data practices, you
         may contact us at:
         <br /><br />
-        Codelix IT Solutions
+        {/* JSX strips the trailing newline before each <br />, so without an
+            explicit space the extracted text glued into "Codelix IT
+            SolutionsAhmedabad, IndiaEmail:" — the line breaks render the same
+            either way */}
+        Codelix IT Solutions{" "}
         <br />
-        Ahmedabad, India
+        Ahmedabad, India{" "}
         <br />
-        Email: <a href="mailto:sales@codelixitsolutions.com">sales@codelixitsolutions.com</a>
+        Email: <a href="mailto:sales@codelixitsolutions.com">sales@codelixitsolutions.com</a>{" "}
         <br />
         Website: <a href="https://www.codelixitsolutions.com">www.codelixitsolutions.com</a>
       </p>

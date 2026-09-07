@@ -20,7 +20,7 @@ export default function TechHeroVisual() {
             <MonitorSmartphone size={22} color="#0096ff" />
           </div>
           <div className="thv-card-text">
-            <h4>Frontend & Mobile</h4>
+            <span className="thv-card-name">Frontend & Mobile</span>
             <p>React, Next.js, Vue, Tailwind</p>
           </div>
           <div className="thv-mini-bar-group">
@@ -35,7 +35,7 @@ export default function TechHeroVisual() {
             <Server size={22} color="#8a2be2" />
           </div>
           <div className="thv-card-text">
-            <h4>Backend & APIs</h4>
+            <span className="thv-card-name">Backend & APIs</span>
             <p>Node.js, Python, Laravel, Java</p>
           </div>
           <div className="thv-mini-bar-group">
@@ -51,7 +51,7 @@ export default function TechHeroVisual() {
             <Database size={22} color="#10b981" />
           </div>
           <div className="thv-card-text">
-            <h4>Data & Cloud</h4>
+            <span className="thv-card-name">Data & Cloud</span>
             <p>PostgreSQL, Docker, AWS</p>
           </div>
           <div className="thv-mini-bar-group">

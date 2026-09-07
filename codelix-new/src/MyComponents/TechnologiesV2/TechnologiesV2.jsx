@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 
@@ -201,6 +202,8 @@ export default function TechnologiesV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
       
 
       {/* ══════════ 1 · HERO ══════════ */}
@@ -209,7 +212,7 @@ export default function TechnologiesV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
                 <em>Technologies</em>
               </nav>
@@ -218,7 +221,7 @@ export default function TechnologiesV2() {
                 <span className="v2-hero-status"><i /> {STACK.length}+ tools, six categories</span>
               </div>
               <h1 className="sd2-hero-title">
-                <span className="line"><span>The stack behind</span></span>
+                <span className="line"><span>The stack behind</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">what we build.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">
@@ -341,10 +344,12 @@ export default function TechnologiesV2() {
             A structured conversation about your project and the stack it actually calls for.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+            <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
+      </main>
+
             <FooterV2 />
     </div>
   );

@@ -1,4 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { trackLead } from "../../lib/analytics";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import {
@@ -78,6 +80,9 @@ export default function ContactV2() {
       const data = await response.json();
 
       if (data.success) {
+        /* fires only on a confirmed success from the form API, so the count
+           reflects real enquiries rather than submit-button clicks */
+        trackLead("contact_form", { service: formData.service, budget: formData.budget });
         setSubmitted(true);
         e.target.reset();
         setFormData({
@@ -158,6 +163,8 @@ export default function ContactV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
       
 
       {/* ══════════ 1 · HERO ══════════ */}
@@ -166,7 +173,7 @@ export default function ContactV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
                 <em>Contact</em>
               </nav>
@@ -175,7 +182,7 @@ export default function ContactV2() {
                 <span className="v2-hero-status"><i /> Usually reply within 1 business day</span>
               </div>
               <h1 className="sd2-hero-title">
-                <span className="line"><span>Tell us what</span></span>
+                <span className="line"><span>Tell us what</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">you're building.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">
@@ -395,6 +402,8 @@ export default function ContactV2() {
       <FaqSection faqs={FAQS} className="v2-section--void" />
 
       {/* ══════════ FOOTER ══════════ */}
+      </main>
+
             <FooterV2 />
     </div>
   );

@@ -108,8 +108,12 @@
   margin: 18px 0 0;
 }
 
-.sv2-hero-sub {
-  margin-top: 20px;
+/* .v2-scoped, not bare .sv2-hero-sub: the design system sets
+   `.v2 p, .v2 ul { margin: 0 }`, and at (0,1,1) that outranks a lone class
+   at (0,1,0) — so the margin here was silently dropped. Matching its
+   specificity fixes it without reaching for !important. */
+.v2 .sv2-hero-sub {
+  margin-top: 32px;
   font-size: 16px;
   line-height: 1.6;
   color: var(--text-55);
@@ -1172,7 +1176,13 @@
     padding-top: 132px;
   }
 }
+
 /* replaced bootstrap's mt-2 / mt-4 (0.5rem / 1.5rem) when bootstrap was
    dropped — it was shipping ~230KB of CSS site-wide for three utilities */
-.shv-mt-2 { margin-top: .5rem; }
-.shv-mt-4 { margin-top: 1.5rem; }
+.shv-mt-2 {
+  margin-top: .5rem;
+}
+
+.shv-mt-4 {
+  margin-top: 1.5rem;
+}

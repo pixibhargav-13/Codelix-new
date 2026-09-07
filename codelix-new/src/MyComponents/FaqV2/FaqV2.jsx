@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import { Search } from "lucide-react";
@@ -120,6 +121,8 @@ export default function FaqV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
       
 
       {/* ══════════ 1 · HERO ══════════ */}
@@ -128,7 +131,7 @@ export default function FaqV2() {
           <div className="sd2-hero-main faqv2-hero-grid">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
                 <em>FAQ</em>
               </nav>
@@ -137,7 +140,7 @@ export default function FaqV2() {
                 <span className="v2-hero-status"><i /> {FAQS.length} answers, straight talk</span>
               </div>
               <h1 className="sd2-hero-title">
-                <span className="line"><span>Everything people</span></span>
+                <span className="line"><span>Everything people</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">ask us, in one place.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">
@@ -172,10 +175,12 @@ export default function FaqV2() {
             and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+            <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
+      </main>
+
             <FooterV2 />
     </div>
   );

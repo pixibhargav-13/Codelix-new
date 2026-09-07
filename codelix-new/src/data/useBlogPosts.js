@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { blogs as staticBlogs } from "./blogData";
-import { InitialDataContext } from "../App";
+import { InitialDataContext } from "../lib/initialDataContext";
 
 export function useBlogPosts() {
   const initialContext = useContext(InitialDataContext);
@@ -28,6 +28,12 @@ export function useBlogPosts() {
     return [...ssgPosts, ...staticBlogs];
   });
 
+  /* Whether the Supabase read is still in flight. A post published from the
+     admin panel exists only in Supabase, so until this settles a slug we
+     can't find might still be on its way — which is the difference between
+     "no such article" and "not loaded yet". */
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     
     let active = true;
@@ -37,7 +43,9 @@ export function useBlogPosts() {
       .eq("published", true)
       .order("published_at", { ascending: false })
       .then(({ data, error }) => {
-        if (!active || error || !data || data.length === 0) return;
+        if (!active) return;
+        setLoading(false);
+        if (error || !data || data.length === 0) return;
         const fromSupabase = data.map((p) => ({
           id: `sb-${p.id}`,
           slug: p.slug,
@@ -51,9 +59,12 @@ export function useBlogPosts() {
           content: p.content,
         }));
         setPosts([...fromSupabase, ...staticBlogs]);
-      });
+      })
+      /* a rejected request must still end the loading state, or an unknown
+         slug would spin forever instead of reporting itself as missing */
+      .catch(() => { if (active) setLoading(false); });
     return () => { active = false; };
   }, []);
 
-  return posts;
+  return { posts, loading };
 }

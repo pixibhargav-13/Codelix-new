@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import { CASE_STUDIES as staticCaseStudies } from "./caseStudiesData";
-import { InitialDataContext } from "../../App";
+import { InitialDataContext } from "../../lib/initialDataContext";
 
 export function useCaseStudies() {
   const initialContext = useContext(InitialDataContext);
@@ -10,6 +10,10 @@ export function useCaseStudies() {
       ? [...initialContext.caseStudies, ...staticCaseStudies]
       : staticCaseStudies
   );
+
+  /* in flight until the Supabase read settles — a study published from the
+     admin panel exists only there, so an unknown slug may still be arriving */
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
 
@@ -20,11 +24,16 @@ export function useCaseStudies() {
       .eq("published", true)
       .order("published_at", { ascending: false })
       .then(({ data, error }) => {
-        if (!active || error) {
+        /* An unmounted component is not a failure — it just means the
+           reader navigated away before the request came back, which happens
+           on every route change now that navigation is client-side. Only a
+           real Supabase error is worth reporting. */
+        if (!active) return;
+        setLoading(false);
+        if (error) {
           console.error("Supabase case_studies fetch error:", error);
           return;
         }
-        console.log("Fetched case studies:", data);
         const fromSupabase = (data || []).map((cs) => {
           const challengeImages = [
             cs.challenge_image_1_url ? { src: cs.challenge_image_1_url, alt: cs.challenge_image_1_alt || "" } : null,
@@ -57,9 +66,10 @@ export function useCaseStudies() {
           };
         });
         setStudies([...fromSupabase, ...staticCaseStudies]);
-      });
+      })
+      .catch(() => { if (active) setLoading(false); });
     return () => { active = false; };
   }, []);
 
-  return studies;
+  return { studies, loading };
 }

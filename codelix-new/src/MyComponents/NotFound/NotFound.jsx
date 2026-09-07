@@ -17,6 +17,8 @@ const NotFound = () => {
       <div className="v2 not-found-page">
         <div className="not-found-hero-section">
           <NavbarV2 />
+
+      <main>
           <div className="not-found-content">
             <h1 className="not-found-code">404</h1>
             <h2 className="not-found-title">Page Not Found</h2>
@@ -33,7 +35,9 @@ const NotFound = () => {
               </Link>
             </div>
           </div>
+          </main>
         </div>
+
         <FooterV2 />
       </div>
     </>

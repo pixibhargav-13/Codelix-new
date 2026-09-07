@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { SEO } from "../../components/SEO";
 import FooterV2 from "../Shared/FooterV2";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import gsap from "gsap";
 import {
   ArrowLeft, Check, X, Minus, FileCode2,
@@ -164,7 +164,7 @@ export default function AdditionalServiceDetailV2() {
 
   const { slug } = useParams();
   const svc = additionalServiceBySlug(slug);
-  const caseStudies = useCaseStudies();
+  const { studies: caseStudies } = useCaseStudies();
 
 
 
@@ -228,11 +228,15 @@ export default function AdditionalServiceDetailV2() {
     const pairs = Array.from(shells)
       .map((shell) => ({ shell, head: shell.querySelector(".v2-method-head") }))
       .filter((p) => p.head);
+    /* Read every rect first, then write every class. Interleaved, each
+       toggle invalidated layout for the next getBoundingClientRect, so a page
+       with N sticky bands forced N layout flushes on every scroll event. */
     const onScroll = () => {
-      pairs.forEach(({ shell, head }) => {
+      const stuck = pairs.map(({ shell }) => {
         const r = shell.getBoundingClientRect();
-        head.classList.toggle("is-stuck", r.top <= 0 && r.bottom > 0);
+        return r.top <= 0 && r.bottom > 0;
       });
+      pairs.forEach(({ head }, i) => head.classList.toggle("is-stuck", stuck[i]));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
@@ -337,7 +341,7 @@ export default function AdditionalServiceDetailV2() {
     return (
       <div className="v2" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }}>
         <h1 style={{ color: "#fff", fontSize: 28 }}>Service not found.</h1>
-        <a className="v2-btn" href="/services">Back to Services →</a>
+        <Link className="v2-btn" to="/services">Back to Services →</Link>
       </div>
     );
   }
@@ -381,9 +385,9 @@ export default function AdditionalServiceDetailV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
-                <a href="/services">Services</a>
+                <Link to="/services">Services</Link>
                 <span>/</span>
                 <em>{svc.title}</em>
               </nav>
@@ -391,15 +395,15 @@ export default function AdditionalServiceDetailV2() {
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Service</span>
               </div>
-              <h1 className="sd2-hero-title">
+              <h1 key={slug} className="sd2-hero-title">
                 <span className="line"><span>{svc.title}</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">{svc.description}</p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact">
+                <Link className="v2-btn v2-btn--filled" to="/contact">
                   <span>Schedule a call</span>
                   <i className="v2-btn-arrow">→</i>
-                </a>
+                </Link>
                 <a className="v2-hero-secondary" href="#estimate">
                   <span className="v2-hero-secondary-label">Estimate my project</span>
                 </a>
@@ -605,7 +609,7 @@ export default function AdditionalServiceDetailV2() {
                 <li><Check size={13} strokeWidth={2.4} /> Fixed price once scoped</li>
                 <li><Check size={13} strokeWidth={2.4} /> Full source-code handover</li>
               </ul>
-              <a className="v2-btn" href="/contact">Get an exact quote →</a>
+              <Link className="v2-btn" to="/contact">Get an exact quote →</Link>
             </aside>
           </div>
         </div>
@@ -713,14 +717,14 @@ export default function AdditionalServiceDetailV2() {
           <h2 className="v2-heading">Real projects in this space.</h2>
           <div className="sd2-work-grid">
             {relatedWork.map((w) => (
-              <a className="sd2-work-card" href={w.href} key={w.href}>
+              <Link className="sd2-work-card" to={w.href} key={w.href}>
                 <span className="sd2-work-media">
                   <img src={w.image} alt="" loading="lazy" />
                 </span>
                 <span className="sd2-work-tag">{w.category}</span>
                 <span className="sd2-work-title">{w.title}</span>
                 <span className="sd2-work-go">Read case study →</span>
-              </a>
+              </Link>
             ))}
           </div>
         </section>
@@ -887,7 +891,7 @@ export default function AdditionalServiceDetailV2() {
         <h2 className="v2-heading">The rest of what we do.</h2>
         <div className="sd2-other-list">
           {related.map((s) => (
-            <a className="sd2-other" href={s.path} key={s.slug}>
+            <Link className="sd2-other" to={s.path} key={s.slug}>
               <div className="sd2-other-top">
                 <span className="sd2-other-icon"><s.icon size={17} strokeWidth={1.5} /></span>
                 <span className="sd2-other-n">{s.n}</span>
@@ -895,7 +899,7 @@ export default function AdditionalServiceDetailV2() {
               <span className="sd2-other-title">{s.title}</span>
               <p className="sd2-other-body">{s.description}</p>
               <span className="sd2-other-go">→</span>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
@@ -913,7 +917,7 @@ export default function AdditionalServiceDetailV2() {
           and what it takes to ship it.
         </p>
         <div className="v2-cta-actions">
-          <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+          <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
       </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}

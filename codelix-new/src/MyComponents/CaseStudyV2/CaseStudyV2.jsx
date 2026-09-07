@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import { ArrowUpRight } from "lucide-react";
@@ -44,7 +45,7 @@ export default function CaseStudyV2() {
      static PROJECTS list, so they need to be reshaped into the same
      card-shape PROJECTS already has before they can slot into this grid —
      additive only, the existing 15 keep coming from PROJECTS untouched */
-  const caseStudies = useCaseStudies();
+  const { studies: caseStudies } = useCaseStudies();
   const adminCards = useMemo(() => {
     const existingSlugs = new Set(PROJECTS.map((p) => toV2Slug(p.href)));
     return caseStudies
@@ -126,6 +127,8 @@ export default function CaseStudyV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
       
       
 
@@ -135,7 +138,7 @@ export default function CaseStudyV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
                 <em>Case Studies</em>
               </nav>
@@ -144,7 +147,7 @@ export default function CaseStudyV2() {
                 <span className="v2-hero-status"><i /> {allProjects.length} documented projects</span>
               </div>
               <h1 className="sd2-hero-title">
-                <span className="line"><span>The problem, the build,</span></span>
+                <span className="line"><span>The problem, the build,</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">and what changed.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">
@@ -177,7 +180,7 @@ export default function CaseStudyV2() {
 
         <div className="csv2-grid is-in">
           {filtered.map((p) => (
-            <a className="csv2-card" href={`/case-study/${toV2Slug(p.href)}`} key={p.id}>
+            <Link className="csv2-card" to={`/case-study/${toV2Slug(p.href)}`} key={p.id}>
               <div className="csv2-card-media">
                 <img src={p.image} alt={p.title} loading="lazy" />
                 <span className="csv2-card-cat">{p.category}</span>
@@ -192,7 +195,7 @@ export default function CaseStudyV2() {
                   Read case study <ArrowUpRight size={15} strokeWidth={1.8} />
                 </span>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
@@ -259,10 +262,12 @@ export default function CaseStudyV2() {
             built the same way as everything above.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Start a project →</a></div>
+            <Link className="v2-btn" to="/contact">Start a project →</Link></div>
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
+      </main>
+
             <FooterV2 />
     </div>
   );

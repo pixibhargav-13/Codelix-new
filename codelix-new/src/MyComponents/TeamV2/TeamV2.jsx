@@ -1,4 +1,5 @@
 import { STATIC_TESTIMONIALS } from '../../data/testimonialsData';
+import { Link } from "react-router-dom";
 import React, { useEffect, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
@@ -95,6 +96,8 @@ export default function TeamV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
 
 
       {/* ══════════ 1 · HERO ══════════ */}
@@ -103,7 +106,7 @@ export default function TeamV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
                 <em>Team</em>
               </nav>
@@ -112,7 +115,7 @@ export default function TeamV2() {
                 <span className="v2-hero-status"><i /> Est. 2024 · Ahmedabad</span>
               </div>
               <h1 className="sd2-hero-title">
-                <span className="line"><span>The people behind</span></span>
+                <span className="line"><span>The people behind</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">what Codelix ships.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">
@@ -121,10 +124,10 @@ export default function TeamV2() {
                 studio.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact">
+                <Link className="v2-btn v2-btn--filled" to="/contact">
                   <span>Work with us</span>
                   <i className="v2-btn-arrow">→</i>
-                </a>
+                </Link>
                 <a className="v2-hero-secondary" href="#leadership">
                   <span className="v2-hero-secondary-label">Meet the founders</span>
                 </a>
@@ -227,7 +230,7 @@ export default function TeamV2() {
         <h2 className="v2-heading">What we build.</h2>
         <div className="sd2-other-list">
           {OTHER_SERVICES.map((s) => (
-            <a className="sd2-other" href={s.path} key={s.path}>
+            <Link className="sd2-other" to={s.path} key={s.path}>
               <div className="sd2-other-top">
                 <span className="sd2-other-icon"><s.icon size={17} strokeWidth={1.5} /></span>
                 <span className="sd2-other-n">{s.n}</span>
@@ -235,7 +238,7 @@ export default function TeamV2() {
               <span className="sd2-other-title">{s.title}</span>
               <p className="sd2-other-body">{s.body}</p>
               <span className="sd2-other-go">→</span>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
@@ -252,10 +255,12 @@ export default function TeamV2() {
           Tell us what you're building.
         </p>
         <div className="v2-cta-actions">
-          <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+          <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
       </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
+      </main>
+
       <FooterV2 />
     </div>
   );

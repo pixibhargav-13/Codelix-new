@@ -1,7 +1,7 @@
 import { STATIC_TESTIMONIALS } from '../../data/testimonialsData';
 import { useTestimonials } from "../../data/useTestimonials";
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
@@ -230,11 +230,15 @@ export default function HomepageV2() {
     const pairs = Array.from(shells)
       .map((shell) => ({ shell, head: shell.querySelector(".v2-method-head") }))
       .filter((p) => p.head);
+    /* Read every rect first, then write every class. Interleaved, each
+       toggle invalidated layout for the next getBoundingClientRect, so a page
+       with N sticky bands forced N layout flushes on every scroll event. */
     const onScroll = () => {
-      pairs.forEach(({ shell, head }) => {
+      const stuck = pairs.map(({ shell }) => {
         const r = shell.getBoundingClientRect();
-        head.classList.toggle("is-stuck", r.top <= 0 && r.bottom > 0);
+        return r.top <= 0 && r.bottom > 0;
       });
+      pairs.forEach(({ head }, i) => head.classList.toggle("is-stuck", stuck[i]));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
@@ -672,6 +676,8 @@ export default function HomepageV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
       {/* ══════════ 1 · HERO — Codelix's own composition ══════════ */}
       <header className="v2-hero">
         <div className="v2-hero-inner">
@@ -683,18 +689,18 @@ export default function HomepageV2() {
               <span className="v2-hero-eyebrow">Premium Software Agency</span>
             </div>
             <h1 className="v2-hero-title">
-              <span className="line"><span>We build</span></span>
-              <span className="line"><span>software that</span></span>
+              <span className="line"><span>We build</span></span>{" "}
+              <span className="line"><span>software that</span></span>{" "}
               <span className="line"><span className="v2-hero-accent">actually scales.</span></span>
             </h1>
             <p className="v2-hero-sub">
               Stop rebuilding brittle prototypes. We engineer production-ready web apps, mobile platforms, and enterprise SaaS solutions designed to handle real users.
             </p>
             <div className="v2-hero-cta">
-              <a className="v2-btn v2-btn--filled" href="/contact">
+              <Link className="v2-btn v2-btn--filled" to="/contact">
                 <span>Start a project</span>
                 <i className="v2-btn-arrow">→</i>
-              </a>
+              </Link>
               <a className="v2-hero-secondary" href="#work">
                 <span className="v2-hero-secondary-icon"><PlayCircle size={17} strokeWidth={1.6} /></span>
                 <span className="v2-hero-secondary-label">See our work</span>
@@ -792,7 +798,7 @@ export default function HomepageV2() {
             </div>
           ))}
           <div className="v2-work-more">
-            <a className="v2-btn" href="/work">View all work →</a>
+            <Link className="v2-btn" to="/work">View all work →</Link>
           </div>
         </div>
         {/* floating preview — follows the cursor, swaps to the hovered row's
@@ -890,18 +896,18 @@ export default function HomepageV2() {
               Each one maps to work we have already shipped. You don't need to know which
               belongs in your business before you talk to us — that's what the first call is for.
             </p>
-            <a className="v2-map-link" href="/work">See the case studies →</a>
+            <Link className="v2-map-link" to="/work">See the case studies →</Link>
           </div>
         </div>
         <div className="v2-map-scroll">
           <div className="v2-map-track">
             {SYSTEMS.map((s) => (
-              <a className="v2-map-card" key={s.id} href="/work">
+              <Link className="v2-map-card" key={s.id} to="/work">
                 <span className="v2-map-id">{s.id}</span>
                 <span className="v2-map-cluster">{s.cluster}</span>
-                <h4 className="v2-map-title">{s.title}</h4>
+                <h3 className="v2-map-title">{s.title}</h3>
                 <p className="v2-map-reality">{s.reality}</p>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -996,7 +1002,7 @@ export default function HomepageV2() {
         </div>
 
         <div className="v2-work-more" style={{ marginTop: '48px', paddingBottom: '0' }}>
-          <a className="v2-btn" href="/services">View all services →</a>
+          <Link className="v2-btn" to="/services">View all services →</Link>
         </div>
       </section>
 
@@ -1008,7 +1014,7 @@ export default function HomepageV2() {
         <p className="v2-lede">Three SaaS products, live in the market, engineered with the same craft we bring to every client project.</p>
         <div className="v2-products-grid">
           {PRODUCTS.map((p) => (
-            <a href={`/products/${p.slug}`} className="v2-product-card" key={p.slug} style={{ "--accent": p.accent }}>
+            <Link to={`/products/${p.slug}`} className="v2-product-card" key={p.slug} style={{ "--accent": p.accent }}>
               <span className="v2-product-card-logo"><img src={p.logo} alt="" /></span>
               <span className="v2-product-card-badge">{p.badge}</span>
               <h3 className="v2-product-card-name">{p.name}</h3>
@@ -1019,7 +1025,7 @@ export default function HomepageV2() {
                 ))}
               </div>
               <span className="v2-product-card-cta">Explore {p.name} <i>→</i></span>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
@@ -1075,7 +1081,7 @@ export default function HomepageV2() {
           We scope what should be built first, what can wait, and what it takes to ship it.
         </p>
         <div className="v2-cta-actions">
-          <a className="v2-btn" href="/contact">Book a consultation →</a>
+          <Link className="v2-btn" to="/contact">Book a consultation →</Link>
         </div>
         <div className="v2-cta-badges">
           <span className="v2-cta-badge">Free consultation</span>
@@ -1087,6 +1093,8 @@ export default function HomepageV2() {
       {/* ══════════ FOOTER — mirrors the live site's real footer content
           (Footer.jsx): same columns, same links, same contact details, the
           "WE LIVE IN IT" marquee, and the oversized wordmark at the base ══════════ */}
+      </main>
+
       <FooterV2 />
     </div>
   );

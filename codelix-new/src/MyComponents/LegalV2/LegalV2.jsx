@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 
@@ -85,6 +86,8 @@ export default function LegalV2({ crumbLabel, statusLabel, titleLine1, titleLine
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
       
 
       {/* ══════════ 1 · HERO ══════════ */}
@@ -93,7 +96,7 @@ export default function LegalV2({ crumbLabel, statusLabel, titleLine1, titleLine
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
                 <em>{crumbLabel}</em>
               </nav>
@@ -101,8 +104,13 @@ export default function LegalV2({ crumbLabel, statusLabel, titleLine1, titleLine
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> {statusLabel}</span>
               </div>
+              {/* the explicit space matters: .line is display:block so this
+                  reads as two lines on screen either way, but without a
+                  whitespace text node between them the extracted text
+                  concatenates — Google was showing "The terms behindusing
+                  this site." as the sitelink */}
               <h1 className="sd2-hero-title">
-                <span className="line"><span>{titleLine1}</span></span>
+                <span className="line"><span>{titleLine1}</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">{titleLine2}</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">{sub}</p>
@@ -154,6 +162,8 @@ export default function LegalV2({ crumbLabel, statusLabel, titleLine1, titleLine
 
 
       {/* ══════════ FOOTER ══════════ */}
+      </main>
+
             <FooterV2 />
     </div>
   );

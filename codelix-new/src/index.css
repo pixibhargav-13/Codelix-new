@@ -3,6 +3,10 @@
   src: url('./assets/fonts/NoiGroteskFix-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  /* without this the browser blocks painting any text in this face until the
+     .ttf arrives — the headings simply weren't drawn. swap paints them in a
+     fallback immediately and re-renders once the font lands. */
+  font-display: swap;
 }
 
 :root {
@@ -115,7 +119,10 @@ button {
 button:hover {
   border-color: #646cff;
 }
-button:focus,
+/* :focus-visible only, deliberately. With plain `button:focus` here too, the
+   ring also fired on a mouse click - so clicking a FAQ row or a carousel dot
+   drew an outline around it, and at (0,1,1) this rule outranked anything the
+   components set on themselves. Keyboard users still get the ring. */
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }

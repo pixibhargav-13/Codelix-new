@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import { Search, ArrowUpRight } from "lucide-react";
@@ -23,7 +24,7 @@ import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 const CATEGORIES = ["All Articles", "business", "CMS", "UI/UX", "Tech", "E-Commerce", "Development", "Artificial Intelligence"];
 
 export default function BlogV2() {
-  const blogs = useBlogPosts();
+  const { posts: blogs } = useBlogPosts();
   
   
   
@@ -83,6 +84,8 @@ export default function BlogV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
       
       
 
@@ -92,7 +95,7 @@ export default function BlogV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
                 <em>Blog</em>
               </nav>
@@ -101,7 +104,7 @@ export default function BlogV2() {
                 <span className="v2-hero-status"><i /> {blogs.length} articles, no fluff</span>
               </div>
               <h1 className="sd2-hero-title">
-                <span className="line"><span>Notes on building</span></span>
+                <span className="line"><span>Notes on building</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">software that lasts.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">
@@ -146,7 +149,7 @@ export default function BlogV2() {
             <p className="bv2-empty">No articles match — try a different search or category.</p>
           )}
           {visible.map((b) => (
-            <a className="bv2-card" href={`/blog/${b.slug || slugify(b.title)}`} key={b.id}>
+            <Link className="bv2-card" to={`/blog/${b.slug || slugify(b.title)}`} key={b.id}>
               <div className="bv2-card-media">
                 <img src={b.image} alt={b.title} loading="lazy" />
               </div>
@@ -155,11 +158,11 @@ export default function BlogV2() {
                   <span>{b.tags[1] || b.tags[0]}</span>
                   <span>{b.readTime}</span>
                 </div>
-                <h3 className="bv2-card-title">{b.title}</h3>
+                <h2 className="bv2-card-title">{b.title}</h2>
                 <span className="bv2-card-date">{b.date}</span>
               </div>
               <span className="bv2-card-arrow" aria-hidden="true"><ArrowUpRight size={18} strokeWidth={1.8} /></span>
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -184,10 +187,12 @@ export default function BlogV2() {
             We scope what should be built first, what can wait, and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+            <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
+      </main>
+
       <FooterV2 />
     </div>
   );

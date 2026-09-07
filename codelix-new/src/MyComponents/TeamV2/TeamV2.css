@@ -57,7 +57,7 @@ header.sd2-hero.team-hero .sd2-hero-main {
 }
 
 .v2-section--gallery .sd2-quote-role {
-  color: rgba(15, 15, 13, .5);
+  color: rgba(15, 15, 13, .58);
 }
 
 /* the shared dot-nav colors (ServiceDetailV2.css) are tuned for the
@@ -65,11 +65,11 @@ header.sd2-hero.team-hero .sd2-hero-main {
    gallery background, so give this page its own dark-ink dot palette,
    same idea as the quote text/name/role overrides above */
 .v2 .v2-section--gallery .sd2-quote-dot {
-  background-color: rgba(15, 15, 13, .25);
+  background-color: rgba(15, 15, 13, .58);
 }
 
 .v2 .v2-section--gallery .sd2-quote-dot:hover {
-  background-color: rgba(15, 15, 13, .5);
+  background-color: rgba(15, 15, 13, .58);
 }
 
 .v2 .v2-section--gallery .sd2-quote-dot.is-active {

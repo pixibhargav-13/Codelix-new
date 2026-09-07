@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import codelixLogo from "../Images/codelix-logo.png";
 import { FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS, FOOTER_PRODUCTS } from "../HomepageV2/footerData";
 import RatingsStrip from "./RatingsStrip";
@@ -24,7 +25,7 @@ export default function FooterV2() {
         <p className="v2-footer-keywords-label">Services</p>
         <div className="v2-footer-keywords-list">
           {FOOTER_ALL_SERVICES.map((k, i) => (
-            <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
+            <Link to={k.path} className="v2-footer-keyword" key={i}>{k.label}</Link>
           ))}
         </div>
       </div>
@@ -32,7 +33,7 @@ export default function FooterV2() {
         <p className="v2-footer-keywords-label">Industries</p>
         <div className="v2-footer-keywords-list">
           {FOOTER_INDUSTRY_KEYWORDS.map((k, i) => (
-            <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
+            <Link to={k.path} className="v2-footer-keyword" key={i}>{k.label}</Link>
           ))}
         </div>
       </div>
@@ -40,7 +41,7 @@ export default function FooterV2() {
         <p className="v2-footer-keywords-label">Products</p>
         <div className="v2-footer-keywords-list">
           {FOOTER_PRODUCTS.map((k, i) => (
-            <a href={k.path} className="v2-footer-keyword" key={i}>{k.label}</a>
+            <Link to={k.path} className="v2-footer-keyword" key={i}>{k.label}</Link>
           ))}
         </div>
       </div>
@@ -53,34 +54,34 @@ export default function FooterV2() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h5>India (HQ)</h5>
+          <h3>India (HQ)</h3>
           <p className="v2-footer-card-addr">
             A-1308, PNTC — Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat — 380015
           </p>
         </a>
         <div className="v2-footer-card">
-          <h5>Phone</h5>
+          <h3>Phone</h3>
           <a className="v2-footer-card-strong" href="tel:+919998263282">+91 99982 63282</a>
           <a className="v2-footer-card-strong" href="tel:+917490909686">+91 74909 09686</a>
         </div>
         <div className="v2-footer-card">
-          <h5>Looking For Jobs</h5>
-          <a className="v2-footer-card-strong" href="/careers">View openings →</a>
+          <h3>Looking For Jobs</h3>
+          <Link className="v2-footer-card-strong" to="/careers">View openings →</Link>
         </div>
         <div className="v2-footer-card">
-          <h5>HR</h5>
+          <h3>HR</h3>
           <a className="v2-footer-card-strong" href="mailto:hr@codelixitsolutions.com">
             hr@codelixitsolutions.com
           </a>
         </div>
         <div className="v2-footer-card">
-          <h5>General</h5>
+          <h3>General</h3>
           <a className="v2-footer-card-strong" href="mailto:info@codelixitsolutions.com">
             info@codelixitsolutions.com
           </a>
         </div>
         <div className="v2-footer-card">
-          <h5>For Sales</h5>
+          <h3>For Sales</h3>
           <a className="v2-footer-card-strong" href="mailto:sales@codelixitsolutions.com">
             sales@codelixitsolutions.com
           </a>
@@ -113,15 +114,15 @@ export default function FooterV2() {
         <RatingsStrip />
       </div>
       <div className="v2-footer-bottom">
-        <a href="/" className="v2-footer-bottom-brand" aria-label="Codelix — home">
+        <Link to="/" className="v2-footer-bottom-brand" aria-label="Codelix — home">
           <img src={codelixLogo} alt="Codelix" />
-        </a>
+        </Link>
         <span className="v2-footer-bottom-copy">© 2026 Codelix IT Solutions — All Copyright Reserved</span>
         <div className="v2-footer-legal">
-          <a href="/sitemap">Sitemap</a>
-          <a href="/refund-policy">Refund Policy</a>
-          <a href="/privacy-policy">Privacy</a>
-          <a href="/terms-of-service">Terms</a>
+          <Link to="/sitemap">Sitemap</Link>
+          <Link to="/refund-policy">Refund Policy</Link>
+          <Link to="/privacy-policy">Privacy</Link>
+          <Link to="/terms-of-service">Terms</Link>
         </div>
       </div>
     </footer>

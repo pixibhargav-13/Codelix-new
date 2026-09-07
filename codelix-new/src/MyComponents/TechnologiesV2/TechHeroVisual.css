@@ -168,7 +168,8 @@
   flex: 1;
 }
 
-.thv-card-text h4 {
+.thv-card-text .thv-card-name {
+  display: block;
   margin: 0 0 4px 0;
   font-size: 16px;
   font-weight: 600;

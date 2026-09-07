@@ -1,4 +1,5 @@
 import { PenTool, Layers, Search, Eye, Smartphone, Palette, CalendarCheck, Lock, Check, HelpCircle, Paintbrush, MousePointerClick, RefreshCw, Users2, Frown, Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark, FileCode2, BookOpen, KeyRound, Server, GitBranch, Layout, Globe, ShoppingCart, Code2, Sparkles, BarChart3, Minus, X, Phone, FileText, PlayCircle, PieChart, Database, Network, TrendingUp, Clock, LifeBuoy, Monitor } from "lucide-react";
+import { Link } from "react-router-dom";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
@@ -270,11 +271,15 @@ export default function DataAnalyticsV2() {
     const pairs = Array.from(shells)
       .map((shell) => ({ shell, head: shell.querySelector(".v2-method-head") }))
       .filter((p) => p.head);
+    /* Read every rect first, then write every class. Interleaved, each
+       toggle invalidated layout for the next getBoundingClientRect, so a page
+       with N sticky bands forced N layout flushes on every scroll event. */
     const onScroll = () => {
-      pairs.forEach(({ shell, head }) => {
+      const stuck = pairs.map(({ shell }) => {
         const r = shell.getBoundingClientRect();
-        head.classList.toggle("is-stuck", r.top <= 0 && r.bottom > 0);
+        return r.top <= 0 && r.bottom > 0;
       });
+      pairs.forEach(({ head }, i) => head.classList.toggle("is-stuck", stuck[i]));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
@@ -417,6 +422,8 @@ export default function DataAnalyticsV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
       
 
       {/* ══════════ 1 · HERO ══════════ */}
@@ -425,9 +432,9 @@ export default function DataAnalyticsV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
-                <a href="/services">Services</a>
+                <Link to="/services">Services</Link>
                 <span>/</span>
                 <em>Data Analytics</em>
               </nav>
@@ -436,7 +443,7 @@ export default function DataAnalyticsV2() {
                 <span className="v2-hero-status"><i /> Service 07 · Data Analytics</span>
               </div>
               <h1 className="sd2-hero-title">
-                <span className="line"><span>Turn raw data into</span></span>
+                <span className="line"><span>Turn raw data into</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">clarity and action.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">
@@ -445,10 +452,10 @@ export default function DataAnalyticsV2() {
                 can stop guessing and start growing.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact">
+                <Link className="v2-btn v2-btn--filled" to="/contact">
                   <span>Schedule a call</span>
                   <i className="v2-btn-arrow">→</i>
-                </a>
+                </Link>
                 <a className="v2-hero-secondary" href="#estimate">
                   <span className="v2-hero-secondary-label">Estimate my project</span>
                 </a>
@@ -665,9 +672,9 @@ export default function DataAnalyticsV2() {
                 <li><Check size={14} /> QA and data validation</li>
                 <li><Check size={14} /> Comprehensive documentation</li>
               </ul>
-              <a href="/contact" className="v2-btn v2-btn--outline" style={{ marginTop: 24, width: "100%" }}>
+              <Link to="/contact" className="v2-btn v2-btn--outline" style={{ marginTop: 24, width: "100%" }}>
                 <span>Discuss this scope</span>
-              </a>
+              </Link>
             </aside>
           </div>
         </div>
@@ -775,14 +782,14 @@ export default function DataAnalyticsV2() {
         <h2 className="v2-heading">Selected work.</h2>
         <div className="sd2-work-grid">
           {RELATED.map((w) => (
-            <a className="sd2-work-card" href={w.link} key={w.link}>
+            <Link className="sd2-work-card" to={w.link} key={w.link}>
               <span className="sd2-work-media">
                 <img src={w.thumb} alt="" loading="lazy" />
               </span>
               <span className="sd2-work-tag">{w.tag}</span>
               <span className="sd2-work-title">{w.title}</span>
               <span className="sd2-work-go">Read case study →</span>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
@@ -967,7 +974,7 @@ export default function DataAnalyticsV2() {
         <h2 className="v2-heading">The rest of what we do.</h2>
         <div className="sd2-other-list">
           {OTHER_SERVICES.map((s) => (
-            <a className="sd2-other" href={s.path} key={s.path}>
+            <Link className="sd2-other" to={s.path} key={s.path}>
               <div className="sd2-other-top">
                 <span className="sd2-other-icon"><s.icon size={17} strokeWidth={1.5} /></span>
                 <span className="sd2-other-n">{s.n}</span>
@@ -975,7 +982,7 @@ export default function DataAnalyticsV2() {
               <span className="sd2-other-title">{s.title}</span>
               <p className="sd2-other-body">{s.body}</p>
               <span className="sd2-other-go">→</span>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
@@ -993,10 +1000,12 @@ export default function DataAnalyticsV2() {
             what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+            <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
+      </main>
+
             <FooterV2 />
     </div>
   );

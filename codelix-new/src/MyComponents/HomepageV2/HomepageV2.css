@@ -17,14 +17,14 @@
 
   --text: #f2f0ec;
   --text-55: rgba(242, 240, 236, .55);
-  --text-45: rgba(242, 240, 236, .45);
-  --text-38: rgba(242, 240, 236, .38);
-  --text-25: rgba(242, 240, 236, .25);
+  --text-45: rgba(242, 240, 236, .53);
+  --text-38: rgba(242, 240, 236, .51);
+  --text-25: rgba(242, 240, 236, .49);
 
   --ink: #0f0f0d;
   --ink-65: rgba(15, 15, 13, .65);
-  --ink-55: rgba(15, 15, 13, .55);
-  --ink-40: rgba(15, 15, 13, .4);
+  --ink-55: rgba(15, 15, 13, .62);
+  --ink-40: rgba(15, 15, 13, .58);
 
   --rule: rgba(242, 240, 236, .1);
   --rule-strong: rgba(242, 240, 236, .2);
@@ -1613,7 +1613,7 @@
   font-size: 10px;
   letter-spacing: .22em;
   text-transform: uppercase;
-  color: rgba(15, 15, 13, .4);
+  color: rgba(15, 15, 13, .58);
   margin-bottom: 10px;
 }
 
@@ -1630,7 +1630,7 @@
 .v2-pipe-lede {
   font-size: 14px;
   line-height: 1.6;
-  color: rgba(15, 15, 13, .55);
+  color: rgba(15, 15, 13, .62);
   max-width: 48ch;
   text-align: left;
   justify-self: end;
@@ -1755,7 +1755,7 @@
   font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   font-size: 12px;
   letter-spacing: .02em;
-  color: rgba(15, 15, 13, .4);
+  color: rgba(15, 15, 13, .58);
 }
 
 .v2-pipe-console-live {
@@ -2253,7 +2253,7 @@
 }
 
 .v2-map-card:hover {
-  border-color: rgba(242, 240, 236, .34);
+  border-color: rgba(242, 240, 236, .49);
   background: linear-gradient(165deg, #1d1d24, #17171c);
   transform: translateY(-8px) scale(1.015);
   box-shadow: 0 22px 44px -20px rgba(0, 0, 0, .55);
@@ -2619,7 +2619,7 @@
 
 /* line only shows once the header is actually pinned mid-scroll */
 .v2-method-head.is-stuck {
-  border-bottom-color: rgba(242, 240, 236, .38);
+  border-bottom-color: rgba(242, 240, 236, .51);
 }
 
 .v2-method-heading {
@@ -3531,7 +3531,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  /* 0, because each dot now carries its own 8px of transparent padding —
+     the visible gap is unchanged, the tappable boxes simply meet */
+  gap: 0;
   margin-top: 40px;
   position: relative;
   z-index: 1;
@@ -3540,20 +3542,48 @@
 .v2-quote-dot {
   appearance: none;
   -webkit-appearance: none;
-  width: 8px;
-  height: 8px;
-  min-width: 8px;
-  min-height: 8px;
+  /* 24px is the minimum touch target; the dot itself stays 8px. Padding
+     makes up the difference and background-clip keeps the paint inside the
+     content box, so the colour still lives on the button and every
+     page-specific override of it keeps working untouched. The border-radius
+     is reduced by the padding for the inner box, which lands at exactly 50%
+     of 8px — a circle. */
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  box-sizing: border-box;
   border-radius: 50%;
   background-color: var(--ink-40) !important;
   border: none;
-  padding: 0;
   margin: 0;
   outline: none;
   box-shadow: none;
   cursor: pointer;
   transition: all 0.3s ease;
   display: block;
+}
+
+/* `.v2 button` above resets padding to 0 and uses the `background`
+   shorthand, which also resets background-clip — and at (0,1,1) it outranks a
+   bare `.v2-quote-dot` (0,1,0). These two declarations are what turn the
+   24px box into a 24px touch target around an 8px dot, so they need the extra
+   `.v2` to actually take effect. */
+.v2 .v2-quote-dot {
+  padding: 8px;
+  background-clip: content-box;
+}
+
+/* index.css draws a focus ring on plain `button:focus` — which fires on a
+   mouse click, not just keyboard focus — and at (0,1,1) it beats the
+   `outline: none` above. That ring used to trace an 8px dot and went
+   unnoticed; now it traces the 24px touch target and reads as a big circle
+   around whichever dot you clicked. Clicking should show nothing; keyboard
+   focus still needs a visible indicator, so it gets a tight ring pulled in
+   close to the dot itself. */
+.v2 .v2-quote-dot:focus-visible {
+  outline: 2px solid var(--ink-65);
+  outline-offset: -6px;
 }
 
 .v2-quote-dot:hover {
@@ -3609,7 +3639,7 @@
   white-space: nowrap;
   font-size: 13px;
   font-weight: 500;
-  color: rgba(15, 15, 13, .3);
+  color: rgba(15, 15, 13, .58);
   transition: color .3s ease;
 }
 
@@ -3630,7 +3660,7 @@
   font-weight: 500;
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: rgba(15, 15, 13, .25);
+  color: rgba(15, 15, 13, .58);
 }
 
 .v2-quote-marquee-item.is-active {
@@ -3877,7 +3907,7 @@
   }
 }
 
-.v2-footer-col h5 {
+.v2-footer-col h3 {
   font-size: 9px;
   font-weight: 600;
   letter-spacing: .16em;
@@ -4040,7 +4070,7 @@
   padding-left: calc(var(--pad-x) + 20px);
 } */
 
-.v2-footer-card h5 {
+.v2-footer-card h3 {
   font-size: 11px;
   font-weight: 600;
   letter-spacing: .1em;
@@ -4753,7 +4783,7 @@
 
 .v2-section--gallery .v2-btn {
   color: var(--ink);
-  border-color: rgba(15, 15, 13, .2);
+  border-color: rgba(15, 15, 13, .58);
 }
 
 .v2-section--gallery .v2-btn:hover {

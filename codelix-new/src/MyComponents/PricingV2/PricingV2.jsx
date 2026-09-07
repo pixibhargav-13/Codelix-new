@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import { FileText, Layers, LifeBuoy } from "lucide-react";
@@ -168,6 +169,8 @@ export default function PricingV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
       
 
       {/* ══════════ 1 · HERO ══════════ */}
@@ -176,7 +179,7 @@ export default function PricingV2() {
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
                 <em>Pricing</em>
               </nav>
@@ -185,7 +188,7 @@ export default function PricingV2() {
                 <span className="v2-hero-status"><i /> Scope-based, not a rate card</span>
               </div>
               <h1 className="sd2-hero-title">
-                <span className="line"><span>How pricing</span></span>
+                <span className="line"><span>How pricing</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">actually works.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">
@@ -253,10 +256,10 @@ export default function PricingV2() {
               {projectType.toLowerCase()} project. Your exact quote depends on the specifics we cover
               on a scoping call.
             </p>
-            <a className="v2-btn v2-btn--filled" href="/contact">
+            <Link className="v2-btn v2-btn--filled" to="/contact">
               <span>Get a real quote</span>
               <i className="v2-btn-arrow">→</i>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -298,10 +301,12 @@ export default function PricingV2() {
             A free scoping call and a written proposal — no obligation to proceed.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+            <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
+      </main>
+
       <FooterV2 />
     </div>
   );

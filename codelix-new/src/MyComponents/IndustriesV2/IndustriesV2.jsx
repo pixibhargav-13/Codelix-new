@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import { ShieldCheck, Gauge, Eye } from "lucide-react";
@@ -122,6 +123,8 @@ export default function IndustriesV2() {
       {/* ══════════ NAV ══════════ */}
       <NavbarV2 />
 
+      <main>
+
 
 
       {/* ══════════ 1 · HERO ══════════ */}
@@ -130,7 +133,7 @@ export default function IndustriesV2() {
           <div className="sd2-hero-main ind-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
                 <em>Industries</em>
               </nav>
@@ -139,7 +142,7 @@ export default function IndustriesV2() {
                 <span className="v2-hero-status"><i /> Eleven sectors, real repeat experience</span>
               </div>
               <h1 className="sd2-hero-title">
-                <span className="line"><span>Built for how</span></span>
+                <span className="line"><span>Built for how</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">your sector actually operates.</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">
@@ -148,10 +151,10 @@ export default function IndustriesV2() {
                 Here's where we have the deepest repeat experience.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact">
+                <Link className="v2-btn v2-btn--filled" to="/contact">
                   <span>Talk about your sector</span>
                   <i className="v2-btn-arrow">→</i>
-                </a>
+                </Link>
                 <a className="v2-hero-secondary" href="#industries">
                   <span className="v2-hero-secondary-label">Browse industries</span>
                 </a>
@@ -185,10 +188,10 @@ export default function IndustriesV2() {
               <li>Faster onboarding — fewer "actually, in our industry…" surprises</li>
               <li>Same process and pricing, tuned per sector</li>
             </ul>
-            <a className="v2-btn v2-btn--filled" href="/contact">
+            <Link className="v2-btn v2-btn--filled" to="/contact">
               <span>Talk about your sector</span>
               <i className="v2-btn-arrow">→</i>
-            </a>
+            </Link>
           </div>
 
           <div className="ind-scroll-right">
@@ -227,9 +230,9 @@ export default function IndustriesV2() {
                         </div>
                       </div>
                     </div>
-                    <a className="ind-panel-more" href={`/industries/${it.slug}`}>
+                    <Link className="ind-panel-more" to={`/industries/${it.slug}`}>
                       Explore {it.title} →
-                    </a>
+                    </Link>
                   </div>
                 </article>
               ))}
@@ -261,9 +264,9 @@ export default function IndustriesV2() {
               <div className="ind-panel-services">
                 {it.services.map((s) => <span key={s}>{s}</span>)}
               </div>
-              <a className="ind-panel-more" href={`/industries/${it.slug}`}>
+              <Link className="ind-panel-more" to={`/industries/${it.slug}`}>
                 Explore {it.title} →
-              </a>
+              </Link>
             </article>
           ))}
         </div>
@@ -353,10 +356,12 @@ export default function IndustriesV2() {
             not a generic pitch reused across every client.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a consultation →</a></div>
+            <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}
+      </main>
+
             <FooterV2 />
     </div>
   );

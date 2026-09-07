@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import gsap from "gsap";
 import { Check, X, ArrowUpRight, ExternalLink } from "lucide-react";
 import FooterV2 from "../Shared/FooterV2";
@@ -95,7 +95,7 @@ export default function ProductDetailV2() {
     return (
       <div className="v2" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }}>
         <h1 style={{ color: "#fff", fontSize: 28 }}>Product not found.</h1>
-        <a className="v2-btn" href={`/products/${PRODUCTS[0].slug}`}>Back to Products →</a>
+        <Link className="v2-btn" to={`/products/${PRODUCTS[0].slug}`}>Back to Products →</Link>
       </div>
     );
   }
@@ -109,15 +109,17 @@ export default function ProductDetailV2() {
       <div className="v2-progress" aria-hidden="true"><span /></div>
       <NavbarV2 />
 
+      <main>
+
       {/* ══════════ HERO ══════════ */}
       <header className="sd2-hero pd2-hero">
         <div className="sd2-hero-inner">
           <div className="sd2-hero-main">
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <span>/</span>
-                <a href={`/products/${PRODUCTS[0].slug}`}>Products</a>
+                <Link to={`/products/${PRODUCTS[0].slug}`}>Products</Link>
                 <span>/</span>
                 <em>{p.name}</em>
               </nav>
@@ -126,15 +128,15 @@ export default function ProductDetailV2() {
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status" style={{ "--dot": p.accent }}><i /> {p.badge}</span>
               </div>
-              <h1 className="sd2-hero-title">
+              <h1 key={slug} className="sd2-hero-title">
                 <span className="line"><span>{p.name}</span></span>
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">{p.tagline}</p>
               <div className="sd2-hero-cta sv2-hero-reveal">
-                <a className="v2-btn v2-btn--filled" href="/contact">
+                <Link className="v2-btn v2-btn--filled" to="/contact">
                   <span>Talk to us about {p.name}</span>
                   <i className="v2-btn-arrow">→</i>
-                </a>
+                </Link>
                 {p.website && (
                   <a className="v2-hero-secondary" href={p.website} target="_blank" rel="noopener noreferrer">
                     <span className="v2-hero-secondary-label">Visit {p.website.replace("https://", "")}</span>
@@ -181,7 +183,7 @@ export default function ProductDetailV2() {
               {p.problem.points.map((pt, i) => (
                 <div className="pd2-problem-card pd2-reveal" key={i}>
                   <pt.icon size={22} strokeWidth={1.5} />
-                  <h4>{pt.title}</h4>
+                  <h3>{pt.title}</h3>
                   <p>{pt.body}</p>
                 </div>
               ))}
@@ -229,7 +231,7 @@ export default function ProductDetailV2() {
                 <div className={`pd2-module-card pd2-reveal ${m.unique ? "is-unique" : ""}`} key={m.n}>
                   <span className="pd2-module-n">{m.n}</span>
                   <m.icon size={20} strokeWidth={1.5} />
-                  <h4>{m.title}</h4>
+                  <h3>{m.title}</h3>
                   <p>{m.body}</p>
                   {m.unique && <span className="pd2-module-badge">Only in {p.name}</span>}
                 </div>
@@ -250,7 +252,7 @@ export default function ProductDetailV2() {
               {p.ai.items.map((it, i) => (
                 <div className="pd2-ai-card pd2-reveal" key={i}>
                   <div className="pd2-ai-icon"><it.icon size={22} strokeWidth={1.5} /></div>
-                  <h4>{it.title}</h4>
+                  <h3>{it.title}</h3>
                   <p>{it.body}</p>
                 </div>
               ))}
@@ -268,7 +270,7 @@ export default function ProductDetailV2() {
             <div className="pd2-users-grid">
               {p.users.map((u) => (
                 <div className="pd2-user-card pd2-reveal" key={u.role}>
-                  <h4>{u.role}</h4>
+                  <h3>{u.role}</h3>
                   <p>{u.body}</p>
                 </div>
               ))}
@@ -291,7 +293,7 @@ export default function ProductDetailV2() {
                     <div className="pd2-feature-card" key={it.title}>
                       <it.icon size={20} strokeWidth={1.5} />
                       <div>
-                        <h4>{it.title}</h4>
+                        <h3>{it.title}</h3>
                         <p>{it.body}</p>
                       </div>
                     </div>
@@ -314,7 +316,7 @@ export default function ProductDetailV2() {
                 <div className="pd2-how-row pd2-reveal" key={i}>
                   <span className="pd2-how-n">{String(i + 1).padStart(2, "0")}</span>
                   <div>
-                    <h4>{step.title}</h4>
+                    <h3>{step.title}</h3>
                     <p>{step.body}</p>
                   </div>
                 </div>
@@ -335,7 +337,7 @@ export default function ProductDetailV2() {
               {p.pricing.tiers.map((t) => (
                 <div className={`pd2-pricing-card pd2-reveal ${t.popular ? "is-popular" : ""}`} key={t.name}>
                   {t.popular && <span className="pd2-pricing-tag">Most Popular</span>}
-                  <h4>{t.name}</h4>
+                  <h3>{t.name}</h3>
                   <p className="pd2-pricing-desc">{t.desc}</p>
                   <div className="pd2-pricing-price">{t.price}<span>{t.period}</span></div>
                   <ul>
@@ -483,13 +485,13 @@ export default function ProductDetailV2() {
           <span className="v2-label pd2-reveal">More From Codelix</span>
           <div className="pd2-other-grid">
             {otherProducts.map((op) => (
-              <a href={`/products/${op.slug}`} className="pd2-other-card pd2-reveal" key={op.slug} style={{ "--accent": op.accent }}>
+              <Link to={`/products/${op.slug}`} className="pd2-other-card pd2-reveal" key={op.slug} style={{ "--accent": op.accent }}>
                 <span className="pd2-other-logo"><img src={op.logo} alt="" /></span>
                 <span className="pd2-other-badge">{op.badge}</span>
-                <h4>{op.name}</h4>
+                <h3>{op.name}</h3>
                 <p>{op.tagline}</p>
                 <span className="pd2-other-arrow"><ArrowUpRight size={18} strokeWidth={2} /></span>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -504,8 +506,10 @@ export default function ProductDetailV2() {
             Tell us about your {p.slug === 'aanganone' ? 'society' : 'team'} and we'll walk you through a live demo.
           </p>
           <div className="v2-cta-actions">
-            <a className="v2-btn" href="/contact">Book a demo →</a></div>
+            <Link className="v2-btn" to="/contact">Book a demo →</Link></div>
 </CtaSection>
+
+      </main>
 
       <FooterV2 />
     </div>

@@ -114,6 +114,12 @@ export function splitTitleLines(el) {
     }
 
     outer.appendChild(inner);
+
+    /* separate the lines with a real whitespace text node. Each .line is
+       display:block so this changes nothing visually, but without it the
+       title's extracted text runs together — "We buildsoftware that" — which
+       is what search engines and screen readers read. */
+    if (el.childNodes.length) el.appendChild(doc.createTextNode(" "));
     el.appendChild(outer);
   });
 }

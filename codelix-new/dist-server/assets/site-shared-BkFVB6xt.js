@@ -1,10 +1,11 @@
 import { jsxs, Fragment, jsx } from "react/jsx-runtime";
-import React, { useState, useEffect, useRef } from "react";
-import { useLenis } from "lenis/react";
-import { N as NAVBAR_SERVICES_HIERARCHY, F as FOOTER_INDUSTRY_KEYWORDS, a as FOOTER_ALL_SERVICES, b as FOOTER_PRODUCTS, C as CLIENT_LOGOS } from "./site-data-BYekvB5e.js";
-import { Sparkles, Zap, Radio, MessageSquare, LineChart, Bot, Contact, ClipboardList, CalendarCheck, Wallet, UserCog, FolderLock, ShieldCheck, UserCheck, MessageCircle, KeyRound, Users, BarChart3, BookOpen, Workflow, GraduationCap, TrendingUp, FileText, BellRing, Receipt, ShieldAlert, Calculator, Package, Cog, ScanLine, Handshake, UsersRound, FolderCog, HardHat, Brain, QrCode, CreditCard, Megaphone, MessagesSquare, Wrench, ParkingSquare, BookUser, Briefcase, Info, Tag, Cpu, Newspaper, HelpCircle, Rocket, Mail, LayoutGrid, ChevronDown, Building2, Boxes, ChevronRight, Globe, Cloud, Database, ShoppingCart, Palette, Smartphone, Plane, Coffee, Activity, Landmark, Factory, Monitor, Server, PenTool, Lock } from "lucide-react";
-import { Y as audyteeLogo, Z as fourBitxLogo, _ as aanganOneLogo, $ as codelixLogo } from "./site-images-BsojGprN.js";
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
+import { Link } from "react-router-dom";
+import { Y as audyteeLogo, Z as fourBitxLogo, _ as aanganOneLogo, $ as codelixLogo } from "./site-images-DRvRo0sp.js";
+import { N as NAVBAR_SERVICES_HIERARCHY, F as FOOTER_INDUSTRY_KEYWORDS, a as FOOTER_ALL_SERVICES, b as FOOTER_PRODUCTS, C as CLIENT_LOGOS } from "./site-data-ES8yYkGU.js";
 import gsap from "gsap";
+import { useLenis } from "lenis/react";
+import { Sparkles, Zap, Radio, MessageSquare, LineChart, Bot, Contact, ClipboardList, CalendarCheck, Wallet, UserCog, FolderLock, ShieldCheck, UserCheck, MessageCircle, KeyRound, Users, BarChart3, BookOpen, Workflow, GraduationCap, TrendingUp, FileText, BellRing, Receipt, ShieldAlert, Calculator, Package, Cog, ScanLine, Handshake, UsersRound, FolderCog, HardHat, Brain, QrCode, CreditCard, Megaphone, MessagesSquare, Wrench, ParkingSquare, BookUser, Briefcase, Info, Tag, Cpu, Newspaper, HelpCircle, Rocket, Mail, LayoutGrid, ChevronDown, Building2, Boxes, ChevronRight, Globe, Cloud, Database, ShoppingCart, Palette, Smartphone, Plane, Coffee, Activity, Landmark, Factory, Monitor, Server, PenTool, Lock } from "lucide-react";
 const PRODUCTS = [
   {
     slug: "audytee",
@@ -136,7 +137,7 @@ const PRODUCTS = [
     badge: "Custom ERP for Every Industry",
     tagline: "Your Factory. Fully Connected. Fully Intelligent.",
     status: "Live",
-    website: null,
+    website: "https://4bitx.com",
     email: "hr@codelixitsolutions.com",
     accent: "#e6a23c",
     headline: "Not just accounting software. A complete Manufacturing Operating System.",
@@ -231,7 +232,7 @@ const PRODUCTS = [
     badge: "Society, Apartment & Community Management",
     tagline: "Smart Living for Modern Societies",
     status: "Live on Google Play · submitted to Apple App Store",
-    website: null,
+    website: "https://aanganone.com",
     email: "hr@codelixitsolutions.com",
     accent: "#4ecb9c",
     headline: "From visitor entry to maintenance billing — one app.",
@@ -321,102 +322,111 @@ function V2MobileDrawer({ open, onClose }) {
   const [productsOpen, setProductsOpen] = React.useState(false);
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx("div", { className: `v2-drawer-backdrop ${open ? "open" : ""}`, onClick: onClose, "aria-hidden": "true", "data-lenis-prevent": "true" }),
-    /* @__PURE__ */ jsxs("div", { className: `v2-drawer ${open ? "open" : ""}`, "aria-hidden": !open, "data-lenis-prevent": "true", children: [
-      /* @__PURE__ */ jsxs("button", { type: "button", className: "v2-drawer-close", "aria-label": "Close menu", onClick: onClose, children: [
-        /* @__PURE__ */ jsx("span", {}),
-        /* @__PURE__ */ jsx("span", {})
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "v2-drawer-scroll-area", children: [
-        /* @__PURE__ */ jsxs("div", { className: "v2-drawer-links", children: [
-          /* @__PURE__ */ jsxs("div", { className: "v2-drawer-accordion mobile-only-drawer-link", children: [
-            /* @__PURE__ */ jsxs(
-              "button",
-              {
-                className: `v2-drawer-link-btn ${servicesOpen ? "open" : ""}`,
-                onClick: () => setServicesOpen(!servicesOpen),
-                "aria-expanded": servicesOpen,
-                children: [
-                  /* @__PURE__ */ jsxs("span", { className: "v2-drawer-link-label", children: [
-                    /* @__PURE__ */ jsx("span", { className: "v2-drawer-link-icon", children: /* @__PURE__ */ jsx(SERVICES_ICON, { size: 17, strokeWidth: 1.75 }) }),
-                    "Services"
-                  ] }),
-                  /* @__PURE__ */ jsx(ChevronDown, { className: `v2-drawer-chevron ${servicesOpen ? "open" : ""}`, size: 20, strokeWidth: 2 })
-                ]
-              }
-            ),
-            /* @__PURE__ */ jsxs("div", { className: `v2-drawer-sublinks ${servicesOpen ? "open" : ""}`, children: [
-              /* @__PURE__ */ jsx("a", { href: "/services", onClick: onClose, className: "v2-drawer-sublink-all", children: "Overview (All Services)" }),
-              NAVBAR_SERVICES_HIERARCHY.map((category) => /* @__PURE__ */ jsxs("div", { className: "v2-drawer-sublink-category", children: [
-                /* @__PURE__ */ jsx("a", { href: category.path, onClick: onClose, className: "v2-drawer-sublink-title", children: category.title }),
-                category.items.map((item) => /* @__PURE__ */ jsx("a", { href: item.path, onClick: onClose, className: "v2-drawer-sublink-item", children: item.label }, item.label))
-              ] }, category.title))
-            ] })
+    /* @__PURE__ */ jsxs(
+      "div",
+      {
+        className: `v2-drawer ${open ? "open" : ""}`,
+        "aria-hidden": !open,
+        inert: !open,
+        "data-lenis-prevent": "true",
+        children: [
+          /* @__PURE__ */ jsxs("button", { type: "button", className: "v2-drawer-close", "aria-label": "Close menu", onClick: onClose, children: [
+            /* @__PURE__ */ jsx("span", {}),
+            /* @__PURE__ */ jsx("span", {})
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: "v2-drawer-accordion mobile-only-drawer-link", children: [
-            /* @__PURE__ */ jsxs(
-              "button",
-              {
-                className: `v2-drawer-link-btn ${industriesOpen ? "open" : ""}`,
-                onClick: () => setIndustriesOpen(!industriesOpen),
-                "aria-expanded": industriesOpen,
-                children: [
-                  /* @__PURE__ */ jsxs("span", { className: "v2-drawer-link-label", children: [
-                    /* @__PURE__ */ jsx("span", { className: "v2-drawer-link-icon", children: /* @__PURE__ */ jsx(Building2, { size: 17, strokeWidth: 1.75 }) }),
-                    "Industries"
-                  ] }),
-                  /* @__PURE__ */ jsx(ChevronDown, { className: `v2-drawer-chevron ${industriesOpen ? "open" : ""}`, size: 20, strokeWidth: 2 })
-                ]
-              }
-            ),
-            /* @__PURE__ */ jsxs("div", { className: `v2-drawer-sublinks ${industriesOpen ? "open" : ""}`, children: [
-              /* @__PURE__ */ jsx("a", { href: "/industries", onClick: onClose, className: "v2-drawer-sublink-all", children: "Overview (All Industries)" }),
-              /* @__PURE__ */ jsx("div", { className: "v2-drawer-sublink-category", children: FOOTER_INDUSTRY_KEYWORDS.map((industry) => /* @__PURE__ */ jsx("a", { href: industry.path, onClick: onClose, className: "v2-drawer-sublink-item", style: { paddingLeft: "16px" }, children: industry.label }, industry.label)) })
-            ] })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "v2-drawer-accordion mobile-only-drawer-link", children: [
-            /* @__PURE__ */ jsxs(
-              "button",
-              {
-                className: `v2-drawer-link-btn ${productsOpen ? "open" : ""}`,
-                onClick: () => setProductsOpen(!productsOpen),
-                "aria-expanded": productsOpen,
-                children: [
-                  /* @__PURE__ */ jsxs("span", { className: "v2-drawer-link-label", children: [
-                    /* @__PURE__ */ jsx("span", { className: "v2-drawer-link-icon", children: /* @__PURE__ */ jsx(Boxes, { size: 17, strokeWidth: 1.75 }) }),
-                    "Products"
-                  ] }),
-                  /* @__PURE__ */ jsx(ChevronDown, { className: `v2-drawer-chevron ${productsOpen ? "open" : ""}`, size: 20, strokeWidth: 2 })
-                ]
-              }
-            ),
-            /* @__PURE__ */ jsx("div", { className: `v2-drawer-sublinks ${productsOpen ? "open" : ""}`, children: /* @__PURE__ */ jsx("div", { className: "v2-drawer-sublink-category", children: PRODUCTS.map((p) => /* @__PURE__ */ jsx("a", { href: `/products/${p.slug}`, onClick: onClose, className: "v2-drawer-sublink-item", children: p.name }, p.slug)) }) })
-          ] }),
-          NAV_LINKS.map((l) => /* @__PURE__ */ jsxs(
-            "a",
-            {
-              href: l.href,
-              onClick: onClose,
-              className: l.label === "Work" || l.label === "About" ? "mobile-only-drawer-link" : "",
-              children: [
-                /* @__PURE__ */ jsx("span", { className: "v2-drawer-link-icon", children: /* @__PURE__ */ jsx(l.icon, { size: 17, strokeWidth: 1.75 }) }),
+          /* @__PURE__ */ jsxs("div", { className: "v2-drawer-scroll-area", children: [
+            /* @__PURE__ */ jsxs("div", { className: "v2-drawer-links", children: [
+              /* @__PURE__ */ jsxs("div", { className: "v2-drawer-accordion mobile-only-drawer-link", children: [
+                /* @__PURE__ */ jsxs(
+                  "button",
+                  {
+                    className: `v2-drawer-link-btn ${servicesOpen ? "open" : ""}`,
+                    onClick: () => setServicesOpen(!servicesOpen),
+                    "aria-expanded": servicesOpen,
+                    children: [
+                      /* @__PURE__ */ jsxs("span", { className: "v2-drawer-link-label", children: [
+                        /* @__PURE__ */ jsx("span", { className: "v2-drawer-link-icon", children: /* @__PURE__ */ jsx(SERVICES_ICON, { size: 17, strokeWidth: 1.75 }) }),
+                        "Services"
+                      ] }),
+                      /* @__PURE__ */ jsx(ChevronDown, { className: `v2-drawer-chevron ${servicesOpen ? "open" : ""}`, size: 20, strokeWidth: 2 })
+                    ]
+                  }
+                ),
+                /* @__PURE__ */ jsxs("div", { className: `v2-drawer-sublinks ${servicesOpen ? "open" : ""}`, children: [
+                  /* @__PURE__ */ jsx(Link, { to: "/services", onClick: onClose, className: "v2-drawer-sublink-all", children: "Overview (All Services)" }),
+                  NAVBAR_SERVICES_HIERARCHY.map((category) => /* @__PURE__ */ jsxs("div", { className: "v2-drawer-sublink-category", children: [
+                    /* @__PURE__ */ jsx(Link, { to: category.path, onClick: onClose, className: "v2-drawer-sublink-title", children: category.title }),
+                    category.items.map((item) => /* @__PURE__ */ jsx(Link, { to: item.path, onClick: onClose, className: "v2-drawer-sublink-item", children: item.label }, item.label))
+                  ] }, category.title))
+                ] })
+              ] }),
+              /* @__PURE__ */ jsxs("div", { className: "v2-drawer-accordion mobile-only-drawer-link", children: [
+                /* @__PURE__ */ jsxs(
+                  "button",
+                  {
+                    className: `v2-drawer-link-btn ${industriesOpen ? "open" : ""}`,
+                    onClick: () => setIndustriesOpen(!industriesOpen),
+                    "aria-expanded": industriesOpen,
+                    children: [
+                      /* @__PURE__ */ jsxs("span", { className: "v2-drawer-link-label", children: [
+                        /* @__PURE__ */ jsx("span", { className: "v2-drawer-link-icon", children: /* @__PURE__ */ jsx(Building2, { size: 17, strokeWidth: 1.75 }) }),
+                        "Industries"
+                      ] }),
+                      /* @__PURE__ */ jsx(ChevronDown, { className: `v2-drawer-chevron ${industriesOpen ? "open" : ""}`, size: 20, strokeWidth: 2 })
+                    ]
+                  }
+                ),
+                /* @__PURE__ */ jsxs("div", { className: `v2-drawer-sublinks ${industriesOpen ? "open" : ""}`, children: [
+                  /* @__PURE__ */ jsx(Link, { to: "/industries", onClick: onClose, className: "v2-drawer-sublink-all", children: "Overview (All Industries)" }),
+                  /* @__PURE__ */ jsx("div", { className: "v2-drawer-sublink-category", children: FOOTER_INDUSTRY_KEYWORDS.map((industry) => /* @__PURE__ */ jsx(Link, { to: industry.path, onClick: onClose, className: "v2-drawer-sublink-item", style: { paddingLeft: "16px" }, children: industry.label }, industry.label)) })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsxs("div", { className: "v2-drawer-accordion mobile-only-drawer-link", children: [
+                /* @__PURE__ */ jsxs(
+                  "button",
+                  {
+                    className: `v2-drawer-link-btn ${productsOpen ? "open" : ""}`,
+                    onClick: () => setProductsOpen(!productsOpen),
+                    "aria-expanded": productsOpen,
+                    children: [
+                      /* @__PURE__ */ jsxs("span", { className: "v2-drawer-link-label", children: [
+                        /* @__PURE__ */ jsx("span", { className: "v2-drawer-link-icon", children: /* @__PURE__ */ jsx(Boxes, { size: 17, strokeWidth: 1.75 }) }),
+                        "Products"
+                      ] }),
+                      /* @__PURE__ */ jsx(ChevronDown, { className: `v2-drawer-chevron ${productsOpen ? "open" : ""}`, size: 20, strokeWidth: 2 })
+                    ]
+                  }
+                ),
+                /* @__PURE__ */ jsx("div", { className: `v2-drawer-sublinks ${productsOpen ? "open" : ""}`, children: /* @__PURE__ */ jsx("div", { className: "v2-drawer-sublink-category", children: PRODUCTS.map((p) => /* @__PURE__ */ jsx(Link, { to: `/products/${p.slug}`, onClick: onClose, className: "v2-drawer-sublink-item", children: p.name }, p.slug)) }) })
+              ] }),
+              NAV_LINKS.map((l) => /* @__PURE__ */ jsxs(
+                Link,
+                {
+                  to: l.href,
+                  onClick: onClose,
+                  className: l.label === "Work" || l.label === "About" ? "mobile-only-drawer-link" : "",
+                  children: [
+                    /* @__PURE__ */ jsx("span", { className: "v2-drawer-link-icon", children: /* @__PURE__ */ jsx(l.icon, { size: 17, strokeWidth: 1.75 }) }),
+                    l.label
+                  ]
+                },
                 l.label
-              ]
-            },
-            l.label
-          ))
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: "v2-drawer-cta", children: [
-          /* @__PURE__ */ jsxs("a", { className: "v2-btn v2-btn--filled", href: "/contact", onClick: onClose, children: [
-            /* @__PURE__ */ jsx("span", { children: "Book a consultation" }),
-            /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "v2-drawer-cta-socials", children: [
-            /* @__PURE__ */ jsx("a", { href: "https://www.linkedin.com/company/codelixit-solutions", target: "_blank", rel: "noopener noreferrer", children: "LinkedIn" }),
-            /* @__PURE__ */ jsx("a", { href: "https://www.instagram.com/codelixitsolutions/", target: "_blank", rel: "noopener noreferrer", children: "Instagram" })
+              ))
+            ] }),
+            /* @__PURE__ */ jsxs("div", { className: "v2-drawer-cta", children: [
+              /* @__PURE__ */ jsxs(Link, { className: "v2-btn v2-btn--filled", to: "/contact", onClick: onClose, children: [
+                /* @__PURE__ */ jsx("span", { children: "Book a consultation" }),
+                /* @__PURE__ */ jsx("i", { className: "v2-btn-arrow", children: "→" })
+              ] }),
+              /* @__PURE__ */ jsxs("div", { className: "v2-drawer-cta-socials", children: [
+                /* @__PURE__ */ jsx("a", { href: "https://www.linkedin.com/company/codelixit-solutions", target: "_blank", rel: "noopener noreferrer", children: "LinkedIn" }),
+                /* @__PURE__ */ jsx("a", { href: "https://www.instagram.com/codelixitsolutions/", target: "_blank", rel: "noopener noreferrer", children: "Instagram" })
+              ] })
+            ] })
           ] })
-        ] })
-      ] })
-    ] })
+        ]
+      }
+    )
   ] });
 }
 const getCategoryIcon = (title) => {
@@ -496,6 +506,7 @@ function NavbarV2() {
   const [navHidden, setNavHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const lenis = useLenis();
+  const lockedRef = useRef(false);
   useEffect(() => {
     let lastY = window.scrollY;
     const onScroll = () => {
@@ -518,16 +529,27 @@ function NavbarV2() {
       document.body.style.overflow = "hidden";
       document.documentElement.style.overflow = "hidden";
       document.body.dataset.scrollY = scrollY;
+      lockedRef.current = true;
     } else {
       if (lenis) lenis.start();
-      scrollY = document.body.dataset.scrollY || 0;
+      const stored = document.body.dataset.scrollY;
+      delete document.body.dataset.scrollY;
       document.body.style.position = "";
       document.body.style.top = "";
       document.body.style.width = "";
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY));
+      if (lockedRef.current) {
+        lockedRef.current = false;
+        if (stored) window.scrollTo(0, parseInt(stored));
+      } else if (stored) {
+        void document.body.offsetHeight;
+        const toTop = () => {
+          window.scrollTo(0, 0);
+          if (lenis) lenis.scrollTo(0, { immediate: true, force: true });
+        };
+        toTop();
+        requestAnimationFrame(toTop);
       }
     }
     const onKey = (e) => {
@@ -545,10 +567,10 @@ function NavbarV2() {
   }, [mobileOpen]);
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx("nav", { className: `v2-nav ${navScrolled ? "scrolled" : ""} ${navHidden ? "nav-hidden" : ""}`, children: /* @__PURE__ */ jsxs("div", { className: "v2-nav-inner", children: [
-      /* @__PURE__ */ jsx("a", { href: "/", className: "v2-nav-logo", "aria-label": "Codelix — home", children: /* @__PURE__ */ jsx("img", { src: codelixLogo, alt: "Codelix" }) }),
+      /* @__PURE__ */ jsx(Link, { to: "/", className: "v2-nav-logo", "aria-label": "Codelix — home", children: /* @__PURE__ */ jsx("img", { src: codelixLogo, alt: "Codelix" }) }),
       /* @__PURE__ */ jsxs("div", { className: "v2-nav-links", children: [
         /* @__PURE__ */ jsxs("div", { className: "v2-nav-dropdown", children: [
-          /* @__PURE__ */ jsxs("a", { href: "/services", children: [
+          /* @__PURE__ */ jsxs(Link, { to: "/services", children: [
             "Services ",
             /* @__PURE__ */ jsx("span", { className: "v2-nav-dropdown-chevron", children: "▾" })
           ] }),
@@ -558,10 +580,10 @@ function NavbarV2() {
                 /* @__PURE__ */ jsx("p", { className: "v2-nav-dropdown-head-label", children: "Our Services" }),
                 /* @__PURE__ */ jsx("p", { className: "v2-nav-dropdown-head-lede", children: "Everything we build, in one place." })
               ] }),
-              /* @__PURE__ */ jsx("a", { href: "/services", className: "v2-nav-dropdown-head-all", children: "View all services →" })
+              /* @__PURE__ */ jsx(Link, { to: "/services", className: "v2-nav-dropdown-head-all", children: "View all services →" })
             ] }),
             /* @__PURE__ */ jsx("div", { className: "v2-nav-mega-menu", children: NAVBAR_SERVICES_HIERARCHY.map((category) => /* @__PURE__ */ jsxs("div", { className: "v2-nav-mega-category", children: [
-              /* @__PURE__ */ jsxs("a", { href: category.path, className: "v2-nav-mega-title-wrapper", children: [
+              /* @__PURE__ */ jsxs(Link, { to: category.path, className: "v2-nav-mega-title-wrapper", children: [
                 /* @__PURE__ */ jsx("div", { className: "v2-nav-mega-icon-box", children: getCategoryIcon(category.title) }),
                 /* @__PURE__ */ jsxs("div", { className: "v2-nav-mega-title-content", children: [
                   /* @__PURE__ */ jsxs("span", { className: "v2-nav-mega-title", children: [
@@ -572,7 +594,7 @@ function NavbarV2() {
                   /* @__PURE__ */ jsx("span", { className: "v2-nav-mega-desc", children: getCategoryDescription(category.title) })
                 ] })
               ] }),
-              /* @__PURE__ */ jsx("div", { className: "v2-nav-mega-links", children: category.items.map((item) => /* @__PURE__ */ jsxs("a", { href: item.path, className: "v2-nav-mega-link", children: [
+              /* @__PURE__ */ jsx("div", { className: "v2-nav-mega-links", children: category.items.map((item) => /* @__PURE__ */ jsxs(Link, { to: item.path, className: "v2-nav-mega-link", children: [
                 /* @__PURE__ */ jsxs("span", { className: "v2-nav-mega-link-left", children: [
                   /* @__PURE__ */ jsx("span", { className: "v2-nav-mega-link-dot" }),
                   item.label
@@ -582,9 +604,9 @@ function NavbarV2() {
             ] }, category.title)) })
           ] })
         ] }),
-        /* @__PURE__ */ jsx("a", { href: "/work", children: "Work" }),
+        /* @__PURE__ */ jsx(Link, { to: "/work", children: "Work" }),
         /* @__PURE__ */ jsxs("div", { className: "v2-nav-dropdown", children: [
-          /* @__PURE__ */ jsxs("a", { href: "/industries", children: [
+          /* @__PURE__ */ jsxs(Link, { to: "/industries", children: [
             "Industries ",
             /* @__PURE__ */ jsx("span", { className: "v2-nav-dropdown-chevron", children: "▾" })
           ] }),
@@ -593,12 +615,12 @@ function NavbarV2() {
               /* @__PURE__ */ jsx("div", { className: "v2-nav-mega-menu-left-bg-icon", children: /* @__PURE__ */ jsx(Building2, { size: 160, strokeWidth: 0.5 }) }),
               /* @__PURE__ */ jsx("h3", { className: "v2-nav-mega-menu-left-title", children: "Industry Expertise" }),
               /* @__PURE__ */ jsx("p", { className: "v2-nav-mega-menu-left-desc", children: "We engineer powerful, scalable software solutions perfectly tailored to the unique challenges of your industry." }),
-              /* @__PURE__ */ jsxs("a", { href: "/industries", className: "v2-nav-mega-menu-left-btn", children: [
+              /* @__PURE__ */ jsxs(Link, { to: "/industries", className: "v2-nav-mega-menu-left-btn", children: [
                 "Explore All Industries ",
                 /* @__PURE__ */ jsx(ChevronRight, { size: 14, strokeWidth: 2.5 })
               ] })
             ] }),
-            /* @__PURE__ */ jsx("div", { className: "v2-nav-mega-menu-right", children: FOOTER_INDUSTRY_KEYWORDS.map((industry) => /* @__PURE__ */ jsxs("a", { href: industry.path, className: "v2-nav-industry-link", children: [
+            /* @__PURE__ */ jsx("div", { className: "v2-nav-mega-menu-right", children: FOOTER_INDUSTRY_KEYWORDS.map((industry) => /* @__PURE__ */ jsxs(Link, { to: industry.path, className: "v2-nav-industry-link", children: [
               /* @__PURE__ */ jsxs("span", { className: "v2-nav-industry-link-left", children: [
                 /* @__PURE__ */ jsx("span", { className: "v2-nav-industry-link-icon-wrap", children: getIndustryIcon(industry.label) }),
                 /* @__PURE__ */ jsx("span", { className: "v2-nav-industry-link-text", children: industry.label })
@@ -608,7 +630,7 @@ function NavbarV2() {
           ] }) })
         ] }),
         /* @__PURE__ */ jsxs("div", { className: "v2-nav-dropdown", children: [
-          /* @__PURE__ */ jsxs("a", { href: `/products/${PRODUCTS[0].slug}`, children: [
+          /* @__PURE__ */ jsxs(Link, { to: `/products/${PRODUCTS[0].slug}`, children: [
             "Products ",
             /* @__PURE__ */ jsx("span", { className: "v2-nav-dropdown-chevron", children: "▾" })
           ] }),
@@ -618,7 +640,7 @@ function NavbarV2() {
               /* @__PURE__ */ jsx("h3", { className: "v2-nav-mega-menu-left-title", children: "Our Products" }),
               /* @__PURE__ */ jsx("p", { className: "v2-nav-mega-menu-left-desc", children: "Beyond client work — SaaS products we design, build, and run ourselves." })
             ] }),
-            /* @__PURE__ */ jsx("div", { className: "v2-nav-products-right", children: PRODUCTS.map((p) => /* @__PURE__ */ jsxs("a", { href: `/products/${p.slug}`, className: "v2-nav-product-link", children: [
+            /* @__PURE__ */ jsx("div", { className: "v2-nav-products-right", children: PRODUCTS.map((p) => /* @__PURE__ */ jsxs(Link, { to: `/products/${p.slug}`, className: "v2-nav-product-link", children: [
               /* @__PURE__ */ jsxs("span", { className: "v2-nav-product-link-top", children: [
                 /* @__PURE__ */ jsx("span", { className: "v2-nav-product-link-logo", children: /* @__PURE__ */ jsx("img", { src: p.logo, alt: "" }) }),
                 /* @__PURE__ */ jsx("span", { className: "v2-nav-product-link-name", style: { color: p.accent }, children: p.name }),
@@ -629,10 +651,10 @@ function NavbarV2() {
             ] }, p.slug)) })
           ] }) })
         ] }),
-        /* @__PURE__ */ jsx("a", { href: "/about", children: "About" })
+        /* @__PURE__ */ jsx(Link, { to: "/about", children: "About" })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "v2-nav-actions", children: [
-        /* @__PURE__ */ jsx("a", { className: "v2-btn v2-btn--filled v2-nav-cta", href: "/contact", children: "Book a consultation" }),
+        /* @__PURE__ */ jsx(Link, { className: "v2-btn v2-btn--filled v2-nav-cta", to: "/contact", children: "Book a consultation" }),
         /* @__PURE__ */ jsxs(
           "button",
           {
@@ -697,15 +719,15 @@ function FooterV2() {
     ] }),
     /* @__PURE__ */ jsxs("div", { className: "v2-footer-keywords-row", children: [
       /* @__PURE__ */ jsx("p", { className: "v2-footer-keywords-label", children: "Services" }),
-      /* @__PURE__ */ jsx("div", { className: "v2-footer-keywords-list", children: FOOTER_ALL_SERVICES.map((k, i) => /* @__PURE__ */ jsx("a", { href: k.path, className: "v2-footer-keyword", children: k.label }, i)) })
+      /* @__PURE__ */ jsx("div", { className: "v2-footer-keywords-list", children: FOOTER_ALL_SERVICES.map((k, i) => /* @__PURE__ */ jsx(Link, { to: k.path, className: "v2-footer-keyword", children: k.label }, i)) })
     ] }),
     /* @__PURE__ */ jsxs("div", { className: "v2-footer-keywords-row", children: [
       /* @__PURE__ */ jsx("p", { className: "v2-footer-keywords-label", children: "Industries" }),
-      /* @__PURE__ */ jsx("div", { className: "v2-footer-keywords-list", children: FOOTER_INDUSTRY_KEYWORDS.map((k, i) => /* @__PURE__ */ jsx("a", { href: k.path, className: "v2-footer-keyword", children: k.label }, i)) })
+      /* @__PURE__ */ jsx("div", { className: "v2-footer-keywords-list", children: FOOTER_INDUSTRY_KEYWORDS.map((k, i) => /* @__PURE__ */ jsx(Link, { to: k.path, className: "v2-footer-keyword", children: k.label }, i)) })
     ] }),
     /* @__PURE__ */ jsxs("div", { className: "v2-footer-keywords-row", children: [
       /* @__PURE__ */ jsx("p", { className: "v2-footer-keywords-label", children: "Products" }),
-      /* @__PURE__ */ jsx("div", { className: "v2-footer-keywords-list", children: FOOTER_PRODUCTS.map((k, i) => /* @__PURE__ */ jsx("a", { href: k.path, className: "v2-footer-keyword", children: k.label }, i)) })
+      /* @__PURE__ */ jsx("div", { className: "v2-footer-keywords-list", children: FOOTER_PRODUCTS.map((k, i) => /* @__PURE__ */ jsx(Link, { to: k.path, className: "v2-footer-keyword", children: k.label }, i)) })
     ] }),
     /* @__PURE__ */ jsxs("div", { className: "v2-footer-cards v2-footer-cards--four", children: [
       /* @__PURE__ */ jsxs(
@@ -716,30 +738,30 @@ function FooterV2() {
           target: "_blank",
           rel: "noopener noreferrer",
           children: [
-            /* @__PURE__ */ jsx("h5", { children: "India (HQ)" }),
+            /* @__PURE__ */ jsx("h3", { children: "India (HQ)" }),
             /* @__PURE__ */ jsx("p", { className: "v2-footer-card-addr", children: "A-1308, PNTC — Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat — 380015" })
           ]
         }
       ),
       /* @__PURE__ */ jsxs("div", { className: "v2-footer-card", children: [
-        /* @__PURE__ */ jsx("h5", { children: "Phone" }),
+        /* @__PURE__ */ jsx("h3", { children: "Phone" }),
         /* @__PURE__ */ jsx("a", { className: "v2-footer-card-strong", href: "tel:+919998263282", children: "+91 99982 63282" }),
         /* @__PURE__ */ jsx("a", { className: "v2-footer-card-strong", href: "tel:+917490909686", children: "+91 74909 09686" })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "v2-footer-card", children: [
-        /* @__PURE__ */ jsx("h5", { children: "Looking For Jobs" }),
-        /* @__PURE__ */ jsx("a", { className: "v2-footer-card-strong", href: "/careers", children: "View openings →" })
+        /* @__PURE__ */ jsx("h3", { children: "Looking For Jobs" }),
+        /* @__PURE__ */ jsx(Link, { className: "v2-footer-card-strong", to: "/careers", children: "View openings →" })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "v2-footer-card", children: [
-        /* @__PURE__ */ jsx("h5", { children: "HR" }),
+        /* @__PURE__ */ jsx("h3", { children: "HR" }),
         /* @__PURE__ */ jsx("a", { className: "v2-footer-card-strong", href: "mailto:hr@codelixitsolutions.com", children: "hr@codelixitsolutions.com" })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "v2-footer-card", children: [
-        /* @__PURE__ */ jsx("h5", { children: "General" }),
+        /* @__PURE__ */ jsx("h3", { children: "General" }),
         /* @__PURE__ */ jsx("a", { className: "v2-footer-card-strong", href: "mailto:info@codelixitsolutions.com", children: "info@codelixitsolutions.com" })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "v2-footer-card", children: [
-        /* @__PURE__ */ jsx("h5", { children: "For Sales" }),
+        /* @__PURE__ */ jsx("h3", { children: "For Sales" }),
         /* @__PURE__ */ jsx("a", { className: "v2-footer-card-strong", href: "mailto:sales@codelixitsolutions.com", children: "sales@codelixitsolutions.com" })
       ] })
     ] }),
@@ -766,13 +788,13 @@ function FooterV2() {
     ] }),
     /* @__PURE__ */ jsx("div", { className: "v2-footer-social v2-mobile-only", style: { borderTop: "none", paddingTop: "20px", paddingBottom: "20px", justifyContent: "center", flexWrap: "wrap", gap: "10px", width: "100%" }, children: /* @__PURE__ */ jsx(RatingsStrip, {}) }),
     /* @__PURE__ */ jsxs("div", { className: "v2-footer-bottom", children: [
-      /* @__PURE__ */ jsx("a", { href: "/", className: "v2-footer-bottom-brand", "aria-label": "Codelix — home", children: /* @__PURE__ */ jsx("img", { src: codelixLogo, alt: "Codelix" }) }),
+      /* @__PURE__ */ jsx(Link, { to: "/", className: "v2-footer-bottom-brand", "aria-label": "Codelix — home", children: /* @__PURE__ */ jsx("img", { src: codelixLogo, alt: "Codelix" }) }),
       /* @__PURE__ */ jsx("span", { className: "v2-footer-bottom-copy", children: "© 2026 Codelix IT Solutions — All Copyright Reserved" }),
       /* @__PURE__ */ jsxs("div", { className: "v2-footer-legal", children: [
-        /* @__PURE__ */ jsx("a", { href: "/sitemap", children: "Sitemap" }),
-        /* @__PURE__ */ jsx("a", { href: "/refund-policy", children: "Refund Policy" }),
-        /* @__PURE__ */ jsx("a", { href: "/privacy-policy", children: "Privacy" }),
-        /* @__PURE__ */ jsx("a", { href: "/terms-of-service", children: "Terms" })
+        /* @__PURE__ */ jsx(Link, { to: "/sitemap", children: "Sitemap" }),
+        /* @__PURE__ */ jsx(Link, { to: "/refund-policy", children: "Refund Policy" }),
+        /* @__PURE__ */ jsx(Link, { to: "/privacy-policy", children: "Privacy" }),
+        /* @__PURE__ */ jsx(Link, { to: "/terms-of-service", children: "Terms" })
       ] })
     ] })
   ] });
@@ -952,14 +974,18 @@ function CtaVisual() {
     }
   );
 }
-const KEY = "codelix_intro_seen";
 const EVENT = "codelix:intro-handoff";
+const KEY = "codelix_intro_seen";
 let decided = null;
 function introWillPlay() {
   if (typeof window === "undefined") return false;
   if (decided === null) {
-    decided = sessionStorage.getItem(KEY) !== "1";
-    if (decided) sessionStorage.setItem(KEY, "1");
+    try {
+      decided = sessionStorage.getItem(KEY) !== "1";
+      if (decided) sessionStorage.setItem(KEY, "1");
+    } catch {
+      decided = true;
+    }
   }
   return decided;
 }
@@ -970,15 +996,31 @@ function onIntroHandoff(fn) {
   window.addEventListener(EVENT, fn, { once: true });
   return () => window.removeEventListener(EVENT, fn);
 }
-const COLUMNS = 7;
+let hasPlayed = false;
+const TAGLINE = "We live in IT";
 function PageLoader() {
   const [mounted, setMounted] = useState(false);
   const rootRef = useRef(null);
-  const colRefs = useRef([]);
+  const logoRef = useRef(null);
+  const taglineRef = useRef(null);
+  const auraARef = useRef(null);
+  const auraBRef = useRef(null);
+  const barRef = useRef(null);
+  const barWrapRef = useRef(null);
+  const shineRef = useRef(null);
+  const letterRefs = useRef([]);
   const lenis = useLenis();
   useEffect(() => {
-    if (introWillPlay()) setMounted(true);
+    if (hasPlayed || !introWillPlay()) return;
+    hasPlayed = true;
+    setMounted(true);
   }, []);
+  useLayoutEffect(() => {
+    const willPlay = introWillPlay();
+    if (!mounted && willPlay) return;
+    const preboot = document.getElementById("pl-preboot");
+    if (preboot && preboot.parentNode) preboot.parentNode.removeChild(preboot);
+  }, [mounted]);
   useEffect(() => {
     if (!mounted) return;
     lenis?.stop();
@@ -1000,36 +1042,105 @@ function PageLoader() {
       setMounted(false);
     };
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      const t = gsap.to(rootRef.current, { opacity: 0, duration: 0.3, onComplete: finish });
+      const t = gsap.to(rootRef.current, { opacity: 0, duration: 0.25, onComplete: finish });
       return () => {
         t.kill();
         cleanup();
       };
     }
-    const cols = colRefs.current.filter(Boolean);
+    const sweep = { x: 140 };
+    const applySweep = () => {
+      const el = shineRef.current;
+      if (!el) return;
+      el.style.backgroundPosition = `${sweep.x}% 0`;
+    };
+    applySweep();
+    const iris = { r: 0 };
+    const applyIris = () => {
+      const el = rootRef.current;
+      if (!el) return;
+      const g = `radial-gradient(circle at 50% 46%, transparent ${iris.r}vmax, #000 ${iris.r + 6}vmax)`;
+      el.style.webkitMaskImage = g;
+      el.style.maskImage = g;
+    };
     const tl = gsap.timeline({ onComplete: finish });
-    tl.to({}, { duration: 0.32 }).add(releaseHero, ">-0.02").to(cols, {
-      /* alternating travel — odd slices drop, even slices rise, so the
-         plate splits apart rather than sliding off as one piece */
-      yPercent: (i) => i % 2 ? 100 : -100,
-      duration: 1,
+    tl.fromTo(
+      auraARef.current,
+      { opacity: 0, scale: 0.8, xPercent: -6 },
+      { opacity: 1, scale: 1.08, xPercent: 3, duration: 1.7, ease: "power2.out" },
+      0
+    ).fromTo(
+      auraBRef.current,
+      { opacity: 0, scale: 1.12, xPercent: 8 },
+      { opacity: 1, scale: 0.92, xPercent: -5, duration: 1.7, ease: "power2.out" },
+      0.05
+    ).fromTo(
+      logoRef.current,
+      { yPercent: 42, opacity: 0, filter: "blur(10px)" },
+      { yPercent: 0, opacity: 1, filter: "blur(0px)", duration: 0.85, ease: "expo.out" },
+      0.08
+    ).to(sweep, { x: -140, duration: 0.95, ease: "power2.inOut", onUpdate: applySweep }, 0.5).fromTo(
+      letterRefs.current.filter(Boolean),
+      { yPercent: 115, opacity: 0, filter: "blur(5px)" },
+      { yPercent: 0, opacity: 1, filter: "blur(0px)", duration: 0.65, stagger: 0.028, ease: "power3.out" },
+      0.5
+    ).fromTo(barWrapRef.current, { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.5).fromTo(barRef.current, { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power1.inOut" }, 0.62).to(barRef.current, {
+      boxShadow: "0 0 22px rgba(62,125,252,.95)",
+      duration: 0.22,
+      ease: "power2.out",
+      yoyo: true,
+      repeat: 1
+    }, 1.52).to({}, { duration: 0.14 }).to([logoRef.current, taglineRef.current, barWrapRef.current], {
+      opacity: 0,
+      scale: 1.08,
+      filter: "blur(7px)",
+      duration: 0.4,
+      ease: "power2.in"
+    }, "exit").to([auraARef.current, auraBRef.current], {
+      opacity: 0,
+      duration: 0.5,
+      ease: "power2.in"
+    }, "exit").to(iris, {
+      r: 150,
+      duration: 1.05,
       ease: "expo.inOut",
-      stagger: { each: 0.055, from: "center" }
-    });
+      onUpdate: applyIris
+    }, "exit+=0.22").add(releaseHero, "exit+=0.42");
     return () => {
       tl.kill();
       cleanup();
     };
   }, [mounted, lenis]);
   if (!mounted) return null;
-  return /* @__PURE__ */ jsx("div", { className: "pl-root", ref: rootRef, "aria-hidden": "true", children: Array.from({ length: COLUMNS }, (_, i) => /* @__PURE__ */ jsx(
-    "span",
-    {
-      className: "pl-col",
-      ref: (el) => colRefs.current[i] = el
-    },
-    i
-  )) });
+  return /* @__PURE__ */ jsxs("div", { className: "pl-root", ref: rootRef, "aria-hidden": "true", children: [
+    /* @__PURE__ */ jsx("span", { className: "pl-aura pl-aura--a", ref: auraARef }),
+    /* @__PURE__ */ jsx("span", { className: "pl-aura pl-aura--b", ref: auraBRef }),
+    /* @__PURE__ */ jsxs("div", { className: "pl-stack", children: [
+      /* @__PURE__ */ jsx("span", { className: "pl-logo-mask", children: /* @__PURE__ */ jsxs("span", { className: "pl-logo-holder", ref: logoRef, children: [
+        /* @__PURE__ */ jsx("img", { className: "pl-logo", src: codelixLogo, alt: "" }),
+        /* @__PURE__ */ jsx(
+          "span",
+          {
+            className: "pl-shine",
+            ref: shineRef,
+            style: {
+              WebkitMaskImage: `url(${codelixLogo})`,
+              maskImage: `url(${codelixLogo})`
+            }
+          }
+        )
+      ] }) }),
+      /* @__PURE__ */ jsx("span", { className: "pl-tagline-mask", ref: taglineRef, children: TAGLINE.split("").map((ch, i) => /* @__PURE__ */ jsx("span", { className: "pl-letter-mask", children: /* @__PURE__ */ jsx(
+        "span",
+        {
+          className: `pl-letter${i >= TAGLINE.length - 2 ? " is-accent" : ""}`,
+          ref: (el) => letterRefs.current[i] = el,
+          children: ch === " " ? " " : ch
+        }
+      ) }, i)) }),
+      /* @__PURE__ */ jsx("div", { className: "pl-bar", ref: barWrapRef, children: /* @__PURE__ */ jsx("span", { className: "pl-bar-fill", ref: barRef }) })
+    ] })
+  ] });
 }
 function ClientStrip() {
   const stripRef = useRef(null);
@@ -1120,7 +1231,7 @@ function FaqSection({ faqs, className = "", label = "FAQ", heading = "Questions 
       ] }),
       /* @__PURE__ */ jsxs("p", { className: "v2-lede v2-faq-note", children: [
         "Don't see yours here? ",
-        /* @__PURE__ */ jsx("a", { href: "/contact", children: "Ask us directly →" })
+        /* @__PURE__ */ jsx(Link, { to: "/contact", children: "Ask us directly →" })
       ] })
     ] }),
     /* @__PURE__ */ jsx("div", { children: faqs.map((f, i) => /* @__PURE__ */ jsxs(
@@ -1160,11 +1271,17 @@ function ScrollSentence({ words, tone, centered = false }) {
     let target = 0;
     let current = 0;
     let primed = false;
-    const readTarget = () => {
+    let docTop = 0, blockHeight = 0, viewportH = 0;
+    const measure = () => {
       const r = el.getBoundingClientRect();
-      const scrollable = r.height - window.innerHeight;
+      docTop = r.top + window.scrollY;
+      blockHeight = r.height;
+      viewportH = window.innerHeight;
+    };
+    const readTarget = () => {
+      const scrollable = blockHeight - viewportH;
       if (scrollable <= 0) return 0;
-      const raw = -r.top / scrollable;
+      const raw = (window.scrollY - docTop) / scrollable;
       const norm = Math.min(Math.max(raw / 0.92, 0), 0.9999);
       return norm * words.length;
     };
@@ -1227,12 +1344,23 @@ function ScrollSentence({ words, tone, centered = false }) {
         raf = requestAnimationFrame(tick);
       }
     };
+    const onResize = () => {
+      measure();
+      handleScroll();
+    };
     window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll, { passive: true });
+    window.addEventListener("resize", onResize, { passive: true });
+    window.addEventListener("load", onResize);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(onResize).catch(() => {
+      });
+    }
+    measure();
     handleScroll();
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("load", onResize);
       cancelAnimationFrame(raf);
     };
   }, [words.length, centered]);
@@ -1341,15 +1469,25 @@ function splitTitleLines(el) {
     const outer = doc.createElement("span");
     outer.className = "line";
     const inner = doc.createElement("span");
-    line.forEach((w, i) => {
-      if (w.accent) {
-        inner.appendChild(buildWordSpan(w, doc));
+    let i = 0;
+    while (i < line.length) {
+      const { accent } = line[i];
+      let end = i;
+      while (end + 1 < line.length && line[end + 1].accent === accent) end++;
+      const text = line.slice(i, end + 1).map((w) => w.text).join(" ");
+      if (accent) {
+        const span = doc.createElement("span");
+        span.className = accent;
+        span.textContent = text;
+        inner.appendChild(span);
       } else {
-        inner.appendChild(doc.createTextNode(w.text));
+        inner.appendChild(doc.createTextNode(text));
       }
-      if (i < line.length - 1) inner.appendChild(doc.createTextNode(" "));
-    });
+      if (end < line.length - 1) inner.appendChild(doc.createTextNode(" "));
+      i = end + 1;
+    }
     outer.appendChild(inner);
+    if (el.childNodes.length) el.appendChild(doc.createTextNode(" "));
     el.appendChild(outer);
   });
 }
@@ -1475,7 +1613,44 @@ function TechStackShowcaseV2({
     ] }, index)) })
   ] });
 }
+function ArticleSkeleton({ label = "Loading article" }) {
+  return /* @__PURE__ */ jsxs("div", { className: "v2 artsk", "aria-busy": "true", children: [
+    /* @__PURE__ */ jsx(NavbarV2, {}),
+    /* @__PURE__ */ jsxs("span", { className: "artsk-sr", role: "status", "aria-live": "polite", children: [
+      label,
+      "…"
+    ] }),
+    /* @__PURE__ */ jsxs("main", { children: [
+      /* @__PURE__ */ jsx("header", { className: "artsk-header", children: /* @__PURE__ */ jsxs("div", { className: "artsk-inner", children: [
+        /* @__PURE__ */ jsxs("div", { className: "artsk-row", children: [
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 48 } }),
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 10 } }),
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 42 } })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "artsk-row", children: [
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 88 } }),
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 116 } }),
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: 74 } })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "artsk-title", children: [
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "82%" } }),
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "54%" } })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ jsxs("div", { className: "artsk-body", children: [
+        /* @__PURE__ */ jsx("span", { className: "artsk-bar artsk-hero" }),
+        [0, 1, 2].map((block) => /* @__PURE__ */ jsxs("div", { className: "artsk-para", children: [
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "100%" } }),
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "96%" } }),
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "99%" } }),
+          /* @__PURE__ */ jsx("span", { className: "artsk-bar", style: { width: "61%" } })
+        ] }, block))
+      ] })
+    ] })
+  ] });
+}
 export {
+  ArticleSkeleton as A,
   ClientStrip as C,
   FooterV2 as F,
   NavbarV2 as N,
