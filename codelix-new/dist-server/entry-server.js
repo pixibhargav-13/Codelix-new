@@ -2084,14 +2084,14 @@ const PIPELINE = [
   { label: "Support", icon: LifeBuoy, body: "We stay on. Every release sharpens the next one." }
 ];
 const SYSTEMS = [
-  { id: "WEB · 01", cluster: "Web Platforms", title: "Conversion-First Website", reality: "Most B2B sites are brochures that load slowly and convert nothing. We build for speed budgets and measured conversion." },
-  { id: "APP · 02", cluster: "Mobile Applications", title: "Cross-Platform App", reality: "Separate iOS and Android builds double your cost and halve your release pace. One codebase, native feel." },
-  { id: "ERP · 03", cluster: "Enterprise Systems", title: "Custom ERP & Workflow", reality: "Your operations run on spreadsheets nobody fully understands. We turn that into a system with an owner." },
-  { id: "COM · 04", cluster: "E-Commerce", title: "Storefront & Checkout", reality: "Carts abandon at checkout because the last three steps were an afterthought. We design backwards from payment." },
-  { id: "AI · 05", cluster: "Applied AI", title: "AI Agents & Automation", reality: "Your team retypes the same data between four tools daily. We automate the handoff, not the judgement." },
-  { id: "SaaS · 06", cluster: "Product Engineering", title: "Multi-Tenant SaaS", reality: "Single-tenant architecture caps your growth at the first enterprise client. We build tenancy in from day one." },
-  { id: "UX · 07", cluster: "Design Systems", title: "UI/UX & Design System", reality: "Every new screen looks slightly different because there is no system. We build the component library first." },
-  { id: "INT · 08", cluster: "Integrations", title: "API & Systems Integration", reality: "Your CRM, accounts, and inventory don't speak. We make them exchange the right data on the right trigger." }
+  { id: "WEB · 01", cluster: "Web Platforms", title: "Conversion-First Website", path: "/services/web-development", reality: "Most B2B sites are brochures that load slowly and convert nothing. We build for speed budgets and measured conversion." },
+  { id: "APP · 02", cluster: "Mobile Applications", title: "Cross-Platform App", path: "/services/application-development", reality: "Separate iOS and Android builds double your cost and halve your release pace. One codebase, native feel." },
+  { id: "ERP · 03", cluster: "Enterprise Systems", title: "Custom ERP & Workflow", path: "/services/erp-crm-development", reality: "Your operations run on spreadsheets nobody fully understands. We turn that into a system with an owner." },
+  { id: "COM · 04", cluster: "E-Commerce", title: "Storefront & Checkout", path: "/services/e-commerce-solutions", reality: "Carts abandon at checkout because the last three steps were an afterthought. We design backwards from payment." },
+  { id: "AI · 05", cluster: "Applied AI", title: "AI Agents & Automation", path: "/services/ai-development", reality: "Your team retypes the same data between four tools daily. We automate the handoff, not the judgement." },
+  { id: "SaaS · 06", cluster: "Product Engineering", title: "Multi-Tenant SaaS", path: "/services/saas-product-development", reality: "Single-tenant architecture caps your growth at the first enterprise client. We build tenancy in from day one." },
+  { id: "UX · 07", cluster: "Design Systems", title: "UI/UX & Design System", path: "/services/ui-ux-design", reality: "Every new screen looks slightly different because there is no system. We build the component library first." },
+  { id: "INT · 08", cluster: "Integrations", title: "API & Systems Integration", path: "/services/api-development-integration", reality: "Your CRM, accounts, and inventory don't speak. We make them exchange the right data on the right trigger." }
 ];
 const SERVICES$1 = [
   { n: "01", tag: "Development", title: "Web Development", items: [{ label: "Performance Optimization", path: "/services/performance-optimization" }], link: "/services/web-development" },
@@ -2678,7 +2678,7 @@ function HomepageV2() {
             /* @__PURE__ */ jsx(Link, { className: "v2-map-link", to: "/work", children: "See the case studies →" })
           ] })
         ] }),
-        /* @__PURE__ */ jsx("div", { className: "v2-map-scroll", children: /* @__PURE__ */ jsx("div", { className: "v2-map-track", children: SYSTEMS.map((s) => /* @__PURE__ */ jsxs(Link, { className: "v2-map-card", to: "/work", children: [
+        /* @__PURE__ */ jsx("div", { className: "v2-map-scroll", children: /* @__PURE__ */ jsx("div", { className: "v2-map-track", children: SYSTEMS.map((s) => /* @__PURE__ */ jsxs(Link, { className: "v2-map-card", to: s.path, children: [
           /* @__PURE__ */ jsx("span", { className: "v2-map-id", children: s.id }),
           /* @__PURE__ */ jsx("span", { className: "v2-map-cluster", children: s.cluster }),
           /* @__PURE__ */ jsx("h3", { className: "v2-map-title", children: s.title }),
