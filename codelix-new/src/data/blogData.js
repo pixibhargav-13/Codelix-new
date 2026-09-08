@@ -6,6 +6,8 @@ export const blogs = [
   {
     id: 1,
     title: "Why digital presence matters more than ever in 2025",
+    excerpt:
+      "Why a website, SEO and consistent content now decide whether customers find you at all — and the parts of a digital presence that actually build trust.",
     date: "20 October 2024",
     readTime: "5 min read",
     image: blogImg1,
@@ -15,6 +17,8 @@ export const blogs = [
   {
     id: 2,
     title: "Design system & component-based UIS: Efficiency at scale",
+    excerpt:
+      "How design tokens and a shared component library keep a growing product consistent — and why component-based architecture cuts design and build time at scale.",
     date: "20 October 2024",
     readTime: "5 min read",
     image: blogImg2,
@@ -24,6 +28,8 @@ export const blogs = [
   {
     id: 3,
     title: "Progressive web apps (PWAS) as the new standard",
+    excerpt:
+      "PWAs bring offline access, push notifications and home-screen install to the web from a single codebase, at a fraction of the cost of separate iOS and Android apps.",
     date: "20 October 2024",
     readTime: "5 min read",
     image: blogImg3,
@@ -33,6 +39,8 @@ export const blogs = [
   {
     id: 4,
     title: "SaaS vs. On-Premise: What's Best for Your Business?",
+    excerpt:
+      "A practical comparison of SaaS and on-premise software across cost, control, security and scalability, to help you pick the right model for your business.",
     date: "20 October 2024",
     readTime: "5 min read",
     image: blogImg1,
@@ -42,6 +50,8 @@ export const blogs = [
   {
     id: 5,
     title: "How E-Commerce Platforms Boost Retail Transformation",
+    excerpt:
+      "How modern e-commerce platforms let traditional retailers sell globally around the clock, and what that changes in inventory, operations and customer reach.",
     date: "20 October 2024",
     readTime: "5 min read",
     image: blogImg2,
@@ -51,6 +61,8 @@ export const blogs = [
   {
     id: 6,
     title: "How End-to-End Web Development Delivers Better Results",
+    excerpt:
+      "End-to-end web development keeps design, build, deployment and maintenance with one team, so the front-end experience and back-end architecture stay aligned.",
     date: "20 October 2024",
     readTime: "5 min read",
     image: blogImg3,
@@ -60,6 +72,8 @@ export const blogs = [
   {
     id: 7,
     title: "Top 5 Reasons to choose laravel for faster web app development.",
+    excerpt:
+      "Five reasons Laravel speeds up PHP web app development — expressive syntax, built-in authentication, Eloquent ORM and an ecosystem that removes the boilerplate.",
     date: "31 October 2025",
     readTime: "5 min read",
     image: blogImg1,
@@ -69,6 +83,8 @@ export const blogs = [
   {
     id: 8,
     title: "AI-Powered Solutions Transforming Modern Businesses",
+    excerpt:
+      "Where AI is already earning its place in business — automating repetitive work, predictive analytics and customer-facing assistants — and what it takes to adopt.",
     date: "31 October 2025",
     readTime: "5 min read",
     image: blogImg2,
@@ -78,6 +94,8 @@ export const blogs = [
   {
     id: 9,
     title: "Mastering WordPress: Advanced CMS Techniques",
+    excerpt:
+      "Advanced WordPress techniques beyond the dashboard: custom post types, the REST API, performance tuning and security hardening for sites that need to scale.",
     date: "31 October 2025",
     readTime: "5 min read",
     image: blogImg3,
@@ -87,6 +105,8 @@ export const blogs = [
   {
     id: 10,
     title: "Building Scalable Web Applications with Modern Frameworks",
+    excerpt:
+      "Which web frameworks hold up when an app grows from 100 users to 100,000 — comparing modern full-stack options for building scalable, maintainable applications.",
     date: "31 October 2025",
     readTime: "5 min read",
     image: blogImg1,
@@ -96,6 +116,8 @@ export const blogs = [
   {
     id: 11,
     title: "The Future of Mobile App Development: Trends and Insights",
+    excerpt:
+      "The trends shaping mobile app development — cross-platform frameworks, AI-driven features and shifting user expectations — and what they mean for your next build.",
     date: "31 October 2025",
     readTime: "5 min read",
     image: blogImg2,
@@ -105,6 +127,8 @@ export const blogs = [
   {
     id: 12,
     title: "Optimizing User Experience Through Better UI/UX Design",
+    excerpt:
+      "Why UI and UX decide whether users convert or leave, and the design decisions — hierarchy, flow, accessibility — that measurably improve both.",
     date: "31 October 2025",
     readTime: "5 min read",
     image: blogImg3,

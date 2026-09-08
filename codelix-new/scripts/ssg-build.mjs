@@ -86,6 +86,7 @@ async function build() {
     id: `sb-${p.id}`,
     slug: p.slug,
     title: p.title,
+    excerpt: p.excerpt || "",
     date: p.published_at ? new Date(p.published_at).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) : "",
     readTime: p.read_time || "",
     image: p.cover_image_url || "",
@@ -206,10 +207,13 @@ async function build() {
 
   // 5. Generate Sitemap
   console.log("Generating sitemap.xml...");
+  /* lastmod tells Google which pages are worth revisiting; without it
+     every URL in the sitemap looks equally stale. */
+  const buildDate = new Date().toISOString().slice(0, 10);
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${allRoutes
-  .map((url) => `  <url>\n    <loc>https://www.codelixitsolutions.com${url}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>${url === '/' ? '1.0' : '0.8'}</priority>\n  </url>`)
+  .map((url) => `  <url>\n    <loc>https://www.codelixitsolutions.com${url}</loc>\n    <lastmod>${buildDate}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>${url === '/' ? '1.0' : '0.8'}</priority>\n  </url>`)
   .join('\n')}
 </urlset>`;
 

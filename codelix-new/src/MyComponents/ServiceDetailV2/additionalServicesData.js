@@ -98,6 +98,9 @@ const RAW = [
   },
   {
     slug: "erp-crm-development",
+    seoTitle: "Custom ERP & CRM Software Development | Codelix",
+    seoDescription:
+      "Custom ERP and CRM software development for manufacturing, inventory, HRMS and enterprise operations. ERP development company in Ahmedabad, India.",
     icon: Building2,
     title: "ERP & CRM Development",
     description: "Custom ERP, CRM, inventory management, HRMS, manufacturing software, and enterprise business applications.",

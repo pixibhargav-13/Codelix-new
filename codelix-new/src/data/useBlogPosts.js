@@ -14,6 +14,7 @@ export function useBlogPosts() {
         id: `sb-${p.id}`,
         slug: p.slug,
         title: p.title,
+        excerpt: p.excerpt || "",
         date: p.published_at
           ? new Date(p.published_at).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })
           : "",
@@ -50,6 +51,7 @@ export function useBlogPosts() {
           id: `sb-${p.id}`,
           slug: p.slug,
           title: p.title,
+          excerpt: p.excerpt || "",
           date: p.published_at
             ? new Date(p.published_at).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })
             : "",

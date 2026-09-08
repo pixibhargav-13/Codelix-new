@@ -21,6 +21,8 @@ import aanganOneLogo from "../Images/Aanganone.svg";
 export const PRODUCTS = [
   {
     slug: "audytee",
+    seoDescription:
+      "Practice management software for CA firms — client records, compliance deadlines, document collection and billing in one place instead of ten spreadsheets.",
     name: "Audytee",
     logo: audyteeLogo,
     badge: "Practice Management Software",
@@ -146,6 +148,9 @@ export const PRODUCTS = [
   {
     slug: "4bitx",
     name: "4bitx",
+    seoTitle: "4bitx — Custom ERP for Manufacturing | Codelix",
+    seoDescription:
+      "Custom ERP software for manufacturing companies — production, inventory, compliance and billing in one system. Built in Ahmedabad by Codelix IT Solutions.",
     logo: fourBitxLogo,
     badge: "Custom ERP for Every Industry",
     tagline: "Your Factory. Fully Connected. Fully Intelligent.",
@@ -241,6 +246,8 @@ export const PRODUCTS = [
 
   {
     slug: "aanganone",
+    seoDescription:
+      "Society and apartment management software for maintenance, visitors, complaints and billing — one app for residents, committees and facility teams.",
     name: "AanganOne",
     logo: aanganOneLogo,
     badge: "Society, Apartment & Community Management",
