@@ -41,12 +41,23 @@ export const StructuredData = ({ type = 'Organization', data = null }) => {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       "headline": data.title,
+      "description": data.excerpt || undefined,
       "image": data.image || `${siteUrl}/og-image.png`,
       "url": `${siteUrl}${location.pathname}`,
       "datePublished": data.date ? new Date(data.date).toISOString() : undefined,
       "author": {
         "@type": "Organization",
         "name": "Codelix IT Solutions"
+      },
+      /* Google's article guidance expects a publisher with a logo; without
+         it the post is not eligible for the richer article treatments. */
+      "publisher": {
+        "@type": "Organization",
+        "name": "Codelix IT Solutions",
+        "logo": {
+          "@type": "ImageObject",
+          "url": `${siteUrl}/codelix.svg`
+        }
       }
     };
   } else if (type === 'Article' && data) { // For Case Studies
