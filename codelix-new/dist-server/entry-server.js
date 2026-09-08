@@ -16972,7 +16972,11 @@ const seoData = {
   "/work": { title: "Our Work & Case Studies | Codelix IT Solutions", description: "Browse our portfolio of shipped projects and detailed case studies." },
   "/faq": { title: "Frequently Asked Questions | Codelix IT Solutions", description: "Got questions? We have answers. Check out our FAQ." },
   "/technologies": { title: "Technologies We Use | Codelix IT Solutions", description: "Explore the modern tech stack we use to build scalable, secure applications." },
-  "/careers": { title: "Careers | Codelix IT Solutions", description: "Join our team of talented engineers and designers at Codelix IT Solutions." },
+  /* A viral LinkedIn hiring post on 9 July drove a 15x brand-search spike, and
+     the hiring queries the site does rank for - "it company ahmedabad for
+     freshers", "it companies near me hiring" - all land on the homepage rather
+     than here. Names the city and the audience so this page can take them. */
+  "/careers": { title: "Careers at Codelix IT Solutions — IT Jobs in Ahmedabad", description: "Open roles for developers, designers and freshers at Codelix IT Solutions in Ahmedabad. Work on web, mobile, AI and ERP projects you can point at." },
   "/pricing": { title: "Pricing | Codelix IT Solutions", description: "Transparent, flexible pricing for our professional development services." },
   "/blog": { title: "Blog | Insights & Updates | Codelix IT Solutions", description: "Read the latest insights, tech trends, and company updates on the Codelix blog." },
   "/case-study": { title: "Case Studies | Codelix IT Solutions", description: "Deep dives into how we solved complex problems for our clients." },
