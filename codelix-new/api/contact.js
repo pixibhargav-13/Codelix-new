@@ -151,6 +151,7 @@ async function persist(formType, d) {
     timeline: d.timeline || null,
     message: d.message || d.aboutProject || null,
     discipline: d.discipline || null,
+    portfolio: d.portfolio || null,
     booking_date: d.bookingDate || null,
     booking_time: d.bookingTime || null,
     referral: d.referral || null,

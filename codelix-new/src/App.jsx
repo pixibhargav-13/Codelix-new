@@ -298,7 +298,9 @@ const AppRoutes = () => {
             <Route path="case-studies" element={<AdminCaseStudyList />} />
             <Route path="case-studies/new" element={<AdminCaseStudyForm />} />
             <Route path="case-studies/:id" element={<AdminCaseStudyForm />} />
-            <Route path="enquiries" element={<AdminEnquiriesList />} />
+            <Route path="enquiries" element={<AdminEnquiriesList type="contact" />} />
+            <Route path="bookings" element={<AdminEnquiriesList type="booking" />} />
+            <Route path="applications" element={<AdminEnquiriesList type="careers" />} />
             <Route path="testimonials" element={<AdminTestimonialsList />} />
             <Route path="testimonials/new" element={<AdminTestimonialForm />} />
             <Route path="testimonials/:id" element={<AdminTestimonialForm />} />

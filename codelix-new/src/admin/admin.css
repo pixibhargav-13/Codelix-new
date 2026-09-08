@@ -696,49 +696,6 @@
 }
 /* ── Enquiries ─────────────────────────────────────────────────────────── */
 
-.adm-enq-filters {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.adm-enq-filter {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 7px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(15, 15, 13, .14);
-  background: transparent;
-  font: inherit;
-  font-size: 13px;
-  cursor: pointer;
-  color: rgba(15, 15, 13, .65);
-}
-
-.adm-enq-filter.is-active {
-  background: #0f0f0d;
-  border-color: #0f0f0d;
-  color: #fff;
-}
-
-.adm-enq-count {
-  font-size: 11px;
-  font-weight: 600;
-  opacity: .6;
-}
-
-.adm-enq-tag {
-  display: inline-block;
-  padding: 3px 9px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .02em;
-  background: rgba(15, 15, 13, .07);
-}
-
 .adm-enq-tag--booking { background: rgba(59, 130, 246, .14); color: #1d4ed8; }
 .adm-enq-tag--careers { background: rgba(16, 185, 129, .14); color: #047857; }
 
@@ -767,4 +724,17 @@
   font-size: 14px;
   color: #0f0f0d;
   white-space: pre-wrap;
+}
+
+
+/* "12 total · 3 this week" beside the heading — the number you actually
+   want when you open the page */
+.adm-enq-summary {
+  font-size: 13px;
+  color: rgba(15, 15, 13, .55);
+}
+
+.adm-enq-summary strong {
+  color: #0f0f0d;
+  font-weight: 600;
 }

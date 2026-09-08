@@ -1,45 +1,95 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
 
-/* Every submission from the three public forms, newest first.
+/* One component, three sections. Each public form gets its own page in the
+   sidebar because the three are read for different reasons and by different
+   people — a booking needs acting on today, an application goes to whoever
+   is hiring, a contact enquiry is sales. A single mixed list made you filter
+   every time to find the one you came for.
 
-   Read-only on purpose: an enquiry is a record of something that happened, so
-   there is nothing here to edit. Deleting is possible but deliberately not
-   offered — losing enquiries is the problem this table exists to solve. */
+   The columns differ per type for the same reason: a booking is useless
+   without its slot, an application without its discipline.
 
-const TYPES = [
-  { key: "all", label: "All" },
-  { key: "contact", label: "Contact" },
-  { key: "booking", label: "Bookings" },
-  { key: "careers", label: "Applications" },
-];
+   Read-only on purpose. An enquiry records something that happened, so there
+   is nothing to edit, and no delete button — losing enquiries is the problem
+   this table exists to solve. */
 
-const TYPE_LABEL = {
-  contact: "Contact",
-  booking: "Booking",
-  careers: "Application",
+const VIEWS = {
+  contact: {
+    eyebrow: "Enquiries",
+    heading: "Contact Enquiries",
+    empty: "No contact enquiries yet. They appear here as soon as someone uses the contact form.",
+    columns: [
+      { key: "name", label: "Name" },
+      { key: "email", label: "Email", email: true },
+      { key: "company", label: "Company" },
+      { key: "service", label: "Service" },
+      { key: "budget", label: "Budget" },
+    ],
+    detail: [
+      ["Phone", "phone"],
+      ["Designation", "designation"],
+      ["Timeline", "timeline"],
+      ["How they heard", "referral"],
+      ["About the project", "message"],
+    ],
+  },
+  booking: {
+    eyebrow: "Enquiries",
+    heading: "Consultation Bookings",
+    empty: "No bookings yet. Consultations booked from the site appear here.",
+    columns: [
+      { key: "name", label: "Name" },
+      { key: "email", label: "Email", email: true },
+      { key: "phone", label: "Phone" },
+      { key: "booking_date", label: "Requested date" },
+      { key: "booking_time", label: "Time" },
+    ],
+    detail: [
+      ["Company", "company"],
+      ["Service", "service"],
+      ["Message", "message"],
+    ],
+  },
+  careers: {
+    eyebrow: "Hiring",
+    heading: "Job Applications",
+    empty: "No applications yet. Submissions from the careers page appear here.",
+    columns: [
+      { key: "name", label: "Name" },
+      { key: "email", label: "Email", email: true },
+      { key: "discipline", label: "Discipline" },
+    ],
+    detail: [
+      ["Phone", "phone"],
+      ["Portfolio / links", "portfolio"],
+      ["Message", "message"],
+    ],
+  },
 };
 
 function when(iso) {
   if (!iso) return "—";
-  const d = new Date(iso);
-  return d.toLocaleString("en-GB", {
+  return new Date(iso).toLocaleString("en-GB", {
     day: "numeric", month: "short", year: "numeric",
     hour: "2-digit", minute: "2-digit",
   });
 }
 
-export default function AdminEnquiriesList() {
+export default function AdminEnquiriesList({ type = "contact" }) {
+  const view = VIEWS[type] || VIEWS.contact;
   const [rows, setRows] = useState(null);
   const [error, setError] = useState("");
-  const [filter, setFilter] = useState("all");
   const [openId, setOpenId] = useState(null);
 
   useEffect(() => {
     let active = true;
+    setRows(null);
+    setOpenId(null);
     supabase
       .from("enquiries")
       .select("*")
+      .eq("form_type", type)
       .order("created_at", { ascending: false })
       .limit(500)
       .then(({ data, error: err }) => {
@@ -48,80 +98,61 @@ export default function AdminEnquiriesList() {
         else setRows(data);
       });
     return () => { active = false; };
-  }, []);
+  }, [type]);
 
-  const shown = useMemo(
-    () => (rows || []).filter((r) => filter === "all" || r.form_type === filter),
-    [rows, filter]
-  );
-
-  const counts = useMemo(() => {
-    const c = { all: (rows || []).length };
-    for (const r of rows || []) c[r.form_type] = (c[r.form_type] || 0) + 1;
-    return c;
+  const newThisWeek = useMemo(() => {
+    if (!rows) return 0;
+    const weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
+    return rows.filter((r) => new Date(r.created_at).getTime() > weekAgo).length;
   }, [rows]);
 
   return (
     <div>
       <div className="adm-main-head">
         <div>
-          <span className="adm-main-eyebrow">Enquiries</span>
-          <h1>Form Submissions</h1>
+          <span className="adm-main-eyebrow">{view.eyebrow}</span>
+          <h1>{view.heading}</h1>
         </div>
-      </div>
-
-      <div className="adm-enq-filters">
-        {TYPES.map((t) => (
-          <button
-            key={t.key}
-            type="button"
-            className={`adm-enq-filter ${filter === t.key ? "is-active" : ""}`}
-            onClick={() => setFilter(t.key)}
-          >
-            {t.label}
-            <span className="adm-enq-count">{counts[t.key] || 0}</span>
-          </button>
-        ))}
+        {rows !== null && rows.length > 0 && (
+          <span className="adm-enq-summary">
+            {rows.length} total
+            {newThisWeek > 0 && <strong> · {newThisWeek} this week</strong>}
+          </span>
+        )}
       </div>
 
       {error && <p className="adm-error">{error}</p>}
 
       {rows === null ? (
         <p className="adm-empty">Loading…</p>
-      ) : shown.length === 0 ? (
-        <p className="adm-empty">
-          {filter === "all"
-            ? "No submissions yet. They will appear here as soon as someone uses a form."
-            : "Nothing of this type yet."}
-        </p>
+      ) : rows.length === 0 ? (
+        <p className="adm-empty">{view.empty}</p>
       ) : (
         <div className="adm-table-wrap">
           <table className="adm-table">
             <thead>
               <tr>
                 <th>Received</th>
-                <th>Type</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Service</th>
+                {view.columns.map((c) => (
+                  <th key={c.key}>{c.label}</th>
+                ))}
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              {shown.map((r) => (
+              {rows.map((r) => (
                 <React.Fragment key={r.id}>
                   <tr>
                     <td>{when(r.created_at)}</td>
-                    <td>
-                      <span className={`adm-enq-tag adm-enq-tag--${r.form_type}`}>
-                        {TYPE_LABEL[r.form_type] || r.form_type}
-                      </span>
-                    </td>
-                    <td>{r.name}</td>
-                    <td>
-                      <a href={`mailto:${r.email}`}>{r.email}</a>
-                    </td>
-                    <td>{r.service || "—"}</td>
+                    {view.columns.map((c) => (
+                      <td key={c.key}>
+                        {c.email && r[c.key] ? (
+                          <a href={`mailto:${r[c.key]}`}>{r[c.key]}</a>
+                        ) : (
+                          r[c.key] || "—"
+                        )}
+                      </td>
+                    ))}
                     <td>
                       <button
                         type="button"
@@ -134,27 +165,21 @@ export default function AdminEnquiriesList() {
                   </tr>
                   {openId === r.id && (
                     <tr>
-                      <td colSpan={6}>
+                      <td colSpan={view.columns.length + 2}>
                         <dl className="adm-enq-detail">
-                          {[
-                            ["Phone", r.phone],
-                            ["Company", r.company],
-                            ["Designation", r.designation],
-                            ["Discipline", r.discipline],
-                            ["Budget", r.budget],
-                            ["Timeline", r.timeline],
-                            ["Requested date", r.booking_date],
-                            ["Requested time", r.booking_time],
-                            ["How they heard", r.referral],
-                            ["Message", r.message],
-                          ]
-                            .filter(([, v]) => v)
-                            .map(([label, value]) => (
-                              <div key={label}>
+                          {view.detail
+                            .filter(([, key]) => r[key])
+                            .map(([label, key]) => (
+                              <div key={key}>
                                 <dt>{label}</dt>
-                                <dd>{value}</dd>
+                                <dd>{r[key]}</dd>
                               </div>
                             ))}
+                          {!view.detail.some(([, key]) => r[key]) && (
+                            <div>
+                              <dd>No further details were provided.</dd>
+                            </div>
+                          )}
                         </dl>
                       </td>
                     </tr>
