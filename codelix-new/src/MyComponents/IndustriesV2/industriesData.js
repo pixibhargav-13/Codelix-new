@@ -17,6 +17,8 @@ const withFixes = (challenges, fixes) =>
 export const INDUSTRIES = [
   {
     slug: "manufacturing",
+    seoDescription:
+      "Manufacturing ERP and custom software that connect the shop floor to the office — production, inventory and reporting in one system. Codelix IT Solutions, Ahmedabad.",
     icon: Factory,
     title: "Manufacturing",
     tagline: "Operational systems that connect the shop floor to the office.",

@@ -11,7 +11,7 @@ import { createClient } from "@supabase/supabase-js";
 import { $ as codelixLogo, a0 as projectThree, a1 as projectTwo, a2 as projectOne, a3 as projectFour, a4 as projectFive, a5 as projectSix, a6 as projectSeven, a7 as projectEight, a8 as projectNine, a9 as projectTen, aa as projectEleven, ab as projectThirteen, ac as projectFourteen, ad as projectFifteen, ae as projectTwentyThree, r as reactLogo, n as nextLogo, t as tsLogo, j as jsLogo, b as viteLogo, c as tailwindLogo, d as bootstrapLogo, g as nodeLogo, l as laravelLogo, m as phpLogo, w as postgresqlLogo, u as techMongo, y as techAws, z as dockerLogo, A as figmaLogo, H as webflowLogo, af as erpBillingSync, ag as erpHandoffFlow, B as adobeXdLogo, C as sketchLogo, D as framerLogo, ah as techPhotoshop, E as canvaLogo, p as pythonLogo, ai as techNode, f as flutterLogo, s as swiftLogo, e as androidLogo, i as javaLogo, x as techFirebase, F as shopifyLogo, G as woocommerceLogo, k as springLogo, o as csharpLogo, h as djangoLogo, aj as manasImg, ak as kushalImg, al as logo1, am as logo2, an as logo3, ao as logo4, ap as logo5, a as angularLogo, v as vueLogo, q as nust, I as n8nLogo, J as zapierLogo, K as makeLogo, aq as blogImg1, ar as blogImg2, as as blogImg3 } from "./assets/site-images-DRvRo0sp.js";
 import { FileText, Briefcase, MessageSquareQuote, LogOut, Plus, X, Calendar, ChevronLeft, Clock, CheckCircle2, ChevronRight, PlayCircle, Target, PenTool, Code2, Globe, Smartphone, Cloud, Rocket, Activity, LifeBuoy, CalendarCheck, Lock, Eye, ShoppingCart, Sparkles, BarChart3, Receipt, Users, EyeOff, Unlink, TrendingDown, PhoneOff, Puzzle, Gauge, Search, ShieldCheck, Wrench, Building2, Store, GraduationCap, HeartPulse, Landmark, Check, FileCode2, GitBranch, BookOpen, KeyRound, Palette, Server, Minus, Phone, CloudCog, Plug, Workflow, Bot, CreditCard, RefreshCw, TrendingUp, Database, AlertTriangle, HelpCircle, Paintbrush, MousePointerClick, Users2, Frown, Layers, Monitor, Layout, Network, PieChart, Headphones, Bell, BatteryLow, RefreshCcw, Wifi, Bug, Ban, LayoutGrid, ShoppingBag, PackageSearch, RotateCcw, Shirt, Utensils, FileSpreadsheet, Repeat, AlertOctagon, Factory, Repeat2, FileWarning, MessageSquare, HeartHandshake, CheckCheck, Send, Mail, MapPin, Wallet, Handshake, Cpu, UtensilsCrossed, Building, Plane, XCircle, FileCheck2, Layers3, Timer, ExternalLink, ArrowUpRight, ClipboardList, Linkedin, Compass, MonitorSmartphone, Terminal, GitPullRequest, GitMerge, TestTube, Settings2, LayoutTemplate, ArrowLeft } from "lucide-react";
 import { a as FOOTER_ALL_SERVICES, T as TECH_STACK } from "./assets/site-data-ES8yYkGU.js";
-import { N as NavbarV2, F as FooterV2, i as introWillPlay, s as splitTitleLinesIn, o as onIntroHandoff, P as PageLoader, C as ClientStrip, S as ScrollSentence, a as PRODUCTS, T as TestimonialSpotlight, b as FaqSection, c as CtaSection, d as TechStackShowcaseV2, p as productBySlug, A as ArticleSkeleton } from "./assets/site-shared-BkFVB6xt.js";
+import { N as NavbarV2, F as FooterV2, i as introWillPlay, s as splitTitleLinesIn, o as onIntroHandoff, P as PageLoader, C as ClientStrip, S as ScrollSentence, a as PRODUCTS, T as TestimonialSpotlight, b as FaqSection, c as CtaSection, d as TechStackShowcaseV2, p as productBySlug, A as ArticleSkeleton } from "./assets/site-shared-sqotFZyF.js";
 const SLUG_NAMES = {
   "about": "About",
   "work": "Our Work",
@@ -4906,6 +4906,8 @@ const RAW = [
   },
   {
     slug: "erp-crm-development",
+    seoTitle: "Custom ERP & CRM Software Development Company | Codelix IT Solutions",
+    seoDescription: "Custom ERP and CRM software development for manufacturing, inventory, HRMS and enterprise operations. ERP development company in Ahmedabad, India.",
     icon: Building2,
     title: "ERP & CRM Development",
     description: "Custom ERP, CRM, inventory management, HRMS, manufacturing software, and enterprise business applications.",
@@ -5390,7 +5392,7 @@ function AdditionalServiceDetailV2() {
   const relatedWork = [...adminWork, ...staticWork].slice(0, 3);
   const faqs = getFaqs(svc);
   return /* @__PURE__ */ jsxs("main", { className: "v2 sd2", ref: rootRef, children: [
-    /* @__PURE__ */ jsx(SEO, { title: `${svc.title} | Codelix IT Solutions`, description: svc.description }),
+    /* @__PURE__ */ jsx(SEO, { title: svc.seoTitle || `${svc.title} | Codelix IT Solutions`, description: svc.seoDescription || svc.description }),
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
     /* @__PURE__ */ jsx("header", { className: "sd2-hero", children: /* @__PURE__ */ jsx("div", { className: "sd2-hero-inner", children: /* @__PURE__ */ jsxs("div", { className: "sd2-hero-main", children: [
@@ -12099,6 +12101,7 @@ const withFixes = (challenges, fixes) => challenges.map((pain, i) => ({ pain, fi
 const INDUSTRIES$1 = [
   {
     slug: "manufacturing",
+    seoDescription: "Manufacturing ERP and custom software that connect the shop floor to the office — production, inventory and reporting in one system. Codelix IT Solutions, Ahmedabad.",
     icon: Factory,
     title: "Manufacturing",
     tagline: "Operational systems that connect the shop floor to the office.",
@@ -12720,7 +12723,7 @@ function IndustryDetailV2() {
     { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that you can take it in-house with the docs we provide, or keep us on a monthly retainer." }
   ];
   return /* @__PURE__ */ jsxs("div", { className: "v2", ref: rootRef, children: [
-    /* @__PURE__ */ jsx(SEO, { title: `${svc.title} Software Solutions | Codelix IT Solutions`, description: svc.tagline }),
+    /* @__PURE__ */ jsx(SEO, { title: svc.seoTitle || `${svc.title} Software Solutions | Codelix IT Solutions`, description: svc.seoDescription || svc.tagline }),
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
     /* @__PURE__ */ jsxs("main", { children: [
@@ -13034,7 +13037,7 @@ function ProductDetailV2() {
   const otherProducts = PRODUCTS.filter((x) => x.slug !== p.slug);
   const faqs = p.faq || [];
   return /* @__PURE__ */ jsxs("div", { className: "v2 pd2-root", ref: rootRef, style: { "--prod-accent": p.accent }, children: [
-    /* @__PURE__ */ jsx(SEO, { title: `${p.name} | Codelix IT Solutions`, description: p.tagline || `Learn about ${p.name} at Codelix IT Solutions.` }),
+    /* @__PURE__ */ jsx(SEO, { title: p.seoTitle || `${p.name} | Codelix IT Solutions`, description: p.seoDescription || p.tagline || `Learn about ${p.name} at Codelix IT Solutions.` }),
     /* @__PURE__ */ jsx("div", { className: "v2-progress", "aria-hidden": "true", children: /* @__PURE__ */ jsx("span", {}) }),
     /* @__PURE__ */ jsx(NavbarV2, {}),
     /* @__PURE__ */ jsxs("main", { children: [

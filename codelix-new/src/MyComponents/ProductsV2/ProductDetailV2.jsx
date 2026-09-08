@@ -105,7 +105,7 @@ export default function ProductDetailV2() {
 
   return (
     <div className="v2 pd2-root" ref={rootRef} style={{ "--prod-accent": p.accent }}>
-      <SEO title={`${p.name} | Codelix IT Solutions`} description={p.tagline || `Learn about ${p.name} at Codelix IT Solutions.`} />
+      <SEO title={p.seoTitle || `${p.name} | Codelix IT Solutions`} description={p.seoDescription || p.tagline || `Learn about ${p.name} at Codelix IT Solutions.`} />
       <div className="v2-progress" aria-hidden="true"><span /></div>
       <NavbarV2 />
 

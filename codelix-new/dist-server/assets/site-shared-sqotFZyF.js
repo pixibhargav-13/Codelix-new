@@ -133,6 +133,8 @@ const PRODUCTS = [
   {
     slug: "4bitx",
     name: "4bitx",
+    seoTitle: "4bitx — Custom ERP Software for Manufacturing | Codelix IT Solutions",
+    seoDescription: "Custom ERP software for manufacturing companies — production, inventory, compliance and billing in one system. Built in Ahmedabad by Codelix IT Solutions.",
     logo: fourBitxLogo,
     badge: "Custom ERP for Every Industry",
     tagline: "Your Factory. Fully Connected. Fully Intelligent.",
