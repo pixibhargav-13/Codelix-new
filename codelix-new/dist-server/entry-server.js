@@ -16966,13 +16966,13 @@ function CaseStudyDetailV2() {
   ] });
 }
 const seoData = {
-  "/": { title: "AI-Powered IT Solutions | Codelix IT Solutions", description: "Empower your business with AI-centric software solutions, world-class UI/UX design, and scalable web apps by Codelix IT Solutions." },
+  "/": { title: "IT Company in Ahmedabad | Codelix IT Solutions", description: "Codelix IT Solutions is an IT company in Ahmedabad building custom software, web and mobile apps, ERP systems and AI solutions for businesses across India." },
   "/services": { title: "Our Services | Web & App Development | Codelix IT Solutions", description: "Explore our comprehensive suite of IT services including Web Development, App Development, UI/UX Design, AI, and Custom Software." },
-  "/services/web-development": { title: "Web Development Services | Codelix IT Solutions", description: "High-performance, scalable web development services tailored to your business needs." },
+  "/services/web-development": { title: "Web Development Company in Ahmedabad | Codelix", description: "Web development company in Ahmedabad building fast, scalable websites and web applications — from marketing sites to complex product platforms." },
   "/services/application-development": { title: "Application Development | iOS & Android | Codelix", description: "Custom mobile and desktop application development for iOS, Android and cross-platform — from product definition through release, testing and ongoing support." },
   "/services/ui-ux-design": { title: "UI/UX Design Services | Codelix IT Solutions", description: "User-centric UI/UX design services to elevate your digital products and user engagement." },
   "/services/e-commerce-solutions": { title: "E-Commerce Solutions | Codelix IT Solutions", description: "End-to-end e-commerce solutions to help you sell online efficiently and securely." },
-  "/services/custom-software-development": { title: "Custom Software Development | Codelix IT Solutions", description: "Bespoke software development tailored precisely to your unique business operations." },
+  "/services/custom-software-development": { title: "Custom Software Development Company | Codelix", description: "Custom software built around how your business actually operates — ERP, CRM, internal tools and customer platforms, delivered with full source-code ownership." },
   "/services/ai-development": { title: "AI Development Services | Codelix IT Solutions", description: "Integrate powerful Artificial Intelligence into your products with our expert AI development." },
   "/services/data-analytics": { title: "Data Analytics Services | Codelix IT Solutions", description: "Turn your raw data into actionable insights with our comprehensive data analytics services." },
   "/services/support-managed-services": { title: "Support & Managed Services | Codelix IT Solutions", description: "Reliable IT support and managed services to keep your operations running smoothly." },
