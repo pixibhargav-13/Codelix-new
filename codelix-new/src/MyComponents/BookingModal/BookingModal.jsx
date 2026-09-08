@@ -23,6 +23,8 @@ export default function BookingModal() {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
   
   const lenis = useLenis();
 
@@ -167,16 +169,49 @@ export default function BookingModal() {
     );
   };
 
-  const handleBook = (e) => {
+  /* This used to be a 600ms setTimeout and nothing else: the visitor saw
+     "Booking Confirmed" and was told a calendar invitation had been sent,
+     while their name, email, phone and chosen slot were discarded when the
+     tab closed. Every consultation booked this way was lost, and the person
+     was left waiting for a call. It now posts to the same endpoint the
+     contact and careers forms use. */
+  const handleBook = async (e) => {
     e.preventDefault();
-    // Simulate API call
-    setTimeout(() => {
-      /* a booking only counts as a lead once it reaches confirmation */
-      trackLead("consultation_booking", {
-        booking_time: selectedTime || undefined,
+    setSending(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "booking",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          service: formData.service === "Other" ? formData.customService : formData.service,
+          message: formData.message,
+          bookingDate: formatDate(selectedDate),
+          bookingTime: selectedTime,
+          _hp: e.target._hp?.value || "",
+        }),
       });
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.error || "We could not confirm that booking. Please try again.");
+        return;
+      }
+
+      /* a booking only counts as a lead once the server has it */
+      trackLead("consultation_booking", { booking_time: selectedTime || undefined });
       setStep(3);
-    }, 600);
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const formatDate = (d) => {
@@ -259,6 +294,10 @@ export default function BookingModal() {
               </div>
 
               <form className="booking-form" onSubmit={handleBook}>
+                {/* honeypot: hidden from people, bots fill it and the server
+                    silently discards the submission */}
+                <input type="text" name="_hp" tabIndex={-1} autoComplete="off"
+                  aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1 }} />
                 <div className="booking-input-group">
                   <label>Full Name *</label>
                   <input 
@@ -341,9 +380,10 @@ export default function BookingModal() {
                 </div>
 
                 <div className="booking-footer" style={{ marginTop: 32 }}>
-                  <button type="submit" className="v2-btn v2-btn--filled" style={{ width: '100%', justifyContent: 'center' }}>
-                    Confirm Booking
+                  <button type="submit" disabled={sending} className="v2-btn v2-btn--filled" style={{ width: '100%', justifyContent: 'center' }}>
+                    {sending ? "Confirming…" : "Confirm Booking"}
                   </button>
+                {error && <p className="booking-error" role="alert">{error}</p>}
                 </div>
               </form>
             </div>

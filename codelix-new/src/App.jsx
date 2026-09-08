@@ -28,6 +28,7 @@ const AdminBlogForm = lazy(() => import("./admin/pages/AdminBlogForm"));
 const AdminCaseStudyList = lazy(() => import("./admin/pages/AdminCaseStudyList"));
 const AdminCaseStudyForm = lazy(() => import("./admin/pages/AdminCaseStudyForm"));
 const AdminTestimonialsList = lazy(() => import("./admin/pages/AdminTestimonialsList"));
+const AdminEnquiriesList = lazy(() => import("./admin/pages/AdminEnquiriesList"));
 const AdminTestimonialForm = lazy(() => import("./admin/pages/AdminTestimonialForm"));
 
 // ─── Eagerly loaded (critical for first paint) ────────────────────────────────
@@ -297,6 +298,7 @@ const AppRoutes = () => {
             <Route path="case-studies" element={<AdminCaseStudyList />} />
             <Route path="case-studies/new" element={<AdminCaseStudyForm />} />
             <Route path="case-studies/:id" element={<AdminCaseStudyForm />} />
+            <Route path="enquiries" element={<AdminEnquiriesList />} />
             <Route path="testimonials" element={<AdminTestimonialsList />} />
             <Route path="testimonials/new" element={<AdminTestimonialForm />} />
             <Route path="testimonials/:id" element={<AdminTestimonialForm />} />
