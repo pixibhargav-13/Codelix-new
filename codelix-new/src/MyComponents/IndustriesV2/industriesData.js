@@ -32,6 +32,8 @@ export const INDUSTRIES = [
   },
   {
     slug: "fintech",
+    seoDescription:
+      "Fintech products where security, compliance and clear information architecture are requirements from the start — onboarding flows, dashboards and reporting.",
     icon: Landmark,
     title: "FinTech",
     tagline: "Where compliance and trust can't be an afterthought.",
@@ -45,6 +47,8 @@ export const INDUSTRIES = [
   },
   {
     slug: "ai-data",
+    seoDescription:
+      "Data pipelines, dashboards and AI features built around a real business question rather than a proof of concept that never leaves the demo.",
     icon: Cpu,
     title: "AI & Data",
     tagline: "Turning raw data into something a team can act on.",
@@ -58,6 +62,8 @@ export const INDUSTRIES = [
   },
   {
     slug: "healthcare",
+    seoDescription:
+      "Healthcare software with privacy and accessibility designed in from day one — appointment flows, patient portals and clinical tools, not a retrofit.",
     icon: HeartPulse,
     title: "Healthcare",
     tagline: "Privacy and accessibility as first-class requirements.",
@@ -71,6 +77,8 @@ export const INDUSTRIES = [
   },
   {
     slug: "food-beverages",
+    seoDescription:
+      "Ordering, reservation and inventory systems for restaurants and food businesses, built to stay reliable through the dinner rush rather than a quiet demo.",
     icon: UtensilsCrossed,
     title: "Food & Beverages",
     tagline: "Ordering and operations that hold up during a dinner rush.",
@@ -84,6 +92,8 @@ export const INDUSTRIES = [
   },
   {
     slug: "e-commerce",
+    seoDescription:
+      "E-commerce storefronts engineered for speed and trust — fast product discovery, a low-friction checkout and a backend your team can actually run.",
     icon: ShoppingCart,
     title: "E-Commerce",
     tagline: "A fast, low-friction path from landing to checkout.",
@@ -97,6 +107,9 @@ export const INDUSTRIES = [
   },
   {
     slug: "real-estate-construction",
+    seoTitle: "Real Estate & Construction Software | Codelix IT Solutions",
+    seoDescription:
+      "Listing platforms and project-tracking tools that keep availability, documents and client communication accurate in one system as things move quickly.",
     icon: Building,
     title: "Real Estate & Construction",
     tagline: "Listings and project data that stay accurate as things move fast.",
@@ -110,6 +123,8 @@ export const INDUSTRIES = [
   },
   {
     slug: "education",
+    seoDescription:
+      "Course catalogues, admissions flows and student portals built to hold up under real enrolment traffic — education software that survives results day.",
     icon: GraduationCap,
     title: "Education",
     tagline: "Built for real enrolment load, not a demo.",
@@ -123,6 +138,8 @@ export const INDUSTRIES = [
   },
   {
     slug: "startups",
+    seoDescription:
+      "Marketing sites and product experiences that explain something new clearly, capture signups and keep evolving as fast as the product behind them does.",
     icon: Rocket,
     title: "Startups",
     tagline: "Ship the idea clearly, capture the signup.",
@@ -136,6 +153,8 @@ export const INDUSTRIES = [
   },
   {
     slug: "b2b-saas",
+    seoDescription:
+      "Product dashboards and internal operations tools for B2B SaaS, built to stay usable as the team, the data and the customer base all grow at once.",
     icon: Layers,
     title: "B2B SaaS",
     tagline: "Internal systems and product dashboards that scale with the team.",
@@ -149,6 +168,9 @@ export const INDUSTRIES = [
   },
   {
     slug: "travel-hospitality",
+    seoTitle: "Travel & Hospitality Software | Codelix IT Solutions",
+    seoDescription:
+      "Booking and reservation platforms designed to stay fast and accurate through seasonal demand spikes, not only in a slow month.",
     icon: Plane,
     title: "Travel & Hospitality",
     tagline: "Booking flows that hold up during peak season.",

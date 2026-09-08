@@ -11,7 +11,7 @@ import { createClient } from "@supabase/supabase-js";
 import { $ as codelixLogo, a0 as projectThree, a1 as projectTwo, a2 as projectOne, a3 as projectFour, a4 as projectFive, a5 as projectSix, a6 as projectSeven, a7 as projectEight, a8 as projectNine, a9 as projectTen, aa as projectEleven, ab as projectThirteen, ac as projectFourteen, ad as projectFifteen, ae as projectTwentyThree, r as reactLogo, n as nextLogo, t as tsLogo, j as jsLogo, b as viteLogo, c as tailwindLogo, d as bootstrapLogo, g as nodeLogo, l as laravelLogo, m as phpLogo, w as postgresqlLogo, u as techMongo, y as techAws, z as dockerLogo, A as figmaLogo, H as webflowLogo, af as erpBillingSync, ag as erpHandoffFlow, B as adobeXdLogo, C as sketchLogo, D as framerLogo, ah as techPhotoshop, E as canvaLogo, p as pythonLogo, ai as techNode, f as flutterLogo, s as swiftLogo, e as androidLogo, i as javaLogo, x as techFirebase, F as shopifyLogo, G as woocommerceLogo, k as springLogo, o as csharpLogo, h as djangoLogo, aj as manasImg, ak as kushalImg, al as logo1, am as logo2, an as logo3, ao as logo4, ap as logo5, a as angularLogo, v as vueLogo, q as nust, I as n8nLogo, J as zapierLogo, K as makeLogo, aq as blogImg1, ar as blogImg2, as as blogImg3 } from "./assets/site-images-DRvRo0sp.js";
 import { FileText, Briefcase, MessageSquareQuote, LogOut, Plus, X, Calendar, ChevronLeft, Clock, CheckCircle2, ChevronRight, PlayCircle, Target, PenTool, Code2, Globe, Smartphone, Cloud, Rocket, Activity, LifeBuoy, CalendarCheck, Lock, Eye, ShoppingCart, Sparkles, BarChart3, Receipt, Users, EyeOff, Unlink, TrendingDown, PhoneOff, Puzzle, Gauge, Search, ShieldCheck, Wrench, Building2, Store, GraduationCap, HeartPulse, Landmark, Check, FileCode2, GitBranch, BookOpen, KeyRound, Palette, Server, Minus, Phone, CloudCog, Plug, Workflow, Bot, CreditCard, RefreshCw, TrendingUp, Database, AlertTriangle, HelpCircle, Paintbrush, MousePointerClick, Users2, Frown, Layers, Monitor, Layout, Network, PieChart, Headphones, Bell, BatteryLow, RefreshCcw, Wifi, Bug, Ban, LayoutGrid, ShoppingBag, PackageSearch, RotateCcw, Shirt, Utensils, FileSpreadsheet, Repeat, AlertOctagon, Factory, Repeat2, FileWarning, MessageSquare, HeartHandshake, CheckCheck, Send, Mail, MapPin, Wallet, Handshake, Cpu, UtensilsCrossed, Building, Plane, XCircle, FileCheck2, Layers3, Timer, ExternalLink, ArrowUpRight, ClipboardList, Linkedin, Compass, MonitorSmartphone, Terminal, GitPullRequest, GitMerge, TestTube, Settings2, LayoutTemplate, ArrowLeft } from "lucide-react";
 import { a as FOOTER_ALL_SERVICES, T as TECH_STACK } from "./assets/site-data-ES8yYkGU.js";
-import { N as NavbarV2, F as FooterV2, i as introWillPlay, s as splitTitleLinesIn, o as onIntroHandoff, P as PageLoader, C as ClientStrip, S as ScrollSentence, a as PRODUCTS, T as TestimonialSpotlight, b as FaqSection, c as CtaSection, d as TechStackShowcaseV2, p as productBySlug, A as ArticleSkeleton } from "./assets/site-shared-sqotFZyF.js";
+import { N as NavbarV2, F as FooterV2, i as introWillPlay, s as splitTitleLinesIn, o as onIntroHandoff, P as PageLoader, C as ClientStrip, S as ScrollSentence, a as PRODUCTS, T as TestimonialSpotlight, b as FaqSection, c as CtaSection, d as TechStackShowcaseV2, p as productBySlug, A as ArticleSkeleton } from "./assets/site-shared-CDqfCN22.js";
 const SLUG_NAMES = {
   "about": "About",
   "work": "Our Work",
@@ -4917,7 +4917,7 @@ const RAW = [
   },
   {
     slug: "erp-crm-development",
-    seoTitle: "Custom ERP & CRM Software Development Company | Codelix IT Solutions",
+    seoTitle: "Custom ERP & CRM Software Development | Codelix",
     seoDescription: "Custom ERP and CRM software development for manufacturing, inventory, HRMS and enterprise operations. ERP development company in Ahmedabad, India.",
     icon: Building2,
     title: "ERP & CRM Development",
@@ -12126,6 +12126,7 @@ const INDUSTRIES$1 = [
   },
   {
     slug: "fintech",
+    seoDescription: "Fintech products where security, compliance and clear information architecture are requirements from the start — onboarding flows, dashboards and reporting.",
     icon: Landmark,
     title: "FinTech",
     tagline: "Where compliance and trust can't be an afterthought.",
@@ -12139,6 +12140,7 @@ const INDUSTRIES$1 = [
   },
   {
     slug: "ai-data",
+    seoDescription: "Data pipelines, dashboards and AI features built around a real business question rather than a proof of concept that never leaves the demo.",
     icon: Cpu,
     title: "AI & Data",
     tagline: "Turning raw data into something a team can act on.",
@@ -12152,6 +12154,7 @@ const INDUSTRIES$1 = [
   },
   {
     slug: "healthcare",
+    seoDescription: "Healthcare software with privacy and accessibility designed in from day one — appointment flows, patient portals and clinical tools, not a retrofit.",
     icon: HeartPulse,
     title: "Healthcare",
     tagline: "Privacy and accessibility as first-class requirements.",
@@ -12165,6 +12168,7 @@ const INDUSTRIES$1 = [
   },
   {
     slug: "food-beverages",
+    seoDescription: "Ordering, reservation and inventory systems for restaurants and food businesses, built to stay reliable through the dinner rush rather than a quiet demo.",
     icon: UtensilsCrossed,
     title: "Food & Beverages",
     tagline: "Ordering and operations that hold up during a dinner rush.",
@@ -12178,6 +12182,7 @@ const INDUSTRIES$1 = [
   },
   {
     slug: "e-commerce",
+    seoDescription: "E-commerce storefronts engineered for speed and trust — fast product discovery, a low-friction checkout and a backend your team can actually run.",
     icon: ShoppingCart,
     title: "E-Commerce",
     tagline: "A fast, low-friction path from landing to checkout.",
@@ -12191,6 +12196,8 @@ const INDUSTRIES$1 = [
   },
   {
     slug: "real-estate-construction",
+    seoTitle: "Real Estate & Construction Software | Codelix IT Solutions",
+    seoDescription: "Listing platforms and project-tracking tools that keep availability, documents and client communication accurate in one system as things move quickly.",
     icon: Building,
     title: "Real Estate & Construction",
     tagline: "Listings and project data that stay accurate as things move fast.",
@@ -12204,6 +12211,7 @@ const INDUSTRIES$1 = [
   },
   {
     slug: "education",
+    seoDescription: "Course catalogues, admissions flows and student portals built to hold up under real enrolment traffic — education software that survives results day.",
     icon: GraduationCap,
     title: "Education",
     tagline: "Built for real enrolment load, not a demo.",
@@ -12217,6 +12225,7 @@ const INDUSTRIES$1 = [
   },
   {
     slug: "startups",
+    seoDescription: "Marketing sites and product experiences that explain something new clearly, capture signups and keep evolving as fast as the product behind them does.",
     icon: Rocket,
     title: "Startups",
     tagline: "Ship the idea clearly, capture the signup.",
@@ -12230,6 +12239,7 @@ const INDUSTRIES$1 = [
   },
   {
     slug: "b2b-saas",
+    seoDescription: "Product dashboards and internal operations tools for B2B SaaS, built to stay usable as the team, the data and the customer base all grow at once.",
     icon: Layers,
     title: "B2B SaaS",
     tagline: "Internal systems and product dashboards that scale with the team.",
@@ -12243,6 +12253,8 @@ const INDUSTRIES$1 = [
   },
   {
     slug: "travel-hospitality",
+    seoTitle: "Travel & Hospitality Software | Codelix IT Solutions",
+    seoDescription: "Booking and reservation platforms designed to stay fast and accurate through seasonal demand spikes, not only in a slow month.",
     icon: Plane,
     title: "Travel & Hospitality",
     tagline: "Booking flows that hold up during peak season.",
@@ -16957,7 +16969,7 @@ const seoData = {
   "/": { title: "AI-Powered IT Solutions | Codelix IT Solutions", description: "Empower your business with AI-centric software solutions, world-class UI/UX design, and scalable web apps by Codelix IT Solutions." },
   "/services": { title: "Our Services | Web & App Development | Codelix IT Solutions", description: "Explore our comprehensive suite of IT services including Web Development, App Development, UI/UX Design, AI, and Custom Software." },
   "/services/web-development": { title: "Web Development Services | Codelix IT Solutions", description: "High-performance, scalable web development services tailored to your business needs." },
-  "/services/application-development": { title: "Application Development | iOS & Android | Codelix IT Solutions", description: "Custom mobile application development for iOS and Android platforms." },
+  "/services/application-development": { title: "Application Development | iOS & Android | Codelix", description: "Custom mobile and desktop application development for iOS, Android and cross-platform — from product definition through release, testing and ongoing support." },
   "/services/ui-ux-design": { title: "UI/UX Design Services | Codelix IT Solutions", description: "User-centric UI/UX design services to elevate your digital products and user engagement." },
   "/services/e-commerce-solutions": { title: "E-Commerce Solutions | Codelix IT Solutions", description: "End-to-end e-commerce solutions to help you sell online efficiently and securely." },
   "/services/custom-software-development": { title: "Custom Software Development | Codelix IT Solutions", description: "Bespoke software development tailored precisely to your unique business operations." },
@@ -16968,9 +16980,9 @@ const seoData = {
   "/contact": { title: "Contact Us | Codelix IT Solutions", description: "Get in touch with Codelix IT Solutions to discuss your next big project." },
   "/industries": { title: "Industries We Serve | Codelix IT Solutions", description: "Discover the various industries we provide specialized IT solutions for." },
   "/process": { title: "Our Process | Codelix IT Solutions", description: "Discover our proven, transparent development process from ideation to launch." },
-  "/team": { title: "Our Team | Codelix IT Solutions", description: "Meet the experts behind the code at Codelix IT Solutions." },
-  "/work": { title: "Our Work & Case Studies | Codelix IT Solutions", description: "Browse our portfolio of shipped projects and detailed case studies." },
-  "/faq": { title: "Frequently Asked Questions | Codelix IT Solutions", description: "Got questions? We have answers. Check out our FAQ." },
+  "/team": { title: "Our Team | Codelix IT Solutions", description: "The engineers, designers and project leads behind Codelix IT Solutions — who actually builds your software, and how the team is put together." },
+  "/work": { title: "Our Work & Case Studies | Codelix IT Solutions", description: "Shipped projects with the detail behind them — the problem, what we built, the stack we chose and the outcome, across ERP, e-commerce, SaaS and mobile." },
+  "/faq": { title: "Frequently Asked Questions | Codelix IT Solutions", description: "Straight answers on how we scope, price and deliver software projects — timelines, source-code ownership, support after launch and how we work with you." },
   "/technologies": { title: "Technologies We Use | Codelix IT Solutions", description: "Explore the modern tech stack we use to build scalable, secure applications." },
   /* A viral LinkedIn hiring post on 9 July drove a 15x brand-search spike, and
      the hiring queries the site does rank for - "it company ahmedabad for
@@ -16979,7 +16991,7 @@ const seoData = {
   "/careers": { title: "Careers at Codelix IT Solutions — IT Jobs in Ahmedabad", description: "Open roles for developers, designers and freshers at Codelix IT Solutions in Ahmedabad. Work on web, mobile, AI and ERP projects you can point at." },
   "/pricing": { title: "Pricing | Codelix IT Solutions", description: "Transparent, flexible pricing for our professional development services." },
   "/blog": { title: "Blog | Insights & Updates | Codelix IT Solutions", description: "Read the latest insights, tech trends, and company updates on the Codelix blog." },
-  "/case-study": { title: "Case Studies | Codelix IT Solutions", description: "Deep dives into how we solved complex problems for our clients." },
+  "/case-study": { title: "Case Studies | Codelix IT Solutions", description: "Detailed breakdowns of software we have delivered — the constraints, the decisions we made, what we built and what changed for the client afterwards." },
   /* These had no entry and fell back to defaultSEO, so every one of them
      served the generic site description — which is why the terms page was
      showing "Craft AI-powered web, app & SaaS solutions..." as its snippet
