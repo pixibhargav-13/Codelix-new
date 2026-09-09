@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 export const SEO = ({
   title,
+  ogTitle,
   description,
   keywords = '',
   robots = 'index, follow, max-image-preview:large, max-snippet:-1',
@@ -11,6 +12,11 @@ export const SEO = ({
   const siteUrl = 'https://www.codelixitsolutions.com';
   const location = useLocation();
   const fullTitle = title || 'Codelix IT Solutions | AI-Powered Web, App & SaaS Development';
+  /* The page title and the social title answer to different readers. The
+     <title> is written for search — it carries the words people type. The
+     og:title is read by a person deciding whether to open a link someone
+     shared, where a keyword phrase reads as spam and the brand does not. */
+  const socialTitle = ogTitle || fullTitle;
   const pathName = location.pathname === '/' ? '/' : location.pathname.replace(/\/+$/, '');
   const fullCanonical = `${siteUrl}${pathName}`;
   const defaultDesc = 'Craft AI-powered web, app & SaaS solutions with world-class UI/UX design. Trusted by 25+ companies for professional development services.';
@@ -35,7 +41,7 @@ export const SEO = ({
       {/* Open Graph */}
       <meta property="og:site_name" content="Codelix IT Solutions" />
       <meta property="og:locale" content="en_US" />
-      <meta property="og:title" content={fullTitle} />
+      <meta property="og:title" content={socialTitle} />
       <meta property="og:description" content={finalDesc} />
       <meta property="og:url" content={fullCanonical} />
       <meta property="og:type" content="website" />
@@ -47,7 +53,7 @@ export const SEO = ({
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@codelixitsolutions" />
-      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:title" content={socialTitle} />
       <meta name="twitter:description" content={finalDesc} />
       <meta name="twitter:url" content={fullCanonical} />
       <meta name="twitter:image" content={defaultImage} />

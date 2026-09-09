@@ -1,5 +1,10 @@
 export const seoData = {
-  "/": { title: "IT Company in Ahmedabad | Codelix IT Solutions", description: "Codelix IT Solutions is an IT company in Ahmedabad building custom software, web and mobile apps, ERP systems and AI solutions for businesses across India." },
+  /* Two titles on purpose. `title` is what Google indexes and is written around
+     "it companies in ahmedabad" — 14,800 searches a month at difficulty 9,
+     which the homepage already ranks 3rd for. `ogTitle` is what a person sees
+     when someone shares the link on WhatsApp or LinkedIn, where a local
+     keyword phrase reads as an ad and the positioning does the work instead. */
+  "/": { title: "IT Company in Ahmedabad | Codelix IT Solutions", ogTitle: "Codelix IT Solutions — AI-Powered Web, App & Software Development", description: "Codelix IT Solutions is an IT company in Ahmedabad building custom software, web and mobile apps, ERP systems and AI solutions for businesses across India." },
   "/services": { title: "Our Services | Web & App Development | Codelix IT Solutions", description: "Explore our comprehensive suite of IT services including Web Development, App Development, UI/UX Design, AI, and Custom Software." },
   "/services/web-development": { title: "Web Development Company in Ahmedabad | Codelix", description: "Web development company in Ahmedabad building fast, scalable websites and web applications — from marketing sites to complex product platforms." },
   "/services/application-development": { title: "Application Development | iOS & Android | Codelix", description: "Custom mobile and desktop application development for iOS, Android and cross-platform — from product definition through release, testing and ongoing support." },
