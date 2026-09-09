@@ -697,44 +697,45 @@
 /* ── Enquiries ─────────────────────────────────────────────────────────── */
 
 .adm-enq-tag--booking { background: rgba(59, 130, 246, .14); color: #1d4ed8; }
-.adm-enq-tag--careers { background: rgba(16, 185, 129, .14); color: #047857; }
-
-/* the expanded row: label/value pairs, only for fields that were filled */
+/* The expanded row: label/value pairs, only for fields that were filled.
+   Built on the panel's own tokens rather than hardcoded colours — the first
+   version used near-black text and a near-black tint, which is invisible on
+   this dark surface. */
 .adm-enq-detail {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 14px 28px;
+  gap: 16px 28px;
   margin: 0;
-  padding: 18px 12px;
-  background: rgba(15, 15, 13, .025);
+  padding: 18px 16px;
+  background: rgba(255, 255, 255, .025);
+  border: 1px solid var(--adm-border-soft);
   border-radius: 8px;
 }
 
 .adm-enq-detail dt {
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: .04em;
+  letter-spacing: .05em;
   text-transform: uppercase;
-  color: rgba(15, 15, 13, .45);
-  margin-bottom: 3px;
+  color: var(--adm-text-faint);
+  margin-bottom: 4px;
 }
 
 .adm-enq-detail dd {
   margin: 0;
   font-size: 14px;
-  color: #0f0f0d;
+  line-height: 1.55;
+  color: var(--adm-text);
   white-space: pre-wrap;
 }
 
-
-/* "12 total · 3 this week" beside the heading — the number you actually
-   want when you open the page */
+/* "12 total · 3 this week" beside the heading */
 .adm-enq-summary {
   font-size: 13px;
-  color: rgba(15, 15, 13, .55);
+  color: var(--adm-text-dim);
 }
 
 .adm-enq-summary strong {
-  color: #0f0f0d;
+  color: var(--adm-text);
   font-weight: 600;
 }
