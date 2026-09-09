@@ -753,3 +753,48 @@
   color: var(--adm-text);
   font-weight: 600;
 }
+/* ── Table refinements ─────────────────────────────────────────────────────
+   Usability rather than decoration: a date that wraps onto three lines, a
+   header that scrolls away on a long list, and a hover you cannot see are the
+   three things that make a data table tiring to read. */
+
+/* dates and times are atomic — never break them across lines */
+.adm-table td:first-child,
+.adm-table td:nth-child(2) {
+  white-space: nowrap;
+}
+
+/* the header stays put while the rows scroll under it */
+.adm-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--adm-bg);
+}
+
+/* a hover you can actually see, and a pointer to match */
+.adm-table tbody tr:hover {
+  background: rgba(255, 255, 255, .035);
+}
+
+.adm-table tbody tr {
+  cursor: default;
+}
+
+/* links inside the table pick up the accent only on hover, so a row of blue
+   email addresses does not shout over the data around it */
+.adm-table a {
+  color: var(--adm-text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.adm-table a:hover {
+  color: var(--adm-accent);
+  border-bottom-color: currentColor;
+}
+
+/* the expanded panel belongs to the row above it, not to the page */
+.adm-table tbody tr:has(+ tr > td > .adm-enq-detail) td {
+  border-bottom-color: transparent;
+}
