@@ -9,7 +9,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { createClient } from "@supabase/supabase-js";
 import { $ as codelixLogo, a0 as projectThree, a1 as projectTwo, a2 as projectOne, a3 as projectFour, a4 as projectFive, a5 as projectSix, a6 as projectSeven, a7 as projectEight, a8 as projectNine, a9 as projectTen, aa as projectEleven, ab as projectThirteen, ac as projectFourteen, ad as projectFifteen, ae as projectTwentyThree, r as reactLogo, n as nextLogo, t as tsLogo, j as jsLogo, b as viteLogo, c as tailwindLogo, d as bootstrapLogo, g as nodeLogo, l as laravelLogo, m as phpLogo, w as postgresqlLogo, u as techMongo, y as techAws, z as dockerLogo, A as figmaLogo, H as webflowLogo, af as erpBillingSync, ag as erpHandoffFlow, B as adobeXdLogo, C as sketchLogo, D as framerLogo, ah as techPhotoshop, E as canvaLogo, p as pythonLogo, ai as techNode, f as flutterLogo, s as swiftLogo, e as androidLogo, i as javaLogo, x as techFirebase, F as shopifyLogo, G as woocommerceLogo, k as springLogo, o as csharpLogo, h as djangoLogo, aj as manasImg, ak as kushalImg, al as logo1, am as logo2, an as logo3, ao as logo4, ap as logo5, a as angularLogo, v as vueLogo, q as nust, I as n8nLogo, J as zapierLogo, K as makeLogo, aq as blogImg1, ar as blogImg2, as as blogImg3 } from "./assets/site-images-DRvRo0sp.js";
-import { FileText, Briefcase, MessageSquareQuote, LogOut, Plus, X, Calendar, ChevronLeft, Clock, CheckCircle2, ChevronRight, PlayCircle, Target, PenTool, Code2, Globe, Smartphone, Cloud, Rocket, Activity, LifeBuoy, CalendarCheck, Lock, Eye, ShoppingCart, Sparkles, BarChart3, Receipt, Users, EyeOff, Unlink, TrendingDown, PhoneOff, Puzzle, Gauge, Search, ShieldCheck, Wrench, Building2, Store, GraduationCap, HeartPulse, Landmark, Check, FileCode2, GitBranch, BookOpen, KeyRound, Palette, Server, Minus, Phone, CloudCog, Plug, Workflow, Bot, CreditCard, RefreshCw, TrendingUp, Database, AlertTriangle, HelpCircle, Paintbrush, MousePointerClick, Users2, Frown, Layers, Monitor, Layout, Network, PieChart, Headphones, Bell, BatteryLow, RefreshCcw, Wifi, Bug, Ban, LayoutGrid, ShoppingBag, PackageSearch, RotateCcw, Shirt, Utensils, FileSpreadsheet, Repeat, AlertOctagon, Factory, Repeat2, FileWarning, MessageSquare, HeartHandshake, CheckCheck, Send, Mail, MapPin, Wallet, Handshake, Cpu, UtensilsCrossed, Building, Plane, XCircle, FileCheck2, Layers3, Timer, ExternalLink, ArrowUpRight, ClipboardList, Linkedin, Compass, MonitorSmartphone, Terminal, GitPullRequest, GitMerge, TestTube, Settings2, LayoutTemplate, ArrowLeft } from "lucide-react";
+import { Inbox, CalendarClock, UserRoundPlus, FileText, Briefcase, MessageSquareQuote, LogOut, Plus, X, Calendar, ChevronLeft, Clock, CheckCircle2, ChevronRight, PlayCircle, Target, PenTool, Code2, Globe, Smartphone, Cloud, Rocket, Activity, LifeBuoy, CalendarCheck, Lock, Eye, ShoppingCart, Sparkles, BarChart3, Receipt, Users, EyeOff, Unlink, TrendingDown, PhoneOff, Puzzle, Gauge, Search, ShieldCheck, Wrench, Building2, Store, GraduationCap, HeartPulse, Landmark, Check, FileCode2, GitBranch, BookOpen, KeyRound, Palette, Server, Minus, Phone, CloudCog, Plug, Workflow, Bot, CreditCard, RefreshCw, TrendingUp, Database, AlertTriangle, HelpCircle, Paintbrush, MousePointerClick, Users2, Frown, Layers, Monitor, Layout, Network, PieChart, Headphones, Bell, BatteryLow, RefreshCcw, Wifi, Bug, Ban, LayoutGrid, ShoppingBag, PackageSearch, RotateCcw, Shirt, Utensils, FileSpreadsheet, Repeat, AlertOctagon, Factory, Repeat2, FileWarning, MessageSquare, HeartHandshake, CheckCheck, Send, Mail, MapPin, Wallet, Handshake, Cpu, UtensilsCrossed, Building, Plane, XCircle, FileCheck2, Layers3, Timer, ExternalLink, ArrowUpRight, ClipboardList, Linkedin, Compass, MonitorSmartphone, Terminal, GitPullRequest, GitMerge, TestTube, Settings2, LayoutTemplate, ArrowLeft } from "lucide-react";
 import { a as FOOTER_ALL_SERVICES, T as TECH_STACK } from "./assets/site-data-ES8yYkGU.js";
 import { N as NavbarV2, F as FooterV2, i as introWillPlay, s as splitTitleLinesIn, o as onIntroHandoff, P as PageLoader, C as ClientStrip, S as ScrollSentence, a as PRODUCTS, T as TestimonialSpotlight, b as FaqSection, c as CtaSection, d as TechStackShowcaseV2, p as productBySlug, A as ArticleSkeleton } from "./assets/site-shared-CDqfCN22.js";
 const SLUG_NAMES = {
@@ -249,6 +249,18 @@ function AdminLayout() {
     /* @__PURE__ */ jsxs("aside", { className: "adm-sidebar", children: [
       /* @__PURE__ */ jsx("div", { className: "adm-sidebar-brand", children: /* @__PURE__ */ jsx("img", { src: codelixLogo, alt: "Codelix" }) }),
       /* @__PURE__ */ jsxs("nav", { children: [
+        /* @__PURE__ */ jsxs(NavLink, { to: "/admin/enquiries", className: ({ isActive }) => isActive ? "active" : "", children: [
+          /* @__PURE__ */ jsx(Inbox, { size: 16, strokeWidth: 1.8 }),
+          /* @__PURE__ */ jsx("span", { children: "Contact Enquiries" })
+        ] }),
+        /* @__PURE__ */ jsxs(NavLink, { to: "/admin/bookings", className: ({ isActive }) => isActive ? "active" : "", children: [
+          /* @__PURE__ */ jsx(CalendarClock, { size: 16, strokeWidth: 1.8 }),
+          /* @__PURE__ */ jsx("span", { children: "Bookings" })
+        ] }),
+        /* @__PURE__ */ jsxs(NavLink, { to: "/admin/applications", className: ({ isActive }) => isActive ? "active" : "", children: [
+          /* @__PURE__ */ jsx(UserRoundPlus, { size: 16, strokeWidth: 1.8 }),
+          /* @__PURE__ */ jsx("span", { children: "Applications" })
+        ] }),
         /* @__PURE__ */ jsxs(NavLink, { to: "/admin/blog", className: ({ isActive }) => isActive ? "active" : "", children: [
           /* @__PURE__ */ jsx(FileText, { size: 16, strokeWidth: 1.8 }),
           /* @__PURE__ */ jsx("span", { children: "Blog Posts" })
@@ -1402,6 +1414,8 @@ function BookingModal() {
   const [currentMonth, setCurrentMonth] = useState(/* @__PURE__ */ new Date());
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
   const lenis = useLenis();
   const [formData, setFormData] = useState({
     name: "",
@@ -1513,14 +1527,39 @@ function BookingModal() {
       ] })
     ] });
   };
-  const handleBook = (e) => {
+  const handleBook = async (e) => {
     e.preventDefault();
-    setTimeout(() => {
-      trackLead("consultation_booking", {
-        booking_time: selectedTime || void 0
+    setSending(true);
+    setError("");
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "booking",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          service: formData.service === "Other" ? formData.customService : formData.service,
+          message: formData.message,
+          bookingDate: formatDate(selectedDate),
+          bookingTime: selectedTime,
+          _hp: e.target._hp?.value || ""
+        })
       });
+      const data = await response.json();
+      if (!response.ok) {
+        setError(data.error || "We could not confirm that booking. Please try again.");
+        return;
+      }
+      trackLead("consultation_booking", { booking_time: selectedTime || void 0 });
       setStep(3);
-    }, 600);
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setSending(false);
+    }
   };
   const formatDate = (d) => {
     if (!d) return "";
@@ -1589,6 +1628,17 @@ function BookingModal() {
             ] })
           ] }),
           /* @__PURE__ */ jsxs("form", { className: "booking-form", onSubmit: handleBook, children: [
+            /* @__PURE__ */ jsx(
+              "input",
+              {
+                type: "text",
+                name: "_hp",
+                tabIndex: -1,
+                autoComplete: "off",
+                "aria-hidden": "true",
+                style: { position: "absolute", left: "-9999px", width: 1, height: 1 }
+              }
+            ),
             /* @__PURE__ */ jsxs("div", { className: "booking-input-group", children: [
               /* @__PURE__ */ jsx("label", { children: "Full Name *" }),
               /* @__PURE__ */ jsx(
@@ -1681,7 +1731,10 @@ function BookingModal() {
                 }
               )
             ] }),
-            /* @__PURE__ */ jsx("div", { className: "booking-footer", style: { marginTop: 32 }, children: /* @__PURE__ */ jsx("button", { type: "submit", className: "v2-btn v2-btn--filled", style: { width: "100%", justifyContent: "center" }, children: "Confirm Booking" }) })
+            /* @__PURE__ */ jsxs("div", { className: "booking-footer", style: { marginTop: 32 }, children: [
+              /* @__PURE__ */ jsx("button", { type: "submit", disabled: sending, className: "v2-btn v2-btn--filled", style: { width: "100%", justifyContent: "center" }, children: sending ? "Confirming…" : "Confirm Booking" }),
+              error && /* @__PURE__ */ jsx("p", { className: "booking-error", role: "alert", children: error })
+            ] })
           ] })
         ] }),
         step === 3 && /* @__PURE__ */ jsxs("div", { className: "booking-step booking-success fade-in", children: [
@@ -11820,17 +11873,27 @@ function ContactV2() {
     e.preventDefault();
     setSending(true);
     setError("");
-    const formPayload = new FormData(e.target);
-    formPayload.append("access_key", "d81ad30d-2d27-411e-849b-6b1d9945a2b8");
-    formPayload.append("subject", `New Inquiry from ${formData.name} — Codelix Contact Form`);
-    formPayload.append("from_name", "Codelix Website");
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        body: formPayload
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "contact",
+          name: formData.name,
+          email: formData.email,
+          contact: formData.contact,
+          company: formData.company,
+          designation: formData.designation,
+          service: formData.service,
+          aboutProject: formData.aboutProject,
+          budget: formData.budget,
+          timeline: formData.timeline,
+          referral: formData.howHeard,
+          _hp: e.target._hp?.value || ""
+        })
       });
       const data = await response.json();
-      if (data.success) {
+      if (response.ok) {
         trackLead("contact_form", { service: formData.service, budget: formData.budget });
         setSubmitted(true);
         e.target.reset();
@@ -11847,7 +11910,7 @@ function ContactV2() {
           howHeard: ""
         });
       } else {
-        setError(data.message || "Something went wrong. Please try again.");
+        setError(data.error || "Something went wrong. Please try again.");
       }
     } catch {
       setError("Network error. Please check your connection and try again.");
@@ -11957,6 +12020,17 @@ function ContactV2() {
             /* @__PURE__ */ jsx("p", { children: "Your message has been received. Our team will get back to you shortly." }),
             /* @__PURE__ */ jsx("button", { className: "v2-btn", onClick: () => setSubmitted(false), children: "Send another →" })
           ] }) : /* @__PURE__ */ jsxs("form", { onSubmit: handleSubmit, className: "contact-form", children: [
+            /* @__PURE__ */ jsx(
+              "input",
+              {
+                type: "text",
+                name: "_hp",
+                tabIndex: -1,
+                autoComplete: "off",
+                "aria-hidden": "true",
+                style: { position: "absolute", left: "-9999px", width: 1, height: 1 }
+              }
+            ),
             /* @__PURE__ */ jsx("input", { type: "checkbox", name: "botcheck", style: { display: "none" } }),
             /* @__PURE__ */ jsxs("div", { className: "contact-form-row", children: [
               /* @__PURE__ */ jsxs("div", { className: "contact-field", children: [
@@ -15480,23 +15554,27 @@ function CareersV2() {
     e.preventDefault();
     setSending(true);
     setError("");
-    const formPayload = new FormData(e.target);
-    formPayload.append("access_key", "d81ad30d-2d27-411e-849b-6b1d9945a2b8");
-    formPayload.append("subject", `New Application from ${formData.name} — ${discipline} — Codelix Careers`);
-    formPayload.append("from_name", "Codelix Careers Form");
-    formPayload.append("discipline", discipline);
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        body: formPayload
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "careers",
+          name: formData.name,
+          email: formData.email,
+          portfolio: formData.portfolio,
+          message: formData.message,
+          discipline,
+          _hp: e.target._hp?.value || ""
+        })
       });
       const data = await response.json();
-      if (data.success) {
+      if (response.ok) {
         setSubmitted(true);
         e.target.reset();
         setFormData({ name: "", email: "", portfolio: "", message: "" });
       } else {
-        setError(data.message || "Something went wrong. Please try again.");
+        setError(data.error || "Something went wrong. Please try again.");
       }
     } catch {
       setError("Network error. Please check your connection and try again.");
@@ -15578,6 +15656,17 @@ function CareersV2() {
             /* @__PURE__ */ jsx("h3", { children: "Got it." }),
             /* @__PURE__ */ jsx("p", { children: "We'll review your details and reach out if it's a fit for something we're working on." })
           ] }) : /* @__PURE__ */ jsxs("form", { onSubmit: handleSubmit, className: "cv2-form", children: [
+            /* @__PURE__ */ jsx(
+              "input",
+              {
+                type: "text",
+                name: "_hp",
+                tabIndex: -1,
+                autoComplete: "off",
+                "aria-hidden": "true",
+                style: { position: "absolute", left: "-9999px", width: 1, height: 1 }
+              }
+            ),
             /* @__PURE__ */ jsxs("div", { className: "cv2-field", children: [
               /* @__PURE__ */ jsx("label", { htmlFor: "cv2-name", children: "Name" }),
               /* @__PURE__ */ jsx("input", { id: "cv2-name", name: "name", type: "text", required: true, value: formData.name, onChange: handleChange })

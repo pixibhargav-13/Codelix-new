@@ -694,3 +694,47 @@
     padding: 8px;
   }
 }
+/* ── Enquiries ─────────────────────────────────────────────────────────── */
+
+.adm-enq-tag--booking { background: rgba(59, 130, 246, .14); color: #1d4ed8; }
+.adm-enq-tag--careers { background: rgba(16, 185, 129, .14); color: #047857; }
+
+/* the expanded row: label/value pairs, only for fields that were filled */
+.adm-enq-detail {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px 28px;
+  margin: 0;
+  padding: 18px 12px;
+  background: rgba(15, 15, 13, .025);
+  border-radius: 8px;
+}
+
+.adm-enq-detail dt {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: rgba(15, 15, 13, .45);
+  margin-bottom: 3px;
+}
+
+.adm-enq-detail dd {
+  margin: 0;
+  font-size: 14px;
+  color: #0f0f0d;
+  white-space: pre-wrap;
+}
+
+
+/* "12 total · 3 this week" beside the heading — the number you actually
+   want when you open the page */
+.adm-enq-summary {
+  font-size: 13px;
+  color: rgba(15, 15, 13, .55);
+}
+
+.adm-enq-summary strong {
+  color: #0f0f0d;
+  font-weight: 600;
+}

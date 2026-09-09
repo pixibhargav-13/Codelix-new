@@ -67,19 +67,28 @@ export default function ContactV2() {
     setSending(true);
     setError("");
 
-    const formPayload = new FormData(e.target);
-    formPayload.append("access_key", "d81ad30d-2d27-411e-849b-6b1d9945a2b8");
-    formPayload.append("subject", `New Inquiry from ${formData.name} — Codelix Contact Form`);
-    formPayload.append("from_name", "Codelix Website");
-
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        body: formPayload,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "contact",
+          name: formData.name,
+          email: formData.email,
+          contact: formData.contact,
+          company: formData.company,
+          designation: formData.designation,
+          service: formData.service,
+          aboutProject: formData.aboutProject,
+          budget: formData.budget,
+          timeline: formData.timeline,
+          referral: formData.howHeard,
+          _hp: e.target._hp?.value || "",
+        }),
       });
       const data = await response.json();
 
-      if (data.success) {
+      if (response.ok) {
         /* fires only on a confirmed success from the form API, so the count
            reflects real enquiries rather than submit-button clicks */
         trackLead("contact_form", { service: formData.service, budget: formData.budget });
@@ -91,7 +100,7 @@ export default function ContactV2() {
           budget: "Select", timeline: "Select", howHeard: "",
         });
       } else {
-        setError(data.message || "Something went wrong. Please try again.");
+        setError(data.error || "Something went wrong. Please try again.");
       }
     } catch {
       setError("Network error. Please check your connection and try again.");
@@ -237,6 +246,10 @@ export default function ContactV2() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="contact-form">
+                {/* honeypot: hidden from people, bots fill it and the server
+                    silently discards the submission */}
+                <input type="text" name="_hp" tabIndex={-1} autoComplete="off"
+                  aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1 }} />
                 <input type="checkbox" name="botcheck" style={{ display: "none" }} />
 
                 <div className="contact-form-row">

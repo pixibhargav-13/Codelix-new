@@ -14,10 +14,24 @@ if (fs.existsSync(path.resolve(__dirname, "../.env.local"))) {
   dotenv.config();
 }
 
-const supabaseUrl = process.env.VITE_SUPABASE_URL || "https://uivndohrtcthphqymqej.supabase.co";
-const supabaseAnonKey = process.env.VITE_SUPABASE_ANON_KEY || "eyJhb... (fallback won't work in real life without real key, but we rely on .env)";
-// Wait, I should just import the supabase client from the dist-server bundle?
-// Actually, creating a new client here is simpler.
+/* No fallbacks. These used to default to a different project's URL and a
+   placeholder key, so a missing variable did not fail the build — it built
+   against the wrong database, fetched nothing, and prerendered a site with
+   no Supabase content at all. Failing loudly here is the point: the whole
+   blog and case-study prerender depends on this connection. */
+const supabaseUrl = process.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = process.env.VITE_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.error(
+    "\n❌ VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY must be set.\n" +
+    "   Locally they come from .env.local; on Vercel from the project's\n" +
+    "   environment variables. Without them nothing from Supabase — blog\n" +
+    "   posts, case studies — reaches the prerendered HTML.\n"
+  );
+  process.exit(1);
+}
+
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 async function build() {

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { trackLead } from "../../lib/analytics";
 import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
@@ -124,25 +125,28 @@ export default function CareersV2() {
     setSending(true);
     setError("");
 
-    const formPayload = new FormData(e.target);
-    formPayload.append("access_key", "d81ad30d-2d27-411e-849b-6b1d9945a2b8");
-    formPayload.append("subject", `New Application from ${formData.name} — ${discipline} — Codelix Careers`);
-    formPayload.append("from_name", "Codelix Careers Form");
-    formPayload.append("discipline", discipline);
-
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        body: formPayload,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "careers",
+          name: formData.name,
+          email: formData.email,
+          portfolio: formData.portfolio,
+          message: formData.message,
+          discipline,
+          _hp: e.target._hp?.value || "",
+        }),
       });
       const data = await response.json();
 
-      if (data.success) {
+      if (response.ok) {
         setSubmitted(true);
         e.target.reset();
         setFormData({ name: "", email: "", portfolio: "", message: "" });
       } else {
-        setError(data.message || "Something went wrong. Please try again.");
+        setError(data.error || "Something went wrong. Please try again.");
       }
     } catch {
       setError("Network error. Please check your connection and try again.");
@@ -269,6 +273,10 @@ export default function CareersV2() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="cv2-form">
+                {/* honeypot: hidden from people, bots fill it and the server
+                    silently discards the submission */}
+                <input type="text" name="_hp" tabIndex={-1} autoComplete="off"
+                  aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1 }} />
                 <div className="cv2-field">
                   <label htmlFor="cv2-name">Name</label>
                   <input id="cv2-name" name="name" type="text" required value={formData.name} onChange={handleChange} />
