@@ -322,9 +322,14 @@
   color: var(--adm-text-dim);
 }
 
+/* Full width. The 960px cap suited prose-shaped forms, but the enquiry tables
+   carry six or seven columns and were being squeezed into a third of the
+   screen while the rest sat empty. */
 .adm-main {
-  padding: 40px 48px;
-  max-width: 960px;
+  padding: 36px 40px;
+  max-width: none;
+  width: 100%;
+  min-width: 0;
 }
 
 .adm-main-head {
@@ -353,11 +358,12 @@
 }
 
 /* ───────────── TABLE ───────────── */
+/* Flat by default. The panel background, the outer border and the shaded
+   header row were three boundaries around the same data; one hairline under
+   the header and one between rows is enough to read a table, and it lets the
+   content sit on the page instead of inside a box. */
 .adm-table-wrap {
-  border: 1px solid var(--adm-border);
-  border-radius: var(--adm-radius);
-  overflow: hidden;
-  background: var(--adm-panel);
+  overflow-x: auto;
 }
 
 .adm-table {
@@ -372,17 +378,25 @@
   text-transform: uppercase;
   letter-spacing: .06em;
   color: var(--adm-text-faint);
-  padding: 13px 16px;
-  background: var(--adm-panel-2);
+  padding: 0 16px 12px;
   border-bottom: 1px solid var(--adm-border);
+  white-space: nowrap;
 }
 
 .adm-table td {
-  padding: 14px 16px;
+  padding: 16px;
   border-bottom: 1px solid var(--adm-border-soft);
   font-size: 13.5px;
   vertical-align: middle;
 }
+
+/* first and last cells sit flush with the page edge, so the table reads as
+   content rather than as a panel floating inside it */
+.adm-table th:first-child,
+.adm-table td:first-child { padding-left: 0; }
+
+.adm-table th:last-child,
+.adm-table td:last-child { padding-right: 0; }
 
 .adm-table tr:last-child td {
   border-bottom: none;

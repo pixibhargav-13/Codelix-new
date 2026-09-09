@@ -23,8 +23,20 @@ const app = (
   </StrictMode>
 );
 
-if (rootElement.hasChildNodes()) {
+/* The admin panel is never prerendered, so the host answers /admin/* with the
+   SPA fallback — which is the HOMEPAGE's prerendered HTML. Hydrating admin
+   onto that markup left the homepage's DOM sitting underneath it: 28 stray
+   children in #root, the homepage's <title> on every admin screen, and the
+   public chatbot widget floating over the panel even though ChatbotGate
+   correctly renders nothing there.
+
+   Admin is client-only and has no server markup worth keeping, so empty the
+   container and mount fresh instead of hydrating someone else's page. */
+const isAdmin = window.location.pathname.startsWith("/admin");
+
+if (rootElement.hasChildNodes() && !isAdmin) {
   hydrateRoot(rootElement, app);
 } else {
+  if (isAdmin) rootElement.innerHTML = "";
   createRoot(rootElement).render(app);
 }
