@@ -798,3 +798,27 @@
 .adm-table tbody tr:has(+ tr > td > .adm-enq-detail) td {
   border-bottom-color: transparent;
 }
+
+/* A way out of every form. Sits where the eyebrow used to, so it reads as
+   "up one level" rather than as another control competing with the title. */
+.adm-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  padding: 4px 8px 4px 0;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--adm-text-dim);
+  text-decoration: none;
+  transition: color .15s ease, gap .15s ease;
+}
+
+.adm-back:hover {
+  color: var(--adm-text);
+  gap: 9px;
+}
+
+.adm-back svg {
+  flex: none;
+}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { Plus, X } from "lucide-react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { ArrowLeft, Plus, X } from "lucide-react";
 import { supabase } from "../../lib/supabaseClient";
 import { uploadImage } from "../uploadImage";
 
@@ -227,7 +227,10 @@ export default function AdminCaseStudyForm() {
     <div>
       <div className="adm-main-head">
         <div>
-          <span className="adm-main-eyebrow">Case Studies</span>
+          <Link className="adm-back" to="/admin/case-studies">
+            <ArrowLeft size={14} strokeWidth={2} />
+            Case Studies
+          </Link>
           <h1>{isNew ? "New Case Study" : "Edit Case Study"}</h1>
         </div>
       </div>
