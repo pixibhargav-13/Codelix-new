@@ -59,14 +59,26 @@ const VIEWS = {
       { key: "name", label: "Name" },
       { key: "email", label: "Email", email: true },
       { key: "discipline", label: "Discipline" },
+      { key: "portfolio", label: "Portfolio", link: true },
     ],
+    /* message stays here: it is free-form prose and would either stretch the
+       table or be truncated to a useless fragment */
     detail: [
       ["Phone", "phone"],
-      ["Portfolio / links", "portfolio"],
       ["Message", "message"],
     ],
   },
 };
+
+/* Portfolio links are shown without the scheme and trimmed, so a long URL
+   cannot stretch the table. The full address stays on the href and the
+   title attribute. */
+function shortUrl(value) {
+  const bare = String(value)
+    .replace(/^https?:\/\//, "")
+    .replace(/\/$/, "");
+  return bare.length > 34 ? bare.slice(0, 34) + "…" : bare;
+}
 
 function when(iso) {
   if (!iso) return "—";
@@ -148,6 +160,10 @@ export default function AdminEnquiriesList({ type = "contact" }) {
                       <td key={c.key}>
                         {c.email && r[c.key] ? (
                           <a href={`mailto:${r[c.key]}`}>{r[c.key]}</a>
+                        ) : c.link && r[c.key] ? (
+                          <a href={r[c.key]} target="_blank" rel="noopener noreferrer" title={r[c.key]}>
+                            {shortUrl(r[c.key])}
+                          </a>
                         ) : (
                           r[c.key] || "—"
                         )}
