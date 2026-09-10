@@ -105,7 +105,13 @@ export default function ProductDetailV2() {
 
   return (
     <div className="v2 pd2-root" ref={rootRef} style={{ "--prod-accent": p.accent }}>
-      <SEO title={p.seoTitle || `${p.name} | Codelix IT Solutions`} description={p.seoDescription || p.tagline || `Learn about ${p.name} at Codelix IT Solutions.`} />
+      {/* each product has its own share card under /og, keyed by slug - a
+          product link shared on its own should look like the product */}
+      <SEO
+        title={p.seoTitle || `${p.name} | Codelix IT Solutions`}
+        description={p.seoDescription || p.tagline || `Learn about ${p.name} at Codelix IT Solutions.`}
+        image={`/og/${p.slug}.png`}
+      />
       <div className="v2-progress" aria-hidden="true"><span /></div>
       <NavbarV2 />
 

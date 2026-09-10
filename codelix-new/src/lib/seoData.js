@@ -35,7 +35,7 @@ export const seoData = {
      the hiring queries the site does rank for - "it company ahmedabad for
      freshers", "it companies near me hiring" - all land on the homepage rather
      than here. Names the city and the audience so this page can take them. */
-  "/careers": { title: "Careers at Codelix IT Solutions — IT Jobs in Ahmedabad", description: "Open roles for developers, designers and freshers at Codelix IT Solutions in Ahmedabad. Work on web, mobile, AI and ERP projects you can point at." },
+  "/careers": { title: "Careers at Codelix IT Solutions — IT Jobs in Ahmedabad", image: "/og/careers.png", description: "Open roles for developers, designers and freshers at Codelix IT Solutions in Ahmedabad. Work on web, mobile, AI and ERP projects you can point at." },
   "/pricing": { title: "Pricing | Codelix IT Solutions", description: "Transparent, flexible pricing for our professional development services." },
   "/blog": { title: "Blog | Insights & Updates | Codelix IT Solutions", description: "Read the latest insights, tech trends, and company updates on the Codelix blog." },
   "/case-study": { title: "Case Studies | Codelix IT Solutions", description: "Detailed breakdowns of software we have delivered — the constraints, the decisions we made, what we built and what changed for the client afterwards." },
