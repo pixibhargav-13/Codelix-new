@@ -480,25 +480,43 @@
 /* ── About: a compact dropdown ────────────────────────────────────────────
    Services and Industries are catalogues, so they earn the full-width bar.
    Three company links in that same bar would read as a mistake — an
-   almost-empty 100vw sheet for one short column. This variant changes only
-   the footprint: it keeps the shared surface, the edge light and the
-   timing, stays `position: fixed` so the existing top rules for both the
-   normal and scrolled nav still apply untouched, and only drops to the
-   right end of the bar instead of spanning it. */
-.v2-nav-dropdown-panel--compact {
-  /* an auto left margin pushes the box to the right end of the same
-     containing block the wide panels use, which lands it under the right of
-     the bar without hard-coding an offset to the trigger */
+   almost-empty sheet holding one short column — so this one is a small
+   panel hanging off its own trigger instead.
+
+   That means leaving the shared `position: fixed` behind: fixed panels are
+   placed against the viewport, which is right for a bar spanning it and
+   wrong for a menu that has to sit under one word. Absolute positioning
+   inside the trigger (already `position: relative`) follows About wherever
+   the bar puts it, and follows it again when the nav shrinks on scroll,
+   with no second rule and no magic numbers. Both selectors are raised
+   above `.v2-nav.scrolled .v2-nav-dropdown-panel`, which would otherwise
+   pin `top` back to a viewport offset. */
+.v2-nav .v2-nav-dropdown-panel--compact,
+.v2-nav.scrolled .v2-nav-dropdown-panel--compact {
+  position: absolute;
+  /* 20px is the gap the wide panels leave between the link and the top of
+     the sheet — matched here so both kinds of menu hang the same way */
+  top: 100%;
+  left: auto;
+  right: 0;
   width: 230px;
-  margin-left: auto;
+  max-height: none;
   padding: 12px;
   display: block;
   grid-template-columns: none;
   grid-auto-rows: auto;
-  max-height: none;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 14px;
+}
+
+/* the wide menus need a 60px bridge to carry the cursor down to a panel
+   pinned below the whole bar; this one starts 20px under its own link, so
+   the bridge only has to cover that — any more and it would swallow hover
+   on the links either side of About */
+.v2-nav .v2-nav-dropdown--compact {
+  padding-bottom: 20px;
+  margin-bottom: -20px;
 }
 
 /* the wide panels are flush to the viewport edges, so their top hairline
