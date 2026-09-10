@@ -477,68 +477,96 @@
     grid-template-columns: 1fr;
   }
 }
-/* ── About: a compact dropdown ────────────────────────────────────────────
-   Services and Industries are catalogues, so they earn the full-width bar.
-   Three company links in that same bar would read as a mistake — an
-   almost-empty sheet holding one short column — so this one is a small
-   panel hanging off its own trigger instead.
-
-   That means leaving the shared `position: fixed` behind: fixed panels are
-   placed against the viewport, which is right for a bar spanning it and
-   wrong for a menu that has to sit under one word. Absolute positioning
-   inside the trigger (already `position: relative`) follows About wherever
-   the bar puts it, and follows it again when the nav shrinks on scroll,
-   with no second rule and no magic numbers. Both selectors are raised
-   above `.v2-nav.scrolled .v2-nav-dropdown-panel`, which would otherwise
-   pin `top` back to a viewport offset. */
-.v2-nav .v2-nav-dropdown-panel--compact,
-.v2-nav.scrolled .v2-nav-dropdown-panel--compact {
-  position: absolute;
-  /* 20px is the gap the wide panels leave between the link and the top of
-     the sheet — matched here so both kinds of menu hang the same way */
-  top: 100%;
-  left: auto;
-  right: 0;
-  width: 230px;
-  max-height: none;
-  padding: 12px;
-  display: block;
-  grid-template-columns: none;
-  grid-auto-rows: auto;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 14px;
+/* ── About mega menu ──────────────────────────────────────────────────────
+   Same shape as the Industries and Products menus: the shared left promo
+   card, then a three-column grid on the right. Three items fill that grid
+   exactly, so each page gets a card with room for a line saying what is
+   actually on it — which is the point of the sheet rather than a list. */
+.v2-nav-about-mega-menu {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 30px;
+  width: 100%;
 }
 
-/* the wide menus need a 60px bridge to carry the cursor down to a panel
-   pinned below the whole bar; this one starts 20px under its own link, so
-   the bridge only has to cover that — any more and it would swallow hover
-   on the links either side of About */
-.v2-nav .v2-nav-dropdown--compact {
-  padding-bottom: 20px;
-  margin-bottom: -20px;
+.v2-nav-about-right {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
 }
 
-/* the wide panels are flush to the viewport edges, so their top hairline
-   runs the full width; on a rounded box it has to stop short of the corners */
-.v2-nav-dropdown-panel--compact::after {
-  left: 14px;
-  right: 14px;
+.v2-nav-about-link {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.v2-nav-dropdown-panel--compact .v2-nav-mega-links {
-  gap: 2px;
+.v2-nav-about-link-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 
-/* the wide menus give each link the width of a mega-menu column to slide
-   into; here the row is the hit area, so the hover state is a surface
-   rather than a nudge */
-.v2-nav-dropdown-panel--compact .v2-nav-mega-link {
-  padding: 10px 12px;
-  border-radius: 9px;
+.v2-nav-about-link-name {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: rgba(242, 240, 236, 0.92);
 }
 
-.v2-nav-dropdown-panel--compact .v2-nav-mega-link:hover {
-  transform: none;
+.v2-nav-about-link-desc {
+  font-size: 13px;
+  color: rgba(242, 240, 236, 0.6);
+  line-height: 1.4;
+}
+
+/* the one card with something time-sensitive on it, so it gets the accent
+   the others do not — the openings page is the reason this menu exists */
+.v2-nav-about-link-badge {
+  align-self: flex-start;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #7c9bff;
+  background: rgba(124, 155, 255, 0.1);
+  border: 1px solid rgba(124, 155, 255, 0.2);
+  border-radius: 999px;
+  padding: 3px 9px;
+}
+
+.v2-nav-about-link:hover {
   background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(124, 155, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.2);
+}
+
+.v2-nav-about-link:hover .v2-nav-industry-link-arrow {
+  opacity: 1;
+  color: #7c9bff;
+  transform: translateX(0);
+}
+
+@media (max-width: 1100px) {
+  .v2-nav-about-mega-menu {
+    flex-direction: column;
+  }
+
+  .v2-nav-about-right {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .v2-nav-about-right {
+    grid-template-columns: 1fr;
+  }
 }

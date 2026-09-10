@@ -6,7 +6,7 @@ import {
   Globe, Smartphone, Palette, ShoppingCart,
   Database, Bot, LineChart, Cloud, ChevronRight,
   Factory, Landmark, Cpu, Activity, Coffee, Building2,
-  GraduationCap, Rocket, Plane, Boxes
+  GraduationCap, Rocket, Plane, Boxes, Users
 } from "lucide-react";
 import codelixLogo from "../Images/codelix-logo.png";
 import V2MobileDrawer from "../HomepageV2/V2MobileDrawer";
@@ -65,7 +65,7 @@ export default function NavbarV2() {
   const lenis = useLenis();
   /* Did THIS instance lock the page scroll? Every one of the 30 page
      components renders its own <NavbarV2 />, so following a drawer link
-     unmounts this navbar and mounts a fresh one — refs and all. The body's
+     unmounts this navbar and mounts a fresh one â refs and all. The body's
      dataset.scrollY outlives that, which is exactly how a stale offset used to
      get restored on the new page. */
   const lockedRef = useRef(false);
@@ -111,7 +111,7 @@ export default function NavbarV2() {
         lockedRef.current = false;
         if (stored) window.scrollTo(0, parseInt(stored));
       } else if (stored) {
-        /* a fresh navbar mounting on top of someone else's lock — a drawer
+        /* a fresh navbar mounting on top of someone else's lock â a drawer
            link was followed. Restoring here would drop the reader part-way
            down the new page. Take the top instead: dropping position:fixed
            gives the document its height back and the browser reapplies the old
@@ -142,19 +142,19 @@ export default function NavbarV2() {
     <>
       <nav className={`v2-nav ${navScrolled ? "scrolled" : ""} ${navHidden ? "nav-hidden" : ""}`}>
         <div className="v2-nav-inner">
-          <Link to="/" className="v2-nav-logo" aria-label="Codelix — home">
+          <Link to="/" className="v2-nav-logo" aria-label="Codelix â home">
             <img src={codelixLogo} alt="Codelix" />
           </Link>
           <div className="v2-nav-links">
             <div className="v2-nav-dropdown">
-              <Link to="/services">Services <span className="v2-nav-dropdown-chevron">▾</span></Link>
+              <Link to="/services">Services <span className="v2-nav-dropdown-chevron">â¾</span></Link>
               <div className="v2-nav-dropdown-panel" data-lenis-prevent>
                 <div className="v2-nav-dropdown-head">
                   <div>
                     <p className="v2-nav-dropdown-head-label">Our Services</p>
                     <p className="v2-nav-dropdown-head-lede">Everything we build, in one place.</p>
                   </div>
-                  <Link to="/services" className="v2-nav-dropdown-head-all">View all services →</Link>
+                  <Link to="/services" className="v2-nav-dropdown-head-all">View all services â</Link>
                 </div>
                 <div className="v2-nav-mega-menu">
                   {NAVBAR_SERVICES_HIERARCHY.map((category) => (
@@ -165,7 +165,7 @@ export default function NavbarV2() {
                         </div>
                         <div className="v2-nav-mega-title-content">
                           <span className="v2-nav-mega-title">
-                            {category.title} <span className="v2-nav-mega-arrow">→</span>
+                            {category.title} <span className="v2-nav-mega-arrow">â</span>
                           </span>
                           <span className="v2-nav-mega-desc">
                             {getCategoryDescription(category.title)}
@@ -190,7 +190,7 @@ export default function NavbarV2() {
             </div>
             <Link to="/work">Work</Link>
             <div className="v2-nav-dropdown">
-              <Link to="/industries">Industries <span className="v2-nav-dropdown-chevron">▾</span></Link>
+              <Link to="/industries">Industries <span className="v2-nav-dropdown-chevron">â¾</span></Link>
               <div className="v2-nav-dropdown-panel" data-lenis-prevent>
                 <div className="v2-nav-industry-mega-menu">
                   <div className="v2-nav-mega-menu-left">
@@ -220,7 +220,7 @@ export default function NavbarV2() {
               </div>
             </div>
             <div className="v2-nav-dropdown">
-              <Link to={`/products/${PRODUCTS[0].slug}`}>Products <span className="v2-nav-dropdown-chevron">▾</span></Link>
+              <Link to={`/products/${PRODUCTS[0].slug}`}>Products <span className="v2-nav-dropdown-chevron">â¾</span></Link>
               <div className="v2-nav-dropdown-panel" data-lenis-prevent>
                 <div className="v2-nav-products-mega-menu">
                   <div className="v2-nav-mega-menu-left">
@@ -229,7 +229,7 @@ export default function NavbarV2() {
                     </div>
                     <h3 className="v2-nav-mega-menu-left-title">Our Products</h3>
                     <p className="v2-nav-mega-menu-left-desc">
-                      Beyond client work — SaaS products we design, build, and run ourselves.
+                      Beyond client work â SaaS products we design, build, and run ourselves.
                     </p>
                   </div>
                   <div className="v2-nav-products-right">
@@ -253,28 +253,52 @@ export default function NavbarV2() {
                 site whose hiring post drove a 15x brand-search spike left the
                 openings page effectively unreachable above 900px. Nesting them
                 keeps the bar at five items and reads them as company info
-                rather than as another thing we sell. */}
-            <div className="v2-nav-dropdown v2-nav-dropdown--compact">
+                rather than as another thing we sell. Same full-width sheet as
+                Services, Industries and Products: three links in a little
+                floating box beside three full-width menus read as an oddity,
+                and the room a card gives each one is room to say what the
+                page actually holds. */}
+            <div className="v2-nav-dropdown">
               <Link to="/about">About <span className="v2-nav-dropdown-chevron">▾</span></Link>
-              <div className="v2-nav-dropdown-panel v2-nav-dropdown-panel--compact" data-lenis-prevent>
-                <div className="v2-nav-mega-links">
-                  <Link to="/about" className="v2-nav-mega-link">
-                    <span className="v2-nav-mega-link-left"><span className="v2-nav-mega-link-dot"></span>About Us</span>
-                    <span className="v2-nav-mega-link-arrow"><ChevronRight size={14} strokeWidth={2} /></span>
-                  </Link>
-                  <Link to="/team" className="v2-nav-mega-link">
-                    <span className="v2-nav-mega-link-left"><span className="v2-nav-mega-link-dot"></span>Our Team</span>
-                    <span className="v2-nav-mega-link-arrow"><ChevronRight size={14} strokeWidth={2} /></span>
-                  </Link>
-                  <Link to="/careers" className="v2-nav-mega-link">
-                    <span className="v2-nav-mega-link-left"><span className="v2-nav-mega-link-dot"></span>Careers</span>
-                    <span className="v2-nav-mega-link-arrow"><ChevronRight size={14} strokeWidth={2} /></span>
-                  </Link>
+              <div className="v2-nav-dropdown-panel" data-lenis-prevent>
+                <div className="v2-nav-about-mega-menu">
+                  <div className="v2-nav-mega-menu-left">
+                    <div className="v2-nav-mega-menu-left-bg-icon">
+                      <Users size={160} strokeWidth={0.5} />
+                    </div>
+                    <h3 className="v2-nav-mega-menu-left-title">The Company</h3>
+                    <p className="v2-nav-mega-menu-left-desc">
+                      Who builds your software, how the team is put together, and what it is like to work here.
+                    </p>
+                    <Link to="/about" className="v2-nav-mega-menu-left-btn">About Codelix <ChevronRight size={14} strokeWidth={2.5} /></Link>
+                  </div>
+                  <div className="v2-nav-about-right">
+                    <Link to="/about" className="v2-nav-about-link">
+                      <span className="v2-nav-about-link-top">
+                        <span className="v2-nav-about-link-name">About Us</span>
+                        <ChevronRight className="v2-nav-industry-link-arrow" size={16} strokeWidth={2} />
+                      </span>
+                      <span className="v2-nav-about-link-desc">How the company started, how we work, and what we are building toward.</span>
+                    </Link>
+                    <Link to="/team" className="v2-nav-about-link">
+                      <span className="v2-nav-about-link-top">
+                        <span className="v2-nav-about-link-name">Our Team</span>
+                        <ChevronRight className="v2-nav-industry-link-arrow" size={16} strokeWidth={2} />
+                      </span>
+                      <span className="v2-nav-about-link-desc">The engineers, designers and project leads who deliver the work.</span>
+                    </Link>
+                    <Link to="/careers" className="v2-nav-about-link">
+                      <span className="v2-nav-about-link-top">
+                        <span className="v2-nav-about-link-name">Careers</span>
+                        <ChevronRight className="v2-nav-industry-link-arrow" size={16} strokeWidth={2} />
+                      </span>
+                      <span className="v2-nav-about-link-badge">We're hiring</span>
+                      <span className="v2-nav-about-link-desc">Open roles for developers, designers and freshers in Ahmedabad.</span>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="v2-nav-actions">
             <Link className="v2-btn v2-btn--filled v2-nav-cta" to="/contact">Book a consultation</Link>
             <button
               className={`v2-burger ${mobileOpen ? "open" : ""}`}
