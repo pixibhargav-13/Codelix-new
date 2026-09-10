@@ -44,9 +44,32 @@ function readWords(el) {
   return words;
 }
 
+/* A word like "E-Commerce" is one word to this splitter but two break
+   opportunities to the browser, which will happily leave "E-" hanging at the
+   end of a line. No CSS property prevents it for Latin text — word-break:
+   keep-all is defined for CJK only, and hyphens/line-break do not govern an
+   explicit hyphen — so the word has to be made atomic in the markup instead.
+   Only words that actually contain an in-word break get wrapped, so the
+   common case emits exactly the markup it did before. */
+const IN_WORD_BREAK = /\S[-\u2013\u2014/]\S/;
+
+function appendWord(parent, text, doc) {
+  if (!IN_WORD_BREAK.test(text)) {
+    parent.appendChild(doc.createTextNode(text));
+    return;
+  }
+  const span = doc.createElement("span");
+  span.style.whiteSpace = "nowrap";
+  span.textContent = text;
+  parent.appendChild(span);
+}
+
 function buildWordSpan(word, doc) {
   const span = doc.createElement("span");
   span.textContent = word.text;
+  /* measure with the same atomicity the rebuilt markup will have, or the
+     line grouping is computed against breaks that will not happen */
+  if (IN_WORD_BREAK.test(word.text)) span.style.whiteSpace = "nowrap";
   if (word.accent) span.className = word.accent;
   return span;
 }
@@ -99,15 +122,14 @@ export function splitTitleLines(el) {
       let end = i;
       while (end + 1 < line.length && line[end + 1].accent === accent) end++;
 
-      const text = line.slice(i, end + 1).map((w) => w.text).join(" ");
-      if (accent) {
-        const span = doc.createElement("span");
-        span.className = accent;
-        span.textContent = text;
-        inner.appendChild(span);
-      } else {
-        inner.appendChild(doc.createTextNode(text));
-      }
+      const runWords = line.slice(i, end + 1);
+      const target = accent ? doc.createElement("span") : inner;
+      if (accent) target.className = accent;
+      runWords.forEach((w, k) => {
+        appendWord(target, w.text, doc);
+        if (k < runWords.length - 1) target.appendChild(doc.createTextNode(" "));
+      });
+      if (accent) inner.appendChild(target);
 
       if (end < line.length - 1) inner.appendChild(doc.createTextNode(" "));
       i = end + 1;
