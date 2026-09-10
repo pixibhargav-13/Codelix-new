@@ -20,6 +20,9 @@ export function useBlogPosts() {
           : "",
         readTime: p.read_time || "",
         image: p.cover_image_url || staticBlogs[0]?.image,
+        /* the fallback above borrows another post.s picture, which is fine
+           for a card in a list and wrong for a link preview */
+        coverImage: p.cover_image_url || undefined,
         tags: p.tags?.length ? p.tags : ["All Articles"],
         content: p.content,
       }));
@@ -57,6 +60,9 @@ export function useBlogPosts() {
             : "",
           readTime: p.read_time || "",
           image: p.cover_image_url || staticBlogs[0]?.image,
+        /* the fallback above borrows another post.s picture, which is fine
+           for a card in a list and wrong for a link preview */
+        coverImage: p.cover_image_url || undefined,
           tags: p.tags?.length ? p.tags : ["All Articles"],
           content: p.content,
         }));

@@ -53,6 +53,10 @@ export function useCaseStudies() {
             challenges: cs.challenges || [],
             solutions: cs.solutions || [],
             image: cs.cover_image_url || "https://laravel.com/img/logomark.min.svg",
+            /* kept separate from `image`, whose fallback above is a
+               placeholder on someone else.s domain - fine as a broken-ish
+               thumbnail, not something to hand a link preview */
+            coverImage: cs.cover_image_url || undefined,
             isConcept: !!cs.is_concept,
             snapshot: cs.snapshot?.length ? cs.snapshot : undefined,
             challengeImages: challengeImages.length ? challengeImages : undefined,
