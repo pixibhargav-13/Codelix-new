@@ -4,7 +4,7 @@ import { useLenis } from 'lenis/react';
 import { NAVBAR_SERVICES_HIERARCHY, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import {
   Globe, Smartphone, Palette, ShoppingCart,
-  Database, Bot, LineChart, Cloud, ChevronRight, ChevronDown,
+  Database, Bot, LineChart, Cloud, ChevronRight,
   Factory, Landmark, Cpu, Activity, Coffee, Building2,
   GraduationCap, Rocket, Plane, Boxes, Users
 } from "lucide-react";
@@ -147,7 +147,7 @@ export default function NavbarV2() {
           </Link>
           <div className="v2-nav-links">
             <div className="v2-nav-dropdown">
-              <Link to="/services">Services <span className="v2-nav-dropdown-chevron"><ChevronDown size={13} strokeWidth={2.5} /></span></Link>
+              <Link to="/services">Services <span className="v2-nav-dropdown-chevron">▾</span></Link>
               <div className="v2-nav-dropdown-panel" data-lenis-prevent>
                 <div className="v2-nav-dropdown-head">
                   <div>
@@ -190,7 +190,7 @@ export default function NavbarV2() {
             </div>
             <Link to="/work">Work</Link>
             <div className="v2-nav-dropdown">
-              <Link to="/industries">Industries <span className="v2-nav-dropdown-chevron"><ChevronDown size={13} strokeWidth={2.5} /></span></Link>
+              <Link to="/industries">Industries <span className="v2-nav-dropdown-chevron">▾</span></Link>
               <div className="v2-nav-dropdown-panel" data-lenis-prevent>
                 <div className="v2-nav-industry-mega-menu">
                   <div className="v2-nav-mega-menu-left">
@@ -220,7 +220,7 @@ export default function NavbarV2() {
               </div>
             </div>
             <div className="v2-nav-dropdown">
-              <Link to={`/products/${PRODUCTS[0].slug}`}>Products <span className="v2-nav-dropdown-chevron"><ChevronDown size={13} strokeWidth={2.5} /></span></Link>
+              <Link to={`/products/${PRODUCTS[0].slug}`}>Products <span className="v2-nav-dropdown-chevron">▾</span></Link>
               <div className="v2-nav-dropdown-panel" data-lenis-prevent>
                 <div className="v2-nav-products-mega-menu">
                   <div className="v2-nav-mega-menu-left">
@@ -259,7 +259,7 @@ export default function NavbarV2() {
                 and the room a card gives each one is room to say what the
                 page actually holds. */}
             <div className="v2-nav-dropdown">
-              <Link to="/about">About <span className="v2-nav-dropdown-chevron"><ChevronDown size={13} strokeWidth={2.5} /></span></Link>
+              <Link to="/about">About <span className="v2-nav-dropdown-chevron">▾</span></Link>
               <div className="v2-nav-dropdown-panel" data-lenis-prevent>
                 <div className="v2-nav-about-mega-menu">
                   <div className="v2-nav-mega-menu-left">

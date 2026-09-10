@@ -283,19 +283,13 @@
 }
 
 .v2-nav-dropdown-chevron {
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
   margin-left: 5px;
-  /* this was a text glyph sitting on the baseline; an svg box does not,
-     so it needs nudging back to optical centre against the uppercase label */
-  vertical-align: -2px;
-  color: rgba(242, 240, 236, 0.5);
-  transition: transform .3s ease, color .3s ease;
+  transition: transform .3s ease;
 }
 
 .v2-nav-dropdown:hover .v2-nav-dropdown-chevron {
   transform: rotate(180deg);
-  color: #fff;
 }
 
 /* full-width bar again, but as ONE horizontal row of equal columns divided
