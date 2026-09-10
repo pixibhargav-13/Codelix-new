@@ -52,39 +52,31 @@ function textWidth(str, size) {
 
 /* Greedy wrap into at most `maxLines`, shrinking the type until it fits
    rather than letting a long service name run off the card. */
-function layout(text, { sizes = [66, 58, 50, 44], maxLines = 2 } = {}) {
-  const words = text.split(/\s+/).filter(Boolean);
-  for (const size of sizes) {
+function layout(text, { sizes = [66, 58, 50, 44], maxLines = 2, budget = TEXT_BUDGET } = {}) {
+  const wrap = (size) => {
     const lines = [];
     let line = "";
-    for (const word of words) {
+    for (const word of text.split(/\s+/).filter(Boolean)) {
       const next = line ? `${line} ${word}` : word;
-      if (textWidth(next, size) <= TEXT_BUDGET || !line) line = next;
+      if (textWidth(next, size) <= budget || !line) line = next;
       else {
         lines.push(line);
         line = word;
       }
     }
     if (line) lines.push(line);
-    const fits =
-      lines.length <= maxLines &&
-      lines.every((l) => textWidth(l, size) <= TEXT_BUDGET);
-    if (fits) return { lines, size };
-  }
-  /* nothing fit — take the smallest size and let it wrap to three */
-  const size = sizes[sizes.length - 1];
-  const lines = [];
-  let line = "";
-  for (const word of words) {
-    const next = line ? `${line} ${word}` : word;
-    if (textWidth(next, size) <= TEXT_BUDGET || !line) line = next;
-    else {
-      lines.push(line);
-      line = word;
+    return lines;
+  };
+
+  for (const size of sizes) {
+    const lines = wrap(size);
+    if (lines.length <= maxLines && lines.every((l) => textWidth(l, size) <= budget)) {
+      return { lines, size };
     }
   }
-  if (line) lines.push(line);
-  return { lines, size };
+  /* nothing fit — take the smallest size and let it run to another line */
+  const size = sizes[sizes.length - 1];
+  return { lines: wrap(size), size };
 }
 
 /* ── naming ───────────────────────────────────────────────────────────────
@@ -204,8 +196,133 @@ async function logoDataUri(file, targetHeight) {
   };
 }
 
+/* ── the homepage globe ───────────────────────────────────────────────────
+   The hero on the homepage is a wireframe network sphere, and it is the one
+   thing about this site that is visually its own. Rebuilding it here rather
+   than screenshotting it keeps the card sharp at any size and lets the
+   layout breathe around it — the card ends up looking like the page it
+   links to, which is the whole job of a share image.
+
+   Orthographic projection of a unit sphere: a point is placed by latitude
+   and longitude, tilted, spun, then flattened by dropping z. z survives as
+   depth, which drives opacity and radius so the far side of the sphere
+   reads as far away rather than as clutter. */
+function sphereArt({ cx, cy, r, accent }) {
+  const TILT = -0.36; // radians, lifts the pole toward the viewer
+  const SPIN = 0.6;
+
+  const project = (lat, lon) => {
+    let x = Math.cos(lat) * Math.cos(lon);
+    let y = Math.sin(lat);
+    let z = Math.cos(lat) * Math.sin(lon);
+    // spin about the vertical axis
+    const x1 = x * Math.cos(SPIN) - z * Math.sin(SPIN);
+    const z1 = x * Math.sin(SPIN) + z * Math.cos(SPIN);
+    // tilt about the horizontal axis
+    const y2 = y * Math.cos(TILT) - z1 * Math.sin(TILT);
+    const z2 = y * Math.sin(TILT) + z1 * Math.cos(TILT);
+    return { x: cx + r * x1, y: cy - r * y2, z: z2 };
+  };
+
+  const parts = [];
+
+  /* graticule: latitude rings and longitude meridians, drawn as polylines of
+     projected points so the tilt comes out right. Each is split wherever it
+     crosses behind the sphere so the back half can be drawn fainter. */
+  const strand = (points, front) => {
+    const d = points.map((p, i) => `${i ? "L" : "M"}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join("");
+    const o = front ? 0.34 : 0.12;
+    return `<path d="${d}" fill="none" stroke="${accent}" stroke-opacity="${o}" stroke-width="1"/>`;
+  };
+
+  const emitStrands = (sample) => {
+    let run = [];
+    let runFront = null;
+    for (const p of sample) {
+      const front = p.z >= 0;
+      if (runFront === null) runFront = front;
+      if (front !== runFront) {
+        if (run.length > 1) parts.push(strand(run, runFront));
+        run = [run[run.length - 1]].filter(Boolean);
+        runFront = front;
+      }
+      run.push(p);
+    }
+    if (run.length > 1) parts.push(strand(run, runFront));
+  };
+
+  for (let i = 1; i < 8; i++) {
+    const lat = -Math.PI / 2 + (i * Math.PI) / 8;
+    const ring = [];
+    for (let s = 0; s <= 96; s++) ring.push(project(lat, (s / 96) * Math.PI * 2));
+    emitStrands(ring);
+  }
+  for (let m = 0; m < 12; m++) {
+    const lon = (m / 12) * Math.PI * 2;
+    const mer = [];
+    for (let s = 0; s <= 64; s++) mer.push(project(-Math.PI / 2 + (s / 64) * Math.PI, lon));
+    emitStrands(mer);
+  }
+
+  /* nodes on a Fibonacci lattice — an even scatter without the clumping at
+     the poles that a lat/long grid gives you */
+  const N = 130;
+  const golden = Math.PI * (3 - Math.sqrt(5));
+  const nodes = [];
+  for (let i = 0; i < N; i++) {
+    const y = 1 - (i / (N - 1)) * 2;
+    const lat = Math.asin(y);
+    const lon = golden * i;
+    nodes.push({ ...project(lat, lon), unit: { lat, lon } });
+  }
+
+  /* edges between neighbours, front hemisphere only: the back ones read as
+     noise through the wireframe rather than as structure */
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      const a = nodes[i];
+      const b = nodes[j];
+      if (a.z < 0.05 || b.z < 0.05) continue;
+      const d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (d > r * 0.22) continue;
+      const o = (0.14 + 0.26 * Math.min(a.z, b.z)).toFixed(3);
+      parts.push(
+        `<line x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}" stroke="#9fb6ff" stroke-opacity="${o}" stroke-width="0.9"/>`
+      );
+    }
+  }
+
+  /* a handful of nodes glow — the ones nearest the viewer, so the highlight
+     lands where the eye already is */
+  const lit = [...nodes].sort((a, b) => b.z - a.z).slice(0, 9);
+  const litSet = new Set(lit);
+  for (const n of nodes) {
+    const depth = (n.z + 1) / 2;
+    if (litSet.has(n)) {
+      parts.push(
+        `<circle cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="9" fill="${accent}" fill-opacity="0.16"/>`,
+        `<circle cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="3.1" fill="#dfe8ff"/>`
+      );
+    } else {
+      const rr = (1.1 + depth * 1.5).toFixed(2);
+      const o = (0.16 + depth * 0.62).toFixed(3);
+      parts.push(
+        `<circle cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${rr}" fill="#c6d4ff" fill-opacity="${o}"/>`
+      );
+    }
+  }
+
+  return parts.join("\n  ");
+}
+
 function svgFor(card, logo) {
-  const { lines, size } = layout(card.headline);
+  const hero = card.variant === "hero";
+  const budget = hero ? 560 : TEXT_BUDGET;
+  const { lines, size } = layout(card.headline, {
+    sizes: hero ? [64, 58, 52] : [66, 58, 50, 44],
+    maxLines: hero ? 3 : 2,
+    budget,
+  });
   const lead = Math.round(size * 1.24);
 
   /* the eyebrow rides with the headline rather than sitting under the logo:
@@ -232,10 +349,20 @@ function svgFor(card, logo) {
       <stop offset="0%" stop-color="#0a0c12"/>
       <stop offset="100%" stop-color="#050507"/>
     </linearGradient>
-    <radialGradient id="glow" cx="88%" cy="12%" r="62%">
-      <stop offset="0%" stop-color="${card.accent}" stop-opacity="0.30"/>
+    <radialGradient id="glow" cx="${hero ? "73%" : "88%"}" cy="${hero ? "48%" : "12%"}" r="${hero ? "48%" : "62%"}">
+      <stop offset="0%" stop-color="${card.accent}" stop-opacity="${hero ? "0.22" : "0.30"}"/>
       <stop offset="100%" stop-color="${card.accent}" stop-opacity="0"/>
     </radialGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#8ea2d8" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+    <!-- keeps the sphere from crowding the headline: a soft wash of the page
+         ground pulled across the left third, so the type sits on flat colour -->
+    <linearGradient id="vignette" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06070c" stop-opacity="0.97"/>
+      <stop offset="42%" stop-color="#06070c" stop-opacity="0.72"/>
+      <stop offset="62%" stop-color="#06070c" stop-opacity="0"/>
+    </linearGradient>
     <style>
       .t   { fill:#F2F0EC; font-family:'Segoe UI',Arial,Helvetica,sans-serif; font-size:${size}px; font-weight:700; letter-spacing:-1.5px; }
       .eb  { fill:${card.accent}; font-family:'Segoe UI',Arial,Helvetica,sans-serif; font-size:22px; font-weight:600; letter-spacing:2.6px; }
@@ -245,6 +372,9 @@ function svgFor(card, logo) {
 
   <rect width="${W}" height="${H}" fill="url(#bg)"/>
   <rect width="${W}" height="${H}" fill="url(#glow)"/>
+  ${hero ? `<rect width="${W}" height="${H}" fill="url(#grid)"/>` : ""}
+  ${hero ? sphereArt({ cx: 880, cy: 300, r: 232, accent: card.accent }) : ""}
+  ${hero ? `<rect width="${W}" height="${H}" fill="url(#vignette)"/>` : ""}
   <rect width="${W}" height="6" fill="${card.accent}"/>
 
   ${chip}
@@ -275,8 +405,23 @@ for (const card of cards) {
   widest = Math.max(widest, ...lines.map((l) => textWidth(l, size)));
 }
 
-/* The default card, for everything with no entry above. Same art, no logo
-   chip, the positioning line as the headline. */
+/* The homepage gets the sphere: it is the one link that gets shared as "this
+   is the company", and the one page whose card is worth the extra weight. */
+const homeLogo = await logoDataUri("codelix-logo.png", 58);
+const home = {
+  route: "/", key: "home", accent: BRAND, variant: "hero",
+  logo: "codelix-logo.png", logoHeight: 58,
+  eyebrow: "AI-Powered Software Development",
+  headline: "We build software that actually scales.",
+  sub: "Web · Mobile · AI · ERP — Ahmedabad",
+};
+await sharp(Buffer.from(svgFor(home, homeLogo)))
+  .png({ compressionLevel: 9 })
+  .toFile(path.join(OUT, "home.png"));
+manifest["/"] = "/og/home.png";
+
+/* The plain default, for anything with no entry at all — a blog post whose
+   cover has not been uploaded yet, mostly. */
 const fallback = {
   route: "/", key: "og-image", accent: BRAND,
   logo: "codelix-logo.png", logoHeight: 62,

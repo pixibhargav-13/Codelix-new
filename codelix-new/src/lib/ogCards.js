@@ -55,5 +55,6 @@ export const OG_CARDS = {
   "/services/data-engineering": "/og/services-data-engineering.png",
   "/services/performance-optimization": "/og/services-performance-optimization.png",
   "/services/security-maintenance": "/og/services-security-maintenance.png",
-  "/services/dedicated-development-teams": "/og/services-dedicated-development-teams.png"
+  "/services/dedicated-development-teams": "/og/services-dedicated-development-teams.png",
+  "/": "/og/home.png"
 };
