@@ -27,11 +27,6 @@ const toV2Slug = (href) => href.replace("/", "");
 
 const CATEGORIES = ["All", "Web Development", "Application Development", "UI/UX Design", "E-Commerce Solutions", "Custom Software Development", "AI Development", "Data Analytics"];
 
-const STATS = [
-  { value: 15, suffix: "+", label: "Case studies documented", note: "Every stage, not just the highlight reel", ring: 75 },
-  { value: 6, suffix: "", label: "Industries covered", note: "Not one narrow niche", ring: 60 },
-  { value: 100, suffix: "%", label: "Source-code ownership", note: "Every project, no exceptions", ring: 100 },
-];
 
 export default function CaseStudyV2() {
   
@@ -200,52 +195,6 @@ export default function CaseStudyV2() {
         </div>
       </section>
 
-      {/* ══════════ 3 · STATS ══════════ */}
-      <section className="v2-section v2-section--void" id="stats">
-        <p className="v2-label">By The Portfolio</p>
-        <h2 className="v2-heading">Depth across a real range of work.</h2>
-        <div className="sd2-bench-panel">
-          <div className="sd2-bench-bar">
-            <span className="sd2-bench-bar-dot" aria-hidden="true" />
-            <span className="sd2-bench-bar-title">Codelix, across case studies</span>
-            <span className="sd2-bench-bar-meta">Updated 2026</span>
-          </div>
-          <div className="sd2-bench-grid csv2-stats-grid">
-            {STATS.map((b, i) => {
-              const R = 52;
-              const C = 2 * Math.PI * R;
-              const offset = C - (C * b.ring) / 100;
-              return (
-                <div className="sd2-bench" key={b.label}>
-                  <div className="sd2-bench-ring">
-                    <svg viewBox="0 0 120 120" className="sd2-bench-ring-svg" aria-hidden="true">
-                      <defs>
-                        <linearGradient id={`csv2-bench-grad-${i}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="rgba(180,200,230,.55)" />
-                          <stop offset="100%" stopColor="rgba(180,200,230,1)" />
-                        </linearGradient>
-                      </defs>
-                      <circle className="sd2-bench-ring-track" cx="60" cy="60" r={R} />
-                      <circle
-                        className="sd2-bench-ring-fill"
-                        cx="60" cy="60" r={R}
-                        stroke={`url(#csv2-bench-grad-${i})`}
-                        style={{ "--c": C, "--ring-offset": offset }}
-                      />
-                    </svg>
-                    <div className="sd2-bench-num">
-                      <span className="sd2-bench-value" data-target={b.value}>0</span>
-                      <span className="sd2-bench-suffix">{b.suffix}</span>
-                    </div>
-                  </div>
-                  <div className="sd2-bench-label">{b.label}</div>
-                  <div className="sd2-bench-note">{b.note}</div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
       {/* ══════════ 4 · CLIENT STRIP ══════════ */}
       <ClientStrip />

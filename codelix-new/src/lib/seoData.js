@@ -28,7 +28,7 @@ export const seoData = {
   "/industries": { title: "Industries We Serve | Codelix IT Solutions", description: "Discover the various industries we provide specialized IT solutions for." },
   "/process": { title: "Our Process | Codelix IT Solutions", description: "Discover our proven, transparent development process from ideation to launch." },
   "/team": { title: "Our Team | Codelix IT Solutions", description: "The engineers, designers and project leads behind Codelix IT Solutions — who actually builds your software, and how the team is put together." },
-  "/work": { title: "Our Work & Case Studies | Codelix IT Solutions", description: "Shipped projects with the detail behind them — the problem, what we built, the stack we chose and the outcome, across ERP, e-commerce, SaaS and mobile." },
+  "/work": { title: "Our Work | Projects We Have Shipped | Codelix", description: "Selected projects with the thinking behind them - the problem, the build, the stack and what changed for the client. Browse the full set in our case studies." },
   "/faq": { title: "Frequently Asked Questions | Codelix IT Solutions", description: "Straight answers on how we scope, price and deliver software projects — timelines, source-code ownership, support after launch and how we work with you." },
   "/technologies": { title: "Technologies We Use | Codelix IT Solutions", description: "Explore the modern tech stack we use to build scalable, secure applications." },
   /* A viral LinkedIn hiring post on 9 July drove a 15x brand-search spike, and
