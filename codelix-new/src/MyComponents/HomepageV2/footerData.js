@@ -142,3 +142,27 @@ export const FOOTER_PRODUCTS = [
   { label: "4bitx", path: "/products/4bitx" },
   { label: "AanganOne", path: "/products/aanganone" }
 ];
+
+/* Everything here was reachable from the mobile drawer and nowhere else, which
+   left About, Team, Work, Process, Technologies, Pricing and FAQ sitting on
+   exactly the same number of internal links as the terms and privacy pages -
+   86 apiece. Google had nothing to separate the pages worth surfacing from
+   the legal boilerplate, and picked the boilerplate for a sitelink. Case
+   Studies was worse: 31 links, the weakest page on the site.
+
+   The labels are written to say what the page is rather than to be short.
+   Anchor text is most of what Google has to go on when it decides what to
+   call a link, and "Our Work" tells it more than "Work" does. */
+export const FOOTER_COMPANY = [
+  { label: "About Us", path: "/about" },
+  { label: "Our Team", path: "/team" },
+  { label: "Our Work", path: "/work" },
+  { label: "Case Studies", path: "/case-study" },
+  { label: "Our Process", path: "/process" },
+  { label: "Technologies", path: "/technologies" },
+  { label: "Pricing", path: "/pricing" },
+  { label: "FAQ", path: "/faq" },
+  { label: "Blog", path: "/blog" },
+  { label: "Careers", path: "/careers" },
+  { label: "Contact Us", path: "/contact" }
+];
