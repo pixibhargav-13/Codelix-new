@@ -217,7 +217,7 @@ const RouteSEO = () => {
 
   const currentSEO = seoData[path] || defaultSEO;
 
-  return <SEO title={currentSEO.title} description={currentSEO.description} />;
+  return <SEO title={currentSEO.title} ogTitle={currentSEO.ogTitle} description={currentSEO.description} />;
 };
 
 const AppRoutes = () => {

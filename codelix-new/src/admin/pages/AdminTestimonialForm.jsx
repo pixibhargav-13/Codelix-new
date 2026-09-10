@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import { supabase } from "../../lib/supabaseClient";
 import { uploadImage } from "../uploadImage";
 
@@ -76,7 +77,10 @@ export default function AdminTestimonialForm() {
     <div>
       <div className="adm-main-head">
         <div>
-          <span className="adm-main-eyebrow">Testimonials</span>
+          <Link className="adm-back" to="/admin/testimonials">
+            <ArrowLeft size={14} strokeWidth={2} />
+            Testimonials
+          </Link>
           <h1>{isNew ? "New Testimonial" : "Edit Testimonial"}</h1>
         </div>
       </div>

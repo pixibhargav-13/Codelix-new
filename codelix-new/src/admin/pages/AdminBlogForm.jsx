@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import { supabase } from "../../lib/supabaseClient";
 import { uploadImage } from "../uploadImage";
 
@@ -101,7 +102,10 @@ export default function AdminBlogForm() {
     <div>
       <div className="adm-main-head">
         <div>
-          <span className="adm-main-eyebrow">Blog Posts</span>
+          <Link className="adm-back" to="/admin/blog">
+            <ArrowLeft size={14} strokeWidth={2} />
+            Blog Posts
+          </Link>
           <h1>{isNew ? "New Blog Post" : "Edit Blog Post"}</h1>
         </div>
       </div>

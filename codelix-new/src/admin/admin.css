@@ -322,9 +322,14 @@
   color: var(--adm-text-dim);
 }
 
+/* Full width. The 960px cap suited prose-shaped forms, but the enquiry tables
+   carry six or seven columns and were being squeezed into a third of the
+   screen while the rest sat empty. */
 .adm-main {
-  padding: 40px 48px;
-  max-width: 960px;
+  padding: 36px 40px;
+  max-width: none;
+  width: 100%;
+  min-width: 0;
 }
 
 .adm-main-head {
@@ -353,11 +358,12 @@
 }
 
 /* ───────────── TABLE ───────────── */
+/* Flat by default. The panel background, the outer border and the shaded
+   header row were three boundaries around the same data; one hairline under
+   the header and one between rows is enough to read a table, and it lets the
+   content sit on the page instead of inside a box. */
 .adm-table-wrap {
-  border: 1px solid var(--adm-border);
-  border-radius: var(--adm-radius);
-  overflow: hidden;
-  background: var(--adm-panel);
+  overflow-x: auto;
 }
 
 .adm-table {
@@ -372,17 +378,25 @@
   text-transform: uppercase;
   letter-spacing: .06em;
   color: var(--adm-text-faint);
-  padding: 13px 16px;
-  background: var(--adm-panel-2);
+  padding: 0 16px 12px;
   border-bottom: 1px solid var(--adm-border);
+  white-space: nowrap;
 }
 
 .adm-table td {
-  padding: 14px 16px;
+  padding: 16px;
   border-bottom: 1px solid var(--adm-border-soft);
   font-size: 13.5px;
   vertical-align: middle;
 }
+
+/* first and last cells sit flush with the page edge, so the table reads as
+   content rather than as a panel floating inside it */
+.adm-table th:first-child,
+.adm-table td:first-child { padding-left: 0; }
+
+.adm-table th:last-child,
+.adm-table td:last-child { padding-right: 0; }
 
 .adm-table tr:last-child td {
   border-bottom: none;
@@ -697,44 +711,114 @@
 /* ── Enquiries ─────────────────────────────────────────────────────────── */
 
 .adm-enq-tag--booking { background: rgba(59, 130, 246, .14); color: #1d4ed8; }
-.adm-enq-tag--careers { background: rgba(16, 185, 129, .14); color: #047857; }
-
-/* the expanded row: label/value pairs, only for fields that were filled */
+/* The expanded row: label/value pairs, only for fields that were filled.
+   Built on the panel's own tokens rather than hardcoded colours — the first
+   version used near-black text and a near-black tint, which is invisible on
+   this dark surface. */
 .adm-enq-detail {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 14px 28px;
+  gap: 16px 28px;
   margin: 0;
-  padding: 18px 12px;
-  background: rgba(15, 15, 13, .025);
+  padding: 18px 16px;
+  background: rgba(255, 255, 255, .025);
+  border: 1px solid var(--adm-border-soft);
   border-radius: 8px;
 }
 
 .adm-enq-detail dt {
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: .04em;
+  letter-spacing: .05em;
   text-transform: uppercase;
-  color: rgba(15, 15, 13, .45);
-  margin-bottom: 3px;
+  color: var(--adm-text-faint);
+  margin-bottom: 4px;
 }
 
 .adm-enq-detail dd {
   margin: 0;
   font-size: 14px;
-  color: #0f0f0d;
+  line-height: 1.55;
+  color: var(--adm-text);
   white-space: pre-wrap;
 }
 
-
-/* "12 total · 3 this week" beside the heading — the number you actually
-   want when you open the page */
+/* "12 total · 3 this week" beside the heading */
 .adm-enq-summary {
   font-size: 13px;
-  color: rgba(15, 15, 13, .55);
+  color: var(--adm-text-dim);
 }
 
 .adm-enq-summary strong {
-  color: #0f0f0d;
+  color: var(--adm-text);
   font-weight: 600;
+}
+/* ── Table refinements ─────────────────────────────────────────────────────
+   Usability rather than decoration: a date that wraps onto three lines, a
+   header that scrolls away on a long list, and a hover you cannot see are the
+   three things that make a data table tiring to read. */
+
+/* dates and times are atomic — never break them across lines */
+.adm-table td:first-child,
+.adm-table td:nth-child(2) {
+  white-space: nowrap;
+}
+
+/* the header stays put while the rows scroll under it */
+.adm-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--adm-bg);
+}
+
+/* a hover you can actually see, and a pointer to match */
+.adm-table tbody tr:hover {
+  background: rgba(255, 255, 255, .035);
+}
+
+.adm-table tbody tr {
+  cursor: default;
+}
+
+/* links inside the table pick up the accent only on hover, so a row of blue
+   email addresses does not shout over the data around it */
+.adm-table a {
+  color: var(--adm-text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.adm-table a:hover {
+  color: var(--adm-accent);
+  border-bottom-color: currentColor;
+}
+
+/* the expanded panel belongs to the row above it, not to the page */
+.adm-table tbody tr:has(+ tr > td > .adm-enq-detail) td {
+  border-bottom-color: transparent;
+}
+
+/* A way out of every form. Sits where the eyebrow used to, so it reads as
+   "up one level" rather than as another control competing with the title. */
+.adm-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  padding: 4px 8px 4px 0;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--adm-text-dim);
+  text-decoration: none;
+  transition: color .15s ease, gap .15s ease;
+}
+
+.adm-back:hover {
+  color: var(--adm-text);
+  gap: 9px;
+}
+
+.adm-back svg {
+  flex: none;
 }
