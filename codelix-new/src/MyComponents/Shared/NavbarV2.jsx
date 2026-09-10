@@ -248,7 +248,31 @@ export default function NavbarV2() {
                 </div>
               </div>
             </div>
-            <Link to="/about">About</Link>
+            {/* About is a dropdown, not a plain link, so /team and /careers
+                have a desktop path at all — both were footer-only, which on a
+                site whose hiring post drove a 15x brand-search spike left the
+                openings page effectively unreachable above 900px. Nesting them
+                keeps the bar at five items and reads them as company info
+                rather than as another thing we sell. */}
+            <div className="v2-nav-dropdown v2-nav-dropdown--compact">
+              <Link to="/about">About <span className="v2-nav-dropdown-chevron">▾</span></Link>
+              <div className="v2-nav-dropdown-panel v2-nav-dropdown-panel--compact" data-lenis-prevent>
+                <div className="v2-nav-mega-links">
+                  <Link to="/about" className="v2-nav-mega-link">
+                    <span className="v2-nav-mega-link-left"><span className="v2-nav-mega-link-dot"></span>About Us</span>
+                    <span className="v2-nav-mega-link-arrow"><ChevronRight size={14} strokeWidth={2} /></span>
+                  </Link>
+                  <Link to="/team" className="v2-nav-mega-link">
+                    <span className="v2-nav-mega-link-left"><span className="v2-nav-mega-link-dot"></span>Our Team</span>
+                    <span className="v2-nav-mega-link-arrow"><ChevronRight size={14} strokeWidth={2} /></span>
+                  </Link>
+                  <Link to="/careers" className="v2-nav-mega-link">
+                    <span className="v2-nav-mega-link-left"><span className="v2-nav-mega-link-dot"></span>Careers</span>
+                    <span className="v2-nav-mega-link-arrow"><ChevronRight size={14} strokeWidth={2} /></span>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="v2-nav-actions">
             <Link className="v2-btn v2-btn--filled v2-nav-cta" to="/contact">Book a consultation</Link>

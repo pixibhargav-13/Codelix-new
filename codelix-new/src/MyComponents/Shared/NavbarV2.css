@@ -477,3 +477,50 @@
     grid-template-columns: 1fr;
   }
 }
+/* ── About: a compact dropdown ────────────────────────────────────────────
+   Services and Industries are catalogues, so they earn the full-width bar.
+   Three company links in that same bar would read as a mistake — an
+   almost-empty 100vw sheet for one short column. This variant changes only
+   the footprint: it keeps the shared surface, the edge light and the
+   timing, stays `position: fixed` so the existing top rules for both the
+   normal and scrolled nav still apply untouched, and only drops to the
+   right end of the bar instead of spanning it. */
+.v2-nav-dropdown-panel--compact {
+  /* an auto left margin pushes the box to the right end of the same
+     containing block the wide panels use, which lands it under the right of
+     the bar without hard-coding an offset to the trigger */
+  width: 230px;
+  margin-left: auto;
+  padding: 12px;
+  display: block;
+  grid-template-columns: none;
+  grid-auto-rows: auto;
+  max-height: none;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+}
+
+/* the wide panels are flush to the viewport edges, so their top hairline
+   runs the full width; on a rounded box it has to stop short of the corners */
+.v2-nav-dropdown-panel--compact::after {
+  left: 14px;
+  right: 14px;
+}
+
+.v2-nav-dropdown-panel--compact .v2-nav-mega-links {
+  gap: 2px;
+}
+
+/* the wide menus give each link the width of a mega-menu column to slide
+   into; here the row is the hit area, so the hover state is a surface
+   rather than a nudge */
+.v2-nav-dropdown-panel--compact .v2-nav-mega-link {
+  padding: 10px 12px;
+  border-radius: 9px;
+}
+
+.v2-nav-dropdown-panel--compact .v2-nav-mega-link:hover {
+  transform: none;
+  background: rgba(255, 255, 255, 0.05);
+}
