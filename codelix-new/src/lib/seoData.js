@@ -1,3 +1,12 @@
+/* Nobody searches for the terms or the refund policy, but Google had no way
+   to know that: they were linked from all 85 pages exactly like every other
+   footer page, so the terms page ended up holding a sitelink under the brand
+   query that Services or Careers should have. `follow` stays on - the pages
+   are still crawled and still pass their links along, they just stop being
+   candidates for the index. Privacy Policy is deliberately left indexed:
+   payment processors and ad platforms sometimes check for one. */
+const NOINDEX = "noindex, follow";
+
 export const seoData = {
   /* Two titles on purpose. `title` is what Google indexes and is written around
      "it companies in ahmedabad" — 14,800 searches a month at difficulty 9,
@@ -35,9 +44,9 @@ export const seoData = {
      served the generic site description — which is why the terms page was
      showing "Craft AI-powered web, app & SaaS solutions..." as its snippet
      in search results instead of anything about the terms. */
-  "/terms-of-service": { title: "Terms & Conditions | Codelix IT Solutions", description: "The terms covering how you may use the Codelix IT Solutions website, its content, and any third-party integrations." },
+  "/terms-of-service": { title: "Terms & Conditions | Codelix IT Solutions", robots: NOINDEX, description: "The terms covering how you may use the Codelix IT Solutions website, its content, and any third-party integrations." },
   "/privacy-policy": { title: "Privacy Policy | Codelix IT Solutions", description: "What data Codelix IT Solutions collects, how it is used and stored, and the choices you have over your information." },
-  "/refund-policy": { title: "Refund & Cancellation Policy | Codelix IT Solutions", description: "How cancellations are handled, how billing works up to the cancellation date, and when refunds are issued." },
+  "/refund-policy": { title: "Refund & Cancellation Policy | Codelix IT Solutions", robots: NOINDEX, description: "How cancellations are handled, how billing works up to the cancellation date, and when refunds are issued." },
   "/sitemap": { title: "Sitemap | Codelix IT Solutions", description: "Every page on the Codelix IT Solutions site, grouped by services, industries, products, work and company." },
 };
 
