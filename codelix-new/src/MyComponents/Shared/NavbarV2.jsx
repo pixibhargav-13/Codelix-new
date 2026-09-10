@@ -6,7 +6,7 @@ import {
   Globe, Smartphone, Palette, ShoppingCart,
   Database, Bot, LineChart, Cloud, ChevronRight,
   Factory, Landmark, Cpu, Activity, Coffee, Building2,
-  GraduationCap, Rocket, Plane, Boxes, Users
+  GraduationCap, Rocket, Plane, Boxes
 } from "lucide-react";
 import codelixLogo from "../Images/codelix-logo.png";
 import V2MobileDrawer from "../HomepageV2/V2MobileDrawer";
@@ -248,57 +248,9 @@ export default function NavbarV2() {
                 </div>
               </div>
             </div>
-            {/* About is a dropdown, not a plain link, so /team and /careers
-                have a desktop path at all — both were footer-only, which on a
-                site whose hiring post drove a 15x brand-search spike left the
-                openings page effectively unreachable above 900px. Nesting them
-                keeps the bar at five items and reads them as company info
-                rather than as another thing we sell. Same full-width sheet as
-                Services, Industries and Products: three links in a little
-                floating box beside three full-width menus read as an oddity,
-                and the room a card gives each one is room to say what the
-                page actually holds. */}
-            <div className="v2-nav-dropdown">
-              <Link to="/about">About <span className="v2-nav-dropdown-chevron">▾</span></Link>
-              <div className="v2-nav-dropdown-panel" data-lenis-prevent>
-                <div className="v2-nav-about-mega-menu">
-                  <div className="v2-nav-mega-menu-left">
-                    <div className="v2-nav-mega-menu-left-bg-icon">
-                      <Users size={160} strokeWidth={0.5} />
-                    </div>
-                    <h3 className="v2-nav-mega-menu-left-title">The Company</h3>
-                    <p className="v2-nav-mega-menu-left-desc">
-                      Who builds your software, how the team is put together, and what it is like to work here.
-                    </p>
-                    <Link to="/about" className="v2-nav-mega-menu-left-btn">About Codelix <ChevronRight size={14} strokeWidth={2.5} /></Link>
-                  </div>
-                  <div className="v2-nav-about-right">
-                    <Link to="/about" className="v2-nav-about-link">
-                      <span className="v2-nav-about-link-top">
-                        <span className="v2-nav-about-link-name">About Us</span>
-                        <ChevronRight className="v2-nav-industry-link-arrow" size={16} strokeWidth={2} />
-                      </span>
-                      <span className="v2-nav-about-link-desc">How the company started, how we work, and what we are building toward.</span>
-                    </Link>
-                    <Link to="/team" className="v2-nav-about-link">
-                      <span className="v2-nav-about-link-top">
-                        <span className="v2-nav-about-link-name">Our Team</span>
-                        <ChevronRight className="v2-nav-industry-link-arrow" size={16} strokeWidth={2} />
-                      </span>
-                      <span className="v2-nav-about-link-desc">The engineers, designers and project leads who deliver the work.</span>
-                    </Link>
-                    <Link to="/careers" className="v2-nav-about-link">
-                      <span className="v2-nav-about-link-top">
-                        <span className="v2-nav-about-link-name">Careers</span>
-                        <ChevronRight className="v2-nav-industry-link-arrow" size={16} strokeWidth={2} />
-                      </span>
-                      <span className="v2-nav-about-link-badge">We're hiring</span>
-                      <span className="v2-nav-about-link-desc">Open roles for developers, designers and freshers in Ahmedabad.</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Link to="/about">About</Link>
+          </div>
+          <div className="v2-nav-actions">
             <Link className="v2-btn v2-btn--filled v2-nav-cta" to="/contact">Book a consultation</Link>
             <button
               className={`v2-burger ${mobileOpen ? "open" : ""}`}
