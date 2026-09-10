@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import { OG_CARDS } from "../lib/ogCards.js";
 
 export const SEO = ({
   title,
@@ -29,11 +30,22 @@ export const SEO = ({
      origin prefixed - a Supabase storage URL already carries one. */
   /* SVG is not a valid og:image - Facebook, LinkedIn and X all refuse it and
      fall back to no preview at all, which is worse than the house card. */
-  const usable = image && !image.split("?")[0].toLowerCase().endsWith(".svg") ? image : null;
+  /* Every page renders this component, but only some reach it through
+     RouteSEO - the service, industry, product and detail pages set their own
+     SEO directly. Looking the route up here rather than at each call site is
+     what makes one generated manifest cover all of them. */
+  const routeCard = OG_CARDS[pathName];
+  const chosen = image || routeCard;
+  const usable = chosen && !chosen.split("?")[0].toLowerCase().endsWith(".svg") ? chosen : null;
   const shareImage = usable
     ? (/^https?:/.test(usable) ? usable : `${siteUrl}${usable.startsWith("/") ? "" : "/"}${usable}`)
     : defaultImage;
   const usingDefaultImage = shareImage === defaultImage;
+  /* Every card the generator makes is 1200x630, and so is the default, so
+     the dimensions can be declared for those. A cover uploaded through the
+     admin panel is whatever size it is, and a wrong declared size crops
+     worse than none. */
+  const knownSize = usingDefaultImage || usable === routeCard;
 
   return (
     <Helmet>
@@ -61,8 +73,8 @@ export const SEO = ({
       {/* the house card is known to be 1200x630; a post cover is whatever it
           is, and declaring dimensions we have not measured makes the crop
           worse than declaring none */}
-      {usingDefaultImage && <meta property="og:image:width" content="1200" />}
-      {usingDefaultImage && <meta property="og:image:height" content="630" />}
+      {knownSize && <meta property="og:image:width" content="1200" />}
+      {knownSize && <meta property="og:image:height" content="630" />}
       <meta property="og:image:alt" content={usingDefaultImage ? "Codelix IT Solutions - AI-Powered Web, App & SaaS Development" : socialTitle} />
 
       {/* Twitter */}
