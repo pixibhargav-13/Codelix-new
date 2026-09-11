@@ -7,6 +7,9 @@ export const SEO = ({
   title,
   ogTitle,
   image,
+  type = "website",
+  publishedTime,
+  modifiedTime,
   description,
   keywords = '',
   robots = 'index, follow, max-image-preview:large, max-snippet:-1',
@@ -68,7 +71,14 @@ export const SEO = ({
       <meta property="og:title" content={socialTitle} />
       <meta property="og:description" content={finalDesc} />
       <meta property="og:url" content={fullCanonical} />
-      <meta property="og:type" content="website" />
+      {/* "article" is not decoration: Facebook and LinkedIn lay an article
+          card out differently from a site card, and the article:* tags below
+          are only read when the type says article. Everything that is not a
+          blog post stays a website. */}
+      <meta property="og:type" content={type} />
+      {type === "article" && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+      {type === "article" && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+      {type === "article" && <meta property="article:author" content="Codelix IT Solutions" />}
       <meta property="og:image" content={shareImage} />
       {/* the house card is known to be 1200x630; a post cover is whatever it
           is, and declaring dimensions we have not measured makes the crop

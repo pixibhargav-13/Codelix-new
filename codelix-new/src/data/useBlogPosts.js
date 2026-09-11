@@ -23,6 +23,10 @@ export function useBlogPosts() {
         /* the fallback above borrows another post.s picture, which is fine
            for a card in a list and wrong for a link preview */
         coverImage: p.cover_image_url || undefined,
+        /* the raw timestamp, kept alongside the display string:
+           article:published_time has to be ISO 8601, and "1 January 2026"
+           is not */
+        publishedAt: p.published_at || undefined,
         tags: p.tags?.length ? p.tags : ["All Articles"],
         content: p.content,
       }));
@@ -63,6 +67,10 @@ export function useBlogPosts() {
         /* the fallback above borrows another post.s picture, which is fine
            for a card in a list and wrong for a link preview */
         coverImage: p.cover_image_url || undefined,
+        /* the raw timestamp, kept alongside the display string:
+           article:published_time has to be ISO 8601, and "1 January 2026"
+           is not */
+        publishedAt: p.published_at || undefined,
           tags: p.tags?.length ? p.tags : ["All Articles"],
           content: p.content,
         }));
@@ -75,4 +83,24 @@ export function useBlogPosts() {
   }, []);
 
   return { posts, loading };
+}
+
+/* The twelve pre-Supabase posts carry their date as a display string
+   ("20 October 2024"), and article:published_time needs ISO 8601. Parsed
+   explicitly rather than handed to Date.parse, whose handling of that shape
+   is implementation-defined — the prerender and the browser have to agree on
+   the answer or the markup changes between them. */
+const MONTHS = {
+  january: 0, february: 1, march: 2, april: 3, may: 4, june: 5,
+  july: 6, august: 7, september: 8, october: 9, november: 10, december: 11,
+};
+
+export function toISODate(value) {
+  if (!value) return undefined;
+  if (/^\d{4}-\d{2}-\d{2}/.test(value)) return new Date(value).toISOString();
+  const m = /^(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})$/.exec(String(value).trim());
+  if (!m) return undefined;
+  const month = MONTHS[m[2].toLowerCase()];
+  if (month === undefined) return undefined;
+  return new Date(Date.UTC(Number(m[3]), month, Number(m[1]))).toISOString();
 }
