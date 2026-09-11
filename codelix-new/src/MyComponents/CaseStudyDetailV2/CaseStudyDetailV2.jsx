@@ -203,7 +203,12 @@ export default function CaseStudyDetailV2() {
 
             {cs.image && (
               <div className="csd2-hero-media sv2-hero-reveal">
-                <img src={cs.image} alt={cs.title} />
+                {/* the hero art is the largest thing on the page and the heaviest
+                    request on the site - the biggest is 2.4 MB. Chrome does
+                    boost the first large in-viewport image on its own, but only
+                    once layout has told it the image is in view; saying so up
+                    front means it is not queued behind the rest. */}
+                <img src={cs.image} alt={cs.title} fetchPriority="high" decoding="async" />
               </div>
             )}
           </div>
