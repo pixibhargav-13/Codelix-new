@@ -4,6 +4,7 @@ import { fileURLToPath, pathToFileURL } from "url";
 import { createClient } from "@supabase/supabase-js";
 import jsesc from "jsesc";
 import { getGeneratedRoutes } from "../src/lib/route-config.js";
+import { seoData } from "../src/lib/seoData.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -174,8 +175,18 @@ async function build() {
         html = html.replace('</head>', `${helmetTags}\n</head>`);
       }
 
+      /* Moved, not copied. The note above used to say these had to stay in the
+         body or hydration would mismatch every page; that turns out not to be
+         how React 19 behaves. It hoists title/meta/link into <head> itself on
+         the client, takes ownership of the copies there, and leaves whatever
+         was rendered inline in the body untouched — a client-side navigation
+         updates <head> correctly while the body copy keeps the previous
+         page's title forever. So they are not hydration anchors, they are
+         orphans: invalid inside <body>, never read, never updated. */
+      const bodyHtml = hoistable.reduce((acc, tag) => acc.replace(tag, ''), appHtml);
+
       // Inject the rendered app HTML
-      html = html.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`);
+      html = html.replace('<div id="root"></div>', `<div id="root">${bodyHtml}</div>`);
 
       /* The homepage intro mounts from a React effect, which only runs after
          hydration — so the prerendered page painted first and the plate
@@ -224,9 +235,14 @@ async function build() {
   /* lastmod tells Google which pages are worth revisiting; without it
      every URL in the sitemap looks equally stale. */
   const buildDate = new Date().toISOString().slice(0, 10);
+  /* a page carrying noindex has no business in the sitemap - the file would
+     be asking Google to index exactly what the tag tells it not to */
+  const sitemapRoutes = allRoutes.filter(
+    (url) => !(seoData[url] && seoData[url].robots && seoData[url].robots.includes("noindex"))
+  );
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${allRoutes
+${sitemapRoutes
   .map((url) => `  <url>\n    <loc>https://www.codelixitsolutions.com${url}</loc>\n    <lastmod>${buildDate}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>${url === '/' ? '1.0' : '0.8'}</priority>\n  </url>`)
   .join('\n')}
 </urlset>`;

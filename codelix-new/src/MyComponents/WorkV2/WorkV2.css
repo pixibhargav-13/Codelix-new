@@ -674,3 +674,9 @@
     transform: scale(0.75);
   }
 }
+/* sits between the section heading and the filter row, so it needs to read
+   as a continuation of the heading rather than as another control in the
+   filter group underneath it */
+.wv-all-cs {
+  margin: -8px 0 26px;
+}

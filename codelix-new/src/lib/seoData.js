@@ -1,3 +1,12 @@
+/* Nobody searches for the terms or the refund policy, but Google had no way
+   to know that: they were linked from all 85 pages exactly like every other
+   footer page, so the terms page ended up holding a sitelink under the brand
+   query that Services or Careers should have. `follow` stays on - the pages
+   are still crawled and still pass their links along, they just stop being
+   candidates for the index. Privacy Policy is deliberately left indexed:
+   payment processors and ad platforms sometimes check for one. */
+const NOINDEX = "noindex, follow";
+
 export const seoData = {
   /* Two titles on purpose. `title` is what Google indexes and is written around
      "it companies in ahmedabad" — 14,800 searches a month at difficulty 9,
@@ -19,14 +28,14 @@ export const seoData = {
   "/industries": { title: "Industries We Serve | Codelix IT Solutions", description: "Discover the various industries we provide specialized IT solutions for." },
   "/process": { title: "Our Process | Codelix IT Solutions", description: "Discover our proven, transparent development process from ideation to launch." },
   "/team": { title: "Our Team | Codelix IT Solutions", description: "The engineers, designers and project leads behind Codelix IT Solutions — who actually builds your software, and how the team is put together." },
-  "/work": { title: "Our Work & Case Studies | Codelix IT Solutions", description: "Shipped projects with the detail behind them — the problem, what we built, the stack we chose and the outcome, across ERP, e-commerce, SaaS and mobile." },
+  "/work": { title: "Our Work | Projects We Have Shipped | Codelix", description: "Selected projects with the thinking behind them - the problem, the build, the stack and what changed for the client. Browse the full set in our case studies." },
   "/faq": { title: "Frequently Asked Questions | Codelix IT Solutions", description: "Straight answers on how we scope, price and deliver software projects — timelines, source-code ownership, support after launch and how we work with you." },
   "/technologies": { title: "Technologies We Use | Codelix IT Solutions", description: "Explore the modern tech stack we use to build scalable, secure applications." },
   /* A viral LinkedIn hiring post on 9 July drove a 15x brand-search spike, and
      the hiring queries the site does rank for - "it company ahmedabad for
      freshers", "it companies near me hiring" - all land on the homepage rather
      than here. Names the city and the audience so this page can take them. */
-  "/careers": { title: "Careers at Codelix IT Solutions — IT Jobs in Ahmedabad", description: "Open roles for developers, designers and freshers at Codelix IT Solutions in Ahmedabad. Work on web, mobile, AI and ERP projects you can point at." },
+  "/careers": { title: "Careers at Codelix IT Solutions — IT Jobs in Ahmedabad", image: "/og/careers.png", description: "Open roles for developers, designers and freshers at Codelix IT Solutions in Ahmedabad. Work on web, mobile, AI and ERP projects you can point at." },
   "/pricing": { title: "Pricing | Codelix IT Solutions", description: "Transparent, flexible pricing for our professional development services." },
   "/blog": { title: "Blog | Insights & Updates | Codelix IT Solutions", description: "Read the latest insights, tech trends, and company updates on the Codelix blog." },
   "/case-study": { title: "Case Studies | Codelix IT Solutions", description: "Detailed breakdowns of software we have delivered — the constraints, the decisions we made, what we built and what changed for the client afterwards." },
@@ -35,9 +44,9 @@ export const seoData = {
      served the generic site description — which is why the terms page was
      showing "Craft AI-powered web, app & SaaS solutions..." as its snippet
      in search results instead of anything about the terms. */
-  "/terms-of-service": { title: "Terms & Conditions | Codelix IT Solutions", description: "The terms covering how you may use the Codelix IT Solutions website, its content, and any third-party integrations." },
+  "/terms-of-service": { title: "Terms & Conditions | Codelix IT Solutions", robots: NOINDEX, description: "The terms covering how you may use the Codelix IT Solutions website, its content, and any third-party integrations." },
   "/privacy-policy": { title: "Privacy Policy | Codelix IT Solutions", description: "What data Codelix IT Solutions collects, how it is used and stored, and the choices you have over your information." },
-  "/refund-policy": { title: "Refund & Cancellation Policy | Codelix IT Solutions", description: "How cancellations are handled, how billing works up to the cancellation date, and when refunds are issued." },
+  "/refund-policy": { title: "Refund & Cancellation Policy | Codelix IT Solutions", robots: NOINDEX, description: "How cancellations are handled, how billing works up to the cancellation date, and when refunds are issued." },
   "/sitemap": { title: "Sitemap | Codelix IT Solutions", description: "Every page on the Codelix IT Solutions site, grouped by services, industries, products, work and company." },
 };
 

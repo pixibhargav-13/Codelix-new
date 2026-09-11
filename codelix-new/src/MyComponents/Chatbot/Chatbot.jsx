@@ -47,12 +47,10 @@ const Chatbot = () => {
 
   const sendMessage = async () => {
     if (!inputMessage.trim() || isLoading) {
-      console.log('Message send blocked:', { hasMessage: !!inputMessage.trim(), isLoading });
       return;
     }
 
     const messageText = inputMessage.trim();
-    console.log('sendMessage called with:', messageText);
 
     const userMessage = {
       text: messageText,
@@ -71,9 +69,6 @@ const Chatbot = () => {
 
       const webhookUrl = 'https://n8n.codelixitsolutions.com/webhook/Chatbot';
 
-      console.log('Sending message to webhook:', messageText);
-      console.log('Webhook URL:', webhookUrl);
-      console.log('Payload:', messagePayload);
 
       // Ensure the request is sent with proper configuration
       const fetchOptions = {
@@ -87,7 +82,6 @@ const Chatbot = () => {
         credentials: 'omit' // Don't send credentials to avoid CORS preflight issues
       };
 
-      console.log('Fetch options:', fetchOptions);
 
       const response = await fetch(webhookUrl, fetchOptions).catch((fetchError) => {
         console.error('Fetch error caught:', fetchError);
@@ -106,10 +100,6 @@ const Chatbot = () => {
         throw fetchError;
       });
 
-      console.log('Fetch request completed successfully');
-      console.log('Response status:', response.status);
-      console.log('Response headers:', Object.fromEntries(response.headers.entries()));
-      console.log('Response ok:', response.ok);
 
       // Check if response is ok
       if (!response.ok) {
@@ -120,15 +110,12 @@ const Chatbot = () => {
 
       // Get response text first to handle both JSON and plain text
       const responseText = await response.text();
-      console.log('Response text:', responseText);
 
       // Try to parse as JSON, if fails, treat as plain text
       let data;
       try {
         data = responseText ? JSON.parse(responseText) : null;
-        console.log('Parsed response data:', data);
       } catch (e) {
-        console.log('Response is not JSON, treating as plain text');
         data = responseText;
       }
 
@@ -136,7 +123,6 @@ const Chatbot = () => {
       let botResponse = '';
       if (!data || data === null || data === '') {
         // No response, don't show anything
-        console.log('No response received from webhook');
         setIsLoading(false);
         return;
       } else if (typeof data === 'string') {
@@ -159,14 +145,12 @@ const Chatbot = () => {
 
       // Only add message if there's actual content
       if (botResponse && botResponse.length > 0) {
-        console.log('Bot response received:', botResponse);
         setMessages(prev => [...prev, {
           text: botResponse,
           isBot: true,
           timestamp: new Date()
         }]);
       } else {
-        console.log('Empty response received, not displaying message');
       }
     } catch (error) {
       console.error('Error sending message:', error);

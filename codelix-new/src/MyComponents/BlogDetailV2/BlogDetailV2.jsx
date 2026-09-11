@@ -108,7 +108,15 @@ export default function BlogDetailV2() {
 
   return (
     <div className="v2" ref={rootRef}>
-      <SEO title={`${blog.title} | Codelix IT Solutions`} description={blog.excerpt || blog.subtitle || `Read ${blog.title} on Codelix IT Solutions.`} />
+      {/* Only a real cover. The pre-Supabase posts share three decorative
+          images between twelve of them, so using those would put the same
+          picture on four unrelated posts - worse than the house card, which
+          at least does not claim to depict the article. */}
+      <SEO
+        title={`${blog.title} | Codelix IT Solutions`}
+        description={blog.excerpt || blog.subtitle || `Read ${blog.title} on Codelix IT Solutions.`}
+        image={blog.coverImage}
+      />
       <div className="v2-progress" aria-hidden="true"><span /></div>
       <div className="bdv2-read-rail" aria-hidden="true">
         <div className="bdv2-read-fill" style={{ transform: `scaleX(${readProgress})` }} />

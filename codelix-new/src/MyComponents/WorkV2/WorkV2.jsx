@@ -332,6 +332,12 @@ export default function WorkV2() {
       <section className="v2-section v2-section--void" id="projects">
         <p className="v2-label">All Projects</p>
         <h2 className="v2-heading">The full portfolio.</h2>
+        {/* States the hierarchy rather than leaving Google to infer it: this
+            page is the narrative, /case-study is the index it draws from and
+            the declared breadcrumb parent of all 15 detail pages. */}
+        <p className="wv-all-cs">
+          <Link className="v2-btn" to="/case-study">See all case studies</Link>
+        </p>
 
         <div className="wv-filters-container">
           <div className="wv-filters" role="group" aria-label="Filter by category">

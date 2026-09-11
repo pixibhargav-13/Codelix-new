@@ -134,7 +134,11 @@ export default function CaseStudyDetailV2() {
 
   return (
     <div className="v2" ref={rootRef}>
-      <SEO title={`${cs.title} | Case Study | Codelix`} description={cs.description || `Read about how we solved ${cs.title} at Codelix IT Solutions.`} />
+      <SEO
+        title={`${cs.title} | Case Study | Codelix`}
+        description={cs.description || `Read about how we solved ${cs.title} at Codelix IT Solutions.`}
+        image={cs.coverImage || (typeof cs.image === "string" && cs.image.startsWith("/") ? cs.image : undefined)}
+      />
       <div className="v2-progress" aria-hidden="true"><span /></div>
 
       {/* ══════════ NAV ══════════ */}

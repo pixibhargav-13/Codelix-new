@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import codelixLogo from "../Images/codelix-logo.png";
-import { FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS, FOOTER_PRODUCTS } from "../HomepageV2/footerData";
+import { FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS, FOOTER_PRODUCTS, FOOTER_COMPANY } from "../HomepageV2/footerData";
 import RatingsStrip from "./RatingsStrip";
 
 export default function FooterV2() {
@@ -41,6 +41,14 @@ export default function FooterV2() {
         <p className="v2-footer-keywords-label">Products</p>
         <div className="v2-footer-keywords-list">
           {FOOTER_PRODUCTS.map((k, i) => (
+            <Link to={k.path} className="v2-footer-keyword" key={i}>{k.label}</Link>
+          ))}
+        </div>
+      </div>
+      <div className="v2-footer-keywords-row">
+        <p className="v2-footer-keywords-label">Company</p>
+        <div className="v2-footer-keywords-list">
+          {FOOTER_COMPANY.map((k, i) => (
             <Link to={k.path} className="v2-footer-keyword" key={i}>{k.label}</Link>
           ))}
         </div>
