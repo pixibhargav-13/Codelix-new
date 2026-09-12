@@ -157,7 +157,10 @@ export default function BlogDetailV2() {
       <section className="v2-section" id="article">
         <div className="bdv2-article-inner">
           <div className="bdv2-image">
-            <img src={blog.image} alt={blog.title} />
+            {/* same as the case study hero: this is the LCP element on the
+                page, so it should not wait for the layout pass to be
+                prioritised */}
+            <img src={blog.image} alt={blog.title} fetchPriority="high" decoding="async" />
           </div>
 
           <article className="bdv2-body" ref={articleRef}>
