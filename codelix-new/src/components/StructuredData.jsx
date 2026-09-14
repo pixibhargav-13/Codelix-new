@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { toISODate } from '../data/useBlogPosts';
+import { toISODate } from '../lib/isoDate.js';
 
 const siteUrl = 'https://www.codelixitsolutions.com';
 
