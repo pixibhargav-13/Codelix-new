@@ -14,7 +14,7 @@ import {
 
 import TeamHeroVisual from "./TeamHeroVisual";
 import manasImg from "../Images/manas_vadodaria.jpeg";
-import kushalImg from "../Images/kushal.png";
+import kushalImg from "../Images/kushal.webp";
 
 /* LinkedIn falls back to the company page until individual profile URLs
    are supplied */

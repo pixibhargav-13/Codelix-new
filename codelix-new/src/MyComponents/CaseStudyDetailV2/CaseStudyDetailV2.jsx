@@ -137,7 +137,7 @@ export default function CaseStudyDetailV2() {
       <SEO
         title={`${cs.title} | Case Study | Codelix`}
         description={cs.description || `Read about how we solved ${cs.title} at Codelix IT Solutions.`}
-        image={cs.coverImage || (typeof cs.image === "string" && cs.image.startsWith("/") ? cs.image : undefined)}
+        image={cs.coverImage || cs.ogImage}
       />
       <div className="v2-progress" aria-hidden="true"><span /></div>
 

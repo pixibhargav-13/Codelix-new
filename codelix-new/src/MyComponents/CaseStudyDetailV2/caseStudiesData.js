@@ -11,10 +11,10 @@ import { PROJECTS } from "../WorkV2/projectsData.js";
 import erpBillingSync from "../Images/work-erp-billing-sync.svg";
 import erpHandoffFlow from "../Images/work-erp-handoff-flow.svg";
 
-const imageFor = (slug) => {
-  const p = PROJECTS.find((proj) => proj.href === `/${slug}`);
-  return p ? p.image : null;
-};
+const projectFor = (slug) => PROJECTS.find((proj) => proj.href === `/${slug}`);
+const imageFor = (slug) => projectFor(slug)?.image ?? null;
+// the PNG original, for og:image — see projectsData.js
+const shareFor = (slug) => projectFor(slug)?.share;
 
 export const CASE_STUDIES = [
   {
@@ -601,4 +601,4 @@ export const CASE_STUDIES = [
     },
     tools: ["Figma", "React", "Tailwind CSS", "Java", "Spring Boot", "PostgreSQL", "Docker", "AWS"],
   },
-].map((cs) => ({ ...cs, image: imageFor(cs.slug) }));
+].map((cs) => ({ ...cs, image: imageFor(cs.slug), ogImage: shareFor(cs.slug) }));

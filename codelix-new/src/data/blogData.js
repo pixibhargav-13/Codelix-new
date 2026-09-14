@@ -1,6 +1,6 @@
-import blogImg1 from "../MyComponents/Images/homepage-blog-image.png";
-import blogImg2 from "../MyComponents/Images/homepage-blog-image2.png";
-import blogImg3 from "../MyComponents/Images/homepage-blog-image3.png";
+import blogImg1 from "../MyComponents/Images/homepage-blog-image.webp";
+import blogImg2 from "../MyComponents/Images/homepage-blog-image2.webp";
+import blogImg3 from "../MyComponents/Images/homepage-blog-image3.webp";
 
 export const blogs = [
   {

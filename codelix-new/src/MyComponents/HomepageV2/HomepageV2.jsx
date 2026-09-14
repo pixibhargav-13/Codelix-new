@@ -12,11 +12,11 @@ import {
 } from "lucide-react";
 
 /* real project screenshots (same assets the case-study pages use) */
-import workOne from "../Images/work-best-project-one.png";
-import workTwo from "../Images/work-best-project-two.png";
-import workThree from "../Images/work-best-project-three.png";
-import workFour from "../Images/work-best-project-four.png";
-import workFive from "../Images/work-best-project-five.png";
+import workOne from "../Images/work-best-project-one.webp";
+import workTwo from "../Images/work-best-project-two.webp";
+import workThree from "../Images/work-best-project-three.webp";
+import workFour from "../Images/work-best-project-four.webp";
+import workFive from "../Images/work-best-project-five.webp";
 
 /* full real tech-stack set — shared with the services page */
 import { TECH_STACK } from "./techStack";
