@@ -219,7 +219,7 @@ export default function TeamV2() {
         heading="What clients say about the team."
         stats={[
           { num: "40+", label: "Projects delivered" },
-          { num: "20+", label: "Clients worldwide" },
+          { num: "40+", label: "Clients worldwide" },
           { num: "100%", label: "Source code ownership" },
         ]}
       />

@@ -36,7 +36,7 @@ const MISSION_WORDS = [
 const STATS = [
   { value: 3, suffix: "+", label: "Years building software", note: "Since day one, same team", ring: 45 },
   { value: 40, suffix: "+", label: "Projects delivered", note: "Across web, mobile & AI", ring: 92 },
-  { value: 20, suffix: "+", label: "Clients worldwide", note: "Repeat business, not one-offs", ring: 88 },
+  { value: 40, suffix: "+", label: "Clients worldwide", note: "Repeat business, not one-offs", ring: 88 },
   { value: 100, suffix: "%", label: "Source-code ownership", note: "Every project, no exceptions", ring: 100 },
 ];
 
@@ -381,7 +381,7 @@ export default function AboutV2() {
         heading="What clients say about working with us."
         stats={[
           { num: "40+", label: "Projects delivered" },
-          { num: "20+", label: "Clients worldwide" },
+          { num: "40+", label: "Clients worldwide" },
           { num: "100%", label: "Source code ownership" },
         ]}
       />

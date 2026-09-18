@@ -24,7 +24,7 @@ export const SEO = ({
   const socialTitle = ogTitle || fullTitle;
   const pathName = location.pathname === '/' ? '/' : location.pathname.replace(/\/+$/, '');
   const fullCanonical = `${siteUrl}${pathName}`;
-  const defaultDesc = 'Craft AI-powered web, app & SaaS solutions with world-class UI/UX design. Trusted by 25+ companies for professional development services.';
+  const defaultDesc = 'Craft AI-powered web, app & SaaS solutions with world-class UI/UX design. Trusted by 40+ companies for professional development services.';
   const finalDesc = description || defaultDesc;
   const defaultImage = `${siteUrl}/og-image.png`;
   /* A blog post or a case study has a picture of the thing itself; sharing it

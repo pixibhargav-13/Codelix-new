@@ -52,5 +52,5 @@ export const seoData = {
 
 export const defaultSEO = {
   title: "Codelix IT Solutions | AI-Powered Web, App & SaaS Development",
-  description: "Craft AI-powered web, app & SaaS solutions with world-class UI/UX design. Trusted by 25+ companies for professional development services."
+  description: "Craft AI-powered web, app & SaaS solutions with world-class UI/UX design. Trusted by 40+ companies for professional development services."
 };
