@@ -37,6 +37,7 @@ import ClientStrip from '../Shared/ClientStrip';
 import { useTestimonials } from "../../data/useTestimonials";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 import { StructuredData } from "../../components/StructuredData";
+import { serviceInfo } from "../../lib/serviceSchema";
 
 
 const CUSTOM_STACK = [
@@ -996,7 +997,7 @@ export default function CustomSoftwareDevelopmentV2() {
       {/* ══════════ FOOTER ══════════ */}
       </main>
 
-            <StructuredData type="FAQPage" data={FAQS} />
+            <StructuredData type="Service" data={serviceInfo("/services/custom-software-development")} />
             <FooterV2 />
     </div>
   );

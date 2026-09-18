@@ -213,6 +213,7 @@ const SENTENCE = [
 import { useTestimonials } from "../../data/useTestimonials";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 import { StructuredData } from "../../components/StructuredData";
+import { serviceInfo } from "../../lib/serviceSchema";
 const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
 
 
@@ -971,7 +972,7 @@ export default function ServiceDetailV2() {
       {/* ══════════ FOOTER ══════════ */}
       </main>
 
-            <StructuredData type="FAQPage" data={FAQS} />
+            <StructuredData type="Service" data={serviceInfo("/services/web-development")} />
             <FooterV2 />
     </div>
   );

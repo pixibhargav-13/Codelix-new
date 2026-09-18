@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from "react-router-dom";
 import gsap from 'gsap';
 import './FaqSection.css';
+import { StructuredData } from "../../components/StructuredData";
 
 export default function FaqSection({ faqs, className = "", label = "FAQ", heading = "Questions we're asked before every engagement." }) {
   const [openFaq, setOpenFaq] = useState(-1);
@@ -64,6 +65,10 @@ export default function FaqSection({ faqs, className = "", label = "FAQ", headin
 
   return (
     <section className={`v2-section ${className}`.trim()} id="faq" ref={ref}>
+      {/* Markup lives here, not on each page: every FAQ on the site renders
+          through this component, so this is the one place it can be built from
+          exactly the list the accordion shows — including pages added later. */}
+      <StructuredData type="FAQPage" data={faqs} />
       <div className="v2-faq-intro">
         <div>
           <p className="v2-label">{label}</p>

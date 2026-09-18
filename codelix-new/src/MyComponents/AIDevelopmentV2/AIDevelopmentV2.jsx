@@ -35,6 +35,7 @@ import ClientStrip from '../Shared/ClientStrip';
 import { useTestimonials } from "../../data/useTestimonials";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 import { StructuredData } from "../../components/StructuredData";
+import { serviceInfo } from "../../lib/serviceSchema";
 
 
 const AI_STACK = [
@@ -990,7 +991,7 @@ export default function AIDevelopmentV2() {
       {/* ══════════ FOOTER ══════════ */}
       </main>
 
-            <StructuredData type="FAQPage" data={FAQS} />
+            <StructuredData type="Service" data={serviceInfo("/services/ai-development")} />
             <FooterV2 />
     </div>
   );

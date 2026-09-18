@@ -6,6 +6,72 @@ import FooterV2 from "../Shared/FooterV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import { PRODUCTS, productBySlug } from "./productsData";
 import { SEO } from "../../components/SEO";
+import { StructuredData } from "../../components/StructuredData";
+
+const SITE = "https://www.codelixitsolutions.com";
+
+/* Only prices the page itself publishes, read from the same data it renders.
+   A tier like "₹1,999" with "/month + GST" becomes a monthly price with tax
+   excluded; a one-off range like "₹2.5 Lakh – ₹25 Lakh+" becomes a minimum
+   only, because the "+" means there is no ceiling to state. Anything priced
+   as a percentage or "billed separately" has no number to give and is left
+   out rather than guessed at. */
+const rupees = (s) => {
+  const lakh = /₹\s*([\d.]+)\s*Lakh/i.exec(s);
+  if (lakh) return Math.round(parseFloat(lakh[1]) * 100000);
+  const plain = /₹\s*([\d,]+)/.exec(s);
+  return plain ? Number(plain[1].replace(/,/g, "")) : null;
+};
+
+function productOffers(p) {
+  const tiers = p.pricing?.tiers || [];
+  const components = p.pricing?.components || [];
+  const offers = [];
+  for (const t of tiers) {
+    const price = rupees(t.price || "");
+    if (price == null) continue;
+    const monthly = /month/i.test(t.period || "");
+    const exTax = /GST/i.test(t.period || "");
+    offers.push({
+      "@type": "Offer",
+      "name": t.name,
+      "price": String(price),
+      "priceCurrency": "INR",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": price,
+        "priceCurrency": "INR",
+        ...(monthly ? { "unitText": "MONTH" } : {}),
+        ...(exTax ? { "valueAddedTaxIncluded": false } : {}),
+      },
+    });
+  }
+  for (const c of components) {
+    const min = rupees(c.range || "");
+    if (min == null) continue;
+    offers.push({
+      "@type": "Offer",
+      "name": c.name,
+      "priceCurrency": "INR",
+      "priceSpecification": { "@type": "PriceSpecification", "minPrice": min, "priceCurrency": "INR" },
+    });
+  }
+  return offers;
+}
+
+function productSchema(p) {
+  const onPlay = /Google Play/i.test(p.status || "");
+  const offers = productOffers(p);
+  return {
+    "name": p.name,
+    "description": p.seoDescription || p.tagline,
+    "image": `${SITE}/og/${p.slug}.png`,
+    ...(p.website ? { "sameAs": [p.website] } : {}),
+    // only the platform the page says it is actually live on
+    ...(onPlay ? { "operatingSystem": "Android" } : {}),
+    ...(offers.length ? { "offers": offers } : {}),
+  };
+}
 
 import "../HomepageV2/HomepageV2.css";
 import "../ServicesV2/ServicesV2.css";
@@ -112,6 +178,7 @@ export default function ProductDetailV2() {
         description={p.seoDescription || p.tagline || `Learn about ${p.name} at Codelix IT Solutions.`}
         image={`/og/${p.slug}.png`}
       />
+      <StructuredData type="SoftwareApplication" data={productSchema(p)} />
       <div className="v2-progress" aria-hidden="true"><span /></div>
       <NavbarV2 />
 

@@ -33,6 +33,7 @@ import ClientStrip from '../Shared/ClientStrip';
 import { useTestimonials } from "../../data/useTestimonials";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 import { StructuredData } from "../../components/StructuredData";
+import { serviceInfo } from "../../lib/serviceSchema";
 
 
 const DATA_STACK = [
@@ -1007,7 +1008,7 @@ export default function DataAnalyticsV2() {
       {/* ══════════ FOOTER ══════════ */}
       </main>
 
-            <StructuredData type="FAQPage" data={FAQS} />
+            <StructuredData type="Service" data={serviceInfo("/services/data-analytics")} />
             <FooterV2 />
     </div>
   );

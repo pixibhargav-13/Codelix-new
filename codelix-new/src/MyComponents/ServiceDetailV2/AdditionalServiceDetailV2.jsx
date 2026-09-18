@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { SEO } from "../../components/SEO";
+import { StructuredData } from "../../components/StructuredData";
+import { serviceInfo } from "../../lib/serviceSchema";
 import FooterV2 from "../Shared/FooterV2";
 import { useParams, Link } from "react-router-dom";
 import gsap from "gsap";
@@ -372,6 +374,7 @@ export default function AdditionalServiceDetailV2() {
   return (
     <main className="v2 sd2" ref={rootRef}>
       <SEO title={svc.seoTitle || `${svc.title} | Codelix IT Solutions`} description={svc.seoDescription || svc.description} />
+      <StructuredData type="Service" data={serviceInfo(`/services/${svc.slug}`, svc.seoDescription || svc.description)} />
       <div className="v2-progress" aria-hidden="true"><span /></div>
 
       {/* ══════════ NAV ══════════ */}

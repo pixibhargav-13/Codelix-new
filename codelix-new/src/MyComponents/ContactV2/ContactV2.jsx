@@ -20,7 +20,6 @@ import ContactHeroVisual from "./ContactHeroVisual";
 import NavbarV2 from "../Shared/NavbarV2";
 import FaqSection from '../Shared/FaqSection';
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
-import { StructuredData } from "../../components/StructuredData";
 
 
 const REQUIRED_FIELDS = ["name", "contact", "email", "company", "designation", "service", "aboutProject"];
@@ -418,7 +417,6 @@ export default function ContactV2() {
       {/* ══════════ FOOTER ══════════ */}
       </main>
 
-            <StructuredData type="FAQPage" data={FAQS} />
             <FooterV2 />
     </div>
   );

@@ -18,7 +18,6 @@ import FaqSection from '../Shared/FaqSection';
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
-import { StructuredData } from "../../components/StructuredData";
 
 
 /* same real budget bands already used in the live /contact intake form
@@ -308,7 +307,6 @@ export default function PricingV2() {
       {/* ══════════ FOOTER ══════════ */}
       </main>
 
-      <StructuredData type="FAQPage" data={FAQS} />
       <FooterV2 />
     </div>
   );

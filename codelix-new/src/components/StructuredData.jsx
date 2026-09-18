@@ -64,6 +64,39 @@ export const StructuredData = ({ type = 'Organization', data = null }) => {
         "acceptedAnswer": { "@type": "Answer", "text": a },
       })),
     };
+  } else if (type === 'SoftwareApplication' && data) {
+    /* The products. Built by the product page from its own data, so every
+       field here is something the page itself states. Google only shows a
+       rich result for software with ratings, which these do not publish;
+       the point is that an assistant asked what Audytee is or costs can read
+       the answer rather than infer it. */
+    const path = location.pathname.replace(/\/+$/, "");
+    schemaObj = {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "@id": `${siteUrl}${path}#software`,
+      "applicationCategory": "BusinessApplication",
+      "publisher": ORG_REF,
+      "creator": ORG_REF,
+      ...data,
+      "url": `${siteUrl}${path}`,
+    };
+  } else if (type === 'Service' && data) {
+    /* One per service page, tying the service to the business by @id so
+       "Codelix provides UI/UX design, from Ahmedabad" is stated rather than
+       left for a reader to assemble from the page copy. */
+    const path = location.pathname.replace(/\/+$/, "");
+    schemaObj = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": `${siteUrl}${path}#service`,
+      "name": data.name,
+      "serviceType": data.name,
+      "description": data.description,
+      "url": `${siteUrl}${path}`,
+      "provider": ORG_REF,
+      "areaServed": "Worldwide",
+    };
   } else if (type === 'Article' && data) { // For Case Studies
     schemaObj = {
       "@context": "https://schema.org",

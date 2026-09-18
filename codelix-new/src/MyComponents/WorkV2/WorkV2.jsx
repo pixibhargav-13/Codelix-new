@@ -30,7 +30,6 @@ import FaqSection from '../Shared/FaqSection';
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
-import { StructuredData } from "../../components/StructuredData";
 
 
 /* the spotlight — a curated, diverse subset of the same 15 real projects
@@ -489,7 +488,6 @@ export default function WorkV2() {
       {/* ══════════ FOOTER ══════════ */}
       </main>
 
-            <StructuredData type="FAQPage" data={FAQS} />
             <FooterV2 />
     </div>
   );

@@ -21,7 +21,6 @@ import NavbarV2 from "../Shared/NavbarV2";
 import FaqSection from '../Shared/FaqSection';
 import CtaSection from '../Shared/CtaSection';
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
-import { StructuredData } from "../../components/StructuredData";
 
 
 /* same honest small-team working style already stated on TeamV2 — Codelix
@@ -344,7 +343,6 @@ export default function CareersV2() {
       {/* ══════════ FOOTER ══════════ */}
       </main>
 
-            <StructuredData type="FAQPage" data={FAQS} />
             <FooterV2 />
     </div>
   );
