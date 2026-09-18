@@ -4,6 +4,8 @@
 
 Contact: Sales@codelixitsolutions.com · +91 9998263282 · A-1308, PNTC — Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat 380015, India
 
+Hours: Monday to Saturday, 10:00–19:00 IST. Closed Sunday.
+
 ## Key pages
 
 - [Home](https://www.codelixitsolutions.com/): AI-powered web, app and SaaS development.
@@ -28,14 +30,28 @@ Contact: Sales@codelixitsolutions.com · +91 9998263282 · A-1308, PNTC — Time
 - [Data analytics](https://www.codelixitsolutions.com/services/data-analytics): Business intelligence, predictive models and data engineering.
 - [Support and managed services](https://www.codelixitsolutions.com/services/support-managed-services): Cloud migration, infrastructure and maintenance.
 
+## Products
+
+Software Codelix designs, builds and runs itself, alongside client work.
+
+- [Audytee](https://www.codelixitsolutions.com/products/audytee): Practice management software for chartered accountant (CA) firms — clients, tasks, compliance calendar, invoicing and billing. Live at https://audytee.com. Plans: Starter ₹499/month, Professional ₹1,999/month, Business ₹4,999/month, all plus GST.
+- [4bitx](https://www.codelixitsolutions.com/products/4bitx): Custom ERP — a manufacturing operating system for Indian SMEs, from the factory floor to finance, with GST e-invoice and e-way bill integration. Used in manufacturing, construction, ceramics, CNC and engineering, brass and metal, textiles, packaging and fabrication. Live at https://4bitx.com. One-time setup from ₹2.5 lakh, plus an annual maintenance contract.
+- [AanganOne](https://www.codelixitsolutions.com/products/aanganone): Society, apartment and community management app for residents, admins, committee members and security guards — visitor entry through to maintenance billing. Live on Google Play; submitted to the Apple App Store. https://aanganone.com
+
 ## Industries
 
 - [Industries overview](https://www.codelixitsolutions.com/industries): Eleven sectors we have repeat experience in.
 - [FinTech](https://www.codelixitsolutions.com/industries/fintech): Where compliance and trust can't be an afterthought.
 - [Healthcare](https://www.codelixitsolutions.com/industries/healthcare): Privacy and accessibility as first-class requirements.
-- [Manufacturing](https://www.codelixitsolutions.com/industries/manufacturing): Systems connecting the shop floor to the office.
-- [E-commerce](https://www.codelixitsolutions.com/industries/e-commerce): Storefronts built to convert and scale.
-- [B2B SaaS](https://www.codelixitsolutions.com/industries/b2b-saas): Multi-tenant products and onboarding flows.
+- [Manufacturing](https://www.codelixitsolutions.com/industries/manufacturing): Operational systems that connect the shop floor to the office.
+- [E-commerce](https://www.codelixitsolutions.com/industries/e-commerce): A fast, low-friction path from landing to checkout.
+- [B2B SaaS](https://www.codelixitsolutions.com/industries/b2b-saas): Internal systems and product dashboards that scale with the team.
+- [AI & Data](https://www.codelixitsolutions.com/industries/ai-data): Turning raw data into something a team can act on.
+- [Education](https://www.codelixitsolutions.com/industries/education): Built for real enrolment load, not a demo.
+- [Food & Beverages](https://www.codelixitsolutions.com/industries/food-beverages): Ordering and operations that hold up during a dinner rush.
+- [Real Estate & Construction](https://www.codelixitsolutions.com/industries/real-estate-construction): Listings and project data that stay accurate as things move fast.
+- [Startups](https://www.codelixitsolutions.com/industries/startups): Ship the idea clearly, capture the signup.
+- [Travel & Hospitality](https://www.codelixitsolutions.com/industries/travel-hospitality): Booking flows that hold up during peak season.
 
 ## Optional
 
