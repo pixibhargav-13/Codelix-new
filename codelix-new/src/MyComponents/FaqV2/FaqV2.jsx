@@ -17,6 +17,7 @@ import NavbarV2 from "../Shared/NavbarV2";
 import FaqSection from '../Shared/FaqSection';
 import CtaSection from '../Shared/CtaSection';
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
+import { StructuredData } from "../../components/StructuredData";
 
 
 /* every answer here is the same real, already-established statement used
@@ -181,6 +182,7 @@ export default function FaqV2() {
       {/* ══════════ FOOTER ══════════ */}
       </main>
 
+            <StructuredData type="FAQPage" data={FAQS} />
             <FooterV2 />
     </div>
   );

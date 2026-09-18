@@ -212,6 +212,7 @@ const SENTENCE = [
    its own word list/timing without a shared-component refactor) */
 import { useTestimonials } from "../../data/useTestimonials";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
+import { StructuredData } from "../../components/StructuredData";
 const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
 
 
@@ -970,6 +971,7 @@ export default function ServiceDetailV2() {
       {/* ══════════ FOOTER ══════════ */}
       </main>
 
+            <StructuredData type="FAQPage" data={FAQS} />
             <FooterV2 />
     </div>
   );

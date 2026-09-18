@@ -34,6 +34,7 @@ import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
 import { useTestimonials } from "../../data/useTestimonials";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
+import { StructuredData } from "../../components/StructuredData";
 
 
 const AI_STACK = [
@@ -989,6 +990,7 @@ export default function AIDevelopmentV2() {
       {/* ══════════ FOOTER ══════════ */}
       </main>
 
+            <StructuredData type="FAQPage" data={FAQS} />
             <FooterV2 />
     </div>
   );

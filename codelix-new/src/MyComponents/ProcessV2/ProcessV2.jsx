@@ -20,6 +20,7 @@ import NavbarV2 from "../Shared/NavbarV2";
 import FaqSection from '../Shared/FaqSection';
 import CtaSection from '../Shared/CtaSection';
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
+import { StructuredData } from "../../components/StructuredData";
 
 
 /* same six stages already used across the per-service "Process" sections
@@ -422,6 +423,7 @@ export default function ProcessV2() {
       {/* ══════════ FOOTER ══════════ */}
       </main>
 
+            <StructuredData type="FAQPage" data={FAQS} />
             <FooterV2 />
     </div>
   );

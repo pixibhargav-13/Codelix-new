@@ -41,6 +41,7 @@ import FaqSection from "../Shared/FaqSection";
 import ScrollSentence from "../Shared/ScrollSentence";
 import CtaSection from "../Shared/CtaSection";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
+import { StructuredData } from "../../components/StructuredData";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -1099,6 +1100,7 @@ export default function HomepageV2() {
           "WE LIVE IN IT" marquee, and the oversized wordmark at the base ══════════ */}
       </main>
 
+      <StructuredData type="FAQPage" data={FAQS} />
       <FooterV2 />
     </div>
   );

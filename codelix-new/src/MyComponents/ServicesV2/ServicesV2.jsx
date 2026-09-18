@@ -24,6 +24,7 @@ import ScrollSentence from '../Shared/ScrollSentence';
 import FaqSection from '../Shared/FaqSection';
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
+import { StructuredData } from "../../components/StructuredData";
 
 
 /* how delivery actually runs — the question every services page has to answer
@@ -636,6 +637,7 @@ export default function ServicesV2() {
       {/* ══════════ FOOTER ══════════ */}
       </main>
 
+      <StructuredData type="FAQPage" data={FAQS} />
       <FooterV2 />
     </div>
   );

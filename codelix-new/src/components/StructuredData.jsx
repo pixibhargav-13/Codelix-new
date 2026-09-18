@@ -47,6 +47,23 @@ export const StructuredData = ({ type = 'Organization', data = null }) => {
         }
       }
     };
+  } else if (type === 'FAQPage' && Array.isArray(data) && data.length) {
+    /* Google stopped showing FAQ rich results for most commercial sites in
+       2023, so this is not about the search results page. It is for answer
+       engines — Bing Copilot (which ChatGPT search draws on), Perplexity and
+       the rest — which can take a marked-up question and its answer as a
+       unit instead of inferring the pairing from an accordion. Built from
+       the same array the page renders, so the markup can never describe
+       questions the visitor cannot see. */
+    schemaObj = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": data.map(({ q, a }) => ({
+        "@type": "Question",
+        "name": q,
+        "acceptedAnswer": { "@type": "Answer", "text": a },
+      })),
+    };
   } else if (type === 'Article' && data) { // For Case Studies
     schemaObj = {
       "@context": "https://schema.org",

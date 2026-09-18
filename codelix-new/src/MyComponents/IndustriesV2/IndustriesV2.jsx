@@ -19,6 +19,7 @@ import FaqSection from '../Shared/FaqSection';
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
+import { StructuredData } from "../../components/StructuredData";
 
 const APPROACH = [
   { icon: Eye, claim: "We learn the domain, not just the brief.", body: "Before we design a single screen, we understand the regulations, the buyer behaviour, and the operational constraints specific to your sector." },
@@ -362,6 +363,7 @@ export default function IndustriesV2() {
       {/* ══════════ FOOTER ══════════ */}
       </main>
 
+            <StructuredData type="FAQPage" data={FAQS} />
             <FooterV2 />
     </div>
   );
