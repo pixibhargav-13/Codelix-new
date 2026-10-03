@@ -24,16 +24,21 @@
   opacity: 0.5;
   pointer-events: none;
   z-index: 0;
+  will-change: transform;
   animation: gridMove 20s linear infinite;
 }
 
+/* Slides the layer one tile along its own (tilted) plane, which looks the
+   same as shifting background-position by a tile but runs on the compositor
+   instead of repainting the grid every frame. The 10% overhang on each side
+   is wider than one 30px tile, so no edge comes into view. */
 @keyframes gridMove {
   0% {
-    background-position: 0 0;
+    transform: rotateX(60deg) translateY(-50px) translateZ(-200px) translate(0, 0);
   }
 
   100% {
-    background-position: 30px 30px;
+    transform: rotateX(60deg) translateY(-50px) translateZ(-200px) translate(30px, 30px);
   }
 }
 

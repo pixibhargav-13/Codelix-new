@@ -109,7 +109,12 @@ export default function ScrollSentence({ words, tone, centered = false }) {
     };
 
     const handleScroll = () => {
-      target = readTarget();
+      const next = readTarget();
+      /* off-screen the target is pinned at 0 or the end, so most scroll
+         events change nothing — don't start a frame that rewrites every
+         word's styles to the values they already have */
+      if (primed && !running && next === current) return;
+      target = next;
       // force the very first render to be instant so it's correct before the
       // user scrolls, but ease every frame after that
       if (!primed) {

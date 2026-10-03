@@ -84,14 +84,16 @@ const LenisGsapSync = () => {
   const lenis = useLenis();
   useEffect(() => {
     if (!lenis) return;
+    /* GSAP's ticker is the only loop driving Lenis (autoRaf is off on
+       ReactLenis), so Lenis and ScrollTrigger update in the same frame. The
+       callback is kept so cleanup removes this exact function. */
+    const tick = (time) => lenis.raf(time * 1000);
     lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
+    gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
     return () => {
       lenis.off('scroll', ScrollTrigger.update);
-      gsap.ticker.remove((time) => lenis.raf(time * 1000));
+      gsap.ticker.remove(tick);
     };
   }, [lenis]);
   return null;
@@ -213,7 +215,7 @@ const AppRoutes = () => {
 // ─── App ──────────────────────────────────────────────────────────────────────
 function App({ initialData }) {
   return (
-    <ReactLenis root options={{ lerp: 0.09, duration: 1.35, smoothWheel: true, wheelMultiplier: 0.85 }}>
+    <ReactLenis root options={{ lerp: 0.09, duration: 1.35, smoothWheel: true, wheelMultiplier: 0.85, autoRaf: false }}>
       <InitialDataContext.Provider value={initialData}>
         <AuthProvider>
           <LenisGsapSync />

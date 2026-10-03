@@ -1,6 +1,6 @@
 import { STATIC_TESTIMONIALS } from '../../data/testimonialsData';
 import { useTestimonials } from "../../data/useTestimonials";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -180,9 +180,6 @@ const FAQS = [
 export default function HomepageV2() {
   const TESTIMONIALS = useTestimonials(STATIC_TESTIMONIALS);
   const navigate = useNavigate();
-  const [navScrolled, setNavScrolled] = useState(false);
-  const [navHidden, setNavHidden] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
   // FAQ items' className is recomputed on every click (for the "open" class),
   // which makes React rewrite that element's className attribute — wiping out
   // an "is-in" class added imperatively by the scroll-reveal observer below.
@@ -200,30 +197,6 @@ export default function HomepageV2() {
   const workSectionRef = useRef(null);
   const workPreviewRef = useRef(null);
   const workPreviewImgRef = useRef(null);
-
-  useEffect(() => {
-    let lastY = window.scrollY;
-    const onScroll = () => {
-      const y = window.scrollY;
-      setNavScrolled(y > 40);
-      setNavHidden(y > lastY && y > 120);
-      lastY = y;
-    };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  /* lock background scroll while the mobile drawer is open, and let Escape
-     close it */
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-    const onKey = (e) => { if (e.key === "Escape") setMobileOpen(false); };
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [mobileOpen]);
 
   /* Every pinned heading band (Method, Work, ...) uses CSS position:sticky.
      Each one's bottom line should only show once IT is actually stuck to the
