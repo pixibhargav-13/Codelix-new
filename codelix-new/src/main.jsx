@@ -8,6 +8,15 @@ import { HelmetProvider } from 'react-helmet-async'
    rely on (box-sizing, heading/paragraph margins) are reproduced in
    index.css so spacing doesn't shift. */
 import './index.css'
+/* The base stylesheets nearly every page builds on (pages import them and
+   then override them in their own CSS). With CSS split per route, Vite loads
+   a lazy route's own stylesheet BEFORE the shared ones it depends on, so on
+   client-side navigation the base would win over the page's overrides.
+   Importing them here puts them in the entry CSS, which is always loaded
+   first, so a page's own CSS reliably comes after them. */
+import './MyComponents/HomepageV2/HomepageV2.css'
+import './MyComponents/ServicesV2/ServicesV2.css'
+import './MyComponents/ServiceDetailV2/ServiceDetailV2.css'
 import App from './App.jsx'
 
 const initialData = typeof window !== 'undefined' && window.__INITIAL_DATA__ ? window.__INITIAL_DATA__ : null;

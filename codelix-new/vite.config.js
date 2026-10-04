@@ -27,7 +27,13 @@ export default defineConfig(({ command, isSsrBuild }) => ({
     ],
   },
   build: {
-    cssCodeSplit: false,
+    /* Each route's CSS ships with its own chunk, so a page only downloads,
+       parses and matches the styles it uses — one 334KB stylesheet for every
+       page cost a phone ~1s of style and layout at load. The prerender
+       (scripts/ssg-build.mjs) reads the manifest to link each page's CSS in
+       its HTML, so a prerendered page is styled before any JS runs. */
+    cssCodeSplit: true,
+    manifest: true,
     rollupOptions: {
       output: {
         /* Rollup emits a separate file for every module shared between two or

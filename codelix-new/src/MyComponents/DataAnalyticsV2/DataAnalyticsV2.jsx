@@ -15,12 +15,12 @@ import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 
 /* Data Analytics-specific tool logos */
-import techPython from "../Images/python.png";
-import techAWS from "../Images/AWS.png";
-import techPostgres from "../Images/postgresql.png";
-import techDocker from "../Images/docker.png";
-import techReact from "../Images/react.png";
-import techMongo from "../Images/MongoDB.png";
+import techPython from "../Images/python.webp";
+import techAWS from "../Images/AWS.webp";
+import techPostgres from "../Images/postgresql.webp";
+import techDocker from "../Images/docker.webp";
+import techReact from "../Images/react.webp";
+import techMongo from "../Images/MongoDB.webp";
 
 /* real project screenshots */
 import { PROJECTS } from "../WorkV2/projectsData";

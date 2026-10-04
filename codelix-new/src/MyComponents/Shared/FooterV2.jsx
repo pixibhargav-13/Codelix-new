@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import codelixLogo from "../Images/codelix-logo.png";
+import codelixLogo from "../Images/codelix-logo.webp";
 import { FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS, FOOTER_PRODUCTS, FOOTER_COMPANY } from "../HomepageV2/footerData";
 import RatingsStrip from "./RatingsStrip";
 

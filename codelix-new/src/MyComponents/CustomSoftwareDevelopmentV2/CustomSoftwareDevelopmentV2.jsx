@@ -16,15 +16,15 @@ import "../ServiceDetailV2/ServiceDetailV2.css";
 
 /* custom-software-specific stack subset — pulled from the same real stack
    list shown on the homepage's "THE STACK" section, not a new set of claims */
-import techJava from "../Images/java.png";
-import techSpring from "../Images/springboot.png";
-import techCsharp from "../Images/csharp.png";
-import techPython from "../Images/python.png";
-import techDjango from "../Images/django.png";
-import techPostgres from "../Images/postgresql.png";
-import techMongo from "../Images/MongoDB.png";
-import techDocker from "../Images/docker.png";
-import techAws from "../Images/AWS.png";
+import techJava from "../Images/java.webp";
+import techSpring from "../Images/springboot.webp";
+import techCsharp from "../Images/csharp.webp";
+import techPython from "../Images/python.webp";
+import techDjango from "../Images/django.webp";
+import techPostgres from "../Images/postgresql.webp";
+import techMongo from "../Images/MongoDB.webp";
+import techDocker from "../Images/docker.webp";
+import techAws from "../Images/AWS.webp";
 
 /* real project screenshots — shared source of truth with WorkV2/CaseStudyV2 */
 import { PROJECTS } from "../WorkV2/projectsData";

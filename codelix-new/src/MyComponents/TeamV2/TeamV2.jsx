@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 
 import TeamHeroVisual from "./TeamHeroVisual";
-import manasImg from "../Images/manas_vadodaria.jpeg";
+import manasImg from "../Images/manas_vadodaria.webp";
 import kushalImg from "../Images/kushal.webp";
 
 /* LinkedIn falls back to the company page until individual profile URLs

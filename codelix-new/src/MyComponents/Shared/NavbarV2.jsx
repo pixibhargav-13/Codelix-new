@@ -8,7 +8,7 @@ import {
   Factory, Landmark, Cpu, Activity, Coffee, Building2,
   GraduationCap, Rocket, Plane, Boxes
 } from "lucide-react";
-import codelixLogo from "../Images/codelix-logo.png";
+import codelixLogo from "../Images/codelix-logo.webp";
 import V2MobileDrawer from "../HomepageV2/V2MobileDrawer";
 import { PRODUCTS } from "../ProductsV2/productsData";
 import "./NavbarV2.css";

@@ -15,12 +15,12 @@ import "../ServiceDetailV2/ServiceDetailV2.css";
 
 /* reusing the same generic stack icons already used on other service pages
    — no new image assets required */
-import techReact from "../Images/react.png";
-import techAWS from "../Images/AWS.png";
-import techDocker from "../Images/docker.png";
-import techPostgres from "../Images/postgresql.png";
+import techReact from "../Images/react.webp";
+import techAWS from "../Images/AWS.webp";
+import techDocker from "../Images/docker.webp";
+import techPostgres from "../Images/postgresql.webp";
 import techNode from "../Images/Express.png";
-import techMongo from "../Images/MongoDB.png";
+import techMongo from "../Images/MongoDB.webp";
 
 import { PROJECTS } from "../WorkV2/projectsData";
 import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";

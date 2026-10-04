@@ -28,22 +28,22 @@ import CtaSection from "../Shared/CtaSection";
 import ClientStrip from "../Shared/ClientStrip";
 
 /* web-specific stack subset */
-import techReact from "../Images/react.png";
-import techNext from "../Images/next.png";
-import techTs from "../Images/typescript.png";
-import techJs from "../Images/javascript.png";
-import techVite from "../Images/vite.png";
-import techTailwind from "../Images/tailwind.png";
-import techBootstrap from "../Images/bootstrap.png";
-import techNode from "../Images/node.png";
-import techLaravel from "../Images/laravel.png";
-import techPhp from "../Images/php.png";
-import techPostgres from "../Images/postgresql.png";
-import techMongo from "../Images/MongoDB.png";
-import techAws from "../Images/AWS.png";
-import techDocker from "../Images/docker.png";
-import techFigma from "../Images/figma.png";
-import techWebflow from "../Images/webflow.png";
+import techReact from "../Images/react.webp";
+import techNext from "../Images/next.webp";
+import techTs from "../Images/typescript.webp";
+import techJs from "../Images/javascript.webp";
+import techVite from "../Images/vite.webp";
+import techTailwind from "../Images/tailwind.webp";
+import techBootstrap from "../Images/bootstrap.webp";
+import techNode from "../Images/node.webp";
+import techLaravel from "../Images/laravel.webp";
+import techPhp from "../Images/php.webp";
+import techPostgres from "../Images/postgresql.webp";
+import techMongo from "../Images/MongoDB.webp";
+import techAws from "../Images/AWS.webp";
+import techDocker from "../Images/docker.webp";
+import techFigma from "../Images/figma.webp";
+import techWebflow from "../Images/webflow.webp";
 
 /* real project screenshots — shared source of truth with WorkV2/CaseStudyV2 */
 import { PROJECTS } from "../WorkV2/projectsData";

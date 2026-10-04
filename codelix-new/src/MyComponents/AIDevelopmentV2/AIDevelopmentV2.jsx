@@ -16,13 +16,13 @@ import "../ServiceDetailV2/ServiceDetailV2.css";
 
 /* applied-AI-specific stack subset — pulled from the same real stack list
    shown on the homepage's "THE STACK" section, not a new set of claims */
-import techPython from "../Images/python.png";
-import techNode from "../Images/node.png";
-import techDjango from "../Images/django.png";
-import techPostgres from "../Images/postgresql.png";
-import techMongo from "../Images/MongoDB.png";
-import techDocker from "../Images/docker.png";
-import techAws from "../Images/AWS.png";
+import techPython from "../Images/python.webp";
+import techNode from "../Images/node.webp";
+import techDjango from "../Images/django.webp";
+import techPostgres from "../Images/postgresql.webp";
+import techMongo from "../Images/MongoDB.webp";
+import techDocker from "../Images/docker.webp";
+import techAws from "../Images/AWS.webp";
 
 /* real project screenshots */
 import { PROJECTS } from "../WorkV2/projectsData";

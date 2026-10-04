@@ -16,14 +16,14 @@ import "../ServiceDetailV2/ServiceDetailV2.css";
 
 /* mobile-specific stack subset — pulled from the same real stack list shown
    on the homepage's "THE STACK" section, not a new set of claims */
-import techFlutter from "../Images/flutter.png";
-import techSwift from "../Images/swift.png";
-import techAndroid from "../Images/android.png";
-import techJava from "../Images/java.png";
-import techNode from "../Images/node.png";
-import techFirebase from "../Images/Firebase.png";
-import techAws from "../Images/AWS.png";
-import techFigma from "../Images/figma.png";
+import techFlutter from "../Images/flutter.webp";
+import techSwift from "../Images/swift.webp";
+import techAndroid from "../Images/android.webp";
+import techJava from "../Images/java.webp";
+import techNode from "../Images/node.webp";
+import techFirebase from "../Images/Firebase.webp";
+import techAws from "../Images/AWS.webp";
+import techFigma from "../Images/figma.webp";
 
 /* real project screenshots — shared source of truth with WorkV2/CaseStudyV2 */
 import { PROJECTS } from "../WorkV2/projectsData";

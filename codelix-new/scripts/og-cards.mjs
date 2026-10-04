@@ -125,7 +125,7 @@ const TOP_LEVEL = {
 const BRANDED = [
   {
     route: "/careers", key: "careers", accent: BRAND,
-    logo: "codelix-logo.png", logoHeight: 62,
+    logo: "codelix-logo.webp", logoHeight: 62,
     eyebrow: "Careers at Codelix",
     headline: "Build things people actually run.",
     sub: "Open roles for developers, designers and freshers — Ahmedabad.",
@@ -146,7 +146,7 @@ const BRANDED = [
   },
   {
     route: "/products/aanganone", key: "aanganone", accent: "#4ecb9c",
-    logo: "Aanganone.svg", logoHeight: 74, chip: true,
+    logo: "Aanganone.webp", logoHeight: 74, chip: true,
     eyebrow: "Society & Community Management",
     headline: "Smart living for modern societies.",
     sub: "A Codelix product",
@@ -160,7 +160,7 @@ for (const [route, copy] of Object.entries(TOP_LEVEL)) {
     route,
     key: route.slice(1),
     accent: BRAND,
-    logo: "codelix-logo.png",
+    logo: "codelix-logo.webp",
     logoHeight: 46,
     ...copy,
     sub: "codelixitsolutions.com",
@@ -174,7 +174,7 @@ for (const route of routes) {
     route,
     key: `${m[1]}-${m[2]}`,
     accent: BRAND,
-    logo: "codelix-logo.png",
+    logo: "codelix-logo.webp",
     logoHeight: 46,
     eyebrow: m[1] === "services" ? "Services" : "Industries",
     headline: titleFromSlug(m[2]),
@@ -490,10 +490,10 @@ for (const card of cards) {
 
 /* The homepage gets the sphere: it is the one link that gets shared as "this
    is the company", and the one page whose card is worth the extra weight. */
-const homeLogo = await logoDataUri("codelix-logo.png", 58);
+const homeLogo = await logoDataUri("codelix-logo.webp", 58);
 const home = {
   route: "/", key: "home", accent: BRAND, variant: "hero",
-  logo: "codelix-logo.png", logoHeight: 58,
+  logo: "codelix-logo.webp", logoHeight: 58,
   eyebrow: "AI-Powered Software Development",
   headline: "We build software that actually scales.",
   sub: "Web · Mobile · AI · ERP — Ahmedabad",
@@ -507,7 +507,7 @@ manifest["/"] = "/og/home.png";
    cover has not been uploaded yet, mostly. */
 const fallback = {
   route: "/", key: "og-image", accent: BRAND,
-  logo: "codelix-logo.png", logoHeight: 62,
+  logo: "codelix-logo.webp", logoHeight: 62,
   eyebrow: "Codelix IT Solutions",
   headline: "We build software that actually scales.",
   sub: "Web, mobile, AI and ERP — built in Ahmedabad.",

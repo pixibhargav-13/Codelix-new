@@ -12,7 +12,7 @@ import {
 import "../HomepageV2/HomepageV2.css";
 
 import { TECH_STACK } from "../HomepageV2/techStack";
-import codelixLogo from "../Images/codelix-logo.png";
+import codelixLogo from "../Images/codelix-logo.webp";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import "./ServicesV2.css";
 import GoogleReviewButton from "../Shared/GoogleReviewButton";

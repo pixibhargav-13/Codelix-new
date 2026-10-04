@@ -16,7 +16,7 @@ import {
 
 import audyteeLogo from "../Images/Audity.svg";
 import fourBitxLogo from "../Images/4bitX.svg";
-import aanganOneLogo from "../Images/Aanganone.svg";
+import aanganOneLogo from "../Images/Aanganone.webp";
 
 export const PRODUCTS = [
   {

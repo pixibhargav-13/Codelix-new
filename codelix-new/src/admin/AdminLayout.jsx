@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { FileText, MessageSquareQuote, LogOut, Briefcase, Inbox, CalendarClock, UserRoundPlus } from "lucide-react";
 import { useAuth } from "./useAuth";
-import codelixLogo from "../MyComponents/Images/codelix-logo.png";
+import codelixLogo from "../MyComponents/Images/codelix-logo.webp";
 import "./admin.css";
 
 export default function AdminLayout() {

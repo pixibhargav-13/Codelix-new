@@ -23,7 +23,7 @@ import { TECH_STACK } from "./techStack";
 
 /* shared with the services page */
 import { CLIENT_LOGOS } from "./clientLogos";
-import codelixLogo from "../Images/codelix-logo.png";
+import codelixLogo from "../Images/codelix-logo.webp";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_INDUSTRY_KEYWORDS } from "./footerData";
 import CtaVisual from "../Shared/CtaVisual";
 import GoogleReviewButton from "../Shared/GoogleReviewButton";

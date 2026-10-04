@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../useAuth";
-import codelixLogo from "../../MyComponents/Images/codelix-logo.png";
+import codelixLogo from "../../MyComponents/Images/codelix-logo.webp";
 import "../admin.css";
 
 export default function AdminLogin() {

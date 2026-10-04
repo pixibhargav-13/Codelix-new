@@ -16,14 +16,14 @@ import "../ServiceDetailV2/ServiceDetailV2.css";
 
 /* e-commerce-specific stack subset — pulled from the same real stack list
    shown on the homepage's "THE STACK" section, not a new set of claims */
-import techReact from "../Images/react.png";
-import techNext from "../Images/next.png";
-import techNode from "../Images/node.png";
-import techShopify from "../Images/shopify.png";
-import techWoo from "../Images/woocommerce.png";
-import techPostgres from "../Images/postgresql.png";
-import techMongo from "../Images/MongoDB.png";
-import techAws from "../Images/AWS.png";
+import techReact from "../Images/react.webp";
+import techNext from "../Images/next.webp";
+import techNode from "../Images/node.webp";
+import techShopify from "../Images/shopify.webp";
+import techWoo from "../Images/woocommerce.webp";
+import techPostgres from "../Images/postgresql.webp";
+import techMongo from "../Images/MongoDB.webp";
+import techAws from "../Images/AWS.webp";
 
 /* real project screenshots — shared source of truth with WorkV2/CaseStudyV2 */
 import { PROJECTS } from "../WorkV2/projectsData";
