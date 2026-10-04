@@ -1292,13 +1292,16 @@
      it was anchored to the bottom (flex-end) before */
 }
 
-/* top row: live-status pill + eyebrow, revealed together by the intro tl */
+/* top row: live-status pill + eyebrow, revealed together by the intro tl.
+   Hero copy is NOT hidden here: it has to be painted from the prerendered
+   HTML so the first paint carries real content (it is the page's LCP
+   element). The intro timeline hides it in a layout effect, before the
+   first client paint, then plays it in. */
 .v2-hero-top {
   display: flex;
   align-items: center;
   gap: 18px;
   flex-wrap: wrap;
-  opacity: 0;
   margin-bottom: 15px;
 }
 
@@ -1383,12 +1386,10 @@
   line-height: 1.6;
   color: var(--text-55);
   max-width: 60ch;
-  opacity: 0;
 }
 
 .v2-hero-cta {
   margin-top: 25px;
-  opacity: 0;
   display: flex;
   align-items: center;
   gap: 32px;
@@ -4809,4 +4810,8 @@
   height: 61px !important;
   transform: scale(0.7);
   transform-origin: top left;
+}
+/* ─── Principles row sizes to its item count (see ServiceDetailV2.css) ─── */
+@media (min-width: 801px) {
+  .v2-principles-grid:has(> :last-child:nth-child(2)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

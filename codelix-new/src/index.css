@@ -1,6 +1,13 @@
 @font-face {
   font-family: 'NoiGroteskFix';
-  src: url('./assets/fonts/NoiGroteskFix-Regular.ttf') format('truetype');
+  /* WOFF2 (57KB vs the 166KB .ttf) from a fixed public URL, so index.html
+     can preload it: discovered only through this stylesheet, it arrived just
+     as the JS started executing and the hero text could not repaint until
+     that finished — ~2.3s on a mid-range phone. The -v1 suffix stands in for
+     a content hash (vercel.json caches /fonts/ as immutable); bump it if the
+     font ever changes. The .ttf stays as a fallback. */
+  src: url('/fonts/NoiGroteskFix-Regular-v1.woff2') format('woff2'),
+       url('./assets/fonts/NoiGroteskFix-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   /* without this the browser blocks painting any text in this face until the

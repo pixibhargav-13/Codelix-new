@@ -2123,3 +2123,25 @@
 #faq .v2-faq-item.open {
   background: rgba(180, 200, 230, .04);
 }
+/* ─── Grids that size to their item count ───
+   These rows were designed around fixed counts (3 tenets, 4 stat rings, an
+   even number of problem cards). Pages carry different numbers of items, so
+   a short row would leave an empty column: fill the row instead. :has() is
+   more specific than the per-page column overrides, so this holds on every
+   page that uses these grids. */
+@media (min-width: 861px) {
+  .sd2-tenet-grid:has(> :last-child:nth-child(2)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 821px) {
+  .sd2-bench-grid:has(> :last-child:nth-child(3)) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .sd2-bench-grid:has(> :last-child:nth-child(2)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 820px) {
+  .sd2-bench-grid > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+@media (min-width: 781px) {
+  .sd2-problem-grid > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+@media (min-width: 721px) {
+  .sd2-manifest-grid > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+}

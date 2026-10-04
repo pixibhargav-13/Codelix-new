@@ -1,4 +1,4 @@
-import { ShoppingCart, Gauge, CreditCard, ShieldCheck, PackageSearch, Wrench, CalendarCheck, Lock, Eye, Check, TrendingDown, Clock, ShoppingBag, Truck, RotateCcw, AlertTriangle, Building2, Store, Rocket, GraduationCap, Shirt, Utensils, FileCode2, BookOpen, KeyRound, Palette, Server, GitBranch, Globe, Smartphone, Code2, Sparkles, BarChart3, LifeBuoy, Minus, X, Phone, FileText, PlayCircle, Monitor } from "lucide-react";
+import { LayoutDashboard, ShoppingCart, Gauge, CreditCard, ShieldCheck, PackageSearch, Wrench, CalendarCheck, Lock, Eye, Check, TrendingDown, Clock, ShoppingBag, Truck, RotateCcw, AlertTriangle, Building2, Store, Rocket, GraduationCap, Shirt, Utensils, FileCode2, BookOpen, KeyRound, Palette, Server, GitBranch, Globe, Smartphone, Code2, Sparkles, BarChart3, LifeBuoy, Minus, X, Phone, FileText, PlayCircle, Monitor } from "lucide-react";
 import { Link } from "react-router-dom";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
@@ -16,14 +16,14 @@ import "../ServiceDetailV2/ServiceDetailV2.css";
 
 /* e-commerce-specific stack subset — pulled from the same real stack list
    shown on the homepage's "THE STACK" section, not a new set of claims */
-import techReact from "../Images/react.png";
-import techNext from "../Images/next.png";
-import techNode from "../Images/node.png";
-import techShopify from "../Images/shopify.png";
-import techWoo from "../Images/woocommerce.png";
-import techPostgres from "../Images/postgresql.png";
-import techMongo from "../Images/MongoDB.png";
-import techAws from "../Images/AWS.png";
+import techReact from "../Images/react.webp";
+import techNext from "../Images/next.webp";
+import techNode from "../Images/node.webp";
+import techShopify from "../Images/shopify.webp";
+import techWoo from "../Images/woocommerce.webp";
+import techPostgres from "../Images/postgresql.webp";
+import techMongo from "../Images/MongoDB.webp";
+import techAws from "../Images/AWS.webp";
 
 /* real project screenshots — shared source of truth with WorkV2/CaseStudyV2 */
 import { PROJECTS } from "../WorkV2/projectsData";
@@ -35,6 +35,8 @@ import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
 import { useTestimonials } from "../../data/useTestimonials";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
+import { StructuredData } from "../../components/StructuredData";
+import { serviceInfo } from "../../lib/serviceSchema";
 
 
 const ECOM_STACK = [
@@ -78,17 +80,14 @@ const BENCHMARKS = [
 
 /* the actual artifacts handed over */
 const HANDOVER = [
-  { icon: FileCode2, title: "Full source code", body: "The complete repository, with clean commit history — yours to keep, fork, or hand to another team." },
-  { icon: GitBranch, title: "Repository access", body: "Transferred to your organisation account, with branch history and CI configuration intact." },
-  { icon: BookOpen, title: "Technical documentation", body: "Setup, architecture, environment variables, and deployment steps written for a developer who's never seen it." },
-  { icon: KeyRound, title: "Credentials & accounts", body: "Hosting, domain, payment gateway, and any third-party keys — registered in your name from the start." },
+  { icon: Globe, title: "Domain access", body: "Your domain is registered in your name, with full access to it — DNS, renewals, and transfers stay in your hands." },
+  { icon: CreditCard, title: "Payment gateway account", body: "Your merchant account is registered in your name, so payments go straight to you." },
+  { icon: LayoutDashboard, title: "Store admin", body: "A login to manage products, inventory, and orders yourself — no code involved — with a walkthrough at handover." },
   { icon: Palette, title: "Design files", body: "The Figma project with components and styles, so future work doesn't start from a screenshot." },
-  { icon: Server, title: "Deployment setup", body: "Live environment configured and documented, with a runbook for redeploying it yourself." },
 ];
 
 const COMPARE_COLS = ["Codelix", "Template / builder", "Freelancer", "Large agency"];
 const COMPARE_ROWS = [
-  { label: "100% source-code ownership", vals: ["yes", "partial", "maybe", "partial"] },
   { label: "Timeline you can hold us to", vals: ["yes", "yes", "no", "partial"] },
   { label: "Built for your exact catalogue & workflow", vals: ["yes", "no", "maybe", "yes"] },
   { label: "Handles a real sale-day traffic spike", vals: ["yes", "maybe", "no", "yes"] },
@@ -121,7 +120,7 @@ const INCLUDED = [
   { icon: PackageSearch, title: "Inventory & order sync", body: "A single source of truth between your storefront, warehouse, and any marketplaces you already sell on." },
   { icon: Gauge, title: "Performance budget", body: "We hold a Core Web Vitals target from day one. Fast on a mid-range phone on 4G, not just on your office wifi." },
   { icon: ShieldCheck, title: "Security & compliance", body: "HTTPS, PCI-conscious payment handling, and sensible headers configured before anything goes live." },
-  { icon: Wrench, title: "CMS & handover", body: "An admin you can actually use for products and orders, plus documentation so your team owns it fully." },
+  { icon: Wrench, title: "CMS & handover", body: "An admin you can actually use for products and orders, plus documentation." },
 ];
 
 /* the interactive estimator's option sets */
@@ -169,7 +168,6 @@ const RELATED = PROJECTS
 
 const PRINCIPLES = [
   { key: "Delivered", icon: CalendarCheck, claim: "No deadline we don't hold ourselves to.", body: "We pad the schedule honestly upfront so we don't have to renegotiate halfway through. If we say a date, we hit it." },
-  { key: "Owned", icon: Lock, claim: "No code you don't fully own.", body: "When the invoice is paid, the code is yours. We hand over the repos, the docs, and the keys. No vendor lock-in." },
   { key: "Visible", icon: Eye, claim: "No progress you can't see.", body: "We don't go dark for a month and come back with a surprise. You see the work as it happens, so we can course-correct early." },
 ];
 
@@ -179,15 +177,12 @@ const FAQS = [
   { q: "Do you handle payment gateway setup?", a: "Yes, for whichever gateways your market actually uses. You own the merchant account — we don't hold your payment processing hostage." },
   { q: "Can it handle a big sale-day traffic spike?", a: "We architect and load-test for it before launch, rather than finding out during your first real sale event." },
   { q: "Will I be able to manage products myself?", a: "Yes. We build an admin your team can actually use for products, inventory, and orders, and walk you through it at handover." },
-  { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that you can take it in-house with the docs we provide, or keep us on a monthly retainer." },
+  { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that, you can keep us on a monthly retainer for updates, fixes, and support." },
 ];
 
 const SENTENCE = [
-  "YOU GET THE SOURCE.",
   "YOU GET THE CATALOGUE.",
   "YOU GET THE CHECKOUT.",
-  "NO LOCK-IN.",
-  "NO LICENSE GAMES.",
 ];
 
 /* scroll-scrubbed word reveal — identical mechanism to ServiceDetailV2's copy,
@@ -438,8 +433,7 @@ export default function ECommerceSolutionsV2() {
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">
                 We build high-performance storefronts and checkout flows with clean,
-                hand-written code — designed to convert browsers into buyers, and
-                handed over with full source-code ownership.
+                hand-written code — designed to convert browsers into buyers.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
                 <Link className="v2-btn v2-btn--filled" to="/contact">
@@ -456,7 +450,6 @@ export default function ECommerceSolutionsV2() {
               {[
                 ["Typical timeline", "3–10 weeks"],
                 ["Starts with", "Discovery call"],
-                ["You receive", "100% source code"],
                 ["Post-launch", "Support included"],
               ].map(([k, v]) => (
                 <div className="sd2-fact" key={k}>
@@ -658,7 +651,6 @@ export default function ECommerceSolutionsV2() {
               <ul className="sd2-est-list">
                 <li><Check size={13} strokeWidth={2.4} /> Design + build + QA included</li>
                 <li><Check size={13} strokeWidth={2.4} /> Fixed price once scoped</li>
-                <li><Check size={13} strokeWidth={2.4} /> Full source-code handover</li>
               </ul>
               <Link className="v2-btn" to="/contact">Get an exact quote →</Link>
             </aside>
@@ -788,7 +780,6 @@ export default function ECommerceSolutionsV2() {
         stats={[
           { num: "40+", label: "Companies trust us" },
           { num: "11", label: "Industries served" },
-          { num: "100%", label: "Source code ownership" },
         ]}
       />
 
@@ -829,7 +820,7 @@ export default function ECommerceSolutionsV2() {
             <h2 className="v2-heading">Everything, at handover.</h2>
           </div>
           <p className="v2-lede">
-            "You own the code" is easy to say. Here is the exact list of what
+            Here is the exact list of what
             lands in your accounts when the project closes.
           </p>
         </div>
@@ -864,7 +855,6 @@ export default function ECommerceSolutionsV2() {
             <span className="sd2-manifest-seal"><Check size={13} strokeWidth={3} /></span>
             <span>
               Everything above transfers to your accounts when the project closes.
-              <b> No lock-in, no retained access, no dependency on us.</b>
             </span>
           </div>
         </div>
@@ -992,6 +982,7 @@ export default function ECommerceSolutionsV2() {
       {/* ══════════ FOOTER ══════════ */}
       </main>
 
+            <StructuredData type="Service" data={serviceInfo("/services/e-commerce-solutions")} />
             <FooterV2 />
     </div>
   );

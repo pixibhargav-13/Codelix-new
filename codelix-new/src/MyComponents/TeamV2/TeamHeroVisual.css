@@ -479,3 +479,25 @@
     opacity: .3;
   }
 }
+
+/* ─── Box size and centring ───
+   This container shares its class name with the Technologies hero, and
+   while every page's CSS shipped as one stylesheet, that page's rules
+   (flex centring, and a fixed 480/420/300px height) applied here too —
+   the layout this graphic was tuned against. With CSS split per page they
+   no longer arrive, so they are stated here. Last in the file, as they
+   came after this file's rules before. */
+.thv-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 480px;
+}
+
+@media (max-width: 940px) {
+  .thv-container { height: 420px; }
+}
+
+@media (max-width: 500px) {
+  .thv-container { height: 300px; }
+}

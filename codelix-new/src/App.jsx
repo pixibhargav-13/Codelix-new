@@ -36,11 +36,41 @@ const AdminTestimonialForm = lazy(() => import("./admin/pages/AdminTestimonialFo
    it, but eagerly importing it put its parse+evaluate cost on the critical
    path of every page. Lazy, and only mounted once the browser is idle.
 
-   BookingModal deliberately stays eager: it installs a global click listener
-   that intercepts "Book a consultation" links, so deferring it would let
-   early clicks fall through to /contact instead of opening the modal. */
+   The booking modal is loaded on first use. BookingGate below is the only
+   eager part: the same click interception the modal does, so an early click
+   on "Book a consultation" still opens the modal instead of falling through
+   to /contact — it just mounts the modal, which then handles every later
+   click itself. */
 const Chatbot = lazy(() => import("./MyComponents/Chatbot/Chatbot"));
-import BookingModal from "./MyComponents/BookingModal/BookingModal";
+const BookingModal = lazy(() => import("./MyComponents/BookingModal/BookingModal"));
+import { bookingAnchorFor, OPEN_BOOKING_EVENT } from "./MyComponents/BookingModal/bookingTrigger";
+
+const BookingGate = () => {
+  const [requested, setRequested] = useState(false);
+
+  useEffect(() => {
+    if (requested) return;
+    const request = () => setRequested(true);
+    const onClick = (e) => {
+      if (!bookingAnchorFor(e)) return;
+      e.preventDefault();
+      request();
+    };
+    window.addEventListener(OPEN_BOOKING_EVENT, request);
+    document.addEventListener("click", onClick, { capture: true });
+    return () => {
+      window.removeEventListener(OPEN_BOOKING_EVENT, request);
+      document.removeEventListener("click", onClick, { capture: true });
+    };
+  }, [requested]);
+
+  if (!requested) return null;
+  return (
+    <Suspense fallback={null}>
+      <BookingModal openOnMount />
+    </Suspense>
+  );
+};
 // ─── 404 Not Found ─────────────────────────────────────────────────────────────
 const NotFound = lazy(() => import("./MyComponents/NotFound/NotFound"));
 
@@ -169,14 +199,16 @@ const LenisGsapSync = () => {
   const lenis = useLenis();
   useEffect(() => {
     if (!lenis) return;
+    /* GSAP's ticker is the only loop driving Lenis (autoRaf is off on
+       ReactLenis), so Lenis and ScrollTrigger update in the same frame. The
+       callback is kept so cleanup removes this exact function. */
+    const tick = (time) => lenis.raf(time * 1000);
     lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
+    gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
     return () => {
       lenis.off('scroll', ScrollTrigger.update);
-      gsap.ticker.remove((time) => lenis.raf(time * 1000));
+      gsap.ticker.remove(tick);
     };
   }, [lenis]);
   return null;
@@ -184,7 +216,7 @@ const LenisGsapSync = () => {
 
 import { SEO } from "./components/SEO";
 
-import { seoData, defaultSEO } from "./lib/seoData";
+import { seoData } from "./lib/seoData";
 
 const RouteSEO = () => {
   const location = useLocation();
@@ -215,7 +247,10 @@ const RouteSEO = () => {
     }
   }
 
-  const currentSEO = seoData[path] || defaultSEO;
+  /* An unknown path renders NotFound, which sets its own noindex tags;
+     the generic defaults here would contradict them with index, follow. */
+  const currentSEO = seoData[path];
+  if (!currentSEO) return null;
 
   return <SEO title={currentSEO.title} ogTitle={currentSEO.ogTitle} description={currentSEO.description} robots={currentSEO.robots} image={currentSEO.image} />;
 };
@@ -321,7 +356,7 @@ function App({ initialData }) {
      trailing it — Lenis uses lerp whenever it is set, so duration now applies
      only to programmatic scrollTo calls. */
   return (
-    <ReactLenis root options={{ lerp: 0.14, duration: 1, smoothWheel: true, wheelMultiplier: 1 }}>
+    <ReactLenis root options={{ lerp: 0.14, duration: 1, smoothWheel: true, wheelMultiplier: 1, autoRaf: false }}>
       <InitialDataContext.Provider value={initialData}>
         <LenisGsapSync />
         <ScrollToTop />
@@ -329,7 +364,7 @@ function App({ initialData }) {
         <BreadcrumbSchema />
         <StructuredData type="Organization" />
         <ChatbotGate />
-        <BookingModal />
+        <BookingGate />
         <AppRoutes />
       </InitialDataContext.Provider>
     </ReactLenis>

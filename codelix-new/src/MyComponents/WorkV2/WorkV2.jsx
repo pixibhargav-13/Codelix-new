@@ -17,7 +17,7 @@ import "./WorkV2.css";
 import logo1 from "../Images/Our-work-logo-one.png";
 import logo2 from "../Images/Our-work-logo-two.png";
 import logo3 from "../Images/Our-work-logo-three.png";
-import logo4 from "../Images/Our-work-logo-four.png";
+import logo4 from "../Images/Our-work-logo-four.webp";
 import logo5 from "../Images/Our-work-logo-five.png";
 
 /* the full portfolio — extracted to its own module so WorkV2 and
@@ -81,7 +81,6 @@ const TESTIMONIALS = [
 const STATS = [
   { value: 15, suffix: "+", label: "Projects delivered", note: "Shown here — more shipped privately", ring: 75 },
   { value: 6, suffix: "", label: "Industries covered", note: "Not one narrow niche", ring: 60 },
-  { value: 100, suffix: "%", label: "Source-code ownership", note: "Every project, no exceptions", ring: 100 },
 ];
 
 const FAQS = [

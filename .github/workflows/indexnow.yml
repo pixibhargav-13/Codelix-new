@@ -1,0 +1,40 @@
+# Notify IndexNow (Bing, and through it ChatGPT search) after every
+# production deploy, so updated pages are picked up without waiting to be
+# recrawled.
+#
+# Vercel reports each deploy back to GitHub as a deployment; this runs when
+# a Production one reaches "success". It cannot run as part of the Vercel
+# build, because IndexNow verifies the key by fetching it from the live
+# site, and the new files are not live until the build has finished.
+
+name: IndexNow
+
+on:
+  deployment_status:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment.environment == 'Production' &&
+       github.event.deployment_status.state == 'success')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      # only the script and the key file — the repo carries a lot of images
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            codelix-new/scripts/indexnow.mjs
+            codelix-new/public/*.txt
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: node codelix-new/scripts/indexnow.mjs

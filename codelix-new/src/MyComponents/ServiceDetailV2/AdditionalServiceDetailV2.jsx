@@ -1,10 +1,12 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { SEO } from "../../components/SEO";
+import { StructuredData } from "../../components/StructuredData";
+import { serviceInfo } from "../../lib/serviceSchema";
 import FooterV2 from "../Shared/FooterV2";
 import { useParams, Link } from "react-router-dom";
 import gsap from "gsap";
 import {
-  ArrowLeft, Check, X, Minus, FileCode2,
+  ArrowLeft, Check, Globe, LayoutDashboard, X, Minus, FileCode2,
   Building2, Rocket, Store, GraduationCap, HeartPulse, Landmark,
   CalendarCheck, Lock, Eye,
   GitBranch, BookOpen, KeyRound, Palette, Server,
@@ -34,7 +36,7 @@ import ClientStrip from "../Shared/ClientStrip";
 
 /* ─── shared/generic content, reused across all 18 pages — the same true,
    general claims already used on the 8 core service pages (fixed
-   pricing, source-code ownership, same delivery process), not invented
+   pricing, same delivery process), not invented
    per-service specifics. ─── */
 const USE_CASES = [
   { icon: Building2, title: "Corporate & B2B", body: "Built for teams whose buyers research before they ever make contact — credibility and clarity first." },
@@ -47,7 +49,6 @@ const USE_CASES = [
 
 const PRINCIPLES = [
   { key: "Delivered", icon: CalendarCheck, claim: "No deadline we don't hold ourselves to.", body: "We pad the schedule honestly upfront so we don't have to renegotiate halfway through. If we say a date, we hit it." },
-  { key: "Owned", icon: Lock, claim: "No code you don't fully own.", body: "When the invoice is paid, the code is yours. We hand over the repos, the docs, and the keys. No vendor lock-in." },
   { key: "Visible", icon: Eye, claim: "No progress you can't see.", body: "We don't go dark for a month and come back with a surprise. You see the work as it happens." },
 ];
 
@@ -55,26 +56,21 @@ const PRINCIPLES = [
    fabricated per-service performance number, since we don't have real
    measured data for 18 different service lines) */
 const BENCHMARKS = [
-  { value: 100, suffix: "%", label: "Source-code ownership", note: "Every project, no exceptions", ring: 100 },
   { value: 100, suffix: "%", label: "Scope agreed in writing", note: "Before any work starts", ring: 100 },
   { value: 24, suffix: "h", label: "Typical response time", note: "During an active engagement", ring: 80 },
-  { value: 0, suffix: "", label: "Retained access after handover", note: "No lock-in, no dependency", ring: 100 },
 ];
 
 /* the actual artifacts handed over — generic across engagement types,
    not tied to one specific deliverable format */
 const HANDOVER = [
-  { icon: FileCode2, title: "Full source code", body: "The complete repository, with clean commit history — yours to keep, fork, or hand to another team." },
-  { icon: GitBranch, title: "Repository access", body: "Transferred to your organisation account, with history and configuration intact." },
-  { icon: BookOpen, title: "Technical documentation", body: "Architecture, setup, and configuration written for someone who's never seen it before." },
-  { icon: KeyRound, title: "Credentials & accounts", body: "Hosting, infrastructure, and any third-party keys — registered in your name from the start." },
-  { icon: Palette, title: "Design or architecture files", body: "Whatever was used to plan the build, handed over so future work doesn't start from scratch." },
-  { icon: Server, title: "Deployment & handover walkthrough", body: "A live session covering how everything runs, so your team owns it fully from day one." },
+  { icon: Globe, title: "Domain access", body: "Your domain is registered in your name, with full access to it — DNS, renewals, and transfers stay in your hands." },
+  { icon: LayoutDashboard, title: "Admin access", body: "A login to the admin panel, so your team can manage content without touching code." },
+  { icon: Palette, title: "Design files", body: "Any design files used to plan the build, so future work doesn't start from scratch." },
+  { icon: Server, title: "Handover walkthrough", body: "A live session showing your team how to use everything we built." },
 ];
 
 const COMPARE_COLS = ["Codelix", "Template / builder", "Freelancer", "Large agency"];
 const COMPARE_ROWS = [
-  { label: "100% source-code ownership", vals: ["yes", "partial", "maybe", "partial"] },
   { label: "Timeline you can hold us to", vals: ["yes", "yes", "no", "partial"] },
   { label: "Built for your exact workflow", vals: ["yes", "no", "maybe", "yes"] },
   { label: "One team, one point of contact", vals: ["yes", "no", "yes", "no"] },
@@ -110,21 +106,19 @@ const getFaqs = (svc) => {
   return [
     { q: `How is ${name} priced?`, a: "Fixed scope, fixed price — you get a written quote before any work starts, based on what you actually need, not an hourly guess." },
     { q: `How long does a typical ${name} engagement take?`, a: "It depends on scope, but most engagements run 2–12 weeks. Use the estimator above for a rough range, then we'll firm it up on a call." },
-    { q: `Do we own the code and IP once the ${name} work is done?`, a: "Yes — 100% source-code ownership transfers to you at project close. No retained access, no dependency on us to keep it running." },
     firstCover
       ? { q: `Does ${name} include ${firstCover}?`, a: `Yes — ${firstCover} is one of the things covered under this service. See "What's Included" above for the full list of what's in scope.` }
       : { q: `What exactly is included in ${name}?`, a: "See \"What's Included\" above for the full list of what's covered under this service." },
     { q: `Do you work with our existing team on ${name}?`, a: "Yes — plenty of engagements plug into an existing in-house team rather than replacing it. We scope around whatever setup you already have." },
-    { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that you can take it in-house with the docs we provide, or keep us on a monthly retainer." },
+    { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that, you can keep us on a monthly retainer for updates, fixes, and support." },
   ];
 };
 
 const SENTENCE = [
-  "YOU GET THE SOURCE.",
-  "YOU GET THE SERVER.",
   "YOU GET THE DOMAIN.",
-  "NO LOCK-IN.",
-  "NO LICENSE GAMES.",
+  "YOU GET THE ADMIN.",
+  "FIXED SCOPE.",
+  "FIXED PRICE.",
 ];
 
 /* generic scope estimator — same interaction/maths as the core pages'
@@ -372,6 +366,7 @@ export default function AdditionalServiceDetailV2() {
   return (
     <main className="v2 sd2" ref={rootRef}>
       <SEO title={svc.seoTitle || `${svc.title} | Codelix IT Solutions`} description={svc.seoDescription || svc.description} />
+      <StructuredData type="Service" data={serviceInfo(`/services/${svc.slug}`, svc.seoDescription || svc.description)} />
       <div className="v2-progress" aria-hidden="true"><span /></div>
 
       {/* ══════════ NAV ══════════ */}
@@ -414,7 +409,6 @@ export default function AdditionalServiceDetailV2() {
               {[
                 ["Typical timeline", "2–12 weeks"],
                 ["Starts with", "Discovery call"],
-                ["You receive", "100% source code"],
                 ["Post-launch", "Support included"],
               ].map(([k, v]) => (
                 <div className="sd2-fact" key={k}>
@@ -607,7 +601,6 @@ export default function AdditionalServiceDetailV2() {
               <ul className="sd2-est-list">
                 <li><Check size={13} strokeWidth={2.4} /> Scoping + build + QA included</li>
                 <li><Check size={13} strokeWidth={2.4} /> Fixed price once scoped</li>
-                <li><Check size={13} strokeWidth={2.4} /> Full source-code handover</li>
               </ul>
               <Link className="v2-btn" to="/contact">Get an exact quote →</Link>
             </aside>
@@ -738,7 +731,6 @@ export default function AdditionalServiceDetailV2() {
         stats={[
           { num: "40+", label: "Companies trust us" },
           { num: "11", label: "Industries served" },
-          { num: "100%", label: "Source code ownership" },
         ]}
       />
 
@@ -773,7 +765,7 @@ export default function AdditionalServiceDetailV2() {
             <h2 className="v2-heading">Everything, at handover.</h2>
           </div>
           <p className="v2-lede">
-            "You own the code" is easy to say. Here is the exact list of what
+            Here is the exact list of what
             lands in your accounts when the project closes.
           </p>
         </div>
@@ -808,7 +800,6 @@ export default function AdditionalServiceDetailV2() {
             <span className="sd2-manifest-seal"><Check size={13} strokeWidth={3} /></span>
             <span>
               Everything above transfers to your accounts when the project closes.
-              <b> No lock-in, no retained access, no dependency on us.</b>
             </span>
           </div>
         </div>

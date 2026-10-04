@@ -3,13 +3,32 @@
 
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RY4BJQ5095"></script>
+  <!-- gtag() and its queue are set up immediately, so the page view and any
+       event fired before the library arrives are queued in dataLayer and
+       sent once it loads. The library itself is fetched after the page has
+       loaded and gone idle: loaded with the page it ran ~0.8s of main-thread
+       work in the middle of a phone's startup. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-RY4BJQ5095');
+
+    (function () {
+      function loadGtag() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-RY4BJQ5095';
+        document.head.appendChild(s);
+      }
+      function afterIdle() {
+        if ('requestIdleCallback' in window) requestIdleCallback(loadGtag, { timeout: 3000 });
+        else setTimeout(loadGtag, 1500);
+      }
+      if (document.readyState === 'complete') afterIdle();
+      else window.addEventListener('load', afterIdle, { once: true });
+    })();
   </script>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/codelix.svg" />
@@ -17,26 +36,43 @@
 
 
 
+  <!-- The site's own face; the hero copy (the page's LCP element) is set in
+       it. Preloaded so it is fetched alongside the CSS instead of after it. -->
+  <link rel="preload" href="/fonts/NoiGroteskFix-Regular-v1.woff2" as="font" type="font/woff2" crossorigin>
+
   <!-- Google Fonts - Hanken Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
+  <!-- Loaded without blocking render: as a plain stylesheet this request
+       held back the first paint by ~0.9s on mobile. The site's own face
+       (NoiGroteskFix) is bundled; these three only style secondary text, and
+       display=swap already paints a fallback until they arrive. -->
+  <link rel="preload" as="style"
     href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet">
+    onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
   <!-- FontAwesome was removed: it blocked first render for ~240ms and 17.2KiB
        on every page, and the site uses zero fa-* classes (icons come from
        lucide-react instead). If icons are ever needed here again, import them
        through the bundle rather than a render-blocking CDN stylesheet. -->
 
 
-  <!-- Structured Data for Site Name -->
+  <!-- Structured Data for Site Name. The @ids are what let Google treat the
+       site and the business below as one company: without them every block
+       describing Codelix is a separate entity, and a second one used to
+       disagree with this one about the name, the email and both social
+       profiles. This template ships on every page, so these two blocks are the
+       single source for the company — StructuredData.jsx only refers to them. -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "Codelix IT Solutions", 
+      "@id": "https://www.codelixitsolutions.com/#website",
+      "name": "Codelix IT Solutions",
       "alternateName": "Codelix",
-      "url": "https://www.codelixitsolutions.com/"
+      "url": "https://www.codelixitsolutions.com/",
+      "publisher": { "@id": "https://www.codelixitsolutions.com/#organization" }
     }
   </script>
 
@@ -45,7 +81,9 @@
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "name": "Codelix IT Solutions Pvt Ltd",
+      "@id": "https://www.codelixitsolutions.com/#organization",
+      "name": "Codelix IT Solutions",
+      "legalName": "Codelix IT Solutions Pvt Ltd",
       "alternateName": "Codelix",
       "description": "Codelix IT Solutions builds AI-powered web, app, and SaaS solutions with world-class UI/UX design, including web development, mobile & desktop application development, custom software, e-commerce, and AI development services.",
       "image": "https://www.codelixitsolutions.com/codelix.svg",
@@ -67,11 +105,16 @@
         "latitude": 23.0095811,
         "longitude": 72.5228785
       },
-      "hasMap": "https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5?entry=ttu&amp;g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D",
-      "areaServed": {
-        "@type": "Country",
-        "name": "Worldwide"
-      },
+      "hasMap": "https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D",
+      "areaServed": "Worldwide",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "10:00",
+          "closes": "19:00"
+        }
+      ],
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+919998263282",
@@ -82,7 +125,8 @@
       },
       "sameAs": [
         "https://www.linkedin.com/company/codelixit-solutions",
-        "https://www.instagram.com/codelixitsolutions/"
+        "https://www.instagram.com/codelixitsolutions/",
+        "https://www.facebook.com/profile.php?id=61561748130641"
       ],
       "makesOffer": [
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Development" } },

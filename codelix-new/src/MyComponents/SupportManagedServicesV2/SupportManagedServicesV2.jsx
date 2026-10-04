@@ -15,12 +15,12 @@ import "../ServiceDetailV2/ServiceDetailV2.css";
 
 /* reusing the same generic stack icons already used on other service pages
    — no new image assets required */
-import techReact from "../Images/react.png";
-import techAWS from "../Images/AWS.png";
-import techDocker from "../Images/docker.png";
-import techPostgres from "../Images/postgresql.png";
+import techReact from "../Images/react.webp";
+import techAWS from "../Images/AWS.webp";
+import techDocker from "../Images/docker.webp";
+import techPostgres from "../Images/postgresql.webp";
 import techNode from "../Images/Express.png";
-import techMongo from "../Images/MongoDB.png";
+import techMongo from "../Images/MongoDB.webp";
 
 import { PROJECTS } from "../WorkV2/projectsData";
 import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
@@ -31,6 +31,8 @@ import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
 import { useTestimonials } from "../../data/useTestimonials";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
+import { StructuredData } from "../../components/StructuredData";
+import { serviceInfo } from "../../lib/serviceSchema";
 
 
 const SUPPORT_STACK = [
@@ -788,7 +790,6 @@ export default function SupportManagedServicesV2() {
         stats={[
           { num: "40+", label: "Companies trust us" },
           { num: "11", label: "Industries served" },
-          { num: "100%", label: "Source code ownership" },
         ]}
       />
 
@@ -991,6 +992,7 @@ export default function SupportManagedServicesV2() {
 
       </main>
 
+      <StructuredData type="Service" data={serviceInfo("/services/support-managed-services")} />
       <FooterV2 />
     </div>
   );

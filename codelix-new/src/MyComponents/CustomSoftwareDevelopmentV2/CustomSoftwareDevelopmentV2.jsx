@@ -1,4 +1,4 @@
-import { Code2, Gauge, Layers, ShieldCheck, Workflow, Wrench, CalendarCheck, Lock, Eye, Check, FileSpreadsheet, Clock, Puzzle, Repeat, Users2, AlertOctagon, Building2, Store, Rocket, Factory, HeartPulse, Landmark, FileCode2, BookOpen, KeyRound, Palette, Server, GitBranch, Globe, Smartphone, ShoppingCart, Sparkles, BarChart3, LifeBuoy, Minus, X, Phone, FileText, PlayCircle, Monitor, Cloud } from "lucide-react";
+import { LayoutDashboard, Code2, Gauge, Layers, ShieldCheck, Workflow, Wrench, CalendarCheck, Lock, Eye, Check, FileSpreadsheet, Clock, Puzzle, Repeat, Users2, AlertOctagon, Building2, Store, Rocket, Factory, HeartPulse, Landmark, FileCode2, BookOpen, KeyRound, Palette, Server, GitBranch, Globe, Smartphone, ShoppingCart, Sparkles, BarChart3, LifeBuoy, Minus, X, Phone, FileText, PlayCircle, Monitor, Cloud } from "lucide-react";
 import { Link } from "react-router-dom";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
@@ -16,15 +16,15 @@ import "../ServiceDetailV2/ServiceDetailV2.css";
 
 /* custom-software-specific stack subset — pulled from the same real stack
    list shown on the homepage's "THE STACK" section, not a new set of claims */
-import techJava from "../Images/java.png";
-import techSpring from "../Images/springboot.png";
-import techCsharp from "../Images/csharp.png";
-import techPython from "../Images/python.png";
-import techDjango from "../Images/django.png";
-import techPostgres from "../Images/postgresql.png";
-import techMongo from "../Images/MongoDB.png";
-import techDocker from "../Images/docker.png";
-import techAws from "../Images/AWS.png";
+import techJava from "../Images/java.webp";
+import techSpring from "../Images/springboot.webp";
+import techCsharp from "../Images/csharp.webp";
+import techPython from "../Images/python.webp";
+import techDjango from "../Images/django.webp";
+import techPostgres from "../Images/postgresql.webp";
+import techMongo from "../Images/MongoDB.webp";
+import techDocker from "../Images/docker.webp";
+import techAws from "../Images/AWS.webp";
 
 /* real project screenshots — shared source of truth with WorkV2/CaseStudyV2 */
 import { PROJECTS } from "../WorkV2/projectsData";
@@ -36,6 +36,8 @@ import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
 import { useTestimonials } from "../../data/useTestimonials";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
+import { StructuredData } from "../../components/StructuredData";
+import { serviceInfo } from "../../lib/serviceSchema";
 
 
 const CUSTOM_STACK = [
@@ -80,17 +82,14 @@ const BENCHMARKS = [
 
 /* the actual artifacts handed over */
 const HANDOVER = [
-  { icon: FileCode2, title: "Full source code", body: "The complete repository, with clean commit history — yours to keep, fork, or hand to another team." },
-  { icon: GitBranch, title: "Repository access", body: "Transferred to your organisation account, with branch history and CI configuration intact." },
-  { icon: BookOpen, title: "Technical documentation", body: "Setup, architecture, environment variables, and deployment steps written for a developer who's never seen it." },
-  { icon: KeyRound, title: "Credentials & accounts", body: "Hosting, database, and any third-party keys — registered in your name from the start." },
   { icon: Workflow, title: "Process documentation", body: "The exact workflow the system was built around, so the logic behind it doesn't live only in someone's head." },
-  { icon: Server, title: "Deployment setup", body: "Live environment configured and documented, with a runbook for redeploying it yourself." },
+  { icon: Globe, title: "Domain access", body: "Your domain is registered in your name, with full access to it — DNS, renewals, and transfers stay in your hands." },
+  { icon: LayoutDashboard, title: "Admin access", body: "A login to the admin panel, so your team can manage data and users without touching code." },
+  { icon: BookOpen, title: "User guide & walkthrough", body: "A plain-language guide to running it day to day, plus a live walkthrough for your team at handover." },
 ];
 
 const COMPARE_COLS = ["Codelix", "Off-the-shelf software", "Freelancer", "Large agency"];
 const COMPARE_ROWS = [
-  { label: "100% source-code ownership", vals: ["yes", "no", "maybe", "partial"] },
   { label: "Timeline you can hold us to", vals: ["yes", "yes", "no", "partial"] },
   { label: "Built for your exact workflow", vals: ["yes", "no", "maybe", "yes"] },
   { label: "No per-seat licensing to outgrow", vals: ["yes", "no", "yes", "yes"] },
@@ -123,7 +122,7 @@ const INCLUDED = [
   { icon: ShieldCheck, title: "Security & access control", body: "Role-based access, audit trails, and sensible data handling configured before anything goes live." },
   { icon: Layers, title: "Systems integration", body: "Your CRM, accounts, and inventory made to exchange the right data on the right trigger, not manually re-entered." },
   { icon: Gauge, title: "Performance under real load", body: "Tested against your actual data volumes and usage patterns, not a clean demo dataset." },
-  { icon: Wrench, title: "Documentation & handover", body: "Technical docs and a walkthrough your team can actually follow, so you own it fully from day one." },
+  { icon: Wrench, title: "Documentation & handover", body: "Plain-language docs and a walkthrough your team can actually follow." },
 ];
 
 /* the interactive estimator's option sets */
@@ -172,7 +171,6 @@ const RELATED = PROJECTS
 
 const PRINCIPLES = [
   { key: "Delivered", icon: CalendarCheck, claim: "No deadline we don't hold ourselves to.", body: "We pad the schedule honestly upfront so we don't have to renegotiate halfway through. If we say a date, we hit it." },
-  { key: "Owned", icon: Lock, claim: "No code you don't fully own.", body: "When the invoice is paid, the code is yours. We hand over the repos, the docs, and the keys. No vendor lock-in." },
   { key: "Visible", icon: Eye, claim: "No progress you can't see.", body: "We don't go dark for a month and come back with a surprise. You see the work as it happens, so we can course-correct early." },
 ];
 
@@ -182,15 +180,14 @@ const FAQS = [
   { q: "What if our workflow changes after launch?", a: "Custom systems are built to be modified — that's the point. We scope changes as they come up, either through a support retainer or as standalone work." },
   { q: "Do you migrate data from our old system?", a: "Yes. Legacy data migration is a common part of these projects — we plan for it during architecture, not as an afterthought during launch week." },
   { q: "How do you handle security and compliance?", a: "Role-based access, audit trails, and data handling appropriate to your industry are built in from the start, not bolted on before launch." },
-  { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that you can take it in-house with the docs we provide, or keep us on a monthly retainer." },
+  { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that, you can keep us on a monthly retainer for updates, fixes, and support." },
 ];
 
 const SENTENCE = [
-  "YOU GET THE SOURCE.",
-  "YOU GET THE DATABASE.",
-  "YOU GET THE SERVER.",
-  "NO LOCK-IN.",
-  "NO LICENSE GAMES.",
+  "YOU GET THE DOMAIN.",
+  "YOU GET THE ADMIN.",
+  "FIXED SCOPE.",
+  "FIXED PRICE.",
 ];
 
 /* scroll-scrubbed word reveal — identical mechanism to ServiceDetailV2's copy,
@@ -442,7 +439,7 @@ export default function CustomSoftwareDevelopmentV2() {
               <p className="sd2-hero-sub sv2-hero-reveal">
                 We build custom systems and internal tools with clean, hand-written
                 code — designed around your exact workflow instead of bending your
-                process to fit someone else's product, handed over with full ownership.
+                process to fit someone else's product.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
                 <Link className="v2-btn v2-btn--filled" to="/contact">
@@ -459,7 +456,6 @@ export default function CustomSoftwareDevelopmentV2() {
               {[
                 ["Typical timeline", "4–14 weeks"],
                 ["Starts with", "Discovery call"],
-                ["You receive", "100% source code"],
                 ["Post-launch", "Support included"],
               ].map(([k, v]) => (
                 <div className="sd2-fact" key={k}>
@@ -661,7 +657,6 @@ export default function CustomSoftwareDevelopmentV2() {
               <ul className="sd2-est-list">
                 <li><Check size={13} strokeWidth={2.4} /> Design + build + QA included</li>
                 <li><Check size={13} strokeWidth={2.4} /> Fixed price once scoped</li>
-                <li><Check size={13} strokeWidth={2.4} /> Full source-code handover</li>
               </ul>
               <Link className="v2-btn" to="/contact">Get an exact quote →</Link>
             </aside>
@@ -791,7 +786,6 @@ export default function CustomSoftwareDevelopmentV2() {
         stats={[
           { num: "40+", label: "Companies trust us" },
           { num: "11", label: "Industries served" },
-          { num: "100%", label: "Source code ownership" },
         ]}
       />
 
@@ -832,7 +826,7 @@ export default function CustomSoftwareDevelopmentV2() {
             <h2 className="v2-heading">Everything, at handover.</h2>
           </div>
           <p className="v2-lede">
-            "You own the code" is easy to say. Here is the exact list of what
+            Here is the exact list of what
             lands in your accounts when the project closes.
           </p>
         </div>
@@ -867,7 +861,6 @@ export default function CustomSoftwareDevelopmentV2() {
             <span className="sd2-manifest-seal"><Check size={13} strokeWidth={3} /></span>
             <span>
               Everything above transfers to your accounts when the project closes.
-              <b> No lock-in, no retained access, no dependency on us.</b>
             </span>
           </div>
         </div>
@@ -995,6 +988,7 @@ export default function CustomSoftwareDevelopmentV2() {
       {/* ══════════ FOOTER ══════════ */}
       </main>
 
+            <StructuredData type="Service" data={serviceInfo("/services/custom-software-development")} />
             <FooterV2 />
     </div>
   );

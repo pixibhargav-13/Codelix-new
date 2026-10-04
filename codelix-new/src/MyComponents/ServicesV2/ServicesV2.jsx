@@ -12,7 +12,7 @@ import {
 import "../HomepageV2/HomepageV2.css";
 
 import { TECH_STACK } from "../HomepageV2/techStack";
-import codelixLogo from "../Images/codelix-logo.png";
+import codelixLogo from "../Images/codelix-logo.webp";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import "./ServicesV2.css";
 import GoogleReviewButton from "../Shared/GoogleReviewButton";
@@ -41,7 +41,6 @@ const METHOD = [
 const STATS = [
   { value: 40, suffix: "+", label: "Projects delivered", icon: Sparkles },
   { value: 8, suffix: "", label: "Core services", icon: Code2 },
-  { value: 100, suffix: "%", label: "Source-code ownership", icon: Lock },
   { value: 24, suffix: "h", label: "Response time", icon: Clock },
 ];
 
@@ -166,14 +165,12 @@ const ENGAGEMENTS = [
 
 const PRINCIPLES = [
   { key: "Delivered", icon: CalendarCheck, claim: "No deadline we don't hold ourselves to.", body: "We pad the schedule honestly upfront so we don't have to renegotiate halfway through. If we say a date, we hit it." },
-  { key: "Owned", icon: Lock, claim: "No code you don't fully own.", body: "When the invoice is paid, the code is yours. We hand over the repos, the docs, and the keys. No vendor lock-in, no hostage situations." },
   { key: "Visible", icon: Eye, claim: "No progress you can't see.", body: "We don't go dark for a month and come back with a surprise. You see the work as it happens, so we can course-correct early." },
 ];
 
 const FAQS = [
   { q: "Which service is right for my project?", a: "Honestly, most projects use two or three of these together. If you're not sure where you land, just tell us what you're trying to build and we'll point you in the right direction." },
   { q: "Can you take over an existing project?", a: "Yes, we do it all the time. We'll audit the codebase first so you know exactly what shape it's in before we touch anything." },
-  { q: "Do you provide source code after project completion?", a: "Yes. Once the project is done and paid for, you get everything — full source code, documentation, and deployment details. It's your code." },
   { q: "How do you price a project?", a: "Fixed-scope work gets a firm quote upfront. Teams and retainers are billed monthly. Either way, you'll see a detailed breakdown with milestones before anything kicks off." },
   { q: "Do you offer support after launch?", a: "Yes. Every project comes with a post-launch support window, and we offer ongoing retainers if you want us to keep maintaining and improving things." },
   { q: "Can you sign an NDA before starting the project?", a: "Absolutely. We're happy to sign an NDA before we even start talking details." },

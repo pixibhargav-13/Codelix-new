@@ -1,4 +1,4 @@
-import { Smartphone, Gauge, Bell, ShieldCheck, Wifi, Wrench, CalendarCheck, Lock, Eye, Check, BatteryLow, RefreshCcw, Store as StoreOff, Ban, Bug, LayoutGrid, Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark, FileCode2, BookOpen, KeyRound, Palette, Server, GitBranch, Globe, ShoppingCart, Code2, Sparkles, BarChart3, LifeBuoy, Minus, X, Phone, FileText, PlayCircle, Cloud } from "lucide-react";
+import { LayoutDashboard, Smartphone, Gauge, Bell, ShieldCheck, Wifi, Wrench, CalendarCheck, Lock, Eye, Check, BatteryLow, RefreshCcw, Store as StoreOff, Ban, Bug, LayoutGrid, Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark, FileCode2, BookOpen, KeyRound, Palette, Server, GitBranch, Globe, ShoppingCart, Code2, Sparkles, BarChart3, LifeBuoy, Minus, X, Phone, FileText, PlayCircle, Cloud } from "lucide-react";
 import { Link } from "react-router-dom";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
@@ -16,14 +16,14 @@ import "../ServiceDetailV2/ServiceDetailV2.css";
 
 /* mobile-specific stack subset — pulled from the same real stack list shown
    on the homepage's "THE STACK" section, not a new set of claims */
-import techFlutter from "../Images/flutter.png";
-import techSwift from "../Images/swift.png";
-import techAndroid from "../Images/android.png";
-import techJava from "../Images/java.png";
-import techNode from "../Images/node.png";
-import techFirebase from "../Images/Firebase.png";
-import techAws from "../Images/AWS.png";
-import techFigma from "../Images/figma.png";
+import techFlutter from "../Images/flutter.webp";
+import techSwift from "../Images/swift.webp";
+import techAndroid from "../Images/android.webp";
+import techJava from "../Images/java.webp";
+import techNode from "../Images/node.webp";
+import techFirebase from "../Images/Firebase.webp";
+import techAws from "../Images/AWS.webp";
+import techFigma from "../Images/figma.webp";
 
 /* real project screenshots — shared source of truth with WorkV2/CaseStudyV2 */
 import { PROJECTS } from "../WorkV2/projectsData";
@@ -35,6 +35,8 @@ import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
 import { useTestimonials } from "../../data/useTestimonials";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
+import { StructuredData } from "../../components/StructuredData";
+import { serviceInfo } from "../../lib/serviceSchema";
 
 
 const APP_STACK = [
@@ -55,7 +57,6 @@ const PROBLEMS = [
   { icon: RefreshCcw, pain: "iOS and Android versions drift apart.", fix: "One Flutter codebase for both platforms, so a fix or feature ships everywhere at once, not twice." },
   { icon: Wifi, pain: "It breaks the moment the signal drops.", fix: "Offline-first data handling and sync logic, so patchy connectivity degrades gracefully instead of crashing." },
   { icon: Bug, pain: "Every update seems to break something else.", fix: "Automated testing across the core flows before every release, so a new feature doesn't quietly break an old one." },
-  { icon: Ban, pain: "Our last developer disappeared.", fix: "You get the repo, the app-store accounts, and the docs. No lock-in, no dependency on us to keep it running." },
 ];
 
 /* who this service is actually for */
@@ -78,17 +79,14 @@ const BENCHMARKS = [
 
 /* the actual artifacts handed over */
 const HANDOVER = [
-  { icon: FileCode2, title: "Full source code", body: "The complete Flutter/native repository, with clean commit history — yours to keep, fork, or hand to another team." },
-  { icon: GitBranch, title: "Repository access", body: "Transferred to your organisation account, with branch history and CI configuration intact." },
-  { icon: BookOpen, title: "Technical documentation", body: "Setup, architecture, environment variables, and build steps written for a developer who's never seen it." },
   { icon: KeyRound, title: "App store accounts", body: "Apple Developer and Google Play Console accounts registered in your name, with credentials handed over." },
   { icon: Palette, title: "Design files", body: "The Figma project with components and styles, so future work doesn't start from a screenshot." },
-  { icon: Server, title: "Backend & deployment setup", body: "Live environment configured and documented, with a runbook for redeploying it yourself." },
+  { icon: LayoutDashboard, title: "Admin access", body: "A login to the admin panel, so your team can manage content and users without touching code." },
+  { icon: BookOpen, title: "User guide & walkthrough", body: "A plain-language guide to running it day to day, plus a live walkthrough for your team at handover." },
 ];
 
 const COMPARE_COLS = ["Codelix", "No-code app builder", "Freelancer", "Large agency"];
 const COMPARE_ROWS = [
-  { label: "100% source-code ownership", vals: ["yes", "no", "maybe", "partial"] },
   { label: "Timeline you can hold us to", vals: ["yes", "yes", "no", "partial"] },
   { label: "One codebase, both platforms", vals: ["yes", "partial", "maybe", "yes"] },
   { label: "One team, one point of contact", vals: ["yes", "no", "yes", "no"] },
@@ -121,7 +119,7 @@ const INCLUDED = [
   { icon: Bell, title: "Push & background handling", body: "Notifications, background sync, and offline-first data so the app stays useful with a weak signal." },
   { icon: ShieldCheck, title: "Security & hardening", body: "Secure auth, encrypted local storage, and sensible API handling configured before anything ships." },
   { icon: LayoutGrid, title: "Store-ready submission", body: "App-store listing assets, screenshots, and compliance review handled as part of the build, not after." },
-  { icon: Wrench, title: "Backend & handover", body: "A backend you can actually run, plus documentation and account handover so your team owns it fully." },
+  { icon: Wrench, title: "Backend & admin", body: "A reliable backend with an admin panel your team can use, plus app-store account handover." },
 ];
 
 /* the interactive estimator's option sets */
@@ -169,7 +167,6 @@ const RELATED = PROJECTS
 
 const PRINCIPLES = [
   { key: "Delivered", icon: CalendarCheck, claim: "No deadline we don't hold ourselves to.", body: "We pad the schedule honestly upfront so we don't have to renegotiate halfway through. If we say a date, we hit it." },
-  { key: "Owned", icon: Lock, claim: "No code you don't fully own.", body: "When the invoice is paid, the code and the store accounts are yours. We hand over the repos, the docs, and the keys." },
   { key: "Visible", icon: Eye, claim: "No progress you can't see.", body: "You get an installable test build early and often, so you're never waiting a month to see what's been built." },
 ];
 
@@ -179,15 +176,13 @@ const FAQS = [
   { q: "Do you handle the App Store and Play Store submission?", a: "Yes. We prepare the listing assets, handle the review process, and submit under your own developer accounts, so you're never locked out of your own app." },
   { q: "Can the app work without an internet connection?", a: "For apps that need it, yes — we build offline-first data handling that syncs once the connection returns, rather than the app simply failing." },
   { q: "Will I be able to update content myself?", a: "Where it makes sense, yes — we build an admin panel or CMS so your team can manage content without waiting on a new app release." },
-  { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes and OS-update compatibility. After that you can take it in-house with the docs we provide, or keep us on a monthly retainer." },
+  { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes and OS-update compatibility. After that, you can keep us on a monthly retainer for updates, fixes, and support." },
 ];
 
 const SENTENCE = [
-  "YOU GET THE SOURCE.",
   "YOU GET THE ACCOUNTS.",
-  "YOU GET THE BACKEND.",
-  "NO LOCK-IN.",
-  "NO LICENSE GAMES.",
+  "YOU GET THE ADMIN.",
+  "FIXED PRICE.",
 ];
 
 /* scroll-scrubbed word reveal — identical mechanism to ServiceDetailV2's copy,
@@ -439,7 +434,7 @@ export default function ApplicationDevelopmentV2() {
               <p className="sd2-hero-sub sv2-hero-reveal">
                 We build cross-platform and native mobile apps with clean, hand-written
                 code — one Flutter codebase where it fits, fully native where the
-                platform demands it, handed over with full source-code ownership.
+                platform demands it.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
                 <Link className="v2-btn v2-btn--filled" to="/contact">
@@ -456,7 +451,6 @@ export default function ApplicationDevelopmentV2() {
               {[
                 ["Typical timeline", "4–12 weeks"],
                 ["Starts with", "Discovery call"],
-                ["You receive", "100% source code"],
                 ["Post-launch", "Support included"],
               ].map(([k, v]) => (
                 <div className="sd2-fact" key={k}>
@@ -658,7 +652,6 @@ export default function ApplicationDevelopmentV2() {
               <ul className="sd2-est-list">
                 <li><Check size={13} strokeWidth={2.4} /> Design + build + QA included</li>
                 <li><Check size={13} strokeWidth={2.4} /> Fixed price once scoped</li>
-                <li><Check size={13} strokeWidth={2.4} /> Full source-code handover</li>
               </ul>
               <Link className="v2-btn" to="/contact">Get an exact quote →</Link>
             </aside>
@@ -788,7 +781,6 @@ export default function ApplicationDevelopmentV2() {
         stats={[
           { num: "40+", label: "Companies trust us" },
           { num: "11", label: "Industries served" },
-          { num: "100%", label: "Source code ownership" },
         ]}
       />
 
@@ -829,7 +821,7 @@ export default function ApplicationDevelopmentV2() {
             <h2 className="v2-heading">Everything, at handover.</h2>
           </div>
           <p className="v2-lede">
-            "You own the code" is easy to say. Here is the exact list of what
+            Here is the exact list of what
             lands in your accounts when the project closes.
           </p>
         </div>
@@ -864,7 +856,6 @@ export default function ApplicationDevelopmentV2() {
             <span className="sd2-manifest-seal"><Check size={13} strokeWidth={3} /></span>
             <span>
               Everything above transfers to your accounts when the project closes.
-              <b> No lock-in, no retained access, no dependency on us.</b>
             </span>
           </div>
         </div>
@@ -992,6 +983,7 @@ export default function ApplicationDevelopmentV2() {
       {/* ══════════ FOOTER ══════════ */}
       </main>
 
+            <StructuredData type="Service" data={serviceInfo("/services/application-development")} />
             <FooterV2 />
     </div>
   );

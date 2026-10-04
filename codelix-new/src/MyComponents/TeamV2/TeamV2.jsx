@@ -13,8 +13,8 @@ import {
 } from "lucide-react";
 
 import TeamHeroVisual from "./TeamHeroVisual";
-import manasImg from "../Images/manas_vadodaria.jpeg";
-import kushalImg from "../Images/kushal.png";
+import manasImg from "../Images/manas_vadodaria.webp";
+import kushalImg from "../Images/kushal.webp";
 
 /* LinkedIn falls back to the company page until individual profile URLs
    are supplied */
@@ -26,7 +26,7 @@ const LEADERSHIP = [
 const HOW_WE_LEAD = [
   { key: "Direct", icon: Compass, claim: "You work with the founders, not a layer beneath them.", body: "No account manager standing between you and the people making decisions. Every project runs through Manas and Kushal directly." },
   { key: "Accountable", icon: Users, claim: "Two people, one shared responsibility.", body: "No hiding behind a team of ten when something goes wrong. If it ships under Codelix, one of us is directly accountable for it." },
-  { key: "Consistent", icon: ShieldCheck, claim: "The same standard, project after project.", body: "Fixed pricing, full source-code ownership, and the same delivery process — whether it's client one or client fifty." },
+  { key: "Consistent", icon: ShieldCheck, claim: "The same standard, project after project.", body: "Fixed pricing and the same delivery process — whether it's client one or client fifty." },
 ];
 
 import "../HomepageV2/HomepageV2.css";
@@ -219,8 +219,7 @@ export default function TeamV2() {
         heading="What clients say about the team."
         stats={[
           { num: "40+", label: "Projects delivered" },
-          { num: "20+", label: "Clients worldwide" },
-          { num: "100%", label: "Source code ownership" },
+          { num: "40+", label: "Clients worldwide" },
         ]}
       />
 

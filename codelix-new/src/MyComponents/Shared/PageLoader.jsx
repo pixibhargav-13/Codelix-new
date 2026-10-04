@@ -2,7 +2,7 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useLenis } from "lenis/react";
 import { introWillPlay, handOffIntro } from "../../lib/introGate";
-import codelixLogo from "../Images/codelix-logo.png";
+import codelixLogo from "../Images/codelix-logo.webp";
 import "./PageLoader.css";
 
 /* Module scope, so it resets on a real page load but persists across

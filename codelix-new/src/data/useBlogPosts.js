@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { supabase } from "../lib/supabaseClient";
+import { selectRows } from "../lib/supabaseRest";
 import { blogs as staticBlogs } from "./blogData";
 import { InitialDataContext } from "../lib/initialDataContext";
 
@@ -23,6 +23,10 @@ export function useBlogPosts() {
         /* the fallback above borrows another post.s picture, which is fine
            for a card in a list and wrong for a link preview */
         coverImage: p.cover_image_url || undefined,
+        /* the raw timestamp, kept alongside the display string:
+           article:published_time has to be ISO 8601, and "1 January 2026"
+           is not */
+        publishedAt: p.published_at || undefined,
         tags: p.tags?.length ? p.tags : ["All Articles"],
         content: p.content,
       }));
@@ -41,11 +45,7 @@ export function useBlogPosts() {
   useEffect(() => {
     
     let active = true;
-    supabase
-      .from("blog_posts")
-      .select("*")
-      .eq("published", true)
-      .order("published_at", { ascending: false })
+    selectRows("blog_posts", { eq: { published: true }, order: { column: "published_at", ascending: false } })
       .then(({ data, error }) => {
         if (!active) return;
         setLoading(false);
@@ -63,6 +63,10 @@ export function useBlogPosts() {
         /* the fallback above borrows another post.s picture, which is fine
            for a card in a list and wrong for a link preview */
         coverImage: p.cover_image_url || undefined,
+        /* the raw timestamp, kept alongside the display string:
+           article:published_time has to be ISO 8601, and "1 January 2026"
+           is not */
+        publishedAt: p.published_at || undefined,
           tags: p.tags?.length ? p.tags : ["All Articles"],
           content: p.content,
         }));
@@ -76,3 +80,6 @@ export function useBlogPosts() {
 
   return { posts, loading };
 }
+
+// kept here so existing imports keep working; the parser lives in lib/isoDate.js
+export { toISODate } from "../lib/isoDate.js";

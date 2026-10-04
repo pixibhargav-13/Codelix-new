@@ -15,12 +15,12 @@ import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 
 /* UI/UX-specific tool logos */
-import techFigma from "../Images/figma.png";
-import techXD from "../Images/adobe-xd.png";
-import techSketch from "../Images/sketch.png";
-import techFramer from "../Images/framer.png";
-import techPhotoshop from "../Images/PhotoShop.png";
-import techCanva from "../Images/canva.png";
+import techFigma from "../Images/figma.webp";
+import techXD from "../Images/adobe-xd.webp";
+import techSketch from "../Images/sketch.webp";
+import techFramer from "../Images/framer.webp";
+import techPhotoshop from "../Images/PhotoShop.webp";
+import techCanva from "../Images/canva.webp";
 
 /* real project screenshots — shared source of truth with WorkV2/CaseStudyV2 */
 import { PROJECTS } from "../WorkV2/projectsData";
@@ -32,6 +32,8 @@ import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
 import { useTestimonials } from "../../data/useTestimonials";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
+import { StructuredData } from "../../components/StructuredData";
+import { serviceInfo } from "../../lib/serviceSchema";
 
 
 const UIUX_STACK = [
@@ -795,7 +797,6 @@ export default function UIUXDesignV2() {
         stats={[
           { num: "40+", label: "Companies trust us" },
           { num: "11", label: "Industries served" },
-          { num: "100%", label: "Source code ownership" },
         ]}
       />
 
@@ -1000,6 +1001,7 @@ export default function UIUXDesignV2() {
       {/* ══════════ FOOTER ══════════ */}
       </main>
 
+            <StructuredData type="Service" data={serviceInfo("/services/ui-ux-design")} />
             <FooterV2 />
     </div>
   );

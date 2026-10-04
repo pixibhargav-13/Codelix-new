@@ -3,6 +3,7 @@ import { trackLead } from "../../lib/analytics";
 import { X, Calendar as CalendarIcon, Clock, ChevronRight, ChevronLeft, CheckCircle2 } from "lucide-react";
 import { useLenis } from 'lenis/react';
 import "./BookingModal.css";
+import { bookingAnchorFor, OPEN_BOOKING_EVENT } from "./bookingTrigger";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES } from "../HomepageV2/footerData";
 
 const TIME_SLOTS = [
@@ -17,7 +18,7 @@ const TIME_SLOTS = [
   "06:00 PM",
 ];
 
-export default function BookingModal() {
+export default function BookingModal({ openOnMount = false }) {
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState(1); // 1: Date & Time, 2: Form, 3: Success
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -49,30 +50,22 @@ export default function BookingModal() {
     };
 
     const handleGlobalClick = (e) => {
-      // Find closest anchor tag
-      const anchor = e.target.closest("a");
-      if (anchor) {
-        const href = anchor.getAttribute("href");
-        if (href === "/contact") {
-          const isNavCta = anchor.classList.contains("v2-nav-cta");
-          const isContactButton = anchor.textContent?.trim().toLowerCase().includes("book");
-
-          if (isNavCta || isContactButton) {
-            e.preventDefault();
-            handleOpen();
-          }
-        }
+      if (bookingAnchorFor(e)) {
+        e.preventDefault();
+        handleOpen();
       }
     };
 
-    window.addEventListener("open-booking-modal", handleOpen);
+    window.addEventListener(OPEN_BOOKING_EVENT, handleOpen);
     document.addEventListener("click", handleGlobalClick, { capture: true });
+    /* mounted by the click that asked for it (see BookingGate in App.jsx) */
+    if (openOnMount) handleOpen();
 
     return () => {
-      window.removeEventListener("open-booking-modal", handleOpen);
+      window.removeEventListener(OPEN_BOOKING_EVENT, handleOpen);
       document.removeEventListener("click", handleGlobalClick, { capture: true });
     };
-  }, []);
+  }, [openOnMount]);
 
   // Lock scroll
   useEffect(() => {

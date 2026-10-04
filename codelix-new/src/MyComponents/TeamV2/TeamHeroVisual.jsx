@@ -9,7 +9,7 @@ import "./TeamHeroVisual.css";
 
 const STATS = [
   { value: "40+", label: "Projects shipped" },
-  { value: "100%", label: "Source-code ownership" },
+  { value: "11", label: "Industries served" },
   { value: "2", label: "Founders — zero layers" },
   { value: "24h", label: "Response time" },
 ];

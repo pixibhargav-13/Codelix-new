@@ -15,40 +15,40 @@ import TechHeroVisual from "./TechHeroVisual";
 
 /* real tools — same source of truth as ToolsAndTechUsed.jsx, not a new/
    invented stack list */
-import reactLogo from "../Images/react.png";
-import angularLogo from "../Images/angular.png";
-import bootstrapLogo from "../Images/bootstrap.png";
-import nust from "../Images/nust.png";
-import vueLogo from "../Images/vue.png";
-import tsLogo from "../Images/typescript.png";
-import jsLogo from "../Images/javascript.png";
-import viteLogo from "../Images/vite.png";
-import tailwindLogo from "../Images/tailwind.png";
-import nextLogo from "../Images/next.png";
-import nodeLogo from "../Images/node.png";
-import laravelLogo from "../Images/laravel.png";
-import phpLogo from "../Images/php.png";
-import pythonLogo from "../Images/python.png";
-import springLogo from "../Images/springboot.png";
-import javaLogo from "../Images/java.png";
-import dockerLogo from "../Images/docker.png";
-import djangoLogo from "../Images/django.png";
-import csharpLogo from "../Images/csharp.png";
-import postgresqlLogo from "../Images/postgresql.png";
-import figmaLogo from "../Images/figma.png";
-import adobeXdLogo from "../Images/adobe-xd.png";
-import sketchLogo from "../Images/sketch.png";
-import framerLogo from "../Images/framer.png";
-import canvaLogo from "../Images/canva.png";
-import flutterLogo from "../Images/flutter.png";
-import androidLogo from "../Images/android.png";
-import swiftLogo from "../Images/swift.png";
-import shopifyLogo from "../Images/shopify.png";
-import woocommerceLogo from "../Images/woocommerce.png";
-import webflowLogo from "../Images/webflow.png";
-import n8nLogo from "../Images/n8n.png";
-import zapierLogo from "../Images/zapier.png";
-import makeLogo from "../Images/make.png";
+import reactLogo from "../Images/react.webp";
+import angularLogo from "../Images/angular.webp";
+import bootstrapLogo from "../Images/bootstrap.webp";
+import nust from "../Images/nust.webp";
+import vueLogo from "../Images/vue.webp";
+import tsLogo from "../Images/typescript.webp";
+import jsLogo from "../Images/javascript.webp";
+import viteLogo from "../Images/vite.webp";
+import tailwindLogo from "../Images/tailwind.webp";
+import nextLogo from "../Images/next.webp";
+import nodeLogo from "../Images/node.webp";
+import laravelLogo from "../Images/laravel.webp";
+import phpLogo from "../Images/php.webp";
+import pythonLogo from "../Images/python.webp";
+import springLogo from "../Images/springboot.webp";
+import javaLogo from "../Images/java.webp";
+import dockerLogo from "../Images/docker.webp";
+import djangoLogo from "../Images/django.webp";
+import csharpLogo from "../Images/csharp.webp";
+import postgresqlLogo from "../Images/postgresql.webp";
+import figmaLogo from "../Images/figma.webp";
+import adobeXdLogo from "../Images/adobe-xd.webp";
+import sketchLogo from "../Images/sketch.webp";
+import framerLogo from "../Images/framer.webp";
+import canvaLogo from "../Images/canva.webp";
+import flutterLogo from "../Images/flutter.webp";
+import androidLogo from "../Images/android.webp";
+import swiftLogo from "../Images/swift.webp";
+import shopifyLogo from "../Images/shopify.webp";
+import woocommerceLogo from "../Images/woocommerce.webp";
+import webflowLogo from "../Images/webflow.webp";
+import n8nLogo from "../Images/n8n.webp";
+import zapierLogo from "../Images/zapier.webp";
+import makeLogo from "../Images/make.webp";
 import NavbarV2 from "../Shared/NavbarV2";
 import FaqSection from '../Shared/FaqSection';
 import CtaSection from '../Shared/CtaSection';
@@ -98,13 +98,11 @@ const CATEGORIES = ["All", "Frontend", "Backend", "Mobile", "Design", "E-Commerc
 const TENETS = [
   { n: "01", claim: "Picked per project, not one-size-fits-all.", body: "The stack follows the problem — a marketing site and a real-time dashboard don't reach for the same tools, and we don't force them to." },
   { n: "02", claim: "Production-proven, not resume-driven.", body: "Everything listed here has shipped in a real client project — nothing is on this page because it's trendy." },
-  { n: "03", claim: "Yours to take anywhere, no lock-in.", body: "Whatever we build with, you get full source-code ownership on delivery — no proprietary framework holding your project hostage." },
 ];
 
 const STATS = [
   { value: STACK.length, suffix: "+", label: "Tools & frameworks", note: "Across the whole delivery stack", ring: 85 },
   { value: 6, suffix: "", label: "Stack categories", note: "Frontend to automation", ring: 60 },
-  { value: 100, suffix: "%", label: "Source-code ownership", note: "Whatever stack we build in", ring: 100 },
 ];
 
 const FAQS = [

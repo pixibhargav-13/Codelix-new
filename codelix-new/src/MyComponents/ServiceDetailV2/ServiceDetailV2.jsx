@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import {
-  Globe, Gauge, Search, ShieldCheck, Smartphone, Wrench,
+  Globe, LayoutDashboard, Gauge, Search, ShieldCheck, Smartphone, Wrench,
   CalendarCheck, Lock, Eye, Check,
   TrendingDown, Clock, EyeOff, Unlink, PhoneOff, Puzzle,
   Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark,
@@ -28,22 +28,22 @@ import CtaSection from "../Shared/CtaSection";
 import ClientStrip from "../Shared/ClientStrip";
 
 /* web-specific stack subset */
-import techReact from "../Images/react.png";
-import techNext from "../Images/next.png";
-import techTs from "../Images/typescript.png";
-import techJs from "../Images/javascript.png";
-import techVite from "../Images/vite.png";
-import techTailwind from "../Images/tailwind.png";
-import techBootstrap from "../Images/bootstrap.png";
-import techNode from "../Images/node.png";
-import techLaravel from "../Images/laravel.png";
-import techPhp from "../Images/php.png";
-import techPostgres from "../Images/postgresql.png";
-import techMongo from "../Images/MongoDB.png";
-import techAws from "../Images/AWS.png";
-import techDocker from "../Images/docker.png";
-import techFigma from "../Images/figma.png";
-import techWebflow from "../Images/webflow.png";
+import techReact from "../Images/react.webp";
+import techNext from "../Images/next.webp";
+import techTs from "../Images/typescript.webp";
+import techJs from "../Images/javascript.webp";
+import techVite from "../Images/vite.webp";
+import techTailwind from "../Images/tailwind.webp";
+import techBootstrap from "../Images/bootstrap.webp";
+import techNode from "../Images/node.webp";
+import techLaravel from "../Images/laravel.webp";
+import techPhp from "../Images/php.webp";
+import techPostgres from "../Images/postgresql.webp";
+import techMongo from "../Images/MongoDB.webp";
+import techAws from "../Images/AWS.webp";
+import techDocker from "../Images/docker.webp";
+import techFigma from "../Images/figma.webp";
+import techWebflow from "../Images/webflow.webp";
 
 /* real project screenshots — shared source of truth with WorkV2/CaseStudyV2 */
 import { PROJECTS } from "../WorkV2/projectsData";
@@ -76,7 +76,6 @@ const PROBLEMS = [
   { icon: Unlink, pain: "We can't update anything ourselves.", fix: "A CMS your team can genuinely use, plus documentation and a walkthrough at handover." },
   { icon: TrendingDown, pain: "Traffic comes, but nobody converts.", fix: "We design backwards from the action you want, then cut every step that isn't earning its place." },
   { icon: PhoneOff, pain: "It falls apart on mobile.", fix: "Designed and tested small-screen-first, across real devices — not a desktop layout squeezed down." },
-  { icon: Puzzle, pain: "Our last developer disappeared.", fix: "You get the repo, the docs, and the credentials. No lock-in, no dependency on us to keep it running." },
 ];
 
 /* who this service is actually for */
@@ -99,19 +98,16 @@ const BENCHMARKS = [
 
 /* the actual artifacts handed over — concrete, not vague promises */
 const HANDOVER = [
-  { icon: FileCode2, title: "Full source code", body: "The complete repository, with clean commit history — yours to keep, fork, or hand to another team." },
-  { icon: GitBranch, title: "Repository access", body: "Transferred to your organisation account, with branch history and CI configuration intact." },
-  { icon: BookOpen, title: "Technical documentation", body: "Setup, architecture, environment variables, and deployment steps written for a developer who's never seen it." },
-  { icon: KeyRound, title: "Credentials & accounts", body: "Hosting, domain, analytics, and any third-party keys — registered in your name from the start." },
-  { icon: Palette, title: "Design files", body: "The Figma project with components and styles, so future work doesn't start from a screenshot." },
-  { icon: Server, title: "Deployment setup", body: "Live environment configured and documented, with a runbook for redeploying it yourself." },
+  { icon: Globe, title: "Domain access", body: "Your domain is registered in your name, with full access to it — DNS, renewals, and transfers stay in your hands." },
+  { icon: LayoutDashboard, title: "Admin access", body: "A login to the admin panel, so your team can manage content without touching code." },
+  { icon: BookOpen, title: "User guide & walkthrough", body: "A plain-language guide to running it day to day, plus a live walkthrough for your team at handover." },
+  { icon: Palette, title: "Design files", body: "The Figma project with components and styles, so future design work doesn't start from a screenshot." },
 ];
 
 /* how we stack up against what a buyer is realistically comparing us to.
    `vals` order = [Codelix, Template/builder, Freelancer, Large agency] */
 const COMPARE_COLS = ["Codelix", "Template / builder", "Freelancer", "Large agency"];
 const COMPARE_ROWS = [
-  { label: "100% source-code ownership", vals: ["yes", "partial", "maybe", "partial"] },
   { label: "Timeline you can hold us to", vals: ["yes", "yes", "no", "partial"] },
   { label: "Built for your exact workflow", vals: ["yes", "no", "maybe", "yes"] },
   { label: "One team, one point of contact", vals: ["yes", "no", "yes", "no"] },
@@ -146,7 +142,7 @@ const INCLUDED = [
   { icon: Search, title: "Technical SEO groundwork", body: "Semantic markup, metadata, sitemaps, structured data, and clean URLs — so the site is findable the day it launches." },
   { icon: Smartphone, title: "Responsive across devices", body: "Designed and tested from small phones up to wide desktops. No 'mobile version' bolted on afterwards." },
   { icon: ShieldCheck, title: "Security & hardening", body: "HTTPS, input validation, dependency auditing, and sensible headers configured before anything goes live." },
-  { icon: Wrench, title: "CMS & handover", body: "An admin you can actually use, plus documentation and deployment details so your team owns it fully." },
+  { icon: Wrench, title: "CMS & handover", body: "An admin you can actually use, plus a guide and walkthrough for your team." },
 ];
 
 /* the interactive estimator's option sets */
@@ -186,7 +182,6 @@ const RELATED = PROJECTS
 
 const PRINCIPLES = [
   { key: "Delivered", icon: CalendarCheck, claim: "No deadline we don't hold ourselves to.", body: "We pad the schedule honestly upfront so we don't have to renegotiate halfway through. If we say a date, we hit it." },
-  { key: "Owned", icon: Lock, claim: "No code you don't fully own.", body: "When the invoice is paid, the code is yours. We hand over the repos, the docs, and the keys. No vendor lock-in." },
   { key: "Visible", icon: Eye, claim: "No progress you can't see.", body: "We don't go dark for a month and come back with a surprise. You see the work as it happens, so we can course-correct early." },
 ];
 
@@ -194,17 +189,16 @@ const FAQS = [
   { q: "How long does a website take to build?", a: "A focused landing page is usually 2–3 weeks. A full marketing site with a CMS runs 4–8 weeks. Web applications depend heavily on scope — use the estimator above for a rough range, then we'll firm it up on a call." },
   { q: "Do you redesign existing websites?", a: "Yes. We'll audit what you have first — sometimes the right answer is a rebuild, sometimes it's targeted fixes to performance and conversion. We'll tell you honestly which one you need." },
   { q: "Will I be able to update the site myself?", a: "Yes, if you want a CMS we'll build one you can actually use, and walk your team through it at handover. If you'd rather we handle updates, that's what the support retainer is for." },
-  { q: "Do you handle hosting and domains?", a: "We can deploy to your hosting or set up new infrastructure on AWS or similar. Either way you own the accounts — we don't hold your domain or hosting hostage." },
+  { q: "Do you handle hosting and domains?", a: "Yes. We set up and manage the hosting for you, and your domain is registered in your name with full access to it — we never hold your domain hostage." },
   { q: "Is SEO included?", a: "Technical SEO is — semantic markup, metadata, structured data, sitemaps, speed. Ongoing content strategy and link building are separate, though we can advise." },
-  { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that you can take it in-house with the docs we provide, or keep us on a monthly retainer." },
+  { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that, you can keep us on a monthly retainer for updates, fixes, and support." },
 ];
 
 const SENTENCE = [
-  "YOU GET THE SOURCE.",
-  "YOU GET THE SERVER.",
   "YOU GET THE DOMAIN.",
-  "NO LOCK-IN.",
-  "NO LICENSE GAMES.",
+  "YOU GET THE ADMIN.",
+  "FIXED SCOPE.",
+  "FIXED PRICE.",
 ];
 
 /* scroll-scrubbed word reveal — identical mechanism to HomepageV2 / ServicesV2
@@ -212,6 +206,8 @@ const SENTENCE = [
    its own word list/timing without a shared-component refactor) */
 import { useTestimonials } from "../../data/useTestimonials";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
+import { StructuredData } from "../../components/StructuredData";
+import { serviceInfo } from "../../lib/serviceSchema";
 const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
 
 
@@ -438,8 +434,7 @@ export default function ServiceDetailV2() {
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">
                 We build high-performance websites and web applications with clean,
-                hand-written code — designed to convert visitors into customers, and
-                handed over with full source-code ownership.
+                hand-written code — designed to convert visitors into customers.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
                 <Link className="v2-btn v2-btn--filled" to="/contact">
@@ -457,7 +452,6 @@ export default function ServiceDetailV2() {
               {[
                 ["Typical timeline", "2–12 weeks"],
                 ["Starts with", "Discovery call"],
-                ["You receive", "100% source code"],
                 ["Post-launch", "Support included"],
               ].map(([k, v]) => (
                 <div className="sd2-fact" key={k}>
@@ -662,7 +656,6 @@ export default function ServiceDetailV2() {
               <ul className="sd2-est-list">
                 <li><Check size={13} strokeWidth={2.4} /> Design + build + QA included</li>
                 <li><Check size={13} strokeWidth={2.4} /> Fixed price once scoped</li>
-                <li><Check size={13} strokeWidth={2.4} /> Full source-code handover</li>
               </ul>
               <Link className="v2-btn" to="/contact">Get an exact quote →</Link>
             </aside>
@@ -770,7 +763,6 @@ export default function ServiceDetailV2() {
         stats={[
           { num: "40+", label: "Companies trust us" },
           { num: "11", label: "Industries served" },
-          { num: "100%", label: "Source code ownership" },
         ]}
       />
 
@@ -805,7 +797,7 @@ export default function ServiceDetailV2() {
             <h2 className="v2-heading">Everything, at handover.</h2>
           </div>
           <p className="v2-lede">
-            "You own the code" is easy to say. Here is the exact list of what
+            Here is the exact list of what
             lands in your accounts when the project closes.
           </p>
         </div>
@@ -842,7 +834,6 @@ export default function ServiceDetailV2() {
             <span className="sd2-manifest-seal"><Check size={13} strokeWidth={3} /></span>
             <span>
               Everything above transfers to your accounts when the project closes.
-              <b> No lock-in, no retained access, no dependency on us.</b>
             </span>
           </div>
         </div>
@@ -970,6 +961,7 @@ export default function ServiceDetailV2() {
       {/* ══════════ FOOTER ══════════ */}
       </main>
 
+            <StructuredData type="Service" data={serviceInfo("/services/web-development")} />
             <FooterV2 />
     </div>
   );

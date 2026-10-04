@@ -58,8 +58,6 @@ const STATIC_QUOTES = [
 const TICKER_FACTS = [
   "11 industries served",
   "40+ projects across sectors",
-  "100% source-code ownership, every project",
-  "0% retained access after handover",
   "Fixed scope, fixed price",
 ];
 
@@ -247,9 +245,8 @@ export default function IndustryDetailV2() {
   const faqs = [
     { q: `Do you have real experience in ${svc.title.toLowerCase()}?`, a: `Yes — ${svc.title} is one of the sectors we take on repeat work in, not a first attempt. See the problems and process above for what that looks like in practice.` },
     { q: "How is this priced?", a: "Fixed scope, fixed price — you get a written quote before any work starts, based on what you actually need, not an hourly guess." },
-    { q: "Do we own the code and IP when it's done?", a: "Yes — 100% source-code ownership transfers to you at project close. No retained access, no dependency on us to keep it running." },
     { q: "We're not exactly this sector — can you still help?", a: "Almost certainly. This page describes where we have the deepest repeat experience, not a hard boundary. Tell us what you're building and we'll tell you honestly if it's a fit." },
-    { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that you can take it in-house with the docs we provide, or keep us on a monthly retainer." },
+    { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that, you can keep us on a monthly retainer for updates, fixes, and support." },
   ];
 
   return (
@@ -296,7 +293,6 @@ export default function IndustryDetailV2() {
               {[
                 ["Sector", svc.title],
                 ["Typical timeline", "2–12 weeks"],
-                ["You receive", "100% source code"],
                 ["Post-launch", "Support included"],
               ].map(([k, v]) => (
                 <div className="sd2-fact" key={k}>
@@ -403,10 +399,6 @@ export default function IndustryDetailV2() {
                 <dt><Timer size={14} strokeWidth={1.8} /> Typical timeline</dt>
                 <dd>2–12 weeks, scope-dependent</dd>
               </div>
-              <div>
-                <dt><KeyRound size={14} strokeWidth={1.8} /> Ownership on close</dt>
-                <dd>100% source code, no retained access</dd>
-              </div>
             </dl>
           </div>
         </div>
@@ -468,7 +460,6 @@ export default function IndustryDetailV2() {
         stats={[
           { num: "11", label: "Industries served" },
           { num: "40+", label: "Projects across sectors" },
-          { num: "100%", label: "Source code ownership" },
         ]}
       />
 
