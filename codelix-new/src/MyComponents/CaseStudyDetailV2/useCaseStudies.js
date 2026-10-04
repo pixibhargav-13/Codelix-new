@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { supabase } from "../../lib/supabaseClient";
+import { selectRows } from "../../lib/supabaseRest";
 import { CASE_STUDIES as staticCaseStudies } from "./caseStudiesData";
 import { InitialDataContext } from "../../lib/initialDataContext";
 
@@ -18,11 +18,7 @@ export function useCaseStudies() {
   useEffect(() => {
 
     let active = true;
-    supabase
-      .from("case_studies")
-      .select("*")
-      .eq("published", true)
-      .order("published_at", { ascending: false })
+    selectRows("case_studies", { eq: { published: true }, order: { column: "published_at", ascending: false } })
       .then(({ data, error }) => {
         /* An unmounted component is not a failure — it just means the
            reader navigated away before the request came back, which happens

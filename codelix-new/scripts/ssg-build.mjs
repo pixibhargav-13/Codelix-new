@@ -5,6 +5,7 @@ import { createClient } from "@supabase/supabase-js";
 import jsesc from "jsesc";
 import { getGeneratedRoutes } from "../src/lib/route-config.js";
 import { seoData } from "../src/lib/seoData.js";
+import { INTRO_MEDIA, INTRO_SEEN_KEY } from "../src/lib/introGate.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -121,6 +122,13 @@ async function build() {
   ];
 
   const allRoutes = [...new Set([...staticRoutes, ...dynamicRoutes])]; // Unique routes
+
+  /* No route matches this path, so it renders NotFound (noindex) and is
+     written to dist/404.html. Vercel serves that file with a real 404 status
+     for any URL that isn't a prerendered page — previously vercel.json sent
+     every unknown URL to the homepage with a 200, which Google reports as a
+     soft 404 and which handed junk URLs an indexable copy of the homepage. */
+  const NOT_FOUND_ROUTE = "/404";
   
   // 4. Load the generated HTML template and SSR render function
   const templatePath = path.resolve(__dirname, "../dist/index.html");
@@ -139,7 +147,7 @@ async function build() {
     wrap: true
   });
 
-  for (const url of allRoutes) {
+  for (const url of [...allRoutes, NOT_FOUND_ROUTE]) {
     try {
       const { appHtml, helmet } = render(url, initialData);
 
@@ -207,14 +215,19 @@ async function build() {
          homepage. This paints the plate in the markup itself, before any JS
          runs, and PageLoader removes it once its own plate is on screen.
          Homepage only: every other route must never be covered. The inline
-         timeout is a safety net so a JS failure can't leave the site hidden. */
+         timeout is a safety net so a JS failure can't leave the site hidden.
+
+         The plate only shows where the intro will actually play — desktop
+         (INTRO_MEDIA), first visit this session. Anywhere else it used to
+         cover the prerendered page until the JS had loaded and hydrated,
+         holding back the first paint for nothing. */
       if (url === "/") {
         html = html.replace(
           "<body>",
           `<body>
-  <style>#pl-preboot{position:fixed;inset:0;z-index:9998;background:#050507}</style>
+  <style>#pl-preboot{display:none}@media ${INTRO_MEDIA}{#pl-preboot{display:block;position:fixed;inset:0;z-index:9998;background:#050507}}</style>
   <div id="pl-preboot"></div>
-  <script>setTimeout(function(){var e=document.getElementById('pl-preboot');if(e&&e.parentNode)e.parentNode.removeChild(e);},4000)</script>`
+  <script>(function(){var e=document.getElementById('pl-preboot');function rm(){if(e&&e.parentNode)e.parentNode.removeChild(e);}try{if(sessionStorage.getItem(${JSON.stringify(INTRO_SEEN_KEY)})==="1")rm();}catch(x){}setTimeout(rm,4000);})()</script>`
         );
       }
 
@@ -223,6 +236,12 @@ async function build() {
         '</body>',
         `<script>window.__INITIAL_DATA__ = ${safeInitialData};</script>\n</body>`
       );
+
+      if (url === NOT_FOUND_ROUTE) {
+        fs.writeFileSync(path.resolve(__dirname, "../dist/404.html"), html);
+        console.log(`✅ Prerendered 404.html`);
+        continue;
+      }
 
       // Save to physical file
       const isRoot = url === "/";

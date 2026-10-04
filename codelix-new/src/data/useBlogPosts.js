@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { supabase } from "../lib/supabaseClient";
+import { selectRows } from "../lib/supabaseRest";
 import { blogs as staticBlogs } from "./blogData";
 import { InitialDataContext } from "../lib/initialDataContext";
 
@@ -45,11 +45,7 @@ export function useBlogPosts() {
   useEffect(() => {
     
     let active = true;
-    supabase
-      .from("blog_posts")
-      .select("*")
-      .eq("published", true)
-      .order("published_at", { ascending: false })
+    selectRows("blog_posts", { eq: { published: true }, order: { column: "published_at", ascending: false } })
       .then(({ data, error }) => {
         if (!active) return;
         setLoading(false);

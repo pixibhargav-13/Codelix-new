@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../lib/supabaseClient";
+import { selectRows } from "../lib/supabaseRest";
 
 /* schema.sql seeds the testimonials table with the same 5 real quotes
    already hardcoded here, so once Supabase returns rows they REPLACE the
@@ -11,11 +11,7 @@ export function useTestimonials(staticTestimonials) {
 
   useEffect(() => {
     let active = true;
-    supabase
-      .from("testimonials")
-      .select("*")
-      .eq("is_featured", true)
-      .order("sort_order", { ascending: true })
+    selectRows("testimonials", { eq: { is_featured: true }, order: { column: "sort_order", ascending: true } })
       .then(({ data, error }) => {
         if (!active || error || !data || data.length === 0) return;
         setTestimonials(

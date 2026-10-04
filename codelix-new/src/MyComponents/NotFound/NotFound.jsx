@@ -13,6 +13,7 @@ const NotFound = () => {
         title="Page Not Found | Codelix IT Solutions"
         description="The page you're looking for doesn't exist or has been moved. Browse our services or return to the homepage."
         keywords="404, page not found"
+        robots="noindex, follow"
       />
       <div className="v2 not-found-page">
         <div className="not-found-hero-section">

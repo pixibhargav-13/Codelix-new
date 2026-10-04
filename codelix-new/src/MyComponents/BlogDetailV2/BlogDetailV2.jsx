@@ -21,6 +21,7 @@ import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from '../Shared/CtaSection';
 import { StructuredData } from "../../components/StructuredData";
 import { SEO } from "../../components/SEO";
+import { fitTitle } from "../../lib/fitTitle.js";
 
 
 export default function BlogDetailV2() {
@@ -113,7 +114,7 @@ export default function BlogDetailV2() {
           picture on four unrelated posts - worse than the house card, which
           at least does not claim to depict the article. */}
       <SEO
-        title={`${blog.title} | Codelix IT Solutions`}
+        title={fitTitle(blog.title, [" | Codelix IT Solutions", " | Codelix"])}
         description={blog.excerpt || blog.subtitle || `Read ${blog.title} on Codelix IT Solutions.`}
         image={blog.coverImage}
         type="article"

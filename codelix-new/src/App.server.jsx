@@ -101,7 +101,7 @@ const LenisGsapSync = () => {
 
 import { SEO } from "./components/SEO";
 
-import { seoData, defaultSEO } from "./lib/seoData";
+import { seoData } from "./lib/seoData";
 
 const RouteSEO = () => {
   const location = useLocation();
@@ -130,7 +130,10 @@ const RouteSEO = () => {
     }
   }
 
-  const currentSEO = seoData[path] || defaultSEO;
+  /* An unknown path renders NotFound, which sets its own noindex tags;
+     the generic defaults here would contradict them with index, follow. */
+  const currentSEO = seoData[path];
+  if (!currentSEO) return null;
 
   return <SEO title={currentSEO.title} ogTitle={currentSEO.ogTitle} description={currentSEO.description} robots={currentSEO.robots} image={currentSEO.image} />;
 };

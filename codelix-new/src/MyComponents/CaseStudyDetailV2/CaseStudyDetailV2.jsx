@@ -21,6 +21,7 @@ import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from '../Shared/CtaSection';
 import { StructuredData } from "../../components/StructuredData";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
+import { fitTitle } from "../../lib/fitTitle.js";
 
 
 /* the mask-line wipe animation (shared with every other v2 hero) only
@@ -135,7 +136,7 @@ export default function CaseStudyDetailV2() {
   return (
     <div className="v2" ref={rootRef}>
       <SEO
-        title={`${cs.title} | Case Study | Codelix`}
+        title={fitTitle(cs.title, [" | Case Study | Codelix", " | Codelix"])}
         description={cs.description || `Read about how we solved ${cs.title} at Codelix IT Solutions.`}
         image={cs.coverImage || cs.ogImage}
       />

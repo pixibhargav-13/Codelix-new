@@ -1,9 +1,31 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { fileURLToPath } from 'node:url'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ command, isSsrBuild }) => ({
   plugins: [react()],
+  resolve: {
+    alias: [
+      /* react-router 7's package.json maps every import condition to its
+         dist/development build, so production bundles shipped the dev
+         build — larger, and running dev-only checks on every navigation.
+         The production build has the identical export list. Exact match
+         only; react-router-dom re-exports it, so both resolve to this copy.
+
+         Client production build only. The SSR build leaves node_modules
+         external, so Node loads react-router-dom and its own react-router
+         there; aliasing the app's imports to a second copy gave the router
+         two contexts and every useLocation() failed. The dev server keeps
+         the development build for its warnings. */
+      ...(command === "build" && !isSsrBuild
+        ? [{
+            find: /^react-router$/,
+            replacement: fileURLToPath(new URL("./node_modules/react-router/dist/production/index.mjs", import.meta.url)),
+          }]
+        : []),
+    ],
+  },
   build: {
     cssCodeSplit: false,
     rollupOptions: {
@@ -41,7 +63,10 @@ export default defineConfig({
              ClientStrip, …) were each their own sub-2KB request; they import
              each other, so keeping them in ONE chunk also avoids any
              cross-chunk init-order problem */
-          if (id.includes('/MyComponents/Shared/')) return 'site-shared';
+          /* PageLoader is the exception: it is imported lazily, for desktop
+             first visits only, and grouping it here would load it eagerly
+             on every page anyway */
+          if (id.includes('/MyComponents/Shared/') && !id.includes('/Shared/PageLoader')) return 'site-shared';
           if (id.includes('/lib/splitTitleLines') || id.includes('/lib/introGate')) return 'site-shared';
           if (
             id.includes('/MyComponents/HomepageV2/techStack') ||
@@ -54,4 +79,4 @@ export default defineConfig({
       },
     },
   },
-})
+}))

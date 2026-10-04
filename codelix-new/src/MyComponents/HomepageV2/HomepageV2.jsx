@@ -1,6 +1,6 @@
 import { STATIC_TESTIMONIALS } from '../../data/testimonialsData';
 import { useTestimonials } from "../../data/useTestimonials";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState, lazy, Suspense } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -32,7 +32,11 @@ import { PRODUCTS } from "../ProductsV2/productsData";
 
 import "./HomepageV2.css";
 import NavbarV2 from "../Shared/NavbarV2";
-import PageLoader from "../Shared/PageLoader";
+/* Only desktop first visits play the intro, so phones and repeat visits
+   never download it. Mounted after hydration (see showIntro below): the
+   server rendered nothing here, and a Suspense boundary appearing during
+   hydration would not match that markup. */
+const PageLoader = lazy(() => import("../Shared/PageLoader"));
 import { introWillPlay, onIntroHandoff } from "../../lib/introGate";
 import FooterV2 from "../Shared/FooterV2";
 import HeroVisual from "./HeroVisual";
@@ -41,6 +45,7 @@ import FaqSection from "../Shared/FaqSection";
 import ScrollSentence from "../Shared/ScrollSentence";
 import CtaSection from "../Shared/CtaSection";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
+import { idleEffect } from "../../lib/whenIdle.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,6 +63,12 @@ const ease = (p) => p * p * p * (p * (p * 6 - 15) + 10);
    pixel, the text moves a pixel; scroll back, it reverses. */
 /* Core workflow declarations */
 const DECLARATIONS = ["PLAN.", "BUILD.", "SCALE."];
+
+/* Module scope: false until the homepage first mounts in this page load.
+   Together with the load's own URL it tells the hero effect whether it is
+   hydrating the prerendered "/" (hero already painted) or mounting a fresh
+   hero after a client-side navigation. */
+let heroMountedThisLoad = false;
 
 const STATEMENTS = [
   { label: "PLAN.", body: "We don't just take orders. We sit with your team, map out the edge cases, and design an architecture that won't paint you into a corner six months from now." },
@@ -180,6 +191,7 @@ const FAQS = [
 export default function HomepageV2() {
   const TESTIMONIALS = useTestimonials(STATIC_TESTIMONIALS);
   const navigate = useNavigate();
+  const [showIntro, setShowIntro] = useState(false);
   // FAQ items' className is recomputed on every click (for the "open" class),
   // which makes React rewrite that element's className attribute — wiping out
   // an "is-in" class added imperatively by the scroll-reveal observer below.
@@ -230,18 +242,24 @@ export default function HomepageV2() {
      leaving some rows' true trigger point stale (already passed, or never
      reached) and permanently unrevealed. One shared refresh, once real
      layout has settled, recalculates every trigger on the page at once. */
+  /* Each refresh re-measures every trigger, i.e. a full layout of a ~20000px
+     page — about 0.3s on a mid-range phone. The window "load" refresh is
+     left to ScrollTrigger, which already refreshes on load by default (doing
+     it here too ran it twice), and the remaining requests are coalesced so
+     fonts.ready and the trailing timer can't stack two back to back. */
   useEffect(() => {
-    const refresh = () => ScrollTrigger.refresh();
+    let pending = 0;
+    const refresh = () => {
+      clearTimeout(pending);
+      pending = setTimeout(() => ScrollTrigger.refresh(), 150);
+    };
     document.fonts?.ready?.then(refresh);
-    window.addEventListener("load", refresh);
-    // images/marquee logos etc. finish arriving well after mount; a couple of
-    // trailing refreshes catches layout shift from anything still loading
-    const t1 = setTimeout(refresh, 800);
-    const t2 = setTimeout(refresh, 2000);
+    // images/marquee logos etc. finish arriving well after mount; one
+    // trailing refresh catches layout shift from anything still loading
+    const trailing = setTimeout(refresh, 2000);
     return () => {
-      window.removeEventListener("load", refresh);
-      clearTimeout(t1);
-      clearTimeout(t2);
+      clearTimeout(pending);
+      clearTimeout(trailing);
     };
   }, []);
 
@@ -249,11 +267,30 @@ export default function HomepageV2() {
      When the session intro is running this must NOT start on mount: it
      would play out behind the loader's plate and reveal an already
      finished, static hero. It's held paused and released by the loader
-     as the plate begins clearing, so the wipe happens in view. */
-  useEffect(() => {
+     as the plate begins clearing, so the wipe happens in view.
+     A layout effect, because the hero copy is visible in the prerendered
+     HTML (see .v2-hero-top in the CSS): the timeline's from-state has to be
+     applied before the first client paint, or the copy flashes, vanishes
+     and then animates in. */
+  useLayoutEffect(() => {
     const held = introWillPlay();
+    const loadUrl = performance.getEntriesByType("navigation")[0]?.name || location.href;
+    const prepainted = !heroMountedThisLoad && new URL(loadUrl).pathname === "/";
+    heroMountedThisLoad = true;
     const q = (s) => rootRef.current.querySelectorAll(s);
     splitTitleLinesIn(rootRef.current, ".v2-hero-title");
+
+    /* No intro on a fresh load (phones, repeat visits): the prerendered hero
+       has been on screen since first paint, often for seconds before this
+       runs on a slow phone. Hiding it now to wipe it back in would blank the
+       copy the visitor is already reading, so just reveal the one element
+       the CSS still hides. Client-side navigation back to "/" mounts a hero
+       nobody has seen yet, so that still gets the entrance. */
+    if (!held && prepainted) {
+      gsap.set(q(".v2-hero-words span"), { opacity: 1 });
+      return;
+    }
+
     const tl = gsap.timeline({
       defaults: { ease: "power4.out" },
       delay: held ? 0 : 0.25,
@@ -271,11 +308,17 @@ export default function HomepageV2() {
 
     const play = () => tl.play();
     const off = onIntroHandoff(play);
+    /* mount the (lazy) loader — queued so it isn't a synchronous re-render
+       from inside this effect; the pre-boot plate covers the page meanwhile */
+    let alive = true;
+    queueMicrotask(() => { if (alive) setShowIntro(true); });
     /* safety net — if the loader ever fails to signal, the hero must
-       still animate rather than sit invisible forever */
-    const failsafe = setTimeout(play, 2600);
+       still animate rather than sit invisible forever. 4s, the same as the
+       pre-boot plate's own fallback, now that the loader's code is fetched
+       on demand rather than already in the page. */
+    const failsafe = setTimeout(play, 4000);
 
-    return () => { tl.kill(); off(); clearTimeout(failsafe); };
+    return () => { alive = false; tl.kill(); off(); clearTimeout(failsafe); };
   }, []);
 
   /* THE handoff — this is not two separate texts (hero fades out, section
@@ -285,8 +328,12 @@ export default function HomepageV2() {
      off getBoundingClientRect at both ends and interpolated every scroll
      frame. The real hero word and the real heading are both hidden while the
      flyer is mid-flight, so only one instance of each word is ever visible —
-     it just happens to be a different element at each end of the trip. */
-  useEffect(() => {
+     it just happens to be a different element at each end of the trip.
+     Set up when idle rather than on mount: its measuring forces a full
+     layout, which on a phone landed inside the already long hydration task.
+     The pinned section below is deferred the same way and, as an effect
+     declared after this one, is still set up after it. */
+  useEffect(() => idleEffect(() => {
     const heroEl = rootRef.current.querySelector(".v2-hero");
     const pinSection = rootRef.current.querySelector(".v2-wr-pin");
     const heroWords = heroWordRefs.current;
@@ -385,7 +432,7 @@ export default function HomepageV2() {
     window.addEventListener("resize", onResize);
     document.fonts?.ready?.then(() => { measure(); st.refresh(); });
     return () => { st.kill(); window.removeEventListener("resize", onResize); };
-  }, []);
+  }), []);
 
   /* body copy fades in right after the heading lands, once the section pins.
      The accent tick (::before) and background ordinal (::after) on each
@@ -394,7 +441,7 @@ export default function HomepageV2() {
      .v2-wr-col element instead, which the CSS reads via var(--wr-decor, 0)
      for their opacity. Same timeline as the body, so both arrive together
      right as each word lands. */
-  useEffect(() => {
+  useEffect(() => idleEffect(() => {
     const ctx = gsap.context(() => {
       const section = rootRef.current.querySelector(".v2-wr-pin");
       const intro = section.querySelector(".v2-wr-intro");
@@ -420,7 +467,7 @@ export default function HomepageV2() {
         .to(cols, { "--wr-decor": 1, ease: "none", stagger: .12 }, "<");
     }, rootRef);
     return () => ctx.revert();
-  }, []);
+  }), []);
 
   /* Reveal-on-enter for every row/heading/label, via IntersectionObserver
      rather than GSAP ScrollTrigger. ScrollTrigger caches a pixel "start"
@@ -639,7 +686,11 @@ export default function HomepageV2() {
 
   return (
     <div className="v2" ref={rootRef}>
-      <PageLoader />
+      {showIntro && (
+        <Suspense fallback={null}>
+          <PageLoader />
+        </Suspense>
+      )}
       <div className="v2-progress" aria-hidden="true"><span /></div>
 
       {/* the travelling clone of DESIGN./BUILD./SCALE. — the real hero words

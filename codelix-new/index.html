@@ -3,13 +3,32 @@
 
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RY4BJQ5095"></script>
+  <!-- gtag() and its queue are set up immediately, so the page view and any
+       event fired before the library arrives are queued in dataLayer and
+       sent once it loads. The library itself is fetched after the page has
+       loaded and gone idle: loaded with the page it ran ~0.8s of main-thread
+       work in the middle of a phone's startup. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-RY4BJQ5095');
+
+    (function () {
+      function loadGtag() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-RY4BJQ5095';
+        document.head.appendChild(s);
+      }
+      function afterIdle() {
+        if ('requestIdleCallback' in window) requestIdleCallback(loadGtag, { timeout: 3000 });
+        else setTimeout(loadGtag, 1500);
+      }
+      if (document.readyState === 'complete') afterIdle();
+      else window.addEventListener('load', afterIdle, { once: true });
+    })();
   </script>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/codelix.svg" />
@@ -17,12 +36,22 @@
 
 
 
+  <!-- The site's own face; the hero copy (the page's LCP element) is set in
+       it. Preloaded so it is fetched alongside the CSS instead of after it. -->
+  <link rel="preload" href="/fonts/NoiGroteskFix-Regular-v1.woff2" as="font" type="font/woff2" crossorigin>
+
   <!-- Google Fonts - Hanken Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
+  <!-- Loaded without blocking render: as a plain stylesheet this request
+       held back the first paint by ~0.9s on mobile. The site's own face
+       (NoiGroteskFix) is bundled; these three only style secondary text, and
+       display=swap already paints a fallback until they arrive. -->
+  <link rel="preload" as="style"
     href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet">
+    onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
   <!-- FontAwesome was removed: it blocked first render for ~240ms and 17.2KiB
        on every page, and the site uses zero fa-* classes (icons come from
        lucide-react instead). If icons are ever needed here again, import them
