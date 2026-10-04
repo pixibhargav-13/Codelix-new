@@ -23,7 +23,6 @@ import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
    elsewhere on the site (HomepageFaq.jsx, ProcessV2, IndustriesV2, WorkV2)
    — compiled into one place, not new/invented answers */
 const FAQS = [
-  { category: "General", q: "Do you provide source code after project completion?", a: "Yes. Once the project is completed and fully paid for, you receive 100% ownership of the source code, along with documentation and deployment details." },
   { category: "General", q: "What if I need changes after the project is delivered?", a: "We offer a revision window after delivery for design or functionality tweaks. For ongoing improvements, we recommend our maintenance plan, which covers updates, enhancements, and tech support." },
   { category: "General", q: "Can you sign an NDA before starting the project?", a: "Of course. We take confidentiality seriously and are happy to sign an NDA before discussing or starting your project to protect your ideas and data." },
   { category: "Pricing & Billing", q: "How does billing work?", a: "Our billing process is simple and transparent. After finalising your project scope, we provide a detailed quotation with milestones. Payments are made in phases: an upfront deposit, followed by milestone-based instalments as work progresses." },

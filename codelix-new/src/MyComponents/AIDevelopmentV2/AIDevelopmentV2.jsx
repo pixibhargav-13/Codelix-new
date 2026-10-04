@@ -55,7 +55,6 @@ const PROBLEMS = [
   { icon: HelpCircle, pain: "We don't know where AI would even help.", fix: "We start with an honest audit of your workflow, not a pitch — some of it won't need AI, and we'll say so." },
   { icon: FileWarning, pain: "We're worried about a black-box system.", fix: "Every system we build is explainable to the people who operate it. No decision your team can't trace back." },
   { icon: AlertTriangle, pain: "A previous AI project never made it to production.", fix: "We scope for what can actually ship and be maintained, not a demo that impresses once and then gets abandoned." },
-  { icon: Users2, pain: "Our last developer disappeared.", fix: "You get the repo, the model configs, and the docs. No lock-in, no dependency on us to keep it running." },
 ];
 
 /* who this service is actually for */
@@ -78,17 +77,13 @@ const BENCHMARKS = [
 
 /* the actual artifacts handed over */
 const HANDOVER = [
-  { icon: FileCode2, title: "Full source code", body: "The complete repository, with clean commit history — yours to keep, fork, or hand to another team." },
-  { icon: GitBranch, title: "Repository access", body: "Transferred to your organisation account, with branch history and CI configuration intact." },
-  { icon: BookOpen, title: "Technical documentation", body: "Setup, architecture, model configuration, and deployment steps written for a developer who's never seen it." },
-  { icon: KeyRound, title: "Credentials & accounts", body: "Hosting, database, and any third-party keys — registered in your name from the start." },
   { icon: Workflow, title: "Decision logic documentation", body: "A plain-language explanation of what the system automates and why, so it's never a black box to your team." },
-  { icon: Server, title: "Deployment setup", body: "Live environment configured and documented, with a runbook for redeploying it yourself." },
+  { icon: BookOpen, title: "User guide & walkthrough", body: "A plain-language guide to running it day to day, plus a live walkthrough for your team at handover." },
+  { icon: KeyRound, title: "Accounts in your name", body: "AI-provider and third-party tool subscriptions registered in your name, so billing and usage stay with you." },
 ];
 
 const COMPARE_COLS = ["Codelix", "Off-the-shelf AI tool", "Freelancer", "Large agency"];
 const COMPARE_ROWS = [
-  { label: "100% source-code ownership", vals: ["yes", "no", "maybe", "partial"] },
   { label: "Timeline you can hold us to", vals: ["yes", "yes", "no", "partial"] },
   { label: "Built for your exact workflow", vals: ["yes", "no", "maybe", "yes"] },
   { label: "Explainable, not a black box", vals: ["yes", "maybe", "maybe", "yes"] },
@@ -121,7 +116,7 @@ const INCLUDED = [
   { icon: Repeat2, title: "Process automation", body: "The repetitive handoff between two systems removed, so a person only touches what needs judgement." },
   { icon: Gauge, title: "Performance & reliability", body: "Response times and uptime held to a target before anything reaches your users, not discovered after launch." },
   { icon: ShieldCheck, title: "Explainability by default", body: "Every automated decision traceable back to a reason — no logic your team can't explain to a customer." },
-  { icon: Wrench, title: "Documentation & handover", body: "Technical docs and a walkthrough your team can actually follow, so you own it fully from day one." },
+  { icon: Wrench, title: "Documentation & handover", body: "Plain-language docs and a walkthrough your team can actually follow." },
 ];
 
 /* the interactive estimator's option sets */
@@ -168,7 +163,6 @@ const RELATED = [14, 5, 2].map((id) => {
 
 const PRINCIPLES = [
   { key: "Delivered", icon: CalendarCheck, claim: "No deadline we don't hold ourselves to.", body: "We pad the schedule honestly upfront so we don't have to renegotiate halfway through. If we say a date, we hit it." },
-  { key: "Owned", icon: Lock, claim: "No code you don't fully own.", body: "When the invoice is paid, the code is yours. We hand over the repos, the docs, and the keys. No vendor lock-in." },
   { key: "Visible", icon: Eye, claim: "No progress you can't see.", body: "We don't go dark for a month and come back with a surprise. You see the work as it happens, so we can course-correct early." },
 ];
 
@@ -178,15 +172,13 @@ const FAQS = [
   { q: "How do you keep the system from making bad decisions?", a: "Every system we build includes human-override paths and is designed to be explainable — no logic your team can't trace back to a reason." },
   { q: "What if the automation gets something wrong?", a: "We build in monitoring and a correction path from day one, and tune the system based on real cases it gets wrong, rather than assuming it's perfect at launch." },
   { q: "Can this integrate with our existing tools?", a: "Yes. We regularly connect CRMs, support platforms, and internal databases so automation reads and writes to your systems, not a separate silo." },
-  { q: "What happens after launch?", a: "Every project includes a post-launch support window for monitoring and tuning. After that you can take it in-house with the docs we provide, or keep us on a monthly retainer." },
+  { q: "What happens after launch?", a: "Every project includes a post-launch support window for monitoring and tuning. After that, you can keep us on a monthly retainer for updates, fixes, and support." },
 ];
 
 const SENTENCE = [
-  "YOU GET THE SOURCE.",
-  "YOU GET THE LOGIC.",
-  "YOU GET THE SERVER.",
+  "EVERY DECISION EXPLAINED.",
   "NO BLACK BOXES.",
-  "NO LOCK-IN.",
+  "FIXED PRICE.",
 ];
 
 /* scroll-scrubbed word reveal — identical mechanism to ServiceDetailV2's copy,
@@ -438,7 +430,7 @@ export default function AIDevelopmentV2() {
               <p className="sd2-hero-sub sv2-hero-reveal">
                 We build AI agents and automation with clean, hand-written code —
                 explainable by default, aimed at the repetitive handoff between
-                your tools, and handed over with full source-code ownership.
+                your tools.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
                 <Link className="v2-btn v2-btn--filled" to="/contact">
@@ -455,7 +447,6 @@ export default function AIDevelopmentV2() {
               {[
                 ["Typical timeline", "2–10 weeks"],
                 ["Starts with", "Workflow audit"],
-                ["You receive", "100% source code"],
                 ["Post-launch", "Support included"],
               ].map(([k, v]) => (
                 <div className="sd2-fact" key={k}>
@@ -657,7 +648,6 @@ export default function AIDevelopmentV2() {
               <ul className="sd2-est-list">
                 <li><Check size={13} strokeWidth={2.4} /> Design + build + QA included</li>
                 <li><Check size={13} strokeWidth={2.4} /> Fixed price once scoped</li>
-                <li><Check size={13} strokeWidth={2.4} /> Full source-code handover</li>
               </ul>
               <Link className="v2-btn" to="/contact">Get an exact quote →</Link>
             </aside>
@@ -787,7 +777,6 @@ export default function AIDevelopmentV2() {
         stats={[
           { num: "40+", label: "Companies trust us" },
           { num: "11", label: "Industries served" },
-          { num: "100%", label: "Source code ownership" },
         ]}
       />
 
@@ -828,7 +817,7 @@ export default function AIDevelopmentV2() {
             <h2 className="v2-heading">Everything, at handover.</h2>
           </div>
           <p className="v2-lede">
-            "You own the code" is easy to say. Here is the exact list of what
+            Here is the exact list of what
             lands in your accounts when the project closes.
           </p>
         </div>
@@ -863,7 +852,6 @@ export default function AIDevelopmentV2() {
             <span className="sd2-manifest-seal"><Check size={13} strokeWidth={3} /></span>
             <span>
               Everything above transfers to your accounts when the project closes.
-              <b> No lock-in, no retained access, no dependency on us.</b>
             </span>
           </div>
         </div>

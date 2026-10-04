@@ -80,7 +80,7 @@ const HANDOVER = [
   { icon: Network, title: "Automated ETL Pipelines", body: "Robust data extraction, transformation, and loading processes that run silently in the background." },
   { icon: BookOpen, title: "Data Dictionary", body: "Comprehensive documentation defining every metric, data source, and transformation rule for your team." },
   { icon: PenTool, title: "Tracking Plans", body: "Detailed specifications for developers on what events to track, when to fire them, and what properties to include." },
-  { icon: Users2, title: "Training & Handover", body: "Workshops and documentation ensuring your team knows how to use the dashboards and maintain the pipelines." },
+  { icon: Users2, title: "Training & Handover", body: "Workshops and documentation ensuring your team knows how to use the dashboards and read the metrics." },
 ];
 
 /* real client quote, specific to this page — kept alongside the shared
@@ -189,7 +189,7 @@ const FAQS = [
 
 const SENTENCE = [
   "YOU GET THE INSIGHTS.",
-  "YOU GET THE PIPELINES.",
+  "YOU GET THE DASHBOARDS.",
   "YOU GET THE CLARITY.",
   "NO MORE GUESSWORK.",
   "NO MORE SILOS.",
@@ -804,7 +804,6 @@ export default function DataAnalyticsV2() {
         stats={[
           { num: "40+", label: "Companies trust us" },
           { num: "11", label: "Industries served" },
-          { num: "100%", label: "Source code ownership" },
         ]}
       />
 
@@ -845,7 +844,7 @@ export default function DataAnalyticsV2() {
             <h2 className="v2-heading">Everything, at handover.</h2>
           </div>
           <p className="v2-lede">
-            "You own the code" is easy to say. Here is the exact list of what
+            Here is the exact list of what
             lands in your accounts when the project closes.
           </p>
         </div>
@@ -880,7 +879,6 @@ export default function DataAnalyticsV2() {
             <span className="sd2-manifest-seal"><Check size={13} strokeWidth={3} /></span>
             <span>
               Everything above transfers to your accounts when the project closes.
-              <b> No lock-in, no retained access, no dependency on us.</b>
             </span>
           </div>
         </div>

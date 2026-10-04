@@ -29,7 +29,6 @@ const APPROACH = [
 const STATS = [
   { value: 11, suffix: "", label: "Industries served", note: "Not spread thin across dozens", ring: 78 },
   { value: 40, suffix: "+", label: "Projects across sectors", note: "Real deployments, not pilots", ring: 92 },
-  { value: 100, suffix: "%", label: "Source-code ownership", note: "Regardless of industry", ring: 100 },
 ];
 
 const FAQS = [

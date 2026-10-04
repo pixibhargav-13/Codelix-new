@@ -98,13 +98,11 @@ const CATEGORIES = ["All", "Frontend", "Backend", "Mobile", "Design", "E-Commerc
 const TENETS = [
   { n: "01", claim: "Picked per project, not one-size-fits-all.", body: "The stack follows the problem — a marketing site and a real-time dashboard don't reach for the same tools, and we don't force them to." },
   { n: "02", claim: "Production-proven, not resume-driven.", body: "Everything listed here has shipped in a real client project — nothing is on this page because it's trendy." },
-  { n: "03", claim: "Yours to take anywhere, no lock-in.", body: "Whatever we build with, you get full source-code ownership on delivery — no proprietary framework holding your project hostage." },
 ];
 
 const STATS = [
   { value: STACK.length, suffix: "+", label: "Tools & frameworks", note: "Across the whole delivery stack", ring: 85 },
   { value: 6, suffix: "", label: "Stack categories", note: "Frontend to automation", ring: 60 },
-  { value: 100, suffix: "%", label: "Source-code ownership", note: "Whatever stack we build in", ring: 100 },
 ];
 
 const FAQS = [

@@ -1186,3 +1186,13 @@
 .shv-mt-4 {
   margin-top: 1.5rem;
 }
+/* ─── Grids that size to their item count (see ServiceDetailV2.css) ─── */
+@media (min-width: 861px) {
+  .sv2-tenet-grid:has(> :last-child:nth-child(2)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 721px) {
+  .sv2-stats-grid:has(> :last-child:nth-child(3)) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  .sv2-stats-grid > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+}

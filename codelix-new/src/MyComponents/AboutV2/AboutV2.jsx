@@ -37,18 +37,15 @@ const STATS = [
   { value: 3, suffix: "+", label: "Years building software", note: "Since day one, same team", ring: 45 },
   { value: 40, suffix: "+", label: "Projects delivered", note: "Across web, mobile & AI", ring: 92 },
   { value: 40, suffix: "+", label: "Clients worldwide", note: "Repeat business, not one-offs", ring: 88 },
-  { value: 100, suffix: "%", label: "Source-code ownership", note: "Every project, no exceptions", ring: 100 },
 ];
 
 const VALUES = [
   { key: "Transparent", icon: Eye, claim: "No progress you can't see.", body: "We don't go dark for a month and come back with a surprise. You see the work as it happens." },
   { key: "Committed", icon: HeartHandshake, claim: "No deadline we don't hold ourselves to.", body: "We pad the schedule honestly upfront so we don't have to renegotiate halfway through. If we say a date, we hit it." },
-  { key: "Reliable", icon: ShieldCheck, claim: "No code you don't fully own.", body: "When the invoice is paid, the code is yours. We hand over the repos, the docs, and the keys. No vendor lock-in." },
 ];
 
 const COMPARE_COLS = ["Codelix", "Template / builder", "Freelancer", "Large agency"];
 const COMPARE_ROWS = [
-  { label: "100% source-code ownership", vals: ["yes", "partial", "maybe", "partial"] },
   { label: "Timeline you can hold us to", vals: ["yes", "yes", "no", "partial"] },
   { label: "Built for your exact workflow", vals: ["yes", "no", "maybe", "yes"] },
   { label: "One team, one point of contact", vals: ["yes", "no", "yes", "no"] },
@@ -211,7 +208,7 @@ export default function AboutV2() {
               <p className="sd2-hero-sub sv2-hero-reveal">
                 Codelix is an IT solutions studio that builds web, mobile, and AI
                 systems for businesses that intend to still be running them in
-                five years. No lock-in, no black boxes — just software you own.
+                five years. No black boxes.
               </p>
               <div className="sd2-hero-cta sv2-hero-reveal">
                 <Link className="v2-btn v2-btn--filled" to="/contact">
@@ -382,7 +379,6 @@ export default function AboutV2() {
         stats={[
           { num: "40+", label: "Projects delivered" },
           { num: "40+", label: "Clients worldwide" },
-          { num: "100%", label: "Source code ownership" },
         ]}
       />
 

@@ -81,7 +81,6 @@ const TESTIMONIALS = [
 const STATS = [
   { value: 15, suffix: "+", label: "Projects delivered", note: "Shown here — more shipped privately", ring: 75 },
   { value: 6, suffix: "", label: "Industries covered", note: "Not one narrow niche", ring: 60 },
-  { value: 100, suffix: "%", label: "Source-code ownership", note: "Every project, no exceptions", ring: 100 },
 ];
 
 const FAQS = [

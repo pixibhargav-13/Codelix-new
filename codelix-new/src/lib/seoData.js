@@ -19,7 +19,7 @@ export const seoData = {
   "/services/application-development": { title: "Application Development | iOS & Android | Codelix", description: "Custom mobile and desktop application development for iOS, Android and cross-platform — from product definition through release, testing and ongoing support." },
   "/services/ui-ux-design": { title: "UI/UX Design Services | Codelix IT Solutions", description: "User-centric UI/UX design services to elevate your digital products and user engagement." },
   "/services/e-commerce-solutions": { title: "E-Commerce Solutions | Codelix IT Solutions", description: "End-to-end e-commerce solutions to help you sell online efficiently and securely." },
-  "/services/custom-software-development": { title: "Custom Software Development Company | Codelix", description: "Custom software built around how your business actually operates — ERP, CRM, internal tools and customer platforms, delivered with full source-code ownership." },
+  "/services/custom-software-development": { title: "Custom Software Development Company | Codelix", description: "Custom software built around how your business actually operates — ERP, CRM, internal tools and customer platforms." },
   "/services/ai-development": { title: "AI Development Services | Codelix IT Solutions", description: "Integrate powerful Artificial Intelligence into your products with our expert AI development." },
   "/services/data-analytics": { title: "Data Analytics Services | Codelix IT Solutions", description: "Turn your raw data into actionable insights with our comprehensive data analytics services." },
   "/services/support-managed-services": { title: "Support & Managed Services | Codelix IT Solutions", description: "Reliable IT support and managed services to keep your operations running smoothly." },
@@ -29,7 +29,7 @@ export const seoData = {
   "/process": { title: "Our Process | Codelix IT Solutions", description: "Discover our proven, transparent development process from ideation to launch." },
   "/team": { title: "Our Team | Codelix IT Solutions", description: "The engineers, designers and project leads behind Codelix IT Solutions — who actually builds your software, and how the team is put together." },
   "/work": { title: "Our Work | Projects We Have Shipped | Codelix", description: "Selected projects with the thinking behind them - the problem, the build, the stack and what changed for the client. Browse the full set in our case studies." },
-  "/faq": { title: "Frequently Asked Questions | Codelix IT Solutions", description: "Straight answers on how we scope, price and deliver software projects — timelines, source-code ownership, support after launch and how we work with you." },
+  "/faq": { title: "Frequently Asked Questions | Codelix IT Solutions", description: "Straight answers on how we scope, price and deliver software projects — timelines, support after launch and how we work with you." },
   "/technologies": { title: "Technologies We Use | Codelix IT Solutions", description: "Explore the modern tech stack we use to build scalable, secure applications." },
   /* A viral LinkedIn hiring post on 9 July drove a 15x brand-search spike, and
      the hiring queries the site does rank for - "it company ahmedabad for

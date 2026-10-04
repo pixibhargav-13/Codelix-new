@@ -54,7 +54,7 @@ const STAGES = [
   {
     n: "06", icon: Rocket, title: "Launch & Support", time: "Ongoing",
     body: "We push it live and stick around. We handle the handoff, the documentation, and the post-launch fixes so you're not left stranded.",
-    deliverables: ["Full source handover", "Documentation", "Post-launch support window"],
+    deliverables: ["Domain & admin access", "User guide", "Post-launch support window"],
   },
 ];
 
@@ -66,7 +66,7 @@ const RISKS = [
   { stage: "Design", icon: PenTool, cost: "A rebuild disguised as “polish” after development", fix: "Interface and architecture agreed before a line of code is written" },
   { stage: "Development", icon: Code2, cost: "Problems surface in week ten, not week two", fix: "Weekly working builds, so issues get caught early" },
   { stage: "QA & Testing", icon: Bug, cost: "Your users find the bugs instead of us", fix: "Cross-device testing and a fix cycle before anything ships" },
-  { stage: "Launch & Support", icon: Rocket, cost: "You're stranded the moment something breaks", fix: "Full handover, documentation, and a support window after launch" },
+  { stage: "Launch & Support", icon: Rocket, cost: "You're stranded the moment something breaks", fix: "Domain and admin access, a user guide, and a support window after launch" },
 ];
 
 const PRINCIPLES = [

@@ -161,7 +161,6 @@ const SERVICES = [
 /* headline numbers — the value is the count-up target, suffix rides along */
 const STATS = [
   { value: 40, suffix: "+", label: "Projects delivered" },
-  { value: 100, suffix: "%", label: "Source-code ownership" },
   { value: 24, suffix: "h", label: "Response time" },
 ];
 
@@ -174,12 +173,10 @@ const STATS = [
 
 const PRINCIPLES = [
   { key: "Delivered.", icon: CalendarCheck, claim: "Deadlines are commitments, not aspirations.", body: "Our disciplined process ensures every project launches exactly when promised. Deliver before the deadline is not a slogan here — it is how the schedule is built." },
-  { key: "Owned.", icon: Lock, claim: "You leave holding all of it — 100%.", body: "On completion you receive 100% ownership of the source code, with documentation and deployment details. No lock-in, no license games, no dependency on us to keep running." },
   { key: "Visible.", icon: Eye, claim: "Nothing about the build stays behind closed doors.", body: "From kickoff to delivery you always know what's happening, why it's happening, and when. Clarity builds trust, and trust is what makes the second project easier than the first." },
 ];
 
 const FAQS = [
-  { q: "Do you provide source code after project completion?", a: "Yes. Once the project is completed and fully paid for, you receive 100% ownership of the source code, along with documentation and deployment details." },
   { q: "What if I need changes after the project is delivered?", a: "We offer a revision window after delivery for design or functionality tweaks. For ongoing improvements, we recommend our maintenance plan." },
   { q: "What is your cancellation policy?", a: "We understand that plans can change. If you wish to cancel a project, you can do so at any stage with written notice." },
   { q: "How do you integrate AI into your solutions?", a: "We use AI to enhance performance and user experience through smart recommendations, chat automation, predictive analytics, and process optimisation." },
@@ -1085,7 +1082,6 @@ export default function HomepageV2() {
         stats={[
           { num: '40+', label: 'Companies trust us' },
           { num: '11', label: 'Industries served' },
-          { num: '100%', label: 'Source code ownership' }
         ]}
       />
 
