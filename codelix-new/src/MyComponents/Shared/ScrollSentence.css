@@ -233,3 +233,12 @@
 .v2-sentence.is-live .v2-sentence-word {
   will-change: opacity, transform;
 }
+
+/* Light mode (phones, touch devices — src/lib/lightMode.js): lines fade and
+   scale but are never blurred; ScrollSentence.jsx skips the blur too. A
+   blur filter on text this large is a full repaint every frame on a phone. */
+@media (max-width: 900px), (pointer: coarse) {
+  .v2-sentence-word {
+    filter: none;
+  }
+}

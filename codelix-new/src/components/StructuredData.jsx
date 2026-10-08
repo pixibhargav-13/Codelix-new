@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { toISODate } from '../lib/isoDate.js';
+import { FOUNDERS } from '../lib/people.js';
 
 const siteUrl = 'https://www.codelixitsolutions.com';
 
@@ -36,7 +37,12 @@ export const StructuredData = ({ type = 'Organization', data = null }) => {
          and an unparseable date makes toISOString() throw mid-render. The
          explicit parser returns undefined instead, which drops the field. */
       "datePublished": toISODate(data.publishedAt || data.date),
-      "author": ORG_REF,
+      /* last edit in the admin panel (updated_at); a post never edited
+         after publishing was last modified when it was published */
+      "dateModified": toISODate(data.updatedAt) || toISODate(data.publishedAt || data.date),
+      /* both founders are credited as authors, with the business as the
+         publisher below */
+      "author": FOUNDERS,
       /* Google's article guidance expects a publisher with a logo; without
          it the post is not eligible for the richer article treatments. */
       "publisher": {
@@ -105,7 +111,10 @@ export const StructuredData = ({ type = 'Organization', data = null }) => {
       "description": data.description,
       "image": data.image || `${siteUrl}/og-image.png`,
       "url": `${siteUrl}${location.pathname}`,
-      "author": ORG_REF
+      "datePublished": toISODate(data.publishedAt),
+      "dateModified": toISODate(data.updatedAt) || toISODate(data.publishedAt),
+      "author": FOUNDERS,
+      "publisher": ORG_REF,
     };
   }
 

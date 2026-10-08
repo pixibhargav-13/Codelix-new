@@ -647,3 +647,25 @@
     font-size: 8.5px;
   }
 }
+/* ─── Light mode: phones and touch devices (see src/lib/lightMode.js) ───
+   All the motion stays — every loop here only moves, rotates or fades, which
+   the GPU composites without repainting (freezing the rings left stray arcs
+   across the globe). What goes is what costs a repaint or a blur pass every
+   frame: the orbs' 80px blur becomes a radial gradient of the same colour,
+   and the frosted-glass panels get a solid tint instead of backdrop blur.
+   The globe itself draws at 30fps (see HeroVisual.jsx). */
+@media (max-width: 900px), (pointer: coarse) {
+  .ambient-orb {
+    filter: none;
+  }
+  .orb-1 { background: radial-gradient(circle, rgba(0, 150, 255, 0.4) 0%, transparent 70%); }
+  .orb-2 { background: radial-gradient(circle, rgba(138, 43, 226, 0.4) 0%, transparent 70%); }
+  .orb-3 { background: radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, transparent 70%); }
+
+  .floating-card,
+  .stat-item {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(12, 16, 28, 0.92);
+  }
+}

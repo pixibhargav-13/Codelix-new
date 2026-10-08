@@ -208,7 +208,7 @@ export default function PageLoader() {
       <div className="pl-stack">
         <span className="pl-logo-mask">
           <span className="pl-logo-holder" ref={logoRef}>
-            <img className="pl-logo" src={codelixLogo} alt="" />
+            <img className="pl-logo" src={codelixLogo} alt="Codelix IT Solutions" />
             {/* band of light, clipped to the logo's own alpha */}
             <span
               className="pl-shine"

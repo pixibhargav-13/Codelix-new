@@ -8,7 +8,7 @@
   perspective: 1200px;
 }
 
-/* Background Glow */
+/* Background glow */
 .phv-glow-bg {
   position: absolute;
   top: 50%;
@@ -16,331 +16,262 @@
   width: 70%;
   height: 70%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, rgba(138, 43, 226, 0.08) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 150, 255, 0.12) 0%, rgba(138, 43, 226, 0.08) 45%, transparent 70%);
   filter: blur(50px);
   z-index: 0;
   animation: phv-pulse-bg 8s infinite alternate ease-in-out;
 }
 
 @keyframes phv-pulse-bg {
-  0% { opacity: 0.6; transform: translate(-50%, -50%) scale(0.9); }
-  100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+  0% { opacity: 0.6; transform: translate(-50%, -50%) scale(0.95); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
 }
 
-/* The Config Window */
-.phv-config-window {
+/* Card wrapper — scaled as one unit at smaller widths */
+.phv-stage {
   position: relative;
-  width: 380px;
-  background: linear-gradient(145deg, rgba(20, 25, 35, 0.9), rgba(10, 12, 18, 0.95));
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
-  box-shadow: 
-    0 30px 60px rgba(0, 0, 0, 0.6),
-    0 0 0 1px rgba(0, 150, 255, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
   z-index: 2;
-  transform: rotateY(-8deg) rotateX(4deg);
-  animation: phv-float-ui 7s infinite alternate ease-in-out;
   flex-shrink: 0;
 }
 
-@keyframes phv-float-ui {
-  0% { transform: rotateY(-8deg) rotateX(4deg) translateY(0); }
-  100% { transform: rotateY(-4deg) rotateX(2deg) translateY(-12px); }
+/* The proposal card */
+.phv-doc {
+  position: relative;
+  width: 440px;
+  background: linear-gradient(145deg, rgba(15, 20, 25, 0.95), rgba(8, 10, 15, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(0, 150, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transform: rotateY(-6deg) rotateX(3deg);
+  animation: phv-float-ui 6s infinite alternate ease-in-out;
 }
 
-/* Header */
-.phv-window-header {
-  height: 44px;
+@keyframes phv-float-ui {
+  0% { transform: rotateY(-6deg) rotateX(3deg) translateY(0); }
+  100% { transform: rotateY(-3deg) rotateX(1deg) translateY(-8px); }
+}
+
+.phv-doc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 18px;
   background: rgba(255, 255, 255, 0.03);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
 }
 
-.phv-mac-dots {
-  display: flex;
+.phv-doc-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.phv-doc-title svg {
+  color: #8fb4ff;
+}
+
+.phv-status {
+  display: inline-flex;
+  align-items: center;
   gap: 6px;
-  margin-right: 16px;
-}
-
-.phv-mac-dots .dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-
-.phv-mac-dots .dot.red { background: #ff5f56; box-shadow: 0 0 8px #ff5f56; }
-.phv-mac-dots .dot.yellow { background: #ffbd2e; box-shadow: 0 0 8px #ffbd2e; }
-.phv-mac-dots .dot.green { background: #27c93f; box-shadow: 0 0 8px #27c93f; }
-
-.phv-window-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono, monospace);
+  padding: 4px 10px;
+  border-radius: 100px;
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.5);
-  letter-spacing: 0.05em;
-  margin: 0 auto 0 0; /* Align left after dots */
+  font-weight: 600;
+  color: #3fb950;
+  background: rgba(46, 160, 67, 0.14);
+  border: 1px solid rgba(46, 160, 67, 0.3);
 }
 
-/* Body */
-.phv-window-body {
-  display: flex;
-  height: 220px;
-}
-
-/* Sidebar */
-.phv-config-sidebar {
-  width: 110px;
-  background: rgba(0, 0, 0, 0.2);
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 16px 12px;
+.phv-doc-body {
+  padding: 16px 18px 18px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
 }
 
-.phv-side-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.5);
-  padding: 8px 10px;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-
-.phv-side-item.active {
-  background: rgba(0, 150, 255, 0.15);
-  color: #0096ff;
-  border: 1px solid rgba(0, 150, 255, 0.2);
-  box-shadow: inset 0 0 10px rgba(0, 150, 255, 0.1);
-}
-
-/* Main Area */
-.phv-config-main {
-  flex: 1;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.phv-module-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 14px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.phv-module-card.added {
-  background: rgba(16, 185, 129, 0.08);
-  border-color: rgba(16, 185, 129, 0.3);
-  box-shadow: inset 0 0 15px rgba(16, 185, 129, 0.05);
-}
-
-.phv-mod-info .phv-mod-name {
+.phv-label {
   display: block;
-  margin: 0 0 4px 0;
-  font-size: 13px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: -0.01em;
-}
-
-.phv-mod-info p {
-  margin: 0;
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.phv-mod-check {
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
-  background: #10b981;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
-}
-
-.phv-mod-add {
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Footer */
-.phv-window-footer {
-  height: 60px;
-  background: rgba(0, 0, 0, 0.3);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-}
-
-.phv-footer-left {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  width: 140px;
-}
-
-.phv-footer-left span {
+  margin-bottom: 8px;
+  font-family: var(--font-mono, monospace);
   font-size: 10px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.4);
 }
 
-.phv-progress-track {
-  width: 100%;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
+/* Complexity band */
+.phv-band-value {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #cfdcff;
+  background: rgba(90, 130, 255, 0.1);
+  border: 1px solid rgba(90, 130, 255, 0.25);
+}
+
+/* Scope list */
+.phv-scope ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
   overflow: hidden;
 }
 
-.phv-progress-fill {
-  width: 70%;
-  height: 100%;
-  background: linear-gradient(90deg, #0096ff, #8a2be2);
-  border-radius: 2px;
-  animation: phv-calc-anim 2s ease-out;
-}
-
-@keyframes phv-calc-anim {
-  from { width: 0%; }
-}
-
-.phv-calc-value {
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.01em;
-  background: rgba(138, 43, 226, 0.2);
-  padding: 6px 14px;
-  border-radius: 8px;
-  border: 1px solid rgba(138, 43, 226, 0.4);
-  box-shadow: inset 0 0 10px rgba(138, 43, 226, 0.2);
-}
-
-/* Hand-crafted Floating Tags */
-.phv-float-tag {
-  position: absolute;
-  padding: 10px 16px;
-  background: linear-gradient(135deg, rgba(30, 35, 50, 0.95), rgba(15, 20, 30, 0.95));
-  border: 1px solid rgba(0, 150, 255, 0.3);
-  border-radius: 100px;
+.phv-scope li {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #fff;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 150, 255, 0.1);
-  backdrop-filter: blur(10px);
-  z-index: 3;
+  gap: 10px;
+  padding: 9px 12px;
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.85);
 }
 
-.phv-float-tag.tag-1 {
-  top: 60px;
-  right: 0px;
-  transform: translateZ(40px);
-  animation: phv-tag-float 4s infinite alternate ease-in-out;
+.phv-scope li + li {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.phv-float-tag.tag-2 {
-  bottom: 80px;
-  left: 0px;
-  border-color: rgba(16, 185, 129, 0.4);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(16, 185, 129, 0.1);
-  transform: translateZ(60px);
-  animation: phv-tag-float 5s infinite alternate-reverse ease-in-out;
-}
-
-.pulse-dot {
-  width: 8px;
-  height: 8px;
-  background: #10b981;
+.phv-tick {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
   border-radius: 50%;
-  box-shadow: 0 0 8px #10b981;
-  animation: phv-pulse-dot 1.5s infinite alternate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3fb950;
+  background: rgba(46, 160, 67, 0.16);
+  border: 1px solid rgba(46, 160, 67, 0.45);
 }
 
-@keyframes phv-pulse-dot {
-  0% { transform: scale(0.8); opacity: 0.7; }
-  100% { transform: scale(1.2); opacity: 1; }
+.phv-scope-item {
+  flex: 1;
+  min-width: 0;
 }
 
-@keyframes phv-tag-float {
-  0% { transform: translateY(0) translateZ(40px); }
-  100% { transform: translateY(-10px) translateZ(40px); }
+.phv-scope-tag {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
 }
 
-/* Subtle Scanline Overlay for tech UI feel */
-.phv-scanline {
+.phv-scope-tag.is-free {
+  color: #3fb950;
+}
+
+/* Payment schedule — segments fill one after another */
+.phv-pay-track {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.phv-pay-step {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.phv-pay-bar {
+  position: relative;
+  height: 6px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+}
+
+.phv-pay-bar i {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,150,255,0.03) 50%, rgba(0,150,255,0.03));
-  background-size: 100% 4px;
-  pointer-events: none;
-  z-index: 10;
-  opacity: 0.5;
-  border-radius: 16px; /* Match window border */
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #4f8cff, #8a5cf6);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: phv-fill 8s infinite;
+  animation-delay: calc(var(--i, 0) * 0.9s);
+}
+
+@keyframes phv-fill {
+  0% { transform: scaleX(0); }
+  12% { transform: scaleX(1); }
+  78% { transform: scaleX(1); }
+  90%, 100% { transform: scaleX(0); }
+}
+
+.phv-pay-name {
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Footer */
+.phv-doc-footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 18px 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.phv-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* Small laptops: the hero column is narrower than the card */
+@media (min-width: 941px) and (max-width: 1240px) {
+  .phv-stage {
+    scale: 0.8;
+  }
+}
+
+@media (min-width: 941px) and (max-width: 1040px) {
+  .phv-stage {
+    scale: 0.74;
+  }
 }
 
 @media (max-width: 940px) {
   .phv-container {
-    height: 420px;
+    height: 520px;
   }
-  .phv-config-window {
-    scale: 0.9;
+  .phv-stage {
+    scale: 0.92;
   }
 }
 
 @media (max-width: 500px) {
   .phv-container {
-    height: 380px;
+    height: 460px;
   }
-  .phv-config-window {
-    scale: 0.8;
-    left: 0px;
+  .phv-stage {
+    scale: 0.76;
   }
-  .phv-float-tag.tag-1 {
-    right: 0px;
-    scale: 0.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phv-glow-bg,
+  .phv-doc {
+    animation: none;
   }
-  .phv-float-tag.tag-2 {
-    left: 0px;
-    scale: 0.85;
+  .phv-pay-bar i {
+    animation: none;
+    transform: scaleX(1);
   }
 }

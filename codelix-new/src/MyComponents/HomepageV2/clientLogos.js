@@ -14,7 +14,19 @@ import client11 from "../Images/homepage-client-eleven.png";
 import client12 from "../Images/homepage-client-twelve.png";
 import client13 from "../Images/homepage-client-thirteen.png";
 
+/* name is the client as written on its logo — used for the image's alt text */
 export const CLIENT_LOGOS = [
-  client1, client2, client3, client4, client5, client6, client7,
-  client8, client9, client10, client11, client12, client13,
+  { src: client1, name: "Delight Auto Forge" },
+  { src: client2, name: "Parmeshwari Brass Industries" },
+  { src: client3, name: "Everson" },
+  { src: client4, name: "Aimerz Advisors" },
+  { src: client5, name: "Wild Crunch" },
+  { src: client6, name: "Royale Touché" },
+  { src: client7, name: "The Library of Alexandria" },
+  { src: client8, name: "Rooted by ASD" },
+  { src: client9, name: "Amara" },
+  { src: client10, name: "PackPro Flexipack" },
+  { src: client11, name: "AanganOne" },
+  { src: client12, name: "Natraj Fashions" },
+  { src: client13, name: "Cavier" },
 ];

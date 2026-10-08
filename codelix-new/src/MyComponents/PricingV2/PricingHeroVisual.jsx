@@ -1,107 +1,78 @@
 import React from 'react';
 import './PricingHeroVisual.css';
-import { Settings2, Database, LayoutTemplate, Smartphone, Plus, Check } from 'lucide-react';
+import { FileText, Check, Lock } from 'lucide-react';
+
+/* A project proposal, as the Pricing page describes one: a complexity band
+   (COMPLEXITY), scope locked before work starts (Fixed-Scope Project), a free
+   discovery call and proposal (FAQ), and payment as a deposit followed by
+   milestone instalments (Milestone-Based Billing / FAQ). No prices — the
+   page is explicit that there is no public rate card. */
+const SCOPE = [
+  { item: 'Discovery & written proposal', tag: 'Free', free: true },
+  { item: 'Design & build', tag: 'In scope' },
+  { item: 'Testing & launch', tag: 'In scope' },
+  { item: 'Post-launch support window', tag: 'In scope' },
+];
+
+const PAYMENTS = ['Deposit', 'Milestone', 'Milestone', 'Launch'];
 
 export default function PricingHeroVisual() {
   return (
     <div className="phv-container">
-      {/* Background glow to ground the composition */}
       <div className="phv-glow-bg"></div>
 
-      {/* The main Configurator UI Window */}
-      <div className="phv-config-window">
-        {/* Window Header */}
-        <div className="phv-window-header">
-          <div className="phv-mac-dots">
-            <span className="dot red"></span>
-            <span className="dot yellow"></span>
-            <span className="dot green"></span>
-          </div>
-          <div className="phv-window-title">
-            <Settings2 size={13} color="rgba(255,255,255,0.6)" />
-            <span>Scope_Estimator_v2.0</span>
-          </div>
-        </div>
-
-        {/* Window Body */}
-        <div className="phv-window-body">
-          {/* Sidebar */}
-          <div className="phv-config-sidebar">
-            <div className="phv-side-item active">
-              <LayoutTemplate size={14} />
-              <span>Web App</span>
-            </div>
-            <div className="phv-side-item active">
-              <Database size={14} />
-              <span>Backend</span>
-            </div>
-            <div className="phv-side-item">
-              <Smartphone size={14} />
-              <span>Mobile iOS</span>
-            </div>
+      <div className="phv-stage">
+        <div className="phv-doc">
+          <div className="phv-doc-header">
+            <span className="phv-doc-title">
+              <FileText size={15} strokeWidth={1.8} />
+              Project proposal
+            </span>
+            <span className="phv-status">
+              <Lock size={11} strokeWidth={2.4} />
+              Scope locked
+            </span>
           </div>
 
-          {/* Main Area */}
-          <div className="phv-config-main">
-            <div className="phv-module-card added">
-              <div className="phv-mod-info">
-                <span className="phv-mod-name">Core Architecture</span>
-                <p>Base platform setup</p>
-              </div>
-              <div className="phv-mod-check">
-                <Check size={14} strokeWidth={3} />
-              </div>
+          <div className="phv-doc-body">
+            <div className="phv-band">
+              <span className="phv-label">Complexity</span>
+              <span className="phv-band-value">Standard — Core product / Redesign</span>
             </div>
 
-            <div className="phv-module-card added">
-              <div className="phv-mod-info">
-                <span className="phv-mod-name">Payment Gateway</span>
-                <p>Stripe Custom Connect</p>
-              </div>
-              <div className="phv-mod-check">
-                <Check size={14} strokeWidth={3} />
-              </div>
+            <div className="phv-scope">
+              <span className="phv-label">Scope</span>
+              <ul>
+                {SCOPE.map((s) => (
+                  <li key={s.item}>
+                    <span className="phv-tick"><Check size={11} strokeWidth={3} /></span>
+                    <span className="phv-scope-item">{s.item}</span>
+                    <span className={`phv-scope-tag${s.free ? ' is-free' : ''}`}>{s.tag}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="phv-module-card optional">
-              <div className="phv-mod-info">
-                <span className="phv-mod-name">AI Assistant</span>
-                <p>LLM Integration</p>
-              </div>
-              <div className="phv-mod-add">
-                <Plus size={14} strokeWidth={3} />
+            <div className="phv-pay">
+              <span className="phv-label">Payment schedule</span>
+              <div className="phv-pay-track">
+                {PAYMENTS.map((p, i) => (
+                  <div className="phv-pay-step" key={i} style={{ '--i': i }}>
+                    <span className="phv-pay-bar"><i /></span>
+                    <span className="phv-pay-name">{p}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Window Footer / Total */}
-        <div className="phv-window-footer">
-          <div className="phv-footer-left">
-            <span>Scope Calculation</span>
-            <div className="phv-progress-track">
-              <div className="phv-progress-fill"></div>
-            </div>
-          </div>
-          <div className="phv-footer-right">
-            <div className="phv-calc-value">Fixed Price</div>
+          <div className="phv-doc-footer">
+            <span>Price locked before work starts</span>
+            <span className="phv-dot" />
+            <span>No creeping invoices</span>
           </div>
         </div>
       </div>
-
-      {/* Floating Elements (Hand-crafted details) */}
-      <div className="phv-float-tag tag-1">
-        <span>No hourly billing</span>
-      </div>
-
-      <div className="phv-float-tag tag-2">
-        <div className="pulse-dot"></div>
-        <span>Scope locked</span>
-      </div>
-      
-      {/* Laser scanline overlay effect for the "tech" feel */}
-      <div className="phv-scanline"></div>
-
     </div>
   );
 }

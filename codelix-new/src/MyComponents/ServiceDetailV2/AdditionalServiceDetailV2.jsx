@@ -712,7 +712,7 @@ export default function AdditionalServiceDetailV2() {
             {relatedWork.map((w) => (
               <Link className="sd2-work-card" to={w.href} key={w.href}>
                 <span className="sd2-work-media">
-                  <img src={w.image} alt="" loading="lazy" />
+                  <img src={w.image} alt={w.title} loading="lazy" />
                 </span>
                 <span className="sd2-work-tag">{w.category}</span>
                 <span className="sd2-work-title">{w.title}</span>

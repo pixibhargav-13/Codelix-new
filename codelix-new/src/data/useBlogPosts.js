@@ -27,6 +27,8 @@ export function useBlogPosts() {
            article:published_time has to be ISO 8601, and "1 January 2026"
            is not */
         publishedAt: p.published_at || undefined,
+        /* last edited (Supabase keeps updated_at current) — dateModified */
+        updatedAt: p.updated_at || undefined,
         tags: p.tags?.length ? p.tags : ["All Articles"],
         content: p.content,
       }));
@@ -67,6 +69,8 @@ export function useBlogPosts() {
            article:published_time has to be ISO 8601, and "1 January 2026"
            is not */
         publishedAt: p.published_at || undefined,
+        /* last edited (Supabase keeps updated_at current) — dateModified */
+        updatedAt: p.updated_at || undefined,
           tags: p.tags?.length ? p.tags : ["All Articles"],
           content: p.content,
         }));

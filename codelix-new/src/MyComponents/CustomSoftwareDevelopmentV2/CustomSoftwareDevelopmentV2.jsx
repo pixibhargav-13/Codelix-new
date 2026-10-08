@@ -768,7 +768,7 @@ export default function CustomSoftwareDevelopmentV2() {
           {RELATED.map((w) => (
             <Link className="sd2-work-card" to={w.link} key={w.link}>
               <span className="sd2-work-media">
-                <img src={w.thumb} alt="" loading="lazy" />
+                <img src={w.thumb} alt={w.title} loading="lazy" />
               </span>
               <span className="sd2-work-tag">{w.tag}</span>
               <span className="sd2-work-title">{w.title}</span>

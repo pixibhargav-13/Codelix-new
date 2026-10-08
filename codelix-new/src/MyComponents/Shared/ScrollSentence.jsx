@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import './ScrollSentence.css';
+import { isLightMode } from '../../lib/lightMode';
 
 /* smootherstep — takes the linear scroll fraction and softens both ends so the
    scrubbed motion doesn't start and stop abruptly */
@@ -56,6 +57,9 @@ export default function ScrollSentence({ words, tone, centered = false }) {
       return Math.min(Math.max(raw, 0), 1) * sentenceSlots(words.length);
     };
 
+    // light mode (phones): lines fade and scale but are never blurred
+    const light = isLightMode();
+
     // Each slot is split so the line spends MOST of it sharp and still.
     const IN_END = 0.2;
     const OUT_START = 0.8;
@@ -88,7 +92,7 @@ export default function ScrollSentence({ words, tone, centered = false }) {
           wordEl.style.transform = centered
             ? `translate3d(-50%,-50%,0) scale(${scale})`
             : `translate3d(0,-50%,0) scale(${scale})`;
-          wordEl.style.filter = blur > 0.01 ? `blur(${blur}px)` : "none";
+          wordEl.style.filter = !light && blur > 0.01 ? `blur(${blur}px)` : "none";
         }
         if (bgEl) {
           // plain crossfade — no sliding motion, the color just blends in

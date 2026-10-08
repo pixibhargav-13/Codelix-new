@@ -38,13 +38,27 @@ export function createRouteCss({ appFile, srcDir, manifest }) {
     return out;
   };
 
-  return function routeCss(url) {
+  const routeFor = (url) => {
     const route = routes.find((r) => r.pattern === "*" || matchPath({ path: r.pattern, end: true }, url));
     if (!route) throw new Error(`No route in App.jsx matches ${url}`);
+    return route;
+  };
+
+  function routeCss(url) {
+    const route = routeFor(url);
     const key = manifestKey(route.file);
     if (!manifest[key]) throw new Error(`${key} (route for ${url}) is not in the Vite manifest`);
     return cssFor(key).map((file) => `/${file}`);
+  }
+
+  /* the page component a URL renders, and whether it is a template shared by
+     several URLs (a ":param" route) — used for the page's dates */
+  routeCss.sourceFor = (url) => {
+    const route = routeFor(url);
+    return { file: route.file, template: route.pattern.includes(":") };
   };
+
+  return routeCss;
 }
 
 function resolveSource(base) {

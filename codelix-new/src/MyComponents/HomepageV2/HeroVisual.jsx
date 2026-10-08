@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './HeroVisual.css';
+import { isLightMode } from '../../lib/lightMode';
 
 const HeroVisual = () => {
   const canvasRef = useRef(null);
@@ -164,10 +165,23 @@ const HeroVisual = () => {
     };
     document.addEventListener('visibilitychange', onVisibility);
 
-    const render = () => {
+    /* Light mode (phones, touch devices): draw at most ~30 frames a second
+       and turn twice as far per frame, so the globe spins at the same speed
+       for half the drawing work. */
+    const light = isLightMode();
+    const minFrameMs = light ? 1000 / 30 - 2 : 0;
+    const spinPerFrame = light ? 0.004 : 0.002;
+    let lastDraw = 0;
+
+    const render = (frameTime = performance.now()) => {
+      if (minFrameMs && frameTime - lastDraw < minFrameMs) {
+        animationId = isRunnable() ? requestAnimationFrame(render) : null;
+        return;
+      }
+      lastDraw = frameTime;
       ctx.clearRect(0, 0, width, height);
 
-      rotationY += 0.002;
+      rotationY += spinPerFrame;
       currentMouseRotY += (targetRotationY - currentMouseRotY) * 0.1;
       const currentRotY = rotationY + currentMouseRotY;
       rotationX += (targetRotationX - rotationX) * 0.1;
