@@ -16,6 +16,10 @@ const AuthProvider = lazy(() =>
 import RequireAuth from "./admin/RequireAuth";
 
 gsap.registerPlugin(ScrollTrigger);
+/* A phone's address bar sliding in or out resizes the viewport mid-scroll;
+   refreshing every trigger then stalls the scroll and makes pinned and
+   scrubbed animations jump. */
+ScrollTrigger.config({ ignoreMobileResize: true });
 
 export { InitialDataContext } from "./lib/initialDataContext";
 import { InitialDataContext } from "./lib/initialDataContext";

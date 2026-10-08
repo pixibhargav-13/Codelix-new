@@ -24,7 +24,6 @@ import AdminTestimonialsList from "./admin/pages/AdminTestimonialsList";
 import AdminTestimonialForm from "./admin/pages/AdminTestimonialForm";
 
 // ─── Eagerly loaded (critical for first paint) ────────────────────────────────
-import Chatbot from "./MyComponents/Chatbot/Chatbot";
 import BookingModal from "./MyComponents/BookingModal/BookingModal";
 
 // ─── 404 Not Found ─────────────────────────────────────────────────────────────
@@ -73,11 +72,11 @@ const ScrollToTop = () => {
 };
 
 // ─── Chatbot is a public-site widget — hide it on the admin panel ────────────
-const ChatbotGate = () => {
-  const location = useLocation();
-  if (location.pathname.startsWith("/admin")) return null;
-  return <Chatbot />;
-};
+/* Rendered by the client only, once the browser is idle (see App.jsx), so
+   it is not prerendered. Its stylesheet ships with its lazy chunk, so a
+   prerendered copy painted unstyled — a dark box with a white icon in the
+   top-left corner — until hydration removed it. */
+const ChatbotGate = () => null;
 
 // ─── Sync Lenis with GSAP ScrollTrigger for extra smooth animations ────────────
 const LenisGsapSync = () => {

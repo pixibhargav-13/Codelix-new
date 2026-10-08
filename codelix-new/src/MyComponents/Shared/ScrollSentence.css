@@ -83,7 +83,6 @@
   width: 100%;
   height: 100%;
   opacity: 0;
-  will-change: opacity;
 }
 
 /* dark run: starts and ends at #050507 (--void) so it blends with adjacent
@@ -170,7 +169,6 @@
   opacity: 0;
   transform: translateY(-50%) scale(.78);
   filter: blur(5px);
-  will-change: opacity, transform;
   pointer-events: none;
   /* keep glyph edges crisp while the line is held at scale(1) */
   -webkit-font-smoothing: antialiased;
@@ -222,4 +220,16 @@
   text-align: center;
   line-height: 1.25;
   transform-origin: center center;
+}
+
+/* Layer hints only while the block is on or near the screen (ScrollSentence
+   toggles .is-live). Pinned permanently they kept ~10 full-screen
+   background layers and the word layers alive for the whole page, which
+   phones pay for on every scroll frame. */
+.v2-sentence.is-live .v2-sentence-bg {
+  will-change: opacity;
+}
+
+.v2-sentence.is-live .v2-sentence-word {
+  will-change: opacity, transform;
 }
