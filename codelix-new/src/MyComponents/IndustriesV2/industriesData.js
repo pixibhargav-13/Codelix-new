@@ -17,6 +17,7 @@ const withFixes = (challenges, fixes) =>
 export const INDUSTRIES = [
   {
     slug: "manufacturing",
+    keywords: "manufacturing ERP software, manufacturing software development, production planning software, inventory management software, shop floor management system, factory automation software, manufacturing ERP Ahmedabad, custom ERP for manufacturers",
     seoDescription:
       "Manufacturing ERP and custom software that connect the shop floor to the office — production, inventory and reporting in one system. Codelix IT Solutions, Ahmedabad.",
     icon: Factory,
@@ -32,6 +33,7 @@ export const INDUSTRIES = [
   },
   {
     slug: "fintech",
+    keywords: "fintech software development, fintech app development, payment app development, lending software, banking software development, payment gateway integration, fintech company India, secure financial software",
     seoDescription:
       "Fintech products where security, compliance and clear information architecture are requirements from the start — onboarding flows, dashboards and reporting.",
     icon: Landmark,
@@ -47,6 +49,7 @@ export const INDUSTRIES = [
   },
   {
     slug: "ai-data",
+    keywords: "AI software development, data analytics solutions, machine learning development, AI and data company India, business intelligence, predictive analytics, data engineering, AI automation",
     seoDescription:
       "Data pipelines, dashboards and AI features built around a real business question rather than a proof of concept that never leaves the demo.",
     icon: Cpu,
@@ -62,6 +65,7 @@ export const INDUSTRIES = [
   },
   {
     slug: "healthcare",
+    keywords: "healthcare software development, hospital management system, clinic management software, telemedicine app development, patient management system, healthcare app development India, EHR software",
     seoDescription:
       "Healthcare software with privacy and accessibility designed in from day one — appointment flows, patient portals and clinical tools, not a retrofit.",
     icon: HeartPulse,
@@ -77,6 +81,7 @@ export const INDUSTRIES = [
   },
   {
     slug: "food-beverages",
+    keywords: "food and beverage software, restaurant management software, food delivery app development, FMCG distribution software, inventory software for food business, online ordering system",
     seoDescription:
       "Ordering, reservation and inventory systems for restaurants and food businesses, built to stay reliable through the dinner rush rather than a quiet demo.",
     icon: UtensilsCrossed,
@@ -92,6 +97,7 @@ export const INDUSTRIES = [
   },
   {
     slug: "e-commerce",
+    keywords: "e-commerce software development, e-commerce website development Ahmedabad, online store development, marketplace development, Shopify development, WooCommerce development, B2B e-commerce platform",
     seoDescription:
       "E-commerce storefronts engineered for speed and trust — fast product discovery, a low-friction checkout and a backend your team can actually run.",
     icon: ShoppingCart,
@@ -107,6 +113,7 @@ export const INDUSTRIES = [
   },
   {
     slug: "real-estate-construction",
+    keywords: "real estate software development, construction management software, property management software, real estate CRM, real estate app development, builder ERP software",
     seoTitle: "Real Estate & Construction Software | Codelix IT Solutions",
     seoDescription:
       "Listing platforms and project-tracking tools that keep availability, documents and client communication accurate in one system as things move quickly.",
@@ -123,6 +130,7 @@ export const INDUSTRIES = [
   },
   {
     slug: "education",
+    keywords: "education software development, school management system, edtech app development, learning management system, LMS development, college management software, online learning platform",
     seoDescription:
       "Course catalogues, admissions flows and student portals built to hold up under real enrolment traffic — education software that survives results day.",
     icon: GraduationCap,
@@ -138,6 +146,7 @@ export const INDUSTRIES = [
   },
   {
     slug: "startups",
+    keywords: "software development for startups, MVP development, startup app development, product development for startups, MVP development company India, startup tech partner",
     seoDescription:
       "Marketing sites and product experiences that explain something new clearly, capture signups and keep evolving as fast as the product behind them does.",
     icon: Rocket,
@@ -153,6 +162,7 @@ export const INDUSTRIES = [
   },
   {
     slug: "b2b-saas",
+    keywords: "B2B SaaS development, SaaS product development, multi-tenant SaaS, SaaS development company India, SaaS application development, subscription software development",
     seoDescription:
       "Product dashboards and internal operations tools for B2B SaaS, built to stay usable as the team, the data and the customer base all grow at once.",
     icon: Layers,
@@ -168,6 +178,7 @@ export const INDUSTRIES = [
   },
   {
     slug: "travel-hospitality",
+    keywords: "travel software development, hotel management software, booking engine development, travel app development, hospitality software, tour booking system",
     seoTitle: "Travel & Hospitality Software | Codelix IT Solutions",
     seoDescription:
       "Booking and reservation platforms designed to stay fast and accurate through seasonal demand spikes, not only in a slow month.",

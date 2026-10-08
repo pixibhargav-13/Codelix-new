@@ -101,7 +101,7 @@ export const StructuredData = ({ type = 'Organization', data = null }) => {
       "description": data.description,
       "url": `${siteUrl}${path}`,
       "provider": ORG_REF,
-      "areaServed": "Worldwide",
+      "areaServed": data.areaServed || "Worldwide",
     };
   } else if (type === 'Article' && data) { // For Case Studies
     schemaObj = {

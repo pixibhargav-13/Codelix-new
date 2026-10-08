@@ -251,7 +251,7 @@ export default function IndustryDetailV2() {
 
   return (
     <div className="v2" ref={rootRef}>
-      <SEO title={svc.seoTitle || `${svc.title} Software Solutions | Codelix IT Solutions`} description={svc.seoDescription || svc.tagline} />
+      <SEO title={svc.seoTitle || `${svc.title} Software Solutions | Codelix IT Solutions`} description={svc.seoDescription || svc.tagline} keywords={svc.keywords} />
       <div className="v2-progress" aria-hidden="true"><span /></div>
 
       <NavbarV2 />

@@ -15,6 +15,7 @@ import "./BlogDetailV2.css";
    with anything published via the Supabase admin panel (see useBlogPosts) —
    the article body, dates, and tags are not duplicated or rewritten here */
 import { slugify } from "../../data/blogData";
+import { blogKeywordsFor } from "../../lib/blogKeywords";
 import { useBlogPosts, toISODate } from "../../data/useBlogPosts";
 import ArticleSkeleton from "../Shared/ArticleSkeleton";
 import NavbarV2 from "../Shared/NavbarV2";
@@ -116,9 +117,11 @@ export default function BlogDetailV2() {
       <SEO
         title={fitTitle(blog.title, [" | Codelix IT Solutions", " | Codelix"])}
         description={blog.excerpt || blog.subtitle || `Read ${blog.title} on Codelix IT Solutions.`}
+        keywords={blogKeywordsFor(slug, blog.tags)}
         image={blog.coverImage}
         type="article"
         publishedTime={toISODate(blog.publishedAt || blog.date)}
+        modifiedTime={toISODate(blog.updatedAt) || toISODate(blog.publishedAt || blog.date)}
       />
       <div className="v2-progress" aria-hidden="true"><span /></div>
       <div className="bdv2-read-rail" aria-hidden="true">

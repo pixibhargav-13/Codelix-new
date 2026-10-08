@@ -21,6 +21,7 @@ import aanganOneLogo from "../Images/Aanganone.webp";
 export const PRODUCTS = [
   {
     slug: "audytee",
+    keywords: "Audytee, CA practice management software, CA firm software, practice management software for chartered accountants, CA office management software, audit firm software, client and task management for CA, GST compliance tracking software, CA software India",
     seoDescription:
       "Practice management software for CA firms — client records, compliance deadlines, document collection and billing in one place instead of ten spreadsheets.",
     name: "Audytee",
@@ -147,6 +148,7 @@ export const PRODUCTS = [
 
   {
     slug: "4bitx",
+    keywords: "4bitx, manufacturing ERP software, ERP for SME manufacturers, factory ERP India, production management software, inventory and production ERP, GST e-invoice ERP, e-way bill ERP, ERP software Ahmedabad",
     name: "4bitx",
     seoTitle: "4bitx — Custom ERP for Manufacturing | Codelix",
     seoDescription:
@@ -246,6 +248,7 @@ export const PRODUCTS = [
 
   {
     slug: "aanganone",
+    keywords: "AanganOne, society management app, apartment management software, housing society management system, society maintenance app, visitor management app, residential community app, RWA management software India",
     seoDescription:
       "Society and apartment management software for maintenance, visitors, complaints and billing — one app for residents, committees and facility teams.",
     name: "AanganOne",

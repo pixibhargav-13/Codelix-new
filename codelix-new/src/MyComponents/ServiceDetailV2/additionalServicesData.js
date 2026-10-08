@@ -38,6 +38,7 @@ const splitCovers = (description) =>
 const RAW = [
   {
     slug: "saas-product-development",
+    keywords: "SaaS product development, SaaS development company India, multi-tenant SaaS development, SaaS application development, SaaS MVP development, subscription software development",
     icon: Cloud,
     title: "SaaS Product Development",
     description: "Build scalable SaaS platforms, multi-tenant applications, subscription systems, and cloud-based products.",
@@ -53,6 +54,7 @@ const RAW = [
   },
   {
     slug: "cloud-solutions-migration",
+    keywords: "cloud migration services, cloud solutions, AWS migration, Azure migration, cloud consulting India, legacy to cloud migration, cloud modernization",
     icon: CloudCog,
     title: "Cloud Solutions & Migration",
     description: "Cloud-native application development, cloud migration, infrastructure modernization, and cloud consulting.",
@@ -68,6 +70,7 @@ const RAW = [
   },
   {
     slug: "api-development-integration",
+    keywords: "API development, API integration services, REST API development, third-party API integration, systems integration, ERP CRM integration, API development company India",
     icon: Plug,
     title: "API Development & Integration",
     description: "RESTful APIs, GraphQL APIs, third-party integrations, payment gateways, CRM/ERP integrations, and middleware development.",
@@ -83,6 +86,7 @@ const RAW = [
   },
   {
     slug: "workflow-automation",
+    keywords: "workflow automation, business process automation, AI workflow automation, automation software development, RPA alternative, n8n and Zapier automation, automate manual tasks",
     icon: Workflow,
     title: "Workflow Automation",
     description: "Business process automation, custom workflows, no-code/low-code automation, and system integrations.",
@@ -98,6 +102,7 @@ const RAW = [
   },
   {
     slug: "erp-crm-development",
+    keywords: "ERP development company, CRM development, custom ERP software, custom CRM software, ERP software Ahmedabad, ERP CRM development India, business management software",
     seoTitle: "Custom ERP & CRM Software Development | Codelix",
     seoDescription:
       "Custom ERP and CRM software development for manufacturing, inventory, HRMS and enterprise operations. ERP development company in Ahmedabad, India.",
@@ -116,6 +121,7 @@ const RAW = [
   },
   {
     slug: "ai-agent-development",
+    keywords: "AI agent development, AI agents for business, autonomous AI agents, LLM agent development, AI assistant development, AI agent development company India",
     icon: Bot,
     title: "AI Agent Development",
     description: "Custom AI agents, autonomous workflows, AI copilots, and intelligent assistants for businesses.",
@@ -131,6 +137,7 @@ const RAW = [
   },
   {
     slug: "generative-ai-solutions",
+    keywords: "generative AI solutions, generative AI development, LLM integration, ChatGPT integration, AI chatbot development, RAG development, generative AI company India",
     icon: Sparkles,
     title: "Generative AI Solutions",
     description: "LLM-powered applications, AI chatbots, content generation, RAG systems, and AI-powered search.",
@@ -146,6 +153,7 @@ const RAW = [
   },
   {
     slug: "cloud-infrastructure-services",
+    keywords: "cloud infrastructure services, AWS infrastructure, DevOps services, cloud architecture, Kubernetes and Docker, CI/CD setup, managed cloud services",
     icon: Server,
     title: "Cloud Infrastructure Services",
     description: "AWS, Azure, Google Cloud deployment, DevOps, Docker, Kubernetes, CI/CD, and server management.",
@@ -161,6 +169,7 @@ const RAW = [
   },
   {
     slug: "ux-research-design-systems",
+    keywords: "UX research, design systems, user research services, usability testing, component library design, UX audit, design system agency",
     icon: PenTool,
     title: "UX Research & Design Systems",
     description: "User research, usability testing, wireframing, prototyping, design systems, and accessibility improvements.",
@@ -176,6 +185,7 @@ const RAW = [
   },
   {
     slug: "marketplace-development",
+    keywords: "marketplace development, multi-vendor marketplace, online marketplace platform, B2B marketplace development, marketplace app development, two-sided marketplace",
     icon: Store,
     title: "Marketplace Development",
     description: "Multi-vendor marketplaces, B2B portals, B2C marketplaces, and vendor management systems.",
@@ -191,6 +201,7 @@ const RAW = [
   },
   {
     slug: "payment-integration-services",
+    keywords: "payment gateway integration, payment integration services, Razorpay integration, Stripe integration, UPI integration, PayU integration, subscription billing integration",
     icon: CreditCard,
     title: "Payment Integration Services",
     description: "Stripe, Razorpay, PayPal, UPI, subscription billing, and secure payment gateway integration.",
@@ -206,6 +217,7 @@ const RAW = [
   },
   {
     slug: "legacy-system-modernization",
+    keywords: "legacy system modernization, legacy application migration, software modernization, legacy code refactoring, monolith to microservices, application re-engineering",
     icon: RefreshCw,
     title: "Legacy System Modernization",
     description: "Modernize outdated software, migrate legacy applications, improve performance, and adopt modern technologies.",
@@ -221,6 +233,7 @@ const RAW = [
   },
   {
     slug: "business-intelligence-solutions",
+    keywords: "business intelligence solutions, BI dashboard development, Power BI services, data visualization, reporting dashboards, BI consulting India",
     icon: BarChart3,
     title: "Business Intelligence Solutions",
     description: "BI dashboards, KPI reporting, Power BI, Tableau, executive dashboards, and decision support systems.",
@@ -236,6 +249,7 @@ const RAW = [
   },
   {
     slug: "predictive-analytics",
+    keywords: "predictive analytics, predictive analytics services, demand forecasting, machine learning models, sales forecasting, predictive modeling",
     icon: TrendingUp,
     title: "Predictive Analytics",
     description: "Forecasting, machine learning models, customer insights, and business prediction systems.",
@@ -251,6 +265,7 @@ const RAW = [
   },
   {
     slug: "data-engineering",
+    keywords: "data engineering services, data pipeline development, ETL development, data warehouse, data lake, big data engineering, data integration",
     icon: Database,
     title: "Data Engineering",
     description: "ETL pipelines, data warehousing, big data processing, and data integration solutions.",
@@ -266,6 +281,7 @@ const RAW = [
   },
   {
     slug: "performance-optimization",
+    keywords: "website performance optimization, speed optimization, Core Web Vitals optimization, page speed optimization, application performance tuning, web app optimization",
     icon: Gauge,
     title: "Performance Optimization",
     description: "Website speed optimization, database tuning, API optimization, scalability improvements, and performance audits.",
@@ -281,6 +297,7 @@ const RAW = [
   },
   {
     slug: "security-maintenance",
+    keywords: "website security and maintenance, application security, software maintenance services, security audit, website maintenance services, vulnerability fixing",
     icon: ShieldCheck,
     title: "Security & Maintenance",
     description: "Security updates, vulnerability fixes, monitoring, backups, maintenance, and ongoing technical support.",
@@ -296,6 +313,7 @@ const RAW = [
   },
   {
     slug: "dedicated-development-teams",
+    keywords: "dedicated development team, hire dedicated developers, offshore development team India, hire developers in India, remote development team, staff augmentation",
     icon: Users,
     title: "Dedicated Development Teams",
     description: "Hire dedicated developers, UI/UX designers, QA engineers, AI engineers, and full-stack development teams.",

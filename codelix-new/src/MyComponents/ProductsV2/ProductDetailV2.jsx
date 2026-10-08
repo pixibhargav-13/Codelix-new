@@ -176,6 +176,7 @@ export default function ProductDetailV2() {
       <SEO
         title={p.seoTitle || `${p.name} | Codelix IT Solutions`}
         description={p.seoDescription || p.tagline || `Learn about ${p.name} at Codelix IT Solutions.`}
+        keywords={p.keywords}
         image={`/og/${p.slug}.png`}
       />
       <StructuredData type="SoftwareApplication" data={productSchema(p)} />
@@ -559,7 +560,7 @@ export default function ProductDetailV2() {
           <div className="pd2-other-grid">
             {otherProducts.map((op) => (
               <Link to={`/products/${op.slug}`} className="pd2-other-card pd2-reveal" key={op.slug} style={{ "--accent": op.accent }}>
-                <span className="pd2-other-logo"><img src={op.logo} alt="" /></span>
+                <span className="pd2-other-logo"><img src={op.logo} alt={`${op.name} logo`} /></span>
                 <span className="pd2-other-badge">{op.badge}</span>
                 <h3>{op.name}</h3>
                 <p>{op.tagline}</p>

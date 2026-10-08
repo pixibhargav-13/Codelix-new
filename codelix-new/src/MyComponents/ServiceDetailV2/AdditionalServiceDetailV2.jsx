@@ -365,7 +365,7 @@ export default function AdditionalServiceDetailV2() {
 
   return (
     <main className="v2 sd2" ref={rootRef}>
-      <SEO title={svc.seoTitle || `${svc.title} | Codelix IT Solutions`} description={svc.seoDescription || svc.description} />
+      <SEO title={svc.seoTitle || `${svc.title} | Codelix IT Solutions`} description={svc.seoDescription || svc.description} keywords={svc.keywords} />
       <StructuredData type="Service" data={serviceInfo(`/services/${svc.slug}`, svc.seoDescription || svc.description)} />
       <div className="v2-progress" aria-hidden="true"><span /></div>
 

@@ -583,6 +583,7 @@ export default function HomepageV2() {
     const enter = (row, ev) => {
       const src = row.dataset.thumb;
       if (src) img.src = src;
+      img.alt = row.dataset.title || "Project preview";
 
       /* mouseenter also fires when a row scrolls up under a stationary
          cursor — and in that case no mousemove has run, so tx/ty would
@@ -736,7 +737,7 @@ export default function HomepageV2() {
               <span className="line"><span className="v2-hero-accent">actually scales.</span></span>
             </h1>
             <p className="v2-hero-sub">
-              Stop rebuilding brittle prototypes. We engineer production-ready web apps, mobile platforms, and enterprise SaaS solutions designed to handle real users.
+              Codelix IT Solutions is a software development company in Ahmedabad, India. We engineer production-ready web apps, mobile platforms, and enterprise SaaS designed to handle real users.
             </p>
             <div className="v2-hero-cta">
               <Link className="v2-btn v2-btn--filled" to="/contact">
@@ -792,9 +793,9 @@ export default function HomepageV2() {
         <div className="v2-method-head">
           <h2 className="v2-method-heading">Our Method.</h2>
           <p className="v2-method-lede">
-            Every engagement starts the same way — not with a proposal
-            template, but with figuring out what your business actually
-            needs before anything gets built.
+            Our method is six steps: ideation, planning, design, agile development,
+            testing, and deployment. It starts with what your business actually
+            needs — not a proposal template.
           </p>
         </div>
         <div className="v2-method-rows">
@@ -819,8 +820,8 @@ export default function HomepageV2() {
         <div className="v2-method-head">
           <h2 className="v2-method-heading">Selected Work.</h2>
           <p className="v2-method-lede">
-            Forty projects delivered across society management, enterprise ERP,
-            commerce, and marketplaces.
+            Codelix has delivered 40+ projects across society management, enterprise
+            ERP, e-commerce, payroll, and marketplaces. Here are five of them.
           </p>
         </div>
         <div className="v2-method-rows">
@@ -829,6 +830,7 @@ export default function HomepageV2() {
               className="v2-work-row"
               key={w.n}
               data-thumb={w.thumb}
+              data-title={w.title}
               onClick={() => navigate(w.link)}
             >
               <div className="v2-work-index">{w.n}</div>
@@ -846,7 +848,7 @@ export default function HomepageV2() {
         {/* floating preview — follows the cursor, swaps to the hovered row's
             screenshot; pointer devices only (wired in JS below) */}
         <div className="v2-work-preview" ref={workPreviewRef} aria-hidden="true">
-          <img alt="" ref={workPreviewImgRef} />
+          <img alt="Project preview" ref={workPreviewImgRef} />
         </div>
       </section>
 
@@ -856,8 +858,8 @@ export default function HomepageV2() {
           <p className="v2-pipe-eyebrow">From Brief To Launch</p>
           <h2 className="v2-pipe-heading">How We Ship.</h2>
           <p className="v2-pipe-lede">
-            Every qualified project moves the same way. One process that
-            scopes, designs, builds, and ships without cutting a stage short.
+            Every project ships through the same seven stages: scope, design, build,
+            test, deploy, monitor, and support — without cutting a stage short.
           </p>
         </div>
         <div className="v2-method-rows v2-pipe-rows">
@@ -935,8 +937,8 @@ export default function HomepageV2() {
           </div>
           <div>
             <p className="v2-map-body">
-              Each one maps to work we have already shipped. You don't need to know which
-              belongs in your business before you talk to us — that's what the first call is for.
+              We build websites, cross-platform apps, ERPs, storefronts, AI automation, SaaS,
+              design systems, and integrations — each one already shipped for clients.
             </p>
             <Link className="v2-map-link" to="/work">See the case studies →</Link>
           </div>
@@ -963,8 +965,8 @@ export default function HomepageV2() {
             <h2 className="v2-heading">Built on tools we trust in production.</h2>
           </div>
           <p className="v2-lede">
-            No experimental dependencies on client work — a proven stack across
-            front-end, mobile, back-end, data, and cloud.
+            We use a proven production stack across front-end, mobile, back-end,
+            data, and cloud — no experimental dependencies on client work.
           </p>
         </div>
         <div className="v2-tech-grid">
@@ -999,8 +1001,8 @@ export default function HomepageV2() {
         <div className="v2-method-head">
           <h2 className="v2-method-heading">What We Provide.</h2>
           <p className="v2-method-lede">
-            Eight services, one delivery standard — the same process, discipline,
-            and ownership handoff on every engagement.
+            Codelix provides eight services: web, app, UI/UX, e-commerce, custom
+            software, AI, data analytics, and managed support — one delivery standard.
           </p>
         </div>
 
@@ -1053,11 +1055,11 @@ export default function HomepageV2() {
       <section className="v2-section v2-products-section" id="products">
         <p className="v2-label">Our Products</p>
         <h2 className="v2-heading">Beyond client work — products we build and run ourselves.</h2>
-        <p className="v2-lede">Three SaaS products, live in the market, engineered with the same craft we bring to every client project.</p>
+        <p className="v2-lede">Codelix runs three live SaaS products — Audytee, 4bitx, and AanganOne — engineered with the same craft we bring to client work.</p>
         <div className="v2-products-grid">
           {PRODUCTS.map((p) => (
             <Link to={`/products/${p.slug}`} className="v2-product-card" key={p.slug} style={{ "--accent": p.accent }}>
-              <span className="v2-product-card-logo"><img src={p.logo} alt="" /></span>
+              <span className="v2-product-card-logo"><img src={p.logo} alt={`${p.name} logo`} /></span>
               <span className="v2-product-card-badge">{p.badge}</span>
               <h3 className="v2-product-card-name">{p.name}</h3>
               <p className="v2-product-card-tagline">{p.tagline}</p>
@@ -1118,7 +1120,7 @@ export default function HomepageV2() {
           <span className="v2-cta-accent">We'll bring back a scoped plan.</span>
         </h2>
         <p className="v2-cta-body">
-          A structured conversation about your product — your users, your workflows, your constraints.
+          A free consultation is a structured conversation about your product — your users, your workflows, your constraints.
           We scope what should be built first, what can wait, and what it takes to ship it.
         </p>
         <div className="v2-cta-actions">
