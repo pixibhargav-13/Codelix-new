@@ -69,10 +69,7 @@ export default defineConfig(({ command, isSsrBuild }) => ({
              ClientStrip, …) were each their own sub-2KB request; they import
              each other, so keeping them in ONE chunk also avoids any
              cross-chunk init-order problem */
-          /* PageLoader is the exception: it is imported lazily, for desktop
-             first visits only, and grouping it here would load it eagerly
-             on every page anyway */
-          if (id.includes('/MyComponents/Shared/') && !id.includes('/Shared/PageLoader')) return 'site-shared';
+          if (id.includes('/MyComponents/Shared/')) return 'site-shared';
           if (id.includes('/lib/splitTitleLines') || id.includes('/lib/introGate')) return 'site-shared';
           if (
             id.includes('/MyComponents/HomepageV2/techStack') ||

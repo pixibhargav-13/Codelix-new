@@ -126,7 +126,9 @@
   letter-spacing: -.02em;
   line-height: 1;
   white-space: nowrap;
-  will-change: top, left, font-size, opacity, color;
+  /* moved and sized with transform only (see the flyer effect) */
+  transform-origin: 0 0;
+  will-change: transform, opacity;
 }
 
 /* ───────────── NAV ───────────── */
@@ -4814,4 +4816,37 @@
 /* ─── Principles row sizes to its item count (see ServiceDetailV2.css) ─── */
 @media (min-width: 801px) {
   .v2-principles-grid:has(> :last-child:nth-child(2)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Off-screen sections pause their looping animations (toggled by
+   HomepageV2's IntersectionObserver); they resume from the same frame. */
+.v2-anim-paused,
+.v2-anim-paused::before,
+.v2-anim-paused::after,
+.v2-anim-paused *,
+.v2-anim-paused *::before,
+.v2-anim-paused *::after {
+  animation-play-state: paused !important;
+}
+
+/* ─── Light mode: phones and touch devices (see src/lib/lightMode.js) ───
+   No backdrop blur behind the nav and drawer (a near-opaque tint reads the
+   same), and the status dot's pulse — an animated box-shadow, the one hero
+   loop that repaints every frame — holds still. The grid drift and the
+   breathing glow are transform/opacity only and keep moving. */
+@media (max-width: 900px), (pointer: coarse) {
+  .v2-nav.scrolled {
+    backdrop-filter: none;
+    background: rgba(10, 10, 15, .96);
+  }
+
+  .v2-drawer,
+  .v2-drawer-backdrop {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .v2-hero-status i {
+    animation: none;
+  }
 }

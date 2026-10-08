@@ -53,6 +53,9 @@ export function useCaseStudies() {
                placeholder on someone else.s domain - fine as a broken-ish
                thumbnail, not something to hand a link preview */
             coverImage: cs.cover_image_url || undefined,
+            /* raw timestamps for datePublished / dateModified */
+            publishedAt: cs.published_at || undefined,
+            updatedAt: cs.updated_at || undefined,
             isConcept: !!cs.is_concept,
             snapshot: cs.snapshot?.length ? cs.snapshot : undefined,
             challengeImages: challengeImages.length ? challengeImages : undefined,

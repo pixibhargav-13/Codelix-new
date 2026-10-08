@@ -48,7 +48,7 @@ export default function ClientStrip() {
       <div className="v2-strip" ref={stripRef}>
         <div className="v2-strip-track" ref={trackRef}>
           {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
-            <img key={i} src={logo} alt="" loading="lazy" />
+            <img key={i} src={logo.src} alt={`${logo.name} logo`} loading="lazy" />
           ))}
         </div>
       </div>

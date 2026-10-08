@@ -454,7 +454,7 @@ export default function WorkV2() {
                 onClick={() => setTestimonial(i)}
                 aria-label={t.name}
               >
-                <img src={t.logo} alt="" />
+                <img src={t.logo} alt={`${t.name} logo`} />
               </button>
             ))}
           </div>

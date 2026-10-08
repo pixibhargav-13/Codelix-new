@@ -16,11 +16,10 @@ import TeamHeroVisual from "./TeamHeroVisual";
 import manasImg from "../Images/manas_vadodaria.webp";
 import kushalImg from "../Images/kushal.webp";
 
-/* LinkedIn falls back to the company page until individual profile URLs
-   are supplied */
+/* each founder's own LinkedIn profile (also their sameAs in src/lib/people.js) */
 const LEADERSHIP = [
-  { name: "Manas Vadodaria", initials: "M", photo: manasImg, title: "CEO", bio: "Sets product direction and leads client delivery at Codelix — turning ideas into market-ready custom software and SaaS solutions for businesses that intend to still be running them in five years.", linkedin: "https://www.linkedin.com/company/codelixit-solutions" },
-  { name: "Kushal Mungalpara", initials: "K", photo: kushalImg, title: "Co-Founder", bio: "Works alongside Manas turning visionary ideas into shipped systems — hands-on across the technical and delivery side of every Codelix engagement.", linkedin: "https://www.linkedin.com/company/codelixit-solutions" },
+  { name: "Manas Vadodaria", initials: "M", photo: manasImg, title: "CEO", bio: "Sets product direction and leads client delivery at Codelix — turning ideas into market-ready custom software and SaaS solutions for businesses that intend to still be running them in five years.", linkedin: "https://www.linkedin.com/in/manas-vadodaria-396353275/" },
+  { name: "Kushal Mungalpara", initials: "K", photo: kushalImg, title: "Co-Founder", bio: "Works alongside Manas turning visionary ideas into shipped systems — hands-on across the technical and delivery side of every Codelix engagement.", linkedin: "https://www.linkedin.com/in/kushal-mungalpara-60805227b/" },
 ];
 
 const HOW_WE_LEAD = [

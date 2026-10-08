@@ -1,6 +1,6 @@
 import { STATIC_TESTIMONIALS } from '../../data/testimonialsData';
 import { useTestimonials } from "../../data/useTestimonials";
-import React, { useEffect, useLayoutEffect, useRef, useState, lazy, Suspense } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -32,11 +32,7 @@ import { PRODUCTS } from "../ProductsV2/productsData";
 
 import "./HomepageV2.css";
 import NavbarV2 from "../Shared/NavbarV2";
-/* Only desktop first visits play the intro, so phones and repeat visits
-   never download it. Mounted after hydration (see showIntro below): the
-   server rendered nothing here, and a Suspense boundary appearing during
-   hydration would not match that markup. */
-const PageLoader = lazy(() => import("../Shared/PageLoader"));
+import PageLoader from "../Shared/PageLoader";
 import { introWillPlay, onIntroHandoff } from "../../lib/introGate";
 import FooterV2 from "../Shared/FooterV2";
 import HeroVisual from "./HeroVisual";
@@ -45,7 +41,6 @@ import FaqSection from "../Shared/FaqSection";
 import ScrollSentence from "../Shared/ScrollSentence";
 import CtaSection from "../Shared/CtaSection";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
-import { idleEffect } from "../../lib/whenIdle.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -188,7 +183,6 @@ const FAQS = [
 export default function HomepageV2() {
   const TESTIMONIALS = useTestimonials(STATIC_TESTIMONIALS);
   const navigate = useNavigate();
-  const [showIntro, setShowIntro] = useState(false);
   // FAQ items' className is recomputed on every click (for the "open" class),
   // which makes React rewrite that element's className attribute — wiping out
   // an "is-in" class added imperatively by the scroll-reveal observer below.
@@ -206,6 +200,21 @@ export default function HomepageV2() {
   const workSectionRef = useRef(null);
   const workPreviewRef = useRef(null);
   const workPreviewImgRef = useRef(null);
+
+  /* The hero and the Method/Work bands carry ~33 looping decorative
+     animations (rings, glows, the grid, pulses). They kept running — and
+     repainting — long after they had scrolled away, which on a phone cost
+     more paint time per scroll frame than everything on screen. Pause each
+     section's loops while it is off screen; they resume where they were. */
+  useEffect(() => {
+    const sections = rootRef.current.querySelectorAll(".v2-hero, .v2-method-shell");
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.target.classList.toggle("v2-anim-paused", !e.isIntersecting)),
+      { rootMargin: "10% 0px" }
+    );
+    sections.forEach((s) => io.observe(s));
+    return () => io.disconnect();
+  }, []);
 
   /* Every pinned heading band (Method, Work, ...) uses CSS position:sticky.
      Each one's bottom line should only show once IT is actually stuck to the
@@ -305,17 +314,11 @@ export default function HomepageV2() {
 
     const play = () => tl.play();
     const off = onIntroHandoff(play);
-    /* mount the (lazy) loader — queued so it isn't a synchronous re-render
-       from inside this effect; the pre-boot plate covers the page meanwhile */
-    let alive = true;
-    queueMicrotask(() => { if (alive) setShowIntro(true); });
     /* safety net — if the loader ever fails to signal, the hero must
-       still animate rather than sit invisible forever. 4s, the same as the
-       pre-boot plate's own fallback, now that the loader's code is fetched
-       on demand rather than already in the page. */
-    const failsafe = setTimeout(play, 4000);
+       still animate rather than sit invisible forever */
+    const failsafe = setTimeout(play, 2600);
 
-    return () => { alive = false; tl.kill(); off(); clearTimeout(failsafe); };
+    return () => { tl.kill(); off(); clearTimeout(failsafe); };
   }, []);
 
   /* THE handoff — this is not two separate texts (hero fades out, section
@@ -326,11 +329,17 @@ export default function HomepageV2() {
      frame. The real hero word and the real heading are both hidden while the
      flyer is mid-flight, so only one instance of each word is ever visible —
      it just happens to be a different element at each end of the trip.
-     Set up when idle rather than on mount: its measuring forces a full
-     layout, which on a phone landed inside the already long hydration task.
-     The pinned section below is deferred the same way and, as an effect
-     declared after this one, is still set up after it. */
-  useEffect(() => idleEffect(() => {
+     Set up on mount, so the words follow the very first scroll — deferring
+     it to idle left them frozen for the first second on a phone.
+
+     The flyer moves with transform only: each clone is laid out once at its
+     LANDING font size and scaled down to the hero size, with translate for
+     position. Animating top/left/font-size made the browser re-lay-out the
+     text on every scroll frame, which is what made the flight stutter on
+     phones. Scaling down (never up) keeps the glyphs sharp, and with
+     line-height 1 and an em letter-spacing, scale() matches what the
+     font-size change looked like exactly. */
+  useEffect(() => {
     const heroEl = rootRef.current.querySelector(".v2-hero");
     const pinSection = rootRef.current.querySelector(".v2-wr-pin");
     const heroWords = heroWordRefs.current;
@@ -383,6 +392,8 @@ export default function HomepageV2() {
         const pinnedViewportTop = r.top - sectionRect.top; // invariant
         return { top: pinnedViewportTop + freezeScrollY, left: r.left };
       });
+
+      flyers.forEach((el, i) => { if (el) el.style.fontSize = labelFontSize[i] + "px"; });
     };
     measure();
 
@@ -414,9 +425,10 @@ export default function HomepageV2() {
         flyers.forEach((el, i) => {
           if (!el || !heroDoc[i] || !labelDocTarget[i]) return;
           const a = heroDoc[i], b = labelDocTarget[i];
-          el.style.top = (a.top + (b.top - a.top) * posP - scrollRef) + "px";
-          el.style.left = (a.left + (b.left - a.left) * posP) + "px";
-          el.style.fontSize = (heroFontSize[i] + (labelFontSize[i] - heroFontSize[i]) * posP) + "px";
+          const x = a.left + (b.left - a.left) * posP;
+          const y = a.top + (b.top - a.top) * posP - scrollRef;
+          const scale = (heroFontSize[i] + (labelFontSize[i] - heroFontSize[i]) * posP) / labelFontSize[i];
+          el.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
           el.style.color = mixColor(posP);
           el.style.opacity = flyerOpacity;
         });
@@ -425,11 +437,20 @@ export default function HomepageV2() {
       },
     });
 
-    const onResize = () => { measure(); st.refresh(); };
+    /* Width only: on a phone "resize" also fires every time the address bar
+       slides in or out mid-scroll, and re-measuring then stalled the scroll
+       and made the words jump. */
+    let lastWidth = window.innerWidth;
+    const onResize = () => {
+      if (window.innerWidth === lastWidth) return;
+      lastWidth = window.innerWidth;
+      measure();
+      st.refresh();
+    };
     window.addEventListener("resize", onResize);
     document.fonts?.ready?.then(() => { measure(); st.refresh(); });
     return () => { st.kill(); window.removeEventListener("resize", onResize); };
-  }), []);
+  }, []);
 
   /* body copy fades in right after the heading lands, once the section pins.
      The accent tick (::before) and background ordinal (::after) on each
@@ -438,7 +459,7 @@ export default function HomepageV2() {
      .v2-wr-col element instead, which the CSS reads via var(--wr-decor, 0)
      for their opacity. Same timeline as the body, so both arrive together
      right as each word lands. */
-  useEffect(() => idleEffect(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
       const section = rootRef.current.querySelector(".v2-wr-pin");
       const intro = section.querySelector(".v2-wr-intro");
@@ -464,7 +485,7 @@ export default function HomepageV2() {
         .to(cols, { "--wr-decor": 1, ease: "none", stagger: .12 }, "<");
     }, rootRef);
     return () => ctx.revert();
-  }), []);
+  }, []);
 
   /* Reveal-on-enter for every row/heading/label, via IntersectionObserver
      rather than GSAP ScrollTrigger. ScrollTrigger caches a pixel "start"
@@ -562,6 +583,7 @@ export default function HomepageV2() {
     const enter = (row, ev) => {
       const src = row.dataset.thumb;
       if (src) img.src = src;
+      img.alt = row.dataset.title || "Project preview";
 
       /* mouseenter also fires when a row scrolls up under a stationary
          cursor — and in that case no mousemove has run, so tx/ty would
@@ -683,11 +705,7 @@ export default function HomepageV2() {
 
   return (
     <div className="v2" ref={rootRef}>
-      {showIntro && (
-        <Suspense fallback={null}>
-          <PageLoader />
-        </Suspense>
-      )}
+      <PageLoader />
       <div className="v2-progress" aria-hidden="true"><span /></div>
 
       {/* the travelling clone of DESIGN./BUILD./SCALE. — the real hero words
@@ -719,7 +737,7 @@ export default function HomepageV2() {
               <span className="line"><span className="v2-hero-accent">actually scales.</span></span>
             </h1>
             <p className="v2-hero-sub">
-              Stop rebuilding brittle prototypes. We engineer production-ready web apps, mobile platforms, and enterprise SaaS solutions designed to handle real users.
+              Codelix IT Solutions is a software development company in Ahmedabad, India. We engineer production-ready web apps, mobile platforms, and enterprise SaaS designed to handle real users.
             </p>
             <div className="v2-hero-cta">
               <Link className="v2-btn v2-btn--filled" to="/contact">
@@ -775,9 +793,9 @@ export default function HomepageV2() {
         <div className="v2-method-head">
           <h2 className="v2-method-heading">Our Method.</h2>
           <p className="v2-method-lede">
-            Every engagement starts the same way — not with a proposal
-            template, but with figuring out what your business actually
-            needs before anything gets built.
+            Our method is six steps: ideation, planning, design, agile development,
+            testing, and deployment. It starts with what your business actually
+            needs — not a proposal template.
           </p>
         </div>
         <div className="v2-method-rows">
@@ -802,8 +820,8 @@ export default function HomepageV2() {
         <div className="v2-method-head">
           <h2 className="v2-method-heading">Selected Work.</h2>
           <p className="v2-method-lede">
-            Forty projects delivered across society management, enterprise ERP,
-            commerce, and marketplaces.
+            Codelix has delivered 40+ projects across society management, enterprise
+            ERP, e-commerce, payroll, and marketplaces. Here are five of them.
           </p>
         </div>
         <div className="v2-method-rows">
@@ -812,6 +830,7 @@ export default function HomepageV2() {
               className="v2-work-row"
               key={w.n}
               data-thumb={w.thumb}
+              data-title={w.title}
               onClick={() => navigate(w.link)}
             >
               <div className="v2-work-index">{w.n}</div>
@@ -829,7 +848,7 @@ export default function HomepageV2() {
         {/* floating preview — follows the cursor, swaps to the hovered row's
             screenshot; pointer devices only (wired in JS below) */}
         <div className="v2-work-preview" ref={workPreviewRef} aria-hidden="true">
-          <img alt="" ref={workPreviewImgRef} />
+          <img alt="Project preview" ref={workPreviewImgRef} />
         </div>
       </section>
 
@@ -839,8 +858,8 @@ export default function HomepageV2() {
           <p className="v2-pipe-eyebrow">From Brief To Launch</p>
           <h2 className="v2-pipe-heading">How We Ship.</h2>
           <p className="v2-pipe-lede">
-            Every qualified project moves the same way. One process that
-            scopes, designs, builds, and ships without cutting a stage short.
+            Every project ships through the same seven stages: scope, design, build,
+            test, deploy, monitor, and support — without cutting a stage short.
           </p>
         </div>
         <div className="v2-method-rows v2-pipe-rows">
@@ -918,8 +937,8 @@ export default function HomepageV2() {
           </div>
           <div>
             <p className="v2-map-body">
-              Each one maps to work we have already shipped. You don't need to know which
-              belongs in your business before you talk to us — that's what the first call is for.
+              We build websites, cross-platform apps, ERPs, storefronts, AI automation, SaaS,
+              design systems, and integrations — each one already shipped for clients.
             </p>
             <Link className="v2-map-link" to="/work">See the case studies →</Link>
           </div>
@@ -946,8 +965,8 @@ export default function HomepageV2() {
             <h2 className="v2-heading">Built on tools we trust in production.</h2>
           </div>
           <p className="v2-lede">
-            No experimental dependencies on client work — a proven stack across
-            front-end, mobile, back-end, data, and cloud.
+            We use a proven production stack across front-end, mobile, back-end,
+            data, and cloud — no experimental dependencies on client work.
           </p>
         </div>
         <div className="v2-tech-grid">
@@ -982,8 +1001,8 @@ export default function HomepageV2() {
         <div className="v2-method-head">
           <h2 className="v2-method-heading">What We Provide.</h2>
           <p className="v2-method-lede">
-            Eight services, one delivery standard — the same process, discipline,
-            and ownership handoff on every engagement.
+            Codelix provides eight services: web, app, UI/UX, e-commerce, custom
+            software, AI, data analytics, and managed support — one delivery standard.
           </p>
         </div>
 
@@ -1036,11 +1055,11 @@ export default function HomepageV2() {
       <section className="v2-section v2-products-section" id="products">
         <p className="v2-label">Our Products</p>
         <h2 className="v2-heading">Beyond client work — products we build and run ourselves.</h2>
-        <p className="v2-lede">Three SaaS products, live in the market, engineered with the same craft we bring to every client project.</p>
+        <p className="v2-lede">Codelix runs three live SaaS products — Audytee, 4bitx, and AanganOne — engineered with the same craft we bring to client work.</p>
         <div className="v2-products-grid">
           {PRODUCTS.map((p) => (
             <Link to={`/products/${p.slug}`} className="v2-product-card" key={p.slug} style={{ "--accent": p.accent }}>
-              <span className="v2-product-card-logo"><img src={p.logo} alt="" /></span>
+              <span className="v2-product-card-logo"><img src={p.logo} alt={`${p.name} logo`} /></span>
               <span className="v2-product-card-badge">{p.badge}</span>
               <h3 className="v2-product-card-name">{p.name}</h3>
               <p className="v2-product-card-tagline">{p.tagline}</p>
@@ -1101,7 +1120,7 @@ export default function HomepageV2() {
           <span className="v2-cta-accent">We'll bring back a scoped plan.</span>
         </h2>
         <p className="v2-cta-body">
-          A structured conversation about your product — your users, your workflows, your constraints.
+          A free consultation is a structured conversation about your product — your users, your workflows, your constraints.
           We scope what should be built first, what can wait, and what it takes to ship it.
         </p>
         <div className="v2-cta-actions">

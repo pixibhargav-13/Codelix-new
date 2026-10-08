@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import gsap from "gsap";
 import { ArrowLeft, ArrowUpRight, X, Check } from "lucide-react";
 import { SEO } from "../../components/SEO";
+import { caseStudyKeywordsFor } from "../../lib/caseStudyKeywords";
 
 /* v2 design system — same source of truth as the other v2 pages */
 import "../HomepageV2/HomepageV2.css";
@@ -22,6 +23,7 @@ import CtaSection from '../Shared/CtaSection';
 import { StructuredData } from "../../components/StructuredData";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 import { fitTitle } from "../../lib/fitTitle.js";
+import { toISODate } from "../../lib/isoDate.js";
 
 
 /* the mask-line wipe animation (shared with every other v2 hero) only
@@ -138,7 +140,11 @@ export default function CaseStudyDetailV2() {
       <SEO
         title={fitTitle(cs.title, [" | Case Study | Codelix", " | Codelix"])}
         description={cs.description || `Read about how we solved ${cs.title} at Codelix IT Solutions.`}
+        keywords={caseStudyKeywordsFor(cs.slug, cs.tags)}
         image={cs.coverImage || cs.ogImage}
+        type={cs.publishedAt ? "article" : undefined}
+        publishedTime={toISODate(cs.publishedAt)}
+        modifiedTime={toISODate(cs.updatedAt) || toISODate(cs.publishedAt)}
       />
       <div className="v2-progress" aria-hidden="true"><span /></div>
 

@@ -1,9 +1,19 @@
 import React, { useRef, useEffect } from 'react';
 import './ScrollSentence.css';
+import { isLightMode } from '../../lib/lightMode';
 
 /* smootherstep — takes the linear scroll fraction and softens both ends so the
    scrubbed motion doesn't start and stop abruptly */
 const ease = (p) => p * p * p * (p * (p * 6 - 15) + 10);
+
+/* Scroll distance per line. Every line, the last included, gets a slot to
+   fade in, hold, and leave the same way. After the last line a short blank
+   beat follows (BLANK_SLOT of a slot — about two wheel ticks), then the
+   block ends and the next section scrolls in. The block's height is derived
+   from the same numbers, so it fits however many lines it has. */
+const SLOT_VH = 46;
+const BLANK_SLOT = 0.5;
+const sentenceSlots = (count) => count + BLANK_SLOT;
 
 /* Tall sticky block that shows ONE line at a time. Unlike a timed animation,
    every value here (opacity, scale, blur, backdrop position) is a direct
@@ -44,9 +54,11 @@ export default function ScrollSentence({ words, tone, centered = false }) {
       if (scrollable <= 0) return 0;
       /* -r.top in viewport space is exactly scrollY - docTop */
       const raw = (window.scrollY - docTop) / scrollable;
-      const norm = Math.min(Math.max(raw / 0.92, 0), 0.9999);
-      return norm * words.length;
+      return Math.min(Math.max(raw, 0), 1) * sentenceSlots(words.length);
     };
+
+    // light mode (phones): lines fade and scale but are never blurred
+    const light = isLightMode();
 
     // Each slot is split so the line spends MOST of it sharp and still.
     const IN_END = 0.2;
@@ -77,10 +89,10 @@ export default function ScrollSentence({ words, tone, centered = false }) {
 
         if (wordEl) {
           wordEl.style.opacity = opacity;
-          wordEl.style.transform = centered 
+          wordEl.style.transform = centered
             ? `translate3d(-50%,-50%,0) scale(${scale})`
             : `translate3d(0,-50%,0) scale(${scale})`;
-          wordEl.style.filter = blur > 0.01 ? `blur(${blur}px)` : "none";
+          wordEl.style.filter = !light && blur > 0.01 ? `blur(${blur}px)` : "none";
         }
         if (bgEl) {
           // plain crossfade — no sliding motion, the color just blends in
@@ -140,10 +152,28 @@ export default function ScrollSentence({ words, tone, centered = false }) {
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(onResize).catch(() => {});
     }
+    /* Anything above the block that changes height moves it: ScrollTrigger
+       pin spacers (set up when the browser goes idle, after load — the
+       homepage's pinned section adds ~70% of a viewport), late images,
+       Supabase content. Missing that left the cached position ~600px stale,
+       so the lines ran ahead of the scroll and the block ended on a long
+       empty stretch. The page's height changing is the one signal all of
+       these share. */
+    const pageResize = typeof ResizeObserver === "function" ? new ResizeObserver(onResize) : null;
+    pageResize?.observe(document.body);
+    /* .is-live turns the layer hints on (see the CSS) only while the block
+       is within a screen of the viewport */
+    const near = new IntersectionObserver(
+      ([entry]) => el.classList.toggle("is-live", entry.isIntersecting),
+      { rootMargin: "100% 0px" }
+    );
+    near.observe(el);
     measure();
     handleScroll();
 
     return () => {
+      pageResize?.disconnect();
+      near.disconnect();
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", onResize);
       window.removeEventListener("load", onResize);
@@ -153,8 +183,9 @@ export default function ScrollSentence({ words, tone, centered = false }) {
 
   return (
     <div 
-      className={`v2-sentence v2-sentence--${tone} ${centered ? 'v2-sentence--centered' : ''}`} 
+      className={`v2-sentence v2-sentence--${tone} ${centered ? 'v2-sentence--centered' : ''}`}
       ref={ref}
+      style={{ height: `calc(100svh + ${sentenceSlots(words.length) * SLOT_VH}vh)` }}
     >
       <div className="v2-sentence-sticky">
         <div className="v2-sentence-bgs">

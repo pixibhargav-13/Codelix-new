@@ -251,7 +251,7 @@ export default function IndustryDetailV2() {
 
   return (
     <div className="v2" ref={rootRef}>
-      <SEO title={svc.seoTitle || `${svc.title} Software Solutions | Codelix IT Solutions`} description={svc.seoDescription || svc.tagline} />
+      <SEO title={svc.seoTitle || `${svc.title} Software Solutions | Codelix IT Solutions`} description={svc.seoDescription || svc.tagline} keywords={svc.keywords} />
       <div className="v2-progress" aria-hidden="true"><span /></div>
 
       <NavbarV2 />
@@ -417,7 +417,7 @@ export default function IndustryDetailV2() {
             {matchedWork.map((w) => (
               <Link className="ind2-work-card" to={w.href} key={w.href}>
                 <span className="ind2-work-media">
-                  <img src={w.image} alt="" loading="lazy" />
+                  <img src={w.image} alt={w.title} loading="lazy" />
                 </span>
                 <span className="ind2-work-cat">{w.category}</span>
                 <span className="ind2-work-title">{w.title}</span>

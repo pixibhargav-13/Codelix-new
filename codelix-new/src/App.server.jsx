@@ -24,7 +24,6 @@ import AdminTestimonialsList from "./admin/pages/AdminTestimonialsList";
 import AdminTestimonialForm from "./admin/pages/AdminTestimonialForm";
 
 // ─── Eagerly loaded (critical for first paint) ────────────────────────────────
-import Chatbot from "./MyComponents/Chatbot/Chatbot";
 import BookingModal from "./MyComponents/BookingModal/BookingModal";
 
 // ─── 404 Not Found ─────────────────────────────────────────────────────────────
@@ -62,6 +61,7 @@ import Blog from "./MyComponents/BlogV2/BlogV2";
 import BlogDetail from "./MyComponents/BlogDetailV2/BlogDetailV2";
 import CaseStudy from "./MyComponents/CaseStudyV2/CaseStudyV2";
 import CaseStudyDetail from "./MyComponents/CaseStudyDetailV2/CaseStudyDetailV2";
+import LocationLanding from "./MyComponents/LocationLandingV2/LocationLandingV2";
 
 // ─── Scroll to top on route change ───────────────────────────────────────────
 const ScrollToTop = () => {
@@ -73,11 +73,11 @@ const ScrollToTop = () => {
 };
 
 // ─── Chatbot is a public-site widget — hide it on the admin panel ────────────
-const ChatbotGate = () => {
-  const location = useLocation();
-  if (location.pathname.startsWith("/admin")) return null;
-  return <Chatbot />;
-};
+/* Rendered by the client only, once the browser is idle (see App.jsx), so
+   it is not prerendered. Its stylesheet ships with its lazy chunk, so a
+   prerendered copy painted unstyled — a dark box with a white icon in the
+   top-left corner — until hydration removed it. */
+const ChatbotGate = () => null;
 
 // ─── Sync Lenis with GSAP ScrollTrigger for extra smooth animations ────────────
 const LenisGsapSync = () => {
@@ -135,7 +135,7 @@ const RouteSEO = () => {
   const currentSEO = seoData[path];
   if (!currentSEO) return null;
 
-  return <SEO title={currentSEO.title} ogTitle={currentSEO.ogTitle} description={currentSEO.description} robots={currentSEO.robots} image={currentSEO.image} />;
+  return <SEO title={currentSEO.title} ogTitle={currentSEO.ogTitle} description={currentSEO.description} keywords={currentSEO.keywords} robots={currentSEO.robots} image={currentSEO.image} />;
 };
 
 const AppRoutes = () => {
@@ -208,6 +208,11 @@ const AppRoutes = () => {
             <Route path="testimonials/:id" element={<AdminTestimonialForm />} />
           </Route>
 
+          {/* city landing pages ("best website development company in surat" etc.) —
+              search-only, linked from nowhere on the site; see LocationLandingV2.jsx.
+              Only single-segment URLs that no literal route above claims reach it,
+              and it renders NotFound for any slug that is not one of those pages. */}
+          <Route path="/:slug" element={<LocationLanding />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

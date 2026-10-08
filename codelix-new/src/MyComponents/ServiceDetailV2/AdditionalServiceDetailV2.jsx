@@ -365,7 +365,7 @@ export default function AdditionalServiceDetailV2() {
 
   return (
     <main className="v2 sd2" ref={rootRef}>
-      <SEO title={svc.seoTitle || `${svc.title} | Codelix IT Solutions`} description={svc.seoDescription || svc.description} />
+      <SEO title={svc.seoTitle || `${svc.title} | Codelix IT Solutions`} description={svc.seoDescription || svc.description} keywords={svc.keywords} />
       <StructuredData type="Service" data={serviceInfo(`/services/${svc.slug}`, svc.seoDescription || svc.description)} />
       <div className="v2-progress" aria-hidden="true"><span /></div>
 
@@ -712,7 +712,7 @@ export default function AdditionalServiceDetailV2() {
             {relatedWork.map((w) => (
               <Link className="sd2-work-card" to={w.href} key={w.href}>
                 <span className="sd2-work-media">
-                  <img src={w.image} alt="" loading="lazy" />
+                  <img src={w.image} alt={w.title} loading="lazy" />
                 </span>
                 <span className="sd2-work-tag">{w.category}</span>
                 <span className="sd2-work-title">{w.title}</span>

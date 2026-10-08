@@ -7,6 +7,7 @@ import { getGeneratedRoutes } from "../src/lib/route-config.js";
 import { seoData } from "../src/lib/seoData.js";
 import { INTRO_MEDIA, INTRO_SEEN_KEY } from "../src/lib/introGate.js";
 import { createRouteCss } from "./route-css.mjs";
+import { createPageDates } from "./page-dates.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -87,6 +88,8 @@ async function build() {
       challenges: cs.challenges || [],
       solutions: cs.solutions || [],
       image: cs.cover_image_url || "https://laravel.com/img/logomark.min.svg",
+      publishedAt: cs.published_at || undefined,
+      updatedAt: cs.updated_at || undefined,
       isConcept: !!cs.is_concept,
       snapshot: cs.snapshot?.length ? cs.snapshot : undefined,
       challengeImages: challengeImages.length ? challengeImages : undefined,
@@ -111,7 +114,11 @@ async function build() {
     content: p.content,
   }));
 
-  const initialData = { caseStudies, blogPosts };
+  /* useBlogPosts maps raw blog_posts rows itself (published_at,
+     cover_image_url, read_time, updated_at…), so it is handed the rows as
+     Supabase returns them. Passing the pre-mapped objects above left every
+     Supabase post prerendered without its date, read time or cover. */
+  const initialData = { caseStudies, blogPosts: blogPostsRaw || [] };
 
   // 2. Get all static routes
   const staticRoutes = getGeneratedRoutes();
@@ -146,6 +153,7 @@ async function build() {
     srcDir: path.resolve(__dirname, "../src"),
     manifest,
   });
+  const pageDates = createPageDates(path.resolve(__dirname, ".."));
   /* after the LAST entry stylesheet: a page's own CSS overrides the shared
      base, so it has to come after it — the same order Vite gives it when
      the route chunk loads on client-side navigation */
@@ -261,6 +269,35 @@ async function build() {
         '</body>',
         `<script>window.__INITIAL_DATA__ = ${safeInitialData};</script>\n</body>`
       );
+
+      /* WebPage markup with the page's dates, for every page that is not a
+         post (posts carry their own Article/BlogPosting dates from
+         Supabase) and not the 404 */
+      /* a post rendered from the built-in fallback data (no Supabase row)
+         has no dates of its own — it gets the WebPage dates instead */
+      const isDatedPost = /^\/(blog|case-study)\/[^/]+$/.test(url) && html.includes('"datePublished"');
+      if (!isDatedPost && url !== NOT_FOUND_ROUTE) {
+        const dates = pageDates(routeCss.sourceFor(url));
+        const title = (html.match(/<title>([\s\S]*?)<\/title>/) || [])[1];
+        const pageUrl = `https://www.codelixitsolutions.com${url === "/" ? "/" : url}`;
+        const webPage = {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "@id": `${pageUrl}#webpage`,
+          url: pageUrl,
+          name: title ? title.replace(/&amp;/g, "&").replace(/&#x27;/g, "'") : undefined,
+          inLanguage: "en",
+          isPartOf: { "@id": "https://www.codelixitsolutions.com/#website" },
+          about: { "@id": "https://www.codelixitsolutions.com/#organization" },
+          publisher: { "@id": "https://www.codelixitsolutions.com/#organization" },
+          datePublished: dates?.published,
+          dateModified: dates?.modified,
+        };
+        html = html.replace(
+          "</head>",
+          `<script type="application/ld+json">${JSON.stringify(webPage).replace(/</g, "\\u003c")}</script>\n</head>`
+        );
+      }
 
       if (url === NOT_FOUND_ROUTE) {
         fs.writeFileSync(path.resolve(__dirname, "../dist/404.html"), html);
