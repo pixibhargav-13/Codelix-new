@@ -239,6 +239,15 @@ export default function LocationLandingV2() {
             </article>
           ))}
         </div>
+        <div className="ll-areas">
+          <h3 className="ll-areas-title">
+            <MapPin size={16} strokeWidth={1.8} /> Areas we serve in {city.name}
+          </h3>
+          <ul className="ll-areas-list">
+            {city.areas.map((a) => <li key={a}>{a}</li>)}
+            <li>All of {city.region}</li>
+          </ul>
+        </div>
       </section>
 
       {/* ══════════ 5 · WHAT'S INCLUDED ══════════ */}

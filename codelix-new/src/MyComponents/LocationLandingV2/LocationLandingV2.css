@@ -825,3 +825,49 @@
     bottom: 84px !important;
   }
 }
+
+/* ── areas served ────────────────────────────────────────────────────── */
+.ll-areas {
+  margin-top: 36px;
+  padding: 26px 28px;
+  border: 1px dashed var(--rule-strong);
+  border-radius: 20px;
+}
+
+.v2 .ll-areas-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.ll-areas-title svg {
+  color: var(--ll-accent);
+}
+
+.v2 .ll-areas-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ll-areas-list li {
+  padding: 7px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 100px;
+  background: var(--ll-card);
+  font-size: 13px;
+  color: var(--text-55);
+}
+
+@media (max-width: 640px) {
+  .ll-areas {
+    padding: 22px 18px;
+  }
+}

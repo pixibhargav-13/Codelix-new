@@ -14,6 +14,15 @@
    Plain data, no image imports: route-config.js reads LOCATION_SLUGS under
    plain Node during the build. */
 
+/* the two FAQs every page asks about its own city — answered from that
+   city's industries and areas, so they differ page to page */
+const listOf = (items) => (items.length > 1 ? `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}` : items[0]);
+
+const localFaqs = (city) => [
+  { q: `Which industries in ${city.name} do you work with?`, a: `Mainly ${listOf(city.industries.map((i) => (/^[A-Z]{2}/.test(i.name) ? i.name : i.name.charAt(0).toLowerCase() + i.name.slice(1))))} — the businesses that drive ${city.name}'s economy — along with startups, service businesses and traders of every size.` },
+  { q: `Which areas of ${city.name} do you serve?`, a: `All of ${city.name}, including ${listOf(city.areas)}, and businesses across the rest of ${city.region}.` },
+];
+
 export const LOCATION_SERVICES = {
   website: {
     key: "website",
@@ -38,6 +47,7 @@ export const LOCATION_SERVICES = {
       { q: `How much does website development cost in ${city.name}?`, a: `It depends on what the site has to do. A business website with a handful of pages costs far less than an e-commerce store or a custom web application. We give every ${city.name} client a fixed written quote after a short discovery call, so you know the full price before any work starts.` },
       { q: "How long does it take to build a website?", a: "A business website typically takes 3–6 weeks from signed-off scope to launch. E-commerce stores and web applications take longer, usually 6–12 weeks, depending on features and integrations." },
       { q: `Do you only work remotely with ${city.name} businesses?`, a: city.meet },
+      ...localFaqs(city),
       { q: "Will my website be SEO-friendly?", a: "Yes. Every site ships with technical SEO in place — fast load times, mobile-first layouts, clean URLs, meta tags, structured data and an XML sitemap — so it is ready to rank from day one." },
       { q: "Who owns the website after it is built?", a: "You do. The domain is registered in your name and you receive admin access, the design files and a handover walkthrough when the project closes." },
     ],
@@ -65,6 +75,7 @@ export const LOCATION_SERVICES = {
       { q: `How much does custom software development cost in ${city.name}?`, a: `Cost depends on scope — the number of modules, user roles, integrations and platforms (web, Android, iOS). We scope every ${city.name} project on a discovery call and send a fixed written quote, so the price does not move halfway through.` },
       { q: "How long does a custom software project take?", a: "Most projects run 6–14 weeks from signed-off scope to launch. We build in short sprints, so you see working software every couple of weeks rather than only at the end." },
       { q: `Do you only work remotely with ${city.name} businesses?`, a: city.meet },
+      ...localFaqs(city),
       { q: "Which technologies do you use?", a: "React, Node.js, Laravel, Python, Spring Boot, Flutter and React Native, with PostgreSQL, MySQL or MongoDB, deployed on AWS. We choose per project based on your scale and who will maintain it." },
       { q: "Do we own the source code?", a: "Yes. The source code, design files, documentation and all accounts are handed over to you when the project closes." },
     ],
@@ -92,6 +103,7 @@ export const LOCATION_SERVICES = {
       { q: `How much does custom ERP software cost in ${city.name}?`, a: `It depends on the modules you need, the number of users and locations, and the integrations involved (Tally, GST e-invoice, e-way bill). We map your processes first and then send ${city.name} clients a fixed written quote.` },
       { q: "Why custom ERP instead of a ready-made ERP?", a: "Ready-made ERPs make you change how your business works to fit the software. A custom ERP fits your existing process, includes only the modules you use, and has no per-user licence fees that grow with your team." },
       { q: `Do you only work remotely with ${city.name} businesses?`, a: city.meet },
+      ...localFaqs(city),
       { q: "Can the ERP work with Tally and GST?", a: "Yes. We build GST-ready invoicing with e-invoice and e-way bill support, and can sync vouchers and ledgers with Tally if your accountant continues to use it." },
       { q: "How long does ERP implementation take?", a: "A focused ERP with a few core modules can go live in 8–12 weeks. Larger rollouts are delivered module by module, so your team starts using the system early instead of waiting for everything at once." },
     ],
@@ -119,6 +131,7 @@ export const LOCATION_SERVICES = {
       { q: `How much does mobile app development cost in ${city.name}?`, a: `It depends on the screens, features, user roles and integrations — and whether you need Android, iOS or both. We scope every ${city.name} app on a discovery call and send a fixed written quote before any work starts.` },
       { q: "How long does it take to build a mobile app?", a: "Most apps take 8–14 weeks from signed-off design to store launch. A focused first version (MVP) can ship sooner, with more features added in later releases." },
       { q: `Do you only work remotely with ${city.name} businesses?`, a: city.meet },
+      ...localFaqs(city),
       { q: "Do you build for both Android and iOS?", a: "Yes. We usually build with Flutter or React Native, so one codebase runs on both Android and iOS. That keeps cost and release time down without giving up a native feel." },
       { q: "Will you publish the app on the Play Store and App Store?", a: "Yes. We prepare the store listings, handle signing and submission, and respond to review feedback. The developer accounts are registered in your name, so you own the app." },
     ],
@@ -130,6 +143,7 @@ export const LOCATION_SERVICES = {
 export const LOCATION_CITIES = {
   ahmedabad: {
     key: "ahmedabad",
+    areas: ["SG Highway","Prahlad Nagar","Satellite","Bodakdev","Vastrapur","Navrangpura","Naroda GIDC","Vatva GIDC","Sanand","Changodar"],
     name: "Ahmedabad",
     region: "Gujarat",
     intro: "Ahmedabad is where Codelix is based — our office is in Vejalpur — so for Ahmedabad businesses we are a local team you can meet in person, not a remote vendor.",
@@ -168,6 +182,7 @@ export const LOCATION_CITIES = {
   },
   surat: {
     key: "surat",
+    areas: ["Adajan","Vesu","Athwa","Varachha","Katargam","Udhna","Sachin GIDC","Pandesara GIDC","Hazira"],
     name: "Surat",
     region: "Gujarat",
     intro: "Surat is one of Gujarat's busiest trading cities, and its businesses move fast — diamond units, textile traders and builders who need technology that keeps up with them.",
@@ -206,6 +221,7 @@ export const LOCATION_CITIES = {
   },
   rajkot: {
     key: "rajkot",
+    areas: ["Kalawad Road","150 Feet Ring Road","Aji GIDC","Metoda GIDC","Shapar-Veraval","Lodhika GIDC","Bhaktinagar"],
     name: "Rajkot",
     region: "Gujarat",
     intro: "Rajkot is the engineering heart of Saurashtra, home to thousands of SMEs that make parts the rest of India runs on — and most of them still manage production in registers and Excel.",
@@ -244,6 +260,7 @@ export const LOCATION_CITIES = {
   },
   jamnagar: {
     key: "jamnagar",
+    areas: ["Shankar Tekri GIDC","Dared GIDC","Patel Colony","Digjam Circle","Lalpur Road","Sikka"],
     name: "Jamnagar",
     region: "Gujarat",
     intro: "Jamnagar is India's brass city and home to some of the world's largest refining capacity, with a dense network of manufacturers and suppliers built around both.",
@@ -282,6 +299,7 @@ export const LOCATION_CITIES = {
   },
   morbi: {
     key: "morbi",
+    areas: ["8-A National Highway","Lakhdhirpur Road","Jetpar Road","Ghuntu Road","Sanala Road","Wankaner"],
     name: "Morbi",
     region: "Gujarat",
     intro: "Morbi is India's ceramic capital — the cluster produces the large majority of the country's ceramic tiles — and its manufacturers compete on speed, dealer networks and exports.",
@@ -320,6 +338,7 @@ export const LOCATION_CITIES = {
   },
   vadodara: {
     key: "vadodara",
+    areas: ["Alkapuri","Akota","Gotri","Makarpura GIDC","Savli GIDC","Por GIDC","Waghodia GIDC","Nandesari GIDC","Manjusar"],
     name: "Vadodara",
     region: "Gujarat",
     intro: "Vadodara is one of Gujarat's major industrial cities, with a deep base of chemical, engineering and power-equipment manufacturers spread across its GIDC estates.",
@@ -358,6 +377,7 @@ export const LOCATION_CITIES = {
   },
   gandhinagar: {
     key: "gandhinagar",
+    areas: ["GIFT City","Infocity","Kudasan","Sargasan","Sector 11","Kalol GIDC","Chhatral GIDC","Mansa"],
     name: "Gandhinagar",
     region: "Gujarat",
     intro: "Gandhinagar is a short drive from our Ahmedabad office, so for Gandhinagar businesses we are a nearby team you can meet in person — not a remote vendor.",
@@ -411,26 +431,63 @@ export const locationPageBySlug = (slug) => {
   return { slug, service: LOCATION_SERVICES[page.service], city: LOCATION_CITIES[page.city] };
 };
 
+/* an industry name as it reads inside a keyword phrase: drop the
+   parenthetical, no commas (the keyword list is comma-separated), and
+   lowercase the first word unless it is an acronym ("IT", "GIFT") */
+const keywordName = (name) => {
+  const n = name.replace(/ \(.*\)$/, "").replace(/, /g, " and ");
+  return /^[A-Z]{2}/.test(n) ? n : n.charAt(0).toLowerCase() + n.slice(1);
+};
+
 /* SEO strings. Titles stay under 60 characters: the longest city/service
    pair ("Best Software Development Company in Jamnagar | Codelix") fits. */
 export const locationSeo = ({ service, city }) => ({
   title: `Best ${service.label} Company in ${city.name} | Codelix`,
   description: `Codelix IT Solutions is ${service.article} ${service.noun} serving ${city.name}, ${city.region}. Fixed quotes, on-time delivery and full ownership of your ${service.short}.`,
-  keywords: [
+  /* ~35–40 per page: the head term and its variants, what people search
+     when comparing (cost, near me, agency), the service's own sub-services,
+     the city's industries, and its main business areas */
+  keywords: [...new Set([
     `best ${service.noun} in ${city.name}`,
     `${service.noun} in ${city.name}`,
+    `top ${service.noun} in ${city.name}`,
     `${service.lower} ${city.name}`,
     `${service.lower} company ${city.name}`,
-    `top ${service.noun} in ${city.name}`,
     `${service.lower} services in ${city.name}`,
-    ...{
-      website: [`website design company in ${city.name}`, `web designer in ${city.name}`, `e-commerce website development ${city.name}`, `website developer near me ${city.name}`],
-      software: [`software company in ${city.name}`, `IT company in ${city.name}`, `custom software development ${city.name}`, `mobile app development company in ${city.name}`],
-      app: [`app developers in ${city.name}`, `Android app development ${city.name}`, `iOS app development ${city.name}`, `Flutter app development ${city.name}`],
-      erp: [`ERP software in ${city.name}`, `custom ERP software ${city.name}`, `manufacturing ERP ${city.name}`, `ERP software company ${city.name}`],
-    }[service.key],
-    ...city.industries.map((i) => `${service.short} for ${i.name.toLowerCase()} ${city.name}`),
+    `${service.lower} agency in ${city.name}`,
+    `affordable ${service.lower} in ${city.name}`,
+    `${service.lower} cost in ${city.name}`,
+    `${service.noun} near me`,
+    `best ${service.noun} in ${city.region}`,
     `${service.noun} ${city.region}`,
+    ...{
+      website: [
+        `website design company in ${city.name}`, `web design company ${city.name}`, `web designer in ${city.name}`,
+        `web development company in ${city.name}`, `website developer in ${city.name}`, `website designing in ${city.name}`,
+        `e-commerce website development ${city.name}`, `business website design ${city.name}`, `SEO friendly website ${city.name}`,
+        `WordPress website development ${city.name}`, `website redesign ${city.name}`,
+      ],
+      software: [
+        `software company in ${city.name}`, `IT company in ${city.name}`, `best IT company in ${city.name}`,
+        `software developers in ${city.name}`, `custom software development ${city.name}`, `web application development ${city.name}`,
+        `SaaS development company ${city.name}`, `CRM software development ${city.name}`, `AI development company ${city.name}`,
+        `software outsourcing ${city.name}`, `IT services in ${city.name}`,
+      ],
+      app: [
+        `app development company in ${city.name}`, `app developers in ${city.name}`, `mobile app developer ${city.name}`,
+        `Android app development ${city.name}`, `iOS app development ${city.name}`, `Flutter app development ${city.name}`,
+        `React Native app development ${city.name}`, `e-commerce app development ${city.name}`, `business app development ${city.name}`,
+        `app development cost in ${city.name}`, `hire app developers ${city.name}`,
+      ],
+      erp: [
+        `ERP software in ${city.name}`, `ERP software company ${city.name}`, `custom ERP software ${city.name}`,
+        `ERP developers in ${city.name}`, `manufacturing ERP ${city.name}`, `ERP for small business ${city.name}`,
+        `GST ERP software ${city.name}`, `inventory management software ${city.name}`, `production planning software ${city.name}`,
+        `ERP implementation ${city.name}`, `cloud ERP ${city.name}`,
+      ],
+    }[service.key],
+    ...city.industries.map((i) => `${service.short} for ${keywordName(i.name)} in ${city.name}`),
+    ...city.areas.slice(0, 4).map((a) => `${service.noun} ${a}`),
     "Codelix IT Solutions",
-  ].join(", "),
+  ])].join(", "),
 });
