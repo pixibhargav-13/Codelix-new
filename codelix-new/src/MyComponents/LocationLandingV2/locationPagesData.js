@@ -26,6 +26,7 @@ const localFaqs = (city) => [
 export const LOCATION_SERVICES = {
   website: {
     key: "website",
+    pitch: "We build fast, mobile-first business websites and online stores.",
     slugPart: "website-development-company",
     label: "Website Development",
     lower: "website development",
@@ -54,6 +55,7 @@ export const LOCATION_SERVICES = {
   },
   software: {
     key: "software",
+    pitch: "We build custom web apps, mobile apps and SaaS products.",
     slugPart: "software-development-company",
     label: "Software Development",
     lower: "software development",
@@ -82,6 +84,7 @@ export const LOCATION_SERVICES = {
   },
   erp: {
     key: "erp",
+    pitch: "We build custom ERP for inventory, production, GST and accounts.",
     slugPart: "erp-development-company",
     label: "ERP Development",
     lower: "ERP development",
@@ -110,6 +113,7 @@ export const LOCATION_SERVICES = {
   },
   app: {
     key: "app",
+    pitch: "We build Android and iOS apps, from design to Play Store launch.",
     slugPart: "mobile-app-development-company",
     label: "Mobile App Development",
     lower: "mobile app development",
@@ -442,8 +446,13 @@ const keywordName = (name) => {
 /* SEO strings. Titles stay under 60 characters: the longest city/service
    pair ("Best Software Development Company in Jamnagar | Codelix") fits. */
 export const locationSeo = ({ service, city }) => ({
-  title: `Best ${service.label} Company in ${city.name} | Codelix`,
-  description: `Codelix IT Solutions is ${service.article} ${service.noun} serving ${city.name}, ${city.region}. Fixed quotes, on-time delivery and full ownership of your ${service.short}.`,
+  /* No brand in the title or description. These pages are for searches
+     like "best ERP development company in Morbi"; with "Codelix" in both,
+     Google also treated them as strong matches for the brand name and
+     started showing them as sitelinks under a "codelix" search, ahead of
+     the real site pages. The brand stays in the page body. */
+  title: `Best ${service.label} Company in ${city.name}, ${city.region}`,
+  description: `Looking for the best ${service.noun} in ${city.name}? ${service.pitch} Fixed quotes, on time.`,
   /* ~35–40 per page: the head term and its variants, what people search
      when comparing (cost, near me, agency), the service's own sub-services,
      the city's industries, and its main business areas */
@@ -488,6 +497,5 @@ export const locationSeo = ({ service, city }) => ({
     }[service.key],
     ...city.industries.map((i) => `${service.short} for ${keywordName(i.name)} in ${city.name}`),
     ...city.areas.slice(0, 4).map((a) => `${service.noun} ${a}`),
-    "Codelix IT Solutions",
   ])].join(", "),
 });
