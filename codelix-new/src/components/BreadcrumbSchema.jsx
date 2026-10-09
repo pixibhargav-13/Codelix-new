@@ -46,11 +46,20 @@ const SLUG_NAMES = {
   'smart-society-management-case-study': 'Smart Society Management Case Study',
 };
 
+const UPPER_WORDS = new Set(['erp', 'crm', 'ai', 'api']);
+const SMALL_WORDS = new Set(['in', 'and', 'of', 'for', 'the', 'to', 'vs']);
+
 const slugToName = (slug) => {
   if (SLUG_NAMES[slug]) return SLUG_NAMES[slug];
+  /* the city landing slugs read as titles: "Best ERP Development Company
+     in Morbi", not "Best Erp Development Company In Morbi" */
   return slug
     .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .map((word, i) => {
+      if (UPPER_WORDS.has(word)) return word.toUpperCase();
+      if (i > 0 && SMALL_WORDS.has(word)) return word;
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
     .join(' ');
 };
 

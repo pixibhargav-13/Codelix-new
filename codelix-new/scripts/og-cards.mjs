@@ -15,6 +15,7 @@ import sharp from "sharp";
 import fs from "fs";
 import path from "path";
 import { getGeneratedRoutes } from "../src/lib/route-config.js";
+import { locationPageBySlug } from "../src/MyComponents/LocationLandingV2/locationPagesData.js";
 
 const ROOT = process.cwd();
 const IMG = path.join(ROOT, "src/MyComponents/Images");
@@ -178,6 +179,22 @@ for (const route of routes) {
     logoHeight: 46,
     eyebrow: m[1] === "services" ? "Services" : "Industries",
     headline: titleFromSlug(m[2]),
+    sub: "codelixitsolutions.com",
+  });
+}
+
+/* city landing pages — "Best Website Development Company in Surat" */
+for (const route of routes) {
+  const page = /^\/best-/.test(route) && locationPageBySlug(route.slice(1));
+  if (!page) continue;
+  cards.push({
+    route,
+    key: route.slice(1),
+    accent: BRAND,
+    logo: "codelix-logo.webp",
+    logoHeight: 46,
+    eyebrow: `${page.city.name}, ${page.city.region}`,
+    headline: `Best ${page.service.label} Company in ${page.city.name}`,
     sub: "codelixitsolutions.com",
   });
 }
