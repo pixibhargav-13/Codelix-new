@@ -871,3 +871,76 @@
     padding: 22px 18px;
   }
 }
+
+/* ── other services in this city ─────────────────────────────────────── */
+.ll-other-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.v2 .ll-other {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 26px 24px;
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  background: var(--ll-card);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color .3s ease, background .3s ease, transform .35s var(--ease-expo);
+}
+
+.v2 .ll-other:hover {
+  border-color: var(--rule-strong);
+  background: var(--ll-card-hover);
+  transform: translateY(-3px);
+}
+
+.v2 .ll-other-k {
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ll-accent);
+}
+
+.v2 .ll-other-title {
+  margin: 12px 0 10px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: var(--text);
+}
+
+.v2 .ll-other-body {
+  flex: 1;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-55);
+}
+
+.v2 .ll-other-go {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.v2 .ll-other:hover .ll-other-go svg {
+  transform: translateX(3px);
+}
+
+.ll-other-go svg {
+  transition: transform .3s var(--ease-expo);
+}
+
+@media (max-width: 900px) {
+  .ll-other-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -18,7 +18,7 @@ import { TECH_STACK } from "../HomepageV2/techStack";
 import { STATIC_TESTIMONIALS } from "../../data/testimonialsData";
 import { useTestimonials } from "../../data/useTestimonials";
 import {
-  LOCATION_SERVICES, LOCATION_CITIES, locationPageBySlug, locationSeo,
+  LOCATION_SERVICES, LOCATION_CITIES, locationPageBySlug, locationSeo, locationSlug,
 } from "./locationPagesData";
 
 /* v2 design system — same look as the service pages */
@@ -28,11 +28,12 @@ import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./LocationLandingV2.css";
 
 /* City landing pages for search. They are deliberately standalone: no site
-   navbar, no site footer, no links into the rest of the site — every page
-   link goes to /contact (the "Book…" ones open the booking modal, see
-   bookingTrigger.js); the rest are tel: and mailto:. Nothing elsewhere links
-   here; Google finds them through sitemap.xml. Content lives in
-   locationPagesData.js. */
+   navbar, no site footer, no links into the rest of the site. The only page
+   links are /contact (the "Book…" ones open the booking modal, see
+   bookingTrigger.js) and the other services' pages for the same city, under
+   "Other services in {city}"; the rest are tel: and mailto:. Nothing
+   elsewhere links here; Google finds them through sitemap.xml. Content lives
+   in locationPagesData.js. */
 
 const PHONE = { href: "tel:+919998263282", label: "+91 99982 63282" };
 const PHONE_2 = { href: "tel:+917490909686", label: "+91 74909 09686" };
@@ -373,6 +374,27 @@ export default function LocationLandingV2() {
               </div>
             </article>
           ))}
+        </div>
+      </section>
+
+      {/* ══════════ 11b · OTHER SERVICES IN THIS CITY — the only links
+          between the city pages; never to other cities ══════════ */}
+      <section className="v2-section" id="other-services">
+        <p className="v2-label">Also in {city.name}</p>
+        <h2 className="v2-heading">Other services in {city.name}.</h2>
+        <div className="ll-other-grid">
+          {Object.values(LOCATION_SERVICES)
+            .filter((s) => s.key !== service.key)
+            .map((s) => (
+              <Link className="ll-other" key={s.key} to={`/${locationSlug(s.key, city.key)}`}>
+                <span className="ll-other-k">{city.name}</span>
+                <h3 className="ll-other-title">{s.label} in {city.name}</h3>
+                <p className="ll-other-body">{s.pitch}</p>
+                <span className="ll-other-go">
+                  View {s.lower} <ArrowRight size={15} strokeWidth={2} />
+                </span>
+              </Link>
+            ))}
         </div>
       </section>
 
