@@ -203,9 +203,9 @@ export default function ContactV2() {
                   <Mail size={15} strokeWidth={1.7} />
                   <span>sales@codelixitsolutions.com</span>
                 </a>
-                <a className="contact-quick-link" href="tel:+919998263282">
+                <a className="contact-quick-link" href="tel:+919429269295">
                   <Phone size={15} strokeWidth={1.7} />
-                  <span>+91 99982 63282</span>
+                  <span>+91 94292 69295</span>
                 </a>
                 <a
                   className="contact-quick-link"

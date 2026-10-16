@@ -69,7 +69,7 @@ export default function FooterV2() {
         </a>
         <div className="v2-footer-card">
           <h3>Phone</h3>
-          <a className="v2-footer-card-strong" href="tel:+919998263282">+91 99982 63282</a>
+          <a className="v2-footer-card-strong" href="tel:+919429269295">+91 94292 69295</a>
           <a className="v2-footer-card-strong" href="tel:+917490909686">+91 74909 09686</a>
         </div>
         <div className="v2-footer-card">

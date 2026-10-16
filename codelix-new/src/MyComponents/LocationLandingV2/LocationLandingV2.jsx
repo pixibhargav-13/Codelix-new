@@ -35,7 +35,7 @@ import "./LocationLandingV2.css";
    elsewhere links here; Google finds them through sitemap.xml. Content lives
    in locationPagesData.js. */
 
-const PHONE = { href: "tel:+919998263282", label: "+91 99982 63282" };
+const PHONE = { href: "tel:+919429269295", label: "+91 94292 69295" };
 const PHONE_2 = { href: "tel:+917490909686", label: "+91 74909 09686" };
 
 const PROCESS = [
