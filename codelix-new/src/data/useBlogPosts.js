@@ -3,6 +3,12 @@ import { selectRows } from "../lib/supabaseRest";
 import { blogs as staticBlogs } from "./blogData";
 import { InitialDataContext } from "../lib/initialDataContext";
 
+/* Posts from scripts/publish-blog-post.mjs store the on-site banner
+   (<name>.banner.webp) as cover_image_url, with the link-preview card next
+   to it as <name>.share.webp. Covers uploaded in the admin panel are used
+   for both. */
+const shareImageFor = (url) => (url ? url.replace(/\.banner\.webp$/, ".share.webp") : undefined);
+
 export function useBlogPosts() {
   const initialContext = useContext(InitialDataContext);
   
@@ -22,7 +28,7 @@ export function useBlogPosts() {
         image: p.cover_image_url || staticBlogs[0]?.image,
         /* the fallback above borrows another post.s picture, which is fine
            for a card in a list and wrong for a link preview */
-        coverImage: p.cover_image_url || undefined,
+        coverImage: shareImageFor(p.cover_image_url),
         /* the raw timestamp, kept alongside the display string:
            article:published_time has to be ISO 8601, and "1 January 2026"
            is not */
@@ -64,7 +70,7 @@ export function useBlogPosts() {
           image: p.cover_image_url || staticBlogs[0]?.image,
         /* the fallback above borrows another post.s picture, which is fine
            for a card in a list and wrong for a link preview */
-        coverImage: p.cover_image_url || undefined,
+        coverImage: shareImageFor(p.cover_image_url),
         /* the raw timestamp, kept alongside the display string:
            article:published_time has to be ISO 8601, and "1 January 2026"
            is not */
