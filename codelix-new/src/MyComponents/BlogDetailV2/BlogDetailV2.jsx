@@ -138,8 +138,12 @@ export default function BlogDetailV2() {
   const tocItems = faqs.length > 0 ? [...headings, { id: "faq", text: "Frequently asked questions" }] : headings;
   const services = servicesForPost(blog);
   const pageUrl = `https://www.codelixitsolutions.com/blog/${slug}`;
+  /* "Updated …" only once the post was edited on a later day than it was
+     published: a fresh post's updated_at is its publish moment, and the
+     byline would otherwise announce an update that never happened */
   const updatedIso = toISODate(blog.updatedAt);
-  const updated = updatedIso
+  const publishedIso = toISODate(blog.publishedAt || blog.date);
+  const updated = updatedIso && (!publishedIso || updatedIso.slice(0, 10) > publishedIso.slice(0, 10))
     ? new Date(updatedIso).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })
     : null;
   const copyLink = () => {
