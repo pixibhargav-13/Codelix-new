@@ -22,3 +22,16 @@ export const FOUNDERS = [
     sameAs: ["https://www.linkedin.com/in/kushal-mungalpara-60805227b/"],
   },
 ];
+
+/* Who is credited on a blog post. Design topics (UI/UX, design systems,
+   wireframes, prototypes) and team-management topics (how a team runs a
+   project, hiring, collaboration, process) are Kushal's; everything else is
+   Manas's. Checked against the title and the category (tags[1]), so posts
+   from the scheduled writer follow the same rule without anyone picking. */
+const KUSHAL_TOPICS = /\bdesign\b|\bui\b|\bux\b|ui\/ux|user experience|wireframe|prototyp|figma|\bteams?\b|management|hiring|collaborat|\bprocess\b|agile|scrum|project manag/i;
+
+export function authorFor(post) {
+  const [manas, kushal] = FOUNDERS;
+  const text = `${post?.title || ""} ${post?.tags?.[1] || ""}`;
+  return KUSHAL_TOPICS.test(text) ? kushal : manas;
+}

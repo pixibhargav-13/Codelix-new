@@ -18,7 +18,7 @@ import { slugify } from "../../data/blogData";
 import { blogKeywordsFor } from "../../lib/blogKeywords";
 import { renderArticle, articleHeadings, articleFaqs } from "../../lib/articleMarkup";
 import { servicesForPost } from "../../lib/blogServices";
-import { FOUNDERS } from "../../lib/people";
+import { authorFor } from "../../lib/people";
 import { useBlogPosts, toISODate } from "../../data/useBlogPosts";
 import ArticleSkeleton from "../Shared/ArticleSkeleton";
 import NavbarV2 from "../Shared/NavbarV2";
@@ -39,6 +39,25 @@ export default function BlogDetailV2() {
   
   const [readProgress, setReadProgress] = useState(0);
   const [copied, setCopied] = useState(false);
+  const [activeId, setActiveId] = useState(null);
+
+  /* contents rail: highlight the section being read — the last heading
+     that has scrolled past the upper third of the screen */
+  useEffect(() => {
+    if (!blog) return;
+    const targets = [...(rootRef.current?.querySelectorAll(".bdv2-body h2[id], #faq") || [])];
+    if (!targets.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        const passed = targets.filter((t) => t.getBoundingClientRect().top < window.innerHeight * 0.33);
+        if (passed.length) setActiveId(passed[passed.length - 1].id);
+        else if (entries.length) setActiveId(targets[0].id);
+      },
+      { rootMargin: "0px 0px -66% 0px", threshold: [0, 1] }
+    );
+    targets.forEach((t) => io.observe(t));
+    return () => io.disconnect();
+  }, [blog]);
 
   const rootRef = useRef(null);
   const articleRef = useRef(null);
@@ -114,6 +133,9 @@ export default function BlogDetailV2() {
   const related = blogs.filter((b) => b.id !== blog.id && b.tags.some((t) => blog.tags.includes(t))).slice(0, 3);
   const headings = articleHeadings(blog.content);
   const faqs = articleFaqs(blog.content);
+  const author = authorFor(blog);
+  const initials = author.name.split(" ").map((w) => w[0]).join("");
+  const tocItems = faqs.length > 0 ? [...headings, { id: "faq", text: "Frequently asked questions" }] : headings;
   const services = servicesForPost(blog);
   const pageUrl = `https://www.codelixitsolutions.com/blog/${slug}`;
   const updatedIso = toISODate(blog.updatedAt);
@@ -147,7 +169,7 @@ export default function BlogDetailV2() {
       <SEO
         title={fitTitle(blog.title, [" | Codelix IT Solutions", " | Codelix"])}
         description={blog.excerpt || blog.subtitle || `Read ${blog.title} on Codelix IT Solutions.`}
-        keywords={blogKeywordsFor(slug, blog.tags)}
+        keywords={blogKeywordsFor(slug, blog.tags, blog.title)}
         image={blog.coverImage}
         type="article"
         publishedTime={toISODate(blog.publishedAt || blog.date)}
@@ -162,7 +184,7 @@ export default function BlogDetailV2() {
       <NavbarV2 />
 
       <main>
-      <StructuredData type="BlogPosting" data={blog} />
+      <StructuredData type="BlogPosting" data={{ ...blog, author }} />
 
       
       
@@ -184,13 +206,11 @@ export default function BlogDetailV2() {
           </div>
           <h1 className="bdv2-title">{blog.title}</h1>
           {blog.excerpt && <p className="bdv2-lede">{blog.excerpt}</p>}
-          {/* the same two people the BlogPosting markup names as authors */}
+          {/* the same person the BlogPosting markup names as author */}
           <div className="bdv2-byline">
-            <span className="bdv2-avatars" aria-hidden="true">
-              {FOUNDERS.map((p) => <i key={p.name}>{p.name.split(" ").map((w) => w[0]).join("")}</i>)}
-            </span>
+            <span className="bdv2-avatars" aria-hidden="true"><i>{initials}</i></span>
             <span>
-              By <Link to="/team">{FOUNDERS.map((p) => p.name).join(" & ")}</Link>
+              By <Link to="/team">{author.name}</Link>, {author.jobTitle}
               {updated && <> · Updated {updated}</>}
             </span>
           </div>
@@ -210,16 +230,32 @@ export default function BlogDetailV2() {
             <img src={blog.image} alt={blog.title} fetchPriority="high" decoding="async" />
           </div>
 
-          {headings.length >= 3 && (
-            <details className="bdv2-toc" open>
-              <summary>On this page</summary>
-              <ol>
-                {headings.map((h) => (
-                  <li key={h.id}><a href={`#${h.id}`}>{h.text}</a></li>
-                ))}
-                {faqs.length > 0 && <li><a href="#faq">Frequently asked questions</a></li>}
-              </ol>
-            </details>
+          <div className="bdv2-content">
+          {/* contents: a collapsed box above the article on small screens,
+              a sticky rail in the right margin on wide ones (CSS decides) */}
+          {tocItems.length >= 3 && (
+            <>
+              <details className="bdv2-toc">
+                <summary>On this page <span>{tocItems.length} sections</span></summary>
+                <ol>
+                  {tocItems.map((h) => (
+                    <li key={h.id}><a href={`#${h.id}`}>{h.text}</a></li>
+                  ))}
+                </ol>
+              </details>
+              <aside className="bdv2-rail" aria-label="On this page">
+                <nav className="bdv2-rail-inner">
+                  <p className="bdv2-rail-k">On this page</p>
+                  <ol>
+                    {tocItems.map((h) => (
+                      <li key={h.id} className={activeId === h.id ? "is-active" : ""}>
+                        <a href={`#${h.id}`}>{h.text}</a>
+                      </li>
+                    ))}
+                  </ol>
+                </nav>
+              </aside>
+            </>
           )}
 
           <article className="bdv2-body" ref={articleRef}>
@@ -238,11 +274,33 @@ export default function BlogDetailV2() {
             <button type="button" onClick={copyLink}>{copied ? "Link copied" : "Copy link"}</button>
           </div>
 
+          {/* who wrote it — the same person (and profile) the BlogPosting
+              markup names as author, chosen by authorFor in src/lib/people.js */}
+          <aside className="bdv2-authors" aria-label="About the author">
+            <p className="bdv2-authors-k">About the author</p>
+            <div className="bdv2-author">
+              <span className="bdv2-author-avatar" aria-hidden="true">{initials}</span>
+              <div>
+                <p className="bdv2-author-name">{author.name}</p>
+                <p className="bdv2-author-role">{author.jobTitle}, Codelix IT Solutions</p>
+                {author.sameAs?.[0] && (
+                  <a className="bdv2-author-link" href={author.sameAs[0]} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+                )}
+              </div>
+            </div>
+            <p className="bdv2-authors-note">
+              Codelix IT Solutions is a software company in Ahmedabad that builds websites, mobile apps,
+              ERP systems and AI tools for businesses across India, with 40+ projects delivered.{" "}
+              <Link to="/team">Meet the team →</Link>
+            </p>
+          </aside>
+
           <div className="bdv2-back">
             <Link className="v2-hero-secondary" to="/blog">
               <ArrowLeft size={15} strokeWidth={2} />
               <span className="v2-hero-secondary-label">Back to all articles</span>
             </Link>
+          </div>
           </div>
         </div>
       </section>
@@ -252,7 +310,7 @@ export default function BlogDetailV2() {
       {faqs.length > 0 && (
         <FaqSection
           faqs={faqs}
-          className="v2-section--void"
+          className="v2-section--void bdv2-wide"
           label="FAQ"
           heading="Questions readers ask about this topic."
         />
@@ -260,7 +318,7 @@ export default function BlogDetailV2() {
 
       {/* ══════════ 2c · HOW WE CAN HELP — the service pages that match the
           post, in the same cards as the service pages' "Explore More" ══════════ */}
-      <section className="v2-section" id="services">
+      <section className="v2-section bdv2-wide" id="services">
         <p className="v2-label">How We Can Help</p>
         <h2 className="v2-heading">Services related to this article.</h2>
         <div className="sd2-other-list bdv2-help-list">
@@ -280,7 +338,7 @@ export default function BlogDetailV2() {
 
       {/* ══════════ 3 · RELATED ARTICLES ══════════ */}
       {related.length > 0 && (
-        <section className="v2-section v2-section--void" id="related">
+        <section className="v2-section v2-section--void bdv2-wide" id="related">
           <p className="v2-label">Keep Reading</p>
           <h2 className="v2-heading">Related articles.</h2>
           <div className="bdv2-related">

@@ -141,6 +141,17 @@ export function renderArticle(content, { insert, skipFaq = false } = {}) {
         </div>
       );
     }
+    /* "Short answer: …" — the answer-first opening — is set apart as a
+       callout, so a skimming reader gets the verdict without reading on */
+    const short = trimmed.match(/^short answer:\s*/i);
+    if (short) {
+      return (
+        <div className="bdv2-answer" key={index}>
+          <span className="bdv2-answer-k">Short answer</span>
+          <p>{inline(trimmed.charAt(short[0].length).toUpperCase() + trimmed.slice(short[0].length + 1), `${index}-`)}</p>
+        </div>
+      );
+    }
     /* the paragraph inviting the reader to book ("…[Book a free
        consultation](…/contact)") is replaced by the site's standard button
        alone — the sentence only repeated what the button says. The "Book…"
