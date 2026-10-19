@@ -35,13 +35,35 @@ const KEY_LOCATION = `${ORIGIN}/${keyFile}`;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+const parseUrls = (xml) =>
+  [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)]
+    .map((m) => m[1].trim())
+    // IndexNow rejects the whole request if any URL is on another host
+    .filter((u) => new URL(u).host === HOST);
+
+/* Every workflow run before this check submitted 0 URLs and still reported
+   success: from GitHub's runners the live sitemap request came back without
+   a single <loc> (most likely a firewall or bot-check page rather than the
+   file), and nothing looked at the response. Now the response is checked,
+   retried, and the run fails loudly if no URLs come back. */
 async function sitemapUrls() {
-  const xml = DRY
-    ? fs.readFileSync(path.join(here, "../dist/sitemap.xml"), "utf8")
-    : await (await fetch(`${ORIGIN}/sitemap.xml`)).text();
-  const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim());
-  // IndexNow rejects the whole request if any URL is on another host
-  return urls.filter((u) => new URL(u).host === HOST);
+  if (DRY) return parseUrls(fs.readFileSync(path.join(here, "../dist/sitemap.xml"), "utf8"));
+  for (let attempt = 1; attempt <= 5; attempt++) {
+    try {
+      const res = await fetch(`${ORIGIN}/sitemap.xml?ts=${Date.now()}`, {
+        cache: "no-store",
+        headers: { "User-Agent": "CodelixIndexNow/1.0 (+https://www.codelixitsolutions.com)", Accept: "application/xml,text/xml;q=0.9,*/*;q=0.8" },
+      });
+      const body = await res.text();
+      const urls = parseUrls(body);
+      if (res.ok && urls.length) return urls;
+      console.log(`sitemap attempt ${attempt}: HTTP ${res.status}, ${res.headers.get("content-type")}, ${body.length} bytes, ${urls.length} URLs — starts: ${JSON.stringify(body.slice(0, 160))}`);
+    } catch (e) {
+      console.log(`sitemap attempt ${attempt} failed: ${e.message}`);
+    }
+    await sleep(15000);
+  }
+  return [];
 }
 
 async function keyIsLive() {
@@ -60,6 +82,10 @@ async function keyIsLive() {
 }
 
 const urlList = await sitemapUrls();
+if (!urlList.length) {
+  console.error(`No URLs found in ${ORIGIN}/sitemap.xml after 5 attempts — not submitting. See the attempt lines above for what came back.`);
+  process.exit(1);
+}
 const body = { host: HOST, key: KEY, keyLocation: KEY_LOCATION, urlList };
 
 if (DRY) {
