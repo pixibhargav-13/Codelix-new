@@ -16,10 +16,14 @@ import "./BlogDetailV2.css";
    the article body, dates, and tags are not duplicated or rewritten here */
 import { slugify } from "../../data/blogData";
 import { blogKeywordsFor } from "../../lib/blogKeywords";
+import { renderArticle, articleHeadings, articleFaqs } from "../../lib/articleMarkup";
+import { servicesForPost } from "../../lib/blogServices";
+import { FOUNDERS } from "../../lib/people";
 import { useBlogPosts, toISODate } from "../../data/useBlogPosts";
 import ArticleSkeleton from "../Shared/ArticleSkeleton";
 import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from '../Shared/CtaSection';
+import FaqSection from "../Shared/FaqSection";
 import { StructuredData } from "../../components/StructuredData";
 import { SEO } from "../../components/SEO";
 import { fitTitle } from "../../lib/fitTitle.js";
@@ -34,6 +38,7 @@ export default function BlogDetailV2() {
   
   
   const [readProgress, setReadProgress] = useState(0);
+  const [copied, setCopied] = useState(false);
 
   const rootRef = useRef(null);
   const articleRef = useRef(null);
@@ -107,6 +112,31 @@ export default function BlogDetailV2() {
   }
 
   const related = blogs.filter((b) => b.id !== blog.id && b.tags.some((t) => blog.tags.includes(t))).slice(0, 3);
+  const headings = articleHeadings(blog.content);
+  const faqs = articleFaqs(blog.content);
+  const services = servicesForPost(blog);
+  const pageUrl = `https://www.codelixitsolutions.com/blog/${slug}`;
+  const updatedIso = toISODate(blog.updatedAt);
+  const updated = updatedIso
+    ? new Date(updatedIso).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })
+    : null;
+  const copyLink = () => {
+    navigator.clipboard?.writeText(pageUrl).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }).catch(() => {});
+  };
+  /* sits before the middle "## " heading of longer articles */
+  const midCta = (
+    <div className="bdv2-midcta">
+      <div>
+        <p className="bdv2-midcta-k">Free consultation</p>
+        <p className="bdv2-midcta-title">Planning something like this?</p>
+        <p className="bdv2-midcta-body">Tell us what you need. After a short call we send a written scope, timeline and fixed quote.</p>
+      </div>
+      <Link className="v2-btn v2-btn--filled" to="/contact"><span>Book a consultation</span><i className="v2-btn-arrow">→</i></Link>
+    </div>
+  );
 
   return (
     <div className="v2" ref={rootRef}>
@@ -153,6 +183,17 @@ export default function BlogDetailV2() {
             <span>{blog.readTime}</span>
           </div>
           <h1 className="bdv2-title">{blog.title}</h1>
+          {blog.excerpt && <p className="bdv2-lede">{blog.excerpt}</p>}
+          {/* the same two people the BlogPosting markup names as authors */}
+          <div className="bdv2-byline">
+            <span className="bdv2-avatars" aria-hidden="true">
+              {FOUNDERS.map((p) => <i key={p.name}>{p.name.split(" ").map((w) => w[0]).join("")}</i>)}
+            </span>
+            <span>
+              By <Link to="/team">{FOUNDERS.map((p) => p.name).join(" & ")}</Link>
+              {updated && <> · Updated {updated}</>}
+            </span>
+          </div>
         </div>
       </header>
 
@@ -169,29 +210,33 @@ export default function BlogDetailV2() {
             <img src={blog.image} alt={blog.title} fetchPriority="high" decoding="async" />
           </div>
 
+          {headings.length >= 3 && (
+            <details className="bdv2-toc" open>
+              <summary>On this page</summary>
+              <ol>
+                {headings.map((h) => (
+                  <li key={h.id}><a href={`#${h.id}`}>{h.text}</a></li>
+                ))}
+                {faqs.length > 0 && <li><a href="#faq">Frequently asked questions</a></li>}
+              </ol>
+            </details>
+          )}
+
           <article className="bdv2-body" ref={articleRef}>
-            {blog.content.split(/\n\n|\\n\\n/).map((block, index) => {
-              const trimmed = block.trim();
-              if (trimmed.startsWith("### ")) {
-                return <h3 key={index}>{trimmed.replace("### ", "")}</h3>;
-              }
-              if (trimmed.startsWith("## ")) {
-                return <h2 key={index}>{trimmed.replace("## ", "")}</h2>;
-              }
-              if (trimmed.startsWith("> ")) {
-                return <blockquote key={index}>{trimmed.replace("> ", "")}</blockquote>;
-              }
-              if (trimmed.startsWith("- ")) {
-                const items = trimmed.split(/\\n|\\\\n|\n/).filter((l) => l.trim().startsWith("- "));
-                return (
-                  <ul key={index}>
-                    {items.map((item, i) => <li key={i}>{item.replace(/^-\s*/, "")}</li>)}
-                  </ul>
-                );
-              }
-              return <p key={index}>{trimmed}</p>;
+            {renderArticle(blog.content, {
+              insert: headings.length >= 4 ? { beforeHeading: Math.floor(headings.length / 2), node: midCta } : undefined,
+              /* the questions are shown in the FAQ accordion below instead */
+              skipFaq: faqs.length > 0,
             })}
           </article>
+
+          <div className="bdv2-share">
+            <span>Share this article</span>
+            <a href={`https://wa.me/?text=${encodeURIComponent(`${blog.title} ${pageUrl}`)}`} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href={`https://x.com/intent/post?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(blog.title)}`} target="_blank" rel="noopener noreferrer">X</a>
+            <button type="button" onClick={copyLink}>{copied ? "Link copied" : "Copy link"}</button>
+          </div>
 
           <div className="bdv2-back">
             <Link className="v2-hero-secondary" to="/blog">
@@ -199,6 +244,37 @@ export default function BlogDetailV2() {
               <span className="v2-hero-secondary-label">Back to all articles</span>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ══════════ 2b · FAQ — the article's own questions, in the same
+          accordion as every other page (it also emits the FAQPage markup) ══════════ */}
+      {faqs.length > 0 && (
+        <FaqSection
+          faqs={faqs}
+          className="v2-section--void"
+          label="FAQ"
+          heading="Questions readers ask about this topic."
+        />
+      )}
+
+      {/* ══════════ 2c · HOW WE CAN HELP — the service pages that match the
+          post, in the same cards as the service pages' "Explore More" ══════════ */}
+      <section className="v2-section" id="services">
+        <p className="v2-label">How We Can Help</p>
+        <h2 className="v2-heading">Services related to this article.</h2>
+        <div className="sd2-other-list bdv2-help-list">
+          {services.map((s, i) => (
+            <Link className="sd2-other is-in" to={s.path} key={s.path}>
+              <div className="sd2-other-top">
+                <span className="sd2-other-icon"><s.icon size={17} strokeWidth={1.5} /></span>
+                <span className="sd2-other-n">{String(i + 1).padStart(2, "0")}</span>
+              </div>
+              <span className="sd2-other-title">{s.label}</span>
+              <p className="sd2-other-body">{s.body}</p>
+              <span className="sd2-other-go">→</span>
+            </Link>
+          ))}
         </div>
       </section>
 
@@ -238,7 +314,11 @@ export default function BlogDetailV2() {
             We scope what should be built first, what can wait, and what it takes to ship it.
           </p>
           <div className="v2-cta-actions">
-            <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
+            <Link className="v2-btn v2-btn--filled" to="/contact">
+              <span>Book a consultation</span>
+              <i className="v2-btn-arrow">→</i>
+            </Link>
+          </div>
 </CtaSection>
 
       {/* ══════════ FOOTER ══════════ */}

@@ -255,3 +255,333 @@
 .bdv2-related-card:hover .bdv2-related-arrow {
   opacity: 1;
 }
+/* ── links, numbered lists and tables (see src/lib/articleMarkup.jsx) ── */
+.v2 .bdv2-body a {
+  color: #9db8ee;
+  text-decoration: underline;
+  text-decoration-color: rgba(157, 184, 238, .4);
+  text-underline-offset: 3px;
+  transition: text-decoration-color .2s ease, color .2s ease;
+}
+
+.v2 .bdv2-body a:hover {
+  color: #c4d4f5;
+  text-decoration-color: currentColor;
+}
+
+.v2 .bdv2-body ol {
+  margin: 0 0 24px;
+  padding-left: 0;
+  list-style: none;
+  counter-reset: bdv2-ol;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.v2 .bdv2-body ol li {
+  counter-increment: bdv2-ol;
+}
+
+.v2 .bdv2-body ol li::before {
+  content: counter(bdv2-ol) ".";
+  top: 0;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: none;
+  color: rgba(180, 200, 230, .8);
+  font-weight: 600;
+}
+
+.bdv2-table {
+  margin: 8px 0 32px;
+  overflow-x: auto;
+  border: 1px solid rgba(242, 240, 236, .1);
+  border-radius: 14px;
+}
+
+.v2 .bdv2-table table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.v2 .bdv2-table th,
+.v2 .bdv2-table td {
+  padding: 13px 16px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(242, 240, 236, .08);
+}
+
+.v2 .bdv2-table th {
+  background: rgba(180, 200, 230, .06);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.v2 .bdv2-table td {
+  color: var(--text-55);
+}
+
+.v2 .bdv2-table tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ── reading column: long lines across the full screen are hard to read,
+   so the article, its boxes and the header text share one ~75-character
+   column ─────────────────────────────────────────────────────────────── */
+.bdv2-article-inner {
+  max-width: 820px;
+}
+
+.v2 .bdv2-lede {
+  max-width: 62ch;
+  margin: 18px 0 0;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--text-55);
+}
+
+/* ── byline ──────────────────────────────────────────────────────────── */
+.bdv2-byline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--text-55);
+}
+
+.bdv2-byline a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.bdv2-byline a:hover {
+  text-decoration: underline;
+}
+
+.bdv2-avatars {
+  display: inline-flex;
+}
+
+.bdv2-avatars i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid var(--canvas);
+  background: linear-gradient(135deg, #6f9dff, #3d5fb8);
+  color: #fff;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+.bdv2-avatars i + i {
+  margin-left: -6px;
+}
+
+/* ── table of contents ───────────────────────────────────────────────── */
+.bdv2-toc {
+  margin: 0 0 44px;
+  padding: 20px 24px;
+  border: 1px solid rgba(242, 240, 236, .1);
+  border-radius: 16px;
+  background: rgba(180, 200, 230, .03);
+}
+
+.bdv2-toc summary {
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #9db8ee;
+  list-style-position: outside;
+}
+
+.v2 .bdv2-toc ol {
+  margin: 14px 0 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 15px;
+}
+
+.bdv2-toc li::marker {
+  color: rgba(180, 200, 230, .6);
+}
+
+.bdv2-toc a {
+  color: var(--text-55);
+  text-decoration: none;
+}
+
+.bdv2-toc a:hover {
+  color: var(--text);
+}
+
+.v2 .bdv2-body h2 {
+  scroll-margin-top: 100px;
+}
+
+/* ── mid-article call to action ─────────────────────────────────────── */
+.bdv2-midcta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 12px 0 44px;
+  padding: 26px 28px;
+  border: 1px solid rgba(242, 240, 236, .16);
+  border-radius: 20px;
+  background: radial-gradient(120% 140% at 100% 0%, rgba(111, 157, 255, .18), transparent 60%), rgba(255, 255, 255, .02);
+}
+
+.v2 .bdv2-midcta p {
+  margin: 0;
+}
+
+.v2 .bdv2-midcta-k {
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #9db8ee;
+}
+
+.v2 .bdv2-midcta-title {
+  margin-top: 6px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.v2 .bdv2-midcta-body {
+  margin-top: 6px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-55);
+}
+
+.v2 .bdv2-midcta .v2-btn {
+  flex: none;
+  text-decoration: none;
+}
+
+/* ── share ──────────────────────────────────────────────────────────── */
+.bdv2-share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  margin-top: 28px;
+  font-size: 13px;
+  color: var(--text-55);
+}
+
+.bdv2-share > span {
+  margin-right: 6px;
+}
+
+.bdv2-share a,
+.bdv2-share button {
+  padding: 7px 14px;
+  border: 1px solid rgba(242, 240, 236, .14);
+  border-radius: 100px;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color .2s ease, background .2s ease;
+}
+
+.bdv2-share a:hover,
+.bdv2-share button:hover {
+  border-color: rgba(242, 240, 236, .3);
+  background: rgba(255, 255, 255, .04);
+}
+
+@media (max-width: 760px) {
+  .bdv2-midcta {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 22px 20px;
+  }
+
+
+  .v2 .bdv2-lede {
+    font-size: 16.5px;
+  }
+}
+
+/* the closing "book a consultation" line of an article ends with the
+   site's standard button (src/lib/articleMarkup.jsx) */
+.bdv2-cta-row {
+  margin: -6px 0 36px;
+}
+
+.v2 .bdv2-body .bdv2-cta-row a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.v2 .bdv2-body .bdv2-cta-row a:hover {
+  color: var(--void);
+}
+
+/* ── header: shares the article's column, so breadcrumb, title, summary,
+   byline, banner and text all start on the same edge ────────────────── */
+.bdv2-header {
+  position: relative;
+  overflow: hidden;
+}
+
+.bdv2-header::before {
+  content: "";
+  position: absolute;
+  top: -260px;
+  left: 50%;
+  width: 900px;
+  height: 640px;
+  transform: translateX(-50%);
+  background: radial-gradient(closest-side, rgba(111, 157, 255, .14), transparent);
+  pointer-events: none;
+}
+
+.bdv2-header-inner {
+  position: relative;
+  max-width: 820px;
+}
+
+.v2 .bdv2-header .bdv2-title {
+  max-width: none;
+  font-size: clamp(30px, 4.2vw, 48px);
+  line-height: 1.12;
+  letter-spacing: -.025em;
+}
+
+.bdv2-header .bdv2-byline {
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(242, 240, 236, .08);
+}
+
+/* the on-site banner (1600x720) — illustration only, the title is above it */
+.bdv2-image {
+  margin-bottom: 40px;
+  background: #08080c;
+}
+
+.bdv2-image img {
+  aspect-ratio: 20 / 9;
+  max-height: none;
+}
