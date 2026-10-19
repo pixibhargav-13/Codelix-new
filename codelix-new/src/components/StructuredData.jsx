@@ -40,9 +40,9 @@ export const StructuredData = ({ type = 'Organization', data = null }) => {
       /* last edit in the admin panel (updated_at); a post never edited
          after publishing was last modified when it was published */
       "dateModified": toISODate(data.updatedAt) || toISODate(data.publishedAt || data.date),
-      /* both founders are credited as authors, with the business as the
-         publisher below */
-      "author": FOUNDERS,
+      /* the post's author (see authorFor in src/lib/people.js), with the
+         business as the publisher below; both founders if none is given */
+      "author": data.author || FOUNDERS,
       /* Google's article guidance expects a publisher with a logo; without
          it the post is not eligible for the richer article treatments. */
       "publisher": {

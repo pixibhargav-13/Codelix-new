@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
-import { Search, ArrowUpRight } from "lucide-react";
+import { Search, ArrowUpRight, ArrowDown } from "lucide-react";
 
 /* v2 design system — same source of truth as the other v2 pages */
 import "../HomepageV2/HomepageV2.css";
@@ -166,9 +166,26 @@ export default function BlogV2() {
           ))}
         </div>
 
-        {visibleCount < filtered.length && (
+        {/* how far through the list the reader is, and exactly how many
+            more the button brings in, instead of a bare text link */}
+        {filtered.length > 0 && (
           <div className="bv2-more">
-            <button className="v2-btn" onClick={() => setVisibleCount((n) => n + 9)}>Load more articles</button>
+            <p className="bv2-more-count" aria-live="polite">
+              Showing <strong>{visible.length}</strong> of <strong>{filtered.length}</strong> articles
+            </p>
+            <div className="bv2-more-bar" aria-hidden="true">
+              <span style={{ width: `${(visible.length / filtered.length) * 100}%` }} />
+            </div>
+            {visibleCount < filtered.length && (
+              <button
+                type="button"
+                className="v2-btn v2-btn--filled bv2-more-btn"
+                onClick={() => setVisibleCount((n) => n + 9)}
+              >
+                <span>Load {Math.min(9, filtered.length - visible.length)} more {filtered.length - visible.length === 1 ? "article" : "articles"}</span>
+                <ArrowDown size={15} strokeWidth={2} aria-hidden="true" />
+              </button>
+            )}
           </div>
         )}
       </section>

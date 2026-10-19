@@ -41,7 +41,7 @@ export const blogs = [
     title: "Why Digital Presence Matters More Than Ever for Indian Businesses",
     excerpt:
       "Most buyers check you online before they call. What a useful digital presence includes, what it costs to keep up, and where to start if yours is thin.",
-    date: "20 October 2024",
+    date: "1 December 2025",
     updatedAt: UPDATED,
     readTime: "5 min read",
     image: coverDigitalPresence,
@@ -146,7 +146,7 @@ Want an honest review of where your business stands online? [Book a free consult
     title: "Design Systems and Component-Based UIs: Efficiency at Scale",
     excerpt:
       "When a design system is worth building, what goes in it, and how component-based development keeps a growing product consistent without slowing teams down.",
-    date: "20 October 2024",
+    date: "29 December 2025",
     updatedAt: UPDATED,
     readTime: "4 min read",
     image: coverDesignSystems,
@@ -233,8 +233,8 @@ If your product is starting to look inconsistent, [book a free consultation](${S
     slug: "progressive-web-apps-pwas-as-the-new-standard",
     title: "Progressive Web Apps (PWAs): When They Beat a Native App",
     excerpt:
-      "What a PWA can and can't do in 2026, how it compares with native and cross-platform apps, and how to tell which one your business actually needs.",
-    date: "20 October 2024",
+      "What a progressive web app (PWA) can and can't do in 2026, how it compares with native and cross-platform apps, and which one your business needs.",
+    date: "26 January 2026",
     updatedAt: UPDATED,
     readTime: "4 min read",
     image: coverPwa,
@@ -244,7 +244,7 @@ If your product is starting to look inconsistent, [book a free consultation](${S
 
 A PWA is a website that can behave like an app. It can be installed on the home screen, work offline for the parts you choose, and send notifications. It's built with web technology, so one codebase serves Android, iPhone and desktop.
 
-## What can a PWA do today?
+## What can a progressive web app do today?
 
 - Install to the home screen without going through an app store
 - Work offline or on weak connections, using a service worker to cache what matters
@@ -321,14 +321,14 @@ Not sure whether you need a PWA or an app? [Book a free consultation](${SITE}/co
     slug: "saas-vs-on-premise-whats-best-for-your-business",
     title: "SaaS vs On-Premise Software: Which Is Right for Your Business?",
     excerpt:
-      "SaaS and on-premise compared on cost, control, data and growth, with a simple way to decide for your business in India.",
-    date: "20 October 2024",
+      "SaaS vs on-premise software compared on cost, control, data and growth, with a simple way to decide for your business in India.",
+    date: "23 February 2026",
     updatedAt: UPDATED,
     readTime: "4 min read",
     image: coverSaas,
     coverImage: coverSaasShare,
     tags: ["All Articles", "business"],
-    content: `Short answer: for most small and mid-size businesses, SaaS or cloud-hosted software is the better default. You pay as you go, there's no server to manage, and updates happen for you. On-premise makes sense when you have strict data rules, unreliable internet at the site that runs the software, or a long-term need to own and control everything.
+    content: `Short answer: in the SaaS vs on-premise decision, SaaS or cloud-hosted software is the better default for most small and mid-size businesses. You pay as you go, there's no server to manage, and updates happen for you. On-premise makes sense when you have strict data rules, unreliable internet at the site that runs the software, or a long-term need to own and control everything.
 
 The question usually comes up when a business outgrows spreadsheets or an old desktop system. Someone suggests a SaaS product, someone else worries about where the data lives, and the decision stalls.
 
@@ -340,7 +340,7 @@ On-premise means the software runs on servers you own or rent, managed by your o
 
 There's a third option that often gets missed: custom software hosted in the cloud under your own account. You own the code and the data, but you don't manage physical servers.
 
-## How do they compare?
+## SaaS vs on-premise: how do they compare?
 
 | Factor | SaaS | On-premise | Custom, cloud-hosted |
 |---|---|---|---|
@@ -416,13 +416,13 @@ Weighing up SaaS against a custom build? [Book a free consultation](${SITE}/cont
     title: "How E-Commerce Platforms Help Indian Retailers Grow Online",
     excerpt:
       "Shopify, WooCommerce or a custom store: how Indian retailers choose an e-commerce platform, what it should include, and the mistakes that cost sales.",
-    date: "20 October 2024",
+    date: "23 March 2026",
     updatedAt: UPDATED,
     readTime: "4 min read",
     image: coverEcommerce,
     coverImage: coverEcommerceShare,
     tags: ["All Articles", "E-Commerce"],
-    content: `Short answer: most retailers starting online should launch on a hosted platform like Shopify or on WooCommerce, then move to a custom build only when their catalogue, pricing rules or integrations outgrow those tools. A custom store is worth it from day one only if you sell in an unusual way, such as B2B pricing per customer, made-to-order products or a marketplace with many sellers.
+    content: `Short answer: most retailers starting online should launch on a hosted e-commerce platform like Shopify or on WooCommerce, then move to a custom build only when their catalogue, pricing rules or integrations outgrow those tools. A custom store is worth it from day one only if you sell in an unusual way, such as B2B pricing per customer, made-to-order products or a marketplace with many sellers.
 
 We hear the same story from shop owners in Gujarat. The physical store does well, Instagram brings enquiries, and orders are taken over WhatsApp and noted in a register. It works until it doesn't: stock gets oversold, payments get missed, and nobody knows which products actually sell.
 
@@ -435,7 +435,7 @@ We hear the same story from shop owners in Gujarat. The physical store does well
 - Stock that stays in sync with your physical store, if you have one
 - WhatsApp order updates, because many customers prefer them to email
 
-## Shopify, WooCommerce or custom?
+## Which e-commerce platform: Shopify, WooCommerce or custom?
 
 | Option | Good fit | Watch out for |
 |---|---|---|
@@ -509,17 +509,17 @@ Planning to sell online or fix a store that isn't converting? [Book a free consu
     title: "End-to-End Web Development: Why One Team Gets Better Results",
     excerpt:
       "What end-to-end web development covers, why one accountable team usually beats several vendors, and what to check before you hire one.",
-    date: "20 October 2024",
+    date: "20 April 2026",
     updatedAt: UPDATED,
     readTime: "4 min read",
     image: coverEndToEnd,
     coverImage: coverEndToEndShare,
     tags: ["All Articles", "Development"],
-    content: `Short answer: having one team own a project from planning through design, build, launch and support usually means fewer gaps, fewer arguments about whose fault something is, and a product that works the way it was designed. Splitting it across a designer, a developer and a hosting company can save money on paper, but the handoffs are where projects slip.
+    content: `Short answer: with end-to-end web development, one team owns the project from planning through design, build, launch and support, which usually means fewer gaps, fewer arguments about whose fault something is, and a product that works the way it was designed. Splitting it across a designer, a developer and a hosting company can save money on paper, but the handoffs are where projects slip.
 
 Most people who come to us with a stalled project describe the same thing. The designer delivered screens that looked good but couldn't be built as drawn. The developer built something close to them. Nobody planned hosting or backups, and when the site broke, everyone pointed at someone else.
 
-## What does end-to-end development cover?
+## What does end-to-end web development cover?
 
 The whole lifecycle, handled by one team:
 
@@ -598,7 +598,7 @@ Have a project that needs one accountable team? [Book a free consultation](${SIT
     title: "5 Reasons to Choose Laravel for Faster Web App Development",
     excerpt:
       "Why Laravel speeds up PHP web app development, where it fits best, and when another framework might suit your project better.",
-    date: "31 October 2025",
+    date: "18 May 2026",
     updatedAt: UPDATED,
     readTime: "4 min read",
     image: coverLaravel,
@@ -696,18 +696,18 @@ Thinking about Laravel for your next project? [Book a free consultation](${SITE}
     slug: "ai-powered-solutions-transforming-modern-businesses",
     title: "AI for Business: Where It Actually Pays Off in 2026",
     excerpt:
-      "Where AI is already useful for small and mid-size businesses, where it isn't yet, and how to start without wasting money on a pilot that goes nowhere.",
-    date: "31 October 2025",
+      "AI for business: where it's already useful for small and mid-size companies, where it isn't yet, and how to start without wasting money on a pilot.",
+    date: "15 June 2026",
     updatedAt: UPDATED,
     readTime: "4 min read",
     image: coverAi,
     coverImage: coverAiShare,
     tags: ["All Articles", "Artificial Intelligence"],
-    content: `Short answer: AI pays off fastest on narrow, repetitive work you can measure, such as answering common customer questions, reading invoices or documents, drafting routine replies, and pulling numbers into reports. It pays off least when it's bought as a vague "AI strategy" without a specific job to do. Start with one process that wastes hours every week.
+    content: `Short answer: AI for business pays off fastest on narrow, repetitive work you can measure, such as answering common customer questions, reading invoices or documents, drafting routine replies, and pulling numbers into reports. It pays off least when it's bought as a vague "AI strategy" without a specific job to do. Start with one process that wastes hours every week.
 
 Most businesses we speak to have tried a chatbot or a ChatGPT subscription and come away unsure. Usually the problem isn't the technology. It's that nobody picked a specific task and measured whether it got faster.
 
-## Where is AI useful right now?
+## Where does AI for business pay off right now?
 
 - Customer questions: a chatbot or WhatsApp assistant that answers order status, pricing and FAQs from your own data, and hands off to a person when it can't
 - Documents: reading invoices, purchase orders or forms and entering the data, with a person checking exceptions
@@ -784,7 +784,7 @@ Have a task you'd like to automate? [Book a free consultation](${SITE}/contact) 
     title: "Advanced WordPress: Custom Post Types, Speed and Security",
     excerpt:
       "How to take WordPress beyond a basic blog: structured content, a faster site, tighter security, and when it's time to go headless or custom.",
-    date: "31 October 2025",
+    date: "13 July 2026",
     updatedAt: UPDATED,
     readTime: "4 min read",
     image: coverWordpress,
@@ -879,18 +879,18 @@ Need a faster or safer WordPress site? [Book a free consultation](${SITE}/contac
     slug: "building-scalable-web-applications-with-modern-frameworks",
     title: "Building Scalable Web Applications: Frameworks and Architecture",
     excerpt:
-      "What actually makes a web app scale, how to choose frameworks for growth, and why most businesses don't need microservices on day one.",
-    date: "31 October 2025",
+      "What makes a scalable web application, how to choose frameworks for growth, and why most businesses don't need microservices on day one.",
+    date: "17 August 2026",
     updatedAt: UPDATED,
     readTime: "4 min read",
     image: coverScalable,
     coverImage: coverScalableShare,
     tags: ["All Articles", "Development"],
-    content: `Short answer: scalability depends far more on architecture, database design and hosting than on which framework you pick. React, Next.js, Laravel, Node.js, Django and Spring Boot can all run large applications. For most business apps, a well-structured single application with good caching and a cloud database will scale further than you expect. Microservices are for when a team or a workload has truly outgrown that.
+    content: `Short answer: a scalable web application depends far more on architecture, database design and hosting than on which framework you pick. React, Next.js, Laravel, Node.js, Django and Spring Boot can all run large applications. For most business apps, a well-structured single application with good caching and a cloud database will scale further than you expect. Microservices are for when a team or a workload has truly outgrown that.
 
 Founders often ask us to "build it to scale to a million users" before they have a hundred. The cost of over-engineering is real: slower delivery and higher hosting bills for traffic that hasn't arrived. The trick is to make the decisions that are hard to change later, and leave the rest simple.
 
-## What does "scalable" really mean?
+## What is a scalable web application?
 
 An app scales when it keeps working well as users, data and features grow. That covers three things:
 
@@ -976,14 +976,14 @@ Building something you expect to grow? [Book a free consultation](${SITE}/contac
     slug: "the-future-of-mobile-app-development-trends-and-insights",
     title: "Mobile App Development Trends That Matter for Your Next App",
     excerpt:
-      "The mobile app trends that actually change how business apps get built in 2026, and the ones you can safely ignore for now.",
-    date: "31 October 2025",
+      "The mobile app development trends that actually change how business apps get built in 2026, and the ones you can safely ignore for now.",
+    date: "21 September 2026",
     updatedAt: UPDATED,
     readTime: "4 min read",
     image: coverMobile,
     coverImage: coverMobileShare,
     tags: ["All Articles", "Tech"],
-    content: `Short answer: for most business apps, the trends that matter are cross-platform development with Flutter or React Native, AI features built into everyday tasks, and designing for patchy connections and mid-range phones. Super apps, AR and similar headlines rarely change what a typical business should build next.
+    content: `Short answer: for most business apps, the mobile app development trends that matter are cross-platform development with Flutter or React Native, AI features built into everyday tasks, and designing for patchy connections and mid-range phones. Super apps, AR and similar headlines rarely change what a typical business should build next.
 
 Trend lists usually mix what's useful for a cost-conscious business with what's interesting at a tech conference. Here we've kept to what changes real build decisions.
 
@@ -1014,7 +1014,7 @@ In India many users switch between good Wi-Fi, weak 4G and no signal several tim
 
 Not every business needs its own app. For simple ordering, appointment booking or support, a WhatsApp flow or a fast mobile website may serve customers better. An app earns its place when people use it often, such as daily staff tools, repeat ordering or account access.
 
-## Trends you can mostly ignore for now
+## Mobile app development trends you can mostly ignore
 
 | Trend | Why it rarely matters for business apps |
 |---|---|
@@ -1070,8 +1070,8 @@ Planning an app? [Book a free consultation](${SITE}/contact) and we'll help you 
     slug: "optimizing-user-experience-through-better-uiux-design",
     title: "Better UI/UX Design: How It Improves Conversions and Retention",
     excerpt:
-      "The UI/UX fixes that most often lift enquiries, sign-ups and repeat use, how a good design process works, and how to tell if your product needs it.",
-    date: "31 October 2025",
+      "The UI/UX design fixes that most often lift enquiries, sign-ups and repeat use, how a good process works, and how to tell if your product needs it.",
+    date: "19 October 2026",
     updatedAt: UPDATED,
     readTime: "4 min read",
     image: coverUx,
@@ -1099,7 +1099,7 @@ Each of these points at a specific screen or step. That's where design work shou
 4. Feedback: show what happened after every action, including errors in plain words.
 5. Accessibility: readable text, enough contrast, and usable by keyboard. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) is the current W3C standard to design against.
 
-## What does a good design process look like?
+## What does a good UI/UX design process look like?
 
 ### Research
 

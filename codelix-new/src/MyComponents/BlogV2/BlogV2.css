@@ -130,5 +130,16 @@
 }
 .bv2-card:hover .bv2-card-arrow { opacity: 1; transform: none; }
 
-.bv2-more { display: flex; justify-content: center; margin-top: 40px; }
+/* end of the list: progress through the articles, then the button */
+.bv2-more { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 56px; }
+.v2 .bv2-more-count { margin: 0; font-size: 13px; letter-spacing: .04em; color: var(--text-55); }
+.v2 .bv2-more-count strong { color: var(--text); font-weight: 600; }
+.bv2-more-bar { width: min(240px, 60%); height: 2px; border-radius: 2px; background: rgba(242, 240, 236, .1); overflow: hidden; }
+.bv2-more-bar span { display: block; height: 100%; border-radius: 2px; background: linear-gradient(90deg, rgba(157, 184, 238, .9), #7c9bff); transition: width .6s var(--ease-expo); }
+.v2 .bv2-more-btn { margin-top: 10px; cursor: pointer; font: inherit; font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; background: none; color: var(--text); }
+/* the reset above (a <button> has a grey default background) outranks the
+   pill's own hover, so the hover fill is restated here */
+.v2 .bv2-more-btn:hover, .v2 .bv2-more-btn:focus-visible { background: var(--text); color: var(--void); }
+.v2 .bv2-more-btn svg { transition: transform .35s var(--ease-expo); }
+.v2 .bv2-more-btn:hover svg { transform: translateY(3px); }
 

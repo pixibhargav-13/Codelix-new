@@ -2,6 +2,15 @@ import { useEffect, useState, useContext } from "react";
 import { selectRows } from "../lib/supabaseRest";
 import { blogs as staticBlogs } from "./blogData";
 import { InitialDataContext } from "../lib/initialDataContext";
+import { toISODate as isoDate } from "../lib/isoDate.js";
+
+/* Every list of posts (blog page, related articles, sitemap page) shows the
+   newest first. Database posts carry an ISO published_at, the built-in
+   ones a "20 October 2024" string; both go through the same parser. Posts
+   from the same day keep the later-written one first (higher id). */
+const timeOf = (p) => { const iso = isoDate(p.publishedAt || p.date); return iso ? Date.parse(iso) : 0; };
+const newestFirst = (list) =>
+  [...list].sort((a, b) => timeOf(b) - timeOf(a) || (typeof a.id === "number" && typeof b.id === "number" ? b.id - a.id : 0));
 
 /* Posts from scripts/publish-blog-post.mjs store the on-site banner
    (<name>.banner.webp) as cover_image_url, with the link-preview card next
@@ -41,7 +50,7 @@ export function useBlogPosts() {
     }
     // Only use staticBlogs if there are no SSG posts, or merge them?
     // The original code merged them: setPosts([...fromSupabase, ...staticBlogs])
-    return [...ssgPosts, ...staticBlogs];
+    return newestFirst([...ssgPosts, ...staticBlogs]);
   });
 
   /* Whether the Supabase read is still in flight. A post published from the
@@ -80,7 +89,7 @@ export function useBlogPosts() {
           tags: p.tags?.length ? p.tags : ["All Articles"],
           content: p.content,
         }));
-        setPosts([...fromSupabase, ...staticBlogs]);
+        setPosts(newestFirst([...fromSupabase, ...staticBlogs]));
       })
       /* a rejected request must still end the loading state, or an unknown
          slug would spin forever instead of reporting itself as missing */
