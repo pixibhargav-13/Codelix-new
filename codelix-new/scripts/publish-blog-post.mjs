@@ -39,15 +39,31 @@ const DRY = args.includes("--dry-run");
 const LIST = args.includes("--list");
 const file = args.find((a) => !a.startsWith("--"));
 
+/* Never process.exit() while a network request may still be closing: on
+   Windows, Node aborts with a libuv assertion (exit code 127) and the run
+   looks failed even when it worked. Errors throw Stop; normal ends return
+   from main() and let Node exit by itself. */
+class Stop extends Error {}
 const fail = (msg) => {
-  console.error(`❌ ${msg}`);
-  process.exit(1);
+  throw new Stop(msg);
 };
+
+async function main() {
 
 const { VITE_SUPABASE_URL: URL_, SUPABASE_SERVICE_ROLE_KEY: KEY, VERCEL_DEPLOY_HOOK_URL: HOOK } = process.env;
 const needDb = LIST || !DRY;
 if (needDb && (!URL_ || !KEY)) {
   fail("VITE_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY must be set in .env.local");
+}
+/* .env.local ships with REPLACE_ME placeholders until the real keys go in */
+const placeholders = Object.entries({ VITE_SUPABASE_URL: URL_, SUPABASE_SERVICE_ROLE_KEY: KEY, VERCEL_DEPLOY_HOOK_URL: HOOK })
+  .filter(([, v]) => v && v.includes("REPLACE_ME"))
+  .map(([k]) => k);
+if (needDb && placeholders.some((k) => k !== "VERCEL_DEPLOY_HOOK_URL")) {
+  fail(`.env.local still has placeholder values for: ${placeholders.join(", ")}. Replace them with the real keys.`);
+}
+if (placeholders.includes("VERCEL_DEPLOY_HOOK_URL")) {
+  fail(".env.local still has a placeholder VERCEL_DEPLOY_HOOK_URL. Paste the real deploy hook URL, or delete that line to publish without an automatic rebuild.");
 }
 const db = needDb ? createClient(URL_, KEY, { auth: { persistSession: false } }) : null;
 
@@ -62,7 +78,7 @@ if (LIST) {
     console.log(`${p.published ? "live " : "draft"} | ${(p.published_at || "").slice(0, 10)} | ${p.slug} | ${p.title} | ${(p.tags || []).join(", ")}`);
   }
   console.log(`${data.length} posts`);
-  process.exit(0);
+  return;
 }
 
 /* ── validate ────────────────────────────────────────────────────────── */
@@ -145,7 +161,7 @@ if (DRY) {
   console.log(`   would publish https://www.codelixitsolutions.com/blog/${slug}`);
   console.log(`   share card preview: ${out}`);
   console.log(`   on-site banner preview: ${outBanner}`);
-  process.exit(0);
+  return;
 }
 
 /* ── publish ─────────────────────────────────────────────────────────── */
@@ -169,3 +185,9 @@ if (HOOK) {
 } else {
   console.log("⚠️ VERCEL_DEPLOY_HOOK_URL not set — the post shows on the site now, but is only prerendered and added to sitemap.xml on the next deploy");
 }
+}
+
+main().catch((e) => {
+  console.error(e instanceof Stop ? `❌ ${e.message}` : e);
+  process.exitCode = 1;
+});
