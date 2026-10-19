@@ -160,7 +160,9 @@ export async function renderCover({ title, category, tags = [] }) {
      Nothing sits near the edges: the blog cards crop it to a different
      shape than the article hero (object-fit: cover), and a logo or label
      in a corner gets cut in half. The centred illustration survives any
-     crop down to a square. */
+     crop down to a square. No accent bar along the top either: every frame
+     that shows the banner has rounded corners, which clip a full-width bar
+     at both ends so it looks cut off. */
   const banner = `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720">
     <defs>
       <radialGradient id="bglow" cx="50%" cy="50%" r="48%">
@@ -182,7 +184,6 @@ export async function renderCover({ title, category, tags = [] }) {
     <circle cx="800" cy="360" r="220" fill="none" stroke="${ACCENT}" stroke-opacity=".06" stroke-dasharray="4 10"/>
     <g transform="translate(537 97) scale(1.25)">${MOTIFS[motif]()}</g>
     <rect width="1600" height="720" fill="url(#bvignette)"/>
-    <rect width="1600" height="5" fill="${ACCENT}"/>
   </svg>`;
 
   return {
