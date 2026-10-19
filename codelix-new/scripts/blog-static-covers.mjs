@@ -1,6 +1,6 @@
 /* Renders a cover for each built-in post in src/data/blogData.js into
-   src/MyComponents/Images/blog/<slug>.webp (the on-site banner, no title)
-   and <slug>-share.webp (the link-preview card, with the title), in the same style as covers for
+   src/MyComponents/Images/blog/<slug>.webp (the on-site banner)
+   and <slug>-share.webp (the link preview) — the same image — in the same style as covers for
    posts published through scripts/publish-blog-post.mjs.
 
      node scripts/blog-static-covers.mjs
