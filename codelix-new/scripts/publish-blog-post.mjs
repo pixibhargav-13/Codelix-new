@@ -29,6 +29,7 @@ import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import { createClient } from "@supabase/supabase-js";
 import { renderCover } from "./blog-cover.mjs";
+import { BLOG_POST_SLUGS } from "../src/lib/blogSlugs.js";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(here, "..");
@@ -152,6 +153,11 @@ if (/\]\((https?:\/\/(www\.)?codelixitsolutions\.com)?\/best-/i.test(content)) p
 if (problems.length) fail(`post rejected:\n   - ${problems.join("\n   - ")}`);
 
 if (db) {
+  /* the twelve built-in posts live in src/data/blogData.js, not the
+     database, so a database check alone would let a new post take one of
+     their URLs; the two would then clash on the site */
+  if (BLOG_POST_SLUGS.includes(slug)) fail(`slug "${slug}" belongs to one of the built-in posts; choose another`);
+  if (slug.startsWith("best-")) fail(`slug "${slug}" looks like a city landing page URL; choose another`);
   const { data: clash } = await db.from("blog_posts").select("id").eq("slug", slug).maybeSingle();
   if (clash) fail(`a post with slug "${slug}" already exists`);
 }
@@ -200,12 +206,67 @@ const { error } = await db.from("blog_posts").insert(row);
 if (error) fail(`insert failed: ${error.message}`);
 console.log(`✅ published https://www.codelixitsolutions.com/blog/${slug} (${words} words, ${row.read_time})`);
 
+const postUrl = `${SITE_ORIGIN}/blog/${slug}`;
+let rebuilt = false;
 if (HOOK) {
   const res = await fetch(HOOK, { method: "POST" });
-  console.log(res.ok ? "✅ Vercel rebuild started — prerender, sitemap and IndexNow follow" : `⚠️ deploy hook returned HTTP ${res.status}`);
+  if (res.ok) {
+    console.log("✅ Vercel rebuild started — waiting for the post to appear in sitemap.xml");
+    rebuilt = await waitForSitemap(postUrl);
+    console.log(rebuilt ? "✅ deployed: the post is prerendered and listed in sitemap.xml" : "⚠️ the post wasn't in sitemap.xml after 10 minutes; the deploy may still be running or may have failed (check Vercel)");
+  } else {
+    console.log(`⚠️ deploy hook returned HTTP ${res.status}`);
+  }
 } else {
   console.log("⚠️ VERCEL_DEPLOY_HOOK_URL not set — the post shows on the site now, but is only prerendered and added to sitemap.xml on the next deploy");
 }
+
+/* IndexNow from here rather than relying on the GitHub workflow, whose
+   sitemap fetch from GitHub's runners has come back empty. The post is
+   already live (rendered in the browser even before the rebuild), so it is
+   submitted either way, together with the blog listing it now heads. */
+await submitIndexNow([postUrl, `${SITE_ORIGIN}/blog`]);
+}
+
+const SITE_ORIGIN = "https://www.codelixitsolutions.com";
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+async function waitForSitemap(url) {
+  for (let i = 0; i < 30; i++) {
+    await sleep(20000);
+    try {
+      const xml = await (await fetch(`${SITE_ORIGIN}/sitemap.xml?ts=${Date.now()}`, { cache: "no-store" })).text();
+      if (xml.includes(`<loc>${url}</loc>`)) return true;
+    } catch {
+      /* keep waiting */
+    }
+  }
+  return false;
+}
+
+async function submitIndexNow(urls) {
+  const pub = path.join(ROOT, "public");
+  const keyFile = fs.readdirSync(pub).find((f) => {
+    const m = /^([a-f0-9]{32})\.txt$/.exec(f);
+    return m && fs.readFileSync(path.join(pub, f), "utf8").trim() === m[1];
+  });
+  if (!keyFile) {
+    console.log("⚠️ IndexNow skipped: no key file in public/");
+    return;
+  }
+  const key = keyFile.replace(/\.txt$/, "");
+  try {
+    const res = await fetch("https://api.indexnow.org/indexnow", {
+      method: "POST",
+      headers: { "Content-Type": "application/json; charset=utf-8" },
+      body: JSON.stringify({ host: new URL(SITE_ORIGIN).host, key, keyLocation: `${SITE_ORIGIN}/${keyFile}`, urlList: urls }),
+    });
+    console.log(res.status === 200 || res.status === 202
+      ? `✅ IndexNow: HTTP ${res.status}, submitted ${urls.length} URLs (${urls.join(", ")})`
+      : `⚠️ IndexNow returned HTTP ${res.status}`);
+  } catch (e) {
+    console.log(`⚠️ IndexNow request failed: ${e.message}`);
+  }
 }
 
 main().catch((e) => {
