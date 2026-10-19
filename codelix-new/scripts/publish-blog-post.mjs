@@ -8,7 +8,7 @@
      node scripts/publish-blog-post.mjs post.json           publish
 
    post.json:
-     { title, slug?, excerpt, content, category, tags: [4–6], read_time? }
+     { title, slug?, excerpt, content, category, primary_keyword, tags: [4–6], read_time? }
    category is one of: Business, Development, AI, E-Commerce, CMS, UI/UX, Tech
    (mapped to the blog page's filter names). content uses the markup that
    src/lib/articleMarkup.jsx renders: blocks separated by a blank line;
@@ -111,6 +111,23 @@ if (h2s < 3) problems.push(`content has ${h2s} "## " headings (want 3+)`);
 if (blocks.some((b) => /^# /.test(b))) problems.push(`content has a "# " heading — the title is already the H1`);
 if (!category) problems.push(`category "${post.category}" is not one of Business, Development, AI, E-Commerce, CMS, UI/UX, Tech`);
 if (tags.length < 1 || tags.length > 6) problems.push(`want 1–6 tags, got ${tags.length}`);
+/* the primary search phrase must appear where search engines weigh it most:
+   title, meta description (excerpt), the "Short answer" sentence, a "## "
+   heading and the slug. Matching ignores case and treats - and spaces alike. */
+const primary = String(post.primary_keyword || "").trim();
+const norm = (t) => String(t).toLowerCase().replace(/[-\s]+/g, " ");
+if (!primary) problems.push("no primary_keyword given");
+else {
+  const where = {
+    title,
+    excerpt,
+    slug,
+    "first paragraph": blocks[0] || "",
+    "a ## heading": blocks.filter((b) => b.startsWith("## ")).join(" "),
+  };
+  const missing = Object.entries(where).filter(([, t]) => !norm(t).includes(norm(primary))).map(([k]) => k);
+  if (missing.length) problems.push(`primary keyword "${primary}" is missing from: ${missing.join(", ")}`);
+}
 /* things that belong in the run's report, never on the live page */
 const leftovers = [/\[add a short quote/i, /notes for reviewer/i, /\bTODO\b/, /lorem ipsum/i, /\[insert/i, /\[placeholder/i];
 for (const re of leftovers) if (re.test(content)) problems.push(`content still contains "${content.match(re)[0]}"`);
@@ -124,6 +141,8 @@ else {
   const answered = faqBlocks.filter((b, i) => b.startsWith("### ") && faqBlocks[i + 1] && !faqBlocks[i + 1].startsWith("### ")).length;
   if (answered < 4) problems.push(`FAQ has ${answered} answered "### " questions (want 4–5)`);
 }
+/* the answer-first opening, shown by the page as a "Short answer" box */
+if (!/^short answer:/i.test(blocks[0] || "")) problems.push(`the first paragraph must start with "Short answer:"`);
 /* the closing line's contact link becomes the page's consultation button */
 if (!/\]\((https?:\/\/(www\.)?codelixitsolutions\.com)?\/contact\/?\)/i.test(content)) problems.push(`no closing link to https://www.codelixitsolutions.com/contact`);
 /* sources are linked inline where their facts appear, not listed at the end */
@@ -146,7 +165,9 @@ const row = {
   excerpt,
   content,
   /* tags[1] is what the blog shows as the post's category */
-  tags: [...new Set(["All Articles", category, ...tags])],
+  /* tags[1] is the category; the primary keyword comes next, so it leads the
+     post's meta keywords (src/lib/blogKeywords.js) */
+  tags: [...new Set(["All Articles", category, primary, ...tags])],
   read_time: String(post.read_time || "").trim() || `${Math.max(3, Math.round(words / 200))} min read`,
   published: true,
   published_at: new Date().toISOString(),
