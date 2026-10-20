@@ -151,7 +151,7 @@ export default function BlogV2() {
           {visible.map((b) => (
             <Link className="bv2-card" to={`/blog/${b.slug || slugify(b.title)}`} key={b.id}>
               <div className="bv2-card-media">
-                <img src={b.image} alt={b.title} loading="lazy" />
+                <img src={b.image} alt={b.title} width="1200" height="630" loading="lazy" decoding="async" />
               </div>
               <div className="bv2-card-body">
                 <div className="bv2-card-meta">

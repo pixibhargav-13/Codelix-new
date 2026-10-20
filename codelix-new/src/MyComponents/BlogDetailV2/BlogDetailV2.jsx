@@ -231,7 +231,7 @@ export default function BlogDetailV2() {
             {/* same as the case study hero: this is the LCP element on the
                 page, so it should not wait for the layout pass to be
                 prioritised */}
-            <img src={blog.image} alt={blog.title} fetchPriority="high" decoding="async" />
+            <img src={blog.image} alt={blog.title} width="1200" height="630" fetchPriority="high" decoding="async" />
           </div>
 
           <div className="bdv2-content">
@@ -349,7 +349,7 @@ export default function BlogDetailV2() {
             {related.map((b) => (
               <Link className="bdv2-related-card" to={`/blog/${b.slug || slugify(b.title)}`} key={b.id}>
                 <div className="bdv2-related-media">
-                  <img src={b.image} alt={b.title} loading="lazy" />
+                  <img src={b.image} alt={b.title} width="1200" height="630" loading="lazy" decoding="async" />
                 </div>
                 <div className="bdv2-related-body">
                   <h3>{b.title}</h3>

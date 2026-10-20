@@ -164,6 +164,13 @@ if (db) {
 
 /* ── cover: see scripts/blog-cover.mjs ─────────────────────────────── */
 const { cover, banner, motif } = await renderCover({ title, category, tags });
+/* the covers must be WebP (RIFF....WEBP) and light, so the blog loads fast;
+   stop before anything is uploaded if that ever changes */
+for (const [name, buf] of [["banner", banner], ["share", cover]]) {
+  const isWebp = buf.length > 12 && buf.toString("ascii", 0, 4) === "RIFF" && buf.toString("ascii", 8, 12) === "WEBP";
+  if (!isWebp) fail(`the ${name} cover is not a WebP image`);
+  if (buf.length > 200 * 1024) fail(`the ${name} cover is ${Math.round(buf.length / 1024)} KB (want under 200 KB)`);
+}
 
 const row = {
   title,
