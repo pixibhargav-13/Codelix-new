@@ -23,10 +23,10 @@ const blogs = new Function(`${src}; return blogs;`)();
 
 fs.mkdirSync(OUT, { recursive: true });
 for (const b of blogs) {
-  const { cover, banner, motif } = await renderCover({ title: b.title, category: b.tags[1], tags: b.tags.slice(2) });
+  const { cover, banner, motif, screen, topic, layout } = await renderCover({ title: b.title, category: b.tags[1], tags: b.tags.slice(2) });
   /* <slug>.webp is the on-site banner, <slug>-share.webp the link preview */
   fs.writeFileSync(path.join(OUT, `${b.slug}.webp`), banner);
   fs.writeFileSync(path.join(OUT, `${b.slug}-share.webp`), cover);
-  console.log(`${motif.padEnd(12)} ${b.slug}`);
+  console.log(`${`${motif} ${screen}`.padEnd(14)} ${(topic || "-").padEnd(9)} ${layout.padEnd(12)} ${b.slug}`);
 }
 console.log(`${blogs.length} covers -> ${path.relative(ROOT, OUT)}`);
