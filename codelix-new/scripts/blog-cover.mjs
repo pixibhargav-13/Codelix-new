@@ -17,11 +17,50 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import sharp from "sharp";
+import * as opentype from "opentype.js";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const W = 1200;
 const H = 630;
-const FONT = "Segoe UI, Arial, sans-serif";
+/* covers use Inter (the site's own font, SIL OFL), bundled in scripts/fonts.
+   Every <text> is turned into vector outlines from those files just before
+   rendering (outlineText), so the cover never depends on the fonts
+   installed on the machine: it looks the same on Windows and on the Linux
+   machine that runs the scheduled blog task in the cloud. */
+const FONT = "Inter";
+const FONT_FILES = { 600: "Inter_600SemiBold.ttf", 700: "Inter_700Bold.ttf", 800: "Inter_800ExtraBold.ttf" };
+const FONTS = Object.fromEntries(Object.entries(FONT_FILES).map(([w, f]) => {
+  const buf = fs.readFileSync(path.join(ROOT, "scripts/fonts", f));
+  return [w, opentype.parse(buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength))];
+}));
+const fontFor = (weight) => FONTS[Number(weight) >= 800 ? 800 : Number(weight) >= 700 ? 700 : 600];
+/* width in px of a line of text, letter spacing included */
+const measure = (str, size, weight = 600, spacing = 0) => fontFor(weight).getAdvanceWidth(str, size) + spacing * Math.max(0, [...str].length - 1);
+const unesc = (s) => s.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&amp;/g, "&");
+
+function outlineText(svg) {
+  return svg.replace(/<text\b([^>]*)>([^<]*)<\/text>/g, (_, attrs, body) => {
+    const attr = (n, d) => (attrs.match(new RegExp(`(?:^|[ ])${n}="([^"]*)"`)) || [])[1] ?? d;
+    const str = unesc(body);
+    const size = Number(attr("font-size", 16));
+    const weight = attr("font-weight", 600);
+    const spacing = Number(attr("letter-spacing", 0));
+    const font = fontFor(weight);
+    let x = Number(attr("x", 0));
+    const y = Number(attr("y", 0));
+    const w = measure(str, size, weight, spacing);
+    const anchor = attr("text-anchor", "start");
+    if (anchor === "middle") x -= w / 2;
+    else if (anchor === "end") x -= w;
+    let d = "";
+    for (const ch of [...str]) {
+      d += font.getPath(ch === " " ? "" : ch, x, y, size).toPathData(2);
+      x += font.getAdvanceWidth(ch, size) + spacing;
+    }
+    const opacity = attr("fill-opacity");
+    return `<path d="${d}" fill="${attr("fill", "#000000")}"${opacity ? ` fill-opacity="${opacity}"` : ""}/>`;
+  });
+}
 const LOGO_SVG = fs.readFileSync(path.join(ROOT, "src/MyComponents/Images/codelix_logo.svg"), "utf8");
 const [, LOGO_SVG_W, LOGO_SVG_H] = LOGO_SVG.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/).map(Number);
 
@@ -60,14 +99,18 @@ export function motifFor({ title = "", tags = [], category = "" }) {
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-function wrap(text, max) {
+/* greedy word wrap by measured width (the first line is indented 16px
+   inside its highlight box, so it gets 16px less) */
+function wrapPx(text, maxPx, size) {
   const lines = [];
   let line = "";
   for (const w of text.split(" ")) {
-    if ((line + " " + w).trim().length > max && line) {
+    const next = (line + " " + w).trim();
+    const room = lines.length ? maxPx : maxPx - 16;
+    if (line && measure(next, size, 800) > room) {
       lines.push(line);
       line = w;
-    } else line = (line + " " + w).trim();
+    } else line = next;
   }
   if (line) lines.push(line);
   return lines;
@@ -329,7 +372,7 @@ function ownA(motif, p) { /* 150 x 112 */
     uiux: `${[p.bg, p.deep, "#fbbf24", p.tint].map((c, i) => `<circle cx="${30 + i * 30}" cy="40" r="12" fill="${c}" stroke="#e2e8f0"/>`).join("")}${pill(18, 70, 90, "#cbd5e1")}${pill(18, 86, 60, p.bg)}`,
     cms: `<rect x="30" y="20" width="58" height="74" rx="6" fill="${p.tint}"/><rect x="22" y="28" width="58" height="74" rx="6" fill="#ffffff" stroke="${p.bg}" stroke-width="3"/>${pill(32, 44, 36, p.bg)}${pill(32, 60, 38, "#cbd5e1")}${pill(32, 76, 30, "#cbd5e1")}${pill(98, 46, 36, p.deep)}`,
     business: `${[0, 1, 2, 3].map((i) => `<ellipse cx="46" cy="${82 - i * 14}" rx="26" ry="9" fill="${i === 3 ? p.bg : p.tint}" stroke="${p.deep}" stroke-opacity=".3"/>`).join("")}${rupee(46, 46, 20, "#ffffff")}${pill(92, 46, 42, p.bg)}${pill(92, 64, 32, "#cbd5e1")}`,
-    development: `<rect x="12" y="14" width="126" height="84" rx="10" fill="#0f172a"/><circle cx="26" cy="28" r="4" fill="#f87171"/><circle cx="40" cy="28" r="4" fill="#fbbf24"/><circle cx="54" cy="28" r="4" fill="#34d399"/><text x="24" y="60" font-family="Consolas, monospace" font-size="16" font-weight="700" fill="#34d399">$</text>${pill(42, 50, 70, "#94a3b8")}${pill(24, 72, 50, p.tint)}`,
+    development: `<rect x="12" y="14" width="126" height="84" rx="10" fill="#0f172a"/><circle cx="26" cy="28" r="4" fill="#f87171"/><circle cx="40" cy="28" r="4" fill="#fbbf24"/><circle cx="54" cy="28" r="4" fill="#34d399"/><text x="24" y="60" font-family="${FONT}" font-size="16" font-weight="700" fill="#34d399">$</text>${pill(42, 50, 70, "#94a3b8")}${pill(24, 72, 50, p.tint)}`,
     mobile: `<path d="M44 30 C30 30 28 44 28 56 V68 L22 76 H66 L60 68 V56 C60 44 58 30 44 30 Z" fill="${p.bg}"/><circle cx="44" cy="82" r="6" fill="${p.bg}"/><circle cx="60" cy="32" r="8" fill="#f43f5e"/>${pill(86, 44, 46, p.deep)}${pill(86, 62, 36, "#cbd5e1")}`,
   }[motif];
 }
@@ -457,7 +500,7 @@ function chips(labels, phone, p) {
   let x = phone ? 650 : 660;
   const y = phone ? 62 : 84;
   return labels.map((label) => {
-    const w = Math.round(label.length * 11.5 + 34);
+    const w = Math.round(measure(label, 17, 700) + 34);
     const out = `<g transform="translate(${x} ${y})">
         <rect x="3" y="5" width="${w}" height="38" rx="19" fill="${p.deep}" fill-opacity=".35"/>
         <rect width="${w}" height="38" rx="19" fill="${p.deep}"/>
@@ -504,21 +547,20 @@ export async function renderCover({ title, category, tags = [] }) {
   const tx = v.right ? 660 : 56;
 
   /* title kept inside 500px so it never runs under the illustration; the
-     largest size that fits in four lines wins (bold glyphs ~0.6em) */
+     largest size that fits in four lines wins */
   const MAX_W = v.right ? 470 : 500;
-  const AVG = 0.6;
   let size = 40;
-  let lines = wrap(title, Math.floor(MAX_W / (40 * AVG))).slice(0, 5);
+  let lines = wrapPx(title, MAX_W, 40).slice(0, 5);
   for (const s of [54, 48, 44, 40]) {
-    const l = wrap(title, Math.floor(MAX_W / (s * AVG)));
+    const l = wrapPx(title, MAX_W, s);
     if (l.length <= 4) { size = s; lines = l; break; }
   }
   const lead = Math.round(size * 1.2);
   const blockH = lines.length * lead;
   const top = Math.max(186, 360 - blockH / 2) + size * 0.82;
-  const textW = (s) => Math.round(s.length * size * AVG);
+  const textW = (s) => Math.round(measure(s, size, 800));
   const kickerY = top - size * 0.86 - 46;
-  const kickerW = Math.round(kicker.length * 11.2 + 36);
+  const kickerW = Math.round(measure(kicker, 15, 700, 1.6) + 36);
 
   /* the vector logo sits straight on the colour, drawn in white so it
      reads on every palette (its blue mark would vanish on the blue and
@@ -562,6 +604,6 @@ export async function renderCover({ title, category, tags = [] }) {
 
   <text x="${tx}" y="${H - 34}" font-family="${FONT}" font-size="20" font-weight="600" fill="#ffffff" fill-opacity=".85">codelixitsolutions.com/blog</text>
 </svg>`;
-  const image = await sharp(Buffer.from(svg)).webp({ quality: 90 }).toBuffer();
+  const image = await sharp(Buffer.from(outlineText(svg))).webp({ quality: 90 }).toBuffer();
   return { cover: image, banner: image, motif, screen: v.screen, topic, layout: v.right ? "title right" : "title left", chips: labels };
 }
