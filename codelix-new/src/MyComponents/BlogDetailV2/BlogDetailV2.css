@@ -588,6 +588,7 @@
 
 .bdv2-image img {
   aspect-ratio: 1200 / 630;
+  height: auto;
   max-height: none;
 }
 
