@@ -174,6 +174,25 @@ async function build() {
     wrap: true
   });
 
+  /* A post or case study published after the last deploy has no file of its
+     own yet, so vercel.json rewrites its URL to a fallback page. That used to
+     be index.html, i.e. the HOMEPAGE's prerendered HTML: the post then
+     carried the homepage's canonical, description and og:image in <head>
+     ahead of its own (React adds its tags but never removes static ones), so
+     Google saw two canonicals, the first pointing at "/". This shell is the
+     bare template instead: only site-wide tags, an empty #root (main.jsx
+     mounts fresh rather than hydrating) and the page then adds its own SEO
+     tags as the only ones. It stops mattering for a post at the next deploy,
+     which prerenders it. */
+  const preconnectLink = `<link rel="preconnect" href="${new URL(supabaseUrl).origin}" crossorigin>`;
+  fs.writeFileSync(
+    path.resolve(__dirname, "../dist/post-shell.html"),
+    template
+      .replace("</head>", `${preconnectLink}\n</head>`)
+      .replace("</body>", `<script>window.__INITIAL_DATA__ = ${safeInitialData};</script>\n</body>`)
+  );
+  console.log("✅ Wrote post-shell.html (fallback for posts published after this build)");
+
   for (const url of [...allRoutes, NOT_FOUND_ROUTE]) {
     try {
       const { appHtml, helmet } = render(url, initialData);

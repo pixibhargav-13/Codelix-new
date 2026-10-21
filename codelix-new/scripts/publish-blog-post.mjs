@@ -225,7 +225,10 @@ if (HOOK) {
     console.log(`⚠️ deploy hook returned HTTP ${res.status}`);
   }
 } else {
-  console.log("⚠️ VERCEL_DEPLOY_HOOK_URL not set — the post shows on the site now, but is only prerendered and added to sitemap.xml on the next deploy");
+  /* without a rebuild the post is still fully indexable: sitemap-posts.xml
+     (api/sitemap.js) reads Supabase live, and the page is served from
+     post-shell.html, so its own canonical and meta tags are the only ones */
+  console.log("ℹ️ VERCEL_DEPLOY_HOOK_URL not set — no rebuild. The post is live and listed in sitemap-posts.xml now, with its own canonical and meta tags; it is prerendered and added to sitemap.xml at the next deploy");
 }
 
 /* IndexNow from here rather than relying on the GitHub workflow, whose
