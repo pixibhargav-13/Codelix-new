@@ -130,7 +130,17 @@ export default function BlogDetailV2() {
     );
   }
 
-  const related = blogs.filter((b) => b.id !== blog.id && b.tags.some((t) => blog.tags.includes(t))).slice(0, 3);
+  /* every post carries "All Articles", so matching on any shared tag made
+     every post "related" and this showed the three newest whatever the topic.
+     Rank by the tags actually shared (category, topic phrases) instead; blogs
+     is newest first, so ties keep the newer post. */
+  const ownTags = new Set(blog.tags.filter((t) => t !== "All Articles"));
+  const related = blogs
+    .filter((b) => b.id !== blog.id)
+    .map((b, i) => ({ b, i, shared: b.tags.filter((t) => ownTags.has(t)).length }))
+    .sort((x, y) => y.shared - x.shared || x.i - y.i)
+    .slice(0, 3)
+    .map(({ b }) => b);
   const headings = articleHeadings(blog.content);
   const faqs = articleFaqs(blog.content);
   const author = authorFor(blog);

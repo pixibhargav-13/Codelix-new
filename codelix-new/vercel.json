@@ -8,9 +8,10 @@
   ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/sitemap-posts.xml", "destination": "/api/sitemap" },
     { "source": "/admin", "destination": "/index.html" },
     { "source": "/admin/(.*)", "destination": "/index.html" },
-    { "source": "/blog/:slug", "destination": "/index.html" },
-    { "source": "/case-study/:slug", "destination": "/index.html" }
+    { "source": "/blog/:slug", "destination": "/post-shell.html" },
+    { "source": "/case-study/:slug", "destination": "/post-shell.html" }
   ]
 }
