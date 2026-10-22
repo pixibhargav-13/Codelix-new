@@ -5,7 +5,8 @@
 
      node scripts/publish-blog-post.mjs --list              existing posts, to avoid repeats
      node scripts/publish-blog-post.mjs post.json --dry-run validate + render cover, send nothing
-     node scripts/publish-blog-post.mjs post.json           publish
+     node scripts/publish-blog-post.mjs post.json           publish, then check the live page
+     node scripts/publish-blog-post.mjs --verify <slug>     re-run the live checks for a published post
 
    post.json:
      { title, slug?, excerpt, content, category, primary_keyword, tags: [4–6], read_time? }
@@ -38,6 +39,7 @@ dotenv.config({ path: path.join(ROOT, ".env.local"), quiet: true });
 const args = process.argv.slice(2);
 const DRY = args.includes("--dry-run");
 const LIST = args.includes("--list");
+const VERIFY = args.includes("--verify");
 const file = args.find((a) => !a.startsWith("--"));
 
 /* Never process.exit() while a network request may still be closing: on
@@ -52,7 +54,7 @@ const fail = (msg) => {
 async function main() {
 
 const { VITE_SUPABASE_URL: URL_, SUPABASE_SERVICE_ROLE_KEY: KEY, VERCEL_DEPLOY_HOOK_URL: HOOK } = process.env;
-const needDb = LIST || !DRY;
+const needDb = LIST || VERIFY || !DRY;
 if (needDb && (!URL_ || !KEY)) {
   fail("VITE_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY must be set in .env.local");
 }
@@ -82,8 +84,18 @@ if (LIST) {
   return;
 }
 
+/* ── --verify <slug> ─────────────────────────────────────────────────── */
+if (VERIFY) {
+  if (!file) fail("usage: node scripts/publish-blog-post.mjs --verify <slug>");
+  const { data: post, error } = await db.from("blog_posts").select("cover_image_url").eq("slug", file).maybeSingle();
+  if (error) fail(error.message);
+  if (!post) fail(`no post with slug "${file}"`);
+  await verifyLive(file, [post.cover_image_url, post.cover_image_url.replace(/\.banner\.webp$/, ".share.webp")]);
+  return;
+}
+
 /* ── validate ────────────────────────────────────────────────────────── */
-if (!file) fail("usage: node scripts/publish-blog-post.mjs <post.json> [--dry-run] | --list");
+if (!file) fail("usage: node scripts/publish-blog-post.mjs <post.json> [--dry-run] | --list | --verify <slug>");
 const post = JSON.parse(fs.readFileSync(file, "utf8"));
 
 /* the blog page's category filter (BlogV2 CATEGORIES) uses these names */
@@ -150,6 +162,10 @@ if (!/\]\((https?:\/\/(www\.)?codelixitsolutions\.com)?\/contact\/?\)/i.test(con
 if (blocks.some((b) => /^## sources\b/i.test(b))) problems.push(`content has a "## Sources" section — link each source inline instead`);
 /* the city landing pages (/best-…) are kept off the rest of the site */
 if (/\]\((https?:\/\/(www\.)?codelixitsolutions\.com)?\/best-/i.test(content)) problems.push("content links to a city landing page (/best-…); link a service page instead");
+/* markup the blog's renderer (src/lib/articleMarkup.jsx) can't show: it
+   would appear as raw symbols, or a line would silently go missing */
+problems.push(...markupProblems(blocks));
+problems.push(...(await linkProblems(content)));
 if (problems.length) fail(`post rejected:\n   - ${problems.join("\n   - ")}`);
 
 if (db) {
@@ -236,10 +252,134 @@ if (HOOK) {
    already live (rendered in the browser even before the rebuild), so it is
    submitted either way, together with the blog listing it now heads. */
 await submitIndexNow([postUrl, `${SITE_ORIGIN}/blog`]);
+
+await verifyLive(slug, [row.cover_image_url, db.storage.from("media").getPublicUrl(`${base}.share.webp`).data.publicUrl]);
 }
 
 const SITE_ORIGIN = "https://www.codelixitsolutions.com";
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/* ── markup checks ──────────────────────────────────────────────────────
+   Each rule is a way a post has rendered wrongly or could: the renderer
+   knows only blank-line-separated blocks of "## "/"### " headings, "- " and
+   "1. " lists, "> " quotes, "|" tables and paragraphs with [label](url)
+   links. Anything else shows up as raw text, and a list or heading that
+   shares its block with other lines loses those lines. */
+function markupProblems(blocks) {
+  const out = [];
+  const short = (b) => JSON.stringify(b.length > 60 ? `${b.slice(0, 60)}…` : b);
+  for (const b of blocks) {
+    const ls = b.split("\n").map((l) => l.trim()).filter(Boolean);
+    if (/\*\*|__/.test(b)) out.push(`bold markup (** or __) shows as raw symbols: ${short(b)}`);
+    if (/(^|\s)\*[^*\s][^*]*\*(\s|[.,;:]|$)/.test(b)) out.push(`italic markup (*text*) shows as raw symbols: ${short(b)}`);
+    if (/```/.test(b)) out.push(`code fences aren't supported: ${short(b)}`);
+    if (/!\[[^\]]*\]\(/.test(b)) out.push(`images aren't supported in the text: ${short(b)}`);
+    if (/<\/?[a-z][^>]*>/i.test(b)) out.push(`HTML tags show as raw text: ${short(b)}`);
+    if (/^#{4,}\s/m.test(b)) out.push(`only "## " and "### " headings are supported: ${short(b)}`);
+    if (/^#{2,3} /.test(b) && ls.length > 1) out.push(`a heading must be alone in its block (blank line after it): ${short(b)}`);
+    if (b.startsWith("- ") && ls.some((l) => !l.startsWith("- "))) out.push(`every line of a "- " list must start with "- " (other lines are dropped): ${short(b)}`);
+    if (/^1\.\s/.test(b) && ls.some((l) => !/^\d+\.\s/.test(l))) out.push(`every line of a numbered list must start with "N. " (other lines are dropped): ${short(b)}`);
+    if (!/^(- |\d+\.\s|\||#{2,3} )/.test(b) && ls.slice(1).some((l) => /^(- |\d+\.\s|\||#{2,3} )/.test(l))) {
+      out.push(`a list, table or heading must start its own block (blank line before it): ${short(b)}`);
+    }
+    if (b.startsWith("|")) {
+      if (ls.some((l) => !l.startsWith("|"))) out.push(`every line of a table must start with "|": ${short(b)}`);
+      const rows = ls.filter((l) => !/^\|[\s:|-]+\|?$/.test(l));
+      const width = (l) => l.replace(/^\||\|$/g, "").split("|").length;
+      if (!ls[1] || !/^\|[\s:|-]+\|?$/.test(ls[1])) out.push(`a table's second line must be the "|---|---|" separator: ${short(b)}`);
+      if (rows.some((r) => width(r) !== width(rows[0]))) out.push(`every table row needs the same number of cells as the header: ${short(b)}`);
+    }
+  }
+  for (const [, url] of blocks.join("\n").matchAll(/\]\(([^)\s]*)\)/g)) {
+    if (!/^(https:\/\/|\/)/.test(url)) out.push(`link "${url}" must be a full https:// URL or a /path on this site`);
+  }
+  return out;
+}
+
+/* ── link checks ────────────────────────────────────────────────────────
+   Internal links must reach a real page: /blog/ and /case-study/ links are
+   looked up in the sitemaps (an unknown one still answers 200 with a "not
+   found" page), everything else must answer 200. External links are only
+   warned about, since many sites refuse automated requests. A failure to
+   reach our own site is a warning too, not a rejection. */
+async function linkProblems(text) {
+  const out = [];
+  const urls = [...new Set([...text.matchAll(/\]\(([^)\s]+)\)/g)].map((m) => m[1]))];
+  const internal = urls.filter((u) => u.startsWith("/") || /^https:\/\/(www\.)?codelixitsolutions\.com/.test(u))
+    .map((u) => u.replace(/^https:\/\/(www\.)?codelixitsolutions\.com/, "").replace(/[?#].*$/, "") || "/");
+  let listed;
+  try {
+    const xml = (await Promise.all(["sitemap.xml", "sitemap-posts.xml"].map(async (f) => (await fetch(`${SITE_ORIGIN}/${f}?ts=${Date.now()}`)).text()))).join("");
+    listed = new Set([...xml.matchAll(/<loc>https:\/\/www\.codelixitsolutions\.com([^<]*)<\/loc>/g)].map((m) => m[1] || "/"));
+  } catch (e) {
+    console.log(`⚠️ couldn't read the sitemaps to check internal links (${e.message})`);
+    return out;
+  }
+  for (const p of new Set(internal)) {
+    if (/^\/(blog|case-study)\/[^/]+$/.test(p)) {
+      if (!listed.has(p)) out.push(`internal link ${p} isn't a published post or case study`);
+      continue;
+    }
+    try {
+      const res = await fetch(`${SITE_ORIGIN}${p}`, { redirect: "manual" });
+      if (res.status !== 200) out.push(`internal link ${p} answers HTTP ${res.status}${res.headers.get("location") ? ` (redirects to ${res.headers.get("location")})` : ""}; link the final page`);
+    } catch (e) {
+      console.log(`⚠️ couldn't check internal link ${p} (${e.message})`);
+    }
+  }
+  for (const u of urls.filter((u) => /^https:\/\//.test(u) && !/codelixitsolutions\.com/.test(u))) {
+    try {
+      const res = await fetch(u, { method: "GET", redirect: "follow", headers: { "User-Agent": "Mozilla/5.0 (compatible; CodelixLinkCheck/1.0)" }, signal: AbortSignal.timeout(15000) });
+      if (res.status === 404 || res.status === 410) console.log(`⚠️ external link looks dead (HTTP ${res.status}): ${u}`);
+    } catch {
+      /* unreachable from here is not proof the link is dead */
+    }
+  }
+  return out;
+}
+
+/* ── live checks after publishing ──────────────────────────────────────
+   What a reader and a search engine get, checked on the live site: the
+   page loads, its canonical is its own (never the homepage's), it is in
+   sitemap-posts.xml, and both covers are served as WebP. The post is
+   already live when these run, so a failure is reported, never retried by
+   publishing again; `--verify <slug>` re-runs just these checks. */
+async function verifyLive(slug, coverUrls) {
+  const postUrl = `${SITE_ORIGIN}/blog/${slug}`;
+  const problems = [];
+  const attempt = async () => {
+    const found = [];
+    const res = await fetch(`${postUrl}?ts=${Date.now()}`, { headers: { "User-Agent": "Mozilla/5.0 (compatible; CodelixLiveCheck/1.0)" } });
+    if (res.status !== 200) found.push(`the post answers HTTP ${res.status}`);
+    const html = await res.text();
+    const canonicals = [...html.matchAll(/<link\b[^>]*rel="canonical"[^>]*href="([^"]+)"/g)].map((m) => m[1]);
+    if (canonicals.length > 1) found.push(`the page HTML has ${canonicals.length} canonical tags`);
+    if (canonicals.some((c) => c !== postUrl)) found.push(`the page HTML's canonical is ${canonicals.find((c) => c !== postUrl)}, not the post`);
+    const xml = await (await fetch(`${SITE_ORIGIN}/sitemap-posts.xml?ts=${Date.now()}`)).text();
+    if (!xml.includes(`<loc>${postUrl}</loc>`)) found.push("the post isn't in sitemap-posts.xml");
+    for (const u of coverUrls) {
+      const c = await fetch(u);
+      if (c.status !== 200 || !/image\/webp/.test(c.headers.get("content-type") || "")) found.push(`cover ${u.split("/").pop()} answers HTTP ${c.status} (${c.headers.get("content-type")})`);
+    }
+    return found;
+  };
+  /* a fresh post can take a moment to reach the CDN */
+  for (let i = 0; i < 4; i++) {
+    try {
+      problems.splice(0, problems.length, ...(await attempt()));
+    } catch (e) {
+      problems.splice(0, problems.length, `couldn't reach the live site (${e.message})`);
+    }
+    if (!problems.length) break;
+    await sleep(30000);
+  }
+  if (problems.length) {
+    console.log(`❌ LIVE CHECK FAILED for ${postUrl} (the post IS published; don't publish it again):\n   - ${problems.join("\n   - ")}`);
+    process.exitCode = 1;
+  } else {
+    console.log("✅ live checks passed: the page loads with its own canonical, it is in sitemap-posts.xml, and both covers are WebP");
+  }
+}
 
 async function waitForSitemap(url) {
   for (let i = 0; i < 30; i++) {
