@@ -228,7 +228,11 @@ async function build() {
         ${helmet.meta?.toString() || ''}
         ${helmet.link?.toString() || ''}
       `
-        : hoistable.join(String.fromCharCode(10));
+        /* data-ssr marks these copies so main.jsx can remove them just before
+           hydrating: React adds its own title/meta/link to <head> and does not
+           adopt ones already there, so without this every tag was in the
+           head twice once the page had loaded */
+        : hoistable.map((tag) => tag.replace(/^<(title|meta|link)\b/, '<$1 data-ssr=""')).join(String.fromCharCode(10));
 
       /* Nineteen page components read from Supabase the moment they mount, and
          the first of those requests pays for a DNS lookup and a TLS handshake
@@ -297,7 +301,7 @@ async function build() {
       const isDatedPost = /^\/(blog|case-study)\/[^/]+$/.test(url) && html.includes('"datePublished"');
       if (!isDatedPost && url !== NOT_FOUND_ROUTE) {
         const dates = pageDates(routeCss.sourceFor(url));
-        const title = (html.match(/<title>([\s\S]*?)<\/title>/) || [])[1];
+        const title = (html.match(/<title\b[^>]*>([\s\S]*?)<\/title>/) || [])[1];
         const pageUrl = `https://www.codelixitsolutions.com${url === "/" ? "/" : url}`;
         const webPage = {
           "@context": "https://schema.org",

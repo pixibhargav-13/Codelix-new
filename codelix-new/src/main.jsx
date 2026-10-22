@@ -43,6 +43,13 @@ const app = (
    container and mount fresh instead of hydrating someone else's page. */
 const isAdmin = window.location.pathname.startsWith("/admin");
 
+/* The prerendered head carries copies of the page's title, meta and
+   canonical tags (marked data-ssr by scripts/ssg-build.mjs) for crawlers and
+   link previews that read the HTML without running it. React renders the
+   same tags into <head> itself and doesn't adopt existing ones, so drop the
+   copies first or each tag ends up in the head twice. */
+document.head.querySelectorAll("[data-ssr]").forEach((tag) => tag.remove());
+
 if (rootElement.hasChildNodes() && !isAdmin) {
   hydrateRoot(rootElement, app);
 } else {
