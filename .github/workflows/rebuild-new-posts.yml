@@ -1,0 +1,90 @@
+# Rebuild the site when a blog post or case study has been published since
+# the last deploy.
+#
+# Posts go live straight from Supabase (the scheduled blog task, the admin
+# panel, scripts/publish-blog-post.mjs) without a Vercel deploy, and there is
+# no deploy hook. Until the next deploy such a post is client-rendered only
+# and missing from sitemap.xml and the /sitemap page. sitemap-posts.xml is
+# read from Supabase on every request, so comparing it with the built
+# sitemap.xml shows exactly which posts are waiting. When any are, this
+# pushes an empty commit to main; Vercel builds every push, which
+# prerenders the posts and adds them to sitemap.xml and /sitemap, and the
+# IndexNow workflow then runs on that deploy.
+
+name: Rebuild for new posts
+
+on:
+  schedule:
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rebuild-new-posts
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Find published posts missing from sitemap.xml
+        id: diff
+        run: |
+          set -euo pipefail
+          site=https://www.codelixitsolutions.com
+          ts=$(date +%s)
+          locs() { curl -fsSL --retry 3 "$site/$1?ts=$ts" | grep -o '<loc>[^<]*</loc>' | sed 's#</\?loc>##g' | sort -u; }
+          live=$(locs sitemap-posts.xml)
+          built=$(locs sitemap.xml)
+          [ -n "$built" ] || { echo "::error::sitemap.xml came back empty"; exit 1; }
+          missing=$(comm -23 <(printf '%s\n' "$live") <(printf '%s\n' "$built") | grep . || true)
+          if [ -z "$missing" ]; then
+            echo "Every published post is in sitemap.xml."
+            exit 0
+          fi
+          echo "Published but not yet in sitemap.xml:"
+          printf '%s\n' "$missing"
+          {
+            echo "missing<<EOF"
+            printf '%s\n' "$missing"
+            echo "EOF"
+            echo "key=$(printf '%s\n' "$missing" | sha256sum | cut -c1-12)"
+          } >> "$GITHUB_OUTPUT"
+
+      - if: steps.diff.outputs.missing != ''
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 50
+          sparse-checkout: README.md
+
+      # A deploy takes a few minutes, and a post the build can't include
+      # (e.g. an error) would otherwise trigger a rebuild every half hour.
+      # The commit carries a key for the set of missing posts: the same set
+      # is rebuilt at most once in 12 hours, after which this reports it.
+      - if: steps.diff.outputs.missing != ''
+        name: Push an empty commit to start a Vercel deploy
+        env:
+          MISSING: ${{ steps.diff.outputs.missing }}
+          KEY: ${{ steps.diff.outputs.key }}
+        run: |
+          set -euo pipefail
+          if git log --since="12 hours ago" --format=%B | grep -q "rebuild-key: $KEY"; then
+            echo "::warning::A rebuild for these posts already ran in the last 12 hours and they are still missing from sitemap.xml. Check the latest Vercel build log:%0A$MISSING"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -q -F - <<MSG
+          Rebuild so new posts are prerendered and in sitemap.xml
+
+          Published since the last deploy:
+          $MISSING
+
+          rebuild-key: $KEY
+          MSG
+          git push origin HEAD:main
+          echo "Pushed a rebuild for:"
+          printf '%s\n' "$MISSING"
