@@ -3,37 +3,39 @@
 
    Each is imported twice. The .webp is what visitors see: the originals
    were 2000x1600 PNGs of up to 2.6 MB, and at 1600px WebP they are 60-240
-   KB. The .png is kept as `share`, the image a case study hands to
-   og:image — LinkedIn's WebP support is not something to rely on, and
-   only crawlers ever fetch that file, so browsers never pay for it. */
+   KB. `share` is what a case study hands to og:image: a 1200x630 JPEG,
+   the size Facebook, LinkedIn, X and WhatsApp all lay out, letterboxed on
+   the site background so the whole screenshot shows. It used to be the
+   original PNG (up to 2.6 MB), which WhatsApp drops from link previews;
+   JPEG because LinkedIn's WebP support is not something to rely on. */
 import projectOne from "../Images/work-best-project-one.webp";
-import projectOneShare from "../Images/work-best-project-one.png";
+import projectOneShare from "../Images/work-best-project-one-share.jpg";
 import projectTwo from "../Images/work-best-project-two.webp";
-import projectTwoShare from "../Images/work-best-project-two.png";
+import projectTwoShare from "../Images/work-best-project-two-share.jpg";
 import projectThree from "../Images/work-best-project-three.webp";
-import projectThreeShare from "../Images/work-best-project-three.png";
+import projectThreeShare from "../Images/work-best-project-three-share.jpg";
 import projectFour from "../Images/work-best-project-four.webp";
-import projectFourShare from "../Images/work-best-project-four.png";
+import projectFourShare from "../Images/work-best-project-four-share.jpg";
 import projectFive from "../Images/work-best-project-five.webp";
-import projectFiveShare from "../Images/work-best-project-five.png";
+import projectFiveShare from "../Images/work-best-project-five-share.jpg";
 import projectSix from "../Images/work-best-project-six.webp";
-import projectSixShare from "../Images/work-best-project-six.png";
+import projectSixShare from "../Images/work-best-project-six-share.jpg";
 import projectSeven from "../Images/work-best-project-seven.webp";
-import projectSevenShare from "../Images/work-best-project-seven.png";
+import projectSevenShare from "../Images/work-best-project-seven-share.jpg";
 import projectEight from "../Images/work-best-project-eight.webp";
-import projectEightShare from "../Images/work-best-project-eight.png";
+import projectEightShare from "../Images/work-best-project-eight-share.jpg";
 import projectNine from "../Images/work-best-project-nine.webp";
-import projectNineShare from "../Images/work-best-project-nine.png";
+import projectNineShare from "../Images/work-best-project-nine-share.jpg";
 import projectTen from "../Images/work-best-project-ten.webp";
-import projectTenShare from "../Images/work-best-project-ten.png";
+import projectTenShare from "../Images/work-best-project-ten-share.jpg";
 import projectEleven from "../Images/work-best-project-eleven.webp";
-import projectElevenShare from "../Images/work-best-project-eleven.png";
+import projectElevenShare from "../Images/work-best-project-eleven-share.jpg";
 import projectThirteen from "../Images/work-best-project-thirteen.webp";
-import projectThirteenShare from "../Images/work-best-project-thirteen.png";
+import projectThirteenShare from "../Images/work-best-project-thirteen-share.jpg";
 import projectFourteen from "../Images/work-best-project-fourteen.webp";
-import projectFourteenShare from "../Images/work-best-project-fourteen.png";
+import projectFourteenShare from "../Images/work-best-project-fourteen-share.jpg";
 import projectFifteen from "../Images/work-best-project-fifteen.webp";
-import projectFifteenShare from "../Images/work-best-project-fifteen.png";
+import projectFifteenShare from "../Images/work-best-project-fifteen-share.jpg";
 
 
 /* real client project — details supplied directly by Codelix, not
