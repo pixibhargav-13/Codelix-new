@@ -601,4 +601,22 @@ export const CASE_STUDIES = [
     },
     tools: ["Figma", "React", "Tailwind CSS", "Java", "Spring Boot", "PostgreSQL", "Docker", "AWS"],
   },
-].map((cs) => ({ ...cs, image: imageFor(cs.slug), ogImage: shareFor(cs.slug) }));
+/* the same shape caseStudyFromRow (src/lib/caseStudyRow.js) gives a
+   Supabase row, so a study renders identically from either source: the
+   grid card's shorter title, description and tags, category and industry
+   come from the shared PROJECTS entry */
+].map((cs) => {
+  const p = projectFor(cs.slug);
+  return {
+    ...cs,
+    category: p?.category,
+    industry: p?.industry,
+    image: imageFor(cs.slug),
+    coverImage: shareFor(cs.slug),
+    cardTitle: p?.title || cs.title,
+    cardDescription: p?.description || cs.description,
+    cardTags: p?.tags || cs.tags,
+  };
+})
+  /* in the grids' order (PROJECTS), which every list of studies follows */
+  .sort((a, b) => PROJECTS.findIndex((p) => p.href === `/${a.slug}`) - PROJECTS.findIndex((p) => p.href === `/${b.slug}`));

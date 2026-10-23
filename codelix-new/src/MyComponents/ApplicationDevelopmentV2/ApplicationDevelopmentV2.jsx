@@ -26,7 +26,7 @@ import techAws from "../Images/AWS.webp";
 import techFigma from "../Images/figma.webp";
 
 /* real project screenshots — shared source of truth with WorkV2/CaseStudyV2 */
-import { PROJECTS } from "../WorkV2/projectsData";
+import { useRelatedWork } from "../CaseStudyDetailV2/useCaseStudies";
 import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import ScrollSentence from '../Shared/ScrollSentence';
@@ -156,14 +156,6 @@ const PROCESS = [
 /* real application-development projects — pulled from the same shared
    portfolio data as the Work page, filtered to the category that actually
    matches this service */
-/* every project in PROJECTS now has a matching v2 case-study page, so all
-   links route through /case-study rather than the old-site v1 href */
-const RELATED = PROJECTS
-  .filter((p) => p.category === "Application Development")
-  .map((p) => ({
-    tag: p.category, title: p.title, thumb: p.image,
-    link: `/case-study${p.href}`,
-  }));
 
 const PRINCIPLES = [
   { key: "Delivered", icon: CalendarCheck, claim: "No deadline we don't hold ourselves to.", body: "We pad the schedule honestly upfront so we don't have to renegotiate halfway through. If we say a date, we hit it." },
@@ -222,6 +214,8 @@ const METRICS = [
 ];
 
 export default function ApplicationDevelopmentV2() {
+  /* related work: case studies from the admin panel (see useCaseStudies) */
+  const RELATED = useRelatedWork({ category: "Application Development" });
   const testimonials = useTestimonials(STATIC_TESTIMONIALS);
 
   

@@ -1,16 +1,17 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import "./WorkHeroVisual.css";
-import { PROJECTS } from "./projectsData";
+import { useProjects } from "../CaseStudyDetailV2/useCaseStudies";
 
 const WorkHeroVisual = () => {
   const containerRef = useRef(null);
 
   // We'll use a subset of actual project images to create the scrolling columns
   // Using real work to avoid any "AI generated" feel.
-  const col1Images = PROJECTS.slice(0, 5).map(p => p.image);
-  const col2Images = PROJECTS.slice(5, 10).map(p => p.image);
-  const col3Images = PROJECTS.slice(10, 15).map(p => p.image);
+  const projects = useProjects();
+  const col1Images = projects.slice(0, 5).map(p => p.image);
+  const col2Images = projects.slice(5, 10).map(p => p.image);
+  const col3Images = projects.slice(10, 15).map(p => p.image);
 
   useEffect(() => {
     const ctx = gsap.context(() => {

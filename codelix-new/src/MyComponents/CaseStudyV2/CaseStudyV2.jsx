@@ -11,10 +11,9 @@ import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./CaseStudyV2.css";
 
-/* the same 15 real projects shared with WorkV2 — one source of truth,
-   not a duplicated or re-invented list */
-import { PROJECTS } from "../WorkV2/projectsData";
-import { useCaseStudies } from "../CaseStudyDetailV2/useCaseStudies";
+/* the case studies from the admin panel, shared with WorkV2 — one source
+   of truth, not a duplicated or re-invented list */
+import { useProjects } from "../CaseStudyDetailV2/useCaseStudies";
 import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
@@ -36,28 +35,8 @@ export default function CaseStudyV2() {
 
   const rootRef = useRef(null);
 
-  /* admin-created case studies (published via Supabase) aren't part of the
-     static PROJECTS list, so they need to be reshaped into the same
-     card-shape PROJECTS already has before they can slot into this grid —
-     additive only, the existing 15 keep coming from PROJECTS untouched */
-  const { studies: caseStudies } = useCaseStudies();
-  const adminCards = useMemo(() => {
-    const existingSlugs = new Set(PROJECTS.map((p) => toV2Slug(p.href)));
-    return caseStudies
-      .filter((cs) => !existingSlugs.has(cs.slug))
-      .map((cs) => ({
-        id: `admin-${cs.slug}`,
-        title: cs.title,
-        category: cs.category,
-        industry: cs.industry,
-        description: cs.description,
-        tags: cs.tags,
-        image: cs.image,
-        href: `/${cs.slug}`,
-      }));
-  }, [caseStudies]);
-
-  const allProjects = useMemo(() => [...adminCards, ...PROJECTS], [adminCards]);
+  /* every case study as a grid card, newest first (see useCaseStudies) */
+  const allProjects = useProjects();
   const filtered = category === "All" ? allProjects : allProjects.filter((p) => p.category === category);
 
   /* hero intro — masked-line GSAP wipe, matching the other v2 pages */

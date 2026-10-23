@@ -23,7 +23,7 @@ import techReact from "../Images/react.webp";
 import techMongo from "../Images/MongoDB.webp";
 
 /* real project screenshots */
-import { PROJECTS } from "../WorkV2/projectsData";
+import { useRelatedWork } from "../CaseStudyDetailV2/useCaseStudies";
 import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import ScrollSentence from '../Shared/ScrollSentence';
@@ -161,16 +161,6 @@ const PROCESS = [
   { n: "06", icon: Check, title: "Handoff & Support", time: "Ongoing", body: "Training your team, providing documentation, and monitoring the pipelines for continuous accuracy." },
 ];
 
-/* the unified operations dashboard concept is the one project actually
-   filed under this category — paired with two real cross-section pieces,
-   pulled from the same shared portfolio data so titles/thumbnails stay
-   accurate. Every project in PROJECTS now has a matching v2 case-study
-   page, so all links route through /case-study. */
-const RELATED = [23, 5, 13].map((id) => {
-  const p = PROJECTS.find((proj) => proj.id === id);
-  const link = `/case-study${p.href}`;
-  return { tag: p.category, title: p.title, link, thumb: p.image };
-});
 
 const PRINCIPLES = [
   { key: "Accurate", icon: Check, claim: "No numbers you can't trust.", body: "We build rigorous validation into our pipelines. If a dashboard shows a number, you can bet your business on it." },
@@ -232,6 +222,8 @@ const METRICS = [
 ];
 
 export default function DataAnalyticsV2() {
+  /* related work: case studies from the admin panel (see useCaseStudies) */
+  const RELATED = useRelatedWork({ slugs: ["internal-ops-erp-case-study", "book-collections-case-study", "freight-shipping-case-study"] });
   const testimonials = useTestimonials(STATIC_TESTIMONIALS);
 
   

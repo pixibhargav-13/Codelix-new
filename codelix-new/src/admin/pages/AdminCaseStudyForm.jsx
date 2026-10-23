@@ -29,7 +29,8 @@ const emptyOutcomeRow = { value: "", suffix: "", label: "" };
 const emptyForm = {
   title: "", slug: "", description: "", category: CATEGORIES[0], industry: INDUSTRIES[0],
   tags: "", tools: "", overview: "", challenges: "", solutions: "",
-  cover_image_url: "", is_concept: false,
+  cover_image_url: "", share_image_url: "", is_concept: false,
+  card_title: "", card_description: "", card_tags: "",
   snapshot: [],
   challenge_image_1_url: "", challenge_image_1_alt: "",
   challenge_image_2_url: "", challenge_image_2_alt: "",
@@ -108,6 +109,9 @@ export default function AdminCaseStudyForm() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const [uploadingField, setUploadingField] = useState("");
+  /* kept as loaded so saving an edit doesn't move the study's publish
+     date (and its place in every list) to today */
+  const [publishedAt, setPublishedAt] = useState(null);
 
   useEffect(() => {
     if (isNew) return;
@@ -120,7 +124,8 @@ export default function AdminCaseStudyForm() {
         tools: (data.tools || []).join(", "),
         overview: arrayToLines(data.overview),
         challenges: arrayToLines(data.challenges), solutions: arrayToLines(data.solutions),
-        cover_image_url: data.cover_image_url || "", is_concept: !!data.is_concept,
+        cover_image_url: data.cover_image_url || "", share_image_url: data.share_image_url || "", is_concept: !!data.is_concept,
+        card_title: data.card_title || "", card_description: data.card_description || "", card_tags: (data.card_tags || []).join(", "),
         snapshot: data.snapshot?.length ? data.snapshot : [],
         challenge_image_1_url: data.challenge_image_1_url || "", challenge_image_1_alt: data.challenge_image_1_alt || "",
         challenge_image_2_url: data.challenge_image_2_url || "", challenge_image_2_alt: data.challenge_image_2_alt || "",
@@ -131,6 +136,7 @@ export default function AdminCaseStudyForm() {
         quote_text: data.quote_text || "", quote_role: data.quote_role || "", quote_name: data.quote_name || "",
         published: data.published,
       });
+      setPublishedAt(data.published_at || null);
       setSlugTouched(true);
       setToolsTouched(true);
       setLoading(false);
@@ -192,6 +198,10 @@ export default function AdminCaseStudyForm() {
       challenges: linesToArray(form.challenges),
       solutions: linesToArray(form.solutions),
       cover_image_url: form.cover_image_url,
+      share_image_url: form.share_image_url || null,
+      card_title: form.card_title.trim() || null,
+      card_description: form.card_description.trim() || null,
+      card_tags: form.card_tags.split(",").map((t) => t.trim()).filter(Boolean),
       is_concept: form.is_concept,
       snapshot: form.snapshot.filter((s) => s.label || s.value),
       challenge_image_1_url: form.challenge_image_1_url || null,
@@ -208,7 +218,7 @@ export default function AdminCaseStudyForm() {
       quote_role: form.quote_role || null,
       quote_name: form.quote_name || null,
       published: form.published,
-      published_at: form.published ? new Date().toISOString() : null,
+      published_at: form.published ? publishedAt || new Date().toISOString() : null,
     };
 
     const query = isNew
@@ -283,6 +293,32 @@ export default function AdminCaseStudyForm() {
             </div>
           )}
         </div>
+        <div className="adm-field">
+          <label htmlFor="share">Link-preview image (optional, 1200×630; shown when the page is shared on WhatsApp, LinkedIn and others; uses the cover if empty)</label>
+          <input id="share" type="file" accept="image/*" onChange={handleImageUpload("share_image_url")} disabled={uploadingField === "share_image_url"} />
+          {uploadingField === "share_image_url" && <span style={{ fontSize: 12, color: "#8b90a3" }}>Uploading…</span>}
+          {form.share_image_url && (
+            <div className="adm-file-preview">
+              <img src={form.share_image_url} alt="" />
+            </div>
+          )}
+        </div>
+
+        <SectionHead>Grid card (optional)</SectionHead>
+        <p style={{ fontSize: 13, color: "#8b90a3", margin: "-4px 0 12px" }}>The shorter text shown on the /work and /case-study grids and on service and industry pages. Leave a field empty to use the title, description or tags above.</p>
+        <div className="adm-field">
+          <label htmlFor="card_title">Card title</label>
+          <input id="card_title" name="card_title" value={form.card_title} onChange={handleChange} placeholder={form.title} />
+        </div>
+        <div className="adm-field">
+          <label htmlFor="card_description">Card description</label>
+          <textarea id="card_description" name="card_description" value={form.card_description} onChange={handleChange} rows={2} />
+        </div>
+        <div className="adm-field">
+          <label htmlFor="card_tags">Card tags (comma-separated, 3–4 main ones)</label>
+          <input id="card_tags" name="card_tags" value={form.card_tags} onChange={handleChange} placeholder={form.tags} />
+        </div>
+
         <div className="adm-field" style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
           <input id="is_concept" type="checkbox" name="is_concept" checked={form.is_concept} onChange={handleChange} style={{ width: "auto" }} />
           <label htmlFor="is_concept" style={{ margin: 0 }}>Concept exploration (not a live client build — shows a disclosure note on the page)</label>

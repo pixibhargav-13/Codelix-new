@@ -14,7 +14,7 @@ import "./BlogV2.css";
 /* same real articles used on the live /blog page, merged with anything
    published via the Supabase admin panel (see useBlogPosts) — not new/
    invented posts, just reskinned in the v2 theme */
-import { slugify } from "../../data/blogData";
+import { slugify } from "../../lib/slugify";
 import { useBlogPosts } from "../../data/useBlogPosts";
 import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from '../Shared/CtaSection';

@@ -22,7 +22,7 @@ import techPostgres from "../Images/postgresql.webp";
 import techNode from "../Images/Express.png";
 import techMongo from "../Images/MongoDB.webp";
 
-import { PROJECTS } from "../WorkV2/projectsData";
+import { useRelatedWork } from "../CaseStudyDetailV2/useCaseStudies";
 import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import ScrollSentence from '../Shared/ScrollSentence';
@@ -153,13 +153,6 @@ const PROCESS = [
   { n: "06", icon: Check, title: "Monthly Review", time: "Every month", body: "A report on uptime, what was fixed, and what we recommend next — so support stays visible, not silent." },
 ];
 
-/* every project in PROJECTS now has a matching v2 case-study page, so all
-   links route through /case-study rather than the old-site v1 href */
-const RELATED = [23, 5, 13].map((id) => {
-  const p = PROJECTS.find((proj) => proj.id === id);
-  const link = `/case-study${p.href}`;
-  return { tag: p.category, title: p.title, link, thumb: p.image };
-});
 
 const PRINCIPLES = [
   { key: "Responsive", icon: Clock, claim: "No ticket that sits for a week.", body: "Response times are written into the plan, not left to best-effort. If we commit to 4 hours, that's what you get." },
@@ -220,6 +213,8 @@ const METRICS = [
 ];
 
 export default function SupportManagedServicesV2() {
+  /* related work: case studies from the admin panel (see useCaseStudies) */
+  const RELATED = useRelatedWork({ slugs: ["internal-ops-erp-case-study", "book-collections-case-study", "freight-shipping-case-study"] });
   const testimonials = useTestimonials(STATIC_TESTIMONIALS);
 
   

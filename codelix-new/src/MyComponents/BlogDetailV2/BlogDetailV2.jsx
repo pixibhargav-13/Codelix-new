@@ -14,7 +14,7 @@ import "./BlogDetailV2.css";
 /* same real article data + slug lookup as the live /blog/:slug page, merged
    with anything published via the Supabase admin panel (see useBlogPosts) —
    the article body, dates, and tags are not duplicated or rewritten here */
-import { slugify } from "../../data/blogData";
+import { slugify } from "../../lib/slugify";
 import { blogKeywordsFor } from "../../lib/blogKeywords";
 import { renderArticle, articleHeadings, articleFaqs } from "../../lib/articleMarkup";
 import { servicesForPost } from "../../lib/blogServices";

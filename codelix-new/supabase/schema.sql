@@ -89,6 +89,12 @@ alter table case_studies add column if not exists scalability text[] not null de
 alter table case_studies add column if not exists quote_text text;
 alter table case_studies add column if not exists quote_role text;
 alter table case_studies add column if not exists quote_name text;
+-- the grid card's shorter title, description and tech tags (empty = use the
+-- page's own), and the 1200x630 link-preview image (empty = use the cover)
+alter table case_studies add column if not exists card_title text;
+alter table case_studies add column if not exists card_description text;
+alter table case_studies add column if not exists card_tags text[] not null default '{}';
+alter table case_studies add column if not exists share_image_url text;
 
 -- ───────────── TESTIMONIALS ─────────────
 create table if not exists testimonials (

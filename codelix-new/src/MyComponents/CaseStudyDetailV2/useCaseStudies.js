@@ -1,15 +1,20 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useMemo } from "react";
 import { selectRows } from "../../lib/supabaseRest";
 import { CASE_STUDIES as staticCaseStudies } from "./caseStudiesData";
 import { InitialDataContext } from "../../lib/initialDataContext";
+import { caseStudyFromRow, caseStudyCard } from "../../lib/caseStudyRow";
+
+/* Supabase studies first (newest first, as queried), then any repo study
+   Supabase doesn't have yet. A study in both is taken from Supabase: that
+   is the copy the admin panel edits. */
+const merge = (fromSupabase) => {
+  const inSupabase = new Set(fromSupabase.map((cs) => cs.slug));
+  return [...fromSupabase, ...staticCaseStudies.filter((cs) => !inSupabase.has(cs.slug))];
+};
 
 export function useCaseStudies() {
   const initialContext = useContext(InitialDataContext);
-  const [studies, setStudies] = useState(
-    initialContext?.caseStudies?.length
-      ? [...initialContext.caseStudies, ...staticCaseStudies]
-      : staticCaseStudies
-  );
+  const [studies, setStudies] = useState(() => merge(initialContext?.caseStudies || []));
 
   /* in flight until the Supabase read settles — a study published from the
      admin panel exists only there, so an unknown slug may still be arriving */
@@ -30,49 +35,31 @@ export function useCaseStudies() {
           console.error("Supabase case_studies fetch error:", error);
           return;
         }
-        const fromSupabase = (data || []).map((cs) => {
-          const challengeImages = [
-            cs.challenge_image_1_url ? { src: cs.challenge_image_1_url, alt: cs.challenge_image_1_alt || "" } : null,
-            cs.challenge_image_2_url ? { src: cs.challenge_image_2_url, alt: cs.challenge_image_2_alt || "" } : null,
-          ].filter(Boolean);
-
-          return {
-            slug: cs.slug,
-            title: cs.title,
-            description: cs.description,
-            category: cs.category,
-            industry: cs.industry || cs.category,
-            tags: cs.tags?.length ? cs.tags : [],
-            tools: cs.tools?.length ? cs.tools : cs.tags || [],
-            overview: cs.overview || [],
-            outcomes: cs.outcomes || [],
-            challenges: cs.challenges || [],
-            solutions: cs.solutions || [],
-            image: cs.cover_image_url || "https://laravel.com/img/logomark.min.svg",
-            /* kept separate from `image`, whose fallback above is a
-               placeholder on someone else.s domain - fine as a broken-ish
-               thumbnail, not something to hand a link preview */
-            coverImage: cs.cover_image_url || undefined,
-            /* raw timestamps for datePublished / dateModified */
-            publishedAt: cs.published_at || undefined,
-            updatedAt: cs.updated_at || undefined,
-            isConcept: !!cs.is_concept,
-            snapshot: cs.snapshot?.length ? cs.snapshot : undefined,
-            challengeImages: challengeImages.length ? challengeImages : undefined,
-            process: cs.process?.length ? cs.process : undefined,
-            resultsNote: cs.results_note || undefined,
-            services: cs.services?.length ? cs.services : undefined,
-            features: cs.features?.length ? cs.features : undefined,
-            whyStack: cs.why_stack?.length ? cs.why_stack : undefined,
-            scalability: cs.scalability?.length ? cs.scalability : undefined,
-            quote: cs.quote_text ? { text: cs.quote_text, role: cs.quote_role || "", name: cs.quote_name || "" } : undefined,
-          };
-        });
-        setStudies([...fromSupabase, ...staticCaseStudies]);
+        setStudies(merge((data || []).map(caseStudyFromRow)));
       })
       .catch(() => { if (active) setLoading(false); });
     return () => { active = false; };
   }, []);
 
   return { studies, loading };
+}
+
+/* every study as a grid card, in the same order */
+export function useProjects() {
+  const { studies } = useCaseStudies();
+  return useMemo(() => studies.map(caseStudyCard), [studies]);
+}
+
+/* the service pages' "related work": the studies in one category, or a
+   hand-picked list of slugs in that order */
+export function useRelatedWork({ category, slugs }) {
+  const projects = useProjects();
+  const key = slugs ? slugs.join(",") : category;
+  return useMemo(() => {
+    const list = slugs
+      ? slugs.map((s) => projects.find((p) => p.slug === s)).filter(Boolean)
+      : projects.filter((p) => p.category === category);
+    return list.map((p) => ({ tag: p.category, title: p.title, thumb: p.image, link: `/case-study${p.href}` }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [projects, key]);
 }

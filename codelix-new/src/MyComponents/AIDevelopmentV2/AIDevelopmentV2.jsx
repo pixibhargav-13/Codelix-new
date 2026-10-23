@@ -25,7 +25,7 @@ import techDocker from "../Images/docker.webp";
 import techAws from "../Images/AWS.webp";
 
 /* real project screenshots */
-import { PROJECTS } from "../WorkV2/projectsData";
+import { useRelatedWork } from "../CaseStudyDetailV2/useCaseStudies";
 import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import ScrollSentence from '../Shared/ScrollSentence';
@@ -150,16 +150,6 @@ const PROCESS = [
   { n: "06", title: "Support", time: "Ongoing", body: "Monitoring, tuning, and improvements as your data and needs evolve. You keep the code either way." },
 ];
 
-/* the AI support-triage concept is the one project actually filed under
-   this category — paired with two real cross-section pieces, pulled from
-   the same shared portfolio data so titles/thumbnails stay accurate. Every
-   project in PROJECTS now has a matching v2 case-study page, so all links
-   route through /case-study rather than the old-site v1 href. */
-const RELATED = [14, 5, 2].map((id) => {
-  const p = PROJECTS.find((proj) => proj.id === id);
-  const link = `/case-study${p.href}`;
-  return { tag: p.category, title: p.title, link, thumb: p.image };
-});
 
 const PRINCIPLES = [
   { key: "Delivered", icon: CalendarCheck, claim: "No deadline we don't hold ourselves to.", body: "We pad the schedule honestly upfront so we don't have to renegotiate halfway through. If we say a date, we hit it." },
@@ -218,6 +208,8 @@ const METRICS = [
 ];
 
 export default function AIDevelopmentV2() {
+  /* related work: case studies from the admin panel (see useCaseStudies) */
+  const RELATED = useRelatedWork({ slugs: ["smart-business-case-study", "book-collections-case-study", "erp-case-study"] });
   const testimonials = useTestimonials(STATIC_TESTIMONIALS);
 
   

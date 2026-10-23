@@ -22,8 +22,7 @@ import logo5 from "../Images/Our-work-logo-five.png";
 
 /* the full portfolio — extracted to its own module so WorkV2 and
    CaseStudyV2 share one source of truth instead of duplicating it */
-import { PROJECTS } from "./projectsData";
-import { useCaseStudies } from "../CaseStudyDetailV2/useCaseStudies";
+import { useProjects } from "../CaseStudyDetailV2/useCaseStudies";
 import NavbarV2 from "../Shared/NavbarV2";
 import WorkHeroVisual from "./WorkHeroVisual";
 import FaqSection from '../Shared/FaqSection';
@@ -34,8 +33,7 @@ import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 
 /* the spotlight — a curated, diverse subset of the same 15 real projects
    above (not new content), one per major category */
-const FEATURED_IDS = [1, 2, 3, 4, 7];
-const FEATURED = FEATURED_IDS.map((id) => PROJECTS.find((p) => p.id === id));
+const FEATURED_SLUGS = ["nextgen-case-study", "erp-case-study", "smart-society-management-case-study", "car-marketplace-case-study", "hr-portal-case-study"];
 
 const CATEGORIES = [
   "All",
@@ -175,30 +173,13 @@ export default function WorkV2() {
     return () => io.disconnect();
   }, []);
 
-  /* admin-created case studies (published via Supabase) aren't part of the
-     static PROJECTS list, so they need to be reshaped into the same
-     card-shape PROJECTS already has before they can slot into this grid —
-     additive only, the existing 15 keep coming from PROJECTS untouched.
-     Same merge as CaseStudyV2.jsx's listing, so a new case study shows up
-     in both places once published. */
-  const { studies: caseStudies } = useCaseStudies();
-  const adminProjects = React.useMemo(() => {
-    const existingSlugs = new Set(PROJECTS.map((p) => p.href.replace("/", "")));
-    return caseStudies
-      .filter((cs) => !existingSlugs.has(cs.slug))
-      .map((cs) => ({
-        id: `admin-${cs.slug}`,
-        title: cs.title,
-        category: cs.category,
-        industry: cs.industry,
-        description: cs.description,
-        tags: cs.tags,
-        image: cs.image,
-        href: `/${cs.slug}`,
-      }));
-  }, [caseStudies]);
-
-  const allWorkProjects = React.useMemo(() => [...adminProjects, ...PROJECTS], [adminProjects]);
+  /* every case study as a grid card, newest first (see useCaseStudies);
+     the spotlight picks its five from the same list */
+  const allWorkProjects = useProjects();
+  const FEATURED = React.useMemo(
+    () => FEATURED_SLUGS.map((s) => allWorkProjects.find((p) => p.slug === s)).filter(Boolean),
+    [allWorkProjects],
+  );
 
   const filtered = allWorkProjects.filter((p) => {
     const matchCategory = filter === "All" || p.category === filter;
