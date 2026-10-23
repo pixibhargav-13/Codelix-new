@@ -70,16 +70,21 @@ export default function BlogDetailV2() {
 
   
 
-  /* hero intro — masked-line GSAP wipe, matching the other v2 pages */
+  /* hero intro — masked-line GSAP wipe, matching the other v2 pages.
+     Keyed on the slug, not the post object: the post is read again from
+     Supabase after the prerendered copy, which gives a new object with the
+     same content, and keying on that replayed the intro — the breadcrumb,
+     title and date vanished and animated in a second time. */
+  const blogKey = blog ? blog.slug || blog.id : null;
   useEffect(() => {
-    if (!blog) return;
+    if (!blogKey) return;
     const q = (s) => rootRef.current.querySelectorAll(s);
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
     tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .7 })
       .fromTo(q(".bdv2-title"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.4")
       .fromTo(q(".bdv2-meta"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.6");
     return () => tl.kill();
-  }, [blog]);
+  }, [blogKey]);
 
   /* extraordinary section — a horizontal reading-progress rail that fills
      as the reader scrolls through the article body, painted every
