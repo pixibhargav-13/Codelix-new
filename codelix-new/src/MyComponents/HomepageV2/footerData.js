@@ -154,6 +154,16 @@ export const FOOTER_HIRE = [
   { label: "Hire Full-Stack Developers", path: "/hire-developers/full-stack" },
   { label: "Hire AI Developers", path: "/hire-developers/ai" },
   { label: "Hire Shopify Developers", path: "/hire-developers/shopify" },
+  { label: "Hire Angular Developers", path: "/hire-developers/angular" },
+  { label: "Hire Vue.js Developers", path: "/hire-developers/vuejs" },
+  { label: "Hire React Native Developers", path: "/hire-developers/react-native" },
+  { label: "Hire Java Developers", path: "/hire-developers/java" },
+  { label: "Hire PHP Developers", path: "/hire-developers/php" },
+  { label: "Hire MERN Stack Developers", path: "/hire-developers/mern" },
+  { label: "Hire WordPress Developers", path: "/hire-developers/wordpress" },
+  { label: "Hire DevOps Engineers", path: "/hire-developers/devops" },
+  { label: "Hire QA Testers", path: "/hire-developers/qa" },
+  { label: "Hire UI/UX Designers", path: "/hire-developers/ui-ux-designers" },
 ];
 
 export const FOOTER_PRODUCTS = [
@@ -180,6 +190,7 @@ export const FOOTER_COMPANY = [
   { label: "Our Process", path: "/process" },
   { label: "Technologies", path: "/technologies" },
   { label: "Pricing", path: "/pricing" },
+  { label: "Cost Calculator", path: "/software-development-cost-calculator" },
   { label: "FAQ", path: "/faq" },
   { label: "Blog", path: "/blog" },
   { label: "Careers", path: "/careers" },

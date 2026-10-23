@@ -14,6 +14,7 @@ Hours: Monday to Saturday, 10:00–19:00 IST. Closed Sunday.
 - [Our work](https://www.codelixitsolutions.com/work): Shipped client projects across six industries.
 - [Case studies](https://www.codelixitsolutions.com/case-study): The problem, the build, and what changed.
 - [Pricing](https://www.codelixitsolutions.com/pricing): How pricing and scoping actually work.
+- [Software development cost calculator](https://www.codelixitsolutions.com/software-development-cost-calculator): Published price ranges by project type and size, for websites, apps, ERP, e-commerce, AI, analytics and design.
 - [Process](https://www.codelixitsolutions.com/process): The six stages every project moves through.
 - [Technologies](https://www.codelixitsolutions.com/technologies): The stack we build on.
 - [Blog](https://www.codelixitsolutions.com/blog): Articles on development, design and AI.
@@ -46,6 +47,16 @@ Dedicated developers from the Ahmedabad team, hired monthly, as a team extension
 - [Hire full-stack developers](https://www.codelixitsolutions.com/hire-developers/full-stack)
 - [Hire AI developers](https://www.codelixitsolutions.com/hire-developers/ai)
 - [Hire Shopify developers](https://www.codelixitsolutions.com/hire-developers/shopify)
+- [Hire Angular developers](https://www.codelixitsolutions.com/hire-developers/angular)
+- [Hire Vue.js developers](https://www.codelixitsolutions.com/hire-developers/vuejs)
+- [Hire React Native developers](https://www.codelixitsolutions.com/hire-developers/react-native)
+- [Hire Java and Spring Boot developers](https://www.codelixitsolutions.com/hire-developers/java)
+- [Hire PHP developers](https://www.codelixitsolutions.com/hire-developers/php)
+- [Hire MERN stack developers](https://www.codelixitsolutions.com/hire-developers/mern)
+- [Hire WordPress developers](https://www.codelixitsolutions.com/hire-developers/wordpress)
+- [Hire DevOps engineers](https://www.codelixitsolutions.com/hire-developers/devops)
+- [Hire QA testers](https://www.codelixitsolutions.com/hire-developers/qa)
+- [Hire UI/UX designers](https://www.codelixitsolutions.com/hire-developers/ui-ux-designers)
 
 ## Products
 
