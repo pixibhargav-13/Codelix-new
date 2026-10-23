@@ -18,6 +18,8 @@ import {
    pattern and count already used on the 8 core service pages. Icon
    rotates by position rather than being hand-picked per row — decorative,
    not meaningful per problem. */
+import { SERVICE_CONTENT } from "./additionalServicesContent.js";
+
 const PAIN_ICONS = [AlertTriangle, Clock, Puzzle];
 const pains = (rows) => rows.map((p, i) => ({ ...p, icon: PAIN_ICONS[i % PAIN_ICONS.length] }));
 
@@ -365,6 +367,7 @@ const RAW = [
 
 export const ADDITIONAL_SERVICES = RAW.map((s) => ({
   ...s,
+  ...SERVICE_CONTENT[s.slug],
   covers: splitCovers(s.description),
 }));
 

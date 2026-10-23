@@ -1019,6 +1019,11 @@
   }
 }
 
+/* four cards read as a 2x2 block rather than a row of three and a stray */
+.sd2-case-grid--four {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 @media (max-width: 560px) {
   .sd2-case-grid {
     grid-template-columns: 1fr;
@@ -2144,4 +2149,30 @@
 }
 @media (min-width: 721px) {
   .sd2-manifest-grid > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+
+/* additional service pages: the overview paragraph, and a lettered tile for
+   tools in a page's stack that have no logo in techStack.js */
+.v2 .sd2-overview-text {
+  max-width: 68ch;
+  margin: 24px 0 0;
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.65;
+  color: rgba(242, 240, 236, .82);
+}
+
+.sd2-tech-mono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex: none;
+  border: .8px solid var(--rule-strong);
+  border-radius: 6px;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--text-55);
 }
