@@ -155,13 +155,8 @@ const EST_ADDONS = [
   { id: "priority", label: "Priority timeline", weeks: 0 },
 ];
 
-/* scroll-scrubbed word reveal — identical mechanism to the core service
-   pages, kept as its own copy rather than a shared import so each page
-   can tune timing independently */
 import { useTestimonials } from "../../data/useTestimonials";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
-const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
-
 
 export default function AdditionalServiceDetailV2() {
   const testimonials = useTestimonials(STATIC_TESTIMONIALS);

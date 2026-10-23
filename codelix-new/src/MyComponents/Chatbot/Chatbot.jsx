@@ -115,7 +115,7 @@ const Chatbot = () => {
       let data;
       try {
         data = responseText ? JSON.parse(responseText) : null;
-      } catch (e) {
+      } catch {
         data = responseText;
       }
 

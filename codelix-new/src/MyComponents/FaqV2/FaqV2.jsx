@@ -50,10 +50,10 @@ export default function FaqV2() {
   
   
   
-  const [category, setCategory] = useState("All");
-  const [search, setSearch] = useState("");
+  const [category] = useState("All");
+  const [search] = useState("");
   const [openIdx, setOpenIdx] = useState(-1);
-  const [revealed, setRevealed] = useState(() => new Set());
+  const [, setRevealed] = useState(() => new Set());
 
   const rootRef = useRef(null);
 

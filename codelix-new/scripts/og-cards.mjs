@@ -103,10 +103,6 @@ function titleFromSlug(slug) {
 /* ── the cards ────────────────────────────────────────────────────────── */
 const routes = getGeneratedRoutes();
 
-/* The legal pages carry noindex and the sitemap is a utility page; none of
-   the three is ever shared deliberately, so none gets art. */
-const SKIP = new Set(["/terms-of-service", "/privacy-policy", "/refund-policy", "/sitemap", "/"]);
-
 const TOP_LEVEL = {
   "/about": { eyebrow: "About Codelix", headline: "A small team that builds like it's theirs." },
   "/work": { eyebrow: "Our Work", headline: "Real constraints. Real shipped work." },

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import FooterV2 from "../Shared/FooterV2";
 import { useParams, Link } from "react-router-dom";
 import gsap from "gsap";
@@ -95,7 +95,6 @@ export default function CaseStudyDetailV2() {
   
   
   
-  const [showSolutions, setShowSolutions] = useState(false);
 
   const rootRef = useRef(null);
 

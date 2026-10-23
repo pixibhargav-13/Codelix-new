@@ -23,7 +23,6 @@ import { TECH_STACK } from "./techStack";
 
 /* shared with the services page */
 import { CLIENT_LOGOS } from "./clientLogos";
-import codelixLogo from "../Images/codelix-logo.webp";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_INDUSTRY_KEYWORDS } from "./footerData";
 import CtaVisual from "../Shared/CtaVisual";
 import GoogleReviewButton from "../Shared/GoogleReviewButton";
@@ -48,14 +47,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 
-/* smootherstep — takes the linear scroll fraction and softens both ends so the
-   scrubbed motion doesn't start and stop abruptly */
-const ease = (p) => p * p * p * (p * (p * 6 - 15) + 10);
-
-/* Tall sticky block that shows ONE line at a time. Unlike a timed animation,
-   every value here (opacity, scale, blur, backdrop position) is a direct
-   function of scroll position — no CSS transition plays on its own. Scroll a
-   pixel, the text moves a pixel; scroll back, it reverses. */
 /* Core workflow declarations */
 const DECLARATIONS = ["PLAN.", "BUILD.", "SCALE."];
 

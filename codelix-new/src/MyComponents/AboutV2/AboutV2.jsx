@@ -1,6 +1,6 @@
 import { STATIC_TESTIMONIALS } from '../../data/testimonialsData';
 import { Link } from "react-router-dom";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import { useTestimonials } from "../../data/useTestimonials";
@@ -73,9 +73,6 @@ const PROCESS = [
   { n: "05", title: "QA & Launch", time: "1–2 weeks", body: "Tested against real conditions before it goes live, then deployed with a rollback plan in place." },
   { n: "06", title: "Support", time: "Ongoing", body: "Post-launch fixes, monitoring, and improvements. You keep everything either way." },
 ];
-
-/* scroll-scrubbed word reveal — same mechanism as the other v2 pages' copy */
-const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
 
 
 export default function AboutV2() {

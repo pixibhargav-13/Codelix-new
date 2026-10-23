@@ -39,6 +39,3 @@ export function trackLead(source, extra = {}) {
   send("generate_lead", { lead_source: source, ...extra });
 }
 
-export function trackEvent(name, params) {
-  send(name, params);
-}

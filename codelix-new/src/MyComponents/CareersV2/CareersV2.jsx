@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { trackLead } from "../../lib/analytics";
 import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
