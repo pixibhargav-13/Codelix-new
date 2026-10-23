@@ -145,7 +145,9 @@ export default function V2MobileDrawer({ open, onClose }) {
                 key={l.label}
                 to={l.href}
                 onClick={onClose}
-                className={(l.label === "Work" || l.label === "About") ? "mobile-only-drawer-link" : ""}
+                /* already in the header's top links on wide screens, so the
+                   drawer shows them on phones only */
+                className={["Work", "Hire Developers", "About"].includes(l.label) ? "mobile-only-drawer-link" : ""}
               >
                 <span className="v2-drawer-link-icon"><l.icon size={17} strokeWidth={1.75} /></span>
                 {l.label}
