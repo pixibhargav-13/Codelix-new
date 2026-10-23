@@ -246,8 +246,11 @@ if (HOOK) {
 } else {
   /* without a rebuild the post is still fully indexable: sitemap-posts.xml
      (api/sitemap.js) reads Supabase live, and the page is served from
-     post-shell.html, so its own canonical and meta tags are the only ones */
-  console.log("ℹ️ VERCEL_DEPLOY_HOOK_URL not set — no rebuild. The post is live and listed in sitemap-posts.xml now, with its own canonical and meta tags; it is prerendered and added to sitemap.xml at the next deploy");
+     post-shell.html, so its own canonical and meta tags are the only ones.
+     The "Rebuild for new posts" workflow (.github/workflows/
+     rebuild-new-posts.yml) notices the post within half an hour and
+     triggers the deploy that prerenders it and adds it to sitemap.xml. */
+  console.log("ℹ️ VERCEL_DEPLOY_HOOK_URL not set — no immediate rebuild. The post is live and listed in sitemap-posts.xml now, with its own canonical and meta tags; the \"Rebuild for new posts\" GitHub workflow redeploys within about 30 minutes, which prerenders it and adds it to sitemap.xml and /sitemap");
 }
 
 /* IndexNow from here rather than relying on the GitHub workflow, whose
