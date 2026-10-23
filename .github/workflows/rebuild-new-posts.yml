@@ -36,7 +36,11 @@ jobs:
           set -euo pipefail
           site=https://www.codelixitsolutions.com
           ts=$(date +%s)
-          locs() { curl -fsSL --retry 3 "$site/$1?ts=$ts" | grep -o '<loc>[^<]*</loc>' | sed 's#</\?loc>##g' | sort -u; }
+          # The site's firewall answers curl's default User-Agent with a 403
+          # from GitHub's runners (the IndexNow workflow gets through because
+          # it names itself), so this one names itself too.
+          ua="CodelixRebuildCheck/1.0 (+https://www.codelixitsolutions.com)"
+          locs() { curl -fsSL --retry 3 -A "$ua" "$site/$1?ts=$ts" | grep -o '<loc>[^<]*</loc>' | sed 's#</\?loc>##g' | sort -u; }
           live=$(locs sitemap-posts.xml)
           built=$(locs sitemap.xml)
           [ -n "$built" ] || { echo "::error::sitemap.xml came back empty"; exit 1; }
