@@ -179,11 +179,12 @@ export default function CareersV2() {
 
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Small team, real client work</span>
+                <h1 className="v2-hero-eyebrow">Careers — IT Jobs in Ahmedabad</h1>
               </div>
-              <h1 className="sd2-hero-title">
+              <h2 className="sd2-hero-title">
                 <span className="line"><span>Work directly with</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">the people who build it.</span></span>
-              </h1>
+              </h2>
               <p className="sd2-hero-sub sv2-hero-reveal">
                 No account managers, no anonymous bench. If you join, you're
                 shipping real client projects alongside the founders.

@@ -38,6 +38,8 @@ const splitCovers = (description) =>
 const RAW = [
   {
     slug: "saas-product-development",
+    seoTitle: "SaaS Product Development Company in India | Codelix",
+    seoDescription: "SaaS product development: multi-tenant platforms, subscription billing, self-serve onboarding and usage analytics, built to scale from MVP to many users.",
     keywords: "SaaS product development, SaaS development company India, multi-tenant SaaS development, SaaS application development, SaaS MVP development, subscription software development",
     icon: Cloud,
     title: "SaaS Product Development",
@@ -54,6 +56,8 @@ const RAW = [
   },
   {
     slug: "cloud-solutions-migration",
+    seoTitle: "Cloud Migration Services: AWS & Azure | Codelix",
+    seoDescription: "Cloud migration and consulting: move legacy apps to AWS or Azure with a phased plan, rollback points and right-sized infrastructure that cuts your cloud bill.",
     keywords: "cloud migration services, cloud solutions, AWS migration, Azure migration, cloud consulting India, legacy to cloud migration, cloud modernization",
     icon: CloudCog,
     title: "Cloud Solutions & Migration",
@@ -70,6 +74,8 @@ const RAW = [
   },
   {
     slug: "api-development-integration",
+    seoTitle: "API Development & Integration Services | Codelix",
+    seoDescription: "REST and GraphQL API development and third-party integration: payment gateways, CRM and ERP sync, and documented middleware that connects the tools you run.",
     keywords: "API development, API integration services, REST API development, third-party API integration, systems integration, ERP CRM integration, API development company India",
     icon: Plug,
     title: "API Development & Integration",
@@ -86,6 +92,8 @@ const RAW = [
   },
   {
     slug: "workflow-automation",
+    seoTitle: "Workflow Automation Services: n8n, Zapier & AI | Codelix",
+    seoDescription: "Business workflow automation with n8n, Make, Zapier and custom code: approvals, data entry, reports and alerts that run on their own, with AI where it helps.",
     keywords: "workflow automation, business process automation, AI workflow automation, automation software development, RPA alternative, n8n and Zapier automation, automate manual tasks",
     icon: Workflow,
     title: "Workflow Automation",
@@ -103,7 +111,7 @@ const RAW = [
   {
     slug: "erp-crm-development",
     keywords: "ERP development company, CRM development, custom ERP software, custom CRM software, ERP software Ahmedabad, ERP CRM development India, business management software",
-    seoTitle: "Custom ERP & CRM Software Development | Codelix",
+    seoTitle: "ERP Software Development Company in Ahmedabad | Codelix",
     seoDescription:
       "Custom ERP and CRM software development for manufacturing, inventory, HRMS and enterprise operations. ERP development company in Ahmedabad, India.",
     icon: Building2,
@@ -121,6 +129,8 @@ const RAW = [
   },
   {
     slug: "ai-agent-development",
+    seoTitle: "AI Agent Development Company in India | Codelix",
+    seoDescription: "AI agent development: agents that read, decide and act across your tools, built on GPT, Claude and Gemini with approval steps, guardrails and cost monitoring.",
     keywords: "AI agent development, AI agents for business, autonomous AI agents, LLM agent development, AI assistant development, AI agent development company India",
     icon: Bot,
     title: "AI Agent Development",
@@ -137,6 +147,8 @@ const RAW = [
   },
   {
     slug: "generative-ai-solutions",
+    seoTitle: "Generative AI Development Services | Codelix",
+    seoDescription: "Generative AI solutions for business: chatbots on your own data, document processing, content drafting and LLM features integrated into your existing software.",
     keywords: "generative AI solutions, generative AI development, LLM integration, ChatGPT integration, AI chatbot development, RAG development, generative AI company India",
     icon: Sparkles,
     title: "Generative AI Solutions",
@@ -153,6 +165,8 @@ const RAW = [
   },
   {
     slug: "cloud-infrastructure-services",
+    seoTitle: "Cloud Infrastructure & DevOps Services | Codelix",
+    seoDescription: "Cloud infrastructure and DevOps services: AWS setup, Docker, CI/CD pipelines, monitoring, backups and auto-scaling so your application stays fast and online.",
     keywords: "cloud infrastructure services, AWS infrastructure, DevOps services, cloud architecture, Kubernetes and Docker, CI/CD setup, managed cloud services",
     icon: Server,
     title: "Cloud Infrastructure Services",
@@ -169,6 +183,8 @@ const RAW = [
   },
   {
     slug: "ux-research-design-systems",
+    seoTitle: "UX Research & Design System Services | Codelix",
+    seoDescription: "UX research and design systems: user interviews, usability testing, journey mapping and Figma component libraries that keep your product consistent as it grows.",
     keywords: "UX research, design systems, user research services, usability testing, component library design, UX audit, design system agency",
     icon: PenTool,
     title: "UX Research & Design Systems",
@@ -185,6 +201,8 @@ const RAW = [
   },
   {
     slug: "marketplace-development",
+    seoTitle: "Multi-Vendor Marketplace Development | Codelix",
+    seoDescription: "Multi-vendor marketplace development: seller onboarding, listings, commissions, split payments, reviews and admin tools for B2B and B2C marketplace platforms.",
     keywords: "marketplace development, multi-vendor marketplace, online marketplace platform, B2B marketplace development, marketplace app development, two-sided marketplace",
     icon: Store,
     title: "Marketplace Development",
@@ -201,6 +219,8 @@ const RAW = [
   },
   {
     slug: "payment-integration-services",
+    seoTitle: "Payment Gateway Integration Services | Codelix",
+    seoDescription: "Payment gateway integration for Razorpay, Stripe, PayPal and UPI: checkout, subscriptions, refunds, webhooks and reconciliation built into your website or app.",
     keywords: "payment gateway integration, payment integration services, Razorpay integration, Stripe integration, UPI integration, PayU integration, subscription billing integration",
     icon: CreditCard,
     title: "Payment Integration Services",
@@ -217,6 +237,8 @@ const RAW = [
   },
   {
     slug: "legacy-system-modernization",
+    seoTitle: "Legacy System Modernization Services | Codelix",
+    seoDescription: "Legacy software modernization: move old PHP, .NET or desktop systems to modern web and cloud stacks in phases, without losing data or stopping daily operations.",
     keywords: "legacy system modernization, legacy application migration, software modernization, legacy code refactoring, monolith to microservices, application re-engineering",
     icon: RefreshCw,
     title: "Legacy System Modernization",
@@ -233,6 +255,8 @@ const RAW = [
   },
   {
     slug: "business-intelligence-solutions",
+    seoTitle: "Business Intelligence Services: Power BI | Codelix",
+    seoDescription: "Business intelligence solutions: Power BI and custom dashboards that pull data from your ERP, CRM and spreadsheets into one trusted, real-time business view.",
     keywords: "business intelligence solutions, BI dashboard development, Power BI services, data visualization, reporting dashboards, BI consulting India",
     icon: BarChart3,
     title: "Business Intelligence Solutions",
@@ -249,6 +273,8 @@ const RAW = [
   },
   {
     slug: "predictive-analytics",
+    seoTitle: "Predictive Analytics Services & ML Models | Codelix",
+    seoDescription: "Predictive analytics services: demand forecasting, churn prediction and lead scoring with machine learning models built on your own historical business data.",
     keywords: "predictive analytics, predictive analytics services, demand forecasting, machine learning models, sales forecasting, predictive modeling",
     icon: TrendingUp,
     title: "Predictive Analytics",
@@ -265,6 +291,8 @@ const RAW = [
   },
   {
     slug: "data-engineering",
+    seoTitle: "Data Engineering Services: ETL & Pipelines | Codelix",
+    seoDescription: "Data engineering services: ETL pipelines, data warehouses and integrations that move, clean and organise data from every system so reports and AI can trust it.",
     keywords: "data engineering services, data pipeline development, ETL development, data warehouse, data lake, big data engineering, data integration",
     icon: Database,
     title: "Data Engineering",
@@ -281,6 +309,8 @@ const RAW = [
   },
   {
     slug: "performance-optimization",
+    seoTitle: "Website Performance Optimization Services | Codelix",
+    seoDescription: "Website and app performance optimization: Core Web Vitals, page speed, database queries and server tuning that make slow software fast and help SEO rankings.",
     keywords: "website performance optimization, speed optimization, Core Web Vitals optimization, page speed optimization, application performance tuning, web app optimization",
     icon: Gauge,
     title: "Performance Optimization",
@@ -297,6 +327,8 @@ const RAW = [
   },
   {
     slug: "security-maintenance",
+    seoTitle: "Website Security & Maintenance Services | Codelix",
+    seoDescription: "Website and application security and maintenance: updates, security patches, vulnerability fixes, backups, uptime monitoring and bug fixes on a monthly plan.",
     keywords: "website security and maintenance, application security, software maintenance services, security audit, website maintenance services, vulnerability fixing",
     icon: ShieldCheck,
     title: "Security & Maintenance",
@@ -313,6 +345,8 @@ const RAW = [
   },
   {
     slug: "dedicated-development-teams",
+    seoTitle: "Dedicated Development Team in India | Codelix",
+    seoDescription: "Hire a dedicated development team from India: developers, designers and QA working only on your product, in your tools and sprints, managed from Ahmedabad.",
     keywords: "dedicated development team, hire dedicated developers, offshore development team India, hire developers in India, remote development team, staff augmentation",
     icon: Users,
     title: "Dedicated Development Teams",

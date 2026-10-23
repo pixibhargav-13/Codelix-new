@@ -139,11 +139,12 @@ export default function IndustriesV2() {
 
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Eleven sectors, real repeat experience</span>
+                <h1 className="v2-hero-eyebrow">Industries We Serve — Software Development by Sector</h1>
               </div>
-              <h1 className="sd2-hero-title">
+              <h2 className="sd2-hero-title">
                 <span className="line"><span>Built for how</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">your sector actually operates.</span></span>
-              </h1>
+              </h2>
               <p className="sd2-hero-sub sv2-hero-reveal">
                 The stack, the compliance posture, and the structure change
                 depending on who's using the site and what they came to do.

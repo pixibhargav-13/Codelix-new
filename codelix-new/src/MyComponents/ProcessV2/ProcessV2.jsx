@@ -214,11 +214,12 @@ export default function ProcessV2() {
 
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Six stages, every project</span>
+                <h1 className="v2-hero-eyebrow">Our Software Development Process</h1>
               </div>
-              <h1 className="sd2-hero-title">
+              <h2 className="sd2-hero-title">
                 <span className="line"><span>How we go from</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">message to launch.</span></span>
-              </h1>
+              </h2>
               <p className="sd2-hero-sub sv2-hero-reveal">
                 Same process regardless of the service — a fixed sequence of
                 stages, each signed off before the next one starts, so

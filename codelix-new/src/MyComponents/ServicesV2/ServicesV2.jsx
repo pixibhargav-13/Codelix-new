@@ -374,11 +374,12 @@ export default function ServicesV2() {
             <div className="sv2-hero-left">
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Seven services · One delivery standard</span>
+                <h1 className="v2-hero-eyebrow">IT Services &amp; Software Development in Ahmedabad</h1>
               </div>
-              <h1 className="sv2-hero-title sv2-hero-reveal">
+              <h2 className="sv2-hero-title sv2-hero-reveal">
                 Everything we build,<br />
                 <span className="v2-hero-accent">and how we build it.</span>
-              </h1>
+              </h2>
               <p className="sv2-hero-sub sv2-hero-reveal">
                 Whether it's a landing page or a full platform — we handle web, mobile, design,
                 e-commerce, custom software, AI, and data analytics. Same team, same process,

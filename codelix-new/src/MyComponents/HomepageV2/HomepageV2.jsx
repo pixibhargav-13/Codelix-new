@@ -729,13 +729,13 @@ export default function HomepageV2() {
               <span className="v2-hero-status">
                 <i /> Available for new projects
               </span>
-              <span className="v2-hero-eyebrow">Premium Software Agency</span>
+              <h1 className="v2-hero-eyebrow">AI-Powered IT Company in Ahmedabad</h1>
             </div>
-            <h1 className="v2-hero-title">
+            <h2 className="v2-hero-title">
               <span className="line"><span>We build</span></span>{" "}
               <span className="line"><span>software that</span></span>{" "}
               <span className="line"><span className="v2-hero-accent">actually scales.</span></span>
-            </h1>
+            </h2>
             <p className="v2-hero-sub">
               Codelix IT Solutions is a software development company in Ahmedabad, India. We engineer production-ready web apps, mobile platforms, and enterprise SaaS designed to handle real users.
             </p>

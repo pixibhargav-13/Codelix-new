@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { SEO } from "../../components/SEO";
+import { StructuredData } from "../../components/StructuredData";
 import { useParams, Link } from "react-router-dom";
 import gsap from "gsap";
 import {
@@ -252,6 +253,7 @@ export default function IndustryDetailV2() {
   return (
     <div className="v2" ref={rootRef}>
       <SEO title={svc.seoTitle || `${svc.title} Software Solutions | Codelix IT Solutions`} description={svc.seoDescription || svc.tagline} keywords={svc.keywords} />
+      <StructuredData type="Service" data={{ name: `${svc.title} software development`, description: svc.seoDescription || svc.tagline }} />
       <div className="v2-progress" aria-hidden="true"><span /></div>
 
       <NavbarV2 />
@@ -273,10 +275,11 @@ export default function IndustryDetailV2() {
 
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Industry</span>
+                <h1 className="v2-hero-eyebrow">{svc.title} Software Development</h1>
               </div>
-              <h1 key={slug} className="sd2-hero-title">
+              <h2 key={slug} className="sd2-hero-title">
                 <span className="line"><span>{svc.title}</span></span>
-              </h1>
+              </h2>
               <p className="sd2-hero-sub sv2-hero-reveal">{svc.tagline}</p>
               <div className="sd2-hero-cta sv2-hero-reveal">
                 <Link className="v2-btn v2-btn--filled" to="/contact">

@@ -426,11 +426,12 @@ export default function ApplicationDevelopmentV2() {
 
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Service 02 · Application Development</span>
+                <h1 className="v2-hero-eyebrow">Mobile App Development Company — iOS, Android &amp; Flutter</h1>
               </div>
-              <h1 className="sd2-hero-title">
+              <h2 className="sd2-hero-title">
                 <span className="line"><span>Apps that feel</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">native, not bolted on.</span></span>
-              </h1>
+              </h2>
               <p className="sd2-hero-sub sv2-hero-reveal">
                 We build cross-platform and native mobile apps with clean, hand-written
                 code — one Flutter codebase where it fits, fully native where the

@@ -137,11 +137,12 @@ export default function FaqV2() {
 
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> {FAQS.length} answers, straight talk</span>
+                <h1 className="v2-hero-eyebrow">Software Development FAQs</h1>
               </div>
-              <h1 className="sd2-hero-title">
+              <h2 className="sd2-hero-title">
                 <span className="line"><span>Everything people</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">ask us, in one place.</span></span>
-              </h1>
+              </h2>
               <p className="sd2-hero-sub sv2-hero-reveal">
                 Search or filter by category — every answer here is the same one
                 you'd get if you asked us directly.

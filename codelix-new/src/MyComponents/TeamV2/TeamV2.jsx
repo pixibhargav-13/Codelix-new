@@ -112,11 +112,12 @@ export default function TeamV2() {
 
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Est. 2024 · Ahmedabad</span>
+                <h1 className="v2-hero-eyebrow">Our Team — Software Developers in Ahmedabad</h1>
               </div>
-              <h1 className="sd2-hero-title">
+              <h2 className="sd2-hero-title">
                 <span className="line"><span>The people behind</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">what Codelix ships.</span></span>
-              </h1>
+              </h2>
               <p className="sd2-hero-sub sv2-hero-reveal">
                 No account managers, no anonymous contractors — every project
                 is scoped and delivered by the two people who founded this

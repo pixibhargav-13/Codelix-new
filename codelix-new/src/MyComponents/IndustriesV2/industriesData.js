@@ -19,7 +19,7 @@ export const INDUSTRIES = [
     slug: "manufacturing",
     keywords: "manufacturing ERP software, manufacturing software development, production planning software, inventory management software, shop floor management system, factory automation software, manufacturing ERP Ahmedabad, custom ERP for manufacturers",
     seoDescription:
-      "Manufacturing ERP and custom software that connect the shop floor to the office — production, inventory and reporting in one system. Codelix IT Solutions, Ahmedabad.",
+      "Manufacturing ERP and custom software that connect the shop floor to the office — production, inventory and reporting in one system, built in Ahmedabad.",
     icon: Factory,
     title: "Manufacturing",
     tagline: "Operational systems that connect the shop floor to the office.",
