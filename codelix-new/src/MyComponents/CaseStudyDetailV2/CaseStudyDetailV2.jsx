@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import FooterV2 from "../Shared/FooterV2";
 import { useParams, Link } from "react-router-dom";
 import gsap from "gsap";
@@ -95,7 +95,6 @@ export default function CaseStudyDetailV2() {
   
   
   
-  const [showSolutions, setShowSolutions] = useState(false);
 
   const rootRef = useRef(null);
 
@@ -104,9 +103,12 @@ export default function CaseStudyDetailV2() {
   
 
   /* hero intro — masked-line GSAP wipe, matching every other v2 page's
-     sd2-hero (same selectors, same timeline shape) */
+     sd2-hero (same selectors, same timeline shape). Keyed on the slug: the
+     study is read again from Supabase after the prerendered copy, and a new
+     object with the same content used to replay the whole intro. */
+  const csKey = cs ? cs.slug : null;
   useEffect(() => {
-    if (!cs) return;
+    if (!csKey) return;
     const q = (s) => rootRef.current.querySelectorAll(s);
     splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
     const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
@@ -119,7 +121,7 @@ export default function CaseStudyDetailV2() {
       .fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7")
       .fromTo(q(".csd2-hero-media.sv2-hero-reveal"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1 }, "-=.9");
     return () => tl.kill();
-  }, [cs]);
+  }, [csKey]);
 
   /* reveal-on-enter + stat count-up */
   useEffect(() => {

@@ -193,15 +193,10 @@ const SENTENCE = [
   "FIXED PRICE.",
 ];
 
-/* scroll-scrubbed word reveal — identical mechanism to HomepageV2 / ServicesV2
-   (kept as a separate copy rather than a shared import so each page can tune
-   its own word list/timing without a shared-component refactor) */
 import { useTestimonials } from "../../data/useTestimonials";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 import { StructuredData } from "../../components/StructuredData";
 import { serviceInfo } from "../../lib/serviceSchema";
-const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
-
 
 export default function ServiceDetailV2() {
   /* related work: case studies from the admin panel (see useCaseStudies) */

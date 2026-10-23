@@ -12,7 +12,6 @@ import {
 import "../HomepageV2/HomepageV2.css";
 
 import { TECH_STACK } from "../HomepageV2/techStack";
-import codelixLogo from "../Images/codelix-logo.webp";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import "./ServicesV2.css";
 import GoogleReviewButton from "../Shared/GoogleReviewButton";
@@ -183,12 +182,6 @@ const SENTENCE = [
   "WE'LL SCOPE THE FIX.",
   "THEN BUILD IT.",
 ];
-
-/* smootherstep — softens both ends of the scrubbed motion */
-const ease = (p) => p * p * p * (p * (p * 6 - 15) + 10);
-
-/* Tall sticky block that shows ONE line at a time, scrubbed to scroll —
-   the same signature moment used on the homepage. */
 
 export default function ServicesV2() {
   

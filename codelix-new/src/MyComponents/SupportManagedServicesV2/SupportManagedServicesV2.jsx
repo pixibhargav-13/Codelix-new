@@ -177,9 +177,6 @@ const SENTENCE = [
   "JUST SUPPORT.",
 ];
 
-/* scroll-scrubbed word reveal — same mechanism as the other v2 service pages */
-const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
-
 
 
 const TECH_CATEGORIES = [

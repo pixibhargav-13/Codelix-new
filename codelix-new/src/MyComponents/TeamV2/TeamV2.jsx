@@ -1,6 +1,6 @@
 import { STATIC_TESTIMONIALS } from '../../data/testimonialsData';
 import { Link } from "react-router-dom";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import { useTestimonials } from "../../data/useTestimonials";

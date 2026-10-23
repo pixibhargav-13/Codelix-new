@@ -171,10 +171,6 @@ const SENTENCE = [
   "FIXED PRICE.",
 ];
 
-/* scroll-scrubbed word reveal — identical mechanism to ServiceDetailV2's copy,
-   kept as its own local copy so each page can tune timing independently */
-const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
-
 
 
 const TECH_CATEGORIES = [

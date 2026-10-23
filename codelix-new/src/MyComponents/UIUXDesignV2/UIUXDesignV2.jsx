@@ -182,10 +182,6 @@ const SENTENCE = [
   "NO LICENSE GAMES.",
 ];
 
-/* scroll-scrubbed word reveal — same mechanism as ServiceDetailV2's copy,
-   kept as its own local copy so each page can tune timing independently */
-const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
-
 
 
 const TECH_CATEGORIES = [

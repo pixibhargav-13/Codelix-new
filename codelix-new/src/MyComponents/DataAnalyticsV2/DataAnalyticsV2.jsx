@@ -30,7 +30,6 @@ import ScrollSentence from '../Shared/ScrollSentence';
 import FaqSection from '../Shared/FaqSection';
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
-import { useTestimonials } from "../../data/useTestimonials";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 import { StructuredData } from "../../components/StructuredData";
 import { serviceInfo } from "../../lib/serviceSchema";
@@ -185,10 +184,6 @@ const SENTENCE = [
   "NO MORE SILOS.",
 ];
 
-/* scroll-scrubbed word reveal — same mechanism as ServiceDetailV2's copy,
-   kept as its own local copy so each page can tune timing independently */
-const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
-
 
 
 const TECH_CATEGORIES = [
@@ -224,7 +219,6 @@ const METRICS = [
 export default function DataAnalyticsV2() {
   /* related work: case studies from the admin panel (see useCaseStudies) */
   const RELATED = useRelatedWork({ slugs: ["internal-ops-erp-case-study", "book-collections-case-study", "freight-shipping-case-study"] });
-  const testimonials = useTestimonials(STATIC_TESTIMONIALS);
 
   
   
