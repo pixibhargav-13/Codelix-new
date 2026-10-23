@@ -10,6 +10,9 @@
 
    post.json:
      { title, slug?, excerpt, content, category, primary_keyword, tags: [4–6], read_time? }
+   or post.md — the same fields as a header between "---" lines (tags
+   comma-separated), then the content as plain text. Easier to review than
+   JSON; drafts live in content/blog-drafts/.
    category is one of: Business, Development, AI, E-Commerce, CMS, UI/UX, Tech
    (mapped to the blog page's filter names). content uses the markup that
    src/lib/articleMarkup.jsx renders: blocks separated by a blank line;
@@ -96,7 +99,7 @@ if (VERIFY) {
 
 /* ── validate ────────────────────────────────────────────────────────── */
 if (!file) fail("usage: node scripts/publish-blog-post.mjs <post.json> [--dry-run] | --list | --verify <slug>");
-const post = JSON.parse(fs.readFileSync(file, "utf8"));
+const post = file.endsWith(".md") ? readMarkdownPost(fs.readFileSync(file, "utf8")) : JSON.parse(fs.readFileSync(file, "utf8"));
 
 /* the blog page's category filter (BlogV2 CATEGORIES) uses these names */
 const CATEGORY_FILTER = {
@@ -258,6 +261,19 @@ await verifyLive(slug, [row.cover_image_url, db.storage.from("media").getPublicU
 
 const SITE_ORIGIN = "https://www.codelixitsolutions.com";
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/* post.md: "key: value" lines between two "---" lines, then the content */
+function readMarkdownPost(text) {
+  const m = text.replace(/\r\n/g, "\n").match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  if (!m) fail('a .md post must start with a "---" header block');
+  const post = { content: m[2].trim() };
+  for (const line of m[1].split("\n")) {
+    const i = line.indexOf(":");
+    if (i > 0) post[line.slice(0, i).trim()] = line.slice(i + 1).trim();
+  }
+  post.tags = String(post.tags || "").split(",").map((t) => t.trim()).filter(Boolean);
+  return post;
+}
 
 /* ── markup checks ──────────────────────────────────────────────────────
    Each rule is a way a post has rendered wrongly or could: the renderer
