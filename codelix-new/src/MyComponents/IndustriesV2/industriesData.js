@@ -198,7 +198,7 @@ export const INDUSTRIES = [
 export const industryBySlug = (slug) => INDUSTRIES.find((i) => i.slug === slug);
 
 /* maps each industry's slug to the exact `industry` string used in
-   WorkV2/projectsData.js (including that file's existing typos —
+   each case study's industry field in the admin panel (including its existing typos —
    "Bavarages", "estae" — kept verbatim so the match actually works)
    so a detail page can pull in real, already-shipped case studies
    instead of inventing "related work". */

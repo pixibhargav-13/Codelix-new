@@ -14,8 +14,7 @@ import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./CaseStudyDetailV2.css";
 
-/* real content extracted verbatim from the 15 individual case-study
-   components, not new/invented copy — see caseStudiesData.js */
+/* every case study comes from Supabase and is edited in the admin panel */
 import { useCaseStudies } from "./useCaseStudies";
 import ArticleSkeleton from "../Shared/ArticleSkeleton";
 import NotFound from "../NotFound/NotFound";

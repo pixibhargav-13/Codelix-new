@@ -3,8 +3,7 @@
    highlighted) and a scene of the topic: a main screen showing it, two
    floating cards and a person with a tablet.
 
-   Shared by publish-blog-post.mjs (new posts) and blog-static-covers.mjs
-   (the built-in posts in src/data/blogData.js). The site shows every cover
+   Used by publish-blog-post.mjs for every new post. The site shows every cover
    at 1200x630 (cards and article hero alike), so nothing is cropped and the
    logo and title can sit near the edges. `banner` and `cover` are the same
    image; both names are kept because the publisher and the page store

@@ -33,7 +33,7 @@ const splitCovers = (description) =>
     .map((s) => s.charAt(0).toUpperCase() + s.slice(1));
 
 /* maps each additional service to the closest of the 7 real project
-   categories (see WorkV2/projectsData.js) so "Related Work" can show
+   categories (each case study's category in the admin panel) so "Related Work" can show
    real, already-shipped projects instead of inventing fake ones — several
    additional services have no close real-project match, so they simply
    render without that section (see AdditionalServiceDetailV2.jsx). */
