@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
 import { useParams, Link } from "react-router-dom";
 import gsap from "gsap";
-import { ArrowLeft, ArrowUpRight, X, Check } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, X, Check, Briefcase, Building2, UserPlus } from "lucide-react";
 import { SEO } from "../../components/SEO";
 import { caseStudyKeywordsFor } from "../../lib/caseStudyKeywords";
 
@@ -17,13 +17,17 @@ import "./CaseStudyDetailV2.css";
    components, not new/invented copy — see caseStudiesData.js */
 import { useCaseStudies } from "./useCaseStudies";
 import ArticleSkeleton from "../Shared/ArticleSkeleton";
+import NotFound from "../NotFound/NotFound";
 import { PROJECTS } from "../WorkV2/projectsData";
 import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from '../Shared/CtaSection';
 import { StructuredData } from "../../components/StructuredData";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 import { fitTitle } from "../../lib/fitTitle.js";
+import { caseStudySeoTitleFor } from "../../lib/seoTitles.js";
 import { toISODate } from "../../lib/isoDate.js";
+import { pickRelated } from "../../lib/pickRelated";
+import { WORK_INDUSTRY_MAP } from "../IndustriesV2/industriesData";
 
 
 /* the mask-line wipe animation (shared with every other v2 hero) only
@@ -39,6 +43,50 @@ const splitTitle = (title) => {
   const mid = Math.ceil(words.length / 2);
   return [words.slice(0, mid).join(" "), words.slice(mid).join(" ")];
 };
+
+/* category → the core service page that sells that work. Case-study
+   categories are the core service names (set in the admin panel from the
+   same list). */
+const CATEGORY_SERVICE = {
+  "Web Development": { label: "Web Development", path: "/services/web-development" },
+  "Application Development": { label: "Mobile App Development", path: "/services/application-development" },
+  "UI/UX Design": { label: "UI/UX Design", path: "/services/ui-ux-design" },
+  "E-Commerce Solutions": { label: "E-Commerce Development", path: "/services/e-commerce-solutions" },
+  "Custom Software Development": { label: "Custom Software Development", path: "/services/custom-software-development" },
+  "AI Development": { label: "AI Development", path: "/services/ai-development" },
+  "Data Analytics": { label: "Data Analytics", path: "/services/data-analytics" },
+};
+
+/* tool name as written in a study's tools list → hire page slug */
+const TOOL_HIRE = {
+  reactjs: "react", react: "react", nodejs: "nodejs", "node.js": "nodejs",
+  laravel: "laravel", django: "python", python: "python", flutter: "flutter",
+  "next.js": "nextjs", shopify: "shopify", woocommerce: "shopify",
+};
+const HIRE_LABEL = {
+  react: "React", nodejs: "Node.js", laravel: "Laravel", python: "Python",
+  flutter: "Flutter", nextjs: "Next.js", shopify: "Shopify",
+};
+
+/* a study from the repo keeps its category and industry on its PROJECTS
+   entry; one from Supabase carries them itself */
+const projectInfo = (cs) => {
+  const project = PROJECTS.find((p) => p.href === `/${cs.slug}`);
+  return { category: cs.category || project?.category, industry: cs.industry || project?.industry };
+};
+
+function caseStudyHelpLinks(cs) {
+  const links = [];
+  const { category, industry } = projectInfo(cs);
+  const service = CATEGORY_SERVICE[category];
+  if (service) links.push({ ...service, icon: Briefcase, body: `The service behind this project — ${service.label.toLowerCase()} for your business.` });
+  const industrySlug = Object.keys(WORK_INDUSTRY_MAP).find((k) => WORK_INDUSTRY_MAP[k] === industry);
+  const industryName = FOOTER_INDUSTRY_KEYWORDS.find((k) => k.path === `/industries/${industrySlug}`)?.label;
+  if (industryName) links.push({ label: `${industryName} Software`, path: `/industries/${industrySlug}`, icon: Building2, body: `More on the software we build for ${industryName.toLowerCase()} businesses.` });
+  const hires = [...new Set((cs.tools || cs.tags || []).map((t) => TOOL_HIRE[String(t).toLowerCase()]).filter(Boolean))].slice(0, 2);
+  hires.forEach((h) => links.push({ label: `Hire ${HIRE_LABEL[h]} Developers`, path: `/hire-developers/${h}`, icon: UserPlus, body: `The ${HIRE_LABEL[h]} developers who build projects like this one.` }));
+  return links;
+}
 
 export default function CaseStudyDetailV2() {
   const { slug } = useParams();
@@ -124,21 +172,23 @@ export default function CaseStudyDetailV2() {
      of the error screen */
   if (!cs && loading) return <ArticleSkeleton label="Loading case study" />;
 
-  if (!cs) {
-    return (
-      <div className="v2" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }}>
-        <main><h1 style={{ color: "#fff", fontSize: 28 }}>Case study not found.</h1>
-        <Link className="v2-btn" to="/case-study">Back to Case Studies →</Link>
-      </main></div>
-    );
-  }
+  /* unknown slugs reach here through the vercel.json rewrite with a 200 —
+     NotFound's noindex keeps them out of the index (see BlogDetailV2) */
+  if (!cs) return <NotFound />;
 
-  const more = PROJECTS.filter((p) => p.href !== `/${cs.slug}`).slice(0, 3);
+  const more = pickRelated(
+    PROJECTS,
+    PROJECTS.findIndex((p) => p.href === `/${cs.slug}`),
+    3,
+    (p) => (p.category === projectInfo(cs).category ? 1 : 0),
+  );
+  const helpLinks = caseStudyHelpLinks(cs);
 
   return (
     <div className="v2" ref={rootRef}>
       <SEO
-        title={fitTitle(cs.title, [" | Case Study | Codelix", " | Codelix"])}
+        title={caseStudySeoTitleFor(cs.slug) || fitTitle(cs.title, [" | Case Study | Codelix", " | Codelix"])}
+        ogTitle={cs.title}
         description={cs.description || `Read about how we solved ${cs.title} at Codelix IT Solutions.`}
         keywords={caseStudyKeywordsFor(cs.slug, cs.tags)}
         image={cs.coverImage || cs.ogImage}
@@ -461,6 +511,30 @@ export default function CaseStudyDetailV2() {
               <span className="sd2-quote-role">{cs.quote.role}</span>
             </figcaption>
           </figure>
+        </section>
+      )}
+
+      {/* ══════════ 5b · RELATED SERVICES — the service, sector and hire
+          pages behind this project. A case study is the strongest proof on
+          the site; linking it to the pages that sell the same work is what
+          lets that proof count for them. ══════════ */}
+      {helpLinks.length > 0 && (
+        <section className="v2-section v2-section--void" id="related-services">
+          <p className="v2-label">Related Services</p>
+          <h2 className="v2-heading">Need something like this built?</h2>
+          <div className="sd2-other-list">
+            {helpLinks.map((l, i) => (
+              <Link className="sd2-other is-in" to={l.path} key={l.path}>
+                <div className="sd2-other-top">
+                  <span className="sd2-other-icon"><l.icon size={17} strokeWidth={1.5} /></span>
+                  <span className="sd2-other-n">{String(i + 1).padStart(2, "0")}</span>
+                </div>
+                <span className="sd2-other-title">{l.label}</span>
+                <p className="sd2-other-body">{l.body}</p>
+                <span className="sd2-other-go">→</span>
+              </Link>
+            ))}
+          </div>
         </section>
       )}
 

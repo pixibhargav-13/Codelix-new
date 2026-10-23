@@ -18,15 +18,18 @@ import { slugify } from "../../data/blogData";
 import { blogKeywordsFor } from "../../lib/blogKeywords";
 import { renderArticle, articleHeadings, articleFaqs } from "../../lib/articleMarkup";
 import { servicesForPost } from "../../lib/blogServices";
+import { pickRelated } from "../../lib/pickRelated";
 import { authorFor } from "../../lib/people";
 import { useBlogPosts, toISODate } from "../../data/useBlogPosts";
 import ArticleSkeleton from "../Shared/ArticleSkeleton";
+import NotFound from "../NotFound/NotFound";
 import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from '../Shared/CtaSection';
 import FaqSection from "../Shared/FaqSection";
 import { StructuredData } from "../../components/StructuredData";
 import { SEO } from "../../components/SEO";
 import { fitTitle } from "../../lib/fitTitle.js";
+import { blogSeoTitleFor } from "../../lib/seoTitles.js";
 
 
 export default function BlogDetailV2() {
@@ -121,26 +124,24 @@ export default function BlogDetailV2() {
      already in hand still render immediately, with no spinner. */
   if (!blog && loading) return <ArticleSkeleton label="Loading article" />;
 
-  if (!blog) {
-    return (
-      <div className="v2" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }}>
-        <main><h1 style={{ color: "#fff", fontSize: 28 }}>Article not found.</h1>
-        <Link className="v2-btn" to="/blog">Back to Blog →</Link>
-      </main></div>
-    );
-  }
+  /* vercel.json rewrites unknown /blog/:slug URLs to the homepage HTML (so a
+     post published from the admin panel works before the next rebuild). A
+     slug that matches no post must still say noindex, or Google indexes the
+     URL as a soft 404 — NotFound carries that tag. */
+  if (!blog) return <NotFound />;
 
   /* every post carries "All Articles", so matching on any shared tag made
-     every post "related" and this showed the three newest whatever the topic.
-     Rank by the tags actually shared (category, topic phrases) instead; blogs
-     is newest first, so ties keep the newer post. */
+     every post "related". Rank by the tags actually shared (category, topic
+     phrases); among equals pickRelated takes the posts that follow this one
+     in the list, so links spread over the whole archive instead of always
+     pointing at the newest three. */
   const ownTags = new Set(blog.tags.filter((t) => t !== "All Articles"));
-  const related = blogs
-    .filter((b) => b.id !== blog.id)
-    .map((b, i) => ({ b, i, shared: b.tags.filter((t) => ownTags.has(t)).length }))
-    .sort((x, y) => y.shared - x.shared || x.i - y.i)
-    .slice(0, 3)
-    .map(({ b }) => b);
+  const related = pickRelated(
+    blogs,
+    blogs.findIndex((b) => b.id === blog.id),
+    3,
+    (b) => b.tags.filter((t) => ownTags.has(t)).length,
+  );
   const headings = articleHeadings(blog.content);
   const faqs = articleFaqs(blog.content);
   const author = authorFor(blog);
@@ -181,7 +182,8 @@ export default function BlogDetailV2() {
           picture on four unrelated posts - worse than the house card, which
           at least does not claim to depict the article. */}
       <SEO
-        title={fitTitle(blog.title, [" | Codelix IT Solutions", " | Codelix"])}
+        title={blogSeoTitleFor(slug) || fitTitle(blog.title, [" | Codelix IT Solutions", " | Codelix"])}
+        ogTitle={blog.title}
         description={blog.excerpt || blog.subtitle || `Read ${blog.title} on Codelix IT Solutions.`}
         keywords={blogKeywordsFor(slug, blog.tags, blog.title)}
         image={blog.coverImage}
