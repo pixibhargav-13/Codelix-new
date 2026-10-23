@@ -30,6 +30,23 @@ Hours: Monday to Saturday, 10:00–19:00 IST. Closed Sunday.
 - [Data analytics](https://www.codelixitsolutions.com/services/data-analytics): Business intelligence, predictive models and data engineering.
 - [Support and managed services](https://www.codelixitsolutions.com/services/support-managed-services): Cloud migration, infrastructure and maintenance.
 
+## Hire developers
+
+Dedicated developers from the Ahmedabad team, hired monthly, as a team extension or for a fixed-scope project. Proposal within 48 hours; clients interview the developer first.
+
+- [Hire dedicated developers](https://www.codelixitsolutions.com/hire-developers): All technologies and engagement models.
+- [Hire React developers](https://www.codelixitsolutions.com/hire-developers/react)
+- [Hire Node.js developers](https://www.codelixitsolutions.com/hire-developers/nodejs)
+- [Hire Laravel developers](https://www.codelixitsolutions.com/hire-developers/laravel)
+- [Hire Python developers](https://www.codelixitsolutions.com/hire-developers/python)
+- [Hire Flutter developers](https://www.codelixitsolutions.com/hire-developers/flutter)
+- [Hire Android developers](https://www.codelixitsolutions.com/hire-developers/android)
+- [Hire iOS developers](https://www.codelixitsolutions.com/hire-developers/ios)
+- [Hire Next.js developers](https://www.codelixitsolutions.com/hire-developers/nextjs)
+- [Hire full-stack developers](https://www.codelixitsolutions.com/hire-developers/full-stack)
+- [Hire AI developers](https://www.codelixitsolutions.com/hire-developers/ai)
+- [Hire Shopify developers](https://www.codelixitsolutions.com/hire-developers/shopify)
+
 ## Products
 
 Software Codelix designs, builds and runs itself, alongside client work.

@@ -116,6 +116,8 @@ const BlogDetail = lazy(() => import("./MyComponents/BlogDetailV2/BlogDetailV2")
 const CaseStudy = lazy(() => import("./MyComponents/CaseStudyV2/CaseStudyV2"));
 const CaseStudyDetail = lazy(() => import("./MyComponents/CaseStudyDetailV2/CaseStudyDetailV2"));
 const LocationLanding = lazy(() => import("./MyComponents/LocationLandingV2/LocationLandingV2"));
+const HireDevelopers = lazy(() => import("./MyComponents/HireDevelopersV2/HireDevelopersV2"));
+const HireDeveloperDetail = lazy(() => import("./MyComponents/HireDevelopersV2/HireDeveloperDetailV2"));
 
 // ─── Scroll to top on route change ───────────────────────────────────────────
 const ScrollToTop = () => {
@@ -307,6 +309,8 @@ const AppRoutes = () => {
           <Route path="/blog/:slug" element={<BlogDetail />} />
           <Route path="/case-study" element={<CaseStudy />} />
           <Route path="/case-study/:slug" element={<CaseStudyDetail />} />
+          <Route path="/hire-developers" element={<HireDevelopers />} />
+          <Route path="/hire-developers/:slug" element={<HireDeveloperDetail />} />
 
           {/* ─── Admin panel ─── */}
           {/* AuthProvider is mounted here rather than around the whole app so

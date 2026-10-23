@@ -137,6 +137,25 @@ export const NAVBAR_SERVICES_HIERARCHY = [
   }
 ];
 
+/* the per-technology hire pages (HireDevelopersV2/hireDevelopersData.js).
+   Footer and sitemap are what give them internal links from every page;
+   the labels are the queries the pages are written for. Listed here rather
+   than imported, so every page's footer doesn't pull in all the page copy. */
+export const FOOTER_HIRE = [
+  { label: "Hire Dedicated Developers", path: "/hire-developers" },
+  { label: "Hire React Developers", path: "/hire-developers/react" },
+  { label: "Hire Node.js Developers", path: "/hire-developers/nodejs" },
+  { label: "Hire Laravel Developers", path: "/hire-developers/laravel" },
+  { label: "Hire Python Developers", path: "/hire-developers/python" },
+  { label: "Hire Flutter Developers", path: "/hire-developers/flutter" },
+  { label: "Hire Android Developers", path: "/hire-developers/android" },
+  { label: "Hire iOS Developers", path: "/hire-developers/ios" },
+  { label: "Hire Next.js Developers", path: "/hire-developers/nextjs" },
+  { label: "Hire Full-Stack Developers", path: "/hire-developers/full-stack" },
+  { label: "Hire AI Developers", path: "/hire-developers/ai" },
+  { label: "Hire Shopify Developers", path: "/hire-developers/shopify" },
+];
+
 export const FOOTER_PRODUCTS = [
   { label: "Audytee", path: "/products/audytee" },
   { label: "4bitx", path: "/products/4bitx" },

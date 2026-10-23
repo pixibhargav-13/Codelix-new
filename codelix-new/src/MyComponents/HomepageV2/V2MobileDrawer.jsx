@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {
   ChevronDown, LayoutGrid, Briefcase, Building2, Info, Users,
-  Workflow, Tag, Cpu, Newspaper, HelpCircle, Rocket, Mail, Boxes,
+  Workflow, Tag, Cpu, Newspaper, HelpCircle, Rocket, Mail, Boxes, UserPlus,
 } from "lucide-react";
 
 /* Homepage, Services, Work, and Industries are already reachable from the
@@ -16,6 +16,7 @@ const SERVICES_ICON = LayoutGrid;
 /* grouped: primary → who we are → how we work → resources → join/contact */
 const NAV_LINKS = [
   { label: "Work", href: "/work", icon: Briefcase },
+  { label: "Hire Developers", href: "/hire-developers", icon: UserPlus },
   { label: "About", href: "/about", icon: Info },
   { label: "Team", href: "/team", icon: Users },
   { label: "Process", href: "/process", icon: Workflow },

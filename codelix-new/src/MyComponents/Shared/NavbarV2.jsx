@@ -248,6 +248,7 @@ export default function NavbarV2() {
                 </div>
               </div>
             </div>
+            <Link to="/hire-developers">Hire Developers</Link>
             <Link to="/about">About</Link>
           </div>
           <div className="v2-nav-actions">

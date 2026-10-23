@@ -1,0 +1,62 @@
+/* Only what the hire pages add on top of the shared sd2-* service-detail
+   styles: a readable intro paragraph and the skills chip list. */
+
+.v2 .hd2-intro {
+  max-width: 68ch;
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+}
+
+.hd2-skills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  margin: 32px 0 0;
+}
+
+.hd2-skills li {
+  padding: 10px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 100px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.hd2-model-meta {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 13px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(176, 196, 255, 0.9);
+}
+
+/* the shared step layout is drawn for three steps; the hiring flow has four,
+   so the columns and the connecting line's inset (half a column) change */
+.hd2-steps.sd2-next {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.hd2-steps .sd2-next-line {
+  left: 12.5%;
+  right: 12.5%;
+  background: linear-gradient(90deg,
+      rgba(180, 200, 230, .1) 0%,
+      rgba(180, 200, 230, .5) 16.6%,
+      rgba(180, 200, 230, .1) 33.3%,
+      rgba(180, 200, 230, .5) 50%,
+      rgba(180, 200, 230, .1) 66.6%,
+      rgba(180, 200, 230, .5) 83.3%,
+      rgba(180, 200, 230, .1) 100%);
+}
+
+@media (max-width: 820px) {
+  .hd2-steps.sd2-next {
+    grid-template-columns: 1fr;
+  }
+}
