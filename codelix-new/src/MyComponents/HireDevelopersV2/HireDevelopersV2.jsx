@@ -53,8 +53,8 @@ export default function HireDevelopersV2() {
                   <span className="line"><span>Hire Dedicated Developers in India</span></span>
                 </h1>
                 <p className="sd2-hero-sub sv2-hero-reveal">
-                  React, Node.js, Laravel, Python, Flutter, mobile, AI and Shopify
-                  developers from our Ahmedabad team — full-time on your product,
+                  Web, mobile, backend, AI, DevOps, QA and design talent from our
+                  Ahmedabad team — full-time on your product,
                   as an extension of your team, or on a fixed-scope project.
                 </p>
                 <div className="sd2-hero-cta sv2-hero-reveal">

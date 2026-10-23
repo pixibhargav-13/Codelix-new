@@ -178,3 +178,14 @@
   line-height: 1.6;
   margin: 0;
 }
+/* link from the estimator to the full calculator page */
+.v2 .pv2-calculator-link {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--text-55);
+  text-decoration: none;
+}
+
+.v2 .pv2-calculator-link:hover {
+  color: var(--text);
+}

@@ -33,7 +33,8 @@ export const STATIC_ROUTES = [
   "/sitemap",
   "/blog",
   "/case-study",
-  "/hire-developers"
+  "/hire-developers",
+  "/software-development-cost-calculator"
 ];
 
 // Combine all non-database routes

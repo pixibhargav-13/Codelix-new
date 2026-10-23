@@ -1,0 +1,115 @@
+/* Cost calculator: the estimator itself reuses the pricing page's pv2-*
+   styles; this adds the size cards, the price table and the service link. */
+
+.cc2-size-list {
+  display: grid;
+  gap: 10px;
+}
+
+.v2 .cc2-size {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  width: 100%;
+  padding: 16px 18px;
+  border: .8px solid var(--rule);
+  border-radius: 14px;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .3s ease, background .3s ease;
+}
+
+.v2 .cc2-size:hover {
+  border-color: var(--rule-strong);
+}
+
+.v2 .cc2-size.is-active {
+  border-color: var(--text);
+  background: rgba(242, 240, 236, .05);
+}
+
+.cc2-size-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.cc2-size-body {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text-55);
+}
+
+.v2 .cc2-service-link {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--text-55);
+  text-decoration: none;
+}
+
+.v2 .cc2-service-link:hover {
+  color: var(--text);
+}
+
+.cc2-table-wrap {
+  margin-top: 36px;
+  overflow-x: auto;
+  border: .8px solid var(--rule);
+  border-radius: 16px;
+}
+
+.cc2-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+
+.cc2-table th,
+.cc2-table td {
+  padding: 16px 20px;
+  border-bottom: .8px solid var(--rule);
+  text-align: left;
+  vertical-align: top;
+}
+
+.cc2-table thead th {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: var(--text-55);
+}
+
+.cc2-table tbody th {
+  font-weight: 600;
+}
+
+.cc2-table tbody tr:last-child th,
+.cc2-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.v2 .cc2-table a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.v2 .cc2-table a:hover {
+  text-decoration: underline;
+}
+
+.cc2-table td {
+  color: rgba(242, 240, 236, .8);
+  white-space: nowrap;
+}
+
+.cc2-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

@@ -80,6 +80,7 @@ export default function SitemapV2() {
       title: "Resources",
       links: [
         { label: "Pricing", href: "/pricing" },
+        { label: "Software Development Cost Calculator", href: "/software-development-cost-calculator" },
         { label: "Technologies", href: "/technologies" },
         { label: "Careers", href: "/careers" },
         { label: "FAQ", href: "/faq" },

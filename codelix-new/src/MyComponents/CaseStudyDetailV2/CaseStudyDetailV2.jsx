@@ -63,10 +63,13 @@ const TOOL_HIRE = {
   reactjs: "react", react: "react", nodejs: "nodejs", "node.js": "nodejs",
   laravel: "laravel", django: "python", python: "python", flutter: "flutter",
   "next.js": "nextjs", shopify: "shopify", woocommerce: "shopify",
+  angularjs: "angular", angular: "angular", "spring boot": "java", java: "java",
+  "react native": "react-native", figma: "ui-ux-designers",
 };
 const HIRE_LABEL = {
   react: "React", nodejs: "Node.js", laravel: "Laravel", python: "Python",
   flutter: "Flutter", nextjs: "Next.js", shopify: "Shopify",
+  angular: "Angular", java: "Java", "react-native": "React Native", "ui-ux-designers": "UI/UX",
 };
 
 /* a study from the repo keeps its category and industry on its PROJECTS
@@ -85,7 +88,7 @@ function caseStudyHelpLinks(cs) {
   const industryName = FOOTER_INDUSTRY_KEYWORDS.find((k) => k.path === `/industries/${industrySlug}`)?.label;
   if (industryName) links.push({ label: `${industryName} Software`, path: `/industries/${industrySlug}`, icon: Building2, body: `More on the software we build for ${industryName.toLowerCase()} businesses.` });
   const hires = [...new Set((cs.tools || cs.tags || []).map((t) => TOOL_HIRE[String(t).toLowerCase()]).filter(Boolean))].slice(0, 2);
-  hires.forEach((h) => links.push({ label: `Hire ${HIRE_LABEL[h]} Developers`, path: `/hire-developers/${h}`, icon: UserPlus, body: `The ${HIRE_LABEL[h]} developers who build projects like this one.` }));
+  hires.forEach((h) => links.push({ label: h === "ui-ux-designers" ? "Hire UI/UX Designers" : `Hire ${HIRE_LABEL[h]} Developers`, path: `/hire-developers/${h}`, icon: UserPlus, body: h === "ui-ux-designers" ? "The designers who design projects like this one." : `The ${HIRE_LABEL[h]} developers who build projects like this one.` }));
   return links;
 }
 

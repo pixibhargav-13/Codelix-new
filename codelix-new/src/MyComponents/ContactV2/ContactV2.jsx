@@ -118,6 +118,21 @@ export default function ContactV2() {
       return v && v !== "Select";
     }).length;
   }, [formData]);
+  /* the cost calculator links here with ?service=…&note=…, so the visitor
+     doesn't retype what they just chose. Read after mount: the prerendered
+     form is empty, and filling it during render would not match it. */
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const service = params.get("service");
+    const note = params.get("note");
+    if (!service && !note) return;
+    setFormData((prev) => ({
+      ...prev,
+      service: FOOTER_ALL_SERVICES.some((s) => s.label === service) ? service : prev.service,
+      aboutProject: note && !prev.aboutProject ? `${note.slice(0, 300)}\n\n` : prev.aboutProject,
+    }));
+  }, []);
+
   const completion = Math.round((filledCount / REQUIRED_FIELDS.length) * 100);
   const RING_R = 52;
   const RING_C = 2 * Math.PI * RING_R;

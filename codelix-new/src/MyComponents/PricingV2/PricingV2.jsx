@@ -18,29 +18,15 @@ import FaqSection from '../Shared/FaqSection';
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
+import { BASE_ESTIMATES, COMPLEXITY } from "../../lib/pricingBands.js";
 
 
-/* same real budget bands already used in the live /contact intake form
-   (ContactUs.jsx) — not new/invented numbers */
-const BASE_ESTIMATES = {
-  "Web": ["$1,500 - $5,000", "$5,000 - $10,000", "$10,000 - $25,000"],
-  "App": ["$5,000 - $15,000", "$15,000 - $35,000", "Above $35,000"],
-  "UI": ["$2,000 - $5,000", "$5,000 - $12,000", "$12,000 - $25,000"],
-  "Ecom": ["$3,000 - $8,000", "$8,000 - $20,000", "Above $20,000"],
-  "Enterprise": ["$10,000 - $25,000", "$25,000 - $60,000", "Above $60,000"],
-  "AI": ["$5,000 - $15,000", "$15,000 - $40,000", "Above $40,000"],
-  "Data": ["$4,000 - $10,000", "$10,000 - $25,000", "Above $25,000"],
-  "Support": ["$500 - $1,500 / mo", "$1,500 - $4,000 / mo", "Custom Retainer"],
-};
+/* the published bands live in src/lib/pricingBands.js, shared with the
+   cost calculator page */
 
 /* dynamically generate sorted project types list directly from the shared truth */
 const PROJECT_TYPES = FOOTER_ALL_SERVICES.map(s => s.label);
 
-const COMPLEXITY = [
-  "Simple (MVP / Foundation)",
-  "Standard (Core product / Redesign)",
-  "Complex (Scale / Enterprise)",
-];
 
 /* ballpark mapping onto those same real bands — explicitly labeled as an
    estimate, not a quote */
@@ -260,6 +246,9 @@ export default function PricingV2() {
             <Link className="v2-btn v2-btn--filled" to="/contact">
               <span>Get a real quote</span>
               <i className="v2-btn-arrow">→</i>
+            </Link>
+            <Link className="pv2-calculator-link" to="/software-development-cost-calculator">
+              Open the full cost calculator →
             </Link>
           </div>
         </div>
