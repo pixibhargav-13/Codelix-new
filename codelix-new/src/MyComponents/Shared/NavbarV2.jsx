@@ -143,7 +143,7 @@ export default function NavbarV2() {
       <nav className={`v2-nav ${navScrolled ? "scrolled" : ""} ${navHidden ? "nav-hidden" : ""}`}>
         <div className="v2-nav-inner">
           <Link to="/" className="v2-nav-logo" aria-label="Codelix — home">
-            <img src={codelixLogo} alt="Codelix" />
+            <img src={codelixLogo} alt="Codelix" width="544" height="188" />
           </Link>
           <div className="v2-nav-links">
             <div className="v2-nav-dropdown">

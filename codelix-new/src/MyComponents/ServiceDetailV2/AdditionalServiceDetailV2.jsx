@@ -27,6 +27,7 @@ import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 import { PROJECTS } from "../WorkV2/projectsData";
 import { useCaseStudies } from "../CaseStudyDetailV2/useCaseStudies";
 import { ADDITIONAL_SERVICES, additionalServiceBySlug } from "./additionalServicesData";
+import { pickRelated } from "../../lib/pickRelated";
 import NavbarV2 from "../Shared/NavbarV2";
 import ScrollSentence from "../Shared/ScrollSentence";
 import FaqSection from "../Shared/FaqSection";
@@ -103,6 +104,15 @@ const NEXT_STEPS = [
 const getFaqs = (svc) => {
   const name = svc.title.toLowerCase();
   const firstCover = svc.covers?.[0];
+  /* questions written for this service (additionalServicesContent.js), then
+     the two that hold for every engagement — pricing and after launch */
+  if (svc.faqs?.length) {
+    return [
+      ...svc.faqs,
+      { q: `How is ${name} priced?`, a: "Fixed scope, fixed price — you get a written quote before any work starts, based on what you actually need, not an hourly guess." },
+      { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that, you can keep us on a monthly retainer for updates, fixes, and support." },
+    ];
+  }
   return [
     { q: `How is ${name} priced?`, a: "Fixed scope, fixed price — you get a written quote before any work starts, based on what you actually need, not an hourly guess." },
     { q: `How long does a typical ${name} engagement take?`, a: "It depends on scope, but most engagements run 2–12 weeks. Use the estimator above for a rough range, then we'll firm it up on a call." },
@@ -340,7 +350,9 @@ export default function AdditionalServiceDetailV2() {
     );
   }
 
-  const related = ADDITIONAL_SERVICES.filter((s) => s.slug !== svc.slug).slice(0, 6).map((s, i) => ({
+  /* the six services that follow this one in the list, wrapping round —
+     taking the first six left every page linking the same set */
+  const related = pickRelated(ADDITIONAL_SERVICES, ADDITIONAL_SERVICES.findIndex((s) => s.slug === svc.slug), 6).map((s, i) => ({
     ...s, n: String(i + 1).padStart(2, "0"), path: `/services/${s.slug}`,
   }));
 
@@ -362,6 +374,12 @@ export default function AdditionalServiceDetailV2() {
   const relatedWork = [...adminWork, ...staticWork].slice(0, 3);
 
   const faqs = getFaqs(svc);
+  /* the service's own use cases and tools when it has them; the old shared
+     set is only a fallback. Icons rotate from the shared set — decorative. */
+  const useCases = svc.useCases
+    ? svc.useCases.map((c, i) => ({ ...c, icon: USE_CASES[i % USE_CASES.length].icon }))
+    : USE_CASES;
+  const stack = (svc.stack || []).map((name) => TECH_STACK.find((t) => t.name === name) || { name });
 
   return (
     <main className="v2 sd2" ref={rootRef}>
@@ -439,6 +457,15 @@ export default function AdditionalServiceDetailV2() {
         </div>
       </section>
 
+      {/* ══════════ 2a · OVERVIEW — written for this service alone ══════════ */}
+      {svc.overview && (
+        <section className="v2-section" id="overview">
+          <p className="v2-label">In Short</p>
+          <h2 className="v2-heading">What {svc.title.toLowerCase()} involves.</h2>
+          <p className="sd2-overview-text">{svc.overview}</p>
+        </section>
+      )}
+
       {/* ══════════ 2b · CLIENT STRIP ══════════ */}
       <ClientStrip />
 
@@ -503,10 +530,10 @@ export default function AdditionalServiceDetailV2() {
             <p className="v2-label">Who It's For</p>
             <h2 className="v2-heading">Who asks us for {svc.title.toLowerCase()}.</h2>
           </div>
-          <p className="v2-lede">The approach changes depending on who's using it and what they came to do.</p>
+          <p className="v2-lede">The situations people are usually in when they ask us for this.</p>
         </div>
-        <div className="sd2-case-grid">
-          {USE_CASES.map((c, i) => (
+        <div className={`sd2-case-grid${useCases.length === 4 ? " sd2-case-grid--four" : ""}`}>
+          {useCases.map((c, i) => (
             <article className="sd2-case" key={c.title}>
               <div className="sd2-case-top">
                 <span className="sd2-case-icon"><c.icon size={21} strokeWidth={1.6} /></span>
@@ -683,8 +710,8 @@ export default function AdditionalServiceDetailV2() {
       <section className="v2-section v2-tech" id="stack">
         <div className="v2-tech-head">
           <div>
-            <p className="v2-label">Our Broader Stack</p>
-            <h2 className="v2-heading">What we build with.</h2>
+            <p className="v2-label">{stack.length ? "Tools We Use" : "Our Broader Stack"}</p>
+            <h2 className="v2-heading">{stack.length ? `What we use for ${svc.title.toLowerCase()}.` : "What we build with."}</h2>
           </div>
           <p className="v2-lede">
             Chosen per project, not by habit — the right tool for your scale,
@@ -692,9 +719,11 @@ export default function AdditionalServiceDetailV2() {
           </p>
         </div>
         <div className="v2-tech-grid">
-          {TECH_STACK.map((t) => (
+          {(stack.length ? stack : TECH_STACK).map((t) => (
             <div className="v2-tech-item" key={t.name}>
-              <img src={t.src} alt={t.name} loading="lazy" />
+              {t.src
+                ? <img src={t.src} alt={t.name} loading="lazy" />
+                : <i className="sd2-tech-mono" aria-hidden="true">{t.name.slice(0, 2)}</i>}
               <span>{t.name}</span>
             </div>
           ))}

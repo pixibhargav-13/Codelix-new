@@ -131,7 +131,7 @@ export default function FooterV2() {
       </div>
       <div className="v2-footer-bottom">
         <Link to="/" className="v2-footer-bottom-brand" aria-label="Codelix — home">
-          <img src={codelixLogo} alt="Codelix" />
+          <img src={codelixLogo} alt="Codelix" width="544" height="188" />
         </Link>
         <span className="v2-footer-bottom-copy">© 2026 Codelix IT Solutions — All Copyright Reserved</span>
         <div className="v2-footer-legal">

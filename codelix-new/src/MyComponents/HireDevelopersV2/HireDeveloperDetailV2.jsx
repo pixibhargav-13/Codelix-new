@@ -130,7 +130,7 @@ export default function HireDeveloperDetailV2() {
             </div>
             <p className="v2-lede">The work clients most often bring to a {techLower} developer.</p>
           </div>
-          <div className="sd2-case-grid">
+          <div className={`sd2-case-grid${role.builds.length === 4 ? " sd2-case-grid--four" : ""}`}>
             {role.builds.map((b, i) => (
               <article className="sd2-case" key={b.title}>
                 <div className="sd2-case-top">
