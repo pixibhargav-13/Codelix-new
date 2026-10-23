@@ -28,6 +28,7 @@ import CtaSection from '../Shared/CtaSection';
 import FaqSection from "../Shared/FaqSection";
 import { StructuredData } from "../../components/StructuredData";
 import { SEO } from "../../components/SEO";
+import BreadcrumbSchema from "../../components/BreadcrumbSchema";
 import { fitTitle } from "../../lib/fitTitle.js";
 import { blogSeoTitleFor } from "../../lib/seoTitles.js";
 
@@ -181,6 +182,7 @@ export default function BlogDetailV2() {
           images between twelve of them, so using those would put the same
           picture on four unrelated posts - worse than the house card, which
           at least does not claim to depict the article. */}
+      <BreadcrumbSchema lastName={blog.title} />
       <SEO
         title={blogSeoTitleFor(slug) || fitTitle(blog.title, [" | Codelix IT Solutions", " | Codelix"])}
         ogTitle={blog.title}

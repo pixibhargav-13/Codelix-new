@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import gsap from "gsap";
 import { ArrowLeft, ArrowUpRight, X, Check, Briefcase, Building2, UserPlus } from "lucide-react";
 import { SEO } from "../../components/SEO";
+import BreadcrumbSchema from "../../components/BreadcrumbSchema";
 import { caseStudyKeywordsFor } from "../../lib/caseStudyKeywords";
 
 /* v2 design system — same source of truth as the other v2 pages */
@@ -186,6 +187,7 @@ export default function CaseStudyDetailV2() {
 
   return (
     <div className="v2" ref={rootRef}>
+      <BreadcrumbSchema lastName={cs.title} />
       <SEO
         title={caseStudySeoTitleFor(cs.slug) || fitTitle(cs.title, [" | Case Study | Codelix", " | Codelix"])}
         ogTitle={cs.title}

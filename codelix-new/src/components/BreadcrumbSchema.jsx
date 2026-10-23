@@ -1,6 +1,19 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS, FOOTER_PRODUCTS, FOOTER_HIRE } from '../MyComponents/HomepageV2/footerData';
+
+/* Breadcrumb names are what Google shows in a result's URL line, so they
+   should be the page's real name. Built from the slug, they came out as
+   "B2b Saas", "Ux Research Design Systems" or "Design System Component Based
+   Uis Efficiency At Scale". Every service, industry, product and hire page is
+   already named in the footer lists, so those names are used by full path;
+   a blog post or case study passes its own headline as `lastName`. The slug
+   is only the fallback. */
+const PATH_NAMES = Object.fromEntries(
+  [...FOOTER_ALL_SERVICES, ...FOOTER_INDUSTRY_KEYWORDS, ...FOOTER_PRODUCTS, ...FOOTER_HIRE]
+    .map(({ label, path }) => [path, label])
+);
 
 const SLUG_NAMES = {
   'about': 'About',
@@ -10,14 +23,6 @@ const SLUG_NAMES = {
   'contact': 'Contact Us',
   'terms-of-service': 'Terms of Service',
   'privacy-policy': 'Privacy Policy',
-  'web-development': 'Web Development',
-  'application-development': 'Application Development',
-  'ui-ux-design': 'UI/UX Design',
-  'e-commerce-solutions': 'E-Commerce Solutions',
-  'custom-software-development': 'Custom Software Development',
-  'ai-development': 'AI Development',
-  'data-analytics': 'Data Analytics',
-  'support-managed-services': 'Support & Managed Services',
   'industries': 'Industries',
   'products': 'Products',
   'process': 'Our Process',
@@ -30,33 +35,9 @@ const SLUG_NAMES = {
   'refund-policy': 'Refund Policy',
   'case-study': 'Case Studies',
   'hire-developers': 'Hire Developers',
-  'react': 'React Developers',
-  'nodejs': 'Node.js Developers',
-  'laravel': 'Laravel Developers',
-  'python': 'Python Developers',
-  'flutter': 'Flutter Developers',
-  'android': 'Android Developers',
-  'ios': 'iOS Developers',
-  'nextjs': 'Next.js Developers',
-  'full-stack': 'Full-Stack Developers',
-  'ai': 'AI Developers',
-  'shopify': 'Shopify Developers',
-  'nextgen-case-study': 'NextGen Case Study',
-  'erp-case-study': 'ERP Case Study',
-  'payroll-case-study': 'Payroll Case Study',
-  'smart-business-case-study': 'Smart Business Case Study',
-  'book-collections-case-study': 'Book Collections Case Study',
-  'makhana-store-case-study': 'Makhana Store Case Study',
-  'freight-shipping-case-study': 'Freight Shipping Case Study',
-  'hr-portal-case-study': 'HR Portal Case Study',
-  'edtech-case-study': 'EdTech Case Study',
-  'modern-creative-agency-case-study': 'Modern Creative Agency Case Study',
-  'elegant-creative-agency-case-study': 'Elegant Creative Agency Case Study',
-  'ai-powered-design-case-study': 'AI-Powered Design Case Study',
-  'car-marketplace-case-study': 'Car Marketplace Case Study',
-  'school-management-case-study': 'School Management Case Study',
-  'smart-society-management-case-study': 'Smart Society Management Case Study',
 };
+
+const SITE = 'https://www.codelixitsolutions.com';
 
 const UPPER_WORDS = new Set(['erp', 'crm', 'ai', 'api']);
 const SMALL_WORDS = new Set(['in', 'and', 'of', 'for', 'the', 'to', 'vs']);
@@ -75,11 +56,18 @@ const slugToName = (slug) => {
     .join(' ');
 };
 
-const BreadcrumbSchema = () => {
+/* posts and case studies render their own breadcrumb (with their headline),
+   so the site-wide one stays out of their way */
+const SELF_NAMED = /^\/(blog|case-study)\/[^/]+\/?$/;
+
+const BreadcrumbSchema = ({ lastName } = {}) => {
   const location = useLocation();
   const pathnames = location.pathname.split('/').filter((x) => x);
 
   if (pathnames.length === 0) {
+    return null;
+  }
+  if (!lastName && SELF_NAMED.test(location.pathname)) {
     return null;
   }
 
@@ -92,7 +80,7 @@ const BreadcrumbSchema = () => {
     }
   ];
 
-  let currentUrl = "https://www.codelixitsolutions.com";
+  let currentUrl = SITE;
 
   pathnames.forEach((value, index) => {
     currentUrl += `/${value}`;
@@ -100,7 +88,7 @@ const BreadcrumbSchema = () => {
     itemListElement.push({
       "@type": "ListItem",
       position: index + 2,
-      name: slugToName(value),
+      name: (index === pathnames.length - 1 && lastName) || PATH_NAMES[currentUrl.replace(SITE, '')] || slugToName(value),
       item: currentUrl
     });
   });
