@@ -1,10 +1,40 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { fileURLToPath } from 'node:url'
+import fs from 'node:fs'
+import path from 'node:path'
+
+/* `vite preview` only serves a prerendered page at its trailing-slash URL;
+   for /industries/healthcare it falls back to dist/index.html, the HOMEPAGE.
+   React then hydrates the healthcare route onto homepage markup and throws
+   hydration error #418 on every page but /. Vercel, Netlify and the
+   .htaccess all serve dist/<path>/index.html for that URL, so the error never
+   happened in production - only locally, where it looked like a real bug.
+   This maps the URL the way the hosts do, and sends unknown URLs to 404.html
+   as Vercel does. */
+const previewLikeHost = () => ({
+  name: 'preview-like-host',
+  configurePreviewServer(server) {
+    const dist = path.resolve(server.config.root, server.config.build.outDir)
+    server.middlewares.use((req, res, next) => {
+      const [pathname, query = ''] = req.url.split('?')
+      if (pathname === '/' || path.extname(pathname)) return next()
+      const page = path.join(dist, decodeURIComponent(pathname), 'index.html')
+      if (fs.existsSync(page)) {
+        req.url = `${pathname.replace(/\/+$/, '')}/index.html${query ? `?${query}` : ''}`
+      } else if (!pathname.startsWith('/admin') && fs.existsSync(path.join(dist, '404.html'))) {
+        res.statusCode = 404
+        res.setHeader('Content-Type', 'text/html')
+        return res.end(fs.readFileSync(path.join(dist, '404.html')))
+      }
+      next()
+    })
+  },
+})
 
 // https://vite.dev/config/
 export default defineConfig(({ command, isSsrBuild }) => ({
-  plugins: [react()],
+  plugins: [react(), previewLikeHost()],
   resolve: {
     alias: [
       /* react-router 7's package.json maps every import condition to its
