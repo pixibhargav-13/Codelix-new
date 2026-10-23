@@ -9,7 +9,9 @@
   margin: 0;
 }
 
-.hd2-skills {
+/* .v2-scoped: the shared `.v2 p, .v2 ul { margin: 0 }` reset is more
+   specific than a lone class and was wiping out the gap above the pills */
+.v2 .hd2-skills {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
