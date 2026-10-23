@@ -8,6 +8,7 @@ import { seoData } from "../src/lib/seoData.js";
 import { INTRO_MEDIA, INTRO_SEEN_KEY } from "../src/lib/introGate.js";
 import { createRouteCss } from "./route-css.mjs";
 import { createPageDates } from "./page-dates.mjs";
+import { caseStudyFromRow } from "../src/lib/caseStudyRow.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -68,39 +69,9 @@ async function build() {
     console.log(`✅ Fetched ${blogPostsRaw?.length || 0} blog posts`);
   }
 
-  // Map to the format the application expects
-  const caseStudies = (caseStudiesRaw || []).map((cs) => {
-    const challengeImages = [
-      cs.challenge_image_1_url ? { src: cs.challenge_image_1_url, alt: cs.challenge_image_1_alt || "" } : null,
-      cs.challenge_image_2_url ? { src: cs.challenge_image_2_url, alt: cs.challenge_image_2_alt || "" } : null,
-    ].filter(Boolean);
-
-    return {
-      slug: cs.slug,
-      title: cs.title,
-      description: cs.description,
-      category: cs.category,
-      industry: cs.industry || cs.category,
-      tags: cs.tags?.length ? cs.tags : [],
-      tools: cs.tools?.length ? cs.tools : cs.tags || [],
-      overview: cs.overview || [],
-      outcomes: cs.outcomes || [],
-      challenges: cs.challenges || [],
-      solutions: cs.solutions || [],
-      image: cs.cover_image_url || "https://laravel.com/img/logomark.min.svg",
-      publishedAt: cs.published_at || undefined,
-      updatedAt: cs.updated_at || undefined,
-      isConcept: !!cs.is_concept,
-      snapshot: cs.snapshot?.length ? cs.snapshot : undefined,
-      challengeImages: challengeImages.length ? challengeImages : undefined,
-      process: cs.process?.length ? cs.process : undefined,
-      resultsNote: cs.results_note || undefined,
-      services: cs.services?.length ? cs.services : undefined,
-      features: cs.features?.length ? cs.features : undefined,
-      whyStack: cs.why_stack?.length ? cs.why_stack : undefined,
-      quote: cs.quote_text ? { text: cs.quote_text, role: cs.quote_role || "", name: cs.quote_name || "" } : undefined,
-    };
-  });
+  /* the same mapping useCaseStudies applies in the browser, so the
+     prerendered page and the one React hydrates are built from one object */
+  const caseStudies = (caseStudiesRaw || []).map(caseStudyFromRow);
 
   const blogPosts = (blogPostsRaw || []).map((p) => ({
     id: `sb-${p.id}`,

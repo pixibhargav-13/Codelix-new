@@ -19,7 +19,7 @@ import "./CaseStudyDetailV2.css";
 import { useCaseStudies } from "./useCaseStudies";
 import ArticleSkeleton from "../Shared/ArticleSkeleton";
 import NotFound from "../NotFound/NotFound";
-import { PROJECTS } from "../WorkV2/projectsData";
+import { caseStudyCard } from "../../lib/caseStudyRow";
 import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from '../Shared/CtaSection';
 import { StructuredData } from "../../components/StructuredData";
@@ -72,12 +72,8 @@ const HIRE_LABEL = {
   angular: "Angular", java: "Java", "react-native": "React Native", "ui-ux-designers": "UI/UX",
 };
 
-/* a study from the repo keeps its category and industry on its PROJECTS
-   entry; one from Supabase carries them itself */
-const projectInfo = (cs) => {
-  const project = PROJECTS.find((p) => p.href === `/${cs.slug}`);
-  return { category: cs.category || project?.category, industry: cs.industry || project?.industry };
-};
+/* every study carries its own category and industry (see caseStudyRow.js) */
+const projectInfo = (cs) => ({ category: cs.category, industry: cs.industry });
 
 function caseStudyHelpLinks(cs) {
   const links = [];
@@ -180,9 +176,10 @@ export default function CaseStudyDetailV2() {
      NotFound's noindex keeps them out of the index (see BlogDetailV2) */
   if (!cs) return <NotFound />;
 
+  const projects = caseStudies.map(caseStudyCard);
   const more = pickRelated(
-    PROJECTS,
-    PROJECTS.findIndex((p) => p.href === `/${cs.slug}`),
+    projects,
+    projects.findIndex((p) => p.slug === cs.slug),
     3,
     (p) => (p.category === projectInfo(cs).category ? 1 : 0),
   );
@@ -196,7 +193,7 @@ export default function CaseStudyDetailV2() {
         ogTitle={cs.title}
         description={cs.description || `Read about how we solved ${cs.title} at Codelix IT Solutions.`}
         keywords={caseStudyKeywordsFor(cs.slug, cs.tags)}
-        image={cs.coverImage || cs.ogImage}
+        image={cs.coverImage}
         type={cs.publishedAt ? "article" : undefined}
         publishedTime={toISODate(cs.publishedAt)}
         modifiedTime={toISODate(cs.updatedAt) || toISODate(cs.publishedAt)}

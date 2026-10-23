@@ -12,6 +12,13 @@ const timeOf = (p) => { const iso = isoDate(p.publishedAt || p.date); return iso
 const newestFirst = (list) =>
   [...list].sort((a, b) => timeOf(b) - timeOf(a) || (typeof a.id === "number" && typeof b.id === "number" ? b.id - a.id : 0));
 
+/* Supabase posts plus any built-in post Supabase doesn't have yet. A post in
+   both is taken from Supabase: that is the copy the admin panel edits. */
+const withStatic = (fromSupabase) => {
+  const inSupabase = new Set(fromSupabase.map((p) => p.slug));
+  return newestFirst([...fromSupabase, ...staticBlogs.filter((p) => !inSupabase.has(p.slug))]);
+};
+
 /* Posts from scripts/publish-blog-post.mjs store the on-site banner
    (<name>.banner.webp) as cover_image_url, with the link-preview card next
    to it as <name>.share.webp. Covers uploaded in the admin panel are used
@@ -48,9 +55,7 @@ export function useBlogPosts() {
         content: p.content,
       }));
     }
-    // Only use staticBlogs if there are no SSG posts, or merge them?
-    // The original code merged them: setPosts([...fromSupabase, ...staticBlogs])
-    return newestFirst([...ssgPosts, ...staticBlogs]);
+    return withStatic(ssgPosts);
   });
 
   /* Whether the Supabase read is still in flight. A post published from the
@@ -89,7 +94,7 @@ export function useBlogPosts() {
           tags: p.tags?.length ? p.tags : ["All Articles"],
           content: p.content,
         }));
-        setPosts(newestFirst([...fromSupabase, ...staticBlogs]));
+        setPosts(withStatic(fromSupabase));
       })
       /* a rejected request must still end the loading state, or an unknown
          slug would spin forever instead of reporting itself as missing */

@@ -13,9 +13,8 @@ import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./SitemapV2.css";
 
-import { CASE_STUDIES } from "../CaseStudyDetailV2/caseStudiesData";
 import { useCaseStudies } from "../CaseStudyDetailV2/useCaseStudies";
-import { blogs, slugify } from "../../data/blogData";
+import { slugify } from "../../lib/slugify";
 import { useBlogPosts } from "../../data/useBlogPosts";
 import { INDUSTRIES } from "../IndustriesV2/industriesData";
 import { PRODUCTS } from "../ProductsV2/productsData";

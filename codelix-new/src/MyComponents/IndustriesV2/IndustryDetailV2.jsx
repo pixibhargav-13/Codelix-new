@@ -12,7 +12,7 @@ import NavbarV2 from "../Shared/NavbarV2";
 import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
 import { TECH_STACK } from "../HomepageV2/techStack";
 import { INDUSTRIES, industryBySlug, WORK_INDUSTRY_MAP } from "./industriesData";
-import { PROJECTS } from "../WorkV2/projectsData";
+import { caseStudyCard } from "../../lib/caseStudyRow";
 import { useCaseStudies } from "../CaseStudyDetailV2/useCaseStudies";
 import { useTestimonials } from "../../data/useTestimonials";
 
@@ -227,21 +227,17 @@ export default function IndustryDetailV2() {
     );
   }
 
-  /* real matches only — static PROJECTS (by their `industry` field) plus
-     any admin-published case study whose own industry (set in the admin
-     panel, using the exact same option list) matches this page. Nothing
-     invented; an industry with no real or admin-added match simply skips
-     this section entirely. */
+  /* real matches only: case studies whose industry (set in the admin
+     panel, from the same option list) matches this page. Nothing invented;
+     an industry with no match simply skips this section entirely. */
   const toggleFlip = (i) => setFlippedCard((prev) => (prev === i ? -1 : i));
   const questions = firstCallQuestions(svc.title);
 
-  const adminMatchedWork = caseStudies
-    .filter((cs) => cs.image && cs.industry === WORK_INDUSTRY_MAP[svc.slug])
-    .map((cs) => ({ image: cs.image, category: cs.category, title: cs.title, href: `/case-study/${cs.slug}` }));
-  const staticMatchedWork = PROJECTS
-    .filter((p) => p.industry === WORK_INDUSTRY_MAP[svc.slug])
+  const matchedWork = caseStudies
+    .map(caseStudyCard)
+    .filter((p) => p.image && p.industry === WORK_INDUSTRY_MAP[svc.slug])
+    .slice(0, 3)
     .map((p) => ({ image: p.image, category: p.category, title: p.title, href: `/case-study${p.href}` }));
-  const matchedWork = [...adminMatchedWork, ...staticMatchedWork].slice(0, 3);
   const otherIndustries = INDUSTRIES.filter((i) => i.slug !== svc.slug).slice(0, 6);
   const faqs = [
     { q: `Do you have real experience in ${svc.title.toLowerCase()}?`, a: `Yes — ${svc.title} is one of the sectors we take on repeat work in, not a first attempt. See the problems and process above for what that looks like in practice.` },

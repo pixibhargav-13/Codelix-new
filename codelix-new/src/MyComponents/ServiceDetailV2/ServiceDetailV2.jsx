@@ -46,7 +46,7 @@ import techFigma from "../Images/figma.webp";
 import techWebflow from "../Images/webflow.webp";
 
 /* real project screenshots — shared source of truth with WorkV2/CaseStudyV2 */
-import { PROJECTS } from "../WorkV2/projectsData";
+import { useRelatedWork } from "../CaseStudyDetailV2/useCaseStudies";
 import NavbarV2 from "../Shared/NavbarV2";
 
 
@@ -171,14 +171,6 @@ const EST_ADDONS = [
 /* real web-development projects — pulled from the same shared portfolio
    data as the Work page, filtered to the category that actually matches
    this service, not the original three placeholders */
-/* every project in PROJECTS now has a matching v2 case-study page, so all
-   links route through /case-study rather than the old-site v1 href */
-const RELATED = PROJECTS
-  .filter((p) => p.category === "Web Development")
-  .map((p) => ({
-    tag: p.category, title: p.title, thumb: p.image,
-    link: `/case-study${p.href}`,
-  }));
 
 const PRINCIPLES = [
   { key: "Delivered", icon: CalendarCheck, claim: "No deadline we don't hold ourselves to.", body: "We pad the schedule honestly upfront so we don't have to renegotiate halfway through. If we say a date, we hit it." },
@@ -212,6 +204,8 @@ const scrollSentenceEase = (p) => p * p * p * (p * (p * 6 - 15) + 10);
 
 
 export default function ServiceDetailV2() {
+  /* related work: case studies from the admin panel (see useCaseStudies) */
+  const RELATED = useRelatedWork({ category: "Web Development" });
   const testimonials = useTestimonials(STATIC_TESTIMONIALS);
 
   

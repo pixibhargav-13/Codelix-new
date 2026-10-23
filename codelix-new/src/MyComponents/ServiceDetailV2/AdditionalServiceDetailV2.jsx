@@ -24,7 +24,7 @@ import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 
-import { PROJECTS } from "../WorkV2/projectsData";
+import { caseStudyCard } from "../../lib/caseStudyRow";
 import { useCaseStudies } from "../CaseStudyDetailV2/useCaseStudies";
 import { ADDITIONAL_SERVICES, additionalServiceBySlug } from "./additionalServicesData";
 import { pickRelated } from "../../lib/pickRelated";
@@ -356,22 +356,15 @@ export default function AdditionalServiceDetailV2() {
     ...s, n: String(i + 1).padStart(2, "0"), path: `/services/${s.slug}`,
   }));
 
-  /* admin-created case studies (published via Supabase) are prepended by
-     useCaseStudies() ahead of the static list, so mapping them into the
-     same { href, image, category, title } shape PROJECTS cards use and
-     putting them first here means the latest published case study for a
-     matching category shows up first — same additive merge as the
-     WorkV2 / CaseStudyV2 listings. */
-  const existingCaseStudySlugs = new Set(PROJECTS.map((p) => p.href.replace("/", "")));
-  const adminWork = svc.relatedCategory
+  /* case studies in this service's category, newest first (the order
+     useCaseStudies gives them) */
+  const relatedWork = svc.relatedCategory
     ? caseStudies
-      .filter((cs) => cs.image && cs.category === svc.relatedCategory && !existingCaseStudySlugs.has(cs.slug))
-      .map((cs) => ({ href: `/case-study/${cs.slug}`, image: cs.image, category: cs.category, title: cs.title }))
+      .map(caseStudyCard)
+      .filter((p) => p.image && p.category === svc.relatedCategory)
+      .slice(0, 3)
+      .map((p) => ({ href: `/case-study${p.href}`, image: p.image, category: p.category, title: p.title }))
     : [];
-  const staticWork = svc.relatedCategory
-    ? PROJECTS.filter((p) => p.category === svc.relatedCategory).map((p) => ({ href: `/case-study${p.href}`, image: p.image, category: p.category, title: p.title }))
-    : [];
-  const relatedWork = [...adminWork, ...staticWork].slice(0, 3);
 
   const faqs = getFaqs(svc);
   /* the service's own use cases and tools when it has them; the old shared
