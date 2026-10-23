@@ -102,11 +102,12 @@ export default function BlogV2() {
 
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> {blogs.length} articles, no fluff</span>
+                <h1 className="v2-hero-eyebrow">Software, Web &amp; App Development Blog</h1>
               </div>
-              <h1 className="sd2-hero-title">
+              <h2 className="sd2-hero-title">
                 <span className="line"><span>Notes on building</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">software that lasts.</span></span>
-              </h1>
+              </h2>
               <p className="sd2-hero-sub sv2-hero-reveal">
                 Practical writing on web, mobile, design, and the decisions
                 behind them — not recycled listicles.
@@ -187,6 +188,22 @@ export default function BlogV2() {
               </button>
             )}
           </div>
+        )}
+
+        {/* Every article as a plain link. The grid above shows nine and loads
+            the rest on a click, which crawlers never make — so posts past the
+            first nine had no link from the blog at all. */}
+        {blogs.length > 0 && (
+          <nav className="bv2-index" aria-label="All articles">
+            <h2 className="bv2-index-title">All articles</h2>
+            <ul>
+              {blogs.map((b) => (
+                <li key={b.id}>
+                  <Link to={`/blog/${b.slug || slugify(b.title)}`}>{b.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         )}
       </section>
 

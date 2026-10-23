@@ -8,7 +8,7 @@ import { Search, ArrowUpRight } from "lucide-react";
 
 import "../HomepageV2/HomepageV2.css";
 
-import { FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
+import { FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS, FOOTER_HIRE } from "../HomepageV2/footerData";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./SitemapV2.css";
@@ -55,6 +55,10 @@ export default function SitemapV2() {
         { label: "Services", href: "/services" },
         ...FOOTER_ALL_SERVICES.map((s) => ({ label: s.label, href: s.path })),
       ],
+    },
+    {
+      title: "Hire Developers",
+      links: FOOTER_HIRE.map((h) => ({ label: h.label, href: h.path })),
     },
     {
       title: "Industries",

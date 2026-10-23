@@ -430,11 +430,12 @@ export default function SupportManagedServicesV2() {
 
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Service 08 · Support &amp; Managed Services</span>
+                <h1 className="v2-hero-eyebrow">Software Maintenance &amp; Managed IT Services</h1>
               </div>
-              <h1 className="sd2-hero-title">
+              <h2 className="sd2-hero-title">
                 <span className="line"><span>Ongoing support that</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">keeps things running.</span></span>
-              </h1>
+              </h2>
               <p className="sd2-hero-sub sv2-hero-reveal">
                 Uptime monitoring, security patching, performance tuning, and
                 dedicated engineering capacity — a support plan that catches

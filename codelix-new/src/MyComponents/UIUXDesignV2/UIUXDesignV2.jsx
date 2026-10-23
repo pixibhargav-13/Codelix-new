@@ -438,11 +438,12 @@ export default function UIUXDesignV2() {
 
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Service 03 · UI/UX Design</span>
+                <h1 className="v2-hero-eyebrow">UI/UX Design Company in Ahmedabad</h1>
               </div>
-              <h1 className="sd2-hero-title">
+              <h2 className="sd2-hero-title">
                 <span className="line"><span>Interfaces that are</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">intuitive, beautiful, and backed by evidence.</span></span>
-              </h1>
+              </h2>
               <p className="sd2-hero-sub sv2-hero-reveal">
                 We design user interfaces and product experiences grounded in real
                 research — prototyped, tested, and refined until the interface

@@ -349,9 +349,29 @@ async function build() {
 
   // 5. Generate Sitemap
   console.log("Generating sitemap.xml...");
-  /* lastmod tells Google which pages are worth revisiting; without it
-     every URL in the sitemap looks equally stale. */
-  const buildDate = new Date().toISOString().slice(0, 10);
+  /* lastmod tells Google which pages are worth revisiting — but only while
+     it is true. Stamping every URL with the build date made all 111 pages
+     claim to change on every deploy, and Google stops trusting a sitemap's
+     lastmod once it sees that. Posts use their Supabase updated_at, other
+     pages the last commit to their source (the same date as their WebPage
+     dateModified); a page with neither gets no lastmod rather than a fake
+     one. */
+  const postDates = new Map(
+    [...(caseStudiesRaw || []).map((r) => [`/case-study/${r.slug}`, r]), ...(blogPostsRaw || []).map((r) => [`/blog/${r.slug}`, r])]
+      .map(([url, r]) => [url, r.updated_at || r.published_at])
+  );
+  const lastmodFor = (url) => {
+    let date = postDates.get(url);
+    if (!date) {
+      try {
+        date = pageDates(routeCss.sourceFor(url))?.modified;
+      } catch {
+        date = undefined;
+      }
+    }
+    const d = date ? new Date(date) : null;
+    return d && !isNaN(d) ? d.toISOString().slice(0, 10) : null;
+  };
   /* a page carrying noindex has no business in the sitemap - the file would
      be asking Google to index exactly what the tag tells it not to */
   const sitemapRoutes = allRoutes.filter(
@@ -360,7 +380,10 @@ async function build() {
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${sitemapRoutes
-  .map((url) => `  <url>\n    <loc>https://www.codelixitsolutions.com${url}</loc>\n    <lastmod>${buildDate}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>${url === '/' ? '1.0' : '0.8'}</priority>\n  </url>`)
+  .map((url) => {
+    const lastmod = lastmodFor(url);
+    return `  <url>\n    <loc>https://www.codelixitsolutions.com${url}</loc>\n${lastmod ? `    <lastmod>${lastmod}</lastmod>\n` : ""}    <changefreq>weekly</changefreq>\n    <priority>${url === '/' ? '1.0' : '0.8'}</priority>\n  </url>`;
+  })
   .join('\n')}
 </urlset>`;
 

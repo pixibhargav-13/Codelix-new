@@ -217,11 +217,12 @@ export default function TechnologiesV2() {
 
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> {STACK.length}+ tools, six categories</span>
+                <h1 className="v2-hero-eyebrow">Technologies We Use for Web &amp; App Development</h1>
               </div>
-              <h1 className="sd2-hero-title">
+              <h2 className="sd2-hero-title">
                 <span className="line"><span>The stack behind</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">what we build.</span></span>
-              </h1>
+              </h2>
               <p className="sd2-hero-sub sv2-hero-reveal">
                 Every tool below has shipped in a real client project — picked for
                 the problem at hand, not because it's trending.

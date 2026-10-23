@@ -3,6 +3,28 @@ import { Helmet } from 'react-helmet-async';
 import { useLocation } from "react-router-dom";
 import { OG_CARDS } from "../lib/ogCards.js";
 
+/* Google shows about 160 characters of a description and cuts the rest
+   mid-word. Case-study descriptions come from Supabase and run to 250-375
+   characters — written as an on-page summary, not a snippet — so every one
+   was being chopped. Keep whole sentences while they fit; if even the first
+   sentence is too long, cut at the last word boundary and mark the cut. */
+const DESC_MAX = 160;
+
+function fitDescription(desc) {
+  const text = desc.replace(/\s+/g, " ").trim();
+  if (text.length <= DESC_MAX) return text;
+  const sentences = text.match(/[^.!?]+[.!?]+(\s|$)/g) || [];
+  let out = "";
+  for (const s of sentences) {
+    if ((out + s).trim().length > DESC_MAX) break;
+    out += s;
+  }
+  out = out.trim();
+  if (out.length >= 90) return out;
+  const cut = text.slice(0, DESC_MAX - 1);
+  return `${cut.slice(0, cut.lastIndexOf(" ")).replace(/[\s,;:—–-]+$/, "")}…`;
+}
+
 export const SEO = ({
   title,
   ogTitle,
@@ -25,7 +47,7 @@ export const SEO = ({
   const pathName = location.pathname === '/' ? '/' : location.pathname.replace(/\/+$/, '');
   const fullCanonical = `${siteUrl}${pathName}`;
   const defaultDesc = 'Craft AI-powered web, app & SaaS solutions with world-class UI/UX design. Trusted by 40+ companies for professional development services.';
-  const finalDesc = description || defaultDesc;
+  const finalDesc = fitDescription(description || defaultDesc);
   const defaultImage = `${siteUrl}/og-image.png`;
   /* A blog post or a case study has a picture of the thing itself; sharing it
      with the house card wastes the one part of the preview people actually

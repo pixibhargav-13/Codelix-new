@@ -143,3 +143,12 @@
 .v2 .bv2-more-btn svg { transition: transform .35s var(--ease-expo); }
 .v2 .bv2-more-btn:hover svg { transform: translateY(3px); }
 
+
+/* plain list of every article under the grid — see BlogV2.jsx */
+.bv2-index { margin-top: 72px; padding-top: 32px; border-top: 1px solid rgba(242, 240, 236, .1); }
+.v2 .bv2-index-title { margin: 0 0 18px; font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--text-55); }
+.v2 .bv2-index ul { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 48px; }
+.bv2-index li { break-inside: avoid; padding: 9px 0; border-bottom: 1px solid rgba(242, 240, 236, .06); }
+.bv2-index a { font-size: 15px; line-height: 1.45; color: var(--text-70, rgba(242, 240, 236, .7)); text-decoration: none; transition: color .2s; }
+.bv2-index a:hover { color: var(--text); }
+@media (max-width: 700px) { .v2 .bv2-index ul { columns: 1; } }

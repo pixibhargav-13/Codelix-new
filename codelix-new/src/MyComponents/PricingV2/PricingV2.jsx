@@ -186,11 +186,12 @@ export default function PricingV2() {
 
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Scope-based, not a rate card</span>
+                <h1 className="v2-hero-eyebrow">Software Development Cost &amp; Pricing in India</h1>
               </div>
-              <h1 className="sd2-hero-title">
+              <h2 className="sd2-hero-title">
                 <span className="line"><span>How pricing</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">actually works.</span></span>
-              </h1>
+              </h2>
               <p className="sd2-hero-sub sv2-hero-reveal">
                 No public rate card — pricing follows scope and complexity. Get a
                 ballpark below, then a written quote after a free scoping call.

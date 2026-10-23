@@ -427,11 +427,12 @@ export default function ServiceDetailV2() {
 
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Service 01 · Web Development</span>
+                <h1 className="v2-hero-eyebrow">Web Development Company in Ahmedabad</h1>
               </div>
-              <h1 className="sd2-hero-title">
+              <h2 className="sd2-hero-title">
                 <span className="line"><span>Websites that are</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">fast, findable, and yours.</span></span>
-              </h1>
+              </h2>
               <p className="sd2-hero-sub sv2-hero-reveal">
                 We build high-performance websites and web applications with clean,
                 hand-written code — designed to convert visitors into customers.

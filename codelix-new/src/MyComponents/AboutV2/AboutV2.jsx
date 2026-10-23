@@ -200,11 +200,12 @@ export default function AboutV2() {
 
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Est. 2024 · Ahmedabad</span>
+                <h1 className="v2-hero-eyebrow">About Codelix IT Solutions — IT Company in Ahmedabad</h1>
               </div>
-              <h1 className="sd2-hero-title">
+              <h2 className="sd2-hero-title">
                 <span className="line"><span>A small team that</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">builds like it's theirs.</span></span>
-              </h1>
+              </h2>
               <p className="sd2-hero-sub sv2-hero-reveal">
                 Codelix is an IT solutions studio that builds web, mobile, and AI
                 systems for businesses that intend to still be running them in

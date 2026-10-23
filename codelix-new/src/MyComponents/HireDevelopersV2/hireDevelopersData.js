@@ -1,0 +1,321 @@
+/* "Hire <tech> developers" pages — the page type that brings most of the
+   non-brand traffic to the large Indian outsourcing firms. Each one targets a
+   query with real commercial intent ("hire react developers", "hire flutter
+   developers India") that none of the service pages answer, because a service
+   page is written around an outcome and these are written around a skill.
+
+   Only technologies already in the shared tech stack (HomepageV2/techStack.js)
+   and the case studies are listed, so every page is something the team
+   actually works in. The copy is per technology — what people hire for, the
+   skills that matter, questions buyers ask about that stack — rather than one
+   template with the name swapped in, which Google treats as duplicate.
+
+   `matchTools` are lowercased names as they appear in a case study's `tools`
+   list, used to show real shipped work on the page. */
+
+import {
+  Atom, Server, Code2, Brain, Smartphone, Apple, Layers, Bot, ShoppingBag, Globe, TabletSmartphone,
+} from "lucide-react";
+
+const RAW = [
+  {
+    slug: "react",
+    tech: "React",
+    icon: Atom,
+    title: "Hire React Developers",
+    seoTitle: "Hire React Developers in India | Codelix",
+    seoDescription: "Hire dedicated React.js developers from Codelix, Ahmedabad: React, TypeScript, Next.js and Redux for dashboards, SaaS and web apps. Proposal in 48 hours.",
+    keywords: "hire react developers, hire reactjs developers, hire react js developer India, dedicated react developer, react development company, offshore react developers, react developers for hire, hire frontend developers",
+    tagline: "React and TypeScript engineers for SaaS products, admin dashboards and customer portals — working in your repo, your sprints and your code standards.",
+    intro: "Most teams that hire React developers already have a product and need it to move faster: a backlog of screens, a dashboard that has grown slow, or a frontend nobody wants to touch. Our React developers have built ERP front-ends, HR portals, payroll systems and marketplaces, and they are used to joining an existing codebase rather than rewriting it.",
+    builds: [
+      { title: "SaaS front-ends", body: "Multi-tenant dashboards, role-based screens and billing flows on React with TypeScript." },
+      { title: "Admin panels & ERP UIs", body: "Data-heavy tables, filters, forms and reports that stay fast with thousands of rows." },
+      { title: "Customer portals", body: "Logged-in areas for clients and partners, wired to your existing APIs and auth." },
+      { title: "Frontend rescue", body: "Performance fixes, state-management cleanup and a test suite for a codebase that has drifted." },
+    ],
+    skills: ["React 18/19 & hooks", "TypeScript", "Next.js (SSR / SSG)", "Redux Toolkit, Zustand, React Query", "REST & GraphQL APIs", "Tailwind, Bootstrap, CSS modules", "Jest & React Testing Library", "Vite and webpack builds"],
+    services: ["/services/web-development", "/services/saas-product-development"],
+    matchTools: ["reactjs", "react"],
+    faqs: [
+      { q: "Do your React developers write TypeScript?", a: "Yes. New React work is written in TypeScript by default. If your codebase is plain JavaScript we follow it, and can migrate it file by file if you want." },
+      { q: "Can a React developer also handle Next.js and SEO?", a: "Yes. Server rendering, static generation, metadata and Core Web Vitals are part of the same skill set, and this website is itself a prerendered React app." },
+      { q: "Can you work on our existing React codebase?", a: "That is the most common case. The first week goes on reading the code, setting up the environment and shipping a small fix, so you see how the developer works before larger tickets." },
+    ],
+  },
+  {
+    slug: "nodejs",
+    tech: "Node.js",
+    icon: Server,
+    title: "Hire Node.js Developers",
+    seoTitle: "Hire Node.js Developers in India | Codelix",
+    seoDescription: "Hire Node.js developers for APIs, microservices and real-time apps. Express, NestJS, PostgreSQL, MongoDB and AWS. Dedicated or project-based, from Ahmedabad.",
+    keywords: "hire nodejs developers, hire node js developer India, dedicated nodejs developer, node.js development company, hire backend developers, express js developers, nestjs developers, api developers for hire",
+    tagline: "Backend engineers for REST and GraphQL APIs, integrations, background jobs and real-time features — built to be read and run by your team later.",
+    intro: "Node.js work is usually about the parts users never see: the API behind a mobile app, the integration that syncs orders into an ERP, the job queue that sends invoices at midnight. Our Node.js developers have shipped the backends for HR, payroll, freight and e-commerce systems, with PostgreSQL or MongoDB underneath and deployments on AWS.",
+    builds: [
+      { title: "REST & GraphQL APIs", body: "Documented with Swagger/OpenAPI, versioned, and covered by tests." },
+      { title: "Third-party integrations", body: "Payment gateways, CRMs, ERPs, WhatsApp and SMS providers, accounting tools." },
+      { title: "Real-time features", body: "Chat, notifications and live dashboards with WebSockets or Socket.IO." },
+      { title: "Microservices & jobs", body: "Queues, schedulers and services split out of a monolith when the load justifies it." },
+    ],
+    skills: ["Node.js & Express", "NestJS", "PostgreSQL, MySQL, MongoDB", "Prisma / Sequelize / Mongoose", "JWT, OAuth & role-based access", "Redis & job queues", "Docker & AWS", "Swagger / OpenAPI docs"],
+    services: ["/services/api-development-integration", "/services/custom-software-development"],
+    matchTools: ["nodejs", "node.js", "expressjs"],
+    faqs: [
+      { q: "Express or NestJS — which do your developers use?", a: "Both. Express for small services and existing codebases, NestJS when a larger team needs enforced structure. We follow what you already have." },
+      { q: "Will the API be documented?", a: "Yes. Every endpoint we build is documented in Swagger/OpenAPI so your frontend, mobile or partner teams can work against it without asking." },
+      { q: "Can your Node.js developers also handle DevOps?", a: "For most projects, yes — Docker, CI pipelines and deployment to AWS or similar. Larger infrastructure work is handled with our cloud team." },
+    ],
+  },
+  {
+    slug: "laravel",
+    tech: "Laravel",
+    icon: Code2,
+    title: "Hire Laravel Developers",
+    seoTitle: "Hire Laravel Developers in India | Codelix",
+    seoDescription: "Hire Laravel and PHP developers for web apps, admin panels, APIs and ERP systems. Upgrades, bug fixes and new builds. Dedicated developers from Ahmedabad.",
+    keywords: "hire laravel developers, hire laravel developer India, dedicated laravel developer, hire php developers, laravel development company, laravel upgrade services, php developers for hire",
+    tagline: "Laravel and PHP developers for business web apps, admin panels and APIs — including the older Laravel projects that need upgrading before they can grow.",
+    intro: "Laravel runs a huge share of business software in India: billing systems, booking platforms, school and society management tools. People hire Laravel developers either to build something new quickly, or because an existing PHP application needs an upgrade, a security review and someone who will stay with it.",
+    builds: [
+      { title: "Business web apps", body: "Booking, billing, inventory and CRM-style systems with admin panels built in." },
+      { title: "APIs for mobile apps", body: "Laravel Sanctum/Passport APIs behind Flutter, Android and iOS apps." },
+      { title: "Version upgrades", body: "Moving older Laravel and PHP versions forward without breaking what works." },
+      { title: "Maintenance & fixes", body: "Ongoing bug fixes, performance work and small features on an existing app." },
+    ],
+    skills: ["Laravel 10/11", "PHP 8+", "Eloquent ORM & MySQL", "Livewire & Blade", "Laravel Sanctum / Passport", "Queues, Horizon & scheduling", "Filament / Nova admin panels", "PHPUnit & Pest"],
+    services: ["/services/web-development", "/services/legacy-system-modernization"],
+    matchTools: ["laravel", "php"],
+    faqs: [
+      { q: "Can you upgrade an old Laravel project?", a: "Yes. We first audit the code and dependencies, then upgrade one version at a time with tests around the critical flows, so nothing breaks in production." },
+      { q: "Do you also work on core PHP or WordPress?", a: "Core PHP, yes. WordPress is handled by the same team for content sites, but complex business logic belongs in Laravel and we will say so." },
+      { q: "Why choose Laravel over Node.js?", a: "For admin-heavy business apps Laravel ships faster because auth, queues, mail and admin tooling come built in. We explain the trade-off for your case before you commit." },
+    ],
+  },
+  {
+    slug: "python",
+    tech: "Python",
+    icon: Brain,
+    title: "Hire Python Developers",
+    seoTitle: "Hire Python & Django Developers in India | Codelix",
+    seoDescription: "Hire Python developers for Django and FastAPI backends, data pipelines, automation scripts and AI integrations. Dedicated or project-based, from Ahmedabad.",
+    keywords: "hire python developers, hire python developer India, hire django developers, django development company, fastapi developers, python automation developers, dedicated python developer",
+    tagline: "Python developers for Django and FastAPI backends, data pipelines, automation and the AI features that sit on top of them.",
+    intro: "Python is what businesses reach for when the work involves data: pulling reports from several systems, automating a manual spreadsheet process, or adding an AI feature that needs a model and a pipeline behind it. Our Python developers work across Django web apps, FastAPI services and the scripts that glue systems together.",
+    builds: [
+      { title: "Django web apps", body: "Admin-heavy business systems with Django REST Framework APIs." },
+      { title: "FastAPI services", body: "Fast, typed APIs for AI features, mobile backends and internal tools." },
+      { title: "Data pipelines", body: "ETL jobs that move and clean data between databases, sheets and BI tools." },
+      { title: "Automation", body: "Scripts and bots that replace repetitive manual work, scheduled and monitored." },
+    ],
+    skills: ["Python 3", "Django & Django REST Framework", "FastAPI", "Pandas & NumPy", "PostgreSQL", "Celery & Redis", "OpenAI / LLM APIs, LangChain", "Docker & AWS"],
+    services: ["/services/data-engineering", "/services/ai-development"],
+    matchTools: ["django", "python"],
+    faqs: [
+      { q: "Django or FastAPI?", a: "Django when you need an admin panel, auth and a full web app quickly; FastAPI for lean APIs and AI or data services. Many projects use both." },
+      { q: "Can your Python developers build AI features?", a: "Yes — LLM integrations, retrieval over your documents, and classification or prediction models where there is enough data. See our AI developers page for dedicated AI work." },
+      { q: "Can you automate a process we do in Excel today?", a: "Usually, yes. We map the steps, automate the repeatable parts, and keep a human check where judgement is needed." },
+    ],
+  },
+  {
+    slug: "flutter",
+    tech: "Flutter",
+    icon: Smartphone,
+    title: "Hire Flutter Developers",
+    seoTitle: "Hire Flutter Developers in India | Codelix",
+    seoDescription: "Hire Flutter developers to build one app for Android and iOS: store releases, Firebase, payments and offline sync. Dedicated developers in Ahmedabad.",
+    keywords: "hire flutter developers, hire flutter developer India, flutter app development company, dedicated flutter developer, cross platform app developers, flutter developers for hire, hire mobile app developers",
+    tagline: "Flutter developers who ship one codebase to Android and iOS — and handle the store submissions, push notifications and payments that come with it.",
+    intro: "Flutter is the default choice for most businesses that need an app on both Android and iOS without paying for two teams. Our Flutter developers have built and released community, society-management and business apps, including AanganOne, our own product on Google Play, so they know the store review process as well as the code.",
+    builds: [
+      { title: "Cross-platform apps", body: "One Dart codebase for Android and iOS, with platform-specific touches where needed." },
+      { title: "Business & field apps", body: "Offline-first apps for sales teams, site visits and attendance." },
+      { title: "Customer apps", body: "Booking, ordering and account apps with payments and push notifications." },
+      { title: "Store releases", body: "Play Store and App Store builds, listings, review fixes and updates." },
+    ],
+    skills: ["Flutter & Dart", "Riverpod / Bloc / Provider", "Firebase (Auth, FCM, Firestore)", "REST & GraphQL integration", "Razorpay, Stripe & in-app purchases", "Offline storage (Hive, SQLite)", "Google Maps & location", "Play Store & App Store release"],
+    services: ["/services/application-development"],
+    matchTools: ["flutter", "dart"],
+    faqs: [
+      { q: "Is Flutter good enough for a production app?", a: "For the vast majority of business and consumer apps, yes. Where an app depends heavily on one platform's native features, we will tell you up front and suggest native Android or iOS instead." },
+      { q: "Do you publish the app to the stores?", a: "Yes. We prepare the builds, store listings and privacy forms, submit under your developer accounts, and fix anything the reviewers raise." },
+      { q: "Can Flutter developers also build the backend?", a: "We pair Flutter developers with our Node.js, Laravel or Firebase backend developers, so one team owns the app and its API." },
+    ],
+  },
+  {
+    slug: "android",
+    tech: "Android",
+    icon: TabletSmartphone,
+    title: "Hire Android Developers",
+    seoTitle: "Hire Android Developers: Kotlin & Java | Codelix",
+    seoDescription: "Hire Android developers for native Kotlin and Java apps: Jetpack Compose, offline sync, payments and Play Store releases. Dedicated developers in Ahmedabad.",
+    keywords: "hire android developers, hire android app developer India, kotlin developers, dedicated android developer, android app development company, native android developers for hire",
+    tagline: "Native Android developers working in Kotlin and Jetpack Compose, for apps that need the hardware, background work and performance only native code gives.",
+    intro: "Most apps today can be cross-platform, but some cannot: apps that run in the background all day, talk to Bluetooth devices or scanners, or must run well on low-end phones used in the field. That is where people hire native Android developers, and where Kotlin and Jetpack Compose earn their keep.",
+    builds: [
+      { title: "Native Android apps", body: "Kotlin and Jetpack Compose apps built to Material guidelines." },
+      { title: "Field & enterprise apps", body: "Barcode scanning, Bluetooth devices, GPS tracking and offline-first sync." },
+      { title: "Existing app upkeep", body: "Target-SDK upgrades, crash fixes and Play Console policy changes." },
+      { title: "Java to Kotlin migration", body: "Moving older Java apps to Kotlin screen by screen." },
+    ],
+    skills: ["Kotlin", "Java", "Jetpack Compose", "MVVM & Clean Architecture", "Room & WorkManager", "Retrofit & Coroutines", "Firebase & FCM", "Play Console & app bundles"],
+    services: ["/services/application-development"],
+    matchTools: ["android", "kotlin"],
+    faqs: [
+      { q: "Should we build native Android or use Flutter?", a: "If you need both platforms and standard features, Flutter is usually cheaper. If the app relies on device hardware, heavy background work or Android-only users, native is the better choice." },
+      { q: "Can you take over an app another team built?", a: "Yes. We start with a code and dependency audit, fix what blocks releases, and then move on to new features." },
+      { q: "Do you handle Play Store policy updates?", a: "Yes — target-SDK bumps, permission changes and data-safety forms are part of ongoing maintenance." },
+    ],
+  },
+  {
+    slug: "ios",
+    tech: "iOS",
+    icon: Apple,
+    title: "Hire iOS Developers",
+    seoTitle: "Hire iOS Developers: Swift & SwiftUI | Codelix",
+    seoDescription: "Hire iOS developers for native iPhone and iPad apps in Swift and SwiftUI, with App Store submission and updates. Dedicated developers in Ahmedabad, India.",
+    keywords: "hire ios developers, hire iphone app developer India, swift developers, swiftui developers, dedicated ios developer, ios app development company, hire apple app developers",
+    tagline: "Swift and SwiftUI developers for native iPhone and iPad apps — through App Store review and every iOS release after it.",
+    intro: "iOS users tend to be the highest-value customers in many markets, and they notice when an app does not feel native. Teams hire iOS developers for apps that need Apple-specific features — Face ID, Apple Pay, widgets, HealthKit — or to keep an existing Swift app current with each new iOS version.",
+    builds: [
+      { title: "Native iPhone & iPad apps", body: "Swift and SwiftUI apps that follow Apple's interface guidelines." },
+      { title: "Apple platform features", body: "Apple Pay, Sign in with Apple, push notifications, widgets and HealthKit." },
+      { title: "App Store submission", body: "Certificates, TestFlight builds, listings and handling review rejections." },
+      { title: "Upgrades & maintenance", body: "Keeping apps working on each new iOS release and device size." },
+    ],
+    skills: ["Swift", "SwiftUI & UIKit", "Combine & async/await", "Core Data & SwiftData", "Apple Pay & StoreKit", "Push notifications (APNs)", "TestFlight & App Store Connect", "XCTest"],
+    services: ["/services/application-development"],
+    matchTools: ["swift", "ios"],
+    faqs: [
+      { q: "Do you need a Mac or Apple account from us?", a: "We build on our own Macs. Apps are published under your Apple Developer account so you own the listing; we help you set it up if you don't have one." },
+      { q: "How do you handle App Store rejections?", a: "We read the reviewer's notes, fix the issue or reply with the explanation Apple asks for, and resubmit. Most rejections are about metadata, privacy text or sign-in flows." },
+      { q: "SwiftUI or UIKit?", a: "SwiftUI for new apps and screens; UIKit where an existing app or a specific component needs it. Both can live in the same app." },
+    ],
+  },
+  {
+    slug: "nextjs",
+    tech: "Next.js",
+    icon: Globe,
+    title: "Hire Next.js Developers",
+    seoTitle: "Hire Next.js Developers in India | Codelix",
+    seoDescription: "Hire Next.js developers for fast, SEO-friendly websites, headless e-commerce and SaaS apps: App Router, server components and Vercel. Team in Ahmedabad.",
+    keywords: "hire nextjs developers, hire next js developer India, next.js development company, dedicated nextjs developer, headless cms developers, seo friendly react website, vercel developers",
+    tagline: "Next.js developers for websites and apps that have to rank in search and load fast on a phone — marketing sites, headless stores and SaaS products.",
+    intro: "Next.js is what React teams use when search traffic and page speed matter. Companies hire Next.js developers to move a slow client-side React app to server rendering, to build a marketing site on a headless CMS, or to launch a SaaS product whose public pages need to rank.",
+    builds: [
+      { title: "Marketing websites", body: "Statically generated pages on a headless CMS your team can edit." },
+      { title: "Headless e-commerce", body: "Shopify or custom storefronts with fast product and category pages." },
+      { title: "SaaS applications", body: "Public pages and the logged-in app in one Next.js codebase." },
+      { title: "Migrations", body: "Moving a client-side React app to Next.js for SEO and Core Web Vitals." },
+    ],
+    skills: ["Next.js App Router", "React Server Components", "SSR, SSG & ISR", "TypeScript", "Headless CMS (Sanity, Strapi, Contentful)", "Tailwind CSS", "Vercel & AWS deployment", "Core Web Vitals tuning"],
+    services: ["/services/web-development", "/services/performance-optimization"],
+    matchTools: ["next.js", "nextjs"],
+    faqs: [
+      { q: "Will a Next.js site rank better than a plain React app?", a: "It gives search engines complete HTML on the first request and usually loads faster, both of which help. Rankings still depend on content and links, which we are honest about." },
+      { q: "Do we have to host on Vercel?", a: "No. Vercel is the simplest option, but we also deploy Next.js on AWS, other Node hosts or as a static export." },
+      { q: "Can you connect it to our CMS?", a: "Yes — Sanity, Strapi, Contentful, WordPress as a headless CMS, or a simple admin we build for you." },
+    ],
+  },
+  {
+    slug: "full-stack",
+    tech: "Full-stack",
+    icon: Layers,
+    title: "Hire Full-Stack Developers",
+    seoTitle: "Hire Full-Stack Developers in India | Codelix",
+    seoDescription: "Hire full-stack developers who build frontend, backend and database together: MERN, React with Laravel or Spring Boot, on AWS. Dedicated team in Ahmedabad.",
+    keywords: "hire full stack developers, hire full stack developer India, mern stack developers, hire mern developers, dedicated full stack developer, full stack development company, mean stack developers",
+    tagline: "Developers who own a feature end to end — database, API and screen — so small teams and startups can ship without coordinating three specialists.",
+    intro: "Startups and small product teams usually need people who can take a ticket from database table to finished screen. Our full-stack developers work mostly in the MERN stack, and in React or Angular paired with Spring Boot, Laravel or Django — the same combinations behind the ERP, HR and payroll systems in our case studies.",
+    builds: [
+      { title: "MVPs", body: "A first version with login, core workflow, admin and payments, launched in weeks." },
+      { title: "Internal tools", body: "The operations dashboards and workflows a spreadsheet can no longer handle." },
+      { title: "Feature squads", body: "Developers who pick up whole features in an existing product." },
+      { title: "SaaS platforms", body: "Multi-tenant apps with subscriptions, roles and reporting." },
+    ],
+    skills: ["MERN (MongoDB, Express, React, Node)", "React or Angular frontends", "Spring Boot, Laravel or Django backends", "PostgreSQL & MySQL", "REST, GraphQL & gRPC", "Docker & CI/CD", "AWS deployment", "Figma-to-code"],
+    services: ["/services/custom-software-development", "/services/saas-product-development"],
+    matchTools: ["reactjs", "nodejs", "spring boot", "django", "angularjs"],
+    faqs: [
+      { q: "Is one full-stack developer enough for our project?", a: "For an MVP or a contained product, often yes. As the product grows we usually add a specialist — a designer, a mobile developer or QA — and tell you when that point comes." },
+      { q: "Which stack will you use?", a: "Whatever you already run. For a new build we recommend based on your team and hiring plans — MERN is common, but not the answer to everything." },
+      { q: "Can a full-stack developer handle deployment?", a: "Yes, for standard setups — Docker, CI pipelines and AWS or similar hosting are part of the role." },
+    ],
+  },
+  {
+    slug: "ai",
+    tech: "AI",
+    icon: Bot,
+    title: "Hire AI Developers",
+    seoTitle: "Hire AI Developers: LLM, Agents & Chatbots | Codelix",
+    seoDescription: "Hire AI developers to build LLM features, AI agents, chatbots and document automation into your software with OpenAI, Claude, RAG and n8n. Team in Ahmedabad.",
+    keywords: "hire ai developers, hire ai developer India, hire llm developers, generative ai developers, ai agent developers, chatbot developers for hire, hire machine learning engineers, openai developers",
+    tagline: "Developers who put large language models to work inside real business software — agents, chatbots, document processing and automations that run without supervision.",
+    intro: "Most companies hiring AI developers do not need a research team. They need someone who can connect a model like GPT or Claude to their own data and systems, handle the cases where it gets things wrong, and keep the cost per request under control. That is the work our AI developers do.",
+    builds: [
+      { title: "AI agents", body: "Agents that read, decide and act across your tools — with approval steps where it matters." },
+      { title: "Chatbots on your data", body: "Support and sales assistants grounded in your documents with retrieval (RAG)." },
+      { title: "Document automation", body: "Extracting data from invoices, forms and contracts into your systems." },
+      { title: "Workflow automation", body: "n8n, Make and Zapier flows with AI steps for triage, drafting and routing." },
+    ],
+    skills: ["OpenAI, Anthropic Claude & Gemini APIs", "Retrieval-augmented generation (RAG)", "Vector databases (pgvector, Pinecone)", "LangChain & tool calling", "Python & FastAPI", "Prompt evaluation & guardrails", "n8n, Make & Zapier", "Cost and latency monitoring"],
+    services: ["/services/ai-development", "/services/ai-agent-development", "/services/generative-ai-solutions"],
+    matchTools: [],
+    faqs: [
+      { q: "Will our data be used to train the AI model?", a: "We use providers and settings that do not train on API data, keep sensitive fields out of prompts where possible, and document exactly what is sent where." },
+      { q: "How do you stop the AI from giving wrong answers?", a: "By grounding answers in your own documents, testing against a set of real questions before launch, and adding human review for anything with financial or legal consequences." },
+      { q: "Which AI model will you use?", a: "The cheapest one that passes the tests for your task. We often start with a strong model to prove the workflow, then move simpler steps to smaller, cheaper models." },
+    ],
+  },
+  {
+    slug: "shopify",
+    tech: "Shopify",
+    icon: ShoppingBag,
+    title: "Hire Shopify Developers",
+    seoTitle: "Hire Shopify Developers in India | Codelix",
+    seoDescription: "Hire Shopify developers for custom themes, store builds, app integrations and speed fixes. Shopify and WooCommerce experts in Ahmedabad, India.",
+    keywords: "hire shopify developers, hire shopify developer India, shopify expert, shopify theme developer, shopify store setup, dedicated shopify developer, hire woocommerce developers",
+    tagline: "Shopify developers for store builds, custom Liquid themes, app integrations and the speed fixes that keep a store converting.",
+    intro: "Brands hire Shopify developers when a theme from the store no longer fits: product pages need custom sections, checkout needs an integration, or the site has slowed down under a pile of apps. Our developers build and maintain Shopify and WooCommerce stores for D2C brands and retailers.",
+    builds: [
+      { title: "Store setup & migration", body: "New Shopify stores, or moves from WooCommerce and other platforms with products and customers intact." },
+      { title: "Custom themes", body: "Liquid and Online Store 2.0 sections your team can rearrange without code." },
+      { title: "Integrations", body: "Payment gateways, shipping, ERP and inventory sync, and marketing tools." },
+      { title: "Speed & conversion fixes", body: "Removing app bloat and fixing Core Web Vitals on product and collection pages." },
+    ],
+    skills: ["Shopify Liquid & Online Store 2.0", "Shopify apps & APIs", "Headless Shopify (Hydrogen / Next.js)", "WooCommerce & WordPress", "Razorpay, Stripe & PayPal", "Shiprocket & shipping integrations", "Google Analytics 4 & pixels", "Page speed optimisation"],
+    services: ["/services/e-commerce-solutions", "/services/payment-integration-services"],
+    matchTools: ["shopify", "woocommerce"],
+    faqs: [
+      { q: "Can you migrate our store to Shopify?", a: "Yes. Products, variants, customers and order history are moved, and old URLs are redirected so you keep your search rankings." },
+      { q: "Do you build custom Shopify apps?", a: "Yes, when an existing app can't do the job. Often a theme customisation or a small private app is cheaper than another monthly subscription." },
+      { q: "Can you make our Shopify store faster?", a: "Usually. Most slow stores are slowed by apps and unoptimised images; we measure first and fix the biggest causes." },
+    ],
+  },
+];
+
+export const HIRE_ROLES = RAW;
+export const HIRE_SLUGS = RAW.map((r) => r.slug);
+export const hireRoleBySlug = (slug) => RAW.find((r) => r.slug === slug);
+
+/* Shared across every role because they are company facts, not per-stack
+   claims: how an engagement can be set up and how it starts. */
+export const ENGAGEMENT_MODELS = [
+  { title: "Dedicated developer", meta: "Monthly", body: "A full-time developer working only on your product, in your tools and stand-ups. Best for ongoing work and a long backlog." },
+  { title: "Team extension", meta: "Monthly", body: "Several developers — plus design or QA if needed — added alongside your in-house team, reporting to your lead." },
+  { title: "Fixed-scope project", meta: "Fixed price", body: "A defined piece of work with a written scope, price and timeline agreed before anything is built." },
+];
+
+export const HIRING_STEPS = [
+  { n: "01", meta: "30 minutes", title: "Tell us what you need", body: "A call about your product, stack, team and the work in the backlog." },
+  { n: "02", meta: "Within 48 hours", title: "Proposal & profiles", body: "A written proposal with the engagement model, cost and the developers we would put on it." },
+  { n: "03", meta: "Your choice", title: "Interview the developer", body: "Talk to the developer directly, and give them a technical task if you want to." },
+  { n: "04", meta: "On your go-ahead", title: "Start", body: "Access to your repo and tools, a first small task in week one, and regular updates from then on." },
+];
+
+export const SHARED_HIRE_FAQS = [
+  { q: "Who owns the code?", a: "You do. Code is written in your repository, and all intellectual property is transferred to you under the contract." },
+  { q: "Will you sign an NDA?", a: "Yes, before we see any of your code or documents." },
+  { q: "What are your working hours?", a: "Monday to Saturday, 10:00–19:00 IST, from our office in Ahmedabad. That overlaps the UK and European morning and the Gulf working day; for US teams we agree a fixed daily call slot at the start." },
+];

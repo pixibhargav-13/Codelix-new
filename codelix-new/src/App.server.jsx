@@ -62,6 +62,8 @@ import BlogDetail from "./MyComponents/BlogDetailV2/BlogDetailV2";
 import CaseStudy from "./MyComponents/CaseStudyV2/CaseStudyV2";
 import CaseStudyDetail from "./MyComponents/CaseStudyDetailV2/CaseStudyDetailV2";
 import LocationLanding from "./MyComponents/LocationLandingV2/LocationLandingV2";
+import HireDevelopers from "./MyComponents/HireDevelopersV2/HireDevelopersV2";
+import HireDeveloperDetail from "./MyComponents/HireDevelopersV2/HireDeveloperDetailV2";
 
 // ─── Scroll to top on route change ───────────────────────────────────────────
 const ScrollToTop = () => {
@@ -185,6 +187,8 @@ const AppRoutes = () => {
           <Route path="/blog/:slug" element={<BlogDetail />} />
           <Route path="/case-study" element={<CaseStudy />} />
           <Route path="/case-study/:slug" element={<CaseStudyDetail />} />
+          <Route path="/hire-developers" element={<HireDevelopers />} />
+          <Route path="/hire-developers/:slug" element={<HireDeveloperDetail />} />
 
           {/* ─── Admin panel ─── */}
           <Route path="/admin/login" element={<AdminLogin />} />

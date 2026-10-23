@@ -21,6 +21,7 @@ import aanganOneLogo from "../Images/Aanganone.webp";
 export const PRODUCTS = [
   {
     slug: "audytee",
+    seoTitle: "Audytee: Practice Management Software for CA Firms",
     keywords: "Audytee, CA practice management software, CA firm software, practice management software for chartered accountants, CA office management software, audit firm software, client and task management for CA, GST compliance tracking software, CA software India",
     seoDescription:
       "Practice management software for CA firms — client records, compliance deadlines, document collection and billing in one place instead of ten spreadsheets.",
@@ -248,6 +249,7 @@ export const PRODUCTS = [
 
   {
     slug: "aanganone",
+    seoTitle: "AanganOne: Society & Apartment Management App",
     keywords: "AanganOne, society management app, apartment management software, housing society management system, society maintenance app, visitor management app, residential community app, RWA management software India",
     seoDescription:
       "Society and apartment management software for maintenance, visitors, complaints and billing — one app for residents, committees and facility teams.",

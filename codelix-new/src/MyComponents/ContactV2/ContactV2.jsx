@@ -189,11 +189,12 @@ export default function ContactV2() {
 
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Usually reply within 1 business day</span>
+                <h1 className="v2-hero-eyebrow">Contact Codelix IT Solutions, Ahmedabad</h1>
               </div>
-              <h1 className="sd2-hero-title">
+              <h2 className="sd2-hero-title">
                 <span className="line"><span>Tell us what</span></span>{" "}
                 <span className="line"><span className="v2-hero-accent">you're building.</span></span>
-              </h1>
+              </h2>
               <p className="sd2-hero-sub sv2-hero-reveal">
                 Whether you're looking for guidance, support, or a custom
                 solution, we're here to help you every step of the way.
