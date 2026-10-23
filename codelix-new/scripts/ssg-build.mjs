@@ -69,6 +69,15 @@ async function build() {
     console.log(`✅ Fetched ${blogPostsRaw?.length || 0} blog posts`);
   }
 
+  /* Every blog post and case study lives only in Supabase now. A failed or
+     empty read would publish a site with no blog and no case studies, so
+     fail the build instead: Vercel then keeps the last good deploy live. */
+  if (caseStudiesError || blogPostsError || !caseStudiesRaw?.length || !blogPostsRaw?.length) {
+    throw new Error(
+      `Supabase returned ${caseStudiesError ? "an error" : `${caseStudiesRaw?.length || 0} case studies`} and ${blogPostsError ? "an error" : `${blogPostsRaw?.length || 0} blog posts`}; refusing to build a site without them`
+    );
+  }
+
   /* the same mapping useCaseStudies applies in the browser, so the
      prerendered page and the one React hydrates are built from one object */
   const caseStudies = (caseStudiesRaw || []).map(caseStudyFromRow);

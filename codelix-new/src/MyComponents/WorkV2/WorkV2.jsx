@@ -61,9 +61,7 @@ const INDUSTRIES = [
   "Travel & Hospitality"
 ];
 
-/* every project in PROJECTS now has a matching v2 case-study page (see
-   CaseStudyDetailV2/caseStudiesData.js), so every card routes through
-   /case-study rather than a bare v1 href */
+/* every project card routes to its case-study page under /case-study */
 const linkFor = (p) => `/case-study${p.href}`;
 
 /* same five real client quotes already used in Ourwork.jsx, not new/invented

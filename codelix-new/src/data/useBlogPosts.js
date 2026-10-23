@@ -1,6 +1,5 @@
 import { useEffect, useState, useContext } from "react";
 import { selectRows } from "../lib/supabaseRest";
-import { blogs as staticBlogs } from "./blogData";
 import { InitialDataContext } from "../lib/initialDataContext";
 import { toISODate as isoDate } from "../lib/isoDate.js";
 
@@ -12,12 +11,8 @@ const timeOf = (p) => { const iso = isoDate(p.publishedAt || p.date); return iso
 const newestFirst = (list) =>
   [...list].sort((a, b) => timeOf(b) - timeOf(a) || (typeof a.id === "number" && typeof b.id === "number" ? b.id - a.id : 0));
 
-/* Supabase posts plus any built-in post Supabase doesn't have yet. A post in
-   both is taken from Supabase: that is the copy the admin panel edits. */
-const withStatic = (fromSupabase) => {
-  const inSupabase = new Set(fromSupabase.map((p) => p.slug));
-  return newestFirst([...fromSupabase, ...staticBlogs.filter((p) => !inSupabase.has(p.slug))]);
-};
+/* a post saved in the admin panel without a cover still gets a picture */
+const FALLBACK_COVER = "/og/blog.png";
 
 /* Posts from scripts/publish-blog-post.mjs store the on-site banner
    (<name>.banner.webp) as cover_image_url, with the link-preview card next
@@ -41,9 +36,9 @@ export function useBlogPosts() {
           ? new Date(p.published_at).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })
           : "",
         readTime: p.read_time || "",
-        image: p.cover_image_url || staticBlogs[0]?.image,
-        /* the fallback above borrows another post.s picture, which is fine
-           for a card in a list and wrong for a link preview */
+        image: p.cover_image_url || FALLBACK_COVER,
+        /* the fallback above is a generic picture, fine for a card in a
+           list and wrong for a link preview */
         coverImage: shareImageFor(p.cover_image_url),
         /* the raw timestamp, kept alongside the display string:
            article:published_time has to be ISO 8601, and "1 January 2026"
@@ -55,7 +50,7 @@ export function useBlogPosts() {
         content: p.content,
       }));
     }
-    return withStatic(ssgPosts);
+    return newestFirst(ssgPosts);
   });
 
   /* Whether the Supabase read is still in flight. A post published from the
@@ -81,9 +76,9 @@ export function useBlogPosts() {
             ? new Date(p.published_at).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })
             : "",
           readTime: p.read_time || "",
-          image: p.cover_image_url || staticBlogs[0]?.image,
-        /* the fallback above borrows another post.s picture, which is fine
-           for a card in a list and wrong for a link preview */
+          image: p.cover_image_url || FALLBACK_COVER,
+        /* the fallback above is a generic picture, fine for a card in a
+           list and wrong for a link preview */
         coverImage: shareImageFor(p.cover_image_url),
         /* the raw timestamp, kept alongside the display string:
            article:published_time has to be ISO 8601, and "1 January 2026"
@@ -94,7 +89,7 @@ export function useBlogPosts() {
           tags: p.tags?.length ? p.tags : ["All Articles"],
           content: p.content,
         }));
-        setPosts(withStatic(fromSupabase));
+        setPosts(newestFirst(fromSupabase));
       })
       /* a rejected request must still end the loading state, or an unknown
          slug would spin forever instead of reporting itself as missing */

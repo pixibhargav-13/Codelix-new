@@ -1,20 +1,13 @@
 import { useEffect, useState, useContext, useMemo } from "react";
 import { selectRows } from "../../lib/supabaseRest";
-import { CASE_STUDIES as staticCaseStudies } from "./caseStudiesData";
 import { InitialDataContext } from "../../lib/initialDataContext";
 import { caseStudyFromRow, caseStudyCard } from "../../lib/caseStudyRow";
 
-/* Supabase studies first (newest first, as queried), then any repo study
-   Supabase doesn't have yet. A study in both is taken from Supabase: that
-   is the copy the admin panel edits. */
-const merge = (fromSupabase) => {
-  const inSupabase = new Set(fromSupabase.map((cs) => cs.slug));
-  return [...fromSupabase, ...staticCaseStudies.filter((cs) => !inSupabase.has(cs.slug))];
-};
 
 export function useCaseStudies() {
   const initialContext = useContext(InitialDataContext);
-  const [studies, setStudies] = useState(() => merge(initialContext?.caseStudies || []));
+  /* every study is in Supabase (edited in the admin panel), newest first */
+  const [studies, setStudies] = useState(() => initialContext?.caseStudies || []);
 
   /* in flight until the Supabase read settles — a study published from the
      admin panel exists only there, so an unknown slug may still be arriving */
@@ -35,7 +28,7 @@ export function useCaseStudies() {
           console.error("Supabase case_studies fetch error:", error);
           return;
         }
-        setStudies(merge((data || []).map(caseStudyFromRow)));
+        setStudies((data || []).map(caseStudyFromRow));
       })
       .catch(() => { if (active) setLoading(false); });
     return () => { active = false; };

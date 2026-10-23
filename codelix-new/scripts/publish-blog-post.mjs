@@ -33,7 +33,6 @@ import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import { createClient } from "@supabase/supabase-js";
 import { renderCover } from "./blog-cover.mjs";
-import { BLOG_POST_SLUGS } from "../src/lib/blogSlugs.js";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(here, "..");
@@ -172,10 +171,6 @@ problems.push(...(await linkProblems(content)));
 if (problems.length) fail(`post rejected:\n   - ${problems.join("\n   - ")}`);
 
 if (db) {
-  /* the twelve built-in posts live in src/data/blogData.js, not the
-     database, so a database check alone would let a new post take one of
-     their URLs; the two would then clash on the site */
-  if (BLOG_POST_SLUGS.includes(slug)) fail(`slug "${slug}" belongs to one of the built-in posts; choose another`);
   if (slug.startsWith("best-")) fail(`slug "${slug}" looks like a city landing page URL; choose another`);
   const { data: clash } = await db.from("blog_posts").select("id").eq("slug", slug).maybeSingle();
   if (clash) fail(`a post with slug "${slug}" already exists`);
