@@ -21,6 +21,7 @@ import { pickRelated } from "../../lib/pickRelated";
 import { authorFor } from "../../lib/people";
 import { useBlogPosts, toISODate } from "../../data/useBlogPosts";
 import ArticleSkeleton from "../Shared/ArticleSkeleton";
+import FullCopyReload from "../Shared/FullCopyReload";
 import NotFound from "../NotFound/NotFound";
 import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from '../Shared/CtaSection';
@@ -120,7 +121,8 @@ export default function BlogDetailV2() {
      a flash of the error screen before the real content replaced it. Wait for
      the read to settle before saying anything is missing; posts that are
      already in hand still render immediately, with no spinner. */
-  if (!blog && loading) return <ArticleSkeleton label="Loading article" />;
+  if ((!blog || blog.partial) && loading) return <ArticleSkeleton label="Loading article" />;
+  if (blog?.partial) return <FullCopyReload label="Loading article" />;
 
   /* vercel.json rewrites unknown /blog/:slug URLs to the homepage HTML (so a
      post published from the admin panel works before the next rebuild). A

@@ -27,10 +27,18 @@ export function createPageDates(repoDir) {
      is public, so no credentials are needed); if that fails, give no dates
      at all rather than wrong ones. */
   if (git(["rev-parse", "--is-shallow-repository"]) === "true") {
+    /* Vercel's clone has no "origin" remote, so the repository is named
+       explicitly. Only commits and trees are fetched (blob:none): that is
+       all `git log -- <file>` reads, and it is ~12 MB in a couple of
+       seconds where the full history is ~240 MB and over a minute. */
+    const owner = process.env.VERCEL_GIT_REPO_OWNER || "pixibhargav-13";
+    const slug = process.env.VERCEL_GIT_REPO_SLUG || "Codelix-new";
+    git(["remote", "add", "page-dates-history", `https://github.com/${owner}/${slug}.git`]);
     try {
-      execFileSync("git", ["fetch", "--unshallow", "--quiet"], { cwd: repoDir, stdio: "ignore", timeout: 120000 });
+      execFileSync("git", ["fetch", "--unshallow", "--filter=blob:none", "--quiet", "page-dates-history", "HEAD"],
+        { cwd: repoDir, stdio: "ignore", timeout: 120000 });
     } catch {
-      /* no network or no remote: dates are left out below */
+      /* no network: dates are left out below */
     }
   }
   const shallow = git(["rev-parse", "--is-shallow-repository"]) === "true";

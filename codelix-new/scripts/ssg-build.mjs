@@ -154,15 +154,18 @@ async function build() {
      own post or study only, and a page that reads neither list during the
      render gets neither. The same slimmed object is handed to render() as
      to the browser, so the prerendered markup and the page React hydrates
-     are built from identical data. */
+     are built from identical data. A slimmed record says so (partial: true):
+     a reader who clicks through to it client-side lands on a detail page
+     that must wait for the full copy from Supabase instead of rendering a
+     body that isn't there. */
   const STUDY_DETAIL_FIELDS = ["overview", "outcomes", "challenges", "solutions", "snapshot", "challengeImages", "process", "resultsNote", "services", "features", "whyStack", "scalability", "quote"];
-  const slimStudy = (cs) => Object.fromEntries(Object.entries(cs).filter(([k]) => !STUDY_DETAIL_FIELDS.includes(k)));
+  const slimStudy = (cs) => ({ ...Object.fromEntries(Object.entries(cs).filter(([k]) => !STUDY_DETAIL_FIELDS.includes(k))), partial: true });
   const dataFor = (url) => {
     const blogSlug = (url.match(/^\/blog\/([^/]+)$/) || [])[1];
     const studySlug = (url.match(/^\/case-study\/([^/]+)$/) || [])[1];
     return {
       caseStudies: initialData.caseStudies.map((cs) => (cs.slug === studySlug ? cs : slimStudy(cs))),
-      blogPosts: initialData.blogPosts.map((p) => (p.slug === blogSlug ? p : { ...p, content: undefined })),
+      blogPosts: initialData.blogPosts.map((p) => (p.slug === blogSlug ? p : { ...p, content: undefined, partial: true })),
     };
   };
   /* records which lists the render actually reads */

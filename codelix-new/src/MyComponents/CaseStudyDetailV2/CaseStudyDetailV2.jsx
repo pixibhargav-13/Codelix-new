@@ -16,6 +16,7 @@ import "./CaseStudyDetailV2.css";
 /* every case study comes from Supabase and is edited in the admin panel */
 import { useCaseStudies } from "./useCaseStudies";
 import ArticleSkeleton from "../Shared/ArticleSkeleton";
+import FullCopyReload from "../Shared/FullCopyReload";
 import NotFound from "../NotFound/NotFound";
 import { caseStudyCard } from "../../lib/caseStudyRow";
 import NavbarV2 from "../Shared/NavbarV2";
@@ -157,7 +158,8 @@ export default function CaseStudyDetailV2() {
   /* same reasoning as the blog detail page: don't call it missing until the
      Supabase read has settled, or an admin-published study opens with a flash
      of the error screen */
-  if (!cs && loading) return <ArticleSkeleton label="Loading case study" />;
+  if ((!cs || cs.partial) && loading) return <ArticleSkeleton label="Loading case study" />;
+  if (cs?.partial) return <FullCopyReload label="Loading case study" />;
 
   /* unknown slugs reach here through the vercel.json rewrite with a 200 —
      NotFound's noindex keeps them out of the index (see BlogDetailV2) */
