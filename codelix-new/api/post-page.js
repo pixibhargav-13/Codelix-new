@@ -1,6 +1,7 @@
 /* global process */
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { createClient } from '@supabase/supabase-js';
 
 /* /blog/:slug and /case-study/:slug land here (vercel.json rewrites) only
@@ -15,15 +16,27 @@ import { createClient } from '@supabase/supabase-js';
 const SITE = 'https://www.codelixitsolutions.com';
 const TABLES = { blog: 'blog_posts', case: 'case_studies' };
 
-/* dist/ is bundled with the function (vercel.json "includeFiles"); the live
-   site's copy is the fallback if it isn't */
+/* dist/ is bundled with the function (vercel.json "includeFiles"); where it
+   lands depends on the runtime, so a few places are tried before falling
+   back to the live site's copy. The fallback uses a browser User-Agent:
+   the site's firewall turns away unfamiliar ones. */
+const here = path.dirname(fileURLToPath(import.meta.url));
+const DIRS = [path.join(process.cwd(), 'dist'), path.join(here, '..', 'dist'), path.join(process.cwd(), 'codelix-new', 'dist')];
+
 async function page(file) {
-  try {
-    return fs.readFileSync(path.join(process.cwd(), 'dist', file), 'utf8');
-  } catch {
-    const res = await fetch(`${SITE}/${file}`, { headers: { 'User-Agent': 'CodelixPostPage/1.0' } });
-    return res.ok ? res.text() : null;
+  for (const dir of DIRS) {
+    try {
+      return { html: fs.readFileSync(path.join(dir, file), 'utf8'), source: 'fs' };
+    } catch { /* try the next place */ }
   }
+  try {
+    const res = await fetch(`${SITE}/${file}`, {
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; CodelixPostPage/1.0; +https://www.codelixitsolutions.com)' },
+    });
+    const html = await res.text();
+    if (html.includes('<html')) return { html, source: `fetch-${res.status}` };
+  } catch { /* fall through */ }
+  return { html: null, source: 'none' };
 }
 
 export default async function handler(req, res) {
@@ -46,9 +59,13 @@ export default async function handler(req, res) {
      and indexed as gone: serve the shell, which shows its own "not found"
      after it has checked for itself */
   if (exists || lookupFailed) {
+    const { html, source } = await page('post-shell.html');
     res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=60');
-    return res.status(200).send((await page('post-shell.html')) || '');
+    res.setHeader('X-Page-Source', source);
+    return res.status(200).send(html || '');
   }
+  const { html, source } = await page('404.html');
   res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=300');
-  return res.status(404).send((await page('404.html')) || 'Not found');
+  res.setHeader('X-Page-Source', source);
+  return res.status(404).send(html || 'Not found');
 }
