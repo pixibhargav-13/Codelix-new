@@ -526,7 +526,7 @@ export default function ServicesV2() {
             <div className="sv2-stat-card" key={s.label}>
               <span className="sv2-stat-icon"><s.icon size={18} strokeWidth={1.6} /></span>
               <div className="v2-stat-num">
-                <span className="v2-stat-value" data-target={s.value}>0</span>
+                <span className="v2-stat-value" data-target={s.value}>{s.value}</span>
                 <span className="v2-stat-suffix">{s.suffix}</span>
               </div>
               <div className="v2-stat-label">{s.label}</div>

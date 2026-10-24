@@ -705,7 +705,7 @@ export default function AIDevelopmentV2() {
                       />
                     </svg>
                     <div className="sd2-bench-num">
-                      <span className="sd2-bench-value" data-target={b.value}>0</span>
+                      <span className="sd2-bench-value" data-target={b.value}>{b.value}</span>
                       <span className="sd2-bench-suffix">{b.suffix}</span>
                     </div>
                   </div>

@@ -609,3 +609,11 @@
   color: #131926;
 }
 
+
+/* phones: hidden until the visitor scrolls past the first screen
+   (see `tucked` in Chatbot.jsx) */
+.chatbot-toggle.is-tucked {
+  opacity: 0;
+  transform: scale(0.6);
+  pointer-events: none;
+}

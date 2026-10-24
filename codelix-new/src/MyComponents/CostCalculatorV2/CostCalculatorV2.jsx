@@ -4,6 +4,7 @@ import { Users, Layers, Plug, Smartphone, ShieldCheck, Clock } from "lucide-reac
 import NavbarV2 from "../Shared/NavbarV2";
 import FooterV2 from "../Shared/FooterV2";
 import FaqSection from "../Shared/FaqSection";
+import RelatedReading from "../Shared/RelatedReading";
 import CtaSection from "../Shared/CtaSection";
 import { useHirePageMotion } from "../HireDevelopersV2/useHirePageMotion";
 import { BASE_ESTIMATES, COMPLEXITY, COST_FAMILIES } from "../../lib/pricingBands.js";
@@ -199,6 +200,8 @@ export default function CostCalculatorV2() {
             ))}
           </div>
         </section>
+
+        <RelatedReading />
 
         <FaqSection faqs={FAQS} className="v2-section--void" heading="Questions about software development cost." />
 

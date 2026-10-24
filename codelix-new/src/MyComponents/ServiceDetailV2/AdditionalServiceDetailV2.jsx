@@ -31,6 +31,7 @@ import { pickRelated } from "../../lib/pickRelated";
 import NavbarV2 from "../Shared/NavbarV2";
 import ScrollSentence from "../Shared/ScrollSentence";
 import FaqSection from "../Shared/FaqSection";
+import RelatedReading from "../Shared/RelatedReading";
 import CtaSection from "../Shared/CtaSection";
 import ClientStrip from "../Shared/ClientStrip";
 
@@ -486,7 +487,7 @@ export default function AdditionalServiceDetailV2() {
                 </button>
                 <div className={`sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`}>
                   <div className="sd2-inc-mobile-body-inner">
-                    <p className="sd2-inc-mobile-body-text">Part of every {svc.title.toLowerCase()} engagement.</p>
+                    <p className="sd2-inc-mobile-body-text">{c} is included in {svc.title}, scoped in your written quote.</p>
                   </div>
                 </div>
               </div>
@@ -504,7 +505,7 @@ export default function AdditionalServiceDetailV2() {
                 <span className="sd2-inc-panel-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
                 <span className="sd2-inc-panel-icon"><Check size={40} strokeWidth={1.2} /></span>
                 <h3 className="sd2-inc-panel-title">{c}</h3>
-                <p className="sd2-inc-panel-body">Part of every {svc.title.toLowerCase()} engagement, scoped to what you actually need.</p>
+                <p className="sd2-inc-panel-body">{c} is included in {svc.title} — scoped to what your project actually needs and listed in the written quote.</p>
               </div>
             ))}
           </div>
@@ -681,7 +682,7 @@ export default function AdditionalServiceDetailV2() {
                       />
                     </svg>
                     <div className="sd2-bench-num">
-                      <span className="sd2-bench-value" data-target={b.value}>0</span>
+                      <span className="sd2-bench-value" data-target={b.value}>{b.value}</span>
                       <span className="sd2-bench-suffix">{b.suffix}</span>
                     </div>
                   </div>
@@ -754,7 +755,7 @@ export default function AdditionalServiceDetailV2() {
       {/* ══════════ 11 · PRINCIPLES ══════════ */}
       <section className="v2-section" id="principles">
         <p className="v2-label">Our Principles</p>
-        <h2 className="v2-heading">Three commitments that govern every project.</h2>
+        <h2 className="v2-heading">Two commitments that govern every project.</h2>
         <div className="sd2-tenet-grid">
           {PRINCIPLES.map((p, i) => (
             <article className="sd2-tenet" key={p.key}>
@@ -864,6 +865,8 @@ export default function AdditionalServiceDetailV2() {
       <ScrollSentence words={SENTENCE} tone="dark" centered={true} />
 
       {/* ══════════ 14 · FAQ ══════════ */}
+      <RelatedReading />
+
       <FaqSection faqs={faqs} className="v2-section--void" />
 
       {/* ══════════ 15 · WHAT HAPPENS NEXT ══════════ */}

@@ -60,7 +60,7 @@ const STACK = [
   { name: "Angular", img: angularLogo, cat: "Frontend" },
   { name: "Vue", img: vueLogo, cat: "Frontend" },
   { name: "Next", img: nextLogo, cat: "Frontend" },
-  { name: "Nust", img: nust, cat: "Frontend" },
+  { name: "NestJS", img: nust, cat: "Backend" },
   { name: "Typescript", img: tsLogo, cat: "Frontend" },
   { name: "Javascript", img: jsLogo, cat: "Frontend" },
   { name: "Tailwind", img: tailwindLogo, cat: "Frontend" },
@@ -316,7 +316,7 @@ export default function TechnologiesV2() {
                       />
                     </svg>
                     <div className="sd2-bench-num">
-                      <span className="sd2-bench-value" data-target={b.value}>0</span>
+                      <span className="sd2-bench-value" data-target={b.value}>{b.value}</span>
                       <span className="sd2-bench-suffix">{b.suffix}</span>
                     </div>
                   </div>

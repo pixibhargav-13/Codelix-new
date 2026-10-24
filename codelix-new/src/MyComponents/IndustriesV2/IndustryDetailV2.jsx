@@ -22,6 +22,7 @@ import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./IndustriesV2.css";
 import "./IndustryDetailV2.css";
 import FaqSection from '../Shared/FaqSection';
+import RelatedReading from "../Shared/RelatedReading";
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
@@ -534,6 +535,8 @@ export default function IndustryDetailV2() {
       </section>
 
       {/* ══════════ 9 · FAQ ══════════ */}
+      <RelatedReading />
+
       <FaqSection faqs={faqs} className="v2-section--void" />
 
       {/* ══════════ 10 · OTHER INDUSTRIES ══════════ */}

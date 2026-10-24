@@ -849,8 +849,8 @@ export default function HomepageV2() {
           <p className="v2-pipe-eyebrow">From Brief To Launch</p>
           <h2 className="v2-pipe-heading">How We Ship.</h2>
           <p className="v2-pipe-lede">
-            Every project ships through the same seven stages: scope, design, build,
-            test, deploy, monitor, and support — without cutting a stage short.
+            Every release goes through the same pipeline: scope, design, build,
+            test, deploy, monitor, and support — without cutting a step short.
           </p>
         </div>
         <div className="v2-method-rows v2-pipe-rows">
@@ -978,7 +978,7 @@ export default function HomepageV2() {
           {STATS.map((s) => (
             <div className="v2-stat" key={s.label}>
               <div className="v2-stat-num">
-                <span className="v2-stat-value" data-target={s.value}>0</span>
+                <span className="v2-stat-value" data-target={s.value}>{s.value}</span>
                 <span className="v2-stat-suffix">{s.suffix}</span>
               </div>
               <div className="v2-stat-label">{s.label}</div>

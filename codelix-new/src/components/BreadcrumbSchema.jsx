@@ -58,6 +58,8 @@ const slugToName = (slug) => {
 
 /* posts and case studies render their own breadcrumb (with their headline),
    so the site-wide one stays out of their way */
+const NO_PAGE = new Set(['/products']);
+
 const SELF_NAMED = /^\/(blog|case-study)\/[^/]+\/?$/;
 
 const BreadcrumbSchema = ({ lastName } = {}) => {
@@ -84,10 +86,13 @@ const BreadcrumbSchema = ({ lastName } = {}) => {
 
   pathnames.forEach((value, index) => {
     currentUrl += `/${value}`;
+    /* /products has no page of its own (it redirects to /work), and a
+       breadcrumb must not point at a redirect */
+    if (NO_PAGE.has(currentUrl.replace(SITE, ''))) return;
 
     itemListElement.push({
       "@type": "ListItem",
-      position: index + 2,
+      position: itemListElement.length + 1,
       name: (index === pathnames.length - 1 && lastName) || PATH_NAMES[currentUrl.replace(SITE, '')] || slugToName(value),
       item: currentUrl
     });
