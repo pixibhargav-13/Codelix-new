@@ -166,7 +166,12 @@
 </head>
 
 <body>
+  <!-- Cloudflare's email obfuscation rewrote every mailto: link into
+       /cdn-cgi/l/email-protection, which crawlers report as a broken link on
+       every page; email_off exempts the prerendered page from it -->
+  <!--email_off-->
   <div id="root"></div>
+  <!--/email_off-->
   <script type="module" src="/src/main.jsx"></script>
 </body>
 
