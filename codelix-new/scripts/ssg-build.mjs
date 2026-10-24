@@ -147,12 +147,34 @@ async function build() {
 
   console.log(`Pre-rendering ${allRoutes.length} pages...`);
 
-  // Safe stringification for initial data
-  const safeInitialData = jsesc(initialData, {
-    isScriptContext: true,
-    json: true,
-    wrap: true
-  });
+  /* window.__INITIAL_DATA__ used to carry every post and case study in full
+     on every page — 240 KB, half to three quarters of each page's HTML. Only
+     the post or case study a page is about needs its body; every other page
+     shows them as cards and lists. So each route gets the full text of its
+     own post or study only, and a page that reads neither list during the
+     render gets neither. The same slimmed object is handed to render() as
+     to the browser, so the prerendered markup and the page React hydrates
+     are built from identical data. */
+  const STUDY_DETAIL_FIELDS = ["overview", "outcomes", "challenges", "solutions", "snapshot", "challengeImages", "process", "resultsNote", "services", "features", "whyStack", "scalability", "quote"];
+  const slimStudy = (cs) => Object.fromEntries(Object.entries(cs).filter(([k]) => !STUDY_DETAIL_FIELDS.includes(k)));
+  const dataFor = (url) => {
+    const blogSlug = (url.match(/^\/blog\/([^/]+)$/) || [])[1];
+    const studySlug = (url.match(/^\/case-study\/([^/]+)$/) || [])[1];
+    return {
+      caseStudies: initialData.caseStudies.map((cs) => (cs.slug === studySlug ? cs : slimStudy(cs))),
+      blogPosts: initialData.blogPosts.map((p) => (p.slug === blogSlug ? p : { ...p, content: undefined })),
+    };
+  };
+  /* records which lists the render actually reads */
+  const recording = (data) => {
+    const used = new Set();
+    const view = {};
+    for (const key of Object.keys(data)) {
+      Object.defineProperty(view, key, { enumerable: true, get: () => (used.add(key), data[key]) });
+    }
+    return { view, used };
+  };
+  const serialize = (data) => jsesc(data, { isScriptContext: true, json: true, wrap: true });
 
   /* A post or case study published after the last deploy has no file of its
      own yet, so vercel.json rewrites its URL to a fallback page. That used to
@@ -169,13 +191,15 @@ async function build() {
     path.resolve(__dirname, "../dist/post-shell.html"),
     template
       .replace("</head>", `${preconnectLink}\n</head>`)
-      .replace("</body>", `<script>window.__INITIAL_DATA__ = ${safeInitialData};</script>\n</body>`)
+      .replace("</body>", `<script>window.__INITIAL_DATA__ = ${serialize(dataFor("/post-shell"))};</script>\n</body>`)
   );
   console.log("✅ Wrote post-shell.html (fallback for posts published after this build)");
 
   for (const url of [...allRoutes, NOT_FOUND_ROUTE]) {
     try {
-      const { appHtml, helmet } = render(url, initialData);
+      const routeData = dataFor(url);
+      const { view, used } = recording(routeData);
+      const { appHtml, helmet } = render(url, view);
 
       let html = template;
 
@@ -267,10 +291,11 @@ async function build() {
         );
       }
 
-      // Inject the initial data before closing body
+      // Inject the initial data before closing body: only the lists read
+      const pageData = Object.fromEntries([...used].map((key) => [key, routeData[key]]));
       html = html.replace(
         '</body>',
-        `<script>window.__INITIAL_DATA__ = ${safeInitialData};</script>\n</body>`
+        `<script>window.__INITIAL_DATA__ = ${serialize(pageData)};</script>\n</body>`
       );
 
       /* WebPage markup with the page's dates, for every page that is not a
