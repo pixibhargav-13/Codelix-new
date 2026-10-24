@@ -20,7 +20,24 @@ export function createPageDates(repoDir) {
       return null;
     }
   };
+  /* Vercel builds from a shallow clone, so `git log -- <file>` saw only the
+     deploy commit and every page's lastmod and dateModified became the
+     deploy date — 109 of 145 sitemap URLs on one day, which teaches Google
+     to ignore lastmod. Fetch the rest of the history first (the repository
+     is public, so no credentials are needed); if that fails, give no dates
+     at all rather than wrong ones. */
+  if (git(["rev-parse", "--is-shallow-repository"]) === "true") {
+    try {
+      execFileSync("git", ["fetch", "--unshallow", "--quiet"], { cwd: repoDir, stdio: "ignore", timeout: 120000 });
+    } catch {
+      /* no network or no remote: dates are left out below */
+    }
+  }
   const shallow = git(["rev-parse", "--is-shallow-repository"]) === "true";
+  if (shallow) {
+    console.warn("⚠️ git history is shallow and could not be deepened — page dates and sitemap lastmod are left out");
+    return () => null;
+  }
   const cache = new Map();
 
   const datesOf = (files) => {
