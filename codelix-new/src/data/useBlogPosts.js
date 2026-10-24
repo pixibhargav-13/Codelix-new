@@ -48,6 +48,8 @@ export function useBlogPosts() {
         updatedAt: p.updated_at || undefined,
         tags: p.tags?.length ? p.tags : ["All Articles"],
         content: p.content,
+        /* prerendered pages carry only their own post's body (ssg-build) */
+        partial: p.partial || undefined,
       }));
     }
     return newestFirst(ssgPosts);
