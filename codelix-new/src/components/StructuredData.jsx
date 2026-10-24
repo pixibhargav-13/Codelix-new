@@ -12,10 +12,15 @@ const siteUrl = 'https://www.codelixitsolutions.com';
    with it on the name, the email (a contact@ mailbox) and both the LinkedIn and
    Instagram URLs, with nothing to tell Google they were the same company.
    Posts now point at that one entity by @id instead of restating it. */
+/* by @id only: the full node in index.html says what type of business it
+   is, and restating a type here contradicted it */
 const ORG_REF = {
-  "@type": "Organization",
   "@id": `${siteUrl}/#organization`,
   "name": "Codelix IT Solutions",
+};
+const PUBLISHER = {
+  ...ORG_REF,
+  "logo": { "@type": "ImageObject", "url": `${siteUrl}/codelix.svg` },
 };
 
 export const StructuredData = ({ type = 'Organization', data = null }) => {
@@ -33,6 +38,8 @@ export const StructuredData = ({ type = 'Organization', data = null }) => {
       "description": data.excerpt || undefined,
       "image": data.image || `${siteUrl}/og-image.png`,
       "url": `${siteUrl}${location.pathname}`,
+      "mainEntityOfPage": { "@type": "WebPage", "@id": `${siteUrl}${location.pathname}` },
+      "inLanguage": "en",
       /* new Date("20 October 2024") leans on implementation-defined parsing,
          and an unparseable date makes toISOString() throw mid-render. The
          explicit parser returns undefined instead, which drops the field. */
@@ -45,13 +52,7 @@ export const StructuredData = ({ type = 'Organization', data = null }) => {
       "author": data.author || FOUNDERS,
       /* Google's article guidance expects a publisher with a logo; without
          it the post is not eligible for the richer article treatments. */
-      "publisher": {
-        ...ORG_REF,
-        "logo": {
-          "@type": "ImageObject",
-          "url": `${siteUrl}/codelix.svg`
-        }
-      }
+      "publisher": PUBLISHER,
     };
   } else if (type === 'FAQPage' && Array.isArray(data) && data.length) {
     /* Google stopped showing FAQ rich results for most commercial sites in
@@ -113,8 +114,12 @@ export const StructuredData = ({ type = 'Organization', data = null }) => {
       "url": `${siteUrl}${location.pathname}`,
       "datePublished": toISODate(data.publishedAt),
       "dateModified": toISODate(data.updatedAt) || toISODate(data.publishedAt),
-      "author": FOUNDERS,
-      "publisher": ORG_REF,
+      "mainEntityOfPage": { "@type": "WebPage", "@id": `${siteUrl}${location.pathname}` },
+      "inLanguage": "en",
+      /* the company, not named people: a case study shows no byline, and
+         markup should not credit authors the page doesn't name */
+      "author": ORG_REF,
+      "publisher": PUBLISHER,
     };
   }
 

@@ -13,6 +13,22 @@ const Chatbot = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showCloseDialog, setShowCloseDialog] = useState(false);
+
+  /* On a phone the round button sat over the first screen's text — the
+     hero's facts, the contact details, a post's cover. There it waits until
+     the visitor has scrolled past the first screen; wider screens have room
+     beside the content and show it straight away. */
+  const [tucked, setTucked] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(max-width: 700px)").matches && window.scrollY < window.innerHeight * 0.8
+  );
+  useEffect(() => {
+    if (!tucked) return;
+    const onScroll = () => {
+      if (window.scrollY >= window.innerHeight * 0.8) setTucked(false);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [tucked]);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -314,9 +330,11 @@ const Chatbot = () => {
 
       {!isOpen && (
         <button
-          className="chatbot-toggle"
+          className={`chatbot-toggle${tucked ? " is-tucked" : ""}`}
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Open chatbot"
+          aria-hidden={tucked || undefined}
+          tabIndex={tucked ? -1 : undefined}
         >
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="white" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

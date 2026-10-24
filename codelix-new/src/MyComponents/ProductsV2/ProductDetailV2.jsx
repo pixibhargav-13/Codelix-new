@@ -80,6 +80,7 @@ import "../IndustriesV2/IndustryDetailV2.css";
 import "./ProductDetailV2.css";
 import CtaSection from '../Shared/CtaSection';
 import FaqSection from "../Shared/FaqSection";
+import RelatedReading from "../Shared/RelatedReading";
 import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 
 export default function ProductDetailV2() {
@@ -192,8 +193,6 @@ export default function ProductDetailV2() {
             <div>
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
                 <Link to="/">Home</Link>
-                <span>/</span>
-                <Link to={`/products/${PRODUCTS[0].slug}`}>Products</Link>
                 <span>/</span>
                 <em>{p.name}</em>
               </nav>
@@ -543,6 +542,8 @@ export default function ProductDetailV2() {
           </div>
         </section>
       )}
+
+      <RelatedReading />
 
       {/* ══════════ FAQ ══════════ */}
       {faqs.length > 0 && (

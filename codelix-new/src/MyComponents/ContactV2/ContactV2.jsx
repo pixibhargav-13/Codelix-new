@@ -5,7 +5,7 @@ import FooterV2 from "../Shared/FooterV2";
 import gsap from "gsap";
 import {
   Search, ShieldCheck, Wallet, Handshake, Rocket,
-  Mail, Phone, MapPin, Check,
+  Mail, Phone, MapPin, Check, Clock,
 } from "lucide-react";
 
 /* v2 design system + shared data — same source of truth as the other v2 pages */
@@ -214,6 +214,14 @@ export default function ContactV2() {
                 Whether you're looking for guidance, support, or a custom
                 solution, we're here to help you every step of the way.
               </p>
+              {/* the form starts ~1,100px down on a phone; without this the
+                  first screen offered no way to start a project */}
+              <div className="sd2-hero-cta sv2-hero-reveal">
+                <a className="v2-btn v2-btn--filled" href="#contact-form">
+                  <span>Fill in the project form</span>
+                  <i className="v2-btn-arrow">→</i>
+                </a>
+              </div>
               <div className="sd2-hero-cta sv2-hero-reveal contact-hero-links">
                 <a className="contact-quick-link" href="mailto:sales@codelixitsolutions.com">
                   <Mail size={15} strokeWidth={1.7} />
@@ -231,11 +239,17 @@ export default function ContactV2() {
                   <MapPin size={15} strokeWidth={1.7} />
                   <span>Ahmedabad, Gujarat</span>
                 </a>
+                {/* the hours the LocalBusiness schema declares, now on the page */}
+                <span className="contact-quick-link">
+                  <Clock size={15} strokeWidth={1.7} />
+                  <span>Mon–Sat, 10:00–19:00 IST</span>
+                </span>
               </div>
             </div>
             
             {/* Visual Column */}
-            <div className="sd2-hero-visual sv2-hero-reveal">
+            {/* decorative mock-up of a chat: looks interactive, isn't */}
+            <div className="sd2-hero-visual sv2-hero-reveal" aria-hidden="true">
               <ContactHeroVisual />
             </div>
           </div>

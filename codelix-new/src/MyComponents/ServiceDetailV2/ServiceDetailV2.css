@@ -190,6 +190,9 @@
 .sd2-crumbs a {
   color: var(--text-45);
   transition: color .3s ease;
+  /* a 44px-tall tap target on phones, same position on screen */
+  padding-block: 13px;
+  margin-block: -13px;
 }
 
 .sd2-crumbs a:hover {

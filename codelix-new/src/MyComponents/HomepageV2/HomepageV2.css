@@ -698,6 +698,16 @@
   z-index: 130;
 }
 
+/* the icon stays 26px; the padding makes the tap target 44px and the
+   negative margin keeps it where it was. Scoped under .v2 so it outranks
+   the button reset (padding: 0) — the two must apply together, or the
+   margin alone shifts the icon. */
+.v2 .v2-burger {
+  box-sizing: content-box;
+  padding: 9px;
+  margin: -9px;
+}
+
 @media (min-width: 861px) {
   .mobile-only-drawer-link {
     display: none !important;
@@ -1348,10 +1358,13 @@
 }
 
 .v2-hero-eyebrow {
-  font-size: 10px;
-  letter-spacing: .22em;
+  /* this line is the page's H1 — 10px in the dimmest grey made the
+     heading search engines read the hardest thing on the page to read */
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .2em;
   text-transform: uppercase;
-  color: var(--text-38);
+  color: var(--text-55);
 }
 
 .v2-hero-title {
@@ -1440,6 +1453,9 @@
   display: inline-flex;
   align-items: center;
   gap: 11px;
+  /* 44px tall tap target without moving the text */
+  padding-block: 14px;
+  margin-block: -14px;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: .08em;
@@ -4741,7 +4757,7 @@
   }
 
   .v2-hero-eyebrow {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   /* Keep CTA buttons side-by-side on mobile */

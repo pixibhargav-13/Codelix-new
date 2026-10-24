@@ -62,7 +62,7 @@ export const TECH_STACK = [
   { src: techLaravel, name: "Laravel" },
   { src: techPhp, name: "PHP" },
   { src: techCsharp, name: "C#" },
-  { src: techNust, name: "Nust" },
+  { src: techNust, name: "NestJS" },
   { src: techMongo, name: "MongoDB" },
   { src: techPostgres, name: "PostgreSQL" },
   { src: techFirebase, name: "Firebase" },

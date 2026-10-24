@@ -230,7 +230,7 @@ export default function AboutV2() {
       {/* ══════════ 2 · STATS ══════════ */}
       <section className="v2-section v2-section--void" id="stats">
         <p className="v2-label">By The Numbers</p>
-        <h2 className="v2-heading">Six years of shipping, not pitching.</h2>
+        <h2 className="v2-heading">Built by shipping, not pitching.</h2>
         <div className="sd2-bench-panel">
           <div className="sd2-bench-bar">
             <span className="sd2-bench-bar-dot" aria-hidden="true" />
@@ -261,7 +261,7 @@ export default function AboutV2() {
                       />
                     </svg>
                     <div className="sd2-bench-num">
-                      <span className="sd2-bench-value" data-target={b.value}>0</span>
+                      <span className="sd2-bench-value" data-target={b.value}>{b.value}</span>
                       <span className="sd2-bench-suffix">{b.suffix}</span>
                     </div>
                   </div>

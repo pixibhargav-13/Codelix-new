@@ -413,7 +413,7 @@ export default function CaseStudyDetailV2() {
                     />
                   </svg>
                   <div className="sd2-bench-num">
-                    <span className="sd2-bench-value" data-target={o.value}>0</span>
+                    <span className="sd2-bench-value" data-target={o.value}>{o.value}</span>
                     <span className="sd2-bench-suffix">{o.suffix}</span>
                   </div>
                 </div>

@@ -31,6 +31,7 @@ import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import ScrollSentence from '../Shared/ScrollSentence';
 import FaqSection from '../Shared/FaqSection';
+import RelatedReading from "../Shared/RelatedReading";
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
 import { useTestimonials } from "../../data/useTestimonials";
@@ -711,7 +712,7 @@ export default function ApplicationDevelopmentV2() {
                       />
                     </svg>
                     <div className="sd2-bench-num">
-                      <span className="sd2-bench-value" data-target={b.value}>0</span>
+                      <span className="sd2-bench-value" data-target={b.value}>{b.value}</span>
                       <span className="sd2-bench-suffix">{b.suffix}</span>
                     </div>
                   </div>
@@ -905,6 +906,8 @@ export default function ApplicationDevelopmentV2() {
       <ScrollSentence words={SENTENCE} tone="dark"  centered={true} />
 
       {/* ══════════ 9 · FAQ ══════════ */}
+      <RelatedReading />
+
       <FaqSection faqs={FAQS} className="v2-section--void" />
 
       {/* ══════════ 14b · WHAT HAPPENS NEXT ══════════ */}

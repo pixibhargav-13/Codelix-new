@@ -4,6 +4,7 @@ import { UserRound, Users, FileSignature } from "lucide-react";
 import NavbarV2 from "../Shared/NavbarV2";
 import FooterV2 from "../Shared/FooterV2";
 import FaqSection from "../Shared/FaqSection";
+import RelatedReading from "../Shared/RelatedReading";
 import CtaSection from "../Shared/CtaSection";
 import ClientStrip from "../Shared/ClientStrip";
 import { HIRE_ROLES, ENGAGEMENT_MODELS, SHARED_HIRE_FAQS } from "./hireDevelopersData";
@@ -129,6 +130,8 @@ export default function HireDevelopersV2() {
             })}
           </div>
         </section>
+
+        <RelatedReading />
 
         <FaqSection faqs={FAQS} heading="Questions about hiring developers from Codelix." />
 

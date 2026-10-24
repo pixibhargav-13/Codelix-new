@@ -147,10 +147,13 @@ export default function TeamV2() {
         <p className="v2-label">Leadership</p>
         <h2 className="v2-heading">Two founders, one team.</h2>
         <div className="team-lead-grid">
+          {/* each card's id is the fragment of that founder's schema @id
+              (src/lib/people.js), so /team#manas-vadodaria lands here */}
           {LEADERSHIP.map((p, i) => (
             <article
               className={`team-lead-row${i % 2 !== 0 ? " team-lead-row--reverse" : ""}`}
               key={p.name}
+              id={p.name.toLowerCase().replace(/\s+/g, "-")}
             >
               {/* ── Image panel ── */}
               <div className="team-lead-img-panel">
