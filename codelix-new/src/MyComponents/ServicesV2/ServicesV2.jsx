@@ -235,17 +235,6 @@ export default function ServicesV2() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* hero intro */
-  useEffect(() => {
-    const el = rootRef.current;
-    if (!el) return;
-    const targets = el.querySelectorAll(".sv2-hero-reveal");
-    targets.forEach((t, i) => {
-      t.style.transitionDelay = `${0.15 + i * 0.09}s`;
-      requestAnimationFrame(() => t.classList.add("is-in"));
-    });
-  }, []);
-
   /* reveal-on-enter via IntersectionObserver (no cached scroll positions to
      go stale when webfonts/images reflow the page) */
   useEffect(() => {

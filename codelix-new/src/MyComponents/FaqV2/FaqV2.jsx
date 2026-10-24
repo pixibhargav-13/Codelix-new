@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
-import gsap from "gsap";
 import { Search } from "lucide-react";
 
 /* v2 design system — same source of truth as the other v2 pages */
@@ -16,7 +15,6 @@ import FaqHeroVisual from "./FaqHeroVisual";
 import NavbarV2 from "../Shared/NavbarV2";
 import FaqSection from '../Shared/FaqSection';
 import CtaSection from '../Shared/CtaSection';
-import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 
 
 /* every answer here is the same real, already-established statement used
@@ -57,19 +55,6 @@ export default function FaqV2() {
 
   const rootRef = useRef(null);
 
-  /* hero intro — masked-line GSAP wipe, matching the other v2 pages */
-  useEffect(() => {
-    const q = (s) => rootRef.current.querySelectorAll(s);
-    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
-    const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
-    tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .7 })
-      .fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")
-      .fromTo(q(".sd2-hero-title .line > span"),
-        { yPercent: 118 }, { yPercent: 0, duration: 1.15, stagger: .1 }, "-=.45")
-      .fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.65")
-      .fromTo(q(".sd2-hero-visual.sv2-hero-reveal"), { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 1 }, "-=.8");
-    return () => tl.kill();
-  }, []);
 
   const filtered = useMemo(() => {
     const term = search.trim().toLowerCase();

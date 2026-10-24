@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
 import { useParams, Link } from "react-router-dom";
-import gsap from "gsap";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 /* v2 design system — same source of truth as the other v2 pages */
@@ -31,6 +30,7 @@ import { SEO } from "../../components/SEO";
 import BreadcrumbSchema from "../../components/BreadcrumbSchema";
 import { fitTitle } from "../../lib/fitTitle.js";
 import { blogSeoTitleFor } from "../../lib/seoTitles.js";
+import { useReplayHeroIntro } from "../../lib/heroIntro.js";
 
 
 export default function BlogDetailV2() {
@@ -76,15 +76,7 @@ export default function BlogDetailV2() {
      same content, and keying on that replayed the intro — the breadcrumb,
      title and date vanished and animated in a second time. */
   const blogKey = blog ? blog.slug || blog.id : null;
-  useEffect(() => {
-    if (!blogKey) return;
-    const q = (s) => rootRef.current.querySelectorAll(s);
-    const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
-    tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .7 })
-      .fromTo(q(".bdv2-title"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.4")
-      .fromTo(q(".bdv2-meta"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.6");
-    return () => tl.kill();
-  }, [blogKey]);
+  useReplayHeroIntro(rootRef, blogKey);
 
   /* extraordinary section — a horizontal reading-progress rail that fills
      as the reader scrolls through the article body, painted every

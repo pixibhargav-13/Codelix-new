@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { SEO } from "../../components/SEO";
 import { StructuredData } from "../../components/StructuredData";
 import { useParams, Link } from "react-router-dom";
-import gsap from "gsap";
 import {
   Check, XCircle, FileCheck2, Layers3, Timer, KeyRound,
   Globe, Smartphone, PenTool, ShoppingCart, Code2, Sparkles, BarChart3,
@@ -25,7 +24,8 @@ import FaqSection from '../Shared/FaqSection';
 import RelatedReading from "../Shared/RelatedReading";
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
-import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
+import { useReplayHeroIntro } from "../../lib/heroIntro.js";
+import { keepWords } from "../../lib/keepWords.js";
 
 /* the 7 core service names that ever appear in industriesData.js's
    `services` arrays — real routes to the actual core service pages, not
@@ -92,20 +92,7 @@ export default function IndustryDetailV2() {
   const testimonials = useTestimonials(STATIC_QUOTES);
   const { studies: caseStudies } = useCaseStudies();
 
-  /* hero intro — masked-line GSAP wipe, matching every other v2 hero */
-  useEffect(() => {
-    if (!svc) return;
-    const q = (s) => rootRef.current.querySelectorAll(s);
-    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
-    const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
-    tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .7 })
-      .fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")
-      .fromTo(q(".sd2-hero-title .line > span"), { yPercent: 118 }, { yPercent: 0, duration: 1.15 }, "-=.45")
-      .fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.65")
-      .fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7")
-      .fromTo(q(".sd2-facts.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.75");
-    return () => tl.kill();
-  }, [svc]);
+  useReplayHeroIntro(rootRef, svc);
 
   /* reveal-on-enter. This page adds a couple of async data sources
      (live testimonials, live case studies) that other detail pages don't
@@ -275,7 +262,7 @@ export default function IndustryDetailV2() {
                 <h1 className="v2-hero-eyebrow">{svc.title} Software Development</h1>
               </div>
               <h2 key={slug} className="sd2-hero-title">
-                <span className="line"><span>{svc.title}</span></span>
+                <span className="line"><span>{keepWords(svc.title)}</span></span>
               </h2>
               <p className="sd2-hero-sub sv2-hero-reveal">{svc.tagline}</p>
               <div className="sd2-hero-cta sv2-hero-reveal">

@@ -20,6 +20,7 @@ import "../HomepageV2/HomepageV2.css";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./HireDevelopersV2.css";
+import { keepWords } from "../../lib/keepWords.js";
 
 const MODEL_ICONS = [UserRound, Users, FileSignature];
 const STEP_ICONS = [Phone, FileText, UserCheck, PlayCircle];
@@ -84,7 +85,7 @@ export default function HireDeveloperDetailV2() {
                   <span className="v2-hero-status"><i /> Hire Developers</span>
                 </div>
                 <h1 key={slug} className="sd2-hero-title">
-                  <span className="line"><span>{role.title}</span></span>
+                  <span className="line"><span>{keepWords(role.title)}</span></span>
                 </h1>
                 <p className="sd2-hero-sub sv2-hero-reveal">{role.tagline}</p>
                 <div className="sd2-hero-cta sv2-hero-reveal">

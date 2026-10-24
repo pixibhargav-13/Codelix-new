@@ -1,26 +1,12 @@
 import { useEffect } from "react";
-import gsap from "gsap";
-import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
+import { useReplayHeroIntro } from "../../lib/heroIntro.js";
 
 /* Hero intro and reveal-on-enter for the hire pages — the same masked-line
    wipe and IntersectionObserver every other v2 detail page runs, shared by
    the hub and the per-role pages. `key` re-runs both when the route param
    changes without a remount. */
 export function useHirePageMotion(rootRef, key) {
-  useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
-    const q = (s) => root.querySelectorAll(s);
-    splitTitleLinesIn(root, ".sd2-hero-title");
-    const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
-    tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .7 })
-      .fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")
-      .fromTo(q(".sd2-hero-title .line > span"), { yPercent: 118 }, { yPercent: 0, duration: 1.15 }, "-=.45")
-      .fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.65")
-      .fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7")
-      .fromTo(q(".sd2-facts.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.75");
-    return () => tl.kill();
-  }, [rootRef, key]);
+  useReplayHeroIntro(rootRef, key);
 
   useEffect(() => {
     const root = rootRef.current;
