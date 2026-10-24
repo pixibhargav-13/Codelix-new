@@ -128,16 +128,77 @@
   flex-wrap: wrap;
 }
 
-/* entrance: each element eases up once mounted (class added in JS) */
-.sv2-hero-reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity .9s var(--ease-expo), transform .9s var(--ease-expo);
+/* hero entrance — a CSS animation, so it starts at the prerendered HTML's
+   first paint instead of waiting for hydration. It used to be a GSAP
+   timeline that hid the already-painted hero on mount and faded it back in,
+   which put mobile LCP 2s+ after first paint. Delays stagger the same order
+   the timeline used. --hero-d overrides the delay per element.
+
+   The big text (title, subtitle) only moves, never fades: a CSS animation
+   can't start while the main thread is busy hydrating, so anything starting
+   at opacity 0 stays invisible — and LCP waits — until the JS is done. */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
 }
 
-.sv2-hero-reveal.is-in {
-  opacity: 1;
-  transform: none;
+@keyframes hero-lift {
+  from {
+    transform: translateY(14px);
+  }
+}
+
+@keyframes hero-settle {
+  from {
+    opacity: 0;
+    transform: scale(.96);
+  }
+}
+
+.sv2-hero-reveal,
+.sd2-crumbs,
+.bdv2-title,
+.bdv2-meta,
+.wv-hero-visual-reveal {
+  animation: hero-rise .9s var(--ease-expo, cubic-bezier(.19, 1, .22, 1)) var(--hero-d, .22s) both;
+}
+
+.sd2-crumbs { --hero-d: 0s; }
+.v2-hero-top.sv2-hero-reveal,
+.pd2-hero-logo.sv2-hero-reveal { --hero-d: .06s; }
+.bdv2-title { --hero-d: .1s; }
+.sd2-hero-cta.sv2-hero-reveal,
+.csd2-tags.sv2-hero-reveal,
+.bdv2-meta { --hero-d: .32s; }
+.sd2-facts.sv2-hero-reveal,
+.csd2-hero-media.sv2-hero-reveal,
+.wv-hero-visual-reveal { --hero-d: .42s; }
+
+.sd2-hero-sub.sv2-hero-reveal,
+.sv2-hero-sub.sv2-hero-reveal,
+.sv2-hero-title.sv2-hero-reveal,
+.bdv2-title {
+  animation-name: hero-lift;
+}
+
+.sd2-hero-visual.sv2-hero-reveal,
+.ind-hero-visual-wrapper.sv2-hero-reveal {
+  --hero-d: .4s;
+  animation-name: hero-settle;
+  animation-duration: 1.1s;
+}
+
+/* doubled class: outranks the per-element animation-name rules above */
+@media (prefers-reduced-motion: reduce) {
+  .sv2-hero-reveal.sv2-hero-reveal,
+  .sd2-crumbs.sd2-crumbs,
+  .bdv2-title.bdv2-title,
+  .bdv2-meta.bdv2-meta,
+  .wv-hero-visual-reveal.wv-hero-visual-reveal {
+    animation: none;
+  }
 }
 
 /* quick-jump chips */

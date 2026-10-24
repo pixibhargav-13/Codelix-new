@@ -275,18 +275,21 @@ export default function HomepageV2() {
     const prepainted = !heroMountedThisLoad && new URL(loadUrl).pathname === "/";
     heroMountedThisLoad = true;
     const q = (s) => rootRef.current.querySelectorAll(s);
-    splitTitleLinesIn(rootRef.current, ".v2-hero-title");
 
     /* No intro on a fresh load (phones, repeat visits): the prerendered hero
        has been on screen since first paint, often for seconds before this
        runs on a slow phone. Hiding it now to wipe it back in would blank the
        copy the visitor is already reading, so just reveal the one element
-       the CSS still hides. Client-side navigation back to "/" mounts a hero
-       nobody has seen yet, so that still gets the entrance. */
+       the CSS still hides. The title is left as prerendered too: splitting
+       it rebuilds its text, which the browser counts as a new, late LCP.
+       Client-side navigation back to "/" mounts a hero nobody has seen yet,
+       so that still gets the split and the entrance. */
     if (!held && prepainted) {
       gsap.set(q(".v2-hero-words span"), { opacity: 1 });
       return;
     }
+
+    splitTitleLinesIn(rootRef.current, ".v2-hero-title");
 
     const tl = gsap.timeline({
       defaults: { ease: "power4.out" },

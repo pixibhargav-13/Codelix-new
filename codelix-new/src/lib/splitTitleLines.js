@@ -102,8 +102,10 @@ export function splitTitleLines(el) {
     lines[lines.length - 1].push(words[i]);
   });
 
-  /* 3. rebuild as .line > span, the shape the GSAP wipe expects */
+  /* 3. rebuild as .line > span, the shape the GSAP wipe expects; .is-split
+     switches the lines from inline flow to masked blocks */
   el.textContent = "";
+  el.classList.add("is-split");
   lines.forEach((line) => {
     const outer = doc.createElement("span");
     outer.className = "line";

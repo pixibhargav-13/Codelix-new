@@ -1384,14 +1384,26 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+  /* one sweep per line when the accent wraps, as the split lines had */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
-.v2-hero-title .line {
+/* Unsplit, the authored lines are inline and the title wraps naturally —
+   that is how the prerendered hero paints, and how it stays on a fresh load.
+   splitTitleLines marks the title .is-split when it rebuilds real lines for
+   the GSAP wipe (client-side navigation and the session intro). */
+.v2-hero-title .line,
+.v2-hero-title .line>span {
+  display: inline;
+}
+
+.v2-hero-title.is-split .line {
   display: block;
   overflow: hidden;
 }
 
-.v2-hero-title .line>span {
+.v2-hero-title.is-split .line>span {
   display: block;
 }
 

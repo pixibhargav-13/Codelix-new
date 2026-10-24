@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import FooterV2 from "../Shared/FooterV2";
 import { useParams, Link } from "react-router-dom";
-import gsap from "gsap";
 import { ArrowLeft, ArrowUpRight, X, Check, Briefcase, Building2, UserPlus } from "lucide-react";
 import { SEO } from "../../components/SEO";
 import BreadcrumbSchema from "../../components/BreadcrumbSchema";
@@ -22,12 +21,13 @@ import { caseStudyCard } from "../../lib/caseStudyRow";
 import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from '../Shared/CtaSection';
 import { StructuredData } from "../../components/StructuredData";
-import { splitTitleLinesIn } from "../../lib/splitTitleLines.js";
 import { fitTitle } from "../../lib/fitTitle.js";
 import { caseStudySeoTitleFor } from "../../lib/seoTitles.js";
 import { toISODate } from "../../lib/isoDate.js";
 import { pickRelated } from "../../lib/pickRelated";
 import { WORK_INDUSTRY_MAP } from "../IndustriesV2/industriesData";
+import { useReplayHeroIntro } from "../../lib/heroIntro.js";
+import { keepWords } from "../../lib/keepWords.js";
 
 
 /* the mask-line wipe animation (shared with every other v2 hero) only
@@ -107,21 +107,7 @@ export default function CaseStudyDetailV2() {
      study is read again from Supabase after the prerendered copy, and a new
      object with the same content used to replay the whole intro. */
   const csKey = cs ? cs.slug : null;
-  useEffect(() => {
-    if (!csKey) return;
-    const q = (s) => rootRef.current.querySelectorAll(s);
-    splitTitleLinesIn(rootRef.current, ".sd2-hero-title");
-    const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
-    tl.fromTo(q(".sd2-crumbs"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .7 })
-      .fromTo(q(".v2-hero-top.sv2-hero-reveal"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .8 }, "-=.4")
-      .fromTo(q(".sd2-hero-title .line > span"),
-        { yPercent: 118 }, { yPercent: 0, duration: 1.15, stagger: .1 }, "-=.45")
-      .fromTo(q(".sd2-hero-sub.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.65")
-      .fromTo(q(".csd2-tags.sv2-hero-reveal"), { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .8 }, "-=.7")
-      .fromTo(q(".sd2-hero-cta.sv2-hero-reveal"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9 }, "-=.7")
-      .fromTo(q(".csd2-hero-media.sv2-hero-reveal"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1 }, "-=.9");
-    return () => tl.kill();
-  }, [csKey]);
+  useReplayHeroIntro(rootRef, csKey);
 
   /* reveal-on-enter + stat count-up */
   useEffect(() => {
@@ -229,14 +215,13 @@ export default function CaseStudyDetailV2() {
                 <span className="v2-hero-status"><i /> Case Study{cs.isConcept ? " · Concept" : ""}</span>
               </div>
               <h1 key={slug} className="sd2-hero-title csd2-title">
-                {/* the separator matters: .line is display:block so this reads
-                    as two lines either way, but without a whitespace text node
-                    between them the extracted title concatenates — Google was
-                    indexing "Marketplace forBuying & Selling Cars" */}
+                {/* the separator matters: without a whitespace text node
+                    between the lines the extracted title concatenates — Google
+                    was indexing "Marketplace forBuying & Selling Cars" */}
                 {splitTitle(cs.title).map((part, i) => (
                   <React.Fragment key={i}>
                     {i > 0 ? " " : null}
-                    <span className="line"><span>{part}</span></span>
+                    <span className="line"><span>{keepWords(part)}</span></span>
                   </React.Fragment>
                 ))}
               </h1>

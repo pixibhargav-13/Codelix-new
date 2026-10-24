@@ -231,16 +231,23 @@
   margin: 26px 0 0;
 }
 
-/* masked lines for the GSAP wipe-up reveal — identical technique to the
-   homepage hero (.v2-hero-title .line), so the two pages share the same
-   signature entrance instead of this one using a flat fade */
-.sd2-hero-title .line {
-  display: block;
-  overflow: hidden;
+/* The title is authored as .line spans but wraps naturally: the lines are
+   inline, so the browser picks the breaks for the width it has. It lifts
+   into place with a CSS animation (keyframes in ServicesV2.css) but is
+   visible from first paint: it is the mobile LCP element. */
+.sd2-hero-title .line,
+.sd2-hero-title .line>span {
+  display: inline;
 }
 
-.sd2-hero-title .line>span {
-  display: block;
+.sd2-hero-title {
+  animation: hero-lift 1s var(--ease-expo, cubic-bezier(.19, 1, .22, 1)) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sd2-hero-title {
+    animation: none;
+  }
 }
 
 .v2 .sd2-hero-sub {
