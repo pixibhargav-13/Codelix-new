@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useLenis } from "lenis/react";
 import { Check, ArrowUpRight, ArrowRight } from "lucide-react";
 import FooterV2 from "../Shared/FooterV2";
 import NavbarV2 from "../Shared/NavbarV2";
@@ -9,6 +10,8 @@ import CtaSection from "../Shared/CtaSection";
 import FaqSection from "../Shared/FaqSection";
 import RelatedReading from "../Shared/RelatedReading";
 import NotFound from "../NotFound/NotFound";
+import ModuleExplorer from "./ModuleExplorer";
+import ErpMock from "./ErpMock";
 import { useReplayHeroIntro } from "../../lib/heroIntro.js";
 import { LISTED_PRODUCTS } from "../ProductsV2/productsData";
 import { ERP_OVERVIEW, ERP_INDUSTRIES, ERP_PATH, ERP_ACCENT, erpMark, erpIndustryBySlug } from "./erpData";
@@ -34,7 +37,27 @@ export default function ErpPageV2() {
 
   const rootRef = useRef(null);
   const statsRef = useRef(null);
+  /* the module open in the explorer; the module cards can set it too */
+  const [activeModule, setActiveModule] = useState(0);
+  const lenis = useLenis();
+  const openModule = (i) => {
+    setActiveModule(i);
+    /* below the fixed header, through Lenis when the page uses it */
+    const el = document.getElementById("explore");
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 90;
+    if (lenis) lenis.scrollTo(top);
+    else window.scrollTo({ top, behavior: "smooth" });
+  };
   const [statsRevealed, setStatsRevealed] = useState(false);
+
+  /* each edition opens on its first module (reset while rendering, as
+     React suggests for state that follows a prop) */
+  const [modulePage, setModulePage] = useState(page);
+  if (modulePage !== page) {
+    setModulePage(page);
+    setActiveModule(0);
+  }
 
   useReplayHeroIntro(rootRef, page);
 
@@ -86,6 +109,8 @@ export default function ErpPageV2() {
   const path = isOverview ? ERP_PATH : `${ERP_PATH}/${page.slug}`;
   const ogKey = isOverview ? "codelix-erp" : `codelix-erp-${page.slug}`;
   const otherEditions = ERP_INDUSTRIES.filter((i) => i.slug !== page.slug);
+  /* "see it with your own ..." */
+  const place = page.slug === "construction" ? "sites" : "plant";
   const otherProducts = LISTED_PRODUCTS.filter((p) => p.slug !== "codelix-erp");
 
   return (
@@ -94,13 +119,26 @@ export default function ErpPageV2() {
       <StructuredData
         type="SoftwareApplication"
         data={{
-          name: isOverview ? "Codelix ERP" : `Codelix ERP for ${page.name}`,
+          name: isOverview ? ERP_OVERVIEW.name : `${ERP_OVERVIEW.name} for ${page.name}`,
           description: page.seoDescription,
           applicationCategory: "BusinessApplication",
           image: `${SITE}/og/${ogKey}.png`,
           url: `${SITE}${path}`,
         }}
       />
+      {page.demoVideo && (
+        <StructuredData
+          type="VideoObject"
+          data={{
+            name: page.demoVideo.heading,
+            description: page.demoVideo.description,
+            thumbnailUrl: `${SITE}${page.demoVideo.poster}`,
+            contentUrl: `${SITE}${page.demoVideo.src}`,
+            uploadDate: page.demoVideo.uploadDate,
+            duration: page.demoVideo.duration,
+          }}
+        />
+      )}
       <div className="v2-progress" aria-hidden="true"><span /></div>
       <NavbarV2 />
 
@@ -114,16 +152,16 @@ export default function ErpPageV2() {
               <nav className="sd2-crumbs sv2-hero-reveal" aria-label="Breadcrumb">
                 <Link to="/">Home</Link>
                 <span>/</span>
-                {isOverview ? <em>Codelix ERP</em> : (
+                {isOverview ? <em>{ERP_OVERVIEW.name}</em> : (
                   <>
-                    <Link to={ERP_PATH}>Codelix ERP</Link>
+                    <Link to={ERP_PATH}>{ERP_OVERVIEW.name}</Link>
                     <span>/</span>
                     <em>{page.name}</em>
                   </>
                 )}
               </nav>
 
-              <div className="pd2-hero-logo sv2-hero-reveal"><img src={erpMark} alt="Codelix ERP logo" /></div>
+              <div className="pd2-hero-logo sv2-hero-reveal"><img src={erpMark} alt={`${ERP_OVERVIEW.name} logo`} /></div>
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status" style={{ "--dot": ERP_ACCENT }}><i /> {page.badge}</span>
               </div>
@@ -136,8 +174,8 @@ export default function ErpPageV2() {
                   <span>Book a free demo</span>
                   <i className="v2-btn-arrow">→</i>
                 </Link>
-                <a className="v2-hero-secondary" href={isOverview ? "#editions" : "#modules"}>
-                  <span className="v2-hero-secondary-label">{isOverview ? "See the editions" : "See the modules"}</span>
+                <a className="v2-hero-secondary" href={isOverview ? "#editions" : page.demoVideo ? "#demo" : "#modules"}>
+                  <span className="v2-hero-secondary-label">{isOverview ? "See the editions" : page.demoVideo ? page.demoVideo.cta : "See the modules"}</span>
                   <ArrowRight size={14} strokeWidth={2} />
                 </a>
               </div>
@@ -154,6 +192,48 @@ export default function ErpPageV2() {
           </div>
         </div>
       </header>
+
+      {/* ══════════ HERO SHOT: the product, straight after the intro ══════════ */}
+      {page.heroShot && (
+        <section className="erp2-heroshot" aria-label={`${page.title} screen`}>
+          <figure className={`erp2-heroshot-frame sv2-hero-reveal ${page.heroShot.screen ? "is-mock" : ""}`}>
+            {page.heroShot.screen ? (
+              <ErpMock screen={page.heroShot.screen} alt={page.heroShot.alt} />
+            ) : (
+              <img src={page.heroShot.img} alt={page.heroShot.alt} fetchPriority="high" decoding="async" />
+            )}
+          </figure>
+        </section>
+      )}
+
+      {/* ══════════ DEMO VIDEO (when the edition has one) ══════════ */}
+      {page.demoVideo && (
+        <section className="v2-section erp2-video" id="demo">
+          <div className="v2-container erp2-video-layout">
+            <div className="erp2-video-copy">
+              <span className="v2-label pd2-reveal">Demo · {page.demoVideo.length}</span>
+              <h2 className="v2-heading pd2-reveal">{page.demoVideo.heading}</h2>
+              <p className="v2-lede pd2-reveal">{page.demoVideo.body}</p>
+              <ul className="erp2-checklist pd2-reveal">
+                {page.demoVideo.covers.map((c) => <li key={c}><Check size={14} strokeWidth={2.5} />{c}</li>)}
+              </ul>
+            </div>
+            <div className="erp2-video-frame pd2-reveal">
+              {page.demoVideo.youtube ? (
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${page.demoVideo.youtube}?rel=0`}
+                  title={page.demoVideo.heading}
+                  loading="lazy"
+                  allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <video src={page.demoVideo.src} poster={page.demoVideo.poster} controls preload="none" playsInline aria-label={page.demoVideo.heading} />
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ══════════ STATS ══════════ */}
       <section className="pd2-stats pd2-reveal" ref={statsRef}>
@@ -228,15 +308,26 @@ export default function ErpPageV2() {
                   <img className="erp2-modules-illus pd2-reveal" src={m.illustration.img} alt={m.illustration.alt} loading="lazy" decoding="async" />
                 )}
                 <div className="pd2-module-grid">
-                  {m.items.map((it) => (
-                    <div className={`pd2-module-card pd2-reveal ${it.unique ? "is-unique" : ""}`} key={it.n}>
-                      <span className="pd2-module-n">{it.n}</span>
-                      <it.icon size={20} strokeWidth={1.5} />
-                      <h3>{it.title}</h3>
-                      <p>{it.body}</p>
-                      {it.unique && <span className="pd2-module-badge">Only in Codelix ERP</span>}
-                    </div>
-                  ))}
+                  {m.items.map((it, i) => {
+                    const inner = (
+                      <>
+                        <span className="pd2-module-n">{it.n}</span>
+                        <it.icon size={20} strokeWidth={1.5} />
+                        <h3>{it.title}</h3>
+                        <p>{it.body}</p>
+                        {it.unique && <span className="pd2-module-badge">Only in Codelix ERP</span>}
+                      </>
+                    );
+                    /* with a module explorer below, a card opens its module there */
+                    return page.spotlights ? (
+                      <button type="button" className="pd2-module-card pd2-reveal erp2-module-btn" key={it.n} onClick={() => openModule(i)}>
+                        {inner}
+                        <span className="erp2-module-see">See it <ArrowRight size={13} strokeWidth={2} /></span>
+                      </button>
+                    ) : (
+                      <div className={`pd2-module-card pd2-reveal ${it.unique ? "is-unique" : ""}`} key={it.n}>{inner}</div>
+                    );
+                  })}
                 </div>
               </div>
               {m.custom && (
@@ -247,35 +338,38 @@ export default function ErpPageV2() {
         );
       })()}
 
-      {/* ══════════ SPOTLIGHTS: each module with its real screen ══════════ */}
-      {page.spotlights && (
-        <section className="v2-section erp2-spots">
+      {/* ══════════ MODULE EXPLORER: each module with its real screen ══════════ */}
+      {(page.spotlights || page.explorer) && (
+        <section className="v2-section erp2-spots" id="explore">
           <div className="v2-container">
             <span className="v2-label pd2-reveal">Inside the app</span>
-            <h2 className="v2-heading pd2-reveal">Every module, the way it really looks.</h2>
-            {page.spotlights.map((s, i) => (
-              <article className={`erp2-spot pd2-reveal ${i % 2 ? "is-flipped" : ""}`} key={s.label}>
-                <div className="erp2-spot-text">
-                  <span className="erp2-spot-label">{String(i + 1).padStart(2, "0")} · {s.label}</span>
-                  <h3>{s.title}</h3>
-                  <dl>
-                    {s.points.map((pt) => (
-                      <div key={pt.title}>
-                        <dt>{pt.title}</dt>
-                        <dd>{pt.body}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                  <p className="erp2-spot-simple"><strong>In simple words:</strong> {s.simple}</p>
-                </div>
-                <figure className="erp2-shot">
-                  <img src={s.img} alt={s.alt} loading="lazy" decoding="async" />
-                </figure>
-              </article>
-            ))}
+            <h2 className="v2-heading pd2-reveal">{page.explorer ? page.explorer.heading : "Every module, the way it really looks."}</h2>
+            <p className="v2-lede pd2-reveal">{page.explorer ? page.explorer.body : "Pick a module to see its real screen and what it does."}</p>
+            <ModuleExplorer
+              spotlights={page.explorer ? page.explorer.items : page.spotlights}
+              icons={page.modules.items.map((it) => it.icon)}
+              active={activeModule}
+              onSelect={setActiveModule}
+            />
           </div>
         </section>
       )}
+
+      {/* ══════════ MID-PAGE PROMPT ══════════ */}
+      <section className="erp2-midcta">
+        <div className="v2-container">
+          <div className="erp2-midcta-box pd2-reveal">
+            <div>
+              <p className="erp2-midcta-title">{isOverview ? "Want to see it with your own work?" : `Want to see it with your own ${place}?`}</p>
+              <p className="erp2-midcta-body">A free demo with examples from your industry, then a written quote.</p>
+            </div>
+            <Link className="v2-btn v2-btn--filled" to="/contact">
+              <span>Book a free demo</span>
+              <i className="v2-btn-arrow">→</i>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* ══════════ AI ══════════ */}
       {page.ai && (
@@ -371,9 +465,15 @@ export default function ErpPageV2() {
           <div className="v2-container">
             <span className="v2-label pd2-reveal">Where it runs</span>
             <h2 className="v2-heading pd2-reveal">Already running on real factory floors.</h2>
-            <ul className="pd2-traction-list pd2-reveal">
-              {page.traction.map((t) => <li key={t}><Check size={16} strokeWidth={2.5} />{t}</li>)}
-            </ul>
+            <div className="erp2-traction-grid">
+              {page.traction.map((t) => (
+                <div className="erp2-traction-card pd2-reveal" key={t.title}>
+                  <span className="erp2-edition-icon"><t.icon size={20} strokeWidth={1.5} /></span>
+                  <h3>{t.title}</h3>
+                  <p>{t.body}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       )}
@@ -383,17 +483,15 @@ export default function ErpPageV2() {
         <div className="v2-container">
           <span className="v2-label pd2-reveal">How it works</span>
           <h2 className="v2-heading pd2-reveal">From first call to going live.</h2>
-          <div className="pd2-how-spine">
+          <ol className="erp2-how-grid">
             {page.howItWorks.map((step, i) => (
-              <div className="pd2-how-row pd2-reveal" key={step.title}>
-                <span className="pd2-how-n">{String(i + 1).padStart(2, "0")}</span>
-                <div>
-                  <h3>{step.title}</h3>
-                  <p>{step.body}</p>
-                </div>
-              </div>
+              <li className="erp2-how-step pd2-reveal" key={step.title}>
+                <span className="erp2-how-n">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
@@ -428,11 +526,11 @@ export default function ErpPageV2() {
           {!isOverview && (
             <>
               <span className="v2-label pd2-reveal">Other editions</span>
-              <div className="pd2-other-grid erp2-other-editions">
+              <div className="pd2-other-grid erp2-other-editions erp2-grid-4">
                 <Link to={ERP_PATH} className="pd2-other-card pd2-reveal" style={{ "--accent": ERP_ACCENT }}>
                   <span className="pd2-other-logo"><img src={erpMark} alt="Codelix ERP logo" /></span>
                   <span className="pd2-other-badge">All editions</span>
-                  <h3>Codelix ERP</h3>
+                  <h3>{ERP_OVERVIEW.name}</h3>
                   <p>One ERP, set up for your industry.</p>
                   <span className="pd2-other-arrow"><ArrowUpRight size={18} strokeWidth={2} /></span>
                 </Link>
@@ -467,7 +565,7 @@ export default function ErpPageV2() {
       <CtaSection className="v2-section--void">
         <p className="v2-label">Get started</p>
         <h2 className="v2-cta-headline">
-          {isOverview ? "See Codelix ERP with your own work." : `See Codelix ERP with your own ${page.slug === "construction" ? "sites" : "plant"}.`}
+          {isOverview ? "See Codelix ERP with your own work." : `See Codelix ERP with your own ${place}.`}
         </h2>
         <p className="v2-cta-body">Book a free demo. We'll walk you through it with examples from your industry, then send a written quote.</p>
         <div className="v2-cta-actions">

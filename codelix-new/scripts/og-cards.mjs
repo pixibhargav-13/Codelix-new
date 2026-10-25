@@ -144,7 +144,7 @@ const BRANDED = [
   {
     route: "/products/codelix-erp", key: "codelix-erp", accent: "#3e7dfc",
     logo: "codelix-logo.webp", logoHeight: 62,
-    eyebrow: "Codelix ERP",
+    eyebrow: "Codelix Custom ERP",
     headline: "One ERP, set up for your industry.",
     sub: "Construction · Manufacturing · Ceramic · Textile",
   },

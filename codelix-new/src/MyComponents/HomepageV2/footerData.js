@@ -170,7 +170,7 @@ export const FOOTER_PRODUCTS = [
   { label: "Audytee", path: "/products/audytee" },
   /* 4bitx is unlisted for now; its page stays live at /products/4bitx */
   // { label: "4bitx", path: "/products/4bitx" },
-  { label: "Codelix ERP", path: "/products/codelix-erp" },
+  { label: "Codelix Custom ERP", path: "/products/codelix-erp" },
   { label: "AanganOne", path: "/products/aanganone" }
 ];
 

@@ -19,6 +19,7 @@ import {
   Receipt, Package, Cog, ScanLine, Handshake, UsersRound, FolderCog, HardHat, Brain,
   Sparkles, ShieldAlert, TrendingUp, Bot, Factory, Shirt, Grid2x2, Layers,
   Boxes, Truck as Dispatch, PackageCheck, AlertTriangle,
+  BadgeCheck, MapPin, Building2, Cloud, Smartphone,
 } from "lucide-react";
 
 import erpMark from "../Images/codelix-erp-mark.svg";
@@ -41,6 +42,8 @@ import mobPayslip from "../Images/erp/erp-mobile-payslip.webp";
 import illusBill from "../Images/erp/erp-illustration-bill.webp";
 import illus404 from "../Images/erp/erp-illustration-404.webp";
 import illusModules from "../Images/erp/erp-illustration-modules.webp";
+import demoPoster from "../Images/erp/erp-demo-poster.webp";
+import { MFG_SCREENS, CERAMIC_SCREENS, TEXTILE_SCREENS } from "./erpScreens";
 
 export const ERP_PATH = "/products/codelix-erp";
 export const ERP_ACCENT = "#3e7dfc";
@@ -84,7 +87,7 @@ const PRICING = {
   ],
 };
 
-/* the core the deck shows, used across editions */
+/* the core the deck shows, on the overview (each edition has its own screens) */
 const CORE_SCREENS = [
   { img: shotDashboard, title: "Dashboard", body: "Sales, expenses, profit and payments for the whole company on one screen." },
   { img: shotApprovals, title: "Approvals", body: "One inbox for everything that needs a yes, with an approval ladder you set." },
@@ -106,12 +109,12 @@ const MFG_AI = {
 };
 
 const MFG_TRACTION = [
-  "The manufacturing edition is live with paying clients",
-  "Running in brass, ceramic, CNC and general manufacturing businesses",
-  "Deployed in Jamnagar's brass cluster",
-  "Built by Codelix IT Solutions in Ahmedabad, 100% made in India",
-  "Cloud-based, so it works from the office, the plant or home",
-  "Mobile-ready for floor staff",
+  { icon: BadgeCheck, title: "Live with paying clients", body: "The manufacturing edition is in daily use, not a prototype." },
+  { icon: Factory, title: "Across industries", body: "Running in brass, ceramic, CNC and general manufacturing businesses." },
+  { icon: MapPin, title: "Jamnagar's brass cluster", body: "Deployed with brass part makers in Jamnagar's brass cluster." },
+  { icon: Building2, title: "Made in India", body: "Built and supported by Codelix IT Solutions in Ahmedabad." },
+  { icon: Cloud, title: "Cloud-based", body: "Works from the office, the plant or home, with nothing to install." },
+  { icon: Smartphone, title: "Mobile-ready", body: "Floor staff punch in, scan bills and approve from their phones." },
 ];
 
 const faqTally = { q: "Does it replace Tally?", a: "It can. Codelix ERP includes full accounting and GST, so many businesses don't need Tally separately. If you'd rather keep Tally for your accountant, it can connect to Tally through its XML interface." };
@@ -122,25 +125,29 @@ const faqTime = { q: "How long does it take to go live?", a: "Typically 4 to 12 
 const faqCustom = { q: "Can it be changed to fit how we work?", a: "Yes. Every rollout is set up for your workflow, and if you need something the ERP doesn't do yet, we build it." };
 const faqStart = { q: "How do we get started?", a: "Book a free demo. We'll show you Codelix ERP with examples from your industry, then send a written quote for the modules you need." };
 
+/* the screen shown right after each hero */
+const HERO_DASHBOARD = { img: shotDashboard, alt: "Codelix ERP company dashboard with monthly sales, expense and margin charts" };
+
 /* ── overview ──────────────────────────────────────────────────────── */
 export const ERP_OVERVIEW = {
   slug: "",
   path: ERP_PATH,
-  name: "Codelix ERP",
-  title: "Codelix ERP",
+  name: "Codelix Custom ERP",
+  title: "Codelix Custom ERP",
   badge: "ERP for every industry",
-  seoTitle: "Codelix ERP: ERP for Construction & Manufacturing",
+  seoTitle: "Codelix Custom ERP for Construction & Manufacturing",
   seoDescription: "One ERP for Indian construction companies and manufacturers: projects, production, inventory, purchase, payroll, accounts and GST, on web and mobile, set up for your industry.",
   keywords: "Codelix ERP, ERP software India, construction ERP, manufacturing ERP, ceramic ERP, textile ERP, ERP for SMEs, ERP software Ahmedabad, ERP software Gujarat, ERP with GST, ERP mobile app",
   tagline: "One ERP for your whole business, set up for how your industry actually works. On the web in the office, and on the phone at the site or on the floor.",
   facts: [["Editions", "Construction, Manufacturing, Ceramic, Textile"], ["Works on", "Web and mobile app"], ["Built by", "Codelix IT Solutions"]],
+  heroShot: HERO_DASHBOARD,
   stats: [
     { value: "4", label: "Industry editions" },
     { value: "₹1000+ Cr", label: "Combined project value of our construction clients" },
     { value: "Web + Mobile", label: "Same data, live on both" },
   ],
   problem: {
-    label: "Why Codelix ERP",
+    label: "Why Codelix Custom ERP",
     heading: "Excel, WhatsApp and paper registers don't add up.",
     body: "Most growing companies run on Tally for accounts, Excel for everything else, WhatsApp for updates and paper registers at the site or the factory. None of it talks to each other, so the owner never sees one true number.",
     points: [
@@ -199,6 +206,20 @@ export const ERP_INDUSTRIES = [
     keywords: "construction ERP, construction ERP software India, ERP for construction company, ERP for contractors, government tender management software, EMD tracking software, construction project management software, BOQ billing software, construction accounting software GST, site attendance app, equipment management software construction",
     tagline: "Private builder or government tender contractor, this is for you. One software for tenders, projects, accounts and GST, purchase, payroll and approvals: on the web in the office, and on the phone at the site.",
     facts: [["For", "Govt. tender contractors and private builders"], ["Works on", "Web and mobile app"], ["Built by", "Codelix IT Solutions"]],
+    heroShot: { img: shotProjects, alt: "Codelix ERP projects screen with portfolio value, money to collect and one card per site marked healthy or at risk" },
+    /* the construction pitch video, served from public/videos */
+    demoVideo: {
+      heading: "See the construction ERP in under 4 minutes.",
+      cta: "Watch the demo",
+      src: "/videos/codelix-construction-erp-demo.mp4",
+      poster: demoPoster,
+      description: "A walkthrough of Codelix ERP for construction: tenders and EMD, projects, procurement, payroll, accounts and approvals, on the web and the mobile app.",
+      body: "A short walkthrough of how a construction company runs on Codelix ERP.",
+      covers: ["Tenders, EMD and projects", "Purchase, approvals and payroll", "Accounts and GST", "The mobile app at the site"],
+      length: "3:26",
+      duration: "PT3M26S",
+      uploadDate: "2026-10-25",
+    },
     stats: [
       { value: "12", label: "Modules in one app" },
       { value: "₹1000+ Cr", label: "Combined project value of our clients" },
@@ -410,6 +431,8 @@ export const ERP_INDUSTRIES = [
     keywords: "manufacturing ERP software, ERP for manufacturing SMEs India, factory ERP, production planning software, BOM software, WIP tracking, inventory management ERP, GST e-invoice ERP, e-way bill ERP, CNC monitoring software, manufacturing ERP Gujarat",
     tagline: "Your factory, fully connected. From the factory floor to your finance team, everything in one system, built for Indian SMEs.",
     facts: [["For", "Manufacturing SMEs, ₹5 Cr to ₹100 Cr"], ["Works on", "Web and mobile app"], ["Built by", "Codelix IT Solutions"]],
+    heroShot: MFG_SCREENS.hero,
+    explorer: MFG_SCREENS.explorer,
     stats: [
       { value: "10", label: "Modules" },
       { value: "₹5 Cr–₹100 Cr", label: "Businesses it's built for" },
@@ -444,7 +467,6 @@ export const ERP_INDUSTRIES = [
       custom: "Need a module we haven't listed? We build it around your process.",
     },
     ai: MFG_AI,
-    coreScreens: CORE_SCREENS,
     mobile: { ...MOBILE, heading: "On the factory floor? Your phone is enough." },
     traction: MFG_TRACTION,
     howItWorks: HOW_IT_WORKS,
@@ -470,6 +492,8 @@ export const ERP_INDUSTRIES = [
     keywords: "ceramic ERP, ceramic ERP software, tiles ERP software, ERP for tile manufacturers, sanitaryware ERP, ceramic industry software India, ERP for ceramic units Morbi, batch tracking software ceramic, ceramic production management software, ceramic dispatch e-way bill software",
     tagline: "Tiles and sanitaryware, from raw material to dispatch, in one system. Every batch, every breakage and every rupee accounted for.",
     facts: [["For", "Tile and sanitaryware manufacturers"], ["Works on", "Web and mobile app"], ["Built by", "Codelix IT Solutions"]],
+    heroShot: CERAMIC_SCREENS.hero,
+    explorer: CERAMIC_SCREENS.explorer,
     stats: [
       { value: "10", label: "Modules" },
       { value: "Batch-wise", label: "Stock kept by lot and grade" },
@@ -505,7 +529,6 @@ export const ERP_INDUSTRIES = [
       custom: "Different stages, grades or packing? We set it up the way your plant runs.",
     },
     ai: MFG_AI,
-    coreScreens: CORE_SCREENS,
     mobile: { ...MOBILE, heading: "On the plant floor? Your phone is enough." },
     traction: MFG_TRACTION,
     howItWorks: HOW_IT_WORKS,
@@ -533,6 +556,8 @@ export const ERP_INDUSTRIES = [
     keywords: "textile ERP, textile ERP software, ERP for textile industry India, garment ERP software, ERP for textile mills, fabric inventory software, yarn stock management software, job work software textile, textile ERP Surat, textile ERP Ahmedabad",
     tagline: "From yarn to finished goods, every lot, every job worker and every rupee in one system.",
     facts: [["For", "Mills, processors and garment units"], ["Works on", "Web and mobile app"], ["Built by", "Codelix IT Solutions"]],
+    heroShot: TEXTILE_SCREENS.hero,
+    explorer: TEXTILE_SCREENS.explorer,
     stats: [
       { value: "10", label: "Modules" },
       { value: "Lot-wise", label: "Yarn and fabric stock" },
@@ -568,7 +593,6 @@ export const ERP_INDUSTRIES = [
       custom: "Different stages, units or job-work flow? We set it up the way your business runs.",
     },
     ai: MFG_AI,
-    coreScreens: CORE_SCREENS,
     mobile: { ...MOBILE, heading: "In the mill or the unit? Your phone is enough." },
     howItWorks: HOW_IT_WORKS,
     pricing: PRICING,
@@ -587,7 +611,7 @@ export const erpIndustryBySlug = (slug) => ERP_INDUSTRIES.find((i) => i.slug ===
 /* the products-menu card: Codelix ERP with its editions inside */
 export const ERP_MENU = {
   slug: "codelix-erp",
-  name: "Codelix ERP",
+  name: ERP_OVERVIEW.name,
   logo: erpMark,
   accent: ERP_ACCENT,
   badge: "ERP for every industry",
