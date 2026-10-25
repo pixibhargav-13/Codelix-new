@@ -39,7 +39,12 @@ export const STATIC_ROUTES = [
 export function getGeneratedRoutes() {
   const industryRoutes = INDUSTRIES.map((i) => `/industries/${i.slug}`);
   const extraServices = ADDITIONAL_SERVICES.map((s) => `/services/${s.slug}`);
-  const productRoutes = ["/products/audytee", "/products/4bitx", "/products/aanganone"];
+  /* 4bitx stays prerendered and in the sitemap: it is unlisted in menus,
+     not removed. Codelix ERP's editions must match ERP_INDUSTRIES in
+     ErpV2/erpData.js (not imported here: it pulls in images, and this file
+     is loaded under plain Node by ssg-build). */
+  const erpRoutes = ["construction", "manufacturing", "ceramic", "textile"].map((s) => `/products/codelix-erp/${s}`);
+  const productRoutes = ["/products/audytee", "/products/4bitx", "/products/aanganone", "/products/codelix-erp", ...erpRoutes];
   /* blog posts and case studies all live in Supabase: ssg-build adds
      their routes from the rows it fetches */
   const hireRoutes = HIRE_SLUGS.map((slug) => `/hire-developers/${slug}`);

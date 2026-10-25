@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import codelixLogo from "../Images/codelix-logo.webp";
 import V2MobileDrawer from "../HomepageV2/V2MobileDrawer";
-import { PRODUCTS } from "../ProductsV2/productsData";
+import { LISTED_PRODUCTS } from "../ProductsV2/productsData";
 import "./NavbarV2.css";
 
 const getCategoryIcon = (title) => {
@@ -220,7 +220,7 @@ export default function NavbarV2() {
               </div>
             </div>
             <div className="v2-nav-dropdown">
-              <Link to={`/products/${PRODUCTS[0].slug}`}>Products <span className="v2-nav-dropdown-chevron">▾</span></Link>
+              <Link to={`/products/${LISTED_PRODUCTS[0].slug}`}>Products <span className="v2-nav-dropdown-chevron">▾</span></Link>
               <div className="v2-nav-dropdown-panel" data-lenis-prevent>
                 <div className="v2-nav-products-mega-menu">
                   <div className="v2-nav-mega-menu-left">
@@ -233,17 +233,36 @@ export default function NavbarV2() {
                     </p>
                   </div>
                   <div className="v2-nav-products-right">
-                    {PRODUCTS.map((p) => (
-                      <Link key={p.slug} to={`/products/${p.slug}`} className="v2-nav-product-link">
-                        <span className="v2-nav-product-link-top">
-                          <span className="v2-nav-product-link-logo"><img src={p.logo} alt={`${p.name} logo`} /></span>
-                          <span className="v2-nav-product-link-name" style={{ color: p.accent }}>{p.name}</span>
-                          <ChevronRight className="v2-nav-industry-link-arrow" size={16} strokeWidth={2} />
-                        </span>
-                        <span className="v2-nav-product-link-badge">{p.badge}</span>
-                        <span className="v2-nav-product-link-tagline">{p.tagline}</span>
-                      </Link>
-                    ))}
+                    {LISTED_PRODUCTS.map((p) => {
+                      const card = (
+                        <>
+                          <span className="v2-nav-product-link-top">
+                            <span className="v2-nav-product-link-logo"><img src={p.logo} alt={`${p.name} logo`} /></span>
+                            <span className="v2-nav-product-link-name" style={{ color: p.accent }}>{p.name}</span>
+                            <ChevronRight className="v2-nav-industry-link-arrow" size={16} strokeWidth={2} />
+                          </span>
+                          <span className="v2-nav-product-link-badge">{p.badge}</span>
+                          <span className="v2-nav-product-link-tagline">{p.tagline}</span>
+                        </>
+                      );
+                      /* Codelix ERP: the card opens the overview, and its
+                         editions sit underneath as their own links */
+                      if (p.editions) {
+                        return (
+                          <div key={p.slug} className="v2-nav-product-link v2-nav-product-group">
+                            <Link to={`/products/${p.slug}`} className="v2-nav-product-group-main">{card}</Link>
+                            <div className="v2-nav-product-editions">
+                              {p.editions.map((ed) => (
+                                <Link key={ed.path} to={ed.path}>{ed.name}<ChevronRight size={13} strokeWidth={2} /></Link>
+                              ))}
+                            </div>
+                          </div>
+                        );
+                      }
+                      return (
+                        <Link key={p.slug} to={`/products/${p.slug}`} className="v2-nav-product-link">{card}</Link>
+                      );
+                    })}
                   </div>
                 </div>
               </div>

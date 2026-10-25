@@ -456,6 +456,45 @@
   box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.2);
 }
 
+/* Codelix ERP: a card that holds its editions as separate links */
+.v2-nav-product-group-main {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.v2-nav-product-editions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.v2-nav-product-editions a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  font-size: 12.5px;
+  color: rgba(242, 240, 236, 0.75);
+  text-decoration: none;
+  transition: border-color .2s ease, background .2s ease, color .2s ease;
+}
+
+.v2-nav-product-editions a svg {
+  opacity: .5;
+}
+
+.v2-nav-product-editions a:hover {
+  border-color: rgba(62, 125, 252, 0.5);
+  background: rgba(62, 125, 252, 0.08);
+  color: #fff;
+}
+
 .v2-nav-product-link:hover .v2-nav-industry-link-arrow {
   opacity: 1;
   color: #7c9bff;

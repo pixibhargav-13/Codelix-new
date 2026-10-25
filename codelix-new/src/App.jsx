@@ -100,6 +100,7 @@ const Contact = lazy(() => import("./MyComponents/ContactV2/ContactV2"));
 const Industries = lazy(() => import("./MyComponents/IndustriesV2/IndustriesV2"));
 const IndustryDetail = lazy(() => import("./MyComponents/IndustriesV2/IndustryDetailV2"));
 const ProductDetail = lazy(() => import("./MyComponents/ProductsV2/ProductDetailV2"));
+const ErpPage = lazy(() => import("./MyComponents/ErpV2/ErpPageV2"));
 const Process = lazy(() => import("./MyComponents/ProcessV2/ProcessV2"));
 const Team = lazy(() => import("./MyComponents/TeamV2/TeamV2"));
 const Work = lazy(() => import("./MyComponents/WorkV2/WorkV2"));
@@ -294,6 +295,9 @@ const AppRoutes = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/industries" element={<Industries />} />
           <Route path="/industries/:slug" element={<IndustryDetail />} />
+          {/* Codelix ERP's own pages, ahead of the generic product route */}
+          <Route path="/products/codelix-erp" element={<ErpPage />} />
+          <Route path="/products/codelix-erp/:industry" element={<ErpPage />} />
           <Route path="/products/:slug" element={<ProductDetail />} />
           <Route path="/process" element={<Process />} />
           <Route path="/team" element={<Team />} />

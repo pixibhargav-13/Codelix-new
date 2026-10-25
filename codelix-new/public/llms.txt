@@ -63,7 +63,12 @@ Dedicated developers from the Ahmedabad team, hired monthly, as a team extension
 Software Codelix designs, builds and runs itself, alongside client work.
 
 - [Audytee](https://www.codelixitsolutions.com/products/audytee): Practice management software for chartered accountant (CA) firms — clients, tasks, compliance calendar, invoicing and billing. Live at https://audytee.com. Plans: Starter ₹499/month, Professional ₹1,999/month, Business ₹4,999/month, all plus GST.
-- [4bitx](https://www.codelixitsolutions.com/products/4bitx): Custom ERP — a manufacturing operating system for Indian SMEs, from the factory floor to finance, with GST e-invoice and e-way bill integration. Used in manufacturing, construction, ceramics, CNC and engineering, brass and metal, textiles, packaging and fabrication. Live at https://4bitx.com. One-time setup from ₹2.5 lakh, plus an annual maintenance contract.
+- [Codelix ERP](https://www.codelixitsolutions.com/products/codelix-erp): ERP for Indian construction companies and manufacturers, on web and a mobile app, with industry editions:
+  - [Construction](https://www.codelixitsolutions.com/products/codelix-erp/construction): for government tender contractors and private builders. 12 modules: tenders and EMD, projects (BOQ, billing, progress), tasks, procurement with supplier rate comparison, equipment (owned or rented), payroll with selfie attendance, accounts and GST (GSTR-1, GSTR-3B), approvals, audit log, contacts library, roles and multi-company settings, dashboard.
+  - [Manufacturing](https://www.codelixitsolutions.com/products/codelix-erp/manufacturing): BOM and production planning, WIP, multi-godown inventory, quality and scrap, CNC monitoring, GST e-invoice and e-way bill, vendor and customer portals, payroll, accounts, analytics and AI.
+  - [Ceramic](https://www.codelixitsolutions.com/products/codelix-erp/ceramic): the manufacturing modules set up for tile and sanitaryware units (production stages, batch-wise stock, breakage and rejection, dispatch, dealer portal).
+  - [Textile](https://www.codelixitsolutions.com/products/codelix-erp/textile): the manufacturing modules set up for mills, processors and garment units (lot-wise stock, production stages, job workers on a vendor portal).
+  Priced per business after a free demo.
 - [AanganOne](https://www.codelixitsolutions.com/products/aanganone): Society, apartment and community management app for residents, admins, committee members and security guards — visitor entry through to maintenance billing. Live on Google Play; submitted to the Apple App Store. https://aanganone.com
 
 ## Industries
@@ -162,4 +167,4 @@ Projects Codelix has delivered: the problem, the build, and the outcome.
 - Legal name: Codelix IT Solutions Pvt Ltd. Office in Ahmedabad, Gujarat, India; works with clients in India and abroad.
 - Founders: Manas Vadodaria (CEO) and Kushal Mungalpara (Co-Founder).
 - Engagements: fixed-scope projects with a written quote, milestone billing, monthly maintenance plans, and dedicated developers.
-- Own products: Audytee (practice management for CA firms), 4bitx (manufacturing ERP), AanganOne (society management app).
+- Own products: Audytee (practice management for CA firms), Codelix ERP (construction and manufacturing ERP), AanganOne (society management app).

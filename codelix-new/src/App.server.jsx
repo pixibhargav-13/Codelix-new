@@ -46,6 +46,7 @@ import Contact from "./MyComponents/ContactV2/ContactV2";
 import Industries from "./MyComponents/IndustriesV2/IndustriesV2";
 import IndustryDetail from "./MyComponents/IndustriesV2/IndustryDetailV2";
 import ProductDetail from "./MyComponents/ProductsV2/ProductDetailV2";
+import ErpPage from "./MyComponents/ErpV2/ErpPageV2";
 import Process from "./MyComponents/ProcessV2/ProcessV2";
 import Team from "./MyComponents/TeamV2/TeamV2";
 import Work from "./MyComponents/WorkV2/WorkV2";
@@ -172,6 +173,8 @@ const AppRoutes = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/industries" element={<Industries />} />
           <Route path="/industries/:slug" element={<IndustryDetail />} />
+          <Route path="/products/codelix-erp" element={<ErpPage />} />
+          <Route path="/products/codelix-erp/:industry" element={<ErpPage />} />
           <Route path="/products/:slug" element={<ProductDetail />} />
           <Route path="/process" element={<Process />} />
           <Route path="/team" element={<Team />} />
