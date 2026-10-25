@@ -104,6 +104,14 @@ export const StructuredData = ({ type = 'Organization', data = null }) => {
       "provider": ORG_REF,
       "areaServed": data.areaServed || "Worldwide",
     };
+  } else if (type === 'VideoObject' && data) {
+    /* a product demo video; every field comes from the page's own data */
+    schemaObj = {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      ...data,
+      "publisher": PUBLISHER,
+    };
   } else if (type === 'Article' && data) { // For Case Studies
     schemaObj = {
       "@context": "https://schema.org",
