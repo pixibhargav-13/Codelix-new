@@ -9,7 +9,7 @@ import {
    logo and the centered nav links, so this menu carries everything else —
    every remaining real page, not a curated subset. */
 import { NAVBAR_SERVICES_HIERARCHY, FOOTER_INDUSTRY_KEYWORDS } from "./footerData";
-import { PRODUCTS } from "../ProductsV2/productsData";
+import { LISTED_PRODUCTS } from "../ProductsV2/productsData";
 
 const SERVICES_ICON = LayoutGrid;
 
@@ -130,10 +130,18 @@ export default function V2MobileDrawer({ open, onClose }) {
 
               <div className={`v2-drawer-sublinks ${productsOpen ? "open" : ""}`}>
                 <div className="v2-drawer-sublink-category">
-                  {PRODUCTS.map((p) => (
-                    <Link key={p.slug} to={`/products/${p.slug}`} onClick={onClose} className="v2-drawer-sublink-item">
-                      {p.name}
-                    </Link>
+                  {LISTED_PRODUCTS.map((p) => (
+                    <React.Fragment key={p.slug}>
+                      <Link to={`/products/${p.slug}`} onClick={onClose} className="v2-drawer-sublink-item">
+                        {p.name}
+                      </Link>
+                      {/* Codelix ERP's editions, indented under it */}
+                      {p.editions?.map((ed) => (
+                        <Link key={ed.path} to={ed.path} onClick={onClose} className="v2-drawer-sublink-item" style={{ paddingLeft: "32px" }}>
+                          {ed.name}
+                        </Link>
+                      ))}
+                    </React.Fragment>
                   ))}
                 </div>
               </div>

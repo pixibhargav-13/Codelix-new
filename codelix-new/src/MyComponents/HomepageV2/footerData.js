@@ -168,7 +168,9 @@ export const FOOTER_HIRE = [
 
 export const FOOTER_PRODUCTS = [
   { label: "Audytee", path: "/products/audytee" },
-  { label: "4bitx", path: "/products/4bitx" },
+  /* 4bitx is unlisted for now; its page stays live at /products/4bitx */
+  // { label: "4bitx", path: "/products/4bitx" },
+  { label: "Codelix ERP", path: "/products/codelix-erp" },
   { label: "AanganOne", path: "/products/aanganone" }
 ];
 

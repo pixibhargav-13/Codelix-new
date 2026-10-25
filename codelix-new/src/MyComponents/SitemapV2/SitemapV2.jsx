@@ -16,7 +16,7 @@ import { useCaseStudies } from "../CaseStudyDetailV2/useCaseStudies";
 import { slugify } from "../../lib/slugify";
 import { useBlogPosts } from "../../data/useBlogPosts";
 import { INDUSTRIES } from "../IndustriesV2/industriesData";
-import { PRODUCTS } from "../ProductsV2/productsData";
+import { LISTED_PRODUCTS } from "../ProductsV2/productsData";
 import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from '../Shared/CtaSection';
 
@@ -63,7 +63,10 @@ export default function SitemapV2() {
     },
     {
       title: "Products",
-      links: PRODUCTS.map(p => ({ label: p.name, href: `/products/${p.slug}` }))
+      links: LISTED_PRODUCTS.flatMap(p => [
+        { label: p.name, href: `/products/${p.slug}` },
+        ...(p.editions || []).map((ed) => ({ label: `${p.name}: ${ed.name}`, href: ed.path })),
+      ])
     },
     {
       title: "Case Studies",

@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { Check, X, ArrowUpRight, ExternalLink } from "lucide-react";
 import FooterV2 from "../Shared/FooterV2";
 import NavbarV2 from "../Shared/NavbarV2";
-import { PRODUCTS, productBySlug } from "./productsData";
+import { LISTED_PRODUCTS, productBySlug } from "./productsData";
 import { SEO } from "../../components/SEO";
 import { StructuredData } from "../../components/StructuredData";
 
@@ -146,12 +146,13 @@ export default function ProductDetailV2() {
     return (
       <div className="v2" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }}>
         <h1 style={{ color: "#fff", fontSize: 28 }}>Product not found.</h1>
-        <Link className="v2-btn" to={`/products/${PRODUCTS[0].slug}`}>Back to Products →</Link>
+        <Link className="v2-btn" to={`/products/${LISTED_PRODUCTS[0].slug}`}>Back to Products →</Link>
       </div>
     );
   }
 
-  const otherProducts = PRODUCTS.filter((x) => x.slug !== p.slug);
+  /* only listed products: an unlisted one (4bitx) isn't advertised here */
+  const otherProducts = LISTED_PRODUCTS.filter((x) => x.slug !== p.slug);
   const faqs = p.faq || [];
 
   return (

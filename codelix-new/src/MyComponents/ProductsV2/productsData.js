@@ -17,6 +17,7 @@ import {
 import audyteeLogo from "../Images/Audity.svg";
 import fourBitxLogo from "../Images/4bitX.svg";
 import aanganOneLogo from "../Images/Aanganone.webp";
+import { ERP_MENU } from "../ErpV2/erpData";
 
 export const PRODUCTS = [
   {
@@ -330,3 +331,16 @@ export const PRODUCTS = [
 ];
 
 export const productBySlug = (slug) => PRODUCTS.find((p) => p.slug === slug);
+
+/* What the products menu, the homepage, the footer and /sitemap list, in
+   this order. 4bitx is left out on purpose for now: its page stays live at
+   /products/4bitx (it's still in PRODUCTS above), it just isn't listed
+   anywhere. To list it again, add productBySlug("4bitx") back here.
+   Codelix ERP has its own pages (ErpV2), so it is listed with the menu card
+   from erpData.js, which also carries its editions. */
+export const LISTED_PRODUCTS = [
+  productBySlug("audytee"),
+  ERP_MENU,
+  // productBySlug("4bitx"),
+  productBySlug("aanganone"),
+];

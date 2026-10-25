@@ -27,7 +27,7 @@ import { FOOTER_SERVICE_KEYWORDS, FOOTER_INDUSTRY_KEYWORDS } from "./footerData"
 import CtaVisual from "../Shared/CtaVisual";
 import GoogleReviewButton from "../Shared/GoogleReviewButton";
 import ClutchWidget from "../Shared/ClutchWidget";
-import { PRODUCTS } from "../ProductsV2/productsData";
+import { LISTED_PRODUCTS } from "../ProductsV2/productsData";
 
 import "./HomepageV2.css";
 import NavbarV2 from "../Shared/NavbarV2";
@@ -1049,9 +1049,9 @@ export default function HomepageV2() {
       <section className="v2-section v2-products-section" id="products">
         <p className="v2-label">Our Products</p>
         <h2 className="v2-heading">Beyond client work — products we build and run ourselves.</h2>
-        <p className="v2-lede">Codelix runs three live SaaS products — Audytee, 4bitx, and AanganOne — engineered with the same craft we bring to client work.</p>
+        <p className="v2-lede">Codelix runs its own live products — Audytee, Codelix ERP and AanganOne — engineered with the same craft we bring to client work.</p>
         <div className="v2-products-grid">
-          {PRODUCTS.map((p) => (
+          {LISTED_PRODUCTS.map((p) => (
             <Link to={`/products/${p.slug}`} className="v2-product-card" key={p.slug} style={{ "--accent": p.accent }}>
               <span className="v2-product-card-logo"><img src={p.logo} alt={`${p.name} logo`} /></span>
               <span className="v2-product-card-badge">{p.badge}</span>
