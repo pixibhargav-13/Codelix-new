@@ -122,17 +122,22 @@ export default function SitemapV2() {
     );
     rootRef.current?.querySelectorAll(".v2-label, .v2-heading, .smv2-group-vertical, .v2-cta").forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, [search]);
+    /* GROUPS too: the case-study and blog groups appear once their data
+       loads, and need observing then or they stay hidden */
+  }, [search, GROUPS]);
 
   /* extraordinary section — a live search across every real route, with a
      match count that re-plays its pop-in animation on every change */
+  /* GROUPS is a dependency: case studies and blog posts arrive from the
+     admin panel after the first render, and without it the page kept the
+     empty lists from before they loaded. Empty groups (still loading) are
+     left out rather than shown as bare hatched bars. */
   const filteredGroups = useMemo(() => {
     const term = search.trim().toLowerCase();
-    if (!term) return GROUPS;
     return GROUPS
-      .map((g) => ({ ...g, links: g.links.filter((l) => l.label.toLowerCase().includes(term) || l.href.toLowerCase().includes(term)) }))
+      .map((g) => (term ? { ...g, links: g.links.filter((l) => l.label.toLowerCase().includes(term) || l.href.toLowerCase().includes(term)) } : g))
       .filter((g) => g.links.length > 0);
-  }, [search]);
+  }, [search, GROUPS]);
 
   const matchCount = useMemo(() => filteredGroups.reduce((n, g) => n + g.links.length, 0), [filteredGroups]);
 
