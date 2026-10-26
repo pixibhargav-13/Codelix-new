@@ -63,6 +63,12 @@ export default defineConfig(({ command, isSsrBuild }) => ({
        (scripts/ssg-build.mjs) reads the manifest to link each page's CSS in
        its HTML, so a prerendered page is styled before any JS runs. */
     cssCodeSplit: true,
+    /* Vite's default inlines every image under 4KB as a data: URI in the JS.
+       All images share the site-images chunk, so that put 45 SVG logos
+       (~138KB) in a script every page downloaded, competing with the CSS for
+       bandwidth before first paint. As files, each image loads only on the
+       page that shows it, and doesn't block rendering. */
+    assetsInlineLimit: 1024,
     manifest: true,
     rollupOptions: {
       output: {

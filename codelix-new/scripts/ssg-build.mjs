@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath, pathToFileURL } from "url";
 import { createClient } from "@supabase/supabase-js";
 import jsesc from "jsesc";
+import Beasties from "beasties";
 import { getGeneratedRoutes } from "../src/lib/route-config.js";
 import { seoData } from "../src/lib/seoData.js";
 import { INTRO_MEDIA, INTRO_SEEN_KEY } from "../src/lib/introGate.js";
@@ -408,8 +409,55 @@ ${sitemapRoutes
   console.log("✅ Sitemap generated");
 
   fs.rmSync(manifestDir, { recursive: true, force: true });
-  
+
+  await inlineCriticalCss(path.resolve(__dirname, "../dist"));
+
   console.log("🎉 SSG Build Complete!");
+}
+
+/* The global stylesheet (~120KB: index.css plus the homepage, services and
+   service-detail styles every route shares) was render-blocking on every
+   page, and on a phone it downloaded alongside the JS — first paint waited
+   ~2s for it. Beasties inlines the rules each prerendered page actually uses
+   into its <head> and loads the full stylesheets without blocking
+   (media="print", switched to "all" on load), so a page paints as soon as
+   its HTML arrives. The full files still load and stay cached, so states JS
+   adds later (menus, reveals, modals) are styled as before. */
+async function inlineCriticalCss(distDir) {
+  const beasties = new Beasties({
+    path: distDir,
+    publicPath: "/",
+    preload: "media",
+    pruneSource: false,
+    /* fonts are applied through CSS variables, which Beasties can't trace,
+       so it never inlines their @font-face; index.html declares the brand
+       font itself instead — and reduceInlineStyles must stay off, or
+       Beasties strips that declaration as "unused" too */
+    inlineFonts: false,
+    reduceInlineStyles: false,
+    /* the desktop intro loader (PageLoader, .pl-*) is mounted by JS, so it is
+       not in the prerendered markup Beasties matches against; if the JS ran
+       before the full stylesheet arrived it showed unstyled and pushed the
+       hero down */
+    allowRules: [/\.pl-/],
+    preloadFonts: false,
+    mergeStylesheets: true,
+    compress: true,
+    logLevel: "warn",
+  });
+  const pages = [];
+  const walk = (dir) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) { if (entry.name !== "assets") walk(full); }
+      else if (entry.name.endsWith(".html")) pages.push(full);
+    }
+  };
+  walk(distDir);
+  for (const file of pages) {
+    fs.writeFileSync(file, await beasties.process(fs.readFileSync(file, "utf8")));
+  }
+  console.log(`✅ Inlined critical CSS into ${pages.length} pages`);
 }
 
 build().catch((err) => {
