@@ -26,7 +26,9 @@
     { "source": "/:slug([a-z0-9-]+-case-study)", "destination": "/case-study/:slug", "permanent": true },
     { "source": "/terms", "destination": "/terms-of-service", "permanent": true },
     { "source": "/privacy", "destination": "/privacy-policy", "permanent": true },
-    { "source": "/products", "destination": "/work", "permanent": true }
+    { "source": "/products", "destination": "/work", "permanent": true },
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/:path+/index.html", "destination": "/:path+", "permanent": true }
   ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },

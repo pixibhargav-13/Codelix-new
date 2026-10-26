@@ -269,29 +269,29 @@ export default function ContactV2() {
                 <div className="contact-form-row">
                   <div className="contact-field">
                     <label>Your Name*</label>
-                    <input type="text" name="name" required value={formData.name} onChange={handleChange} />
+                    <input type="text" name="name" autoComplete="name" required value={formData.name} onChange={handleChange} />
                   </div>
                   <div className="contact-field">
                     <label>Email*</label>
-                    <input type="email" name="email" required value={formData.email} onChange={handleChange} />
+                    <input type="email" name="email" autoComplete="email" required value={formData.email} onChange={handleChange} />
                   </div>
                 </div>
 
                 <div className="contact-form-row">
                   <div className="contact-field">
                     <label>Contact*</label>
-                    <input type="text" name="contact" required value={formData.contact} onChange={handleChange} />
+                    <input type="text" name="contact" autoComplete="tel" inputMode="tel" required value={formData.contact} onChange={handleChange} />
                   </div>
                   <div className="contact-field">
                     <label>Company*</label>
-                    <input type="text" name="company" required value={formData.company} onChange={handleChange} />
+                    <input type="text" name="company" autoComplete="organization" required value={formData.company} onChange={handleChange} />
                   </div>
                 </div>
 
                 <div className="contact-form-row">
                   <div className="contact-field">
                     <label>Designation*</label>
-                    <input type="text" name="designation" required value={formData.designation} onChange={handleChange} />
+                    <input type="text" name="designation" autoComplete="organization-title" required value={formData.designation} onChange={handleChange} />
                   </div>
                   <div className="contact-field">
                     <label>Service*</label>
