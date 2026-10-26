@@ -39,6 +39,10 @@
   <!-- The site's own face; the hero copy (the page's LCP element) is set in
        it. Preloaded so it is fetched alongside the CSS instead of after it. -->
   <link rel="preload" href="/fonts/NoiGroteskFix-Regular-v1.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- declared here as well as in index.css: the stylesheets load without
+       blocking (critical CSS, scripts/ssg-build.mjs), and until this face is
+       declared text paints in the fallback, wraps differently and jumps -->
+  <style>@font-face{font-family:'NoiGroteskFix';src:url('/fonts/NoiGroteskFix-Regular-v1.woff2') format('woff2');font-weight:normal;font-style:normal;font-display:swap}</style>
 
   <!-- Google Fonts - Hanken Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
