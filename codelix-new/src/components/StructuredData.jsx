@@ -20,7 +20,7 @@ const ORG_REF = {
 };
 const PUBLISHER = {
   ...ORG_REF,
-  "logo": { "@type": "ImageObject", "url": `${siteUrl}/codelix.svg` },
+  "logo": { "@type": "ImageObject", "url": `${siteUrl}/codelix-logo-512.png`, "width": 512, "height": 512 },
 };
 
 export const StructuredData = ({ type = 'Organization', data = null }) => {

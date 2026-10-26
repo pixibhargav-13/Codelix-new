@@ -12,6 +12,7 @@ export const FOUNDERS = [
     jobTitle: "CEO",
     url: `${siteUrl}/team`,
     sameAs: ["https://www.linkedin.com/in/manas-vadodaria-396353275/"],
+    worksFor: { "@id": `${siteUrl}/#organization` },
   },
   {
     "@type": "Person",
@@ -20,6 +21,7 @@ export const FOUNDERS = [
     jobTitle: "Co-Founder",
     url: `${siteUrl}/team`,
     sameAs: ["https://www.linkedin.com/in/kushal-mungalpara-60805227b/"],
+    worksFor: { "@id": `${siteUrl}/#organization` },
   },
 ];
 

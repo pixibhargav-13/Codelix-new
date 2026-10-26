@@ -301,6 +301,15 @@ async function build() {
         `<script>window.__INITIAL_DATA__ = ${serialize(pageData)};</script>\n</body>`
       );
 
+      /* the more specific schema.org page types; everything else is a WebPage */
+      const PAGE_TYPES = {
+        "/about": "AboutPage",
+        "/team": "AboutPage",
+        "/contact": "ContactPage",
+        "/blog": "CollectionPage",
+        "/case-study": "CollectionPage",
+        "/work": "CollectionPage",
+      };
       /* WebPage markup with the page's dates, for every page that is not a
          post (posts carry their own Article/BlogPosting dates from
          Supabase) and not the 404 */
@@ -313,7 +322,7 @@ async function build() {
         const pageUrl = `https://www.codelixitsolutions.com${url === "/" ? "/" : url}`;
         const webPage = {
           "@context": "https://schema.org",
-          "@type": "WebPage",
+          "@type": PAGE_TYPES[url] || "WebPage",
           "@id": `${pageUrl}#webpage`,
           url: pageUrl,
           name: title ? title.replace(/&amp;/g, "&").replace(/&#x27;/g, "'") : undefined,
