@@ -73,10 +73,15 @@ const PALETTES = {
   cms: { bg: "#4f46e5", deep: "#312e81", tint: "#e0e7ff" },
   business: { bg: "#0284c7", deep: "#0c4a6e", tint: "#e0f2fe" },
   development: { bg: "#0f766e", deep: "#134e4a", tint: "#ccfbf1" },
+  compliance: { bg: "#0e7490", deep: "#164e63", tint: "#cffafe" },
 };
 
 /* the title decides first, then the tags, then the category */
 const MOTIF_WORDS = [
+  /* privacy, data-protection and compliance posts get their own scene (a
+     consent form, padlock and shield) rather than falling through to a
+     generic one: the DPDP post of 26 Oct 2026 got "cloud vs server" */
+  ["compliance", /\bdpdp\b|gdpr|privacy|data protection|personal data|compliance|consent|\bkyc\b|cyber ?security|data breach/],
   ["erp", /\berp\b|tally|inventory|\bcrm\b|manufactur/],
   /* "app" alone means mobile, but "web app" does not */
   ["mobile", /(?<!web )\bapps?\b|mobile|android|\bios\b|flutter|react native|\bpwas?\b|progressive web/],
@@ -174,6 +179,23 @@ function screen(motif, p) {
         <polyline points="44,214 106,196 158,204 228,166 300,150" fill="none" stroke="${p.deep}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M284 144 L302 150 L292 166" fill="none" stroke="${p.deep}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
         <circle cx="330" cy="220" r="22" fill="${p.tint}"/><path d="M322 220 L330 212 L338 220 M330 212 V230" fill="none" stroke="${p.bg}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`;
+    case "compliance": /* a consent notice: purposes to tick, a withdraw toggle, a padlock */
+      return `
+        ${bar(22, 54, 336, 30, p.deep, 8)}${line(36, 65, 120, "#ffffff")}
+        ${[0, 1, 2].map((i) => {
+          const y = 98 + i * 40;
+          const on = i < 2;
+          return `<rect x="30" y="${y}" width="22" height="22" rx="5" fill="${on ? p.bg : "#ffffff"}" stroke="${on ? p.bg : "#cbd5e1"}" stroke-width="2.5"/>
+            ${on ? `<path d="M35 ${y + 11} l4.5 4.5 l8 -9" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>` : ""}
+            ${line(64, y + 2, [150, 120, 136][i], on ? p.deep : "#94a3b8")}${line(64, y + 16, [96, 110, 80][i])}`;
+        }).join("")}
+        ${bar(30, 222, 44, 24, p.tint, 12)}<circle cx="62" cy="234" r="9" fill="${p.bg}"/>${line(86, 230, 100, "#94a3b8")}
+        <g transform="translate(300 176)">
+          <path d="M0 -50 L40 -34 V0 C40 26 22 44 0 54 C-22 44 -40 26 -40 0 V-34 Z" fill="${p.tint}" stroke="${p.bg}" stroke-width="4"/>
+          <rect x="-16" y="-6" width="32" height="26" rx="5" fill="${p.deep}"/>
+          <path d="M-9 -6 V-14 a9 9 0 0 1 18 0 V-6" fill="none" stroke="${p.deep}" stroke-width="5"/>
+          <circle cx="0" cy="7" r="4" fill="#ffffff"/>
+        </g>`;
     default: /* development */
       return `
         ${[[0, 120, p.bg], [20, 180, "#94a3b8"], [20, 140, p.deep], [40, 200, "#94a3b8"], [40, 110, p.bg], [20, 160, "#94a3b8"], [0, 90, p.deep], [0, 150, "#94a3b8"]]
@@ -191,7 +213,7 @@ function screen(motif, p) {
    screen() above is variant 0 of each scene; these are 1 and 2. The
    title (then the tags) picks one through SCREEN_HINTS; when nothing
    matches, the title's hash does. */
-const SCREEN_COUNT = { development: 3, mobile: 2, business: 3, uiux: 2, ecommerce: 2, cms: 2, ai: 2, erp: 2 };
+const SCREEN_COUNT = { development: 3, mobile: 2, business: 3, uiux: 2, ecommerce: 2, cms: 2, ai: 2, erp: 2, compliance: 1 };
 const SCREEN_HINTS = {
   development: [[2, /end-to-end|one team|process|deliver|agile/], [1, /scal|architect|cloud|server|\bapi\b|microservice/], [0, /laravel|php|code|bug|test/]],
   mobile: [[1, /\bpwas?\b|progressive web|web app/], [0, /trend|native|android|\bios\b|flutter/]],
@@ -325,6 +347,7 @@ const ALT_PALETTES = {
   cms: { bg: "#2563eb", deep: "#1e3a8a", tint: "#dbeafe" },
   business: { bg: "#1d4ed8", deep: "#172554", tint: "#dbeafe" },
   development: { bg: "#334155", deep: "#0f172a", tint: "#e2e8f0" },
+  compliance: { bg: "#4338ca", deep: "#1e1b4b", tint: "#e0e7ff" },
 };
 
 /* tech and topic names shown as chips when the title or tags mention them */
@@ -333,7 +356,7 @@ const TECH = [
   ["Laravel", /laravel/i], ["Flutter", /flutter/i], ["PWA", /\bpwas?\b|progressive web/i], ["SaaS", /\bsaas\b/i],
   ["WordPress", /wordpress/i], ["Shopify", /shopify/i], ["WooCommerce", /woocommerce/i], ["ERP", /\berp\b/i],
   ["CRM", /\bcrm\b/i], ["GST", /\bgst\b/i], ["Tally", /\btally\b/i], ["UPI", /\bupi\b/i], ["Figma", /figma/i],
-  ["AI", /\bai\b/i], ["UI/UX", /ui\/ux/i], ["Cloud", /\bcloud\b|on-premise/i], ["E-Commerce", /e-?commerce/i],
+  ["DPDP", /\bdpdp\b/i], ["GDPR", /\bgdpr\b/i], ["AI", /\bai\b/i], ["UI/UX", /ui\/ux/i], ["Cloud", /\bcloud\b|on-premise/i], ["E-Commerce", /e-?commerce/i],
 ];
 export function chipsFor(title, tags = []) {
   const found = [];
@@ -373,6 +396,7 @@ function ownA(motif, p) { /* 150 x 112 */
     business: `${[0, 1, 2, 3].map((i) => `<ellipse cx="46" cy="${82 - i * 14}" rx="26" ry="9" fill="${i === 3 ? p.bg : p.tint}" stroke="${p.deep}" stroke-opacity=".3"/>`).join("")}${rupee(46, 46, 20, "#ffffff")}${pill(92, 46, 42, p.bg)}${pill(92, 64, 32, "#cbd5e1")}`,
     development: `<rect x="12" y="14" width="126" height="84" rx="10" fill="#0f172a"/><circle cx="26" cy="28" r="4" fill="#f87171"/><circle cx="40" cy="28" r="4" fill="#fbbf24"/><circle cx="54" cy="28" r="4" fill="#34d399"/><text x="24" y="60" font-family="${FONT}" font-size="16" font-weight="700" fill="#34d399">$</text>${pill(42, 50, 70, "#94a3b8")}${pill(24, 72, 50, p.tint)}`,
     mobile: `<path d="M44 30 C30 30 28 44 28 56 V68 L22 76 H66 L60 68 V56 C60 44 58 30 44 30 Z" fill="${p.bg}"/><circle cx="44" cy="82" r="6" fill="${p.bg}"/><circle cx="60" cy="32" r="8" fill="#f43f5e"/>${pill(86, 44, 46, p.deep)}${pill(86, 62, 36, "#cbd5e1")}`,
+    compliance: `<path d="M30 50 V40 a16 16 0 0 1 32 0 V50" fill="none" stroke="${p.deep}" stroke-width="7"/><rect x="20" y="50" width="52" height="42" rx="8" fill="${p.bg}"/><circle cx="46" cy="68" r="6" fill="#ffffff"/><rect x="43" y="70" width="6" height="12" rx="3" fill="#ffffff"/>${pill(88, 50, 46, p.deep)}${pill(88, 68, 34, "#cbd5e1")}`,
   }[motif];
 }
 
@@ -387,6 +411,7 @@ function ownB(motif, p) { /* 168 x 98 */
     business: `<path d="M24 70 L52 46 L76 58 L120 26" fill="none" stroke="${p.bg}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M104 24 L122 24 L122 42" fill="none" stroke="${p.bg}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>${pill(24, 80, 70, "#cbd5e1")}`,
     development: `<circle cx="42" cy="49" r="20" fill="none" stroke="${p.bg}" stroke-width="8" stroke-dasharray="8 5"/><circle cx="42" cy="49" r="8" fill="${p.deep}"/><circle cx="98" cy="28" r="7" fill="${p.bg}"/><circle cx="98" cy="72" r="7" fill="${p.bg}"/><circle cx="136" cy="50" r="7" fill="${p.deep}"/><path d="M98 35 V65 M98 50 Q118 50 130 50" fill="none" stroke="${p.bg}" stroke-width="4"/>`,
     mobile: `${[0, 1, 2, 3, 4].map((i) => star(30 + i * 27, i < 4 ? "#fbbf24" : "#e2e8f0")).join("")}${pill(20, 74, 96, "#cbd5e1")}`,
+    compliance: `<rect x="18" y="14" width="64" height="72" rx="7" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>${pill(28, 28, 40, p.deep)}${pill(28, 44, 44, "#cbd5e1")}${pill(28, 60, 32, "#cbd5e1")}<circle cx="74" cy="72" r="16" fill="${p.bg}"/><path d="M67 72 l5 5 l9 -10" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>${pill(104, 36, 46, p.deep)}${pill(104, 54, 34, "#cbd5e1")}`,
   }[motif];
 }
 
