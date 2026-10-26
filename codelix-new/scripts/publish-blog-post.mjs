@@ -9,7 +9,17 @@
      node scripts/publish-blog-post.mjs --verify <slug>     re-run the live checks for a published post
 
    post.json:
-     { title, slug?, excerpt, content, category, primary_keyword, tags: [4–6], read_time? }
+     { title, slug?, excerpt, content, category, primary_keyword, tags: [4–6], read_time?,
+       post_type, fact_check: [{ claim, source, quote }, ...],
+       review: { accuracy, relevance, reader_value, seo } }
+   post_type sets the length: educational 800–1,200 words, tutorial
+   1,200–1,800, comparison 1,000–1,500 (with a table), erp-guide
+   1,000–1,600. review holds the findings of the pre-publish review, one
+   note per area, so a post can't go live without one.
+   fact_check is the post's evidence: each factual claim, the URL it comes
+   from and the exact sentence on that page that supports it. Every
+   external link in the content needs at least one entry. The dry run
+   writes it out as <slug>-fact-check.md for review.
    or post.md — the same fields as a header between "---" lines (tags
    comma-separated), then the content as plain text. Easier to review than
    JSON; drafts live in content/blog-drafts/.
@@ -121,7 +131,25 @@ const h2s = blocks.filter((b) => b.startsWith("## ")).length;
 const problems = [];
 if (title.length < 20 || title.length > 90) problems.push(`title is ${title.length} chars (want 20–90)`);
 if (excerpt.length < 80 || excerpt.length > 160) problems.push(`excerpt is ${excerpt.length} chars (want 80–160, it is the meta description)`);
-if (words < 750 || words > 2000) problems.push(`content is ${words} words (want 750–2,000)`);
+/* length by kind of post (the owner's ranges, 26 Oct 2026) */
+const POST_TYPES = {
+  educational: { label: "simple educational blog", min: 800, max: 1200 },
+  tutorial: { label: "detailed technical tutorial", min: 1200, max: 1800 },
+  comparison: { label: "software or technology comparison", min: 1000, max: 1500 },
+  "erp-guide": { label: "industry-specific ERP guide", min: 1000, max: 1600 },
+};
+const postType = POST_TYPES[String(post.post_type || "").trim().toLowerCase()];
+if (!postType) problems.push(`post_type "${post.post_type || ""}" must be one of: ${Object.keys(POST_TYPES).join(", ")}`);
+else {
+  if (words < postType.min || words > postType.max) problems.push(`content is ${words} words; a ${postType.label} should be ${postType.min.toLocaleString("en-IN")}–${postType.max.toLocaleString("en-IN")}`);
+  if (post.post_type === "comparison" && !blocks.some((b) => b.startsWith("|"))) problems.push("a comparison post needs a comparison table");
+}
+/* the pre-publish review: what was checked in each area, and what changed */
+const REVIEW_AREAS = { accuracy: "every claim re-checked against its fact_check quote", relevance: "the post answers the search query it targets", reader_value: "a business owner can act on it", seo: "keyword placement, title, description, headings, links" };
+const review = post.review && typeof post.review === "object" ? post.review : {};
+for (const [k, what] of Object.entries(REVIEW_AREAS)) {
+  if (String(review[k] || "").trim().length < 30) problems.push(`review.${k} is missing: say what the review checked (${what}) and what it changed`);
+}
 if (h2s < 3) problems.push(`content has ${h2s} "## " headings (want 3+)`);
 if (blocks.some((b) => /^# /.test(b))) problems.push(`content has a "# " heading — the title is already the H1`);
 if (!category) problems.push(`category "${post.category}" is not one of Business, Development, AI, E-Commerce, CMS, UI/UX, Tech`);
@@ -167,6 +195,8 @@ if (/\]\((https?:\/\/(www\.)?codelixitsolutions\.com)?\/best-/i.test(content)) p
 /* markup the blog's renderer (src/lib/articleMarkup.jsx) can't show: it
    would appear as raw symbols, or a line would silently go missing */
 problems.push(...markupProblems(blocks));
+problems.push(...proseProblems(content));
+problems.push(...factCheckProblems(post.fact_check, content));
 problems.push(...(await linkProblems(content)));
 if (problems.length) fail(`post rejected:\n   - ${problems.join("\n   - ")}`);
 
@@ -205,10 +235,14 @@ if (DRY) {
   const outBanner = path.join(path.dirname(path.resolve(file)), `${slug}-banner.webp`);
   fs.writeFileSync(out, cover);
   fs.writeFileSync(outBanner, banner);
+  const ledger = path.join(path.dirname(path.resolve(file)), `${slug}-fact-check.md`);
+  fs.writeFileSync(ledger, factCheckReport(title, post.fact_check, post.review));
   console.log(`✅ dry run OK — ${words} words, ${h2s} sections, ${row.read_time}, cover: ${motif}, tags: ${row.tags.join(", ")}`);
   console.log(`   would publish https://www.codelixitsolutions.com/blog/${slug}`);
   console.log(`   share card preview: ${out}`);
   console.log(`   on-site banner preview: ${outBanner}`);
+  console.log(`   fact check (${post.fact_check.length} claims): ${ledger}`);
+  console.log(`   type: ${postType.label} (${postType.min}–${postType.max} words)`);
   return;
 }
 
@@ -308,6 +342,65 @@ function markupProblems(blocks) {
     if (!/^(https:\/\/|\/)/.test(url)) out.push(`link "${url}" must be a full https:// URL or a /path on this site`);
   }
   return out;
+}
+
+/* ── prose checks ───────────────────────────────────────────────────────
+   Slips a proofread should catch but a writing pass can introduce, like
+   "...under our [security service](…) We'll sign an NDA", which went live
+   on 26 Oct 2026 without its full stop. Link URLs are left out of the
+   text these look at, so their dots and slashes don't trip them. */
+function proseProblems(content) {
+  const out = [];
+  const text = content.replace(/\]\([^)]*\)/g, "]");
+  const near = (s, i) => JSON.stringify(s.slice(Math.max(0, i - 30), i + 30));
+  for (const m of content.matchAll(/\]\([^)\s]+\) +(?=[A-Z][a-z'’])/g)) {
+    out.push(`a link runs straight into the next sentence (missing full stop?): ${near(content, m.index + m[0].length)}`);
+  }
+  for (const m of text.matchAll(/[a-z]{2}[.!?][A-Z][a-z]/g)) out.push(`no space after a full stop: ${near(text, m.index + 3)}`);
+  for (const m of text.matchAll(/\b([A-Za-z]{2,}) \1\b/gi)) out.push(`doubled word "${m[1]}": ${near(text, m.index + 4)}`);
+  if (/[—–]/.test(text)) out.push("em or en dashes: use a comma, full stop or plain hyphen");
+  for (const b of text.split(/\n\n+/)) {
+    const open = (b.match(/\(/g) || []).length;
+    const close = (b.match(/\)/g) || []).length;
+    if (open !== close) out.push(`unbalanced brackets (${open} "(" vs ${close} ")"): ${JSON.stringify(b.slice(0, 60))}`);
+  }
+  /* products the site no longer lists; promote what the Products menu shows */
+  if (/4bitx/i.test(content)) out.push("mentions 4bitx, which the site no longer lists; use Codelix Custom ERP (https://www.codelixitsolutions.com/products/codelix-erp) instead");
+  return out;
+}
+
+/* ── fact check ─────────────────────────────────────────────────────────
+   Every claim needs its evidence on record: the source URL and the exact
+   sentence that supports it, copied from the page or PDF that was read
+   (not from a search snippet). Every external link must be backed by at
+   least one entry, so no source is cited without having been read. */
+function factCheckProblems(fc, content) {
+  if (!Array.isArray(fc) || fc.length < 3) {
+    return ['add "fact_check": a list of { claim, source, quote } for each factual claim (dates, numbers, rules, prices, names), with the exact supporting sentence from the source'];
+  }
+  const out = [];
+  const norm = (u) => String(u || "").trim().replace(/[#?].*$/, "").replace(/\/+$/, "").toLowerCase();
+  fc.forEach((e, i) => {
+    const n = `fact_check[${i}]`;
+    if (!e || typeof e !== "object") return out.push(`${n} must be { claim, source, quote }`);
+    if (String(e.claim || "").trim().length < 15) out.push(`${n}.claim is missing or too short`);
+    if (!/^https:\/\//.test(String(e.source || ""))) out.push(`${n}.source must be the https:// URL the quote comes from`);
+    const q = String(e.quote || "").trim();
+    if (q.length < 15 || q.length > 600) out.push(`${n}.quote must be the exact supporting sentence (15–600 characters), got ${q.length}`);
+  });
+  const sources = new Set(fc.map((e) => norm(e && e.source)));
+  const external = [...new Set([...content.matchAll(/\]\((https:\/\/[^)\s]+)\)/g)].map((m) => m[1]))]
+    .filter((u) => !/codelixitsolutions\.com/.test(u));
+  for (const u of external) if (!sources.has(norm(u))) out.push(`external link ${u} has no fact_check entry (what does it support, and with which sentence?)`);
+  return out;
+}
+
+function factCheckReport(title, fc, review) {
+  const lines = [`# Fact check: ${title}`, "", `Checked ${new Date().toISOString().slice(0, 10)}. Each claim, its source and the sentence that supports it.`, ""];
+  fc.forEach((e, i) => lines.push(`${i + 1}. ${e.claim}`, `   - Source: ${e.source}`, `   - Quote: "${String(e.quote).trim()}"`, ""));
+  lines.push("## Review", "");
+  for (const [k, v] of Object.entries(review || {})) lines.push(`- ${k}: ${v}`);
+  return lines.join("\n");
 }
 
 /* ── link checks ────────────────────────────────────────────────────────
