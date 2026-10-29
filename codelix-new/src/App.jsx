@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState, lazy, Suspense } from "react";
-import { Routes, Route, useLocation, Navigate } from "react-router-dom";
+import React, { useEffect, useRef, useState, Suspense } from "react";
+import { lazy } from "./lib/lazyRoute";
+import { Routes, Route, useLocation, Navigate, matchRoutes, createRoutesFromChildren } from "react-router-dom";
 import { ReactLenis, useLenis } from 'lenis/react';
 import { trackPageView } from "./lib/analytics";
 import gsap from "gsap";
@@ -264,17 +265,11 @@ const RouteSEO = () => {
   return <SEO title={currentSEO.title} ogTitle={currentSEO.ogTitle} description={currentSEO.description} keywords={currentSEO.keywords} robots={currentSEO.robots} image={currentSEO.image} />;
 };
 
-const AppRoutes = () => {
-  const location = useLocation();
-  const isAdminRoute = location.pathname.startsWith("/admin");
-
-  return (
-    <>
-      <RouteSEO />
-      {/* dark background fallback while a route's chunk loads, so it
-          doesn't flash white between the dark site pages */}
-      <Suspense fallback={isAdminRoute ? null : <div className="v2" style={{ width: '100vw', height: '100vh', backgroundColor: '#050507' }} />}>
-        <Routes>
+/* The route table, at module level so main.jsx can work out which page a URL
+   renders before hydrating (preloadRoute below). scripts/route-css.mjs
+   reads the <Route path=… element={<Page />}> lines from this file. */
+const ROUTES = (
+  <>
           <Route path="/" element={<Homepage />} />
           <Route path="/services" element={<Services />} />
           <Route path="/services/web-development" element={<WebDevelopment />} />
@@ -362,7 +357,29 @@ const AppRoutes = () => {
               and it renders NotFound for any slug that is not one of those pages. */}
           <Route path="/:slug" element={<LocationLanding />} />
           <Route path="*" element={<NotFound />} />
-        </Routes>
+  </>
+);
+
+/* load the lazy page(s) a URL renders; see src/lib/lazyRoute.js. It has to
+   live beside ROUTES, which needs this file's lazy components; the only cost
+   of the extra export is a full reload instead of hot refresh in dev. */
+// eslint-disable-next-line react-refresh/only-export-components
+export function preloadRoute(pathname) {
+  const matches = matchRoutes(createRoutesFromChildren(ROUTES), pathname) || [];
+  return Promise.all(matches.map((m) => m.route.element?.type?.preload?.()).filter(Boolean));
+}
+
+const AppRoutes = () => {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith("/admin");
+
+  return (
+    <>
+      <RouteSEO />
+      {/* dark background fallback while a route's chunk loads, so it
+          doesn't flash white between the dark site pages */}
+      <Suspense fallback={isAdminRoute ? null : <div className="v2" style={{ width: '100vw', height: '100vh', backgroundColor: '#050507' }} />}>
+        <Routes>{ROUTES}</Routes>
       </Suspense>
     </>
   );

@@ -51,6 +51,13 @@ export function createRouteCss({ appFile, srcDir, manifest }) {
     return cssFor(key).map((file) => `/${file}`);
   }
 
+  /* the page component's own JS chunk, which main.jsx loads before hydrating
+     (see the data-route-chunk link ssg-build.mjs adds) */
+  routeCss.chunkFor = (url) => {
+    const entry = manifest[manifestKey(routeFor(url).file)];
+    return entry ? `/${entry.file}` : null;
+  };
+
   /* the page component a URL renders, and whether it is a template shared by
      several URLs (a ":param" route) — used for the page's dates */
   routeCss.sourceFor = (url) => {
