@@ -24,7 +24,7 @@ const PAGE = {
   customSoftware: { label: "Custom software development", path: "/services/custom-software-development", body: "Internal tools, workflows and platforms built for your process." },
   /* 4bitx is unlisted; links that used to point there go to Codelix ERP */
   codelixErp: { label: "Codelix Custom ERP", path: "/products/codelix-erp", body: "Our own ERP, with editions for construction, manufacturing, ceramic and textile." },
-  erpManufacturing: { label: "Codelix ERP for manufacturing", path: "/products/codelix-erp/manufacturing", body: "Our own manufacturing ERP, with GST e-invoice and e-way bills." },
+  erpManufacturing: { label: "Codelix Custom ERP for manufacturing", path: "/products/codelix-erp/manufacturing", body: "Our own manufacturing ERP, with GST e-invoice and e-way bills." },
   manufacturing: { label: "Software for manufacturing", path: "/industries/manufacturing", body: "Production, inventory and dispatch systems for factories." },
   hireHub: { label: "Hire dedicated developers", path: "/hire-developers", body: "Developers by technology, full-time on your product." },
   dedicatedTeams: { label: "Dedicated development teams", path: "/services/dedicated-development-teams", body: "A managed team of developers, design and QA for a long roadmap." },
