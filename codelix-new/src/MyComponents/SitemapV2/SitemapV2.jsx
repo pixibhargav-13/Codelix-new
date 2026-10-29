@@ -63,11 +63,14 @@ export default function SitemapV2() {
     },
     {
       title: "Products",
-      links: LISTED_PRODUCTS.flatMap(p => [
-        { label: p.name, href: `/products/${p.slug}` },
-        ...(p.editions || []).map((ed) => ({ label: `${p.name}: ${ed.name}`, href: ed.path })),
-      ])
+      links: LISTED_PRODUCTS.map((p) => ({ label: p.name, href: `/products/${p.slug}` })),
     },
+    /* the editions are part of Codelix Custom ERP, not products of their
+       own: they get their own group, named after the product */
+    ...LISTED_PRODUCTS.filter((p) => p.editions).map((p) => ({
+      title: `${p.name} editions`,
+      links: p.editions.map((ed) => ({ label: `${ed.name} ERP`, href: ed.path })),
+    })),
     {
       title: "Case Studies",
       links: caseStudiesDynamic.map(cs => ({ label: cs.title, href: `/case-study/${cs.slug}` }))

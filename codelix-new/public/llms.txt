@@ -167,4 +167,4 @@ Projects Codelix has delivered: the problem, the build, and the outcome.
 - Legal name: Codelix IT Solutions Pvt Ltd. Office in Ahmedabad, Gujarat, India; works with clients in India and abroad.
 - Founders: Manas Vadodaria (CEO) and Kushal Mungalpara (Co-Founder).
 - Engagements: fixed-scope projects with a written quote, milestone billing, monthly maintenance plans, and dedicated developers.
-- Own products: Audytee (practice management for CA firms), Codelix ERP (construction and manufacturing ERP), AanganOne (society management app).
+- Own products (three): Audytee (practice management for CA firms), Codelix Custom ERP (one ERP with construction, manufacturing, ceramic and textile editions), AanganOne (society management app).

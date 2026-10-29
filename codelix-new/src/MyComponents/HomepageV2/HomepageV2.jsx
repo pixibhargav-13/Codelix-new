@@ -1049,7 +1049,7 @@ export default function HomepageV2() {
       <section className="v2-section v2-products-section" id="products">
         <p className="v2-label">Our Products</p>
         <h2 className="v2-heading">Beyond client work — products we build and run ourselves.</h2>
-        <p className="v2-lede">Codelix runs its own live products — Audytee, Codelix ERP and AanganOne — engineered with the same craft we bring to client work.</p>
+        <p className="v2-lede">Codelix runs three live products of its own — Audytee, Codelix Custom ERP and AanganOne — engineered with the same craft we bring to client work.</p>
         <div className="v2-products-grid">
           {LISTED_PRODUCTS.map((p) => (
             <Link to={`/products/${p.slug}`} className="v2-product-card" key={p.slug} style={{ "--accent": p.accent }}>
