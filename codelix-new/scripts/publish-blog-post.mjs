@@ -7,6 +7,14 @@
      node scripts/publish-blog-post.mjs post.json --dry-run validate + render cover, send nothing
      node scripts/publish-blog-post.mjs post.json           publish, then check the live page
      node scripts/publish-blog-post.mjs --verify <slug>     re-run the live checks for a published post
+     node scripts/publish-blog-post.mjs --slot              the oldest scheduled slot still without a post
+     node scripts/publish-blog-post.mjs post.json --published-at=<ISO>
+                                                            publish dated to that missed slot
+
+   Slots: the writer is scheduled Mon, Wed and Fri at 10:00 IST. When a run
+   can't happen (a usage limit, an outage), a later run catches up: --slot
+   names the oldest slot from the last 14 days that has no post, and the
+   post goes out dated to that slot, so the blog keeps its schedule.
 
    post.json:
      { title, slug?, excerpt, content, category, primary_keyword, tags: [4–6], read_time?,
@@ -52,6 +60,8 @@ const args = process.argv.slice(2);
 const DRY = args.includes("--dry-run");
 const LIST = args.includes("--list");
 const VERIFY = args.includes("--verify");
+const SLOT = args.includes("--slot");
+const PUBLISHED_AT = (args.find((a) => a.startsWith("--published-at=")) || "").slice("--published-at=".length);
 const file = args.find((a) => !a.startsWith("--"));
 
 /* Never process.exit() while a network request may still be closing: on
@@ -66,7 +76,7 @@ const fail = (msg) => {
 async function main() {
 
 const { VITE_SUPABASE_URL: URL_, SUPABASE_SERVICE_ROLE_KEY: KEY, VERCEL_DEPLOY_HOOK_URL: HOOK } = process.env;
-const needDb = LIST || VERIFY || !DRY;
+const needDb = LIST || VERIFY || SLOT || !DRY;
 if (needDb && (!URL_ || !KEY)) {
   fail("VITE_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY must be set in .env.local");
 }
@@ -81,6 +91,15 @@ if (placeholders.includes("VERCEL_DEPLOY_HOOK_URL")) {
   fail(".env.local still has a placeholder VERCEL_DEPLOY_HOOK_URL. Paste the real deploy hook URL, or delete that line to publish without an automatic rebuild.");
 }
 const db = needDb ? createClient(URL_, KEY, { auth: { persistSession: false } }) : null;
+
+/* ── --slot ────────────────────────────────────────────────────────────
+   Prints the slot to write for, or "no missed slot" (the run should stop
+   there, before any research). */
+if (SLOT) {
+  const slot = await missedSlot(db);
+  console.log(slot ? `slot: ${slot.toISOString()} (${slotLabel(slot)})` : "no missed slot");
+  return;
+}
 
 /* ── --list ──────────────────────────────────────────────────────────── */
 if (LIST) {
@@ -206,6 +225,21 @@ if (db) {
   if (clash) fail(`a post with slug "${slug}" already exists`);
 }
 
+/* a post dated to a missed slot: only that exact slot is accepted, so a
+   typo can't put a post at an arbitrary date */
+let publishedAt = new Date();
+if (PUBLISHED_AT) {
+  const when = new Date(PUBLISHED_AT);
+  if (Number.isNaN(when.getTime())) fail(`--published-at "${PUBLISHED_AT}" is not a date; use the ISO time --slot printed`);
+  if (!isSlot(when)) fail(`--published-at ${when.toISOString()} is not a scheduled slot (Mon, Wed or Fri at 10:00 IST)`);
+  if (when > new Date()) fail("--published-at is in the future");
+  if (db) {
+    const slot = await missedSlot(db);
+    if (!slot || slot.getTime() !== when.getTime()) fail(`--published-at ${when.toISOString()} isn't the oldest missed slot (that is ${slot ? slot.toISOString() : "none"}); run --slot`);
+  }
+  publishedAt = when;
+}
+
 /* ── cover: see scripts/blog-cover.mjs ─────────────────────────────── */
 const { cover, banner, motif } = await renderCover({ title, category, tags });
 /* the covers must be WebP (RIFF....WEBP) and light, so the blog loads fast;
@@ -227,7 +261,7 @@ const row = {
   tags: [...new Set(["All Articles", category, primary, ...tags])],
   read_time: String(post.read_time || "").trim() || `${Math.max(3, Math.round(words / 200))} min read`,
   published: true,
-  published_at: new Date().toISOString(),
+  published_at: publishedAt.toISOString(),
 };
 
 if (DRY) {
@@ -238,7 +272,7 @@ if (DRY) {
   const ledger = path.join(path.dirname(path.resolve(file)), `${slug}-fact-check.md`);
   fs.writeFileSync(ledger, factCheckReport(title, post.fact_check, post.review));
   console.log(`✅ dry run OK — ${words} words, ${h2s} sections, ${row.read_time}, cover: ${motif}, tags: ${row.tags.join(", ")}`);
-  console.log(`   would publish https://www.codelixitsolutions.com/blog/${slug}`);
+  console.log(`   would publish https://www.codelixitsolutions.com/blog/${slug}${PUBLISHED_AT ? `, dated ${slotLabel(publishedAt)}` : ""}`);
   console.log(`   share card preview: ${out}`);
   console.log(`   on-site banner preview: ${outBanner}`);
   console.log(`   fact check (${post.fact_check.length} claims): ${ledger}`);
@@ -292,6 +326,41 @@ await verifyLive(slug, [row.cover_image_url, db.storage.from("media").getPublicU
 }
 
 const SITE_ORIGIN = "https://www.codelixitsolutions.com";
+
+/* ── schedule slots ─────────────────────────────────────────────────────
+   10:00 IST is 04:30 UTC, the same calendar day. Counting starts at the
+   first slot a run missed (Wed 28 Oct 2026, a usage limit), so nothing
+   older is backfilled, and looks back at most 14 days. A slot is covered
+   by any post published from that slot up to the next one. */
+const SLOT_DAYS = [1, 3, 5];
+const SLOT_START = Date.parse("2026-10-28T04:30:00Z");
+const LOOKBACK_MS = 14 * 24 * 3600 * 1000;
+const isSlot = (d) => SLOT_DAYS.includes(d.getUTCDay()) && d.getUTCHours() === 4 && d.getUTCMinutes() === 30 && d.getUTCSeconds() === 0 && d.getUTCMilliseconds() === 0;
+const slotLabel = (d) => `${d.toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short", year: "numeric", timeZone: "Asia/Kolkata" })}, 10:00 IST`;
+function slotsSince(from, to) {
+  const out = [];
+  const day = new Date(from);
+  day.setUTCHours(4, 30, 0, 0);
+  for (; day.getTime() <= to; day.setUTCDate(day.getUTCDate() + 1)) {
+    if (day.getTime() >= from && SLOT_DAYS.includes(day.getUTCDay())) out.push(new Date(day));
+  }
+  return out;
+}
+async function missedSlot(db) {
+  const now = Date.now();
+  const from = Math.max(SLOT_START, now - LOOKBACK_MS);
+  const slots = slotsSince(from, now);
+  if (!slots.length) return null;
+  const { data, error } = await db.from("blog_posts").select("published_at").eq("published", true).gte("published_at", slots[0].toISOString());
+  if (error) fail(error.message);
+  const times = data.map((p) => Date.parse(p.published_at));
+  for (let i = 0; i < slots.length; i++) {
+    const start = slots[i].getTime();
+    const end = i + 1 < slots.length ? slots[i + 1].getTime() : Infinity;
+    if (!times.some((t) => t >= start && t < end)) return slots[i];
+  }
+  return null;
+}
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 /* post.md: "key: value" lines between two "---" lines, then the content */
