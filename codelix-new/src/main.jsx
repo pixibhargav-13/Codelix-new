@@ -17,7 +17,7 @@ import './index.css'
 import './MyComponents/HomepageV2/HomepageV2.css'
 import './MyComponents/ServicesV2/ServicesV2.css'
 import './MyComponents/ServiceDetailV2/ServiceDetailV2.css'
-import App from './App.jsx'
+import App, { preloadRoute } from './App.jsx'
 
 const initialData = typeof window !== 'undefined' && window.__INITIAL_DATA__ ? window.__INITIAL_DATA__ : null;
 const rootElement = document.getElementById('root');
@@ -51,7 +51,20 @@ const isAdmin = window.location.pathname.startsWith("/admin");
 document.head.querySelectorAll("[data-ssr]").forEach((tag) => tag.remove());
 
 if (rootElement.hasChildNodes() && !isAdmin) {
-  hydrateRoot(rootElement, app);
+  /* load the page this URL renders first (its chunk is already downloading:
+     ssg-build.mjs modulepreloads it). Hydrating while it was still loading
+     left the route waiting, and the first context update (Lenis setting
+     itself up) made React throw the prerendered page away and render it
+     again from scratch. A failed load only means hydrating the way it did
+     before.
+
+     Only for HTML prerendered for this very URL, which is what carries the
+     data-route-chunk link. The 404 page and the post shell are served for
+     other URLs (an unknown /blog/ slug, a post published since the build);
+     their markup can't match the route, so they hydrate as before. */
+  const prerenderedForThisUrl = document.querySelector("link[data-route-chunk]");
+  const ready = prerenderedForThisUrl ? preloadRoute(window.location.pathname).catch(() => {}) : Promise.resolve();
+  ready.then(() => hydrateRoot(rootElement, app));
 } else {
   if (isAdmin) rootElement.innerHTML = "";
   createRoot(rootElement).render(app);

@@ -213,6 +213,16 @@ async function build() {
         .join("\n");
       if (pageCss) html = html.replace(entryCssLink[0], `${entryCssLink[0]}\n${pageCss}`);
 
+      /* the page's own chunk: preloaded from the head, and awaited by main.jsx
+         before it hydrates, so the route hydrates in one pass. Otherwise the
+         lazy route was still loading when Lenis set its context on mount,
+         and React discarded the prerendered page for a client render —
+         repainting the hero seconds after it was first shown. */
+      /* not on the 404: it is also served for unknown /blog/ and /case-study/
+         URLs, which route to other components */
+      const routeChunk = url === NOT_FOUND_ROUTE ? null : routeCss.chunkFor(url);
+      if (routeChunk) html = html.replace("</head>", `<link rel="modulepreload" crossorigin href="${routeChunk}" data-route-chunk>\n</head>`);
+
       /* react-helmet-async's context extraction returns nothing under React 19 -
          helmet comes back undefined and the SEO tags render inline into the app
          markup instead, which leaves them inside <div id="root">. A browser hoists
