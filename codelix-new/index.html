@@ -42,7 +42,13 @@
   <!-- declared here as well as in index.css: the stylesheets load without
        blocking (critical CSS, scripts/ssg-build.mjs), and until this face is
        declared text paints in the fallback, wraps differently and jumps -->
-  <style>@font-face{font-family:'NoiGroteskFix';src:url('/fonts/NoiGroteskFix-Regular-v1.woff2') format('woff2');font-weight:normal;font-style:normal;font-display:swap}</style>
+  <!-- NoiGroteskFallback: local Arial scaled to NoiGrotesk's metrics (size-adjust
+       calibrated against real headings on 41 pages at 5 widths; ascent/descent/
+       line gap from the font's hhea table),
+       so text painted before the font arrives wraps the same way and nothing
+       moves when it swaps in. Without it the 68px city-page headline wrapped
+       onto an extra line and the hero jumped (CLS 0.29 on desktop). -->
+  <style>@font-face{font-family:'NoiGroteskFix';src:url('/fonts/NoiGroteskFix-Regular-v1.woff2') format('woff2');font-weight:normal;font-style:normal;font-display:swap}@font-face{font-family:'NoiGroteskFallback';src:local('Arial'),local('Helvetica'),local('Arimo');size-adjust:101%;ascent-override:84.16%;descent-override:20.79%;line-gap-override:14.36%}</style>
 
   <!-- Google Fonts - Hanken Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
