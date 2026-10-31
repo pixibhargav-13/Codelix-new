@@ -25,7 +25,8 @@ export const POST = {
 const PAGE = {
   erp: { label: "ERP & CRM development", path: "/services/erp-crm-development", body: "Custom ERP and CRM built around how your business runs." },
   customSoftware: { label: "Custom software development", path: "/services/custom-software-development", body: "Internal tools, workflows and platforms built for your process." },
-  /* 4bitx is unlisted; links that used to point there go to Codelix ERP */
+  /* Codelix ERP is the ERP product; /products/4bitx redirects to its
+     manufacturing edition */
   codelixErp: { label: "Codelix Custom ERP", path: "/products/codelix-erp", body: "Our own ERP, with editions for construction, manufacturing, ceramic and textile." },
   erpManufacturing: { label: "Codelix Custom ERP for manufacturing", path: "/products/codelix-erp/manufacturing", body: "Our own manufacturing ERP, with GST e-invoice and e-way bills." },
   manufacturing: { label: "Software for manufacturing", path: "/industries/manufacturing", body: "Production, inventory and dispatch systems for factories." },
@@ -60,7 +61,6 @@ export const HIRE_GUIDES = {
 export const RELATED_READING = {
   "/services/custom-software-development": [POST.customCost, POST.customVsOts, PAGE.erp, POST.inHouse, PAGE.calculator],
   "/services/erp-crm-development": [POST.erpCost, POST.tally, POST.ceramicErp, PAGE.codelixErp, PAGE.manufacturing],
-  "/products/4bitx": [PAGE.erp, POST.erpCost, POST.tally],
   "/industries/manufacturing": [PAGE.erpManufacturing, PAGE.erp, POST.tally],
   "/products/codelix-erp": [POST.erpCost, POST.tally, PAGE.erp],
   "/products/codelix-erp/construction": [POST.erpCost, POST.customVsOts, PAGE.erp],
