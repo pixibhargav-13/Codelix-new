@@ -167,6 +167,17 @@ export default function PricingV2() {
                 No public rate card — pricing follows scope and complexity. Get a
                 ballpark below, then a written quote after a free scoping call.
               </p>
+              {/* the only page hero without a call to action: on a phone nothing
+                  in the first screen led anywhere */}
+              <div className="sd2-hero-cta sv2-hero-reveal">
+                <a className="v2-btn v2-btn--filled" href="#estimator">
+                  <span>Estimate my project</span>
+                  <i className="v2-btn-arrow">→</i>
+                </a>
+                <Link className="v2-hero-secondary" to="/contact">
+                  <span className="v2-hero-secondary-label">Schedule a call</span>
+                </Link>
+              </div>
             </div>
             
             <div className="sd2-hero-visual sv2-hero-reveal">

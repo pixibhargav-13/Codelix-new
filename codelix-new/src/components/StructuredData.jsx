@@ -34,6 +34,7 @@ export const StructuredData = ({ type = 'Organization', data = null }) => {
     schemaObj = {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
+      "@id": `${siteUrl}${location.pathname.replace(/\/+$/, "")}#article`,
       "headline": data.title,
       "description": data.excerpt || undefined,
       "image": data.image || `${siteUrl}/og-image.png`,
@@ -116,6 +117,7 @@ export const StructuredData = ({ type = 'Organization', data = null }) => {
     schemaObj = {
       "@context": "https://schema.org",
       "@type": "Article",
+      "@id": `${siteUrl}${location.pathname.replace(/\/+$/, "")}#article`,
       "headline": data.title,
       "description": data.description,
       "image": data.image || `${siteUrl}/og-image.png`,

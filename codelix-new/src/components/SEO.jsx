@@ -35,6 +35,8 @@ export const SEO = ({
   description,
   keywords = '',
   robots = 'index, follow, max-image-preview:large, max-snippet:-1',
+  /* the person a post is bylined to; everything else is the company's */
+  author = 'Codelix IT Solutions',
 }) => {
   const siteUrl = 'https://www.codelixitsolutions.com';
   const location = useLocation();
@@ -81,7 +83,7 @@ export const SEO = ({
       <meta name="description" content={finalDesc} />
       {keywords && <meta name="keywords" content={keywords} />}
       <meta name="robots" content={robots} />
-      <meta name="author" content="Codelix IT Solutions" />
+      <meta name="author" content={author} />
       <meta name="theme-color" content="#000000" />
 
       {/* Canonical URL */}

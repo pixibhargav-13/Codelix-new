@@ -48,7 +48,7 @@ export const COST_FAMILIES = [
     ],
   },
   {
-    key: "Enterprise", label: "ERP, CRM or custom software", service: "Enterprise Software Solutions", path: "/services/custom-software-development",
+    key: "Enterprise", label: "ERP, CRM or custom software", service: "Enterprise Software Solutions", path: "/services/erp-crm-development",
     sizes: [
       "One or two modules, such as inventory or a sales CRM, replacing spreadsheets.",
       "A multi-module system — sales, purchase, inventory, accounts — with roles and reports.",

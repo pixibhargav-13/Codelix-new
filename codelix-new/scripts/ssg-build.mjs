@@ -343,6 +343,11 @@ async function build() {
           publisher: { "@id": "https://www.codelixitsolutions.com/#organization" },
           datePublished: dates?.published,
           dateModified: dates?.modified,
+          /* /team is about the founders, defined (with these @ids) in the
+             organisation node in index.html */
+          mainEntity: url === "/team"
+            ? [{ "@id": "https://www.codelixitsolutions.com/team#manas-vadodaria" }, { "@id": "https://www.codelixitsolutions.com/team#kushal-mungalpara" }]
+            : undefined,
         };
         html = html.replace(
           "</head>",
@@ -410,7 +415,11 @@ async function build() {
 ${sitemapRoutes
   .map((url) => {
     const lastmod = lastmodFor(url);
-    return `  <url>\n    <loc>https://www.codelixitsolutions.com${url}</loc>\n${lastmod ? `    <lastmod>${lastmod}</lastmod>\n` : ""}    <changefreq>weekly</changefreq>\n    <priority>${url === '/' ? '1.0' : '0.8'}</priority>\n  </url>`;
+    /* no changefreq/priority: Google ignores both. Posts stay listed here
+       even though sitemap-posts.xml also lists them: the rebuild workflow
+       (.github/workflows/rebuild-new-posts.yml) finds unbuilt posts by
+       comparing the two files. */
+    return `  <url>\n    <loc>https://www.codelixitsolutions.com${url}</loc>\n${lastmod ? `    <lastmod>${lastmod}</lastmod>\n` : ""}  </url>`;
   })
   .join('\n')}
 </urlset>`;

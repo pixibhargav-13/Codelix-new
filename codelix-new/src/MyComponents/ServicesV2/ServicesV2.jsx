@@ -578,7 +578,7 @@ export default function ServicesV2() {
       {/* ══════════ 6 · PRINCIPLES ══════════ */}
       <section className="v2-section" id="principles">
         <p className="v2-label">Our Principles</p>
-        <h2 className="v2-heading">Three things we don't bend on.</h2>
+        <h2 className="v2-heading">Two things we don't bend on.</h2>
         <div className="sv2-tenet-grid">
           {PRINCIPLES.map((p, i) => (
             <article className="sv2-tenet" key={p.key}>

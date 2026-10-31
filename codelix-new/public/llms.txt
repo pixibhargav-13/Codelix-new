@@ -100,6 +100,10 @@ Cost guides and comparisons. Prices quoted are Codelix's own published ranges.
 - [Custom vs off-the-shelf software](https://www.codelixitsolutions.com/blog/custom-software-vs-off-the-shelf-software): When building your own software pays off.
 - [In-house vs outsourcing software development](https://www.codelixitsolutions.com/blog/in-house-vs-outsourcing-software-development): Cost, control and risk of each model.
 - [When to move from Tally to ERP](https://www.codelixitsolutions.com/blog/when-to-move-from-tally-to-erp): Signs a business has outgrown Tally and spreadsheets.
+- [ERP for the ceramic industry](https://www.codelixitsolutions.com/blog/erp-for-ceramic-industry): Features, options, prices and timelines for tile and sanitaryware makers.
+- [AI chatbot cost in India](https://www.codelixitsolutions.com/blog/ai-chatbot-cost-in-india): WhatsApp AI add-ons vs a custom build, plus model and WhatsApp message charges.
+- [DPDP Act compliance for small business](https://www.codelixitsolutions.com/blog/dpdp-act-compliance-for-small-business): What the DPDP Rules require, what compliance costs and what to fix first.
+- [WhatsApp payment reminders for invoices](https://www.codelixitsolutions.com/blog/whatsapp-payment-reminders-for-invoices): Automating invoice reminders on WhatsApp from Tally, Zoho or an ERP, and the per-message cost.
 - [Software development cost calculator](https://www.codelixitsolutions.com/software-development-cost-calculator): Published price ranges by project type and size.
 
 ## Case studies

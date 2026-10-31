@@ -217,7 +217,7 @@ export default function ContactV2() {
                 </a>
                 <a
                   className="contact-quick-link"
-                  href="https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D"
+                  href="https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5"
                   target="_blank" rel="noopener noreferrer"
                 >
                   <MapPin size={15} strokeWidth={1.7} />
@@ -268,34 +268,34 @@ export default function ContactV2() {
 
                 <div className="contact-form-row">
                   <div className="contact-field">
-                    <label>Your Name*</label>
-                    <input type="text" name="name" autoComplete="name" required value={formData.name} onChange={handleChange} />
+                    <label htmlFor="contact-name">Your Name*</label>
+                    <input type="text" id="contact-name" name="name" autoComplete="name" required value={formData.name} onChange={handleChange} />
                   </div>
                   <div className="contact-field">
-                    <label>Email*</label>
-                    <input type="email" name="email" autoComplete="email" required value={formData.email} onChange={handleChange} />
-                  </div>
-                </div>
-
-                <div className="contact-form-row">
-                  <div className="contact-field">
-                    <label>Contact*</label>
-                    <input type="text" name="contact" autoComplete="tel" inputMode="tel" required value={formData.contact} onChange={handleChange} />
-                  </div>
-                  <div className="contact-field">
-                    <label>Company*</label>
-                    <input type="text" name="company" autoComplete="organization" required value={formData.company} onChange={handleChange} />
+                    <label htmlFor="contact-email">Email*</label>
+                    <input type="email" id="contact-email" name="email" autoComplete="email" required value={formData.email} onChange={handleChange} />
                   </div>
                 </div>
 
                 <div className="contact-form-row">
                   <div className="contact-field">
-                    <label>Designation*</label>
-                    <input type="text" name="designation" autoComplete="organization-title" required value={formData.designation} onChange={handleChange} />
+                    <label htmlFor="contact-contact">Contact*</label>
+                    <input type="text" id="contact-contact" name="contact" autoComplete="tel" inputMode="tel" required value={formData.contact} onChange={handleChange} />
                   </div>
                   <div className="contact-field">
-                    <label>Service*</label>
-                    <select name="service" required value={formData.service} onChange={handleChange}>
+                    <label htmlFor="contact-company">Company*</label>
+                    <input type="text" id="contact-company" name="company" autoComplete="organization" required value={formData.company} onChange={handleChange} />
+                  </div>
+                </div>
+
+                <div className="contact-form-row">
+                  <div className="contact-field">
+                    <label htmlFor="contact-designation">Designation*</label>
+                    <input type="text" id="contact-designation" name="designation" autoComplete="organization-title" required value={formData.designation} onChange={handleChange} />
+                  </div>
+                  <div className="contact-field">
+                    <label htmlFor="contact-service">Service*</label>
+                    <select id="contact-service" name="service" required value={formData.service} onChange={handleChange}>
                       <option disabled value="Select">Select</option>
                       {FOOTER_ALL_SERVICES.map(s => (
                         <option key={s.label} value={s.label}>{s.label}</option>
@@ -306,14 +306,14 @@ export default function ContactV2() {
                 </div>
 
                 <div className="contact-field">
-                  <label>About Project*</label>
-                  <textarea rows="4" name="aboutProject" required value={formData.aboutProject} onChange={handleChange} />
+                  <label htmlFor="contact-aboutProject">About Project*</label>
+                  <textarea rows="4" id="contact-aboutProject" name="aboutProject" required value={formData.aboutProject} onChange={handleChange} />
                 </div>
 
                 <div className="contact-form-row">
                   <div className="contact-field">
-                    <label>Budget</label>
-                    <select name="budget" value={formData.budget} onChange={handleChange}>
+                    <label htmlFor="contact-budget">Budget</label>
+                    <select id="contact-budget" name="budget" value={formData.budget} onChange={handleChange}>
                       <option disabled value="Select">Select</option>
                       <option>Under $1500</option>
                       <option>$1500 - $5,000</option>
@@ -324,8 +324,8 @@ export default function ContactV2() {
                     </select>
                   </div>
                   <div className="contact-field">
-                    <label>Timeline</label>
-                    <select name="timeline" value={formData.timeline} onChange={handleChange}>
+                    <label htmlFor="contact-timeline">Timeline</label>
+                    <select id="contact-timeline" name="timeline" value={formData.timeline} onChange={handleChange}>
                       <option disabled value="Select">Select</option>
                       <option>1-3 months</option>
                       <option>3-6 months</option>
@@ -337,8 +337,8 @@ export default function ContactV2() {
                 </div>
 
                 <div className="contact-field">
-                  <label>How did you hear about us?</label>
-                  <textarea rows="3" name="howHeard" value={formData.howHeard} onChange={handleChange} />
+                  <label htmlFor="contact-howHeard">How did you hear about us?</label>
+                  <textarea rows="3" id="contact-howHeard" name="howHeard" value={formData.howHeard} onChange={handleChange} />
                 </div>
 
                 {error && <p className="contact-error">⚠️ {error}</p>}
