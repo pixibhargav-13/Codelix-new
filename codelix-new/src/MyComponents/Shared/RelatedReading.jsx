@@ -1,14 +1,33 @@
 import { Link, useLocation } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
-import { RELATED_READING } from "../../lib/relatedReading";
+import { RELATED_READING, HIRE_PRIORITY } from "../../lib/relatedReading";
+import { HIRE_ROLES } from "../HireDevelopersV2/hireDevelopersData";
+
+const MAX_HIRE = 3;
+const rank = (slug) => {
+  const i = HIRE_PRIORITY.indexOf(slug);
+  return i === -1 ? HIRE_PRIORITY.length : i;
+};
 
 /* "Related reading" for a hub page — see src/lib/relatedReading.js. Uses the
-   same cards as the service pages' "Explore More" row; renders nothing on a
-   page with no entry. */
+   same cards as the service pages' "Explore More" row, followed by the hire
+   pages for the technologies the service is built with; renders nothing on a
+   page with neither. */
 export default function RelatedReading({ className = "" }) {
   const { pathname } = useLocation();
-  const items = RELATED_READING[pathname.replace(/\/+$/, "") || "/"];
-  if (!items) return null;
+  const path = pathname.replace(/\/+$/, "") || "/";
+  const listed = RELATED_READING[path] || [];
+  const hire = HIRE_ROLES
+    .filter((r) => r.services.includes(path))
+    .sort((a, b) => rank(a.slug) - rank(b.slug))
+    .map((r) => ({
+      label: r.title,
+      path: `/hire-developers/${r.slug}`,
+      body: `Dedicated ${r.tech} developers from India, monthly or fixed scope.`,
+    }));
+  const seen = new Set(listed.map((item) => item.path));
+  const items = [...listed, ...hire.filter((item) => !seen.has(item.path)).slice(0, MAX_HIRE)];
+  if (!items.length) return null;
 
   return (
     <section className={`v2-section ${className}`.trim()} id="related-reading">

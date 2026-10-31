@@ -396,7 +396,7 @@ export default function AIDevelopmentV2() {
 
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Service 06 · AI Development</span>
-                <h1 className="v2-hero-eyebrow">AI Software Development Services</h1>
+                <h1 className="v2-hero-eyebrow">AI Development Company in India</h1>
               </div>
               <h2 className="sd2-hero-title">
                 <span className="line"><span>Automation for the handoff,</span></span>{" "}

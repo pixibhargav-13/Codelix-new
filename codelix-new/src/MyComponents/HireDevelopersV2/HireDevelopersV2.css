@@ -1,6 +1,15 @@
 /* Only what the hire pages add on top of the shared sd2-* service-detail
    styles: a readable intro paragraph and the skills chip list. */
 
+.v2 .hd2-guides {
+  margin-top: 32px;
+}
+.v2 .hd2-guides a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .v2 .hd2-intro {
   max-width: 68ch;
   font-size: clamp(18px, 1.6vw, 22px);
