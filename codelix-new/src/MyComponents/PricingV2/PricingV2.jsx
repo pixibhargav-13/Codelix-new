@@ -14,6 +14,7 @@ import "./PricingV2.css";
 import NavbarV2 from "../Shared/NavbarV2";
 import PricingHeroVisual from "./PricingHeroVisual";
 import FaqSection from '../Shared/FaqSection';
+import DeepDive from "../Shared/DeepDive";
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
 import { BASE_ESTIMATES, COMPLEXITY } from "../../lib/pricingBands.js";
@@ -251,6 +252,8 @@ export default function PricingV2() {
       </section>
 
       {/* ══════════ 3 · ENGAGEMENT MODELS ══════════ */}
+      <DeepDive />
+
       <section className="v2-section v2-section--void" id="models">
         <p className="v2-label">Engagement Models</p>
         <h2 className="v2-heading">Three ways we structure a project.</h2>

@@ -30,6 +30,7 @@ import { pickRelated } from "../../lib/pickRelated";
 import NavbarV2 from "../Shared/NavbarV2";
 import ScrollSentence from "../Shared/ScrollSentence";
 import FaqSection from "../Shared/FaqSection";
+import DeepDive from "../Shared/DeepDive";
 import RelatedReading from "../Shared/RelatedReading";
 import CtaSection from "../Shared/CtaSection";
 import ClientStrip from "../Shared/ClientStrip";
@@ -441,6 +442,9 @@ export default function AdditionalServiceDetailV2() {
           <p className="sd2-overview-text">{svc.overview}</p>
         </section>
       )}
+
+      {/* ══════════ 2a+ · QUESTIONS ONLY THIS SERVICE ANSWERS ══════════ */}
+      <DeepDive />
 
       {/* ══════════ 2b · CLIENT STRIP ══════════ */}
       <ClientStrip />

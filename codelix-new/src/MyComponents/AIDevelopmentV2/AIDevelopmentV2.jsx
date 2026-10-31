@@ -29,6 +29,7 @@ import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import ScrollSentence from '../Shared/ScrollSentence';
 import FaqSection from '../Shared/FaqSection';
+import DeepDive from "../Shared/DeepDive";
 import RelatedReading from "../Shared/RelatedReading";
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
@@ -885,6 +886,7 @@ export default function AIDevelopmentV2() {
       <ScrollSentence words={SENTENCE} tone="dark"  centered={true} />
 
       {/* ══════════ 9 · FAQ ══════════ */}
+      <DeepDive />
       <RelatedReading />
 
       <FaqSection faqs={FAQS} className="v2-section--void" />
