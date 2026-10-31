@@ -1071,7 +1071,7 @@ export default function HomepageV2() {
       {/* ══════════ 7 · PRINCIPLES ══════════ */}
       <section className="v2-section v2-section--void v2-principles-section" id="principles">
         <p className="v2-label">Our Principles</p>
-        <h2 className="v2-heading">Three commitments that govern every project we take.</h2>
+        <h2 className="v2-heading">Two commitments that govern every project we take.</h2>
         <div className="v2-principles-grid">
           {PRINCIPLES.map((p) => (
             <div className="v2-principle" key={p.key}>

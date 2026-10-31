@@ -287,7 +287,7 @@ export default function AboutV2() {
       {/* ══════════ 5 · VALUES ══════════ */}
       <section className="v2-section" id="values">
         <p className="v2-label">What We Actually Believe</p>
-        <h2 className="v2-heading">Three things that don't change per client.</h2>
+        <h2 className="v2-heading">Two things that don't change per client.</h2>
         <div className="sd2-tenet-grid">
           {VALUES.map((p, i) => (
             <article className="sd2-tenet" key={p.key}>

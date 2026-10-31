@@ -18,6 +18,9 @@ const POST = {
   webCost: { label: "Website development cost in India", path: "/blog/website-development-cost-in-india", body: "Price ranges for business sites, custom web apps and portals." },
   laravelNode: { label: "Laravel vs Node.js for business web apps", path: "/blog/laravel-vs-node-js-for-business-web-apps", body: "Which backend suits an admin-heavy app and which a real-time one." },
   ecomCost: { label: "E-commerce website development cost in India", path: "/blog/e-commerce-website-development-cost-in-india", body: "Shopify vs WooCommerce vs custom, and the running costs." },
+  chatbotCost: { label: "AI chatbot cost in India", path: "/blog/ai-chatbot-cost-in-india", body: "WhatsApp AI add-ons vs a custom build, and the model and message charges." },
+  dpdp: { label: "DPDP Act compliance for small business", path: "/blog/dpdp-act-compliance-for-small-business", body: "What the Rules require, what it costs and what to fix first." },
+  ceramicErp: { label: "ERP for the ceramic industry", path: "/blog/erp-for-ceramic-industry", body: "Features, options, prices and timelines for tile and sanitaryware makers." },
 };
 const PAGE = {
   erp: { label: "ERP & CRM development", path: "/services/erp-crm-development", body: "Custom ERP and CRM built around how your business runs." },
@@ -32,17 +35,18 @@ const PAGE = {
   hireReactNative: { label: "Hire React Native developers", path: "/hire-developers/react-native", body: "Cross-platform apps for teams already using React." },
   hireShopify: { label: "Hire Shopify developers", path: "/hire-developers/shopify", body: "Store builds, custom themes, integrations and speed fixes." },
   calculator: { label: "Software development cost calculator", path: "/software-development-cost-calculator", body: "Our published price range for your type and size of project." },
+  aiDev: { label: "AI development", path: "/services/ai-development", body: "AI features, agents and automation built into your product." },
 };
 
 export const RELATED_READING = {
-  "/services/custom-software-development": [POST.customCost, POST.customVsOts, PAGE.erp, POST.inHouse],
-  "/services/erp-crm-development": [POST.erpCost, POST.tally, PAGE.codelixErp, PAGE.manufacturing],
+  "/services/custom-software-development": [POST.customCost, POST.customVsOts, PAGE.erp, POST.inHouse, PAGE.calculator],
+  "/services/erp-crm-development": [POST.erpCost, POST.tally, POST.ceramicErp, PAGE.codelixErp, PAGE.manufacturing],
   "/products/4bitx": [PAGE.erp, POST.erpCost, POST.tally],
   "/industries/manufacturing": [PAGE.erpManufacturing, PAGE.erp, POST.tally],
   "/products/codelix-erp": [POST.erpCost, POST.tally, PAGE.erp],
   "/products/codelix-erp/construction": [POST.erpCost, POST.customVsOts, PAGE.erp],
   "/products/codelix-erp/manufacturing": [POST.tally, POST.erpCost, PAGE.manufacturing],
-  "/products/codelix-erp/ceramic": [POST.tally, POST.erpCost, PAGE.manufacturing],
+  "/products/codelix-erp/ceramic": [POST.ceramicErp, POST.tally, POST.erpCost, PAGE.manufacturing],
   "/products/codelix-erp/textile": [POST.tally, POST.erpCost, PAGE.manufacturing],
   "/services/application-development": [POST.appCost, POST.flutterRn, PAGE.hireFlutter, PAGE.hireReactNative],
   "/hire-developers": [PAGE.dedicatedTeams, POST.inHouse, PAGE.calculator],
@@ -50,4 +54,10 @@ export const RELATED_READING = {
   "/software-development-cost-calculator": [POST.webCost, POST.appCost, POST.ecomCost, POST.erpCost, POST.customCost],
   "/services/web-development": [POST.webCost, POST.laravelNode, PAGE.calculator],
   "/services/e-commerce-solutions": [POST.ecomCost, PAGE.hireShopify, PAGE.calculator],
+  /* the AI pages had no Related Reading, so the AI chatbot cost guide had no
+     link from any money page */
+  "/services/ai-development": [POST.chatbotCost, PAGE.calculator, POST.customVsOts],
+  "/services/generative-ai-solutions": [POST.chatbotCost, PAGE.aiDev, PAGE.calculator],
+  "/services/ai-agent-development": [POST.chatbotCost, PAGE.aiDev, PAGE.calculator],
+  "/services/security-maintenance": [POST.dpdp, PAGE.customSoftware],
 };

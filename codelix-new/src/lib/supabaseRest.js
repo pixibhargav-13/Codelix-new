@@ -12,12 +12,12 @@
 const url = import.meta.env.VITE_SUPABASE_URL;
 const key = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-export function selectRows(table, { eq = {}, order } = {}) {
+export function selectRows(table, { eq = {}, order, select = "*" } = {}) {
   if (!url || !key) {
     return Promise.resolve({ data: null, error: new Error("Supabase env vars not set") });
   }
 
-  const params = new URLSearchParams({ select: "*" });
+  const params = new URLSearchParams({ select });
   for (const [column, value] of Object.entries(eq)) params.append(column, `eq.${value}`);
   if (order) params.append("order", `${order.column}.${order.ascending ? "asc" : "desc"}`);
 

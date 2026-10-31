@@ -149,6 +149,14 @@ const blocks = content.split(/\n\n+/).map((b) => b.trim());
 const h2s = blocks.filter((b) => b.startsWith("## ")).length;
 const problems = [];
 if (title.length < 20 || title.length > 90) problems.push(`title is ${title.length} chars (want 20–90)`);
+/* search results show ~60 characters; fitTitle() (src/lib/fitTitle.js) uses
+   the part before a colon or dash for longer headlines, so it needs one, and
+   that lead clause must itself fit */
+if (title.length > 60) {
+  const lead = title.split(/\s*(?::|\s[–—-])\s/)[0].trim();
+  if (lead === title || lead.length < 20 || lead.length > 60)
+    problems.push(`title is ${title.length} chars: over 60, a title needs a colon or dash after a 20–60 character lead clause (its search title)`);
+}
 if (excerpt.length < 80 || excerpt.length > 160) problems.push(`excerpt is ${excerpt.length} chars (want 80–160, it is the meta description)`);
 /* length by kind of post (the owner's ranges, 26 Oct 2026) */
 const POST_TYPES = {

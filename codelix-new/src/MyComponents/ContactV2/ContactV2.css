@@ -55,6 +55,8 @@
 .contact-quick-link {
   display: inline-flex;
   align-items: center;
+  /* the links were 20px tall: too small to tap reliably */
+  min-height: 44px;
   gap: 9px;
   font-size: 13px;
   font-weight: 500;

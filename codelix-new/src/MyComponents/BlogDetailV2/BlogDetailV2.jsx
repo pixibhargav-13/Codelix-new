@@ -36,7 +36,7 @@ import { useReplayHeroIntro } from "../../lib/heroIntro.js";
 
 export default function BlogDetailV2() {
   const { slug } = useParams();
-  const { posts: blogs, loading } = useBlogPosts();
+  const { posts: blogs, loading } = useBlogPosts({ contentFor: slug });
   const blog = blogs.find((b) => (b.slug ? b.slug === slug : slugify(b.title) === slug));
 
   
@@ -189,6 +189,7 @@ export default function BlogDetailV2() {
         keywords={blogKeywordsFor(slug, blog.tags, blog.title)}
         image={blog.coverImage}
         type="article"
+        author={author.name}
         publishedTime={toISODate(blog.publishedAt || blog.date)}
         modifiedTime={toISODate(blog.updatedAt) || toISODate(blog.publishedAt || blog.date)}
       />

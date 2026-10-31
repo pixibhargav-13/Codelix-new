@@ -29,6 +29,7 @@ import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import ScrollSentence from '../Shared/ScrollSentence';
 import FaqSection from '../Shared/FaqSection';
+import RelatedReading from "../Shared/RelatedReading";
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
 import { useTestimonials } from "../../data/useTestimonials";
@@ -757,7 +758,7 @@ export default function AIDevelopmentV2() {
       {/* ══════════ 8 · PRINCIPLES ══════════ */}
       <section className="v2-section" id="principles">
         <p className="v2-label">Our Principles</p>
-        <h2 className="v2-heading">Three commitments that govern every project.</h2>
+        <h2 className="v2-heading">Two commitments that govern every project.</h2>
         <div className="sd2-tenet-grid">
           {PRINCIPLES.map((p, i) => (
             <article className="sd2-tenet" key={p.key}>
@@ -884,6 +885,8 @@ export default function AIDevelopmentV2() {
       <ScrollSentence words={SENTENCE} tone="dark"  centered={true} />
 
       {/* ══════════ 9 · FAQ ══════════ */}
+      <RelatedReading />
+
       <FaqSection faqs={FAQS} className="v2-section--void" />
 
       {/* ══════════ 14b · WHAT HAPPENS NEXT ══════════ */}

@@ -763,7 +763,7 @@ export default function ECommerceSolutionsV2() {
       {/* ══════════ 8 · PRINCIPLES ══════════ */}
       <section className="v2-section" id="principles">
         <p className="v2-label">Our Principles</p>
-        <h2 className="v2-heading">Three commitments that govern every project.</h2>
+        <h2 className="v2-heading">Two commitments that govern every project.</h2>
         <div className="sd2-tenet-grid">
           {PRINCIPLES.map((p, i) => (
             <article className="sd2-tenet" key={p.key}>

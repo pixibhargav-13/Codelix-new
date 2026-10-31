@@ -179,6 +179,9 @@
   text-transform: uppercase;
   color: var(--text);
   transition: opacity .35s ease;
+  /* a 44px-tall tap target (the image is 34px), same position on screen */
+  padding-block: 5px;
+  margin-block: -5px;
 }
 
 .v2-nav-logo:hover {
@@ -835,8 +838,8 @@
   position: absolute;
   top: 32px;
   right: 32px;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1466,8 +1469,8 @@
   align-items: center;
   gap: 11px;
   /* 44px tall tap target without moving the text */
-  padding-block: 14px;
-  margin-block: -14px;
+  padding-block: 15px;
+  margin-block: -15px;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: .08em;
@@ -4783,6 +4786,8 @@
   .v2-btn--filled {
     padding: 10px 16px !important;
     font-size: 12px !important;
+    /* the padding above made the pills 40px tall; 44px is the minimum tap target */
+    min-height: 44px;
   }
 
   .v2-hero-secondary {
