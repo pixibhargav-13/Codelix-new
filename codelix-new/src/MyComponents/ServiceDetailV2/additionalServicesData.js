@@ -118,6 +118,10 @@ const RAW = [
       "Custom ERP and CRM software development for manufacturing, inventory, HRMS and enterprise operations. ERP development company in Ahmedabad, India.",
     icon: Building2,
     title: "ERP & CRM Development",
+    /* the visible H1 carries the search phrase ("ERP software development"),
+       which the short card title can't; Search Console showed this page
+       falling from 25 to 58 while three pages split the ERP queries */
+    h1: "ERP & CRM Software Development",
     description: "Custom ERP, CRM, inventory management, HRMS, manufacturing software, and enterprise business applications.",
     relatedCategory: "Custom Software Development",
     problems: pains([

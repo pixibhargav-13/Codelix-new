@@ -7,7 +7,7 @@
    never linked to each other. Keyed by the page's path; RelatedReading
    renders the entry for the current page, if there is one. Every target is
    a live page — check before adding one. */
-const POST = {
+export const POST = {
   erpCost: { label: "ERP software development cost in India", path: "/blog/erp-software-development-cost-in-india", body: "Setup price ranges, yearly AMC and the hidden costs to plan for." },
   tally: { label: "When to move from Tally to ERP", path: "/blog/when-to-move-from-tally-to-erp", body: "The signs your business has outgrown Tally and spreadsheets." },
   customCost: { label: "Custom software development cost in India", path: "/blog/custom-software-development-cost-in-india", body: "Price ranges by project size, and fixed price vs a dedicated team." },
@@ -35,7 +35,26 @@ const PAGE = {
   hireReactNative: { label: "Hire React Native developers", path: "/hire-developers/react-native", body: "Cross-platform apps for teams already using React." },
   hireShopify: { label: "Hire Shopify developers", path: "/hire-developers/shopify", body: "Store builds, custom themes, integrations and speed fixes." },
   calculator: { label: "Software development cost calculator", path: "/software-development-cost-calculator", body: "Our published price range for your type and size of project." },
-  aiDev: { label: "AI development", path: "/services/ai-development", body: "AI features, agents and automation built into your product." },
+  aiDev: { label: "AI development", path: "/services/ai-development", body: "AI chatbots, LLM features and automation built into your product." },
+  aiAgent: { label: "AI agent development", path: "/services/ai-agent-development", body: "Agents that read, decide and act across your tools, with approval steps." },
+  ecomIndustry: { label: "Software for e-commerce brands", path: "/industries/e-commerce", body: "Stores, marketplaces and the systems behind them." },
+};
+
+/* Guides a hire page points to, by the role's slug: the comparison or cost
+   question a buyer of that skill asks next. Roles not listed get the
+   outsourcing and custom-software guides. */
+export const HIRE_GUIDES = {
+  "react-native": [POST.flutterRn, POST.appCost],
+  flutter: [POST.flutterRn, POST.appCost],
+  android: [POST.appCost, POST.flutterRn],
+  ios: [POST.appCost, POST.flutterRn],
+  nodejs: [POST.laravelNode, POST.customCost],
+  laravel: [POST.laravelNode, POST.webCost],
+  php: [POST.laravelNode, POST.webCost],
+  wordpress: [POST.webCost, POST.inHouse],
+  shopify: [POST.ecomCost, POST.inHouse],
+  python: [POST.chatbotCost, POST.customCost],
+  ai: [POST.chatbotCost, POST.customCost],
 };
 
 export const RELATED_READING = {
@@ -52,12 +71,27 @@ export const RELATED_READING = {
   "/hire-developers": [PAGE.dedicatedTeams, POST.inHouse, PAGE.calculator],
   "/services/dedicated-development-teams": [PAGE.hireHub, POST.inHouse, PAGE.calculator],
   "/software-development-cost-calculator": [POST.webCost, POST.appCost, POST.ecomCost, POST.erpCost, POST.customCost],
-  "/services/web-development": [POST.webCost, POST.laravelNode, PAGE.calculator],
+  "/services/web-development": [POST.webCost, POST.laravelNode, POST.ecomCost, PAGE.calculator],
   "/services/e-commerce-solutions": [POST.ecomCost, PAGE.hireShopify, PAGE.calculator],
   /* the AI pages had no Related Reading, so the AI chatbot cost guide had no
-     link from any money page */
-  "/services/ai-development": [POST.chatbotCost, PAGE.calculator, POST.customVsOts],
-  "/services/generative-ai-solutions": [POST.chatbotCost, PAGE.aiDev, PAGE.calculator],
+     link from any money page. Search Console (Oct 2026) showed the AI service
+     page and the AI agent page splitting "ai agent development services", so
+     agent searches are handed to the agent page from both of the others. */
+  "/services/ai-development": [PAGE.aiAgent, POST.chatbotCost, PAGE.calculator, POST.customVsOts],
+  "/services/generative-ai-solutions": [POST.chatbotCost, PAGE.aiAgent, PAGE.aiDev, PAGE.calculator],
   "/services/ai-agent-development": [POST.chatbotCost, PAGE.aiDev, PAGE.calculator],
   "/services/security-maintenance": [POST.dpdp, PAGE.customSoftware],
+  /* the e-commerce cost guide ranks 13-20 and had one link in from a money
+     page; the ERP service page fell from 25 to 58 with three pages splitting
+     its queries, so the industry pages point at the one ERP page */
+  "/industries/e-commerce": [POST.ecomCost, PAGE.hireShopify, PAGE.calculator],
+  "/industries/food-beverages": [POST.ecomCost, PAGE.erp],
+  "/industries/fintech": [PAGE.customSoftware, POST.dpdp],
+  "/industries/real-estate-construction": [PAGE.erp, PAGE.codelixErp],
 };
+
+/* Hire pages for the technologies a service is built with, taken from each
+   role's own `services` list, so every service page links to the matching
+   "hire X developers" pages without a hand-kept second list. The roles that
+   Search Console shows close to page one come first. */
+export const HIRE_PRIORITY = ["react-native", "angular", "nodejs", "python", "full-stack"];

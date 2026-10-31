@@ -15,6 +15,7 @@ import {
   HIRE_ROLES, hireRoleBySlug, ENGAGEMENT_MODELS, HIRING_STEPS, SHARED_HIRE_FAQS,
 } from "./hireDevelopersData";
 import { useHirePageMotion } from "./useHirePageMotion";
+import { HIRE_GUIDES, POST } from "../../lib/relatedReading";
 
 import "../HomepageV2/HomepageV2.css";
 import "../ServicesV2/ServicesV2.css";
@@ -24,6 +25,17 @@ import { keepWords } from "../../lib/keepWords.js";
 
 const MODEL_ICONS = [UserRound, Users, FileSignature];
 const STEP_ICONS = [Phone, FileText, UserCheck, PlayCircle];
+
+/* The questions a buyer outside India asks before hiring here — overlap,
+   ownership, cost and data — answered with company facts only. Search
+   Console (Oct 2026) shows these pages ranking 10–25 for "hire <tech>
+   developers india", which the page didn't address anywhere. */
+const INDIA_POINTS = [
+  { title: "Working hours overlap", body: () => "We work 10:00–19:00 IST (UTC+5:30), Monday to Saturday. That covers the UK and European morning and the Gulf working day; US teams get a fixed daily call slot." },
+  { title: "Cost agreed up front", body: (tech) => `A ${tech} developer is billed monthly, or a fixed price for a defined scope. The written proposal states the cost before anything starts.` },
+  { title: "You own the work", body: () => "Code lives in your repository from day one, an NDA is signed before we see anything, and the contract transfers all IP to you." },
+  { title: "Personal data handled in writing", body: () => "If the work touches customer or staff data, the contract sets out how it is stored, accessed and deleted, in line with India's DPDP Act." },
+];
 
 export default function HireDeveloperDetailV2() {
   const { slug } = useParams();
@@ -47,6 +59,7 @@ export default function HireDeveloperDetailV2() {
     .map((path) => FOOTER_ALL_SERVICES.find((s) => s.path === path))
     .filter(Boolean);
   const otherRoles = HIRE_ROLES.filter((r) => r.slug !== role.slug);
+  const guides = HIRE_GUIDES[role.slug] || [POST.inHouse, POST.customCost];
   const faqs = [
     ...role.faqs,
     { q: `How quickly can a ${role.tech} developer start?`, a: "You get a written proposal within 48 hours of the first call. Once you have interviewed and approved the developer, work starts as soon as you give access to your repository and tools." },
@@ -179,6 +192,33 @@ export default function HireDeveloperDetailV2() {
               );
             })}
           </div>
+        </section>
+
+        <section className="v2-section" id="india">
+          <p className="v2-label">Hiring From India</p>
+          <h2 className="v2-heading">What hiring {role.tech} developers in India looks like.</h2>
+          <div className="sd2-other-list">
+            {INDIA_POINTS.map((p, i) => (
+              <article className="sd2-other" key={p.title}>
+                <div className="sd2-other-top">
+                  <span className="sd2-other-icon"><role.icon size={17} strokeWidth={1.5} /></span>
+                  <span className="sd2-other-n">{String(i + 1).padStart(2, "0")}</span>
+                </div>
+                <span className="sd2-other-title">{p.title}</span>
+                <p className="sd2-other-body">{p.body(role.tech)}</p>
+              </article>
+            ))}
+          </div>
+          <p className="v2-lede hd2-guides">
+            Before you decide, read our guides:{" "}
+            {guides.map((g, i) => (
+              <React.Fragment key={g.path}>
+                {i > 0 && " and "}
+                <Link to={g.path}>{g.label}</Link>
+              </React.Fragment>
+            ))}
+            .
+          </p>
         </section>
 
         {work.length > 0 && (
