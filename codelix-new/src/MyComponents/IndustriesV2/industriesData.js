@@ -17,6 +17,8 @@ const withFixes = (challenges, fixes) =>
 export const INDUSTRIES = [
   {
     slug: "manufacturing",
+    seoTitle: "Manufacturing Software Development Company in India",
+    h1: "Manufacturing Software Development Company in India",
     keywords: "manufacturing ERP software, manufacturing software development, production planning software, inventory management software, shop floor management system, factory automation software, manufacturing ERP Ahmedabad, custom ERP for manufacturers",
     seoDescription:
       "Manufacturing ERP and custom software that connect the shop floor to the office — production, inventory and reporting in one system, built in Ahmedabad.",
@@ -33,6 +35,8 @@ export const INDUSTRIES = [
   },
   {
     slug: "fintech",
+    seoTitle: "Fintech Software Development Company in India",
+    h1: "Fintech Software Development Company in India",
     keywords: "fintech software development, fintech app development, payment app development, lending software, banking software development, payment gateway integration, fintech company India, secure financial software",
     seoDescription:
       "Fintech products where security, compliance and clear information architecture are requirements from the start — onboarding flows, dashboards and reporting.",
@@ -81,6 +85,8 @@ export const INDUSTRIES = [
   },
   {
     slug: "food-beverages",
+    seoTitle: "Food & Beverage Software Development Company",
+    h1: "Food & Beverage Software Development",
     keywords: "food and beverage software, restaurant management software, food delivery app development, FMCG distribution software, inventory software for food business, online ordering system",
     seoDescription:
       "Ordering, reservation and inventory systems for restaurants and food businesses, built to stay reliable through the dinner rush rather than a quiet demo.",
@@ -97,6 +103,7 @@ export const INDUSTRIES = [
   },
   {
     slug: "e-commerce",
+    seoTitle: "E-commerce Software Development for Brands | Codelix",
     keywords: "e-commerce software development, e-commerce website development Ahmedabad, online store development, marketplace development, Shopify development, WooCommerce development, B2B e-commerce platform",
     seoDescription:
       "E-commerce storefronts engineered for speed and trust — fast product discovery, a low-friction checkout and a backend your team can actually run.",
@@ -113,8 +120,8 @@ export const INDUSTRIES = [
   },
   {
     slug: "real-estate-construction",
+    seoTitle: "Construction & Real Estate Software Development",
     keywords: "real estate software development, construction management software, property management software, real estate CRM, real estate app development, builder ERP software",
-    seoTitle: "Real Estate & Construction Software | Codelix IT Solutions",
     seoDescription:
       "Listing platforms and project-tracking tools that keep availability, documents and client communication accurate in one system as things move quickly.",
     icon: Building,
@@ -130,6 +137,8 @@ export const INDUSTRIES = [
   },
   {
     slug: "education",
+    seoTitle: "Education Software & School Management Systems",
+    h1: "Education Software & School Management Systems",
     keywords: "education software development, school management system, edtech app development, learning management system, LMS development, college management software, online learning platform",
     seoDescription:
       "Course catalogues, admissions flows and student portals built to hold up under real enrolment traffic — education software that survives results day.",

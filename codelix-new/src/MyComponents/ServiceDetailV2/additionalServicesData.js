@@ -58,7 +58,7 @@ const RAW = [
   },
   {
     slug: "cloud-solutions-migration",
-    seoTitle: "Cloud Migration Services: AWS & Azure | Codelix",
+    seoTitle: "Cloud Migration Services in India: AWS & Azure",
     seoDescription: "Cloud migration and consulting: move legacy apps to AWS or Azure with a phased plan, rollback points and right-sized infrastructure that cuts your cloud bill.",
     keywords: "cloud migration services, cloud solutions, AWS migration, Azure migration, cloud consulting India, legacy to cloud migration, cloud modernization",
     icon: CloudCog,
@@ -76,7 +76,7 @@ const RAW = [
   },
   {
     slug: "api-development-integration",
-    seoTitle: "API Development & Integration Services | Codelix",
+    seoTitle: "API Development & Integration Services in India | Codelix",
     seoDescription: "REST and GraphQL API development and third-party integration: payment gateways, CRM and ERP sync, and documented middleware that connects the tools you run.",
     keywords: "API development, API integration services, REST API development, third-party API integration, systems integration, ERP CRM integration, API development company India",
     icon: Plug,
@@ -113,9 +113,9 @@ const RAW = [
   {
     slug: "erp-crm-development",
     keywords: "ERP development company, CRM development, custom ERP software, custom CRM software, ERP software Ahmedabad, ERP CRM development India, business management software",
-    seoTitle: "ERP Software Development Company in Ahmedabad | Codelix",
+    seoTitle: "ERP & CRM Software Development Company in India",
     seoDescription:
-      "Custom ERP and CRM software development for manufacturing, inventory, HRMS and enterprise operations. ERP development company in Ahmedabad, India.",
+      "Custom ERP and CRM for manufacturers and distributors: inventory, production, GST e-invoicing and Tally sync. ERP from about ₹2.5 lakh, fixed quotes.",
     icon: Building2,
     title: "ERP & CRM Development",
     /* the visible H1 carries the search phrase ("ERP software development"),
@@ -153,7 +153,7 @@ const RAW = [
   },
   {
     slug: "generative-ai-solutions",
-    seoTitle: "Generative AI Development Services | Codelix",
+    seoTitle: "Generative AI Development Services in India | Codelix",
     seoDescription: "Generative AI solutions for business: chatbots on your own data, document processing, content drafting and LLM features integrated into your existing software.",
     keywords: "generative AI solutions, generative AI development, LLM integration, ChatGPT integration, AI chatbot development, RAG development, generative AI company India",
     icon: Sparkles,
@@ -207,7 +207,7 @@ const RAW = [
   },
   {
     slug: "marketplace-development",
-    seoTitle: "Multi-Vendor Marketplace Development | Codelix",
+    seoTitle: "Marketplace Development Agency: Multi-Vendor Platforms",
     seoDescription: "Multi-vendor marketplace development: seller onboarding, listings, commissions, split payments, reviews and admin tools for B2B and B2C marketplace platforms.",
     keywords: "marketplace development, multi-vendor marketplace, online marketplace platform, B2B marketplace development, marketplace app development, two-sided marketplace",
     icon: Store,
@@ -225,7 +225,7 @@ const RAW = [
   },
   {
     slug: "payment-integration-services",
-    seoTitle: "Payment Gateway Integration Services | Codelix",
+    seoTitle: "Payment Gateway Integration Services in India | Codelix",
     seoDescription: "Payment gateway integration for Razorpay, Stripe, PayPal and UPI: checkout, subscriptions, refunds, webhooks and reconciliation built into your website or app.",
     keywords: "payment gateway integration, payment integration services, Razorpay integration, Stripe integration, UPI integration, PayU integration, subscription billing integration",
     icon: CreditCard,
@@ -279,7 +279,7 @@ const RAW = [
   },
   {
     slug: "predictive-analytics",
-    seoTitle: "Predictive Analytics Services & ML Models | Codelix",
+    seoTitle: "Predictive Analytics & Demand Forecasting | Codelix",
     seoDescription: "Predictive analytics services: demand forecasting, churn prediction and lead scoring with machine learning models built on your own historical business data.",
     keywords: "predictive analytics, predictive analytics services, demand forecasting, machine learning models, sales forecasting, predictive modeling",
     icon: TrendingUp,
@@ -315,7 +315,7 @@ const RAW = [
   },
   {
     slug: "performance-optimization",
-    seoTitle: "Website Performance Optimization Services | Codelix",
+    seoTitle: "Website & App Performance Optimization Services",
     seoDescription: "Website and app performance optimization: Core Web Vitals, page speed, database queries and server tuning that make slow software fast and help SEO rankings.",
     keywords: "website performance optimization, speed optimization, Core Web Vitals optimization, page speed optimization, application performance tuning, web app optimization",
     icon: Gauge,
@@ -333,7 +333,7 @@ const RAW = [
   },
   {
     slug: "security-maintenance",
-    seoTitle: "Website Security & Maintenance Services | Codelix",
+    seoTitle: "Website Security & Maintenance Services in India",
     seoDescription: "Website and application security and maintenance: updates, security patches, vulnerability fixes, backups, uptime monitoring and bug fixes on a monthly plan.",
     keywords: "website security and maintenance, application security, software maintenance services, security audit, website maintenance services, vulnerability fixing",
     icon: ShieldCheck,
@@ -351,7 +351,7 @@ const RAW = [
   },
   {
     slug: "dedicated-development-teams",
-    seoTitle: "Dedicated Development Team in India | Codelix",
+    seoTitle: "Dedicated Development & IT Team in India | Codelix",
     seoDescription: "Hire a dedicated development team from India: developers, designers and QA working only on your product, in your tools and sprints, managed from Ahmedabad.",
     keywords: "dedicated development team, hire dedicated developers, offshore development team India, hire developers in India, remote development team, staff augmentation",
     icon: Users,

@@ -30,6 +30,7 @@ import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import ScrollSentence from '../Shared/ScrollSentence';
 import FaqSection from '../Shared/FaqSection';
+import DeepDive from "../Shared/DeepDive";
 import RelatedReading from "../Shared/RelatedReading";
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
@@ -402,7 +403,7 @@ export default function ECommerceSolutionsV2() {
 
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Service 04 · E-Commerce Solutions</span>
-                <h1 className="v2-hero-eyebrow">E-Commerce Website Development Company</h1>
+                <h1 className="v2-hero-eyebrow">E-Commerce Website Development Company in India</h1>
               </div>
               <h2 className="sd2-hero-title">
                 <span className="line"><span>Storefronts built</span></span>{" "}
@@ -890,6 +891,7 @@ export default function ECommerceSolutionsV2() {
       <ScrollSentence words={SENTENCE} tone="dark"  centered={true} />
 
       {/* ══════════ 9 · FAQ ══════════ */}
+      <DeepDive />
       <RelatedReading />
 
       <FaqSection faqs={FAQS} className="v2-section--void" />

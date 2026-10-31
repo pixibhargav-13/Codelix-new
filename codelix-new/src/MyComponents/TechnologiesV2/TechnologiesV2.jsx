@@ -50,6 +50,7 @@ import zapierLogo from "../Images/zapier.webp";
 import makeLogo from "../Images/make.webp";
 import NavbarV2 from "../Shared/NavbarV2";
 import FaqSection from '../Shared/FaqSection';
+import DeepDive from "../Shared/DeepDive";
 import CtaSection from '../Shared/CtaSection';
 
 
@@ -202,7 +203,7 @@ export default function TechnologiesV2() {
 
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> {STACK.length}+ tools, six categories</span>
-                <h1 className="v2-hero-eyebrow">Technologies We Use for Web &amp; App Development</h1>
+                <h1 className="v2-hero-eyebrow">Technologies We Use for Web, App &amp; AI Development</h1>
               </div>
               <h2 className="sd2-hero-title">
                 <span className="line"><span>The stack behind</span></span>{" "}
@@ -318,6 +319,8 @@ export default function TechnologiesV2() {
       <FaqSection faqs={FAQS} className="v2-section--void" />
 
       {/* ══════════ 7 · CTA ══════════ */}
+      <DeepDive />
+
       <CtaSection className="v2-section--void">
         
           <p className="v2-label">Start Here</p>

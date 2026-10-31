@@ -21,6 +21,7 @@ import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./IndustriesV2.css";
 import "./IndustryDetailV2.css";
 import FaqSection from '../Shared/FaqSection';
+import DeepDive from "../Shared/DeepDive";
 import RelatedReading from "../Shared/RelatedReading";
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
@@ -259,7 +260,7 @@ export default function IndustryDetailV2() {
 
               <div className="v2-hero-top sv2-hero-reveal">
                 <span className="v2-hero-status"><i /> Industry</span>
-                <h1 className="v2-hero-eyebrow">{svc.title} Software Development</h1>
+                <h1 className="v2-hero-eyebrow">{svc.h1 || `${svc.title} Software Development`}</h1>
               </div>
               <h2 key={slug} className="sd2-hero-title">
                 <span className="line"><span>{keepWords(svc.title)}</span></span>
@@ -522,6 +523,7 @@ export default function IndustryDetailV2() {
       </section>
 
       {/* ══════════ 9 · FAQ ══════════ */}
+      <DeepDive />
       <RelatedReading />
 
       <FaqSection faqs={faqs} className="v2-section--void" />

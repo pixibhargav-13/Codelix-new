@@ -4,6 +4,7 @@ import { Users, Layers, Plug, Smartphone, ShieldCheck, Clock } from "lucide-reac
 import NavbarV2 from "../Shared/NavbarV2";
 import FooterV2 from "../Shared/FooterV2";
 import FaqSection from "../Shared/FaqSection";
+import DeepDive from "../Shared/DeepDive";
 import RelatedReading from "../Shared/RelatedReading";
 import CtaSection from "../Shared/CtaSection";
 import { useHirePageMotion } from "../HireDevelopersV2/useHirePageMotion";
@@ -200,6 +201,8 @@ export default function CostCalculatorV2() {
             ))}
           </div>
         </section>
+
+        <DeepDive />
 
         <RelatedReading />
 
