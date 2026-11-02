@@ -40,7 +40,7 @@ export function getGeneratedRoutes() {
   const industryRoutes = INDUSTRIES.map((i) => `/industries/${i.slug}`);
   const extraServices = ADDITIONAL_SERVICES.map((s) => `/services/${s.slug}`);
   /* Codelix ERP is the one ERP product (owner's decision, 1 Nov 2026):
-     /products/4bitx 308s to the manufacturing edition in vercel.json, so it
+     /products/4bitx 308s to /products/codelix-erp in vercel.json, so it
      is no longer prerendered or in the sitemap. Codelix ERP's editions must match ERP_INDUSTRIES in
      ErpV2/erpData.js (not imported here: it pulls in images, and this file
      is loaded under plain Node by ssg-build). */
