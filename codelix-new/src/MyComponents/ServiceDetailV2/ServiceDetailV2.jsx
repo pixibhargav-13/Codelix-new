@@ -2,13 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
 import {
-  Globe, LayoutDashboard, Gauge, Search, ShieldCheck, Smartphone, Wrench,
-  CalendarCheck, Lock, Eye, Check,
-  TrendingDown, Clock, EyeOff, Unlink, PhoneOff, Puzzle,
-  Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark,
-  FileCode2, BookOpen, KeyRound, Palette, Server, GitBranch,
-  PenTool, ShoppingCart, Code2, Sparkles,
-  Minus, X, Phone, FileText, PlayCircle, BarChart3, LifeBuoy,
+  Globe, LayoutDashboard, Gauge, Search, ShieldCheck, Smartphone, Wrench, Check, TrendingDown, Clock, EyeOff, Unlink, PhoneOff, Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark, FileCode2, BookOpen, Palette, PenTool, ShoppingCart, Code2, Sparkles, Minus, X, BarChart3, LifeBuoy,
 } from "lucide-react";
 
 /* v2 design system + shared data — same source of truth as the other v2 pages */
@@ -117,14 +111,6 @@ const COMPARE_ROWS = [
   { label: "Won't vanish mid-project", vals: ["yes", "yes", "no", "yes"] },
 ];
 
-/* the exact next steps after someone reaches out — removes the "what am I
-   signing up for" hesitation right before the CTA */
-const NEXT_STEPS = [
-  { n: "01", icon: Phone, title: "Discovery call", meta: "30 minutes", body: "A no-pressure call to understand what you're building, who it's for, and what success looks like. No slide deck, no sales script." },
-  { n: "02", icon: FileText, title: "Written proposal", meta: "Within 48 hours", body: "A clear scope, a fixed price, and a timeline — in writing. You'll know exactly what you're getting and what it costs before you commit." },
-  { n: "03", icon: PlayCircle, title: "Kickoff", meta: "On your go-ahead", body: "Once you're happy, we lock the scope and start. You get a staging link and a point of contact from day one." },
-];
-
 /* cross-sell to the rest of the catalogue */
 const OTHER_SERVICES = [
   { icon: Smartphone, n: "02", title: "Application Development", body: "Mobile apps, SaaS platforms, and cloud-native solutions built from scratch.", path: "/services/application-development" },
@@ -168,15 +154,6 @@ const EST_ADDONS = [
   { id: "analytics", label: "Analytics & dashboards", weeks: 0.5 },
 ];
 
-
-/* real web-development projects — pulled from the same shared portfolio
-   data as the Work page, filtered to the category that actually matches
-   this service, not the original three placeholders */
-
-const PRINCIPLES = [
-  { key: "Delivered", icon: CalendarCheck, claim: "No deadline we don't hold ourselves to.", body: "We pad the schedule honestly upfront so we don't have to renegotiate halfway through. If we say a date, we hit it." },
-  { key: "Visible", icon: Eye, claim: "No progress you can't see.", body: "We don't go dark for a month and come back with a surprise. You see the work as it happens, so we can course-correct early." },
-];
 
 const FAQS = [
   { q: "How long does a website take to build?", a: "A focused landing page is usually 2–3 weeks. A full marketing site with a CMS runs 4–8 weeks. Web applications depend heavily on scope — use the estimator above for a rough range, then we'll firm it up on a call." },
@@ -745,26 +722,6 @@ export default function ServiceDetailV2() {
       {/* ══════════ EXTRAORDINARY SECTION: TECH STACK ══════════ */}
       <TechStackShowcaseV2 />
 
-      {/* ══════════ 8 · PRINCIPLES ══════════ */}
-      <section className="v2-section" id="principles">
-        <p className="v2-label">Our Principles</p>
-        <h2 className="v2-heading">Two commitments that govern every project.</h2>
-        <div className="sd2-tenet-grid">
-          {PRINCIPLES.map((p, i) => (
-            <article className="sd2-tenet" key={p.key}>
-              <span className="sd2-tenet-shine" aria-hidden="true" />
-              <div className="sd2-tenet-top">
-                <span className="sd2-tenet-icon"><p.icon size={20} strokeWidth={1.5} /></span>
-                <span className="sd2-tenet-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
-              </div>
-              <h3 className="sd2-tenet-claim">{p.claim}</h3>
-              <p className="sd2-tenet-body">{p.body}</p>
-              <span className="sd2-tenet-tag">{p.key}</span>
-            </article>
-          ))}
-        </div>
-      </section>
-
       {/* ══════════ 8a · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">
         <div className="sd2-case-head">
@@ -887,35 +844,6 @@ export default function ServiceDetailV2() {
               <p className="sd2-other-body">{s.body}</p>
               <span className="sd2-other-go">→</span>
             </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* ══════════ 14b · WHAT HAPPENS NEXT ══════════ */}
-      <section className="v2-section v2-section--void" id="next">
-        <div className="sd2-case-head">
-          <div>
-            <p className="v2-label">What Happens Next</p>
-            <h2 className="v2-heading">Three steps from here to kickoff.</h2>
-          </div>
-          <p className="v2-lede">
-            No drawn-out sales process. Reach out and here's exactly what follows.
-          </p>
-        </div>
-        <div className="sd2-next">
-          <span className="sd2-next-line" aria-hidden="true" />
-          {NEXT_STEPS.map((s) => (
-            <article className="sd2-step" key={s.n}>
-              <div className="sd2-step-node">
-                <span className="sd2-step-num">{s.n}</span>
-                <span className="sd2-step-badge"><s.icon size={15} strokeWidth={1.7} /></span>
-              </div>
-              <div className="sd2-step-inner">
-                <span className="sd2-step-meta">{s.meta}</span>
-                <h3 className="sd2-step-title">{s.title}</h3>
-                <p className="sd2-step-body">{s.body}</p>
-              </div>
-            </article>
           ))}
         </div>
       </section>

@@ -5,9 +5,11 @@ import "./DeepDive.css";
 const isInternal = (href) => href.startsWith("/");
 
 function Anchor({ href, children }) {
-  return isInternal(href)
-    ? <Link to={href}>{children}</Link>
-    : <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>;
+  if (isInternal(href)) return <Link to={href}>{children}</Link>;
+  /* tel: and mailto: open in place; web links open in a new tab */
+  return /^https?:/.test(href)
+    ? <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>
+    : <a href={href}>{children}</a>;
 }
 
 /* The page's own question-and-answer sections — see src/lib/deepDives.js.

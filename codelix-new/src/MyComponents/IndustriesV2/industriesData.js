@@ -53,6 +53,7 @@ export const INDUSTRIES = [
   },
   {
     slug: "ai-data",
+    seoTitle: "AI & Data Software Development | Codelix",
     keywords: "AI software development, data analytics solutions, machine learning development, AI and data company India, business intelligence, predictive analytics, data engineering, AI automation",
     seoDescription:
       "Data pipelines, dashboards and AI features built around a real business question rather than a proof of concept that never leaves the demo.",
@@ -69,6 +70,7 @@ export const INDUSTRIES = [
   },
   {
     slug: "healthcare",
+    seoTitle: "Healthcare Software Development | Codelix",
     keywords: "healthcare software development, hospital management system, clinic management software, telemedicine app development, patient management system, healthcare app development India, EHR software",
     seoDescription:
       "Healthcare software with privacy and accessibility designed in from day one — appointment flows, patient portals and clinical tools, not a retrofit.",
@@ -155,6 +157,7 @@ export const INDUSTRIES = [
   },
   {
     slug: "startups",
+    seoTitle: "MVP & Startup Software Development | Codelix",
     keywords: "software development for startups, MVP development, startup app development, product development for startups, MVP development company India, startup tech partner",
     seoDescription:
       "Marketing sites and product experiences that explain something new clearly, capture signups and keep evolving as fast as the product behind them does.",
@@ -171,6 +174,7 @@ export const INDUSTRIES = [
   },
   {
     slug: "b2b-saas",
+    seoTitle: "B2B SaaS Software Development Company | Codelix",
     keywords: "B2B SaaS development, SaaS product development, multi-tenant SaaS, SaaS development company India, SaaS application development, subscription software development",
     seoDescription:
       "Product dashboards and internal operations tools for B2B SaaS, built to stay usable as the team, the data and the customer base all grow at once.",
@@ -188,7 +192,7 @@ export const INDUSTRIES = [
   {
     slug: "travel-hospitality",
     keywords: "travel software development, hotel management software, booking engine development, travel app development, hospitality software, tour booking system",
-    seoTitle: "Travel & Hospitality Software | Codelix IT Solutions",
+    seoTitle: "Travel & Hospitality Booking Software | Codelix",
     seoDescription:
       "Booking and reservation platforms designed to stay fast and accurate through seasonal demand spikes, not only in a slow month.",
     icon: Plane,

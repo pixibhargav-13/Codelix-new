@@ -1,4 +1,6 @@
-import { PenTool, Layers, Search, Eye, Smartphone, Palette, CalendarCheck, Lock, Check, HelpCircle, Paintbrush, MousePointerClick, RefreshCw, Users2, Frown, Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark, FileCode2, BookOpen, KeyRound, Server, GitBranch, Layout, Globe, ShoppingCart, Code2, Sparkles, BarChart3, LifeBuoy, Minus, X, Phone, FileText, PlayCircle, Monitor, Database } from "lucide-react";
+import {
+  PenTool, Layers, Search, Eye, Smartphone, Palette, Check, HelpCircle, Paintbrush, MousePointerClick, RefreshCw, Users2, Frown, Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark, FileCode2, BookOpen, KeyRound, GitBranch, Layout, Globe, ShoppingCart, Code2, Sparkles, BarChart3, LifeBuoy, Minus, X, Monitor, Database,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
@@ -93,13 +95,6 @@ const COMPARE_ROWS = [
   { label: "Won't vanish mid-project", vals: ["yes", "yes", "no", "yes"] },
 ];
 
-/* next steps */
-const NEXT_STEPS = [
-  { n: "01", icon: Phone, title: "Discovery call", meta: "30 minutes", body: "A no-pressure call to understand your product, your users, and what's not working. No slide deck, no sales pitch." },
-  { n: "02", icon: FileText, title: "Design brief", meta: "Within 48 hours", body: "A clear scope covering deliverables, timeline, and price — in writing. You know exactly what you're getting before you commit." },
-  { n: "03", icon: PlayCircle, title: "Kickoff", meta: "On your go-ahead", body: "We start with research, share findings early, and keep you in the loop at every stage. You see progress from week one." },
-];
-
 /* cross-sell to the rest of the catalogue */
 const OTHER_SERVICES = [
   { icon: Globe, n: "01", title: "Web Development", body: "Modern websites and web applications tailored to your business needs.", path: "/services/web-development" },
@@ -150,17 +145,6 @@ const PROCESS = [
   { n: "04", title: "Visual Design", time: "1–3 weeks", body: "High-fidelity screens with real content, brand applied, and every interaction state accounted for." },
   { n: "05", title: "Prototype & Test", time: "1–2 weeks", body: "Interactive Figma prototype tested with real users — we identify and fix usability issues before development starts." },
   { n: "06", title: "Handoff & Support", time: "Ongoing", body: "Annotated specs, exported assets, and a design system your developers can build from accurately." },
-];
-
-/* real UI/UX design projects — pulled from the same shared portfolio data
-   as the Work page, filtered to the category that actually matches this
-   service (the previous list mixed in e-commerce/mobile projects and even
-   a mistitled entry — this is the honest fix) */
-
-const PRINCIPLES = [
-  { key: "Delivered", icon: CalendarCheck, claim: "No deadline we don't hold ourselves to.", body: "We pad the schedule honestly upfront so we don't have to renegotiate halfway through. If we say a date, we hit it." },
-  { key: "Owned", icon: Lock, claim: "No design you don't fully own.", body: "When the invoice is paid, the Figma files, the design system, and every asset are yours. No lock-in, no retained access." },
-  { key: "Visible", icon: Eye, claim: "No progress you can't see.", body: "We don't go dark for a month and come back with a surprise. You see the work as it happens, so we can course-correct early." },
 ];
 
 const FAQS = [
@@ -782,28 +766,6 @@ export default function UIUXDesignV2() {
         categories={TECH_CATEGORIES}
         metrics={METRICS}
       />
-      {/* ══════════ 13 · PRINCIPLES ══════════ */}
-      <section className="v2-section" id="principles">
-        <p className="v2-label">Our Principles</p>
-        <h2 className="v2-heading">Three commitments that govern every project.</h2>
-        <div className="sd2-tenet-grid">
-          {PRINCIPLES.map((p, i) => (
-            <article className="sd2-tenet" key={p.key}>
-              <span className="sd2-tenet-shine" aria-hidden="true" />
-              <div className="sd2-tenet-top">
-                <span className="sd2-tenet-icon"><p.icon size={20} strokeWidth={1.5} /></span>
-                <span className="sd2-tenet-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
-              </div>
-              <h3 className="sd2-tenet-claim">{p.claim}</h3>
-              <p className="sd2-tenet-body">{p.body}</p>
-              <span className="sd2-tenet-tag">{p.key}</span>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      
-
 {/* ══════════ 9 · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">
         <div className="sd2-case-head">
@@ -923,35 +885,6 @@ export default function UIUXDesignV2() {
               <p className="sd2-other-body">{s.body}</p>
               <span className="sd2-other-go">→</span>
             </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* ══════════ 16 · WHAT HAPPENS NEXT ══════════ */}
-      <section className="v2-section v2-section--void" id="next">
-        <div className="sd2-case-head">
-          <div>
-            <p className="v2-label">What Happens Next</p>
-            <h2 className="v2-heading">Three steps from here to kickoff.</h2>
-          </div>
-          <p className="v2-lede">
-            No drawn-out sales process. Reach out and here's exactly what follows.
-          </p>
-        </div>
-        <div className="sd2-next">
-          <span className="sd2-next-line" aria-hidden="true" />
-          {NEXT_STEPS.map((s) => (
-            <article className="sd2-step" key={s.n}>
-              <div className="sd2-step-node">
-                <span className="sd2-step-num">{s.n}</span>
-                <span className="sd2-step-badge"><s.icon size={15} strokeWidth={1.7} /></span>
-              </div>
-              <div className="sd2-step-inner">
-                <span className="sd2-step-meta">{s.meta}</span>
-                <h3 className="sd2-step-title">{s.title}</h3>
-                <p className="sd2-step-body">{s.body}</p>
-              </div>
-            </article>
           ))}
         </div>
       </section>

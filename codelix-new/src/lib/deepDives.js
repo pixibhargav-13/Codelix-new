@@ -474,6 +474,140 @@ export const DEEP_DIVES = {
     },
   ],
 
+  "/industries/education": [
+    {
+      id: "edu-what",
+      label: "What We Build",
+      question: "What software do schools and education businesses need?",
+      answer: "Schools usually need one system for the daily admin (admissions, attendance, fees, timetables and report cards) and a mobile app that keeps parents informed. Course businesses need a website that sells and delivers courses. Because most of the data is about children, consent and access control matter from the first screen.",
+      points: [
+        { title: "School management app", body: "Attendance, homework, fees, notices and results for staff, parents and students in one app.", links: [{ label: "School management case study", href: "/case-study/school-management-case-study" }] },
+        { title: "Online course platforms", body: "Course catalogue, enrolment, payments and lesson delivery.", links: [{ label: "EdTech website case study", href: "/case-study/edtech-case-study" }] },
+        { title: "Fees and payments", body: "Fee schedules, UPI and card payments, receipts and reminders for overdue fees.", links: [{ label: "Payment integration", href: "/services/payment-integration-services" }] },
+        { title: "Children's data", body: "India's DPDP Act requires verifiable consent from a parent or guardian before processing a child's personal data, so it is built into sign-up.", links: [{ label: "DPDP compliance guide", href: `${SITE_BLOG}dpdp-act-compliance-for-small-business` }] },
+      ],
+    },
+  ],
+  "/industries/e-commerce": [
+    {
+      id: "ecomind-what",
+      label: "What We Build",
+      question: "What does an online brand need beyond a storefront?",
+      answer: "The store is the part customers see. Behind it, a growing brand needs stock that stays in sync with the warehouse and marketplaces, GST invoices for every order, shipping and returns that don't run on spreadsheets, and pages fast enough on a mid-range phone that people actually buy.",
+      points: [
+        { title: "Storefront", body: "Shopify, WooCommerce or a custom store, built mobile-first.", links: [{ label: "NextGen fashion store", href: "/case-study/nextgen-case-study" }, { label: "Book collections store", href: "/case-study/book-collections-case-study" }] },
+        { title: "Inventory and orders", body: "One source of truth across the store, warehouse and marketplaces, so nothing oversells." },
+        { title: "Payments and GST", body: "UPI, cards and COD, with a GST invoice generated for every order.", links: [{ label: "Payment integration", href: "/services/payment-integration-services" }] },
+        { title: "D2C food and FMCG", body: "Batch-aware stock and a fast checkout for packaged food brands.", links: [{ label: "Makhana store case study", href: "/case-study/makhana-store-case-study" }] },
+      ],
+      more: [{ label: "E-commerce website development cost in India", href: `${SITE_BLOG}e-commerce-website-development-cost-in-india` }],
+    },
+  ],
+  "/industries/real-estate-construction": [
+    {
+      id: "rec-what",
+      label: "What We Build",
+      question: "What software do contractors, builders and housing societies use?",
+      answer: "Contractors and builders need to track tenders, projects, purchases and equipment across sites from one place, usually from a phone at the site. Housing societies need a simple app for maintenance bills, complaints and notices. We build both: our Codelix ERP construction edition for the first, and custom apps for the second.",
+      points: [
+        { title: "Construction ERP", body: "Tenders, projects, tasks, procurement and equipment in one system, with a mobile app for site teams.", links: [{ label: "Construction ERP", href: "/products/codelix-erp/construction" }] },
+        { title: "Site-to-office reporting", body: "Daily progress, material use and labour recorded at the site and visible in the office the same day." },
+        { title: "Society management", body: "Maintenance billing, complaints, visitor entry and notices for residential communities.", links: [{ label: "Society management case study", href: "/case-study/smart-society-management-case-study" }] },
+        { title: "Approvals and audit", body: "Purchase and payment approvals with a record of who approved what, and when." },
+      ],
+    },
+  ],
+  "/industries/healthcare": [
+    {
+      id: "hc-what",
+      label: "What It Needs",
+      question: "What does healthcare software need to get right?",
+      answer: "Healthcare software holds some of the most sensitive personal data there is, so the order of priorities is fixed: who can see each record, a log of every access, and data stored where it should be, then the features. In India that is the DPDP Act; if you serve patients in the US, HIPAA rules on protected health information also apply.",
+      points: [
+        { title: "Appointments and records", body: "Booking, reminders and patient records, with each role seeing only what it needs." },
+        { title: "Access logs", body: "Every view and change to a patient record logged with who, what and when." },
+        { title: "Consent", body: "Clear consent at sign-up and a way for patients to see, correct or delete their data.", links: [{ label: "DPDP compliance guide", href: `${SITE_BLOG}dpdp-act-compliance-for-small-business` }] },
+        { title: "Secure hosting", body: "Encrypted storage, backups and data kept in the region you choose.", links: [{ label: "Security & maintenance", href: "/services/security-maintenance" }] },
+      ],
+    },
+  ],
+  "/industries/startups": [
+    {
+      id: "st-what",
+      label: "Building an MVP",
+      question: "What should a startup build first, and what does it cost?",
+      answer: "The first version should do one job well enough that people pay for it, and nothing else. On our published pricing, an MVP mobile app for Android and iOS costs $5,000–$15,000, and a SaaS MVP with sign-up, one core workflow and subscriptions usually takes 8–12 weeks. Everything that isn't needed to prove the idea waits for version two.",
+      points: [
+        { title: "Scope one workflow", body: "The single thing customers will pay for, with sign-up and payments; the rest goes on a later list." },
+        { title: "Charge from day one", body: "Billing live at launch, so you learn whether people pay, not just whether they sign up.", links: [{ label: "SaaS product development", href: "/services/saas-product-development" }] },
+        { title: "Own your code", body: "Everything in your repository and cloud accounts, so investors and future hires can see and build on it." },
+        { title: "Plan the next team", body: "Start with a fixed-price MVP, then move to a dedicated team as the backlog grows.", links: [{ label: "Dedicated teams", href: "/services/dedicated-development-teams" }] },
+      ],
+      more: [
+        { label: "App development cost in India", href: `${SITE_BLOG}app-development-cost-in-india` },
+        { label: "Cost calculator", href: "/software-development-cost-calculator" },
+      ],
+    },
+  ],
+  "/industries/b2b-saas": [
+    {
+      id: "saas-what",
+      label: "What We Build",
+      question: "What do B2B SaaS companies ask us to build?",
+      answer: "Two kinds of work: the product itself (multi-tenant architecture, roles, subscription billing and the features customers pay for) and the internal systems that run the company as it grows, such as billing reconciliation, onboarding and support escalation, which usually start in spreadsheets.",
+      points: [
+        { title: "Product features", body: "New modules, integrations and dashboards built by a team that works in your repository.", links: [{ label: "SaaS product development", href: "/services/saas-product-development" }] },
+        { title: "Billing and subscriptions", body: "Plans, trials, upgrades and invoices through Razorpay or Stripe.", links: [{ label: "Payment integration", href: "/services/payment-integration-services" }] },
+        { title: "Internal operations", body: "Billing reconciliation, onboarding and escalation moved out of spreadsheets.", links: [{ label: "Internal ops ERP case study", href: "/case-study/internal-ops-erp-case-study" }] },
+        { title: "AI features", body: "Search, summaries and assistants inside the product.", links: [{ label: "Generative AI solutions", href: "/services/generative-ai-solutions" }] },
+      ],
+    },
+  ],
+  "/industries/ai-data": [
+    {
+      id: "aid-what",
+      label: "Where To Start",
+      question: "Where should a business start with AI and data?",
+      answer: "With the data it already has. Most companies get more from a clean dashboard of today's numbers, or a chatbot that answers from their own documents, than from a complex model. Once the data is reliable, forecasting and AI agents become worth building.",
+      points: [
+        { title: "Reliable data first", body: "Pipelines that pull from Tally, ERP, CRM and spreadsheets into one place.", links: [{ label: "Data engineering", href: "/services/data-engineering" }] },
+        { title: "Dashboards", body: "The numbers each team checks, refreshed automatically.", links: [{ label: "Data analytics & BI", href: "/services/data-analytics" }] },
+        { title: "Chatbots on your documents", body: "Answers from your own content, with sources.", links: [{ label: "AI chatbot cost in India", href: `${SITE_BLOG}ai-chatbot-cost-in-india` }] },
+        { title: "Forecasting and agents", body: "Demand forecasts and AI agents once the basics are in place.", links: [{ label: "Predictive analytics", href: "/services/predictive-analytics" }, { label: "AI agents", href: "/services/ai-agent-development" }] },
+      ],
+    },
+  ],
+  "/industries/travel-hospitality": [
+    {
+      id: "th-what",
+      label: "What It Needs",
+      question: "What software do travel and hospitality businesses need?",
+      answer: "Mostly a booking system that never double-books: live availability, payments that confirm instantly, and confirmations by email and WhatsApp. Behind it sits the part guests don't see, which covers inventory across channels, cancellations and refunds, and reports that show occupancy and revenue by day.",
+      points: [
+        { title: "Booking engine", body: "Live availability, pricing rules and instant confirmation on your own website." },
+        { title: "Payments and refunds", body: "UPI, cards and international payments, with cancellations and partial refunds handled in the system.", links: [{ label: "Payment integration", href: "/services/payment-integration-services" }] },
+        { title: "Guest messages", body: "Confirmations, reminders and updates by email and WhatsApp." },
+        { title: "Reports", body: "Occupancy, revenue and booking sources by day, without exporting spreadsheets.", links: [{ label: "Data analytics & BI", href: "/services/data-analytics" }] },
+      ],
+    },
+  ],
+
+  /* ───────── contact ───────── */
+  "/contact": [
+    {
+      id: "visit",
+      label: "Visit Or Call",
+      question: "Where is the Codelix office, and when can you reach us?",
+      answer: "Codelix IT Solutions Pvt Ltd works from A-1308, PNTC, Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat 380015, Monday to Saturday, 10:00 to 19:00 IST. Call or email in those hours, or send the form any time; we reply within one business day and send a written proposal within 48 hours of the first call.",
+      points: [
+        { title: "Office", body: "A-1308, PNTC, Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat 380015.", links: [{ label: "Get directions on Google Maps", href: "https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5" }] },
+        { title: "Hours", body: "Monday to Saturday, 10:00–19:00 IST. That overlaps the UK and European morning and the Gulf working day; US teams get a fixed call slot." },
+        { title: "Phone and email", body: "+91 94292 69295 · sales@codelixitsolutions.com", links: [{ label: "Call", href: "tel:+919429269295" }, { label: "Email", href: "mailto:sales@codelixitsolutions.com" }] },
+        { title: "What you'll get", body: "A reply within one business day, an NDA before details if you want one, and a free written proposal with scope, price and timeline." },
+      ],
+    },
+  ],
+
   /* ───────── technologies hub ───────── */
   "/technologies": [
     {
