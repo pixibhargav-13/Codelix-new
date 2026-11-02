@@ -1,4 +1,6 @@
-import { LifeBuoy, Wrench, ShieldCheck, Activity, Users2, Clock, AlertTriangle, Server, RefreshCw, GitBranch, TrendingUp, Headphones, Bell, CheckCircle2, Layers, Search, Globe, Smartphone, Palette, ShoppingCart, Code2, Sparkles, BarChart3, Minus, X, Check, Phone, FileText, PlayCircle, FileCode2, Store, Rocket, GraduationCap, Building2, HeartPulse, Monitor, Cloud, Lock } from "lucide-react";
+import {
+  Wrench, ShieldCheck, Activity, Users2, Clock, AlertTriangle, Server, RefreshCw, GitBranch, TrendingUp, Headphones, Bell, Search, Globe, Smartphone, Palette, ShoppingCart, Code2, Sparkles, BarChart3, Minus, X, Check, FileText, FileCode2, Store, Rocket, GraduationCap, Building2, HeartPulse, Monitor, Cloud, Lock,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
@@ -92,13 +94,6 @@ const COMPARE_ROWS = [
   { label: "Predictable monthly cost", vals: ["yes", "no", "no", "yes"] },
 ];
 
-/* next steps */
-const NEXT_STEPS = [
-  { n: "01", icon: Phone, title: "Discovery call", meta: "30 minutes", body: "We talk through your current setup, what's breaking, and what a realistic support plan looks like." },
-  { n: "02", icon: FileText, title: "Support plan proposal", meta: "Within 3 days", body: "A fixed monthly retainer scoped to your actual system — response times, coverage hours, and price, in writing." },
-  { n: "03", icon: PlayCircle, title: "Onboarding & monitoring live", meta: "Within a week", body: "We set up monitoring, get access, and you have a direct line to the team from day one." },
-];
-
 /* cross-sell to the rest of the catalogue */
 const OTHER_SERVICES = [
   { icon: Globe, n: "01", title: "Web Development", body: "Modern websites and web applications tailored to your business needs.", path: "/services/web-development" },
@@ -151,12 +146,6 @@ const PROCESS = [
   { n: "06", icon: Check, title: "Monthly Review", time: "Every month", body: "A report on uptime, what was fixed, and what we recommend next — so support stays visible, not silent." },
 ];
 
-
-const PRINCIPLES = [
-  { key: "Responsive", icon: Clock, claim: "No ticket that sits for a week.", body: "Response times are written into the plan, not left to best-effort. If we commit to 4 hours, that's what you get." },
-  { key: "Transparent", icon: FileText, claim: "No black-box support.", body: "Every incident, patch, and fix is logged and reported. You always know exactly what's being maintained and why." },
-  { key: "Proactive", icon: Activity, claim: "No waiting for it to break.", body: "Monitoring and scheduled maintenance catch problems before they become downtime, not after your users report them." },
-];
 
 const FAQS = [
   { q: "Do you only support projects you originally built?", a: "No. We start every new support engagement with a codebase audit so we understand the system properly, whether we built it or not." },
@@ -777,28 +766,6 @@ export default function SupportManagedServicesV2() {
         categories={TECH_CATEGORIES}
         metrics={METRICS}
       />
-      {/* ══════════ 8 · PRINCIPLES ══════════ */}
-      <section className="v2-section" id="principles">
-        <p className="v2-label">Our Principles</p>
-        <h2 className="v2-heading">Three commitments that govern every project.</h2>
-        <div className="sd2-tenet-grid">
-          {PRINCIPLES.map((p, i) => (
-            <article className="sd2-tenet" key={p.key}>
-              <span className="sd2-tenet-shine" aria-hidden="true" />
-              <div className="sd2-tenet-top">
-                <span className="sd2-tenet-icon"><p.icon size={20} strokeWidth={1.5} /></span>
-                <span className="sd2-tenet-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
-              </div>
-              <h3 className="sd2-tenet-claim">{p.claim}</h3>
-              <p className="sd2-tenet-body">{p.body}</p>
-              <span className="sd2-tenet-tag">{p.key}</span>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      
-
 {/* ══════════ 8a · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">
         <div className="sd2-case-head">
@@ -919,35 +886,6 @@ export default function SupportManagedServicesV2() {
               <p className="sd2-other-body">{s.body}</p>
               <span className="sd2-other-go">→</span>
             </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* ══════════ 14b · WHAT HAPPENS NEXT ══════════ */}
-      <section className="v2-section v2-section--void" id="next">
-        <div className="sd2-case-head">
-          <div>
-            <p className="v2-label">What Happens Next</p>
-            <h2 className="v2-heading">Three steps from here to onboarding.</h2>
-          </div>
-          <p className="v2-lede">
-            No drawn-out sales process. Reach out and here's exactly what follows.
-          </p>
-        </div>
-        <div className="sd2-next">
-          <span className="sd2-next-line" aria-hidden="true" />
-          {NEXT_STEPS.map((s) => (
-            <article className="sd2-step" key={s.n}>
-              <div className="sd2-step-node">
-                <span className="sd2-step-num">{s.n}</span>
-                <span className="sd2-step-badge"><s.icon size={15} strokeWidth={1.7} /></span>
-              </div>
-              <div className="sd2-step-inner">
-                <span className="sd2-step-meta">{s.meta}</span>
-                <h3 className="sd2-step-title">{s.title}</h3>
-                <p className="sd2-step-body">{s.body}</p>
-              </div>
-            </article>
           ))}
         </div>
       </section>

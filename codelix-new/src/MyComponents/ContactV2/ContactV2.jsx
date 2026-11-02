@@ -18,6 +18,7 @@ import "./ContactV2.css";
 import ContactHeroVisual from "./ContactHeroVisual";
 import NavbarV2 from "../Shared/NavbarV2";
 import FaqSection from '../Shared/FaqSection';
+import DeepDive from "../Shared/DeepDive";
 
 
 const REQUIRED_FIELDS = ["name", "contact", "email", "company", "designation", "service", "aboutProject"];
@@ -398,6 +399,10 @@ export default function ContactV2() {
           </aside>
         </div>
       </section>
+
+      {/* ══════════ 2b · OFFICE, HOURS, PHONE — the full address and a directions
+          link, which the page only gave as "Ahmedabad, Gujarat" (deepDives.js) ══════════ */}
+      <DeepDive />
 
       {/* ══════════ 3 · PROCESS — connected timeline ══════════ */}
       <section className="v2-section v2-section--void" id="process">
