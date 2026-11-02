@@ -274,7 +274,7 @@ export default function ECommerceSolutionsV2() {
     ].join(", ");
     rootRef.current.querySelectorAll(sel).forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, []);
+  }, [RELATED.length]);
 
   useEffect(() => {
     const nums = rootRef.current.querySelectorAll(".sd2-bench-value");
@@ -356,7 +356,7 @@ export default function ECommerceSolutionsV2() {
       el.removeEventListener("mousemove", move);
       el.removeEventListener("mouseleave", leave);
     });
-  }, []);
+  }, [RELATED.length]);
 
 
 

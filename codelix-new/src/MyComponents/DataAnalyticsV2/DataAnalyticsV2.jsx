@@ -285,7 +285,7 @@ export default function DataAnalyticsV2() {
     ].join(", ");
     rootRef.current.querySelectorAll(sel).forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, []);
+  }, [RELATED.length]);
 
 
   /* benchmark numbers count up when scrolled in */
@@ -371,7 +371,7 @@ export default function DataAnalyticsV2() {
       el.removeEventListener("mousemove", move);
       el.removeEventListener("mouseleave", leave);
     });
-  }, []);
+  }, [RELATED.length]);
 
 
   return (

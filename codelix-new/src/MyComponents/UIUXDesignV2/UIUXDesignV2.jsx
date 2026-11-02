@@ -276,7 +276,7 @@ export default function UIUXDesignV2() {
     ].join(", ");
     rootRef.current.querySelectorAll(sel).forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, []);
+  }, [RELATED.length]);
 
 
   /* benchmark numbers count up when scrolled in */
@@ -362,7 +362,7 @@ export default function UIUXDesignV2() {
       el.removeEventListener("mousemove", move);
       el.removeEventListener("mouseleave", leave);
     });
-  }, []);
+  }, [RELATED.length]);
 
 
   return (

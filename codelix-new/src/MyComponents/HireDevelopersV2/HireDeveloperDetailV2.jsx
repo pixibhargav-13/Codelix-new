@@ -42,7 +42,7 @@ export default function HireDeveloperDetailV2() {
   const role = hireRoleBySlug(slug);
   const rootRef = useRef(null);
   const { studies } = useCaseStudies();
-  useHirePageMotion(rootRef, slug);
+  useHirePageMotion(rootRef, slug, studies.length);
 
   /* an unknown slug is a real 404 (noindex), not an empty template */
   if (!role) return <NotFound />;
