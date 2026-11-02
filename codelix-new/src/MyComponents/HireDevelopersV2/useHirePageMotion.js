@@ -5,7 +5,7 @@ import { useReplayHeroIntro } from "../../lib/heroIntro.js";
    wipe and IntersectionObserver every other v2 detail page runs, shared by
    the hub and the per-role pages. `key` re-runs both when the route param
    changes without a remount. */
-export function useHirePageMotion(rootRef, key) {
+export function useHirePageMotion(rootRef, key, contentKey = 0) {
   useReplayHeroIntro(rootRef, key);
 
   useEffect(() => {
@@ -30,5 +30,8 @@ export function useHirePageMotion(rootRef, key) {
       io.disconnect();
       clearTimeout(safety);
     };
-  }, [rootRef, key]);
+    /* `contentKey` changes when content arrives after mount (case studies
+       loaded on client-side navigation); without it those cards were never
+       observed and stayed at opacity 0 until a full reload */
+  }, [rootRef, key, contentKey]);
 }

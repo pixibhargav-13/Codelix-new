@@ -220,7 +220,7 @@ export default function AdditionalServiceDetailV2() {
     ].join(", ");
     rootRef.current?.querySelectorAll(sel).forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, [svc]);
+  }, [svc, caseStudies.length]);
 
   /* damped scroll-progress bar */
   useEffect(() => {
