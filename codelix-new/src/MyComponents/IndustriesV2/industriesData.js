@@ -17,6 +17,12 @@ const withFixes = (challenges, fixes) =>
 export const INDUSTRIES = [
   {
     slug: "manufacturing",
+    faqs: [
+      { q: "Can the software pull data from our machines and weighbridges?", a: "Usually, yes. Where a machine, controller or weighbridge can export data or exposes an API, we read from it directly instead of having someone re-type readings. We check what each machine supports on the first call." },
+      { q: "Does it handle GST e-invoicing and e-way bills?", a: "Yes. Since 1 August 2023, e-invoicing applies to businesses whose aggregate turnover exceeded ₹5 crore in any financial year from 2017-18, and the ERP generates e-invoices and e-way bills with each dispatch." },
+      { q: "Can we keep Tally for accounts?", a: "Yes. Codelix ERP includes accounting and GST, but it can also connect to Tally through its XML interface if your accountant prefers to stay on Tally." },
+      { q: "How long does it take to go live?", a: "Codelix ERP typically goes live in 4 to 12 weeks, depending on modules, workflow and data migration. A fully custom ERP is rolled out module by module over 3 to 6 months." },
+    ],
     seoTitle: "Manufacturing Software Development Company in India",
     h1: "Manufacturing Software Development Company in India",
     keywords: "manufacturing ERP software, manufacturing software development, production planning software, inventory management software, shop floor management system, factory automation software, manufacturing ERP Ahmedabad, custom ERP for manufacturers",
@@ -35,6 +41,12 @@ export const INDUSTRIES = [
   },
   {
     slug: "fintech",
+    faqs: [
+      { q: "Do you build to regulatory requirements?", a: "We build the controls auditors and regulators look for: audit trails, role-based access, encryption and data retention rules. The exact rules depend on your licence, so we work alongside your compliance team on what applies to you." },
+      { q: "How do you handle KYC?", a: "Through the API of the KYC or verification provider you choose, with documents stored encrypted and every access logged." },
+      { q: "Does the DPDP Act apply to fintech software?", a: "Yes, to any personal data you hold. Most of the duties under the DPDP Rules, 2025 apply from around mid-May 2027; our DPDP guide covers what to plan for." },
+      { q: "Do you have a finance product of your own?", a: "Yes. Audytee is our practice management software for CA firms, covering clients, compliance deadlines, documents and billing." },
+    ],
     seoTitle: "Fintech Software Development Company in India",
     h1: "Fintech Software Development Company in India",
     keywords: "fintech software development, fintech app development, payment app development, lending software, banking software development, payment gateway integration, fintech company India, secure financial software",
@@ -53,6 +65,12 @@ export const INDUSTRIES = [
   },
   {
     slug: "ai-data",
+    faqs: [
+      { q: "Do we need a data warehouse before using AI?", a: "No. Most first projects start from the data you already have in Tally, an ERP, a CRM or spreadsheets, cleaned and joined for one purpose. A warehouse is worth building once several teams need the same data." },
+      { q: "Will our data be used to train AI models?", a: "We use business API plans and settings that keep your data out of model training where the provider offers that, keep your data in your own accounts, and go through the provider's terms with you before anything goes live." },
+      { q: "What does a first AI project cost?", a: "On our published pricing, a chatbot on your documents or a few automated workflows costs $5,000–$15,000, and AI connected to your CRM, ERP or product $15,000–$40,000." },
+      { q: "Do you work with Power BI?", a: "Yes. We build Power BI reports and data models, or custom dashboards where Power BI isn't a fit." },
+    ],
     seoTitle: "AI & Data Software Development | Codelix",
     keywords: "AI software development, data analytics solutions, machine learning development, AI and data company India, business intelligence, predictive analytics, data engineering, AI automation",
     seoDescription:
@@ -70,6 +88,12 @@ export const INDUSTRIES = [
   },
   {
     slug: "healthcare",
+    faqs: [
+      { q: "Have you built healthcare software before?", a: "Not as a published case study yet. What we bring are the same building blocks healthcare software needs (records, appointments, role-based access and audit logs) from HR, school and ERP systems we have shipped, and we are upfront about that on the first call." },
+      { q: "Can you make our software DPDP or HIPAA compliant?", a: "We build the technical safeguards those rules require: access control, encryption, audit logs, consent and data deletion. Compliance also depends on your own processes, so we work alongside your compliance advisor." },
+      { q: "Where is patient data stored?", a: "In a cloud account you own, in the region you choose, with encrypted storage and tested backups." },
+      { q: "How is a healthcare project priced?", a: "Fixed scope, fixed price: you get a written quote after a scoping call, before any work starts." },
+    ],
     seoTitle: "Healthcare Software Development | Codelix",
     keywords: "healthcare software development, hospital management system, clinic management software, telemedicine app development, patient management system, healthcare app development India, EHR software",
     seoDescription:
@@ -87,6 +111,12 @@ export const INDUSTRIES = [
   },
   {
     slug: "food-beverages",
+    faqs: [
+      { q: "Can it track stock by batch and expiry date?", a: "Yes. Stock is tracked by batch, manufacturing and expiry date, and dispatch can follow first-expiry-first-out." },
+      { q: "Can distributors place their own orders?", a: "Yes, through an ordering app or portal with each distributor's own price list, plus outstanding balances." },
+      { q: "Can online sales and distributor orders share the same stock?", a: "Yes. That is the point of one connected system: a sale on your D2C store and a distributor order both update the same stock." },
+      { q: "Can it work with Tally?", a: "Yes. Orders and invoices can sync to Tally, so your accounts stay in the tool your accountant already uses." },
+    ],
     seoTitle: "Food & Beverage Software Development Company",
     h1: "Food & Beverage Software Development",
     keywords: "food and beverage software, restaurant management software, food delivery app development, FMCG distribution software, inventory software for food business, online ordering system",
@@ -105,6 +135,12 @@ export const INDUSTRIES = [
   },
   {
     slug: "e-commerce",
+    faqs: [
+      { q: "Should we build on Shopify or go custom?", a: "Most new brands should start on Shopify. A custom store makes sense for dealer pricing, bulk B2B ordering, several warehouses or a marketplace; our e-commerce cost guide compares the options." },
+      { q: "Can you connect our store to Tally or our ERP?", a: "Yes. Orders, stock and invoices can sync between the store and Tally or an ERP, so nothing oversells." },
+      { q: "Which payment gateways do you integrate?", a: "Razorpay, PayU and Cashfree for customers paying in rupees, and Stripe or PayPal for international customers." },
+      { q: "Can you speed up our existing store?", a: "Yes. We measure it on real phones, fix the biggest causes first, and show before-and-after numbers for each change." },
+    ],
     seoTitle: "E-commerce Software Development for Brands | Codelix",
     keywords: "e-commerce software development, e-commerce website development Ahmedabad, online store development, marketplace development, Shopify development, WooCommerce development, B2B e-commerce platform",
     seoDescription:
@@ -122,6 +158,12 @@ export const INDUSTRIES = [
   },
   {
     slug: "real-estate-construction",
+    faqs: [
+      { q: "Is the construction ERP for contractors or builders?", a: "Both. It covers tenders, projects, tasks, procurement and equipment, which contractors and builders both run across several sites." },
+      { q: "Does it work at the site on a phone?", a: "Yes. Site teams use the mobile app to record progress, material use and requests, and the office sees it the same day." },
+      { q: "Can you build a housing society app?", a: "Yes. We have built one for residential communities, and our own AanganOne app covers visitors, maintenance billing, complaints and notices." },
+      { q: "How long does the construction ERP take to go live?", a: "Typically 4 to 12 weeks, depending on how many modules you take, your workflow and how much data is moved." },
+    ],
     seoTitle: "Construction & Real Estate Software Development",
     keywords: "real estate software development, construction management software, property management software, real estate CRM, real estate app development, builder ERP software",
     seoDescription:
@@ -139,6 +181,12 @@ export const INDUSTRIES = [
   },
   {
     slug: "education",
+    faqs: [
+      { q: "Can parents use the school app?", a: "Yes. Parents see attendance, homework, notices, fees and results, and staff and students each get their own view." },
+      { q: "How do you handle children's data?", a: "India's DPDP Act requires verifiable consent from a parent or guardian before processing a child's personal data, so that consent step is built into sign-up, along with access controls." },
+      { q: "Can fees be paid online?", a: "Yes, by UPI, cards or net banking, with receipts and reminders for overdue fees." },
+      { q: "Do you build online course websites?", a: "Yes: course catalogues, enrolment, payments and lesson delivery, like the EdTech website in our case studies." },
+    ],
     seoTitle: "Education Software & School Management Systems",
     h1: "Education Software & School Management Systems",
     keywords: "education software development, school management system, edtech app development, learning management system, LMS development, college management software, online learning platform",
@@ -157,6 +205,12 @@ export const INDUSTRIES = [
   },
   {
     slug: "startups",
+    faqs: [
+      { q: "How much does an MVP cost?", a: "On our published pricing, an MVP app for Android and iOS costs $5,000–$15,000, and a SaaS MVP with sign-up, one core workflow and subscriptions usually takes 8–12 weeks." },
+      { q: "Will we own the code?", a: "Yes. The code lives in your repository and the hosting in your cloud accounts from day one, so investors and future hires can see and build on it." },
+      { q: "Can you work with a non-technical founder?", a: "Yes. You get a written scope in plain language, a demo every two weeks, and decisions explained in terms of cost and risk, not jargon." },
+      { q: "What happens after the MVP?", a: "Most startups move to a dedicated team once the product is live and the backlog grows; others pay per change. You can switch either way." },
+    ],
     seoTitle: "MVP & Startup Software Development | Codelix",
     keywords: "software development for startups, MVP development, startup app development, product development for startups, MVP development company India, startup tech partner",
     seoDescription:
@@ -174,6 +228,12 @@ export const INDUSTRIES = [
   },
   {
     slug: "b2b-saas",
+    faqs: [
+      { q: "Can your developers join our existing engineering team?", a: "Yes. Dedicated developers work in your repository, tools and stand-ups and report to your tech lead." },
+      { q: "Single-tenant or multi-tenant?", a: "Most B2B SaaS products start multi-tenant, with a tenant ID on every record; separate databases make sense when customers contractually require data isolation." },
+      { q: "Can you add AI features to our product?", a: "Yes: search, summaries, assistants and agents built into the product, with costs and accuracy tracked." },
+      { q: "Do you handle subscription billing?", a: "Yes, through Razorpay for rupee payments or Stripe for other currencies, including trials, upgrades and failed-payment retries." },
+    ],
     seoTitle: "B2B SaaS Software Development Company | Codelix",
     keywords: "B2B SaaS development, SaaS product development, multi-tenant SaaS, SaaS development company India, SaaS application development, subscription software development",
     seoDescription:
@@ -191,6 +251,12 @@ export const INDUSTRIES = [
   },
   {
     slug: "travel-hospitality",
+    faqs: [
+      { q: "Have you built travel software before?", a: "Not as a published case study yet. The parts a booking system needs (live availability, payments, notifications and admin panels) are ones we have built in marketplace and community apps, and we are upfront about that on the first call." },
+      { q: "Can it connect to OTAs or a channel manager?", a: "Where the OTA or channel manager offers an API, yes. We confirm which ones you use and what each supports on the first call." },
+      { q: "Can international guests pay in their own currency?", a: "Yes, through Stripe or PayPal alongside an Indian gateway for rupee payments." },
+      { q: "How is a travel project priced?", a: "Fixed scope, fixed price: a written quote after a scoping call, before any work starts." },
+    ],
     keywords: "travel software development, hotel management software, booking engine development, travel app development, hospitality software, tour booking system",
     seoTitle: "Travel & Hospitality Booking Software | Codelix",
     seoDescription:

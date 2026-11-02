@@ -227,9 +227,12 @@ export default function IndustryDetailV2() {
     .slice(0, 3)
     .map((p) => ({ image: p.image, category: p.category, title: p.title, href: `/case-study${p.href}` }));
   const otherIndustries = INDUSTRIES.filter((i) => i.slug !== svc.slug).slice(0, 6);
+  /* each sector's own questions (industriesData.js), then the two that hold
+     for every sector. The old first question, "Do you have real experience
+     in <sector>?", answered yes on every page, including sectors with no
+     published project. */
   const faqs = [
-    { q: `Do you have real experience in ${svc.title.toLowerCase()}?`, a: `Yes — ${svc.title} is one of the sectors we take on repeat work in, not a first attempt. See the problems and process above for what that looks like in practice.` },
-    { q: "How is this priced?", a: "Fixed scope, fixed price — you get a written quote before any work starts, based on what you actually need, not an hourly guess." },
+    ...(svc.faqs || []),
     { q: "We're not exactly this sector — can you still help?", a: "Almost certainly. This page describes where we have the deepest repeat experience, not a hard boundary. Tell us what you're building and we'll tell you honestly if it's a fit." },
     { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that, you can keep us on a monthly retainer for updates, fixes, and support." },
   ];
@@ -516,7 +519,7 @@ export default function IndustryDetailV2() {
       </section>
 
       {/* ══════════ 9 · FAQ, then related reading ══════════ */}
-      <FaqSection faqs={faqs} className="v2-section--void" />
+      <FaqSection faqs={faqs} className="v2-section--void" heading={`Questions about software for ${svc.title.toLowerCase()}.`} />
 
       <RelatedReading />
 

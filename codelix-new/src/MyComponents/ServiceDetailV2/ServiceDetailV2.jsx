@@ -811,7 +811,7 @@ export default function ServiceDetailV2() {
       </section>
 
       {/* ══════════ 9 · FAQ ══════════ */}
-      <FaqSection faqs={FAQS} className="v2-section--void" />
+      <FaqSection faqs={FAQS} className="v2-section--void" heading="Questions about web development." />
 
       <RelatedReading />
 

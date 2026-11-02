@@ -278,7 +278,7 @@ export default function PricingV2() {
       </section>
 
       {/* ══════════ 4 · FAQ ══════════ */}
-      <FaqSection faqs={FAQS} />
+      <FaqSection faqs={FAQS} heading="Questions about pricing and billing." />
 
       {/* ══════════ 6 · CTA ══════════ */}
       <CtaSection className="v2-section--void">

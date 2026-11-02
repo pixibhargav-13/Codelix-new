@@ -850,7 +850,7 @@ export default function CustomSoftwareDevelopmentV2() {
       </section>
 
       {/* ══════════ 9 · FAQ ══════════ */}
-      <FaqSection faqs={FAQS} className="v2-section--void" />
+      <FaqSection faqs={FAQS} className="v2-section--void" heading="Questions about custom software." />
 
       <RelatedReading />
 

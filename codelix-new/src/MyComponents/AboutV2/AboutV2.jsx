@@ -7,6 +7,7 @@ import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
 import NavbarV2 from "../Shared/NavbarV2";
 import ScrollSentence from "../Shared/ScrollSentence";
 import CtaSection from "../Shared/CtaSection";
+import FaqSection from "../Shared/FaqSection";
 import ClientStrip from "../Shared/ClientStrip";
 import {
   Eye, HeartHandshake, ShieldCheck,
@@ -72,6 +73,16 @@ const PROCESS = [
   { n: "06", title: "Support", time: "Ongoing", body: "Post-launch fixes, monitoring, and improvements. You keep everything either way." },
 ];
 
+
+/* answers to what people search about the company itself; facts only from
+   the site's own schema and pages */
+const PAGE_FAQS = [
+  { q: "What does Codelix IT Solutions do?", a: "We build custom software, websites, mobile apps, ERP and CRM systems, and AI features for businesses in India and abroad, with a fixed written quote before work starts." },
+  { q: "Where is Codelix based?", a: "In Ahmedabad, Gujarat: A-1308, PNTC, Times Of India Press Road, Vejalpur, Ahmedabad 380015. We work Monday to Saturday, 10:00–19:00 IST." },
+  { q: "When was Codelix founded?", a: "In 2024, as Codelix IT Solutions Pvt Ltd." },
+  { q: "Who leads Codelix?", a: "Manas Vadodaria (CEO) and Kushal Mungalpara (Co-Founder). Every engagement starts and ends with them." },
+  { q: "Does Codelix build its own products?", a: "Yes: Codelix ERP for construction, manufacturing, ceramic and textile businesses, Audytee for CA firms, and AanganOne for housing societies." },
+];
 
 export default function AboutV2() {
   const testimonials = useTestimonials(STATIC_TESTIMONIALS);
@@ -387,6 +398,9 @@ export default function AboutV2() {
       </section>
 
       {/* ══════════ 7 · CTA ══════════ */}
+      {/* ══════════ FAQ — the questions people search about the company itself ══════════ */}
+      <FaqSection faqs={PAGE_FAQS} heading="Questions about Codelix." />
+
       <CtaSection className="v2-section--void">
         
           <p className="v2-label">Start Here</p>

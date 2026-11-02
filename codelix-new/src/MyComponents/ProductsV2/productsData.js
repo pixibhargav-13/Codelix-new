@@ -132,6 +132,12 @@ export const PRODUCTS = [
       { value: "₹2,400 Cr", label: "Estimated addressable market" },
       { value: "0", label: "Modern AI-powered CA platforms before Audytee" },
     ],
+    faq: [
+      { q: "Who is Audytee for?", a: "Chartered accountant firms in India that run clients, tasks, compliance deadlines and billing across Excel sheets and WhatsApp today." },
+      { q: "What does it cover?", a: "Twenty modules, including client management, task tracking, a compliance calendar for GST, ITR, TDS and ROC, billing with GST invoices, a document vault, notice management and a client portal." },
+      { q: "Does it track compliance deadlines automatically?", a: "Yes. The compliance calendar tracks GST, ITR, TDS and ROC deadlines, and notices from GST, Income Tax and TDS portals can be fetched automatically." },
+      { q: "Can clients send documents through it?", a: "Yes, through a secure client portal or an automated WhatsApp bot, so documents land in the firm's vault with a record of what arrived and when." },
+    ],
     traction: {
       points: [
         "20 modules built and fully live",
@@ -319,6 +325,12 @@ export const PRODUCTS = [
       "Real-time emergency alerts",
       "Clean, modern UI — easy for guards, admins, and residents alike",
       "Built and maintained in India, for Indian societies",
+    ],
+    faq: [
+      { q: "Who is AanganOne for?", a: "Residential societies and apartment communities: residents, society admins, committee members and security guards each get their own role in one app." },
+      { q: "Does it handle visitor entry?", a: "Yes. Visitors are logged, tracked and approved digitally, with contactless QR entry at the gate and a real-time dashboard for guards." },
+      { q: "Can residents pay maintenance in the app?", a: "Yes. Monthly maintenance invoices are generated automatically, and residents pay by UPI, card or net banking in the app." },
+      { q: "Is it on iPhone and Android?", a: "It is live on Google Play and has been submitted to the Apple App Store." },
     ],
     traction: {
       points: [
