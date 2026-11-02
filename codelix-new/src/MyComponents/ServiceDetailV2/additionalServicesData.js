@@ -19,6 +19,7 @@ import {
    rotates by position rather than being hand-picked per row — decorative,
    not meaningful per problem. */
 import { SERVICE_CONTENT } from "./additionalServicesContent.js";
+import { SERVICE_DEPTH } from "./additionalServicesDepth.js";
 
 const PAIN_ICONS = [AlertTriangle, Clock, Puzzle];
 const pains = (rows) => rows.map((p, i) => ({ ...p, icon: PAIN_ICONS[i % PAIN_ICONS.length] }));
@@ -372,7 +373,10 @@ const RAW = [
 export const ADDITIONAL_SERVICES = RAW.map((s) => ({
   ...s,
   ...SERVICE_CONTENT[s.slug],
+  /* each covered item with what it means for this service; the plain list
+     from the description is only a fallback */
   covers: splitCovers(s.description),
+  ...SERVICE_DEPTH[s.slug],
 }));
 
 export const additionalServiceBySlug = (slug) =>
