@@ -43,17 +43,20 @@
   background: radial-gradient(circle, rgba(140, 180, 255, .14), transparent 60%);
 }
 
-/* faint concentric rings for texture, faded out at the edges */
+/* a fine engineering grid for texture (replaced concentric rings), centred
+   on the lockup and faded out towards the edges */
 .pl-root::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: repeating-radial-gradient(
-    circle at 50% 48%,
-    rgba(150, 185, 255, .045) 0 1px,
-    transparent 1px 92px
-  );
+  background-image:
+    linear-gradient(rgba(150, 185, 255, .08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(150, 185, 255, .08) 1px, transparent 1px);
+  background-size: 72px 72px;
+  background-position: center center;
+  -webkit-mask-image: radial-gradient(circle at 50% 48%, #000 0, transparent 62%);
+  mask-image: radial-gradient(circle at 50% 48%, #000 0, transparent 62%);
 }
 
 .pl-root::after {
