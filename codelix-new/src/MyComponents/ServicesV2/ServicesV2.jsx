@@ -596,7 +596,7 @@ export default function ServicesV2() {
       </section>
 
       {/* ══════════ 7 · FAQ ══════════ */}
-      <FaqSection faqs={FAQS} className="v2-section--void" />
+      <FaqSection faqs={FAQS} className="v2-section--void" heading="Questions about our services." />
 
       {/* ══════════ 8 · CTA ══════════ */}
       <CtaSection className="v2-section--void">

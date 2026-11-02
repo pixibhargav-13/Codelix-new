@@ -319,7 +319,7 @@ export default function TechnologiesV2() {
       </section>
 
       {/* ══════════ 5 · FAQ ══════════ */}
-      <FaqSection faqs={FAQS} className="v2-section--void" />
+      <FaqSection faqs={FAQS} className="v2-section--void" heading="Questions about our technology choices." />
 
       {/* ══════════ 7 · CTA ══════════ */}
       <CtaSection className="v2-section--void">

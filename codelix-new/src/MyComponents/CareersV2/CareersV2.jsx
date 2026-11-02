@@ -307,7 +307,7 @@ export default function CareersV2() {
       </section>
 
       {/* ══════════ 5 · FAQ ══════════ */}
-      <FaqSection faqs={FAQS} className="v2-section--void" />
+      <FaqSection faqs={FAQS} className="v2-section--void" heading="Questions about working at Codelix." />
 
       {/* ══════════ 6 · CTA ══════════ */}
       <CtaSection className="v2-section--void">

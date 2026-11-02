@@ -429,7 +429,7 @@ export default function WorkV2() {
       </section>
 
       {/* ══════════ 6 · FAQ ══════════ */}
-      <FaqSection faqs={FAQS} />
+      <FaqSection faqs={FAQS} heading="Questions about our work." />
 
       {/* ══════════ 8 · CTA ══════════ */}
       <CtaSection className="v2-section--void">

@@ -665,7 +665,7 @@ export default function AdditionalServiceDetailV2() {
       )}
 
       {/* ══════════ 14 · FAQ ══════════ */}
-      <FaqSection faqs={faqs} className="v2-section--void" />
+      <FaqSection faqs={faqs} className="v2-section--void" heading={`Questions about ${svc.title.toLowerCase()}.`} />
 
       <RelatedReading />
 

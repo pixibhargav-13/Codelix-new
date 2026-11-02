@@ -63,7 +63,9 @@ export default function HireDeveloperDetailV2() {
   const faqs = [
     ...role.faqs,
     { q: `How quickly can a ${role.tech} developer start?`, a: "You get a written proposal within 48 hours of the first call. Once you have interviewed and approved the developer, work starts as soon as you give access to your repository and tools." },
-    ...SHARED_HIRE_FAQS,
+    /* ownership and working hours are already answered in "Hiring From India"
+       on this page; the hub keeps the full shared set */
+    ...SHARED_HIRE_FAQS.filter((f) => !/^(Who owns the code|What are your working hours)/.test(f.q)),
   ];
 
   return (

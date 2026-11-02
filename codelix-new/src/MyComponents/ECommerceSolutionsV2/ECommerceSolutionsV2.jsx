@@ -845,7 +845,7 @@ export default function ECommerceSolutionsV2() {
       </section>
 
       {/* ══════════ 9 · FAQ ══════════ */}
-      <FaqSection faqs={FAQS} className="v2-section--void" />
+      <FaqSection faqs={FAQS} className="v2-section--void" heading="Questions about e-commerce development." />
 
       <RelatedReading />
 

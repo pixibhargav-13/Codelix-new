@@ -431,7 +431,7 @@ export default function ContactV2() {
       </section>
 
       {/* ══════════ 4 · FAQ ══════════ */}
-      <FaqSection faqs={FAQS} className="v2-section--void" />
+      <FaqSection faqs={FAQS} className="v2-section--void" heading="Questions before you get in touch." />
 
       {/* ══════════ FOOTER ══════════ */}
       </main>

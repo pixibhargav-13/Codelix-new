@@ -855,7 +855,7 @@ export default function SupportManagedServicesV2() {
       </section>
 
       {/* ══════════ 9 · FAQ ══════════ */}
-      <FaqSection faqs={FAQS} className="v2-section--void" />
+      <FaqSection faqs={FAQS} className="v2-section--void" heading="Questions about maintenance and support." />
 
       {/* ══════════ 15 · OTHER SERVICES ══════════ */}
       <section className="v2-section" id="other">

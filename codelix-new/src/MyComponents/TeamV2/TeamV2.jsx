@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import FooterV2 from "../Shared/FooterV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from "../Shared/CtaSection";
+import FaqSection from "../Shared/FaqSection";
 import {
   Compass, Users, ShieldCheck, Linkedin, Globe, Smartphone, PenTool,
   ShoppingCart, Code2, Sparkles, BarChart3, Database, LifeBuoy,
@@ -41,6 +42,13 @@ const OTHER_SERVICES = [
   { icon: Sparkles, n: "06", title: "AI & Automation Solutions", body: "AI agents, chatbots, generative AI, and workflow automation that works.", path: "/services/ai-development" },
   { icon: BarChart3, n: "07", title: "Data Analytics & Business Intelligence", body: "Dashboards, reporting, data visualization, and predictive analytics.", path: "/services/data-analytics" },
   { icon: LifeBuoy, n: "08", title: "Support & Managed Services", body: "Ongoing maintenance, technical support, and dedicated team augmentation.", path: "/services/support-managed-services" },
+];
+
+/* what a buyer asks about the people behind the work */
+const PAGE_FAQS = [
+  { q: "Who will work on my project?", a: "Developers, designers and QA from our team, led by one of the founders. You meet them before work starts, and you can talk to the developer directly rather than through an account manager." },
+  { q: "Can I talk to the founders?", a: "Yes. Every engagement starts and ends with Manas Vadodaria and Kushal Mungalpara; book a call from the contact page." },
+  { q: "Is Codelix hiring?", a: "We hire when the work calls for it. See the careers page for open roles, or tell us what you do best." },
 ];
 
 export default function TeamV2() {
@@ -217,6 +225,9 @@ export default function TeamV2() {
       </section>
 
       {/* ══════════ 7 · CTA ══════════ */}
+      {/* ══════════ FAQ — the questions people search about the company itself ══════════ */}
+      <FaqSection faqs={PAGE_FAQS} heading="Questions about our team." />
+
       <CtaSection className="v2-section--void">
 
         <p className="v2-label">Start Here</p>

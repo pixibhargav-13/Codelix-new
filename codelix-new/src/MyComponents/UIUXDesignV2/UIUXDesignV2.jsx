@@ -854,7 +854,7 @@ export default function UIUXDesignV2() {
       </section>
 
       {/* ══════════ 15 · FAQ ══════════ */}
-      <FaqSection faqs={FAQS} className="v2-section--void" />
+      <FaqSection faqs={FAQS} className="v2-section--void" heading="Questions about UI/UX design." />
 
       {/* ══════════ 17 · OTHER SERVICES ══════════ */}
       <section className="v2-section" id="other">

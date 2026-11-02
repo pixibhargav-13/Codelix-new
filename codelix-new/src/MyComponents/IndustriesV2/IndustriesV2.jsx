@@ -326,7 +326,7 @@ export default function IndustriesV2() {
       </section>
 
       {/* ══════════ 5 · FAQ ══════════ */}
-      <FaqSection faqs={FAQS} className="v2-section--void" />
+      <FaqSection faqs={FAQS} className="v2-section--void" heading="Questions about the sectors we work in." />
 
       {/* ══════════ 7 · CTA ══════════ */}
       <CtaSection className="v2-section--void">
