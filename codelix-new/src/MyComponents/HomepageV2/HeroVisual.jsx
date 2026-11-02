@@ -23,7 +23,13 @@ const HeroVisual = () => {
     ctx.scale(dpr, dpr);
 
     const points = [];
-    const numPoints = 350; // Optimized for wireframe visibility
+    /* Phones and touch devices (light mode) get a sparser globe: the line
+       count grows faster than the point count, and at 350 points each frame
+       was a ~100ms task on a throttled mid-range phone, which kept the main
+       thread busy for the whole of page start-up (Lighthouse TBT ~1s on the
+       homepage, measured 2 Nov 2026). 220 points reads the same at phone
+       size. */
+    const numPoints = isLightMode() ? 220 : 350;
     for (let i = 0; i < numPoints; i++) {
       const phi = Math.acos(-1 + (2 * i) / numPoints);
       const theta = Math.sqrt(numPoints * Math.PI) * phi;
@@ -137,7 +143,9 @@ const HeroVisual = () => {
        have the setting on. */
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const isRunnable = () => onScreen && pageVisible && !reduceMotion;
+    /* `started` (set further down) holds the loop back on phones until
+       start-up is over; the callbacks below only run after it is set */
+    const isRunnable = () => started && onScreen && pageVisible && !reduceMotion;
 
     const start = () => {
       if (animationId === null && isRunnable()) animationId = requestAnimationFrame(render);
@@ -285,10 +293,49 @@ const HeroVisual = () => {
     };
 
     /* paint one frame immediately so the globe is never blank before the
-       observer's first callback lands, then let the gates drive it */
-    animationId = requestAnimationFrame(render);
+       observer's first callback lands, then let the gates drive it.
+
+       On phones the spin waits until start-up is over: the first frame is
+       painted (so the globe is there from the start), and the loop begins
+       when the page has loaded and gone idle, or at the visitor's first
+       touch, scroll or key press, whichever comes first. Spinning from the
+       first frame competed with hydration for the same main thread. */
+    let started = !light;
+    const begin = () => {
+      if (started) return;
+      started = true;
+      removeWake();
+      start();
+    };
+    const WAKE = ["pointerdown", "touchstart", "scroll", "keydown", "wheel"];
+    const removeWake = () => WAKE.forEach((t) => window.removeEventListener(t, begin));
+    let idleTimer = null;
+    let idleHandle = null;
+    const afterLoad = () => {
+      idleTimer = setTimeout(() => {
+        idleHandle = "requestIdleCallback" in window
+          ? requestIdleCallback(begin, { timeout: 2000 })
+          : (begin(), null);
+      }, 1500);
+    };
+    if (light) {
+      WAKE.forEach((t) => window.addEventListener(t, begin, { passive: true, once: true }));
+      if (document.readyState === "complete") afterLoad();
+      else window.addEventListener("load", afterLoad, { once: true });
+      /* one still frame now; the gates below only run the loop once started */
+      animationId = requestAnimationFrame((t) => {
+        render(t);
+        if (!started) stop();
+      });
+    } else {
+      animationId = requestAnimationFrame(render);
+    }
 
     return () => {
+      removeWake();
+      window.removeEventListener("load", afterLoad);
+      if (idleTimer) clearTimeout(idleTimer);
+      if (idleHandle && "cancelIdleCallback" in window) cancelIdleCallback(idleHandle);
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('visibilitychange', onVisibility);
       io.disconnect();
