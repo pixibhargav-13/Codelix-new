@@ -12,6 +12,10 @@ let hasPlayed = false;
 
 const TAGLINE = "We live in IT";
 
+/* the hero's own three beats (PLAN / BUILD / SCALE), set large, one after
+   another, before the logo */
+const WORDS = ["Plan.", "Build.", "Scale."];
+
 /* Homepage intro, once per browser session.
 
    The live Codelix logo (the same asset the navbar uses, so the intro and
@@ -36,6 +40,11 @@ export default function PageLoader() {
   const barWrapRef = useRef(null);
   const shineRef = useRef(null);
   const metaRef = useRef(null);
+  const wordRefs = useRef([]);
+  const gridRef = useRef(null);
+  const vignetteRef = useRef(null);
+  const topRef = useRef(null);
+  const bottomRef = useRef(null);
   const letterRefs = useRef([]);
   const lenis = useLenis();
 
@@ -105,94 +114,79 @@ export default function PageLoader() {
     };
     applySweep();
 
-    /* radial mask that starts fully opaque and opens outward from the
-       lockup — vmax units so it clears the corners on any aspect ratio */
-    const iris = { r: 0 };
-    const applyIris = () => {
-      const el = rootRef.current;
-      if (!el) return;
-      const g = `radial-gradient(circle at 50% 46%, transparent ${iris.r}vmax, #000 ${iris.r + 6}vmax)`;
-      el.style.webkitMaskImage = g;
-      el.style.maskImage = g;
-    };
-
     const tl = gsap.timeline({ onComplete: finish });
 
-    /* the ambient fields drift for the whole runtime, so the screen has
-       movement behind the lockup rather than sitting as a dead black field */
+    /* the ambient fields and the grid drift in for the whole runtime */
     tl.fromTo(
       auraARef.current,
       { opacity: 0, scale: 0.8, xPercent: -6 },
-      { opacity: 1, scale: 1.08, xPercent: 3, duration: 1.7, ease: "power2.out" },
+      { opacity: 1, scale: 1.08, xPercent: 3, duration: 2.2, ease: "power2.out" },
       0
     )
       .fromTo(
         auraBRef.current,
         { opacity: 0, scale: 1.12, xPercent: 8 },
-        { opacity: 1, scale: 0.92, xPercent: -5, duration: 1.7, ease: "power2.out" },
+        { opacity: 1, scale: 0.92, xPercent: -5, duration: 2.2, ease: "power2.out" },
         0.05
       )
+      .fromTo(gridRef.current, { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 1.4, ease: "power2.out" }, 0);
 
-      /* logo rises out of its mask */
+    /* Plan. / Build. / Scale. — each rises out of its mask and leaves upward */
+    const words = wordRefs.current.filter(Boolean);
+    words.forEach((w, i) => {
+      const at = 0.12 + i * 0.46;
+      tl.fromTo(w, { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.36, ease: "power3.out" }, at)
+        .to(w, { yPercent: -110, opacity: 0, duration: 0.24, ease: "power3.in" }, at + 0.3);
+    });
+
+    tl
+      /* logo rises out of its mask once the three words have passed */
       .fromTo(
         logoRef.current,
         { yPercent: 42, opacity: 0, filter: "blur(10px)" },
         { yPercent: 0, opacity: 1, filter: "blur(0px)", duration: 0.85, ease: "expo.out" },
-        0.08
+        1.52
       )
-
-      /* light travels through the logo's own silhouette — the band is
-         masked by the logo's alpha channel, so it is the artwork catching
-         light rather than a highlight sliding over a rectangle */
-      .to(sweep, { x: -140, duration: 0.95, ease: "power2.inOut", onUpdate: applySweep }, 0.5)
-
-      /* tagline cascades in letter by letter under the logo */
+      /* light travels through the logo's own silhouette */
+      .to(sweep, { x: -140, duration: 0.95, ease: "power2.inOut", onUpdate: applySweep }, 1.8)
       .fromTo(
         letterRefs.current.filter(Boolean),
         { yPercent: 115, opacity: 0, filter: "blur(5px)" },
         { yPercent: 0, opacity: 1, filter: "blur(0px)", duration: 0.65, stagger: 0.028, ease: "power3.out" },
-        0.5
+        1.72
       )
 
       /* hairline progress across the foot of the screen, with its caption */
-      .fromTo([barWrapRef.current, metaRef.current], { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.35)
-      .fromTo(barRef.current, { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power1.inOut" }, 0.62)
-
-      /* a short bloom as the bar closes, so completion registers */
+      .fromTo([barWrapRef.current, metaRef.current], { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.2)
+      .fromTo(barRef.current, { scaleX: 0 }, { scaleX: 1, duration: 2.2, ease: "power1.inOut" }, 0.3)
       .to(barRef.current, {
         boxShadow: "0 0 22px rgba(62,125,252,.95)",
         duration: 0.22,
         ease: "power2.out",
         yoyo: true,
         repeat: 1,
-      }, 1.52)
+      }, 2.45)
 
-      .to({}, { duration: 0.14 })
+      .to({}, { duration: 0.12 })
 
       .to([logoRef.current, taglineRef.current], {
         opacity: 0,
-        scale: 1.08,
+        scale: 1.06,
         filter: "blur(7px)",
-        duration: 0.4,
+        duration: 0.35,
         ease: "power2.in",
       }, "exit")
-      .to([auraARef.current, auraBRef.current, barWrapRef.current, metaRef.current], {
+      .to([auraARef.current, auraBRef.current, gridRef.current, vignetteRef.current, barWrapRef.current, metaRef.current], {
         opacity: 0,
-        duration: 0.5,
+        duration: 0.35,
         ease: "power2.in",
       }, "exit")
 
-      /* Iris: a hole opens where the logo was and grows past the corners,
-         so the homepage is revealed THROUGH the plate rather than the plate
-         sliding off it. Driven as a CSS variable on a radial-gradient mask —
-         clip-path can't punch an expanding hole without a path. */
-      .to(iris, {
-        r: 150,
-        duration: 1.05,
-        ease: "expo.inOut",
-        onUpdate: applyIris,
-      }, "exit+=0.22")
-      .add(releaseHero, "exit+=0.42");
+      /* Split: the plate parts at the middle, top half up and bottom half
+         down, so the homepage is revealed between them */
+      .to(topRef.current, { yPercent: -100, duration: 0.95, ease: "expo.inOut" }, "exit+=0.22")
+      .to(bottomRef.current, { yPercent: 100, duration: 0.95, ease: "expo.inOut" }, "exit+=0.22")
+      .add(releaseHero, "exit+=0.4");
 
     return () => { tl.kill(); cleanup(); };
   }, [mounted, lenis]);
@@ -200,11 +194,25 @@ export default function PageLoader() {
   if (!mounted) return null;
 
   return (
-    <div className="pl-root" ref={rootRef} aria-hidden="true">
+    <div className="pl-root pl-root--split" ref={rootRef} aria-hidden="true">
+      {/* the plate itself, in two halves that part on exit */}
+      <span className="pl-half pl-half--top" ref={topRef} />
+      <span className="pl-half pl-half--bottom" ref={bottomRef} />
+      <span className="pl-grid" ref={gridRef} />
+      <span className="pl-vignette" ref={vignetteRef} />
+
       {/* two drifting fields of brand light, so the whole screen moves
           rather than one small element in a static black void */}
       <span className="pl-aura pl-aura--a" ref={auraARef} />
       <span className="pl-aura pl-aura--b" ref={auraBRef} />
+
+      <div className="pl-words">
+        {WORDS.map((w, i) => (
+          <span className="pl-word-mask" key={w}>
+            <span className={`pl-word${i === WORDS.length - 1 ? " is-accent" : ""}`} ref={(el) => (wordRefs.current[i] = el)}>{w}</span>
+          </span>
+        ))}
+      </div>
 
       <div className="pl-stack">
         <span className="pl-logo-mask">
