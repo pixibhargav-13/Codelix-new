@@ -10,7 +10,6 @@ import FooterV2 from "../Shared/FooterV2";
 import "../HomepageV2/HomepageV2.css";
 
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
-import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
 import { STATIC_TESTIMONIALS } from "../../data/testimonialsData";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
@@ -567,16 +566,6 @@ export default function DataAnalyticsV2() {
         </div>
       </section>
 
-      {/* ══════════ 11 · TESTIMONIAL ══════════ */}
-      <TestimonialSpotlight
-        testimonials={PAGE_TESTIMONIALS}
-        label="Client Voices"
-        heading="What clients say once we ship."
-        stats={[
-          { num: "40+", label: "Companies trust us" },
-          { num: "11", label: "Industries served" },
-        ]}
-      />
 
       {/* ══════════ 4b · PROCESS ══════════ */}
       <section className="v2-method-shell" id="process">

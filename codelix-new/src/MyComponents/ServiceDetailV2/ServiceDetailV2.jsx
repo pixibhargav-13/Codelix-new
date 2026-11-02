@@ -10,8 +10,6 @@ import {
 import "../HomepageV2/HomepageV2.css";
 
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
-import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
-import { STATIC_TESTIMONIALS } from "../../data/testimonialsData";
 import "../ServicesV2/ServicesV2.css";
 import "./ServiceDetailV2.css";
 import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
@@ -171,14 +169,12 @@ const SENTENCE = [
   "FIXED PRICE.",
 ];
 
-import { useTestimonials } from "../../data/useTestimonials";
 import { StructuredData } from "../../components/StructuredData";
 import { serviceInfo } from "../../lib/serviceSchema";
 
 export default function ServiceDetailV2() {
   /* related work: case studies from the admin panel (see useCaseStudies) */
   const RELATED = useRelatedWork({ category: "Web Development" });
-  const testimonials = useTestimonials(STATIC_TESTIMONIALS);
 
   
   
@@ -545,16 +541,6 @@ export default function ServiceDetailV2() {
         </div>
       </section>
 
-      {/* ══════════ 11 · TESTIMONIAL ══════════ */}
-      <TestimonialSpotlight
-        testimonials={testimonials}
-        label="Client Voices"
-        heading="What clients say once we ship."
-        stats={[
-          { num: "40+", label: "Companies trust us" },
-          { num: "11", label: "Industries served" },
-        ]}
-      />
 
       {/* ══════════ 5 · INTERACTIVE ESTIMATOR — the standout ══════════ */}
       <section className="v2-section v2-section--void sd2-est-section" id="estimate">

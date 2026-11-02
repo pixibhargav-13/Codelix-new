@@ -9,8 +9,6 @@ import {
   Building2, Rocket, Store, GraduationCap, HeartPulse, Landmark,
   GitBranch, BookOpen, KeyRound, Server,
 } from "lucide-react";
-import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
-import { STATIC_TESTIMONIALS } from "../../data/testimonialsData";
 
 /* v2 design system + shared data — same source of truth as the other v2 pages */
 import "../HomepageV2/HomepageV2.css";
@@ -111,11 +109,9 @@ const EST_ADDONS = [
   { id: "priority", label: "Priority timeline", weeks: 0 },
 ];
 
-import { useTestimonials } from "../../data/useTestimonials";
 import { useReplayHeroIntro } from "../../lib/heroIntro.js";
 
 export default function AdditionalServiceDetailV2() {
-  const testimonials = useTestimonials(STATIC_TESTIMONIALS);
 
   const { slug } = useParams();
   const svc = additionalServiceBySlug(slug);
@@ -480,16 +476,6 @@ export default function AdditionalServiceDetailV2() {
         </section>
       )}
 
-      {/* ══════════ 10 · TESTIMONIAL ══════════ */}
-      <TestimonialSpotlight
-        testimonials={testimonials}
-        label="Client Voices"
-        heading="What clients say once we ship."
-        stats={[
-          { num: "40+", label: "Companies trust us" },
-          { num: "11", label: "Industries served" },
-        ]}
-      />
 
       {/* ══════════ 6 · PROCESS ══════════ */}
       <section className="v2-method-shell" id="process">

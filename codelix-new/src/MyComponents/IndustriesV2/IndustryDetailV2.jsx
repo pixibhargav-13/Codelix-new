@@ -8,7 +8,6 @@ import {
 } from "lucide-react";
 import FooterV2 from "../Shared/FooterV2";
 import NavbarV2 from "../Shared/NavbarV2";
-import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
 import { TECH_STACK } from "../HomepageV2/techStack";
 import { INDUSTRIES, industryBySlug, WORK_INDUSTRY_MAP } from "./industriesData";
 import { caseStudyCard } from "../../lib/caseStudyRow";
@@ -444,15 +443,6 @@ export default function IndustryDetailV2() {
       {/* ══════════ 7 · TESTIMONIAL — live, admin-editable, auto-rotating
           (same pattern as Homepage/About/Team), instead of one quote
           frozen at build time ══════════ */}
-      <TestimonialSpotlight
-        testimonials={testimonials}
-        label="Client Voices"
-        heading={`What clients say about our ${svc.title.toLowerCase()} work.`}
-        stats={[
-          { num: "11", label: "Industries served" },
-          { num: "40+", label: "Projects across sectors" },
-        ]}
-      />
 
       {/* ══════════ EXTRAORDINARY SECTION: THE BUILD, LAYER BY LAYER — a
           scroll-drawn SVG spine connecting the real services this industry
