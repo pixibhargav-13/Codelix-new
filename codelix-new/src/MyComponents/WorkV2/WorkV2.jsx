@@ -291,6 +291,9 @@ export default function WorkV2() {
         </div>
       </section>
 
+      {/* ══════════ 7 · CLIENT STRIP ══════════ */}
+      <ClientStrip />
+
       {/* ══════════ 3 · ALL PROJECTS — filterable grid ══════════ */}
       <section className="v2-section v2-section--void" id="projects">
         <p className="v2-label">All Projects</p>
@@ -427,9 +430,6 @@ export default function WorkV2() {
 
       {/* ══════════ 6 · FAQ ══════════ */}
       <FaqSection faqs={FAQS} />
-
-      {/* ══════════ 7 · CLIENT STRIP ══════════ */}
-      <ClientStrip />
 
       {/* ══════════ 8 · CTA ══════════ */}
       <CtaSection className="v2-section--void">

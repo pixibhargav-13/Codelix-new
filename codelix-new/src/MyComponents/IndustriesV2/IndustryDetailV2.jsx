@@ -525,10 +525,10 @@ export default function IndustryDetailV2() {
         </div>
       </section>
 
-      {/* ══════════ 9 · FAQ ══════════ */}
-      <RelatedReading />
-
+      {/* ══════════ 9 · FAQ, then related reading ══════════ */}
       <FaqSection faqs={faqs} className="v2-section--void" />
+
+      <RelatedReading />
 
       {/* ══════════ 10 · OTHER INDUSTRIES ══════════ */}
       <section className="v2-section" id="other">

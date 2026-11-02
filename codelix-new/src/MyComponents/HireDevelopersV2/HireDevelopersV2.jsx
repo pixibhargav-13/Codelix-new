@@ -131,9 +131,9 @@ export default function HireDevelopersV2() {
           </div>
         </section>
 
-        <RelatedReading />
-
         <FaqSection faqs={FAQS} heading="Questions about hiring developers from Codelix." />
+
+        <RelatedReading />
 
         <CtaSection className="v2-section--void">
           <p className="v2-label">Start Here</p>

@@ -250,6 +250,9 @@ export default function TechnologiesV2() {
         </div>
       </section>
 
+      {/* ══════════ 2b · WHICH TECHNOLOGY FOR WHAT — links to every hire page ══════════ */}
+      <DeepDive />
+
       {/* ══════════ 3 · WHY THIS STACK ══════════ */}
       <section className="v2-section v2-section--void" id="why">
         <p className="v2-label">Why This Stack</p>
@@ -319,8 +322,6 @@ export default function TechnologiesV2() {
       <FaqSection faqs={FAQS} className="v2-section--void" />
 
       {/* ══════════ 7 · CTA ══════════ */}
-      <DeepDive />
-
       <CtaSection className="v2-section--void">
         
           <p className="v2-label">Start Here</p>

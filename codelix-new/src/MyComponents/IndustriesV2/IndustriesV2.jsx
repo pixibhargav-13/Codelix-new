@@ -151,6 +151,9 @@ export default function IndustriesV2() {
         </div>
       </header>
 
+      {/* ══════════ 6 · CLIENT STRIP ══════════ */}
+      <ClientStrip />
+
       {/* ══════════ 2 · INDUSTRIES — scroll-driven sticky reveal
           (the extraordinary section): each card is its own position:sticky
           element with a progressively larger "top" offset, so as the
@@ -324,9 +327,6 @@ export default function IndustriesV2() {
 
       {/* ══════════ 5 · FAQ ══════════ */}
       <FaqSection faqs={FAQS} className="v2-section--void" />
-
-      {/* ══════════ 6 · CLIENT STRIP ══════════ */}
-      <ClientStrip />
 
       {/* ══════════ 7 · CTA ══════════ */}
       <CtaSection className="v2-section--void">
