@@ -299,8 +299,8 @@ async function build() {
         html = html.replace(
           "<body>",
           `<body>
-  <style>#pl-preboot{display:none}@media ${INTRO_MEDIA}{#pl-preboot{display:block;position:fixed;inset:0;z-index:9998;background:#050507}}</style>
-  <div id="pl-preboot"></div>
+  <style>#pl-preboot{display:none}@media ${INTRO_MEDIA}{#pl-preboot{display:block;position:fixed;inset:0;z-index:9998;background:radial-gradient(circle at 50% 46%,rgba(62,125,252,.12),rgba(62,125,252,.03) 30%,transparent 55%),#050507}#pl-preboot i{position:absolute;left:5vw;right:5vw;bottom:40px;height:1px;background:rgba(242,240,236,.12);overflow:hidden}#pl-preboot i:after{content:"";position:absolute;top:0;bottom:0;width:30%;background:linear-gradient(90deg,transparent,#6f9dff,transparent);animation:pl-pre 1.4s ease-in-out infinite}@keyframes pl-pre{from{transform:translateX(-100%)}to{transform:translateX(340%)}}}@media ${INTRO_MEDIA} and (prefers-reduced-motion:reduce){#pl-preboot i:after{animation:none}}</style>
+  <div id="pl-preboot"><i></i></div>
   <script>(function(){var e=document.getElementById('pl-preboot');function rm(){if(e&&e.parentNode)e.parentNode.removeChild(e);}try{if(sessionStorage.getItem(${JSON.stringify(INTRO_SEEN_KEY)})==="1")rm();}catch(x){}setTimeout(rm,4000);})()</script>`
         );
       }

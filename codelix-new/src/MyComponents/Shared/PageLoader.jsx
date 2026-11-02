@@ -35,6 +35,7 @@ export default function PageLoader() {
   const barRef = useRef(null);
   const barWrapRef = useRef(null);
   const shineRef = useRef(null);
+  const metaRef = useRef(null);
   const letterRefs = useRef([]);
   const lenis = useLenis();
 
@@ -153,8 +154,8 @@ export default function PageLoader() {
         0.5
       )
 
-      /* short determinate bar — progress without a numeric readout */
-      .fromTo(barWrapRef.current, { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.5)
+      /* hairline progress across the foot of the screen, with its caption */
+      .fromTo([barWrapRef.current, metaRef.current], { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.35)
       .fromTo(barRef.current, { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power1.inOut" }, 0.62)
 
       /* a short bloom as the bar closes, so completion registers */
@@ -168,14 +169,14 @@ export default function PageLoader() {
 
       .to({}, { duration: 0.14 })
 
-      .to([logoRef.current, taglineRef.current, barWrapRef.current], {
+      .to([logoRef.current, taglineRef.current], {
         opacity: 0,
         scale: 1.08,
         filter: "blur(7px)",
         duration: 0.4,
         ease: "power2.in",
       }, "exit")
-      .to([auraARef.current, auraBRef.current], {
+      .to([auraARef.current, auraBRef.current, barWrapRef.current, metaRef.current], {
         opacity: 0,
         duration: 0.5,
         ease: "power2.in",
@@ -234,9 +235,14 @@ export default function PageLoader() {
           ))}
         </span>
 
-        <div className="pl-bar" ref={barWrapRef}>
-          <span className="pl-bar-fill" ref={barRef} />
-        </div>
+      </div>
+
+      <div className="pl-meta" ref={metaRef}>
+        <span>Codelix IT Solutions</span>
+        <span>Ahmedabad, India</span>
+      </div>
+      <div className="pl-bar" ref={barWrapRef}>
+        <span className="pl-bar-fill" ref={barRef} />
       </div>
     </div>
   );

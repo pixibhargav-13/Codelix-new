@@ -26,8 +26,10 @@
   top: 46%;
   width: min(120vw, 1100px);
   height: min(120vw, 1100px);
-  margin-left: min(-60vw, -550px);
-  margin-top: min(-60vw, -550px);
+  /* half the box, so the glow is centred on the lockup; min(-60vw, -550px)
+     picked the larger offset and pushed it up and left on wide screens */
+  margin-left: calc(min(120vw, 1100px) / -2);
+  margin-top: calc(min(120vw, 1100px) / -2);
   background: radial-gradient(circle, rgba(62, 125, 252, .2), rgba(62, 125, 252, .05) 42%, transparent 66%);
 }
 
@@ -36,8 +38,8 @@
   top: 52%;
   width: min(78vw, 720px);
   height: min(78vw, 720px);
-  margin-left: min(-39vw, -360px);
-  margin-top: min(-39vw, -360px);
+  margin-left: calc(min(78vw, 720px) / -2);
+  margin-top: calc(min(78vw, 720px) / -2);
   background: radial-gradient(circle, rgba(140, 180, 255, .14), transparent 60%);
 }
 
@@ -69,7 +71,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 26px;
   /* flex: none is load-bearing — as a flex item this would otherwise shrink
      to nothing in a narrow container, which is how earlier versions of this
      loader ended up rendering an empty plate */
@@ -96,7 +98,7 @@
   display: block;
   /* explicit width with a floor: a bare min()/percentage collapses wherever
      the viewport or container resolves to zero */
-  width: clamp(150px, 17vw, 230px);
+  width: clamp(200px, 22vw, 320px);
   height: auto;
 }
 
@@ -141,7 +143,7 @@
 .pl-letter {
   display: inline-block;
   font-family: var(--font, "NoiGroteskFix", "NoiGroteskFallback", system-ui, sans-serif);
-  font-size: clamp(20px, 2.6vw, 34px);
+  font-size: clamp(22px, 2.5vw, 38px);
   font-weight: 500;
   letter-spacing: -.02em;
   color: var(--text, #f2f0ec);
@@ -154,23 +156,40 @@
   color: #6f9dff;
 }
 
-/* ── short determinate bar ──
-   progress without a numeric readout, which is what made an earlier version
-   read as a sci-fi HUD */
+/* ── progress: a hairline across the foot of the screen ──
+   still no numeric readout, which is what made an earlier version read as
+   a sci-fi HUD; at 132px under the logo it barely registered, so it now
+   spans the screen and frames the lockup instead */
 .pl-bar {
-  position: relative;
-  width: 132px;
-  height: 2px;
-  border-radius: 2px;
-  background: rgba(242, 240, 236, .1);
+  position: absolute;
+  z-index: 1;
+  left: var(--pad-x, 5vw);
+  right: var(--pad-x, 5vw);
+  bottom: 40px;
+  height: 1px;
+  background: rgba(242, 240, 236, .12);
   overflow: hidden;
-  margin-top: 6px;
+}
+
+/* caption row above the hairline: who and where, quiet and small */
+.pl-meta {
+  position: absolute;
+  z-index: 1;
+  left: var(--pad-x, 5vw);
+  right: var(--pad-x, 5vw);
+  bottom: 56px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font, "NoiGroteskFix", "NoiGroteskFallback", system-ui, sans-serif);
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(242, 240, 236, .45);
 }
 
 .pl-bar-fill {
   position: absolute;
   inset: 0;
-  border-radius: 2px;
   background: linear-gradient(90deg, #3e7dfc, #8cb6ff);
   box-shadow: 0 0 10px rgba(62, 125, 252, .6);
   transform: scaleX(0);
@@ -178,7 +197,7 @@
 }
 
 @media (max-width: 640px) {
-  .pl-logo { width: clamp(130px, 44vw, 190px); }
-  .pl-letter { font-size: clamp(17px, 6.4vw, 24px); }
-  .pl-bar { width: 108px; }
+  .pl-logo { width: clamp(150px, 46vw, 210px); }
+  .pl-letter { font-size: clamp(18px, 6.4vw, 26px); }
+  .pl-meta { font-size: 10px; letter-spacing: .14em; }
 }
