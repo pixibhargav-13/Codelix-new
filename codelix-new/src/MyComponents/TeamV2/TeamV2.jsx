@@ -2,8 +2,6 @@ import { STATIC_TESTIMONIALS } from '../../data/testimonialsData';
 import { Link } from "react-router-dom";
 import React, { useEffect, useRef } from "react";
 import FooterV2 from "../Shared/FooterV2";
-import { useTestimonials } from "../../data/useTestimonials";
-import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
 import NavbarV2 from "../Shared/NavbarV2";
 import CtaSection from "../Shared/CtaSection";
 import {
@@ -46,7 +44,6 @@ const OTHER_SERVICES = [
 ];
 
 export default function TeamV2() {
-  const testimonials = useTestimonials(STATIC_TESTIMONIALS);
 
   const rootRef = useRef(null);
 
@@ -199,16 +196,6 @@ export default function TeamV2() {
         </div>
       </section>
 
-      {/* ══════════ 4 · TESTIMONIAL ══════════ */}
-      <TestimonialSpotlight
-        testimonials={testimonials}
-        label="Client Voices"
-        heading="What clients say about the team."
-        stats={[
-          { num: "40+", label: "Projects delivered" },
-          { num: "40+", label: "Clients worldwide" },
-        ]}
-      />
 
       {/* ══════════ 5 · EXPLORE SERVICES ══════════ */}
       <section className="v2-section" id="other">

@@ -10,8 +10,6 @@ import FooterV2 from "../Shared/FooterV2";
 import "../HomepageV2/HomepageV2.css";
 
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
-import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
-import { STATIC_TESTIMONIALS } from "../../data/testimonialsData";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
 
@@ -35,7 +33,6 @@ import DeepDive from "../Shared/DeepDive";
 import RelatedReading from "../Shared/RelatedReading";
 import CtaSection from '../Shared/CtaSection';
 import ClientStrip from '../Shared/ClientStrip';
-import { useTestimonials } from "../../data/useTestimonials";
 import { StructuredData } from "../../components/StructuredData";
 import { serviceInfo } from "../../lib/serviceSchema";
 
@@ -197,7 +194,6 @@ const METRICS = [
 export default function AIDevelopmentV2() {
   /* related work: case studies from the admin panel (see useCaseStudies) */
   const RELATED = useRelatedWork({ slugs: ["smart-business-case-study", "book-collections-case-study", "erp-case-study"] });
-  const testimonials = useTestimonials(STATIC_TESTIMONIALS);
 
   
   
@@ -555,16 +551,6 @@ export default function AIDevelopmentV2() {
         </div>
       </section>
 
-      {/* ══════════ 11 · TESTIMONIAL ══════════ */}
-      <TestimonialSpotlight
-        testimonials={testimonials}
-        label="Client Voices"
-        heading="What clients say once we ship."
-        stats={[
-          { num: "40+", label: "Companies trust us" },
-          { num: "11", label: "Industries served" },
-        ]}
-      />
 
       {/* ══════════ 4b · PROCESS ══════════ */}
       <section className="v2-method-shell" id="process">
