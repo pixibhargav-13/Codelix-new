@@ -5,11 +5,9 @@ import { serviceInfo } from "../../lib/serviceSchema";
 import FooterV2 from "../Shared/FooterV2";
 import { useParams, Link } from "react-router-dom";
 import {
-  ArrowLeft, Check, Globe, LayoutDashboard, X, Minus, FileCode2,
+  Check, FileCode2,
   Building2, Rocket, Store, GraduationCap, HeartPulse, Landmark,
-  CalendarCheck, Lock, Eye,
-  GitBranch, BookOpen, KeyRound, Palette, Server,
-  Phone, FileText, PlayCircle,
+  GitBranch, BookOpen, KeyRound, Server,
 } from "lucide-react";
 import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
 import { STATIC_TESTIMONIALS } from "../../data/testimonialsData";
@@ -21,14 +19,12 @@ import { TECH_STACK } from "../HomepageV2/techStack";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import "../ServicesV2/ServicesV2.css";
 import "../ServiceDetailV2/ServiceDetailV2.css";
-import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 
 import { caseStudyCard } from "../../lib/caseStudyRow";
 import { useCaseStudies } from "../CaseStudyDetailV2/useCaseStudies";
 import { ADDITIONAL_SERVICES, additionalServiceBySlug } from "./additionalServicesData";
 import { pickRelated } from "../../lib/pickRelated";
 import NavbarV2 from "../Shared/NavbarV2";
-import ScrollSentence from "../Shared/ScrollSentence";
 import FaqSection from "../Shared/FaqSection";
 import DeepDive from "../Shared/DeepDive";
 import RelatedReading from "../Shared/RelatedReading";
@@ -49,38 +45,10 @@ const USE_CASES = [
   { icon: Landmark, title: "Finance & Legal", body: "Compliance-conscious builds where trust signals and data handling actually matter." },
 ];
 
-const PRINCIPLES = [
-  { key: "Delivered", icon: CalendarCheck, claim: "No deadline we don't hold ourselves to.", body: "We pad the schedule honestly upfront so we don't have to renegotiate halfway through. If we say a date, we hit it." },
-  { key: "Visible", icon: Eye, claim: "No progress you can't see.", body: "We don't go dark for a month and come back with a surprise. You see the work as it happens." },
-];
+/* icons for the per-service deliverables, by position (decorative) */
+const HAND_ICONS = [GitBranch, Server, BookOpen, KeyRound];
 
-/* generic quality bars — real, universal company commitments (not a
-   fabricated per-service performance number, since we don't have real
-   measured data for 18 different service lines) */
-const BENCHMARKS = [
-  { value: 100, suffix: "%", label: "Scope agreed in writing", note: "Before any work starts", ring: 100 },
-  { value: 24, suffix: "h", label: "Typical response time", note: "During an active engagement", ring: 80 },
-];
-
-/* the actual artifacts handed over — generic across engagement types,
-   not tied to one specific deliverable format */
-const HANDOVER = [
-  { icon: Globe, title: "Domain access", body: "Your domain is registered in your name, with full access to it — DNS, renewals, and transfers stay in your hands." },
-  { icon: LayoutDashboard, title: "Admin access", body: "A login to the admin panel, so your team can manage content without touching code." },
-  { icon: Palette, title: "Design files", body: "Any design files used to plan the build, so future work doesn't start from scratch." },
-  { icon: Server, title: "Handover walkthrough", body: "A live session showing your team how to use everything we built." },
-];
-
-const COMPARE_COLS = ["Codelix", "Template / builder", "Freelancer", "Large agency"];
-const COMPARE_ROWS = [
-  { label: "Timeline you can hold us to", vals: ["yes", "yes", "no", "partial"] },
-  { label: "Built for your exact workflow", vals: ["yes", "no", "maybe", "yes"] },
-  { label: "One team, one point of contact", vals: ["yes", "no", "yes", "no"] },
-  { label: "Post-launch support & docs", vals: ["yes", "no", "maybe", "yes"] },
-  { label: "Transparent, fixed pricing", vals: ["yes", "yes", "maybe", "no"] },
-  { label: "Won't vanish mid-project", vals: ["yes", "yes", "no", "yes"] },
-];
-
+/* fallback only: every service now has its own steps */
 const PROCESS = [
   { n: "01", title: "Discovery", time: "2–3 days", body: "We work out what actually has to be solved — the constraints, the users, and what can be cut from scope." },
   { n: "02", title: "Scoping", time: "3–5 days", body: "A concrete plan agreed before anything is built, so nothing gets rebuilt later because of a missed assumption." },
@@ -88,12 +56,6 @@ const PROCESS = [
   { n: "04", title: "Build", time: "2–8 weeks", body: "Built in short cycles with visible progress — you see it working early and often, not just at the end." },
   { n: "05", title: "QA & Launch", time: "1–2 weeks", body: "Tested against real conditions before it goes live, then deployed with a rollback plan in place." },
   { n: "06", title: "Support", time: "Ongoing", body: "Post-launch fixes, monitoring, and improvements. You keep everything either way." },
-];
-
-const NEXT_STEPS = [
-  { n: "01", icon: Phone, meta: "30 minutes", title: "Discovery call", body: "A no-pressure call to understand what you're building and what's not working. No slide deck, no sales pitch." },
-  { n: "02", icon: FileText, meta: "Within 48 hours", title: "Written proposal", body: "A clear scope, a fixed price, and a timeline — in writing. You know exactly what you're getting before you commit." },
-  { n: "03", icon: PlayCircle, meta: "On your go-ahead", title: "Kickoff", body: "We lock the scope and start. You get a point of contact and visible progress from day one." },
 ];
 
 /* interpolated with the actual service name/title so each of the 18 pages
@@ -104,7 +66,7 @@ const NEXT_STEPS = [
    dedicated "does this cover..." item are now service-specific. */
 const getFaqs = (svc) => {
   const name = svc.title.toLowerCase();
-  const firstCover = svc.covers?.[0];
+  const firstCover = svc.covers?.[0]?.title || svc.covers?.[0];
   /* questions written for this service (additionalServicesContent.js), then
      the two that hold for every engagement — pricing and after launch */
   if (svc.faqs?.length) {
@@ -124,13 +86,6 @@ const getFaqs = (svc) => {
     { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that, you can keep us on a monthly retainer for updates, fixes, and support." },
   ];
 };
-
-const SENTENCE = [
-  "YOU GET THE DOMAIN.",
-  "YOU GET THE ADMIN.",
-  "FIXED SCOPE.",
-  "FIXED PRICE.",
-];
 
 /* generic scope estimator — same interaction/maths as the core pages'
    estimator, but with universal size tiers instead of web-specific
@@ -271,34 +226,6 @@ export default function AdditionalServiceDetailV2() {
     return () => io.disconnect();
   }, [svc]);
 
-  /* benchmark numbers count up when scrolled in */
-  useEffect(() => {
-    const nums = rootRef.current?.querySelectorAll(".sd2-bench-value");
-    if (!nums || !nums.length) return;
-    const run = (el) => {
-      const target = Number(el.dataset.target);
-      if (target === 0) { el.textContent = "0"; return; }
-      const start = performance.now();
-      const step = (now) => {
-        const p = Math.min((now - start) / 1400, 1);
-        const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
-        el.textContent = Math.round(target * eased).toString();
-        if (p < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    };
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        run(e.target);
-        io.unobserve(e.target);
-      }),
-      { threshold: 0.01, rootMargin: "0px 0px -12% 0px" }
-    );
-    nums.forEach((n) => io.observe(n));
-    return () => io.disconnect();
-  }, [svc]);
-
   /* damped scroll-progress bar */
   useEffect(() => {
     const bar = rootRef.current?.querySelector(".v2-progress span");
@@ -357,6 +284,10 @@ export default function AdditionalServiceDetailV2() {
     ? svc.useCases.map((c, i) => ({ ...c, icon: USE_CASES[i % USE_CASES.length].icon }))
     : USE_CASES;
   const stack = (svc.stack || []).map((name) => TECH_STACK.find((t) => t.name === name) || { name });
+  /* this service's own items, steps and deliverables (additionalServicesDepth.js) */
+  const covers = svc.covers.map((c) => (typeof c === "string" ? { title: c, body: `${c} is scoped to your project in the written quote.` } : c));
+  const process = (svc.process || PROCESS).map((m, i) => ({ ...m, n: String(i + 1).padStart(2, "0") }));
+  const deliverables = svc.deliverables || [];
 
   return (
     <main className="v2 sd2" ref={rootRef}>
@@ -402,8 +333,8 @@ export default function AdditionalServiceDetailV2() {
 
             <aside className="sd2-facts sv2-hero-reveal">
               {[
-                ["Typical timeline", "2–12 weeks"],
-                ["Starts with", "Discovery call"],
+                ["Typical timeline", svc.timeline || "2–12 weeks"],
+                ["Built with", (svc.stack || []).slice(0, 3).join(", ") || "Chosen per project"],
                 ["Post-launch", "Support included"],
               ].map(([k, v]) => (
                 <div className="sd2-fact" key={k}>
@@ -452,8 +383,8 @@ export default function AdditionalServiceDetailV2() {
       {/* ══════════ 3 · WHAT'S INCLUDED ══════════ */}
       <section className="v2-section" id="included">
         <p className="v2-label">What's Included</p>
-        <h2 className="v2-heading">Where this service applies.</h2>
-        <p className="v2-lede">Not an upsell list — this is what's actually covered under {svc.title.toLowerCase()}.</p>
+        <h2 className="v2-heading">What {svc.title.toLowerCase()} covers.</h2>
+        <p className="v2-lede">Each part, and what it means in practice. Your written quote lists the parts your project needs.</p>
         <div className="sd2-inc-showcase">
           <div className="sd2-inc-nav" role="tablist" aria-label="What's included" ref={incNavRef}>
             <span
@@ -461,8 +392,8 @@ export default function AdditionalServiceDetailV2() {
               style={{ transform: `translateY(${incIndicator.top}px)`, height: `${incIndicator.height}px` }}
               aria-hidden="true"
             />
-            {svc.covers.map((c, i) => (
-              <div className="sd2-inc-navitem" key={c} ref={(el) => (incItemRefs.current[i] = el)}>
+            {covers.map((c, i) => (
+              <div className="sd2-inc-navitem" key={c.title} ref={(el) => (incItemRefs.current[i] = el)}>
                 <button
                   type="button"
                   role="tab"
@@ -473,12 +404,12 @@ export default function AdditionalServiceDetailV2() {
                   onClick={() => setIncActive(i)}
                 >
                   <span className="sd2-inc-tab-n">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="sd2-inc-tab-title">{c}</span>
+                  <span className="sd2-inc-tab-title">{c.title}</span>
                   <span className="sd2-inc-tab-icon"><Check size={16} strokeWidth={1.8} /></span>
                 </button>
                 <div className={`sd2-inc-mobile-body ${incActive === i ? "is-open" : ""}`}>
                   <div className="sd2-inc-mobile-body-inner">
-                    <p className="sd2-inc-mobile-body-text">{c} is included in {svc.title}, scoped in your written quote.</p>
+                    <p className="sd2-inc-mobile-body-text">{c.body}</p>
                   </div>
                 </div>
               </div>
@@ -486,17 +417,17 @@ export default function AdditionalServiceDetailV2() {
           </div>
 
           <div className="sd2-inc-stage">
-            {svc.covers.map((c, i) => (
+            {covers.map((c, i) => (
               <div
                 className={`sd2-inc-panel ${incActive === i ? "is-active" : ""}`}
                 aria-hidden={incActive !== i}
-                key={c}
+                key={c.title}
               >
                 <span className="sd2-inc-panel-glow" aria-hidden="true" />
                 <span className="sd2-inc-panel-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
                 <span className="sd2-inc-panel-icon"><Check size={40} strokeWidth={1.2} /></span>
-                <h3 className="sd2-inc-panel-title">{c}</h3>
-                <p className="sd2-inc-panel-body">{c} is included in {svc.title} — scoped to what your project actually needs and listed in the written quote.</p>
+                <h3 className="sd2-inc-panel-title">{c.title}</h3>
+                <p className="sd2-inc-panel-body">{c.body}</p>
               </div>
             ))}
           </div>
@@ -620,12 +551,12 @@ export default function AdditionalServiceDetailV2() {
         <div className="v2-method-head">
           <h2 className="v2-method-heading">How A {svc.title} Engagement Runs.</h2>
           <p className="v2-method-lede">
-            Six stages from first call to live delivery — nothing advances until the
+            {process.length} stages, in the order they happen — nothing advances until the
             stage before it is signed off.
           </p>
         </div>
         <div className="v2-method-rows">
-          {PROCESS.map((m) => (
+          {process.map((m) => (
             <div className="v2-method-row" key={m.n}>
               <div className="v2-method-index">{m.n}</div>
               <div>
@@ -635,54 +566,6 @@ export default function AdditionalServiceDetailV2() {
               <div className="v2-method-body">{m.body}</div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* ══════════ 7 · QUALITY BENCHMARKS ══════════ */}
-      <section className="v2-section v2-section--void" id="benchmarks">
-        <p className="v2-label">Quality Bar</p>
-        <h2 className="v2-heading">The commitments we hold ourselves to on {svc.title.toLowerCase()}.</h2>
-        <p className="v2-lede">Not aspirations — the same terms on every engagement, regardless of scope.</p>
-        <div className="sd2-bench-panel">
-          <div className="sd2-bench-bar">
-            <span className="sd2-bench-bar-dot" aria-hidden="true" />
-            <span className="sd2-bench-bar-title">Live quality gate</span>
-            <span className="sd2-bench-bar-meta">Checked on every engagement</span>
-          </div>
-          <div className="sd2-bench-grid">
-            {BENCHMARKS.map((b, i) => {
-              const R = 52;
-              const C = 2 * Math.PI * R;
-              const offset = C - (C * b.ring) / 100;
-              return (
-                <div className="sd2-bench" key={b.label}>
-                  <div className="sd2-bench-ring">
-                    <svg viewBox="0 0 120 120" className="sd2-bench-ring-svg" aria-hidden="true">
-                      <defs>
-                        <linearGradient id={`asd2-bench-grad-${i}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="rgba(180,200,230,.55)" />
-                          <stop offset="100%" stopColor="rgba(180,200,230,1)" />
-                        </linearGradient>
-                      </defs>
-                      <circle className="sd2-bench-ring-track" cx="60" cy="60" r={R} />
-                      <circle
-                        className="sd2-bench-ring-fill"
-                        cx="60" cy="60" r={R}
-                        stroke={`url(#asd2-bench-grad-${i})`}
-                        style={{ "--c": C, "--ring-offset": offset }}
-                      />
-                    </svg>
-                    <div className="sd2-bench-num">
-                      <span className="sd2-bench-value" data-target={b.value}>{b.value}</span>
-                      <span className="sd2-bench-suffix">{b.suffix}</span>
-                    </div>
-                  </div>
-                  <div className="sd2-bench-label">{b.label}</div>
-                  <div className="sd2-bench-note">{b.note}</div>
-                </div>
-              );
-            })}
-          </div>
         </div>
       </section>
 
@@ -743,39 +626,16 @@ export default function AdditionalServiceDetailV2() {
         ]}
       />
 
-      {/* ══════════ 11 · PRINCIPLES ══════════ */}
-      <section className="v2-section" id="principles">
-        <p className="v2-label">Our Principles</p>
-        <h2 className="v2-heading">Two commitments that govern every project.</h2>
-        <div className="sd2-tenet-grid">
-          {PRINCIPLES.map((p, i) => (
-            <article className="sd2-tenet" key={p.key}>
-              <span className="sd2-tenet-shine" aria-hidden="true" />
-              <div className="sd2-tenet-top">
-                <span className="sd2-tenet-icon"><p.icon size={20} strokeWidth={1.5} /></span>
-                <span className="sd2-tenet-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
-              </div>
-              <h3 className="sd2-tenet-claim">{p.claim}</h3>
-              <p className="sd2-tenet-body">{p.body}</p>
-              <span className="sd2-tenet-tag">{p.key}</span>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* ══════════ EXTRAORDINARY SECTION: TECH STACK ══════════ */}
-      <TechStackShowcaseV2 />
-
       {/* ══════════ 12 · HANDOVER ══════════ */}
+      {deliverables.length > 0 && (
       <section className="v2-section" id="handover">
         <div className="sd2-case-head">
           <div>
             <p className="v2-label">What You Receive</p>
-            <h2 className="v2-heading">Everything, at handover.</h2>
+            <h2 className="v2-heading">What you receive from a {svc.title.toLowerCase()} project.</h2>
           </div>
           <p className="v2-lede">
-            Here is the exact list of what
-            lands in your accounts when the project closes.
+            What lands in your accounts and repository, so the work stays yours.
           </p>
         </div>
         <div className="sd2-manifest">
@@ -785,24 +645,27 @@ export default function AdditionalServiceDetailV2() {
               Handover manifest
             </span>
             <span className="sd2-manifest-meta">
-              {HANDOVER.length} items
+              {deliverables.length} items
               <i />
               Transferred on completion
             </span>
           </div>
 
           <div className="sd2-manifest-grid">
-            {HANDOVER.map((h, i) => (
+            {deliverables.map((h, i) => {
+              const Icon = HAND_ICONS[i % HAND_ICONS.length];
+              return (
               <article className="sd2-hand" key={h.title}>
                 <div className="sd2-hand-top">
-                  <span className="sd2-hand-icon"><h.icon size={16} strokeWidth={1.6} /></span>
+                  <span className="sd2-hand-icon"><Icon size={16} strokeWidth={1.6} /></span>
                   <span className="sd2-hand-n">{String(i + 1).padStart(2, "0")}</span>
                   <span className="sd2-hand-tick"><Check size={12} strokeWidth={3} /></span>
                 </div>
                 <h3 className="sd2-hand-title">{h.title}</h3>
                 <p className="sd2-hand-body">{h.body}</p>
               </article>
-            ))}
+              );
+            })}
           </div>
 
           <div className="sd2-manifest-foot">
@@ -813,79 +676,12 @@ export default function AdditionalServiceDetailV2() {
           </div>
         </div>
       </section>
-
-      {/* ══════════ 13 · WHY US vs ALTERNATIVES ══════════ */}
-      <section className="v2-section v2-section--void" id="compare">
-        <div className="sd2-case-head">
-          <div>
-            <p className="v2-label">Why Us</p>
-            <h2 className="v2-heading">What you're actually comparing for {svc.title.toLowerCase()}.</h2>
-          </div>
-          <p className="v2-lede">
-            A template, a freelancer, and a big agency all solve part of the
-            problem. Here's where each one tends to leave you exposed.
-          </p>
-        </div>
-
-        <div className="sd2-cmp" role="table" aria-label="Codelix compared to alternatives">
-          <div className="sd2-cmp-head" role="row">
-            <span className="sd2-cmp-rowlabel" role="columnheader" />
-            {COMPARE_COLS.map((c, i) => (
-              <span className={`sd2-cmp-col ${i === 0 ? "is-us" : ""}`} role="columnheader" key={c}>{c}</span>
-            ))}
-          </div>
-          {COMPARE_ROWS.map((row) => (
-            <div className="sd2-cmp-row" role="row" key={row.label}>
-              <span className="sd2-cmp-rowlabel" role="rowheader">{row.label}</span>
-              {row.vals.map((v, i) => (
-                <span className={`sd2-cmp-cell ${i === 0 ? "is-us" : ""} sd2-cmp-${v}`} role="cell" key={i}>
-                  {v === "yes" && <Check size={16} strokeWidth={2.6} />}
-                  {(v === "partial" || v === "maybe") && <Minus size={16} strokeWidth={2.6} />}
-                  {v === "no" && <X size={15} strokeWidth={2.6} />}
-                  <em className="sd2-cmp-txt">
-                    {v === "yes" ? "Yes" : v === "no" ? "No" : v === "partial" ? "Partial" : "Maybe"}
-                  </em>
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ══════════ 13.5 · SCROLL SENTENCE ══════════ */}
-      <ScrollSentence words={SENTENCE} tone="dark" centered={true} />
+      )}
 
       {/* ══════════ 14 · FAQ ══════════ */}
       <RelatedReading />
 
       <FaqSection faqs={faqs} className="v2-section--void" />
-
-      {/* ══════════ 15 · WHAT HAPPENS NEXT ══════════ */}
-      <section className="v2-section v2-section--void" id="next">
-        <div className="sd2-case-head">
-          <div>
-            <p className="v2-label">What Happens Next</p>
-            <h2 className="v2-heading">Three steps from here to kickoff.</h2>
-          </div>
-          <p className="v2-lede">No drawn-out sales process. Reach out and here's exactly what follows.</p>
-        </div>
-        <div className="sd2-next">
-          <span className="sd2-next-line" aria-hidden="true" />
-          {NEXT_STEPS.map((s) => (
-            <article className="sd2-step" key={s.n}>
-              <div className="sd2-step-node">
-                <span className="sd2-step-num">{s.n}</span>
-                <span className="sd2-step-badge"><s.icon size={15} strokeWidth={1.7} /></span>
-              </div>
-              <div className="sd2-step-inner">
-                <span className="sd2-step-meta">{s.meta}</span>
-                <h3 className="sd2-step-title">{s.title}</h3>
-                <p className="sd2-step-body">{s.body}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
 
       {/* ══════════ 16 · OTHER SERVICES ══════════ */}
       <section className="v2-section" id="other">
