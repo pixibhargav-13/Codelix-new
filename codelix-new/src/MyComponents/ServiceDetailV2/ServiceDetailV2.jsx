@@ -550,6 +550,35 @@ export default function ServiceDetailV2() {
         </div>
       </section>
 
+      {/* ══════════ 10 · RELATED WORK ══════════ */}
+      <section className="v2-section v2-section--void" id="work">
+        <p className="v2-label">Related Work</p>
+        <h2 className="v2-heading">Web builds we've shipped.</h2>
+        <div className="sd2-work-grid">
+          {RELATED.map((w) => (
+            <Link className="sd2-work-card" to={w.link} key={w.link}>
+              <span className="sd2-work-media">
+                <img src={w.thumb} alt={w.title} loading="lazy" />
+              </span>
+              <span className="sd2-work-tag">{w.tag}</span>
+              <span className="sd2-work-title">{w.title}</span>
+              <span className="sd2-work-go">Read case study →</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 11 · TESTIMONIAL ══════════ */}
+      <TestimonialSpotlight
+        testimonials={testimonials}
+        label="Client Voices"
+        heading="What clients say once we ship."
+        stats={[
+          { num: "40+", label: "Companies trust us" },
+          { num: "11", label: "Industries served" },
+        ]}
+      />
+
       {/* ══════════ 5 · INTERACTIVE ESTIMATOR — the standout ══════════ */}
       <section className="v2-section v2-section--void sd2-est-section" id="estimate">
         <div className="sd2-est">
@@ -713,34 +742,8 @@ export default function ServiceDetailV2() {
         </div>
       </section>
 
-      {/* ══════════ 10 · RELATED WORK ══════════ */}
-      <section className="v2-section v2-section--void" id="work">
-        <p className="v2-label">Related Work</p>
-        <h2 className="v2-heading">Web builds we've shipped.</h2>
-        <div className="sd2-work-grid">
-          {RELATED.map((w) => (
-            <Link className="sd2-work-card" to={w.link} key={w.link}>
-              <span className="sd2-work-media">
-                <img src={w.thumb} alt={w.title} loading="lazy" />
-              </span>
-              <span className="sd2-work-tag">{w.tag}</span>
-              <span className="sd2-work-title">{w.title}</span>
-              <span className="sd2-work-go">Read case study →</span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* ══════════ 11 · TESTIMONIAL ══════════ */}
-      <TestimonialSpotlight
-        testimonials={testimonials}
-        label="Client Voices"
-        heading="What clients say once we ship."
-        stats={[
-          { num: "40+", label: "Companies trust us" },
-          { num: "11", label: "Industries served" },
-        ]}
-      />
+      {/* ══════════ EXTRAORDINARY SECTION: TECH STACK ══════════ */}
+      <TechStackShowcaseV2 />
 
       {/* ══════════ 8 · PRINCIPLES ══════════ */}
       <section className="v2-section" id="principles">
@@ -761,9 +764,6 @@ export default function ServiceDetailV2() {
           ))}
         </div>
       </section>
-
-      {/* ══════════ EXTRAORDINARY SECTION: TECH STACK ══════════ */}
-      <TechStackShowcaseV2 />
 
       {/* ══════════ 8a · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">
@@ -815,6 +815,9 @@ export default function ServiceDetailV2() {
         </div>
       </section>
 
+      {/* ══════════ 8.5 · SCROLL SENTENCE ══════════ */}
+      <ScrollSentence words={SENTENCE} tone="dark"  centered={true} />
+
       {/* ══════════ 8b · WHY US vs ALTERNATIVES ══════════ */}
       <section className="v2-section v2-section--void" id="compare">
         <div className="sd2-case-head">
@@ -864,13 +867,29 @@ export default function ServiceDetailV2() {
         </div>
       </section>
 
-      {/* ══════════ 8.5 · SCROLL SENTENCE ══════════ */}
-      <ScrollSentence words={SENTENCE} tone="dark"  centered={true} />
-
       {/* ══════════ 9 · FAQ ══════════ */}
+      <FaqSection faqs={FAQS} className="v2-section--void" />
+
       <RelatedReading />
 
-      <FaqSection faqs={FAQS} className="v2-section--void" />
+      {/* ══════════ 15 · OTHER SERVICES ══════════ */}
+      <section className="v2-section" id="other">
+        <p className="v2-label">Explore More</p>
+        <h2 className="v2-heading">The rest of what we do.</h2>
+        <div className="sd2-other-list">
+          {OTHER_SERVICES.map((s) => (
+            <Link className="sd2-other" to={s.path} key={s.path}>
+              <div className="sd2-other-top">
+                <span className="sd2-other-icon"><s.icon size={17} strokeWidth={1.5} /></span>
+                <span className="sd2-other-n">{s.n}</span>
+              </div>
+              <span className="sd2-other-title">{s.title}</span>
+              <p className="sd2-other-body">{s.body}</p>
+              <span className="sd2-other-go">→</span>
+            </Link>
+          ))}
+        </div>
+      </section>
 
       {/* ══════════ 14b · WHAT HAPPENS NEXT ══════════ */}
       <section className="v2-section v2-section--void" id="next">
@@ -897,25 +916,6 @@ export default function ServiceDetailV2() {
                 <p className="sd2-step-body">{s.body}</p>
               </div>
             </article>
-          ))}
-        </div>
-      </section>
-
-      {/* ══════════ 15 · OTHER SERVICES ══════════ */}
-      <section className="v2-section" id="other">
-        <p className="v2-label">Explore More</p>
-        <h2 className="v2-heading">The rest of what we do.</h2>
-        <div className="sd2-other-list">
-          {OTHER_SERVICES.map((s) => (
-            <Link className="sd2-other" to={s.path} key={s.path}>
-              <div className="sd2-other-top">
-                <span className="sd2-other-icon"><s.icon size={17} strokeWidth={1.5} /></span>
-                <span className="sd2-other-n">{s.n}</span>
-              </div>
-              <span className="sd2-other-title">{s.title}</span>
-              <p className="sd2-other-body">{s.body}</p>
-              <span className="sd2-other-go">→</span>
-            </Link>
           ))}
         </div>
       </section>

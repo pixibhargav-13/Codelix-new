@@ -458,6 +458,62 @@ export default function AdditionalServiceDetailV2() {
         </div>
       </section>
 
+      {/* ══════════ 9 · RELATED WORK — real projects only, and only when
+          there's a genuinely close category match. No fabricated case
+          studies for a service line we have no real project for. ══════════ */}
+      {relatedWork.length > 0 && (
+        <section className="v2-section v2-section--void" id="work">
+          <p className="v2-label">Related Work</p>
+          <h2 className="v2-heading">Real projects in this space.</h2>
+          <div className="sd2-work-grid">
+            {relatedWork.map((w) => (
+              <Link className="sd2-work-card" to={w.href} key={w.href}>
+                <span className="sd2-work-media">
+                  <img src={w.image} alt={w.title} loading="lazy" />
+                </span>
+                <span className="sd2-work-tag">{w.category}</span>
+                <span className="sd2-work-title">{w.title}</span>
+                <span className="sd2-work-go">Read case study →</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ══════════ 10 · TESTIMONIAL ══════════ */}
+      <TestimonialSpotlight
+        testimonials={testimonials}
+        label="Client Voices"
+        heading="What clients say once we ship."
+        stats={[
+          { num: "40+", label: "Companies trust us" },
+          { num: "11", label: "Industries served" },
+        ]}
+      />
+
+      {/* ══════════ 6 · PROCESS ══════════ */}
+      <section className="v2-method-shell" id="process">
+        <div className="v2-method-head">
+          <h2 className="v2-method-heading">How A {svc.title} Engagement Runs.</h2>
+          <p className="v2-method-lede">
+            {process.length} stages, in the order they happen — nothing advances until the
+            stage before it is signed off.
+          </p>
+        </div>
+        <div className="v2-method-rows">
+          {process.map((m) => (
+            <div className="v2-method-row" key={m.n}>
+              <div className="v2-method-index">{m.n}</div>
+              <div>
+                <div className="v2-method-title">{m.title}</div>
+                <span className="v2-method-timeframe">{m.time}</span>
+              </div>
+              <div className="v2-method-body">{m.body}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ══════════ 5 · INTERACTIVE ESTIMATOR ══════════ */}
       <section className="v2-section v2-section--void sd2-est-section" id="estimate">
         <div className="sd2-est">
@@ -546,29 +602,6 @@ export default function AdditionalServiceDetailV2() {
         </div>
       </section>
 
-      {/* ══════════ 6 · PROCESS ══════════ */}
-      <section className="v2-method-shell" id="process">
-        <div className="v2-method-head">
-          <h2 className="v2-method-heading">How A {svc.title} Engagement Runs.</h2>
-          <p className="v2-method-lede">
-            {process.length} stages, in the order they happen — nothing advances until the
-            stage before it is signed off.
-          </p>
-        </div>
-        <div className="v2-method-rows">
-          {process.map((m) => (
-            <div className="v2-method-row" key={m.n}>
-              <div className="v2-method-index">{m.n}</div>
-              <div>
-                <div className="v2-method-title">{m.title}</div>
-                <span className="v2-method-timeframe">{m.time}</span>
-              </div>
-              <div className="v2-method-body">{m.body}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ══════════ 8 · TECH ══════════ */}
       <section className="v2-section v2-tech" id="stack">
         <div className="v2-tech-head">
@@ -592,39 +625,6 @@ export default function AdditionalServiceDetailV2() {
           ))}
         </div>
       </section>
-
-      {/* ══════════ 9 · RELATED WORK — real projects only, and only when
-          there's a genuinely close category match. No fabricated case
-          studies for a service line we have no real project for. ══════════ */}
-      {relatedWork.length > 0 && (
-        <section className="v2-section v2-section--void" id="work">
-          <p className="v2-label">Related Work</p>
-          <h2 className="v2-heading">Real projects in this space.</h2>
-          <div className="sd2-work-grid">
-            {relatedWork.map((w) => (
-              <Link className="sd2-work-card" to={w.href} key={w.href}>
-                <span className="sd2-work-media">
-                  <img src={w.image} alt={w.title} loading="lazy" />
-                </span>
-                <span className="sd2-work-tag">{w.category}</span>
-                <span className="sd2-work-title">{w.title}</span>
-                <span className="sd2-work-go">Read case study →</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* ══════════ 10 · TESTIMONIAL ══════════ */}
-      <TestimonialSpotlight
-        testimonials={testimonials}
-        label="Client Voices"
-        heading="What clients say once we ship."
-        stats={[
-          { num: "40+", label: "Companies trust us" },
-          { num: "11", label: "Industries served" },
-        ]}
-      />
 
       {/* ══════════ 12 · HANDOVER ══════════ */}
       {deliverables.length > 0 && (
@@ -679,9 +679,9 @@ export default function AdditionalServiceDetailV2() {
       )}
 
       {/* ══════════ 14 · FAQ ══════════ */}
-      <RelatedReading />
-
       <FaqSection faqs={faqs} className="v2-section--void" />
+
+      <RelatedReading />
 
       {/* ══════════ 16 · OTHER SERVICES ══════════ */}
       <section className="v2-section" id="other">

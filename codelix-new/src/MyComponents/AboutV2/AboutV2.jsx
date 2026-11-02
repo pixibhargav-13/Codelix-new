@@ -258,6 +258,9 @@ export default function AboutV2() {
         </div>
       </section>
 
+      {/* ══════════ 6 · CLIENT STRIP ══════════ */}
+      <ClientStrip />
+
       {/* ══════════ 3b · HOW WE WORK — sticky header, numbered rows ══════════ */}
       <section className="v2-method-shell" id="process">
         <div className="v2-method-head">
@@ -382,9 +385,6 @@ export default function AboutV2() {
           ))}
         </div>
       </section>
-
-      {/* ══════════ 6 · CLIENT STRIP ══════════ */}
-      <ClientStrip />
 
       {/* ══════════ 7 · CTA ══════════ */}
       <CtaSection className="v2-section--void">

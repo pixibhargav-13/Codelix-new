@@ -781,33 +781,88 @@ export default function HomepageV2() {
       {/* ══════════ CLIENT STRIP ══════════ */}
       <ClientStrip />
 
-      {/* ══════════ 3 · METHOD — heading stays pinned at the top of the
-          section while the numbered rows scroll past underneath it ══════════ */}
-      <section className="v2-method-shell" id="method">
+      {/* ══════════ 6 · SERVICES — Premium Bento Grid ══════════ */}
+      <section className="v2-method-shell v2-services-section" id="services">
         <div className="v2-method-head">
-          <h2 className="v2-method-heading">Our Method.</h2>
+          <h2 className="v2-method-heading">What We Provide.</h2>
           <p className="v2-method-lede">
-            Our method is six steps: ideation, planning, design, agile development,
-            testing, and deployment. It starts with what your business actually
-            needs — not a proposal template.
+            Codelix provides eight services: web, app, UI/UX, e-commerce, custom
+            software, AI, data analytics, and managed support — one delivery standard.
           </p>
         </div>
-        <div className="v2-method-rows">
-          {METHOD.map((m) => (
-            <div className="v2-method-row" key={m.n}>
-              <div className="v2-method-index">{m.n}</div>
-              <div>
-                <div className="v2-method-title">{m.title}</div>
-                <span className="v2-method-timeframe">{m.time}</span>
+
+        <div className="v2-services-grid">
+          {SERVICES.map((s, idx) => (
+            <div className={`v2-svc-card v2-svc-card-${idx + 1}`} key={s.n} onClick={() => navigate(s.link)}>
+              <div className="v2-svc-glow"></div>
+              <div className="v2-svc-content">
+                <div className="v2-svc-head">
+                  <span className="v2-svc-num">{s.n}</span>
+                  <span className="v2-svc-tag">{s.tag}</span>
+                </div>
+                <div className="v2-svc-bottom">
+                  <div className="v2-svc-text">
+                    <h3 className="v2-svc-title">{s.title}</h3>
+                    {s.items && (
+                      <ul className="v2-svc-sublist">
+                        {s.items.map((sub, i) => (
+                          <li key={i}>
+                            <span
+                              className="v2-svc-sublink"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                navigate(sub.path);
+                              }}
+                              style={{ display: 'inline-flex', alignItems: 'center', textAlign: 'left' }}
+                            >
+                              <span>{sub.label}</span>
+                              <span style={{ opacity: 0.4, fontSize: '0.9em', marginLeft: '8px' }}>→</span>
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                  <div className="v2-svc-arrow">→</div>
+                </div>
               </div>
-              <div className="v2-method-body">{m.body}</div>
             </div>
           ))}
         </div>
+
+        <div className="v2-work-more" style={{ marginTop: '48px', paddingBottom: '0' }}>
+          <Link className="v2-btn" to="/services">View all services →</Link>
+        </div>
       </section>
 
-      {/* ══════════ 3b · SCROLL SENTENCE (dark) ══════════ */}
-      <ScrollSentence words={SENTENCE_ONE} tone="dark" />
+      {/* ══════════ 4c · SYSTEM MAP strip ══════════ */}
+      <section className="v2-map">
+        <div className="v2-map-header">
+          <div>
+            <div className="v2-map-label">What We Build</div>
+            <h2 className="v2-map-headline">Eight ways we build,<br />all already shipped.</h2>
+          </div>
+          <div>
+            <p className="v2-map-body">
+              We build websites, cross-platform apps, ERPs, storefronts, AI automation, SaaS,
+              design systems, and integrations — each one already shipped for clients.
+            </p>
+            <Link className="v2-map-link" to="/work">See the case studies →</Link>
+          </div>
+        </div>
+        <div className="v2-map-scroll">
+          <div className="v2-map-track">
+            {SYSTEMS.map((s) => (
+              <Link className="v2-map-card" key={s.id} to={s.path}>
+                <span className="v2-map-id">{s.id}</span>
+                <span className="v2-map-cluster">{s.cluster}</span>
+                <h3 className="v2-map-title">{s.title}</h3>
+                <p className="v2-map-reality">{s.reality}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ══════════ 4 · WORK ══════════ */}
       <section className="v2-method-shell" id="work" ref={workSectionRef}>
@@ -845,6 +900,63 @@ export default function HomepageV2() {
           <img alt="Project preview" ref={workPreviewImgRef} />
         </div>
       </section>
+
+      {/* ══════════ 5b · STATS band — numbers count up when scrolled in ══════════ */}
+      <section className="v2-section v2-stats-section">
+        <div className="v2-stats">
+          {STATS.map((s) => (
+            <div className="v2-stat" key={s.label}>
+              <div className="v2-stat-num">
+                <span className="v2-stat-value" data-target={s.value}>{s.value}</span>
+                <span className="v2-stat-suffix">{s.suffix}</span>
+              </div>
+              <div className="v2-stat-label">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 8 · TESTIMONIAL (light band) — bare editorial layout,
+          matching the rest of the site's system: hairline dividers, no
+          cards, no icon chrome, monochrome type. Every quote stays mounted
+          so the crossfade/height transition is driven by .is-active alone. ══════════ */}
+      {/* ══════════ 8 · TESTIMONIAL ══════════ */}
+      <TestimonialSpotlight
+        testimonials={TESTIMONIALS}
+        heading="What clients say once we ship."
+        stats={[
+          { num: '40+', label: 'Companies trust us' },
+          { num: '11', label: 'Industries served' },
+        ]}
+      />
+
+      {/* ══════════ 3 · METHOD — heading stays pinned at the top of the
+          section while the numbered rows scroll past underneath it ══════════ */}
+      <section className="v2-method-shell" id="method">
+        <div className="v2-method-head">
+          <h2 className="v2-method-heading">Our Method.</h2>
+          <p className="v2-method-lede">
+            Our method is six steps: ideation, planning, design, agile development,
+            testing, and deployment. It starts with what your business actually
+            needs — not a proposal template.
+          </p>
+        </div>
+        <div className="v2-method-rows">
+          {METHOD.map((m) => (
+            <div className="v2-method-row" key={m.n}>
+              <div className="v2-method-index">{m.n}</div>
+              <div>
+                <div className="v2-method-title">{m.title}</div>
+                <span className="v2-method-timeframe">{m.time}</span>
+              </div>
+              <div className="v2-method-body">{m.body}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════ 3b · SCROLL SENTENCE (dark) ══════════ */}
+      <ScrollSentence words={SENTENCE_ONE} tone="dark" />
 
       {/* ══════════ 4b · DELIVERY PIPELINE ══════════ */}
       <section className="v2-method-shell v2-pipe-shell">
@@ -922,35 +1034,6 @@ export default function HomepageV2() {
         </div>
       </section>
 
-      {/* ══════════ 4c · SYSTEM MAP strip ══════════ */}
-      <section className="v2-map">
-        <div className="v2-map-header">
-          <div>
-            <div className="v2-map-label">What We Build</div>
-            <h2 className="v2-map-headline">Eight ways we build,<br />all already shipped.</h2>
-          </div>
-          <div>
-            <p className="v2-map-body">
-              We build websites, cross-platform apps, ERPs, storefronts, AI automation, SaaS,
-              design systems, and integrations — each one already shipped for clients.
-            </p>
-            <Link className="v2-map-link" to="/work">See the case studies →</Link>
-          </div>
-        </div>
-        <div className="v2-map-scroll">
-          <div className="v2-map-track">
-            {SYSTEMS.map((s) => (
-              <Link className="v2-map-card" key={s.id} to={s.path}>
-                <span className="v2-map-id">{s.id}</span>
-                <span className="v2-map-cluster">{s.cluster}</span>
-                <h3 className="v2-map-title">{s.title}</h3>
-                <p className="v2-map-reality">{s.reality}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ══════════ 4d · TECH STACK — "what we build it with" ══════════ */}
       <section className="v2-section v2-tech" id="stack">
         <div className="v2-tech-head">
@@ -974,75 +1057,6 @@ export default function HomepageV2() {
       </section>
 
 
-
-      {/* ══════════ 5b · STATS band — numbers count up when scrolled in ══════════ */}
-      <section className="v2-section v2-stats-section">
-        <div className="v2-stats">
-          {STATS.map((s) => (
-            <div className="v2-stat" key={s.label}>
-              <div className="v2-stat-num">
-                <span className="v2-stat-value" data-target={s.value}>{s.value}</span>
-                <span className="v2-stat-suffix">{s.suffix}</span>
-              </div>
-              <div className="v2-stat-label">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ══════════ 6 · SERVICES — Premium Bento Grid ══════════ */}
-      <section className="v2-method-shell v2-services-section" id="services">
-        <div className="v2-method-head">
-          <h2 className="v2-method-heading">What We Provide.</h2>
-          <p className="v2-method-lede">
-            Codelix provides eight services: web, app, UI/UX, e-commerce, custom
-            software, AI, data analytics, and managed support — one delivery standard.
-          </p>
-        </div>
-
-        <div className="v2-services-grid">
-          {SERVICES.map((s, idx) => (
-            <div className={`v2-svc-card v2-svc-card-${idx + 1}`} key={s.n} onClick={() => navigate(s.link)}>
-              <div className="v2-svc-glow"></div>
-              <div className="v2-svc-content">
-                <div className="v2-svc-head">
-                  <span className="v2-svc-num">{s.n}</span>
-                  <span className="v2-svc-tag">{s.tag}</span>
-                </div>
-                <div className="v2-svc-bottom">
-                  <div className="v2-svc-text">
-                    <h3 className="v2-svc-title">{s.title}</h3>
-                    {s.items && (
-                      <ul className="v2-svc-sublist">
-                        {s.items.map((sub, i) => (
-                          <li key={i}>
-                            <span
-                              className="v2-svc-sublink"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                navigate(sub.path);
-                              }}
-                              style={{ display: 'inline-flex', alignItems: 'center', textAlign: 'left' }}
-                            >
-                              <span>{sub.label}</span>
-                              <span style={{ opacity: 0.4, fontSize: '0.9em', marginLeft: '8px' }}>→</span>
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                  <div className="v2-svc-arrow">→</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="v2-work-more" style={{ marginTop: '48px', paddingBottom: '0' }}>
-          <Link className="v2-btn" to="/services">View all services →</Link>
-        </div>
-      </section>
 
       {/* ══════════ 6.5 · OUR PRODUCTS — real, in-house SaaS products we
           build and run ourselves, distinct from client project work above. ══════════ */}
@@ -1083,20 +1097,6 @@ export default function HomepageV2() {
           ))}
         </div>
       </section>
-
-      {/* ══════════ 8 · TESTIMONIAL (light band) — bare editorial layout,
-          matching the rest of the site's system: hairline dividers, no
-          cards, no icon chrome, monochrome type. Every quote stays mounted
-          so the crossfade/height transition is driven by .is-active alone. ══════════ */}
-      {/* ══════════ 8 · TESTIMONIAL ══════════ */}
-      <TestimonialSpotlight
-        testimonials={TESTIMONIALS}
-        heading="What clients say once we ship."
-        stats={[
-          { num: '40+', label: 'Companies trust us' },
-          { num: '11', label: 'Industries served' },
-        ]}
-      />
 
       {/* ══════════ 8b · SCROLL SENTENCE (light) ══════════ */}
       <ScrollSentence words={SENTENCE_TWO} tone="light" />

@@ -251,9 +251,13 @@ export default function PricingV2() {
         </div>
       </section>
 
-      {/* ══════════ 3 · ENGAGEMENT MODELS ══════════ */}
+      {/* ══════════ 5 · CLIENT STRIP ══════════ */}
+      <ClientStrip />
+
+      {/* ══════════ 2b · PRICE RANGES — questions answered (deepDives.js) ══════════ */}
       <DeepDive />
 
+      {/* ══════════ 3 · ENGAGEMENT MODELS ══════════ */}
       <section className="v2-section v2-section--void" id="models">
         <p className="v2-label">Engagement Models</p>
         <h2 className="v2-heading">Three ways we structure a project.</h2>
@@ -275,9 +279,6 @@ export default function PricingV2() {
 
       {/* ══════════ 4 · FAQ ══════════ */}
       <FaqSection faqs={FAQS} />
-
-      {/* ══════════ 5 · CLIENT STRIP ══════════ */}
-      <ClientStrip />
 
       {/* ══════════ 6 · CTA ══════════ */}
       <CtaSection className="v2-section--void">
