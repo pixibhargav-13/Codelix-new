@@ -21,16 +21,16 @@ const hire = (slug) => {
   return { label: role.title, href: `/hire-developers/${slug}` };
 };
 
-const CWV = {
-  cols: ["Metric", "What it measures", "Good result"],
-  rows: [
-    ["Largest Contentful Paint (LCP)", "How fast the main content appears", "2.5 seconds or less"],
-    ["Interaction to Next Paint (INP)", "How fast the page responds to a tap or click", "200 milliseconds or less"],
-    ["Cumulative Layout Shift (CLS)", "How much the layout jumps while loading", "0.1 or less"],
-  ],
-};
+const CWV_STATS = [
+  { value: "2.5s", label: "Largest Contentful Paint (LCP)", body: "How fast the main content appears. Good is 2.5 seconds or less." },
+  { value: "200ms", label: "Interaction to Next Paint (INP)", body: "How fast the page responds to a tap or click. Good is 200 milliseconds or less." },
+  { value: "0.1", label: "Cumulative Layout Shift (CLS)", body: "How much the layout jumps while loading. Good is 0.1 or less." },
+];
 const CWV_SOURCE = { label: `web.dev, Web Vitals (${CHECKED})`, href: "https://web.dev/articles/vitals" };
 const E_INVOICE_SOURCE = { label: "Notification 10/2023-Central Tax, GST Council", href: "https://gstcouncil.gov.in/sites/default/files/2024-05/10ct_eng.pdf" };
+
+/* price cards for one family of the published bands */
+const priceCards = (key, labels) => BASE_ESTIMATES[key].map((value, i) => ({ value, ...labels[i] }));
 
 /* every band from the price table, in the order the calculator lists them */
 const bandRows = COST_FAMILIES.map((f) => [f.label, ...BASE_ESTIMATES[f.key]]);
@@ -42,8 +42,14 @@ export const DEEP_DIVES = {
       id: "web-cost",
       label: "Cost & Stack",
       question: "How much does web development cost, and which stack should you use?",
+      cards: priceCards("Web", [
+        { label: "Business website", body: "5–15 pages with a CMS, contact forms and basic SEO." },
+        { label: "Custom site or web app", body: "Custom design, logins, integrations and an admin panel." },
+        { label: "Large portal or platform", body: "Many roles, workflows and third-party systems." },
+      ]),
       answer: "A business website of 5–15 pages costs $1,500–$5,000, a custom site or web app with logins and integrations $5,000–$10,000, and a large portal $10,000–$25,000. We build marketing sites in Next.js or WordPress, admin-heavy business apps in Laravel, and real-time apps and APIs in Node.js, and recommend one after hearing what the application spends its time doing.",
       table: {
+        highlight: 2,
         cols: ["What you need", "Usually built with", "Typical timeline"],
         rows: [
           ["Business website with a CMS", "Next.js or WordPress", "3–6 weeks"],
@@ -62,7 +68,7 @@ export const DEEP_DIVES = {
       label: "Speed",
       question: "How fast should a business website be?",
       answer: "Google ranks sites on how they work on a phone, and publishes three Core Web Vitals targets for page experience. We build to those targets from the first sprint, because retrofitting speed into a finished site costs more than designing for it.",
-      table: CWV,
+      stats: CWV_STATS,
       source: CWV_SOURCE,
     },
   ],
@@ -71,8 +77,14 @@ export const DEEP_DIVES = {
       id: "app-cost",
       label: "Cost & Approach",
       question: "How much does a mobile app cost, and should it be cross-platform?",
+      cards: priceCards("App", [
+        { label: "MVP app", body: "Android and iOS, sign-up, one core feature and an admin panel." },
+        { label: "Full-featured app", body: "Payments, notifications, chat or maps, plus its backend." },
+        { label: "Multi-sided platform", body: "Customer, partner and admin apps with real-time features." },
+      ]),
       answer: "An MVP for Android and iOS costs $5,000–$15,000, a full app with payments, notifications and its backend $15,000–$35,000, and a multi-sided platform above $35,000. Most business apps are built once in Flutter or React Native and released to both stores; separate native apps make sense only for heavy device or graphics work.",
       table: {
+        highlight: 2,
         cols: ["Approach", "Best for", "Cost"],
         rows: [
           ["Flutter", "New apps that want the same polished UI on every phone", "One codebase for both stores"],
@@ -104,8 +116,14 @@ export const DEEP_DIVES = {
       id: "ecom-choice",
       label: "Platform & Cost",
       question: "Shopify, WooCommerce or a custom store: which fits, and what does it cost?",
+      cards: priceCards("Ecom", [
+        { label: "Platform store", body: "Shopify or WooCommerce with your products, payments and shipping." },
+        { label: "Custom store", body: "ERP or inventory sync, GST invoices and a mobile-first checkout." },
+        { label: "Marketplace or high volume", body: "Many sellers, commissions and custom integrations." },
+      ]),
       answer: "A Shopify or WooCommerce store set up with your products, payments and shipping costs $3,000–$8,000; a custom store with ERP or inventory sync and GST invoices $8,000–$20,000; a multi-vendor marketplace above $20,000. Most new D2C brands should start on Shopify. A custom build makes sense when your rules don't fit a platform: dealer pricing, bulk B2B orders or several warehouses.",
       table: {
+        highlight: 1,
         cols: ["Option", "Running cost", "Best for"],
         rows: [
           ["Shopify", "Monthly plan plus apps (Basic is ₹1,499 a month paid yearly, as of 1 November 2026)", "Launching fast without managing servers"],
@@ -164,6 +182,7 @@ export const DEEP_DIVES = {
       answer: "Yes. Since 1 August 2023, e-invoicing applies to businesses whose aggregate turnover exceeded ₹5 crore in any financial year from 2017-18, so the ERP has to generate each B2B invoice in the e-invoice format and register it, usually through a GST Suvidha Provider API. Many businesses keep Tally for accounts and sync vouchers and ledgers from the ERP, so the accounts team doesn't change tools.",
       source: E_INVOICE_SOURCE,
       table: {
+        highlight: 1,
         cols: ["Question", "Typical answer"],
         rows: [
           ["What does it cost?", "From about ₹2.5 lakh for a focused setup to ₹25 lakh+ company-wide, plus a yearly AMC of 15–20%"],
@@ -198,6 +217,7 @@ export const DEEP_DIVES = {
       question: "What skills and guardrails does a production AI agent need?",
       answer: "An agent is only as useful as the tools (skills) it can call and as safe as the limits around them. We build each skill as a small, tested function with its own permissions, log every action, and put approval steps and spending limits in front of anything irreversible. For enterprises, that also means role-based access, audit logs and keeping data in the region you choose.",
       table: {
+        highlight: 1,
         cols: ["Part", "What we build"],
         rows: [
           ["Skills (tools)", "Functions the agent can call: search the CRM, create a ticket, read a PDF, send a draft"],
@@ -216,6 +236,7 @@ export const DEEP_DIVES = {
       question: "Which payment gateway should you integrate in India?",
       answer: "For customers paying in rupees, an Indian gateway such as Razorpay, PayU or Cashfree covers UPI, cards, net banking and wallets. For international customers, Stripe or PayPal handle other currencies. Many businesses integrate one of each behind a single checkout. Compare current fees on each gateway's own pricing page before you choose.",
       table: {
+        highlight: 2,
         cols: ["Gateway", "Typical use", "Note"],
         rows: [
           ["Razorpay", "Indian customers: UPI, cards, net banking, subscriptions", "Standard 2% platform fee per successful domestic transaction, plus GST (as of 1 November 2026)"],
@@ -263,7 +284,7 @@ export const DEEP_DIVES = {
       label: "The Targets",
       question: "What should performance optimization achieve?",
       answer: "For websites, success is measured against Google's Core Web Vitals, judged on real phones rather than a fast office laptop. For enterprise software, it is response times on the slowest, most-used screens and reports, under the load your busiest day brings. Either way, we measure first, fix the biggest causes, and measure again.",
-      table: CWV,
+      stats: CWV_STATS,
       source: CWV_SOURCE,
     },
     {
@@ -286,6 +307,7 @@ export const DEEP_DIVES = {
       question: "n8n, Zapier, Make or custom code: which should you automate with?",
       answer: "Use Zapier or Make when the apps you use already have connectors and the volume is modest. Use n8n when you want to self-host so data stays on your own server, or need code steps. Use custom code when volume is high, the logic is complex, or a system has no connector at all, such as Tally or an older ERP.",
       table: {
+        highlight: 1,
         cols: ["Tool", "Best for", "Watch out for"],
         rows: [
           ["Zapier", "Quick automations between popular SaaS apps", "Costs grow with the number of tasks run"],
@@ -315,6 +337,7 @@ export const DEEP_DIVES = {
       question: "What does a dedicated development team in India look like?",
       answer: "A dedicated IT team works only on your product, in your tools and stand-ups, and is billed monthly. It can be a single developer joining your team, a small pod, or a full squad that owns a product, and it can grow or shrink as the roadmap changes.",
       table: {
+        highlight: 2,
         cols: ["Shape", "Who is in it", "Best for"],
         rows: [
           ["One developer", "A developer in your stack, reporting to your lead", "Clearing a backlog alongside your own team"],
@@ -349,6 +372,7 @@ export const DEEP_DIVES = {
       question: "Should you rewrite, refactor or replatform a legacy system?",
       answer: "Refactor when the system works and the code is sound but dated. Replatform when the code is fine but the hosting, framework version or database is the problem. Rewrite only when the system no longer matches how the business works. Whichever you choose, move in phases so the old system keeps running until the new one is proven.",
       table: {
+        highlight: 2,
         cols: ["Approach", "When it fits", "Risk"],
         rows: [
           ["Refactor", "Working system, maintainable code, outdated parts", "Low"],
@@ -504,6 +528,7 @@ export const DEEP_DIVES = {
       question: "How does this cost calculator work out a range?",
       answer: "It maps the type and size of your project onto the same price bands we publish on our pricing page and quote from, so the range is what similar projects have actually cost us to deliver. It is a starting point, not a quote: integrations, data migration, deadlines and third-party fees are confirmed on a scoping call.",
       table: {
+        highlight: 2,
         cols: ["Example", "Size", "Range"],
         rows: [
           ["A 10-page business website with a CMS", "Simple website", BASE_ESTIMATES.Web[0]],

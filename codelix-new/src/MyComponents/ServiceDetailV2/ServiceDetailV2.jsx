@@ -461,6 +461,9 @@ export default function ServiceDetailV2() {
       {/* ══════════ 2b · CLIENT STRIP ══════════ */}
       <ClientStrip />
 
+      {/* the page's own questions, answered near the top (deepDives.js) */}
+      <DeepDive />
+
       {/* ══════════ 3 · WHAT'S INCLUDED ══════════ */}
       <section className="v2-section" id="included">
         <p className="v2-label">What's Included</p>
@@ -865,7 +868,6 @@ export default function ServiceDetailV2() {
       <ScrollSentence words={SENTENCE} tone="dark"  centered={true} />
 
       {/* ══════════ 9 · FAQ ══════════ */}
-      <DeepDive />
       <RelatedReading />
 
       <FaqSection faqs={FAQS} className="v2-section--void" />
