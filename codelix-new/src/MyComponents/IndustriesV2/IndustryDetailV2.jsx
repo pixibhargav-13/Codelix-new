@@ -321,6 +321,9 @@ export default function IndustryDetailV2() {
       {/* ══════════ 2b · CLIENT STRIP ══════════ */}
       <ClientStrip />
 
+      {/* the page's own questions, answered near the top (deepDives.js) */}
+      <DeepDive />
+
       {/* ══════════ 3 · THE SHIFT — extraordinary scroll-wipe section ══════════ */}
       <section className="v2-section" id="shift">
         <p className="v2-label">The Shift</p>
@@ -523,7 +526,6 @@ export default function IndustryDetailV2() {
       </section>
 
       {/* ══════════ 9 · FAQ ══════════ */}
-      <DeepDive />
       <RelatedReading />
 
       <FaqSection faqs={faqs} className="v2-section--void" />
