@@ -10,10 +10,12 @@
        url('./assets/fonts/NoiGroteskFix-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  /* without this the browser blocks painting any text in this face until the
-     .ttf arrives — the headings simply weren't drawn. swap paints them in a
-     fallback immediately and re-renders once the font lands. */
-  font-display: swap;
+  /* without a font-display the browser blocks painting any text in this face
+     until the file arrives — the headings simply weren't drawn. optional
+     paints the metric-matched fallback immediately and only uses this face
+     if it is ready by first paint, so text never re-wraps late (see the
+     comment in index.html). */
+  font-display: optional;
 }
 
 :root {

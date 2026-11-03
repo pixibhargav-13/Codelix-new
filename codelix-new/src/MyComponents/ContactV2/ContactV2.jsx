@@ -21,7 +21,10 @@ import FaqSection from '../Shared/FaqSection';
 import DeepDive from "../Shared/DeepDive";
 
 
-const REQUIRED_FIELDS = ["name", "contact", "email", "company", "designation", "service", "aboutProject"];
+/* Designation is optional: founders, students and small owners often have
+   none, and every required field costs enquiries. The API needs only name
+   and email. */
+const REQUIRED_FIELDS = ["name", "contact", "email", "company", "service", "aboutProject"];
 
 /* real process, ported from the existing /contact page */
 const PROCESS = [
@@ -291,8 +294,8 @@ export default function ContactV2() {
 
                 <div className="contact-form-row">
                   <div className="contact-field">
-                    <label htmlFor="contact-designation">Designation*</label>
-                    <input type="text" id="contact-designation" name="designation" autoComplete="organization-title" required value={formData.designation} onChange={handleChange} />
+                    <label htmlFor="contact-designation">Designation</label>
+                    <input type="text" id="contact-designation" name="designation" autoComplete="organization-title" value={formData.designation} onChange={handleChange} />
                   </div>
                   <div className="contact-field">
                     <label htmlFor="contact-service">Service*</label>
