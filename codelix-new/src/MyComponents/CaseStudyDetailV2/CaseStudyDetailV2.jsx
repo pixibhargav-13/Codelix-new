@@ -464,9 +464,12 @@ export default function CaseStudyDetailV2() {
       )}
 
       {/* ══════════ 5 · TOOLS ══════════ */}
-      <section className="v2-section v2-section--void" id="tools">
-        <p className="v2-label">Tools & Technologies</p>
-        <h2 className="v2-heading">What this project was built with.</h2>
+      {/* a slim strip, not a full section: a large heading over one row of
+          chips read as an empty block, and the main tools are already in
+          At a glance at the top */}
+      <section className="v2-section v2-section--void csd2-tools-strip" id="tools">
+        <div className="csd2-tools-row">
+          <h2 className="csd2-tools-title">Tools &amp; technologies</h2>
         <div className="csd2-tools">
           {cs.tools.map((t) => (
             <span key={t}>
@@ -474,6 +477,7 @@ export default function CaseStudyDetailV2() {
               {t}
             </span>
           ))}
+        </div>
         </div>
 
         {cs.whyStack && (
