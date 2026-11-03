@@ -295,12 +295,45 @@ async function build() {
          (INTRO_MEDIA), first visit this session. Anywhere else it used to
          cover the prerendered page until the JS had loaded and hydrated,
          holding back the first paint for nothing. */
+      /* Mobile intro: the desktop intro's look (glow, logo, "We live in IT",
+         caption row, hairline, circle reveal) as pure CSS in the homepage
+         HTML, for phones and touch devices, where the React intro never
+         plays (see INTRO_MEDIA). It starts with the first paint instead of
+         waiting for the JS, runs about 2.2s, never holds the hero (the page
+         renders underneath at full opacity), plays once per session (its
+         own key, so it can't touch the desktop gate), and is skipped under
+         prefers-reduced-motion. An inline script removes it when done. The
+         reveal radius starts below zero: at 0% the mask's 6% soft edge left a
+         see-through hole behind the logo before the reveal began. */
+      const MOBILE_INTRO_KEY = "codelix_intro_seen_m";
+      const logoFile = fs.readdirSync(path.resolve(__dirname, "../dist/assets")).find((f) => /^codelix-logo-.*\.webp$/.test(f));
+      const mobileIntro = !logoFile ? "" : `
+  <style>
+  @property --plm-r{syntax:"<length-percentage>";inherits:false;initial-value:-8%}
+  #pl-m{display:none}
+  @media not all and ${INTRO_MEDIA}{@media (prefers-reduced-motion:no-preference){
+  #pl-m{display:flex;position:fixed;inset:0;z-index:9998;align-items:center;justify-content:center;flex-direction:column;gap:22px;background:radial-gradient(circle at 50% 46%,rgba(62,125,252,.2),rgba(62,125,252,.05) 34%,transparent 62%),#050507;-webkit-mask-image:radial-gradient(circle at 50% 46%,transparent var(--plm-r),#000 calc(var(--plm-r) + 6%));mask-image:radial-gradient(circle at 50% 46%,transparent var(--plm-r),#000 calc(var(--plm-r) + 6%));animation:plm-iris .9s cubic-bezier(.87,0,.13,1) 1.35s forwards}
+  #pl-m img{display:block;width:clamp(150px,46vw,210px);height:auto;opacity:0;transform:translateY(40%);filter:blur(8px);animation:plm-rise .75s cubic-bezier(.16,1,.3,1) .05s forwards}
+  #pl-m b{font:500 clamp(18px,6.4vw,26px)/1.1 "NoiGroteskFix","NoiGroteskFallback",system-ui,sans-serif;letter-spacing:-.02em;color:#f2f0ec;opacity:0;transform:translateY(60%);animation:plm-rise .6s cubic-bezier(.16,1,.3,1) .35s forwards}
+  #pl-m b i{font-style:normal;color:#6f9dff}
+  #pl-m s{position:absolute;left:5vw;right:5vw;bottom:52px;display:flex;justify-content:space-between;font:10px/1 system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:rgba(242,240,236,.45);opacity:0;animation:plm-fade .4s ease .2s forwards}
+  #pl-m u{position:absolute;left:5vw;right:5vw;bottom:38px;height:1px;background:rgba(242,240,236,.12);overflow:hidden}
+  #pl-m u:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#3e7dfc,#8cb6ff);transform:scaleX(0);transform-origin:left;animation:plm-bar 1.05s ease-in-out .2s forwards}
+  #pl-m.out img,#pl-m.out b,#pl-m.out s,#pl-m.out u{transition:opacity .3s ease}
+  @keyframes plm-rise{to{opacity:1;transform:none;filter:none}}
+  @keyframes plm-fade{to{opacity:1}}
+  @keyframes plm-bar{to{transform:scaleX(1)}}
+  @keyframes plm-iris{0%{--plm-r:-8%}100%{--plm-r:160%}}
+  }}
+  </style>
+  <div id="pl-m" aria-hidden="true"><img src="/assets/${logoFile}" alt="" width="544" height="188"><b>We live in <i>IT</i></b><s><span>Codelix IT Solutions</span><span>Ahmedabad, India</span></s><u></u></div>
+  <script>(function(){var e=document.getElementById('pl-m');if(!e)return;function rm(){if(e&&e.parentNode)e.parentNode.removeChild(e);}if(getComputedStyle(e).display==='none'){rm();return;}try{if(sessionStorage.getItem(${JSON.stringify(MOBILE_INTRO_KEY)})==='1'){rm();return;}sessionStorage.setItem(${JSON.stringify(MOBILE_INTRO_KEY)},'1');}catch(x){}if(!(window.CSS&&CSS.registerProperty)){setTimeout(function(){e.style.transition='opacity .5s';e.style.opacity='0';},1400);}setTimeout(rm,2400);})()</script>`;
       if (url === "/") {
         html = html.replace(
           "<body>",
           `<body>
   <style>#pl-preboot{display:none}@media ${INTRO_MEDIA}{#pl-preboot{display:block;position:fixed;inset:0;z-index:9998;background:radial-gradient(circle at 50% 46%,rgba(62,125,252,.12),rgba(62,125,252,.03) 30%,transparent 55%),#050507}#pl-preboot i{position:absolute;left:5vw;right:5vw;bottom:40px;height:1px;background:rgba(242,240,236,.12);overflow:hidden}#pl-preboot i:after{content:"";position:absolute;top:0;bottom:0;width:30%;background:linear-gradient(90deg,transparent,#6f9dff,transparent);animation:pl-pre 1.4s ease-in-out infinite}@keyframes pl-pre{from{transform:translateX(-100%)}to{transform:translateX(340%)}}}@media ${INTRO_MEDIA} and (prefers-reduced-motion:reduce){#pl-preboot i:after{animation:none}}</style>
-  <div id="pl-preboot"><i></i></div>
+  <div id="pl-preboot"><i></i></div>${mobileIntro}
   <script>(function(){var e=document.getElementById('pl-preboot');function rm(){if(e&&e.parentNode)e.parentNode.removeChild(e);}try{if(sessionStorage.getItem(${JSON.stringify(INTRO_SEEN_KEY)})==="1")rm();}catch(x){}setTimeout(rm,4000);})()</script>`
         );
       }
