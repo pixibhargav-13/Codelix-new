@@ -1056,3 +1056,115 @@
   opacity: 1;
 }
 
+
+/* ───────────── redesign, Nov 2026: glance, results, overview, before/after ───────────── */
+
+/* At a glance — three facts under the hero copy */
+.v2 .csd2-glance {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, auto));
+  justify-content: start;
+  gap: 0;
+  margin: 26px 0 30px;
+  border: .8px solid var(--rule);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.v2 .csd2-glance > div {
+  padding: 14px 20px;
+  border-left: .8px solid var(--rule);
+}
+.v2 .csd2-glance > div:first-child { border-left: none; }
+.v2 .csd2-glance dt {
+  margin: 0 0 6px;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(242, 240, 236, .5);
+}
+.v2 .csd2-glance dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.35;
+  color: #fff;
+}
+@media (max-width: 700px) {
+  .v2 .csd2-glance { grid-template-columns: 1fr; }
+  .v2 .csd2-glance > div { border-left: none; border-top: .8px solid var(--rule); }
+  .v2 .csd2-glance > div:first-child { border-top: none; }
+}
+
+/* the screenshot gets more of the hero on desktop */
+@media (min-width: 941px) {
+  .v2 .sd2-hero-main:has(.csd2-hero-media) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  }
+  .v2 .csd2-hero-media {
+    box-shadow: 0 40px 90px -40px rgba(62, 125, 252, .45), 0 0 0 .8px rgba(242, 240, 236, .08);
+  }
+}
+
+/* Results — large figures */
+.v2 .csd2-results .csd2-result {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 30px 26px 28px;
+  border-left: .8px solid var(--rule);
+}
+.v2 .csd2-results .csd2-result:first-child { border-left: none; }
+.v2 .csd2-result-num {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  font-size: clamp(40px, 4.6vw, 64px);
+  line-height: 1;
+  letter-spacing: -.03em;
+  background: linear-gradient(100deg, #f2f0ec 0%, #9db8ee 55%, #6f9dff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.v2 .csd2-result-suffix {
+  font-size: .5em;
+  letter-spacing: 0;
+}
+.v2 .csd2-result-label {
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(242, 240, 236, .72);
+}
+@media (max-width: 760px) {
+  .v2 .csd2-results .csd2-result { border-left: none; border-top: .8px solid var(--rule); padding: 22px 18px; }
+  .v2 .csd2-results .csd2-result:nth-child(-n + 2) { border-top: none; }
+  .v2 .csd2-results .csd2-result:nth-child(2n) { border-left: .8px solid var(--rule); }
+}
+
+/* Overview — lead paragraph, readable body */
+.v2 .csd2-overview {
+  max-width: 74ch;
+  padding-left: 0;
+  border-left: none;
+}
+.v2 .csd2-overview p {
+  color: rgba(242, 240, 236, .74);
+}
+.v2 .csd2-overview .csd2-overview-lead {
+  font-size: clamp(19px, 1.7vw, 23px);
+  line-height: 1.55;
+  color: #fff;
+}
+
+/* Before / after — numbered, brighter text */
+.v2 .csd2-issue-row p {
+  color: rgba(242, 240, 236, .8);
+}
+.v2 .csd2-issue-n {
+  flex: none;
+  min-width: 22px;
+  padding-top: 3px;
+  font-size: 12px;
+  letter-spacing: .08em;
+  color: rgba(242, 240, 236, .42);
+}
