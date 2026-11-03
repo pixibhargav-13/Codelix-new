@@ -325,11 +325,26 @@ export default function CaseStudyDetailV2() {
           a challenge, and a solution). Challenges → Solutions already
           carries that story more concretely, so this cuts the repeat
           instead of trimming the more specific pair. ══════════ */}
+      {/* two columns on desktop: the heading and lead paragraph stay in
+          view on the left while the rest reads as numbered blocks on the
+          right — as one long column it left half the screen empty */}
       <section className="v2-section" id="overview">
-        <p className="v2-label">Project Overview</p>
-        <h2 className="v2-heading">The project in brief.</h2>
-        <div className="csd2-overview">
-          {cs.overview.map((p, i) => <p key={i} className={i === 0 ? "csd2-overview-lead" : undefined}>{p}</p>)}
+        <div className="csd2-brief">
+          <div className="csd2-brief-head">
+            <p className="v2-label">Project Overview</p>
+            <h2 className="v2-heading">The project in brief.</h2>
+            {cs.overview[0] && <p className="csd2-overview-lead">{cs.overview[0]}</p>}
+          </div>
+          {cs.overview.length > 1 && (
+            <ol className="csd2-brief-body">
+              {cs.overview.slice(1).map((p, i) => (
+                <li key={i}>
+                  <span className="csd2-brief-n">{String(i + 1).padStart(2, "0")}</span>
+                  <p>{p}</p>
+                </li>
+              ))}
+            </ol>
+          )}
         </div>
       </section>
 

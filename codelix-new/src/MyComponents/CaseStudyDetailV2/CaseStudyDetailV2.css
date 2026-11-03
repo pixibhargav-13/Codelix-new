@@ -1141,19 +1141,56 @@
   .v2 .csd2-results .csd2-result:nth-child(2n) { border-left: .8px solid var(--rule); }
 }
 
-/* Overview — lead paragraph, readable body */
-.v2 .csd2-overview {
-  max-width: 74ch;
-  padding-left: 0;
-  border-left: none;
+/* Overview — heading and lead on the left (sticky on desktop), the rest
+   as numbered blocks on the right */
+.v2 .csd2-brief {
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  gap: clamp(32px, 5vw, 88px);
+  align-items: start;
 }
-.v2 .csd2-overview p {
-  color: rgba(242, 240, 236, .74);
+.v2 .csd2-brief-head {
+  position: sticky;
+  top: 110px;
 }
-.v2 .csd2-overview .csd2-overview-lead {
-  font-size: clamp(19px, 1.7vw, 23px);
-  line-height: 1.55;
+.v2 .csd2-brief-head .v2-heading {
+  margin-bottom: 24px;
+}
+.v2 .csd2-overview-lead {
+  margin: 0;
+  font-size: clamp(18px, 1.5vw, 21px);
+  line-height: 1.6;
   color: #fff;
+}
+.v2 .csd2-brief-body {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: .8px solid var(--rule);
+}
+.v2 .csd2-brief-body li {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 8px;
+  padding: 26px 0;
+  border-bottom: .8px solid var(--rule);
+}
+.v2 .csd2-brief-n {
+  padding-top: 4px;
+  font-size: 12px;
+  letter-spacing: .1em;
+  color: #9db8ee;
+}
+.v2 .csd2-brief-body p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.75;
+  color: rgba(242, 240, 236, .76);
+}
+@media (max-width: 900px) {
+  .v2 .csd2-brief { grid-template-columns: 1fr; gap: 28px; }
+  .v2 .csd2-brief-head { position: static; }
+  .v2 .csd2-brief-body li { grid-template-columns: 32px minmax(0, 1fr); padding: 20px 0; }
 }
 
 /* Before / after — numbered, brighter text */
