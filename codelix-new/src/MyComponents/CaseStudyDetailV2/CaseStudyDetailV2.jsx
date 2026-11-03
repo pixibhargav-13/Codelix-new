@@ -173,6 +173,16 @@ export default function CaseStudyDetailV2() {
     (p) => (p.category === projectInfo(cs).category ? 1 : 0),
   );
   const helpLinks = caseStudyHelpLinks(cs);
+  /* At a glance: the three facts a visitor looks for first, from fields
+     every study has. The hero used to repeat the tools list as chips, which
+     the Tools section below already shows. */
+  const industrySlug = Object.keys(WORK_INDUSTRY_MAP).find((k) => WORK_INDUSTRY_MAP[k] === cs.industry);
+  const industryLabel = FOOTER_INDUSTRY_KEYWORDS.find((k) => k.path === `/industries/${industrySlug}`)?.label || cs.industry;
+  const glance = [
+    industryLabel && ["Industry", industryLabel],
+    cs.category && ["Service", CATEGORY_SERVICE[cs.category]?.label || cs.category],
+    (cs.tools || cs.tags || []).length > 0 && ["Built with", (cs.tools || cs.tags).slice(0, 3).join(", ")],
+  ].filter(Boolean);
 
   return (
     <div className="v2" ref={rootRef}>
@@ -228,9 +238,16 @@ export default function CaseStudyDetailV2() {
                 ))}
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">{cs.description}</p>
-              <div className="csd2-tags sv2-hero-reveal">
-                {cs.tags.map((t) => <span key={t}>{t}</span>)}
-              </div>
+              {glance.length > 0 && (
+                <dl className="csd2-glance sv2-hero-reveal">
+                  {glance.map(([k, v]) => (
+                    <div key={k}>
+                      <dt>{k}</dt>
+                      <dd>{v}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
               {cs.isConcept && (
                 <p className="csd2-concept-note">
                   This is a concept exploration, not a live client build — shown here honestly as design work, not a deployed product.
@@ -262,6 +279,28 @@ export default function CaseStudyDetailV2() {
         </div>
       </header>
 
+      {/* ══════════ 1c · RESULTS — straight after the hero, because the
+          numbers are what a visitor came to check; shown as large figures
+          (the small rings were hard to read at a glance) ══════════ */}
+      {cs.outcomes?.length > 0 && (
+        <section className="v2-section v2-section--void" id="outcomes">
+          <p className="v2-label">The Results</p>
+          <h2 className="v2-heading">What changed after launch.</h2>
+          <div className="csd2-outcomes csd2-results">
+            {cs.outcomes.map((o, i) => (
+              <div className="csd2-result" key={i}>
+                <span className="csd2-result-num">
+                  <span className="sd2-bench-value" data-target={o.value}>{o.value}</span>
+                  <span className="csd2-result-suffix">{o.suffix}</span>
+                </span>
+                <span className="csd2-result-label">{o.label}</span>
+              </div>
+            ))}
+          </div>
+          {cs.resultsNote && <p className="csd2-results-note">{cs.resultsNote}</p>}
+        </section>
+      )}
+
       {/* ══════════ 1b · SNAPSHOT — only present on richer, fully-briefed
           case studies; older entries without this data simply skip it. ══ */}
       {cs.snapshot && (
@@ -286,10 +325,26 @@ export default function CaseStudyDetailV2() {
           a challenge, and a solution). Challenges → Solutions already
           carries that story more concretely, so this cuts the repeat
           instead of trimming the more specific pair. ══════════ */}
+      {/* two columns on desktop: the heading and lead paragraph stay in
+          view on the left while the rest reads as numbered blocks on the
+          right — as one long column it left half the screen empty */}
       <section className="v2-section" id="overview">
-        <p className="v2-label">Project Overview</p>
-        <div className="csd2-overview">
-          {cs.overview.map((p, i) => <p key={i}>{p}</p>)}
+        <div className="csd2-brief">
+          <div className="csd2-brief-head">
+            <p className="v2-label">Project Overview</p>
+            <h2 className="v2-heading">The project in brief.</h2>
+            {cs.overview[0] && <p className="csd2-overview-lead">{cs.overview[0]}</p>}
+          </div>
+          {cs.overview.length > 1 && (
+            <ol className="csd2-brief-body">
+              {cs.overview.slice(1).map((p, i) => (
+                <li key={i}>
+                  <span className="csd2-brief-n">{String(i + 1).padStart(2, "0")}</span>
+                  <p>{p}</p>
+                </li>
+              ))}
+            </ol>
+          )}
         </div>
       </section>
 
@@ -315,12 +370,13 @@ export default function CaseStudyDetailV2() {
       <section className="v2-section" id="challenges">
         <div className="csd2-challenges-grid">
           <div className="csd2-challenges-col">
-            <p className="v2-label">The Challenges</p>
-            <h2 className="v2-heading">The problem we faced.</h2>
+            <p className="v2-label">Before</p>
+            <h2 className="v2-heading">What wasn't working.</h2>
             <div className="csd2-issues csd2-issues--problem">
               {cs.challenges.map((p, i) => (
                 <div className="csd2-issue-row" key={i}>
                   <span className="csd2-issue-icon"><X size={13} strokeWidth={2.6} /></span>
+                  <span className="csd2-issue-n">{String(i + 1).padStart(2, "0")}</span>
                   <p>{p}</p>
                 </div>
               ))}
@@ -328,12 +384,13 @@ export default function CaseStudyDetailV2() {
           </div>
 
           <div className="csd2-challenges-col">
-            <p className="v2-label">The Solutions</p>
-            <h2 className="v2-heading">What we built instead.</h2>
+            <p className="v2-label">After</p>
+            <h2 className="v2-heading">What we built.</h2>
             <div className="csd2-issues csd2-issues--solution">
               {cs.solutions.map((p, i) => (
                 <div className="csd2-issue-row" key={i}>
                   <span className="csd2-issue-icon"><Check size={13} strokeWidth={2.6} /></span>
+                  <span className="csd2-issue-n">{String(i + 1).padStart(2, "0")}</span>
                   <p>{p}</p>
                 </div>
               ))}
@@ -369,48 +426,6 @@ export default function CaseStudyDetailV2() {
           </div>
         </section>
       )}
-
-      {/* ══════════ 3b · OUTCOMES ══════════ */}
-      <section className="v2-section v2-section--void" id="outcomes">
-        <p className="v2-label">Project Outcomes</p>
-        <h2 className="v2-heading">The results, measured after launch.</h2>
-        <p className="v2-lede">Four numbers that summarize what changed once the system went live.</p>
-        <div className="csd2-outcomes">
-          {cs.outcomes.map((o, i) => {
-            const R = 52;
-            const C = 2 * Math.PI * R;
-            const ring = Math.min(o.value, 100);
-            const offset = C - (C * ring) / 100;
-            return (
-              <div className="sd2-bench" key={i}>
-                <div className="sd2-bench-ring">
-                  <svg viewBox="0 0 120 120" className="sd2-bench-ring-svg" aria-hidden="true">
-                    <defs>
-                      <linearGradient id={`csd2-grad-${i}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="rgba(180,200,230,.55)" />
-                        <stop offset="100%" stopColor="rgba(180,200,230,1)" />
-                      </linearGradient>
-                    </defs>
-                    <circle className="sd2-bench-ring-track" cx="60" cy="60" r={R} />
-                    <circle
-                      className="sd2-bench-ring-fill"
-                      cx="60" cy="60" r={R}
-                      stroke={`url(#csd2-grad-${i})`}
-                      style={{ "--c": C, "--ring-offset": offset }}
-                    />
-                  </svg>
-                  <div className="sd2-bench-num">
-                    <span className="sd2-bench-value" data-target={o.value}>{o.value}</span>
-                    <span className="sd2-bench-suffix">{o.suffix}</span>
-                  </div>
-                </div>
-                <div className="sd2-bench-label">{o.label}</div>
-              </div>
-            );
-          })}
-        </div>
-        {cs.resultsNote && <p className="csd2-results-note">{cs.resultsNote}</p>}
-      </section>
 
       {/* ══════════ 4a · SERVICES DELIVERED ══════════ */}
       {cs.services && (
@@ -449,9 +464,12 @@ export default function CaseStudyDetailV2() {
       )}
 
       {/* ══════════ 5 · TOOLS ══════════ */}
-      <section className="v2-section v2-section--void" id="tools">
-        <p className="v2-label">Tools & Technologies</p>
-        <h2 className="v2-heading">What this project was built with.</h2>
+      {/* a slim strip, not a full section: a large heading over one row of
+          chips read as an empty block, and the main tools are already in
+          At a glance at the top */}
+      <section className="v2-section v2-section--void csd2-tools-strip" id="tools">
+        <div className="csd2-tools-row">
+          <h2 className="csd2-tools-title">Tools &amp; technologies</h2>
         <div className="csd2-tools">
           {cs.tools.map((t) => (
             <span key={t}>
@@ -459,6 +477,7 @@ export default function CaseStudyDetailV2() {
               {t}
             </span>
           ))}
+        </div>
         </div>
 
         {cs.whyStack && (
