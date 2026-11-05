@@ -209,12 +209,14 @@
   transition: border-color .5s ease, transform .3s ease;
 }
 
-.ind2-bp-node>*:not(.ind2-bp-node-dot) {
+/* only the icon dims until its node is lit: dimming the text too left it
+   at 1.7-3.8:1 contrast, unreadable before the scroll reached it */
+.ind2-bp-node>.ind2-bp-node-icon {
   opacity: 0.4;
   transition: opacity .5s ease;
 }
 
-.ind2-bp-node.is-lit>*:not(.ind2-bp-node-dot) {
+.ind2-bp-node.is-lit>.ind2-bp-node-icon {
   opacity: 1;
 }
 
@@ -268,7 +270,7 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: .05em;
-  color: var(--text-25);
+  color: var(--text-55);
   font-variant-numeric: tabular-nums;
 }
 

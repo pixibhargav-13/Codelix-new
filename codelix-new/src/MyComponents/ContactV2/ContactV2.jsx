@@ -237,7 +237,8 @@ export default function ContactV2() {
             
             {/* Visual Column */}
             {/* decorative mock-up of a chat: looks interactive, isn't */}
-            <div className="sd2-hero-visual sv2-hero-reveal" aria-hidden="true">
+            {/* decorative: inert keeps its two links out of the tab order too */}
+            <div className="sd2-hero-visual sv2-hero-reveal" aria-hidden="true" inert>
               <ContactHeroVisual />
             </div>
           </div>

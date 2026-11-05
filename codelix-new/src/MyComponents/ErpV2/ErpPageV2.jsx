@@ -311,7 +311,7 @@ export default function ErpPageV2() {
                   {m.items.map((it, i) => {
                     const inner = (
                       <>
-                        <span className="pd2-module-n">{it.n}</span>
+                        <span className="pd2-module-n" data-n={it.n} aria-hidden="true" />
                         <it.icon size={20} strokeWidth={1.5} />
                         <h3>{it.title}</h3>
                         <p>{it.body}</p>

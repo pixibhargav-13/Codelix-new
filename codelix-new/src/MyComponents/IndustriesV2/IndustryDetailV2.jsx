@@ -499,15 +499,18 @@ export default function IndustryDetailV2() {
               key={item.q}
               className={`ind2-flip-card ${flippedCard === i ? "is-flipped" : ""}`}
               onClick={() => toggleFlip(i)}
-              aria-label={flippedCard === i ? "Show question" : "Show why we ask"}
+              /* the visible text is the accessible name (an aria-label here
+                 hid the question from screen readers); only the face that is
+                 showing is read out */
+              aria-pressed={flippedCard === i}
             >
               <div className="ind2-flip-inner">
-                <div className="ind2-flip-face ind2-flip-front">
+                <div className="ind2-flip-face ind2-flip-front" aria-hidden={flippedCard === i}>
                   <span className="ind2-flip-n">{String(i + 1).padStart(2, "0")}</span>
                   <p>{item.q}</p>
                   <span className="ind2-flip-hint">Tap to see why →</span>
                 </div>
-                <div className="ind2-flip-face ind2-flip-back">
+                <div className="ind2-flip-face ind2-flip-back" aria-hidden={flippedCard !== i}>
                   <span className="ind2-flip-n">{String(i + 1).padStart(2, "0")}</span>
                   <p>{item.a}</p>
                   <span className="ind2-flip-hint">Tap to close →</span>

@@ -480,7 +480,8 @@ export default function AdditionalServiceDetailV2() {
       {/* ══════════ 6 · PROCESS ══════════ */}
       <section className="v2-method-shell" id="process">
         <div className="v2-method-head">
-          <h2 className="v2-method-heading">How A {svc.title} Engagement Runs.</h2>
+          {/* was "How A {title} Engagement Runs." — "How A AI…", "How A ERP…" */}
+          <h2 className="v2-method-heading">{svc.title}, Stage by Stage.</h2>
           <p className="v2-method-lede">
             {process.length} stages, in the order they happen — nothing advances until the
             stage before it is signed off.

@@ -6,11 +6,12 @@
    say so. */
 import { Cog, Boxes, ScanLine, ShieldCheck, Layers, AlertTriangle, Truck, Handshake } from "lucide-react";
 
-const BLUE = "#3e7dfc";
-const PINK = "#e0457b";
-const ORANGE = "#f08a24";
-const PURPLE = "#8b5cf6";
-const TEAL = "#14a3a3";
+/* avatar colours, darkened so their white initials reach 4.5:1 */
+const BLUE = "#2f62d6";
+const PINK = "#c2305f";
+const ORANGE = "#b35a0c";
+const PURPLE = "#7444e0";
+const TEAL = "#0c7778";
 
 const week = (vals, labels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]) =>
   vals.map(([v, label], i) => ({ l: labels[i], v, label, today: i === vals.length - 1 }));

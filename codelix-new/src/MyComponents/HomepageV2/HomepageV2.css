@@ -3582,10 +3582,10 @@
      page-specific override of it keeps working untouched. The border-radius
      is reduced by the padding for the inner box, which lands at exactly 50%
      of 8px — a circle. */
-  width: 24px;
-  height: 24px;
-  min-width: 24px;
-  min-height: 24px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   box-sizing: border-box;
   border-radius: 50%;
   background-color: var(--ink-40) !important;
@@ -3604,7 +3604,8 @@
    24px box into a 24px touch target around an 8px dot, so they need the extra
    `.v2` to actually take effect. */
 .v2 .v2-quote-dot {
-  padding: 8px;
+  /* 44px is the recommended touch target (WCAG 2.5.5); the dot stays 8px */
+  padding: 18px;
   background-clip: content-box;
 }
 
@@ -3617,7 +3618,7 @@
    close to the dot itself. */
 .v2 .v2-quote-dot:focus-visible {
   outline: 2px solid var(--ink-65);
-  outline-offset: -6px;
+  outline-offset: -16px;
 }
 
 .v2-quote-dot:hover {
@@ -3666,6 +3667,9 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  /* a full touch target; the names were 20px tall */
+  min-height: 44px;
+  padding-block: 0;
   flex: none;
   background: none;
   border: none;
