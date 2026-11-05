@@ -451,7 +451,7 @@ export const ERP_INDUSTRIES = [
     explorer: MFG_SCREENS.explorer,
     stats: [
       { value: "10", label: "Modules" },
-      { value: "₹5 Cr–₹100 Cr", label: "Businesses it's built for" },
+      { value: "₹5–100 Cr", label: "Businesses it's built for" },
       { value: "Web + Mobile", label: "Same data, live on both" },
     ],
     problem: {
