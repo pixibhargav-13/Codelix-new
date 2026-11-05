@@ -4,22 +4,9 @@
    cards, FAQ, client strip, CTA) come from ServicesV2.css / ServiceDetailV2.css.
    ============================================================ */
 
-#faq .v2-faq-a {
-  transition: height .5s var(--ease-expo);
-}
 
-#faq .v2-faq-a p {
-  opacity: 0;
-  transition: opacity .4s ease .05s;
-}
 
-#faq .v2-faq-item.open .v2-faq-a p {
-  opacity: 1;
-}
 
-#faq .v2-faq-item.open {
-  background: rgba(180, 200, 230, .04);
-}
 
 /* ───────────── ESTIMATOR — the extraordinary section: picking chips
    updates the result panel live; the result value remounts on change

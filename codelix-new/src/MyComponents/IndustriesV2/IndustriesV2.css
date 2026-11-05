@@ -5,25 +5,6 @@
    ServiceDetailV2.css. All three are imported by the component.
    ============================================================ */
 
-/* ───────────── FAQ polish (this page only — #faq scopes it since
-   .v2-faq-* is shared with the homepage) ───────────── */
-#faq .v2-faq-a {
-  transition: height .5s var(--ease-expo);
-}
-
-#faq .v2-faq-a p {
-  opacity: 0;
-  transition: opacity .4s ease .05s;
-}
-
-#faq .v2-faq-item.open .v2-faq-a p {
-  opacity: 1;
-}
-
-#faq .v2-faq-item.open {
-  background: rgba(180, 200, 230, .04);
-}
-
 /* ───────────── STATS — 3 items instead of the usual 4, so the ring grid
    needs its own column count rather than inheriting the shared 4-up one */
 .ind-stats-grid {

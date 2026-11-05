@@ -5,10 +5,6 @@
    ServicesV2.css / ServiceDetailV2.css. All three are imported.
    ============================================================ */
 
-#faq .v2-faq-a { transition: height .5s var(--ease-expo); }
-#faq .v2-faq-a p { opacity: 0; transition: opacity .4s ease .05s; }
-#faq .v2-faq-item.open .v2-faq-a p { opacity: 1; }
-#faq .v2-faq-item.open { background: rgba(180, 200, 230, .04); }
 
 .tv2-stats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .tv2-stats-grid .sd2-bench:nth-child(3n+1) { border-left: none; }
