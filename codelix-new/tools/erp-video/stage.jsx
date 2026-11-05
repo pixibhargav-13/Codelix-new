@@ -420,56 +420,102 @@ function End({ t, ed }) {
   );
 }
 
+/* The beat: 120 BPM, so one beat is 0.5s and one bar is 2s. Every scene
+   lasts a whole number of bars, so cuts land on the downbeat of the music
+   that audio.py writes. Each scene is drawn in its own "design" time and
+   played faster (k = design / real), which keeps every animation's order
+   and spacing while making the whole video snappier.
+   Each entry: [design seconds, Scene, real seconds, sound cues in design time]. */
+const BAR = 2;
+const range = (n) => [...Array(n).keys()];
+
 function scenesFor(ed) {
+  const ex = (idx) => (p) => <Explore {...p} idx={idx} />;
   const list = [
-    [4.5, Hook], [8, Problem], [4, Brand], [8.5, Dashboard],
-    ...ed.explorer.items.map((_, idx) => [8.5, (p) => <Explore {...p} idx={idx} />]),
-    [8, Portals], [7.5, Mobile], [8.5, Ai], [6.5, Modules],
+    [4.5, Hook, 2 * BAR, [[0.2, "impact"], [0.6, "pop"], [1.3, "sparkle"]]],
+    [8, Problem, 3 * BAR, [...range(4).flatMap((i) => [[0.9 + i * 0.45, "pop"], [1.3 + i * 0.45, "error"]])]],
+    [4, Brand, 2 * BAR, [[0.1, "impact"], [0.8, "chime"]]],
+    [8.5, Dashboard, 3 * BAR, [[0.5, "swoosh"], [4.2, "scribble"], [4.3, "tick"]]],
+    ...ed.explorer.items.map((it, idx) => [8.5, ex(idx), 3 * BAR, [[0.4, "swoosh"], ...it.points.map((_, i) => [2.2 + i * 1.1, "tick"])]]),
+    [8, Portals, 3 * BAR, [[1.1, "pop"], [1.6, "pop"], ...range(4).flatMap((j) => [[1.8 + j * 0.35, "tick"]])]],
+    [7.5, Mobile, 3 * BAR, range(4).map((i) => [0.9 + i * 0.35, "pop"])],
+    [8.5, Ai, 3 * BAR, [[0.3, "sparkle"], ...range(4).map((i) => [1.1 + i * 0.5, "pop"])]],
+    [6.5, Modules, 2 * BAR, range(ed.modules.items.length).map((i) => [0.9 + i * 0.16, "blip"])],
   ];
-  if (ed.traction) list.push([6.5, Trust]);
-  list.push([6, End]);
+  if (ed.traction) list.push([6.5, Trust, 2 * BAR, range(3).map((i) => [1.1 + i * 0.5, "pop"])]);
+  list.push([6, End, 3 * BAR, [[0.2, "impact"], [1.2, "chime"]]]);
   return list;
 }
 
-const FADE = 0.45;
+/* the blue swipe that carries every cut, centred on the cut */
+const SWIPE = 0.5;
+function Swipe({ t, cuts }) {
+  const c = cuts.find((b) => t > b - SWIPE / 2 && t < b + SWIPE / 2);
+  /* kept mounted off-frame between cuts so its logo is already loaded */
+  const p = c === undefined ? 0 : (t - (c - SWIPE / 2)) / SWIPE; /* 0 → 1 across the cut */
+  const x = c === undefined ? -3000 : -2600 + p * 5200;
+  return (
+    <div className="vs-swipe" style={{ transform: `translateX(${x}px) skewX(-14deg)` }}>
+      <span className="vs-swipe-a" />
+      <span className="vs-swipe-b"><img src={erpMark} alt="" /></span>
+      <span className="vs-swipe-c" />
+    </div>
+  );
+}
 
 function Video({ ed, t }) {
   const copy = COPY[ed.slug];
   const scenes = scenesFor(ed);
   let start = 0;
   const layers = [];
-  scenes.forEach(([dur, Scene], i) => {
+  const cuts = [0];
+  scenes.forEach(([design, Scene, dur], i) => {
     const local = t - start;
-    /* a dip, not a crossfade: the old scene clears in the first 0.2s of
-       the next one, then the new one fades up, so text never doubles up */
-    if (local >= 0 && local < dur + FADE) {
-      const fadeIn = i === 0 ? 1 : clamp((local - 0.2) / 0.25);
-      const fadeOut = local > dur ? 1 - clamp((local - dur) / 0.2) : 1;
+    /* the swipe covers the frame at the cut, so scenes swap there cleanly */
+    if (local >= 0 && local < dur) {
+      const k = design / dur;
+      const zoom = 1 + 0.03 * (local / dur);
       layers.push(
-        <div className="vs-layer" key={i} style={{ opacity: Math.min(fadeIn, fadeOut) }}>
-          <Scene t={local} ed={ed} copy={copy} />
+        <div className="vs-layer" key={i} style={{ transform: `scale(${zoom})` }}>
+          <Scene t={local * k} ed={ed} copy={copy} />
         </div>
       );
     }
     start += dur;
+    if (i < scenes.length - 1) cuts.push(start);
   });
   return (
     <div className="vs-frame">
       <Wave t={t} />
       {layers}
-      {t > 4.5 && <div style={{ opacity: ramp(t, 4.6, 0.4) }}><Bug name={ed.name} /></div>}
+      {t > 4 && <div style={{ opacity: ramp(t, 4.1, 0.3) }}><Bug name={ed.name} /></div>}
+      <Swipe t={t} cuts={cuts} />
     </div>
   );
 }
 
+/* every sound cue in real seconds, for audio.py */
+export function eventsOf(ed) {
+  const out = [{ t: 0, type: "whoosh" }];
+  let start = 0;
+  scenesFor(ed).forEach(([design, , dur, cues], i, all) => {
+    const k = design / dur;
+    for (const [at, type] of cues) if (at / k < dur) out.push({ t: +(start + at / k).toFixed(3), type });
+    start += dur;
+    if (i < all.length - 1) out.push({ t: +(start - 0.2).toFixed(3), type: "whoosh" });
+  });
+  return out.sort((a, b) => a.t - b.t);
+}
+
 export const durationOf = (slug) =>
-  scenesFor(ERP_INDUSTRIES.find((i) => i.slug === slug)).reduce((s, [d]) => s + d, 0);
+  scenesFor(ERP_INDUSTRIES.find((i) => i.slug === slug)).reduce((s, [, , d]) => s + d, 0);
 
 /* render.py drives this: ?ed=<slug>, then window.__seek(t) per frame */
 const params = new URLSearchParams(location.search);
 const ed = ERP_INDUSTRIES.find((i) => i.slug === (params.get("ed") || "manufacturing"));
 const root = createRoot(document.getElementById("root"));
 window.__duration = durationOf(ed.slug);
+window.__events = eventsOf(ed);
 window.__seek = (t) =>
   new Promise((resolve) => {
     flushSync(() => root.render(<Video ed={ed} t={t} />));

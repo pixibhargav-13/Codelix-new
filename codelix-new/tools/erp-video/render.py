@@ -15,7 +15,11 @@ import os
 import subprocess
 import threading
 
+import json
+
 import imageio_ffmpeg
+
+import audio
 from playwright.sync_api import sync_playwright
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -64,11 +68,13 @@ def main():
             return
 
         target = os.path.join(a.out, f"codelix-{a.edition}-erp-demo.mp4")
+        silent = target.replace(".mp4", ".silent.mp4")
+        events = page.evaluate("window.__events")
         ff = subprocess.Popen(
             [imageio_ffmpeg.get_ffmpeg_exe(), "-y", "-loglevel", "error",
              "-f", "image2pipe", "-framerate", str(a.fps), "-c:v", "mjpeg", "-i", "-",
              "-c:v", "libx264", "-preset", "slow", "-crf", "26", "-tune", "animation",
-             "-pix_fmt", "yuv420p", "-movflags", "+faststart", target],
+             "-pix_fmt", "yuv420p", silent],
             stdin=subprocess.PIPE,
         )
         frames = int(round(duration * a.fps))
@@ -82,6 +88,17 @@ def main():
         ff.stdin.close()
         ff.wait()
         browser.close()
+
+        # soundtrack: music on the beat grid plus a sound for every cue
+        wav = target.replace(".mp4", ".wav")
+        json.dump(events, open(target.replace(".mp4", ".events.json"), "w"), indent=1)
+        audio.write_wav(wav, audio.soundtrack(events, duration))
+        subprocess.run(
+            [imageio_ffmpeg.get_ffmpeg_exe(), "-y", "-loglevel", "error", "-i", silent, "-i", wav,
+             "-c:v", "copy", "-c:a", "aac", "-b:a", "160k", "-shortest", "-movflags", "+faststart", target],
+            check=True,
+        )
+        os.remove(silent)
         print(f"wrote {target} ({os.path.getsize(target) / 1e6:.1f} MB, {duration:.1f}s)")
 
 

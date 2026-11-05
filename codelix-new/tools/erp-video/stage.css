@@ -215,3 +215,12 @@ html, body { margin: 0; background: #f6f3ec; }
 /* keep the screen inside the frame: copy 680 + gap 60 + screen fills the rest */
 .vs-split { gap: 60px; padding-right: 110px; }
 .vs-ring { width: 430px; height: 285px; right: -14px; top: 200px; }
+
+/* the swipe: three skewed bands crossing the frame on every cut */
+.vs-swipe { position: absolute; top: -200px; bottom: -200px; left: 0; width: 2600px; display: flex; z-index: 20; pointer-events: none; }
+.vs-swipe span { display: block; height: 100%; }
+.vs-swipe-a { width: 260px; background: #9db8ee; }
+.vs-swipe-b { flex: 1; background: #3e7dfc; display: grid; place-items: center; }
+.vs-swipe-b img { width: 150px; height: 150px; transform: skewX(14deg); filter: brightness(0) invert(1); }
+.vs-swipe-c { width: 180px; background: #121212; }
+.vs-layer { transform-origin: 50% 45%; }
