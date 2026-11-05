@@ -43,6 +43,9 @@ import illusBill from "../Images/erp/erp-illustration-bill.webp";
 import illus404 from "../Images/erp/erp-illustration-404.webp";
 import illusModules from "../Images/erp/erp-illustration-modules.webp";
 import demoPoster from "../Images/erp/erp-demo-poster.webp";
+import posterMfg from "../Images/erp/erp-demo-poster-manufacturing.webp";
+import posterCeramic from "../Images/erp/erp-demo-poster-ceramic.webp";
+import posterTextile from "../Images/erp/erp-demo-poster-textile.webp";
 import { MFG_SCREENS, CERAMIC_SCREENS, TEXTILE_SCREENS } from "./erpScreens";
 
 export const ERP_PATH = "/products/codelix-erp";
@@ -432,6 +435,19 @@ export const ERP_INDUSTRIES = [
     tagline: "Your factory, fully connected. From the factory floor to your finance team, everything in one system, built for Indian SMEs.",
     facts: [["For", "Manufacturing SMEs, ₹5 Cr to ₹100 Cr"], ["Works on", "Web and mobile app"], ["Built by", "Codelix IT Solutions"]],
     heroShot: MFG_SCREENS.hero,
+    /* rendered by tools/erp-video from this edition's own sample-data screens */
+    demoVideo: {
+      heading: "See the manufacturing ERP in under 2 minutes.",
+      cta: "Watch the demo",
+      src: "/videos/codelix-manufacturing-erp-demo.mp4",
+      poster: posterMfg,
+      description: "A walkthrough of Codelix ERP for manufacturers: factory dashboard, work orders and WIP, multi-godown inventory, CNC monitoring, quality and scrap, vendor and customer portals, the mobile app and AI. Shown with sample data.",
+      body: "A short walkthrough of how a factory runs on Codelix ERP, with sample data.",
+      covers: ["Work orders, WIP and delay warnings", "Inventory, CNC monitoring and quality", "Vendor and customer portals", "The mobile app and AI on your data"],
+      length: "1:42",
+      duration: "PT1M42S",
+      uploadDate: "2026-11-05",
+    },
     explorer: MFG_SCREENS.explorer,
     stats: [
       { value: "10", label: "Modules" },
@@ -455,8 +471,8 @@ export const ERP_INDUSTRIES = [
       items: [
         { n: "01", title: "Accounting and finance", icon: Calculator, body: "Ledger, sales and purchase, receipts, credit and debit notes, bank reconciliation, cost centres, P&L, balance sheet and trial balance." },
         { n: "02", title: "GST and compliance", icon: Receipt, body: "GSTIN auto-fetch, e-invoice (IRN and QR), e-way bill, ITC tracking and GST return tracking." },
-        { n: "03", title: "Inventory", icon: Package, body: "Multi-godown stock, barcode and QR, batch tracking, stock alerts and real-time valuation." },
-        { n: "04", title: "Manufacturing and production", icon: Cog, body: "BOM, production planning, WIP tracking, quality control, and rejection and scrap management." },
+        { n: "03", title: "Inventory", icon: Package, body: "Multi-godown stock, barcode and QR, batch tracking, job-work challans out and back, stock alerts and real-time valuation." },
+        { n: "04", title: "Manufacturing and production", icon: Cog, body: "BOM, work orders, production planning, WIP by stage, delay warnings, quality control, and rejection and scrap management." },
         { n: "05", title: "CNC monitoring", icon: ScanLine, body: "Photograph the CNC screen; AI reads it and updates the ERP: production and downtime by machine, operator and shift.", unique: true },
         { n: "06", title: "Vendor portal", icon: Handshake, body: "Vendors get their own login to see material requirements, accept POs, upload invoices and track payments." },
         { n: "07", title: "Customer portal", icon: UsersRound, body: "Customers place orders, track dispatch, download invoices and see their ledger, without calling you." },
@@ -493,6 +509,19 @@ export const ERP_INDUSTRIES = [
     tagline: "Tiles and sanitaryware, from raw material to dispatch, in one system. Every batch, every breakage and every rupee accounted for.",
     facts: [["For", "Tile and sanitaryware manufacturers"], ["Works on", "Web and mobile app"], ["Built by", "Codelix IT Solutions"]],
     heroShot: CERAMIC_SCREENS.hero,
+    /* rendered by tools/erp-video from this edition's own sample-data screens */
+    demoVideo: {
+      heading: "See the ceramic ERP in under 2 minutes.",
+      cta: "Watch the demo",
+      src: "/videos/codelix-ceramic-erp-demo.mp4",
+      poster: posterCeramic,
+      description: "A walkthrough of Codelix ERP for tile and sanitaryware makers: plant dashboard, production stages to the kiln, stock by batch and grade, breakage, dispatch with e-way bill, dealer and vendor portals, the mobile app and AI. Shown with sample data.",
+      body: "A short walkthrough of how a ceramic plant runs on Codelix ERP, with sample data.",
+      covers: ["Batches from body preparation to sorting", "Stock by batch, shade and grade", "Breakage and dispatch with e-way bill", "Dealer portal and the mobile app"],
+      length: "1:42",
+      duration: "PT1M42S",
+      uploadDate: "2026-11-05",
+    },
     explorer: CERAMIC_SCREENS.explorer,
     stats: [
       { value: "10", label: "Modules" },
@@ -516,15 +545,15 @@ export const ERP_INDUSTRIES = [
       body: "Ceramic units run on the same 10 modules as our manufacturing edition, configured around how a ceramic plant actually works.",
       items: [
         { n: "01", title: "Production stages", icon: Cog, body: "BOM and production planning set up for your stages, such as body preparation, pressing, glazing, firing and sorting, with WIP tracked stage by stage." },
-        { n: "02", title: "Batch-wise inventory", icon: Boxes, body: "Batch tracking across godowns, so each lot's size and grade stay together, with barcode and QR." },
+        { n: "02", title: "Batch-wise inventory", icon: Boxes, body: "Batch tracking across godowns, so each lot's size, shade and grade stay together, counted in boxes and square metres, with barcode and QR." },
         { n: "03", title: "Quality, breakage and rejection", icon: AlertTriangle, body: "Quality control with rejection and scrap management, so breakage shows up in your cost instead of disappearing." },
-        { n: "04", title: "Dispatch, e-invoice and e-way bill", icon: PackageCheck, body: "E-invoice (IRN and QR) and e-way bills generated from the same order, not made separately." },
+        { n: "04", title: "Dispatch, e-invoice and e-way bill", icon: PackageCheck, body: "Loading slips that name the batch and grade, dealer credit checked before the truck leaves, and the e-invoice (IRN and QR) and e-way bill made from the same order." },
         { n: "05", title: "Dealer portal", icon: UsersRound, body: "Dealers place orders, track dispatch, download invoices and check their ledger themselves." },
         { n: "06", title: "Vendor portal", icon: Handshake, body: "Raw-material and packing suppliers see your requirements, accept POs, upload invoices and track payments." },
         { n: "07", title: "Accounting and GST", icon: Calculator, body: "Full books, bank reconciliation, ITC tracking and GST returns, linked to production and dispatch." },
         { n: "08", title: "HR, shifts and payroll", icon: HardHat, body: "Shift attendance, payroll and productivity for plant staff." },
         { n: "09", title: "Documents", icon: FolderCog, body: "QC reports, test certificates, invoices and e-way bills in one place." },
-        { n: "10", title: "Analytics and AI", icon: Brain, body: "Profitability by product, demand forecasting and purchase-rate alerts." },
+        { n: "10", title: "Analytics and AI", icon: Brain, body: "Profitability by size and design, cost per box with breakage included, demand forecasting and purchase-rate alerts." },
       ],
       custom: "Different stages, grades or packing? We set it up the way your plant runs.",
     },
@@ -557,6 +586,19 @@ export const ERP_INDUSTRIES = [
     tagline: "From yarn to finished goods, every lot, every job worker and every rupee in one system.",
     facts: [["For", "Mills, processors and garment units"], ["Works on", "Web and mobile app"], ["Built by", "Codelix IT Solutions"]],
     heroShot: TEXTILE_SCREENS.hero,
+    /* rendered by tools/erp-video from this edition's own sample-data screens */
+    demoVideo: {
+      heading: "See the textile ERP in under 2 minutes.",
+      cta: "Watch the demo",
+      src: "/videos/codelix-textile-erp-demo.mp4",
+      poster: posterTextile,
+      description: "A walkthrough of Codelix ERP for mills, processors and garment units: mill dashboard, lots from yarn to fabric, job work challans, lot-wise stock, buyer orders, job worker and buyer portals, the mobile app and AI. Shown with sample data.",
+      body: "A short walkthrough of how a textile business runs on Codelix ERP, with sample data.",
+      covers: ["Lots from yarn to finished fabric", "Job work: sent out, back and pending", "Lot-wise stock and buyer orders", "Portals and the mobile app"],
+      length: "1:36",
+      duration: "PT1M36S",
+      uploadDate: "2026-11-05",
+    },
     explorer: TEXTILE_SCREENS.explorer,
     stats: [
       { value: "10", label: "Modules" },
@@ -580,8 +622,8 @@ export const ERP_INDUSTRIES = [
       body: "Textile businesses run on the same 10 modules as our manufacturing edition, configured around how yarn, fabric and garments actually move.",
       items: [
         { n: "01", title: "Production stages", icon: Cog, body: "Production planning set up for your stages, such as weaving, processing, dyeing or printing and stitching, with WIP tracked at each one." },
-        { n: "02", title: "Lot-wise inventory", icon: Boxes, body: "Yarn, grey fabric and finished goods by lot and batch across godowns, with barcode and QR." },
-        { n: "03", title: "Job workers on the vendor portal", icon: Handshake, body: "Job workers and suppliers get their own login to see requirements, accept POs, upload invoices and track payments." },
+        { n: "02", title: "Lot-wise inventory", icon: Boxes, body: "Yarn in kg, grey and finished fabric in metres and garments in pieces, kept lot by lot across godowns, with barcode and QR." },
+        { n: "03", title: "Job workers on the vendor portal", icon: Handshake, body: "Challans for every metre sent out and every metre back, what is still pending at each worker, and bills checked against agreed rates. Job workers also get their own portal login." },
         { n: "04", title: "Quality and rejection", icon: AlertTriangle, body: "Quality control with rejection and scrap management, so defects show up in your cost." },
         { n: "05", title: "Dispatch, e-invoice and e-way bill", icon: PackageCheck, body: "E-invoice (IRN and QR) and e-way bills generated from the same order." },
         { n: "06", title: "Buyer portal", icon: UsersRound, body: "Buyers and agents place orders, track dispatch, download invoices and see their ledger." },
@@ -598,6 +640,7 @@ export const ERP_INDUSTRIES = [
     pricing: PRICING,
     faq: [
       { q: "Can it keep yarn and fabric stock by lot?", a: "Yes. Batch tracking keeps each lot of yarn, grey fabric and finished goods separate across godowns, with barcode and QR." },
+      { q: "Can it track fabric sent to job workers?", a: "Yes. Every lot sent out goes on a challan, and every metre that comes back is entered against it, so you can see what is still pending at each job worker and for how long. Job work bills are checked against the agreed rate before you pay." },
       { q: "Can job workers use it?", a: "Yes. Job workers can be added as vendors with their own portal login, where they see your requirements, accept POs, upload invoices and track their payments." },
       { q: "Can we set up our own production stages?", a: "Yes. During setup we configure production planning and WIP tracking for your stages, whether you weave, process, print, stitch or do all of them." },
       { q: "Does it make e-invoices and e-way bills?", a: "Yes. E-invoice with IRN and QR, and e-way bills, are generated from the same order and dispatch." },
