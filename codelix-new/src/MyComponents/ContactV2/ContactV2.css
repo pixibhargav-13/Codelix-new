@@ -30,22 +30,6 @@
   }
 }
 
-/* ───────────── FAQ polish (this page only — #faq scopes it since
-   .v2-faq-* is shared with the homepage) ───────────── */
-#faq .v2-faq-a {
-  transition: height .5s var(--ease-expo);
-}
-#faq .v2-faq-a p {
-  opacity: 0;
-  transition: opacity .4s ease .05s;
-}
-#faq .v2-faq-item.open .v2-faq-a p {
-  opacity: 1;
-}
-#faq .v2-faq-item.open {
-  background: rgba(180, 200, 230, .04);
-}
-
 /* ───────────── quick-contact links in the hero ─────────────
    .sd2-hero-cta already sets gap: 32px at (0,1,0) — scoped as a compound
    selector here (0,2,0) to win without !important */
