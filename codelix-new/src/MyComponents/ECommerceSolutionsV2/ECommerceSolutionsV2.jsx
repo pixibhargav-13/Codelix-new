@@ -1,6 +1,4 @@
-import {
-  LayoutDashboard, ShoppingCart, Gauge, CreditCard, ShieldCheck, PackageSearch, Wrench, Lock, Check, TrendingDown, Clock, ShoppingBag, RotateCcw, AlertTriangle, Building2, Store, Rocket, GraduationCap, Shirt, Utensils, FileCode2, Palette, Server, Globe, Smartphone, Code2, Sparkles, BarChart3, LifeBuoy, Minus, X, Monitor,
-} from "lucide-react";
+import { LayoutDashboard, ShoppingCart, Gauge, CreditCard, ShieldCheck, PackageSearch, Wrench, Check, TrendingDown, Clock, ShoppingBag, RotateCcw, AlertTriangle, Building2, Store, Rocket, GraduationCap, Shirt, Utensils, FileCode2, Palette, Globe, Smartphone, Code2, Sparkles, BarChart3, LifeBuoy, Minus, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
@@ -26,7 +24,6 @@ import techAws from "../Images/AWS.webp";
 
 /* real project screenshots — shared source of truth with WorkV2/CaseStudyV2 */
 import { useRelatedWork } from "../CaseStudyDetailV2/useCaseStudies";
-import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import ScrollSentence from '../Shared/ScrollSentence';
 import FaqSection from '../Shared/FaqSection';
@@ -163,35 +160,7 @@ const SENTENCE = [
 
 
 
-const TECH_CATEGORIES = [
-  {
-    id: "commerce",
-    title: "Commerce Engines",
-    icon: Server,
-    tools: ["Shopify Plus", "Magento", "WooCommerce", "BigCommerce"],
-    colSpan: 1,
-  },
-  {
-    id: "headless",
-    title: "Headless Storefronts",
-    icon: Monitor,
-    tools: ["Next.js Commerce", "Vue Storefront", "Hydrogen", "Builder.io"],
-    colSpan: 1,
-  },
-  {
-    id: "ops",
-    title: "Payments & Ops",
-    icon: Lock,
-    tools: ["Stripe", "PayPal", "Algolia", "ShipStation"],
-    colSpan: 1,
-  }
-];
 
-const METRICS = [
-  { value: "<1s", label: "Page Load Time" },
-  { value: "99.99%", label: "Checkout Uptime" },
-  { value: "40%", label: "Boost In Conversions" }
-];
 
 export default function ECommerceSolutionsV2() {
   /* related work: case studies from the admin panel (see useCaseStudies) */
@@ -737,13 +706,6 @@ export default function ECommerceSolutionsV2() {
         </div>
       </section>
 
-      {/* ══════════ TECH STACK ══════════ */}
-      <TechStackShowcaseV2
-        title="High-Conversion Commerce Stacks"
-        description="Scalable headless commerce and enterprise platforms designed to handle traffic spikes and complex inventory logic seamlessly."
-        categories={TECH_CATEGORIES}
-        metrics={METRICS}
-      />
 {/* ══════════ 8a · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">
         <div className="sd2-case-head">

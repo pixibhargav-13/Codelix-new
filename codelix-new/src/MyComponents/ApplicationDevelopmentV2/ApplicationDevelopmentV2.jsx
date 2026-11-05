@@ -1,6 +1,4 @@
-import {
-  LayoutDashboard, Smartphone, Gauge, Bell, ShieldCheck, Wifi, Wrench, Check, BatteryLow, RefreshCcw, Bug, LayoutGrid, Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark, FileCode2, BookOpen, KeyRound, Palette, Server, Globe, ShoppingCart, Code2, Sparkles, BarChart3, LifeBuoy, Minus, X, Cloud, Store as StoreOff,
-} from "lucide-react";
+import { LayoutDashboard, Smartphone, Gauge, Bell, ShieldCheck, Wifi, Wrench, Check, BatteryLow, RefreshCcw, Bug, LayoutGrid, Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark, FileCode2, BookOpen, KeyRound, Palette, Globe, ShoppingCart, Code2, Sparkles, BarChart3, LifeBuoy, Minus, X, Store as StoreOff } from "lucide-react";
 import { Link } from "react-router-dom";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
@@ -26,7 +24,6 @@ import techFigma from "../Images/figma.webp";
 
 /* real project screenshots — shared source of truth with WorkV2/CaseStudyV2 */
 import { useRelatedWork } from "../CaseStudyDetailV2/useCaseStudies";
-import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import ScrollSentence from '../Shared/ScrollSentence';
 import FaqSection from '../Shared/FaqSection';
@@ -163,35 +160,7 @@ const SENTENCE = [
 
 
 
-const TECH_CATEGORIES = [
-  {
-    id: "mobile",
-    title: "Mobile Core",
-    icon: Smartphone,
-    tools: ["Swift (iOS)", "Kotlin (Android)", "React Native", "Flutter"],
-    colSpan: 1,
-  },
-  {
-    id: "backend",
-    title: "Backend Sync",
-    icon: Server,
-    tools: ["Firebase", "Node.js", "GraphQL", "WebSocket"],
-    colSpan: 1,
-  },
-  {
-    id: "cloud",
-    title: "Testing & Distribution",
-    icon: Cloud,
-    tools: ["TestFlight", "Fastlane", "Appium", "Bitrise"],
-    colSpan: 1,
-  }
-];
 
-const METRICS = [
-  { value: "4.8+", label: "Avg. App Store Rating" },
-  { value: "60fps", label: "Guaranteed Render Speed" },
-  { value: "100%", label: "Crash-Free Sessions" }
-];
 
 export default function ApplicationDevelopmentV2() {
   /* related work: case studies from the admin panel (see useCaseStudies) */
@@ -738,13 +707,6 @@ export default function ApplicationDevelopmentV2() {
         </div>
       </section>
 
-      {/* ══════════ TECH STACK ══════════ */}
-      <TechStackShowcaseV2
-        title="Built for Mobile & Cross-Platform Dominance"
-        description="Native and hybrid mobile technologies engineered for performance, smooth animations, and platform-specific capabilities."
-        categories={TECH_CATEGORIES}
-        metrics={METRICS}
-      />
 {/* ══════════ 8a · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">
         <div className="sd2-case-head">

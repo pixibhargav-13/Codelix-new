@@ -12,7 +12,6 @@ import "../HomepageV2/HomepageV2.css";
 import { FOOTER_SERVICE_KEYWORDS, FOOTER_ALL_SERVICES, FOOTER_INDUSTRY_KEYWORDS } from "../HomepageV2/footerData";
 import "../ServicesV2/ServicesV2.css";
 import "./ServiceDetailV2.css";
-import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 import ScrollSentence from "../Shared/ScrollSentence";
 import FaqSection from "../Shared/FaqSection";
 import DeepDive from "../Shared/DeepDive";
@@ -705,8 +704,6 @@ export default function ServiceDetailV2() {
         </div>
       </section>
 
-      {/* ══════════ EXTRAORDINARY SECTION: TECH STACK ══════════ */}
-      <TechStackShowcaseV2 />
 
       {/* ══════════ 8a · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">

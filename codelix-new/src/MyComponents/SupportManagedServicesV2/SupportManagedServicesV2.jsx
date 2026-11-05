@@ -1,6 +1,4 @@
-import {
-  Wrench, ShieldCheck, Activity, Users2, Clock, AlertTriangle, Server, RefreshCw, GitBranch, TrendingUp, Headphones, Bell, Search, Globe, Smartphone, Palette, ShoppingCart, Code2, Sparkles, BarChart3, Minus, X, Check, FileText, FileCode2, Store, Rocket, GraduationCap, Building2, HeartPulse, Monitor, Cloud, Lock,
-} from "lucide-react";
+import { Wrench, ShieldCheck, Activity, Users2, Clock, AlertTriangle, Server, RefreshCw, GitBranch, TrendingUp, Headphones, Bell, Search, Globe, Smartphone, Palette, ShoppingCart, Code2, Sparkles, BarChart3, Minus, X, Check, FileText, FileCode2, Store, Rocket, GraduationCap, Building2, HeartPulse } from "lucide-react";
 import { Link } from "react-router-dom";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
@@ -22,7 +20,6 @@ import techNode from "../Images/Express.png";
 import techMongo from "../Images/MongoDB.webp";
 
 import { useRelatedWork } from "../CaseStudyDetailV2/useCaseStudies";
-import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import ScrollSentence from '../Shared/ScrollSentence';
 import FaqSection from '../Shared/FaqSection';
@@ -163,35 +160,7 @@ const SENTENCE = [
 
 
 
-const TECH_CATEGORIES = [
-  {
-    id: "monitoring",
-    title: "Monitoring & Alerting",
-    icon: Monitor,
-    tools: ["Datadog", "New Relic", "PagerDuty", "Sentry"],
-    colSpan: 1,
-  },
-  {
-    id: "devops",
-    title: "DevOps & CI/CD",
-    icon: Cloud,
-    tools: ["GitHub Actions", "GitLab CI", "Terraform", "Jenkins"],
-    colSpan: 1,
-  },
-  {
-    id: "security",
-    title: "Security & Backups",
-    icon: Lock,
-    tools: ["Cloudflare", "AWS Shield", "Vault", "Veeam"],
-    colSpan: 1,
-  }
-];
 
-const METRICS = [
-  { value: "<15m", label: "Incident Response Time" },
-  { value: "24/7", label: "Active Monitoring" },
-  { value: "99.99%", label: "Guaranteed Uptime" }
-];
 
 export default function SupportManagedServicesV2() {
   /* related work: case studies from the admin panel (see useCaseStudies) */
@@ -745,13 +714,6 @@ export default function SupportManagedServicesV2() {
         </div>
       </section>
 
-      {/* ══════════ TECH STACK ══════════ */}
-      <TechStackShowcaseV2
-        title="Proactive Monitoring & DevOps"
-        description="The tools we use to maintain, secure, and continuously monitor your applications ensuring uninterrupted business operations."
-        categories={TECH_CATEGORIES}
-        metrics={METRICS}
-      />
 {/* ══════════ 8a · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">
         <div className="sd2-case-head">
