@@ -18,6 +18,14 @@
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     },
     {
+      "source": "/media/(.*)",
+      "headers": [
+        { "key": "x-vercel-enable-rewrite-caching", "value": "1" },
+        { "key": "CDN-Cache-Control", "value": "max-age=604800" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000" }
+      ]
+    },
+    {
       "source": "/assets/(.*)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     }
@@ -32,6 +40,7 @@
     { "source": "/:path+/index.html", "destination": "/:path+", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/media/:path*", "destination": "https://qmahqirligslilrywyot.supabase.co/storage/v1/object/public/media/:path*" },
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/sitemap-posts.xml", "destination": "/api/sitemap" },
     { "source": "/admin", "destination": "/index.html" },

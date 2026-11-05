@@ -33,8 +33,22 @@ const previewLikeHost = () => ({
 })
 
 // https://vite.dev/config/
+/* /media/* is the Supabase storage bucket served from our own domain
+   (vercel.json rewrites it in production, src/lib/media.js points the URLs
+   at it); the dev and preview servers proxy it the same way so images load
+   locally too */
+const mediaProxy = {
+  "/media": {
+    target: "https://qmahqirligslilrywyot.supabase.co",
+    changeOrigin: true,
+    rewrite: (p) => p.replace(/^\/media\//, "/storage/v1/object/public/media/"),
+  },
+}
+
 export default defineConfig(({ command, isSsrBuild }) => ({
   plugins: [react(), previewLikeHost()],
+  server: { proxy: mediaProxy },
+  preview: { proxy: mediaProxy },
   resolve: {
     alias: [
       /* react-router 7's package.json maps every import condition to its
