@@ -8,6 +8,7 @@ import FooterV2 from "../Shared/FooterV2";
 import FaqSection from "../Shared/FaqSection";
 import CtaSection from "../Shared/CtaSection";
 import ClientStrip from "../Shared/ClientStrip";
+import DeepDive from "../Shared/DeepDive";
 import NotFound from "../NotFound/NotFound";
 import { useCaseStudies } from "../CaseStudyDetailV2/useCaseStudies";
 import { FOOTER_ALL_SERVICES } from "../HomepageV2/footerData";
@@ -100,7 +101,7 @@ export default function HireDeveloperDetailV2() {
                   <span className="v2-hero-status"><i /> Hire Developers</span>
                 </div>
                 <h1 key={slug} className="sd2-hero-title">
-                  <span className="line"><span>{keepWords(role.title)}</span></span>
+                  <span className="line"><span>{keepWords(role.h1 || role.title)}</span></span>
                 </h1>
                 <p className="sd2-hero-sub sv2-hero-reveal">{role.tagline}</p>
                 <div className="sd2-hero-cta sv2-hero-reveal">
@@ -169,6 +170,10 @@ export default function HireDeveloperDetailV2() {
             {role.skills.map((s) => <li key={s}>{s}</li>)}
           </ul>
         </section>
+
+        {/* the comparison, the questions to ask and the first two weeks, for
+            the stacks that have them (src/lib/hireDeepDives.js) */}
+        <DeepDive />
 
         <section className="v2-section v2-section--void" id="models">
           <div className="sd2-case-head">
