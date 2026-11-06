@@ -12,6 +12,7 @@
    source, so it can be re-checked. */
 import { BASE_ESTIMATES, COST_FAMILIES } from "./pricingBands";
 import { HIRE_ROLES } from "../MyComponents/HireDevelopersV2/hireDevelopersData";
+import { HIRE_DEEP_DIVES } from "./hireDeepDives";
 
 const SITE_BLOG = "/blog/";
 const CHECKED = "as of 1 November 2026";
@@ -676,4 +677,6 @@ export const DEEP_DIVES = {
       ],
     },
   ],
+  /* hire pages in striking distance: see hireDeepDives.js */
+  ...HIRE_DEEP_DIVES,
 };
