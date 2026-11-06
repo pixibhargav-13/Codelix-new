@@ -1,6 +1,4 @@
-import {
-  LayoutDashboard, Code2, Gauge, Layers, ShieldCheck, Workflow, Wrench, Check, FileSpreadsheet, Clock, Puzzle, Repeat, Users2, AlertOctagon, Building2, Store, Rocket, Factory, HeartPulse, Landmark, FileCode2, BookOpen, Palette, Server, Globe, Smartphone, ShoppingCart, Sparkles, BarChart3, LifeBuoy, Minus, X, Monitor, Cloud,
-} from "lucide-react";
+import { LayoutDashboard, Code2, Gauge, Layers, ShieldCheck, Workflow, Wrench, Check, FileSpreadsheet, Clock, Puzzle, Repeat, Users2, AlertOctagon, Building2, Store, Rocket, Factory, HeartPulse, Landmark, FileCode2, BookOpen, Palette, Globe, Smartphone, ShoppingCart, Sparkles, BarChart3, LifeBuoy, Minus, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
@@ -27,7 +25,6 @@ import techAws from "../Images/AWS.webp";
 
 /* real project screenshots — shared source of truth with WorkV2/CaseStudyV2 */
 import { useRelatedWork } from "../CaseStudyDetailV2/useCaseStudies";
-import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import ScrollSentence from '../Shared/ScrollSentence';
 import FaqSection from '../Shared/FaqSection';
@@ -167,35 +164,7 @@ const SENTENCE = [
 
 
 
-const TECH_CATEGORIES = [
-  {
-    id: "core",
-    title: "Core Architecture",
-    icon: Server,
-    tools: [".NET Core", "Java Spring Boot", "Python FastAPI", "Go"],
-    colSpan: 1,
-  },
-  {
-    id: "frontend",
-    title: "Frontend Systems",
-    icon: Monitor,
-    tools: ["React", "Angular", "Vue.js", "TypeScript"],
-    colSpan: 1,
-  },
-  {
-    id: "infra",
-    title: "Infrastructure",
-    icon: Cloud,
-    tools: ["AWS", "Microsoft Azure", "Google Cloud", "Docker"],
-    colSpan: 1,
-  }
-];
 
-const METRICS = [
-  { value: "Zero", label: "Technical Debt At Launch" },
-  { value: "Tier 1", label: "Enterprise Security" },
-  { value: "100%", label: "System Scalability" }
-];
 
 export default function CustomSoftwareDevelopmentV2() {
   /* related work: case studies from the admin panel (see useCaseStudies) */
@@ -742,13 +711,6 @@ export default function CustomSoftwareDevelopmentV2() {
         </div>
       </section>
 
-      {/* ══════════ TECH STACK ══════════ */}
-      <TechStackShowcaseV2
-        title="Enterprise-Grade Software Architecture"
-        description="Robust, scalable, and secure technology stacks chosen specifically for complex, bespoke business logic and integrations."
-        categories={TECH_CATEGORIES}
-        metrics={METRICS}
-      />
 {/* ══════════ 8a · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">
         <div className="sd2-case-head">

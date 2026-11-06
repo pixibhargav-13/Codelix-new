@@ -1,6 +1,4 @@
-import {
-  PenTool, Search, Eye, Smartphone, Palette, Check, HelpCircle, MousePointerClick, RefreshCw, Users2, Building2, Store, Rocket, HeartPulse, Landmark, FileCode2, BookOpen, Server, Globe, ShoppingCart, Code2, Sparkles, BarChart3, Minus, X, PieChart, Database, Network, Clock, LifeBuoy, Monitor,
-} from "lucide-react";
+import { PenTool, Search, Eye, Smartphone, Palette, Check, HelpCircle, MousePointerClick, RefreshCw, Users2, Building2, Store, Rocket, HeartPulse, Landmark, FileCode2, BookOpen, Globe, ShoppingCart, Code2, Sparkles, BarChart3, Minus, X, PieChart, Database, Network, Clock, LifeBuoy } from "lucide-react";
 import { Link } from "react-router-dom";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
@@ -24,7 +22,6 @@ import techMongo from "../Images/MongoDB.webp";
 
 /* real project screenshots */
 import { useRelatedWork } from "../CaseStudyDetailV2/useCaseStudies";
-import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import ScrollSentence from '../Shared/ScrollSentence';
 import FaqSection from '../Shared/FaqSection';
@@ -172,35 +169,7 @@ const SENTENCE = [
 
 
 
-const TECH_CATEGORIES = [
-  {
-    id: "warehouse",
-    title: "Data Warehousing",
-    icon: Database,
-    tools: ["Snowflake", "Google BigQuery", "Amazon Redshift"],
-    colSpan: 1,
-  },
-  {
-    id: "elt",
-    title: "Pipelines & ELT",
-    icon: Server,
-    tools: ["dbt", "Fivetran", "Airflow", "Segment"],
-    colSpan: 1,
-  },
-  {
-    id: "viz",
-    title: "Visualization",
-    icon: Monitor,
-    tools: ["Tableau", "Power BI", "Looker", "Metabase"],
-    colSpan: 1,
-  }
-];
 
-const METRICS = [
-  { value: "Real-Time", label: "Data Synchronization" },
-  { value: "100%", label: "Data Accuracy" },
-  { value: "360°", label: "Business Visibility" }
-];
 
 export default function DataAnalyticsV2() {
   /* related work: case studies from the admin panel (see useCaseStudies) */
@@ -755,13 +724,6 @@ export default function DataAnalyticsV2() {
         </div>
       </section>
 
-      {/* ══════════ TECH STACK ══════════ */}
-      <TechStackShowcaseV2
-        title="The Modern Data Stack"
-        description="Powerful data warehousing, ELT pipelines, and visualization tools to turn raw data into actionable business intelligence."
-        categories={TECH_CATEGORIES}
-        metrics={METRICS}
-      />
 {/* ══════════ 8a · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">
         <div className="sd2-case-head">

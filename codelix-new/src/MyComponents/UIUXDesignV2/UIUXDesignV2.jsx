@@ -1,6 +1,4 @@
-import {
-  PenTool, Layers, Search, Eye, Smartphone, Palette, Check, HelpCircle, Paintbrush, MousePointerClick, RefreshCw, Users2, Frown, Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark, FileCode2, BookOpen, KeyRound, GitBranch, Layout, Globe, ShoppingCart, Code2, Sparkles, BarChart3, LifeBuoy, Minus, X, Monitor, Database,
-} from "lucide-react";
+import { PenTool, Layers, Search, Eye, Smartphone, Palette, Check, HelpCircle, Paintbrush, MousePointerClick, RefreshCw, Users2, Frown, Building2, Store, Rocket, GraduationCap, HeartPulse, Landmark, FileCode2, BookOpen, KeyRound, GitBranch, Layout, Globe, ShoppingCart, Code2, Sparkles, BarChart3, LifeBuoy, Minus, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
@@ -23,7 +21,6 @@ import techCanva from "../Images/canva.webp";
 
 /* real project screenshots — shared source of truth with WorkV2/CaseStudyV2 */
 import { useRelatedWork } from "../CaseStudyDetailV2/useCaseStudies";
-import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import ScrollSentence from '../Shared/ScrollSentence';
 import FaqSection from '../Shared/FaqSection';
@@ -163,35 +160,7 @@ const SENTENCE = [
 
 
 
-const TECH_CATEGORIES = [
-  {
-    id: "design",
-    title: "Design & Prototyping",
-    icon: PenTool,
-    tools: ["Figma", "Sketch", "Adobe XD", "Principle"],
-    colSpan: 1,
-  },
-  {
-    id: "motion",
-    title: "Motion & Interaction",
-    icon: Monitor,
-    tools: ["After Effects", "Framer", "Lottie", "Rive"],
-    colSpan: 1,
-  },
-  {
-    id: "research",
-    title: "Research & Handoff",
-    icon: Database,
-    tools: ["Maze", "Hotjar", "Zeplin", "Storybook"],
-    colSpan: 1,
-  }
-];
 
-const METRICS = [
-  { value: "300%", label: "Avg. Engagement Increase" },
-  { value: "10ms", label: "Interaction Latency" },
-  { value: "AA", label: "WCAG Accessibility" }
-];
 
 export default function UIUXDesignV2() {
   /* related work: case studies from the admin panel (see useCaseStudies) */
@@ -745,13 +714,6 @@ export default function UIUXDesignV2() {
         </div>
       </section>
 
-      {/* ══════════ TECH STACK ══════════ */}
-      <TechStackShowcaseV2
-        title="The Modern Design Arsenal"
-        description="Industry-standard design tools and prototyping software we use to create pixel-perfect, accessible, and highly-interactive experiences."
-        categories={TECH_CATEGORIES}
-        metrics={METRICS}
-      />
 {/* ══════════ 9 · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">
         <div className="sd2-case-head">

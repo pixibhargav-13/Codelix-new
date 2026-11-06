@@ -1,6 +1,4 @@
-import {
-  Gauge, MessageSquare, ShieldCheck, Workflow, Wrench, Check, Repeat2, Clock, HelpCircle, FileWarning, AlertTriangle, Building2, Store, Rocket, HeartPulse, Landmark, GraduationCap, FileCode2, BookOpen, KeyRound, Palette, Server, Globe, Smartphone, ShoppingCart, Code2, BarChart3, LifeBuoy, Minus, X, Database, Cloud,
-} from "lucide-react";
+import { Gauge, MessageSquare, ShieldCheck, Workflow, Wrench, Check, Repeat2, Clock, HelpCircle, FileWarning, AlertTriangle, Building2, Store, Rocket, HeartPulse, Landmark, GraduationCap, FileCode2, BookOpen, KeyRound, Palette, Globe, Smartphone, ShoppingCart, Code2, BarChart3, LifeBuoy, Minus, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
@@ -25,7 +23,6 @@ import techAws from "../Images/AWS.webp";
 
 /* real project screenshots */
 import { useRelatedWork } from "../CaseStudyDetailV2/useCaseStudies";
-import TechStackShowcaseV2 from "../Shared/TechStackShowcaseV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import ScrollSentence from '../Shared/ScrollSentence';
 import FaqSection from '../Shared/FaqSection';
@@ -161,35 +158,7 @@ const SENTENCE = [
 
 
 
-const TECH_CATEGORIES = [
-  {
-    id: "models",
-    title: "AI Models & Frameworks",
-    icon: Database,
-    tools: ["TensorFlow", "PyTorch", "OpenAI API", "Hugging Face"],
-    colSpan: 1,
-  },
-  {
-    id: "data",
-    title: "Data Engineering",
-    icon: Server,
-    tools: ["Apache Kafka", "Spark", "Databricks", "Snowflake"],
-    colSpan: 1,
-  },
-  {
-    id: "automation",
-    title: "Automation",
-    icon: Cloud,
-    tools: ["Zapier", "Make", "n8n", "UIPath"],
-    colSpan: 1,
-  }
-];
 
-const METRICS = [
-  { value: "10x", label: "Faster Workflows" },
-  { value: "95%", label: "Accuracy In Predictions" },
-  { value: "24/7", label: "Automated Operations" }
-];
 
 export default function AIDevelopmentV2() {
   /* related work: case studies from the admin panel (see useCaseStudies) */
@@ -736,13 +705,6 @@ export default function AIDevelopmentV2() {
         </div>
       </section>
 
-      {/* ══════════ TECH STACK ══════════ */}
-      <TechStackShowcaseV2
-        title="Advanced Machine Learning & Automation Infrastructure"
-        description="Cutting-edge AI frameworks and data processing pipelines that power intelligent decision-making and workflow automation."
-        categories={TECH_CATEGORIES}
-        metrics={METRICS}
-      />
 {/* ══════════ 8a · HANDOVER ══════════ */}
       <section className="v2-section" id="handover">
         <div className="sd2-case-head">
