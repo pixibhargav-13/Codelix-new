@@ -10,6 +10,7 @@ import { INTRO_MEDIA, INTRO_SEEN_KEY } from "../src/lib/introGate.js";
 import { createRouteCss } from "./route-css.mjs";
 import { createPageDates } from "./page-dates.mjs";
 import { caseStudyFromRow } from "../src/lib/caseStudyRow.js";
+import { localMedia } from "../src/lib/media.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -45,12 +46,14 @@ async function build() {
 
   // 1. Fetch dynamic data from Supabase
   console.log("Fetching case studies from Supabase...");
-  const { data: caseStudiesRaw, error: caseStudiesError } = await supabase
+  const { data: caseStudiesRows, error: caseStudiesError } = await supabase
     .from("case_studies")
     .select("*")
     .eq("published", true)
     .order("published_at", { ascending: false });
 
+  /* storage images served from our own domain through /media (see src/lib/media.js) */
+  const caseStudiesRaw = caseStudiesRows?.map((r) => localMedia(r, supabaseUrl));
   if (caseStudiesError) {
     console.error("❌ Error fetching case studies:", caseStudiesError.message);
   } else {
@@ -58,12 +61,13 @@ async function build() {
   }
 
   console.log("Fetching blog posts from Supabase...");
-  const { data: blogPostsRaw, error: blogPostsError } = await supabase
+  const { data: blogPostsRows, error: blogPostsError } = await supabase
     .from("blog_posts")
     .select("*")
     .eq("published", true)
     .order("published_at", { ascending: false });
 
+  const blogPostsRaw = blogPostsRows?.map((r) => localMedia(r, supabaseUrl));
   if (blogPostsError) {
     console.error("❌ Error fetching blog posts:", blogPostsError.message);
   } else {

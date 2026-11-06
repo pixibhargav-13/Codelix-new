@@ -2,6 +2,7 @@ import { useEffect, useState, useContext, useMemo } from "react";
 import { selectRows } from "../../lib/supabaseRest";
 import { InitialDataContext } from "../../lib/initialDataContext";
 import { caseStudyFromRow, caseStudyCard } from "../../lib/caseStudyRow";
+import { localMedia } from "../../lib/media.js";
 
 
 export function useCaseStudies() {
@@ -28,7 +29,7 @@ export function useCaseStudies() {
           console.error("Supabase case_studies fetch error:", error);
           return;
         }
-        setStudies((data || []).map(caseStudyFromRow));
+        setStudies((data || []).map((r) => caseStudyFromRow(localMedia(r))));
       })
       .catch(() => { if (active) setLoading(false); });
     return () => { active = false; };
