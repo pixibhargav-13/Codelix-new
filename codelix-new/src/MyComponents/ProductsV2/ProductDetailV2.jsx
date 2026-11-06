@@ -287,7 +287,7 @@ export default function ProductDetailV2() {
             <div className="pd2-module-grid">
               {p.modules.map((m) => (
                 <div className={`pd2-module-card pd2-reveal ${m.unique ? "is-unique" : ""}`} key={m.n}>
-                  <span className="pd2-module-n">{m.n}</span>
+                  <span className="pd2-module-n" data-n={m.n} aria-hidden="true" />
                   <m.icon size={20} strokeWidth={1.5} />
                   <h3>{m.title}</h3>
                   <p>{m.body}</p>

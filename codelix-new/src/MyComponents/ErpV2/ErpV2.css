@@ -250,8 +250,9 @@
   padding-top: 16px;
   font-size: 12px;
   font-weight: 600;
+  /* full strength: at .65 opacity the 12px label was 2.8:1 on the card */
   color: var(--prod-accent);
-  opacity: .65;
+  opacity: 1;
   transition: opacity .25s ease;
 }
 
@@ -727,13 +728,13 @@
 
 .erp2-mock {
   --m-ink: #1d2433;
-  --m-muted: #6b7385;
+  --m-muted: #5c6477; /* 5.3:1 on the mock background (was 4.4) */
   --m-line: #e6e9f0;
   --m-soft: #f5f7fb;
-  --m-blue: #2f6bf2;
-  --m-green: #13a150;
-  --m-red: #e0364f;
-  --m-amber: #d98a07;
+  --m-blue: #2459d6; /* 4.9:1 on its chip (was 4.2) */
+  --m-green: #077a3a; /* 5.3:1 on white, 4.8:1 on its chip (was 3.4) */
+  --m-red: #c0283f; /* 5.4:1 on white (was 4.4) */
+  --m-amber: #9a6100; /* 5.0:1 on white (was 2.8) */
   font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 1.3cqw;
   line-height: 1.35;

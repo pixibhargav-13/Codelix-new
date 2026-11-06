@@ -252,6 +252,12 @@ span.v2-label.pd2-reveal {
   background: color-mix(in srgb, var(--prod-accent) 5%, transparent);
 }
 
+/* the outlined number is decoration: drawn from data-n so it isn't read
+   out as text, or measured as text that fails contrast */
+.pd2-module-n::before {
+  content: attr(data-n);
+}
+
 .pd2-module-n {
   position: absolute;
   top: 12px;
