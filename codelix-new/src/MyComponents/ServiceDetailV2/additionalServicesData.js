@@ -113,8 +113,11 @@ const RAW = [
   },
   {
     slug: "erp-crm-development",
-    keywords: "ERP development company, CRM development, custom ERP software, custom CRM software, ERP software Ahmedabad, ERP CRM development India, business management software",
-    seoTitle: "ERP & CRM Software Development Company in India",
+    /* one page per intent (Search Console, Nov 2026): "ERP … Ahmedabad" searches
+       rank the Ahmedabad page at 23–43 and this one at 58–88, so this page
+       targets custom ERP and CRM development and links to that page instead */
+    keywords: "custom ERP development, custom CRM development, ERP and CRM development company India, custom ERP software, ERP software development services, CRM software development, business management software",
+    seoTitle: "Custom ERP & CRM Software Development in India | Codelix",
     seoDescription:
       "Custom ERP and CRM for manufacturers and distributors: inventory, production, GST e-invoicing and Tally sync. ERP from about ₹2.5 lakh, fixed quotes.",
     icon: Building2,
@@ -122,7 +125,7 @@ const RAW = [
     /* the visible H1 carries the search phrase ("ERP software development"),
        which the short card title can't; Search Console showed this page
        falling from 25 to 58 while three pages split the ERP queries */
-    h1: "ERP & CRM Software Development",
+    h1: "Custom ERP & CRM Software Development",
     description: "Custom ERP, CRM, inventory management, HRMS, manufacturing software, and enterprise business applications.",
     relatedCategory: "Custom Software Development",
     problems: pains([

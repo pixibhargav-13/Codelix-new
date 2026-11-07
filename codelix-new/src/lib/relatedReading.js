@@ -24,6 +24,8 @@ export const POST = {
 };
 const PAGE = {
   erp: { label: "ERP & CRM development", path: "/services/erp-crm-development", body: "Custom ERP and CRM built around how your business runs." },
+  /* the page that ranks for "ERP company in Ahmedabad" searches */
+  erpAhmedabad: { label: "ERP development company in Ahmedabad", path: "/best-erp-development-company-in-ahmedabad", body: "Our ERP work for businesses in Ahmedabad and Gujarat." },
   customSoftware: { label: "Custom software development", path: "/services/custom-software-development", body: "Internal tools, workflows and platforms built for your process." },
   /* Codelix ERP is the ERP product; /products/4bitx redirects to its
      overview page */
@@ -60,7 +62,7 @@ export const HIRE_GUIDES = {
 
 export const RELATED_READING = {
   "/services/custom-software-development": [POST.customCost, POST.customVsOts, PAGE.erp, POST.inHouse, PAGE.calculator],
-  "/services/erp-crm-development": [POST.erpCost, POST.tally, POST.ceramicErp, PAGE.codelixErp, PAGE.manufacturing],
+  "/services/erp-crm-development": [POST.erpCost, POST.tally, POST.ceramicErp, PAGE.codelixErp, PAGE.erpAhmedabad, PAGE.manufacturing],
   "/industries/manufacturing": [PAGE.erpManufacturing, PAGE.erp, POST.tally],
   "/products/codelix-erp": [POST.erpCost, POST.tally, PAGE.erp],
   "/products/codelix-erp/construction": [POST.erpCost, POST.customVsOts, PAGE.erp],
