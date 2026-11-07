@@ -1239,15 +1239,41 @@
 /* ───────────── outcome-led structure, Nov 2026 ───────────── */
 
 /* snapshot in the hero: up to five facts in a ruled grid that wraps */
+/* five facts in two full rows on a four-column grid:
+   Client (wide) · Industry · Service, then Platform (wide) · Built with (wide).
+   Client and stack are the longest values, so they get the room. */
 .v2 .csd2-glance.csd2-glance--snapshot {
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: .8px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
 }
-/* each cell draws its own hairline, so a short last row leaves empty space
-   rather than a filled grey block */
 .v2 .csd2-glance.csd2-glance--snapshot > div {
-  border-left: none;
-  box-shadow: 0 0 0 .8px var(--rule);
+  border-left: .8px solid var(--rule);
+  border-top: .8px solid var(--rule);
+}
+.v2 .csd2-glance.csd2-glance--snapshot > div:nth-child(1),
+.v2 .csd2-glance.csd2-glance--snapshot > div:nth-child(4) { border-left: none; }
+.v2 .csd2-glance.csd2-glance--snapshot > div:nth-child(-n + 3) { border-top: none; }
+.v2 .csd2-glance.csd2-glance--snapshot > div:nth-child(1),
+.v2 .csd2-glance.csd2-glance--snapshot > div:nth-child(4),
+.v2 .csd2-glance.csd2-glance--snapshot > div:nth-child(5) { grid-column: span 2; }
+@media (max-width: 700px) {
+  /* Client across the top, then two facts per row */
+  .v2 .csd2-glance.csd2-glance--snapshot { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .v2 .csd2-glance.csd2-glance--snapshot > div { grid-column: auto; border-left: .8px solid var(--rule); border-top: .8px solid var(--rule); }
+  .v2 .csd2-glance.csd2-glance--snapshot > div:nth-child(1) { grid-column: span 2; border-top: none; border-left: none; }
+  .v2 .csd2-glance.csd2-glance--snapshot > div:nth-child(2n) { border-left: none; }
+}
+
+/* three headline results fill the row (the grid was built for four) */
+.v2 .csd2-outcomes.csd2-results { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.v2 .csd2-outcomes.csd2-results:has(> .csd2-result:nth-child(2):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 760px) {
+  /* stacked on phones: three in a 2-up grid left an empty quarter */
+  .v2 .csd2-outcomes.csd2-results { grid-template-columns: 1fr; }
+  .v2 .csd2-results .csd2-result,
+  .v2 .csd2-results .csd2-result:nth-child(2n) { border-left: none; }
+  .v2 .csd2-results .csd2-result:nth-child(-n + 2) { border-top: .8px solid var(--rule); }
+  .v2 .csd2-results .csd2-result:first-child { border-top: none; }
 }
 
 /* how a headline metric was measured */
