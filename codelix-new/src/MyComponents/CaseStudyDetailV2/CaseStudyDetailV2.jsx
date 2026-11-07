@@ -88,6 +88,42 @@ function caseStudyHelpLinks(cs) {
   return links;
 }
 
+/* the closing call to action, by the study's service category: someone who
+   just read an ERP story is asking a different question from someone who
+   read about a store redesign */
+const CATEGORY_CTA = {
+  "Custom Software Development": {
+    line: "Still running operations on Excel and WhatsApp?",
+    accent: "Book a 30-minute call.",
+    body: "Tell us how the work moves today. We'll show you what one system would replace, what to build first, and send a written plan.",
+  },
+  "E-Commerce Solutions": {
+    line: "Losing shoppers between the product page and checkout?",
+    accent: "Book a 30-minute call.",
+    body: "Walk us through your store. We'll point out where buyers drop off and send a written plan for fixing it.",
+  },
+  "Application Development": {
+    line: "Need an app your users will actually open?",
+    accent: "Book a 30-minute call.",
+    body: "Tell us who uses it and what they need to get done. We'll scope the first version and send a written plan.",
+  },
+  "Web Development": {
+    line: "Is your website losing leads before the first call?",
+    accent: "Book a 30-minute call.",
+    body: "Show us the site and who it needs to win over. We'll tell you what is costing you enquiries and send a written plan.",
+  },
+  "UI/UX Design": {
+    line: "Does your website undersell your work?",
+    accent: "Book a 30-minute call.",
+    body: "Tell us who you want to win. We'll show you where the design gets in the way and send a written plan.",
+  },
+  default: {
+    line: "Bring us the problem.",
+    accent: "We'll bring back a scoped plan.",
+    body: "A structured conversation about your product: your users, your workflows, your constraints. We scope what should be built first, what can wait, and what it takes to ship it.",
+  },
+};
+
 export default function CaseStudyDetailV2() {
   const { slug } = useParams();
   const { studies: caseStudies, loading } = useCaseStudies();
@@ -183,6 +219,18 @@ export default function CaseStudyDetailV2() {
     cs.category && ["Service", CATEGORY_SERVICE[cs.category]?.label || cs.category],
     (cs.tools || cs.tags || []).length > 0 && ["Built with", (cs.tools || cs.tags).slice(0, 3).join(", ")],
   ].filter(Boolean);
+  /* the snapshot (client, industry, service, platform, stack) replaces the
+     derived facts when a study has one */
+  const glanceRows = cs.snapshot ? cs.snapshot.map((x) => [x.label, x.value]) : glance;
+
+  /* the story in the order a buyer reads it: the overview's paragraphs are
+     [summary, situation before, what we built, result]; a short overview
+     falls back to the first paragraph as the "before" */
+  const overview = cs.overview || [];
+  const beforeText = overview.length >= 3 ? overview[1] : overview[0];
+  const builtParas = overview.length >= 3 ? overview.slice(2) : overview.slice(1);
+  const pairs = Array.from({ length: Math.max(cs.challenges?.length || 0, cs.solutions?.length || 0) }, (_, i) => [cs.challenges?.[i], cs.solutions?.[i]]);
+  const cta = CATEGORY_CTA[cs.category] || CATEGORY_CTA.default;
 
   return (
     <div className="v2" ref={rootRef}>
@@ -238,9 +286,9 @@ export default function CaseStudyDetailV2() {
                 ))}
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">{cs.description}</p>
-              {glance.length > 0 && (
-                <dl className="csd2-glance sv2-hero-reveal">
-                  {glance.map(([k, v]) => (
+              {glanceRows.length > 0 && (
+                <dl className={`csd2-glance sv2-hero-reveal${cs.snapshot ? " csd2-glance--snapshot" : ""}`}>
+                  {glanceRows.map(([k, v]) => (
                     <div key={k}>
                       <dt>{k}</dt>
                       <dd>{v}</dd>
@@ -287,34 +335,18 @@ export default function CaseStudyDetailV2() {
           <p className="v2-label">The Results</p>
           <h2 className="v2-heading">What changed after launch.</h2>
           <div className="csd2-outcomes csd2-results">
-            {cs.outcomes.map((o, i) => (
+            {cs.outcomes.slice(0, 3).map((o, i) => (
               <div className="csd2-result" key={i}>
                 <span className="csd2-result-num">
                   <span className="sd2-bench-value" data-target={o.value}>{o.value}</span>
                   <span className="csd2-result-suffix">{o.suffix}</span>
                 </span>
                 <span className="csd2-result-label">{o.label}</span>
+                {o.note && <span className="csd2-result-note">{o.note}</span>}
               </div>
             ))}
           </div>
           {cs.resultsNote && <p className="csd2-results-note">{cs.resultsNote}</p>}
-        </section>
-      )}
-
-      {/* ══════════ 1b · SNAPSHOT — only present on richer, fully-briefed
-          case studies; older entries without this data simply skip it. ══ */}
-      {cs.snapshot && (
-        <section className="v2-section v2-section--void" id="snapshot">
-          <p className="v2-label">Engagement at a Glance</p>
-          <h2 className="v2-heading">The project, in numbers.</h2>
-          <div className="csd2-snapshot">
-            {cs.snapshot.map((s, i) => (
-              <div className="csd2-snapshot-item" key={i}>
-                <span className="csd2-snapshot-k">{s.label}</span>
-                <span className="csd2-snapshot-v">{s.value}</span>
-              </div>
-            ))}
-          </div>
         </section>
       )}
 
@@ -328,29 +360,46 @@ export default function CaseStudyDetailV2() {
       {/* two columns on desktop: the heading and lead paragraph stay in
           view on the left while the rest reads as numbered blocks on the
           right — as one long column it left half the screen empty */}
-      <section className="v2-section" id="overview">
-        <div className="csd2-brief">
-          <div className="csd2-brief-head">
-            <p className="v2-label">Project Overview</p>
-            <h2 className="v2-heading">The project in brief.</h2>
-            {cs.overview[0] && <p className="csd2-overview-lead">{cs.overview[0]}</p>}
+      {beforeText && (
+        <section className="v2-section" id="before">
+          <div className="csd2-brief">
+            <div className="csd2-brief-head">
+              <p className="v2-label">The Situation Before</p>
+              <h2 className="v2-heading">Where they started.</h2>
+            </div>
+            <p className="csd2-overview-lead csd2-before">{beforeText}</p>
           </div>
-          {cs.overview.length > 1 && (
-            <ol className="csd2-brief-body">
-              {cs.overview.slice(1).map((p, i) => (
-                <li key={i}>
-                  <span className="csd2-brief-n">{String(i + 1).padStart(2, "0")}</span>
-                  <p>{p}</p>
-                </li>
-              ))}
-            </ol>
-          )}
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* ══════════ 2a-i · CHALLENGE IMAGES — two illustrative diagrams
-          side by side, giving the problem section a visual anchor before
-          the reader hits the text list. ══════════ */}
+      {/* every problem next to what was done about it, row by row: as two
+          separate lists the reader had to match them up */}
+      {pairs.length > 0 && (
+        <section className="v2-section v2-section--void" id="challenges">
+          <p className="v2-label">Problem → What We Did</p>
+          <h2 className="v2-heading">What was broken, and how we fixed it.</h2>
+          <div className="csd2-pairs" role="table" aria-label="Problems and what we did about each">
+            <div className="csd2-pair csd2-pair--head" role="row">
+              <span role="columnheader">The problem</span>
+              <span role="columnheader">What we did</span>
+            </div>
+            {pairs.map(([problem, fix], i) => (
+              <div className="csd2-pair" role="row" key={i}>
+                <div className="csd2-pair-cell csd2-pair-cell--problem" role="cell">
+                  <span className="csd2-issue-icon"><X size={13} strokeWidth={2.6} /></span>
+                  <span className="csd2-issue-n">{String(i + 1).padStart(2, "0")}</span>
+                  <p>{problem}</p>
+                </div>
+                <div className="csd2-pair-cell csd2-pair-cell--fix" role="cell">
+                  <span className="csd2-issue-icon"><Check size={13} strokeWidth={2.6} /></span>
+                  <p>{fix}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {cs.challengeImages && (
         <div className="csd2-duo">
           {cs.challengeImages.map((img, i) => (
@@ -361,43 +410,24 @@ export default function CaseStudyDetailV2() {
         </div>
       )}
 
-      {/* ══════════ 2b · CHALLENGES / SOLUTIONS — placed right after the
-          objectives so a reader hits problem-then-solution before the
-          results and delivery process, matching how the story actually
-          unfolded rather than leading with the numbers. Each point gets
-          its own row with a colored icon (red = problem, green = fixed)
-          instead of a wall of prose paragraphs. ══════════ */}
-      <section className="v2-section" id="challenges">
-        <div className="csd2-challenges-grid">
-          <div className="csd2-challenges-col">
-            <p className="v2-label">Before</p>
-            <h2 className="v2-heading">What wasn't working.</h2>
-            <div className="csd2-issues csd2-issues--problem">
-              {cs.challenges.map((p, i) => (
-                <div className="csd2-issue-row" key={i}>
-                  <span className="csd2-issue-icon"><X size={13} strokeWidth={2.6} /></span>
-                  <span className="csd2-issue-n">{String(i + 1).padStart(2, "0")}</span>
-                  <p>{p}</p>
-                </div>
-              ))}
+      {builtParas.length > 0 && (
+        <section className="v2-section" id="overview">
+          <div className="csd2-brief">
+            <div className="csd2-brief-head">
+              <p className="v2-label">What We Built</p>
+              <h2 className="v2-heading">How the build came together.</h2>
             </div>
-          </div>
-
-          <div className="csd2-challenges-col">
-            <p className="v2-label">After</p>
-            <h2 className="v2-heading">What we built.</h2>
-            <div className="csd2-issues csd2-issues--solution">
-              {cs.solutions.map((p, i) => (
-                <div className="csd2-issue-row" key={i}>
-                  <span className="csd2-issue-icon"><Check size={13} strokeWidth={2.6} /></span>
-                  <span className="csd2-issue-n">{String(i + 1).padStart(2, "0")}</span>
+            <ol className="csd2-brief-body">
+              {builtParas.map((p, i) => (
+                <li key={i}>
+                  <span className="csd2-brief-n">{String(i + 1).padStart(2, "0")}</span>
                   <p>{p}</p>
-                </div>
+                </li>
               ))}
-            </div>
+            </ol>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ══════════ 3 · DELIVERY PROCESS — reuses the same sticky-header
           method-row pattern already proven on the service pages, rather
@@ -447,8 +477,8 @@ export default function CaseStudyDetailV2() {
       {/* ══════════ 4b · CORE FEATURES ══════════ */}
       {cs.features && (
         <section className="v2-section" id="features">
-          <p className="v2-label">Core Features</p>
-          <h2 className="v2-heading">What shipped inside the system.</h2>
+          <p className="v2-label">Also In The Build</p>
+          <h2 className="v2-heading">More of what shipped.</h2>
           <div className="csd2-features">
             {cs.features.map((f, i) => (
               <div className="csd2-feature" key={i}>
@@ -574,14 +604,11 @@ export default function CaseStudyDetailV2() {
         
           <p className="v2-label">Start Here</p>
           <h2 className="v2-cta-headline">
-            Bring us the problem.
+            {cta.line}
             <br />
-            <span className="v2-cta-accent">We'll bring back a scoped plan.</span>
+            <span className="v2-cta-accent">{cta.accent}</span>
           </h2>
-          <p className="v2-cta-body">
-            A structured conversation about your product — your users, your workflows, your constraints.
-            We scope what should be built first, what can wait, and what it takes to ship it.
-          </p>
+          <p className="v2-cta-body">{cta.body}</p>
           <div className="v2-cta-actions">
             <Link className="v2-btn" to="/contact">Book a consultation →</Link></div>
 </CtaSection>

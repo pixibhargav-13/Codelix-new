@@ -1235,3 +1235,76 @@
 @media (max-width: 700px) {
   .v2 .csd2-tools-row { flex-direction: column; align-items: flex-start; padding: 18px; }
 }
+
+/* ───────────── outcome-led structure, Nov 2026 ───────────── */
+
+/* snapshot in the hero: up to five facts in a ruled grid that wraps */
+.v2 .csd2-glance.csd2-glance--snapshot {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: .8px;
+}
+/* each cell draws its own hairline, so a short last row leaves empty space
+   rather than a filled grey block */
+.v2 .csd2-glance.csd2-glance--snapshot > div {
+  border-left: none;
+  box-shadow: 0 0 0 .8px var(--rule);
+}
+
+/* how a headline metric was measured */
+.v2 .csd2-result-note {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(242, 240, 236, .5);
+}
+
+/* the situation before, set as one readable lead paragraph */
+.v2 .csd2-before {
+  margin: 0;
+  max-width: 62ch;
+}
+
+/* problem → what we did, one row per problem */
+.v2 .csd2-pairs {
+  margin-top: 40px;
+  border: .8px solid var(--rule);
+  border-radius: 18px;
+  overflow: hidden;
+}
+.v2 .csd2-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: .8px solid var(--rule);
+}
+.v2 .csd2-pair:first-child { border-top: none; }
+.v2 .csd2-pair--head span {
+  padding: 16px 24px;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(242, 240, 236, .5);
+}
+.v2 .csd2-pair-cell {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 22px 24px;
+}
+.v2 .csd2-pair-cell--fix {
+  border-left: .8px solid var(--rule);
+  background: rgba(62, 125, 252, .045);
+}
+.v2 .csd2-pair-cell p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(242, 240, 236, .8);
+}
+.v2 .csd2-pair-cell--problem .csd2-issue-icon { color: #f08a8a; }
+.v2 .csd2-pair-cell--fix .csd2-issue-icon { color: #6fd39b; }
+.v2 .csd2-pair-cell .csd2-issue-icon { flex: none; margin-top: 4px; }
+@media (max-width: 760px) {
+  .v2 .csd2-pair { grid-template-columns: 1fr; }
+  .v2 .csd2-pair--head { display: none; }
+  .v2 .csd2-pair-cell--fix { border-left: none; border-top: .8px dashed var(--rule); }
+  .v2 .csd2-pair-cell { padding: 18px; }
+}
