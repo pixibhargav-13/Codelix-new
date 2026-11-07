@@ -19,7 +19,7 @@ import { renderArticle, articleHeadings, articleFaqs } from "../../lib/articleMa
 import { servicesForPost } from "../../lib/blogServices";
 import { pickRelated } from "../../lib/pickRelated";
 import { authorFor } from "../../lib/people";
-import { useBlogPosts, toISODate } from "../../data/useBlogPosts";
+import { useBlogPosts, toISODate, SITE_TZ } from "../../data/useBlogPosts";
 import ArticleSkeleton from "../Shared/ArticleSkeleton";
 import FullCopyReload from "../Shared/FullCopyReload";
 import NotFound from "../NotFound/NotFound";
@@ -154,8 +154,10 @@ export default function BlogDetailV2() {
      byline would otherwise announce an update that never happened */
   const updatedIso = toISODate(blog.updatedAt);
   const publishedIso = toISODate(blog.publishedAt || blog.date);
-  const updated = updatedIso && (!publishedIso || updatedIso.slice(0, 10) > publishedIso.slice(0, 10))
-    ? new Date(updatedIso).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })
+  /* the calendar day in the site's time zone, the same one the dates print in */
+  const dayOf = (iso) => new Date(iso).toLocaleDateString("en-CA", { timeZone: SITE_TZ });
+  const updated = updatedIso && (!publishedIso || dayOf(updatedIso) > dayOf(publishedIso))
+    ? new Date(updatedIso).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: SITE_TZ })
     : null;
   const copyLink = () => {
     navigator.clipboard?.writeText(pageUrl).then(() => {
