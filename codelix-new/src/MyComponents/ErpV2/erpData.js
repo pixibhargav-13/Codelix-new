@@ -138,8 +138,9 @@ export const ERP_OVERVIEW = {
   name: "Codelix Custom ERP",
   title: "Codelix Custom ERP",
   badge: "ERP for every industry",
-  seoTitle: "Codelix Custom ERP for Construction & Manufacturing",
-  seoDescription: "One ERP for Indian construction companies and manufacturers: projects, production, inventory, purchase, payroll, accounts and GST, on web and mobile, set up for your industry.",
+  /* all four editions: ceramic and textile were missing */
+  seoTitle: "Codelix ERP: Construction, Manufacturing, Ceramic & Textile",
+  seoDescription: "One ERP for Indian contractors, manufacturers, ceramic and textile units: projects, production, inventory, purchase, payroll, accounts and GST, web and mobile.",
   keywords: "Codelix ERP, ERP software India, construction ERP, manufacturing ERP, ceramic ERP, textile ERP, ERP for SMEs, ERP software Ahmedabad, ERP software Gujarat, ERP with GST, ERP mobile app",
   tagline: "One ERP for your whole business, set up for how your industry actually works. On the web in the office, and on the phone at the site or on the floor.",
   facts: [["Editions", "Construction, Manufacturing, Ceramic, Textile"], ["Works on", "Web and mobile app"], ["Built by", "Codelix IT Solutions"]],
