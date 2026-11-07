@@ -297,4 +297,194 @@ export const HIRE_DEEP_DIVES = {
       ],
     },
   ],
+
+  /* second batch, by Search Console impressions (Oct–Nov 2026): AI 1,221
+     at pos 67, Android 493 at pos 59, Laravel pos 50–66, MERN pos 70–87 */
+  "/hire-developers/ai": [
+    {
+      id: "ai-compare",
+      label: "Which AI Developer",
+      question: "LLM developer, machine learning engineer or automation builder: which do you need?",
+      answer: "Most companies hiring AI developers need an LLM application developer: someone who connects GPT, Claude or Gemini to their own documents and systems, with guardrails and cost control. Hire a machine learning engineer only for a prediction problem with plenty of labelled data, and an automation builder when the job is moving data between tools.",
+      table: {
+        highlight: 1,
+        cols: ["", "LLM / AI app developer", "Machine learning engineer", "Automation builder"],
+        rows: [
+          ["Builds", "Chatbots, assistants, document search, AI agents", "Custom models for prediction, classification, vision", "Workflows connecting your apps"],
+          ["Your data is used to", "Answer from (documents, databases)", "Train on (labelled history)", "Move between tools"],
+          ["Typical stack", "Python or Node.js, vector database, LLM APIs", "Python, scikit-learn, PyTorch", "n8n, Make or Zapier, small scripts"],
+          ["Before the first version", "Collect real examples", "Prepare and label data, then train", "Map the steps"],
+          ["Hire when", "You want AI inside your product or workflow", "You have years of labelled data and one prediction to make", "The work is copying data, not reasoning about it"],
+        ],
+      },
+      more: [
+        { label: "AI agent development", href: "/services/ai-agent-development" },
+        { label: "AI development services", href: "/services/ai-development" },
+        { label: "AI chatbot cost in India", href: `${BLOG}ai-chatbot-cost-in-india` },
+      ],
+    },
+    {
+      id: "ai-vetting",
+      label: "Before You Hire",
+      question: "What should you ask an AI developer before hiring?",
+      answer: "Ask how they know the AI is right, not which model they like: how they measure answers, search your documents, control cost, protect your data and stop an agent from doing something harmful.",
+      points: [
+        { title: "Measuring quality", body: "How do they check answers are right before and after a change? Look for a test set of real questions scored automatically, not \"we tried a few prompts\"." },
+        { title: "Searching your documents", body: "How do they split and search your documents, and what happens when the answer isn't there? A good answer covers hybrid search, citations and saying \"I don't know\"." },
+        { title: "Cost per conversation", body: "How do they estimate it, and what do they do when it's too high: caching, a smaller model for simple steps, shorter prompts?" },
+        { title: "Your data", body: "Where does it go, and can the provider train on it? They should know each provider's data settings and when to keep data in your own cloud." },
+        { title: "Agents that act", body: "When an agent calls your systems, how is it kept safe? Look for limited permissions, a confirmation step for risky actions and a log of every call." },
+      ],
+    },
+    {
+      id: "ai-first-weeks",
+      label: "The First Two Weeks",
+      question: "What happens in the first two weeks with an AI developer?",
+      answer: "The first days pin down one task and real examples of it, a working prototype answers those examples by the end of week one, and week two builds the test set that measures every change after it.",
+      points: [
+        { title: "Days 1–2: one task, real examples", body: "Agree the first task to automate and collect real questions, documents or tickets to test it on." },
+        { title: "Days 3–5: a working prototype", body: "A first version answering your real examples, so you can judge quality early." },
+        { title: "Week 2: a test set", body: "Real questions with the answers you expect, scored automatically, so each change is measured instead of guessed." },
+        { title: "Week 2 on: production work", body: "Guardrails, logging, cost limits and the connection into your product or tools." },
+      ],
+    },
+  ],
+
+  "/hire-developers/android": [
+    {
+      id: "and-compare",
+      label: "Native Android vs Cross-Platform",
+      question: "Native Android, Flutter or React Native: when should you hire Android developers?",
+      answer: "Hire native Android developers when the app is Android-only or leans on the device: running in the background all day, talking to Bluetooth scanners or printers, or staying fast on low-end phones. For a new app on both Android and iOS, Flutter or React Native usually costs less.",
+      table: {
+        highlight: 1,
+        cols: ["", "Native Android (Kotlin)", "Flutter", "React Native"],
+        rows: [
+          ["Platforms", "Android only", "Android and iOS", "Android and iOS"],
+          ["Language", "Kotlin (and Java)", "Dart", "JavaScript / TypeScript"],
+          ["Background work, Bluetooth, hardware", "Every Android API directly", "Through plugins or platform channels", "Through libraries or native modules"],
+          ["App size on low-end phones", "Smallest", "Larger (ships its own engine)", "Larger (ships a JavaScript runtime)"],
+          ["Best for", "Field apps, device integration, Android-only products", "New apps for both stores", "Teams already on React"],
+        ],
+      },
+      more: [hire("flutter", "Hire Flutter developers"), hire("react-native", "Hire React Native developers"), { label: "App development cost in India", href: `${BLOG}app-development-cost-in-india` }],
+    },
+    {
+      id: "and-vetting",
+      label: "Before You Hire",
+      question: "What should you ask an Android developer before hiring?",
+      answer: "Ask about modern Android and about the parts that only show up on real phones: Jetpack Compose, background limits, app architecture, Google Play policies, and testing across many devices.",
+      points: [
+        { title: "Jetpack Compose", body: "Have they built screens in Compose and moved an older XML layout to it? Compose is Google's recommended UI toolkit." },
+        { title: "Background work", body: "How do they run work that must finish after the app closes (WorkManager) while staying within Android's background and battery rules?" },
+        { title: "Architecture", body: "How do they use ViewModels, coroutines and Flow so a screen survives rotation and the system killing the app?" },
+        { title: "Google Play", body: "Have they handled app bundles and signing, a policy rejection, and the yearly target-API update?" },
+        { title: "Many devices", body: "How do they test across Android versions and screen sizes, and read crashes in Crashlytics or Play vitals?" },
+      ],
+    },
+    {
+      id: "and-first-weeks",
+      label: "The First Two Weeks",
+      question: "What happens in the first two weeks with an Android developer?",
+      answer: "The build runs locally and in CI in the first days, a first change reaches you as a Google Play test build by the end of week one, and week two starts with a note on target API, libraries and crashes.",
+      points: [
+        { title: "Days 1–2: building and running", body: "The Gradle build working locally and in CI, and the app running on an emulator and a real low-end phone." },
+        { title: "Days 3–5: one real ticket", body: "A fix or small feature delivered as an internal test build on Google Play." },
+        { title: "Week 2: a health note", body: "Target API level, outdated libraries, crashes and freezes from Play vitals, ranked by what users feel most." },
+        { title: "Week 2 on: your backlog", body: "Features and fixes, each as a test build you can install." },
+      ],
+    },
+  ],
+
+  "/hire-developers/laravel": [
+    {
+      id: "lv-compare",
+      label: "Laravel vs Node.js vs Django",
+      question: "Laravel, Node.js or Django: when is Laravel the right hire?",
+      answer: "Hire Laravel developers for business applications full of forms, records and admin screens: billing, booking, school or inventory systems. Laravel ships those faster because authentication, queues, mail and scheduling come built in. Node.js suits real-time apps and JavaScript teams, and Django data-heavy products.",
+      table: {
+        highlight: 1,
+        cols: ["", "Laravel (PHP)", "Node.js", "Django (Python)"],
+        rows: [
+          ["Strongest at", "Admin-heavy business apps", "APIs, real-time, integrations", "Data-heavy apps and AI features"],
+          ["Comes built in", "Auth, queues, mail, scheduling, migrations", "Very little; chosen from libraries", "Admin, auth, ORM, migrations"],
+          ["Admin panel", "Filament or Nova", "Built separately", "Django admin"],
+          ["Hosting", "Any PHP host, or Forge and Laravel Cloud", "Node servers, containers, serverless", "Python servers or containers"],
+          ["Best for", "Billing, booking, school and ERP-style systems", "Real-time apps, JavaScript teams", "Data- and AI-backed products"],
+        ],
+      },
+      more: [{ label: "Laravel vs Node.js for business web apps", href: `${BLOG}laravel-vs-node-js-for-business-web-apps` }, hire("nodejs", "Hire Node.js developers"), hire("python", "Hire Python developers")],
+    },
+    {
+      id: "lv-vetting",
+      label: "Before You Hire",
+      question: "What should you ask a Laravel developer before hiring?",
+      answer: "Ask about what keeps a Laravel app healthy for years: query performance, version upgrades, queues, security defaults and tests on the flows that make money.",
+      points: [
+        { title: "Eloquent performance", body: "How do they find N+1 queries on a page listing hundreds of records: eager loading, Debugbar or Telescope?" },
+        { title: "Version upgrades", body: "Have they upgraded an app across several Laravel versions, and how did they handle packages that lagged behind?" },
+        { title: "Queues", body: "What goes on a queue, how are failed jobs retried, and how do they watch them in Horizon?" },
+        { title: "Security defaults", body: "How do they handle mass assignment, authorization policies and validation, and keep secrets out of the repository?" },
+        { title: "Tests that matter", body: "Do they write feature tests with PHPUnit or Pest for checkout, invoicing and other flows that make money?" },
+      ],
+    },
+    {
+      id: "lv-first-weeks",
+      label: "The First Two Weeks",
+      question: "What happens in the first two weeks with a Laravel developer?",
+      answer: "The app runs locally with its database and queues in the first days, a first fix ships with a test by the end of week one, and week two starts with a note on versions, upgrade blockers and security.",
+      points: [
+        { title: "Days 1–2: running locally", body: "PHP, Composer packages, the database and queues running with Sail or Herd, plus seed data." },
+        { title: "Days 3–5: a first fix", body: "One real ticket shipped with a test, through your review process." },
+        { title: "Week 2: an upgrade and security note", body: "Laravel and PHP versions, packages that block an upgrade, and any security issues found." },
+        { title: "Week 2 on: your backlog", body: "Features and fixes, with feature tests on the flows they touch." },
+      ],
+    },
+  ],
+
+  "/hire-developers/mern": [
+    {
+      id: "mern-compare",
+      label: "MERN vs Other Stacks",
+      question: "MERN, Next.js with PostgreSQL, or Laravel with React: when is MERN the right hire?",
+      answer: "Hire MERN developers when one JavaScript team should own the whole product and your data changes shape often: MVPs, marketplaces, real-time features and internal tools. If the data is strongly relational with a lot of reporting, a PostgreSQL stack such as Next.js or Laravel usually fits better.",
+      table: {
+        highlight: 1,
+        cols: ["", "MERN", "Next.js + PostgreSQL", "Laravel + React"],
+        rows: [
+          ["Language", "JavaScript / TypeScript throughout", "JavaScript / TypeScript throughout", "PHP backend, JavaScript frontend"],
+          ["Database", "MongoDB (documents)", "PostgreSQL (relational)", "MySQL or PostgreSQL (relational)"],
+          ["Suits data that", "Changes shape often, nests deeply", "Has strict relations and reports", "Has strict relations and reports"],
+          ["Search-friendly pages", "Needs extra setup, or Next.js", "Built in (server rendering)", "Server-rendered Blade or Inertia"],
+          ["Best for", "MVPs, real-time apps, flexible data", "Content-heavy SaaS and marketing sites", "Admin-heavy business apps"],
+        ],
+      },
+      more: [hire("full-stack", "Hire full-stack developers"), hire("react", "Hire React developers"), hire("nodejs", "Hire Node.js developers")],
+    },
+    {
+      id: "mern-vetting",
+      label: "Before You Hire",
+      question: "What should you ask a MERN stack developer before hiring?",
+      answer: "Ask about MongoDB first, because that is where MERN apps slow down or get hard to report on: schema design, indexes and transactions, then authentication and keeping data-heavy React screens fast.",
+      points: [
+        { title: "Schema design", body: "When do they embed documents and when do they reference them? It decides how fast your queries are and how hard reports become." },
+        { title: "Indexes", body: "How do they find slow queries with explain plans or the Atlas profiler, and choose indexes?" },
+        { title: "Transactions", body: "Where does the app need multi-document transactions, such as payments, and how do they handle them in MongoDB?" },
+        { title: "Auth and injection", body: "How do they handle sessions or JWTs, refresh tokens, and NoSQL injection in queries?" },
+        { title: "Fast React screens", body: "How do they keep a data-heavy screen quick: pagination, memoisation and data fetching with React Query?" },
+      ],
+    },
+    {
+      id: "mern-first-weeks",
+      label: "The First Two Weeks",
+      question: "What happens in the first two weeks with a MERN developer?",
+      answer: "The database, API and React app run locally and on staging in the first days, one small feature ships end to end by the end of week one, and week two starts with a note on indexes and schema choices.",
+      points: [
+        { title: "Days 1–2: the stack running", body: "MongoDB, the Express API and the React app running locally and on staging." },
+        { title: "Days 3–5: one feature end to end", body: "A small feature from collection to screen, with an API test." },
+        { title: "Week 2: a data note", body: "Missing indexes, slow queries and schema choices that will hurt as data grows." },
+        { title: "Week 2 on: your backlog", body: "Features end to end, each with its API change and screen in one pull request." },
+      ],
+    },
+  ],
 };
