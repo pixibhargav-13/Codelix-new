@@ -166,6 +166,9 @@ export default function CaseStudyDetailV2() {
     const nums = rootRef.current?.querySelectorAll(".sd2-bench-value") || [];
     const runNum = (el) => {
       const target = Number(el.dataset.target);
+      /* a value like "4d→1d" is text, not a count: leave it as written
+         instead of animating it into "NaN" */
+      if (!Number.isFinite(target)) return;
       const isDecimal = target % 1 !== 0;
       const start = performance.now();
       const step = (now) => {
@@ -287,7 +290,7 @@ export default function CaseStudyDetailV2() {
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">{cs.description}</p>
               {glanceRows.length > 0 && (
-                <dl className={`csd2-glance sv2-hero-reveal${cs.snapshot ? " csd2-glance--snapshot" : ""}`}>
+                <dl className={`csd2-glance sv2-hero-reveal${cs.snapshot ? ` csd2-glance--snapshot${cs.snapshot.length === 5 ? " csd2-glance--five" : ""}` : ""}`}>
                   {glanceRows.map(([k, v]) => (
                     <div key={k}>
                       <dt>{k}</dt>
@@ -367,7 +370,17 @@ export default function CaseStudyDetailV2() {
               <p className="v2-label">The Situation Before</p>
               <h2 className="v2-heading">Where they started.</h2>
             </div>
-            <p className="csd2-overview-lead csd2-before">{beforeText}</p>
+            <div>
+              <p className="csd2-overview-lead csd2-before">{beforeText}</p>
+              {cs.constraints && (
+                <div className="csd2-constraints">
+                  <span className="csd2-constraints-k">Constraints we worked within</span>
+                  <ul>
+                    {cs.constraints.map((c, i) => <li key={i}>{c}</li>)}
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
         </section>
       )}
@@ -376,12 +389,13 @@ export default function CaseStudyDetailV2() {
           separate lists the reader had to match them up */}
       {pairs.length > 0 && (
         <section className="v2-section v2-section--void" id="challenges">
-          <p className="v2-label">Problem → What We Did</p>
+          <p className="v2-label">Problem → What We Did{cs.pairResults ? " → Result" : ""}</p>
           <h2 className="v2-heading">What was broken, and how we fixed it.</h2>
-          <div className="csd2-pairs" role="table" aria-label="Problems and what we did about each">
+          <div className={`csd2-pairs${cs.pairResults ? " csd2-pairs--results" : ""}`} role="table" aria-label="Problems, what we did about each, and the result">
             <div className="csd2-pair csd2-pair--head" role="row">
               <span role="columnheader">The problem</span>
               <span role="columnheader">What we did</span>
+              {cs.pairResults && <span role="columnheader">The result</span>}
             </div>
             {pairs.map(([problem, fix], i) => (
               <div className="csd2-pair" role="row" key={i}>
@@ -394,7 +408,32 @@ export default function CaseStudyDetailV2() {
                   <span className="csd2-issue-icon"><Check size={13} strokeWidth={2.6} /></span>
                   <p>{fix}</p>
                 </div>
+                {cs.pairResults && (
+                  <div className="csd2-pair-cell csd2-pair-cell--result" role="cell">
+                    <p>{cs.pairResults[i]}</p>
+                  </div>
+                )}
               </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {cs.screens && (
+        <section className="v2-section" id="screens">
+          <p className="v2-label">Key Screens</p>
+          <h2 className="v2-heading">The system, as the team uses it.</h2>
+          <div className="csd2-screens">
+            {cs.screens.map((sc, i) => (
+              <figure className={`csd2-screen${i === 0 ? " is-wide" : ""}`} key={i}>
+                <div className="csd2-screen-frame">
+                  <img src={sc.src} alt={sc.alt || sc.caption} loading="lazy" />
+                </div>
+                <figcaption>
+                  <strong>{sc.title}</strong>
+                  {sc.caption && <span>{sc.caption}</span>}
+                </figcaption>
+              </figure>
             ))}
           </div>
         </section>
@@ -542,14 +581,27 @@ export default function CaseStudyDetailV2() {
       {/* ══════════ 5c · CLIENT TESTIMONIAL ══════════ */}
       {cs.quote && (
         <section className="v2-section">
-          <figure className="sd2-quote">
-            <span className="sd2-quote-mark" aria-hidden="true">&ldquo;</span>
-            <blockquote className="sd2-quote-text">{cs.quote.text}</blockquote>
-            <figcaption className="sd2-quote-by">
-              {cs.quote.name && <span className="sd2-quote-name">{cs.quote.name}</span>}
-              <span className="sd2-quote-role">{cs.quote.role}</span>
-            </figcaption>
-          </figure>
+          <div className={`csd2-voice${cs.quote.video ? " has-video" : ""}`}>
+            <figure className="sd2-quote">
+              <span className="sd2-quote-mark" aria-hidden="true">&ldquo;</span>
+              <blockquote className="sd2-quote-text">{cs.quote.text}</blockquote>
+              <figcaption className="sd2-quote-by csd2-quote-by">
+                {cs.quote.photo
+                  ? <img className="csd2-quote-photo" src={cs.quote.photo} alt={cs.quote.name} loading="lazy" />
+                  : cs.quote.name && <span className="csd2-quote-photo csd2-quote-initials" aria-hidden="true">{cs.quote.name.split(" ").map((w) => w[0]).join("").slice(0, 2)}</span>}
+                <span>
+                  {cs.quote.name && <span className="sd2-quote-name">{cs.quote.name}</span>}
+                  <span className="sd2-quote-role">{cs.quote.role}</span>
+                </span>
+              </figcaption>
+            </figure>
+            {cs.quote.video && (
+              <div className="csd2-voice-video">
+                <video src={cs.quote.video} poster={cs.quote.poster || undefined} controls preload="none" playsInline />
+                <span className="csd2-voice-video-k">In their words · 60 seconds</span>
+              </div>
+            )}
+          </div>
         </section>
       )}
 
