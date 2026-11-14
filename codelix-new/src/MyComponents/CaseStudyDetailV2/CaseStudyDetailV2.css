@@ -1459,6 +1459,29 @@
   color: rgba(242, 240, 236, .82);
 }
 
-/* no screenshots yet: the stack row alone, without a full section's padding */
-.v2 .v2-section.csd2-stack-only { padding-top: 0; padding-bottom: clamp(48px, 6vw, 80px); }
-.v2 .csd2-stack-only .csd2-stack { margin-top: 14px; }
+/* no screenshots yet: the stack sits under the problem table as one
+   labelled row, instead of a near-empty band of its own */
+.v2 .csd2-builtwith {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px 20px;
+  margin-top: 28px;
+  padding: 18px 22px;
+  border: .8px solid var(--rule);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .02);
+}
+.v2 .csd2-builtwith-k {
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(242, 240, 236, .5);
+  white-space: nowrap;
+}
+.v2 .csd2-builtwith .csd2-stack { margin: 0; }
+.v2 .csd2-stack li { background: rgba(255, 255, 255, .03); transition: border-color .2s, color .2s; }
+.v2 .csd2-stack li:hover { border-color: rgba(62, 125, 252, .55); color: #fff; }
+@media (max-width: 700px) {
+  .v2 .csd2-builtwith { flex-direction: column; align-items: flex-start; padding: 16px; }
+}

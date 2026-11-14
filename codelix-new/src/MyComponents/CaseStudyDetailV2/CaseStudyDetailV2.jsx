@@ -73,6 +73,10 @@ const HIRE_LABEL = {
 };
 
 /* every study carries its own category and industry (see caseStudyRow.js) */
+/* the stack tags show each tool by its proper name ("Nodejs" → "Node.js") */
+const TOOL_NAME = { nodejs: "Node.js", reactjs: "React", expressjs: "Express", postgres: "PostgreSQL", mongodb: "MongoDB", mysql: "MySQL", aws: "AWS" };
+const toolName = (t) => TOOL_NAME[String(t).toLowerCase()] || t;
+
 const projectInfo = (cs) => ({ category: cs.category, industry: cs.industry });
 
 function caseStudyHelpLinks(cs) {
@@ -389,39 +393,43 @@ export default function CaseStudyDetailV2() {
               </div>
             ))}
           </div>
+          {!cs.screens && cs.tools?.length > 0 && (
+            <div className="csd2-builtwith">
+              <span className="csd2-builtwith-k">Built with</span>
+              <ul className="csd2-stack" aria-label="Tech stack">
+                {cs.tools.map((t) => <li key={t}>{toolName(t)}</li>)}
+              </ul>
+            </div>
+          )}
         </section>
       )}
 
       {/* ══════════ 4 · SCREENS + STACK — 2–3 screenshots with the stack
           as tags underneath; without screenshots, the tags alone ══════════ */}
-      <section className={`v2-section${cs.screens ? "" : " csd2-stack-only"}`} id="screens">
-        {cs.screens ? (
-          <>
-            <p className="v2-label">Screens &amp; Stack</p>
-            <h2 className="v2-heading">What the team uses every day.</h2>
-            <div className="csd2-screens">
-              {cs.screens.slice(0, 3).map((sc, i) => (
-                <figure className={`csd2-screen${i === 0 ? " is-wide" : ""}`} key={i}>
-                  <div className="csd2-screen-frame">
-                    <img src={sc.src} alt={sc.alt || sc.caption || sc.title} loading="lazy" />
-                  </div>
-                  <figcaption>
-                    <strong>{sc.title}</strong>
-                    {sc.caption && <span>{sc.caption}</span>}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </>
-        ) : (
-          <p className="v2-label">Built With</p>
-        )}
-        {cs.tools?.length > 0 && (
-          <ul className="csd2-stack" aria-label="Tech stack">
-            {cs.tools.map((t) => <li key={t}>{t}</li>)}
-          </ul>
-        )}
-      </section>
+      {cs.screens && (
+        <section className="v2-section" id="screens">
+          <p className="v2-label">Screens &amp; Stack</p>
+          <h2 className="v2-heading">What the team uses every day.</h2>
+          <div className="csd2-screens">
+            {cs.screens.slice(0, 3).map((sc, i) => (
+              <figure className={`csd2-screen${i === 0 ? " is-wide" : ""}`} key={i}>
+                <div className="csd2-screen-frame">
+                  <img src={sc.src} alt={sc.alt || sc.caption || sc.title} loading="lazy" />
+                </div>
+                <figcaption>
+                  <strong>{sc.title}</strong>
+                  {sc.caption && <span>{sc.caption}</span>}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          {cs.tools?.length > 0 && (
+            <ul className="csd2-stack" aria-label="Tech stack">
+              {cs.tools.map((t) => <li key={t}>{toolName(t)}</li>)}
+            </ul>
+          )}
+        </section>
+      )}
 
       {/* ══════════ 5c · CLIENT TESTIMONIAL ══════════ */}
       {cs.quote && (
