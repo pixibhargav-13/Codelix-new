@@ -231,8 +231,7 @@ export default function CaseStudyDetailV2() {
      falls back to the first paragraph as the "before" */
   const overview = cs.overview || [];
   const beforeText = overview.length >= 3 ? overview[1] : overview[0];
-  const builtParas = overview.length >= 3 ? overview.slice(2) : overview.slice(1);
-  const pairs = Array.from({ length: Math.max(cs.challenges?.length || 0, cs.solutions?.length || 0) }, (_, i) => [cs.challenges?.[i], cs.solutions?.[i]]);
+  const pairs = Array.from({ length: Math.max(cs.challenges?.length || 0, cs.solutions?.length || 0) }, (_, i) => [cs.challenges?.[i], cs.solutions?.[i]]).slice(0, 4);
   const cta = CATEGORY_CTA[cs.category] || CATEGORY_CTA.default;
 
   return (
@@ -271,7 +270,7 @@ export default function CaseStudyDetailV2() {
                 <span>/</span>
                 <Link to="/case-study">Case Studies</Link>
                 <span>/</span>
-                <em>{cs.title}</em>
+                <em>{cs.cardTitle || cs.title}</em>
               </nav>
 
               <div className="v2-hero-top sv2-hero-reveal">
@@ -290,7 +289,10 @@ export default function CaseStudyDetailV2() {
               </h1>
               <p className="sd2-hero-sub sv2-hero-reveal">{cs.description}</p>
               {glanceRows.length > 0 && (
-                <dl className={`csd2-glance sv2-hero-reveal${cs.snapshot ? ` csd2-glance--snapshot${cs.snapshot.length === 5 ? " csd2-glance--five" : ""}` : ""}`}>
+                <dl
+                  className={`csd2-glance sv2-hero-reveal${cs.snapshot ? " csd2-glance--snapshot" : ""}`}
+                  style={cs.snapshot ? { "--cols": glanceRows.length <= 4 ? glanceRows.length : 3 } : undefined}
+                >
                   {glanceRows.map(([k, v]) => (
                     <div key={k}>
                       <dt>{k}</dt>
@@ -353,44 +355,15 @@ export default function CaseStudyDetailV2() {
         </section>
       )}
 
-      {/* ══════════ 2 · OVERVIEW ══════════
-          Business Objectives was dropped from here — it restated the same
-          points as The Challenges / The Solutions below almost 1:1 (e.g.
-          "give leadership real-time visibility" appeared as an objective,
-          a challenge, and a solution). Challenges → Solutions already
-          carries that story more concretely, so this cuts the repeat
-          instead of trimming the more specific pair. ══════════ */}
-      {/* two columns on desktop: the heading and lead paragraph stay in
-          view on the left while the rest reads as numbered blocks on the
-          right — as one long column it left half the screen empty */}
-      {beforeText && (
-        <section className="v2-section" id="before">
-          <div className="csd2-brief">
-            <div className="csd2-brief-head">
-              <p className="v2-label">The Situation Before</p>
-              <h2 className="v2-heading">Where they started.</h2>
-            </div>
-            <div>
-              <p className="csd2-overview-lead csd2-before">{beforeText}</p>
-              {cs.constraints && (
-                <div className="csd2-constraints">
-                  <span className="csd2-constraints-k">Constraints we worked within</span>
-                  <ul>
-                    {cs.constraints.map((c, i) => <li key={i}>{c}</li>)}
-                  </ul>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* every problem next to what was done about it, row by row: as two
-          separate lists the reader had to match them up */}
+      {/* ══════════ 3 · PROBLEM → WHAT WE DID → RESULT — the situation
+          before sits above the table as one short paragraph instead of a
+          section of its own; 3–4 rows; the result column appears only
+          when a study has confirmed results per row ══════════ */}
       {pairs.length > 0 && (
         <section className="v2-section v2-section--void" id="challenges">
           <p className="v2-label">Problem → What We Did{cs.pairResults ? " → Result" : ""}</p>
           <h2 className="v2-heading">What was broken, and how we fixed it.</h2>
+          {beforeText && <p className="csd2-before-lead">{beforeText}</p>}
           <div className={`csd2-pairs${cs.pairResults ? " csd2-pairs--results" : ""}`} role="table" aria-label="Problems, what we did about each, and the result">
             <div className="csd2-pair csd2-pair--head" role="row">
               <span role="columnheader">The problem</span>
@@ -419,164 +392,36 @@ export default function CaseStudyDetailV2() {
         </section>
       )}
 
-      {cs.screens && (
-        <section className="v2-section" id="screens">
-          <p className="v2-label">Key Screens</p>
-          <h2 className="v2-heading">The system, as the team uses it.</h2>
-          <div className="csd2-screens">
-            {cs.screens.map((sc, i) => (
-              <figure className={`csd2-screen${i === 0 ? " is-wide" : ""}`} key={i}>
-                <div className="csd2-screen-frame">
-                  <img src={sc.src} alt={sc.alt || sc.caption} loading="lazy" />
-                </div>
-                <figcaption>
-                  <strong>{sc.title}</strong>
-                  {sc.caption && <span>{sc.caption}</span>}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {cs.challengeImages && (
-        <div className="csd2-duo">
-          {cs.challengeImages.map((img, i) => (
-            <div className="csd2-duo-frame" key={i}>
-              <img src={img.src} alt={img.alt} />
-            </div>
-          ))}
-        </div>
-      )}
-
-      {builtParas.length > 0 && (
-        <section className="v2-section" id="overview">
-          <div className="csd2-brief">
-            <div className="csd2-brief-head">
-              <p className="v2-label">What We Built</p>
-              <h2 className="v2-heading">How the build came together.</h2>
-            </div>
-            <ol className="csd2-brief-body">
-              {builtParas.map((p, i) => (
-                <li key={i}>
-                  <span className="csd2-brief-n">{String(i + 1).padStart(2, "0")}</span>
-                  <p>{p}</p>
-                </li>
+      {/* ══════════ 4 · SCREENS + STACK — 2–3 screenshots with the stack
+          as tags underneath; without screenshots, the tags alone ══════════ */}
+      <section className={`v2-section${cs.screens ? "" : " csd2-stack-only"}`} id="screens">
+        {cs.screens ? (
+          <>
+            <p className="v2-label">Screens &amp; Stack</p>
+            <h2 className="v2-heading">What the team uses every day.</h2>
+            <div className="csd2-screens">
+              {cs.screens.slice(0, 3).map((sc, i) => (
+                <figure className={`csd2-screen${i === 0 ? " is-wide" : ""}`} key={i}>
+                  <div className="csd2-screen-frame">
+                    <img src={sc.src} alt={sc.alt || sc.caption || sc.title} loading="lazy" />
+                  </div>
+                  <figcaption>
+                    <strong>{sc.title}</strong>
+                    {sc.caption && <span>{sc.caption}</span>}
+                  </figcaption>
+                </figure>
               ))}
-            </ol>
-          </div>
-        </section>
-      )}
-
-      {/* ══════════ 3 · DELIVERY PROCESS — reuses the same sticky-header
-          method-row pattern already proven on the service pages, rather
-          than inventing a new timeline component from scratch. Sits right
-          after the problem/solution so "how we built it" reads before
-          "what happened after launch." ══════════ */}
-      {cs.process && (
-        <section className="v2-method-shell" id="process">
-          <div className="v2-method-head">
-            <h2 className="v2-method-heading">How We Delivered It.</h2>
-            <p className="v2-method-lede">
-              The phase-by-phase path from discovery to go-live.
-            </p>
-          </div>
-          <div className="v2-method-rows">
-            {cs.process.map((m, i) => (
-              <div className="v2-method-row" key={i}>
-                <div className="v2-method-index">{String(i + 1).padStart(2, "0")}</div>
-                <div>
-                  <div className="v2-method-title">{m.phase}</div>
-                  <span className="v2-method-timeframe">{m.time}</span>
-                </div>
-                <div className="v2-method-body">{m.body}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* ══════════ 4a · SERVICES DELIVERED ══════════ */}
-      {cs.services && (
-        <section className="v2-section v2-section--void" id="services-delivered">
-          <p className="v2-label">Services Delivered</p>
-          <h2 className="v2-heading">What we were engaged to do.</h2>
-          <div className="csd2-ledger">
-            {cs.services.map((s, i) => (
-              <div className="csd2-ledger-row" key={i}>
-                <span className="csd2-ledger-index">{String(i + 1).padStart(2, "0")}</span>
-                <span className="csd2-ledger-text">{s}</span>
-                <span className="csd2-ledger-icon"><Check size={13} strokeWidth={2.6} /></span>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* ══════════ 4b · CORE FEATURES ══════════ */}
-      {cs.features && (
-        <section className="v2-section" id="features">
-          <p className="v2-label">Also In The Build</p>
-          <h2 className="v2-heading">More of what shipped.</h2>
-          <div className="csd2-features">
-            {cs.features.map((f, i) => (
-              <div className="csd2-feature" key={i}>
-                <div className="csd2-feature-top">
-                  <span className="csd2-feature-icon"><Check size={14} strokeWidth={2.6} /></span>
-                  <span className="csd2-feature-index">{String(i + 1).padStart(2, "0")}</span>
-                </div>
-                <p>{f}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* ══════════ 5 · TOOLS ══════════ */}
-      {/* a slim strip, not a full section: a large heading over one row of
-          chips read as an empty block, and the main tools are already in
-          At a glance at the top */}
-      <section className="v2-section v2-section--void csd2-tools-strip" id="tools">
-        <div className="csd2-tools-row">
-          <h2 className="csd2-tools-title">Tools &amp; technologies</h2>
-        <div className="csd2-tools">
-          {cs.tools.map((t) => (
-            <span key={t}>
-              <i className="csd2-tools-avatar" aria-hidden="true">{t.charAt(0)}</i>
-              {t}
-            </span>
-          ))}
-        </div>
-        </div>
-
-        {cs.whyStack && (
-          <div className="csd2-whystack">
-            <p className="csd2-whystack-label">Why this stack</p>
-            <ul>
-              {cs.whyStack.map((w, i) => <li key={i}>{w}</li>)}
-            </ul>
-          </div>
+            </div>
+          </>
+        ) : (
+          <p className="v2-label">Built With</p>
+        )}
+        {cs.tools?.length > 0 && (
+          <ul className="csd2-stack" aria-label="Tech stack">
+            {cs.tools.map((t) => <li key={t}>{t}</li>)}
+          </ul>
         )}
       </section>
-
-      {/* ══════════ 5b · FUTURE SCALABILITY ══════════ */}
-      {cs.scalability && (
-        <section className="v2-section" id="scalability">
-          <p className="v2-label">Built To Grow</p>
-          <h2 className="v2-heading">Where this goes from here.</h2>
-          <div className="csd2-roadmap">
-            {cs.scalability.map((s, i) => (
-              <div className="csd2-roadmap-item" key={i}>
-                <span className="csd2-roadmap-marker">{String(i + 1).padStart(2, "0")}</span>
-                <div className="csd2-roadmap-card">
-                  <p>{s}</p>
-                  <span className="csd2-roadmap-arrow"><ArrowUpRight size={15} strokeWidth={2} /></span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
 
       {/* ══════════ 5c · CLIENT TESTIMONIAL ══════════ */}
       {cs.quote && (
