@@ -46,7 +46,14 @@ export function caseStudyFromRow(cs) {
     features: cs.features?.length ? cs.features : undefined,
     whyStack: cs.why_stack?.length ? cs.why_stack : undefined,
     scalability: cs.scalability?.length ? cs.scalability : undefined,
-    quote: cs.quote_text ? { text: cs.quote_text, role: cs.quote_role || "", name: cs.quote_name || "" } : undefined,
+    quote: cs.quote_text
+      ? { text: cs.quote_text, role: cs.quote_role || "", name: cs.quote_name || "", photo: cs.quote_photo_url || "", video: cs.quote_video_url || "", poster: cs.quote_video_poster_url || "" }
+      : undefined,
+    /* optional, owner-supplied: constraints the project worked within, the
+       result each problem row led to, and captioned screenshots */
+    constraints: cs.constraints?.length ? cs.constraints : undefined,
+    pairResults: cs.pair_results?.length ? cs.pair_results : undefined,
+    screens: cs.screens?.length ? cs.screens : undefined,
   };
 }
 
