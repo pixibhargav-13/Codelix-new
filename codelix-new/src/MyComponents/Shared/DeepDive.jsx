@@ -85,21 +85,44 @@ export default function DeepDive({ className = "" }) {
         </div>
       )}
 
-      {b.points && (
-        <div className="dd2-points">
+      {b.points && b.chips && (
+        <div className={`dd2-points dd2-points--chips dd2-points--n${b.points.length}`}>
+          {b.points.map((p, i) => (
+            <article className="dd2-point" key={p.title}>
+              <span className="dd2-point-n">{String(i + 1).padStart(2, "0")}</span>
+              <h3>{p.title}</h3>
+              <p>{p.body}</p>
+              {p.links && (
+                <div className="dd2-chips">
+                  <span className="dd2-chips-k">Hire</span>
+                  <ul>
+                    {p.links.map((l) => (
+                      <li key={l.href}>
+                        <Anchor href={l.href}>{l.label.replace(/^Hire\s+/, "")}<span aria-hidden="true"> →</span></Anchor>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </article>
+          ))}
+        </div>
+      )}
+
+      {b.points && !b.chips && (
+        <div className={`dd2-points dd2-points--n${b.points.length}`}>
           {b.points.map((p) => (
             <article className="dd2-point" key={p.title}>
               <h3>{p.title}</h3>
               <p>{p.body}</p>
               {p.links && (
-                <p className="dd2-point-links">
-                  {p.links.map((l, i) => (
-                    <span key={l.href}>
-                      {i > 0 && " · "}
-                      <Anchor href={l.href}>{l.label}</Anchor>
-                    </span>
+                <ul className="dd2-point-links">
+                  {p.links.map((l) => (
+                    <li key={l.href}>
+                      <Anchor href={l.href}>{l.label}<span aria-hidden="true"> →</span></Anchor>
+                    </li>
                   ))}
-                </p>
+                </ul>
               )}
             </article>
           ))}
@@ -114,14 +137,19 @@ export default function DeepDive({ className = "" }) {
             </p>
           )}
           {b.more && (
-            <p className="dd2-more">
-              {b.more.map((l, i) => (
-                <span key={l.href}>
-                  {i > 0 && " · "}
-                  <Anchor href={l.href}>{l.label} →</Anchor>
-                </span>
-              ))}
-            </p>
+            <nav className="dd2-reading" aria-label="Related reading">
+              <span className="dd2-reading-k">Related reading</span>
+              <ul>
+                {b.more.map((l) => (
+                  <li key={l.href}>
+                    <Anchor href={l.href}>
+                      <span className="dd2-reading-t">{l.label}</span>
+                      <span className="dd2-reading-a" aria-hidden="true">→</span>
+                    </Anchor>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           )}
         </div>
       )}

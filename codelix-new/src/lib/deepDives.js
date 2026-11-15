@@ -612,6 +612,8 @@ export const DEEP_DIVES = {
   "/technologies": [
     {
       id: "tech-hire",
+      /* each card ends in a row of hire links: shown as chips, three cards a row */
+      chips: true,
       label: "By Technology",
       question: "Which technology do we use for what?",
       answer: "We pick the stack per project: what the product needs to do, who will maintain it, and what it has to connect to. Each technology below links to the developers you can hire for it.",
