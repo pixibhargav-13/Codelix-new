@@ -53,13 +53,13 @@ const PROCESS = [
   { n: "03", title: "Design & Architecture", time: "1–2 weeks", body: "The technical approach and any interface work, reviewed with you until the direction is signed off." },
   { n: "04", title: "Build", time: "2–8 weeks", body: "Built in short cycles with visible progress — you see it working early and often, not just at the end." },
   { n: "05", title: "QA & Launch", time: "1–2 weeks", body: "Tested against real conditions before it goes live, then deployed with a rollback plan in place." },
-  { n: "06", title: "Support", time: "Ongoing", body: "Post-launch fixes, monitoring, and improvements. You keep everything either way." },
+  { n: "06", title: "Support", time: "Ongoing", body: "Post-launch fixes, monitoring, and improvements." },
 ];
 
 /* interpolated with the actual service name/title so each of the 18 pages
    reads as answering questions about THAT service, not a copy-pasted
    generic block — the answers stay universally true (same pricing model,
-   same ownership terms on every engagement) since we don't have real
+   same terms on every engagement) since we don't have real
    per-service specifics to report, but the questions themselves and one
    dedicated "does this cover..." item are now service-specific. */
 const getFaqs = (svc) => {
@@ -622,7 +622,7 @@ export default function AdditionalServiceDetailV2() {
             <h2 className="v2-heading">What you receive from a {svc.title.toLowerCase()} project.</h2>
           </div>
           <p className="v2-lede">
-            What lands in your accounts and repository, so the work stays yours.
+            What lands in your accounts when the project closes.
           </p>
         </div>
         <div className="sd2-manifest">

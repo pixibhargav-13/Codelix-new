@@ -541,7 +541,6 @@ export const DEEP_DIVES = {
       points: [
         { title: "Scope one workflow", body: "The single thing customers will pay for, with sign-up and payments; the rest goes on a later list." },
         { title: "Charge from day one", body: "Billing live at launch, so you learn whether people pay, not just whether they sign up.", links: [{ label: "SaaS product development", href: "/services/saas-product-development" }] },
-        { title: "Own your code", body: "Everything in your repository and cloud accounts, so investors and future hires can see and build on it." },
         { title: "Plan the next team", body: "Start with a fixed-price MVP, then move to a dedicated team as the backlog grows.", links: [{ label: "Dedicated teams", href: "/services/dedicated-development-teams" }] },
       ],
       more: [

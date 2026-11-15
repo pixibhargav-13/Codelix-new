@@ -73,7 +73,6 @@ export default function HireDevelopersV2() {
                 {[
                   ["Technologies", `${HIRE_ROLES.length} stacks`],
                   ["Proposal", "Within 48 hours"],
-                  ["Code ownership", "Yours, always"],
                 ].map(([k, v]) => (
                   <div className="sd2-fact" key={k}>
                     <span className="sd2-fact-k">{k}</span>

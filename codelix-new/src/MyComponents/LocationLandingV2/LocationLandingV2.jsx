@@ -57,7 +57,7 @@ const WHY = [
   { icon: ShieldCheck, title: "Fixed price, in writing", body: "A written scope and a fixed quote before work starts — no hourly meter running." },
   { icon: Users, title: "One team, start to finish", body: "Design, development, testing and support by the same team, with one point of contact." },
   { icon: Sparkles, title: "40+ projects delivered", body: "ERPs, e-commerce stores, mobile apps and SaaS products shipped across 11 industries." },
-  { icon: KeyRound, title: "You own everything", body: "Domain, source code, design files and admin access are handed over to you at the end." },
+  { icon: KeyRound, title: "Support after launch", body: "Fixes and improvements after go-live, from the same team that built it." },
 ];
 
 const STATS = [
@@ -166,7 +166,6 @@ export default function LocationLandingV2() {
             </div>
             <ul className="ll-ticks ll-reveal">
               <li><Check size={14} strokeWidth={2.6} /> Fixed quote in 48 hours</li>
-              <li><Check size={14} strokeWidth={2.6} /> You own the code</li>
               <li><Check size={14} strokeWidth={2.6} /> Support after launch</li>
             </ul>
           </div>
@@ -182,7 +181,6 @@ export default function LocationLandingV2() {
               <div><dt>Serving</dt><dd>{city.name} &amp; all of {city.region}</dd></div>
               <div><dt>Typical timeline</dt><dd>{service.timeline}</dd></div>
               <div><dt>Pricing</dt><dd>Fixed quote, in writing</dd></div>
-              <div><dt>Ownership</dt><dd>100% yours at handover</dd></div>
             </dl>
             <div className="ll-glance-stats">
               {STATS.map((s) => (

@@ -29,7 +29,6 @@ export const SERVICE_DEPTH = {
       { title: "Launch and learn", time: "Ongoing", body: "First customers onboarded, usage tracked per feature, and the next sprint chosen from what people actually use." },
     ],
     deliverables: [
-      { title: "Source code", body: "The full product in your repository, with a README to run it locally." },
       { title: "Production environment", body: "Hosting, database and deploy pipeline set up in your own cloud account." },
       { title: "Billing account", body: "Plans and webhooks configured in your Razorpay or Stripe account, not ours." },
       { title: "Architecture notes", body: "How tenants, roles and billing fit together, so the next developer starts quickly." },
@@ -74,7 +73,7 @@ export const SERVICE_DEPTH = {
       { title: "Go live and watch", time: "First weeks", body: "Alerts on failures, a retry queue, and a log of every run your team can check." },
     ],
     deliverables: [
-      { title: "API code and docs", body: "Source in your repository and OpenAPI documentation for every endpoint." },
+      { title: "API documentation", body: "OpenAPI documentation for every endpoint." },
       { title: "Test collection", body: "A Postman or OpenAPI collection to try every call against sandbox and live." },
       { title: "Logging and alerts", body: "Run logs and failure alerts going to your team's email or Slack." },
       { title: "Keys in your accounts", body: "Every third-party credential registered to your company, not to us." },
@@ -95,7 +94,7 @@ export const SERVICE_DEPTH = {
       { title: "Run in parallel", time: "About 1 week", body: "The automation runs alongside the manual process until the outputs match, then takes over." },
     ],
     deliverables: [
-      { title: "Workflows you own", body: "Built in your own n8n, Make or Zapier account, or in your repository for custom code." },
+      { title: "Workflows in your account", body: "Built in your own n8n, Make or Zapier account." },
       { title: "Process map", body: "A one-page diagram of what runs, when, and what happens on failure." },
       { title: "Failure alerts", body: "Errors routed to the person who can fix them, not lost in a log." },
       { title: "Team walkthrough", body: "A session showing staff what changed and how to handle the exceptions." },
@@ -121,7 +120,7 @@ export const SERVICE_DEPTH = {
       { title: "Running system", body: "The ERP on your cloud account or server, with backups scheduled." },
       { title: "Migrated data", body: "Masters and opening balances moved and checked line by line with your team." },
       { title: "User guides and training", body: "Guides and sessions per department: stores, accounts, sales and management." },
-      { title: "Admin and code access", body: "Admin rights for your team and the source code, as agreed in your contract." },
+      { title: "Admin access", body: "Admin rights for your team." },
     ],
   },
   "ai-agent-development": {
@@ -139,7 +138,6 @@ export const SERVICE_DEPTH = {
       { title: "Expand and monitor", time: "Ongoing", body: "More autonomy only where the pilot earned it, with costs and accuracy tracked per task." },
     ],
     deliverables: [
-      { title: "Agent code and prompts", body: "Everything in your repository, including the tool (skill) definitions." },
       { title: "Evaluation set", body: "Real tasks with expected results, re-run before any change goes live." },
       { title: "Usage dashboard", body: "Tasks completed, approvals, errors and model cost per task." },
       { title: "Model accounts", body: "API keys with OpenAI, Anthropic or Google held in your company's name." },
@@ -161,7 +159,6 @@ export const SERVICE_DEPTH = {
       { title: "Launch with feedback", time: "Ongoing", body: "Users rate answers; weak ones are fixed by improving content, not just prompts." },
     ],
     deliverables: [
-      { title: "Application code", body: "Code, prompts and configuration in your repository." },
       { title: "Search index", body: "The indexed content stored in your own cloud account." },
       { title: "Evaluation results", body: "The test questions, expected answers and how the system scored." },
       { title: "Content admin", body: "A way for your team to add or remove documents without a developer." },
@@ -184,7 +181,7 @@ export const SERVICE_DEPTH = {
       { title: "Monitor and manage", time: "Ongoing", body: "Dashboards and alerts on uptime, errors and cost, with fixes as part of the plan." },
     ],
     deliverables: [
-      { title: "Infrastructure as code", body: "Terraform or equivalent for every environment, in your repository." },
+      { title: "Infrastructure as code", body: "Terraform or equivalent for every environment, documented." },
       { title: "CI/CD pipelines", body: "Build and deploy pipelines in your GitHub or GitLab account." },
       { title: "Monitoring", body: "Dashboards and alerts your team receives directly." },
       { title: "Access documentation", body: "Who has access to what, and how to rotate keys." },
@@ -231,7 +228,6 @@ export const SERVICE_DEPTH = {
       { title: "Three applications", body: "Buyer site or app, seller panel and admin panel." },
       { title: "Payout setup", body: "Split payments configured in your Razorpay Route or Stripe Connect account." },
       { title: "Seller onboarding guide", body: "What sellers need to sign up, list and get paid." },
-      { title: "Source code", body: "All three applications in your repository." },
     ],
   },
   "payment-integration-services": {
@@ -251,7 +247,6 @@ export const SERVICE_DEPTH = {
       { title: "Go live and reconcile", time: "First settlements", body: "Live keys switched on, and the first settlements matched against orders." },
     ],
     deliverables: [
-      { title: "Integration code", body: "Checkout and webhook code in your repository." },
       { title: "Webhook log", body: "Every payment event recorded, so any order can be traced." },
       { title: "Refund and reconciliation screens", body: "Refunds from your admin, and a daily settlement-to-order match." },
       { title: "Live keys in your account", body: "The gateway account and keys belong to your business." },
@@ -316,7 +311,6 @@ export const SERVICE_DEPTH = {
       { title: "Put it to work", time: "Ongoing", body: "Forecasts fed into the dashboard or ERP, with accuracy tracked and retraining scheduled." },
     ],
     deliverables: [
-      { title: "Model code", body: "Training and retraining scripts in your repository." },
       { title: "Backtest report", body: "How accurate the model was on past periods, against the baseline." },
       { title: "Forecast output", body: "Forecasts delivered where your team already works." },
       { title: "Accuracy monitoring", body: "An alert when forecasts start drifting from actuals." },
@@ -337,7 +331,6 @@ export const SERVICE_DEPTH = {
       { title: "Monitor", time: "Ongoing", body: "Alerts when a pipeline fails or data looks wrong, before a report is wrong." },
     ],
     deliverables: [
-      { title: "Pipeline code", body: "Pipelines and schedules in your repository." },
       { title: "Warehouse schema", body: "Documentation of every table and how it is filled." },
       { title: "Data quality checks", body: "The checks that run on every load, with their alerts." },
       { title: "Your cloud account", body: "The warehouse runs in an account you own." },
@@ -404,7 +397,6 @@ export const SERVICE_DEPTH = {
       { title: "Start", time: "On your go-ahead", body: "Access to your repository and tools, and a first small task in week one." },
     ],
     deliverables: [
-      { title: "Code in your repository", body: "Every commit lands in your repository from the first day." },
       { title: "Weekly updates", body: "What shipped, what's next and any blockers, every week." },
       { title: "Documentation as you go", body: "Decisions and setup written down in your wiki, not in someone's head." },
       { title: "Clean handovers", body: "If a team member changes, a written handover to their replacement." },

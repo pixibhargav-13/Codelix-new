@@ -207,7 +207,6 @@ export const INDUSTRIES = [
     slug: "startups",
     faqs: [
       { q: "How much does an MVP cost?", a: "On our published pricing, an MVP app for Android and iOS costs $5,000–$15,000, and a SaaS MVP with sign-up, one core workflow and subscriptions usually takes 8–12 weeks." },
-      { q: "Will we own the code?", a: "Yes. The code lives in your repository and the hosting in your cloud accounts from day one, so investors and future hires can see and build on it." },
       { q: "Can you work with a non-technical founder?", a: "Yes. You get a written scope in plain language, a demo every two weeks, and decisions explained in terms of cost and risk, not jargon." },
       { q: "What happens after the MVP?", a: "Most startups move to a dedicated team once the product is live and the backlog grows; others pay per change. You can switch either way." },
     ],
