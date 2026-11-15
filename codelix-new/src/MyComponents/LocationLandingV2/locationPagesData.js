@@ -50,7 +50,7 @@ export const LOCATION_SERVICES = {
       { q: `Do you only work remotely with ${city.name} businesses?`, a: city.meet },
       ...localFaqs(city),
       { q: "Will my website be SEO-friendly?", a: "Yes. Every site ships with technical SEO in place — fast load times, mobile-first layouts, clean URLs, meta tags, structured data and an XML sitemap — so it is ready to rank from day one." },
-      { q: "Who owns the website after it is built?", a: "You do. The domain is registered in your name and you receive admin access, the design files and a handover walkthrough when the project closes." },
+      { q: "What do we receive when the website is finished?", a: "The domain is registered in your name, and you receive admin access, the design files and a handover walkthrough when the project closes." },
     ],
   },
   software: {
@@ -79,7 +79,6 @@ export const LOCATION_SERVICES = {
       { q: `Do you only work remotely with ${city.name} businesses?`, a: city.meet },
       ...localFaqs(city),
       { q: "Which technologies do you use?", a: "React, Node.js, Laravel, Python, Spring Boot, Flutter and React Native, with PostgreSQL, MySQL or MongoDB, deployed on AWS. We choose per project based on your scale and who will maintain it." },
-      { q: "Do we own the source code?", a: "Yes. The source code, design files, documentation and all accounts are handed over to you when the project closes." },
     ],
   },
   erp: {

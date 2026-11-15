@@ -28,13 +28,13 @@ const MODEL_ICONS = [UserRound, Users, FileSignature];
 const STEP_ICONS = [Phone, FileText, UserCheck, PlayCircle];
 
 /* The questions a buyer outside India asks before hiring here — overlap,
-   ownership, cost and data — answered with company facts only. Search
+   cost and data — answered with company facts only. Search
    Console (Oct 2026) shows these pages ranking 10–25 for "hire <tech>
    developers india", which the page didn't address anywhere. */
 const INDIA_POINTS = [
   { title: "Working hours overlap", body: () => "We work 10:00–19:00 IST (UTC+5:30), Monday to Saturday. That covers the UK and European morning and the Gulf working day; US teams get a fixed daily call slot." },
   { title: "Cost agreed up front", body: (tech) => `A ${tech} developer is billed monthly, or a fixed price for a defined scope. The written proposal states the cost before anything starts.` },
-  { title: "You own the work", body: () => "Code lives in your repository from day one, an NDA is signed before we see anything, and the contract transfers all IP to you." },
+  { title: "NDA before we start", body: () => "An NDA is signed before we see any of your code or documents." },
   { title: "Personal data handled in writing", body: () => "If the work touches customer or staff data, the contract sets out how it is stored, accessed and deleted, in line with India's DPDP Act." },
 ];
 
@@ -64,9 +64,9 @@ export default function HireDeveloperDetailV2() {
   const faqs = [
     ...role.faqs,
     { q: `How quickly can a ${role.tech} developer start?`, a: "You get a written proposal within 48 hours of the first call. Once you have interviewed and approved the developer, work starts as soon as you give access to your repository and tools." },
-    /* ownership and working hours are already answered in "Hiring From India"
+    /* working hours are already answered in "Hiring From India"
        on this page; the hub keeps the full shared set */
-    ...SHARED_HIRE_FAQS.filter((f) => !/^(Who owns the code|What are your working hours)/.test(f.q)),
+    ...SHARED_HIRE_FAQS.filter((f) => !/^(What are your working hours)/.test(f.q)),
   ];
 
   return (
