@@ -215,3 +215,13 @@ values
   ('Emily Watson', 'Director, Nova Corp', 'Honestly, we were struggling to keep up with our growth until they stepped in. They didn''t just build the tech; they actually understood our users. It''s been a total game-changer for our workflow, and the design is just spot on.', true, 4),
   ('Chris Taylor', 'COO, Orbit Labs', 'What I love most is that they don''t just say ''yes'' to everything — they tell us what''s actually going to work. The whole process felt super collaborative, and they genuinely cared about making the project a success.', true, 5)
 on conflict do nothing;
+
+-- ───────────── CONSULTATION SLOTS ─────────────
+-- One booking per date + time. /api/contact already checks before saving;
+-- this index is the backstop for two bookings sent at the same instant.
+-- The database refuses the second insert (error 23505) and the API turns
+-- that into "this time was just booked". Fails if duplicate slots already
+-- exist: delete or move those rows first.
+create unique index if not exists enquiries_booking_slot_unique
+  on enquiries (booking_date, booking_time)
+  where form_type = 'booking';

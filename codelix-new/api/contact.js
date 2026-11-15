@@ -198,7 +198,7 @@ async function persist(formType, d) {
     booking_time: d.bookingTime || null,
     referral: d.referral || null,
   });
-  return { stored: !error, reason: error?.message };
+  return { stored: !error, reason: error?.message, code: error?.code };
 }
 
 export default async function handler(req, res) {
@@ -261,6 +261,15 @@ export default async function handler(req, res) {
 
   /* Store first: if the mail fails, the enquiry still exists. */
   const persisted = await persist(formType, d);
+  /* 23505 = the unique slot index refused it: someone else's booking for this
+     exact date + time was saved a moment earlier. Nothing was stored. */
+  if (formType === "booking" && persisted.code === "23505") {
+    const taken = await takenSlots(isoDate(d.bookingDateIso));
+    return res.status(409).json({
+      error: "Sorry, that time was just booked by someone else. Please pick another slot.",
+      taken: taken || [d.bookingTime],
+    });
+  }
   if (!persisted.stored && persisted.reason !== "supabase env not set") {
     console.error("contact: supabase insert failed", persisted.reason);
   }
