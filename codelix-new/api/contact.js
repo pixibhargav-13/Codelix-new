@@ -237,6 +237,12 @@ export default async function handler(req, res) {
     if (!dt || !TIME_SLOTS.includes(d.bookingTime)) {
       return res.status(400).json({ error: "Please pick a date and time for the call." });
     }
+    /* the popup already enforces these; a script posting directly does not */
+    const todayIst = isoDate(new Date(Date.now() + 330 * 60000).toISOString().slice(0, 10));
+    const days = (dt - todayIst) / 86400000;
+    if (days < 0 || days > 90 || dt.getUTCDay() === 0) {
+      return res.status(400).json({ error: "Please pick a weekday within the next three months." });
+    }
     const taken = await takenSlots(dt);
     if (taken && taken.includes(d.bookingTime)) {
       return res.status(409).json({
