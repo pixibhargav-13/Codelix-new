@@ -195,3 +195,189 @@
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.58);
 }
+
+/* link-heavy cards (the technologies hub): three a row so six cards make two
+   even rows, a number, and the hire links as chips pinned to the card foot */
+.v2 .dd2-points--chips {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.v2 .dd2-points--chips .dd2-point {
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  transition: border-color .25s, background .25s;
+}
+.v2 .dd2-points--chips .dd2-point:hover {
+  border-color: rgba(62, 125, 252, .35);
+  background: rgba(62, 125, 252, .04);
+}
+.v2 .dd2-point-n {
+  margin-bottom: 18px;
+  font-size: 12px;
+  letter-spacing: .14em;
+  color: rgba(157, 184, 238, .7);
+}
+.v2 .dd2-points--chips .dd2-point h3 { font-size: 20px; }
+.v2 .dd2-chips {
+  margin-top: auto;
+  padding-top: 22px;
+}
+.v2 .dd2-chips-k {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .45);
+}
+.v2 .dd2-chips ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.v2 .dd2 .dd2-chips a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .03);
+  font-size: 13.5px;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, .88);
+  text-decoration: none;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.v2 .dd2 .dd2-chips a span { margin-left: 4px; opacity: .55; transition: transform .2s, opacity .2s; }
+.v2 .dd2 .dd2-chips a:hover {
+  border-color: rgba(62, 125, 252, .6);
+  background: rgba(62, 125, 252, .1);
+  color: #fff;
+}
+.v2 .dd2 .dd2-chips a:hover span { opacity: 1; transform: translateX(2px); }
+@media (max-width: 1024px) {
+  .v2 .dd2-points--chips { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .v2 .dd2-points--chips { grid-template-columns: 1fr; gap: 14px; }
+  .v2 .dd2-points--chips .dd2-point { padding: 22px; }
+}
+
+/* further reading under a section: a labelled row of link cards instead of
+   an underlined line of text */
+.v2 .dd2-foot { flex-direction: column; justify-content: flex-start; gap: 14px; }
+.v2 .dd2-reading { width: 100%; margin-top: 8px; }
+.v2 .dd2-reading-k {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .45);
+}
+.v2 .dd2-reading ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.v2 .dd2 .dd2-reading a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 100%;
+  padding: 16px 18px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .02);
+  font-size: 15px;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, .88);
+  text-decoration: none;
+  transition: border-color .2s, background .2s, color .2s;
+}
+.v2 .dd2-reading-a {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .16);
+  font-size: 14px;
+  color: rgba(157, 184, 238, .9);
+  transition: transform .2s, background .2s, border-color .2s;
+}
+.v2 .dd2 .dd2-reading a:hover {
+  border-color: rgba(62, 125, 252, .5);
+  background: rgba(62, 125, 252, .06);
+  color: #fff;
+}
+.v2 .dd2 .dd2-reading a:hover .dd2-reading-a {
+  transform: translateX(3px);
+  background: #3e7dfc;
+  border-color: #3e7dfc;
+  color: #fff;
+}
+@media (max-width: 900px) {
+  .v2 .dd2-reading ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .v2 .dd2-reading ul { grid-template-columns: 1fr; }
+}
+
+/* card rows that always come out even: a six-track grid, so 2, 3 and 6 cards
+   fill whole rows, 4 sit in one row, and 5 split three over two */
+@media (min-width: 1025px) {
+  .v2 .dd2-points[class*="dd2-points--n"] { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .v2 .dd2-points--n2 > .dd2-point { grid-column: span 3; }
+  .v2 .dd2-points--n3 > .dd2-point,
+  .v2 .dd2-points--n6 > .dd2-point,
+  .v2 .dd2-points--n5 > .dd2-point:nth-child(-n + 3) { grid-column: span 2; }
+  .v2 .dd2-points--n5 > .dd2-point:nth-child(n + 4) { grid-column: span 3; }
+  .v2 .dd2-points--n4 { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+  .v2 .dd2-points[class*="dd2-points--n"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .v2 .dd2-points--n3 > .dd2-point:last-child,
+  .v2 .dd2-points--n5 > .dd2-point:last-child { grid-column: span 2; }
+}
+@media (max-width: 640px) {
+  .v2 .dd2-points[class*="dd2-points--n"] { grid-template-columns: 1fr; }
+}
+
+/* every card: links pinned to the foot as small pills, not an underlined line */
+.v2 .dd2-points:not(.dd2-points--chips) .dd2-point { display: flex; flex-direction: column; }
+.v2 .dd2-point ul.dd2-point-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: auto 0 0;
+  padding: 18px 0 0;
+  list-style: none;
+}
+.v2 .dd2 .dd2-point-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .03);
+  font-size: 13.5px;
+  line-height: 1.25;
+  color: rgba(255, 255, 255, .88);
+  text-decoration: none;
+  transition: border-color .2s, background .2s, color .2s;
+}
+.v2 .dd2 .dd2-point-links a span { margin-left: 4px; opacity: .55; transition: transform .2s, opacity .2s; }
+.v2 .dd2 .dd2-point-links a:hover { border-color: rgba(62, 125, 252, .6); background: rgba(62, 125, 252, .1); color: #fff; }
+.v2 .dd2 .dd2-point-links a:hover span { opacity: 1; transform: translateX(2px); }
