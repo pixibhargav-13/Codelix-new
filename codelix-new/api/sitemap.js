@@ -30,7 +30,7 @@ export default async function handler(req, res) {
     const entries = [
       ...(blogsRes.data || []).map((r) => ({ ...r, path: `/blog/${r.slug}` })),
       ...(caseStudiesRes.data || []).map((r) => ({ ...r, path: `/case-study/${r.slug}` })),
-    ].filter((r) => r.slug);
+    ].filter((r) => /^[a-z0-9-]+$/.test(r.slug || '')); // same rule as api/post-page.js; anything else would break the XML
 
     const lastmod = (r) => {
       const d = new Date(r.updated_at || r.published_at);

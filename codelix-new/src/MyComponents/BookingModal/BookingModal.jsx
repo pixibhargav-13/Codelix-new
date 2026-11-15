@@ -157,7 +157,8 @@ export default function BookingModal({ openOnMount = false }) {
       const isPast = date < today;
       const isSelected = selectedDate?.getTime() === date.getTime();
       
-      const disabled = isSunday || isPast;
+      const tooFar = date - today > 90 * 86400000; // api/contact.js refuses beyond 90 days
+      const disabled = isSunday || isPast || tooFar;
 
       days.push(
         <button

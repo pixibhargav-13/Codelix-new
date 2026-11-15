@@ -216,6 +216,37 @@ values
   ('Chris Taylor', 'COO, Orbit Labs', 'What I love most is that they don''t just say ''yes'' to everything — they tell us what''s actually going to work. The whole process felt super collaborative, and they genuinely cared about making the project a success.', true, 5)
 on conflict do nothing;
 
+-- ───────────── ENQUIRIES ─────────────
+-- Every public form (contact, careers, booking). Written only by
+-- /api/contact with the service role key; read in /admin/enquiries.
+create table if not exists enquiries (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  form_type text not null,
+  name text not null,
+  email text not null,
+  phone text,
+  message text,
+  company text,
+  designation text,
+  service text,
+  budget text,
+  timeline text,
+  referral text,
+  discipline text,
+  portfolio text,
+  booking_date text,
+  booking_time text
+);
+
+alter table enquiries enable row level security;
+
+drop policy if exists "Authenticated can read enquiries" on enquiries;
+create policy "Authenticated can read enquiries"
+  on enquiries for select
+  to authenticated
+  using (true);
+
 -- ───────────── CONSULTATION SLOTS ─────────────
 -- One booking per date + time. /api/contact already checks before saving;
 -- this index is the backstop for two bookings sent at the same instant.
