@@ -239,6 +239,34 @@
   font-weight: 500;
 }
 
+.booking-time-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+.booking-time-btn:disabled:hover {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.booking-time-btn.taken {
+  opacity: 0.5;
+}
+
+.booking-time-btn.taken .booking-time-label {
+  text-decoration: line-through;
+  text-decoration-color: rgba(242, 240, 236, 0.45);
+}
+
+.booking-time-tag {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #a0a09b;
+}
+
 .booking-times-empty {
   display: flex;
   flex-direction: column;
@@ -524,4 +552,22 @@ body.booking-modal-open {
   .booking-done-btn {
     padding: 16px 34px;
   }
+}
+
+/* step 1 shows the "slot just taken" message above the Continue button */
+.booking-footer {
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.booking-error {
+  flex-basis: 100%;
+  margin: 0.75rem 0 0;
+  color: #f2a7a0;
+  font-size: 0.9rem;
+}
+
+.booking-footer > .booking-error:first-child {
+  margin-top: 0;
+  text-align: right;
 }
