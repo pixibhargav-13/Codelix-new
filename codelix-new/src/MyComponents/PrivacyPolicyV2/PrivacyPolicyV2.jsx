@@ -142,6 +142,12 @@ const SECTIONS = [
           but you can modify settings to disable them if preferred.
         </p>
         <p>Disabling cookies may affect some functionalities of the Site.</p>
+        <p>
+          We use Google Analytics and Microsoft Clarity to understand how visitors use the Site.
+          Clarity records clicks, scrolling and page interactions so we can find and fix problems;
+          text typed into forms is masked and not recorded. You can learn more in the{" "}
+          <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">Microsoft Privacy Statement</a>.
+        </p>
       </>
     ),
   },
