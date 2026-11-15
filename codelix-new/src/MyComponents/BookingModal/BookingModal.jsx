@@ -18,6 +18,21 @@ const TIME_SLOTS = [
   "06:00 PM",
 ];
 
+/* YYYY-MM-DD from the calendar's local date: the server keys slots on this */
+const isoOf = (d) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+
+/* Slots are in IST. On today's date, hide start times that have already
+   passed in India, whatever the visitor's own time zone is. */
+function slotPassed(date, time) {
+  const ist = new Date(Date.now() + (330 + new Date().getTimezoneOffset()) * 60000);
+  if (isoOf(date) !== isoOf(ist)) return false;
+  const [hm, ap] = time.split(" ");
+  let h = Number(hm.split(":")[0]) % 12;
+  if (ap === "PM") h += 12;
+  return h <= ist.getHours();
+}
+
 export default function BookingModal({ openOnMount = false }) {
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState(1); // 1: Date & Time, 2: Form, 3: Success
@@ -26,6 +41,8 @@ export default function BookingModal({ openOnMount = false }) {
   const [selectedTime, setSelectedTime] = useState(null);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
+  const [taken, setTaken] = useState([]);
+  const [loadingSlots, setLoadingSlots] = useState(false);
   
   const lenis = useLenis();
 
@@ -66,6 +83,19 @@ export default function BookingModal({ openOnMount = false }) {
       document.removeEventListener("click", handleGlobalClick, { capture: true });
     };
   }, [openOnMount]);
+
+  /* Which times are already booked for the chosen date. */
+  useEffect(() => {
+    if (!selectedDate) { setTaken([]); return; }
+    let live = true;
+    setLoadingSlots(true);
+    fetch(`/api/contact?slots=${isoOf(selectedDate)}`)
+      .then((r) => (r.ok ? r.json() : { taken: [] }))
+      .then((j) => { if (live) setTaken(Array.isArray(j.taken) ? j.taken : []); })
+      .catch(() => { if (live) setTaken([]); })
+      .finally(() => { if (live) setLoadingSlots(false); });
+    return () => { live = false; };
+  }, [selectedDate]);
 
   // Lock scroll
   useEffect(() => {
@@ -138,6 +168,7 @@ export default function BookingModal({ openOnMount = false }) {
           onClick={() => {
             setSelectedDate(date);
             setSelectedTime(null);
+            setError("");
           }}
         >
           {d}
@@ -186,12 +217,21 @@ export default function BookingModal({ openOnMount = false }) {
           service: formData.service === "Other" ? formData.customService : formData.service,
           message: formData.message,
           bookingDate: formatDate(selectedDate),
+          bookingDateIso: isoOf(selectedDate),
           bookingTime: selectedTime,
           _hp: e.target._hp?.value || "",
         }),
       });
       const data = await response.json();
 
+      if (response.status === 409) {
+        /* someone took this slot while the form was being filled in */
+        setTaken(Array.isArray(data.taken) ? data.taken : [...taken, selectedTime]);
+        setSelectedTime(null);
+        setStep(1);
+        setError(data.error || "That time was just booked. Please pick another slot.");
+        return;
+      }
       if (!response.ok) {
         setError(data.error || "We could not confirm that booking. Please try again.");
         return;
@@ -239,17 +279,24 @@ export default function BookingModal({ openOnMount = false }) {
                     {selectedDate && <span style={{ display: 'block', fontSize: '0.85rem', color: '#a0a09b', marginTop: '0.4rem', fontWeight: 400 }}>Times are shown in IST</span>}
                   </h3>
                   {selectedDate ? (
-                    <div className="booking-times">
-                      {TIME_SLOTS.map((time) => (
-                        <button
-                          key={time}
-                          type="button"
-                          className={`booking-time-btn ${selectedTime === time ? "selected" : ""}`}
-                          onClick={() => setSelectedTime(time)}
-                        >
-                          {time}
-                        </button>
-                      ))}
+                    <div className="booking-times" aria-busy={loadingSlots}>
+                      {TIME_SLOTS.map((time) => {
+                        const isTaken = taken.includes(time);
+                        const off = isTaken || loadingSlots || slotPassed(selectedDate, time);
+                        return (
+                          <button
+                            key={time}
+                            type="button"
+                            className={`booking-time-btn ${selectedTime === time ? "selected" : ""} ${isTaken ? "taken" : ""}`}
+                            disabled={off}
+                            aria-label={isTaken ? `${time}, already booked` : time}
+                            onClick={() => { setSelectedTime(time); setError(""); }}
+                          >
+                            <span className="booking-time-label">{time}</span>
+                            {isTaken && <span className="booking-time-tag">Booked</span>}
+                          </button>
+                        );
+                      })}
                     </div>
                   ) : (
                     <div className="booking-times-empty">
@@ -261,9 +308,10 @@ export default function BookingModal({ openOnMount = false }) {
               </div>
 
               <div className="booking-footer">
+                {error && <p className="booking-error" role="alert">{error}</p>}
                 <button 
                   className="v2-btn v2-btn--filled" 
-                  disabled={!selectedDate || !selectedTime}
+                  disabled={!selectedDate || !selectedTime || taken.includes(selectedTime)}
                   onClick={() => setStep(2)}
                 >
                   Continue →

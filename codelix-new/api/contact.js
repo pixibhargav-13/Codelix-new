@@ -131,14 +131,56 @@ function buildEmail(formType, d) {
   </div>`;
 }
 
-async function persist(formType, d) {
+/* Consultation slots. A slot is one date + one start time; once a booking
+   holds it, nobody else can take it. Dates travel as YYYY-MM-DD so the check
+   never depends on how a browser formats a date. */
+const TIME_SLOTS = ["10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM",
+  "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM"];
+
+function isoDate(v) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(v || ""));
+  if (!m) return null;
+  const dt = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3]));
+  return dt.getUTCDate() === +m[3] ? dt : null;
+}
+
+/* Bookings are stored as "Monday, November 16, 2026". Rows made before the
+   year was added read "Monday, November 16", so both spellings count. */
+function dateLabels(dt) {
+  const opts = { weekday: "long", month: "long", day: "numeric", timeZone: "UTC" };
+  const short = dt.toLocaleDateString("en-US", opts);
+  return { label: `${short}, ${dt.getUTCFullYear()}`, legacy: short };
+}
+
+function supa() {
   const url = process.env.SUPABASE_URL;
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  return url && key ? createClient(url, key, { auth: { persistSession: false } }) : null;
+}
+
+/* Returns the taken times for a date, or null when it can't be checked. */
+async function takenSlots(dt) {
+  const supabase = supa();
+  if (!supabase) return null;
+  const { label, legacy } = dateLabels(dt);
+  const { data, error } = await supabase
+    .from("enquiries")
+    .select("booking_time")
+    .eq("form_type", "booking")
+    .in("booking_date", [label, legacy]);
+  if (error) {
+    console.error("contact: slot lookup failed", error.message);
+    return null;
+  }
+  return [...new Set(data.map((r) => r.booking_time).filter(Boolean))];
+}
+
+async function persist(formType, d) {
   /* Optional on purpose: without these the endpoint still emails, so a missing
      variable degrades to the old behaviour instead of dropping the enquiry. */
-  if (!url || !key) return { stored: false, reason: "supabase env not set" };
+  const supabase = supa();
+  if (!supabase) return { stored: false, reason: "supabase env not set" };
 
-  const supabase = createClient(url, key, { auth: { persistSession: false } });
   const { error } = await supabase.from("enquiries").insert({
     form_type: formType,
     name: d.name,
@@ -160,6 +202,15 @@ async function persist(formType, d) {
 }
 
 export default async function handler(req, res) {
+  /* GET /api/contact?slots=YYYY-MM-DD → which times are already booked.
+     Only times come back, never who booked them. */
+  if (req.method === "GET" && req.query?.slots) {
+    const dt = isoDate(req.query.slots);
+    if (!dt) return res.status(400).json({ error: "Bad date" });
+    const taken = await takenSlots(dt);
+    res.setHeader("Cache-Control", "no-store");
+    return res.status(200).json({ taken: taken || [] });
+  }
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
   if (!originAllowed(req)) return res.status(403).json({ error: "Forbidden" });
 
@@ -179,6 +230,21 @@ export default async function handler(req, res) {
 
   if (!d.name || !d.email) {
     return res.status(400).json({ error: "Please provide at least a name and an email address." });
+  }
+
+  if (formType === "booking") {
+    const dt = isoDate(d.bookingDateIso);
+    if (!dt || !TIME_SLOTS.includes(d.bookingTime)) {
+      return res.status(400).json({ error: "Please pick a date and time for the call." });
+    }
+    const taken = await takenSlots(dt);
+    if (taken && taken.includes(d.bookingTime)) {
+      return res.status(409).json({
+        error: "Sorry, that time was just booked by someone else. Please pick another slot.",
+        taken,
+      });
+    }
+    d.bookingDate = dateLabels(dt).label;
   }
 
   const to = RECEIVERS[formType]();
