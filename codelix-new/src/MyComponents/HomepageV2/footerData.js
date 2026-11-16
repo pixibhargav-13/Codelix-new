@@ -54,6 +54,15 @@ export const FOOTER_ALL_SERVICES = [...FOOTER_SERVICE_KEYWORDS, ...FOOTER_MORE_S
    IndustriesV2/industriesData.js + IndustryDetailV2.jsx) — these used to
    point at #slug anchors on the listing page, which never scrolled
    anywhere since no element on that page carried a matching id. */
+/* the Ahmedabad landing pages had almost no internal links (3–4 each), so
+   Google treated them as near-orphans */
+export const FOOTER_AHMEDABAD = [
+  { label: "Software Development Company in Ahmedabad", path: "/best-software-development-company-in-ahmedabad" },
+  { label: "Website Development Company in Ahmedabad", path: "/best-website-development-company-in-ahmedabad" },
+  { label: "Mobile App Development Company in Ahmedabad", path: "/best-mobile-app-development-company-in-ahmedabad" },
+  { label: "ERP Development Company in Ahmedabad", path: "/best-erp-development-company-in-ahmedabad" },
+];
+
 export const FOOTER_INDUSTRY_KEYWORDS = [
   { label: "Manufacturing", path: "/industries/manufacturing" },
   { label: "FinTech", path: "/industries/fintech" },

@@ -5,11 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TestimonialSpotlight from "../Shared/TestimonialSpotlight";
-import {
-  Target, PenTool, Code2, CheckCircle2, Rocket,
-  Globe, Smartphone, Cloud, Activity, LifeBuoy,
-  CalendarCheck, Lock, Eye, PlayCircle, ArrowLeft, ArrowRight, ShoppingCart, Bot, BarChart2
-} from "lucide-react";
+import { Cloud, CalendarCheck, Eye, PlayCircle } from "lucide-react";
 
 /* real project screenshots (same assets the case-study pages use) */
 import workOne from "../Images/work-best-project-one.webp";
@@ -81,40 +77,17 @@ const WORK = [
 /* Sticky scroll sentences — the reference's signature full-screen moment */
 const SENTENCE_ONE = [
   "YOUR BUSINESS RUNS ON SOFTWARE.",
-  "SOMEONE BUILT IT.",
-  "SOMEONE MAINTAINS IT.",
-  "SOMEONE OWNS IT.",
-  "IT SHOULD BE YOU.",
+  "SOMEONE BUILDS IT.",
+  "SOMEONE KEEPS IT RUNNING.",
+  "SOMEONE PICKS UP WHEN IT BREAKS.",
+  "LET THAT BE US.",
 ];
 const SENTENCE_TWO = [
   "TELL US WHAT YOU NEED.",
   "WE SCOPE IT HONESTLY.",
   "BUILD IT PROPERLY.",
   "SHIP IT ON TIME.",
-  "THEN HAND YOU THE KEYS.",
-];
-
-/* Delivery pipeline — mirrors the reference's SOURCE→…→LEARN rail, including
-   its one branching beat (REACH forking into WhatsApp/Email/LinkedIn before
-   merging back into CONVERSE). Ours forks at Deploy into Web/Mobile/Cloud. */
-const PIPELINE = [
-  { label: "Scope", icon: Target, body: "Goals, users, constraints — mapped before an estimate exists." },
-  { label: "Design", icon: PenTool, body: "Screens and flows agreed before any code is written." },
-  { label: "Build", icon: Code2, body: "Shipped in sprints. Reviewable every fortnight." },
-  { label: "Test", icon: CheckCircle2, body: "Function, security, and load — against your real cases.", highlight: true },
-  {
-    label: "Deploy",
-    icon: Rocket,
-    body: "Released across every surface at once.",
-    branch: true,
-    channels: [
-      { label: "Web", icon: Globe, body: "Live on your domain, monitored from hour one." },
-      { label: "Mobile", icon: Smartphone, body: "Signed, submitted, and tracked through store review." },
-      { label: "Cloud", icon: Cloud, body: "Provisioned, scaled, and backed up automatically." },
-    ],
-  },
-  { label: "Monitor", icon: Activity, body: "Uptime, errors, and performance watched from day one." },
-  { label: "Support", icon: LifeBuoy, body: "We stay on. Every release sharpens the next one." },
+  "THEN STAY ON TO SUPPORT IT.",
 ];
 
 /* Capability catalogue — mirrors the reference's 84-system map strip 
@@ -158,7 +131,7 @@ const STATS = [
 
 
 const PRINCIPLES = [
-  { key: "Delivered.", icon: CalendarCheck, claim: "Deadlines are commitments, not aspirations.", body: "Our disciplined process ensures every project launches exactly when promised. Deliver before the deadline is not a slogan here — it is how the schedule is built." },
+  { key: "Delivered.", icon: CalendarCheck, claim: "Deadlines are commitments, not aspirations.", body: "Every timeline comes from a scoped plan with milestones, so you know the launch date before work starts — and if anything puts it at risk, you hear about it early, not on the day." },
   { key: "Visible.", icon: Eye, claim: "Nothing about the build stays behind closed doors.", body: "From kickoff to delivery you always know what's happening, why it's happening, and when. Clarity builds trust, and trust is what makes the second project easier than the first." },
 ];
 
@@ -505,7 +478,7 @@ export default function HomepageV2() {
     );
     const sel = [
       ".v2-method-row", ".v2-work-row", ".v2-principle",
-      ".v2-faq-item", ".v2-deck-shell", ".v2-cta", ".v2-pipe-node", ".v2-map-card", ".v2-strip",
+      ".v2-faq-item", ".v2-deck-shell", ".v2-cta", ".v2-map-card", ".v2-strip",
       ".v2-heading", ".v2-map-headline", ".v2-label", ".v2-map-label", ".v2-lede",
     ].join(", ");
     rootRef.current.querySelectorAll(sel).forEach((el) => io.observe(el));
@@ -957,82 +930,6 @@ export default function HomepageV2() {
 
       {/* ══════════ 3b · SCROLL SENTENCE (dark) ══════════ */}
       <ScrollSentence words={SENTENCE_ONE} tone="dark" />
-
-      {/* ══════════ 4b · DELIVERY PIPELINE ══════════ */}
-      <section className="v2-method-shell v2-pipe-shell">
-        <div className="v2-method-head v2-pipe-head">
-          <p className="v2-pipe-eyebrow">From Brief To Launch</p>
-          <h2 className="v2-pipe-heading">How We Ship.</h2>
-          <p className="v2-pipe-lede">
-            Every release goes through the same pipeline: scope, design, build,
-            test, deploy, monitor, and support — without cutting a step short.
-          </p>
-        </div>
-        <div className="v2-method-rows v2-pipe-rows">
-          {/* the whole pipeline lives inside a bordered "console" panel — a
-              deliberate tonal break from the light gallery around it, styled
-              like a running terminal/engine readout rather than a plain
-              card rail. */}
-          <div className="v2-pipe-console">
-            <div className="v2-pipe-console-bar">
-              <span className="v2-pipe-console-dots" aria-hidden="true">
-                <i />
-                <i />
-                <i />
-              </span>
-              <span className="v2-pipe-console-title">how-we-ship.sh</span>
-              <span className="v2-pipe-console-live">
-                <i className="v2-pipe-console-live-dot" aria-hidden="true" />
-                running
-              </span>
-            </div>
-            <div className="v2-pipe-scroll">
-              <div className="v2-pipe-rail">
-                {PIPELINE.map((n, i) => (
-                  <React.Fragment key={n.label}>
-                    <div className={`v2-pipe-node ${n.highlight ? "is-highlight" : ""}`}>
-                      <span className="v2-pipe-step">{String(i + 1).padStart(2, "0")}</span>
-                      <span className="v2-pipe-label">
-                        <span className="v2-pipe-icon"><n.icon size={15} strokeWidth={1.8} /></span>
-                        <span className="v2-pipe-name">{n.label}</span>
-                      </span>
-                      <p className="v2-pipe-body">{n.body}</p>
-                    </div>
-                    {i < PIPELINE.length - 1 && (
-                      <div className="v2-pipe-connector" aria-hidden="true">
-                        <span className="v2-pipe-track" />
-                        <span className="v2-pipe-arrow">→</span>
-                      </div>
-                    )}
-                  </React.Fragment>
-                ))}
-              </div>
-              {/* the one branching beat gets the FULL row's width to itself,
-                  underneath the main rail, instead of squeezing into a column
-                  that also has to hold its own place in that rail */}
-              {PIPELINE.filter((n) => n.branch).map((n) => (
-                <div className="v2-pipe-fork" key={n.label}>
-                  <span className="v2-pipe-fork-connector" aria-hidden="true">
-                    <span className="v2-pipe-fork-connector-track" />
-                  </span>
-                  <span className="v2-pipe-fork-label">Ships to three destinations at once</span>
-                  <div className="v2-pipe-fork-row">
-                    {n.channels.map((c) => (
-                      <div className="v2-pipe-node v2-pipe-node--mini" key={c.label}>
-                        <span className="v2-pipe-label">
-                          <span className="v2-pipe-icon"><c.icon size={13} strokeWidth={1.8} /></span>
-                          <span className="v2-pipe-name">{c.label}</span>
-                        </span>
-                        <p className="v2-pipe-body">{c.body}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ══════════ 4d · TECH STACK — "what we build it with" ══════════ */}
       <section className="v2-section v2-tech" id="stack">
