@@ -3,6 +3,12 @@ import gsap from 'gsap';
 import './ClientStrip.css';
 import { CLIENT_LOGOS } from '../HomepageV2/clientLogos'; // We will move clientLogos later or just import from there
 
+/* Every logo gets the same visual area, not the same height: at one fixed
+   height a wide wordmark looked huge next to a square badge. Taller cap
+   keeps square logos from towering over the row. */
+const LOGO_AREA = 6000; // px² at 1x
+const logoHeight = ({ width, height }) => Math.min(52, Math.round(Math.sqrt((LOGO_AREA * height) / width)));
+
 export default function ClientStrip() {
   const stripRef = useRef(null);
   const trackRef = useRef(null);
@@ -48,7 +54,8 @@ export default function ClientStrip() {
       <div className="v2-strip" ref={stripRef}>
         <div className="v2-strip-track" ref={trackRef}>
           {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (
-            <img key={i} src={logo.src} alt={`${logo.name} logo`} width={logo.width} height={logo.height} loading="lazy" />
+            <img key={i} src={logo.src} alt={`${logo.name} logo`} width={logo.width} height={logo.height} loading="lazy"
+              style={{ height: logoHeight(logo) }} />
           ))}
         </div>
       </div>
