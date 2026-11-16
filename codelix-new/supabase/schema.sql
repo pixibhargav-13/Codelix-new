@@ -209,11 +209,11 @@ create policy "Authenticated can delete media"
 -- pages switch over to reading from this table. ─────────────
 insert into testimonials (name, role, quote, is_featured, sort_order)
 values
-  ('Rajesh Patel', 'CEO, Harmony Inc.', 'We were able to successfully complete the project by meeting the best partner. They have a very good understanding of development and skills, and are fully committed to the task schedule.', true, 1),
-  ('Priya Sharma', 'Founder, Nexa Digital', 'Their communication and problem-solving skills are top-notch. The entire workflow was smooth and professional.', true, 2),
-  ('Amit Kumar', 'CTO, PixelWave', 'Amazing team! Delivered everything on time with exceptional quality. Totally recommend!', true, 3),
-  ('Emily Watson', 'Director, Nova Corp', 'Honestly, we were struggling to keep up with our growth until they stepped in. They didn''t just build the tech; they actually understood our users. It''s been a total game-changer for our workflow, and the design is just spot on.', true, 4),
-  ('Chris Taylor', 'COO, Orbit Labs', 'What I love most is that they don''t just say ''yes'' to everything — they tell us what''s actually going to work. The whole process felt super collaborative, and they genuinely cared about making the project a success.', true, 5)
+  ('Rajesh Mehta', 'CEO, Mehta Industries', 'Working with the Codelix team was a great experience. They understood our requirements clearly and delivered the project as planned. Their technical knowledge, commitment, and attention to detail made the entire process smooth.', true, 1),
+  ('Priya Shah', 'Founder, Nexa Digital Solutions', 'What impressed us most was their communication and problem-solving approach. The team was always responsive, understood our expectations, and made sure everything was delivered professionally.', true, 2),
+  ('Amit Patel', 'CTO, PixelTech Solutions', 'Excellent team to work with! They delivered the project on time and maintained great quality throughout. The team was supportive, technically strong, and easy to collaborate with.', true, 3),
+  ('Neha Desai', 'Director, Nova Enterprises', 'As our business started growing, we needed a technology partner who could understand our challenges and build solutions accordingly. The Codelix team understood our business requirements and delivered a solution that made our daily operations much smoother.', true, 4),
+  ('Karan Joshi', 'COO, Orbit Technologies', 'The best thing about working with Codelix is their honest approach. They don''t just agree with every requirement; they suggest better solutions whenever needed. The entire experience was collaborative, transparent, and focused on achieving the right results.', true, 5)
 on conflict do nothing;
 
 -- ───────────── ENQUIRIES ─────────────

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { STATIC_TESTIMONIALS } from "../../data/testimonialsData";
 import { Link } from "react-router-dom";
 import FooterV2 from "../Shared/FooterV2";
 import { ArrowUpRight } from "lucide-react";
@@ -13,11 +14,6 @@ import "../ServiceDetailV2/ServiceDetailV2.css";
 import "./WorkV2.css";
 
 /* real client testimonials — same source of truth as Ourwork.jsx */
-import logo1 from "../Images/Our-work-logo-one.png";
-import logo2 from "../Images/Our-work-logo-two.png";
-import logo3 from "../Images/Our-work-logo-three.png";
-import logo4 from "../Images/Our-work-logo-four.webp";
-import logo5 from "../Images/Our-work-logo-five.png";
 
 /* the full portfolio — extracted to its own module so WorkV2 and
    CaseStudyV2 share one source of truth instead of duplicating it */
@@ -62,15 +58,7 @@ const INDUSTRIES = [
 /* every project card routes to its case-study page under /case-study */
 const linkFor = (p) => `/case-study${p.href}`;
 
-/* same five real client quotes already used in Ourwork.jsx, not new/invented
-   attributions */
-const TESTIMONIALS = [
-  { logo: logo1, quote: "We were able to successfully complete the project by meeting the best partner. They have a very good understanding of development and skills, and are fully committed to the task schedule. We'll always work on the project with them.", name: "Rajesh Patel", role: "CEO, Harmony Inc." },
-  { logo: logo2, quote: "Their communication and problem-solving skills are top-notch. The entire workflow was smooth and professional.", name: "Priya Sharma", role: "Founder, Nexa Digital" },
-  { logo: logo3, quote: "Amazing team! Delivered everything on time with exceptional quality. Totally recommend!", name: "Amit Kumar", role: "CTO, PixelWave" },
-  { logo: logo4, quote: "Honestly, we were struggling to keep up with our growth until they stepped in. They didn't just build the tech, they actually understood our users. It's been a total game-changer for our workflow.", name: "Emily Watson", role: "Director, Nova Corp" },
-  { logo: logo5, quote: "What I love most is that they don't just say 'yes' to everything — they tell us what's actually going to work. The whole process felt super collaborative.", name: "Chris Taylor", role: "COO, Orbit Labs" },
-];
+const TESTIMONIALS = STATIC_TESTIMONIALS;
 
 const STATS = [
   { value: 15, suffix: "+", label: "Projects delivered", note: "Shown here — more shipped privately", ring: 75 },
@@ -395,8 +383,7 @@ export default function WorkV2() {
         </div>
       </section>
 
-      {/* ══════════ 5 · CLIENT TESTIMONIALS — same real quotes as
-          Ourwork.jsx ══════════ */}
+      {/* ══════════ 5 · CLIENT TESTIMONIALS ══════════ */}
       <section className="v2-section v2-section--void" id="testimonials">
         <p className="v2-label">In Their Words</p>
         <h2 className="v2-heading">What it's like working with us.</h2>
@@ -409,7 +396,7 @@ export default function WorkV2() {
               <span className="wv-testimonial-avatar">{TESTIMONIALS[testimonial].name[0]}</span>
               <div>
                 <strong>{TESTIMONIALS[testimonial].name}</strong>
-                <span>{TESTIMONIALS[testimonial].role}</span>
+                <span>{TESTIMONIALS[testimonial].position}</span>
               </div>
             </div>
           </div>
@@ -421,7 +408,7 @@ export default function WorkV2() {
                 onClick={() => setTestimonial(i)}
                 aria-label={t.name}
               >
-                <img src={t.logo} alt={`${t.name} logo`} />
+                <span>{t.position.split(", ").pop()}</span>
               </button>
             ))}
           </div>
