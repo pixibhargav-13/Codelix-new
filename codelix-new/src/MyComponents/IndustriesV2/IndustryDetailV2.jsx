@@ -13,6 +13,7 @@ import { INDUSTRIES, industryBySlug, WORK_INDUSTRY_MAP } from "./industriesData"
 import { caseStudyCard } from "../../lib/caseStudyRow";
 import { useCaseStudies } from "../CaseStudyDetailV2/useCaseStudies";
 import { useTestimonials } from "../../data/useTestimonials";
+import { STATIC_TESTIMONIALS } from "../../data/testimonialsData";
 
 import "../HomepageV2/HomepageV2.css";
 import "../ServicesV2/ServicesV2.css";
@@ -41,17 +42,6 @@ const SERVICE_INFO = {
   "Data Analytics": { icon: BarChart3, path: "/services/data-analytics", body: "The reporting and dashboard layer, built on data your team can actually trust." },
 };
 
-/* fallback shown before Supabase responds — same 5 real quotes used on
-   the Homepage carousel and About/Team pages, so this page also
-   auto-rotates through live, admin-editable testimonials instead of one
-   static quote frozen at build time. */
-const STATIC_QUOTES = [
-  { quote: "We were able to successfully complete the project by meeting the best partner. They have a very good understanding of development and skills, and are fully committed to the task schedule.", name: "Rajesh Patel", position: "CEO, Harmony Inc." },
-  { quote: "Their communication and problem-solving skills are top-notch. The entire workflow was smooth and professional.", name: "Priya Sharma", position: "Founder, Nexa Digital" },
-  { quote: "Amazing team! Delivered everything on time with exceptional quality. Totally recommend!", name: "Amit Kumar", position: "CTO, PixelWave" },
-  { quote: "Honestly, we were struggling to keep up with our growth until they stepped in. They didn't just build the tech; they actually understood our users. It's been a total game-changer for our workflow, and the design is just spot on.", name: "Emily Watson", position: "Director, Nova Corp" },
-  { quote: "What I love most is that they don't just say 'yes' to everything — they tell us what's actually going to work. The whole process felt super collaborative, and they genuinely cared about making the project a success.", name: "Chris Taylor", position: "COO, Orbit Labs" },
-];
 
 /* same real, site-wide facts already shown on the Industries listing
    page (STATS in IndustriesV2.jsx) — presented as a horizontal ticker
@@ -89,7 +79,7 @@ export default function IndustryDetailV2() {
   const blueprintActiveRef = useRef(-1);
 
   const blueprintServices = (svc?.services || []).map((name) => ({ name, ...SERVICE_INFO[name] })).filter((s) => s.icon);
-  const testimonials = useTestimonials(STATIC_QUOTES);
+  const testimonials = useTestimonials(STATIC_TESTIMONIALS);
   const { studies: caseStudies } = useCaseStudies();
 
   useReplayHeroIntro(rootRef, svc);
