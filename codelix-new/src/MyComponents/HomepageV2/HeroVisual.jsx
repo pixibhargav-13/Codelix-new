@@ -394,7 +394,7 @@ const HeroVisual = () => {
           </div>
           <pre><code>{`{
   "projects": 40,
-  "satisfaction": "99%",
+  "based": "Ahmedabad",
   "delivery": "on-time",
   "code": "clean"
 }`}</code></pre>
