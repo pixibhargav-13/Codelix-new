@@ -146,6 +146,7 @@ const PAGE = {
   estAddons: [],
   estRange: [1, 1.35, 0], // [low x, high x, minimum weeks]
   name: "UI/UX Design",
+  answer: "Codelix IT Solutions is a UI/UX design company in Ahmedabad. We design websites, mobile apps and SaaS products from user research through wireframes and Figma prototypes, then hand over full Figma files and a design system. A typical project takes 1–6 weeks and starts with a discovery call.",
   status: "Service 03 · UI/UX Design",
   h1: "UI/UX Design Company in Ahmedabad",
   heroLine: "Interfaces that are",

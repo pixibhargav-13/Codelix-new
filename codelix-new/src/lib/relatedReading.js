@@ -21,6 +21,27 @@ export const POST = {
   chatbotCost: { label: "AI chatbot cost in India", path: "/blog/ai-chatbot-cost-in-india", body: "WhatsApp AI add-ons vs a custom build, and the model and message charges." },
   dpdp: { label: "DPDP Act compliance for small business", path: "/blog/dpdp-act-compliance-for-small-business", body: "What the Rules require, what it costs and what to fix first." },
   ceramicErp: { label: "ERP for the ceramic industry", path: "/blog/erp-for-ceramic-industry", body: "Features, options, prices and timelines for tile and sanitaryware makers." },
+  /* posts that had 2–5 links in from other pages (audit, 18 Nov 2026) */
+  constructionErp: { label: "ERP for construction companies", path: "/blog/erp-for-construction-company", body: "What it must track, GST and RERA rules, options and costs." },
+  textileErp: { label: "ERP for the textile industry", path: "/blog/erp-for-textile-industry", body: "Lot and job-work tracking, GST job-work rules, options and costs." },
+  caPms: { label: "Practice management software for CA firms", path: "/blog/practice-management-software-for-ca-firms", body: "ICAI's free PMS, Turia, Audytee or custom, with prices and checks." },
+  societySoftware: { label: "How to choose society management software", path: "/blog/society-management-software-how-to-choose", body: "Ready-made app vs custom, costs and GST on maintenance." },
+  eInvoiceRcm: { label: "E-invoicing for reverse charge purchases", path: "/blog/e-invoicing-for-reverse-charge-january-2027", body: "What changes in January 2027, who it hits and what to set up." },
+  rule14b: { label: "Rule 14B GST registration for online sellers", path: "/blog/rule-14b-gst-registration-for-ecommerce-sellers", body: "Registering in a new state through a marketplace warehouse." },
+  chooseAhmedabad: { label: "How to choose a software company in Ahmedabad", path: "/blog/choose-a-software-development-company-in-ahmedabad", body: "Cost, timelines, what to ask and the contract terms that protect you." },
+  timeline: { label: "How long custom software takes", path: "/blog/custom-software-development-timeline", body: "What each stage of a custom software project takes." },
+  waReminders: { label: "WhatsApp payment reminders for invoices", path: "/blog/whatsapp-payment-reminders-for-invoices", body: "Costs, rules and how to automate them from Tally, Zoho or an ERP." },
+  saasOnPrem: { label: "SaaS vs on-premise software", path: "/blog/saas-vs-on-premise-whats-best-for-your-business", body: "Cost, control, data and growth compared." },
+  pwa: { label: "Progressive web apps vs native apps", path: "/blog/progressive-web-apps-pwas-as-the-new-standard", body: "What a PWA can and can't do, and when it beats a native app." },
+  appTrends: { label: "Mobile app development trends", path: "/blog/the-future-of-mobile-app-development-trends-and-insights", body: "The trends that change how business apps get built, and the ones to ignore." },
+  uxConversions: { label: "How better UI/UX design improves conversions", path: "/blog/optimizing-user-experience-through-better-uiux-design", body: "The design fixes that most often lift enquiries and sign-ups." },
+  designSystems: { label: "Design systems and component-based UIs", path: "/blog/design-system-component-based-uis-efficiency-at-scale", body: "When a design system is worth building, and what goes in it." },
+  aiForBusiness: { label: "AI for business: where it pays off", path: "/blog/ai-powered-solutions-transforming-modern-businesses", body: "Where AI is already useful for small and mid-size companies." },
+  ecomPlatforms: { label: "Choosing an e-commerce platform in India", path: "/blog/how-e-commerce-platforms-boost-retail-transformation", body: "Shopify, WooCommerce or a custom store, and the mistakes that cost sales." },
+  endToEnd: { label: "End-to-end web development", path: "/blog/how-end-to-end-web-development-delivers-better-results", body: "Why one accountable team usually beats several vendors." },
+  digitalPresence: { label: "Why digital presence matters", path: "/blog/why-digital-presence-matters-more-than-ever-in-2025", body: "What a useful online presence includes and what it costs to keep up." },
+  wordpressAdvanced: { label: "Advanced WordPress", path: "/blog/mastering-wordpress-advanced-cms-techniques", body: "Custom post types, speed and security, and when to go headless." },
+  laravelReasons: { label: "5 reasons to choose Laravel", path: "/blog/top-5-reasons-to-choose-laravel-for-faster-web-app-development", body: "Why Laravel speeds up PHP web apps, and when another framework fits better." },
 };
 const PAGE = {
   erp: { label: "ERP & CRM development", path: "/services/erp-crm-development", body: "Custom ERP and CRM built around how your business runs." },
@@ -52,44 +73,51 @@ export const HIRE_GUIDES = {
   android: [POST.appCost, POST.flutterRn],
   ios: [POST.appCost, POST.flutterRn],
   nodejs: [POST.laravelNode, POST.customCost],
-  laravel: [POST.laravelNode, POST.webCost],
+  laravel: [POST.laravelNode, POST.laravelReasons, POST.webCost],
   php: [POST.laravelNode, POST.webCost],
-  wordpress: [POST.webCost, POST.inHouse],
+  wordpress: [POST.wordpressAdvanced, POST.webCost, POST.inHouse],
   shopify: [POST.ecomCost, POST.inHouse],
   python: [POST.chatbotCost, POST.customCost],
   ai: [POST.chatbotCost, POST.customCost],
+  "ui-ux-designers": [POST.uxConversions, POST.designSystems],
 };
 
 export const RELATED_READING = {
-  "/services/custom-software-development": [POST.customCost, POST.customVsOts, PAGE.erp, POST.inHouse, PAGE.calculator],
-  "/services/erp-crm-development": [POST.erpCost, POST.tally, POST.ceramicErp, PAGE.codelixErp, PAGE.erpAhmedabad, PAGE.manufacturing],
+  "/services/custom-software-development": [POST.customCost, POST.timeline, POST.customVsOts, POST.chooseAhmedabad, PAGE.erp, PAGE.calculator],
   "/industries/manufacturing": [PAGE.erpManufacturing, PAGE.erp, POST.tally],
-  "/products/codelix-erp": [POST.erpCost, POST.tally, PAGE.erp],
-  "/products/codelix-erp/construction": [POST.erpCost, POST.customVsOts, PAGE.erp],
+  "/products/codelix-erp": [POST.erpCost, POST.tally, POST.eInvoiceRcm, PAGE.erp],
+  "/products/codelix-erp/construction": [POST.constructionErp, POST.erpCost, POST.customVsOts, PAGE.erp],
   "/products/codelix-erp/manufacturing": [POST.tally, POST.erpCost, PAGE.manufacturing],
   "/products/codelix-erp/ceramic": [POST.ceramicErp, POST.tally, POST.erpCost, PAGE.manufacturing],
-  "/products/codelix-erp/textile": [POST.tally, POST.erpCost, PAGE.manufacturing],
-  "/services/application-development": [POST.appCost, POST.flutterRn, PAGE.hireFlutter, PAGE.hireReactNative],
+  "/products/codelix-erp/textile": [POST.textileErp, POST.tally, POST.erpCost, PAGE.manufacturing],
+  "/services/application-development": [POST.appCost, POST.flutterRn, POST.pwa, POST.appTrends, PAGE.hireFlutter, PAGE.hireReactNative],
   "/hire-developers": [PAGE.dedicatedTeams, POST.inHouse, PAGE.calculator],
   "/services/dedicated-development-teams": [PAGE.hireHub, POST.inHouse, PAGE.calculator],
   "/software-development-cost-calculator": [POST.webCost, POST.appCost, POST.ecomCost, POST.erpCost, POST.customCost],
-  "/services/web-development": [POST.webCost, POST.laravelNode, POST.ecomCost, PAGE.calculator],
-  "/services/e-commerce-solutions": [POST.ecomCost, PAGE.hireShopify, PAGE.calculator],
+  "/services/web-development": [POST.webCost, POST.laravelNode, POST.endToEnd, POST.digitalPresence, PAGE.calculator],
+  "/services/e-commerce-solutions": [POST.ecomCost, POST.ecomPlatforms, POST.rule14b, PAGE.hireShopify, PAGE.calculator],
   /* the AI pages had no Related Reading, so the AI chatbot cost guide had no
      link from any money page. Search Console (Oct 2026) showed the AI service
      page and the AI agent page splitting "ai agent development services", so
      agent searches are handed to the agent page from both of the others. */
-  "/services/ai-development": [PAGE.aiAgent, POST.chatbotCost, PAGE.calculator, POST.customVsOts],
+  "/services/ai-development": [PAGE.aiAgent, POST.chatbotCost, POST.aiForBusiness, PAGE.calculator],
   "/services/generative-ai-solutions": [POST.chatbotCost, PAGE.aiAgent, PAGE.aiDev, PAGE.calculator],
   "/services/ai-agent-development": [POST.chatbotCost, PAGE.aiDev, PAGE.calculator],
   "/services/security-maintenance": [POST.dpdp, PAGE.customSoftware],
   /* the e-commerce cost guide ranks 13-20 and had one link in from a money
      page; the ERP service page fell from 25 to 58 with three pages splitting
      its queries, so the industry pages point at the one ERP page */
-  "/industries/e-commerce": [POST.ecomCost, PAGE.hireShopify, PAGE.calculator],
+  "/industries/e-commerce": [POST.ecomCost, POST.ecomPlatforms, POST.rule14b, PAGE.hireShopify],
   "/industries/food-beverages": [POST.ecomCost, PAGE.erp],
   "/industries/fintech": [PAGE.customSoftware, POST.dpdp],
-  "/industries/real-estate-construction": [PAGE.erp, PAGE.codelixErp],
+  "/industries/real-estate-construction": [POST.constructionErp, PAGE.erp, PAGE.codelixErp],
+  "/services/ui-ux-design": [POST.uxConversions, POST.designSystems],
+  "/services/erp-crm-development": [POST.erpCost, POST.tally, POST.ceramicErp, POST.constructionErp, POST.textileErp, PAGE.codelixErp],
+  "/services/workflow-automation": [POST.waReminders, POST.aiForBusiness],
+  "/services/saas-product-development": [POST.saasOnPrem, POST.customCost],
+  "/services/cloud-solutions-migration": [POST.saasOnPrem],
+  "/products/audytee": [POST.caPms],
+  "/products/aanganone": [POST.societySoftware],
 };
 
 /* Hire pages for the technologies a service is built with, taken from each

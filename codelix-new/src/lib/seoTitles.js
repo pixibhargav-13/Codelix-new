@@ -24,16 +24,17 @@ const CASE_STUDY_SEO_TITLES = {
   "book-collections-case-study": "E-Commerce Platform for a Book Store: Case Study | Codelix",
   "erp-case-study": "Custom ERP for Industrial & Financial Workflows | Codelix",
   "smart-society-management-case-study": "Society Management App: Case Study | Codelix",
-  /* frozen at their pre-Nov-2026 values: the visible titles became outcome
+  /* frozen at their pre-Nov-2026 values (except four retitled on 18 Nov 2026
+     to name the service and the brand): the visible titles became outcome
      headlines ("…cut reconciliation from 4 days to 1…"), and search titles
      shouldn't move with them */
-  "car-marketplace-case-study": "A Feature-Rich Mobile Marketplace for Buying & Selling Cars",
+  "car-marketplace-case-study": "Used-Car Marketplace App Development: Case Study | Codelix",
   "edtech-case-study": "Modern EdTech Website for Online Courses | Codelix",
   "elegant-creative-agency-case-study": "Elegant Creative Agency Website – UI/UX Design | Codelix",
-  "freight-shipping-case-study": "Freight & Shipping Web Platform – Modern Development",
-  "hr-portal-case-study": "Modern HR Portal for Employee Benefits - Web Development",
+  "freight-shipping-case-study": "Freight & Shipping Web Platform: Case Study | Codelix",
+  "hr-portal-case-study": "HR Benefits Portal Development: Case Study | Codelix",
   "internal-ops-erp-case-study": "Internal Operations ERP for a B2B SaaS Company | Codelix",
-  "makhana-store-case-study": "Organic Makhana Store – Responsive E-Commerce Platform",
+  "makhana-store-case-study": "Makhana E-Commerce Store Development: Case Study | Codelix",
   "modern-creative-agency-case-study": "Modern Website UI/UX Design for a Creative Agency | Codelix",
   "nextgen-case-study": "NextGen – Modern Fashion E-Commerce Website | Codelix",
   "payroll-case-study": "Custom Payroll Management System – Web & Mobile | Codelix",

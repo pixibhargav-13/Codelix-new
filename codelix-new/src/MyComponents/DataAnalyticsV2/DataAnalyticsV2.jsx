@@ -149,6 +149,7 @@ const PAGE = {
   estAddons: [],
   estRange: [1, 1.35, 0], // [low x, high x, minimum weeks]
   name: "Data Analytics",
+  answer: "Codelix IT Solutions builds data analytics and business intelligence systems from Ahmedabad, India: automated data pipelines, a central data warehouse and dashboards that give you one source of truth. A typical project takes 2–8 weeks, starts with a data audit and includes support after handoff.",
   status: "Service 07 · Data Analytics",
   h1: "Data Analytics & Business Intelligence Services",
   heroLine: "Turn raw data into",

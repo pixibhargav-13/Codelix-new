@@ -144,6 +144,7 @@ const PAGE = {
   estAddons: ["auth"],
   estRange: [0.85, 1.25, 3], // [low x, high x, minimum weeks]
   name: "Application Development",
+  answer: "Codelix IT Solutions is a mobile app development company in Ahmedabad, India, building cross-platform and native apps for Android and iOS: one Flutter codebase where it fits, fully native where the platform demands it. A typical app takes 4–12 weeks, starts with a discovery call and includes support after launch.",
   status: "Service 02 · Application Development",
   h1: "Mobile App Development Company in India",
   heroLine: "Apps that feel",

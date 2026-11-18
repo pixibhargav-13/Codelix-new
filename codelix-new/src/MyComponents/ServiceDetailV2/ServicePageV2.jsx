@@ -246,6 +246,15 @@ export default function ServicePageV2({ page }) {
         </div>
       </header>
 
+      {/* ══════════ IN SHORT: a self-contained answer for readers and for
+          search and AI answers that quote one passage ══════════ */}
+      {page.answer && (
+        <section className="v2-section sd2-answer" aria-label="In short">
+          <p className="v2-label is-in">In Short</p>
+          <p className="v2-lede is-in">{page.answer}</p>
+        </section>
+      )}
+
       {/* ══════════ 2 · PROBLEMS WE SOLVE ══════════ */}
       <section className="v2-section v2-section--void" id="problems">
         <p className="v2-label">Sound Familiar?</p>

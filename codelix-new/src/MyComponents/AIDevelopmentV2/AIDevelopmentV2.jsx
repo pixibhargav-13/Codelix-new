@@ -141,6 +141,7 @@ const PAGE = {
   estAddons: ["override"],
   estRange: [0.85, 1.25, 2], // [low x, high x, minimum weeks]
   name: "AI Development",
+  answer: "Codelix IT Solutions is an AI development company in India, based in Ahmedabad. We build AI agents, chatbots and automation for the repetitive handoffs between your tools. A typical project takes 2–10 weeks, starts with a workflow audit and includes support after launch.",
   status: "Service 06 · AI Development",
   h1: "AI Development Company in India",
   heroLine: "Automation for the handoff,",
