@@ -585,7 +585,7 @@ export default function ServicePageV2({ page }) {
         <div className="v2-tech-grid">
           {page.stack.map((t) => (
             <div className="v2-tech-item" key={t.name}>
-              <img src={t.src} alt={t.name} loading="lazy" />
+              <img src={t.src} alt={t.name} width="26" height="26" loading="lazy" />
               <span>{t.name}</span>
             </div>
           ))}

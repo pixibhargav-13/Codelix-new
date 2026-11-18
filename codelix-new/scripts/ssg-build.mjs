@@ -464,11 +464,43 @@ ${sitemapRoutes
   fs.writeFileSync(path.resolve(__dirname, "../dist/sitemap.xml"), sitemapXml);
   console.log("✅ Sitemap generated");
 
+  writeLlmsFull(sitemapRoutes);
+
   fs.rmSync(manifestDir, { recursive: true, force: true });
 
   await inlineCriticalCss(path.resolve(__dirname, "../dist"));
 
   console.log("🎉 SSG Build Complete!");
+}
+
+/* llms-full.txt: the text of every page in the sitemap, as plain Markdown,
+   for AI assistants that read it (llms.txt is the short index). Built from
+   the prerendered HTML, so it says exactly what the pages say. The city
+   landing pages are left out, as they are from llms.txt. */
+function writeLlmsFull(routes) {
+  const dist = path.resolve(__dirname, "../dist");
+  const decode = (s) => s.replace(/&amp;/g, "&").replace(/&#x27;|&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&nbsp;/g, " ");
+  const text = (h) => decode(h
+    .replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<svg[\s\S]*?<\/svg>|<nav[\s\S]*?<\/nav>/gi, " ")
+    .replace(/<h([1-3])[^>]*>/gi, (m, l) => `\n\n${"#".repeat(Number(l) + 2)} `)
+    .replace(/<\/h[1-3]>/gi, "\n")
+    .replace(/<(p|li|tr|div|section|article)\b[^>]*>/gi, "\n")
+    .replace(/<[^>]+>/g, " "))
+    .split("\n").map((l) => l.replace(/\s+/g, " ").trim()).filter(Boolean).join("\n");
+  const parts = ["# Codelix IT Solutions: full site text", "", "Every page of https://www.codelixitsolutions.com in plain text. The short index is /llms.txt.", ""];
+  let written = 0;
+  for (const url of routes.filter((u) => !u.startsWith("/best-"))) {
+    const file = path.join(dist, url === "/" ? "index.html" : `${url.slice(1)}/index.html`);
+    if (!fs.existsSync(file)) continue;
+    const html = fs.readFileSync(file, "utf8");
+    const title = decode((html.match(/<title[^>]*>([^<]*)<\/title>/i) || [])[1] || url);
+    const main = (html.match(/<main[\s\S]*<\/main>/i) || [""])[0];
+    if (!main) continue;
+    parts.push(`## ${title}`, `URL: https://www.codelixitsolutions.com${url}`, "", text(main), "", "---", "");
+    written++;
+  }
+  fs.writeFileSync(path.join(dist, "llms-full.txt"), parts.join("\n"));
+  console.log(`✅ llms-full.txt: ${written} pages`);
 }
 
 /* The global stylesheet (~120KB: index.css plus the homepage, services and

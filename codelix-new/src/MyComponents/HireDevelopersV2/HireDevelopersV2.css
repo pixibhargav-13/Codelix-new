@@ -71,3 +71,56 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* engagement models compared (hub) */
+.hd2-models-table-wrap {
+  margin-top: 40px;
+  overflow-x: auto;
+  border: .8px solid var(--rule);
+  border-radius: 14px;
+}
+
+.hd2-models-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.hd2-models-table caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.hd2-models-table th,
+.hd2-models-table td {
+  padding: 16px 18px;
+  text-align: left;
+  vertical-align: top;
+  border-top: .8px solid var(--rule);
+}
+
+.hd2-models-table thead th,
+.hd2-models-table thead td {
+  border-top: 0;
+  background: rgba(242, 240, 236, .025);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.hd2-models-table tbody th {
+  font-weight: 500;
+  color: var(--text);
+  width: 22%;
+}
+
+.hd2-models-table tbody td {
+  color: var(--text-55);
+}

@@ -18,6 +18,7 @@ import './MyComponents/HomepageV2/HomepageV2.css'
 import './MyComponents/ServicesV2/ServicesV2.css'
 import './MyComponents/ServiceDetailV2/ServiceDetailV2.css'
 import App, { preloadRoute } from './App.jsx'
+import { onCLS, onINP, onLCP } from 'web-vitals'
 
 const initialData = typeof window !== 'undefined' && window.__INITIAL_DATA__ ? window.__INITIAL_DATA__ : null;
 const rootElement = document.getElementById('root');
@@ -42,6 +43,17 @@ const app = (
    Admin is client-only and has no server markup worth keeping, so empty the
    container and mount fresh instead of hydrating someone else's page. */
 const isAdmin = window.location.pathname.startsWith("/admin");
+
+/* Real visitors' LCP, INP and CLS, sent to GA4 as events: the site is below
+   the traffic Google needs for field data in PageSpeed. CLS is x1000 so GA's
+   integer values keep its precision. */
+if (!isAdmin) {
+  const sendVital = ({ name, value, id }) =>
+    window.gtag?.("event", name, { value: Math.round(name === "CLS" ? value * 1000 : value), metric_id: id, non_interaction: true });
+  onCLS(sendVital);
+  onINP(sendVital);
+  onLCP(sendVital);
+}
 
 /* The prerendered head carries copies of the page's title, meta and
    canonical tags (marked data-ssr by scripts/ssg-build.mjs) for crawlers and

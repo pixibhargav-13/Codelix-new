@@ -223,8 +223,8 @@ export default function IndustryDetailV2() {
      published project. */
   const faqs = [
     ...(svc.faqs || []),
-    { q: "We're not exactly this sector — can you still help?", a: "Almost certainly. This page describes where we have the deepest repeat experience, not a hard boundary. Tell us what you're building and we'll tell you honestly if it's a fit." },
-    { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that, you can keep us on a monthly retainer for updates, fixes, and support." },
+    { schema: false, q: "We're not exactly this sector — can you still help?", a: "Almost certainly. This page describes where we have the deepest repeat experience, not a hard boundary. Tell us what you're building and we'll tell you honestly if it's a fit." },
+    { schema: false, q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that, you can keep us on a monthly retainer for updates, fixes, and support." },
   ];
 
   return (
@@ -426,7 +426,7 @@ export default function IndustryDetailV2() {
         <div className="v2-tech-grid">
           {TECH_STACK.map((t) => (
             <div className="v2-tech-item" key={t.name}>
-              <img src={t.src} alt={t.name} loading="lazy" />
+              <img src={t.src} alt={t.name} width="26" height="26" loading="lazy" />
               <span>{t.name}</span>
             </div>
           ))}

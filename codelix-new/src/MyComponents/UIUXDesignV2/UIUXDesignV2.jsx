@@ -196,7 +196,7 @@ const PAGE = {
   ctaLede: "A structured conversation about your product — your users, your goals, your constraints. We scope what should be designed first, what can wait, and what it takes to ship it.",
   path: "/services/ui-ux-design",
   deepDive: false,
-  relatedReading: false,
+  relatedReading: true,
   process: { heading: "How A Design Project Runs.", lede: "Six stages from first call to final handoff — nothing advances until the stage before it is signed off.", steps: PROCESS },
   stack: UIUX_STACK,
   PROBLEMS, USE_CASES, BENCHMARKS, HANDOVER, COMPARE_COLS, COMPARE_ROWS, OTHER_SERVICES, INCLUDED, EST_TYPES, EST_SCALE, EST_ADDONS, FAQS, SENTENCE,

@@ -68,7 +68,9 @@ export default function FaqSection({ faqs, className = "", label = "FAQ", headin
       {/* Markup lives here, not on each page: every FAQ on the site renders
           through this component, so this is the one place it can be built from
           exactly the list the accordion shows — including pages added later. */}
-      <StructuredData type="FAQPage" data={faqs} />
+      {/* a Q&A shared across many pages carries schema: false, so it is
+          marked up on its home page only; it still shows here */}
+      <StructuredData type="FAQPage" data={faqs.filter((f) => f.schema !== false)} />
       <div className="v2-faq-intro">
         <div>
           <p className="v2-label">{label}</p>
