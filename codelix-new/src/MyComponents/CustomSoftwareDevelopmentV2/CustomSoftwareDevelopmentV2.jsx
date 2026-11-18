@@ -148,6 +148,7 @@ const PAGE = {
   estAddons: ["auth"],
   estRange: [0.85, 1.25, 3], // [low x, high x, minimum weeks]
   name: "Custom Software Development",
+  answer: "Codelix IT Solutions is a custom software development company in Ahmedabad, India. We build custom systems and internal tools around your exact workflow, instead of bending your process to fit someone else's product. A typical project takes 4–14 weeks, starts with a discovery call and includes support after launch.",
   status: "Service 05 · Custom Software Development",
   h1: "Custom Software Development Company in India",
   heroLine: "Software built around",

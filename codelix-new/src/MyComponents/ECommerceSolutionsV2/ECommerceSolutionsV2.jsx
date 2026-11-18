@@ -144,6 +144,7 @@ const PAGE = {
   estAddons: [],
   estRange: [0.85, 1.25, 2], // [low x, high x, minimum weeks]
   name: "E-Commerce Solutions",
+  answer: "Codelix IT Solutions is an e-commerce website development company in Ahmedabad, India, building Shopify, WooCommerce and custom online stores with payment gateways and fast checkout. A typical store takes 3–10 weeks, starts with a discovery call and includes support after launch.",
   status: "Service 04 · E-Commerce Solutions",
   h1: "E-Commerce Website Development Company in India",
   heroLine: "Storefronts built",

@@ -153,6 +153,7 @@ const PAGE = {
   estAddons: ["cms"],
   estRange: [0.85, 1.25, 2], // [low x, high x, minimum weeks]
   name: "Web Development",
+  answer: "Codelix IT Solutions is a web application development company in Ahmedabad, India. We build websites and web applications with hand-written code, on a fixed written quote. A typical project takes 2–12 weeks, starts with a discovery call and includes support after launch.",
   status: "Service 01 · Web Development",
   h1: "Web Application Development Company in India",
   heroLine: "Websites that are",

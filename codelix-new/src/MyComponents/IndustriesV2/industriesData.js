@@ -47,7 +47,7 @@ export const INDUSTRIES = [
       { q: "Does the DPDP Act apply to fintech software?", a: "Yes, to any personal data you hold. Most of the duties under the DPDP Rules, 2025 apply from around mid-May 2027; our DPDP guide covers what to plan for." },
       { q: "Do you have a finance product of your own?", a: "Yes. Audytee is our practice management software for CA firms, covering clients, compliance deadlines, documents and billing." },
     ],
-    seoTitle: "Fintech Software Development Company in India",
+    seoTitle: "Fintech Software Development Company in India | Codelix",
     h1: "Fintech Software Development Company in India",
     keywords: "fintech software development, fintech app development, payment app development, lending software, banking software development, payment gateway integration, fintech company India, secure financial software",
     seoDescription:
@@ -117,7 +117,7 @@ export const INDUSTRIES = [
       { q: "Can online sales and distributor orders share the same stock?", a: "Yes. That is the point of one connected system: a sale on your D2C store and a distributor order both update the same stock." },
       { q: "Can it work with Tally?", a: "Yes. Orders and invoices can sync to Tally, so your accounts stay in the tool your accountant already uses." },
     ],
-    seoTitle: "Food & Beverage Software Development Company",
+    seoTitle: "Food & Beverage Software Development Company | Codelix",
     h1: "Food & Beverage Software Development",
     keywords: "food and beverage software, restaurant management software, food delivery app development, FMCG distribution software, inventory software for food business, online ordering system",
     seoDescription:
@@ -164,7 +164,7 @@ export const INDUSTRIES = [
       { q: "Can you build a housing society app?", a: "Yes. We have built one for residential communities, and our own AanganOne app covers visitors, maintenance billing, complaints and notices." },
       { q: "How long does the construction ERP take to go live?", a: "Typically 4 to 12 weeks, depending on how many modules you take, your workflow and how much data is moved." },
     ],
-    seoTitle: "Construction & Real Estate Software Development",
+    seoTitle: "Construction & Real Estate Software Development | Codelix",
     keywords: "real estate software development, construction management software, property management software, real estate CRM, real estate app development, builder ERP software",
     seoDescription:
       "Listing platforms and project-tracking tools that keep availability, documents and client communication accurate in one system as things move quickly.",
@@ -187,7 +187,7 @@ export const INDUSTRIES = [
       { q: "Can fees be paid online?", a: "Yes, by UPI, cards or net banking, with receipts and reminders for overdue fees." },
       { q: "Do you build online course websites?", a: "Yes: course catalogues, enrolment, payments and lesson delivery, like the EdTech website in our case studies." },
     ],
-    seoTitle: "Education Software & School Management Systems",
+    seoTitle: "Education Software & School Management Systems | Codelix",
     h1: "Education Software & School Management Systems",
     keywords: "education software development, school management system, edtech app development, learning management system, LMS development, college management software, online learning platform",
     seoDescription:

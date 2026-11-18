@@ -147,6 +147,7 @@ const PAGE = {
   estAddons: [],
   estRange: [1, 1.35, 0], // [low x, high x, minimum weeks]
   name: "Support & Managed Services",
+  answer: "Codelix IT Solutions provides software maintenance and managed IT services from Ahmedabad, India: uptime monitoring, security patching, performance tuning and dedicated engineering capacity. Onboarding takes about a week, starts with a codebase audit, and runs on a monthly contract with no lock-in.",
   status: "Service 08 · Support & Managed Services",
   h1: "Software Maintenance & Managed IT Services",
   heroLine: "Ongoing support that",
