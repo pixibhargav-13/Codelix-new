@@ -117,12 +117,6 @@ const SERVICES = [
   { n: "08", tag: "Support", title: "Support & Managed Services", items: [{ label: "Cloud Solutions & Migration", path: "/services/cloud-solutions-migration" }, { label: "Cloud Infrastructure Services", path: "/services/cloud-infrastructure-services" }, { label: "Security & Maintenance", path: "/services/security-maintenance" }, { label: "Dedicated Development Teams", path: "/services/dedicated-development-teams" }], link: "/services/support-managed-services" },
 ];
 
-/* headline numbers — the value is the count-up target, suffix rides along */
-const STATS = [
-  { value: 40, suffix: "+", label: "Projects delivered" },
-  { value: 24, suffix: "h", label: "Response time" },
-];
-
 /* same real client quotes already used on the Our Work page — reused here
    rather than inventing new placeholder testimonials. schema.sql seeds the
    Supabase testimonials table with these same 5 quotes, so once Supabase
@@ -487,40 +481,6 @@ export default function HomepageV2() {
 
   /* (Footer marquee animation is now handled in pure CSS) */
 
-  /* stat numbers count up from 0 → target the first time they scroll in */
-  useEffect(() => {
-    const nums = rootRef.current.querySelectorAll(".v2-stat-value");
-    if (!nums.length) return;
-    const runCount = (el) => {
-      const target = Number(el.dataset.target);
-      const dur = 1400;
-      const start = performance.now();
-      const step = (now) => {
-        const p = Math.min((now - start) / dur, 1);
-        // easeOutExpo — fast then settles, so the number feels like it "lands"
-        const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
-        el.textContent = Math.round(target * eased).toString();
-        if (p < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    };
-    // same trigger config as the page's proven reveal observer — a low
-    // threshold plus a bottom rootMargin, rather than a high 0.6 threshold
-    // that can be finicky on a short element
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (!e.isIntersecting) return;
-          runCount(e.target);
-          io.unobserve(e.target);
-        });
-      },
-      { threshold: 0.01, rootMargin: "0px 0px -12% 0px" }
-    );
-    nums.forEach((n) => io.observe(n));
-    return () => io.disconnect();
-  }, []);
-
   /* Work rows: a project screenshot follows the cursor while a row is hovered
      — the signature agency "hover to preview" interaction. Pointer devices
      only; the image lives in one shared element whose src swaps per row. */
@@ -871,21 +831,6 @@ export default function HomepageV2() {
             screenshot; pointer devices only (wired in JS below) */}
         <div className="v2-work-preview" ref={workPreviewRef} aria-hidden="true">
           <img alt="Project preview" ref={workPreviewImgRef} />
-        </div>
-      </section>
-
-      {/* ══════════ 5b · STATS band — numbers count up when scrolled in ══════════ */}
-      <section className="v2-section v2-stats-section">
-        <div className="v2-stats">
-          {STATS.map((s) => (
-            <div className="v2-stat" key={s.label}>
-              <div className="v2-stat-num">
-                <span className="v2-stat-value" data-target={s.value}>{s.value}</span>
-                <span className="v2-stat-suffix">{s.suffix}</span>
-              </div>
-              <div className="v2-stat-label">{s.label}</div>
-            </div>
-          ))}
         </div>
       </section>
 
