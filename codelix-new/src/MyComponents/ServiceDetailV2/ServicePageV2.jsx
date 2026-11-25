@@ -1,7 +1,7 @@
 /* One template for the eight main service pages. Each page file
    (AIDevelopmentV2.jsx, ServiceDetailV2.jsx, ...) holds only its own text
    and data and passes it in as `page`. */
-import { Check, FileCode2, Minus, X } from "lucide-react";
+import { Check, FileCode2, Minus, X, MapPin, PhoneCall, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import FooterV2 from "../Shared/FooterV2";
@@ -248,12 +248,35 @@ export default function ServicePageV2({ page }) {
 
       {/* ══════════ IN SHORT: a self-contained answer for readers and for
           search and AI answers that quote one passage ══════════ */}
-      {page.answer && (
-        <section className="v2-section sd2-answer" aria-label="In short">
-          <p className="v2-label is-in">In Short</p>
-          <p className="v2-lede is-in">{page.answer}</p>
-        </section>
-      )}
+      {page.answer && (() => {
+        /* the first sentence leads in large type, the rest follows; the
+           whole answer stays one passage in the page text */
+        const stops = [page.answer.indexOf(". "), page.answer.indexOf(": ")].filter((i) => i > 0);
+        const cut = stops.length ? Math.min(...stops) + 1 : 0;
+        const lead = cut > 0 && cut <= 200 ? page.answer.slice(0, cut) : "";
+        const rest = lead ? page.answer.slice(cut).trim() : page.answer;
+        return (
+          <section className="v2-section sd2-answer" aria-label="In short">
+            <div className="sd2-answer-card">
+              <div className="sd2-answer-side">
+                <p className="v2-label is-in">In Short</p>
+                <span className="sd2-answer-mark" aria-hidden="true">&ldquo;</span>
+              </div>
+              <div className="sd2-answer-main">
+                <p className="sd2-answer-text">
+                  {lead && <strong className="sd2-answer-lead">{lead} </strong>}
+                  {rest}
+                </p>
+                <ul className="sd2-answer-facts">
+                  <li><MapPin size={15} strokeWidth={1.8} /> Ahmedabad, India</li>
+                  <li><PhoneCall size={15} strokeWidth={1.8} /> Free discovery call</li>
+                  <li><FileText size={15} strokeWidth={1.8} /> Written scope and fixed quote</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* ══════════ 2 · PROBLEMS WE SOLVE ══════════ */}
       <section className="v2-section v2-section--void" id="problems">
