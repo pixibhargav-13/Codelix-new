@@ -267,12 +267,18 @@ export default function ServicePageV2({ page }) {
                   {lead && <strong className="sd2-answer-lead">{lead} </strong>}
                   {rest}
                 </p>
-                <ul className="sd2-answer-facts">
-                  <li><MapPin size={15} strokeWidth={1.8} /> Ahmedabad, India</li>
-                  <li><PhoneCall size={15} strokeWidth={1.8} /> Free discovery call</li>
-                  <li><FileText size={15} strokeWidth={1.8} /> Written scope and fixed quote</li>
-                </ul>
               </div>
+              {/* right column: the three facts every engagement shares, and the next step */}
+              <aside className="sd2-answer-aside" aria-label="At a glance">
+                <p className="sd2-answer-aside-k">At a glance</p>
+                <ul className="sd2-answer-facts">
+                  <li><span className="sd2-answer-icon"><MapPin size={16} strokeWidth={1.8} /></span><span><em>Based in</em>Ahmedabad, India</span></li>
+                  <li><span className="sd2-answer-icon"><PhoneCall size={16} strokeWidth={1.8} /></span><span><em>Starts with</em>A free discovery call</span></li>
+                  <li><span className="sd2-answer-icon"><FileText size={16} strokeWidth={1.8} /></span><span><em>You receive</em>A written scope and fixed quote</span></li>
+                </ul>
+                {/* "Book" in the label opens the booking modal (bookingTrigger.js) */}
+                <Link className="sd2-answer-cta" to="/contact">Book a discovery call <span aria-hidden="true">→</span></Link>
+              </aside>
             </div>
           </section>
         );
