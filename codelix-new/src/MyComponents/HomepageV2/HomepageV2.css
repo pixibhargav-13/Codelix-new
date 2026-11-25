@@ -382,13 +382,17 @@
   background: linear-gradient(90deg, rgba(124, 155, 255, .8), rgba(160, 120, 240, .5), transparent);
 }
 
+/* hover intent: the panel only appears after the pointer rests on the link
+   for .18s. Until then it stays visibility:hidden, which also keeps it from
+   catching the pointer, so sweeping the mouse past the nav on the way down
+   the page no longer pops the menu open over the content. */
 .v2-nav-dropdown:hover .v2-nav-dropdown-panel,
 .v2-nav-dropdown-panel:hover {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
   transform: none;
-  transition: opacity .4s var(--ease-premium), transform .5s var(--ease-premium), visibility 0s linear 0s;
+  transition: opacity .4s var(--ease-premium) .18s, transform .5s var(--ease-premium) .18s, visibility 0s linear .18s;
 }
 
 .v2-nav-dropdown-head {
