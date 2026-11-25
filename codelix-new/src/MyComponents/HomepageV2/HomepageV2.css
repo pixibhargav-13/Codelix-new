@@ -282,9 +282,12 @@
      bridge has to cover the whole distance from the link down to the
      bottom of the nav bar in either scroll state, generously, or the
      cursor loses :hover crossing the gap and the panel snaps shut before
-     you can reach a card inside it. */
-  padding-bottom: 60px;
-  margin-bottom: -60px;
+     you can reach a card inside it. Measured: the link ends 20px above the
+     panel at the top of the page and 17px above it once scrolled, so 22px
+     just reaches the panel. 60px reached into the page below the bar, and
+     the menu opened while the pointer was over the page content. */
+  padding-bottom: 22px;
+  margin-bottom: -22px;
 }
 
 .v2-nav-dropdown-chevron {
