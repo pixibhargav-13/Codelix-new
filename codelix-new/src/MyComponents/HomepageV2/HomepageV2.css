@@ -2480,47 +2480,48 @@
   transform: translate(4px, -4px);
 }
 
-/* Asymmetrical Layout for 8 items */
+/* 12-column bento: ERP & custom software and web share the top row, the
+   other six sit three to a row */
+/* Custom Software (ERP first) */
 .v2-svc-card-1 {
-  grid-column: span 5;
+  grid-column: span 6;
 }
 
 /* Web */
 .v2-svc-card-2 {
-  grid-column: span 4;
+  grid-column: span 6;
 }
 
 /* App */
 .v2-svc-card-3 {
-  grid-column: span 3;
+  grid-column: span 4;
 }
 
 /* UI/UX */
 .v2-svc-card-4 {
-  grid-column: span 6;
+  grid-column: span 4;
 }
 
 /* E-commerce */
 .v2-svc-card-5 {
-  grid-column: span 6;
-}
-
-/* Custom Software */
-.v2-svc-card-6 {
   grid-column: span 4;
 }
 
 /* AI Dev */
-.v2-svc-card-7 {
+.v2-svc-card-6 {
   grid-column: span 4;
 }
 
 /* Analytics */
-.v2-svc-card-8 {
+.v2-svc-card-7 {
   grid-column: span 4;
 }
 
 /* Support */
+.v2-svc-card-8 {
+  grid-column: span 4;
+}
+
 
 @media (max-width: 1000px) {
   .v2-services-grid {

@@ -106,12 +106,14 @@ const SYSTEMS = [
   { id: "INT · 08", cluster: "Integrations", title: "API & Systems Integration", path: "/services/api-development-integration", reality: "Your CRM, accounts, and inventory don't speak. We make them exchange the right data on the right trigger." },
 ];
 
+/* the owner's order: ERP and custom software first, then web, app and
+   UI/UX, then the rest */
 const SERVICES = [
-  { n: "01", tag: "Development", title: "Web Development", items: [{ label: "Performance Optimization", path: "/services/performance-optimization" }], link: "/services/web-development" },
-  { n: "02", tag: "Development", title: "Application Development", items: [{ label: "SaaS Product Development", path: "/services/saas-product-development" }], link: "/services/application-development" },
-  { n: "03", tag: "Design", title: "UI/UX Design", items: [{ label: "UX Research & Design Systems", path: "/services/ux-research-design-systems" }], link: "/services/ui-ux-design" },
-  { n: "04", tag: "Commerce", title: "E-Commerce Solutions", items: [{ label: "Marketplace Development", path: "/services/marketplace-development" }, { label: "Payment Integration Services", path: "/services/payment-integration-services" }], link: "/services/e-commerce-solutions" },
-  { n: "05", tag: "Development", title: "Custom Software Development", items: [{ label: "ERP & CRM Development", path: "/services/erp-crm-development" }, { label: "API Development & Integration", path: "/services/api-development-integration" }, { label: "Legacy System Modernization", path: "/services/legacy-system-modernization" }], link: "/services/custom-software-development" },
+  { n: "01", tag: "ERP & Software", title: "Custom Software Development", items: [{ label: "ERP & CRM Development", path: "/services/erp-crm-development" }, { label: "API Development & Integration", path: "/services/api-development-integration" }, { label: "Legacy System Modernization", path: "/services/legacy-system-modernization" }], link: "/services/custom-software-development" },
+  { n: "02", tag: "Development", title: "Web Development", items: [{ label: "Performance Optimization", path: "/services/performance-optimization" }], link: "/services/web-development" },
+  { n: "03", tag: "Development", title: "Application Development", items: [{ label: "SaaS Product Development", path: "/services/saas-product-development" }], link: "/services/application-development" },
+  { n: "04", tag: "Design", title: "UI/UX Design", items: [{ label: "UX Research & Design Systems", path: "/services/ux-research-design-systems" }], link: "/services/ui-ux-design" },
+  { n: "05", tag: "Commerce", title: "E-Commerce Solutions", items: [{ label: "Marketplace Development", path: "/services/marketplace-development" }, { label: "Payment Integration Services", path: "/services/payment-integration-services" }], link: "/services/e-commerce-solutions" },
   { n: "06", tag: "Applied AI", title: "AI Development", items: [{ label: "AI Agent Development", path: "/services/ai-agent-development" }, { label: "Generative AI Solutions", path: "/services/generative-ai-solutions" }, { label: "Workflow Automation", path: "/services/workflow-automation" }], link: "/services/ai-development" },
   { n: "07", tag: "Analytics", title: "Data Analytics", items: [{ label: "Business Intelligence Solutions", path: "/services/business-intelligence-solutions" }, { label: "Predictive Analytics", path: "/services/predictive-analytics" }, { label: "Data Engineering", path: "/services/data-engineering" }], link: "/services/data-analytics" },
   { n: "08", tag: "Support", title: "Support & Managed Services", items: [{ label: "Cloud Solutions & Migration", path: "/services/cloud-solutions-migration" }, { label: "Cloud Infrastructure Services", path: "/services/cloud-infrastructure-services" }, { label: "Security & Maintenance", path: "/services/security-maintenance" }, { label: "Dedicated Development Teams", path: "/services/dedicated-development-teams" }], link: "/services/support-managed-services" },
@@ -719,8 +721,9 @@ export default function HomepageV2() {
         <div className="v2-method-head">
           <h2 className="v2-method-heading">What We Provide.</h2>
           <p className="v2-method-lede">
-            Codelix provides eight services: web, app, UI/UX, e-commerce, custom
-            software, AI, data analytics, and managed support — one delivery standard.
+            Codelix provides eight services: ERP and custom software, web, app,
+            UI/UX, e-commerce, AI, data analytics, and managed support — one
+            delivery standard.
           </p>
         </div>
 
