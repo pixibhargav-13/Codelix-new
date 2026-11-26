@@ -71,7 +71,7 @@ const getFaqs = (svc) => {
     return [
       ...svc.faqs,
       { q: `How is ${name} priced?`, a: "Fixed scope, fixed price — you get a written quote before any work starts, based on what you actually need, not an hourly guess." },
-      { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that, you can keep us on a monthly retainer for updates, fixes, and support." },
+      { schema: false, q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that, you can keep us on a monthly retainer for updates, fixes, and support." },
     ];
   }
   return [
@@ -81,7 +81,7 @@ const getFaqs = (svc) => {
       ? { q: `Does ${name} include ${firstCover}?`, a: `Yes — ${firstCover} is one of the things covered under this service. See "What's Included" above for the full list of what's in scope.` }
       : { q: `What exactly is included in ${name}?`, a: "See \"What's Included\" above for the full list of what's covered under this service." },
     { q: `Do you work with our existing team on ${name}?`, a: "Yes — plenty of engagements plug into an existing in-house team rather than replacing it. We scope around whatever setup you already have." },
-    { q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that, you can keep us on a monthly retainer for updates, fixes, and support." },
+    { schema: false, q: "What happens after launch?", a: "Every project includes a post-launch support window for fixes. After that, you can keep us on a monthly retainer for updates, fixes, and support." },
   ];
 };
 
@@ -605,7 +605,7 @@ export default function AdditionalServiceDetailV2() {
           {(stack.length ? stack : TECH_STACK).map((t) => (
             <div className="v2-tech-item" key={t.name}>
               {t.src
-                ? <img src={t.src} alt={t.name} loading="lazy" />
+                ? <img src={t.src} alt={t.name} width="26" height="26" loading="lazy" />
                 : <i className="sd2-tech-mono" aria-hidden="true">{t.name.slice(0, 2)}</i>}
               <span>{t.name}</span>
             </div>

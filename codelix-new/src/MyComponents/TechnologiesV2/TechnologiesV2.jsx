@@ -243,7 +243,7 @@ export default function TechnologiesV2() {
         <div className="tv2-grid">
           {filtered.map((t, i) => (
             <div className="tv2-tile" style={{ "--d": `${(i % 10) * 0.04}s` }} key={t.name + t.cat}>
-              <img src={t.img} alt={t.name} loading="lazy" />
+              <img src={t.img} alt={t.name} width="34" height="34" loading="lazy" />
               <span>{t.name}</span>
             </div>
           ))}

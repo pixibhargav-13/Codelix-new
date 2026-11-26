@@ -617,6 +617,6 @@ export const HIRING_STEPS = [
 ];
 
 export const SHARED_HIRE_FAQS = [
-  { q: "Will you sign an NDA?", a: "Yes, before we see any of your code or documents." },
+  { q: "Will you sign an NDA?", a: "Yes, before we see any of your code or documents.", schema: false },
   { q: "What are your working hours?", a: "Monday to Saturday, 10:00–19:00 IST, from our office in Ahmedabad. That overlaps the UK and European morning and the Gulf working day; for US teams we agree a fixed daily call slot at the start." },
 ];

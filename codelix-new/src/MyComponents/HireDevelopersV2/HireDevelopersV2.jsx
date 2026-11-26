@@ -23,7 +23,19 @@ const FAQS = [
   { q: "How much does it cost to hire a developer from Codelix?", a: "It depends on the technology, seniority and whether you hire a dedicated developer, a team or a fixed-scope project. After a short call you get a written proposal with the exact cost within 48 hours." },
   { q: "Can I interview the developer before hiring?", a: "Yes. You talk to the developer directly and can give them a technical task before you approve them." },
   { q: "Do I hire freelancers or Codelix employees?", a: "Codelix developers, working from our office in Ahmedabad, with a project lead you can escalate to." },
-  ...SHARED_HIRE_FAQS,
+  { q: "What is the difference between a dedicated developer, team extension and a fixed-scope project?", a: "A dedicated developer works full-time on your product, in your tools and stand-ups, billed monthly. Team extension adds several developers (plus design or QA if needed) who report to your lead, also monthly. A fixed-scope project is a defined piece of work with a written scope, price and timeline agreed before anything is built." },
+  { q: "How quickly can a developer start?", a: "You get a written proposal with the engagement model, cost and developer profiles within 48 hours of the first call. After you interview the developer and give the go-ahead, they get access to your repo and tools and take a first small task in week one." },
+  /* the hub is the home for the shared hire questions, so they stay in its
+     FAQ markup; on the 21 role pages they show but aren't marked up again */
+  ...SHARED_HIRE_FAQS.map((f) => ({ ...f, schema: true })),
+];
+
+/* the engagement models side by side, from ENGAGEMENT_MODELS */
+const MODEL_ROWS = [
+  ["Best for", "Ongoing work and a long backlog", "Adding capacity next to your in-house team", "A defined piece of work"],
+  ["Who directs the work", "You, in your tools and stand-ups", "Your lead; the developers report to them", "The written scope agreed before work starts"],
+  ["People", "One full-time developer", "Several developers, plus design or QA if needed", "As the written scope sets out"],
+  ["Billing", "Monthly", "Monthly", "Fixed price"],
 ];
 
 export default function HireDevelopersV2() {
@@ -127,6 +139,25 @@ export default function HireDevelopersV2() {
                 </article>
               );
             })}
+          </div>
+          <div className="hd2-models-table-wrap">
+            <table className="hd2-models-table">
+              <caption>Dedicated developer vs team extension vs fixed-scope project</caption>
+              <thead>
+                <tr>
+                  <td />
+                  {ENGAGEMENT_MODELS.map((m) => <th scope="col" key={m.title}>{m.title}</th>)}
+                </tr>
+              </thead>
+              <tbody>
+                {MODEL_ROWS.map(([label, ...cells]) => (
+                  <tr key={label}>
+                    <th scope="row">{label}</th>
+                    {cells.map((c, i) => <td key={i}>{c}</td>)}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </section>
 
