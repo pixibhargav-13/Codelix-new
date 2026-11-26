@@ -46,7 +46,10 @@ const AdminTestimonialForm = lazy(() => import("./admin/pages/AdminTestimonialFo
    on "Book a consultation" still opens the modal instead of falling through
    to /contact — it just mounts the modal, which then handles every later
    click itself. */
-const Chatbot = lazy(() => import("./MyComponents/Chatbot/Chatbot"));
+/* The chatbot is switched off for now: it isn't working, so it stays out of
+   the page. To bring it back, restore this import, the ChatbotGate component and the
+   <ChatbotGate /> line in App (git history has all three); the widget's own
+   files in MyComponents/Chatbot are untouched. */
 const BookingModal = lazy(() => import("./MyComponents/BookingModal/BookingModal"));
 import { bookingAnchorFor, OPEN_BOOKING_EVENT } from "./MyComponents/BookingModal/bookingTrigger";
 
@@ -176,32 +179,6 @@ const AnalyticsRouteTracker = () => {
   }, [location.pathname, location.search]);
 
   return null;
-};
-
-// ─── Chatbot is a public-site widget — hide it on the admin panel ────────────
-const ChatbotGate = () => {
-  const location = useLocation();
-  const [idle, setIdle] = useState(false);
-
-  useEffect(() => {
-    const mount = () => setIdle(true);
-    if (typeof window.requestIdleCallback === "function") {
-      const id = window.requestIdleCallback(mount, { timeout: 3000 });
-      return () => window.cancelIdleCallback(id);
-    }
-    /* Safari has no requestIdleCallback */
-    const t = setTimeout(mount, 1500);
-    return () => clearTimeout(t);
-  }, []);
-
-  if (location.pathname.startsWith("/admin")) return null;
-  if (!idle) return null;
-
-  return (
-    <Suspense fallback={null}>
-      <Chatbot />
-    </Suspense>
-  );
 };
 
 // ─── Sync Lenis with GSAP ScrollTrigger for extra smooth animations ────────────
@@ -400,7 +377,6 @@ function App({ initialData }) {
         <AnalyticsRouteTracker />
         <BreadcrumbSchema />
         <StructuredData type="Organization" />
-        <ChatbotGate />
         <BookingGate />
         <AppRoutes />
       </InitialDataContext.Provider>
