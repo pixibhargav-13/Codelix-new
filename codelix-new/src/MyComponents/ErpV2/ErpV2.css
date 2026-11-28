@@ -1318,4 +1318,6 @@
   .v2 .erp2-stats .pd2-stat { padding: 18px 16px; }
   .v2 .erp2-stats .pd2-stat-num { font-size: 22px; white-space: normal; }
   .v2 .erp2-stats .pd2-stat-label { font-size: 13px; }
+  /* an odd last card takes the whole row instead of leaving a hole */
+  .v2 .erp2-stats .pd2-stat:last-child:nth-child(odd) { grid-column: 1 / -1; }
 }

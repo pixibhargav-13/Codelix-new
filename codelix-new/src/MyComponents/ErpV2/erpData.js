@@ -223,6 +223,7 @@ export const ERP_INDUSTRIES = [
       length: "3:26",
       duration: "PT3M26S",
       uploadDate: "2026-10-25",
+      deck: { href: "/downloads/codelix-construction-erp-presentation.pdf", label: "Download presentation (PDF)" },
     },
     stats: [
       { value: "12", label: "Modules in one app" },
