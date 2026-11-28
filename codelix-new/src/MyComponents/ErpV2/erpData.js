@@ -436,18 +436,20 @@ export const ERP_INDUSTRIES = [
     tagline: "Your factory, fully connected. From the factory floor to your finance team, everything in one system, built for Indian SMEs.",
     facts: [["For", "Manufacturing SMEs, ₹5 Cr to ₹100 Cr"], ["Works on", "Web and mobile app"], ["Built by", "Codelix IT Solutions"]],
     heroShot: MFG_SCREENS.hero,
-    /* rendered by tools/erp-video from this edition's own sample-data screens */
+    /* the brass and manufacturing pitch video and its deck, supplied by the
+       owner (28 Nov 2026); the poster is a frame from the video */
     demoVideo: {
-      heading: "See the manufacturing ERP in 76 seconds.",
+      heading: "See Codelix ERP for brass and manufacturing.",
       cta: "Watch the demo",
-      src: "/videos/codelix-manufacturing-erp-demo.mp4",
+      src: "/videos/codelix-brass-erp-demo.mp4",
       poster: posterMfg,
-      description: "A walkthrough of Codelix ERP for manufacturers: factory dashboard, work orders and WIP, multi-godown inventory, CNC monitoring, quality and scrap, vendor and customer portals, the mobile app and AI. Shown with sample data.",
-      body: "A short walkthrough of how a factory runs on Codelix ERP, with sample data.",
-      covers: ["Work orders, WIP and delay warnings", "Inventory, CNC monitoring and quality", "Vendor and customer portals", "The mobile app and AI on your data"],
-      length: "1:16",
-      duration: "PT1M16S",
-      uploadDate: "2026-11-05",
+      description: "A walkthrough of Codelix ERP for brass and manufacturing companies: orders, stock by weight, purchase, job work, forging, casting, scrap, plating, packing, export documents, GST billing, CRM, the client portal, payroll and cashflow, on computer, tablet and phone.",
+      body: "A short walkthrough of how a brass or manufacturing factory runs on Codelix ERP, from the order to the payment.",
+      covers: ["Orders, stock and purchase, by weight", "Job work, forging, plating and packing", "Export documents, GST bills and reminders", "Client portal, payroll and the owner's dashboard"],
+      length: "3:29",
+      duration: "PT3M29S",
+      uploadDate: "2026-11-28",
+      deck: { href: "/downloads/codelix-brass-erp-presentation.pdf", label: "Download the presentation (PDF, 12 MB)" },
     },
     explorer: MFG_SCREENS.explorer,
     stats: [

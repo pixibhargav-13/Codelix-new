@@ -217,6 +217,11 @@ export default function ErpPageV2() {
               <ul className="erp2-checklist pd2-reveal">
                 {page.demoVideo.covers.map((c) => <li key={c}><Check size={14} strokeWidth={2.5} />{c}</li>)}
               </ul>
+              {page.demoVideo.deck && (
+                <a className="v2-btn erp2-deck pd2-reveal" href={page.demoVideo.deck.href} download>
+                  {page.demoVideo.deck.label} ↓
+                </a>
+              )}
             </div>
             <div className="erp2-video-frame pd2-reveal">
               {page.demoVideo.youtube ? (

@@ -1287,3 +1287,6 @@
     right: 12px;
   }
 }
+
+/* the deck download under the demo video's checklist */
+.v2 .erp2-deck { display: inline-flex; margin-top: 26px; }
