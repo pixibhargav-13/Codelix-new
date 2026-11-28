@@ -218,8 +218,9 @@ export default function ErpPageV2() {
                 {page.demoVideo.covers.map((c) => <li key={c}><Check size={14} strokeWidth={2.5} />{c}</li>)}
               </ul>
               {page.demoVideo.deck && (
-                <a className="v2-btn erp2-deck pd2-reveal" href={page.demoVideo.deck.href} download>
-                  {page.demoVideo.deck.label} ↓
+                <a className="v2-btn v2-btn--filled erp2-deck pd2-reveal" href={page.demoVideo.deck.href} download>
+                  <span>{page.demoVideo.deck.label}</span>
+                  <i className="v2-btn-arrow">↓</i>
                 </a>
               )}
             </div>
@@ -241,7 +242,7 @@ export default function ErpPageV2() {
       )}
 
       {/* ══════════ STATS ══════════ */}
-      <section className="pd2-stats pd2-reveal" ref={statsRef}>
+      <section className="pd2-stats erp2-stats pd2-reveal" ref={statsRef}>
         {page.stats.map((s) => (
           <div className="pd2-stat" key={s.label}>
             <span className="pd2-stat-num" data-value={s.value}>{s.value}</span>

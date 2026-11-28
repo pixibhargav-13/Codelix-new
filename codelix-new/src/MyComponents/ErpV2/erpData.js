@@ -449,11 +449,13 @@ export const ERP_INDUSTRIES = [
       length: "3:29",
       duration: "PT3M29S",
       uploadDate: "2026-11-28",
-      deck: { href: "/downloads/codelix-brass-erp-presentation.pdf", label: "Download the presentation (PDF, 12 MB)" },
+      deck: { href: "/downloads/codelix-brass-erp-presentation.pdf", label: "Download presentation (PDF)" },
     },
     explorer: MFG_SCREENS.explorer,
+    /* the first two are from the owner's Brass ERP deck (28 Nov 2026) */
     stats: [
-      { value: "10", label: "Modules" },
+      { value: "30+", label: "Clients in brass and manufacturing" },
+      { value: "₹750+ Cr", label: "Combined turnover of those clients" },
       { value: "₹5–100 Cr", label: "Businesses it's built for" },
       { value: "Web + Mobile", label: "Same data, live on both" },
     ],
