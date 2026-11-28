@@ -223,7 +223,7 @@ export const ERP_INDUSTRIES = [
       length: "3:26",
       duration: "PT3M26S",
       uploadDate: "2026-10-25",
-      deck: { href: "/downloads/codelix-construction-erp-presentation.pdf", label: "Construction ERP presentation", meta: "PDF · 2.6 MB" },
+      deck: { href: "/downloads/codelix-construction-erp-presentation.pdf", label: "Construction ERP presentation", meta: "PDF" },
     },
     stats: [
       { value: "12", label: "Modules in one app" },
@@ -450,7 +450,7 @@ export const ERP_INDUSTRIES = [
       length: "3:29",
       duration: "PT3M29S",
       uploadDate: "2026-11-28",
-      deck: { href: "/downloads/codelix-brass-erp-presentation.pdf", label: "Brass & manufacturing ERP presentation", meta: "PDF · 12 MB" },
+      deck: { href: "/downloads/codelix-brass-erp-presentation.pdf", label: "Brass & manufacturing ERP presentation", meta: "PDF" },
     },
     explorer: MFG_SCREENS.explorer,
     /* the first two are from the owner's Brass ERP deck (28 Nov 2026) */
