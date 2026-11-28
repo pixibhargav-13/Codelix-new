@@ -148,8 +148,15 @@ export const ERP_OVERVIEW = {
   stats: [
     { value: "4", label: "Industry editions" },
     { value: "₹1000+ Cr", label: "Combined project value of our construction clients" },
+    /* from the owner's Brass ERP deck (28 Nov 2026), as on the manufacturing page */
+    { value: "₹750+ Cr", label: "Combined turnover of our 30+ brass and manufacturing clients" },
     { value: "Web + Mobile", label: "Same data, live on both" },
   ],
+  demosSection: {
+    label: "Demos",
+    heading: "Watch it run, edition by edition.",
+    body: "Short walkthroughs of each edition. Pick your industry.",
+  },
   problem: {
     label: "Why Codelix Custom ERP",
     heading: "Excel, WhatsApp and paper registers don't add up.",
@@ -180,8 +187,8 @@ export const ERP_OVERVIEW = {
       { n: "07", title: "Tasks", icon: ListTodo, body: "Who does what, and by when." },
       { n: "08", title: "Library", icon: Contact, body: "All staff, clients and vendors in one address book." },
       { n: "09", title: "Roles and companies", icon: Settings2, body: "Each role sees its own menus; run several companies from one login." },
+      { n: "10", title: "Built around you", icon: Sparkles, body: "Need something different? We build it around how you work.", custom: true },
     ],
-    custom: "Need something different? We build it around how you work.",
   },
   coreScreens: CORE_SCREENS,
   mobile: MOBILE,

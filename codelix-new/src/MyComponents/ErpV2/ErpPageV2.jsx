@@ -30,6 +30,46 @@ const SITE = "https://www.codelixitsolutions.com";
    with the product pages' design (ProductDetailV2.css) plus the sections a
    pitch deck needs: module spotlights with real screens, the mobile app,
    the editions, and who it's for. */
+/* one demo: copy, checklist, deck download and the player */
+function DemoBlock({ demo, level = "h2" }) {
+  return (
+    <>
+      <div className="erp2-video-copy">
+        <span className="v2-label pd2-reveal">Demo · {demo.length}</span>
+        {React.createElement(level, { className: "v2-heading pd2-reveal" }, demo.heading)}
+        <p className="v2-lede pd2-reveal">{demo.body}</p>
+        <ul className="erp2-checklist pd2-reveal">
+          {demo.covers.map((c) => <li key={c}><Check size={14} strokeWidth={2.5} />{c}</li>)}
+        </ul>
+        {demo.deck && (
+          <a className="erp2-deck pd2-reveal" href={demo.deck.href} download>
+            <span className="erp2-deck-icon" aria-hidden="true"><FileText size={20} strokeWidth={1.75} /></span>
+            <span className="erp2-deck-text">
+              <small>Download</small>
+              <strong>{demo.deck.label}</strong>
+              <small>{demo.deck.meta}</small>
+            </span>
+            <span className="erp2-deck-go" aria-hidden="true"><ArrowRight size={16} /></span>
+          </a>
+        )}
+      </div>
+      <div className="erp2-video-frame pd2-reveal">
+        {demo.youtube ? (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${demo.youtube}?rel=0`}
+            title={demo.heading}
+            loading="lazy"
+            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        ) : (
+          <video key={demo.src} src={demo.src} poster={demo.poster} controls preload="none" playsInline aria-label={demo.heading} />
+        )}
+      </div>
+    </>
+  );
+}
+
 export default function ErpPageV2() {
   const { industry } = useParams();
   const page = industry ? erpIndustryBySlug(industry) : ERP_OVERVIEW;
@@ -39,6 +79,8 @@ export default function ErpPageV2() {
   const statsRef = useRef(null);
   /* the module open in the explorer; the module cards can set it too */
   const [activeModule, setActiveModule] = useState(0);
+  const [activeDemo, setActiveDemo] = useState(0);
+  const demoEditions = ERP_INDUSTRIES.filter((e) => e.demoVideo);
   const lenis = useLenis();
   const openModule = (i) => {
     setActiveModule(i);
@@ -210,38 +252,7 @@ export default function ErpPageV2() {
       {page.demoVideo && (
         <section className="v2-section erp2-video" id="demo">
           <div className="v2-container erp2-video-layout">
-            <div className="erp2-video-copy">
-              <span className="v2-label pd2-reveal">Demo · {page.demoVideo.length}</span>
-              <h2 className="v2-heading pd2-reveal">{page.demoVideo.heading}</h2>
-              <p className="v2-lede pd2-reveal">{page.demoVideo.body}</p>
-              <ul className="erp2-checklist pd2-reveal">
-                {page.demoVideo.covers.map((c) => <li key={c}><Check size={14} strokeWidth={2.5} />{c}</li>)}
-              </ul>
-              {page.demoVideo.deck && (
-                <a className="erp2-deck pd2-reveal" href={page.demoVideo.deck.href} download>
-                  <span className="erp2-deck-icon" aria-hidden="true"><FileText size={20} strokeWidth={1.75} /></span>
-                  <span className="erp2-deck-text">
-                    <small>Download</small>
-                    <strong>{page.demoVideo.deck.label}</strong>
-                    <small>{page.demoVideo.deck.meta}</small>
-                  </span>
-                  <span className="erp2-deck-go" aria-hidden="true"><ArrowRight size={16} /></span>
-                </a>
-              )}
-            </div>
-            <div className="erp2-video-frame pd2-reveal">
-              {page.demoVideo.youtube ? (
-                <iframe
-                  src={`https://www.youtube-nocookie.com/embed/${page.demoVideo.youtube}?rel=0`}
-                  title={page.demoVideo.heading}
-                  loading="lazy"
-                  allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              ) : (
-                <video src={page.demoVideo.src} poster={page.demoVideo.poster} controls preload="none" playsInline aria-label={page.demoVideo.heading} />
-              )}
-            </div>
+            <DemoBlock demo={page.demoVideo} />
           </div>
         </section>
       )}
@@ -305,6 +316,41 @@ export default function ErpPageV2() {
         </section>
       )}
 
+      {/* ══════════ DEMOS (overview): one player, a tab per edition ══════════ */}
+      {isOverview && page.demosSection && (
+        <section className="v2-section erp2-video erp2-demos" id="demo">
+          <div className="v2-container">
+            <span className="v2-label pd2-reveal">{page.demosSection.label}</span>
+            <h2 className="v2-heading pd2-reveal">{page.demosSection.heading}</h2>
+            <p className="v2-lede pd2-reveal">{page.demosSection.body}</p>
+            <div className="erp2-demo-tabs pd2-reveal" role="tablist" aria-label="Edition demos">
+              {demoEditions.map((ed, i) => (
+                <button
+                  type="button" role="tab" key={ed.slug}
+                  id={`demo-tab-${ed.slug}`} aria-controls="demo-panel"
+                  aria-selected={i === activeDemo} tabIndex={i === activeDemo ? 0 : -1}
+                  className={i === activeDemo ? "is-on" : undefined}
+                  onClick={() => setActiveDemo(i)}
+                  onKeyDown={(e) => {
+                    const step = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+                    if (!step) return;
+                    const n = (i + step + demoEditions.length) % demoEditions.length;
+                    setActiveDemo(n);
+                    document.getElementById(`demo-tab-${demoEditions[n].slug}`)?.focus();
+                  }}
+                >
+                  <ed.icon size={16} strokeWidth={1.75} /> {ed.name}
+                  <small>{ed.demoVideo.length}</small>
+                </button>
+              ))}
+            </div>
+            <div className="erp2-video-layout erp2-demo-panel" id="demo-panel" role="tabpanel" aria-labelledby={`demo-tab-${demoEditions[activeDemo].slug}`}>
+              <DemoBlock demo={demoEditions[activeDemo].demoVideo} level="h3" />
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ══════════ MODULES (edition) / CORE (overview) ══════════ */}
       {(page.modules || page.core) && (() => {
         const m = page.modules || page.core;
@@ -336,7 +382,7 @@ export default function ErpPageV2() {
                         <span className="erp2-module-see">See it <ArrowRight size={13} strokeWidth={2} /></span>
                       </button>
                     ) : (
-                      <div className={`pd2-module-card pd2-reveal ${it.unique ? "is-unique" : ""}`} key={it.n}>{inner}</div>
+                      <div className={`pd2-module-card pd2-reveal ${it.unique ? "is-unique" : ""} ${it.custom ? "is-custom" : ""}`} key={it.n}>{inner}</div>
                     );
                   })}
                 </div>
