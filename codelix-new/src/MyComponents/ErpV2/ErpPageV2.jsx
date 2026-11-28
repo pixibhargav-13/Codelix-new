@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useLenis } from "lenis/react";
-import { Check, ArrowUpRight, ArrowRight } from "lucide-react";
+import { Check, ArrowUpRight, ArrowRight, FileText } from "lucide-react";
 import FooterV2 from "../Shared/FooterV2";
 import NavbarV2 from "../Shared/NavbarV2";
 import { SEO } from "../../components/SEO";
@@ -218,9 +218,14 @@ export default function ErpPageV2() {
                 {page.demoVideo.covers.map((c) => <li key={c}><Check size={14} strokeWidth={2.5} />{c}</li>)}
               </ul>
               {page.demoVideo.deck && (
-                <a className="v2-btn v2-btn--filled erp2-deck pd2-reveal" href={page.demoVideo.deck.href} download>
-                  <span>{page.demoVideo.deck.label}</span>
-                  <i className="v2-btn-arrow">↓</i>
+                <a className="erp2-deck pd2-reveal" href={page.demoVideo.deck.href} download>
+                  <span className="erp2-deck-icon" aria-hidden="true"><FileText size={20} strokeWidth={1.75} /></span>
+                  <span className="erp2-deck-text">
+                    <small>Download</small>
+                    <strong>{page.demoVideo.deck.label}</strong>
+                    <small>{page.demoVideo.deck.meta}</small>
+                  </span>
+                  <span className="erp2-deck-go" aria-hidden="true"><ArrowRight size={16} /></span>
                 </a>
               )}
             </div>

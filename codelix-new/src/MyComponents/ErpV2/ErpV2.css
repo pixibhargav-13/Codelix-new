@@ -1289,7 +1289,37 @@
 }
 
 /* the deck download under the demo video's checklist */
-.v2 .erp2-deck { display: inline-flex; margin-top: 26px; }
+.v2 .erp2-deck {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 420px;
+  margin-top: 28px;
+  padding: 14px 16px;
+  border: .8px solid var(--rule-strong);
+  border-radius: 16px;
+  background: radial-gradient(120% 140% at 0% 0%, rgba(62, 125, 252, .14), transparent 60%), rgba(255, 255, 255, .02);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color .2s, background-color .2s;
+}
+.v2 .erp2-deck:hover, .v2 .erp2-deck:focus-visible { border-color: rgba(111, 157, 255, .6); background-color: rgba(62, 125, 252, .08); }
+.v2 .erp2-deck-icon {
+  display: grid; place-items: center; flex: none;
+  width: 44px; height: 44px; border-radius: 12px;
+  background: rgba(62, 125, 252, .16); color: #8fb3ff;
+}
+.v2 .erp2-deck-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.v2 .erp2-deck-text strong { font-size: 15px; font-weight: 500; line-height: 1.35; }
+.v2 .erp2-deck-text small { font-size: 12px; opacity: .6; letter-spacing: .02em; }
+.v2 .erp2-deck-text small:first-child { text-transform: uppercase; letter-spacing: .14em; font-size: 10.5px; }
+.v2 .erp2-deck-go {
+  display: grid; place-items: center; flex: none;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: .8px solid var(--rule-strong);
+  transition: transform .2s, background-color .2s;
+}
+.v2 .erp2-deck:hover .erp2-deck-go { transform: translateX(3px); background: rgba(62, 125, 252, .25); }
 
 /* number strip on the ERP pages: a row of cards instead of loose numbers */
 .v2 .pd2-stats.erp2-stats {
