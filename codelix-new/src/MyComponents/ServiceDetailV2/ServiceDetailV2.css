@@ -2295,3 +2295,8 @@
   .v2 .sd2-answer-side { flex-direction: row; align-items: center; }
   .v2 .sd2-answer-mark { font-size: 64px; }
 }
+
+/* three cards: three equal columns, not three of four */
+@media (min-width: 1001px) {
+  .sd2-other-list:has(> :nth-child(3):last-child) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

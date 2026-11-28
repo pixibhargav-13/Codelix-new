@@ -148,8 +148,15 @@ export const ERP_OVERVIEW = {
   stats: [
     { value: "4", label: "Industry editions" },
     { value: "₹1000+ Cr", label: "Combined project value of our construction clients" },
+    /* from the owner's Brass ERP deck (28 Nov 2026), as on the manufacturing page */
+    { value: "₹750+ Cr", label: "Combined turnover of our 30+ brass and manufacturing clients" },
     { value: "Web + Mobile", label: "Same data, live on both" },
   ],
+  demosSection: {
+    label: "Demos",
+    heading: "Watch it run, edition by edition.",
+    body: "Short walkthroughs of each edition. Pick your industry.",
+  },
   problem: {
     label: "Why Codelix Custom ERP",
     heading: "Excel, WhatsApp and paper registers don't add up.",
@@ -180,8 +187,8 @@ export const ERP_OVERVIEW = {
       { n: "07", title: "Tasks", icon: ListTodo, body: "Who does what, and by when." },
       { n: "08", title: "Library", icon: Contact, body: "All staff, clients and vendors in one address book." },
       { n: "09", title: "Roles and companies", icon: Settings2, body: "Each role sees its own menus; run several companies from one login." },
+      { n: "10", title: "Built around you", icon: Sparkles, body: "Need something different? We build it around how you work.", custom: true },
     ],
-    custom: "Need something different? We build it around how you work.",
   },
   coreScreens: CORE_SCREENS,
   mobile: MOBILE,
@@ -223,6 +230,7 @@ export const ERP_INDUSTRIES = [
       length: "3:26",
       duration: "PT3M26S",
       uploadDate: "2026-10-25",
+      deck: { href: "/downloads/codelix-construction-erp-presentation.pdf", label: "Construction ERP presentation", meta: "PDF" },
     },
     stats: [
       { value: "12", label: "Modules in one app" },
@@ -436,22 +444,26 @@ export const ERP_INDUSTRIES = [
     tagline: "Your factory, fully connected. From the factory floor to your finance team, everything in one system, built for Indian SMEs.",
     facts: [["For", "Manufacturing SMEs, ₹5 Cr to ₹100 Cr"], ["Works on", "Web and mobile app"], ["Built by", "Codelix IT Solutions"]],
     heroShot: MFG_SCREENS.hero,
-    /* rendered by tools/erp-video from this edition's own sample-data screens */
+    /* the brass and manufacturing pitch video and its deck, supplied by the
+       owner (28 Nov 2026); the poster is a frame from the video */
     demoVideo: {
-      heading: "See the manufacturing ERP in 76 seconds.",
+      heading: "See Codelix ERP for brass and manufacturing.",
       cta: "Watch the demo",
-      src: "/videos/codelix-manufacturing-erp-demo.mp4",
+      src: "/videos/codelix-brass-erp-demo.mp4",
       poster: posterMfg,
-      description: "A walkthrough of Codelix ERP for manufacturers: factory dashboard, work orders and WIP, multi-godown inventory, CNC monitoring, quality and scrap, vendor and customer portals, the mobile app and AI. Shown with sample data.",
-      body: "A short walkthrough of how a factory runs on Codelix ERP, with sample data.",
-      covers: ["Work orders, WIP and delay warnings", "Inventory, CNC monitoring and quality", "Vendor and customer portals", "The mobile app and AI on your data"],
-      length: "1:16",
-      duration: "PT1M16S",
-      uploadDate: "2026-11-05",
+      description: "A walkthrough of Codelix ERP for brass and manufacturing companies: orders, stock by weight, purchase, job work, forging, casting, scrap, plating, packing, export documents, GST billing, CRM, the client portal, payroll and cashflow, on computer, tablet and phone.",
+      body: "A short walkthrough of how a brass or manufacturing factory runs on Codelix ERP, from the order to the payment.",
+      covers: ["Orders, stock and purchase, by weight", "Job work, forging, plating and packing", "Export documents, GST bills and reminders", "Client portal, payroll and the owner's dashboard"],
+      length: "3:29",
+      duration: "PT3M29S",
+      uploadDate: "2026-11-28",
+      deck: { href: "/downloads/codelix-brass-erp-presentation.pdf", label: "Brass & manufacturing ERP presentation", meta: "PDF" },
     },
     explorer: MFG_SCREENS.explorer,
+    /* the first two are from the owner's Brass ERP deck (28 Nov 2026) */
     stats: [
-      { value: "10", label: "Modules" },
+      { value: "30+", label: "Clients in brass and manufacturing" },
+      { value: "₹750+ Cr", label: "Combined turnover of those clients" },
       { value: "₹5–100 Cr", label: "Businesses it's built for" },
       { value: "Web + Mobile", label: "Same data, live on both" },
     ],
