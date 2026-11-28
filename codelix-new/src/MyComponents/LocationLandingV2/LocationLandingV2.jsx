@@ -56,12 +56,12 @@ const NEXT_STEPS = [
 const WHY = [
   { icon: ShieldCheck, title: "Fixed price, in writing", body: "A written scope and a fixed quote before work starts — no hourly meter running." },
   { icon: Users, title: "One team, start to finish", body: "Design, development, testing and support by the same team, with one point of contact." },
-  { icon: Sparkles, title: "40+ projects delivered", body: "ERPs, e-commerce stores, mobile apps and SaaS products shipped across 11 industries." },
+  { icon: Sparkles, title: "75+ clients served", body: "ERPs, e-commerce stores, mobile apps and SaaS products shipped across 11 industries." },
   { icon: KeyRound, title: "Support after launch", body: "Fixes and improvements after go-live, from the same team that built it." },
 ];
 
 const STATS = [
-  { num: "40+", label: "Projects delivered" },
+  { num: "75+", label: "Clients served" },
   { num: "11", label: "Industries served" },
   { num: "24h", label: "Response time" },
 ];
@@ -317,7 +317,7 @@ export default function LocationLandingV2() {
         label="Client Voices"
         heading="What clients say once we ship."
         stats={[
-          { num: "40+", label: "Companies trust us" },
+          { num: "75+", label: "Clients served" },
           { num: "11", label: "Industries served" },
         ]}
       />
@@ -449,8 +449,9 @@ export default function LocationLandingV2() {
             </ul>
           </div>
           <div className="ll-foot-col">
-            <span className="ll-foot-k"><MapPin size={14} /> Office</span>
-            <p>A-1308, PNTC — Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat — 380015</p>
+            <span className="ll-foot-k"><MapPin size={14} /> Offices</span>
+            <p>Ahmedabad (HQ): A-1308, PNTC — Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat — 380015</p>
+            <p>Jamnagar: A-9, Bhakti Yog, Mehulnagar Telephone Ex., Jamnagar, Gujarat — 361006</p>
             <span className="ll-foot-k ll-foot-k--gap"><Clock size={14} /> Response</span>
             <p>We reply to every enquiry within 24 hours.</p>
           </div>

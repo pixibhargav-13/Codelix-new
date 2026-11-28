@@ -64,17 +64,17 @@ export default function FooterV2() {
 
       {/* office / contact info */}
       <div className="v2-footer-cards v2-footer-cards--four">
-        <a
-          className="v2-footer-card"
-          href="https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h3>India (HQ)</h3>
+        {/* plain text on purpose: the owner wants no address to be a link */}
+        <div className="v2-footer-card">
+          <h3>Ahmedabad (HQ)</h3>
           <p className="v2-footer-card-addr">
             A-1308, PNTC — Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat — 380015
           </p>
-        </a>
+          <h3 style={{ marginTop: 18 }}>Jamnagar</h3>
+          <p className="v2-footer-card-addr">
+            A-9, Bhakti Yog, Mehulnagar Telephone Ex., Jamnagar, Gujarat — 361006
+          </p>
+        </div>
         <div className="v2-footer-card">
           <h3>Phone</h3>
           <a className="v2-footer-card-strong" href="tel:+919998263282">+91 99982 63282</a>

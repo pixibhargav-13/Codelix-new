@@ -219,14 +219,10 @@ export default function ContactV2() {
                   <Phone size={15} strokeWidth={1.7} />
                   <span>+91 99982 63282</span>
                 </a>
-                <a
-                  className="contact-quick-link"
-                  href="https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5"
-                  target="_blank" rel="noopener noreferrer"
-                >
+                <span className="contact-quick-link">
                   <MapPin size={15} strokeWidth={1.7} />
-                  <span>Ahmedabad, Gujarat</span>
-                </a>
+                  <span>Ahmedabad (HQ) · Jamnagar</span>
+                </span>
                 {/* the hours the LocalBusiness schema declares, now on the page */}
                 <span className="contact-quick-link">
                   <Clock size={15} strokeWidth={1.7} />

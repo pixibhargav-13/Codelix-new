@@ -49,7 +49,7 @@ const SERVICE_INFO = {
    visual everywhere else. */
 const TICKER_FACTS = [
   "11 industries served",
-  "40+ projects across sectors",
+  "75+ clients served",
   "Fixed scope, fixed price",
 ];
 

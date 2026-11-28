@@ -26,7 +26,7 @@ const APPROACH = [
 
 const STATS = [
   { value: 11, suffix: "", label: "Industries served", note: "Not spread thin across dozens", ring: 78 },
-  { value: 40, suffix: "+", label: "Projects across sectors", note: "Real deployments, not pilots", ring: 92 },
+  { value: 75, suffix: "+", label: "Clients across sectors", note: "Real deployments, not pilots", ring: 92 },
 ];
 
 const FAQS = [

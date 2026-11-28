@@ -50,7 +50,7 @@ export default function ClientStrip() {
 
   return (
     <section className="v2-section v2-client-strip" style={{ paddingTop: 56, paddingBottom: 56, paddingLeft: 0, paddingRight: 0 }}>
-      <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>Trusted by 40+ companies</p>
+      <p className="v2-label" style={{ textAlign: "center", marginBottom: 28 }}>75+ clients served — businesses like these</p>
       <div className="v2-strip" ref={stripRef}>
         <div className="v2-strip-track" ref={trackRef}>
           {CLIENT_LOGOS.concat(CLIENT_LOGOS).map((logo, i) => (

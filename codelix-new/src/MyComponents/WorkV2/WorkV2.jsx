@@ -61,7 +61,7 @@ const linkFor = (p) => `/case-study${p.href}`;
 const TESTIMONIALS = STATIC_TESTIMONIALS;
 
 const STATS = [
-  { value: 15, suffix: "+", label: "Projects delivered", note: "Shown here — more shipped privately", ring: 75 },
+  { value: 75, suffix: "+", label: "Clients served", note: "A selection of their projects is shown here", ring: 75 },
   { value: 6, suffix: "", label: "Industries covered", note: "Not one narrow niche", ring: 60 },
 ];
 

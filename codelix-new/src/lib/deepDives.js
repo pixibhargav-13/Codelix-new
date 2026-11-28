@@ -598,9 +598,10 @@ export const DEEP_DIVES = {
       id: "visit",
       label: "Visit Or Call",
       question: "Where is the Codelix office, and when can you reach us?",
-      answer: "Codelix IT Solutions Pvt Ltd works from A-1308, PNTC, Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat 380015, Monday to Saturday, 10:00 to 19:00 IST. Call or email in those hours, or send the form any time; we reply within one business day and send a written proposal within 48 hours of the first call.",
+      answer: "Codelix IT Solutions Pvt Ltd has its headquarters at A-1308, PNTC, Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat 380015, and an office at A-9, Bhakti Yog, Mehulnagar Telephone Ex., Jamnagar, Gujarat 361006. We work Monday to Saturday, 10:00 to 19:00 IST. Call or email in those hours, or send the form any time; we reply within one business day and send a written proposal within 48 hours of the first call.",
       points: [
-        { title: "Office", body: "A-1308, PNTC, Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat 380015.", links: [{ label: "Get directions on Google Maps", href: "https://www.google.com/maps/place/Codelix+IT+Solutions+Pvt+Ltd/@23.009586,72.5203036,17z/data=!3m1!4b1!4m6!3m5!1s0x395e856f394696fd:0x69f60cf69bf7dd43!8m2!3d23.0095811!4d72.5228785!16s%2Fg%2F11z61zmnv5" }] },
+        { title: "Ahmedabad (HQ)", body: "A-1308, PNTC, Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat 380015." },
+        { title: "Jamnagar", body: "A-9, Bhakti Yog, Mehulnagar Telephone Ex., Jamnagar, Gujarat 361006." },
         { title: "Hours", body: "Monday to Saturday, 10:00–19:00 IST. That overlaps the UK and European morning and the Gulf working day; US teams get a fixed call slot." },
         { title: "Phone and email", body: "+91 99982 63282 · sales@codelixitsolutions.com", links: [{ label: "Call", href: "tel:+919998263282" }, { label: "Email", href: "mailto:sales@codelixitsolutions.com" }] },
         { title: "What you'll get", body: "A reply within one business day, an NDA before details if you want one, and a free written proposal with scope, price and timeline." },
