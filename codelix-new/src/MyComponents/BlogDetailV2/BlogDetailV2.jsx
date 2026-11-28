@@ -310,7 +310,7 @@ export default function BlogDetailV2() {
             </div>
             <p className="bdv2-authors-note">
               Codelix IT Solutions is a software company in Ahmedabad that builds websites, mobile apps,
-              ERP systems and AI tools for businesses across India, with 40+ projects delivered.{" "}
+              ERP systems and AI tools for businesses across India, with 75+ clients served.{" "}
               <Link to="/team">Meet the team →</Link>
             </p>
           </aside>

@@ -34,8 +34,8 @@ const MISSION_WORDS = [
 
 const STATS = [
   { value: 3, suffix: "+", label: "Years building software", note: "Since day one, same team", ring: 45 },
-  { value: 40, suffix: "+", label: "Projects delivered", note: "Across web, mobile & AI", ring: 92 },
-  { value: 40, suffix: "+", label: "Clients worldwide", note: "Repeat business, not one-offs", ring: 88 },
+  { value: 75, suffix: "+", label: "Clients served", note: "Across web, mobile & AI", ring: 92 },
+  { value: 11, suffix: "", label: "Industries served", note: "Not one narrow niche", ring: 88 },
 ];
 
 const VALUES = [
@@ -78,7 +78,7 @@ const PROCESS = [
    the site's own schema and pages */
 const PAGE_FAQS = [
   { q: "What does Codelix IT Solutions do?", a: "We build custom software, websites, mobile apps, ERP and CRM systems, and AI features for businesses in India and abroad, with a fixed written quote before work starts." },
-  { q: "Where is Codelix based?", a: "In Ahmedabad, Gujarat: A-1308, PNTC, Times Of India Press Road, Vejalpur, Ahmedabad 380015. We work Monday to Saturday, 10:00–19:00 IST." },
+  { q: "Where is Codelix based?", a: "Our headquarters is in Ahmedabad: A-1308, PNTC, Times Of India Press Road, Vejalpur, Ahmedabad 380015. We also have an office in Jamnagar: A-9, Bhakti Yog, Mehulnagar Telephone Ex., Jamnagar 361006. We work Monday to Saturday, 10:00–19:00 IST." },
   { q: "When was Codelix founded?", a: "In 2024, as Codelix IT Solutions Pvt Ltd." },
   { q: "Who leads Codelix?", a: "Manas Vadodaria (CEO) and Kushal Mungalpara (Co-Founder). Every engagement starts and ends with them." },
   { q: "Does Codelix build its own products?", a: "Yes: Codelix ERP for construction, manufacturing, ceramic and textile businesses, Audytee for CA firms, and AanganOne for housing societies." },
@@ -373,8 +373,8 @@ export default function AboutV2() {
         label="Client Voices"
         heading="What clients say about working with us."
         stats={[
-          { num: "40+", label: "Projects delivered" },
-          { num: "40+", label: "Clients worldwide" },
+          { num: "75+", label: "Clients served" },
+          { num: "11", label: "Industries served" },
         ]}
       />
 

@@ -393,7 +393,7 @@ const HeroVisual = () => {
             <span></span><span></span><span></span>
           </div>
           <pre><code>{`{
-  "projects": 40,
+  "clients": "75+",
   "based": "Ahmedabad",
   "delivery": "on-time",
   "code": "clean"
@@ -423,8 +423,8 @@ const HeroVisual = () => {
         <div className="stat-item">
           <div className="stat-pulse"></div>
           <div className="stat-content">
-            <span className="stat-val">40+</span>
-            <span className="stat-lbl">Shipped</span>
+            <span className="stat-val">75+</span>
+            <span className="stat-lbl">Clients</span>
           </div>
         </div>
         <div className="stat-item right">

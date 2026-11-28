@@ -38,7 +38,7 @@ const METHOD = [
 
 /* headline numbers — value is the count-up target, suffix rides along */
 const STATS = [
-  { value: 40, suffix: "+", label: "Projects delivered", icon: Sparkles },
+  { value: 75, suffix: "+", label: "Clients served", icon: Sparkles },
   { value: 8, suffix: "", label: "Core services", icon: Code2 },
   { value: 24, suffix: "h", label: "Response time", icon: Clock },
 ];

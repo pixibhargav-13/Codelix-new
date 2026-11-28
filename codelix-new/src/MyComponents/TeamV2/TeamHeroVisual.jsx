@@ -8,7 +8,7 @@ import "./TeamHeroVisual.css";
    dashboard from a sci-fi film. */
 
 const STATS = [
-  { value: "40+", label: "Projects shipped" },
+  { value: "75+", label: "Clients served" },
   { value: "11", label: "Industries served" },
   { value: "2", label: "Founders — zero layers" },
   { value: "24h", label: "Response time" },

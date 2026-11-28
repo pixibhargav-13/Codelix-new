@@ -805,8 +805,8 @@ export default function HomepageV2() {
         <div className="v2-method-head">
           <h2 className="v2-method-heading">Selected Work.</h2>
           <p className="v2-method-lede">
-            Codelix has delivered 40+ projects across society management, enterprise
-            ERP, e-commerce, payroll, and marketplaces. Here are five of them.
+            Codelix has worked with 75+ clients across society management, enterprise
+            ERP, e-commerce, payroll, and marketplaces. Here are five of the projects.
           </p>
         </div>
         <div className="v2-method-rows">
@@ -846,7 +846,7 @@ export default function HomepageV2() {
         testimonials={TESTIMONIALS}
         heading="What clients say once we ship."
         stats={[
-          { num: '40+', label: 'Companies trust us' },
+          { num: '75+', label: 'Clients served' },
           { num: '11', label: 'Industries served' },
         ]}
       />
