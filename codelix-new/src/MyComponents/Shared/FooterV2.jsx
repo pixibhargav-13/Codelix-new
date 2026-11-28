@@ -70,7 +70,9 @@ export default function FooterV2() {
           <p className="v2-footer-card-addr">
             A-1308, PNTC — Times Of India Press Road, Vejalpur, Ahmedabad, Gujarat — 380015
           </p>
-          <h3 style={{ marginTop: 18 }}>Jamnagar</h3>
+        </div>
+        <div className="v2-footer-card">
+          <h3>Jamnagar</h3>
           <p className="v2-footer-card-addr">
             A-9, Bhakti Yog, Mehulnagar Telephone Ex., Jamnagar, Gujarat — 361006
           </p>
@@ -81,14 +83,11 @@ export default function FooterV2() {
           <a className="v2-footer-card-strong" href="tel:+917490909686">+91 74909 09686</a>
         </div>
         <div className="v2-footer-card">
-          <h3>Looking For Jobs</h3>
-          <Link className="v2-footer-card-strong" to="/careers">View openings →</Link>
-        </div>
-        <div className="v2-footer-card">
-          <h3>HR</h3>
+          <h3>HR &amp; Careers</h3>
           <a className="v2-footer-card-strong" href="mailto:hr@codelixitsolutions.com">
             hr@codelixitsolutions.com
           </a>
+          <Link className="v2-footer-card-strong" to="/careers">View openings →</Link>
         </div>
         <div className="v2-footer-card">
           <h3>General</h3>
